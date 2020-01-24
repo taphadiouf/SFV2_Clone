@@ -1,3 +1,8 @@
+/**
+ * @author Erwan Yhuellou
+ * @created 13/01/2020
+ * @description PAD Framework
+ */
 public class PAD {
     
     //Used In order to know if user can by pass a class given in parameter
