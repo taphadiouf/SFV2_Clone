@@ -37,14 +37,6 @@ public class PAD {
         System.Debug('>> logLimit - ' + description);
     }
 
-    public static String myColor(Integer myFrom, Integer myTo) {
-        Decimal myPercent;
-        if (myTo != 0) myPercent = (myFrom + 0.0) / (myTo + 0.0);
-        else myPercent = 0;
-        if (myPercent >= 0.8) return 'background-color:#B22222;color:white;font-weight:bold;';
-        else if (myPercent >= 0.5) return 'background-color:#FF7F00;color:white;font-weight:bold;';
-        else return 'font-weight:bold;';
-    }
     public static void limits() {
         logLimit('AggregateQueries - ' + Limits.getAggregateQueries() + ' / ' + Limits.getLimitAggregateQueries());
         logLimit('Callouts - ' + Limits.getCallouts() + ' / ' + Limits.getLimitCallouts());
