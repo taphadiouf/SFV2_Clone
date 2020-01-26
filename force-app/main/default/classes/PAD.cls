@@ -1,7 +1,7 @@
 /**
  * @author Erwan Yhuellou
  * @created 13/01/2020
- * @description PAD Framework
+ * @description PAD Framework used for byPass, log and limit monitoring
  */
 public class PAD {
     
