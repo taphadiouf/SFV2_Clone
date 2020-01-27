@@ -5,27 +5,26 @@
  */
  @isTest
 private class PAD_Test {
-/*
+
     @testSetup static void setup() {
         
-        User u = UserInfo.getUserId();
-        u.LPCR_ByPassTrigger__c = 'SM001_TestIfByPassed';
-        update u;
-
-        // Create common test accounts
-        UM002_TestDataFactory tdf = new UM002_TestDataFactory();
-        Account a = tdf.AccountTdf.create('Account Test');
-        insert a;
+        // init data
     }
 
     static testMethod void validatePAD() {
 
+        PAD.log('PAD_Test', 'validatePAD', 'starting test method');
+        
         System.AssertEquals(PAD.canTrigger('SM001_TestIfByPassed'), true, 'User can by Pass SM001_TestIfByPassed');
+        
+        PAD.log('PAD_Test', 'validatePAD', 'starting test method', 'ok');
 
-        PAD.log('SM001_TestIfByPassed', 'method', 'description', 'ok');
-        PAD.log('SM001_TestIfByPassed', 'method', 'description');
+        UM002_TestDataFactory tdf = new UM002_TestDataFactory();
+        Account a = tdf.AccountTdf.create('Account Test');
+        PAD.log('PAD_Test', 'validatePAD', 'a:' , (SObject)a);
+        
         PAD.limits();
         
     }
-*/
+
 }

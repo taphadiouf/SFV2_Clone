@@ -29,6 +29,11 @@ public class PAD {
         System.Debug('>> ' + className + ' - ' + methodName + ' - ' + description + ':' + value);
     }
 
+    // Used to have an homogene way of debugging acrros developement team
+    public static void log(String className, String methodName, String description, SObject value) {
+        System.Debug('>> ' + className + ' - ' + methodName + ' - ' + description + ':' + String.valueOf(value));
+    }
+
     public static void log(String className, String methodName, String description) {
         System.Debug('>> ' + className + ' - ' + methodName + ' - ' + description);
     }

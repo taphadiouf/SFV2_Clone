@@ -5,7 +5,7 @@
  */
  @isTest
 private class SM001_TestIfByPassed_Test {
-/*
+
     @testSetup static void setup() {
         
         // Create common test accounts
@@ -17,9 +17,17 @@ private class SM001_TestIfByPassed_Test {
     static testMethod void validatePAD() {
 
         Account tmp = [Select Id, Name from Account where name like 'Account Test'];
-
         System.AssertNotEquals(tmp, null, 'Account not created');
+
+        tmp.Name = 'Modified';
+        update tmp;
+        tmp = [Select Id, Name from Account where name like 'Modified'];
+        System.AssertNotEquals(tmp, null, 'Account not updated');
+
+        delete tmp;
+        List<Account> tmpList = [Select Id, Name from Account where name like 'Modified'];
+        System.AssertEquals(tmpList.size(), 0, 'Account should be deleted');
         
     }
-*/
+
 }
