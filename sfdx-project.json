@@ -2,7 +2,9 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true
+      "default": true,
+      "package": "LPCR",
+      "versionNumber": "0.0.0.NEXT"
     }
   ],
   "namespace": "",
