@@ -1,7 +1,7 @@
 scratch-org-def: config/project-scratch-def.json
 assign-permset: false
 permset-name:
-run-apex-tests: false
+run-apex-tests: true
 apex-test-format: tap
 show-scratch-org-url: false
 open-path: 
