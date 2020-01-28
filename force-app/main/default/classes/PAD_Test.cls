@@ -13,7 +13,7 @@ private class PAD_Test {
 
     static testMethod void validatePAD() {
 
-        PAD.log('PAD_Test', 'validatePAD', 'starting test method');
+        PAD.log('PAD_Test', 'validatePAD', 'starting test method'); 
         
         System.AssertEquals(PAD.canTrigger('SM001_TestIfByPassed'), true, 'User can by Pass SM001_TestIfByPassed');
         
