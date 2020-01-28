@@ -20,6 +20,12 @@
         },
         "environments": {
             "test": {
+                "formation" : {
+                    "test" : {
+                        "size" : "permformance-m",
+                        "quantity" : 12
+                    }
+                },
                 "scripts": {
                     "test-setup":
                     "./vendor/sfdx/release.sh ci-$HEROKU_TEST_RUN_COMMIT_VERSION && ./bin/test-setup.sh",
