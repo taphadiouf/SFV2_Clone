@@ -10,4 +10,4 @@ echo "Creating New Scratch Org..."
 
 sfdx force:org:create --setdefaultusername -f config/project-scratch-def.json --setalias $YourAlias -d 30
 
-sfdx force:org:list
+sfdx force:org:list 
