@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_PrestataireActuel__c</fullName>
+    <externalId>false</externalId>
+    <label>Prestataire actuel</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Autre</fullName>
+                <default>false</default>
+                <label>Autre</label>
+            </value>
+            <value>
+                <fullName>Babilou</fullName>
+                <default>false</default>
+                <label>Babilou</label>
+            </value>
+            <value>
+                <fullName>Crèche attitude</fullName>
+                <default>false</default>
+                <label>Crèche attitude</label>
+            </value>
+            <value>
+                <fullName>Crèches de France</fullName>
+                <default>false</default>
+                <label>Crèches de France</label>
+            </value>
+            <value>
+                <fullName>La maison bleue</fullName>
+                <default>false</default>
+                <label>La maison bleue</label>
+            </value>
+            <value>
+                <fullName>Ma place en crèche</fullName>
+                <default>false</default>
+                <label>Ma place en crèche</label>
+            </value>
+            <value>
+                <fullName>People and baby</fullName>
+                <default>false</default>
+                <label>People and baby</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>
