@@ -12,7 +12,7 @@ private class UM001_LogManager_Test {
         UM002_TestDataFactory tdf = new UM002_TestDataFactory();
         Account a = tdf.AccountTdf.create('Account Test');
         insert a;
-    }
+    } 
 
     static testMethod void validatePAD() {
 

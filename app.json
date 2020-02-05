@@ -4,7 +4,8 @@
                 "url": "https://github.com/heroku/salesforce-cli-buildpack#v3"
             },
             {
-                "url": "https://github.com/heroku/salesforce-buildpack#v3"
+                
+                "url": "https://github.com/franckdepicardie/salesforce-buildpack"
             }
         ],
         "env": {
@@ -20,6 +21,12 @@
         },
         "environments": {
             "test": {
+                "formation" : {
+                    "test" : {
+                        "size" : "performance-l",
+                        "quantity" : 1
+                    }
+                },
                 "scripts": {
                     "test-setup":
                     "./vendor/sfdx/release.sh ci-$HEROKU_TEST_RUN_COMMIT_VERSION && ./bin/test-setup.sh",
