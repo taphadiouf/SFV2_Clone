@@ -9,11 +9,48 @@
         <value>Leads</value>
     </caseValues>
     <gender>Masculine</gender>
+    <layouts>
+        <layout>AO Privé</layout>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Entreprise</layout>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Famille</layout>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
     <quickActions>
         <label><!-- Adobe Sign --></label>
         <name>echosign_dev1__EchoSign_Lead_Publisher_Action</name>
     </quickActions>
+    <recordTypes>
+        <label><!-- AO Privé --></label>
+        <name>AO_Prive</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Entreprise --></label>
+        <name>Entreprise</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Famille --></label>
+        <name>Famille</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Au moins un numéro de téléphone fixe, de téléphone mobile ou un email doit être renseigné. --></errorMessage>
+        <name>VR_Lead_ContactMandatory</name>
+    </validationRules>
     <webLinks>
         <label><!-- Conga_Composer_OAuth --></label>
         <name>APXTConga4__Conga_Composer_OAuth</name>
