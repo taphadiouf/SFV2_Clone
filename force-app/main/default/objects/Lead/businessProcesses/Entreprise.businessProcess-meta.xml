@@ -3,10 +3,6 @@
     <fullName>Entreprise</fullName>
     <isActive>true</isActive>
     <values>
-        <fullName>A traiter</fullName>
-        <default>true</default>
-    </values>
-    <values>
         <fullName>Abandonné</fullName>
         <default>false</default>
     </values>
@@ -17,5 +13,9 @@
     <values>
         <fullName>En cours</fullName>
         <default>false</default>
+    </values>
+    <values>
+        <fullName>Nouveau</fullName>
+        <default>true</default>
     </values>
 </BusinessProcess>
