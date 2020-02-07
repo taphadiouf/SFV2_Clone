@@ -566,6 +566,10 @@
         <recordType>Lead.Famille</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Lead-Partenaire</layout>
+        <recordType>Lead.Partenaire</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>User-User Layout</layout>
     </layoutAssignments>
     <objectPermissions>
@@ -595,6 +599,11 @@
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Lead.Famille</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Lead.Partenaire</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <userLicense>Salesforce</userLicense>
