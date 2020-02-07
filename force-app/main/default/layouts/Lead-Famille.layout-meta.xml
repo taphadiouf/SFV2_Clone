@@ -76,6 +76,10 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>LPCR_Garde__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LPCR_AutresEnfantsFoyer__c</field>
             </layoutItems>
         </layoutColumns>

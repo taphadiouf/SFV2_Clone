@@ -866,6 +866,21 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_Garde__c</picklist>
+        <values>
+            <fullName>Autorité parentale conjointe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garde alternée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garde parent unique</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_PrestataireActuel__c</picklist>
         <values>
             <fullName>Autre</fullName>
@@ -932,11 +947,39 @@
     <picklistValues>
         <picklist>LPCR_SituationFamiliale__c</picklist>
         <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Célibataire géographique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Divorcé</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>En couple</fullName>
             <default>false</default>
         </values>
         <values>
+            <fullName>Famille recomposée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marié %2F Pacsé</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Mono parentale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Séparé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Veuf %2F Veuve</fullName>
             <default>false</default>
         </values>
     </picklistValues>
