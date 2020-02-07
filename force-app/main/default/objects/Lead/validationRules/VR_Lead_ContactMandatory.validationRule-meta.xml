@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Lead_ContactMandatory</fullName>
+    <active>true</active>
+    <description>L’utilisateur doit renseigner obligatoirement au moins un numéro de téléphone fixe, de téléphone mobile ou un email.</description>
+    <errorConditionFormula>AND(ISNULL(Email),ISNULL(Phone),ISNULL(MobilePhone))</errorConditionFormula>
+    <errorMessage>Au moins un numéro de téléphone fixe, de téléphone mobile ou un email doit être renseigné.</errorMessage>
+</ValidationRule>
