@@ -554,6 +554,10 @@
         <recordType>Lead.AO_Prive</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Lead-AO Public</layout>
+        <recordType>Lead.AO_Public</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Lead-Entreprise</layout>
         <recordType>Lead.Entreprise</recordType>
     </layoutAssignments>
@@ -576,6 +580,11 @@
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Lead.AO_Prive</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Lead.AO_Public</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
