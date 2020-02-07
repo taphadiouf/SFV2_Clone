@@ -5,9 +5,18 @@
         <layout>Lead-Entreprise</layout>
         <recordType>Lead.Entreprise</recordType>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Lead-Famille</layout>
+        <recordType>Lead.Famille</recordType>
+    </layoutAssignments>
     <recordTypeVisibilities>
         <default>true</default>
         <recordType>Lead.Entreprise</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Lead.Famille</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <userLicense>Salesforce</userLicense>
