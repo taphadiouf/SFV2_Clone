@@ -390,14 +390,14 @@
     [
         "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/layouts",
         {
-            "state": "u",
             "sourcePath": "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/layouts",
             "isDirectory": true,
-            "isMetadataFile": false,
             "size": 160,
             "modifiedTime": 1581071561493,
             "changeTime": 1581071561493,
-            "contentHash": "f73e0ae12b074099db66caac09ab28911661cfe4"
+            "contentHash": "f73e0ae12b074099db66caac09ab28911661cfe4",
+            "isMetadataFile": false,
+            "state": "u"
         }
     ],
     [
@@ -583,14 +583,14 @@
     [
         "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/objects/Lead",
         {
+            "state": "u",
             "sourcePath": "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/objects/Lead",
             "isDirectory": true,
-            "size": 128,
-            "modifiedTime": 1581071367893,
-            "changeTime": 1581071367893,
-            "contentHash": "9742ec40467fbefb3ae01e2661a4c52e12214791",
             "isMetadataFile": false,
-            "state": "u"
+            "size": 160,
+            "modifiedTime": 1581071693040,
+            "changeTime": 1581071693040,
+            "contentHash": "04c4fc9f1cb248efeb1f60ba084d5ac770892ed3"
         }
     ],
     [
@@ -2231,61 +2231,53 @@
     [
         "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/profiles/Admin.profile-meta.xml",
         {
+            "state": "u",
             "sourcePath": "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/profiles/Admin.profile-meta.xml",
             "isDirectory": false,
-            "size": 20260,
-            "modifiedTime": 1580992360546,
-            "changeTime": 1580992360546,
-            "contentHash": "12bd923090e75f4a18450b618fbc2e8b0ff58529",
             "isMetadataFile": true,
-            "state": "n",
-            "isWorkspace": false,
-            "isArtifactRoot": false
+            "size": 19854,
+            "modifiedTime": 1581071693078,
+            "changeTime": 1581071693078,
+            "contentHash": "5df1cfe791af00d461641cd64d433844f700562a"
         }
     ],
     [
         "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/profiles/Custom%3A Marketing Profile.profile-meta.xml",
         {
+            "state": "u",
             "sourcePath": "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/profiles/Custom%3A Marketing Profile.profile-meta.xml",
             "isDirectory": false,
-            "size": 6143,
-            "modifiedTime": 1580992360547,
-            "changeTime": 1580992360547,
-            "contentHash": "140dfca117869ae0684cf6ae2b1ecde2af322a00",
             "isMetadataFile": true,
-            "state": "n",
-            "isWorkspace": false,
-            "isArtifactRoot": false
+            "size": 4753,
+            "modifiedTime": 1581071693102,
+            "changeTime": 1581071693102,
+            "contentHash": "e70cd59ce3e071a646e11e9572f293d13765534f"
         }
     ],
     [
         "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/profiles/Custom%3A Sales Profile.profile-meta.xml",
         {
+            "state": "u",
             "sourcePath": "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/profiles/Custom%3A Sales Profile.profile-meta.xml",
             "isDirectory": false,
-            "size": 6143,
-            "modifiedTime": 1580992360547,
-            "changeTime": 1580992360547,
-            "contentHash": "140dfca117869ae0684cf6ae2b1ecde2af322a00",
             "isMetadataFile": true,
-            "state": "n",
-            "isWorkspace": false,
-            "isArtifactRoot": false
+            "size": 4753,
+            "modifiedTime": 1581071693097,
+            "changeTime": 1581071693097,
+            "contentHash": "e70cd59ce3e071a646e11e9572f293d13765534f"
         }
     ],
     [
         "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/profiles/Custom%3A Support Profile.profile-meta.xml",
         {
+            "state": "u",
             "sourcePath": "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/profiles/Custom%3A Support Profile.profile-meta.xml",
             "isDirectory": false,
-            "size": 6481,
-            "modifiedTime": 1580992360547,
-            "changeTime": 1580992360547,
-            "contentHash": "fbd1c10afc9f98e05e420543ee185341a30f81f8",
             "isMetadataFile": true,
-            "state": "n",
-            "isWorkspace": false,
-            "isArtifactRoot": false
+            "size": 5091,
+            "modifiedTime": 1581071693086,
+            "changeTime": 1581071693086,
+            "contentHash": "38e3f5306a45fe7cb3c841700e35a0966102e79a"
         }
     ],
     [
@@ -3027,14 +3019,40 @@
     [
         "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/layouts/Lead-Entreprise.layout-meta.xml",
         {
-            "state": "u",
             "sourcePath": "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/layouts/Lead-Entreprise.layout-meta.xml",
             "isDirectory": false,
-            "isMetadataFile": true,
             "size": 8689,
             "modifiedTime": 1581071561493,
             "changeTime": 1581071561493,
-            "contentHash": "e5be0b8f9a85964519cff63c81671093126b0c0f"
+            "contentHash": "e5be0b8f9a85964519cff63c81671093126b0c0f",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/objects/Lead/recordTypes/Entreprise.recordType-meta.xml",
+        {
+            "state": "u",
+            "sourcePath": "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/objects/Lead/recordTypes/Entreprise.recordType-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 5767,
+            "modifiedTime": 1581071693043,
+            "changeTime": 1581071693043,
+            "contentHash": "1e5350c45d73e023d1c089db1f7face98fc53504"
+        }
+    ],
+    [
+        "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/objects/Lead/recordTypes",
+        {
+            "state": "u",
+            "sourcePath": "/Users/jeanbaptiste.beck/Code/SFV2/force-app/main/default/objects/Lead/recordTypes",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 96,
+            "modifiedTime": 1581071693042,
+            "changeTime": 1581071693042,
+            "contentHash": "201b72d8e21e96fbcff40df8df6e1d0203c29991"
         }
     ]
 ]
