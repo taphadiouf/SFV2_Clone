@@ -3,6 +3,7 @@
     <fullName>Entreprise</fullName>
     <active>true</active>
     <businessProcess>Entreprise</businessProcess>
+    <compactLayoutAssignment>Entreprise</compactLayoutAssignment>
     <label>Entreprise</label>
     <picklistValues>
         <picklist>Industry</picklist>
@@ -862,6 +863,21 @@
         </values>
         <values>
             <fullName>Trésorier</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Garde__c</picklist>
+        <values>
+            <fullName>Autorité parentale conjointe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garde alternée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garde parent unique</fullName>
             <default>false</default>
         </values>
     </picklistValues>
