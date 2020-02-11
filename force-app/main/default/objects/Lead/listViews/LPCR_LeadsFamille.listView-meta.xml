@@ -7,6 +7,7 @@
     <columns>LPCR_ProfessionCoDemandeur__c</columns>
     <columns>LPCR_SocieteCoDemandeur__c</columns>
     <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.STATUS</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>LEAD.RECORDTYPE</field>

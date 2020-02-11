@@ -6,6 +6,7 @@
     <columns>LPCR_TypeClient__c</columns>
     <columns>LEAD.EMAIL</columns>
     <columns>LEAD.PHONE</columns>
+    <columns>LEAD.STATUS</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>LEAD.RECORDTYPE</field>
