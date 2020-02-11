@@ -17,17 +17,91 @@
         </sections>
     </layouts>
     <layouts>
-        <layout>Entreprise</layout>
+        <layout>AO Public</layout>
         <sections>
             <label><!-- Liens Personnalisés --></label>
             <section>Liens Personnalisés</section>
         </sections>
     </layouts>
     <layouts>
-        <layout>Famille</layout>
+        <layout>Entreprise</layout>
+        <sections>
+            <label><!-- Concurrence --></label>
+            <section>Concurrence</section>
+        </sections>
+        <sections>
+            <label><!-- Contact --></label>
+            <section>Contact</section>
+        </sections>
+        <sections>
+            <label><!-- Informations --></label>
+            <section>Informations</section>
+        </sections>
         <sections>
             <label><!-- Liens Personnalisés --></label>
             <section>Liens Personnalisés</section>
+        </sections>
+        <sections>
+            <label><!-- Société --></label>
+            <section>Société</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Famille</layout>
+        <sections>
+            <label><!-- Crèches sélectionnées --></label>
+            <section>Crèches sélectionnées</section>
+        </sections>
+        <sections>
+            <label><!-- Demandeurs --></label>
+            <section>Demandeurs</section>
+        </sections>
+        <sections>
+            <label><!-- Employeurs --></label>
+            <section>Employeurs</section>
+        </sections>
+        <sections>
+            <label><!-- Enfant 1 --></label>
+            <section>Enfant 1</section>
+        </sections>
+        <sections>
+            <label><!-- Enfant 2 --></label>
+            <section>Enfant 2</section>
+        </sections>
+        <sections>
+            <label><!-- Enfant 3 --></label>
+            <section>Enfant 3</section>
+        </sections>
+        <sections>
+            <label><!-- Famille --></label>
+            <section>Famille</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Partenaire</layout>
+        <sections>
+            <label><!-- Contact --></label>
+            <section>Contact</section>
+        </sections>
+        <sections>
+            <label><!-- Informations --></label>
+            <section>Informations</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+        <sections>
+            <label><!-- Message --></label>
+            <section>Message</section>
+        </sections>
+        <sections>
+            <label><!-- Partenaire --></label>
+            <section>Partenaire</section>
         </sections>
     </layouts>
     <quickActions>
@@ -39,12 +113,20 @@
         <name>AO_Prive</name>
     </recordTypes>
     <recordTypes>
+        <label><!-- AO Public --></label>
+        <name>AO_Public</name>
+    </recordTypes>
+    <recordTypes>
         <label><!-- Entreprise --></label>
         <name>Entreprise</name>
     </recordTypes>
     <recordTypes>
         <label><!-- Famille --></label>
         <name>Famille</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Partenaire --></label>
+        <name>Partenaire</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>

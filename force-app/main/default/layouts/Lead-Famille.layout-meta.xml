@@ -101,7 +101,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Title</field>
+                <field>LPCR_TypeProfession__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_Profession__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -120,6 +124,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_CompteSocieteCoDemandeur__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeProfessionCoDemandeur__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

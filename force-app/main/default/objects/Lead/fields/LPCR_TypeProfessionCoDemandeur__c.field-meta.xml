@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_TypeProfessionCoDemandeur__c</fullName>
+    <externalId>false</externalId>
+    <label>Type de profession co-demandeur</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pole direction générale</fullName>
+                <default>false</default>
+                <label>Pole direction générale</label>
+            </value>
+            <value>
+                <fullName>Pôle achat, services</fullName>
+                <default>false</default>
+                <label>Pôle achat, services</label>
+            </value>
+            <value>
+                <fullName>Pole Ressources humaines</fullName>
+                <default>false</default>
+                <label>Pole Ressources humaines</label>
+            </value>
+            <value>
+                <fullName>Pole développement durable, environnement, RSE</fullName>
+                <default>false</default>
+                <label>Pole développement durable, environnement, RSE</label>
+            </value>
+            <value>
+                <fullName>Pole Finance administratif, juridique</fullName>
+                <default>false</default>
+                <label>Pole Finance administratif, juridique</label>
+            </value>
+            <value>
+                <fullName>Pole informatique &amp; Technique</fullName>
+                <default>false</default>
+                <label>Pole informatique &amp; Technique</label>
+            </value>
+            <value>
+                <fullName>Pôle commercial</fullName>
+                <default>false</default>
+                <label>Pôle commercial</label>
+            </value>
+            <value>
+                <fullName>Pôle Marketing &amp; Communicaiton</fullName>
+                <default>false</default>
+                <label>Pôle Marketing &amp; Communicaiton</label>
+            </value>
+            <value>
+                <fullName>Public</fullName>
+                <default>false</default>
+                <label>Public</label>
+            </value>
+            <value>
+                <fullName>PLAC</fullName>
+                <default>false</default>
+                <label>PLAC</label>
+            </value>
+            <value>
+                <fullName>CE</fullName>
+                <default>false</default>
+                <label>CE</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

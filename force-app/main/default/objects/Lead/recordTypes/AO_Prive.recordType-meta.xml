@@ -491,7 +491,439 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_Fonction__c</picklist>
+        <picklist>LPCR_Garde__c</picklist>
+        <values>
+            <fullName>Autorité parentale conjointe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garde alternée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garde parent unique</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_PrestataireActuel__c</picklist>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Babilou</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crèche attitude</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crèches de France</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La maison bleue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ma place en crèche</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>People and baby</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_PrivePublic__c</picklist>
+        <values>
+            <fullName>Privé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_ProfessionCoDemandeur__c</picklist>
+        <values>
+            <fullName>Assistant achats</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Assistante Ressources Humaines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Assistante de Direction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Associé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Avocat%2C profession libérale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chief Happiness Officer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur Gestion des carrières</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur Général des Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur Internet%2C digital%2C webmarketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur R%26D%2C innovation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur achats</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur administratif%2C financier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur audit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur communication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur comptable%2C trésorerie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur contrôle de gestion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur d%27hôtel ou palace</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur de cabinet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur de division%2C business unit ou filiale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur de l%27actions sociale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur des opérations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur des ressources humaines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur des services généraux</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur des systèmes d%27information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur du développement durable%2FRSE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur développement RH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur formation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur grands comptes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur général</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur général adjoint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur hygiène%2C sécurité%2C environnement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur immobilier%2C urbanisme%2C habitat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur industriel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur ingénierie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur international</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur juridique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur partenariats%2C licensing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur production</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur produit%2C marque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur qualité</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur recrutement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur relations sociales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur régional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur service client</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur surfaces commerciales %28magasin%2C hypermarché%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur sécurité informatique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur technique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur télécommunications</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur usine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur%2Ftrice Petite Enfance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Elu - Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Elu petite enfance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gérant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Haut fonctionnaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Président</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable Communication RH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable Financier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable Internet%2C digital%2C webmarketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable Marque Employeur</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable Qualité de Vie au Travail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable RSE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable achats</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable administratif%2C financier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable audit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable commande publique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable communication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable comptable%2C trésorerie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable contrôle de gestion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable d%27hôtel ou palace</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable de l%27actions sociale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable des services généraux</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable développement RH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable formation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable grands comptes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable immobilier%2C urbanisme%2C habitat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable juridique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable partenariats%2C licensing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable produit%2C marque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable recrutement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable relations sociales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable ressources humaines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable rémunération</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable service client</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable surfaces commerciales %28magasin%2C hypermarché%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable%2FCoordinatrice petite enfance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secrétaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secrétaire général</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trésorier</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Profession__c</picklist>
         <values>
             <fullName>Assistant achats</fullName>
             <default>false</default>
@@ -866,63 +1298,6 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_Garde__c</picklist>
-        <values>
-            <fullName>Autorité parentale conjointe</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Garde alternée</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Garde parent unique</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_PrestataireActuel__c</picklist>
-        <values>
-            <fullName>Autre</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Babilou</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Crèche attitude</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Crèches de France</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>La maison bleue</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Ma place en crèche</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>People and baby</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_PrivePublic__c</picklist>
-        <values>
-            <fullName>Privé</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Public</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
         <picklist>LPCR_ProfilLead__c</picklist>
         <values>
             <fullName>Autre</fullName>
@@ -987,7 +1362,18 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_TypeFonction__c</picklist>
+        <picklist>LPCR_TypePrestation__c</picklist>
+        <values>
+            <fullName>Occasionnel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Régulier</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeProfessionCoDemandeur__c</picklist>
         <values>
             <fullName>CE</fullName>
             <default>false</default>
@@ -1034,13 +1420,49 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_TypePrestation__c</picklist>
+        <picklist>LPCR_TypeProfession__c</picklist>
         <values>
-            <fullName>Occasionnel</fullName>
+            <fullName>CE</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Régulier</fullName>
+            <fullName>PLAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pole Finance administratif%2C juridique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pole Ressources humaines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pole direction générale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pole développement durable%2C environnement%2C RSE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pole informatique %26 Technique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pôle Marketing %26 Communicaiton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pôle achat%2C services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pôle commercial</fullName>
             <default>false</default>
         </values>
     </picklistValues>

@@ -2,13 +2,11 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_LeadsFamille</fullName>
     <columns>FULL_NAME</columns>
-    <columns>LEAD.EMAIL</columns>
+    <columns>LPCR_Profession__c</columns>
     <columns>LEAD.COMPANY</columns>
-    <columns>LEAD.STATE</columns>
-    <columns>LEAD.STATUS</columns>
-    <columns>LEAD.UNREAD</columns>
-    <columns>LEAD.CREATED_DATE</columns>
-    <columns>CORE.USERS.ALIAS</columns>
+    <columns>LPCR_ProfessionCoDemandeur__c</columns>
+    <columns>LPCR_SocieteCoDemandeur__c</columns>
+    <columns>LEAD.EMAIL</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>LEAD.RECORDTYPE</field>

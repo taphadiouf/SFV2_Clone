@@ -363,11 +363,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.LPCR_Fonction__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Lead.LPCR_Garde__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -518,6 +513,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.LPCR_Profession__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Lead.LPCR_ProfilLead__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -583,12 +583,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.LPCR_TypeFonction__c</field>
+        <field>Lead.LPCR_TypePrestation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.LPCR_TypePrestation__c</field>
+        <field>Lead.LPCR_TypeProfessionCoDemandeur__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_TypeProfession__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
