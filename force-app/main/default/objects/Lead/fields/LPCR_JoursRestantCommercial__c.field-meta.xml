@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_DelaiTraitementServiceFamille__c</fullName>
+    <fullName>LPCR_JoursRestantCommercial__c</fullName>
     <externalId>false</externalId>
     <formula>0</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Délai de traitement service famille</label>
+    <label>Nombre de jours restant service commerci</label>
     <precision>18</precision>
     <required>false</required>
     <scale>0</scale>

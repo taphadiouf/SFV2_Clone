@@ -332,14 +332,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.LPCR_DelaiTraitementCommercial__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.LPCR_DelaiTraitementServiceFamille__c</field>
-        <readable>false</readable>
+        <editable>true</editable>
+        <field>Lead.LPCR_DateTransfertServiceFamille__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -379,6 +374,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Lead.LPCR_Jeudi3__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_JoursRestantCommercial__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_JoursRestantServiceFamille__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -560,6 +565,11 @@
         <editable>false</editable>
         <field>Lead.LPCR_TelephoneCoDemandeur__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_TelephoneMobileCoDemandeur__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
