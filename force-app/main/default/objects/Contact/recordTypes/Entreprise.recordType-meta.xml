@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Entreprise</fullName>
+    <active>true</active>
+    <label>Entreprise</label>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Appel d%27Offre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Challenge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chargé d%27affaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directrice de crèche</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Evènement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Publicité</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recherche Internet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Site Internet Grandir</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Siège</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Name</picklist>
+        <values>
+            <fullName>M</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mme</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>
