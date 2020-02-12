@@ -705,14 +705,26 @@
         <layout>Account-Account Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Account-Crèche</layout>
+        <recordType>Account.Creche</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-Entreprise</layout>
+        <recordType>Account.Entreprise</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-Famille</layout>
+        <recordType>Account.Famille</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-Partenaire</layout>
+        <recordType>Account.Partenaire</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>LPCR_Log__c-Présentation Log</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Lead-AO Privé</layout>
-        <recordType>Lead.AO_Prive</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Lead-AO Public</layout>
@@ -756,7 +768,22 @@
     </objectPermissions>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Lead.AO_Prive</recordType>
+        <recordType>Account.Creche</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Account.Entreprise</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>Account.Famille</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Account.Partenaire</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
