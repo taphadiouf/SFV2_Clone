@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_LeadsEntreprise</fullName>
+    <columns>LPCR_NomSociete__c</columns>
+    <columns>LPCR_Departement__c</columns>
+    <columns>LPCR_TypeClient__c</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.MOBILE_PHONE</columns>
+    <columns>LEAD.STATUS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LEAD.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Lead.Entreprise</value>
+    </filters>
+    <label>Leads Entreprise</label>
+</ListView>

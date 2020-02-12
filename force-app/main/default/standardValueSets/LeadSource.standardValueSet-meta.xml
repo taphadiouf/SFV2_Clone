@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Site Internet Grandir</fullName>
+        <default>false</default>
+        <label>Site Internet Grandir</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Chargé d&#39;affaire</fullName>
+        <default>false</default>
+        <label>Chargé d&#39;affaire</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Appel d&#39;Offre</fullName>
+        <default>false</default>
+        <label>Appel d&#39;Offre</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directrice de crèche</fullName>
+        <default>false</default>
+        <label>Directrice de crèche</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Recherche Internet</fullName>
+        <default>false</default>
+        <label>Recherche Internet</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Publicité</fullName>
+        <default>false</default>
+        <label>Publicité</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Siège</fullName>
+        <default>false</default>
+        <label>Siège</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Challenge</fullName>
+        <default>false</default>
+        <label>Challenge</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Evènement</fullName>
+        <default>false</default>
+        <label>Evènement</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Autre</fullName>
+        <default>false</default>
+        <label>Autre</label>
+    </standardValue>
+</StandardValueSet>

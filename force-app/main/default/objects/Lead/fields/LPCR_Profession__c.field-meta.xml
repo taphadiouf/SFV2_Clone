@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_Fonction__c</fullName>
+    <fullName>LPCR_Profession__c</fullName>
     <externalId>false</externalId>
-    <label>Fonction</label>
+    <label>Profession</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>
-        <controllingField>LPCR_TypeFonction__c</controllingField>
+        <controllingField>LPCR_TypeProfession__c</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>

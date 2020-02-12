@@ -5,11 +5,10 @@
     <label>Prestataire actuel</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
     <type>MultiselectPicklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>true</sorted>
+            <sorted>false</sorted>
             <value>
                 <fullName>Autre</fullName>
                 <default>false</default>

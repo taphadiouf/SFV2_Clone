@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Garde__c</fullName>
+    <externalId>false</externalId>
+    <label>Garde</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>LPCR_SituationFamiliale__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Autorité parentale conjointe</fullName>
+                <default>false</default>
+                <label>Autorité parentale conjointe</label>
+            </value>
+            <value>
+                <fullName>Garde alternée</fullName>
+                <default>false</default>
+                <label>Garde alternée</label>
+            </value>
+            <value>
+                <fullName>Garde parent unique</fullName>
+                <default>false</default>
+                <label>Garde parent unique</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Divorcé</controllingFieldValue>
+            <controllingFieldValue>Séparé</controllingFieldValue>
+            <valueName>Autorité parentale conjointe</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Divorcé</controllingFieldValue>
+            <controllingFieldValue>Séparé</controllingFieldValue>
+            <valueName>Garde alternée</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Divorcé</controllingFieldValue>
+            <controllingFieldValue>Séparé</controllingFieldValue>
+            <valueName>Garde parent unique</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>
