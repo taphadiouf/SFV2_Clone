@@ -5,7 +5,7 @@
     */
 
 public with sharing class SM001_EventServices {
-    public static List<Event> LEAD_RG03_IS250(list<Event> newEventsList) {
+    public static List<Lead> LEAD_RG03_IS250(list<Event> newEventsList) {
         
         set<Id> setLeadIds = new set<Id> ();
 
@@ -18,11 +18,10 @@ public with sharing class SM001_EventServices {
                                     AND RecordType.Name='Famille' 
                                     AND Status ='Nouveau']);
         for(Lead le: listLead){
-            le.status ='En Cours';
+            le.status ='En cours';
         }
         update listLead;
         return listLead;
         }
 
 }
-        

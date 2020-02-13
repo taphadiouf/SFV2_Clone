@@ -18,11 +18,10 @@ public with sharing class SM001_TaskServices {
                                     AND RecordType.Name='Famille' 
                                     AND Status ='Nouveau']);
         for(Lead le: listLead){
-            le.status ='En Cours';
+            le.status ='En cours';
         }
         update listLead;
         return listLead;
         }
 
 }
-        
