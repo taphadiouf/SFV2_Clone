@@ -4,7 +4,7 @@
  * @description Trigger action handler on Task Object
  */
 
-public with sharing class APT001_TaskTrigger extends TM000_TriggerHandler(){
+public with sharing class APT001_TaskTrigger extends TM000_TriggerHandler{
 
     private Map<Id, Task> newTasksMap;
     private Map<Id, Task> oldTasksMap;

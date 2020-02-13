@@ -5,7 +5,7 @@
     */
 
 public with sharing class SM001_TaskServices {
-    public static List<Task> LEAD_RG03_IS250(list<Task> newTasksList) {
+    public static List<Lead> LEAD_RG03_IS250(list<Task> newTasksList) {
         
         set<Id> setLeadIds = new set<Id> ();
 
@@ -21,6 +21,7 @@ public with sharing class SM001_TaskServices {
             le.status ='En Cours';
         }
         update listLead;
+        return listLead;
         }
 
 }

@@ -21,6 +21,7 @@ public with sharing class SM001_EventServices {
             le.status ='En Cours';
         }
         update listLead;
+        return listLead;
         }
 
 }

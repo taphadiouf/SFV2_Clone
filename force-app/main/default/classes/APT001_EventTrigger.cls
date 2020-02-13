@@ -4,7 +4,7 @@
  * @description Trigger action handler on Event Object
  */
 
-public with sharing class APT001_EvenyTrigger extends TM000_TriggerHandler(){
+public with sharing class APT001_EventTrigger extends TM000_TriggerHandler{
 
     private Map<Id, Event> newEventsMap;
     private Map<Id, Event> oldEventsMap;
