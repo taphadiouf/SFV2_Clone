@@ -2,7 +2,14 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "baseUrl": ".",
-        "paths": {}
+        "paths": {
+            "c/LWC001_SF_LEAD_COMER_36": [
+                "LWC001_SF_LEAD_COMER_36/LWC001_SF_LEAD_COMER_36.js"
+            ],
+            "c/lWC001_SF_LEAD_COMER_36": [
+                "lWC001_SF_LEAD_COMER_36/lWC001_SF_LEAD_COMER_36.js"
+            ]
+        }
     },
     "include": [
         "**/*",

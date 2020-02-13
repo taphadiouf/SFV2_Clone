@@ -90,6 +90,37 @@ public with sharing class UM002_TestDataFactory {
         }
         
     }
+    //This part of code is added by hanae on the 12/02/2020
+    //it's a class that permit to add a list of leads/Tasks/Events
+        public List<Lead> createLead(Integer numLeads, String name,String recTypeId, String status){
+            List<Lead> leads = new List<Lead>();
+            for(Integer i=0;i<numLeads;i++){
+                Lead l= new Lead(Name= name, RecordTypeId = recTypeId, Status = status);
+                leads.add(l);
+            }
+            return leads;
+        }
+
+        public List<Task> createTask(Integer numTask, Set<Id> WhoIds ){
+            List<Task> tasks = new List<Task>();
+            for(Integer i=0;i<numTasks;i++){
+                Task t= new Task(WhoId = WhoIds[i]);
+                tasks.add(t);
+            }
+            return tasks;
+        }
+
+        public List<Event> createEvent(Integer numEvent, Set<Id> WhoIds ){
+            List<Event> events = new List<Event>();
+            for(Integer i=0;i<numEvents;i++){
+                Event t= new Event(WhoId = WhoIds[i]);
+                events.add(t);
+            }
+            return events;
+        }
+
+    // End of part added by hanae on the same day
+
 
     /*
     public class AccountContactRelationTdf {
