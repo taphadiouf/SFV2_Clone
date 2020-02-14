@@ -1,0 +1,54 @@
+<template>
+    <div class="slds-theme_default">
+        <center>
+        <lightning-button label="Convertir" variant="brand" onclick={openmodal}></lightning-button>
+        </center>
+
+        <template if:true={openmodel}>
+        <div class="demo-only" style="height: 640px;">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" size="medium">
+                            </lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Popup Conversion Lead Famille > Opportunité</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <lightning-card>
+                            <div class="slds-m-around_medium">
+                                <lightning-input type="checkbox" label="Création contrat d'acceuil ?" onchange={handleChange}></lightning-input>
+                                <template if:true={areDetailsVisible}>
+                                    <div class="slds-m-vertical_medium slds-p-left_xx-large slds-p-left_xx-large">
+                                        <lightning-record-edit-form object-api-name="Account">
+                                            <lightning-input-field field-name="Name">
+                                            </lightning-input-field>
+                                        </lightning-record-edit-form>
+                                        <lightning-input type="checkbox" label="Parent Sponsorisé ?" onchange={handleChange2}></lightning-input>
+                                        <div class="slds-p-left_xx-large">
+                                            <template if:true={DetailsVisible}>
+                                                <lightning-record-edit-form object-api-name="Account">
+                                                    <lightning-input-field field-name="Type">
+                                                    </lightning-input-field>
+                                                </lightning-record-edit-form>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </lightning-card>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button label="Convertir" variant="brand" onclick={saveMethod}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <lightning-button label="Annuler" variant="neutral" onclick={closeModal}></lightning-button>
+                        
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+        </template>
+    </div>
+</template>
