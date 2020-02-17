@@ -24,8 +24,8 @@ sfdx force:package:install -p 04t0M000001SbQHQA0 -u $YourAlias  -w 25
 echo "Sparklane :"
 sfdx force:package:install -p 04t4I000000gNw8QAE -u $YourAlias  -w 25
 
-echo "Conga :"
-sfdx force:package:install -p 04tf2000002FhY6AAK -u $YourAlias  -w 25 --noprompt
+#echo "Conga :"
+#sfdx force:package:install -p 04tf2000002FhY6AAK -u $YourAlias  -w 25 --noprompt
 
 echo "Adobe Sign :"
 sfdx force:package:install -p 04t0g000000tOItAAM -u $YourAlias  -w 25
