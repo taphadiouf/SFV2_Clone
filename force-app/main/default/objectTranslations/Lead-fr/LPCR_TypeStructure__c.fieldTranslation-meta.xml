@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type de structure --></label>
+    <name>LPCR_TypeStructure__c</name>
+    <picklistValues>
+        <masterLabel>Autre</masterLabel>
+        <translation><!-- Autre --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crèche associative</masterLabel>
+        <translation><!-- Crèche associative --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crèche municipale</masterLabel>
+        <translation><!-- Crèche municipale --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crèches Familiales / Parentale</masterLabel>
+        <translation><!-- Crèches Familiales / Parentale --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Micro crèches</masterLabel>
+        <translation><!-- Micro crèches --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
