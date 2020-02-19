@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_NombreJours__c</fullName>
+    <description>Nombre de jours par semaine d&#39;accueil de l’enfant. Somme des valeurs de Lundi à Vendredi</description>
+    <externalId>false</externalId>
+    <formula>LPCR_Lundi__c+LPCR_Mardi__c+LPCR_Mercredi__c+LPCR_Jeudi__c+LPCR_Vendredi__c</formula>
+    <inlineHelpText>Nombre de jours par semaine d&#39;accueil de l’enfant. Somme des valeurs de Lundi à Vendredi</inlineHelpText>
+    <label>Nombre de jours</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

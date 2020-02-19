@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_ProfessionCoDemandeur__c</fullName>
+    <fullName>LPCR_Fonction__c</fullName>
     <externalId>false</externalId>
-    <label>Profession co-demandeur</label>
+    <label>Fonction</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Picklist</type>
     <valueSet>
-        <controllingField>LPCR_TypeProfessionCoDemandeur__c</controllingField>
+        <controllingField>LPCR_TypeFonction__c</controllingField>
+        <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
@@ -271,9 +272,9 @@
                 <label>Directeur télécommunications</label>
             </value>
             <value>
-                <fullName>Directeur R&amp;D, innovation</fullName>
+                <fullName>Directeur  R&amp;D, innovation</fullName>
                 <default>false</default>
-                <label>Directeur R&amp;D, innovation</label>
+                <label>Directeur  R&amp;D, innovation</label>
             </value>
             <value>
                 <fullName>Directeur industriel</fullName>
@@ -316,9 +317,9 @@
                 <label>Directeur commercial</label>
             </value>
             <value>
-                <fullName>Directeur grands comptes</fullName>
+                <fullName>Directeur  grands comptes</fullName>
                 <default>false</default>
-                <label>Directeur grands comptes</label>
+                <label>Directeur  grands comptes</label>
             </value>
             <value>
                 <fullName>Directeur surfaces commerciales (magasin, hypermarché)</fullName>
@@ -376,9 +377,9 @@
                 <label>Directeur Internet, digital, webmarketing</label>
             </value>
             <value>
-                <fullName>Directeur communication</fullName>
+                <fullName>Directeur  communication</fullName>
                 <default>false</default>
-                <label>Directeur communication</label>
+                <label>Directeur  communication</label>
             </value>
             <value>
                 <fullName>Responsable marketing</fullName>
@@ -406,9 +407,9 @@
                 <label>Responsable Internet, digital, webmarketing</label>
             </value>
             <value>
-                <fullName>Responsable communication</fullName>
+                <fullName>Responsable  communication</fullName>
                 <default>false</default>
-                <label>Responsable communication</label>
+                <label>Responsable  communication</label>
             </value>
             <value>
                 <fullName>Responsable/Coordinatrice petite enfance</fullName>
@@ -695,7 +696,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pole informatique &amp; Technique</controllingFieldValue>
-            <valueName>Directeur R&amp;D, innovation</valueName>
+            <valueName>Directeur  R&amp;D, innovation</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pole informatique &amp; Technique</controllingFieldValue>
@@ -731,7 +732,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle commercial</controllingFieldValue>
-            <valueName>Directeur grands comptes</valueName>
+            <valueName>Directeur  grands comptes</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle commercial</controllingFieldValue>
@@ -779,7 +780,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle Marketing &amp; Communicaiton</controllingFieldValue>
-            <valueName>Directeur communication</valueName>
+            <valueName>Directeur  communication</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle Marketing &amp; Communicaiton</controllingFieldValue>
@@ -803,7 +804,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle Marketing &amp; Communicaiton</controllingFieldValue>
-            <valueName>Responsable communication</valueName>
+            <valueName>Responsable  communication</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Public</controllingFieldValue>

@@ -1,55 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_Statut__c</fullName>
+    <fullName>LPCR_SituationFamiliale__c</fullName>
     <externalId>false</externalId>
-    <label>Statut</label>
+    <label>Situation Familiale</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
-        <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Non traité</fullName>
-                <default>true</default>
-                <label>Non traité</label>
+                <fullName>Célibataire</fullName>
+                <default>false</default>
+                <label>Célibataire</label>
             </value>
             <value>
-                <fullName>Liste d’attente</fullName>
+                <fullName>En couple</fullName>
                 <default>false</default>
-                <label>Liste d’attente</label>
+                <label>En couple</label>
             </value>
             <value>
-                <fullName>Option</fullName>
+                <fullName>Marié</fullName>
                 <default>false</default>
-                <label>Option</label>
+                <label>Marié</label>
             </value>
             <value>
-                <fullName>Recommandation</fullName>
+                <fullName>Pacsé</fullName>
                 <default>false</default>
-                <label>Recommandation</label>
+                <label>Pacsé</label>
             </value>
             <value>
-                <fullName>Recommandation validée</fullName>
+                <fullName>Divorcé</fullName>
                 <default>false</default>
-                <label>Recommandation validée</label>
+                <label>Divorcé</label>
             </value>
             <value>
-                <fullName>Proposition</fullName>
+                <fullName>Séparé</fullName>
                 <default>false</default>
-                <label>Proposition</label>
+                <label>Séparé</label>
             </value>
             <value>
-                <fullName>Confirmé</fullName>
+                <fullName>Autre</fullName>
                 <default>false</default>
-                <label>Confirmé</label>
-            </value>
-            <value>
-                <fullName>Annulé</fullName>
-                <default>false</default>
-                <label>Annulé</label>
+                <label>Autre</label>
             </value>
         </valueSetDefinition>
     </valueSet>
