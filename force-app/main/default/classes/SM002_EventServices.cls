@@ -4,7 +4,7 @@
     * @set the staus of leads to "En cours" whenever an Event is created and the old status is new 
     */
 
-public with sharing class SM001_EventServices {
+public with sharing class SM002_EventServices {
     public static List<Lead> LEAD_RG03_IS250(list<Event> newEventsList) {
         
         set<Id> setLeadIds = new set<Id> ();
@@ -12,11 +12,7 @@ public with sharing class SM001_EventServices {
         for(Event ta:newEventsList){
             setLeadIds.add(ta.WhoId);
         }
-        List<Lead> listLead = new List<Lead>([SELECT Id, Status,RecordType.Name 
-                                    FROM Lead 
-                                    WHERE Id In :setLeadIds 
-                                    AND RecordType.Name='Famille' 
-                                    AND Status ='Nouveau']);
+        List<Lead> listLead = EM002_LeadEntity.getLeadByListId(setLeadIds);
         for(Lead le: listLead){
             le.status ='En cours';
         }
