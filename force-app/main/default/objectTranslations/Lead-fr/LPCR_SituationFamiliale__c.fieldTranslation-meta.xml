@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Situation familiale --></label>
+    <name>LPCR_SituationFamiliale__c</name>
+    <picklistValues>
+        <masterLabel>Autre</masterLabel>
+        <translation><!-- Autre --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Célibataire géographique</masterLabel>
+        <translation><!-- Célibataire géographique --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Divorcé</masterLabel>
+        <translation><!-- Divorcé --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>En couple</masterLabel>
+        <translation><!-- En couple --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Famille recomposée</masterLabel>
+        <translation><!-- Famille recomposée --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Marié / Pacsé</masterLabel>
+        <translation><!-- Marié / Pacsé --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mono parentale</masterLabel>
+        <translation><!-- Mono parentale --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Séparé</masterLabel>
+        <translation><!-- Séparé --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Veuf / Veuve</masterLabel>
+        <translation><!-- Veuf / Veuve --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

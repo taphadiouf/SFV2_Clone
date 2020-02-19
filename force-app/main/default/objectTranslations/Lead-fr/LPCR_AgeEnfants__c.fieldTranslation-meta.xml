@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Age des enfants --></label>
+    <name>LPCR_AgeEnfants__c</name>
+    <picklistValues>
+        <masterLabel>4-8 ans</masterLabel>
+        <translation><!-- 4-8 ans --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>8-12 ans</masterLabel>
+        <translation><!-- 8-12 ans --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>&lt; 4 ans</masterLabel>
+        <translation><!-- &lt; 4 ans --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>&gt; 12 ans</masterLabel>
+        <translation><!-- &gt; 12 ans --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

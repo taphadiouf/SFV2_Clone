@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type de fonction co-demandeur --></label>
+    <name>LPCR_TypeFonctionCoDemandeur__c</name>
+    <picklistValues>
+        <masterLabel>CE</masterLabel>
+        <translation><!-- CE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PLAC</masterLabel>
+        <translation><!-- PLAC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pole Finance administratif, juridique</masterLabel>
+        <translation><!-- Pole Finance administratif, juridique --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pole Ressources humaines</masterLabel>
+        <translation><!-- Pole Ressources humaines --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pole direction générale</masterLabel>
+        <translation><!-- Pole direction générale --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pole développement durable, environnement, RSE</masterLabel>
+        <translation><!-- Pole développement durable, environnement, RSE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pole informatique &amp; Technique</masterLabel>
+        <translation><!-- Pole informatique &amp; Technique --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Public</masterLabel>
+        <translation><!-- Public --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pôle Marketing &amp; Communicaiton</masterLabel>
+        <translation><!-- Pôle Marketing &amp; Communicaiton --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pôle achat, services</masterLabel>
+        <translation><!-- Pôle achat, services --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pôle commercial</masterLabel>
+        <translation><!-- Pôle commercial --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
