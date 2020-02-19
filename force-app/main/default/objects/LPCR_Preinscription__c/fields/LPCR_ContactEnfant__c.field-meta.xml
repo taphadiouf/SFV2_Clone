@@ -3,6 +3,15 @@
     <fullName>LPCR_ContactEnfant__c</fullName>
     <externalId>false</externalId>
     <label>Contact Enfant</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Contact.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Enfant</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Préinscriptions</relationshipLabel>
     <relationshipName>Preinscriptions</relationshipName>
