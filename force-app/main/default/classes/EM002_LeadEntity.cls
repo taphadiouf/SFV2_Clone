@@ -9,7 +9,7 @@ public with sharing class EM002_LeadEntity {
                                 FROM Lead 
                                 WHERE Id In :setLeadIds 
                                 AND RecordType.Name='Famille' 
-                                AND Status ='Nouveau']);
+                                AND Status ='Nouveau'];
     }
 
 }
