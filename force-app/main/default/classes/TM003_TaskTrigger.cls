@@ -4,13 +4,13 @@
  * @description Trigger action handler on Task Object
  */
 
-public with sharing class APT001_TaskTrigger extends TM000_TriggerHandler{
+public with sharing class TM003_TaskTrigger extends TM000_TriggerHandler{
 
     private Map<Id, Task> newTasksMap;
     private Map<Id, Task> oldTasksMap;
     private List<Task> newTasksList;
 
-    public APT001_TaskTrigger() {
+    public TM003_TaskTrigger() {
         newTasksMap = (Map<Id, Task>) Trigger.newMap;
         oldTasksMap = (Map<Id, Task>) Trigger.oldMap;
         newTasksList = (List<Task>) Trigger.new;
@@ -19,6 +19,6 @@ public with sharing class APT001_TaskTrigger extends TM000_TriggerHandler{
     protected override void afterInsert() {
 
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM001_TaskServices.LEAD_RG03_IS250(newTasksList);
+        SM003_TaskServices.LEAD_RG03_IS250(newTasksList);
     }
 }
