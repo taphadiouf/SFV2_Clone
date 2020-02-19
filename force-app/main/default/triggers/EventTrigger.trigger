@@ -5,5 +5,5 @@
  */
 trigger EventTrigger on Event (after insert) {
     //The handler will manage all the processes
-	new APT001_EventTrigger().run();
+	new TM002_EventTrigger().run();
 }

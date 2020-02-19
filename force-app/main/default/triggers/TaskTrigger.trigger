@@ -5,5 +5,5 @@
  */
 trigger TaskTrigger on Task (after insert) {
     //The handler will manage all the processes
-	new APT001_TaskTrigger().run();
+	new TM003_TaskTrigger().run();
 }
