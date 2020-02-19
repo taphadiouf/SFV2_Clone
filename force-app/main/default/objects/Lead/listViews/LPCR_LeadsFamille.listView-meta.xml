@@ -2,7 +2,6 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_LeadsFamille</fullName>
     <columns>FULL_NAME</columns>
-    <columns>LPCR_Profession__c</columns>
     <columns>LEAD.COMPANY</columns>
     <columns>LPCR_ProfessionCoDemandeur__c</columns>
     <columns>LPCR_SocieteCoDemandeur__c</columns>
