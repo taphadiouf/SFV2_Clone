@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_DossierComplet__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Le service Famille vérifie les pièces jointes et coche cette case lorsque le dossier est complet</description>
+    <externalId>false</externalId>
+    <label>Dossier complet</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>
