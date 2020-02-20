@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_SituationFamiliale__c</fullName>
+    <externalId>false</externalId>
+    <label>Situation Familiale</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Célibataire</fullName>
+                <default>false</default>
+                <label>Célibataire</label>
+            </value>
+            <value>
+                <fullName>En couple</fullName>
+                <default>false</default>
+                <label>En couple</label>
+            </value>
+            <value>
+                <fullName>Marié</fullName>
+                <default>false</default>
+                <label>Marié</label>
+            </value>
+            <value>
+                <fullName>Pacsé</fullName>
+                <default>false</default>
+                <label>Pacsé</label>
+            </value>
+            <value>
+                <fullName>Divorcé</fullName>
+                <default>false</default>
+                <label>Divorcé</label>
+            </value>
+            <value>
+                <fullName>Séparé</fullName>
+                <default>false</default>
+                <label>Séparé</label>
+            </value>
+            <value>
+                <fullName>Autre</fullName>
+                <default>false</default>
+                <label>Autre</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

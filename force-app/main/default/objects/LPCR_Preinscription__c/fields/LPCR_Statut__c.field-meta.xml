@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Statut__c</fullName>
+    <externalId>false</externalId>
+    <label>Statut</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Non traité</fullName>
+                <default>true</default>
+                <label>Non traité</label>
+            </value>
+            <value>
+                <fullName>Liste d’attente</fullName>
+                <default>false</default>
+                <label>Liste d’attente</label>
+            </value>
+            <value>
+                <fullName>Option</fullName>
+                <default>false</default>
+                <label>Option</label>
+            </value>
+            <value>
+                <fullName>Recommandation</fullName>
+                <default>false</default>
+                <label>Recommandation</label>
+            </value>
+            <value>
+                <fullName>Recommandation validée</fullName>
+                <default>false</default>
+                <label>Recommandation validée</label>
+            </value>
+            <value>
+                <fullName>Proposition</fullName>
+                <default>false</default>
+                <label>Proposition</label>
+            </value>
+            <value>
+                <fullName>Confirmé</fullName>
+                <default>false</default>
+                <label>Confirmé</label>
+            </value>
+            <value>
+                <fullName>Annulé</fullName>
+                <default>false</default>
+                <label>Annulé</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
