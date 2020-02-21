@@ -262,8 +262,12 @@
         <relatedList>RelatedEmailStatusList</relatedList>
     </relatedLists>
     <relatedLists>
+<<<<<<< HEAD:force-app/main/default/layouts/Lead-AO Public DSP.layout-meta.xml
         <fields>NAME</fields>
         <relatedList>LPCR_Structure_AO__c.LPCR_Lead__c</relatedList>
+=======
+        <relatedList>RelatedEntityHistoryList</relatedList>
+>>>>>>> 96325e7da72b1a2b21ab1a1a82d803712960f6f6:force-app/main/default/layouts/Lead-AO Public.layout-meta.xml
     </relatedLists>
     <runAssignmentRulesDefault>false</runAssignmentRulesDefault>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -272,7 +276,11 @@
     <showRunAssignmentRulesCheckbox>true</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
+<<<<<<< HEAD:force-app/main/default/layouts/Lead-AO Public DSP.layout-meta.xml
         <masterLabel>00h1X0000012j1S</masterLabel>
+=======
+        <masterLabel>00h3E000001IOkJ</masterLabel>
+>>>>>>> 96325e7da72b1a2b21ab1a1a82d803712960f6f6:force-app/main/default/layouts/Lead-AO Public.layout-meta.xml
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
