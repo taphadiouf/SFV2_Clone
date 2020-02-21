@@ -5,6 +5,7 @@
     <label>Fonction co-demandeur</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>
         <controllingField>LPCR_TypeFonctionCoDemandeur__c</controllingField>
