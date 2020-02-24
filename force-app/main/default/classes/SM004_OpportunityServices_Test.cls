@@ -1,10 +1,10 @@
 /**
 * @author Achraf ABOUL
 * @created 21/02/2020
-* @description Test Class of TM004_OpportunityTrigger
+* @description Test Class of SM004_OpportunityServices.
 */
 @isTest
-public class TM004_OpportunityTrigger_Test {
+public class SM004_OpportunityServices_Test {
     
     @testSetup 
     
