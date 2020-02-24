@@ -4,7 +4,7 @@
    * @List Manager class
 */
 
-public with sharing class UM003_ListManager{
+public with sharing class UM003_TypeManager{
 
     public static Boolean isNullOrEmpty(List<SObject> listSObject){
         return (listSObject==null || listSObject.size()==0) ?true:false;
