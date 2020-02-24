@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type de structure</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Mac</fullName>
+                <default>false</default>
+                <label>Mac</label>
+            </value>
+            <value>
+                <fullName>HG</fullName>
+                <default>false</default>
+                <label>HG</label>
+            </value>
+            <value>
+                <fullName>Micro</fullName>
+                <default>false</default>
+                <label>Micro</label>
+            </value>
+            <value>
+                <fullName>MAF</fullName>
+                <default>false</default>
+                <label>MAF</label>
+            </value>
+            <value>
+                <fullName>RAM</fullName>
+                <default>false</default>
+                <label>RAM</label>
+            </value>
+            <value>
+                <fullName>ALSH</fullName>
+                <default>false</default>
+                <label>ALSH</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
