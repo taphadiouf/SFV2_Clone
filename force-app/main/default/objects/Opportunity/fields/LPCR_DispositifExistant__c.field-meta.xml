@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_DispositifExistant__c</fullName>
+    <externalId>false</externalId>
+    <label>Dispositif existant</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Places en crèche</fullName>
+                <default>false</default>
+                <label>Places en crèche</label>
+            </value>
+            <value>
+                <fullName>Chèque CESU</fullName>
+                <default>false</default>
+                <label>Chèque CESU</label>
+            </value>
+            <value>
+                <fullName>Conciergerie</fullName>
+                <default>false</default>
+                <label>Conciergerie</label>
+            </value>
+            <value>
+                <fullName>Plateforme de service à la personne</fullName>
+                <default>false</default>
+                <label>Plateforme de service à la personne</label>
+            </value>
+            <value>
+                <fullName>Conférences / Atelier parentalité</fullName>
+                <default>false</default>
+                <label>Conférences / Atelier parentalité</label>
+            </value>
+            <value>
+                <fullName>Accompagnement scolaire</fullName>
+                <default>false</default>
+                <label>Accompagnement scolaire</label>
+            </value>
+            <value>
+                <fullName>Garde d’enfants périscolaire</fullName>
+                <default>false</default>
+                <label>Garde d’enfants périscolaire</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_ZoneGeographique__c</fullName>
+    <externalId>false</externalId>
+    <label>Zone géographique</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>IDF</fullName>
+                <default>false</default>
+                <label>IDF</label>
+            </value>
+            <value>
+                <fullName>Nord Est</fullName>
+                <default>false</default>
+                <label>Nord Est</label>
+            </value>
+            <value>
+                <fullName>Grand Ouest</fullName>
+                <default>false</default>
+                <label>Grand Ouest</label>
+            </value>
+            <value>
+                <fullName>Rhone Alpes</fullName>
+                <default>false</default>
+                <label>Rhone Alpes</label>
+            </value>
+            <value>
+                <fullName>PACA</fullName>
+                <default>false</default>
+                <label>PACA</label>
+            </value>
+            <value>
+                <fullName>LR&quot;</fullName>
+                <default>false</default>
+                <label>LR&quot;</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
