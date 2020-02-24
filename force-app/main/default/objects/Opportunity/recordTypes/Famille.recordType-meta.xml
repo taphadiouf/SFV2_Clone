@@ -28,6 +28,315 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_DispositifExistant__c</picklist>
+        <values>
+            <fullName>Accompagnement scolaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chèque CESU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conciergerie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conférences %2F Atelier parentalité</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garde d%E2%80%99enfants périscolaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Places en crèche</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plateforme de service à la personne</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_GestionnaireRetenu__c</picklist>
+        <values>
+            <fullName>AASBR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ADMR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AGDS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AGES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ALEF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ALFA 3A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Babilou</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crescendo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Croix St Simon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crèche attitude</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crèche de france</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enfance pour tous</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Envol</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Famille rurale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IFAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La croix rouge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La maison bleue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leo Lagrange</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Les petites canailles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Léa et léo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mutualité française</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peoplenbaby</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SLEA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Micro__c</picklist>
+        <values>
+            <fullName>Non</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oui</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_RaisonPerteOpportunite__c</picklist>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autre mode de garde</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Budget</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concurrence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non disponibilité LPCR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non disponibilité partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prix partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Report du projet</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeAO__c</picklist>
+        <values>
+            <fullName>Ouvert</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procédure adaptée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procédure simplifiée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Restreint</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeAttribution__c</picklist>
+        <values>
+            <fullName>Mono attribution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Multi attribution</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeContrat__c</picklist>
+        <values>
+            <fullName>Afermage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Appel à projet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concession</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marché</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenariat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Régie intéréssée</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeMarche__c</picklist>
+        <values>
+            <fullName>A%26E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C%26E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C%2BE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeOffre__c</picklist>
+        <values>
+            <fullName>Offre dédiée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offre réseau</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_VisiteObligatoire__c</picklist>
+        <values>
+            <fullName>Non</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oui</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_ZoneGeographique__c</picklist>
+        <values>
+            <fullName>Grand Ouest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LR%22</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nord Est</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PACA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rhone Alpes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LeadSource</picklist>
         <values>
             <fullName>Appel d%27Offre</fullName>
@@ -67,6 +376,25 @@
         </values>
         <values>
             <fullName>Siège</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Existing Customer - Downgrade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing Customer - Replacement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing Customer - Upgrade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Customer</fullName>
             <default>false</default>
         </values>
     </picklistValues>
