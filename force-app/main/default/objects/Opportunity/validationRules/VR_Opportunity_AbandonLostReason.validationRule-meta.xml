@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Opportunity_AbandonLostReason</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND (
+     NOT($User.LPCR_BypassValidationRules__c ),
+     AND(
+         ISPICKVAL( StageName,&quot;Abandon&quot;),
+         ISNULL( LPCR_MotifAbandon__c )
+         )
+     )</errorConditionFormula>
+    <errorDisplayField>LPCR_MotifAbandon__c</errorDisplayField>
+    <errorMessage>Veuillez précisez la raison de l&#39;abandon de l&#39;Appel d&#39;Offre</errorMessage>
+</ValidationRule> 

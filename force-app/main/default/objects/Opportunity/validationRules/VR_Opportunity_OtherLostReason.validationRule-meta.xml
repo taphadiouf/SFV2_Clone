@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Opportunity_OtherLostReason</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND ( 
+      NOT($User.LPCR_BypassValidationRules__c ),
+      AND(ISPICKVAL(LPCR_RaisonPerteOpportunite__c,&quot;Autre&quot;),
+         ISNULL( LPCR_AutreRaisonPerte__c )
+         )
+     )</errorConditionFormula>
+    <errorDisplayField>LPCR_AutreRaisonPerte__c</errorDisplayField>
+    <errorMessage>Veuillez renseigner la raison &quot;Autre&quot; de la perte</errorMessage>
+</ValidationRule>

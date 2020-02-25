@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Opportunity_Probability_20_500</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND (
+     NOT ( $User.LPCR_BypassValidationRules__c ),
+     OR  ( RecordType.DeveloperName = &#39;Entreprise&#39;,
+           RecordType.DeveloperName = &#39;Famille&#39; )
+     ,
+OR  (
+    AND(ISPICKVAL(StageName,&quot;Proposition Commerciale&quot; ),Probability &lt; 0.2),
+    AND(ISPICKVAL(StageName,&quot;Proposition Commerciale&quot; ), Probability &gt; 0.50)
+    )
+)</errorConditionFormula>
+    <errorDisplayField>Probability</errorDisplayField>
+    <errorMessage>Veuillez renseigner une valeur de probabilité comprise entre 20 et 50%</errorMessage>
+</ValidationRule>
