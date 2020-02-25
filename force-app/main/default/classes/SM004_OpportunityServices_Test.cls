@@ -14,8 +14,9 @@ public class SM004_OpportunityServices_Test {
         insert leads;
     }        
     
+    //Test the method syncOppRecordType from SM004_OpportunityServices class indirectly
     @isTest
-    public static void afterInsert_Test(){
+    public static void syncOppRecordType_Test(){
         List<Lead> leads  = [SELECT Id,RecordTypeId FROM Lead WHERE Name = 'test'];
         
         LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
