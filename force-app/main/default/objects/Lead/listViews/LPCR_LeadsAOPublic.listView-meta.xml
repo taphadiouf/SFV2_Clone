@@ -13,7 +13,7 @@
     <filters>
         <field>LEAD.RECORDTYPE</field>
         <operation>equals</operation>
-        <value>Lead.AO_Public</value>
+        <value>Lead.AO_PublicDSP</value>
     </filters>
     <label>Leads AO Public</label>
 </ListView>

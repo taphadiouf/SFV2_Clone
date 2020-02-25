@@ -2,8 +2,8 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Partenaire</fullName>
     <active>true</active>
-    <businessProcess>Partenaire</businessProcess>
-    <compactLayoutAssignment>Partenaire</compactLayoutAssignment>
+    <businessProcess>Lead</businessProcess>
+    <compactLayoutAssignment>LPCR_Partenaire</compactLayoutAssignment>
     <label>Partenaire</label>
     <picklistValues>
         <picklist>Industry</picklist>
@@ -1257,6 +1257,13 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_Micro__c</picklist>
+        <values>
+            <fullName>TBD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_PrestataireActuel__c</picklist>
         <values>
             <fullName>Autre</fullName>
@@ -1314,6 +1321,13 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_RegionCommerciale__c</picklist>
+        <values>
+            <fullName>TBD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_Region__c</picklist>
         <values>
             <fullName>PACA</fullName>
@@ -1356,6 +1370,13 @@
         </values>
         <values>
             <fullName>Veuf %2F Veuve</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeAttribution__c</picklist>
+        <values>
+            <fullName>TBD</fullName>
             <default>false</default>
         </values>
     </picklistValues>

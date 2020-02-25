@@ -92,9 +92,9 @@ newMe.FederationIdentifier = null;
     }
     //This part of code is added by hanae on the 12/02/2020
     //it's a class that permit to add a list of leads/Tasks/Events/ Users
-    
-    public static User createUser(){
-        Profile prof = [SELECT Id FROM Profile WHERE Name = 'Administrateur système' limit 1].get(0);
+
+        public static User createUser(){
+            Profile prof = [SELECT Id FROM Profile WHERE Name = 'System Administrator' limit 1].get(0);
         
         String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
         User usr = new User(Alias = 'testusr', Email = uniqueUserName,
