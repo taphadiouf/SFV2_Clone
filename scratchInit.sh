@@ -35,9 +35,6 @@ sfdx force:package:install -p 04t0g000000tOItAAM -u $YourAlias  -w 25
 
 echo "Finish installing all managed package"
 
-echo "deploy current branch (it should be develop if you just cloned SFDV2 repo)"
-sfdx force:source:push
-
 echo "assign LPCR Admin permission set to default scratch org user..."
 sfdx force:user:permset:assign -n LPCR_Admin
 
