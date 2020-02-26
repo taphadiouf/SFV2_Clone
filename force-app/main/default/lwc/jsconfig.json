@@ -3,8 +3,11 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/lWC001_SF_LEAD_COMER_36": [
-                "lWC001_SF_LEAD_COMER_36/lWC001_SF_LEAD_COMER_36.js"
+            "c/lWC001_Lead_Famille_Conversion": [
+                "lWC001_Lead_Famille_Conversion/lWC001_Lead_Famille_Conversion.js"
+            ],
+            "c/lwc002_ConvertButton_LeadFamille": [
+                "lwc002_ConvertButton_LeadFamille/lwc002_ConvertButton_LeadFamille.js"
             ]
         }
     },
