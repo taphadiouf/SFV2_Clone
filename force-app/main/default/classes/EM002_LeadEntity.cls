@@ -50,5 +50,5 @@ public with sharing class EM002_LeadEntity {
                 FROM Lead 
                 WHERE Id = :leadId LIMIT 1];
     }
-    
+     
 }
