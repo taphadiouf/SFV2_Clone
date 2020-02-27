@@ -168,5 +168,18 @@ return acr;
 }
 }
 */
+    // Added By Ayoub 
+    public static LPCR_Preinscription__c createPreinscription(String nomEnfant, String prenomEnfant,Id compteFamilleId,Id contactId){
+        LPCR_Preinscription__c  preinsciption = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,
+                                                                           LPCR_PrenomEnfant__c=prenomEnfant,
+                                                                           NomEnfant__c=nomEnfant,
+                                                                           LPCR_ContactEnfant__c=contactId);
+        return preinsciption;
+    }
     
+     public static Account createAccount(String name){
+        Account  acc = new Account(Name = name);
+        return acc;
+    }
+    //--- End Ayoub's Part
 }
