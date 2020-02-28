@@ -7,5 +7,5 @@ public with sharing class EM003_RecordTypeEntity {
     public static Id getRecTypeIdByObjectAndName(String SobjectType, String Name) {
         return [SELECT Id FROM RecordType WHERE SObjectType = :SobjectType AND DeveloperName = :Name].Id;
     }
-    
+     
 }
