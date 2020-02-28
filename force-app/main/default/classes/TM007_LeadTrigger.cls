@@ -14,10 +14,17 @@ public class TM007_LeadTrigger extends TM000_TriggerHandler{
     }
     protected override void beforeUpdate() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        System.debug('trigger launched from conversion');
-        System.debug(this.newLeadsList.get(0));
-        System.debug(this.newLeadsList.get(0).isConverted);
-        System.debug(this.newLeadsList.get(0).convertedOpportunityId);
+        List<Lead> convertedLeadsList = new List<Lead>();
+        for(Lead eachLead : newLeadsList){
+            if(eachLead.isConverted){
+                convertedLeadsList.add(eachLead);
+            }
+        }
+        if(!convertedLeadsList.isEmpty()){
+            SM007_LeadServices.syncOppRecordType('Entreprise', 'Entreprise', convertedLeadsList);
+            SM007_LeadServices.syncOppRecordType('AO_PublicReservation', 'AOPublicReservataire', convertedLeadsList);
+        }
+        
     }
     
 }
