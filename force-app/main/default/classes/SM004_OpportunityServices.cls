@@ -5,11 +5,4 @@
 */
 public class SM004_OpportunityServices {
     
-    public static void syncOppRecordType(String recordTypeName, Map<Id, Opportunity> oppsMap){
-        Id leadRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead',recordTypeName);
-        Id opportunityRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity',recordTypeName);
-        for(Lead eachLead : EM002_LeadEntity.getLeadsByOppsAndRecordType(leadRecordTypeId, oppsMap.keySet())){
-            oppsMap.get(eachLead.convertedOpportunityId).RecordTypeId = opportunityRecordTypeId;
-        }
-    }
 }
