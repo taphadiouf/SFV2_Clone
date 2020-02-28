@@ -52,25 +52,6 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <recordTypeVisibilities>
-<<<<<<< HEAD
-        <recordType>Contact.Collaborateur</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Contact.Enfant</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Contact.Entreprise</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Contact.Parent</recordType>
-=======
-        <recordType>Lead.AO_Public</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
         <recordType>Lead.AO_PublicDSP</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -88,7 +69,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Lead.Partenaire</recordType>
->>>>>>> 29bf92f53a4bc7c8121e8f6a36413b0e3779ff97
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
