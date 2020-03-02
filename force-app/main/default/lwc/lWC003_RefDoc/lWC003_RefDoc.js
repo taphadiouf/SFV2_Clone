@@ -17,9 +17,12 @@ const columns = [
     { label: 'Date de création', fieldName: 'Date de création', type: 'date' }
 ];
 
-export default class LWC003_RefDoc extends LightningElement {
+export default class Lwc003_RefDoc extends LightningElement {
     @api recordId = '';
     value;
+
+    @track
+    title ='Gestion document LPCR';
 
     @track data = [];
     @track columns = columns;
@@ -29,37 +32,14 @@ export default class LWC003_RefDoc extends LightningElement {
 
     constructor(){
         super();
-        console.log("constructor2!")
-        //this.options = [];
+       
     }
     async connectedCallback(){
 
-        console.log("connectedCallback !")
-      //  const data = await this.fetchDataHelper( 100 );
-       // this.data = data;
-        /*
-        getAccountsByRecordtype(
-            {
-                recordtypeId : this.recType
-            }
-        )
-        .then(accounts=>{
-            for(let i=0; i< accounts.length; i++){
-                this.options.push({
-                    label: accounts[i].Name,
-                    value: accounts[i].Name
-                });
-            }
-        })
-        .catch(err=>{
-            console.error(err);
-        });
-        */
+      
+     
     }
-    handleChangePopUp(event) {
-        this.PopUpVisible = !this.PopUpVisible;
-    }
- 
+    
     
 
 }

@@ -5,17 +5,23 @@
  */-->
 
  <template>
-    <div style="height: 400px;">
-    <lightning-card  title="Gestion document LPCR"  >
-        <lightning-button label="Charger un nouveau fichier" onclick={handleChangePopUp} slot="actions"></lightning-button>
-        <template if:true={PopUpVisible}>
+    <div >
+    <lightning-card  title={title}  >
+      
+            <c-lwc004_-ref-doc-param  record-id ="" >
                
-        </template>
-        <lightning-datatable
-        key-field="id"
-        data={data}
-        columns={columns}>
-</lightning-datatable>
+            </c-lwc004_-ref-doc-param>
+            
+        
+        <div style="height: 400px;">
+            <lightning-datatable
+            key-field="id"
+            data={data}
+            columns={columns}>
+        </lightning-datatable>
+        </div>
+      
+
     </lightning-card>
 </div>
 </template>

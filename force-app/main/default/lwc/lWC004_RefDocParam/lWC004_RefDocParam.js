@@ -8,11 +8,14 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
-import { LightningElement, api } from "lwc";
+import { LightningElement, api,track } from "lwc";
 
-export default class lWC004_RefDocParam extends LightningElement {
+export default class Lwc004_RefDocParam extends LightningElement {
  
- /* @api recordId;
+  @api recordId;
+@track skip="Annuler";
+@track uploadFile='Charger un nouveau fichier';
+
 
   handlePopup() {
     this.template.querySelector("section").classList.remove("slds-hide");
@@ -26,5 +29,18 @@ export default class lWC004_RefDocParam extends LightningElement {
     this.template
       .querySelector("div.modalBackdrops")
       .classList.add("slds-hide");
-  }*/
+  }
+
+
+
+get acceptedFormats() {
+    return ['.pdf', '.png'];
+}
+
+handleUploadFinished(event) {
+    // Get the list of uploaded files
+    const uploadedFiles = event.detail.files;
+    alert("No. of files uploaded : " + uploadedFiles.length);
+}
+
 }
