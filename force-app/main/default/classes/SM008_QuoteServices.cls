@@ -15,6 +15,7 @@ public with sharing class SM008_QuoteServices {
         for(Opportunity eachOpp : oppsToUpdate){
             eachOpp.StageName = 'Signée';
         }
+        update oppsToUpdate;
         
     }
     public static void updateAccountsFromQuotes(List<SBQQ__Quote__c> quotesList){
@@ -28,6 +29,6 @@ public with sharing class SM008_QuoteServices {
         for(Account eachAcc : accountsToUpdate){
             eachAcc.LPCR_Statut__c = 'Client';
         }
-        
+        update accountsToUpdate;
     }
 }
