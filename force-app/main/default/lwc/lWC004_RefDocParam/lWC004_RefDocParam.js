@@ -14,8 +14,13 @@ export default class Lwc004_RefDocParam extends LightningElement {
  
   @api recordId;
 @track skip="Annuler";
-@track uploadFile='Charger un nouveau fichier';
 
+@track submit="Envoyer";
+@track uploadFile='Charger un nouveau fichier';
+@track type='Type';
+@track attachment='Fichier';
+@track uploadFiles='Upload Files';
+@track orDropFiles='or Drop Files';
 
   handlePopup() {
     this.template.querySelector("section").classList.remove("slds-hide");

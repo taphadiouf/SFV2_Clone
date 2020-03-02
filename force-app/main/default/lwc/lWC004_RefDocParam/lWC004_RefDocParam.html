@@ -26,47 +26,57 @@
       <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
         <div class="slds-p-bottom_large slds-p-left_large" style="width:500px">
           <lightning-record-edit-form id="recordViewForm" record-id={recordId} object-api-name="Account">
-         
-            <div class="slds-form-element__row">
-            <div class="slds-size_1-of-2">
-              <div class="slds-form-element">
-                <label class="slds-form-element__label" for="input-01">Latitude</label>
-                <div class="slds-form-element__control">
-                  <lightning-input-field field-name="Name"> </lightning-input-field>
+
+
+
+            <fieldset class="slds-form-element slds-form-element_compound">
+
+              <div class="slds-form-element__control">
+                <div class=" slds-form-element__row">
+                  <div class="slds-form-element">
+                    <span class="slds-form-element__label" id="file-selector-primary-type">{type}</span>
+                    <div class="slds-form-element__control">
+
+                    <lightning-input-field field-name="Name"> </lightning-input-field>
+                  </div>
+                  </div>
+                  <div class="slds-size_1-of-2">
+                    <div class="slds-form-element">
+                      <span class="slds-form-element__label" id="file-selector-primary-label">{attachment}</span>
+                      <div class="slds-form-element__control">
+                        <div class="slds-file-selector slds-file-selector_files">
+                          <div class="slds-file-selector__dropzone">
+                            <input type="file" class="slds-file-selector__input slds-assistive-text" accept="image/png"
+                              id="file-upload-input-01"
+                              aria-labelledby="file-selector-primary-label file-selector-secondary-label" />
+                            <label class="slds-file-selector__body" for="file-upload-input-01"
+                              id="file-selector-secondary-label">
+                              <span class="slds-file-selector__button slds-button slds-button_neutral">
+                                <svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+                                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#upload"></use>
+                                </svg>{uploadFiles}</span>
+                              <span class="slds-file-selector__text slds-medium-show">{orDropFiles}</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
-            </div>
-            <div class="slds-size_2-of-2">
-              <div class="slds-form-element">
-                <label class="slds-form-element__label" for="input-01">Latitude</label>
-                <div class="slds-form-element__control">
-                  <lightning-file-upload
-                  label="Attach receipt"
-                  name="fileUploader"
-                  accept={acceptedFormats}
-                  record-id={myRecordId}
-                  onuploadfinished={handleUploadFinished}
-                  multiple>
-          </lightning-file-upload>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-            
-           
-           
-       
-
+            </fieldset>
             <lightning-button type="submit" label="Update record" class="slds-m-top_medium">
             </lightning-button>
           </lightning-record-edit-form>
         </div>
       </div>
-      <footer class="slds-modal__footer slds-modal__footer_directional">
+      <footer class="slds-modal__footer ">
         <button class="slds-button slds-button_neutral" onclick={handleSkip}>
           {skip}
+        </button>
+        <button class="slds-button slds-button_neutral" onclick={handleSubmit}>
+          {submit}
         </button>
       </footer>
     </div>
