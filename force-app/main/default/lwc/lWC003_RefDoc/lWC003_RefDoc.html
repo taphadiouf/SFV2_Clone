@@ -1,0 +1,21 @@
+<!--
+ * @ author Ayoub Ouarti
+ * @created 28/02/2020
+ * @description LWC : The goal of this part is to realize the component which will allow the management of document sending + document consultation of the LPCR document repository
+ */-->
+
+ <template>
+    <div style="height: 400px;">
+    <lightning-card  title="Gestion document LPCR"  >
+        <lightning-button label="Charger un nouveau fichier" onclick={handleChangePopUp} slot="actions"></lightning-button>
+        <template if:true={PopUpVisible}>
+               
+        </template>
+        <lightning-datatable
+        key-field="id"
+        data={data}
+        columns={columns}>
+</lightning-datatable>
+    </lightning-card>
+</div>
+</template>
