@@ -5,10 +5,10 @@
 * @Last update : 20/02/2020 by Achraf ABOUL
 */
 public with sharing class EM002_LeadEntity {
-    public static List<Lead> getLeadsByOppsAndRecordType(Id leadEntrepriseTypeId, Set<Id> opportunitiesIds) {
+    public static List<Lead> getLeadsByOppsAndRecordType(Id leadRecordTypeId, Set<Id> opportunitiesIds) {
         return [SELECT Id FROM Lead WHERE 
                 convertedOpportunityId IN :opportunitiesIds
-                AND RecordTypeId = :leadEntrepriseTypeId];
+                AND RecordTypeId = :leadRecordTypeId];
     }
     public static List<Lead> getLeadsBy(set<Id> setLeadIds,String recordTypeName) {
         return [SELECT Id, Status,RecordType.Name ,LPCR_DatePriseEnChargeCommercial__c

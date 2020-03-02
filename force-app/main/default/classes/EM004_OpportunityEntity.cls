@@ -1,13 +1,12 @@
 /**
 * @author Achraf ABOUL
 * @date 25/02/2020
-* @SOQL Queries about Opportunity
+* @description SOQL Queries about Opportunity
 */
 public with sharing class EM004_OpportunityEntity {
-
-public static List<Opportunity> getOppsByIds(Set<Id> oppsIds){
-    return [SELECT Id FROM Opportunity WHERE Id IN :oppsIds];
-}
+public static List<Opportunity> getOppsByIds(Set<Id> oppsIds) {
+        return [SELECT Id, RecordTypeId FROM Opportunity WHERE Id IN :oppsIds];
+    }
 public static List<Opportunity> saveOrUpdte(List<Opportunity> oppties){
     if(UM003_TypeManager.isNotNullAndNotEmpty(oppties) ){
         upsert oppties;
@@ -20,5 +19,4 @@ public static Opportunity saveOrUpdte(Opportunity oppty){
     }
     return  oppty; 
 }
-
 }
