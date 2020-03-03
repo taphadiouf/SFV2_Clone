@@ -20,62 +20,66 @@
           <span class="slds-assistive-text">Close</span>
         </button>
         <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
-          Modal Header
+          {uploadFileHeader}
         </h2>
       </header>
       <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-        <div class="slds-p-bottom_large slds-p-left_large" style="width:500px">
-          <lightning-record-edit-form id="recordViewForm" record-id={recordId} object-api-name="Account">
-
-
-
-            <fieldset class="slds-form-element slds-form-element_compound">
-
-              <div class="slds-form-element__control">
-                <div class=" slds-form-element__row">
+        <div class="slds-p-bottom_large slds-p-left_large" >
+          
+          <fieldset class="slds-form-element slds-form-element_compound">
+            <div class="slds-form-element__control">
+              <div class=" slds-form-element__row">
+                <div class="slds-size_1-of-2">
                   <div class="slds-form-element">
                     <span class="slds-form-element__label" id="file-selector-primary-type">{type}</span>
                     <div class="slds-form-element__control">
-
-                    <lightning-input-field field-name="Name"> </lightning-input-field>
-                  </div>
-                  </div>
-                  <div class="slds-size_1-of-2">
-                    <div class="slds-form-element">
-                      <span class="slds-form-element__label" id="file-selector-primary-label">{attachment}</span>
-                      <div class="slds-form-element__control">
-                        <div class="slds-file-selector slds-file-selector_files">
-                          <div class="slds-file-selector__dropzone">
-                            <input type="file" class="slds-file-selector__input slds-assistive-text" accept="image/png"
-                              id="file-upload-input-01"
-                              aria-labelledby="file-selector-primary-label file-selector-secondary-label" />
-                            <label class="slds-file-selector__body" for="file-upload-input-01"
-                              id="file-selector-secondary-label">
-                              <span class="slds-file-selector__button slds-button slds-button_neutral">
-                                <svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
-                                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#upload"></use>
-                                </svg>{uploadFiles}</span>
-                              <span class="slds-file-selector__text slds-medium-show">{orDropFiles}</span>
-                            </label>
-                          </div>
-                        </div>
-                      </div>
+                      <lightning-combobox placeholder="Choisir un type" options={picklistTypeValue} name="type"
+                        onchange={handleChangeFields}>
+                      </lightning-combobox>
                     </div>
                   </div>
-
                 </div>
+
+                <div class="slds-size_1-of-2">
+                  <div class="slds-form-element">
+                    <span class="slds-form-element__label" id="file-selector-primary-label">{attachment}</span>
+                    <div class="slds-form-element__control"  style="width:300px ; margin-top: -3px;">
+
+                      <div >
+                        <lightning-input label="" name="file uploader" onchange={handleFilesChange} type="file"
+                          multiple>
+                      </lightning-input>
+                      </div><br />
+                      <div class="slds-text-body_small slds-text-color_error">{fileName}
+                      
+                      </div>
+
+                    </div>
+
+
+                  </div>
+                </div>
+
+
               </div>
-            </fieldset>
-            <lightning-button type="submit" label="Update record" class="slds-m-top_medium">
-            </lightning-button>
-          </lightning-record-edit-form>
+            </div>
+            <template if:true={showLoadingSpinner} >
+                <div class="slds-size_2-of-2" >
+                    <lightning-spinner alternative-text="Uploading......" size="medium"></lightning-spinner>
+                </div>
+               
+              </template>
+          </fieldset>
+          
         </div>
+     
+
       </div>
       <footer class="slds-modal__footer ">
         <button class="slds-button slds-button_neutral" onclick={handleSkip}>
           {skip}
         </button>
-        <button class="slds-button slds-button_neutral" onclick={handleSubmit}>
+        <button class="slds-button slds-button_neutral" onclick={handleSave}>
           {submit}
         </button>
       </footer>
