@@ -22,4 +22,8 @@ public with sharing class UM003_TypeManager{
         return obj==null ?true:false;
     }
 
+    public static Boolean idNotNull(Id id){
+        return id!=null ?true:false;
+    }
+
 }
