@@ -26,6 +26,7 @@ public with sharing class EM002_LeadEntity {
     }
     public static Lead getAllLeadfielsById(Id leadId){
         return [SELECT  Id,
+                		Status,
                         LastName,
                         Name, 
                         OwnerId, 
@@ -48,7 +49,8 @@ public with sharing class EM002_LeadEntity {
                         LPCR_Lundi3__c, LPCR_Mardi3__c, LPCR_Mercredi3__c, LPCR_Jeudi3__c, LPCR_Vendredi3__c, LPCR_AmplitudeHoraireLundi3__c, LPCR_AmplitudeHoraireMardi3__c, LPCR_AmplitudeHoraireMercredi3__c, LPCR_AmplitudeHoraireJeudi3__c, LPCR_AmplitudeHoraireVendredi3__c, 
                         LPCR_NomEnfant1__c, LPCR_NomEnfant2__c, LPCR_NomEnfant3__c
                 FROM Lead 
-                WHERE Id = :leadId LIMIT 1];
+                WHERE Id = :leadId 
+                LIMIT 1];
     }
      
 }

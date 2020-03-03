@@ -35,7 +35,7 @@ sfdx force:package:install -p 04t0g000000tOItAAM -u $YourAlias  -w 25
 
 echo "Finish installing all managed package"
 
-echo "assign LPCR Admin permission set to default scratch org user..."
-sfdx force:user:permset:assign -n LPCR_Admin
+#echo "assign LPCR Admin permission set to default scratch org user..."
+#sfdx force:user:permset:assign -n LPCR_Admin
 
 echo "scratchInit finished"

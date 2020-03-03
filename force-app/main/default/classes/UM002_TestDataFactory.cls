@@ -175,6 +175,7 @@ newMe.FederationIdentifier = null;
         return new Account(Name = name,
                            RecordTypeId = recId);
     }
+    
     // End of part added by hanae on the same day
     // Added By Ayoub 	
     public static LPCR_Preinscription__c createPreinscription(String nomEnfant, String prenomEnfant,Id compteFamilleId,Id contactId){	
@@ -189,6 +190,42 @@ newMe.FederationIdentifier = null;
         return acc;	
     }	
     //--- End Ayoub's Part
+    
+    
+    //This part of code is added by hanae on the 28/02/2020 to create Attachments and LPCR_Log__c records
+    public static List<Attachment> createAttachements(Integer numAtts, String name,String body,String parentId){
+        List<Attachment> atts = new List<Attachment>();
+        for(Integer i=0;i<numAtts;i++){
+            Attachment a = new Attachment();
+            a.Name = name;
+            Blob bodyBlob = Blob.valueOf(body);
+            a.body = bodyBlob;
+            a.ParentId = parentId;
+            atts.add(a);
+        }
+        return atts;
+    }
+    
+    public static List<LPCR_Log__c> createLogsFromAttachments( String name,String result, String typ,List<Attachment> attsList){
+        List<LPCR_Log__c> logsList = new List<LPCR_Log__c>();
+        LPCR_Log__c tempLog;
+        for(Attachment eachAtt : attsList){
+             tempLog = new LPCR_Log__c();
+            tempLog.Name = name;
+            tempLog.LPCR_TargetObject__c = '' + eachAtt.Id;
+            tempLog.LPCR_Result__c = result;
+            tempLog.LPCR_Type__c = typ;
+            logsList.add(tempLog);
+        }
+        return logsList;
+    }
+        
+       
+    
+    
+    
+    //End of the part on the same day
+    
     
     /*
 public class AccountContactRelationTdf {
