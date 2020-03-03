@@ -5,21 +5,6 @@
 */
 public with sharing class APC002_AttachmentController {
 
-    public static List<Attachment> saveOrUpdte(List<Attachment> attachments){
-        if(UM003_TypeManager.isNotNullAndNotEmpty(attachments) ){
-            upsert attachments;
-        }
-     return  attachments; 
-    }
-
-    public static Attachment saveOrUpdte(Attachment attachment){
-        if(UM003_TypeManager.isNotNull(attachment)){
-            upsert attachment;
-        }
-     return  attachment; 
-    }
-
-
      @AuraEnabled
     public static Attachment save(Id idParent, String strFileName, String base64Data,String description) {
         // Decoding base64Data
@@ -35,6 +20,12 @@ public with sharing class APC002_AttachmentController {
         return att;
     }
 
-    
+     @AuraEnabled
+    public static List<Attachment>  getAllAttachments() {
+       
+        return [SELECT Id,Name,Description ,CreatedDate from Attachment Order By CreatedDate Desc];
+    }
+
+   
 
 }

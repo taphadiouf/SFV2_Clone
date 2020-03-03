@@ -25,7 +25,6 @@
       </header>
       <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
         <div class="slds-p-bottom_large slds-p-left_large" >
-          
           <fieldset class="slds-form-element slds-form-element_compound">
             <div class="slds-form-element__control">
               <div class=" slds-form-element__row">
@@ -39,41 +38,29 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="slds-size_1-of-2">
                   <div class="slds-form-element">
                     <span class="slds-form-element__label" id="file-selector-primary-label">{attachment}</span>
-                    <div class="slds-form-element__control"  style="width:300px ; margin-top: -3px;">
-
+                    <div class="slds-form-element__control"  style="width:400px ; margin-top: -3px;">
                       <div >
                         <lightning-input label="" name="file uploader" onchange={handleFilesChange} type="file"
                           multiple>
                       </lightning-input>
                       </div><br />
-                      <div class="slds-text-body_small slds-text-color_error">{fileName}
-                      
+                      <div class="slds-text-body_small slds-text-color_weak">{fileName}
                       </div>
-
                     </div>
-
-
                   </div>
                 </div>
-
-
               </div>
             </div>
             <template if:true={showLoadingSpinner} >
                 <div class="slds-size_2-of-2" >
                     <lightning-spinner alternative-text="Uploading......" size="medium"></lightning-spinner>
                 </div>
-               
               </template>
           </fieldset>
-          
         </div>
-     
-
       </div>
       <footer class="slds-modal__footer ">
         <button class="slds-button slds-button_neutral" onclick={handleSkip}>
