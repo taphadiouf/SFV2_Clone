@@ -92,44 +92,46 @@ newMe.FederationIdentifier = null;
     }
     //This part of code is added by hanae on the 12/02/2020
     //it's a class that permit to add a list of leads/Tasks/Events/ Users
-
+    
     public static User createUser(){
         Profile prof = [SELECT Id FROM Profile WHERE Name = 'System Administrator' limit 1].get(0);
+        
+        String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
+        User usr = new User(Alias = 'testusr', Email = uniqueUserName,
+                            EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
+                            LocaleSidKey = 'en_US', ProfileId = prof.Id,
+                            TimeZoneSidKey = 'America/Los_Angeles',
+                            UserName = uniqueUserName);
+        insert usr;
+        return usr;
+    }
     
-    String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
-    User usr = new User(Alias = 'testusr', Email = uniqueUserName,
-                        EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
-                        LocaleSidKey = 'en_US', ProfileId = prof.Id,
-                        TimeZoneSidKey = 'America/Los_Angeles',
-                        UserName = uniqueUserName);
-    insert usr;
-    return usr;
-}
-
-
-public static List<Lead> createLeads(Integer numLeads, String recTypeId, String lastName, String company, String status,String Email){
-    List<Lead> leads = new List<Lead>();
-    for(Integer i=0;i<numLeads;i++){
-        Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName,Company=company ,Status = status, Email=email);
-        leads.add(l);
+    
+    public static List<Lead> createLeads(Integer numLeads, String recTypeId, String lastName, String company, String status,String Email){
+        List<Lead> leads = new List<Lead>();
+        for(Integer i=0;i<numLeads;i++){
+            Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName,Company=company ,Status = status, Email=email);
+            leads.add(l);
+        }
+        return leads;
     }
-    return leads;
-}
-
-public static List<Task> createTasks(Set<Id> whoIds ){
-    List<Task> tasks = new List<Task>();
-    for(Id eachId : whoIds){
-        Task t= new Task(WhoId = eachId);
-        tasks.add(t);
+    
+    public static List<Task> createTasks(Set<Id> whoIds ){
+        List<Task> tasks = new List<Task>();
+        for(Id eachId : whoIds){
+            Task t= new Task(WhoId = eachId);
+            tasks.add(t);
+        }
+        return tasks;
     }
-    return tasks;
-}
-
-public static List<Event> createEvents(Set<Id> whoIds, Integer min, DateTime theDate ){
-    List<Event> events = new List<Event>();
-    for(Id eachId : whoIds){
-        Event t= new Event(WhoId = eachId, DurationInMinutes = min, ActivityDateTime = theDate);
-        events.add(t);
+    
+    public static List<Event> createEvents(Set<Id> whoIds, Integer min, DateTime theDate ){
+        List<Event> events = new List<Event>();
+        for(Id eachId : whoIds){
+            Event t= new Event(WhoId = eachId, DurationInMinutes = min, ActivityDateTime = theDate);
+            events.add(t);
+        }
+        return events;
     }
     return events;
 }
@@ -150,6 +152,42 @@ public static Account createAccByRT(String name, Id recId){
 }
     
     // End of part added by hanae on the same day
+    
+    
+    
+    //This part of code is added by hanae on the 28/02/2020 to create Attachments and LPCR_Log__c records
+    public static List<Attachment> createAttachements(Integer numAtts, String name,String body,String parentId){
+        List<Attachment> atts = new List<Attachment>();
+        for(Integer i=0;i<numAtts;i++){
+            Attachment a = new Attachment();
+            a.Name = name;
+            Blob bodyBlob = Blob.valueOf(body);
+            a.body = bodyBlob;
+            a.ParentId = parentId;
+            atts.add(a);
+        }
+        return atts;
+    }
+    
+    public static List<LPCR_Log__c> createLogsFromAttachments( String name,String result, String typ,List<Attachment> attsList){
+        List<LPCR_Log__c> logsList = new List<LPCR_Log__c>();
+        LPCR_Log__c tempLog;
+        for(Attachment eachAtt : attsList){
+             tempLog = new LPCR_Log__c();
+            tempLog.Name = name;
+            tempLog.LPCR_TargetObject__c = '' + eachAtt.Id;
+            tempLog.LPCR_Result__c = result;
+            tempLog.LPCR_Type__c = typ;
+            logsList.add(tempLog);
+        }
+        return logsList;
+    }
+        
+       
+    
+    
+    
+    //End of the part on the same day
     
     
     /*
