@@ -133,8 +133,7 @@ newMe.FederationIdentifier = null;
         }
         return events;
     }
-    return events;
-}
+   
 
 
 
