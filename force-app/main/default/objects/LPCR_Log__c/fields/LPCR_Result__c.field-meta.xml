@@ -25,6 +25,16 @@
                 <default>false</default>
                 <label>Error</label>
             </value>
+            <value>
+                <fullName>Sent</fullName>
+                <default>false</default>
+                <label>Sent</label>
+            </value>
+            <value>
+                <fullName>Purgé</fullName>
+                <default>false</default>
+                <label>Purgé</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
