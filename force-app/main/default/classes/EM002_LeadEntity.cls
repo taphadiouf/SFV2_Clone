@@ -27,6 +27,7 @@ public with sharing class EM002_LeadEntity {
     public static Lead getAllLeadfielsById(Id leadId){
         return [SELECT  Id,
                         LastName,
+                		FirstName,
                         Name, 
                         OwnerId, 
                         Phone, 
