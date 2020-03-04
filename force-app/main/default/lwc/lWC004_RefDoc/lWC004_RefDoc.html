@@ -1,0 +1,45 @@
+<!--
+ * @ author Ayoub Ouarti
+ * @created 28/02/2020
+ * @description LWC : The goal of this part is to realize the component which will allow the management of document sending + document consultation of the LPCR document repository
+ */-->
+
+ <template>
+        <div >
+        <lightning-card  title={title}  >
+          
+                <c-l-w-c-004_-ref-doc-param  record-id ={recordId} >
+                   
+                </c-l-w-c-004_-ref-doc-param>
+                
+            
+            <div style="min-height: 300px;">
+                    <template if:true={attachments}>
+                            <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                                    <div style="margin-left: 20px;margin-top: 10px;">Lines :</div>
+                                    <lightning-input type="number" min="1" class="slds-size_1-of-6" style="margin-left: -20px;"
+                                        value={numberOfData} name="numberOfData" onchange={handlNumberOfData}></lightning-input>
+                                </div>
+                    <lightning-datatable key-field="Id" data={attachments} hide-checkbox-column="true" show-row-number-column
+                    columns={columns} sorted-by={sortBy} sorted-direction={sortDirection} onsort={handleSortdata}
+                    errors={errorMsg}>
+                </lightning-datatable>
+                </template>
+            </div>
+            <template if:true={errorMsg}>
+                    <!-- handle Apex error -->
+                    <span class="slds-align_absolute-center">{errorMsg}</span>
+                </template>
+    
+                <div class="slds-align_absolute-center">
+                        <lightning-button icon-name="utility:back" name="previous" onclick={handelPrevious}></lightning-button>
+                        <span class="slds-badge slds-badge_lightest" style="margin-right: 10px;margin-left: 10px;">
+                            Page {currentPage} out of {numberOfAllPages}
+                        </span>
+                        <lightning-button icon-name="utility:forward" name="forward" onclick={handelForward}></lightning-button>
+                    </div>
+    
+        </lightning-card>
+    </div>
+    </template>
+    

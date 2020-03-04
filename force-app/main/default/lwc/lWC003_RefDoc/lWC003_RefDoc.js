@@ -18,7 +18,7 @@ const columns = [
     { label: 'Date de création', fieldName: 'CreatedDate', type: 'date' ,sortable: true}
 ];
 
-export default class Lwc003_RefDoc extends LightningElement {
+export default class LWC003_RefDoc extends LightningElement {
     @api recordId;
     value;
 
