@@ -93,8 +93,6 @@ export default class Lwc003_RefDoc extends LightningElement {
             //calculate number of all pages from the size of attachments
             this.numberOfAllPages = Math.ceil(this.totalData / this.numberOfData);
             this.currentPage = 1;
-
-            alert(this.numberOfAllPages+' '+ this.currentPage);
           }
         }
     
