@@ -174,7 +174,22 @@ newMe.FederationIdentifier = null;
     public static Account createAcc(String name, Id recId){
         return new Account(Name = name,
                            RecordTypeId = recId);
+   
+
+
+
+public static List<Lead> createLeadsWithAllFields(Integer numLeads, String recTypeId, String lastName,String firstName, String PrenomCoDemandeur,String company, String status,String Email, String NomCoDemandeur, Date DateNaissance1, String EmailCoDemandeur, String Phone, String CiviliteCoDemandeur){
+    List<Lead> leads = new List<Lead>();
+    for(Integer i=0;i<numLeads;i++){
+        Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName, FirstName=firstName, LPCR_PrenomCoDemandeur__c =PrenomCoDemandeur,Company=company ,Status = status, Email=email, LPCR_NomCoDemandeur__c= NomCoDemandeur,  LPCR_DateNaissance1__c= DateNaissance1 , LPCR_EmailCoDemandeur__c =EmailCoDemandeur, Phone=Phone, LPCR_CiviliteCoDemandeur__c = CiviliteCoDemandeur);
+        leads.add(l);
     }
+    return leads;
+}
+public static Account createAccByRT(String name, Id recId){
+    return new Account(Name = name,
+                       RecordTypeId = recId);
+}
     
     // End of part added by hanae on the same day
     // Added By Ayoub 	

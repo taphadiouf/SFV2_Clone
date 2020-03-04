@@ -28,6 +28,7 @@ public with sharing class EM002_LeadEntity {
         return [SELECT  Id,
                 		Status,
                         LastName,
+                		FirstName,
                         Name, 
                         OwnerId, 
                         Phone, 

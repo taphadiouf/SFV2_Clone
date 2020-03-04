@@ -9,7 +9,7 @@
 
 /* eslint-disable no-console */
 import { LightningElement, api,track } from 'lwc';
-import  createAccountFromLead from '@salesforce/apex/APC001_IS241_LeadFaConverController.createAccountFromLead';
+import  createAccountFromLead from '@salesforce/apex/APC001_LeadFaConverController.createAccountFromLead';
 import { NavigationMixin } from 'lightning/navigation';
 export default class Lwc002_ConvertButton_LeadFamille extends NavigationMixin(LightningElement) {
     @api recordId = '';

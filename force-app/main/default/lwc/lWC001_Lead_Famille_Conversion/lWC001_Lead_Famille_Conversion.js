@@ -12,7 +12,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 import { LightningElement, track, api } from 'lwc';
-import  getAccountsByRecordtype from '@salesforce/apex/APC001_IS241_LeadFaConverController.getAccountsByRecordtype';
+import  getAccountsByRecordtype from '@salesforce/apex/APC001_LeadFaConverController.getAccountsByRecordtype';
 
 
 
@@ -20,7 +20,7 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     @api recordId = '';
     value;
     options;
-    recType = 'Crèche';
+    recType = 'Creche';
 
     @track areDetailsVisible = false; 
     @track DetailsVisible = false;
