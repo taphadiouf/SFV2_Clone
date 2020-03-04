@@ -11,7 +11,7 @@
 import { LightningElement, track, api,wire } from 'lwc';
 import getAllAttachments from "@salesforce/apex/APC002_AttachmentController.getAllAttachments";
 import { CurrentPageReference } from "lightning/navigation";
-//import { registerListener, unregisterAllListeners } from "c/pubsub";
+import { registerListener, unregisterAllListeners } from "c/pubsub";
 const columns = [
     { label: 'Titre', fieldName: 'Name' ,sortable: true},
     { label: 'Type', fieldName: 'Description',sortable: true},
@@ -44,7 +44,7 @@ export default class Lwc003_RefDoc extends LightningElement {
 
     disconnectedCallback() {
         // unsubscribe from bearListUpdate event
-       // unregisterAllListeners(this);
+        unregisterAllListeners(this);
       }
     
       async connectedCallback() {
@@ -56,9 +56,21 @@ export default class Lwc003_RefDoc extends LightningElement {
         this.dataTreatment(this.attachmentsFromDB);
     
         // Subscribe to handleOrderListResult event to receive data from The Search Component
-      //  registerListener("handleOrderListResult", this.handleOrderListResult, this);
+        registerListener("handleCreatedAttachment", this.handleCreatedAttachment, this);
       }
     
+  //Handle Data from the Search Component
+  handleCreatedAttachment(attachment) {
+      
+      this.attachments = [ attachment, ...this.attachments ];
+      this.errorMsg = undefined;
+      this.attachmentsFromDB = attachments;
+      this.totalData = attachments.length;
+      this.dataTreatment(attachments);
+
+  }
+
+
       dataTreatment(attachments) {
         if (this.paginationApex) {
           getAllattachmentsWithOffset({
@@ -81,6 +93,8 @@ export default class Lwc003_RefDoc extends LightningElement {
             //calculate number of all pages from the size of attachments
             this.numberOfAllPages = Math.ceil(this.totalData / this.numberOfData);
             this.currentPage = 1;
+
+            alert(this.numberOfAllPages+' '+ this.currentPage);
           }
         }
     
@@ -143,24 +157,7 @@ export default class Lwc003_RefDoc extends LightningElement {
         }
       }
     
-      //Handle Data from the Search Component
-      handleOrderListResult(attachments) {
-        if (attachments === undefined) {
-          this.errorMsg = "No items to display.";
-          this.attachments = undefined;
-          this.attachmentsFromDB = undefined;
-          this.numberOfAllPages = 1;
-          this.currentPage = 1;
-        } else {
-          this.numberOfAllPages = 1;
-          this.currentPage = 1;
-          this.attachments = attachments;
-          this.errorMsg = undefined;
-          this.attachmentsFromDB = attachments;
-          this.totalData = attachments.length;
-          this.dataTreatment(attachments);
-        }
-      }
+    
     
       handleSortdata(event) {
         if (this.attachments !== undefined) {

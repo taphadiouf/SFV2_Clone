@@ -8,9 +8,11 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api, track,wire } from "lwc";
 import save from '@salesforce/apex/APC002_AttachmentController.save';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { CurrentPageReference } from 'lightning/navigation';
+import { fireEvent } from 'c/pubsub';
 export default class Lwc004_RefDocParam extends LightningElement {
 
   @api recordId;
@@ -41,6 +43,16 @@ export default class Lwc004_RefDocParam extends LightningElement {
   content;
   MAX_FILE_SIZE = 1500000;
 
+  @wire(CurrentPageReference) pageRef;
+
+
+
+  disconnectedCallback() {
+    // unsubscribe from bearListUpdate event
+    unregisterAllListeners(this);
+  }
+
+
 
   constructor() {
     super();
@@ -65,9 +77,9 @@ export default class Lwc004_RefDocParam extends LightningElement {
        { label: 'Pièce justificative', value: 'Pièce justificative' },
        { label: 'Autres', value: 'Autres' }];
     }
-
-
   }
+
+
 
 
 
@@ -163,6 +175,7 @@ export default class Lwc004_RefDocParam extends LightningElement {
         );
         this.handleSkip();
 
+        fireEvent(this.pageRef, 'handleCreatedAttachment', result);
       })
       .catch(error => {
         // Showing errors if any while inserting the files
