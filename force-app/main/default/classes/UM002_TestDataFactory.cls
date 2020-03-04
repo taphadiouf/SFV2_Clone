@@ -94,7 +94,7 @@ newMe.FederationIdentifier = null;
     //it's a class that permit to add a list of leads/Tasks/Events/ Users
     
     public static User createUser(){
-        Profile prof = [SELECT Id FROM Profile WHERE Name = 'System Administrator' limit 1].get(0);
+        Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
         
         String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
         User usr = new User(Alias = 'testusr', Email = uniqueUserName,
@@ -274,4 +274,9 @@ return acr;
 }
 */
     
+     public static Account createAccount(String name){
+        Account  acc = new Account(Name = name);
+        return acc;
+    }
+    //--- End Ayoub's Part
 }
