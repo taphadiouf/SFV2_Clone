@@ -3,7 +3,7 @@
 * @date 03/03/2020
 * @Description Queries about Attachment
 */
-public with sharing class APC002_AttachmentController {
+public with sharing class APC002_AttachmentController_Test {
 
      @AuraEnabled
     public static Attachment save(Id idParent, String strFileName, String base64Data,String description) {
