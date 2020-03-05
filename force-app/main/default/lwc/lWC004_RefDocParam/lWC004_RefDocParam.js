@@ -10,8 +10,8 @@
 /* eslint-disable no-alert */
 import { LightningElement, api, track,wire } from "lwc";
 import save from '@salesforce/apex/APC002_AttachmentController.save';
-import { ShowToastEvent } from 'lWC004_RefDocParam/node_modules/lightning/platformShowToastEvent';
-import { CurrentPageReference } from 'lWC004_RefDocParam/node_modules/lightning/navigation';
+import {ShowToastEvent} from 'lightning/platformShowToastEvent';
+import { CurrentPageReference } from "lightning/navigation";
 import { fireEvent } from 'c/pubsub';
 export default class LWC004_RefDocParam extends LightningElement {
 
