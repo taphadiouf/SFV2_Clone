@@ -21,7 +21,7 @@
                                                         value={value}
                                                         placeholder="-Select-"
                                                         options={options}
-                                                        onchange={handleChange3} ></lightning-combobox>
+                                                        onchange={connectedCallback} ></lightning-combobox>
                                     <lightning-input type="checkbox" label="Parent Sponsorisé ?" onchange={handleChange2}></lightning-input>
                                     <div class="slds-p-left_xx-large">
                                         <template if:true={DetailsVisible}>
@@ -30,7 +30,7 @@
                                                         value={value}
                                                         placeholder="-Select-"
                                                         options={options}
-                                                        onchange={handleChange3} ></lightning-combobox>
+                                                        onchange={connectedCallback} ></lightning-combobox>
                                         </template>
                                     </div>
                                 </div>

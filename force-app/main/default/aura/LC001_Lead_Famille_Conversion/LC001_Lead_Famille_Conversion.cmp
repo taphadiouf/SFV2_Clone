@@ -2,14 +2,14 @@
  	* @created 18/02/2020
  	* @description LC : a new custom quick action for the new conversion proces for lead famille
 -->
-<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global" controller="APC001_IS241_LeadFaConverController">
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global" controller="APC001_LeadFaConverController">
     <aura:attribute name="recordId" type="String" />
         <div class="slds-col modal-header slds-modal__header">
             <h2 class="title slds-text-heading--medium">Popup Conversion Lead Famille > Opportunité</h2>
         </div>
         <div class="slds-col modal-body" style="overflow-y: auto !important">
             <div>
-                <c:lWC001_Lead_Famille_Conversion recordId="{!v.recordId}" />
+                <c:lWC001_Lead_Famille_Conversion/>
             </div>
             
         </div>
