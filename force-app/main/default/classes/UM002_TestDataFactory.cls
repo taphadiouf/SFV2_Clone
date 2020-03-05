@@ -133,8 +133,49 @@ newMe.FederationIdentifier = null;
         }
         return events;
     }
+    public static List<Opportunity> createOpportunities(Integer numOpps, String name, String stageName){
+        List<Opportunity> opps = new List<Opportunity>();
+        Opportunity tempOpp;
+        for(Integer i = 0; i<numOpps; i++){
+            tempOpp = new Opportunity(Name = name, StageName = stageName, CloseDate = Date.today());
+            opps.add(tempOpp);
+        }
+        return opps;
+    }
+    public static List<Account> createAccounts(Integer numAccs, String name){
+        List<Account> accounts = new List<Account>();
+        Account tempAcc;
+        for(Integer i = 0; i<numAccs; i++){
+            tempAcc = new Account(Name = name);
+            accounts.add(tempAcc);
+        }
+        return accounts;
+    }
+    public static List<SBQQ__Quote__c> createQuotes(Integer numRecs, List<Account> accs, List<Opportunity> opps){
+        List<SBQQ__Quote__c> quotes = new List<SBQQ__Quote__c>();
+        SBQQ__Quote__c tempQuote;
+        for(Integer i = 0; i<numRecs; i++){
+            tempQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = opps.get(i).Id,
+                SBQQ__Account__c = accs.get(i).Id
+            );
+            quotes.add(tempQuote);
+        }
+        return quotes;
+    }
+    public static List<Lead> createLe(Integer numLeads, String recTypeId, String lastName,String PrenomCoDemandeur,String company, String status,String Email, String NomCoDemandeur, Date DateNaissance1, String EmailCoDemandeur, String Phone, String CiviliteCoDemandeur){
+        List<Lead> leads = new List<Lead>();
+        for(Integer i=0;i<numLeads;i++){
+            Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName, LPCR_PrenomCoDemandeur__c =PrenomCoDemandeur,Company=company ,Status = status, Email=email, LPCR_NomCoDemandeur__c= NomCoDemandeur,  LPCR_DateNaissance1__c= DateNaissance1 , LPCR_EmailCoDemandeur__c =EmailCoDemandeur, Phone=Phone, LPCR_CiviliteCoDemandeur__c = CiviliteCoDemandeur);
+            leads.add(l);
+        }
+        return leads;
+    }
+    public static Account createAcc(String name, Id recId){
+        return new Account(Name = name,
+                           RecordTypeId = recId);
    
-
+    }
 
 
 public static List<Lead> createLeadsWithAllFields(Integer numLeads, String recTypeId, String lastName,String firstName, String PrenomCoDemandeur,String company, String status,String Email, String NomCoDemandeur, Date DateNaissance1, String EmailCoDemandeur, String Phone, String CiviliteCoDemandeur){
@@ -151,7 +192,19 @@ public static Account createAccByRT(String name, Id recId){
 }
     
     // End of part added by hanae on the same day
-    
+    // Added By Ayoub 	
+    public static LPCR_Preinscription__c createPreinscription(String nomEnfant, String prenomEnfant,Id compteFamilleId,Id contactId){	
+        LPCR_Preinscription__c  preinsciption = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_ContactEnfant__c=contactId);	
+        return preinsciption;	
+    }
+    public static Account createAccount(String name){	
+        Account  acc = new Account(Name = name);	
+        return acc;	
+    }	
+    //--- End Ayoub's Part
     
     
     //This part of code is added by hanae on the 28/02/2020 to create Attachments and LPCR_Log__c records
@@ -220,18 +273,5 @@ return acr;
 }
 }
 */
-    // Added By Ayoub 
-    public static LPCR_Preinscription__c createPreinscription(String nomEnfant, String prenomEnfant,Id compteFamilleId,Id contactId){
-        LPCR_Preinscription__c  preinsciption = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,
-                                                                           LPCR_PrenomEnfant__c=prenomEnfant,
-                                                                           NomEnfant__c=nomEnfant,
-                                                                           LPCR_ContactEnfant__c=contactId);
-        return preinsciption;
-    }
-    
-     public static Account createAccount(String name){
-        Account  acc = new Account(Name = name);
-        return acc;
-    }
-    //--- End Ayoub's Part
+   
 }
