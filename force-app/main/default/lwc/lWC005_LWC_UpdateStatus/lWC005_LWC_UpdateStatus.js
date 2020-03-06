@@ -1,5 +1,6 @@
 import { LightningElement, wire, api,track } from 'lwc';
 import  getPicklistvalues from '@salesforce/apex/LWC003_LWC_UpdateStatusController.getPicklistvalues';
+import  updateLstPreinscription from '@salesforce/apex/LWC003_LWC_UpdateStatusController.updateLstPreinscription';
 
 
 
@@ -49,7 +50,7 @@ export default class LWC005_LWC_UpdateStatus extends LightningElement {
             statut :this.value
         })
         console.log('test')
-        console.log('hanae'+this.statut)
+        console.log("hanae"+ this.value)
         .then((result)=>{
             this.lstPreinscription = result;
             console.log('Laliste modifiée'+result);
