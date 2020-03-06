@@ -6,7 +6,7 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Lead</value>
+        <value>Leads</value>
     </caseValues>
     <gender>Masculine</gender>
     <layouts>
@@ -117,13 +117,17 @@
         <name>Convertir</name>
     </quickActions>
     <quickActions>
+        <label><!-- Créer Lead Entreprise 1 --></label>
+        <name>CreerLeadEntreprise1</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Créer Lead Entreprise 2 --></label>
+        <name>CreerLeadEntreprise2</name>
+    </quickActions>
+    <quickActions>
         <label><!-- Adobe Sign --></label>
         <name>echosign_dev1__EchoSign_Lead_Publisher_Action</name>
     </quickActions>
-    <recordTypes>
-        <label><!-- AO Public --></label>
-        <name>AO_Public</name>
-    </recordTypes>
     <recordTypes>
         <label><!-- AO Public DSP --></label>
         <name>AO_PublicDSP</name>
