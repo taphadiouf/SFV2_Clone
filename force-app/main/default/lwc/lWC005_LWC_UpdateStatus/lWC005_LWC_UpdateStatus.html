@@ -1,7 +1,7 @@
 <template>
     <div class="slds-theme_default">
         <center>
-        <lightning-button label="Show Modal" variant="brand" onclick={openmodal}></lightning-button>
+        <lightning-button label="Modification Statut" variant="brand" onclick={openmodal}></lightning-button>
         </center>
 
         <template if:true={openmodel}>
@@ -17,18 +17,20 @@
                     </header>
 
                         <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="overflow: unset;">
-                            <lightning-combobox
-                                name="Statut"
-                                label="Statut"
-                                value={value}
-                                placeholder="-select-"
-                                options={options}
-                                onchange={connectedCallback} ></lightning-combobox>
+                                    <lightning-combobox
+                                        name="Statut"
+                                        label="Statut"
+                                        value={value}
+                                        placeholder="-select-"
+                                        options={options}
+                                        onchange={connectedCallback} ></lightning-combobox>
+                                <div class ="slds-p-top_medium">Pour information cette action mettra à jour "nbre" de Préinscription</div>                
                         </div>
+                        
                    
                     <footer class="slds-modal__footer">
                         <lightning-button label="Cancel" variant="neutral" onclick={closeModal}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <lightning-button label="Modifier" variant="brand" onclick={updateMethod}></lightning-button>
+                        <lightning-button label="Modifier" variant="brand" onclick={updatePreinscription}></lightning-button>
                     </footer>
                 </div>
             </section>
@@ -36,3 +38,5 @@
         </template>
     </div>
 </template>
+
+
