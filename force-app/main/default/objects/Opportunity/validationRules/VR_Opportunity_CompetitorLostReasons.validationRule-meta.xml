@@ -4,10 +4,10 @@
     <active>true</active>
     <errorConditionFormula>AND ( 
       NOT($User.LPCR_BypassValidationRules__c ),
-      AND(ISPICKVAL(LPCR_RaisonPerteOpportunite__c,&quot;Concurrence&quot;),
-         ISNULL(Concurrent__c)
-         )
+      ISPICKVAL(LPCR_RaisonPerteOpportunite__c,&quot;Concurrence&quot;),
+      ISBLANK(Concurrent__c)
+         
      )</errorConditionFormula>
     <errorDisplayField>Concurrent__c</errorDisplayField>
     <errorMessage>Veuillez renseigner le concurrent à l&#39;origine de la perte de l&#39;Opportunité</errorMessage>
-</ValidationRule> 
+</ValidationRule>
