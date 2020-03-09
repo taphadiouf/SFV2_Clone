@@ -6,43 +6,23 @@
     <picklistValues>
         <picklist>AccountSource</picklist>
         <values>
-            <fullName>Appel d%27Offre</fullName>
+            <fullName>Other</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Autre</fullName>
+            <fullName>Partner Referral</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Challenge</fullName>
+            <fullName>Phone Inquiry</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Chargé d%27affaire</fullName>
+            <fullName>Purchased List</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Directrice de crèche</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Evènement</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Publicité</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Recherche Internet</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Site Internet Grandir</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Siège</fullName>
+            <fullName>Web</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -178,6 +158,41 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_TypeCreche__c</picklist>
+        <values>
+            <fullName>ALSH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halte-Garderie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jardin d%E2%80%99enfants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MICRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RAM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Ownership</picklist>
         <values>
             <fullName>Other</fullName>
@@ -277,11 +292,31 @@
     <picklistValues>
         <picklist>Type</picklist>
         <values>
+            <fullName>Channel Partner %2F Reseller</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer - Channel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer - Direct</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Installation Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Other</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technology Partner</fullName>
             <default>false</default>
         </values>
     </picklistValues>
