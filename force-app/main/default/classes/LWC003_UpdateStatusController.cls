@@ -1,4 +1,4 @@
-public with sharing class LWC003_LWC_UpdateStatusController {
+public with sharing class LWC003_UpdateStatusController {
 
     @AuraEnabled 
      public static List<String> getPicklistvalues(){

@@ -1,10 +1,11 @@
 import { LightningElement, wire, api,track } from 'lwc';
-import  getPicklistvalues from '@salesforce/apex/LWC003_LWC_UpdateStatusController.getPicklistvalues';
-import  updateLstPreinscription from '@salesforce/apex/LWC003_LWC_UpdateStatusController.updateLstPreinscription';
+import  getPicklistvalues from '@salesforce/apex/LWC003_UpdateStatusController.getPicklistvalues';
+import  updateLstPreinscription from '@salesforce/apex/LWC003_UpdateStatusController.updateLstPreinscription';
+import { NavigationMixin } from 'lightning/navigation';
 
 
 
-export default class LWC005_LWC_UpdateStatus extends LightningElement {
+export default class LWC005_UpdateStatus extends NavigationMixin(LightningElement) {
     @track openmodel = false;
     value;
     options;
@@ -44,19 +45,31 @@ export default class LWC005_LWC_UpdateStatus extends LightningElement {
     closeModal() {
         this.openmodel = false
     } 
-    updatePreinscription() {
-        console.log('Laliste modifiée');
+    updatePreinscription() {      
         updateLstPreinscription({
             statut :this.value
         })
-        console.log('test')
-        console.log("hanae"+ this.value)
+       
         .then((result)=>{
             this.lstPreinscription = result;
-            console.log('Laliste modifiée'+result);
+            console.log('Laliste modifiée '+result);
+            this.redirect();
         })
         .catch(err=>{
             console.error(err);
+        });
+    }
+    redirect(){
+        this[NavigationMixin.Navigate]({
+            type: 'standard__objectPage',
+            attributes: {
+                objectApiName: 'LPCR_Preinscription__c',
+                actionName: 'list'
+            },
+            state: {
+                filterName: 'Recent' 
+            }
+            
         });
     }
 }

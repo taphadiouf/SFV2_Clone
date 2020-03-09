@@ -205,6 +205,24 @@ public static Account createAccByRT(String name, Id recId){
         return acc;	
     }	
     //--- End Ayoub's Part
+
+    //This part of code is added by hanae on the 09/03/2020
+    public static List<LPCR_Preinscription__c> createPreinscription(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
+        List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
+        for(Integer i=0;i<numPrei;i++){
+            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_Statut__c = statut,
+                                                                            LPCR_ContactEnfant__c=contactId);	
+            preinscriptions.add(pre);
+        }
+        
+        return preinscriptions;	
+    }
+
+    //--- End of Hanae's part
+
     
     
     //This part of code is added by hanae on the 28/02/2020 to create Attachments and LPCR_Log__c records
