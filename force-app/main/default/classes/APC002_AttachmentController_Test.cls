@@ -3,29 +3,27 @@
 * @date 03/03/2020
 * @Description Queries about Attachment
 */
+@isTest
 public with sharing class APC002_AttachmentController_Test {
 
-     @AuraEnabled
-    public static Attachment save(Id idParent, String strFileName, String base64Data,String description) {
-        // Decoding base64Data
-        base64Data = EncodingUtil.urlDecode(base64Data, 'UTF-8');
+
+    @testSetup
+    public static void setup(){
+         Account acc = UM002_TestDataFactory.createAccount('test');
+         insert acc;
         
-        // inserting file
-        Attachment att = new Attachment();
-        att.Name = strFileName;
-        att.ParentId = idParent;
-        att.body = EncodingUtil.base64Decode(base64Data);
-        att.Description = description;
-        insert att;
-        return att;
     }
 
-     @AuraEnabled
-    public static List<Attachment>  getAllAttachments() {
-       
-        return [SELECT Id,Name,Description ,CreatedDate from Attachment Order By CreatedDate Desc];
-    }
+    @isTest
+    public static void saveAndgetAllAttachments_Test(){
 
+         Account acc = [SELECT name From Account WHERE Name = 'test'];
+        //Id idParent, String strFileName, String base64Data,String description
+        APC002_AttachmentController.save(acc.Id,'Test','TEST','Test');
+        List<Attachment> attachments = APC002_AttachmentController.getAllAttachments();
+        System.assertNotEquals(null, attachments,'Attachment not created');
+        System.assertNotEquals(0, attachments.size(),'Attachment not created');
+    }
    
 
 }
