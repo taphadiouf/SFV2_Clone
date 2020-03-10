@@ -174,22 +174,22 @@ newMe.FederationIdentifier = null;
     public static Account createAcc(String name, Id recId){
         return new Account(Name = name,
                            RecordTypeId = recId);
-   
+        
     }
-
-
-public static List<Lead> createLeadsWithAllFields(Integer numLeads, String recTypeId, String lastName,String firstName, String PrenomCoDemandeur,String company, String status,String Email, String NomCoDemandeur, Date DateNaissance1, String EmailCoDemandeur, String Phone, String CiviliteCoDemandeur){
-    List<Lead> leads = new List<Lead>();
-    for(Integer i=0;i<numLeads;i++){
-        Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName, FirstName=firstName, LPCR_PrenomCoDemandeur__c =PrenomCoDemandeur,Company=company ,Status = status, Email=email, LPCR_NomCoDemandeur__c= NomCoDemandeur,  LPCR_DateNaissance1__c= DateNaissance1 , LPCR_EmailCoDemandeur__c =EmailCoDemandeur, Phone=Phone, LPCR_CiviliteCoDemandeur__c = CiviliteCoDemandeur);
-        leads.add(l);
+    
+    
+    public static List<Lead> createLeadsWithAllFields(Integer numLeads, String recTypeId, String lastName,String firstName, String PrenomCoDemandeur,String company, String status,String Email, String NomCoDemandeur, Date DateNaissance1, String EmailCoDemandeur, String Phone, String CiviliteCoDemandeur){
+        List<Lead> leads = new List<Lead>();
+        for(Integer i=0;i<numLeads;i++){
+            Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName, FirstName=firstName, LPCR_PrenomCoDemandeur__c =PrenomCoDemandeur,Company=company ,Status = status, Email=email, LPCR_NomCoDemandeur__c= NomCoDemandeur,  LPCR_DateNaissance1__c= DateNaissance1 , LPCR_EmailCoDemandeur__c =EmailCoDemandeur, Phone=Phone, LPCR_CiviliteCoDemandeur__c = CiviliteCoDemandeur);
+            leads.add(l);
+        }
+        return leads;
     }
-    return leads;
-}
-public static Account createAccByRT(String name, Id recId){
-    return new Account(Name = name,
-                       RecordTypeId = recId);
-}
+    public static Account createAccByRT(String name, Id recId){
+        return new Account(Name = name,
+                           RecordTypeId = recId);
+    }
     
     // End of part added by hanae on the same day
     // Added By Ayoub 	
@@ -204,6 +204,34 @@ public static Account createAccByRT(String name, Id recId){
         Account  acc = new Account(Name = name);	
         return acc;	
     }	
+    
+    public static List<LPCR_ParametrageScore__c> createParametrageScores(Id accId){
+        List<LPCR_ParametrageScore__c> listParams =new List<LPCR_ParametrageScore__c>();
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_Anciennete__c =1,LPCR_Score__c=100));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Anciennete__c =5,LPCR_Score__c=300));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Anciennete__c =10,LPCR_Score__c=500));
+        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =1,LPCR_Score__c=20));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =2,LPCR_Score__c=30));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =3,LPCR_Score__c=50));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =4,LPCR_Score__c=60));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =5,LPCR_Score__c=100));
+        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =1000,LPCR_Score__c=10));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =10000,LPCR_Score__c=100));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =100000,LPCR_Score__c=500));
+        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_ReponseCrecheMunicipale__c=true,LPCR_Score__c=20));        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_ReponseCrecheMunicipale__c=False,LPCR_Score__c=50));
+        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2019,12,31),LPCR_Score__c=100));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2020,12,31),LPCR_Score__c=10));
+          
+        
+        return listParams;
+        
+    }
+    
     //--- End Ayoub's Part
     
     public static List<LPCR_Preinscription__c> createPreinscriptions(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
@@ -244,7 +272,7 @@ public static Account createAccByRT(String name, Id recId){
         List<LPCR_Log__c> logsList = new List<LPCR_Log__c>();
         LPCR_Log__c tempLog;
         for(Attachment eachAtt : attsList){
-             tempLog = new LPCR_Log__c();
+            tempLog = new LPCR_Log__c();
             tempLog.Name = name;
             tempLog.LPCR_TargetObject__c = '' + eachAtt.Id;
             tempLog.LPCR_Result__c = result;
@@ -253,8 +281,8 @@ public static Account createAccByRT(String name, Id recId){
         }
         return logsList;
     }
-        
-       
+    
+    
     
     
     
@@ -292,5 +320,5 @@ return acr;
 }
 }
 */
-   
+    
 }
