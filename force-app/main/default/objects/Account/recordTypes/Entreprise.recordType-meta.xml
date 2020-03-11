@@ -178,6 +178,236 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_DispositifsExistants__c</picklist>
+        <values>
+            <fullName>Accompagnement scolaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chéque CESU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conciergerie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conférences %2F Ateliers parentalité</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garde d%E2%80%99enfants périscolaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Place en crèche</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plateforme service à la personne</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Enjeux__c</picklist>
+        <values>
+            <fullName>Amélioration de la marque employeur</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Efficacité %2Fengagement des collaborateurs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fidélisation des talents</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qualité de vie au travail</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Garde__c</picklist>
+        <values>
+            <fullName>Autorité parentale conjointe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garde alternée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garde parent unique</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_MoyenDeTransport__c</picklist>
+        <values>
+            <fullName>Transports en commun</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Voiture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>À pied</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_PrestataireActuelCreche__c</picklist>
+        <values>
+            <fullName>Babilou</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crèche attitude</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crèches de France</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La maison bleue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ma place en crèche</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>People and Baby</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_PrivePublic__c</picklist>
+        <values>
+            <fullName>Privé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_RegionCommerciale__c</picklist>
+        <values>
+            <fullName>Grand Ouest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nord Est</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PACA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rhone Alpes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_SituationFamiliale__c</picklist>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Célibataire géographique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Divorcé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>En couple</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Famille recomposée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marié %2F Pacsé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monoparentale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Séparé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Veuf %2F Veuve</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Statut__c</picklist>
+        <values>
+            <fullName>Ancien client</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeClient__c</picklist>
+        <values>
+            <fullName>CE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collectivité</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grand Compte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PLAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PME-ETI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TPE</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Ownership</picklist>
         <values>
             <fullName>Other</fullName>
@@ -271,6 +501,21 @@
         </values>
         <values>
             <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Statut__c</picklist>
+        <values>
+            <fullName>Ancien client</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect</fullName>
             <default>false</default>
         </values>
     </picklistValues>

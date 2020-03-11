@@ -15,6 +15,16 @@
                 <default>false</default>
                 <label>Client</label>
             </value>
+            <value>
+                <fullName>Prospect</fullName>
+                <default>false</default>
+                <label>Prospect</label>
+            </value>
+            <value>
+                <fullName>Ancien client</fullName>
+                <default>false</default>
+                <label>Ancien client</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
