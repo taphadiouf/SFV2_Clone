@@ -14,4 +14,16 @@ public with sharing class UM003_TypeManager{
         return (listSObject!=null && listSObject.size()>0) ?true:false;
     }
 
+
+    public static Boolean isNotNull(SObject obj){
+        return obj!=null ?true:false;
+    }
+    public static Boolean isNull(SObject obj){
+        return obj==null ?true:false;
+    }
+
+    public static Boolean idNotNull(Id id){
+        return id!=null ?true:false;
+    }
+
 }

@@ -92,9 +92,9 @@ newMe.FederationIdentifier = null;
     }
     //This part of code is added by hanae on the 12/02/2020
     //it's a class that permit to add a list of leads/Tasks/Events/ Users
-
-        public static User createUser(){
-            Profile prof = [SELECT Id FROM Profile WHERE Name = 'System Administrator' limit 1].get(0);
+    
+    public static User createUser(){
+        Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
         
         String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
         User usr = new User(Alias = 'testusr', Email = uniqueUserName,
@@ -133,8 +133,159 @@ newMe.FederationIdentifier = null;
         }
         return events;
     }
+    public static List<Opportunity> createOpportunities(Integer numOpps, String name, String stageName){
+        List<Opportunity> opps = new List<Opportunity>();
+        Opportunity tempOpp;
+        for(Integer i = 0; i<numOpps; i++){
+            tempOpp = new Opportunity(Name = name, StageName = stageName, CloseDate = Date.today());
+            opps.add(tempOpp);
+        }
+        return opps;
+    }
+    public static List<Account> createAccounts(Integer numAccs, String name){
+        List<Account> accounts = new List<Account>();
+        Account tempAcc;
+        for(Integer i = 0; i<numAccs; i++){
+            tempAcc = new Account(Name = name);
+            accounts.add(tempAcc);
+        }
+        return accounts;
+    }
+    public static List<SBQQ__Quote__c> createQuotes(Integer numRecs, List<Account> accs, List<Opportunity> opps){
+        List<SBQQ__Quote__c> quotes = new List<SBQQ__Quote__c>();
+        SBQQ__Quote__c tempQuote;
+        for(Integer i = 0; i<numRecs; i++){
+            tempQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = opps.get(i).Id,
+                SBQQ__Account__c = accs.get(i).Id
+            );
+            quotes.add(tempQuote);
+        }
+        return quotes;
+    }
+    public static List<Lead> createLe(Integer numLeads, String recTypeId, String lastName,String PrenomCoDemandeur,String company, String status,String Email, String NomCoDemandeur, Date DateNaissance1, String EmailCoDemandeur, String Phone, String CiviliteCoDemandeur){
+        List<Lead> leads = new List<Lead>();
+        for(Integer i=0;i<numLeads;i++){
+            Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName, LPCR_PrenomCoDemandeur__c =PrenomCoDemandeur,Company=company ,Status = status, Email=email, LPCR_NomCoDemandeur__c= NomCoDemandeur,  LPCR_DateNaissance1__c= DateNaissance1 , LPCR_EmailCoDemandeur__c =EmailCoDemandeur, Phone=Phone, LPCR_CiviliteCoDemandeur__c = CiviliteCoDemandeur);
+            leads.add(l);
+        }
+        return leads;
+    }
+    public static Account createAcc(String name, Id recId){
+        return new Account(Name = name,
+                           RecordTypeId = recId);
+        
+    }
+    
+    
+    public static List<Lead> createLeadsWithAllFields(Integer numLeads, String recTypeId, String lastName,String firstName, String PrenomCoDemandeur,String company, String status,String Email, String NomCoDemandeur, Date DateNaissance1, String EmailCoDemandeur, String Phone, String CiviliteCoDemandeur){
+        List<Lead> leads = new List<Lead>();
+        for(Integer i=0;i<numLeads;i++){
+            Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName, FirstName=firstName, LPCR_PrenomCoDemandeur__c =PrenomCoDemandeur,Company=company ,Status = status, Email=email, LPCR_NomCoDemandeur__c= NomCoDemandeur,  LPCR_DateNaissance1__c= DateNaissance1 , LPCR_EmailCoDemandeur__c =EmailCoDemandeur, Phone=Phone, LPCR_CiviliteCoDemandeur__c = CiviliteCoDemandeur);
+            leads.add(l);
+        }
+        return leads;
+    }
+    public static Account createAccByRT(String name, Id recId){
+        return new Account(Name = name,
+                           RecordTypeId = recId);
+    }
     
     // End of part added by hanae on the same day
+    // Added By Ayoub 	
+    public static LPCR_Preinscription__c createPreinscription(String nomEnfant, String prenomEnfant,Id compteFamilleId,Id contactId){	
+        LPCR_Preinscription__c  preinsciption = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_ContactEnfant__c=contactId);	
+        return preinsciption;	
+    }
+    public static Account createAccount(String name){	
+        Account  acc = new Account(Name = name);	
+        return acc;	
+    }	
+    
+    public static List<LPCR_ParametrageScore__c> createParametrageScores(Id accId){
+        List<LPCR_ParametrageScore__c> listParams =new List<LPCR_ParametrageScore__c>();
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_Anciennete__c =1,LPCR_Score__c=100));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Anciennete__c =5,LPCR_Score__c=300));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Anciennete__c =10,LPCR_Score__c=500));
+        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =1,LPCR_Score__c=20));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =2,LPCR_Score__c=30));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =3,LPCR_Score__c=50));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =4,LPCR_Score__c=60));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =5,LPCR_Score__c=100));
+        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =1000,LPCR_Score__c=10));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =10000,LPCR_Score__c=100));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =100000,LPCR_Score__c=500));
+        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_ReponseCrecheMunicipale__c=true,LPCR_Score__c=20));        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_ReponseCrecheMunicipale__c=False,LPCR_Score__c=50));
+        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2019,12,31),LPCR_Score__c=100));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2020,12,31),LPCR_Score__c=10));
+          
+        
+        return listParams;
+        
+    }
+    
+    //--- End Ayoub's Part
+
+    //This part of code is added by hanae on the 09/03/2020
+    public static List<LPCR_Preinscription__c> createPreinscription(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
+        List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
+        for(Integer i=0;i<numPrei;i++){
+            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_Statut__c = statut,
+                                                                            LPCR_ContactEnfant__c=contactId);	
+            preinscriptions.add(pre);
+        }
+        
+        return preinscriptions;	
+    }
+
+    //--- End of Hanae's part
+
+    
+    
+    //This part of code is added by hanae on the 28/02/2020 to create Attachments and LPCR_Log__c records
+    public static List<Attachment> createAttachements(Integer numAtts, String name,String body,String parentId){
+        List<Attachment> atts = new List<Attachment>();
+        for(Integer i=0;i<numAtts;i++){
+            Attachment a = new Attachment();
+            a.Name = name;
+            Blob bodyBlob = Blob.valueOf(body);
+            a.body = bodyBlob;
+            a.ParentId = parentId;
+            atts.add(a);
+        }
+        return atts;
+    }
+    
+    public static List<LPCR_Log__c> createLogsFromAttachments( String name,String result, String typ,List<Attachment> attsList){
+        List<LPCR_Log__c> logsList = new List<LPCR_Log__c>();
+        LPCR_Log__c tempLog;
+        for(Attachment eachAtt : attsList){
+            tempLog = new LPCR_Log__c();
+            tempLog.Name = name;
+            tempLog.LPCR_TargetObject__c = '' + eachAtt.Id;
+            tempLog.LPCR_Result__c = result;
+            tempLog.LPCR_Type__c = typ;
+            logsList.add(tempLog);
+        }
+        return logsList;
+    }
+    
+    
+    
+    
+    
+    //End of the part on the same day
     
     
     /*
