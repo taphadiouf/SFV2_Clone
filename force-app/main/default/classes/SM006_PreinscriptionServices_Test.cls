@@ -2,6 +2,8 @@
 * @author Ayoub Ouarti
 * @created 27/02/2020
 * @description Test Class of SM006_PreinscriptionServices.
+* @Modified by hanae on the 12/03/2020
+*/
 */
 @isTest
 public class SM006_PreinscriptionServices_Test {
@@ -20,16 +22,16 @@ public class SM006_PreinscriptionServices_Test {
         LPCR_Preinscription__c  preinsciption = UM002_TestDataFactory.createPreinscription('test','test', 'OCC',acc.Id,contact.Id );
         insert preinsciption;
         LPCR_Preinscription__c  preinsciption1 = UM002_TestDataFactory.createPreinscription('test','test', 'DEF',acc.Id,contact.Id );
-        insert preinsciption;
+        insert preinsciption1;
         LPCR_Preinscription__c  preinsciption2 = UM002_TestDataFactory.createPreinscription('test','test', 'DSP',acc.Id,contact.Id );
-        insert preinsciption;
+        insert preinsciption2;
     }        
     
     //Test the method createOpptyAndQuoteForPreinsc_Test from SM006_PreinscriptionServices class indirectly
     @isTest
     public static void createOpptyAndQuoteForPreinsc_Test(){
         
-        LPCR_Preinscription__c  preinsciption  = [SELECT LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test' AND (LPCR_TypePreinscription__c = 'OCC' OR LPCR_TypePreinscription__c = 'DEF' OR LPCR_TypePreinscription__c = 'DEF')];
+        LPCR_Preinscription__c  preinsciption  = [SELECT LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test' AND (LPCR_TypePreinscription__c = 'OCC' OR LPCR_TypePreinscription__c = 'DEF' OR LPCR_TypePreinscription__c = 'DEF') LIMIT 1];
         preinsciption.LPCR_Statut__c='Confirmé';
         update preinsciption;
         List<Opportunity> opptys = [SELECT Id,RecordTypeId,AccountId FROM Opportunity WHERE AccountId = :preinsciption.LPCR_CompteFamille__c];

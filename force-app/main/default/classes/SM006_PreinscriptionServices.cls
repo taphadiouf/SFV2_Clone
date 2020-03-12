@@ -2,6 +2,7 @@
 * @author Ayoub Ouarti
 * @created 25/02/2020
 * @description Services class on Preinscription Object
+* @Modified by hanae on the 12/03/2020
 */
 public class SM006_PreinscriptionServices {
     
