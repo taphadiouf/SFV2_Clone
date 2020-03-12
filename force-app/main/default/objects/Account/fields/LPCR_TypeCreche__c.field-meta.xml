@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_Statut__c</fullName>
+    <fullName>LPCR_TypeCreche__c</fullName>
     <externalId>false</externalId>
-    <label>LPCR Statut</label>
+    <label>Type de crèche</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Picklist</type>
@@ -11,49 +11,44 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Prospect</fullName>
+                <fullName>ALSH</fullName>
                 <default>false</default>
-                <label>Prospect</label>
+                <label>ALSH</label>
             </value>
             <value>
-                <fullName>Client</fullName>
+                <fullName>MAF</fullName>
                 <default>false</default>
-                <label>Client</label>
+                <label>MAF</label>
             </value>
             <value>
-                <fullName>Ancien client</fullName>
+                <fullName>MICRO</fullName>
                 <default>false</default>
-                <label>Ancien client</label>
+                <label>MICRO</label>
             </value>
             <value>
-                <fullName>Contact</fullName>
+                <fullName>MAC</fullName>
                 <default>false</default>
-                <label>Contact</label>
+                <label>MAC</label>
+            </value>
+            <value>
+                <fullName>Halte-Garderie</fullName>
+                <default>false</default>
+                <label>Halte-Garderie</label>
+            </value>
+            <value>
+                <fullName>Jardin d’enfants</fullName>
+                <default>false</default>
+                <label>Jardin d’enfants</label>
+            </value>
+            <value>
+                <fullName>RAM</fullName>
+                <default>false</default>
+                <label>RAM</label>
             </value>
             <value>
                 <fullName>Partenaire</fullName>
                 <default>false</default>
                 <label>Partenaire</label>
-            </value>
-            <value>
-                <fullName>Ex-adhérent</fullName>
-                <default>false</default>
-                <label>Ex-adhérent</label>
-            </value>
-            <value>
-                <fullName>Fournisseur</fullName>
-                <default>false</default>
-                <label>Fournisseur</label>
-            </value>
-            <value>
-                <fullName>Rachat LPCR</fullName>
-                <default>false</default>
-                <label>Rachat LPCR</label>
-            </value>
-            <value>
-                <fullName>Ne souhaite pas adhérer</fullName>
-                <default>false</default>
-                <label>Ne souhaite pas adhérer</label>
             </value>
         </valueSetDefinition>
     </valueSet>
