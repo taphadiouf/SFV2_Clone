@@ -15,8 +15,8 @@ public with sharing class LWC003_UpdateStatusController {
      
  }
  @AuraEnabled
- public static List<LPCR_Preinscription__c> updateLstPreinscription(String statut){
-    List<LPCR_Preinscription__c> lstPreinscription = EM007_PreinscriptionEntity.getListofPreinscription();
+ public static List<LPCR_Preinscription__c> updateLstPreinscription(String statut, List<Id> preinscriptionIds){
+    List<LPCR_Preinscription__c> lstPreinscription = EM007_PreinscriptionEntity.getListofPreinscriptionById(preinscriptionIds);
      for(LPCR_Preinscription__c eachPreinscription : lstPreinscription){
          eachPreinscription.LPCR_Statut__c = statut;
      }

@@ -1,4 +1,4 @@
-import { LightningElement, wire, api,track } from 'lwc';
+import { LightningElement, api } from 'lwc';
 import  getPicklistvalues from '@salesforce/apex/LWC003_UpdateStatusController.getPicklistvalues';
 import  updateLstPreinscription from '@salesforce/apex/LWC003_UpdateStatusController.updateLstPreinscription';
 import { NavigationMixin } from 'lightning/navigation';
@@ -6,23 +6,17 @@ import { NavigationMixin } from 'lightning/navigation';
 
 
 export default class LWC005_UpdateStatus extends NavigationMixin(LightningElement) {
-    @track openmodel = false;
+    @api openmodal = false;
     value;
     options;
-
+    @api
+    preinscriptionIds 
     constructor(){
         super();
         this.options = [];
     }
-    
-
-
-
     connectedCallback(event){
-
         console.log("ConnectedCallback5!")
-        
-        
         getPicklistvalues()
         .then(options=>{
             for(let i=0; i< options.length; i++){
@@ -40,18 +34,17 @@ export default class LWC005_UpdateStatus extends NavigationMixin(LightningElemen
         });               
     }
     openmodal() {
-        this.openmodel = true
+        this.openmodal = true
     }
     closeModal() {
-        this.openmodel = false
+        this.openmodal = false
     } 
     updatePreinscription() {      
         updateLstPreinscription({
-            statut :this.value
+            statut :this.value,
+            preinscriptionIds : this.preinscriptionIds
         })
-       
         .then((result)=>{
-            this.lstPreinscription = result;
             console.log('Laliste modifiée '+result);
             this.redirect();
         })

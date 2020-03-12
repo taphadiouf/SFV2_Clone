@@ -1,6 +1,7 @@
 import {
     LightningElement,
-    wire
+    wire,
+    api
 } from 'lwc';
 import getAllMailTemplates from '@salesforce/apex/APC004_SendMailController.getAllMailTemplates';
 import sendMail from '@salesforce/apex/APC004_SendMailController.sendMail';
@@ -9,12 +10,15 @@ import {
 } from 'lightning/platformShowToastEvent';
 
 export default class LWC006_SendMail extends LightningElement {
-    openmodel;
+    @api
+    openmodal;
+    @api
+    preinscriptionIds;
+
     emailTemplates;
     emailTemplatesMap;
     currentEmailTemplate;
     value;
-    preInscriptionIds =['a333N0000008nxaQAA', 'a333N0000008nxVQAQ'];
 
     constructor() {
         super();
@@ -48,24 +52,24 @@ export default class LWC006_SendMail extends LightningElement {
 
     }
     openmodal() {
-        this.openmodel = true
+        this.openmodal = true
     }
     closeModal() {
-        this.openmodel = false
+        this.openmodal = false
     }
     sendMailF() {
         console.log('sendMail method invoked');
         sendMail({
             subject: this.currentEmailTemplate.subject,
             body: this.currentEmailTemplate.body,
-            preInscriptionIds : this.preInscriptionIds
+            preInscriptionIds : this.preinscriptionIds
         })
         .then(()=>{
             this.dispatchEvent(new ShowToastEvent({
                 title: "Succès!",
                 message: "Les emails sont envoyés avec succès!",
                 variant: "success"
-            }));        })
+            }));})
         .catch();
         this.closeModal();
     }

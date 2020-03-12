@@ -1,0 +1,11 @@
+<template>
+        <button onclick={openSend}>Envoi de mail</button>
+        <button onclick={changeStatus}>Modification statut</button>
+        <lightning-datatable
+        key-field="id"
+        data={preInscriptionsList}
+        columns={columns}>
+    </lightning-datatable>
+    <c-l-w-c005_-update-status  preinscription-ids={selectedIds}></c-l-w-c005_-update-status>
+    <c-l-w-c006_-send-mail  preinscription-ids={selectedIds}></c-l-w-c006_-send-mail>
+</template>

@@ -1,10 +1,6 @@
 <template>
     <div class="slds-theme_default">
-        <center>
-        <lightning-button label="Modification Statut" variant="brand" onclick={openmodal}></lightning-button>
-        </center>
-
-        <template if:true={openmodel}>
+        <template if:true={openmodal}>
             <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
                 <div class="slds-modal__container">
                     <header class="slds-modal__header">
@@ -24,12 +20,12 @@
                                         placeholder="-select-"
                                         options={options}
                                         onchange={connectedCallback} ></lightning-combobox>
-                                <div class ="slds-p-top_medium">Pour information cette action mettra à jour "nbre de Préinscription</div>                
+                                <div class ="slds-p-top_medium">Pour information cette action mettra à jour {preinscriptionIds.length} Préinscriptions</div>                
                         </div>
                         
                    
                     <footer class="slds-modal__footer">
-                        <lightning-button label="Cancel" variant="neutral" onclick={closeModal}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <lightning-button label="Annuler" variant="neutral" onclick={closeModal}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
                         <lightning-button label="Modifier" variant="brand" onclick={updatePreinscription}></lightning-button>
                     </footer>
                 </div>
