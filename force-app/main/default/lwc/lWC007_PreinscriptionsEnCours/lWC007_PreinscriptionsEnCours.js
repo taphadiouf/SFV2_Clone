@@ -23,7 +23,7 @@ export default class LWC007_PreinscriptionsEnCours extends LightningElement {
     }
 
     
-    @wire(getPreInscriptionsByAcc, {accId : '0013N00000BWkTjQAL'})
+    @wire(getPreInscriptionsByAcc, {accId : '$accId'})
     getPreInscriptionsByAccF({error, data}){
         debugger;
         console.log('hello from wired method');
