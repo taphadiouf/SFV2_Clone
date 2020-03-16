@@ -1,6 +1,6 @@
 public with sharing class LWC003_UpdateStatusController {
 
-    @AuraEnabled 
+    @AuraEnabled(Cacheable=true)
      public static List<String> getPicklistvalues(){
      
      List<String> lstPicklistValue = new List<String>();

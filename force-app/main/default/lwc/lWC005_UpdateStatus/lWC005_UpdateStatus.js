@@ -1,7 +1,22 @@
-import { LightningElement, api } from 'lwc';
-import  getPicklistvalues from '@salesforce/apex/LWC003_UpdateStatusController.getPicklistvalues';
-import  updateLstPreinscription from '@salesforce/apex/LWC003_UpdateStatusController.updateLstPreinscription';
-import { NavigationMixin } from 'lightning/navigation';
+import {
+    LightningElement,
+    api,
+    wire
+} from 'lwc';
+import getPicklistvalues from '@salesforce/apex/LWC003_UpdateStatusController.getPicklistvalues';
+import updateLstPreinscription from '@salesforce/apex/LWC003_UpdateStatusController.updateLstPreinscription';
+import {
+    NavigationMixin
+} from 'lightning/navigation';
+import {
+    ShowToastEvent
+} from 'lightning/platformShowToastEvent';
+import {
+    fireEvent
+} from 'c/pubsub';
+import {
+    CurrentPageReference
+} from 'lightning/navigation';
 
 
 
@@ -10,49 +25,53 @@ export default class LWC005_UpdateStatus extends NavigationMixin(LightningElemen
     value;
     options;
     @api
-    preinscriptionIds 
-    constructor(){
-        super();
-        this.options = [];
-    }
-    connectedCallback(event){
-        console.log("ConnectedCallback5!")
-        getPicklistvalues()
-        .then(options=>{
-            for(let i=0; i< options.length; i++){
+    preinscriptionIds
+    @wire(CurrentPageReference) pageRef;
+
+    @wire(getPicklistvalues,{})
+    getPicklistvaluesF({error, data}){
+        if(data){
+            this.options = [];
+            for (let i = 0; i < data.length; i++) {
                 this.options.push({
-                    label: options[i],
-                    value: options[i]
+                    label: data[i],
+                    value: data[i]
                 });
             }
-            console.log(options);
-            this.value = event.detail.value;
-            console.log(this.value);
-        })
-        .catch(err=>{
-            console.error(err);
-        });               
+        }
+         if(error){
+             console.error(error);
+         }
+        
     }
-    openmodal() {
-        this.openmodal = true
+    handleValueChange(event) {
+        this.value = event.detail.value;
+    }
+    updatePreinscription() {
+        updateLstPreinscription({
+                statut: this.value,
+                preinscriptionIds: this.preinscriptionIds
+            })
+            .then((result) => {
+                console.log('Laliste modifiée ' + result);
+                this.dispatchEvent(new ShowToastEvent({
+                    title: "Succès!",
+                    message: "Les statuts sont mis à jour avec succès!",
+                    variant: "success"
+                }));
+                //this.redirect();
+            })
+            .catch(err => {
+                console.error(err);
+            });
+        this.openmodal = false;
+        fireEvent(this.pageRef, "refreshPreInscList", null);
     }
     closeModal() {
-        this.openmodal = false
-    } 
-    updatePreinscription() {      
-        updateLstPreinscription({
-            statut :this.value,
-            preinscriptionIds : this.preinscriptionIds
-        })
-        .then((result)=>{
-            console.log('Laliste modifiée '+result);
-            this.redirect();
-        })
-        .catch(err=>{
-            console.error(err);
-        });
+        this.openmodal = false;
     }
-    redirect(){
+    /*
+    redirect() {
         this[NavigationMixin.Navigate]({
             type: 'standard__objectPage',
             attributes: {
@@ -60,9 +79,10 @@ export default class LWC005_UpdateStatus extends NavigationMixin(LightningElemen
                 actionName: 'list'
             },
             state: {
-                filterName: 'Recent' 
+                filterName: 'Recent'
             }
-            
+
         });
     }
+    */
 }

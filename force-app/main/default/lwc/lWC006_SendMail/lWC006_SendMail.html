@@ -17,7 +17,8 @@
                     </header>
                     <div class="modalContent slds-modal__content slds-p-around_medium" id="modal-content-id-1">
                         <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-                            <lightning-combobox name="progress" label="Veuillez sélectionner un modèle de mail:" value={value} placeholder="Email Template" options={emailTemplates}
+                            <lightning-combobox name="progress" label="Veuillez sélectionner un modèle de mail:"
+                                value={value} placeholder="Email Template" options={emailTemplates}
                                 onchange={handleTemplateChange}></lightning-combobox>
                         </div>
                         <p>Pour information, ce mail sera envoyé à {preinscriptionIds.length} destinataires</p>
