@@ -1,6 +1,6 @@
 /* eslint-disable no-dupe-class-members */
 import { LightningElement, api, wire } from 'lwc';
-import getPreInscriptionsByAcc from '@salesforce/apex/APC005_PreinscriptionsEnCoursController.getPreInscriptionsByAcc';
+import getPreInscriptionsByAcc from '@salesforce/apex/APC005_PreinscriptionsEnCoursCtrl.getPreInscriptionsByAcc';
 
 export default class LWC007_PreinscriptionsEnCours extends LightningElement {
     @api

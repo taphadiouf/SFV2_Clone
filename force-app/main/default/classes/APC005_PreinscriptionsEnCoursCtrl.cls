@@ -3,14 +3,9 @@
 * @date 12/03/2020
 * @Description PreinscriptionsEnCours component controller
 */
-public with sharing class APC005_PreinscriptionsEnCoursController {
-    public APC005_PreinscriptionsEnCoursController() {
-
-    }
+public with sharing class APC005_PreinscriptionsEnCoursCtrl {
     @AuraEnabled(cacheable=true)
     public static String getPreInscriptionsByAcc(Id accId){
-        system.debug('Hello from backend');
-        System.debug('accId : ' + accId);
         List<WRP001_PreinscriptionWrapper> preinscWrapperList = new List<WRP001_PreinscriptionWrapper>();
         for(LPCR_Preinscription__c eachPreInsc :  EM007_PreinscriptionEntity.getPreinscriptionsByAccId(accId)){
                 preinscWrapperList.add(new WRP001_PreinscriptionWrapper(
