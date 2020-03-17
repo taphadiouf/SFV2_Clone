@@ -31,7 +31,7 @@ public class SM006_PreinscriptionServices_Test {
     @isTest
     public static void createOpptyAndQuoteForPreinsc_Test(){
         
-        LPCR_Preinscription__c  preinsciption  = [SELECT LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test' AND (LPCR_TypePreinscription__c = 'OCC' OR LPCR_TypePreinscription__c = 'DEF' OR LPCR_TypePreinscription__c = 'DEF') LIMIT 1];
+        LPCR_Preinscription__c  preinsciption  = [SELECT LPCR_ValidationFormulaire__c,LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'];
         preinsciption.LPCR_Statut__c='Confirmé';
         update preinsciption;
         List<Opportunity> opptys = [SELECT Id,RecordTypeId,AccountId FROM Opportunity WHERE AccountId = :preinsciption.LPCR_CompteFamille__c];
@@ -39,22 +39,37 @@ public class SM006_PreinscriptionServices_Test {
         
         Test.startTest();
         System.runAs(UM002_TestDataFactory.createUser()){
-        System.assertEquals('Confirmé',preinsciption.LPCR_Statut__c,'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : LPCR_Preinscription__c.LPCR_Statut__c not equals Confirmé ');
-        System.assertEquals(1,opptys.size(),'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : Fail to create the exacte number of Opportunities');
-        System.assertEquals(1,quotes.size(),'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : Fail to create the exacte number of Quotes');
-        
-        Id dspOpportunityRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndDeveloperName('Opportunity','AOPublicDSP');
-        for(Opportunity eachOppty : opptys){
-               System.assertEquals(dspOpportunityRecTypeId,eachOppty.RecordTypeId,'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : Fail to create the exacte record type for Opportunity');
+            System.assertEquals('Confirmé',preinsciption.LPCR_Statut__c,'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : LPCR_Preinscription__c.LPCR_Statut__c not equals Confirmé ');
+            System.assertEquals(1,opptys.size(),'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : Fail to create the exacte number of Opportunities');
+            System.assertEquals(1,quotes.size(),'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : Fail to create the exacte number of Quotes');
+            
+            Id accueilQuoteRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndDeveloperName('SBQQ__Quote__c','Contrat_Accueil');
 
-            }
-        Id accueilQuoteRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndDeveloperName('SBQQ__Quote__c','Contrat_Accueil');
             for(SBQQ__Quote__c eachQuote : quotes){
-               System.assertEquals(accueilQuoteRecordTypeId,eachQuote.RecordTypeId,'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : Fail to create the exacte record type for Quote');
-
-            }
+                System.assertEquals(accueilQuoteRecordTypeId,eachQuote.RecordTypeId,'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : Fail to create the exacte record type for Quote');
+                
+            }      
         }
         Test.stopTest();
+        
+    }
+    
+    
+    //Test the method setStatusWhenValidateFormulaireIsTrue_Test from SM006_PreinscriptionServices class indirectly
+    @isTest
+    public static void setStatusWhenValidateFormulaireIsTrue_Test(){
+        
+        LPCR_Preinscription__c  preinsciption  = [SELECT LPCR_ValidationFormulaire__c,LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'];
+        preinsciption.LPCR_Statut__c='Confirmé';
+        Test.startTest();
+        System.runAs(UM002_TestDataFactory.createUser()){
+            preinsciption.LPCR_ValidationFormulaire__c=true;
+            update preinsciption;
+            preinsciption  = [SELECT LPCR_ValidationFormulaire__c,LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'];
+            System.assertEquals('Liste d’attente',preinsciption.LPCR_Statut__c,'Error in SM006_PreinscriptionServices_Test.setStatusWhenValidateFormulaireIsTrue_Test : LPCR_Preinscription__c.LPCR_Statut__c not equals Liste d’attente ');            
+            Test.stopTest();    
+        }
+        
         
     }
 }
