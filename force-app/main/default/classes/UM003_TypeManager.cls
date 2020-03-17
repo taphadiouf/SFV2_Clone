@@ -26,4 +26,13 @@ public with sharing class UM003_TypeManager{
         return id!=null ?true:false;
     }
 
+ public static Set<Id> getIdsOfListObjects(List<SObject> listSObject){
+     Set<Id> ids = new Set<Id> ();
+     if(UM003_TypeManager.isNotNullAndNotEmpty(listSObject))
+            for(SObject eachObj: listSObject){
+                ids.add(eachObj.Id);
+            }
+        return ids;
+    }
+
 }
