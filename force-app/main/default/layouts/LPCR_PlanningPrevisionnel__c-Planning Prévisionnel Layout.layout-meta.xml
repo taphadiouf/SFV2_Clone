@@ -7,56 +7,59 @@
         <label>Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Readonly</behavior>
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureLundiAm__c</field>
+                <field>LPCR_HeureDebutLundi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureLundiPm__c</field>
+                <field>LPCR_HeureFinLundi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureMardiAm__c</field>
+                <field>LPCR_HeureDebutMardi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureMardiPm__c</field>
+                <field>LPCR_HeureFinMardi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureMercrediAm__c</field>
+                <field>LPCR_HeureDebutMercredi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureMercrediPm__c</field>
+                <field>LPCR_HeureFinMercredi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureJeudiAm__c</field>
+                <field>LPCR_HeureDebutJeudi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureJeudiPm__c</field>
+                <field>LPCR_HeureFinJeudi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureVendrediAm__c</field>
+                <field>LPCR_HeureDebutVendredi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureVendrediPm__c</field>
+                <field>LPCR_HeureFinVendredi__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_OrdreTri__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>LPCR_Contrat__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>OwnerId</field>
-            </layoutItems>
-        </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>

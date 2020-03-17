@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_HeureMercrediAm__c</fullName>
+    <fullName>LPCR_HeureFinJeudi__c</fullName>
     <externalId>false</externalId>
-    <label>Heure Mercredi Matin</label>
-    <precision>2</precision>
+    <label>Heure de fin jeudi</label>
     <required>false</required>
-    <scale>0</scale>
     <trackTrending>false</trackTrending>
-    <type>Number</type>
-    <unique>false</unique>
+    <type>Time</type>
 </CustomField>
