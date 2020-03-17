@@ -1,0 +1,62 @@
+<apex:page standardStylesheets="false" standardController="Account" docType="html-5.0" showHeader="false" applyHtmlTag="false" applyBodyTag="false" cache="false" expires="0">
+    <html lang="en">
+        <head>
+            <title>Annex 2</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+        </head>
+        <body>
+            <div class="row">
+                <div class="col-md-12" style="font-weight: bold; 
+                                              font-size: 30px;
+                                              width: 100%;
+                                              display: flex;
+                                              position: fixed;
+                                              align-items: center;
+                                              justify-content: center;">
+                    Annex 2
+                </div>
+            </div><br/><br/>
+            <div class="row">
+                <div class="col-md-12" style="font-weight: bold; 
+                                              font-size: 30px;
+                                              width: 100%;
+                                              display: flex;
+                                              position: fixed;
+                                              align-items: center;
+                                              justify-content: center;">
+                    Montant Forfait
+                </div>
+            </div><br/><br/><br/><br/>
+            <div style="margin-left : 7%; ">
+                <div style="border: 2px solid black; width: 70%;">
+                    <div style="margin-left : 5%; margin-top:2%; margin-bottom: 2%">
+                        <div style="font-weight: bold;">
+                            Contrat au bénéfice de l'enfant :
+                        </div>
+                        <div>
+                            Nom de l'enfant :
+                        </div>
+                        <div>
+                            Prénom de l'enfant :
+                        </div>
+                        <div>
+                            N° d'identifiant :
+                        </div>
+                    </div>
+                </div><br/>
+                <div style="margin-left : 3.5%;">
+                    <div>
+                        Au sein de l'établissement de
+                    </div>
+                    <div>
+                        Pour la période du
+                    </div>
+                    <div>
+                        Type Planning 
+                    </div>
+                </div>
+            </div>
+            
+        </body>     
+    </html>
+</apex:page>
