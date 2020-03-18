@@ -94,15 +94,27 @@ newMe.FederationIdentifier = null;
     //it's a class that permit to add a list of leads/Tasks/Events/ Users
     
     public static User createUser(){
-        Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
+        User usr = null;
+        try{
+           usr=  [SELECT Id, Name,Alias FROM User Where Alias = 'testusr' limit 1];
+        }
+        catch(Exception e){
+           usr = null; 
+        }
         
-        String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
-        User usr = new User(Alias = 'testusr', Email = uniqueUserName,
-                            EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
-                            LocaleSidKey = 'en_US', ProfileId = prof.Id,
-                            TimeZoneSidKey = 'America/Los_Angeles',
-                            UserName = uniqueUserName);
-        insert usr;
+        if(usr==null){
+            Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
+            
+            String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
+            usr = new User(Alias = 'testusr', Email = uniqueUserName,
+                                EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
+                                LocaleSidKey = 'en_US', ProfileId = prof.Id,
+                                TimeZoneSidKey = 'America/Los_Angeles',
+                                UserName = uniqueUserName);
+            insert usr;
+        }
+        
+        
         return usr;
     }
     
@@ -307,6 +319,26 @@ newMe.FederationIdentifier = null;
     //End of the part on the same day
     
     
+
+
+    // This part is added by hanae on the 12/03/2020
+
+
+    public static LPCR_Preinscription__c createPreinscription(String nomEnfant, String prenomEnfant, String typePreinscription,Id compteFamilleId,Id contactId){	
+        LPCR_Preinscription__c  preinsciption = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,
+                                                                            LPCR_TypePreinscription__c=typePreinscription,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_ContactEnfant__c=contactId);	
+        return preinsciption;	
+    }
+
+    //End of the part on the same day
+
+
+
+
+
     /*
 public class AccountContactRelationTdf {
 
