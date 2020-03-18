@@ -4,7 +4,6 @@
 * @description Test Class of SM006_PreinscriptionServices.
 * @Modified by hanae on the 12/03/2020
 */
-*/
 @isTest
 public class SM006_PreinscriptionServices_Test {
     
