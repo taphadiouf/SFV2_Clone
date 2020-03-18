@@ -94,15 +94,27 @@ newMe.FederationIdentifier = null;
     //it's a class that permit to add a list of leads/Tasks/Events/ Users
     
     public static User createUser(){
-        Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
+        User usr = null;
+        try{
+           usr=  [SELECT Id, Name,Alias FROM User Where Alias = 'testusr' limit 1];
+        }
+        catch(Exception e){
+           usr = null; 
+        }
         
-        String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
-        User usr = new User(Alias = 'testusr', Email = uniqueUserName,
-                            EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
-                            LocaleSidKey = 'en_US', ProfileId = prof.Id,
-                            TimeZoneSidKey = 'America/Los_Angeles',
-                            UserName = uniqueUserName);
-        insert usr;
+        if(usr==null){
+            Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
+            
+            String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
+            usr = new User(Alias = 'testusr', Email = uniqueUserName,
+                                EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
+                                LocaleSidKey = 'en_US', ProfileId = prof.Id,
+                                TimeZoneSidKey = 'America/Los_Angeles',
+                                UserName = uniqueUserName);
+            insert usr;
+        }
+        
+        
         return usr;
     }
     
