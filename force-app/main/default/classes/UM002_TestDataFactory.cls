@@ -77,7 +77,6 @@ public with sharing class UM002_TestDataFactory {
             User me;
             /*
 User me = EM001_User.dataManager.getListByIdsWithRoleAndProfile(new Set<Id>{UserInfo.getUserId()}).get(0);
-
 String s = ((Datetime.now()+'').replace(' ','')).replace(':','');
 Datetime dt = Datetime.now();
 User newMe = me.clone();
@@ -94,15 +93,27 @@ newMe.FederationIdentifier = null;
     //it's a class that permit to add a list of leads/Tasks/Events/ Users
     
     public static User createUser(){
-        Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
+        User usr = null;
+        try{
+           usr=  [SELECT Id, Name,Alias FROM User Where Alias = 'testusr' limit 1];
+        }
+        catch(Exception e){
+           usr = null; 
+        }
         
-        String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
-        User usr = new User(Alias = 'testusr', Email = uniqueUserName,
-                            EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
-                            LocaleSidKey = 'en_US', ProfileId = prof.Id,
-                            TimeZoneSidKey = 'America/Los_Angeles',
-                            UserName = uniqueUserName);
-        insert usr;
+        if(usr==null){
+            Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
+            
+            String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
+            usr = new User(Alias = 'testusr', Email = uniqueUserName,
+                                EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
+                                LocaleSidKey = 'en_US', ProfileId = prof.Id,
+                                TimeZoneSidKey = 'America/Los_Angeles',
+                                UserName = uniqueUserName);
+            insert usr;
+        }
+        
+        
         return usr;
     }
     
@@ -174,22 +185,22 @@ newMe.FederationIdentifier = null;
     public static Account createAcc(String name, Id recId){
         return new Account(Name = name,
                            RecordTypeId = recId);
-   
+        
     }
-
-
-public static List<Lead> createLeadsWithAllFields(Integer numLeads, String recTypeId, String lastName,String firstName, String PrenomCoDemandeur,String company, String status,String Email, String NomCoDemandeur, Date DateNaissance1, String EmailCoDemandeur, String Phone, String CiviliteCoDemandeur){
-    List<Lead> leads = new List<Lead>();
-    for(Integer i=0;i<numLeads;i++){
-        Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName, FirstName=firstName, LPCR_PrenomCoDemandeur__c =PrenomCoDemandeur,Company=company ,Status = status, Email=email, LPCR_NomCoDemandeur__c= NomCoDemandeur,  LPCR_DateNaissance1__c= DateNaissance1 , LPCR_EmailCoDemandeur__c =EmailCoDemandeur, Phone=Phone, LPCR_CiviliteCoDemandeur__c = CiviliteCoDemandeur);
-        leads.add(l);
+    
+    
+    public static List<Lead> createLeadsWithAllFields(Integer numLeads, String recTypeId, String lastName,String firstName, String PrenomCoDemandeur,String company, String status,String Email, String NomCoDemandeur, Date DateNaissance1, String EmailCoDemandeur, String Phone, String CiviliteCoDemandeur){
+        List<Lead> leads = new List<Lead>();
+        for(Integer i=0;i<numLeads;i++){
+            Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName, FirstName=firstName, LPCR_PrenomCoDemandeur__c =PrenomCoDemandeur,Company=company ,Status = status, Email=email, LPCR_NomCoDemandeur__c= NomCoDemandeur,  LPCR_DateNaissance1__c= DateNaissance1 , LPCR_EmailCoDemandeur__c =EmailCoDemandeur, Phone=Phone, LPCR_CiviliteCoDemandeur__c = CiviliteCoDemandeur);
+            leads.add(l);
+        }
+        return leads;
     }
-    return leads;
-}
-public static Account createAccByRT(String name, Id recId){
-    return new Account(Name = name,
-                       RecordTypeId = recId);
-}
+    public static Account createAccByRT(String name, Id recId){
+        return new Account(Name = name,
+                           RecordTypeId = recId);
+    }
     
     // End of part added by hanae on the same day
     // Added By Ayoub 	
@@ -204,9 +215,74 @@ public static Account createAccByRT(String name, Id recId){
         Account  acc = new Account(Name = name);	
         return acc;	
     }	
+    
+    public static List<LPCR_ParametrageScore__c> createParametrageScores(Id accId){
+        List<LPCR_ParametrageScore__c> listParams =new List<LPCR_ParametrageScore__c>();
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_Anciennete__c =1,LPCR_Score__c=100));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Anciennete__c =5,LPCR_Score__c=300));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Anciennete__c =10,LPCR_Score__c=500));
+        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =1,LPCR_Score__c=20));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =2,LPCR_Score__c=30));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =3,LPCR_Score__c=50));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =4,LPCR_Score__c=60));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =5,LPCR_Score__c=100));
+        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =1000,LPCR_Score__c=10));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =10000,LPCR_Score__c=100));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =100000,LPCR_Score__c=500));
+        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_ReponseCrecheMunicipale__c=true,LPCR_Score__c=20));        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_ReponseCrecheMunicipale__c=False,LPCR_Score__c=50));
+        
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2019,12,31),LPCR_Score__c=100));
+        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2020,12,31),LPCR_Score__c=10));
+          
+        
+        return listParams;
+        
+    }
+    
     //--- End Ayoub's Part
+
+    //This part of code is added by hanae on the 09/03/2020
+    public static List<LPCR_Preinscription__c> createPreinscription(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
+        List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
+        for(Integer i=0;i<numPrei;i++){
+            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_Statut__c = statut,
+                                                                            LPCR_ContactEnfant__c=contactId);	
+            preinscriptions.add(pre);
+        }
+        
+        return preinscriptions;	
+    }
+
+    //--- End of Hanae's part
+
     
+    public static List<LPCR_Preinscription__c> createPreinscriptions(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
+        List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
+        for(Integer i=0;i<numPrei;i++){
+            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteFamille__c=compteFamilleId,	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_Statut__c = statut,
+                                                                            LPCR_ContactEnfant__c=contactId);	
+            preinscriptions.add(pre);
+        }
+        
+        return preinscriptions;	
+    }
     
+    public static EmailTemplate createEmailTemplate(String name, String developerName, String templateType){
+        return new EmailTemplate(Name = name,
+                        DeveloperName = developerName,
+                         TemplateType =templateType,
+                         FolderId = UserInfo.getUserId());
+    }
     //This part of code is added by hanae on the 28/02/2020 to create Attachments and LPCR_Log__c records
     public static List<Attachment> createAttachements(Integer numAtts, String name,String body,String parentId){
         List<Attachment> atts = new List<Attachment>();
@@ -225,7 +301,7 @@ public static Account createAccByRT(String name, Id recId){
         List<LPCR_Log__c> logsList = new List<LPCR_Log__c>();
         LPCR_Log__c tempLog;
         for(Attachment eachAtt : attsList){
-             tempLog = new LPCR_Log__c();
+            tempLog = new LPCR_Log__c();
             tempLog.Name = name;
             tempLog.LPCR_TargetObject__c = '' + eachAtt.Id;
             tempLog.LPCR_Result__c = result;
@@ -234,44 +310,58 @@ public static Account createAccByRT(String name, Id recId){
         }
         return logsList;
     }
-        
-       
+    
+    
     
     
     
     //End of the part on the same day
     
     
+
+
+    // This part is added by hanae on the 12/03/2020
+
+
+    public static LPCR_Preinscription__c createPreinscription(String nomEnfant, String prenomEnfant, String typePreinscription,Id compteFamilleId,Id contactId){	
+        LPCR_Preinscription__c  preinsciption = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,
+                                                                            LPCR_TypePreinscription__c=typePreinscription,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_ContactEnfant__c=contactId);	
+        return preinsciption;	
+    }
+
+    //End of the part on the same day
+
+
+
+
+
     /*
 public class AccountContactRelationTdf {
-
 public AccountContactRelation create(Id accountId, Id contactId) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
-
 return acr;
 }
-
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
-
 return acr;
 }
-
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles, String fonction) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
 acr.Function__c = fonction;
-
 return acr;
 }
 }
 */
-   
+    
 }
