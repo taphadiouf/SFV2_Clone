@@ -77,7 +77,6 @@ public with sharing class UM002_TestDataFactory {
             User me;
             /*
 User me = EM001_User.dataManager.getListByIdsWithRoleAndProfile(new Set<Id>{UserInfo.getUserId()}).get(0);
-
 String s = ((Datetime.now()+'').replace(' ','')).replace(':','');
 Datetime dt = Datetime.now();
 User newMe = me.clone();
@@ -341,34 +340,29 @@ newMe.FederationIdentifier = null;
 
     /*
 public class AccountContactRelationTdf {
-
 public AccountContactRelation create(Id accountId, Id contactId) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
-
 return acr;
 }
-
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
-
 return acr;
 }
-
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles, String fonction) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
 acr.Function__c = fonction;
-
 return acr;
 }
 }
 */
     
+
 }
