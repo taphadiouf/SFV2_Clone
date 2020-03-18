@@ -77,7 +77,6 @@ public with sharing class UM002_TestDataFactory {
             User me;
             /*
 User me = EM001_User.dataManager.getListByIdsWithRoleAndProfile(new Set<Id>{UserInfo.getUserId()}).get(0);
-
 String s = ((Datetime.now()+'').replace(' ','')).replace(':','');
 Datetime dt = Datetime.now();
 User newMe = me.clone();
@@ -94,15 +93,27 @@ newMe.FederationIdentifier = null;
     //it's a class that permit to add a list of leads/Tasks/Events/ Users
     
     public static User createUser(){
-        Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
+        User usr = null;
+        try{
+           usr=  [SELECT Id, Name,Alias FROM User Where Alias = 'testusr' limit 1];
+        }
+        catch(Exception e){
+           usr = null; 
+        }
         
-        String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
-        User usr = new User(Alias = 'testusr', Email = uniqueUserName,
-                            EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
-                            LocaleSidKey = 'en_US', ProfileId = prof.Id,
-                            TimeZoneSidKey = 'America/Los_Angeles',
-                            UserName = uniqueUserName);
-        insert usr;
+        if(usr==null){
+            Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
+            
+            String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
+            usr = new User(Alias = 'testusr', Email = uniqueUserName,
+                                EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
+                                LocaleSidKey = 'en_US', ProfileId = prof.Id,
+                                TimeZoneSidKey = 'America/Los_Angeles',
+                                UserName = uniqueUserName);
+            insert usr;
+        }
+        
+        
         return usr;
     }
     
@@ -329,34 +340,29 @@ newMe.FederationIdentifier = null;
 
     /*
 public class AccountContactRelationTdf {
-
 public AccountContactRelation create(Id accountId, Id contactId) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
-
 return acr;
 }
-
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
-
 return acr;
 }
-
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles, String fonction) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
 acr.Function__c = fonction;
-
 return acr;
 }
 }
 */
     
+
 }
