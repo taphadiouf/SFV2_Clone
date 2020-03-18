@@ -1,7 +1,7 @@
 /**
 * @author Ayoub Ouarti
-* @date 17/03/2020
-* @Description Batch for checking the box renewal quoted on the quote which will create the renewal opp and quote.
+* @date 18/03/2020
+* @Description Batch for checking the box ordered on the quote which will create the order
 */
 global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>,Schedulable {
     String query;
