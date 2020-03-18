@@ -94,15 +94,28 @@ newMe.FederationIdentifier = null;
     //it's a class that permit to add a list of leads/Tasks/Events/ Users
     
     public static User createUser(){
-        Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
+        //added by ayoub  to check first the user in DB.
+        User usr = null;
+        try{
+           usr=  [SELECT Id, Name,Alias FROM User Where Alias = 'testusr' limit 1];
+        }
+        catch(Exception e){
+           usr = null; 
+        }
         
-        String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
-        User usr = new User(Alias = 'testusr', Email = uniqueUserName,
-                            EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
-                            LocaleSidKey = 'en_US', ProfileId = prof.Id,
-                            TimeZoneSidKey = 'America/Los_Angeles',
-                            UserName = uniqueUserName);
-        insert usr;
+        if(usr==null){
+            Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
+            
+            String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
+            usr = new User(Alias = 'testusr', Email = uniqueUserName,
+                                EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
+                                LocaleSidKey = 'en_US', ProfileId = prof.Id,
+                                TimeZoneSidKey = 'America/Los_Angeles',
+                                UserName = uniqueUserName);
+            insert usr;
+        }
+        
+        
         return usr;
     }
     
@@ -226,40 +239,44 @@ newMe.FederationIdentifier = null;
         
         listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2019,12,31),LPCR_Score__c=100));
         listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2020,12,31),LPCR_Score__c=10));
-          
+        
         
         return listParams;
         
     }
     
+    public static Contract createContract(Id accountID){	
+        Contract  contract = new Contract(AccountID = accountID);	
+        return contract;	
+    }	
     //--- End Ayoub's Part
-
+    
     //This part of code is added by hanae on the 09/03/2020
     public static List<LPCR_Preinscription__c> createPreinscription(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i=0;i<numPrei;i++){
             LPCR_Preinscription__c  pre = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
-                                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
-                                                                            NomEnfant__c=nomEnfant,	
-                                                                            LPCR_Statut__c = statut,
-                                                                            LPCR_ContactEnfant__c=contactId);	
+                                                                      LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                                      NomEnfant__c=nomEnfant,	
+                                                                      LPCR_Statut__c = statut,
+                                                                      LPCR_ContactEnfant__c=contactId);	
             preinscriptions.add(pre);
         }
         
         return preinscriptions;	
     }
-
+    
     //--- End of Hanae's part
-
+    
     
     public static List<LPCR_Preinscription__c> createPreinscriptions(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i=0;i<numPrei;i++){
             LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteFamille__c=compteFamilleId,	
-                                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
-                                                                            NomEnfant__c=nomEnfant,	
-                                                                            LPCR_Statut__c = statut,
-                                                                            LPCR_ContactEnfant__c=contactId);	
+                                                                     LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                                     NomEnfant__c=nomEnfant,	
+                                                                     LPCR_Statut__c = statut,
+                                                                     LPCR_ContactEnfant__c=contactId);	
             preinscriptions.add(pre);
         }
         
@@ -268,9 +285,9 @@ newMe.FederationIdentifier = null;
     
     public static EmailTemplate createEmailTemplate(String name, String developerName, String templateType){
         return new EmailTemplate(Name = name,
-                        DeveloperName = developerName,
-                         TemplateType =templateType,
-                         FolderId = UserInfo.getUserId());
+                                 DeveloperName = developerName,
+                                 TemplateType =templateType,
+                                 FolderId = UserInfo.getUserId());
     }
     //This part of code is added by hanae on the 28/02/2020 to create Attachments and LPCR_Log__c records
     public static List<Attachment> createAttachements(Integer numAtts, String name,String body,String parentId){

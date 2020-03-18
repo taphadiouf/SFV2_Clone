@@ -12,7 +12,6 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
         Date today = date.today();
-        System.debug('query in start method today : '+today);
         
         query = 'SELECT Id FROM Contract WHERE Status =\'Activated\' AND LPCR_RenouvellementAutomatique__c = true AND  LPCR_DateRenouvellement__c = :today AND LPCR_DateRenouvellement__c != null AND (SBQQ__RenewalQuoted__c = false OR SBQQ__RenewalForecast__c = false) ';//AND Termination_Date__c = null' ;
         
@@ -20,18 +19,17 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
     }
     
     global void execute(Database.BatchableContext BC, List<Contract> scope) {
-        
+       	System.debug('scope to execute : '+scope);
+
         Set<Id> contractIds = UM003_TypeManager.getIdsOfListObjects(scope);
-        
-        List<Contract> listOfContract = [SELECT Id,EndDate,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
+        List<Contract> listOfContract = [SELECT Id,Name,EndDate,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
                                          WHERE Id in :contractIds ];   
         for (Contract eachContract : listOfContract) {
             eachContract.SBQQ__RenewalQuoted__c=true;
+            System.debug('Updating contract '+eachContract);
         }
         
-        update listOfContract;
-        
-        
+        update listOfContract;        
     }
     
     global void finish(Database.BatchableContext BC) {
@@ -40,7 +38,7 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
     global void execute(SchedulableContext sc) {
         
         APB002_RenewalContract sc1 = new APB002_RenewalContract();
-        Database.executeBatch(this, 1);
+       
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB002_RenewalContract');
         
