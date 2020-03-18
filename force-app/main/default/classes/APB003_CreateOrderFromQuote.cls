@@ -22,8 +22,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
         
         Set<Id> quoteIds = UM003_TypeManager.getIdsOfListObjects(scope);
         List<SBQQ__Quote__c> listOfquote = [SELECT Id,SBQQ__Status__c ,SBQQ__Ordered__c  FROM SBQQ__Quote__c WHERE 
-                                            SBQQ__Status__c ='Activated' AND SBQQ__Ordered__c  = false 
-                                            AND Id in :quoteIds ];   
+                                            Id in :quoteIds ];   
         for (SBQQ__Quote__c eachquote : listOfquote) {
             eachquote.SBQQ__Ordered__c =true;
             System.debug('Updating quote '+eachquote.SBQQ__Ordered__c );
