@@ -3,7 +3,7 @@
     <fullName>Opportunité AO Public</fullName>
     <isActive>true</isActive>
     <values>
-        <fullName>Candidature</fullName>
+        <fullName>Abandonnée</fullName>
         <default>false</default>
     </values>
     <values>
@@ -11,15 +11,15 @@
         <default>false</default>
     </values>
     <values>
-        <fullName>Offre</fullName>
+        <fullName>Attente de réponse</fullName>
         <default>false</default>
     </values>
     <values>
-        <fullName>Négociation/fullName>
+        <fullName>Candidature</fullName>
         <default>false</default>
     </values>
     <values>
-        <fullName>Attente de réponse/fullName>
+        <fullName>Candidature %2B Offre</fullName>
         <default>false</default>
     </values>
     <values>
@@ -27,15 +27,15 @@
         <default>false</default>
     </values>
     <values>
-        <fullName>Perdue/fullName>
+        <fullName>Négociation</fullName>
         <default>false</default>
     </values>
     <values>
-        <fullName>Sans suite/fullName>
+        <fullName>Offre</fullName>
         <default>false</default>
     </values>
     <values>
-        <fullName>Abandonnée/fullName>
+        <fullName>Sans suite</fullName>
         <default>false</default>
     </values>
 </BusinessProcess>
