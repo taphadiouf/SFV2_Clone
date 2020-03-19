@@ -115,6 +115,23 @@ newMe.FederationIdentifier = null;
         }
         return leads;
     }
+    public static List<Lead> createLeadsWithCrecheLink(Integer numLeads, String lastName, String company, String status,String Email, Id crecheId, String crecheNumber){
+        List<Lead> leads = new List<Lead>();
+        for(Integer i=0;i<numLeads;i++){
+            Lead l= new Lead(LastName=lastName,Company=company ,Status = status, Email=email);
+            if(crecheNumber.equals('1')){
+                l.LPCR_CodeCreche1__c = crecheId;
+            }
+            if(crecheNumber.equals('2')){
+                l.LPCR_CodeCreche2__c = crecheId;
+            }
+            if(crecheNumber.equals('3')){
+                l.LPCR_CodeCreche3__c = crecheId;
+            }
+            leads.add(l);
+        }
+        return leads;
+    }
     
     public static List<Task> createTasks(Set<Id> whoIds ){
         List<Task> tasks = new List<Task>();
@@ -186,6 +203,7 @@ newMe.FederationIdentifier = null;
         }
         return leads;
     }
+    
     public static Account createAccByRT(String name, Id recId){
         return new Account(Name = name,
                            RecordTypeId = recId);
