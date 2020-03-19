@@ -62,11 +62,11 @@ public class SM006_PreinscriptionServices_Test {
         
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            LPCR_Preinscription__c  preinsciption  = [SELECT LPCR_ValidationFormulaire__c,LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test' LIMIT 0];
+            LPCR_Preinscription__c  preinsciption  = [SELECT LPCR_ValidationFormulaire__c,LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test' LIMIT 1];
             preinsciption.LPCR_Statut__c='Confirmé';
             preinsciption.LPCR_ValidationFormulaire__c=true;
             update preinsciption;
-            preinsciption  = [SELECT LPCR_ValidationFormulaire__c,LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'];
+            preinsciption  = [SELECT LPCR_ValidationFormulaire__c,LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test' LIMIT 1];
             Test.stopTest(); 
             System.assertEquals('Liste d’attente',preinsciption.LPCR_Statut__c,'Error in SM006_PreinscriptionServices_Test.setStatusWhenValidateFormulaireIsTrue_Test : LPCR_Preinscription__c.LPCR_Statut__c not equals Liste d’attente ');            
                
