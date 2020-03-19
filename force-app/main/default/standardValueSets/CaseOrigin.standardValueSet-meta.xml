@@ -2,13 +2,13 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>false</sorted>
     <standardValue>
-        <fullName>M</fullName>
+        <fullName>Service Famille</fullName>
         <default>false</default>
-        <label>M.</label>
+        <label>Service Famille</label>
     </standardValue>
     <standardValue>
-        <fullName>Mme</fullName>
+        <fullName>Service Commercial</fullName>
         <default>false</default>
-        <label>Mme</label>
+        <label>Service Commercial</label>
     </standardValue>
 </StandardValueSet>
