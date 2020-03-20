@@ -9,7 +9,7 @@ public with sharing class VFC001_GenererDocAnn2 {
     SBQQ__Quote__c currentRecord;
     public VFC001_GenererDocAnn2() {
         //  currentRecord = new SBQQ__Quote__c(id=controller.getRecord().id);
-        currentRecord = new SBQQ__Quote__c(id=Apexpages.currentPage().getParameters().get('recordId'));  
+        currentRecord = new SBQQ__Quote__c(id=Apexpages.currentPage().getParameters().get('recordId')); 
     }
     
     public List<planningPrevisionnelWrapper> getPlannings(){
@@ -23,7 +23,6 @@ public with sharing class VFC001_GenererDocAnn2 {
     
     
     public class planningPrevisionnelWrapper{
-        public String LPCR_Contrat{get;set;}
         public String LPCR_HeureDebutLundi{get;set;}
         public String LPCR_HeureFinLundi{get;set;} 
         public String LPCR_HeureDebutMardi{get;set;}
@@ -47,10 +46,11 @@ public with sharing class VFC001_GenererDocAnn2 {
             LPCR_HeureFinVendredi = convertTimeToString(pl.LPCR_HeureFinVendredi__c);
         }
         public String convertTimeToString(Time tm){
+            String tt = '';
             if(tm != null){
-                return tm.hour()+':'+tm.minute();
+                tt = tm.hour()+':'+tm.minute();
             }
-            return '';
+            return tt;
         }
     }
     
