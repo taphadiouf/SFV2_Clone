@@ -126,6 +126,15 @@ newMe.FederationIdentifier = null;
         }
         return leads;
     }
+    public static List<LPCR_Structure_AO__c> createStructuresAOFromLeads(Integer numStructuresPerLead, List<Lead> leadsList){
+        List<LPCR_Structure_AO__c> structures = new List<LPCR_Structure_AO__c>();
+        for(Lead eachLead : leadsList){
+            for(Integer i = 0; i<numStructuresPerLead; i++){
+                structures.add(new LPCR_Structure_AO__c(LPCR_Lead__c = eachLead.Id));
+            }
+        }
+        return structures;
+    }
     
     public static List<Task> createTasks(Set<Id> whoIds ){
         List<Task> tasks = new List<Task>();
