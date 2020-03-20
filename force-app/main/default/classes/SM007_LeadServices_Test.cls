@@ -53,12 +53,13 @@ public class SM007_LeadServices_Test {
                 System.assert(eachResult.isSuccess());
             }
             Id entrepriseOppRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity', 'Entreprise');
-            Id aoOppRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity', 'AOPublicReservataire');
+            Id aoOppRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity', 'AOPublicReservation');
                        
             List<Opportunity> entrepriseOpps = [SELECT Id FROM Opportunity WHERE RecordTypeId = :entrepriseOppRecTypeId];
             List<Opportunity> aoOpps = [SELECT Id FROM Opportunity WHERE RecordTypeId = :aoOppRecTypeId];
             System.assertEquals(entrepriseLeads.size(), entrepriseOpps.size(), 'Error in SM007_LeadServices_Test : problem in synchronizing Lead recordtype: Entreprise, with Opportunity recordtype: Entreprise RecordType');
             System.assertEquals(aoPublicReservLeads.size(), aoOpps.size(), 'Error in SM007_LeadServices_Test : problem in synchronizing Lead recordtype: AO_PublicReservation, with Opportunity recordtype: AOPublicReservataire');
+
         }
         Test.stopTest();
     }

@@ -22,7 +22,7 @@ public class TM007_LeadTrigger extends TM000_TriggerHandler{
         }
         if(!convertedLeadsList.isEmpty()){
             SM007_LeadServices.syncOppRecordType('Entreprise', 'Entreprise', convertedLeadsList);
-            SM007_LeadServices.syncOppRecordType('AO_PublicReservation', 'AOPublicReservataire', convertedLeadsList);
+            SM007_LeadServices.syncOppRecordType('AO_PublicReservation', 'AOPublicReservation', convertedLeadsList);
             SM007_LeadServices.linkStructureAOsToOpps(convertedLeadsList);
         }
         
