@@ -1,11 +1,14 @@
 <template>
-    <div class="slds-grid">
-        <div class="slds-col slds-5_of_12"><button onclick={openSend}>Envoi de mail</button></div>
-        <div class="slds-col slds-5_of_12"><button onclick={changeStatus}>Modification statut</button>
+    <div class="slds-grid slds-m-bottom_xx-small">
+        <div class="slds-col slds-size_9-of-12"></div>
+        <div class="slds-col slds-size_1-of-12"><button onclick={openSend}>Envoi de mail</button></div>
+        <div class="slds-col slds-size_2-of-12"><button onclick={changeStatus}>Modification statut</button>
         </div>
     </div>
-    <lightning-datatable key-field="id" data={getPreInscriptionsByAcc} columns={columns}>
-    </lightning-datatable>
+    <div class="datatableContainer">
+            <lightning-datatable key-field="id" data={getPreInscriptionsByAcc} columns={columns}>
+                </lightning-datatable>
+    </div>
     <c-l-w-c005_-update-status preinscription-ids={selectedIds}></c-l-w-c005_-update-status>
     <c-l-w-c006_-send-mail preinscription-ids={selectedIds}></c-l-w-c006_-send-mail>
 </template>
