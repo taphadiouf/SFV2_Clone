@@ -1,13 +1,19 @@
 <template>
     <div class="slds-grid slds-m-bottom_xx-small">
-        <div class="slds-col slds-size_9-of-12"></div>
-        <div class="slds-col slds-size_1-of-12"><button onclick={openSend}>Envoi de mail</button></div>
-        <div class="slds-col slds-size_2-of-12"><button onclick={changeStatus}>Modification statut</button>
-        </div>
+            <button class="actionButton firstButton slds-m-right_small" onclick={openSend}>Envoi de mail</button>
+            <button class="actionButton" onclick={changeStatus}>Modification statut</button>
     </div>
-    <div class="datatableContainer">
+    <div class="resultsContainer slds-m-top_small">
+        <div class="slds-m-around_small">
+            <div class="slds-col slds-no-flex">
+                <h2 class="slds-m-bottom--xx-small">
+                    <a class="slds-page-header__title slds-text-color--default slds-show--inline-block uiOutputURL"
+                        href="javascript:void(0);" dir="ltr" title="">Related PreInscriptions</a>
+                </h2>
+            </div>
             <lightning-datatable key-field="id" data={getPreInscriptionsByAcc} columns={columns}>
-                </lightning-datatable>
+            </lightning-datatable>
+        </div>
     </div>
     <c-l-w-c005_-update-status preinscription-ids={selectedIds}></c-l-w-c005_-update-status>
     <c-l-w-c006_-send-mail preinscription-ids={selectedIds}></c-l-w-c006_-send-mail>

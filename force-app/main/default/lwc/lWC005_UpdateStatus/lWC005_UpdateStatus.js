@@ -28,9 +28,12 @@ export default class LWC005_UpdateStatus extends NavigationMixin(LightningElemen
     preinscriptionIds
     @wire(CurrentPageReference) pageRef;
 
-    @wire(getPicklistvalues,{})
-    getPicklistvaluesF({error, data}){
-        if(data){
+    @wire(getPicklistvalues, {})
+    getPicklistvaluesF({
+        error,
+        data
+    }) {
+        if (data) {
             this.options = [];
             for (let i = 0; i < data.length; i++) {
                 this.options.push({
@@ -39,10 +42,10 @@ export default class LWC005_UpdateStatus extends NavigationMixin(LightningElemen
                 });
             }
         }
-         if(error){
-             console.error(error);
-         }
-        
+        if (error) {
+            console.error(error);
+        }
+
     }
     handleValueChange(event) {
         this.value = event.detail.value;
@@ -52,8 +55,7 @@ export default class LWC005_UpdateStatus extends NavigationMixin(LightningElemen
                 statut: this.value,
                 preinscriptionIds: this.preinscriptionIds
             })
-            .then((result) => {
-                console.log('Laliste modifiée ' + result);
+            .then(() => {
                 this.dispatchEvent(new ShowToastEvent({
                     title: "Succès!",
                     message: "Les statuts sont mis à jour avec succès!",
@@ -61,11 +63,13 @@ export default class LWC005_UpdateStatus extends NavigationMixin(LightningElemen
                 }));
                 //this.redirect();
             })
+            .then(() => {
+                this.openmodal = false;
+                fireEvent(this.pageRef, "refreshPreInscList", null);
+            })
             .catch(err => {
                 console.error(err);
             });
-        this.openmodal = false;
-        fireEvent(this.pageRef, "refreshPreInscList", null);
     }
     closeModal() {
         this.openmodal = false;

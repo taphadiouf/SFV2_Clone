@@ -16,11 +16,21 @@ import {
 } from 'lightning/navigation';
 
 export default class LWC007_PreinscriptionsEnCours extends LightningElement {
-    @api
-    accId;
+    @api accId;
     columns;
     selectedIds = [];
     @wire(CurrentPageReference) pageRef;
+    @wire(getPreInscriptionsByAcc, {
+        accId: '$accId'
+    })
+    preInscriptionsList;
+    get getPreInscriptionsByAcc() {
+        if (this.preInscriptionsList.data) {
+            return JSON.parse(this.preInscriptionsList.data);
+        }
+        const l = [];
+        return l;
+    }
     constructor() {
         super();
         this.columns = [{
@@ -51,43 +61,36 @@ export default class LWC007_PreinscriptionsEnCours extends LightningElement {
         ];
     }
     connectedCallback() {
-        console.log('accId : ' + this.accId);
         registerListener(
             "refreshPreInscList",
             () => {
+                console.log('refresh called!!');
                 refreshApex(this.preInscriptionsList);
-
             },
             this
         );
     }
-    @wire(getPreInscriptionsByAcc, {
-        accId: '$accId'
-    })
-    preInscriptionsList;
-    get getPreInscriptionsByAcc() {
-        if (this.preInscriptionsList.data) {
-            return JSON.parse(this.preInscriptionsList.data);
-        }
-        const l = [];
-        return l;
-    }
-
     openSend() {
         let selectedElements = this.template.querySelector('lightning-datatable').getSelectedRows();
         this.selectedIds = [];
-        for (let i = 0; i < selectedElements.length; i++) {
-            this.selectedIds.push(selectedElements[i].recId);
+        if(selectedElements.length > 0){
+            for (let i = 0; i < selectedElements.length; i++) {
+                this.selectedIds.push(selectedElements[i].recId);
+            }
+            this.template.querySelector('c-l-w-c006_-send-mail').openmodal = true;
         }
-        this.template.querySelector('c-l-w-c006_-send-mail').openmodal = true;
+        
     }
     changeStatus() {
         let selectedElements = this.template.querySelector('lightning-datatable').getSelectedRows();
         this.selectedIds = [];
-        for (let i = 0; i < selectedElements.length; i++) {
-            this.selectedIds.push(selectedElements[i].recId);
+        if(selectedElements.length > 0){
+            for (let i = 0; i < selectedElements.length; i++) {
+                this.selectedIds.push(selectedElements[i].recId);
+            }
+            this.template.querySelector('c-l-w-c005_-update-status').openmodal = true;
         }
-        this.template.querySelector('c-l-w-c005_-update-status').openmodal = true;
+       
     }
 
 }
