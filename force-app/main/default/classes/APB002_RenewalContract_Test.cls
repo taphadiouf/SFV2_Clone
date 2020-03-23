@@ -20,7 +20,7 @@ public class APB002_RenewalContract_Test {
         insert contract;
     }
     @isTest
-    private static void test(){
+    private static void testAPB002RenewalContract(){
         System.runAs(UM002_TestDataFactory.createUser()){
             
             Account acc = [SELECT Id, name from Account where name ='test' ];
@@ -34,7 +34,7 @@ public class APB002_RenewalContract_Test {
             Test.startTest();
             APB002_RenewalContract renewalContractBatch = new APB002_RenewalContract();
             renewalContractBatch.execute(null);
-             
+            
             Test.stopTest();
             contract = [SELECT Id,AccountId,Name,Status,StartDate,EndDate,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
                         WHERE AccountId =:acc.Id ];

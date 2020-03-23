@@ -9,11 +9,15 @@ public class SM008_QuoteServices_Test {
     @testSetup 
     static void testSetup(){
         List<Account> accounts = UM002_TestDataFactory.createAccounts(100, 'testAccount');
+        
         List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(100, 'testOpp', 'Prospecting');
+        
         insert accounts;
         insert opps;
         List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(100, accounts, opps);
         insert quotes;
+        insert UM002_TestDataFactory.createAccounts(1, 'test').get(0);
+        insert UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
         
     } 
     @isTest
@@ -34,4 +38,25 @@ public class SM008_QuoteServices_Test {
     @isTest
     public static void updateAccountsFromQuotes_Test(){
     }
+    
+    
+    @isTest //added by Ayoub
+    public static void setQuoteFields_Test(){
+        
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
+            List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
+            List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
+            Opportunity opp = oppties.get(0);
+            opp.LPCR_RenouvellementConvenu__c='Oui';
+            update opp;
+            SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
+            insert quote;
+            
+            quote = [SELECT Id ,LPCR_RenouvellementConvenu__c from SBQQ__Quote__c WHERE Id = :quote.Id];
+            System.assertNotEquals(null,quote.LPCR_RenouvellementConvenu__c,'LPCR_RenouvellementConvenu__c is null');
+            System.assertEquals(quote.LPCR_RenouvellementConvenu__c, opp.LPCR_RenouvellementConvenu__c, 'Quote LPCR_RenouvellementConvenu__c not equals to oppt LPCR_RenouvellementConvenu__c');
+            Test.stopTest();
+            
+        } }
 }

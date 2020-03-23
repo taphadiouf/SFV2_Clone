@@ -35,4 +35,14 @@ public with sharing class UM003_TypeManager{
         return ids;
     }
 
+    
+    public static Set<String> getFieldsOfListObjects(List<SObject> listSObject,String fieldAPI){
+     Set<String> fields = new Set<String>();
+     if(UM003_TypeManager.isNotNullAndNotEmpty(listSObject))
+            for(SObject eachObj: listSObject){
+                fields.add((String)eachObj.get(fieldAPI));
+            }
+        return fields;
+    }
+
 }

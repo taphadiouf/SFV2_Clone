@@ -49,6 +49,10 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_DateRenouvellement__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_RenouvellementConvenu__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
