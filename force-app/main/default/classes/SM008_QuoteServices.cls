@@ -35,7 +35,7 @@ public with sharing class SM008_QuoteServices {
     //added by Ayoub
      public static void setQuoteFields(List<SBQQ__Quote__c> quotesList){
         Set<String> opptyIds = UM003_TypeManager.getFieldsOfListObjects(quotesList,'SBQQ__Opportunity2__c');
-        Map<Id,Opportunity> opptyMap = new  Map<Id,Opportunity>([SELECT Id,LPCR_RenouvellementAutomatique__c ,LPCR_RenouvellementConvenu__c  from Opportunity WHERE Id in :opptyIds]);
+        Map<Id,Opportunity> opptyMap = new  Map<Id,Opportunity>([SELECT Id ,LPCR_RenouvellementConvenu__c  from Opportunity WHERE Id in :opptyIds]);
         
         for (SBQQ__Quote__c eachQuote : quotesList){
             if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
