@@ -13,7 +13,9 @@ public class SM007_LeadServices {
                 oppsIdsToSync.add(eachLead.convertedOpportunityId);
             }
         }
-        List<Opportunity> oppsToSync = EM004_OpportunityEntity.getOppsByIds(oppsIdsToSync);
+        Set<String> oppFields = new Set<String>();
+        oppFields.add('RecordTypeId');
+        List<Opportunity> oppsToSync = new EM004_OpportunityEntity().getByIds(oppsIdsToSync, oppFields);
         for(Opportunity eachOpp : oppsToSync){
             eachOpp.RecordTypeId = opportunityRecordTypeId;
         }
