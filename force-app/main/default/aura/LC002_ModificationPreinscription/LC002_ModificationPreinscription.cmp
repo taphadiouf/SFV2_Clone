@@ -1,0 +1,5 @@
+<aura:component implements="lightning:isUrlAddressable">
+        <aura:attribute name='accId' type='String' />
+        <aura:handler name="init" value="this" action="{!c.doInit}"/>
+        <c:lWC007_PreinscriptionsEnCours accId="{!v.accId}"></c:lWC007_PreinscriptionsEnCours>
+</aura:component>	

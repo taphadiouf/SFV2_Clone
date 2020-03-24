@@ -285,6 +285,19 @@ newMe.FederationIdentifier = null;
         
         return preinscriptions;	
     }
+    public static List<LPCR_Preinscription__c> createPreinscForEntreprise(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id entrepriseAccountId,Id contactId){	
+        List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
+        for(Integer i=0;i<numPrei;i++){
+            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteEntreprise__c= entrepriseAccountId,	
+                                                                            LPCR_PrenomEnfant__c= prenomEnfant,	
+                                                                            NomEnfant__c= nomEnfant,	
+                                                                            LPCR_Statut__c = statut,
+                                                                            LPCR_ContactEnfant__c=contactId);	
+            preinscriptions.add(pre);
+        }
+        
+        return preinscriptions;	
+    }
     
     public static EmailTemplate createEmailTemplate(String name, String developerName, String templateType){
         return new EmailTemplate(Name = name,
