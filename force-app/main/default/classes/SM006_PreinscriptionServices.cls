@@ -14,16 +14,16 @@ public class SM006_PreinscriptionServices {
         
         List<Opportunity> listOpptys = new List<Opportunity>();
         List<SBQQ__Quote__c> listQuotes = new List<SBQQ__Quote__c>();
-        Id dspOpportunityRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndDeveloperName('Opportunity','AOPublicDSP');
+        Id dspOpportunityRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndDeveloperName(System.Label.LPCR_Opportunity,System.Label.LPCR_PublicDSP);
         for(LPCR_Preinscription__c eachNewPreinscri : newPreinscrisMap.values()){
             if(eachNewPreinscri.LPCR_Statut__c != oldPreinscrisMap.get(eachNewPreinscri.Id).LPCR_Statut__c && 
-               'Confirmé'.equals(eachNewPreinscri.LPCR_Statut__c) ){
-                   listOpptys.add(new Opportunity(AccountId=eachNewPreinscri.LPCR_CompteFamille__c , Name ='Opportunité pour : '+eachNewPreinscri.LPCR_PrenomEnfant__c+' '+eachNewPreinscri.NomEnfant__c  ,StageName='Prospecting',CloseDate=Date.today()));
+               Label.LPCR_Confirme .equals(eachNewPreinscri.LPCR_Statut__c) ){
+                   listOpptys.add(new Opportunity(AccountId=eachNewPreinscri.LPCR_CompteFamille__c , Name =Label.LPCR_OppFor+eachNewPreinscri.LPCR_PrenomEnfant__c+' '+eachNewPreinscri.NomEnfant__c  ,StageName=Label.LPCR_Prospecting,CloseDate=Date.today()));
                }
         }
         
         listOpptys= EM004_OpportunityEntity.saveOrUpdte(listOpptys);
-        Id accueilQuoteRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndDeveloperName('SBQQ__Quote__c','Contrat_Accueil');
+        Id accueilQuoteRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndDeveloperName(System.Label.LPCR_Quote,System.Label.LPCR_ContratA);
         for(Opportunity eachOppty : listOpptys){
             listQuotes.add(new SBQQ__Quote__c(RecordTypeId=accueilQuoteRecordTypeId,SBQQ__Account__c=eachOppty.AccountId ,SBQQ__Opportunity2__c= eachOppty.Id));
         }
@@ -36,14 +36,14 @@ public class SM006_PreinscriptionServices {
     public static void setStatusWhenValidateFormulaireIsTrue(Map<Id,LPCR_Preinscription__c> mapNewPreinscription,Map<Id,LPCR_Preinscription__c> mapOldPreinscription){
         for(LPCR_Preinscription__c eachPreinscription : mapNewPreinscription.values()){
             if(eachPreinscription.LPCR_ValidationFormulaire__c && mapOldPreinscription.get(eachPreinscription.Id).LPCR_ValidationFormulaire__c != eachPreinscription.LPCR_ValidationFormulaire__c ){
-                eachPreinscription.LPCR_Statut__c='Liste d’attente';               
+                eachPreinscription.LPCR_Statut__c=Label.LPCR_ListeAtt;               
             }  
         }
     }
     
     public static void setStatusWhenValidateFormulaireIsTrue(List<LPCR_Preinscription__c> preinscriptions){
         for(LPCR_Preinscription__c eachPreinscription : preinscriptions){
-            if(eachPreinscription.LPCR_ValidationFormulaire__c ){eachPreinscription.LPCR_Statut__c='Liste d’attente';               
+            if(eachPreinscription.LPCR_ValidationFormulaire__c ){eachPreinscription.LPCR_Statut__c=Label.LPCR_ListeAtt;               
             }
         }
     }

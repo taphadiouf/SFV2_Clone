@@ -11,7 +11,7 @@ public with sharing class APC001_LeadFaConverController {
     @AuraEnabled(cacheable=true)
     public static List<Account> getAccountsByRecordtype(String recordTypeName) {
        List<Account> accounts = new List<Account>();
-       Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account','Creche');
+       Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Creche);
        if(UM003_TypeManager.idNotNull(recordtypeId)){
             accounts = [SELECT Name FROM Account WHERE RecordTypeId = :recordtypeId];
         }
@@ -25,9 +25,9 @@ public with sharing class APC001_LeadFaConverController {
         Contact contactEnfant1 = new Contact();
         Lead currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
         if(currentLead.FirstName+' '+currentLead.LastName == currentLead.LPCR_PrenomCoDemandeur__c+' '+currentLead.LPCR_NomCoDemandeur__c || currentLead.FirstName+' '+currentLead.LastName == currentLead.LPCR_CiviliteCoDemandeur__c+' '+currentLead.LPCR_PrenomCoDemandeur__c+' '+currentLead.LPCR_NomCoDemandeur__c ){
-            newAccount = new Account(Name = 'Famille '+currentLead.LastName, RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account','Famille'));
+            newAccount = new Account(Name = 'Famille '+currentLead.LastName, RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Famille));
         }else{
-            newAccount = new Account(Name = 'Famille '+currentLead.LastName+' '+currentLead.LPCR_NomCoDemandeur__c, RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account','Famille'));
+            newAccount = new Account(Name = 'Famille '+currentLead.LastName+' '+currentLead.LPCR_NomCoDemandeur__c, RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Famille));
         }
         insert newAccount;  
         Contact newContact1 = new Contact(LastName =currentLead.LastName, FirstName = currentLead.FirstName , OwnerId = currentLead.OwnerId, Phone = currentLead.Phone, Email = currentLead.Email, AccountId =newAccount.Id  );

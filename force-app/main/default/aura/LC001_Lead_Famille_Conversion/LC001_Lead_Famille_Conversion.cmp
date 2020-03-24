@@ -15,7 +15,7 @@
         </div>
         <div class="slds-grid slds-grid_align-end">
             <button class="slds-button slds-button--neutral uiButton--default uiButton--default uiButton" type="button">
-                <lightning:button variant="neutral" label="Annuler" onclick="{! c.cancel}" />
+                <lightning:button variant="neutral" label="Annuler" onclick="{! c.cancelAction}" />
             </button>
             <c:lwc002_ConvertButton_LeadFamille recordId="{!v.recordId}"/>
         </div>
