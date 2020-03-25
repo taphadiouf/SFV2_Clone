@@ -5,7 +5,7 @@
 */
 public class APC004_SendMailController {
     
-    @AuraEnabled
+    @AuraEnabled(Cacheable=true)
     public static List<EmailTemplate> getAllMailTemplates(){
         return EM008_EmailTemplateEntity.getAllEmailTemplates();
     }
