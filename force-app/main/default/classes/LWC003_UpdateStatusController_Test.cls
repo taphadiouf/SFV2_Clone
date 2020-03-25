@@ -26,8 +26,10 @@ public with sharing class LWC003_UpdateStatusController_Test {
     @isTest
     public static void updateLstPreinscription_Test() {
         System.runAs(UM002_TestDataFactory.createUser()){
+            Map<Id, LPCR_Preinscription__c> preinscriptionIdsMap = new Map<Id, LPCR_Preinscription__c>([SELECT Id,LPCR_Statut__c FROM LPCR_Preinscription__c]);
+            List<Id> preinscriptionIds = new List<Id>(preinscriptionIdsMap.keySet());
             Test.startTest();
-            LWC003_UpdateStatusController.updateLstPreinscription('Option');
+            LWC003_UpdateStatusController.updateLstPreinscription('Option', preinscriptionIds);
             Test.stopTest();
         }
         

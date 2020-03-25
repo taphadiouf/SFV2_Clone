@@ -77,7 +77,6 @@ public with sharing class UM002_TestDataFactory {
             User me;
             /*
 User me = EM001_User.dataManager.getListByIdsWithRoleAndProfile(new Set<Id>{UserInfo.getUserId()}).get(0);
-
 String s = ((Datetime.now()+'').replace(' ','')).replace(':','');
 Datetime dt = Datetime.now();
 User newMe = me.clone();
@@ -127,6 +126,15 @@ newMe.FederationIdentifier = null;
             leads.add(l);
         }
         return leads;
+    }
+    public static List<LPCR_Structure_AO__c> createStructuresAOFromLeads(Integer numStructuresPerLead, List<Lead> leadsList){
+        List<LPCR_Structure_AO__c> structures = new List<LPCR_Structure_AO__c>();
+        for(Lead eachLead : leadsList){
+            for(Integer i = 0; i<numStructuresPerLead; i++){
+                structures.add(new LPCR_Structure_AO__c(LPCR_Lead__c = eachLead.Id));
+            }
+        }
+        return structures;
     }
     
     public static List<Task> createTasks(Set<Id> whoIds ){
@@ -554,6 +562,19 @@ newMe.FederationIdentifier = null;
         
         return preinscriptions;	
     }
+    public static List<LPCR_Preinscription__c> createPreinscForEntreprise(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id entrepriseAccountId,Id contactId){	
+        List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
+        for(Integer i=0;i<numPrei;i++){
+            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteEntreprise__c= entrepriseAccountId,	
+                                                                            LPCR_PrenomEnfant__c= prenomEnfant,	
+                                                                            NomEnfant__c= nomEnfant,	
+                                                                            LPCR_Statut__c = statut,
+                                                                            LPCR_ContactEnfant__c=contactId);	
+            preinscriptions.add(pre);
+        }
+        
+        return preinscriptions;	
+    }
     
     public static EmailTemplate createEmailTemplate(String name, String developerName, String templateType){
         return new EmailTemplate(Name = name,
@@ -598,34 +619,29 @@ newMe.FederationIdentifier = null;
     
     /*
 public class AccountContactRelationTdf {
-
 public AccountContactRelation create(Id accountId, Id contactId) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
-
 return acr;
 }
-
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
-
 return acr;
 }
-
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles, String fonction) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
 acr.Function__c = fonction;
-
 return acr;
 }
 }
 */
     
+
 }
