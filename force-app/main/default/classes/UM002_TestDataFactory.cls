@@ -77,7 +77,6 @@ public with sharing class UM002_TestDataFactory {
             User me;
             /*
 User me = EM001_User.dataManager.getListByIdsWithRoleAndProfile(new Set<Id>{UserInfo.getUserId()}).get(0);
-
 String s = ((Datetime.now()+'').replace(' ','')).replace(':','');
 Datetime dt = Datetime.now();
 User newMe = me.clone();
@@ -94,13 +93,12 @@ newMe.FederationIdentifier = null;
     //it's a class that permit to add a list of leads/Tasks/Events/ Users
     
     public static User createUser(){
-        //added by ayoub  to check first the user in DB.
         User usr = null;
         try{
-            usr=  [SELECT Id, Name,Alias FROM User Where Alias = 'testusr' limit 1];
+           usr=  [SELECT Id, Name,Alias FROM User Where Alias = 'testusr' limit 1];
         }
         catch(Exception e){
-            usr = null; 
+           usr = null; 
         }
         
         if(usr==null){
@@ -108,10 +106,10 @@ newMe.FederationIdentifier = null;
             
             String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
             usr = new User(Alias = 'testusr', Email = uniqueUserName,
-                           EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
-                           LocaleSidKey = 'en_US', ProfileId = prof.Id,
-                           TimeZoneSidKey = 'America/Los_Angeles',
-                           UserName = uniqueUserName);
+                                EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
+                                LocaleSidKey = 'en_US', ProfileId = prof.Id,
+                                TimeZoneSidKey = 'America/Los_Angeles',
+                                UserName = uniqueUserName);
             insert usr;
         }
         
@@ -127,6 +125,15 @@ newMe.FederationIdentifier = null;
             leads.add(l);
         }
         return leads;
+    }
+    public static List<LPCR_Structure_AO__c> createStructuresAOFromLeads(Integer numStructuresPerLead, List<Lead> leadsList){
+        List<LPCR_Structure_AO__c> structures = new List<LPCR_Structure_AO__c>();
+        for(Lead eachLead : leadsList){
+            for(Integer i = 0; i<numStructuresPerLead; i++){
+                structures.add(new LPCR_Structure_AO__c(LPCR_Lead__c = eachLead.Id));
+            }
+        }
+        return structures;
     }
     
     public static List<Task> createTasks(Set<Id> whoIds ){
@@ -239,327 +246,62 @@ newMe.FederationIdentifier = null;
         
         listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2019,12,31),LPCR_Score__c=100));
         listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2020,12,31),LPCR_Score__c=10));
-        
+          
         
         return listParams;
         
     }
-    
-    public static Contract createContract(Id accountID){	
-        Contract  contract = new Contract(AccountID = accountID);	
-        return contract;	
-    }	
-    
-    public static Order createOrder(Id accountID,Id contractID,Date orderStartDate,String name ,String status,String billindDayOfMonth){	
-        Order  order = new Order(blng__BillingDayOfMonth__c = billindDayOfMonth,AccountID = accountID,ContractId =contractID,EffectiveDate=orderStartDate,Status=status,Name=name);	
-        return order;	
-    }	
-    
-    public static PricebookEntry createPricebookEntry(Id pricebookId, Id productId){
-        PricebookEntry pbe = new PricebookEntry();
-        pbe.isActive = true;
-        pbe.UnitPrice = 100;
-        pbe.Product2Id = productId;
-        pbe.Pricebook2Id = pricebookId;
-        return pbe;
-    }
-    public static Product2 createProduct(String name, Id billingRuleId,Id revenueRecognitionRuleId,Id taxeRuleId ){
-        Product2 prod = new Product2();
-        prod.isActive = true;
-        prod.Name = name;
-        prod.blng__BillingRule__c =billingRuleId;
-        prod.blng__RevenueRecognitionRule__c  =revenueRecognitionRuleId ;
-        prod.blng__TaxRule__c =taxeRuleId;
-        return prod;
-    }
-    
-    public static OrderItem createOrderProduct(Id standardPricebookId,ID orderID, Id productId,String chargeType,Decimal unitPrice ){
-        OrderItem orderItem = new OrderItem();
-        orderItem.OrderId = orderID;
-        orderItem.Product2ID = productId;
-        orderItem.PricebookEntryId=standardPricebookId;
-        orderItem.SBQQ__ChargeType__c =chargeType;
-        orderItem.UnitPrice =unitPrice;
-        return orderItem;
-    }
-    
-    public static void insertBillingCustomSettings() {
-        
-        List<blng__BillingConfig__c> listofConfiguration = new List<blng__BillingConfig__c>();
-        List<blng__TaxConfig__c> listofTaxConfig = new List<blng__TaxConfig__c>();
-        blng__BillingConfig__c advancedARApplication = new blng__BillingConfig__c(Name = 'ADVANCED_AR_APPLICATION',
-                                                                                  blng__StringValue__c = '',
-                                                                                  blng__FieldType__c = 'Boolean',
-                                                                                  blng__Description__c = 'Advanced AR application',
-                                                                                  blng__PicklistIndicator__c ='',
-                                                                                  blng__Category__c ='Invoice',
-                                                                                  blng__Sequence__c = 2,
-                                                                                  blng__BooleanValue__c = true);
-        listofConfiguration.add(advancedARApplication);
-        blng__BillingConfig__c taxCalculationBasedOn = new blng__BillingConfig__c(Name = 'TAX_CALCULATION_BASED_ON',
-                                                                                  blng__StringValue__c = 'Order: Account Billing Address',
-                                                                                  blng__FieldType__c = 'Picklist',
-                                                                                  blng__Description__c = 'Tax calculation is based on?',
-                                                                                  blng__PicklistIndicator__c ='TaxcCalculationList',
-                                                                                  blng__Category__c ='General',
-                                                                                  blng__Sequence__c = 3);
-        listofConfiguration.add(taxCalculationBasedOn);
-        blng__BillingConfig__c alignBilling = new blng__BillingConfig__c(Name = 'ALIGN_BILLDAYOFMONTH_TO_ORDERSTARTDATE',
-                                                                         blng__StringValue__c = '',
-                                                                         blng__FieldType__c = 'Boolean',
-                                                                         blng__Description__c = 'Align Billing day of month to Order start date',
-                                                                         blng__PicklistIndicator__c ='',
-                                                                         blng__Category__c ='General',
-                                                                         blng__Sequence__c = 3,
-                                                                         blng__BooleanValue__c = true);
-        listofConfiguration.add(alignBilling);
-        blng__BillingConfig__c calculationProrationType = new blng__BillingConfig__c(Name = 'PRORATION_TYPE',
-                                                                                     blng__StringValue__c = 'Calendar Days',
-                                                                                     blng__FieldType__c = 'Picklist',
-                                                                                     blng__Description__c = 'Proration type.',
-                                                                                     blng__PicklistIndicator__c ='CalendarDaysList',
-                                                                                     blng__Category__c ='Invoice',
-                                                                                     blng__Sequence__c = 3);
-        listofConfiguration.add(calculationProrationType);
-        
-        blng__BillingConfig__c PartialProrationType = new blng__BillingConfig__c(Name = 'PARTIAL_PERIOD_BILLING_PRORATION',
-                                                                                 blng__StringValue__c = 'Month + Daily',
-                                                                                 blng__FieldType__c = 'Picklist',
-                                                                                 blng__Description__c = 'Partial Proration Type',
-                                                                                 blng__PicklistIndicator__c ='PartialProrationTypeList',
-                                                                                 blng__Category__c ='Invoice',
-                                                                                 blng__Sequence__c = 3);
-        listofConfiguration.add(PartialProrationType);
-        blng__BillingConfig__c invoiceTobeChargedOn = new blng__BillingConfig__c(Name = 'INVOICE_TO_BE_CHARGED_ON',
-                                                                                 blng__StringValue__c = 'Due Date',
-                                                                                 blng__FieldType__c = 'Picklist',
-                                                                                 blng__Description__c = 'Payment Scheduler to pickup unpaid invoices on OR after',
-                                                                                 blng__PicklistIndicator__c ='PaymentSchedulerList',
-                                                                                 blng__Category__c ='Invoice',
-                                                                                 blng__Sequence__c = 2,
-                                                                                 blng__BooleanValue__c = false);
-        listofConfiguration.add(invoiceTobeChargedOn);  
-        blng__BillingConfig__c periodPriceRounding = new blng__BillingConfig__c(Name = 'PERIOD_PRICE_ROUNDING',
-                                                                                blng__StringValue__c = 'HALF_UP',
-                                                                                blng__FieldType__c = 'Picklist',
-                                                                                blng__Description__c = 'Billable Unit Price Rounding',
-                                                                                blng__PicklistIndicator__c ='PeriodPriceRoundingList',
-                                                                                blng__Category__c ='General',
-                                                                                blng__Sequence__c = 8,
-                                                                                blng__BooleanValue__c = false);
-        listofConfiguration.add(periodPriceRounding);  
-        
-        blng__BillingConfig__c usageRatingProcess = new blng__BillingConfig__c(Name = 'USAGE_RATING_PROCESS',
-                                                                               blng__StringValue__c = 'On Trigger',
-                                                                               blng__FieldType__c = 'Picklist',
-                                                                               blng__Description__c = 'Usage Rating Process based on',
-                                                                               blng__PicklistIndicator__c ='UsageRatingProcessList',
-                                                                               blng__Category__c ='General',
-                                                                               blng__Sequence__c = 9,
-                                                                               blng__BooleanValue__c = false);
-        listofConfiguration.add(usageRatingProcess);    
-        
-        blng__BillingConfig__c billingRemainderProcessing = new blng__BillingConfig__c(Name = 'BILLING_REMAINDER_PROCESS',
-                                                                                       blng__StringValue__c = 'Last Period',
-                                                                                       blng__FieldType__c = 'Picklist',
-                                                                                       blng__Description__c = 'Billing Remainder Process',
-                                                                                       blng__PicklistIndicator__c ='billingRemainderProcessList',
-                                                                                       blng__Category__c ='Invoice',
-                                                                                       blng__Sequence__c = 5,
-                                                                                       blng__BooleanValue__c = false);
-        listofConfiguration.add(billingRemainderProcessing);
-        
-        blng__BillingConfig__c revenueRemainderProcessing = new blng__BillingConfig__c(Name = 'REVENUE_REMAINDER_PROCESS',
-                                                                                       blng__StringValue__c = 'Last Period',
-                                                                                       blng__FieldType__c = 'Picklist',
-                                                                                       blng__Description__c = 'Revenue Remainder Process',
-                                                                                       blng__PicklistIndicator__c ='RevenueRemainderProcessList',
-                                                                                       blng__Category__c ='Invoice',
-                                                                                       blng__Sequence__c = 6,
-                                                                                       blng__BooleanValue__c = false);
-        listofConfiguration.add(revenueRemainderProcessing);
-        
-        blng__BillingConfig__c saveCreditCardBetails = new blng__BillingConfig__c(Name = 'SAVE_CREDIT_CARD_ON_PAYMENT_PAGE',
-                                                                                  blng__StringValue__c = '',
-                                                                                  blng__FieldType__c = 'Boolean',
-                                                                                  blng__Description__c = 'Save credit card details',
-                                                                                  blng__PicklistIndicator__c ='',
-                                                                                  blng__Category__c ='General',
-                                                                                  blng__Sequence__c = 6,
-                                                                                  blng__BooleanValue__c = false);
-        listofConfiguration.add(saveCreditCardBetails);
-        
-        blng__BillingConfig__c enableStateAndCountryPicklist = new blng__BillingConfig__c(Name = 'ENABLE_STATE_AND_COUNTRY_PICKLIST',
-                                                                                          blng__StringValue__c = '',
-                                                                                          blng__FieldType__c = 'Boolean',
-                                                                                          blng__Description__c = 'Enable state and country picklist in Site Page and Virtual Terminal(works when state and country feature is enabled in Salesforce)',
-                                                                                          blng__PicklistIndicator__c ='',
-                                                                                          blng__Category__c ='General',
-                                                                                          blng__Sequence__c = 6,
-                                                                                          blng__BooleanValue__c = false);
-        listofConfiguration.add(enableStateAndCountryPicklist);
-        
-        
-        blng__BillingConfig__c sampledata = new blng__BillingConfig__c(Name = 'INSERT_SAMPLE_DATA',
-                                                                       blng__StringValue__c = '',
-                                                                       blng__FieldType__c = 'Boolean',
-                                                                       blng__Description__c = 'Insert Sample Data',
-                                                                       blng__PicklistIndicator__c ='',
-                                                                       blng__BooleanValue__c = false);
-        listofConfiguration.add(sampledata);
-        
-        //Added by DL,W-4000272, In-order to make Tax Engine name dynamic
-        blng__BillingConfig__c taxEngineName = new blng__BillingConfig__c(Name = 'AVALARA_AVATAX',
-                                                                          blng__StringValue__c = 'Avalara AvaTax',
-                                                                          blng__FieldType__c = '',
-                                                                          blng__Description__c = '',
-                                                                          blng__PicklistIndicator__c ='',
-                                                                          blng__Category__c ='Tax',
-                                                                          blng__BooleanValue__c = false);
-        listofConfiguration.add(taxEngineName);
-        
-        insert listofConfiguration;        
-        
-    }  
-    
-    public static blng__LegalEntity__c setupLegalEntity() {
-        blng__LegalEntity__c legalEntity = new blng__LegalEntity__c(blng__Active__c=true, blng__Country__c='USA');
-        insert legalEntity;
-        return legalEntity;
-    }
-    
-    public static blng__RevenueRecognitionRule__c setupRevRec(string legalEntityId) {
-        blng__RevenueRecognitionRule__c revRecRule = new blng__RevenueRecognitionRule__c (blng__Active__c=true,blng__CreateRevenueSchedule__c='Yes',Name='Monthly');
-        insert revRecRule;
-        
-        blng__FinanceBook__c revFinanceBook = new blng__FinanceBook__c(blng__Active__c = true, Name = 'Rev Finance Book', blng__PeriodType__c = 'Revenue');
-        insert revFinanceBook;
-        
-        blng__RevenueDistributionMethod__c revDist = new blng__RevenueDistributionMethod__c( blng__Active__c = true, Name = 'Monthly Invoice', blng__Type__c = 'Invoice', blng__RevenueTransactionCreationProcess__c = 'Automatic', blng__RevenueScheduleTermStartDate__c = 'Invoice Line Start Date', blng__RevenueScheduleTermEndDate__c = 'Invoice Line End Date', blng__MonthlyRecognitionProration__c = 'Number of Days', blng__DistributionMethod__c = 'Monthly');
-        insert revDist;
-        
-        blng__GLRule__c glRule = new blng__GLRule__c(blng__Active__c = true, Name = 'GL Rule');
-        insert glRule;
-        
-        
-        blng__RevenueRecognitionTreatment__c revRecTreatment = new blng__RevenueRecognitionTreatment__c( blng__Active__c = true, blng__RevenueLegalEntity__c = legalEntityId, blng__RevenueRecognitionRule__c = revRecRule.Id, blng__ProcessingOrder__c = 10, blng__Percentage__c = 100, blng__Type__c = 'Percentage', blng__RevenueScheduleCreationAction__c = 'Invoice Posting', blng__RevenueScheduleAmount__c = 'Transaction Amount', blng__RevenueFinanceBook__c = revFinanceBook.Id, blng__RevenueDistributionMethod__c = revDist.id, blng__RevenueGLRule__c = glRule.Id);
-        insert revRecTreatment;
-        return revRecRule;
-    }
-    
-    public static blng__BillingRule__c setupBillingRule(string legalEntityId) {            
-        blng__BillingRule__c billingRule = new blng__BillingRule__c(blng__InitialBillingTrigger__c = 'Order Product Activation Date', 
-                                                                    Name = 'TEST',blng__Active__c = true, blng__GenerateInvoices__c='Yes');
-        insert billingRule;
-        
-        blng__FinanceBook__c accoutingFinanceBook = new blng__FinanceBook__c(blng__Active__c = true,
-                                                                             Name = 'Accounting Finance Book', blng__PeriodType__c = 'Accounting');
-        insert accoutingFinanceBook;
-        
-        blng__BillingTreatment__c billingTreatment = new blng__BillingTreatment__c( blng__BillingFinanceBook__c = accoutingFinanceBook.Id,
-                                                                                   blng__Active__c = true, blng__BillingLegalEntity__c = legalEntityId, 
-                                                                                   blng__BillingRule__c = billingRule.Id /*,blng__CancellationRule__c = 'LIFO based on Termination Date'*/);
-        insert billingTreatment;
-        
-        return billingRule;
-    }
-    
-    public static blng__TaxRule__c setupTaxRule(string legalEntityId) {            
-        blng__TaxRule__c taxRule = new blng__TaxRule__c(blng__Active__c = true, blng__TaxableYesNo__c = 'Yes', Name = 'Tax Rule');
-        insert taxRule;
-        
-        blng__TaxIntegration__c stdTaxInt = new blng__TaxIntegration__c(blng__Active__c = true, blng__Default__c = true, blng__TaxEngine__c = 'Standard');
-        insert stdTaxInt;
-        
-        blng__TaxTreatment__c taxTreatment = new blng__TaxTreatment__c( blng__Active__c = true, blng__TaxLegalEntity__c = legalEntityId, blng__TaxRule__c = taxRule.Id, blng__TaxIntegration__c = stdTaxInt.Id);
-        insert taxTreatment;
-        
-        return taxRule;
-    }
-    
-    public static blng__TaxRule__c setupTaxRuleasNO(string legalEntityId) {            
-        blng__TaxRule__c taxRule = new blng__TaxRule__c(blng__Active__c = true, blng__TaxableYesNo__c = 'No', Name = 'Tax Rule NO');
-        insert taxRule;
-        
-        return taxRule;
-    }
-    
-    public static SBQQ__Quote__c createQuote(String city ,String opportunityId, String accountId, String priceBookId, String type) 
-    {
-        SBQQ__Quote__c cpqQuote = new SBQQ__Quote__c();
-        cpqQuote.SBQQ__Primary__c = false;
-        cpqQuote.SBQQ__StartDate__c = System.Today();
-        cpqQuote.SBQQ__Opportunity2__c = opportunityId;
-        cpqQuote.SBQQ__SubscriptionTerm__c = null;
-        cpqQuote.SBQQ__BillingFrequency__c = 'Invoice Plan';
-        cpqQuote.SBQQ__Account__c = accountId;
-        cpqQuote.SBQQ__Type__c = type;
-        cpqQuote.SBQQ__PriceBook__c = priceBookId;
-        cpqQuote.SBQQ__PricebookId__c = priceBookId;
-        cpqQuote.SBQQ__QuoteLanguage__c = 'English';
-        cpqQuote.SBQQ__BillingCity__c = city;
-        return cpqQuote;
-    }
-    
-    public static SBQQ__QuoteLine__c createQuoteLine(String productId, String quoteId, String pricebookEntryId, Decimal price,Integer qte) 
-    {
-        SBQQ__QuoteLine__c quoteLineInstance = new SBQQ__QuoteLine__c();
-        quoteLineInstance.SBQQ__StartDate__c = System.Today();
-        quoteLineInstance.SBQQ__Product__c = productId;
-        quoteLineInstance.SBQQ__Quantity__c = qte;
-        quoteLineInstance.SBQQ__DefaultSubscriptionTerm__c = null;
-        quoteLineInstance.SBQQ__ListPrice__c = price;
-        quoteLineInstance.SBQQ__CustomerPrice__c = price;
-        quoteLineInstance.SBQQ__NetPrice__c = price;
-        quoteLineInstance.SBQQ__SpecialPrice__c = price;
-        quoteLineInstance.SBQQ__Quote__c = quoteId;
-        quoteLineInstance.SBQQ__PricebookEntryId__c = pricebookEntryId;
-        quoteLineInstance.SBQQ__PricingMethod__c = 'List';
-        quoteLineInstance.SBQQ__SubscriptionPricing__c = null;
-        quoteLineInstance.SBQQ__ChargeType__c ='Recurring';
-        quoteLineInstance.SBQQ__BillingType__c = 'Advance';
-        quoteLineInstance.SBQQ__BillingFrequency__c ='Invoice Plan';
-        return quoteLineInstance;
-    }
 
-    public static LPCR_RessourceFamille__c createRessourceFamille(Id productId, Id accId,Id recordTypeID,String name,Decimal price){
+        public static LPCR_RessourceFamille__c createRessourceFamille(Id productId, Id userId,String name,Decimal price){
          return new LPCR_RessourceFamille__c(   LPCR_DateDebut__c = date.today(),
-                                                LPCR_CompteFamille__c=accId,
+                                                LPCR_CompteFamille__c=userId,
                                                 LPCR_Produit__c=productId,
-                                                RecordTypeId=recordTypeID,
                                                 LPCR_TauxMensuel__c=price,
                                                 Name=name);
     } 
 
-
-    //--- End Ayoub's Part
     
+    //--- End Ayoub's Part
+
     //This part of code is added by hanae on the 09/03/2020
     public static List<LPCR_Preinscription__c> createPreinscription(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i=0;i<numPrei;i++){
             LPCR_Preinscription__c  pre = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
-                                                                      LPCR_PrenomEnfant__c=prenomEnfant,	
-                                                                      NomEnfant__c=nomEnfant,	
-                                                                      LPCR_Statut__c = statut,
-                                                                      LPCR_ContactEnfant__c=contactId);	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_Statut__c = statut,
+                                                                            LPCR_ContactEnfant__c=contactId);	
             preinscriptions.add(pre);
         }
         
         return preinscriptions;	
     }
-    
+
     //--- End of Hanae's part
-    
+
     
     public static List<LPCR_Preinscription__c> createPreinscriptions(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i=0;i<numPrei;i++){
             LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteFamille__c=compteFamilleId,	
-                                                                     LPCR_PrenomEnfant__c=prenomEnfant,	
-                                                                     NomEnfant__c=nomEnfant,	
-                                                                     LPCR_Statut__c = statut,
-                                                                     LPCR_ContactEnfant__c=contactId);	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_Statut__c = statut,
+                                                                            LPCR_ContactEnfant__c=contactId);	
+            preinscriptions.add(pre);
+        }
+        
+        return preinscriptions;	
+    }
+    public static List<LPCR_Preinscription__c> createPreinscForEntreprise(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id entrepriseAccountId,Id contactId){	
+        List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
+        for(Integer i=0;i<numPrei;i++){
+            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteEntreprise__c= entrepriseAccountId,	
+                                                                            LPCR_PrenomEnfant__c= prenomEnfant,	
+                                                                            NomEnfant__c= nomEnfant,	
+                                                                            LPCR_Statut__c = statut,
+                                                                            LPCR_ContactEnfant__c=contactId);	
             preinscriptions.add(pre);
         }
         
@@ -568,9 +310,9 @@ newMe.FederationIdentifier = null;
     
     public static EmailTemplate createEmailTemplate(String name, String developerName, String templateType){
         return new EmailTemplate(Name = name,
-                                 DeveloperName = developerName,
-                                 TemplateType =templateType,
-                                 FolderId = UserInfo.getUserId());
+                        DeveloperName = developerName,
+                         TemplateType =templateType,
+                         FolderId = UserInfo.getUserId());
     }
     //This part of code is added by hanae on the 28/02/2020 to create Attachments and LPCR_Log__c records
     public static List<Attachment> createAttachements(Integer numAtts, String name,String body,String parentId){
@@ -607,36 +349,51 @@ newMe.FederationIdentifier = null;
     //End of the part on the same day
     
     
+
+
+    // This part is added by hanae on the 12/03/2020
+
+
+    public static LPCR_Preinscription__c createPreinscription(String nomEnfant, String prenomEnfant, String typePreinscription,Id compteFamilleId,Id contactId){	
+        LPCR_Preinscription__c  preinsciption = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,
+                                                                            LPCR_TypePreinscription__c=typePreinscription,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_ContactEnfant__c=contactId);	
+        return preinsciption;	
+    }
+
+    //End of the part on the same day
+
+
+
+
+
     /*
 public class AccountContactRelationTdf {
-
 public AccountContactRelation create(Id accountId, Id contactId) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
-
 return acr;
 }
-
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
-
 return acr;
 }
-
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles, String fonction) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
 acr.Function__c = fonction;
-
 return acr;
 }
 }
 */
     
+
 }

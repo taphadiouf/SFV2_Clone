@@ -5,7 +5,7 @@
 */
 public with sharing class SM011_RessourceFamilleServices {
   
-  public void createNewRessourceFamilleRecord(Map<Id,LPCR_RessourceFamille__c> newMapRessourceFamille,Map<Id,LPCR_RessourceFamille__c> oldMapRessourceFamille){
+  public static void createNewRessourceFamilleRecord(Map<Id,LPCR_RessourceFamille__c> newMapRessourceFamille,Map<Id,LPCR_RessourceFamille__c> oldMapRessourceFamille){
        List<LPCR_RessourceFamille__c> listRessourceFamilleToInsert = new List<LPCR_RessourceFamille__c> ();
        Date lastDayOfCurrentMonthDate=Date.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month())) ;
        Date firstDayOfNextMonthDate=Date.newInstance(Date.today().Year(), Date.today().month()+1 ,1) ;
