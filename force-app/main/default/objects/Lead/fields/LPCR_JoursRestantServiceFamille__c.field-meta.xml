@@ -2,8 +2,8 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_JoursRestantServiceFamille__c</fullName>
     <externalId>false</externalId>
-    <formula>0</formula>
-    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <formula>IF(ISBLANK(LPCR_DatePriseEnChargeServiceFamille__c),
+IF(NOT(ISBLANK( LPCR_DateTransfertServiceFamille__c )),15 - (TODAY()-DATEVALUE(LPCR_DateTransfertServiceFamille__c))  ,NULL),NULL)</formula>
     <label>Jours restant service famille</label>
     <precision>18</precision>
     <required>false</required>

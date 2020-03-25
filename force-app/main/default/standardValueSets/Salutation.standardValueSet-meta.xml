@@ -6,9 +6,21 @@
         <default>false</default>
         <label>M.</label>
     </standardValue>
-    <standardValue>
+   <standardValue>
         <fullName>Mme</fullName>
         <default>false</default>
         <label>Mme</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Mr.</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Mr.</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Mrs.</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Mrs.</label>
     </standardValue>
 </StandardValueSet>

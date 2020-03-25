@@ -126,6 +126,15 @@ newMe.FederationIdentifier = null;
         }
         return leads;
     }
+    public static List<LPCR_Structure_AO__c> createStructuresAOFromLeads(Integer numStructuresPerLead, List<Lead> leadsList){
+        List<LPCR_Structure_AO__c> structures = new List<LPCR_Structure_AO__c>();
+        for(Lead eachLead : leadsList){
+            for(Integer i = 0; i<numStructuresPerLead; i++){
+                structures.add(new LPCR_Structure_AO__c(LPCR_Lead__c = eachLead.Id));
+            }
+        }
+        return structures;
+    }
     
     public static List<Task> createTasks(Set<Id> whoIds ){
         List<Task> tasks = new List<Task>();
@@ -269,6 +278,19 @@ newMe.FederationIdentifier = null;
             LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteFamille__c=compteFamilleId,	
                                                                             LPCR_PrenomEnfant__c=prenomEnfant,	
                                                                             NomEnfant__c=nomEnfant,	
+                                                                            LPCR_Statut__c = statut,
+                                                                            LPCR_ContactEnfant__c=contactId);	
+            preinscriptions.add(pre);
+        }
+        
+        return preinscriptions;	
+    }
+    public static List<LPCR_Preinscription__c> createPreinscForEntreprise(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id entrepriseAccountId,Id contactId){	
+        List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
+        for(Integer i=0;i<numPrei;i++){
+            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteEntreprise__c= entrepriseAccountId,	
+                                                                            LPCR_PrenomEnfant__c= prenomEnfant,	
+                                                                            NomEnfant__c= nomEnfant,	
                                                                             LPCR_Statut__c = statut,
                                                                             LPCR_ContactEnfant__c=contactId);	
             preinscriptions.add(pre);
