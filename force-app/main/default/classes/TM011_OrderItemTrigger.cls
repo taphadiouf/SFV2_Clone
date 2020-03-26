@@ -15,7 +15,9 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     }
     protected override void afterInsert() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-            SM012_OrderItemServices job = new SM012_OrderItemServices(newOrderItemsMap);
+            SM012_OrderItemServices job = new SM012_OrderItemServices(newOrderItemsList);
             ID jobID = System.enqueueJob(job);
     }
+    
+    
 }
