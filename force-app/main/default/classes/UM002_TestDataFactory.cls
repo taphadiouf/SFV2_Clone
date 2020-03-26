@@ -116,8 +116,6 @@ newMe.FederationIdentifier = null;
         
         return usr;
     }
-    
-    
     public static List<Lead> createLeads(Integer numLeads, String recTypeId, String lastName, String company, String status,String Email){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0;i<numLeads;i++){
