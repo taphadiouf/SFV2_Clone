@@ -43,6 +43,13 @@
         <value>Creche</value>
     </labels>
     <labels>
+        <fullName>LPCR_DocLPCR</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_DocLPCR</shortDescription>
+        <value>Document LPCR</value>
+    </labels>
+    <labels>
         <fullName>LPCR_EnCours</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -110,6 +117,13 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LPCR_ResultS</shortDescription>
+        <value>Sent</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Sent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Sent</shortDescription>
         <value>Sent</value>
     </labels>
 </CustomLabels>
