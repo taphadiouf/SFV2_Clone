@@ -77,6 +77,7 @@ public with sharing class UM002_TestDataFactory {
             User me;
             /*
 User me = EM001_User.dataManager.getListByIdsWithRoleAndProfile(new Set<Id>{UserInfo.getUserId()}).get(0);
+
 String s = ((Datetime.now()+'').replace(' ','')).replace(':','');
 Datetime dt = Datetime.now();
 User newMe = me.clone();
@@ -105,7 +106,7 @@ newMe.FederationIdentifier = null;
         if(usr==null){
             Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
             
-            String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
+            String uniqueUserName = 'standarduser' +Integer.valueof((Math.random() * 10000))+ DateTime.now().millisecond() + '@testorg.com';            
             usr = new User(Alias = 'testusr', Email = uniqueUserName,
                            EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
                            LocaleSidKey = 'en_US', ProfileId = prof.Id,
@@ -255,6 +256,11 @@ newMe.FederationIdentifier = null;
     
     public static Contract createContract(Id accountID){	
         Contract  contract = new Contract(AccountID = accountID);	
+        return contract;	
+    }	
+    
+    public static Contract createContract(Id accountID,Id quoteId, Id orderId){	
+        Contract  contract = new Contract(AccountID = accountID,SBQQ__Quote__c=quoteId,SBQQ__Order__c =orderId);	
         return contract;	
     }	
     
@@ -498,7 +504,7 @@ newMe.FederationIdentifier = null;
         cpqQuote.SBQQ__Primary__c = false;
         cpqQuote.SBQQ__StartDate__c = System.Today();
         cpqQuote.SBQQ__Opportunity2__c = opportunityId;
-        cpqQuote.SBQQ__SubscriptionTerm__c = null;
+        cpqQuote.SBQQ__SubscriptionTerm__c = 12;
         cpqQuote.SBQQ__BillingFrequency__c = 'Invoice Plan';
         cpqQuote.SBQQ__Account__c = accountId;
         cpqQuote.SBQQ__Type__c = type;
@@ -515,7 +521,7 @@ newMe.FederationIdentifier = null;
         quoteLineInstance.SBQQ__StartDate__c = System.Today();
         quoteLineInstance.SBQQ__Product__c = productId;
         quoteLineInstance.SBQQ__Quantity__c = qte;
-        quoteLineInstance.SBQQ__DefaultSubscriptionTerm__c = null;
+        //quoteLineInstance.SBQQ__DefaultSubscriptionTerm__c = null;
         quoteLineInstance.SBQQ__ListPrice__c = price;
         quoteLineInstance.SBQQ__CustomerPrice__c = price;
         quoteLineInstance.SBQQ__NetPrice__c = price;
@@ -523,7 +529,7 @@ newMe.FederationIdentifier = null;
         quoteLineInstance.SBQQ__Quote__c = quoteId;
         quoteLineInstance.SBQQ__PricebookEntryId__c = pricebookEntryId;
         quoteLineInstance.SBQQ__PricingMethod__c = 'List';
-        quoteLineInstance.SBQQ__SubscriptionPricing__c = null;
+        //quoteLineInstance.SBQQ__SubscriptionPricing__c = null;
         quoteLineInstance.SBQQ__ChargeType__c ='Recurring';
         quoteLineInstance.SBQQ__BillingType__c = 'Advance';
         quoteLineInstance.SBQQ__BillingFrequency__c ='Invoice Plan';
@@ -616,32 +622,51 @@ newMe.FederationIdentifier = null;
     
     //End of the part on the same day
     
-    
+    // This part is added by hanae on the 12/03/2020
+
+
+    public static LPCR_Preinscription__c createPreinscription(String nomEnfant, String prenomEnfant, String typePreinscription,Id compteFamilleId,Id contactId){	
+        LPCR_Preinscription__c  preinsciption = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,
+                                                                            LPCR_TypePreinscription__c=typePreinscription,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_ContactEnfant__c=contactId);	
+        return preinsciption;	
+    }
+
+    //End of the part on the same day
+
+
     /*
 public class AccountContactRelationTdf {
+
 public AccountContactRelation create(Id accountId, Id contactId) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
+
 return acr;
 }
+
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
+
 return acr;
 }
+
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles, String fonction) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
 acr.Function__c = fonction;
+
 return acr;
 }
 }
 */
     
-
 }
