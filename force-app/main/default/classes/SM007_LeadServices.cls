@@ -5,6 +5,9 @@
 */
 public class SM007_LeadServices {
     
+    public static Set<Id> opportunitiesIds;
+    public static Set<Id> accountsIds;
+    public static Set<Id> contactsIds;
     public static void syncRecordTypesWithLeads(List<Lead> leadsList){
         //Map : target Object API Name => (Map : Lead recordtype developerName =>  target Recordtype DeveloperName)
         Map<String, Map<String, String>> leadRtToTargetRtMap = new Map<String, Map<String, String>>();
@@ -52,12 +55,17 @@ public class SM007_LeadServices {
         //End Map def
         
         //This loop populates opportunitiesMap, accountsMap and  contactsMap with the mapping between (target record Id) => (Lead recordtypeId)
-        for(Lead eachLead : leadsList){ 
-            targetIdToLeadRtIdMap.get('Opportunity').put(eachLead.convertedOpportunityId, eachLead.recordTypeId);
-            targetIdToLeadRtIdMap.get('Account').put(eachLead.convertedAccountId, eachLead.recordTypeId);
-            targetIdToLeadRtIdMap.get('Contact').put(eachLead.convertedContactId, eachLead.recordTypeId);
+        for(Lead eachLead : leadsList){
+            if(SM007_LeadServices.opportunitiesIds != null && SM007_LeadServices.opportunitiesIds.contains(eachLead.convertedOpportunityId)){
+                targetIdToLeadRtIdMap.get('Opportunity').put(eachLead.convertedOpportunityId, eachLead.recordTypeId);
+            } 
+            if(SM007_LeadServices.accountsIds != null && SM007_LeadServices.accountsIds.contains(eachLead.convertedAccountId)){
+                targetIdToLeadRtIdMap.get('Account').put(eachLead.convertedAccountId, eachLead.recordTypeId);               
+            }
+            if(SM007_LeadServices.contactsIds != null && SM007_LeadServices.contactsIds.contains(eachLead.convertedContactId)){
+                targetIdToLeadRtIdMap.get('Contact').put(eachLead.convertedContactId, eachLead.recordTypeId);
+            }
         }
-        
         Map<String, List<SObject>> targetRecordsMap = new Map<String, List<SObject>>();
         Set<String> targetFields = new Set<String>();
         targetFields.add('RecordTypeId');
@@ -80,6 +88,7 @@ public class SM007_LeadServices {
             }
             recordsToUpdate.addAll(targetRecordsMap.get(eachObjectName));
         }
+        System.debug(recordsToUpdate.size());
         update recordsToUpdate;
         
     }

@@ -27,23 +27,32 @@ public class SM007_LeadServices_Test {
         insert UM002_TestDataFactory.createStructuresAOFromLeads(3, aoPartenaireLeads);
     }     
     
-    //Test the method syncOppRecordType from SM007_LeadServices.syncOppRecordType method indirectly by using the Lead before update trigger
     @isTest
-    private static void syncOppRecordType_Test(){
-        List<Lead> entrepriseLeads = [SELECT Id,RecordTypeId FROM Lead WHERE Name = 'entrepriseLead'];
-        List<Lead> aoPublicReservLeads = [SELECT Id,RecordTypeId FROM Lead WHERE Name = 'aoPublicReservLeads'];
-        List<Lead> aoPublicDSPLeads = [SELECT Id,RecordTypeId FROM Lead WHERE Name = 'aoPublicDSPLeads'];
-        List<Lead> partenaireLeads = [SELECT Id,RecordTypeId FROM Lead WHERE Name = 'aoPartenaireLeads'];
-        
-        List<Lead> allLeads = new List<Lead>();
-        allLeads.addAll(entrepriseLeads);
-        allLeads.addAll(aoPublicReservLeads);
-        allLeads.addAll(aoPublicDSPLeads);
-        allLeads.addAll(partenaireLeads);
+    public static void syncLeadEntrepriseRT(){
+        syncLeadRT('Entreprise');
+    }
+    @isTest
+    public static void syncLeadPartenaireRT(){
+        syncLeadRT('Partenaire');
+    }
+    @isTest
+    public static void syncLeadAOPubDSPRT(){
+        syncLeadRT('AO_PublicDSP');
+    }
+    @isTest
+    public static void syncLeadAOPubReservRT(){
+        syncLeadRT('AO_PublicReservation');
+    }
+    private static void syncLeadRT(String leadRTName){
+        LPCR_LeadConversionRTMapping__mdt convMappingRecord = [SELECT Id, LPCR_LeadRT__c, LPCR_OpportunityRT__c, LPCR_AccountRT__c, LPCR_ContactRT__c
+                                                                FROM LPCR_LeadConversionRTMapping__mdt
+                                                                WHERE LPCR_LeadRT__c = :leadRTName];
+        Id leadRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', leadRTName);
+        List<Lead> leadsRecords = [SELECT Id,RecordTypeId FROM Lead WHERE RecordTypeId = :leadRTId];
         LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
         List<Database.LeadConvert> leadsToConvert = new List<Database.LeadConvert>();
         Database.LeadConvert tempLc;
-        for(Lead eachLead : allLeads){
+        for(Lead eachLead : leadsRecords){
             tempLc = new Database.LeadConvert();
             tempLc.setLeadId(eachLead.id);
             tempLc.setDoNotCreateOpportunity(false);
@@ -56,22 +65,23 @@ public class SM007_LeadServices_Test {
             for(Database.LeadConvertResult eachResult : lcr){
                 System.assert(eachResult.isSuccess());
             }
-            Id entrepriseOppRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity', 'Entreprise');
-            Id aoPubReservOppRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity', 'AOPublicReservation');
-            Id aoPubDSPOppRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity', 'AOPublicDSP');
-            Id partenaireOppRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity', 'Partenaire');
+            Id opportunityRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity', convMappingRecord.LPCR_OpportunityRT__c);
+            Id accountRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account', convMappingRecord.LPCR_AccountRT__c);
+            Id contactRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contact', convMappingRecord.LPCR_ContactRT__c);
+
             
-            List<Opportunity> entrepriseOpps = [SELECT Id FROM Opportunity WHERE RecordTypeId = :entrepriseOppRecTypeId];
-            List<Opportunity> aoPubReservOpps = [SELECT Id FROM Opportunity WHERE RecordTypeId = :aoPubReservOppRecTypeId];
-            List<Opportunity> aoPubDSPOpps = [SELECT Id FROM Opportunity WHERE RecordTypeId = :aoPubDSPOppRecTypeId];
-            List<Opportunity> partenaireOpps = [SELECT Id FROM Opportunity WHERE RecordTypeId = :aoPubDSPOppRecTypeId];
-            System.assertEquals(entrepriseLeads.size(), entrepriseOpps.size());
-            System.assertEquals(aoPublicReservLeads.size(), aoPubReservOpps.size());
-            System.assertEquals(partenaireLeads.size(), partenaireOpps.size());
+            List<Opportunity> opporunitiesRslts = [SELECT Id FROM Opportunity WHERE RecordTypeId = :opportunityRecTypeId];
+            List<Account> accountsRslts = [SELECT Id FROM Account WHERE RecordTypeId = :accountRecTypeId];
+            List<Contact> contactsRslts = [SELECT Id FROM Contact WHERE RecordTypeId = :contactRecTypeId];
+
+            System.assertEquals(leadsRecords.size(), opporunitiesRslts.size());
+            System.assertEquals(leadsRecords.size(), accountsRslts.size());
+            System.assertEquals(leadsRecords.size(), contactsRslts.size());
             
         }
-        Test.stopTest();
+        Test.stopTest();                                                            
     }
+
     
     //Test the method syncOppRecordType from SM007_LeadServices.linkStructureAOsToOpps method indirectly by using the Lead before update trigger
     @isTest 
@@ -113,4 +123,55 @@ public class SM007_LeadServices_Test {
         System.assertEquals(600, structuresWithOpp.size());
         Test.stopTest();
     }
+    /*
+    //Test the method syncOppRecordType from SM007_LeadServices.syncOppRecordType method indirectly by using the Lead before update trigger
+    @isTest
+    private static void syncOppRecordType_Test(){
+        List<Lead> entrepriseLeads = [SELECT Id,RecordTypeId FROM Lead WHERE Name = 'entrepriseLead'];
+        List<Lead> aoPublicReservLeads = [SELECT Id,RecordTypeId FROM Lead WHERE Name = 'aoPublicReservLeads'];
+        List<Lead> aoPublicDSPLeads = [SELECT Id,RecordTypeId FROM Lead WHERE Name = 'aoPublicDSPLeads'];
+        List<Lead> partenaireLeads = [SELECT Id,RecordTypeId FROM Lead WHERE Name = 'aoPartenaireLeads'];
+        
+        List<Lead> allLeads = new List<Lead>();
+        allLeads.addAll(entrepriseLeads);
+        allLeads.addAll(aoPublicReservLeads);
+        //allLeads.addAll(aoPublicDSPLeads);
+        //allLeads.addAll(partenaireLeads);
+        System.debug('allLeads '+ allLeads);
+        System.debug(allLeads.size());
+        LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
+        List<Database.LeadConvert> leadsToConvert = new List<Database.LeadConvert>();
+        Database.LeadConvert tempLc;
+        for(Lead eachLead : allLeads){
+            tempLc = new Database.LeadConvert();
+            tempLc.setLeadId(eachLead.id);
+            tempLc.setDoNotCreateOpportunity(false);
+            tempLc.setConvertedStatus(convertStatus.MasterLabel);
+            leadsToConvert.add(tempLc);
+        }
+        System.debug('leadsToConvert ' + leadsToConvert);
+        System.debug(leadsToConvert.size());
+        Test.startTest();
+        System.runAs(UM002_TestDataFactory.createUser()){
+            List<Database.LeadConvertResult> lcr = Database.convertLead(leadsToConvert);
+            for(Database.LeadConvertResult eachResult : lcr){
+                System.assert(eachResult.isSuccess());
+            }
+            Id entrepriseOppRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity', 'Entreprise');
+            Id aoPubReservOppRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity', 'AOPublicReservation');
+            Id aoPubDSPOppRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity', 'AOPublicDSP');
+            Id partenaireOppRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity', 'Partenaire');
+            
+            List<Opportunity> entrepriseOpps = [SELECT Id FROM Opportunity WHERE RecordTypeId = :entrepriseOppRecTypeId];
+            List<Opportunity> aoPubReservOpps = [SELECT Id FROM Opportunity WHERE RecordTypeId = :aoPubReservOppRecTypeId];
+            List<Opportunity> aoPubDSPOpps = [SELECT Id FROM Opportunity WHERE RecordTypeId = :aoPubDSPOppRecTypeId];
+            List<Opportunity> partenaireOpps = [SELECT Id FROM Opportunity WHERE RecordTypeId = :aoPubDSPOppRecTypeId];
+            System.assertEquals(entrepriseLeads.size(), entrepriseOpps.size());
+            System.assertEquals(aoPublicReservLeads.size(), aoPubReservOpps.size());
+            System.assertEquals(partenaireLeads.size(), partenaireOpps.size());
+            
+        }
+        Test.stopTest();
+    }
+    */
 }
