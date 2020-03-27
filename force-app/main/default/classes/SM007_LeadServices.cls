@@ -46,4 +46,20 @@ public class SM007_LeadServices {
         }
         insert liensCrechesLeads;
     }
+    public static void linkStructureAOsToOpps(List<Lead> convertedLeadsList){
+        Id aoPublicReservationRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'AO_PublicReservation');
+        Id aoPublicDSPRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'AO_PublicDSP');
+        
+        Map<Id, Lead> wantedLeadsMap = new Map<Id, Lead>();
+        for(Lead eachLead : convertedLeadsList){
+            if(!String.isEmpty(eachLead.recordTypeId) && (eachLead.recordTypeId.equals(aoPublicReservationRT) || eachLead.recordTypeId.equals(aoPublicDSPRT))){
+                wantedLeadsMap.put(eachLead.id, eachLead);
+            }
+        }
+        List<LPCR_Structure_AO__c> aoStructures = EM009_StructureAOEntity.getStructuresAOByLeads(wantedLeadsMap.keySet());
+        for(LPCR_Structure_AO__c eachStructureAO : aoStructures){
+            eachStructureAO.opportunite__c = wantedLeadsMap.get(eachStructureAO.LPCR_Lead__c).convertedOpportunityId;
+        }
+        update aoStructures;
+    }
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Enjeux__c</fullName>
+    <externalId>false</externalId>
+    <label>Enjeux</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Qualité de vie au travail</fullName>
+                <default>false</default>
+                <label>Qualité de vie au travail</label>
+            </value>
+            <value>
+                <fullName>Efficacité /engagement des collaborateurs</fullName>
+                <default>false</default>
+                <label>Efficacité /engagement des collaborateurs</label>
+            </value>
+            <value>
+                <fullName>Fidélisation des talents</fullName>
+                <default>false</default>
+                <label>Fidélisation des talents</label>
+            </value>
+            <value>
+                <fullName>Amélioration de la marque employeur</fullName>
+                <default>false</default>
+                <label>Amélioration de la marque employeur</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>
