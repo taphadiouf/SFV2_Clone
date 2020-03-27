@@ -613,7 +613,21 @@ newMe.FederationIdentifier = null;
     
     //End of the part on the same day
     
-    
+    // This part is added by hanae on the 12/03/2020
+
+
+    public static LPCR_Preinscription__c createPreinscription(String nomEnfant, String prenomEnfant, String typePreinscription,Id compteFamilleId,Id contactId){	
+        LPCR_Preinscription__c  preinsciption = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
+                                                                            LPCR_PrenomEnfant__c=prenomEnfant,
+                                                                            LPCR_TypePreinscription__c=typePreinscription,	
+                                                                            NomEnfant__c=nomEnfant,	
+                                                                            LPCR_ContactEnfant__c=contactId);	
+        return preinsciption;	
+    }
+
+    //End of the part on the same day
+
+
     /*
 public class AccountContactRelationTdf {
 
