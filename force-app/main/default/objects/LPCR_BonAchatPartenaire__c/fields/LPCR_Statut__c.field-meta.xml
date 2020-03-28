@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_AmplitudeHoraireVendredi1__c</fullName>
+    <fullName>LPCR_Statut__c</fullName>
     <externalId>false</externalId>
-    <label>Amplitude horaire vendredi Enfant</label>
+    <label>Statut</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -13,19 +11,24 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Matin</fullName>
+                <fullName>En cours</fullName>
                 <default>false</default>
-                <label>Matin</label>
+                <label>En cours</label>
             </value>
             <value>
-                <fullName>Après-midi</fullName>
+                <fullName>Annulé</fullName>
                 <default>false</default>
-                <label>Après-midi</label>
+                <label>Annulé</label>
             </value>
             <value>
-                <fullName>Journée entière</fullName>
+                <fullName>Résilié</fullName>
                 <default>false</default>
-                <label>Journée entière</label>
+                <label>Résilié</label>
+            </value>
+            <value>
+                <fullName>Terminé</fullName>
+                <default>false</default>
+                <label>Terminé</label>
             </value>
         </valueSetDefinition>
     </valueSet>

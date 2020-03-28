@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Account Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Crèche</layout>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Entreprise</layout>
+        <sections>
+            <label><!-- Facturation --></label>
+            <section>Facturation</section>
+        </sections>
+        <sections>
+            <label><!-- Informations sur la préinscripton --></label>
+            <section>Informations sur la préinscripton</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+        <sections>
+            <label><!-- Purchase Order --></label>
+            <section>Purchase Order</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Famille</layout>
+        <sections>
+            <label><!-- Informations CAF --></label>
+            <section>Informations CAF</section>
+        </sections>
+        <sections>
+            <label><!-- Informations Financières --></label>
+            <section>Informations Financières</section>
+        </sections>
+        <sections>
+            <label><!-- Informations Système --></label>
+            <section>Informations Système</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Partenaire</layout>
+        <sections>
+            <label><!-- Champs --></label>
+            <section>Champs</section>
+        </sections>
+        <sections>
+            <label><!-- Informations Crèche --></label>
+            <section>Informations Crèche</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Nouvelle Demande Réseau Grandir --></label>
+        <name>NouvelleDemandeReseauGrandir</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Adobe Sign --></label>
+        <name>echosign_dev1__EchoSign_Account_Publisher_Action</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Crèche --></label>
+        <name>Creche</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Entreprise --></label>
+        <name>Entreprise</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Famille --></label>
+        <name>Famille</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Partenaire --></label>
+        <name>Partenaire</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Veuillez renseigner le prestataire actuel --></errorMessage>
+        <name>VR_Compte_AutrePrestataire</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- MAJ_Preinscriptions --></label>
+        <name>MAJ_Preinscriptions</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Amend_Assets --></label>
+        <name>SBQQ__Amend_Assets</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Renew_Assets --></label>
+        <name>SBQQ__Renew_Assets</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreditCenter --></label>
+        <name>blng__CreditCenter</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- PaymentVirtualTerminal --></label>
+        <name>blng__PaymentVirtualTerminal</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Refund --></label>
+        <name>blng__Refund</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_to_EchoSign --></label>
+        <name>echosign_dev1__Send_to_EchoSign</name>
+    </webLinks>
+</CustomObjectTranslation>
