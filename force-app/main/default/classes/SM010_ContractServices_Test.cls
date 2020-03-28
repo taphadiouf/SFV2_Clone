@@ -1,0 +1,95 @@
+/**
+* @author Ayoub Ouarti
+* @created 23/03/2020
+* @description Test Class for SM010_ContractServices
+*/
+@isTest
+public class SM010_ContractServices_Test {
+    
+    @testsetup
+    static void setup(){
+        Id standardPricebookId = Test.getStandardPricebookId();
+        
+        UM002_TestDataFactory.insertBillingCustomSettings();
+        
+        blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+        
+        blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+        
+        blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+        
+        blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
+        
+        Account acc = UM002_TestDataFactory.createAccounts(1,'test').get(0);
+        acc.SBQQ__RenewalModel__c ='Contract Based';
+        insert acc;
+        
+        Opportunity opp = UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
+        insert opp;
+        SBQQ__Quote__c quote = UM002_TestDataFactory.createQuote('test',opp.Id, acc.Id, standardPricebookId, 'Quote');
+        
+        quote.SBQQ__Primary__c =true;
+        insert quote;
+                
+        Product2 prod = UM002_TestDataFactory.createProduct('test', billingRule.Id, revRecRule.Id,taxRule.Id );
+        prod.SBQQ__SubscriptionPricing__c ='Fixed Price';
+        insert prod;
+        
+        PricebookEntry priceBookEntry1 = UM002_TestDataFactory.createPricebookEntry(standardPricebookId,prod.Id);
+        insert priceBookEntry1;
+        
+        SBQQ__QuoteLine__c quoteLine = UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, priceBookEntry1.Id, 200,1);
+        insert quoteLine;
+        opp.SBQQ__PrimaryQuote__c =quote.Id;
+        update opp;
+        
+        quote.SBQQ__Ordered__c  = true; 
+        quote.LPCR_RenouvellementConvenu__c='Oui';
+        update quote;
+        
+        Order order = Database.query('SELECT Id ,SBQQ__Contracted__c , Status ,OpportunityId,EffectiveDate FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
+        order.status ='Activated';
+        update order;
+        
+        
+    }
+    
+    
+    @isTest
+    private static void testSetContractFields(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date lastMonth=Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day()+1) ;
+            Account acc = [SELECT Id, name from Account where name ='test' ];
+            
+            SBQQ__Quote__c quote = Database.query('SELECT Id FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
+            Order order = Database.query('SELECT Id , Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
+            
+            Test.startTest();
+            
+            order.SBQQ__Contracted__c=true; 
+            update order;
+            
+            Contract contract =null; 
+           try{
+                contract = [SELECT Id,SBQQ__Order__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
+                            WHERE SBQQ__Order__c =:order.Id ]; 
+            }catch(Exception e){
+                system.debug('Error , Contract not get generated');
+                contract = UM002_TestDataFactory.createContract(acc.Id,quote.Id,order.Id);
+            }
+           
+            contract.LPCR_RenouvellementAutomatique__c=true;
+            contract.StartDate=lastMonth;
+            contract.ContractTerm =1;
+            contract.SBQQ__RenewalQuoted__c=false;
+            upsert contract;
+        
+            Test.stopTest();
+            contract = [SELECT Id,SBQQ__Order__c,LPCR_RenouvellementConvenu__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
+                        WHERE SBQQ__Order__c =:order.Id ]; 
+            System.assertNotEquals(null, contract.LPCR_RenouvellementConvenu__c,'LPCR_RenouvellementConvenu__c is null');
+            
+        }
+    }
+    
+}
