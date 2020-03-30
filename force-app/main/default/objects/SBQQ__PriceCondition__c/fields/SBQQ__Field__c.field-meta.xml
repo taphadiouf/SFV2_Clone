@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__Field__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Field on Quote Line or Product Option object that is evaluated by this condition.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Sélectionnez le champ qui doit contenir la valeur que vous saisissez dans le champ Valeur.</inlineHelpText>
+    <label>Field</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Product Code</fullName>
+                <default>false</default>
+                <label>Product Code</label>
+            </value>
+            <value>
+                <fullName>LPCR_Creche__c</fullName>
+                <default>false</default>
+                <label>LPCR_Creche__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeFacturation__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeFacturation__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__BillingFrequency__c</fullName>
+                <default>false</default>
+                <label>SBQQ__BillingFrequency__c</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
