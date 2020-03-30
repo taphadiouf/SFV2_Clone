@@ -300,8 +300,8 @@
     <relatedLists>
         <fields>NAME</fields>
         <fields>LPCR_Statut__c</fields>
-        <fields>LPCR_DateDebut__c</fields>
-        <fields>LPCR_DateFin__c</fields>
+        <fields>LPCR_DateDebutPrestation__c</fields>
+        <fields>LPCR_DateFinPrestation__c</fields>
         <fields>LPCR_NombreJoursSemaine__c</fields>
         <fields>LPCR_PrixAchat__c</fields>
         <relatedList>LPCR_BonAchatPartenaire__c.LPCR_Demande__c</relatedList>
