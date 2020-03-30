@@ -17,6 +17,7 @@
         <members>SBQQ__QuoteLine__c.LPCR_Region__c</members>
         <members>Account.LPCR_TypeEntreprise__c</members>
         <members>SBQQ__Quote__c.LPCR_TypeEntreprise__c</members>
+        <members>SBQQ__Quote__c.LPCR_Creche__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_Majoration__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_PrixBerceau__c</members>
         <members>SBQQ__ProductOption__c.LPCR_JoursSemaine__c</members>
@@ -90,13 +91,30 @@
         <members>LPCR_TablePrix__c</members>
         <members>LPCR_RessourceFamille__c</members>
         <members>LPCR_BaremeCAF__c</members>
+
+        <members>SBQQ__PriceAction__c</members>
+        <members>SBQQ__PriceCondition__c</members>
+        <members>SBQQ__LookupQuery__c</members>
+        <members>SBQQ__PriceRule__c</members>
+        <members>SBQQ__ConfigurationAttribute__c</members>
+        <members>SBQQ__Quote__c</members>
+        <members>SBQQ__ProductOption__c</members>
+
+        <members>blng__LegalEntity__c</members>
+        <members>SBQQ__QuoteLine__c</members>
+
+        <members>SBQQ__Subscription__c</members>
+        <members>blng__InvoiceLine__c</members>
+
+
         <name>CustomObject</name>
     </types>
-
+<!--
     <types>
         <members>SBQQ__Quote__c.LPCR_ValidationPrix</members>
         <name>ApprovalProcess</name>
     </types>
+-->
 
     <types>
         <members>SBQQ__Quote__c.LPCR_StatutBrouillon</members>
@@ -117,5 +135,45 @@
     <name>EmailTemplate</name>
     </types>
 
+    <types>
+    <members>LPCR_TablePrix__c.ALSH</members>
+    <members>LPCR_TablePrix__c.B2B</members>
+    <members>LPCR_TablePrix__c.Micro</members>
+    <members>SBQQ__ConfigurationAttribute__c.SBQQ__Configuration_Attribute</members>
+    <members>SBQQ__ConfigurationAttribute__c.SBQQ__Global_Attribute</members>
+    <members>SBQQ__Quote__c.Contrat_Accueil</members>
+    <members>SBQQ__Quote__c.Reservataire</members>
+    <name>RecordType</name>
+  </types>
+
+    <types>
+        <members>LPCR_JoursSemaine</members>
+        <members>LPCR_Region</members>
+        <members>LPCR_TrancheALSH</members>
+        <members>LPCR_TypeAccueilALSH</members>
+        <members>LPCR_TypeEntreprise</members>
+        <name>GlobalValueSet</name>
+    </types>
+
+    <types>
+    <members>LPCR_75015MICRO</members>
+    <members>LPCR_77MicroAutres</members>
+    <members>LPCR_AnouckGuihot</members>
+    <members>LPCR_ApprobateursPrix</members>
+    <members>LPCR_AubinSalon</members>
+    <members>LPCR_ClementineCourrier</members>
+    <members>LPCR_ElodieRault</members>
+    <members>LPCR_FatimalLaid</members>
+    <members>LPCR_JimmyBuffo</members>
+    <members>LPCR_LeadsNonAssignes</members>
+    <members>LPCR_Management</members>
+    <members>LPCR_MarionVoiry</members>
+    <members>LPCR_MichaelRosilio</members>
+    <members>LPCR_NabilaHouat</members>
+    <members>LPCR_ParentExterieurPSU</members>
+    <members>LPCR_RidaHabla</members>
+    <members>LPCR_ServiceFamille</members>
+    <name>Queue</name>
+    </types>
     <version>48.0</version>
 </Package>
