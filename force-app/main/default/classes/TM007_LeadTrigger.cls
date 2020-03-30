@@ -14,6 +14,11 @@ public class TM007_LeadTrigger extends TM000_TriggerHandler{
     }
     protected override void beforeUpdate() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        List<Lead> l = [SELECT Id, name, lastname,isconverted,convertedAccountId  from lead ];
+        System.debug('llll' + l);
+        System.debug('SM007_LeadServices.opportunitiesIds' + SM007_LeadServices.opportunitiesIds);
+        System.debug('SM007_LeadServices.accountsIds' + SM007_LeadServices.accountsIds);
+        System.debug('SM007_LeadServices.contactsIds' + SM007_LeadServices.contactsIds);
         List<Lead> convertedLeadsList = new List<Lead>();
         for(Lead eachLead : newLeadsList){
             if(eachLead.isConverted){
@@ -21,8 +26,7 @@ public class TM007_LeadTrigger extends TM000_TriggerHandler{
             }
         }
         if(!convertedLeadsList.isEmpty()){
-            SM007_LeadServices.syncOppRecordType('Entreprise', 'Entreprise', convertedLeadsList);
-            SM007_LeadServices.syncOppRecordType('AO_PublicReservation', 'AOPublicReservation', convertedLeadsList);
+            SM007_LeadServices.syncRecordTypesWithLeads(convertedLeadsList);
             SM007_LeadServices.linkStructureAOsToOpps(convertedLeadsList);
         }
         

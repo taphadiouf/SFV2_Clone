@@ -3,7 +3,10 @@
 * @date 25/02/2020
 * @description SOQL Queries about Opportunity
 */
-public with sharing class EM004_OpportunityEntity {
+public with sharing class EM004_OpportunityEntity extends EM001_AbstractObjectEntity{
+    public EM004_OpportunityEntity(){
+        super('Opportunity');
+    }
 public static List<Opportunity> getOppsByIds(Set<Id> oppsIds) {
         return [SELECT Id, RecordTypeId FROM Opportunity WHERE Id IN :oppsIds];
     }
