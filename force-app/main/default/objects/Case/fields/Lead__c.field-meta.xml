@@ -3,6 +3,7 @@
     <fullName>Lead__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
+    <inlineHelpText>Veuillez renseigner un lead ou un contact enfant</inlineHelpText>
     <label>Lead</label>
     <referenceTo>Lead</referenceTo>
     <relationshipLabel>DemandeRG</relationshipLabel>

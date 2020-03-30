@@ -10,6 +10,13 @@
     </caseValues>
     <gender>Masculine</gender>
     <layouts>
+        <layout>AO Privé</layout>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <layouts>
         <layout>AO Public DSP</layout>
         <sections>
             <label><!-- Commentaire --></label>
@@ -86,6 +93,13 @@
         </sections>
     </layouts>
     <layouts>
+        <layout>Lead Layout</layout>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <layouts>
         <layout>Partenaire</layout>
         <sections>
             <label><!-- Contact --></label>
@@ -119,6 +133,10 @@
     <quickActions>
         <label><!-- Créer Lead Entreprise 2 --></label>
         <name>CreerLeadEntreprise2</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Nouvelle Demande Réseau Grandir --></label>
+        <name>NouvelleDemandeReseauGrandir</name>
     </quickActions>
     <quickActions>
         <label><!-- Adobe Sign --></label>
