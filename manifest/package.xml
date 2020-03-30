@@ -74,7 +74,6 @@
         <members>LPCR_BaremeCAF__c.LPCR_RessourcePlafond__c</members>
         <members>LPCR_BaremeCAF__c.LPCR_RessourcePlancher__c</members>
         <members>LPCR_BaremeCAF__c.LPCR_TauxEffortParEnfant__c</members>
-
         <members>SBQQ__ConfigurationAttribute__c.SBQQ__TargetField__c</members>
         <members>SBQQ__PriceRule__c.SBQQ__LookupObject__c</members>
         <members>SBQQ__LookupQuery__c.SBQQ__TestedField__c</members>
@@ -82,8 +81,6 @@
         <members>SBQQ__PriceAction__c.SBQQ__Field__c</members>
         <members>SBQQ__PriceAction__c.SBQQ__SourceLookupField__c</members>
         <members>SBQQ__PriceCondition__c.SBQQ__Field__c</members>
-
-
         <name>CustomField</name>
     </types>
 
@@ -91,7 +88,6 @@
         <members>LPCR_TablePrix__c</members>
         <members>LPCR_RessourceFamille__c</members>
         <members>LPCR_BaremeCAF__c</members>
-
         <members>SBQQ__PriceAction__c</members>
         <members>SBQQ__PriceCondition__c</members>
         <members>SBQQ__LookupQuery__c</members>
@@ -99,10 +95,8 @@
         <members>SBQQ__ConfigurationAttribute__c</members>
         <members>SBQQ__Quote__c</members>
         <members>SBQQ__ProductOption__c</members>
-
         <members>blng__LegalEntity__c</members>
         <members>SBQQ__QuoteLine__c</members>
-
         <members>SBQQ__Subscription__c</members>
         <members>blng__InvoiceLine__c</members>
 
