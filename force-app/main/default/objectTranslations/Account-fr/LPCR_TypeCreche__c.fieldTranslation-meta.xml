@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type de crèche --></label>
+    <name>LPCR_TypeCreche__c</name>
+    <picklistValues>
+        <masterLabel>ALSH</masterLabel>
+        <translation><!-- ALSH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Halte-Garderie</masterLabel>
+        <translation><!-- Halte-Garderie --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Jardin d’enfants</masterLabel>
+        <translation><!-- Jardin d’enfants --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MAC</masterLabel>
+        <translation><!-- MAC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MAF</masterLabel>
+        <translation><!-- MAF --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MICRO</masterLabel>
+        <translation><!-- MICRO --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Partenaire</masterLabel>
+        <translation><!-- Partenaire --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RAM</masterLabel>
+        <translation><!-- RAM --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
