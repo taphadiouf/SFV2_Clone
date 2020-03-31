@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_TypeReconduction__c</fullName>
+    <externalId>false</externalId>
+    <label>Type de reconduction</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>LPCR_CDDCDI__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>LPCR_TypeReconduction</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>CDD</controllingFieldValue>
+            <valueName>Express</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CDD</controllingFieldValue>
+            <valueName>Tacite</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

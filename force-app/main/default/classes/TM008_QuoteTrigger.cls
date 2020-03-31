@@ -18,4 +18,10 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
         SM008_QuoteServices.updateOppsFromQuotes(newQuotesList);
         SM008_QuoteServices.updateAccountsFromQuotes(newQuotesList);
     }
+    
+    //added by Ayoub
+    protected override void beforeInsert() {
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM008_QuoteServices.setQuoteFields(newQuotesList);
+    }
 }
