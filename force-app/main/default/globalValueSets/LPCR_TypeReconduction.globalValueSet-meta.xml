@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Express</fullName>
+        <default>true</default>
+        <label>Express</label>
+    </customValue>
+    <customValue>
+        <fullName>Tacite</fullName>
+        <default>false</default>
+        <label>Tacite</label>
+    </customValue>
+    <masterLabel>Type reconduction</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

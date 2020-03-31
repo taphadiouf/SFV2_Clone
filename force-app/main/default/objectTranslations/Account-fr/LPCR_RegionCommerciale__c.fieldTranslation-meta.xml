@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Région  commerciale --></label>
+    <name>LPCR_RegionCommerciale__c</name>
+    <picklistValues>
+        <masterLabel>Grand Ouest</masterLabel>
+        <translation><!-- Grand Ouest --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>IDF</masterLabel>
+        <translation><!-- IDF --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>LR</masterLabel>
+        <translation><!-- LR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Nord Est</masterLabel>
+        <translation><!-- Nord Est --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PACA</masterLabel>
+        <translation><!-- PACA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rhone Alpes</masterLabel>
+        <translation><!-- Rhone Alpes --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
