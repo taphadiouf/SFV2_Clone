@@ -1,0 +1,115 @@
+<!--@ author Hanae Makboub
+	* @created 17/03/2020
+	* @description VisualForce page to generate document type Annex 2 -->
+    <apex:page controller="VFC001_GenererDocAnn2" applyBodyTag="False" >
+        <apex:stylesheet value="{!$Resource.LPCR_styleAnnex2}"/>
+        <html>
+            <head> 
+                <title>Annex 2</title>
+                <apex:slds />
+            </head>
+            <body class="slds-scope">
+                <div class="slds-align_absolute-center">
+                    <apex:image id="theImage" value="{!$Resource.LPCR_logo}" width="200" height="100"/>
+                </div>
+                <div class="slds-grid slds-grid_vertical">
+                    <div class="slds-col slds-align_absolute-center slds-text-heading_large slds-text-title_bold">
+                        {!$Label.LPCR_Title1}
+                    </div>
+                </div>
+                
+                    <div class="slds-col slds-align_absolute-center slds-text-heading_large slds-text-title_bold  ">
+                        {!$Label.LPCR_Title2} 
+                    </div>
+                <br/><br/><br/><br/>
+                <div id="pageMargiin">
+                    <div id="box">
+                        <div id="insideBox">
+                            <div class="slds-text-title_bold">
+                                {!$Label.LPCR_ContratEnfant }
+                            </div>
+                            <div>
+                                {!$Label.LPCR_NomEnfant  } 
+                            </div>
+                            <div>
+                                {!$Label.LPCR_PrenomEnfant }
+                            </div>
+                            <div>
+                                {!$Label.LPCR_Identifiant}
+                            </div> 
+                        </div>
+                    </div><br/>
+                    <div style="margin-left : 2%;">
+                        <div>
+                            {!$Label.LPCR_Etablissement}
+                        </div>
+                        <div>
+                            {!$Label.LPCR_Periode}
+                        </div>
+                        <div>
+                            {!$Label.LPCR_PlanningType}
+                        </div><br/>
+                        
+                        <apex:repeat value="{!plannings}" var="pl">
+                            
+                            <table border = "1" cellpadding = "5" cellspacing = "5" id="theTable">
+                                <tr>
+                                    <th id="Intr">lun</th>
+                                    <th id="Intr">mar</th>
+                                    <th id="Intr">mer</th>
+                                    <th id="Intr">jeu</th>
+                                    <th id="Intr">ven</th>
+                                </tr>
+                                <tr>
+                                    <td id="Intd">{! pl.LPCR_HeureDebutLundi }-{! pl.LPCR_HeureFinLundi }</td>
+                                    <td id="Intd">{! pl.LPCR_HeureDebutMardi }-{! pl.LPCR_HeureFinMardi }</td>
+                                    <td id="Intd">{! pl.LPCR_HeureDebutMercredi }-{! pl.LPCR_HeureFinMercredi }</td>
+                                    <td id="Intd">{! pl.LPCR_HeureDebutJeudi }-{! pl.LPCR_HeureFinJeudi }</td>
+                                    <td id="Intd">{! pl.LPCR_HeureDebutVendredi }-{! pl.LPCR_HeureFinVendredi }</td>
+                                </tr>
+                            </table>
+                            <br/>
+                        </apex:repeat>
+                        
+                        <br/>
+                        
+                        
+                        <div class="slds-text-title_bold">
+                            <div>
+                                {!$Label.LPCR_NbrContractuelSemaine}
+                            </div><br/>
+                            <div>
+                                {!$Label.LPCR_NbrContractuelMois}
+                            </div><br/>
+                        </div>
+                        <div>
+                            {!$Label.LPCR_RessourcesM }
+                        </div>
+                        <div>
+                            {!$Label.LPCR_Taux}
+                        </div>
+                        <div>
+                            {!$Label.LPCR_Tarif}
+                        </div><br/>
+                        <div>
+                            {!$Label.LPCR_Conge}
+                        </div><br/>
+                        <div>
+                            {!$Label.LPCR_MontantM}
+                        </div>
+                        <div>
+                            Fait le:..../..../....
+                        </div><br/><br/>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-order_2 slds-large-order_1">
+                                {!$Label.LPCR_SignatureE}
+                            </div>
+                            <div class="slds-col slds-order_1 slds-large-order_2">
+                                {!$Label.LPCR_SignatureR}
+                            </div>
+                        </div><br/><br/><br/>
+                    </div>
+                </div>
+            </body>     
+        </html>
+    </apex:page>
