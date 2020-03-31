@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PresentationCompacteContratPartenaire</fullName>
+    <fields>Name</fields>
+    <fields>LPCR_Compte__c</fields>
+    <fields>LPCR_TypeContrat__c</fields>
+    <fields>LPCR_CDDCDI__c</fields>
+    <fields>LPCR_Statut__c</fields>
+    <fields>LPCR_DateDebut__c</fields>
+    <fields>LPCR_DateFin__c</fields>
+    <label>Présentation compacte Contrat Partenaire</label>
+</CompactLayout>

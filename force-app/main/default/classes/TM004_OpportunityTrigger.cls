@@ -15,5 +15,6 @@ public class TM004_OpportunityTrigger extends TM000_TriggerHandler{
     }
     protected override void afterInsert() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM007_LeadServices.opportunitiesIds = new Set<Id>(newOpportunitiesMap.keySet());
         }
 }

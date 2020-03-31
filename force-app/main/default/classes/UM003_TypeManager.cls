@@ -26,7 +26,7 @@ public with sharing class UM003_TypeManager{
         return id!=null ?true:false;
     }
 
-public static Set<Id> getIdsOfListObjects(List<SObject> listSObject){
+ public static Set<Id> getIdsOfListObjects(List<SObject> listSObject){
      Set<Id> ids = new Set<Id> ();
      if(UM003_TypeManager.isNotNullAndNotEmpty(listSObject))
             for(SObject eachObj: listSObject){
@@ -35,10 +35,10 @@ public static Set<Id> getIdsOfListObjects(List<SObject> listSObject){
         return ids;
     }
 
-
+    
     public static Set<String> getFieldsOfListObjects(List<SObject> listSObject,String fieldAPI){
      Set<String> fields = new Set<String>();
-     if(UM003_TypeManager.isNotNullAndNotEmpty(listSObject)){}
+     if(UM003_TypeManager.isNotNullAndNotEmpty(listSObject))
             for(SObject eachObj: listSObject){
                 fields.add((String)eachObj.get(fieldAPI));
             }

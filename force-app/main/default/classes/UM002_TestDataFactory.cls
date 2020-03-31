@@ -77,6 +77,7 @@ public with sharing class UM002_TestDataFactory {
             User me;
             /*
 User me = EM001_User.dataManager.getListByIdsWithRoleAndProfile(new Set<Id>{UserInfo.getUserId()}).get(0);
+
 String s = ((Datetime.now()+'').replace(' ','')).replace(':','');
 Datetime dt = Datetime.now();
 User newMe = me.clone();
@@ -93,31 +94,30 @@ newMe.FederationIdentifier = null;
     //it's a class that permit to add a list of leads/Tasks/Events/ Users
     
     public static User createUser(){
+        //added by ayoub  to check first the user in DB.
         User usr = null;
         try{
-           usr=  [SELECT Id, Name,Alias FROM User Where Alias = 'testusr' limit 1];
+            usr=  [SELECT Id, Name,Alias FROM User Where Alias = 'testusr' limit 1];
         }
         catch(Exception e){
-           usr = null; 
+            usr = null; 
         }
         
         if(usr==null){
             Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
             
-            String uniqueUserName = 'standarduser' + DateTime.now().millisecond() + '@testorg.com';
+            String uniqueUserName = 'standarduser' +Integer.valueof((Math.random() * 10000))+ DateTime.now().millisecond() + '@testorg.com';            
             usr = new User(Alias = 'testusr', Email = uniqueUserName,
-                                EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
-                                LocaleSidKey = 'en_US', ProfileId = prof.Id,
-                                TimeZoneSidKey = 'America/Los_Angeles',
-                                UserName = uniqueUserName);
+                           EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
+                           LocaleSidKey = 'en_US', ProfileId = prof.Id,
+                           TimeZoneSidKey = 'America/Los_Angeles',
+                           UserName = uniqueUserName);
             insert usr;
         }
         
         
         return usr;
     }
-    
-    
     public static List<Lead> createLeads(Integer numLeads, String recTypeId, String lastName, String company, String status,String Email){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0;i<numLeads;i++){
@@ -246,7 +246,7 @@ newMe.FederationIdentifier = null;
         
         listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2019,12,31),LPCR_Score__c=100));
         listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2020,12,31),LPCR_Score__c=10));
-          
+        
         
         return listParams;
         
@@ -533,36 +533,34 @@ newMe.FederationIdentifier = null;
         quoteLineInstance.SBQQ__BillingFrequency__c ='Invoice Plan';
         return quoteLineInstance;
     }
-
-
     //--- End Ayoub's Part
-
+    
     //This part of code is added by hanae on the 09/03/2020
     public static List<LPCR_Preinscription__c> createPreinscription(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i=0;i<numPrei;i++){
             LPCR_Preinscription__c  pre = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
-                                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
-                                                                            NomEnfant__c=nomEnfant,	
-                                                                            LPCR_Statut__c = statut,
-                                                                            LPCR_ContactEnfant__c=contactId);	
+                                                                      LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                                      NomEnfant__c=nomEnfant,	
+                                                                      LPCR_Statut__c = statut,
+                                                                      LPCR_ContactEnfant__c=contactId);	
             preinscriptions.add(pre);
         }
         
         return preinscriptions;	
     }
-
+    
     //--- End of Hanae's part
-
+    
     
     public static List<LPCR_Preinscription__c> createPreinscriptions(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i=0;i<numPrei;i++){
             LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteFamille__c=compteFamilleId,	
-                                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
-                                                                            NomEnfant__c=nomEnfant,	
-                                                                            LPCR_Statut__c = statut,
-                                                                            LPCR_ContactEnfant__c=contactId);	
+                                                                     LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                                     NomEnfant__c=nomEnfant,	
+                                                                     LPCR_Statut__c = statut,
+                                                                     LPCR_ContactEnfant__c=contactId);	
             preinscriptions.add(pre);
         }
         
@@ -584,9 +582,9 @@ newMe.FederationIdentifier = null;
     
     public static EmailTemplate createEmailTemplate(String name, String developerName, String templateType){
         return new EmailTemplate(Name = name,
-                        DeveloperName = developerName,
-                         TemplateType =templateType,
-                         FolderId = UserInfo.getUserId());
+                                 DeveloperName = developerName,
+                                 TemplateType =templateType,
+                                 FolderId = UserInfo.getUserId());
     }
     //This part of code is added by hanae on the 28/02/2020 to create Attachments and LPCR_Log__c records
     public static List<Attachment> createAttachements(Integer numAtts, String name,String body,String parentId){
@@ -622,9 +620,6 @@ newMe.FederationIdentifier = null;
     
     //End of the part on the same day
     
-    
-
-
     // This part is added by hanae on the 12/03/2020
 
 
@@ -639,35 +634,58 @@ newMe.FederationIdentifier = null;
 
     //End of the part on the same day
 
-
+	//This part is added by hanae on the 19/03/2020
+	public static List<LPCR_PlanningPrevisionnel__c> createPlannings(Integer numPlann, Id idQuote, Time debutLundi, Time finLundi, Time DebutMardi, Time finMardi, Time DebutMercredi, Time finMercredi, Time DebutJeudi, Time finJeudi, Time DebutVendredi, Time finVendredi){	
+        List<LPCR_PlanningPrevisionnel__c>  plannings = new List<LPCR_PlanningPrevisionnel__c>();
+        for(Integer i=0;i<numPlann;i++){
+            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Contrat__c  =idQuote,
+                                                                               LPCR_HeureDebutLundi__c = debutLundi,
+                                                                               LPCR_HeureFinLundi__c   = finLundi,
+                                                                               LPCR_HeureDebutMardi__c = DebutMardi,
+                                                                               LPCR_HeureFinMardi__c  = finMardi,
+                                                                               LPCR_HeureDebutMercredi__c = DebutMercredi,
+                                                                               LPCR_HeureFinMercredi__c = finMercredi, 
+                                                                               LPCR_HeureDebutJeudi__c = DebutJeudi,
+                                                                               LPCR_HeureFinJeudi__c = finJeudi,
+                                                                               LPCR_HeureDebutVendredi__c = DebutVendredi,
+                                                                               LPCR_HeureFinVendredi__c = finVendredi);
+            plannings.add(pl);
+        }
+        return plannings;	
+    }
 
 
 
     /*
 public class AccountContactRelationTdf {
+
 public AccountContactRelation create(Id accountId, Id contactId) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
+
 return acr;
 }
+
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
+
 return acr;
 }
+
 public AccountContactRelation create(Id accountId, Id contactId, List<String> roles, String fonction) {
 AccountContactRelation acr = new AccountContactRelation();
 acr.ContactId = contactId;
 acr.AccountId = accountId;
 acr.Roles = String.join(roles, ';');
 acr.Function__c = fonction;
+
 return acr;
 }
 }
 */
     
-
 }
