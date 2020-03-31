@@ -3,7 +3,7 @@
 * @created 26/03/2020
 * @description Trigger actions on OrderItem Object
 */
-trigger OrderItemTrigger on OrderItem (after insert ) {
+trigger OrderItemTrigger on OrderItem (after insert,after update ) {
   
     new TM011_OrderItemTrigger().run();
 
