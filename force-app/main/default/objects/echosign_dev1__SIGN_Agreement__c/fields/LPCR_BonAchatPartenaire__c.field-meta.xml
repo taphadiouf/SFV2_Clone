@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_BonAchatPartenaire__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Bon d&#39;achat partenaire</label>
+    <referenceTo>LPCR_BonAchatPartenaire__c</referenceTo>
+    <relationshipLabel>Accords</relationshipLabel>
+    <relationshipName>Accords</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

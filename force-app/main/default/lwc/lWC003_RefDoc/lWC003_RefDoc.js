@@ -30,7 +30,7 @@ export default class LWC003_RefDoc extends LightningElement {
 
     attachmentsFromDB = [];
     @track attachments = [];
-    @track columns = columns;
+
     @track errorMsg;
     @track sortBy;
     @track sortDirection;

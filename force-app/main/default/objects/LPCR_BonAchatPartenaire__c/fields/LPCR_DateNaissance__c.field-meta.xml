@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_DateNaissance__c</fullName>
+    <externalId>false</externalId>
+    <formula>LPCR_ContactEnfant__r.Birthdate</formula>
+    <label>Date de naissance</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>
