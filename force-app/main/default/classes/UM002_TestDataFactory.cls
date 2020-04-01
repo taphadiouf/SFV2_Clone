@@ -118,12 +118,27 @@ newMe.FederationIdentifier = null;
         
         return usr;
     }
-    
-    
     public static List<Lead> createLeads(Integer numLeads, String recTypeId, String lastName, String company, String status,String Email){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0;i<numLeads;i++){
             Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName,Company=company ,Status = status, Email=email);
+            leads.add(l);
+        }
+        return leads;
+    }
+    public static List<Lead> createLeadsWithCrecheLink(Integer numLeads, String lastName, String company, String status,String Email, Id crecheId, String crecheNumber){
+        List<Lead> leads = new List<Lead>();
+        for(Integer i=0;i<numLeads;i++){
+            Lead l= new Lead(LastName=lastName,Company=company ,Status = status, Email=email);
+            if(crecheNumber.equals('1')){
+                l.LPCR_CodeCreche1__c = crecheId;
+            }
+            if(crecheNumber.equals('2')){
+                l.LPCR_CodeCreche2__c = crecheId;
+            }
+            if(crecheNumber.equals('3')){
+                l.LPCR_CodeCreche3__c = crecheId;
+            }
             leads.add(l);
         }
         return leads;
@@ -208,6 +223,7 @@ newMe.FederationIdentifier = null;
         }
         return leads;
     }
+    
     public static Account createAccByRT(String name, Id recId){
         return new Account(Name = name,
                            RecordTypeId = recId);
@@ -253,6 +269,15 @@ newMe.FederationIdentifier = null;
         return listParams;
         
     }
+
+        public static LPCR_RessourceFamille__c createRessourceFamille(Id productId, Id userId,String name,Decimal price){
+         return new LPCR_RessourceFamille__c(   LPCR_DateDebut__c = date.today(),
+                                                LPCR_CompteFamille__c=userId,
+                                                LPCR_Produit__c=productId,
+                                                LPCR_TauxMensuel__c=price,
+                                                Name=name);
+    } 
+
     
     public static Contract createContract(Id accountID){	
         Contract  contract = new Contract(AccountID = accountID);	
@@ -635,6 +660,27 @@ newMe.FederationIdentifier = null;
     }
 
     //End of the part on the same day
+
+	//This part is added by hanae on the 19/03/2020
+	public static List<LPCR_PlanningPrevisionnel__c> createPlannings(Integer numPlann, Id idQuote, Time debutLundi, Time finLundi, Time DebutMardi, Time finMardi, Time DebutMercredi, Time finMercredi, Time DebutJeudi, Time finJeudi, Time DebutVendredi, Time finVendredi){	
+        List<LPCR_PlanningPrevisionnel__c>  plannings = new List<LPCR_PlanningPrevisionnel__c>();
+        for(Integer i=0;i<numPlann;i++){
+            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Contrat__c  =idQuote,
+                                                                               LPCR_HeureDebutLundi__c = debutLundi,
+                                                                               LPCR_HeureFinLundi__c   = finLundi,
+                                                                               LPCR_HeureDebutMardi__c = DebutMardi,
+                                                                               LPCR_HeureFinMardi__c  = finMardi,
+                                                                               LPCR_HeureDebutMercredi__c = DebutMercredi,
+                                                                               LPCR_HeureFinMercredi__c = finMercredi, 
+                                                                               LPCR_HeureDebutJeudi__c = DebutJeudi,
+                                                                               LPCR_HeureFinJeudi__c = finJeudi,
+                                                                               LPCR_HeureDebutVendredi__c = DebutVendredi,
+                                                                               LPCR_HeureFinVendredi__c = finVendredi);
+            plannings.add(pl);
+        }
+        return plannings;	
+    }
+
 
 
     /*

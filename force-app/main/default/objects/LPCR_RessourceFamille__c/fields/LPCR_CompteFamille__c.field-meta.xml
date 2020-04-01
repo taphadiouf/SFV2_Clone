@@ -4,6 +4,7 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Compte Famille</label>
+<<<<<<< HEAD
     <lookupFilter>
         <active>true</active>
         <filterItems>
@@ -13,6 +14,8 @@
         </filterItems>
         <isOptional>false</isOptional>
     </lookupFilter>
+=======
+>>>>>>> df00287b16103d995a2bf4ed6e2a997127c29510
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Ressources Familles</relationshipLabel>
     <relationshipName>Ressources_Familles</relationshipName>
