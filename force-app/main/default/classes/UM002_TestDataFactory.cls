@@ -251,6 +251,15 @@ newMe.FederationIdentifier = null;
         return listParams;
         
     }
+
+        public static LPCR_RessourceFamille__c createRessourceFamille(Id productId, Id userId,String name,Decimal price){
+         return new LPCR_RessourceFamille__c(   LPCR_DateDebut__c = date.today(),
+                                                LPCR_CompteFamille__c=userId,
+                                                LPCR_Produit__c=productId,
+                                                LPCR_TauxMensuel__c=price,
+                                                Name=name);
+    } 
+
     
     public static Contract createContract(Id accountID){	
         Contract  contract = new Contract(AccountID = accountID);	
