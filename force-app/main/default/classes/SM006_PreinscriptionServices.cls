@@ -16,8 +16,8 @@ public class SM006_PreinscriptionServices {
         List<SBQQ__Quote__c> listQuotes = new List<SBQQ__Quote__c>();
         Id dspOpportunityRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndDeveloperName('Opportunity','AOPublicDSP');
         for(LPCR_Preinscription__c eachNewPreinscri : newPreinscrisMap.values()){
-            if(eachNewPreinscri.LPCR_Statut__c != oldPreinscrisMap.get(eachNewPreinscri.Id).LPCR_Statut__c && 
-               'Confirmé'.equals(eachNewPreinscri.LPCR_Statut__c) ){
+            if((eachNewPreinscri.LPCR_Statut__c != oldPreinscrisMap.get(eachNewPreinscri.Id).LPCR_Statut__c && 
+               'Confirmé'.equals(eachNewPreinscri.LPCR_Statut__c))&& ('OCC'.equals(eachNewPreinscri.LPCR_TypePreinscription__c) || 'DEF'.equals(eachNewPreinscri.LPCR_TypePreinscription__c) || 'DSP'.equals(eachNewPreinscri.LPCR_TypePreinscription__c) )){
                    listOpptys.add(new Opportunity(AccountId=eachNewPreinscri.LPCR_CompteFamille__c , Name ='Opportunité pour : '+eachNewPreinscri.LPCR_PrenomEnfant__c+' '+eachNewPreinscri.NomEnfant__c  ,StageName='Prospecting',CloseDate=Date.today()));
                }
         }
