@@ -16,10 +16,17 @@ public class SM007_LeadServices_Test {
         List<Lead> aoPublicReservLeads = UM002_TestDataFactory.createLeads(100, aoPublicReservLeadRT, 'aoPublicReservLeads', 'aoPublicReservLeads', 'Nouveau', 'test@test.com');
         List<Lead> aoPublicDSPLeads = UM002_TestDataFactory.createLeads(100, aoPublicDSPLeadRT, 'aoPublicDSPLeads', 'aoPublicDSPLeads', 'Nouveau', 'test@test.com');
         List<Lead> aoPartenaireLeads = UM002_TestDataFactory.createLeads(100, partenaireLeadRT, 'aoPartenaireLeads', 'aoPartenaireLeads', 'Nouveau', 'test@test.com');
+
         insert entrepriseLeads;
         insert aoPublicReservLeads;
         insert aoPublicDSPLeads;
         insert aoPartenaireLeads;
+
+        List<Account> accs =  new List<Account>();
+        accs.add(UM002_TestDataFactory.createAccount('creche1'));
+        accs.add(UM002_TestDataFactory.createAccount('creche2'));
+        accs.add(UM002_TestDataFactory.createAccount('creche3'));
+        insert accs;
         
         insert UM002_TestDataFactory.createStructuresAOFromLeads(3, entrepriseLeads);
         insert UM002_TestDataFactory.createStructuresAOFromLeads(3, aoPublicReservLeads);
@@ -80,6 +87,29 @@ public class SM007_LeadServices_Test {
             
         }
         Test.stopTest();                                                            
+    }
+    @isTest
+    public static void createLiensCrecheLead_Test(){
+
+        Account creche1 = [SELECT Id FROM Account WHERE Name = 'creche1' limit 1];
+        Account creche2 = [SELECT Id FROM Account WHERE Name = 'creche2' limit 1];
+        Account creche3 = [SELECT Id FROM Account WHERE Name = 'creche3' limit 1];
+        Test.startTest();
+        List<Lead> leads1 = UM002_TestDataFactory.createLeadsWithCrecheLink( 100, 'lead lastname 1', 'lead company 1', 'Nouveau', 'test1@test.com', creche1.Id, '1');
+        List<Lead> leads2 = UM002_TestDataFactory.createLeadsWithCrecheLink( 100, 'lead lastname 2', 'lead company 2', 'Nouveau', 'test2@test.com', creche2.Id, '2');
+        List<Lead> leads3 = UM002_TestDataFactory.createLeadsWithCrecheLink( 100, 'lead lastname 3', 'lead company 3', 'Nouveau', 'test3@test.com', creche3.Id, '3');
+        
+        insert leads1;
+        insert leads2;
+        insert leads3;
+        Test.stopTest();
+        List<LPCR_LienCrecheLead__c> liens1 = [SELECT Id FROM LPCR_LienCrecheLead__c WHERE LPCR_Creche__c = :creche1.Id];
+        List<LPCR_LienCrecheLead__c> liens2 = [SELECT Id FROM LPCR_LienCrecheLead__c WHERE LPCR_Creche__c = :creche2.Id];
+        List<LPCR_LienCrecheLead__c> liens3 = [SELECT Id FROM LPCR_LienCrecheLead__c WHERE LPCR_Creche__c = :creche3.Id];
+        System.assertEquals(100, liens1.size());
+        System.assertEquals(100, liens2.size());
+        System.assertEquals(100, liens3.size());
+        //Test the method syncOppRecordType from SM007_LeadServices.linkStructureAOsToOpps method indirectly by using the Lead before update trigger
     }
 
     
