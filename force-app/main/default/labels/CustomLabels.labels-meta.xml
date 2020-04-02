@@ -1,6 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>LPCR_Account</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Account</shortDescription>
+        <value>Account</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Confirme</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Confirme</shortDescription>
+        <value>Confirmé</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Contact</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Contact</shortDescription>
+        <value>Contact</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ContratA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContratA</shortDescription>
+        <value>Contrat_Accueil</value>
+    </labels>
+
+
+    <labels>
+        <fullName>LPCR_PopConLT</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_PopConLT</shortDescription>
+        <value>Création contrat d'acceuil ?</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_PopConLT2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_PopConLT2</shortDescription>
+        <value>Parent Sponsorisé ?</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_CrecheWA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_CrecheWA</shortDescription>
+        <value>Crèche</value>
+    </labels>
+
+
+
+
+
+    <labels>
+        <fullName>LPCR_ConvertLeadF</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ConvertLeadF</shortDescription>
+        <value>Popup Conversion Lead Famille &gt; Opportunité</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Creche</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Creche</shortDescription>
+        <value>Creche</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_DocLPCR</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_DocLPCR</shortDescription>
+        <value>Document LPCR</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_EnCours</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_EnCours</shortDescription>
+        <value>En Cours</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Famille</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Famille</shortDescription>
+        <value>Famille</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ListeAtt</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ListeAtt</shortDescription>
+        <value>Liste d’attente</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Nouveau</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Nouveau</shortDescription>
+        <value>Nouveau</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_OppFor</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_OppFor</shortDescription>
+        <value>Opportunité pour : </value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Opportunity</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Opportunity</shortDescription>
+        <value>Opportunity</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Prospecting</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Prospecting</shortDescription>
+        <value>Prospecting</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_PublicDSP</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_PublicDSP</shortDescription>
+        <value>AOPublicDSP</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Quote</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Quote</shortDescription>
+        <value>SBQQ__Quote__c</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ResultS</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ResultS</shortDescription>
+        <value>Sent</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Sent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Sent</shortDescription>
+        <value>Sent</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Conge</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -125,5 +279,26 @@
         <protected>true</protected>
         <shortDescription>LPCR_Title2</shortDescription>
         <value>Montant Forfait</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_OCC</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_OCC</shortDescription>
+        <value>OCC</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_DEF</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_DEF</shortDescription>
+        <value>DEF</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_DSP</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_DSP</shortDescription>
+        <value>DSP</value>
     </labels>
 </CustomLabels>

@@ -41,7 +41,7 @@
         </values>
         <values>
             <fullName>Quarterly</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Semiannual</fullName>
@@ -249,6 +249,10 @@
         <values>
             <fullName>Draft</fullName>
             <default>true</default>
+        </values>
+        <values>
+            <fullName>Envoyé pour signature</fullName>
+            <default>false</default>
         </values>
         <values>
             <fullName>In Review</fullName>

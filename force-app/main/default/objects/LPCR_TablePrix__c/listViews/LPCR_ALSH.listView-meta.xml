@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_ALSH</fullName>
+    <columns>NAME</columns>
+    <columns>LPCR_Tranche__c</columns>
+    <columns>LPCR_TypeAccueil__c</columns>
+    <columns>LPCR_Prix__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LPCR_Produit__c</field>
+        <operation>equals</operation>
+        <value>Accueil Loisirs sans Hébergement</value>
+    </filters>
+    <label>Accueil Loisirs sans Hébergement</label>
+</ListView>

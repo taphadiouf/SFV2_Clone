@@ -13,10 +13,19 @@
 /* eslint-disable no-alert */
 import { LightningElement, track, api } from 'lwc';
 import  getAccountsByRecordtype from '@salesforce/apex/APC001_LeadFaConverController.getAccountsByRecordtype';
+import LPCR_PopConLT from '@salesforce/label/c.LPCR_PopConLT';
+import LPCR_PopConLT2 from '@salesforce/label/c.LPCR_PopConLT2';
+import LPCR_CrecheWA from '@salesforce/label/c.LPCR_CrecheWA';
+
 
 
 
 export default class LWC001_Lead_Famille_Conversion extends LightningElement {
+    label = {
+        LPCR_PopConLT,
+        LPCR_PopConLT2,
+        LPCR_CrecheWA,
+    };
     @api recordId = '';
     value;
     options;
@@ -53,6 +62,7 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         });
         
     }
+    
     handleChange(event) {
         this.areDetailsVisible = event.target.checked;
     }

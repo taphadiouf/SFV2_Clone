@@ -13,20 +13,20 @@
                 <div class="slds-p-around_medium">
                     <lightning-card>
                         <div class="slds-m-around_medium">
-                            <lightning-input type="checkbox" label="Création contrat d'acceuil ?" onchange={handleChange}></lightning-input>
+                            <lightning-input type="checkbox" label={label.LPCR_PopConLT} onchange={handleChange}></lightning-input>
                             <template if:true={areDetailsVisible}>
                                 <div class="slds-m-vertical_medium slds-p-left_xx-large slds-p-left_xx-large">  
                                     <lightning-combobox name="Name"
-                                                        label="Crèche"
+                                                        label={label.LPCR_CrecheWA}
                                                         value={value}
                                                         placeholder="-Select-"
                                                         options={options}
                                                         onchange={connectedCallback} ></lightning-combobox>
-                                    <lightning-input type="checkbox" label="Parent Sponsorisé ?" onchange={handleChange2}></lightning-input>
+                                    <lightning-input type="checkbox" label={label.LPCR_PopConLT2} onchange={handleChange2}></lightning-input>
                                     <div class="slds-p-left_xx-large">
                                         <template if:true={DetailsVisible}>
                                             <lightning-combobox name="Name"
-                                                        label="Crèche"
+                                                        label={label.LPCR_CrecheWA}
                                                         value={value}
                                                         placeholder="-Select-"
                                                         options={options}

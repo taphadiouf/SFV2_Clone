@@ -10,4 +10,5 @@ public with sharing class EM005_AccountEntity extends EM001_AbstractObjectEntity
     public static List<Account> getAccsByIds(Set<Id> accsIds){
         return [SELECT Id FROM Account WHERE Id IN :accsIds];
     }
+   
 }
