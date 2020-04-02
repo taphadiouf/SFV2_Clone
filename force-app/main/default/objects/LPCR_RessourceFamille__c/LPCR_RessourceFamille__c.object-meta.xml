@@ -143,11 +143,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-<<<<<<< HEAD
     <enableActivities>false</enableActivities>
-=======
-    <enableActivities>true</enableActivities>
->>>>>>> df00287b16103d995a2bf4ed6e2a997127c29510
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
@@ -156,27 +152,15 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-<<<<<<< HEAD
     <gender>Feminine</gender>
     <label>Ressource Famille</label>
     <nameField>
         <label>Ressource Famille Name</label>
-=======
-    <externalSharingModel>Private</externalSharingModel>
-    <gender>Feminine</gender>
-    <label>Ressource Famille</label>
-    <nameField>
-        <label>Ressource Famille</label>
->>>>>>> df00287b16103d995a2bf4ed6e2a997127c29510
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Ressources Familles</pluralLabel>
-<<<<<<< HEAD
-=======
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
->>>>>>> df00287b16103d995a2bf4ed6e2a997127c29510
-    <searchLayouts/>
+        <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
