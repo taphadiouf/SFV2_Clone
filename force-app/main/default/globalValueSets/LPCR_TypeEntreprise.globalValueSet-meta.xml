@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Grand Compte</fullName>
+        <default>false</default>
+        <label>Grand Compte</label>
+    </customValue>
+    <customValue>
+        <fullName>PME-ETI</fullName>
+        <default>false</default>
+        <label>PME-ETI</label>
+    </customValue>
+    <customValue>
+        <fullName>TPE</fullName>
+        <default>false</default>
+        <label>TPE</label>
+    </customValue>
+    <customValue>
+        <fullName>PLAC</fullName>
+        <default>false</default>
+        <label>PLAC</label>
+    </customValue>
+    <masterLabel>Type d&#39;entreprise</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_NombreMois__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(AND(DAY(LPCR_DateFin__c)=29,MONTH(LPCR_DateFin__c)=2,MONTH(LPCR_DateDebut__c)=2),(DAY(LPCR_DateFin__c)-DAY(LPCR_DateDebut__c)+1)/29,IF(AND(DAY(LPCR_DateFin__c)=29,MONTH(LPCR_DateFin__c)=2),((DAY(LPCR_DateDebut__c)-DAY(LPCR_DateFin__c)-1)*-1)/29,IF(AND(DAY(LPCR_DateFin__c)=28,MONTH(LPCR_DateFin__c)=2),((DAY(LPCR_DateDebut__c)-DAY(LPCR_DateFin__c)-1)*-1)/28,IF(DAY(LPCR_DateDebut__c)=DAY(LPCR_DateFin__c),((DAY(LPCR_DateFin__c)-DAY(LPCR_DateDebut__c))+1)/30,IF(AND(DAY(LPCR_DateFin__c)=31,DAY(LPCR_DateDebut__c)=1),((DAY(LPCR_DateFin__c)-DAY(LPCR_DateDebut__c)))/30,IF(AND(DAY(LPCR_DateFin__c)=31),((DAY(LPCR_DateFin__c)-DAY(LPCR_DateDebut__c)-1))/30,IF(AND(DAY(LPCR_DateFin__c)=30,DAY(LPCR_DateDebut__c)=1),((DAY(LPCR_DateFin__c)-DAY(LPCR_DateDebut__c)+1))/30,IF(DAY(LPCR_DateFin__c)=30,((DAY(LPCR_DateFin__c)-DAY(LPCR_DateDebut__c)+1))/30,IF(AND((DAY(LPCR_DateFin__c)&lt;DAY(LPCR_DateDebut__c)),DAY(LPCR_DateDebut__c)=31),((DAY(LPCR_DateFin__c)-DAY(LPCR_DateDebut__c))+2)/30*-1,IF(DAY(LPCR_DateFin__c)&lt;DAY(LPCR_DateDebut__c),((DAY(LPCR_DateFin__c)+1-DAY(LPCR_DateDebut__c)))/30*-1,IF(DAY(LPCR_DateDebut__c)=1,((DAY(LPCR_DateFin__c)-DAY(LPCR_DateDebut__c)+1))/30,((DAY(LPCR_DateFin__c)-DAY(LPCR_DateDebut__c)+1)/30)))))))))))+((YEAR(LPCR_DateFin__c)-YEAR(LPCR_DateDebut__c)-1)*12)+(12-MONTH(LPCR_DateDebut__c)+MONTH(LPCR_DateFin__c)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Nombre de mois</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>
