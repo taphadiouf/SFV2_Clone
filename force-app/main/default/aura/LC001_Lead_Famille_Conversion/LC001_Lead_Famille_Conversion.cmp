@@ -5,7 +5,7 @@
 <aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global" controller="APC001_LeadFaConverController">
     <aura:attribute name="recordId" type="String" />
         <div class="slds-col modal-header slds-modal__header">
-            <h2 class="title slds-text-heading--medium">Popup Conversion Lead Famille > Opportunité</h2>
+            <h2 class="title slds-text-heading--medium">{!$Label.c.LPCR_ConvertLeadF}</h2>
         </div>
         <div class="slds-col modal-body" style="overflow-y: auto !important">
             <div>
@@ -15,7 +15,7 @@
         </div>
         <div class="slds-grid slds-grid_align-end">
             <button class="slds-button slds-button--neutral uiButton--default uiButton--default uiButton" type="button">
-                <lightning:button variant="neutral" label="Annuler" onclick="{! c.cancel}" />
+                <lightning:button variant="neutral" label="Annuler" onclick="{! c.cancelAction}" />
             </button>
             <c:lwc002_ConvertButton_LeadFamille recordId="{!v.recordId}"/>
         </div>

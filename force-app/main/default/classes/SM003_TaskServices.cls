@@ -13,11 +13,11 @@ public with sharing class SM003_TaskServices {
         for(Task eachTask:newTasksList){
             setLeadIds.add(eachTask.WhoId);
         }
-        List<Lead> listLead = EM002_LeadEntity.getLeadsBy(setLeadIds,'Famille');
+        List<Lead> listLead = EM002_LeadEntity.getLeadsBy(setLeadIds,System.Label.LPCR_Famille);
         if(UM003_TypeManager.isNotNullAndNotEmpty(listLead)){
             for(Lead eachLead: listLead){
-                if('Nouveau'.equals(eachLead.status)){
-                    eachLead.status ='En cours';
+                if(Label.LPCR_Nouveau.equals(eachLead.status)){
+                    eachLead.status =Label.LPCR_EnCours;
                 }
                 eachLead.LPCR_DatePriseEnChargeCommercial__c=Date.today();
             }
