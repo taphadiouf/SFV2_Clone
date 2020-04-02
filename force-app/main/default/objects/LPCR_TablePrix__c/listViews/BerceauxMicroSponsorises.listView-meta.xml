@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BerceauxMicroSponsorises</fullName>
+    <columns>NAME</columns>
+    <columns>LPCR_JoursSemaine__c</columns>
+    <columns>LPCR_Region__c</columns>
+    <columns>LPCR_Prix__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LPCR_Produit__c</field>
+        <operation>equals</operation>
+        <value>Berceau Micro Sponsorisé</value>
+    </filters>
+    <label>Berceaux Micro Sponsorisés</label>
+</ListView>
