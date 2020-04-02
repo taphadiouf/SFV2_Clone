@@ -44,5 +44,4 @@ public with sharing class UM003_TypeManager{
             }
         return fields;
     }
-
 }
