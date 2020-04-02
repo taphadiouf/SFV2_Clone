@@ -4,10 +4,21 @@
     <active>true</active>
     <label>Contrat de Référencement</label>
     <picklistValues>
+        <picklist>LPCR_RenouvellementConvenu__c</picklist>
+        <values>
+            <fullName>Non</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oui</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_TypeFacturation__c</picklist>
         <values>
             <fullName>Advance</fullName>
-            <default>true</default>
+            <default>false</default>
         </values>
         <values>
             <fullName>Arrears</fullName>
