@@ -11,7 +11,7 @@ public with sharing class APC001_LeadFaConverController {
     @AuraEnabled(cacheable=true)
     public static List<Account> getAccountsByRecordtype(String recordTypeName) {
        List<Account> accounts = new List<Account>();
-       Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Creche);
+       Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,recordTypeName);
        if(UM003_TypeManager.idNotNull(recordtypeId)){
             accounts = [SELECT Name FROM Account WHERE RecordTypeId = :recordtypeId];
         }

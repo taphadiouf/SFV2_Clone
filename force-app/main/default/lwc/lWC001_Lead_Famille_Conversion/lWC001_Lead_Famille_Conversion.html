@@ -8,29 +8,27 @@
 
  <template>
     <div class="slds-theme_default">
-        <div>
-            <div>
                 <div class="slds-p-around_medium">
                     <lightning-card>
                         <div class="slds-m-around_medium">
-                            <lightning-input type="checkbox" label={label.LPCR_PopConLT} onchange={handleChange}></lightning-input>
-                            <template if:true={areDetailsVisible}>
+                            <lightning-input type="checkbox" label={label.LPCR_PopConLT} onchange={handleContrDaccCheckbox}></lightning-input>
+                            <template if:true={showCreches1}>
                                 <div class="slds-m-vertical_medium slds-p-left_xx-large slds-p-left_xx-large">  
                                     <lightning-combobox name="Name"
                                                         label={label.LPCR_CrecheWA}
-                                                        value={value}
+                                                        value={creche1Value}
                                                         placeholder="-Select-"
-                                                        options={options}
-                                                        onchange={connectedCallback} ></lightning-combobox>
-                                    <lightning-input type="checkbox" label={label.LPCR_PopConLT2} onchange={handleChange2}></lightning-input>
+                                                        options={creches}
+                                                        onchange={handleCreche1Chosen} ></lightning-combobox>
+                                    <lightning-input type="checkbox" label={label.LPCR_PopConLT2} onchange={handleSponsCheckbox}></lightning-input>
                                     <div class="slds-p-left_xx-large">
-                                        <template if:true={DetailsVisible}>
+                                        <template if:true={showCreches2}>
                                             <lightning-combobox name="Name"
                                                         label={label.LPCR_CrecheWA}
-                                                        value={value}
+                                                        value={creche2Value}
                                                         placeholder="-Select-"
-                                                        options={options}
-                                                        onchange={connectedCallback} ></lightning-combobox>
+                                                        options={creches}
+                                                        onchange={handleCreche2Chosen} ></lightning-combobox>
                                         </template>
                                     </div>
                                 </div>
@@ -38,8 +36,6 @@
                         </div>
                     </lightning-card>
                 </div>
-            </div>
-        </div>
     </div>
 
 </template>
