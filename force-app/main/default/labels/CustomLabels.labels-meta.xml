@@ -110,7 +110,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LPCR_OppFor</shortDescription>
-        <value>Opportunité pour :</value>
+        <value>Opportunité pour : </value>
     </labels>
     <labels>
         <fullName>LPCR_Opportunity</fullName>
@@ -279,5 +279,26 @@
         <protected>true</protected>
         <shortDescription>LPCR_Title2</shortDescription>
         <value>Montant Forfait</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_OCC</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_OCC</shortDescription>
+        <value>OCC</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_DEF</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_DEF</shortDescription>
+        <value>DEF</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_DSP</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_DSP</shortDescription>
+        <value>DSP</value>
     </labels>
 </CustomLabels>

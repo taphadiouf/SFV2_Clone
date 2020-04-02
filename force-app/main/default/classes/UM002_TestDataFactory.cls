@@ -126,6 +126,23 @@ newMe.FederationIdentifier = null;
         }
         return leads;
     }
+    public static List<Lead> createLeadsWithCrecheLink(Integer numLeads, String lastName, String company, String status,String Email, Id crecheId, String crecheNumber){
+        List<Lead> leads = new List<Lead>();
+        for(Integer i=0;i<numLeads;i++){
+            Lead l= new Lead(LastName=lastName,Company=company ,Status = status, Email=email);
+            if(crecheNumber.equals('1')){
+                l.LPCR_CodeCreche1__c = crecheId;
+            }
+            if(crecheNumber.equals('2')){
+                l.LPCR_CodeCreche2__c = crecheId;
+            }
+            if(crecheNumber.equals('3')){
+                l.LPCR_CodeCreche3__c = crecheId;
+            }
+            leads.add(l);
+        }
+        return leads;
+    }
     public static List<LPCR_Structure_AO__c> createStructuresAOFromLeads(Integer numStructuresPerLead, List<Lead> leadsList){
         List<LPCR_Structure_AO__c> structures = new List<LPCR_Structure_AO__c>();
         for(Lead eachLead : leadsList){
@@ -206,6 +223,7 @@ newMe.FederationIdentifier = null;
         }
         return leads;
     }
+    
     public static Account createAccByRT(String name, Id recId){
         return new Account(Name = name,
                            RecordTypeId = recId);
@@ -251,6 +269,15 @@ newMe.FederationIdentifier = null;
         return listParams;
         
     }
+
+        public static LPCR_RessourceFamille__c createRessourceFamille(Id productId, Id userId,String name,Decimal price){
+         return new LPCR_RessourceFamille__c(   LPCR_DateDebut__c = date.today(),
+                                                LPCR_CompteFamille__c=userId,
+                                                LPCR_Produit__c=productId,
+                                                LPCR_TauxMensuel__c=price,
+                                                Name=name);
+    } 
+
     
     public static Contract createContract(Id accountID){	
         Contract  contract = new Contract(AccountID = accountID);	

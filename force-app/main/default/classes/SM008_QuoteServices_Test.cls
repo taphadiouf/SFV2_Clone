@@ -49,13 +49,18 @@ public class SM008_QuoteServices_Test {
             List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
             Opportunity opp = oppties.get(0);
             opp.LPCR_RenouvellementConvenu__c='Oui';
+            opp.LPCR_TypeFacturation__c='Arrears';
+            opp.LPCR_BillingFrequency__c='Invoice Plan';
             update opp;
             SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
+            
             insert quote;
             
-            quote = [SELECT Id ,LPCR_RenouvellementConvenu__c from SBQQ__Quote__c WHERE Id = :quote.Id];
+            quote = [SELECT Id ,LPCR_RenouvellementConvenu__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c from SBQQ__Quote__c WHERE Id = :quote.Id];
             System.assertNotEquals(null,quote.LPCR_RenouvellementConvenu__c,'LPCR_RenouvellementConvenu__c is null');
             System.assertEquals(quote.LPCR_RenouvellementConvenu__c, opp.LPCR_RenouvellementConvenu__c, 'Quote LPCR_RenouvellementConvenu__c not equals to oppt LPCR_RenouvellementConvenu__c');
+            System.assertEquals(quote.LPCR_TypeFacturation__c, opp.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
+            System.assertEquals(quote.SBQQ__BillingFrequency__c, opp.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
             Test.stopTest();
             
         } }
