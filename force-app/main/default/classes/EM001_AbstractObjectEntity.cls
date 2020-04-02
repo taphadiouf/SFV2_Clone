@@ -38,6 +38,14 @@ public abstract class EM001_AbstractObjectEntity{
         queryString += (' FROM ' + this.sObjectAPIName + ' WHERE Id IN :idsSet');
         return Database.query(queryString);
     }
+    public SObject getById(Id recId, Set<String> fields){
+        String queryString = 'SELECT Id';
+        for(String eachField : fields){
+            queryString += (',' + eachField);
+        }
+        queryString += (' FROM ' + this.sObjectAPIName + ' WHERE Id = :recId');
+        return Database.query(queryString);
+    }
     public List<SObject> getBy(String filterField, Set<Object> filterSet, Set<String> returnedFields){
         String queryString = 'SELECT Id';
         for(String eachField : returnedFields){

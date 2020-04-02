@@ -4,7 +4,10 @@
 * @SOQL Queries about Lead
 * @Last update : 20/02/2020 by Achraf ABOUL
 */
-public with sharing class EM002_LeadEntity {
+public with sharing class EM002_LeadEntity extends EM001_AbstractObjectEntity{
+    public EM002_LeadEntity(){
+        super('Lead');
+    }
     public static List<Lead> getLeadsByOppsAndRecordType(Id leadRecordTypeId, Set<Id> opportunitiesIds) {
         return [SELECT Id FROM Lead WHERE 
                 convertedOpportunityId IN :opportunitiesIds

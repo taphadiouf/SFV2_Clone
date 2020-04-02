@@ -17,7 +17,15 @@ public with sharing class APC001_LeadFaConverController {
         }
         return accounts;
     }
-
+    @AuraEnabled(cacheable=true)
+    public static Lead getCurrentLead(Id leadId){
+        Set<String> fields = new Set<String>();
+        for(Integer i = 1; i< 4; i++){
+            fields.add('LPCR_NomEnfant' + i + '__c');
+            fields.add('LPCR_PrenomEnfant' + i + '__c');
+        }
+        return (Lead) new EM002_LeadEntity().getById(leadId, fields);
+    }
     @AuraEnabled()
     public static Id createAccountFromLead(Id leadId){
         Account newAccount = new Account();
