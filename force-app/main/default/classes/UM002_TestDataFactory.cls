@@ -606,7 +606,7 @@ newMe.FederationIdentifier = null;
         
         return preinscriptions;	
     }
-    
+
     public static EmailTemplate createEmailTemplate(String name, String developerName, String templateType){
         return new EmailTemplate(Name = name,
                                  DeveloperName = developerName,

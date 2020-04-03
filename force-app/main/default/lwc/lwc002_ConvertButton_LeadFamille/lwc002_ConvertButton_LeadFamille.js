@@ -18,24 +18,27 @@ export default class Lwc002_ConvertButton_LeadFamille extends NavigationMixin(Li
         console.log("recordId : " + this.recordId);
         createAccountFromLead({
             leadId : this.recordId,
-            
         })
         .then((result)=>{
             console.log('saveMethod: contactId:',result);
             this.contactId = result;
             console.log("thecontactId: "+result);
-           this[NavigationMixin.Navigate]({
-                type: 'standard__recordPage',
-                attributes: {
-                    recordId: this.contactId ,
-                    objectApiName: 'Contact',
-                    actionName: 'view'
-                }
-            });
+            this.redirect();
+           
         })
         .catch(err=>{
             console.error(err);
         });
         
+    }
+    redirect(){
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: this.contactId ,
+                objectApiName: 'Contact',
+                actionName: 'view'
+            }
+        });
     }
 }

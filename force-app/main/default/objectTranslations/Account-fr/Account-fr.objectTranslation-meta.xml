@@ -6,6 +6,14 @@
             <label><!-- Liens Personnalisés --></label>
             <section>Liens Personnalisés</section>
         </sections>
+        <sections>
+            <label><!-- Occupation de la crèche --></label>
+            <section>Occupation de la crèche</section>
+        </sections>
+        <sections>
+            <label><!-- Préinscription --></label>
+            <section>Préinscription</section>
+        </sections>
     </layouts>
     <layouts>
         <layout>Entreprise</layout>
@@ -60,6 +68,10 @@
             <section>Liens Personnalisés</section>
         </sections>
     </layouts>
+    <quickActions>
+        <label><!-- Mettre à jour le compte --></label>
+        <name>ModifierComptePartenaire</name>
+    </quickActions>
     <quickActions>
         <label><!-- Nouvelle Demande Réseau Grandir --></label>
         <name>NouvelleDemandeReseauGrandir</name>
