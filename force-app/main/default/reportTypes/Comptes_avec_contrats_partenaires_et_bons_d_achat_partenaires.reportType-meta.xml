@@ -326,11 +326,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Agrement__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Email__c</field>
             <table>Account</table>
         </columns>
@@ -339,11 +334,7 @@
             <field>LPCR_Activite__c</field>
             <table>Account</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_Agrement__c</field>
-            <table>Account</table>
-        </columns>
+       
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_AutrePrestataire__c</field>
@@ -352,11 +343,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_BIC__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_CA__c</field>
             <table>Account</table>
         </columns>
         <columns>
