@@ -17,13 +17,11 @@ import  getEnfants from '@salesforce/apex/APC001_LeadFaConverController.getEnfan
 import LPCR_PopConLT from '@salesforce/label/c.LPCR_PopConLT';
 import LPCR_PopConLT2 from '@salesforce/label/c.LPCR_PopConLT2';
 import LPCR_CrecheWA from '@salesforce/label/c.LPCR_CrecheWA';
-
-
-
-
+import {fireEvent} from 'c/pubsub';
+import {CurrentPageReference} from 'lightning/navigation';
 export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     label; 
-    @api recordId = '';
+    @api recordId;
     value;
     options;
     recType;
@@ -33,9 +31,11 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     showCreches2;
     creches;
     enfants;
+    enfantsIndexes;
+    
     constructor(){
         super();
-        console.log("constructor2!")
+        console.log("constructor3!")
         this.options = [];
         this.label = {
             LPCR_PopConLT,
@@ -46,8 +46,10 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         this.showCreches1 = false;
         this.showCreches2 = false;
         this.creches = [];
-        this.enfants = {};
+        this.enfants = [];
     }
+    @wire(CurrentPageReference)
+    pageRef;
     @wire(getAccountsByRecordtype, {recordTypeName : "$recType"})
     getAccountsByRecordtypeF({error, data}){
         if(data){
@@ -65,22 +67,22 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     @wire(getEnfants, {leadId : "$recordId"})
     getEnfantsF({error, data}){
         if(data){
-            this.enfants = data;
+            this.enfants = JSON.parse(data);
         }
         else if(error){
             console.error(error);
         }
     }
-
     connectedCallback(){
-        console.log("ConnectedCallback11!");
+        console.log("ConnectedCallback14!");
     }
     get showEnfants(){
         return this.enfants.length > 1;
     }
     handleEnfantCheckbox(event){
-        console.log(event.target);
-        console.log(event.target.dataset.enfant);
+        this.enfantsIndexes[event.target.num] = event.target.checked;
+        fireEvent(this.pageRef, "changedEnfants", this.enfantsIndexes);
+
     }
     handleContrDaccCheckbox(event) {
         this.showCreches1 = event.target.checked;

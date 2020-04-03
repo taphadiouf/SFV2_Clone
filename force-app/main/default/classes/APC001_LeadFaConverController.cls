@@ -3,11 +3,7 @@
  * @ created 21/02/2020
  * @ description Apex class on the convert button in the lead famille convertion process
  */
-
-
-
-
-public with sharing class APC001_LeadFaConverController {
+public with sharing class APC001_LeadFaConverController{
     @AuraEnabled(cacheable=true)
     public static List<Account> getAccountsByRecordtype(String recordTypeName) {
        List<Account> accounts = new List<Account>();
@@ -56,6 +52,7 @@ public with sharing class APC001_LeadFaConverController {
     }
     @AuraEnabled(cacheable=true)
     public static String getEnfants(Id leadId){
+        System.debug('run getEnfants');
         List<WRP002_EnfantWrapper> enfants = new List<WRP002_EnfantWrapper>();
         Set<String> fields = new Set<String>();
         for(Integer i = 1; i < 4; i++){
@@ -72,6 +69,7 @@ public with sharing class APC001_LeadFaConverController {
                 enfants.add(new WRP002_EnfantWrapper(i, tempNom, tempPrenom, 'Enfant '+i));
             }
         }
+        System.debug('enfants ' + enfants);
         return JSON.serialize(enfants);
     }
     public class WRP002_EnfantWrapper{

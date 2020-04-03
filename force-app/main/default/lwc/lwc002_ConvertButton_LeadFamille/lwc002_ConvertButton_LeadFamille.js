@@ -8,12 +8,27 @@
 
 
 /* eslint-disable no-console */
-import { LightningElement, api,track } from 'lwc';
+import { LightningElement, api, wire} from 'lwc';
 import  createAccountFromLead from '@salesforce/apex/APC001_LeadFaConverController.createAccountFromLead';
 import { NavigationMixin } from 'lightning/navigation';
+import {CurrentPageReference} from 'lightning/navigation';
+import {registerListener, unregisterAllListeners} from 'c/pubsub';
+
 export default class Lwc002_ConvertButton_LeadFamille extends NavigationMixin(LightningElement) {
-    @api recordId = '';
-    @track contactId;
+    @api recordId;
+    contactId;
+    enfantsIndexes;
+    @wire(CurrentPageReference)
+    pageRef;
+    connectedCallback(){
+        registerListener("changedEnfants",this.handleChangedEnfants,this);
+    }
+    disconnectedCallback(){
+        unregisterAllListeners(this);
+    }
+    handleChangedEnfants(enfantsIndexes){
+        this.enfantsIndexes  = enfantsIndexes;
+    }
     saveMethod() {
         console.log("recordId : " + this.recordId);
         createAccountFromLead({
