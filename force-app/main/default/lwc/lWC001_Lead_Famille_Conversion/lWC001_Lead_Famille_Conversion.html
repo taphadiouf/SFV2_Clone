@@ -16,7 +16,7 @@
                                 blabla
                                 <ul>
                                     <template for:each={enfants} for:item="eachEnfant">
-                                        
+                                        <lightning-input key={eachEnfant.num} data-enfant={eachEnfant} type="checkbox" label={eachEnfant.label} onchange={handleEnfantCheckbox}></lightning-input>
                                     </template>
                                 </ul>
                             </template>

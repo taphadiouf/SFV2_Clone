@@ -17,15 +17,6 @@ public with sharing class APC001_LeadFaConverController {
         }
         return accounts;
     }
-    @AuraEnabled(cacheable=true)
-    public static Lead getCurrentLead(Id leadId){
-        Set<String> fields = new Set<String>();
-        for(Integer i = 1; i< 4; i++){
-            fields.add('LPCR_NomEnfant' + i + '__c');
-            fields.add('LPCR_PrenomEnfant' + i + '__c');
-        }
-        return (Lead) new EM002_LeadEntity().getById(leadId, fields);
-    }
     @AuraEnabled()
     public static Id createAccountFromLead(Id leadId){
         Account newAccount = new Account();
@@ -63,4 +54,36 @@ public with sharing class APC001_LeadFaConverController {
             Database.LeadConvertResult lcr = Database.convertLead(lc); 
         return newContact1.Id;
     }
+    @AuraEnabled(cacheable=true)
+    public static String getEnfants(Id leadId){
+        List<WRP002_EnfantWrapper> enfants = new List<WRP002_EnfantWrapper>();
+        Set<String> fields = new Set<String>();
+        for(Integer i = 1; i < 4; i++){
+            fields.add('LPCR_NomEnfant' + i + '__c');
+            fields.add('LPCR_PrenomEnfant' + i + '__c');
+        }
+        Lead currentLead = (Lead) new EM002_LeadEntity().getById(leadId, fields);
+        String tempNom;
+        String tempPrenom;
+        for(Integer i = 1; i < 4; i++){
+            tempNom = (String) currentLead.get('LPCR_NomEnfant' + i + '__c');
+            tempPrenom = (String) currentLead.get('LPCR_PrenomEnfant' + i + '__c');
+            if(tempNom != null && tempPrenom != null){
+                enfants.add(new WRP002_EnfantWrapper(i, tempNom, tempPrenom, 'Enfant '+i));
+            }
+        }
+        return JSON.serialize(enfants);
+    }
+    public class WRP002_EnfantWrapper{
+        Integer num;
+        String nom;
+        String  prenom;
+        String label;
+        public WRP002_EnfantWrapper(Integer num, String nom, String prenom, String label){
+            this.num  = num;
+            this.nom = nom;
+            this.prenom = prenom;
+            this.label = label;
+        }
+    } 
 }
