@@ -24,4 +24,11 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         SM008_QuoteServices.setQuoteFields(newQuotesList);
     }
+
+
+    //added bu hanae on the 02/04/2020
+    protected override void afterInsert() {
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM008_QuoteServices.IncrementAccCreche(newQuotesMap);
+    }
 }

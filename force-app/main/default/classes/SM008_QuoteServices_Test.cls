@@ -10,6 +10,7 @@ public class SM008_QuoteServices_Test {
     static void testSetup(){
         List<Account> accounts = UM002_TestDataFactory.createAccounts(100, 'testAccount');
         
+        
         List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(100, 'testOpp', 'Prospecting');
         
         insert accounts;
@@ -64,4 +65,32 @@ public class SM008_QuoteServices_Test {
             Test.stopTest();
             
         } }
+    //added by hanae on the 02/04/2020
+    @isTest
+    public static void IncrementAccCreche_Test(){
+        Id rc = [SELECT Id FROM RecordType WHERE SObjectType = :'Account' AND Name = :'Crèche'].Id;
+        List<Account> crecheAccs = UM002_TestDataFactory.createCrecheAccountsWithQuote(100,'crecheAcct',rc,2);
+        insert crecheAccs;
+        List<Account> crecheAccswithoutQuote = UM002_TestDataFactory.createCrecheAccountsWithQuote(100,'crecheAccountWQ',rc,null );
+        insert crecheAccswithoutQuote;
+        Map<Id,Account> mapAccounts = new Map<Id,Account>([SELECT Id,Name,LPCR_NombreContrat__c FROM Account WHERE RecordType.Name = 'Crèche' AND LPCR_NombreContrat__c = 2 ]);
+        List<SBQQ__Quote__c> crecheQuotes = UM002_TestDataFactory.createaccountQuotes(mapAccounts.keyset());
+        insert crecheQuotes;
+		Map<Id,Account> mapAccs = new Map<Id,Account>([SELECT Id,Name,LPCR_NombreContrat__c FROM Account WHERE RecordType.Name = 'Crèche' AND LPCR_NombreContrat__c = null ]);
+        List<SBQQ__Quote__c> crecheQuotes1 = UM002_TestDataFactory.createaccountQuotes(mapAccs.keyset());
+        insert crecheQuotes1;
+        Map<Id, SBQQ__Quote__c> newQuote = new Map<Id, SBQQ__Quote__c>();
+        
+        
+
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
+            Account crecheAcc = [Select Id, Name,LPCR_NombreContrat__c FROM Account WHERE Name ='crecheAcct' LIMIT 1 ];
+            System.assertEquals(3,crecheAcc.LPCR_NombreContrat__c);
+            Account crecheAcc1 = [Select Id, Name,LPCR_NombreContrat__c FROM Account WHERE Name ='crecheAccountWQ' LIMIT 1 ];
+            System.assertEquals(1,crecheAcc1.LPCR_NombreContrat__c);
+            Test.stopTest();
+        }
+        
+    }
 }

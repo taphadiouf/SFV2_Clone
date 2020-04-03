@@ -18,5 +18,9 @@ public with sharing class EM006_QuoteEntity {
         }
      return  quote; 
     }
+    
+    public static List<SBQQ__Quote__c> getNewQuotes(Map<Id, SBQQ__Quote__c> newQuotesMap){
+        return [SELECT Id,SBQQ__Account__c  FROM SBQQ__Quote__c WHERE Id =: newQuotesMap.KeySet()];
+    }
 
 }

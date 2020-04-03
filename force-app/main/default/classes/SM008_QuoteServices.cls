@@ -33,7 +33,7 @@ public with sharing class SM008_QuoteServices {
     }
     
     //added by Ayoub
-     public static void setQuoteFields(List<SBQQ__Quote__c> quotesList){
+    public static void setQuoteFields(List<SBQQ__Quote__c> quotesList){
         Set<String> opptyIds = UM003_TypeManager.getFieldsOfListObjects(quotesList,'SBQQ__Opportunity2__c');
         Map<Id,Opportunity> opptyMap = new  Map<Id,Opportunity>([SELECT Id,LPCR_BillingFrequency__c, LPCR_TypeFacturation__c,LPCR_RenouvellementConvenu__c  from Opportunity WHERE Id in :opptyIds]);
         
@@ -43,10 +43,38 @@ public with sharing class SM008_QuoteServices {
                 eachQuote.LPCR_TypeFacturation__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_TypeFacturation__c;
                 eachQuote.LPCR_RenouvellementConvenu__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_RenouvellementConvenu__c;
                 if('Non'.equals(eachQuote.LPCR_RenouvellementConvenu__c)){
-                   eachQuote.SBQQ__RenewalUpliftRate__c=null;
+                    eachQuote.SBQQ__RenewalUpliftRate__c=null;
                 }
             }
         }
-       
+        
     }
+    
+    
+    //added by hanae on the 02/04/2020
+    public static List<Account> IncrementAccCreche(Map<Id, SBQQ__Quote__c> newQuotesMap){
+        Set<Id> crecheQuoteIds = new Set<Id>();
+        List<Account> lstaccount = new List<Account>();
+        List<Account> lstCrecheAccount = EM005_AccountEntity.getCrecheAccs();
+        List<SBQQ__Quote__c> lstCrecheQuote = EM006_QuoteEntity.getNewQuotes(newQuotesMap);
+        for(SBQQ__Quote__c eachNewQuote : lstCrecheQuote){
+            crecheQuoteIds.add(eachNewQuote.SBQQ__Account__c);
+        }
+        for(Account acc : lstCrecheAccount){
+            if(crecheQuoteIds.contains(acc.Id)){
+                if(acc.LPCR_NombreContrat__c != NULL) {
+                    acc.LPCR_NombreContrat__c = acc.LPCR_NombreContrat__c+1;
+                    lstaccount.add(acc);
+                }else{
+                    acc.LPCR_NombreContrat__c = 1;
+                    lstaccount.add(acc);
+                }
+            } 
+        }
+        update lstaccount;
+        system.debug('>>>here'+lstaccount);
+        return lstaccount;
+    }
+    
+    
 }

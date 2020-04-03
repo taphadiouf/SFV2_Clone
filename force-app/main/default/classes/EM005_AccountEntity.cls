@@ -10,4 +10,7 @@ public with sharing class EM005_AccountEntity extends EM001_AbstractObjectEntity
     public static List<Account> getAccsByIds(Set<Id> accsIds){
         return [SELECT Id FROM Account WHERE Id IN :accsIds];
     }
+    public static List<Account> getCrecheAccs(){
+        return [SELECT Id,Name,RecordType.Name,LPCR_NombreContrat__c FROM Account WHERE RecordType.Name='Crèche' ];
+    }
 }

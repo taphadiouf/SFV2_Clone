@@ -680,6 +680,26 @@ newMe.FederationIdentifier = null;
         }
         return plannings;	
     }
+    
+    //This part is added by hanae on the 02/04/2020
+    public static List<Account> createCrecheAccountsWithQuote(Integer numAccs, String name, Id recTypeId, Decimal numQuote ){
+        List<Account> accounts = new List<Account>();
+        Account tempAcc;
+        for(Integer i = 0; i<numAccs; i++){
+            tempAcc = new Account(Name = name, RecordTypeId = recTypeId, LPCR_NombreContrat__c = numQuote);
+            accounts.add(tempAcc);
+        }
+        return accounts;
+    }
+    
+    public static List<SBQQ__Quote__c> createaccountQuotes(Set<Id> whoIds ){
+        List<SBQQ__Quote__c> quotes = new List<SBQQ__Quote__c>();
+        for(Id eachId : whoIds){
+            SBQQ__Quote__c quote= new SBQQ__Quote__c(SBQQ__Account__c = eachId);
+            quotes.add(quote);
+        }
+        return quotes;
+    }
 
 
 
