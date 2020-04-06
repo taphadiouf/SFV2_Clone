@@ -886,11 +886,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>LPCR_ContratPartenaire__c.LPCR_ContactLPCR__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>LPCR_ContratPartenaire__c.LPCR_ContratPrincipal__c</field>
         <readable>true</readable>
     </fieldPermissions>
