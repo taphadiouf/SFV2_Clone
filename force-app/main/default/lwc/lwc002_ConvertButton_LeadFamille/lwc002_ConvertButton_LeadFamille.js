@@ -9,7 +9,7 @@
 
 /* eslint-disable no-console */
 import { LightningElement, api, wire} from 'lwc';
-import  createAccountFromLead from '@salesforce/apex/APC001_LeadFaConverController.createAccountFromLead';
+import  convertLead from '@salesforce/apex/APC001_LeadFaConverController.convertLead';
 import { NavigationMixin } from 'lightning/navigation';
 import {CurrentPageReference} from 'lightning/navigation';
 import {registerListener, unregisterAllListeners} from 'c/pubsub';
@@ -18,10 +18,12 @@ export default class Lwc002_ConvertButton_LeadFamille extends NavigationMixin(Li
     @api recordId;
     contactId;
     enfantsIndexes;
+    chosenCrecheId;
     @wire(CurrentPageReference)
     pageRef;
     connectedCallback(){
         registerListener("changedEnfants",this.handleChangedEnfants,this);
+        registerListener("chosenCrecheChanged", this.handleChosenCrecheChanged, this);
     }
     disconnectedCallback(){
         unregisterAllListeners(this);
@@ -29,10 +31,15 @@ export default class Lwc002_ConvertButton_LeadFamille extends NavigationMixin(Li
     handleChangedEnfants(enfantsIndexes){
         this.enfantsIndexes  = enfantsIndexes;
     }
-    saveMethod() {
+    handleChosenCrecheChanged(chosenCrecheId){
+        this.chosenCrecheId = chosenCrecheId;
+    }
+    convertLeadF() {
         console.log("recordId : " + this.recordId);
-        createAccountFromLead({
+        convertLead({
             leadId : this.recordId,
+            enfantsIndexes : this.enfantsIndexes,
+            chosenCrecheId : this.chosenCrecheId
         })
         .then((result)=>{
             console.log('saveMethod: contactId:',result);

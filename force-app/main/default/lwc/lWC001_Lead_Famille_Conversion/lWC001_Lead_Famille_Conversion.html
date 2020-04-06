@@ -10,7 +10,7 @@
                 <div class="slds-m-around_medium">
                     <lightning-input type="checkbox" label={label.LPCR_PopConLT} onchange={handleContrDaccCheckbox}>
                     </lightning-input>
-                    <template if:true={showCreches1}>
+                    <template if:true={showCreches}>
                         <template if:true={showEnfants}>
                             <ul>
                                 <template for:each={enfants} for:item="eachEnfant">
@@ -20,15 +20,19 @@
                             </ul>
                         </template>
                         <div class="slds-m-vertical_medium slds-p-left_xx-large slds-p-left_xx-large">
-                            <lightning-combobox name="Name" label={label.LPCR_CrecheWA} value={creche1Value}
-                                placeholder="-Select-" options={creches} onchange={handleCreche1Chosen}>
+                           
+                            <lightning-combobox name="Name" label={label.LPCR_CrecheWA} value={chosenCrecheId}
+                                placeholder="-Select-" options={creches} onchange={handleCrecheChosen}>
                             </lightning-combobox>
+
                             <lightning-input type="checkbox" label={label.LPCR_PopConLT2}
-                                onchange={handleSponsCheckbox}></lightning-input>
+                                onchange={handleSponsCheckbox}>
+                            </lightning-input>
+
                             <div class="slds-p-left_xx-large">
-                                <template if:true={showCreches2}>
-                                    <lightning-combobox name="Name" label={label.LPCR_CrecheWA} value={creche2Value}
-                                        placeholder="-Select-" options={creches} onchange={handleCreche2Chosen}>
+                                <template if:true={showComptes}>
+                                    <lightning-combobox name="Name" label={label.LPCR_CompteWA} value={chosenCompteId}
+                                        placeholder="-Select-" options={comptes} onchange={handleCompteChosen}>
                                     </lightning-combobox>
                                 </template>
                             </div>

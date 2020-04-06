@@ -13,10 +13,12 @@
 /* eslint-disable no-alert */
 import { LightningElement, api, wire } from 'lwc';
 import  getAccountsByRecordtype from '@salesforce/apex/APC001_LeadFaConverController.getAccountsByRecordtype';
+import  getRelatedCreches from '@salesforce/apex/APC001_LeadFaConverController.getRelatedCreches';
 import  getEnfants from '@salesforce/apex/APC001_LeadFaConverController.getEnfants';
 import LPCR_PopConLT from '@salesforce/label/c.LPCR_PopConLT';
 import LPCR_PopConLT2 from '@salesforce/label/c.LPCR_PopConLT2';
 import LPCR_CrecheWA from '@salesforce/label/c.LPCR_CrecheWA';
+import LPCR_CompteWA from '@salesforce/label/c.LPCR_CompteWA';
 import {fireEvent} from 'c/pubsub';
 import {CurrentPageReference} from 'lightning/navigation';
 export default class LWC001_Lead_Famille_Conversion extends LightningElement {
@@ -25,11 +27,12 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     value;
     options;
     recType;
-    creche1Value;
-    creche2Value;
-    showCreches1;
-    showCreches2;
+    chosenCrecheId;
+    chosenCompteId;
+    showCreches;
+    showComptes;
     creches;
+    comptes;
     enfants;
     enfantsIndexes;
     
@@ -41,15 +44,17 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
             LPCR_PopConLT,
             LPCR_PopConLT2,
             LPCR_CrecheWA,
+            LPCR_CompteWA
         };
         this.recType = 'Creche';
-        this.showCreches1 = false;
-        this.showCreches2 = false;
+        this.showCreches = false;
+        this.showComptes = false;
         this.creches = [];
         this.enfants = [];
     }
     @wire(CurrentPageReference)
     pageRef;
+    /*
     @wire(getAccountsByRecordtype, {recordTypeName : "$recType"})
     getAccountsByRecordtypeF({error, data}){
         if(data){
@@ -63,7 +68,23 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         else if(error){
             console.error(error);
         }
+    }*/
+    @wire(getRelatedCreches, {leadId : "$recordId"})
+    getRelatedCrechesF({error, data}){
+        if(data){
+            this.creches = [];
+            for(let i = 0; i < data.length ; i++){
+                this.creches.push({
+                    label : data[i].Name,
+                    value : data[i].Id
+                });
+            }
+        }
+        if(error){
+            console.error(error);
+        }
     }
+
     @wire(getEnfants, {leadId : "$recordId"})
     getEnfantsF({error, data}){
         if(data){
@@ -74,20 +95,26 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         }
     }
     connectedCallback(){
-        console.log("ConnectedCallback14!");
+        console.log("ConnectedCallback18");
     }
     get showEnfants(){
         return this.enfants.length > 1;
     }
+    handleContrDaccCheckbox(event) {
+        this.showCreches = event.target.checked;
+    }
     handleEnfantCheckbox(event){
         this.enfantsIndexes[event.target.num] = event.target.checked;
         fireEvent(this.pageRef, "changedEnfants", this.enfantsIndexes);
-
     }
-    handleContrDaccCheckbox(event) {
-        this.showCreches1 = event.target.checked;
+    handleCrecheChosen(event){
+        this.chosenCrecheId = event.target.value;
+        fireEvent(this.pageRef, "chosenCrecheChanged", this.chosenCrecheId);
     }
     handleSponsCheckbox(event) {
-        this.showCreches2 = event.target.checked;
+        this.showComptes = event.target.checked;
+    }
+    handleCompteChosen(event){
+
     }
 }

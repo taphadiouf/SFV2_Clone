@@ -51,11 +51,13 @@
         <shortDescription>LPCR_CrecheWA</shortDescription>
         <value>Crèche</value>
     </labels>
-
-
-
-
-
+    <labels>
+        <fullName>LPCR_CompteWA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_CompteWA</shortDescription>
+        <value>Compte</value>
+    </labels>
     <labels>
         <fullName>LPCR_ConvertLeadF</fullName>
         <language>en_US</language>
@@ -90,6 +92,20 @@
         <protected>false</protected>
         <shortDescription>LPCR_Famille</shortDescription>
         <value>Famille</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Parent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Parent</shortDescription>
+        <value>Parent</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Enfant</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Enfant</shortDescription>
+        <value>Enfant</value>
     </labels>
     <labels>
         <fullName>LPCR_ListeAtt</fullName>
