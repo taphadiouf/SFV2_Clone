@@ -48,7 +48,7 @@ public class SM008_QuoteServices_Test {
             List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
             List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
             Opportunity opp = oppties.get(0);
-            opp.LPCR_RenouvellementConvenu__c='Oui';
+            opp.LPCR_IndexationConvenue__c='Oui';
             opp.LPCR_TypeFacturation__c='Arrears';
             opp.LPCR_BillingFrequency__c='Invoice Plan';
             update opp;
@@ -56,9 +56,9 @@ public class SM008_QuoteServices_Test {
             
             insert quote;
             
-            quote = [SELECT Id ,LPCR_RenouvellementConvenu__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c from SBQQ__Quote__c WHERE Id = :quote.Id];
-            System.assertNotEquals(null,quote.LPCR_RenouvellementConvenu__c,'LPCR_RenouvellementConvenu__c is null');
-            System.assertEquals(quote.LPCR_RenouvellementConvenu__c, opp.LPCR_RenouvellementConvenu__c, 'Quote LPCR_RenouvellementConvenu__c not equals to oppt LPCR_RenouvellementConvenu__c');
+            quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c from SBQQ__Quote__c WHERE Id = :quote.Id];
+            System.assertNotEquals(null,quote.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
+            System.assertEquals(quote.LPCR_IndexationConvenue__c, opp.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
             System.assertEquals(quote.LPCR_TypeFacturation__c, opp.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
             System.assertEquals(quote.SBQQ__BillingFrequency__c, opp.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
             Test.stopTest();
