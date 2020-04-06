@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Account.Creche</members>
+        <members>Account.Famille</members>
+        <members>Account.Entreprise</members>
+        <members>SBQQ__Quote__c.Reservataire</members>
+        <members>SBQQ__Quote__c.Referencement</members>
+        <members>SBQQ__Quote__c.Contrat_Accueil</members>
+        <members>LPCR_TablePrix__c.Micro</members>
+        <members>LPCR_TablePrix__c.B2B</members>
+        <members>LPCR_TablePrix__c.ALSH</members>
+        <name>RecordType</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c.LPCR_RefDevisReservataire__c</members>
+        <members>SBQQ__Quote__c.LPCR_RefDevisReferencement__c</members>
+        <members>SBQQ__Quote__c.LPCR_NumeroDuDevis__c</members>
+        <members>Contract.LPCR_DateDebut__c</members>
+        <members>Contract.LPCR_DateFin__c</members>
+        <members>Contract.LPCR_StatutContrat__c</members>
+        <members>SBQQ__QuoteLine__c.LPCR_NumeroPOAutomatique__c</members>
+        <members>SBQQ__QuoteLine__c.LPCR_NumeroDeBonDeCommande__c</members>
+        <members>blng__Invoice__c.LPCR_StatutFacture__c</members>
+        <members>Contract.LPCR_DateFinFacturation__c</members>
+        <members>Contract.LPCR_DateLiberationBerceau__c</members>
+        <members>Contract.LPCR_DateReceptionDemandeFinContrat__c</members>
+        <members>Contract.LPCR_DateFinFacturation__c</members>
+        <members>Contract.LPCR_DateReceptionDemandeFinContrat__c</members>
+        <members>Contract.LPCR_DateLiberationBerceau__c</members>
+        <members>blng__Invoice__c.LPCR_StatutFacture__c</members>
+        <members>SBQQ__Quote__c.LPCR_AValider__c</members>
+        <members>SBQQ__Quote__c.LPCR_LigneSuperieurePP__c</members>
+        <members>SBQQ__Quote__c.LPCR_LigneInferieurePP__c</members>
+        <members>SBQQ__QuoteLine__c.LPCR_InferieurPP__c</members>
+        <members>SBQQ__QuoteLine__c.LPCR_SuperieuPP__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContactRepresentant1__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContactRepresentant2__c</members>
+        <members>SBQQ__Quote__c.LPCR_NumeroAllocataire__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>unfiled$public/LPCR_ApprouverModificationPrix</members>
+        <members>unfiled$public/LPCR_Contrat_NonSigne</members>
+        <members>unfiled$public/LPCR_FinContrat</members>
+        <members>unfiled$public/LPCR_FinContratDans5Jours</members>
+        <members>unfiled$public/LPCR_FinContratDans90Jours</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+        <members>Account-Crèche</members>
+        <members>Account-Entreprise</members>
+        <members>Account-Famille</members>
+        <members>Account-Partenaire</members>
+        <members>Contract-CPQ Contract Layout</members>
+        <members>SBQQ__DiscountSchedule__c-Discount Schedule Layout</members>
+        <members>SBQQ__Quote__c-Contrat d'accueil</members>
+        <members>SBQQ__Quote__c-Référencement</members>
+        <members>SBQQ__Quote__c-Réservation</members>
+        <members>SBQQ__QuoteLine__c-Quote Line Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>LPCR_JoursSemaine</members>
+        <members>LPCR_Region</members>
+        <members>LPCR_TrancheALSH</members>
+        <members>LPCR_TypeAccueilALSH</members>
+        <members>LPCR_TypeEntreprise</members>
+        <name>GlobalValueSet</name>
+    </types>
+    <version>48.0</version>
+</Package>
