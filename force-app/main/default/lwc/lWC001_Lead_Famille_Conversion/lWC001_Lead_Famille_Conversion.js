@@ -12,13 +12,14 @@
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 import { LightningElement, api, wire } from 'lwc';
-import  getAccountsByRecordtype from '@salesforce/apex/APC001_LeadFaConverController.getAccountsByRecordtype';
 import  getRelatedCreches from '@salesforce/apex/APC001_LeadFaConverController.getRelatedCreches';
 import  getEnfants from '@salesforce/apex/APC001_LeadFaConverController.getEnfants';
 import LPCR_PopConLT from '@salesforce/label/c.LPCR_PopConLT';
 import LPCR_PopConLT2 from '@salesforce/label/c.LPCR_PopConLT2';
 import LPCR_CrecheWA from '@salesforce/label/c.LPCR_CrecheWA';
 import LPCR_CompteWA from '@salesforce/label/c.LPCR_CompteWA';
+import LPCR_EnfantsWA from '@salesforce/label/c.LPCR_EnfantsWA';
+
 import {fireEvent} from 'c/pubsub';
 import {CurrentPageReference} from 'lightning/navigation';
 export default class LWC001_Lead_Famille_Conversion extends LightningElement {
@@ -44,7 +45,8 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
             LPCR_PopConLT,
             LPCR_PopConLT2,
             LPCR_CrecheWA,
-            LPCR_CompteWA
+            LPCR_CompteWA,
+            LPCR_EnfantsWA
         };
         this.recType = 'Creche';
         this.showCreches = false;
@@ -100,11 +102,21 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     get showEnfants(){
         return this.enfants.length > 1;
     }
+    get getEnfantsOptions(){
+        let enfantsOptions = [];
+        for(let i = 0; i < this.enfants.length; i++){
+            enfantsOptions.push({
+                label : this.enfants[i].label,
+                value : this.enfants[i].num
+            });
+        }
+        return enfantsOptions;
+    }
     handleContrDaccCheckbox(event) {
         this.showCreches = event.target.checked;
     }
     handleEnfantCheckbox(event){
-        this.enfantsIndexes[event.target.num] = event.target.checked;
+        this.enfantsIndexes[event.target.value] = event.target.checked;
         fireEvent(this.pageRef, "changedEnfants", this.enfantsIndexes);
     }
     handleCrecheChosen(event){

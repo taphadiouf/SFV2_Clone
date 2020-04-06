@@ -39,7 +39,8 @@ export default class Lwc002_ConvertButton_LeadFamille extends NavigationMixin(Li
         convertLead({
             leadId : this.recordId,
             enfantsIndexes : this.enfantsIndexes,
-            chosenCrecheId : this.chosenCrecheId
+            chosenCrecheId : this.chosenCrecheId,
+            chosenCompteId : this.chosenCrecheId
         })
         .then((result)=>{
             console.log('saveMethod: contactId:',result);

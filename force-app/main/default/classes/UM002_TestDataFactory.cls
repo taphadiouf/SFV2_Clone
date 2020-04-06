@@ -121,7 +121,17 @@ newMe.FederationIdentifier = null;
     public static List<Lead> createLeads(Integer numLeads, String recTypeId, String lastName, String company, String status,String Email){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0;i<numLeads;i++){
-            Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName,Company=company ,Status = status, Email=email);
+            leads.add(new Lead(RecordTypeId = recTypeId, LastName=lastName,Company=company ,Status = status, Email=email));
+        }
+        return leads;
+    }
+    public static List<Lead> createLeads(Integer numLeads, Map<String, Object> fieldsMap){
+        List<Lead> leads = new List<Lead>();
+        for(Integer i=0; i<numLeads; i++){
+            Lead l= new Lead();
+            for(String eachFieldName : fieldsMap.keySet()){
+                l.put(eachFieldName, fieldsMap.get(eachFieldName));
+            }
             leads.add(l);
         }
         return leads;

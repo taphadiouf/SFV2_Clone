@@ -24,100 +24,6 @@ public with sharing class APC001_LeadFaConverController{
         return new EM005_AccountEntity().getByIds(accIdsSet, accFieldsSet);
     }
     @AuraEnabled(cacheable=true)
-    public static List<Account> getAccountsByRecordtype(String recordTypeName) {
-       List<Account> accounts = new List<Account>();
-       Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,recordTypeName);
-       if(UM003_TypeManager.idNotNull(recordtypeId)){
-            accounts = [SELECT Name FROM Account WHERE RecordTypeId = :recordtypeId];
-        }
-        return accounts;
-    }
-    @AuraEnabled()
-    public static void convertLead(Id leadId, List<Integer> enfantsIndexes, Id chosenCrecheId){
-        Lead currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
-        //Creation of Account Famille
-        Account newFamilleAccount = new Account(
-                                    Name = Label.LPCR_Famille+' '+currentLead.LastName+' '+currentLead.LPCR_NomCoDemandeur__c, 
-                                    RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Famille)
-                                    );
-        insert newFamilleAccount;  
-
-        //Creation of contacts (Enfant & Representant => Parent RT)
-        List<Contact> newContacts = new List<Contact>();
-        Id parentContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Parent);
-        Id enfantContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Enfant);
-        Contact contactRepresent1 = new Contact(
-                                                LastName =currentLead.LastName, 
-                                                FirstName = currentLead.FirstName, 
-                                                OwnerId = currentLead.OwnerId, 
-                                                Phone = currentLead.Phone, 
-                                                Email = currentLead.Email, 
-                                                AccountId = newFamilleAccount.Id,
-                                                RecordTypeId = parentContactRT
-                                                );
-        newContacts.add(contactRepresent1);
-        Contact contactRepresent2;
-        if(String.isNotBlank(currentLead.LPCR_PrenomCoDemandeur__c) && String.isNotBlank(currentLead.LPCR_NomCoDemandeur__c)){
-            contactRepresent2 = new Contact(
-                    FirstName = (String.isNotBlank(currentLead.LPCR_CiviliteCoDemandeur__c) ? (currentLead.LPCR_CiviliteCoDemandeur__c+ ' ') : '') + currentLead.LPCR_PrenomCoDemandeur__c,
-                    LastName = currentLead.LPCR_NomCoDemandeur__c, 
-                    OwnerId = currentLead.OwnerId, 
-                    Birthdate = currentLead.LPCR_DateNaissance1__c,
-                    Email = currentLead.LPCR_EmailCoDemandeur__c, 
-                    AccountId = newFamilleAccount.Id,
-                    RecordTypeId = parentContactRT
-                );
-            newContacts.add(contactRepresent2);
-        }
-        //Create contacts enfants
-        for(Integer eachNum : enfantsIndexes){
-            newContacts.add(
-                new Contact(
-                    FirstName = (String) currentLead.get('LPCR_PrenomEnfant' + eachNum + '__c'),
-                    LastName = (String) currentLead.get('LPCR_NomEnfant' + eachNum + '__c'), 
-                    Birthdate = (Date) currentLead.get('LPCR_DateNaissance' + eachNum + '__c'), 
-                    OwnerId = currentLead.OwnerId, 
-                    AccountId = newFamilleAccount.Id,
-                    RecordTypeId = enfantContactRT
-                    ));
-        }
-
-        insert newContacts;
-
-        //Set (Reprsentants 1 & 2) for newFamilleAccount  
-        newFamilleAccount.LPCR_Representant1__c = contactRepresent1.Id;
-        if(contactRepresent2 != null) newFamilleAccount.LPCR_Representant2__c = contactRepresent2.Id;
-        update newFamilleAccount;
-
-        //Create AccountContactRelation for (Reprsentants 1 & 2)
-        List<AccountContactRelation> accountContactRelations = new List<AccountContactRelation>();
-        accountContactRelations.add(
-            new AccountContactRelation(
-                ContactId = contactRepresent1.Id,
-                AccountId = currentLead.LPCR_CompteSociete__c
-            )
-        );
-        if(contactRepresent2 != null){
-            accountContactRelations.add(
-                new AccountContactRelation(
-                    ContactId = contactRepresent2.Id,
-                    AccountId = currentLead.LPCR_CompteSocieteCoDemandeur__c
-            )
-        );
-        }
-        //Convert the lead
-        LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
-            Database.LeadConvert lc = new Database.LeadConvert();
-            lc.setLeadId(leadId);
-            lc.setDoNotCreateOpportunity(true);
-            lc.setConvertedStatus(convertStatus.MasterLabel);
-        	lc.setAccountId(newFamilleAccount.Id);
-        	lc.setContactId(contactRepresent1.Id);
-            Database.LeadConvertResult lcr = Database.convertLead(lc); 
-    }
-
-
-    @AuraEnabled(cacheable=true)
     public static String getEnfants(Id leadId){
         System.debug('run getEnfants');
         List<WRP002_EnfantWrapper> enfants = new List<WRP002_EnfantWrapper>();
@@ -151,4 +57,131 @@ public with sharing class APC001_LeadFaConverController{
             this.label = label;
         }
     } 
+    /*
+    @AuraEnabled(cacheable=true)
+    public static List<Account> getAccountsByRecordtype(String recordTypeName) {
+       List<Account> accounts = new List<Account>();
+       Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,recordTypeName);
+       if(UM003_TypeManager.idNotNull(recordtypeId)){
+            accounts = [SELECT Name FROM Account WHERE RecordTypeId = :recordtypeId];
+        }
+        return accounts;
+    }
+    */
+    @AuraEnabled()
+    public static void convertLead(Id leadId, List<Integer> enfantsIndexes, Id chosenCrecheId, Id chosenCompteId){
+        Lead currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
+        String prenomCoDemandeur = currentLead.LPCR_PrenomCoDemandeur__c;                                         
+        String nomCoDemandeur = currentLead.LPCR_NomCoDemandeur__c;                                         
+        String civiliteCoDemandeur = currentLead.LPCR_CiviliteCoDemandeur__c; 
+        //Create Account (Famille)
+        Account newFamilleAccount = new Account(
+                                    Name = Label.LPCR_Famille + ' ' + currentLead.LastName + (nomCoDemandeur != null ? (' ' +nomCoDemandeur) : ''), 
+                                    RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Famille)
+                                    );
+        insert newFamilleAccount;  
+
+        ///Create contacts (Enfants and Representants(Parent RT) )
+        //Map : Contact Variable Name => Contact Record
+        Map<String, Contact> newContactsMap = new Map<String, Contact>();
+        //Representants part (Parent)
+        Id parentContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Parent);
+        newContactsMap.put('contactRep1', new Contact(
+                                                LastName =currentLead.LastName, 
+                                                FirstName = currentLead.FirstName, 
+                                                OwnerId = currentLead.OwnerId, 
+                                                Phone = currentLead.Phone, 
+                                                Email = currentLead.Email, 
+                                                AccountId = newFamilleAccount.Id,
+                                                RecordTypeId = parentContactRT
+                                                ));
+                                           
+        if(String.isNotBlank(prenomCoDemandeur) && String.isNotBlank(nomCoDemandeur)){
+            newContactsMap.put('contactRep2', new Contact(
+                    FirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur,
+                    LastName = nomCoDemandeur, 
+                    OwnerId = currentLead.OwnerId, 
+                    Birthdate = currentLead.LPCR_DateNaissance1__c,
+                    Email = currentLead.LPCR_EmailCoDemandeur__c, 
+                    AccountId = newFamilleAccount.Id,
+                    RecordTypeId = parentContactRT
+                ));
+        }
+        //Enfants part
+        Id enfantContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Enfant);
+        for(Integer eachIndex : enfantsIndexes){
+            newContactsMap.put(
+                ('contactEnfant'+ eachIndex),
+                new Contact(
+                    FirstName = (String) currentLead.get('LPCR_PrenomEnfant' + eachIndex + '__c'),
+                    LastName = (String) currentLead.get('LPCR_NomEnfant' + eachIndex + '__c'), 
+                    Birthdate = (Date) currentLead.get('LPCR_DateNaissance' + eachIndex + '__c'), 
+                    OwnerId = currentLead.OwnerId, 
+                    AccountId = newFamilleAccount.Id,
+                    RecordTypeId = enfantContactRT
+                    ));
+        }
+
+        insert newContactsMap.values();
+
+        
+        //Set Reprsentants1 and Reprsentants2 fields for newFamilleAccount  
+        newFamilleAccount.LPCR_Representant1__c = newContactsMap.get('contactRep1').Id;
+        if(newContactsMap.get('contactRep2') != null) newFamilleAccount.LPCR_Representant2__c = newContactsMap.get('contactRep2').Id;
+        update newFamilleAccount;
+
+        //Create AccountContactRelation for Reprsentants1 and Reprsentants2 contacts
+        List<AccountContactRelation> accountContactRelations = new List<AccountContactRelation>();
+        accountContactRelations.add(
+            new AccountContactRelation(
+                ContactId = newContactsMap.get('contactRep1').Id,
+                AccountId = currentLead.LPCR_CompteSociete__c
+            )
+        );
+        if(newContactsMap.get('contactRep2') != null){
+            accountContactRelations.add(
+                new AccountContactRelation(
+                    ContactId = newContactsMap.get('contactRep2').Id,
+                    AccountId = currentLead.LPCR_CompteSocieteCoDemandeur__c
+            )
+        );
+        }
+        insert accountContactRelations;
+        
+        //Convert the lead
+        LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
+            Database.LeadConvert lc = new Database.LeadConvert();
+            lc.setLeadId(leadId);
+            lc.setDoNotCreateOpportunity(false);
+            lc.setConvertedStatus(convertStatus.MasterLabel);
+        	lc.setAccountId(newFamilleAccount.Id);
+        	lc.setContactId(newContactsMap.get('contactRep1').Id);
+            Database.LeadConvertResult lcr = Database.convertLead(lc); 
+
+        //Create a quote for each child (enfant)
+        List<SBQQ__Quote__c> quotesList = new List<SBQQ__Quote__c>();
+        Contact tmpContactEnfant;
+        Contact tmpContactRep1;
+        Contact tmpContactRep2;
+        for(Integer eachIndex : enfantsIndexes){
+            tmpContactEnfant = newContactsMap.get('contactEnfant' + eachIndex);
+            tmpContactRep1 = newContactsMap.get('contactRep1');
+            tmpContactRep2 = newContactsMap.get('contactRep2');
+            quotesList.add(
+                    new SBQQ__Quote__c(
+                        LPCR_DateDebut__c = (Date) currentLead.get('LPCR_DateEntreeCreche' + eachIndex + '__c'),
+                        LPCR_Creche__c = chosenCrecheId,
+                        SBQQ__Account__c = chosenCompteId,
+                        LPCR_ContactEnfant__c = (tmpContactEnfant != null ? tmpContactEnfant.Id : null),
+                        LPCR_ContactRepresentant1__c = (tmpContactRep1 != null ? tmpContactRep1.Id : null),
+                        LPCR_ContactRepresentant2__c = (tmpContactRep2 != null ? tmpContactRep2.Id : null),
+                        SBQQ__Opportunity2__c = currentLead.convertedOpportunityId
+                    )
+                );
+        }
+        insert quotesList;
+    }
+
+
+    
 }
