@@ -33,9 +33,21 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>LPCR_CodePostal__c</field>
+            <value>
+                <elementReference>CodePostal</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>LPCR_Compte__c</field>
             <value>
                 <elementReference>AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LPCR_ContactPartenaire__c</field>
+            <value>
+                <elementReference>ContactId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -63,6 +75,24 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>LPCR_Revalorisation25__c</field>
+            <value>
+                <elementReference>Revalorisation</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LPCR_Rue__c</field>
+            <value>
+                <elementReference>Rue</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LPCR_Statut__c</field>
+            <value>
+                <stringValue>Brouillon</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>LPCR_TypeContrat__c</field>
             <value>
                 <stringValue>Avenant</stringValue>
@@ -72,6 +102,12 @@
             <field>LPCR_TypeReconduction__c</field>
             <value>
                 <elementReference>ValeurTypeReconduction</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LPCR_Ville__c</field>
+            <value>
+                <elementReference>Ville</elementReference>
             </value>
         </inputAssignments>
         <object>LPCR_ContratPartenaire__c</object>
@@ -84,6 +120,9 @@
         <connector>
             <targetReference>CreationAvenant</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>ErreurOpportunite</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>AccountId</field>
             <value>
@@ -128,12 +167,28 @@
         </filters>
         <object>LPCR_ContratPartenaire__c</object>
         <outputAssignments>
+            <assignToReference>CodePostal</assignToReference>
+            <field>LPCR_CodePostal__c</field>
+        </outputAssignments>
+        <outputAssignments>
             <assignToReference>AccountId</assignToReference>
             <field>LPCR_Compte__c</field>
         </outputAssignments>
         <outputAssignments>
             <assignToReference>ContactId</assignToReference>
             <field>LPCR_ContactPartenaire__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>Revalorisation</assignToReference>
+            <field>LPCR_Revalorisation25__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>Rue</assignToReference>
+            <field>LPCR_Rue__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>Ville</assignToReference>
+            <field>LPCR_Ville__c</field>
         </outputAssignments>
     </recordLookups>
     <screens>
@@ -148,6 +203,26 @@
             <name>ErreurCreationAvenant</name>
             <defaultValue>
                 <stringValue>Une erreur s&#39;est produite lors de la création de l&#39;avenant : {!$Flow.FaultMessage}</stringValue>
+            </defaultValue>
+            <fieldText>Erreur lors de la création</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>ErreurOpportunite</name>
+        <label>Erreur Opportunité</label>
+        <locationX>539</locationX>
+        <locationY>318</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>ErreurCreationOpportunite</name>
+            <defaultValue>
+                <stringValue>Une erreur s&#39;est produite lors de la création de l&#39;opportunité : {!$Flow.FaultMessage}</stringValue>
             </defaultValue>
             <fieldText>Erreur lors de la création</fieldText>
             <fieldType>LargeTextArea</fieldType>
@@ -264,6 +339,13 @@
         <isOutput>false</isOutput>
     </variables>
     <variables>
+        <name>CodePostal</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>ContactId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
@@ -279,6 +361,20 @@
         <isOutput>false</isOutput>
     </variables>
     <variables>
+        <name>Revalorisation</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Rue</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>ValeurCDDCDI</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
@@ -287,6 +383,13 @@
     </variables>
     <variables>
         <name>ValeurTypeReconduction</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Ville</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
