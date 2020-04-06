@@ -334,6 +334,7 @@
             <field>LPCR_Activite__c</field>
             <table>Account</table>
         </columns>
+       
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_AutrePrestataire__c</field>
@@ -344,7 +345,6 @@
             <field>LPCR_BIC__c</field>
             <table>Account</table>
         </columns>
-        
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_Capital__c</field>
