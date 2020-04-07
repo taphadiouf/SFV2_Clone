@@ -14,4 +14,19 @@
             <default>false</default>
         </values>
     </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypePlanning__c</picklist>
+        <values>
+            <fullName>Multi-Planning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Planning Classique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Planning Tournant</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
 </RecordType>

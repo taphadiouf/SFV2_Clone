@@ -152,11 +152,12 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
     <gender>Masculine</gender>
     <label>Barème CAF</label>
     <nameField>
         <displayFormat>BCAF-{00000}</displayFormat>
-        <label>Barème CAF</label>
+        <label>Barème CAF Name</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
