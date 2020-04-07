@@ -17,6 +17,7 @@
         <members>SBQQ__Quote__c.LPCR_TypeFacturation__c</members>
         <members>SBQQ__PriceCondition__c.SBQQ__Field__c</members>
         <members>SBQQ__Quote__c.SBQQ__Status__c</members>
+        <members>Opportunity.LPCR_EtapeFamille__c</members>
         <name>CustomField</name>
     </types>
 
@@ -49,6 +50,7 @@
         <members>SBQQ__QuoteLine__c</members>
         <members>Contract</members>
         <members>SBQQ__DiscountSchedule__c</members>
+        <members>SBQQ__PriceCondition__c</members>
     <name>CustomObject</name>
     </types>
 
@@ -80,6 +82,7 @@
         <members>LPCR_TablePrix__c.LPCR_MajUnique</members>
         <members>Opportunity.LPCR_UpdateRTOppty</members>
         <members>SBQQ__Quote__c.LPCR_UpdateRTQuote</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateRefDevis</members>
         <name>WorkflowFieldUpdate</name>
     </types>
 
@@ -137,6 +140,15 @@
         <members>Account.LPCR_NouveauContratAccueil</members>
         <name>QuickAction</name>
     </types>
+
+    <types>
+        <members>Contract.LPCR_AlerteFinDeContratDans5jours</members>
+        <members>SBQQ__Quote__c.LPCR_AlerteContratToujoursAttenteSignature</members>
+        <members>Contract.LPCR_AlerteFinDeContratDans90jours</members>
+        <name>WorkflowAlert</name>
+    </types>
+
+
 
     <version>48.0</version>
 </Package>

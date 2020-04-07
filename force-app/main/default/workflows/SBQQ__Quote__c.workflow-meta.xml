@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>LPCR_AlerteContratToujoursAttenteSignature</fullName>
+        <description>Alerte Contrat Toujours En Attente De Signature</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>lalia.thiam@lpcr.fr</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_Contrat_NonSigne</template>
+    </alerts>
     <fieldUpdates>
         <fullName>LPCR_UpdateRTQuote</fullName>
         <field>RecordTypeId</field>
@@ -9,6 +20,18 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>LPCR_UpdateRefDevis</fullName>
+        <field>LPCR_NumeroDuDevis__c</field>
+        <formula>IF($RecordType.Name = &quot;Contrat Réservataire&quot;, LPCR_RefDevisReservataire__c ,
+IF($RecordType.Name = &quot;Contrat de Référencement&quot;, LPCR_RefDevisReferencement__c ,
+NULL))</formula>
+        <name>Update ref devis</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <rules>
         <fullName>Indexation Des Prix</fullName>
