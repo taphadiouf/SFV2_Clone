@@ -1,53 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <alerts>
-        <fullName>LPCR_ContratRejete</fullName>
-        <description>Validation de prix rejeté</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_DevisRejete</template>
-    </alerts>
-    <alerts>
-        <fullName>LPCR_Contratvalide</fullName>
-        <description>Contrat validé</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_DevisAccepte</template>
-    </alerts>
     <fieldUpdates>
-        <fullName>LPCR_StatutBrouillon</fullName>
-        <field>SBQQ__Status__c</field>
-        <literalValue>Draft</literalValue>
-        <name>STATUTBROUILLON</name>
+        <fullName>LPCR_UpdateRTQuote</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Contrat_Accueil</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update RT Quote</name>
         <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
+        <operation>LookupValue</operation>
         <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutEnRevue</fullName>
-        <field>SBQQ__Status__c</field>
-        <literalValue>In Review</literalValue>
-        <name>STATUTENREVUE</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutValide</fullName>
-        <field>SBQQ__Status__c</field>
-        <literalValue>Approved</literalValue>
-        <name>STATUTVALIDE</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
+    <rules>
+        <fullName>Indexation Des Prix</fullName>
+        <actions>
+            <name>LPCR_MiseaJourValeurIndexation</name>
+            <type>Task</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_RenouvellementConvenu__c</field>
+            <operation>equals</operation>
+            <value>Non</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <offsetFromField>SBQQ__Quote__c.LPCR_DateFin__c</offsetFromField>
+            <timeLength>-60</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>LPCR_ContratNonSigné</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Envoyé pour signature</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>LPCR_AlerteContratToujoursAttenteSignature</name>
+                <type>Alert</type>
+            </actions>
+            <timeLength>10</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>LPCR_NumeroDevis</fullName>
+        <actions>
+            <name>LPCR_UpdateRefDevis</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Draft</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update RT Quote</fullName>
+        <actions>
+            <name>LPCR_UpdateRTQuote</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>SBQQ__Account__r.RecordType.DeveloperName = &quot;Famille&quot;</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
 </Workflow>
