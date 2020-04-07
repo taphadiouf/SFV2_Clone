@@ -235,15 +235,11 @@
     <picklistValues>
         <picklist>SBQQ__Status__c</picklist>
         <values>
-            <fullName>Accepted</fullName>
+            <fullName>Actif</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Approved</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Denied</fullName>
+            <fullName>Annulé</fullName>
             <default>false</default>
         </values>
         <values>
@@ -255,15 +251,15 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>In Review</fullName>
+            <fullName>Prêt à envoyer</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Presented</fullName>
+            <fullName>Signé</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Rejected</fullName>
+            <fullName>Terminé</fullName>
             <default>false</default>
         </values>
     </picklistValues>
