@@ -57,7 +57,14 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_RenouvellementConvenu__c</field>
             </layoutItems>
-          
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeFacturation__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_BillingFrequency__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>
@@ -92,6 +99,13 @@
             </layoutItem>
         </relatedContentItems>
     </relatedContent>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>SBQQ__NetAmount__c</fields>
+        <fields>SBQQ__Status__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <relatedList>SBQQ__WebQuote__c.SBQQ__Opportunity__c</relatedList>
+    </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

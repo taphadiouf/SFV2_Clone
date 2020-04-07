@@ -4,6 +4,17 @@
     <active>true</active>
     <label>Contrat D’accueil</label>
     <picklistValues>
+        <picklist>LPCR_TypeFacturation__c</picklist>
+        <values>
+            <fullName>Advance</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Arrears</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>SBQQ__BillingFrequency__c</picklist>
         <values>
             <fullName>Annual</fullName>
@@ -15,7 +26,7 @@
         </values>
         <values>
             <fullName>Monthly</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Quarterly</fullName>
@@ -227,6 +238,10 @@
         <values>
             <fullName>Draft</fullName>
             <default>true</default>
+        </values>
+        <values>
+            <fullName>Envoyé pour signature</fullName>
+            <default>false</default>
         </values>
         <values>
             <fullName>In Review</fullName>

@@ -15,7 +15,8 @@ public with sharing class VFC001_GenererDocAnn2 {
         this.QPWrappers = new List<QPWrapper>();
         this.quotes = new List<SBQQ__Quote__c>();
         
-        List<SBQQ__Quote__c> quo = [Select Id, SBQQ__StartDate__c,SBQQ__EndDate__c , (Select Id, 
+        List<SBQQ__Quote__c> quo = [Select Id, SBQQ__StartDate__c,SBQQ__EndDate__c, LPCR_ContactEnfant__r.Name , LPCR_Creche__r.ShippingCity,LPCR_RessourcesMensuelles__c,
+                                    											(Select Id, 
                                                                                       LPCR_Contrat__c,
                                                                                       LPCR_HeureDebutLundi__c, 
                                                                                       LPCR_HeureFinLundi__c , 
@@ -29,7 +30,7 @@ public with sharing class VFC001_GenererDocAnn2 {
                                                                                       LPCR_HeureFinVendredi__c 
                                                                                       FROM Plannings_Pr_visionnels__r ) From SBQQ__Quote__c WHERE Id=:currentRecord.id];
         this.quotes = quo;
-        List<SBQQ__Quote__c> quotesForWrapper = [Select Id, SBQQ__StartDate__c,SBQQ__EndDate__c From SBQQ__Quote__c WHERE Id=:currentRecord.Id];
+        List<SBQQ__Quote__c> quotesForWrapper = [Select Id, SBQQ__StartDate__c,SBQQ__EndDate__c, LPCR_ContactEnfant__c,LPCR_Creche__r.ShippingCity, LPCR_RessourcesMensuelles__c   From SBQQ__Quote__c WHERE Id=:currentRecord.Id];
         List<LPCR_PlanningPrevisionnel__c> plansForSelect = new List<LPCR_PlanningPrevisionnel__c>();
         List<QPWrapper> plansForWrapper = new List<QPWrapper>() ;
         SBQQ__Quote__c q;

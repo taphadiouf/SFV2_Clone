@@ -269,15 +269,30 @@ newMe.FederationIdentifier = null;
         return listParams;
         
     }
-
-        public static LPCR_RessourceFamille__c createRessourceFamille(Id productId, Id userId,String name,Decimal price){
-         return new LPCR_RessourceFamille__c(   LPCR_DateDebut__c = date.today(),
-                                                LPCR_CompteFamille__c=userId,
-                                                LPCR_Produit__c=productId,
-                                                LPCR_TauxMensuel__c=price,
-                                                Name=name);
+    
+    public static LPCR_RessourceFamille__c createRessourceFamille(Id productId, Id userId,String name,Decimal price){
+        return new LPCR_RessourceFamille__c(   LPCR_DateDebut__c = date.today(),
+                                            LPCR_CompteFamille__c=userId,
+                                            LPCR_Produit__c=productId,
+                                            LPCR_TauxMensuel__c=price,
+                                            Name=name);
     } 
-
+    
+    public static List<LPCR_RessourceFamille__c> createRessourceFamille(Integer nbr,Id productId, Id userId,Decimal price,List<Date> listStartDate,List<Decimal> listNbrEnfant,List<Decimal> listNbrEnfantHandicape){
+        List<LPCR_RessourceFamille__c> listRessourceFamille = new List<LPCR_RessourceFamille__c>();
+        for(Integer i=0;i<nbr;i++){
+            listRessourceFamille.add(new LPCR_RessourceFamille__c(
+                LPCR_CompteFamille__c=userId,
+                LPCR_Produit__c=productId,
+                LPCR_TauxMensuel__c=price,
+                LPCR_DateDebut__c =listStartDate.get(i),
+                LPCR_NombreEnfants__c=listNbrEnfant.get(i),
+                LPCR_NombreEnfantHandicape__c=listNbrEnfantHandicape.get(i),
+                Name=i+1+''));
+        }
+        return listRessourceFamille;
+    } 
+    
     
     public static Contract createContract(Id accountID){	
         Contract  contract = new Contract(AccountID = accountID);	
@@ -560,6 +575,21 @@ newMe.FederationIdentifier = null;
         quoteLineInstance.SBQQ__BillingFrequency__c ='Invoice Plan';
         return quoteLineInstance;
     }
+    
+    
+    public static List< LPCR_BaremeCAF__c > createBaremeCAF(Integer nbr, List<Date> listStartDates,List<Decimal> listTauxEffortParEnfant){
+        List<LPCR_BaremeCAF__c> listBaremeCAF = new List<LPCR_BaremeCAF__c>();
+        for(Date eachDate : listStartDates){
+            for(Integer i = 0; i <nbr ;i++){
+                listBaremeCAF.add(new LPCR_BaremeCAF__c(LPCR_DateDebut__c = eachDate,
+                                                        LPCR_DateFin__c =Date.newInstance(eachDate.Year(), 12, 31),
+                                                        LPCR_NombresEnfants__c =i+1,
+                                                        LPCR_TauxEffortParEnfant__c =listTauxEffortParEnfant.get(i)));
+            }  
+        }
+        
+        return listBaremeCAF;
+    }
     //--- End Ayoub's Part
     
     //This part of code is added by hanae on the 09/03/2020
@@ -597,10 +627,10 @@ newMe.FederationIdentifier = null;
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i=0;i<numPrei;i++){
             LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteEntreprise__c= entrepriseAccountId,	
-                                                                            LPCR_PrenomEnfant__c= prenomEnfant,	
-                                                                            NomEnfant__c= nomEnfant,	
-                                                                            LPCR_Statut__c = statut,
-                                                                            LPCR_ContactEnfant__c=contactId);	
+                                                                     LPCR_PrenomEnfant__c= prenomEnfant,	
+                                                                     NomEnfant__c= nomEnfant,	
+                                                                     LPCR_Statut__c = statut,
+                                                                     LPCR_ContactEnfant__c=contactId);	
             preinscriptions.add(pre);
         }
         
@@ -648,8 +678,8 @@ newMe.FederationIdentifier = null;
     //End of the part on the same day
     
     // This part is added by hanae on the 12/03/2020
-
-
+    
+    
     public static LPCR_Preinscription__c createPreinscription(String nomEnfant, String prenomEnfant, String typePreinscription,Id compteFamilleId,Id contactId){	
         LPCR_Preinscription__c  preinsciption = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
                                                                             LPCR_PrenomEnfant__c=prenomEnfant,
@@ -658,11 +688,11 @@ newMe.FederationIdentifier = null;
                                                                             LPCR_ContactEnfant__c=contactId);	
         return preinsciption;	
     }
-
+    
     //End of the part on the same day
-
-	//This part is added by hanae on the 19/03/2020
-	public static List<LPCR_PlanningPrevisionnel__c> createPlannings(Integer numPlann, Id idQuote, Time debutLundi, Time finLundi, Time DebutMardi, Time finMardi, Time DebutMercredi, Time finMercredi, Time DebutJeudi, Time finJeudi, Time DebutVendredi, Time finVendredi){	
+    
+    //This part is added by hanae on the 19/03/2020
+    public static List<LPCR_PlanningPrevisionnel__c> createPlannings(Integer numPlann, Id idQuote, Time debutLundi, Time finLundi, Time DebutMardi, Time finMardi, Time DebutMercredi, Time finMercredi, Time DebutJeudi, Time finJeudi, Time DebutVendredi, Time finVendredi){	
         List<LPCR_PlanningPrevisionnel__c>  plannings = new List<LPCR_PlanningPrevisionnel__c>();
         for(Integer i=0;i<numPlann;i++){
             LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Contrat__c  =idQuote,
@@ -680,9 +710,9 @@ newMe.FederationIdentifier = null;
         }
         return plannings;	
     }
-
-
-
+    
+    
+    
     /*
 public class AccountContactRelationTdf {
 

@@ -27,7 +27,7 @@ public with sharing class VFC001_GenererDocAnn2_Test {
             
             VFC001_GenererDocAnn2 planningController = new VFC001_GenererDocAnn2();
             List<LPCR_PlanningPrevisionnel__c> planing =[SELECT Id,LPCR_Contrat__c FROM LPCR_PlanningPrevisionnel__c];
-            planningController.getPlannings();
+            //planningController.getPlannings();
         }
         
     }

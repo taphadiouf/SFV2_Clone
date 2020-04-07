@@ -23,43 +23,46 @@
             </div>
             <br/><br/><br/><br/>
             <div id="pageMargiin">
-                <div id="box">
-                    <div id="insideBox">
-                        <div class="slds-text-title_bold">
-                            {!$Label.LPCR_ContratEnfant }
-                        </div>
-                        <div>
-                            {!$Label.LPCR_NomEnfant  } 
-                        </div>
-                        <div>
-                            {!$Label.LPCR_PrenomEnfant }
-                        </div>
-                        <div>
-                            {!$Label.LPCR_Identifiant}
-                        </div> 
-                    </div>
-                </div><br/>
-                <div style="margin-left : 2%;">
-                    <div>
-                        {!$Label.LPCR_Etablissement}
-                    </div>
+                <apex:form >
+                    <apex:repeat value="{!quotes}" var="q">
+                        <div id="box">
+                            <div id="insideBox">
+                                <div class="slds-text-title_bold">
+                                    {!$Label.LPCR_ContratEnfant }
+                                </div>
+                                <div>
+                                    {!$Label.LPCR_NomEnfant  } 
+                                    <apex:outputField value="{!q.LPCR_ContactEnfant__c}" />
+                                </div>
+                                <div>
+                                    {!$Label.LPCR_PrenomEnfant }
+                                    <apex:outputField value="{!q.LPCR_ContactEnfant__c}" />
+                                </div>
+                                <div>
+                                    {!$Label.LPCR_Identifiant}
+                                </div> 
+                            </div>
+                        </div><br/>
+                    </apex:repeat>
                     
+                </apex:form>
+                <div style="margin-left : 2%;">
                     <apex:form >
-                        <apex:repeat value="{!quotes}" var="q">
-                            <div class="slds-grid slds-wrap">
-                                <div class="slds-col slds-size_1-of-12">
-                                    {!$Label.LPCR_Periode}
-                                </div>
-                                <div class="slds-col slds-size_1-of-12">
-                                    <apex:outputField value="{!q.SBQQ__StartDate__c}" />                                    
-                                </div>
+                        <apex:repeat value="{!quotes}" var="q">     
+                            <div >
+                                {!$Label.LPCR_Etablissement}
+                                <apex:outputField value="{!q.LPCR_Creche__r.ShippingCity}" />
+                            </div>
+                            <div >
                                 
-                                <div class="slds-col slds-size_1-of-12">
-                                    au
-                                </div>
-                                <div class="slds-col slds-size_1-of-12">
-                                    <apex:outputField value="{!q.SBQQ__EndDate__c}" /> 
-                                </div>
+                                {!$Label.LPCR_Periode}
+                                
+                                <apex:outputField value="{!q.SBQQ__StartDate__c}" />                                    
+                                
+                                au : 
+                                
+                                <apex:outputField value="{!q.SBQQ__EndDate__c}" /> 
+                                
                                 
                             </div>
                             
@@ -97,41 +100,46 @@
                     
                     <br/>
                     
-                    
-                    <div class="slds-text-title_bold">
-                        <div>
-                            {!$Label.LPCR_NbrContractuelSemaine}
-                        </div><br/>
-                        <div>
-                            {!$Label.LPCR_NbrContractuelMois}
-                        </div><br/>
-                    </div>
-                    <div>
-                        {!$Label.LPCR_RessourcesM }
-                    </div>
-                    <div>
-                        {!$Label.LPCR_Taux}
-                    </div>
-                    <div>
-                        {!$Label.LPCR_Tarif}
-                    </div><br/>
-                    <div>
-                        {!$Label.LPCR_Conge}
-                    </div><br/>
-                    <div>
-                        {!$Label.LPCR_MontantM}
-                    </div>
-                    <div>
-                        Fait le:..../..../....
-                    </div><br/><br/>
-                    <div class="slds-grid">
-                        <div class="slds-col slds-order_2 slds-large-order_1">
-                            {!$Label.LPCR_SignatureE}
-                        </div>
-                        <div class="slds-col slds-order_1 slds-large-order_2">
-                            {!$Label.LPCR_SignatureR}
-                        </div>
-                    </div><br/><br/><br/>
+                    <apex:form >
+                        <apex:repeat value="{!quotes}" var="q">
+                            <div class="slds-text-title_bold">
+                                <div>
+                                    {!$Label.LPCR_NbrContractuelSemaine}
+                                </div><br/>
+                                <div>
+                                    {!$Label.LPCR_NbrContractuelMois}
+                                </div><br/>
+                            </div>
+                            <div>
+                                {!$Label.LPCR_RessourcesM }
+                                <apex:outputField value="{!q.LPCR_RessourcesMensuelles__c}" />
+                            </div>
+                            <div>
+                                {!$Label.LPCR_Taux}
+                            </div>
+                            <div>
+                                {!$Label.LPCR_Tarif}
+                            </div><br/>
+                            <div>
+                                {!$Label.LPCR_Conge}
+                            </div><br/>
+                            <div>
+                                {!$Label.LPCR_MontantM}
+                            </div>
+                            <div>
+                                Fait le:..../..../....
+                            </div><br/><br/>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-order_2 slds-large-order_1">
+                                    {!$Label.LPCR_SignatureE}
+                                </div>
+                                <div class="slds-col slds-order_1 slds-large-order_2">
+                                    {!$Label.LPCR_SignatureR}
+                                </div>
+                            </div><br/><br/><br/>
+                        </apex:repeat>
+                        
+                    </apex:form>
                 </div>
             </div>
         </body>     

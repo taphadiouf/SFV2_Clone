@@ -31,5 +31,10 @@ public class TM007_LeadTrigger extends TM000_TriggerHandler{
         }
         
     }
+    protected  override void afterInsert(){
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM007_LeadServices.createLiensCrecheLead(newLeadsList);
+
+    }
     
 }
