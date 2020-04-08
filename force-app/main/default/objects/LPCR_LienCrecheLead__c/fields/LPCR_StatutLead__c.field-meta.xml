@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_StatutLead__c</fullName>
+    <description>pour affichage du statut du Lead sur les listes associées.</description>
+    <externalId>false</externalId>
+    <formula>TEXT(LPCR_Lead__r.Status)</formula>
+    <label>Statut du Lead</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
