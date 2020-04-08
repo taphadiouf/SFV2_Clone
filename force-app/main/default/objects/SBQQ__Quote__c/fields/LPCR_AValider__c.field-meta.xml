@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_AValider__c</fullName>
+    <externalId>false</externalId>
+    <formula>OR( LPCR_LigneSuperieurePP__c  &lt;&gt; 0,  LPCR_LigneInferieurePP__c  &lt;&gt; 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>A Valider</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>
