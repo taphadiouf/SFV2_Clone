@@ -12,16 +12,9 @@
                     </lightning-input>
                     <template if:true={showCreches}>
                         <template if:true={showEnfants}>
-                            <lightning-checkbox-group label={label.LPCR_EnfantsWA} options={getEnfantsOptions}
-                                onchange={handleEnfantCheckbox}>
+                            <lightning-checkbox-group name="Checkbox Group" label={label.LPCR_EnfantsWA}
+                                options={getEnfantsOptions} value={enfantsIndexes} onchange={handleEnfantCheckbox}>
                             </lightning-checkbox-group>
-                            <!-- 
-                            <ul>
-                                <template for:each={enfants} for:item="eachEnfant">
-                                    <lightning-input key={eachEnfant.num} data-num={eachEnfant.num} type="checkbox"
-                                        label={eachEnfant.label}></lightning-input>
-                                </template>
-                            </ul> -->
                         </template>
                         <div class="slds-m-vertical_medium slds-p-left_xx-large slds-p-left_xx-large">
 

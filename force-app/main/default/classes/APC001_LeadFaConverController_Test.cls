@@ -20,7 +20,7 @@ public with sharing class APC001_LeadFaConverController_Test {
 
         Id leadFamilleRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Lead, Label.LPCR_Famille); 
         Map<String, Object> fieldsMap = new Map<String, Object>();
-        fieldsMap.put('LastName', 'CurrentLastName');
+        fieldsMap.put('LastName', 'CurrentLeadLastName');
         fieldsMap.put('FirstName', 'CurrentLeadFirstName');
         fieldsMap.put('Phone', '12');
         fieldsMap.put('Company', 'LeadCompanyName');

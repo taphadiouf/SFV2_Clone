@@ -25,7 +25,6 @@ public with sharing class APC001_LeadFaConverController{
     }
     @AuraEnabled(cacheable=true)
     public static String getEnfants(Id leadId){
-        System.debug('run getEnfants');
         List<WRP002_EnfantWrapper> enfants = new List<WRP002_EnfantWrapper>();
         Set<String> fields = new Set<String>();
         for(Integer i = 1; i < 4; i++){
@@ -38,11 +37,10 @@ public with sharing class APC001_LeadFaConverController{
         for(Integer i = 1; i < 4; i++){
             tempNom = (String) currentLead.get('LPCR_NomEnfant' + i + '__c');
             tempPrenom = (String) currentLead.get('LPCR_PrenomEnfant' + i + '__c');
-            if(tempNom != null && tempPrenom != null){
+            if(!String.isBlank(tempNom) && !String.isBlank(tempPrenom)){
                 enfants.add(new WRP002_EnfantWrapper(i, tempNom, tempPrenom, 'Enfant '+i));
             }
         }
-        System.debug('enfants ' + enfants);
         return JSON.serialize(enfants);
     }
     public class WRP002_EnfantWrapper{
@@ -160,6 +158,7 @@ public with sharing class APC001_LeadFaConverController{
         Contact tmpContactEnfant;
         Contact tmpContactRep1;
         Contact tmpContactRep2;
+        currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
         for(Integer eachIndex : enfantsIndexes){
             tmpContactEnfant = newContactsMap.get('contactEnfant' + eachIndex);
             tmpContactRep1 = newContactsMap.get('contactRep1');

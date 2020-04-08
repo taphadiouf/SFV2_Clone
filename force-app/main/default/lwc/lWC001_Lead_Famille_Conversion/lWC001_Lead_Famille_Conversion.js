@@ -26,8 +26,6 @@ import {CurrentPageReference} from 'lightning/navigation';
 export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     label; 
     @api recordId;
-    value;
-    options;
     accEntrepriseRT;
     chosenCrecheId;
     chosenCompteId;
@@ -37,11 +35,9 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     comptes;
     enfants;
     enfantsIndexes;
-    
     constructor(){
         super();
         console.log("constructor3!")
-        this.options = [];
         this.label = {
             LPCR_PopConLT,
             LPCR_PopConLT2,
@@ -55,6 +51,7 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         this.creches = [];
         this.comptes = [];
         this.enfants = [];
+        this.enfantsIndexes = [];
     }
     @wire(CurrentPageReference)
     pageRef;
@@ -98,17 +95,17 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         }
     }
     connectedCallback(){
-        console.log("ConnectedCallback18");
+        console.log("ConnectedCallback8");
     }
     get showEnfants(){
-        return this.enfants.length > 1;
+        return (this.enfants.length > 1);
     }
     get getEnfantsOptions(){
         let enfantsOptions = [];
         for(let i = 0; i < this.enfants.length; i++){
             enfantsOptions.push({
                 label : this.enfants[i].label,
-                value : this.enfants[i].num
+                value : ''+this.enfants[i].num
             });
         }
         return enfantsOptions;
@@ -117,7 +114,7 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         this.showCreches = event.target.checked;
     }
     handleEnfantCheckbox(event){
-        this.enfantsIndexes[event.target.value] = event.target.checked;
+        this.enfantsIndexes = event.detail.value;
         fireEvent(this.pageRef, "changedEnfants", this.enfantsIndexes);
     }
     handleCrecheChosen(event){
