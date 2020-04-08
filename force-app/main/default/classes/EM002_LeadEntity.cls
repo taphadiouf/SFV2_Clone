@@ -36,7 +36,7 @@ public with sharing class EM002_LeadEntity extends EM001_AbstractObjectEntity{
                         OwnerId, 
                         Phone, 
                         Email,
-                        convertedOpportunityId, 
+                        ConvertedOpportunityId, 
                         LPCR_CiviliteCoDemandeur__c, 
                         LPCR_PrenomCoDemandeur__c, 
                         LPCR_NomCoDemandeur__c, 
@@ -52,7 +52,9 @@ public with sharing class EM002_LeadEntity extends EM001_AbstractObjectEntity{
                         LPCR_Lundi1__c, LPCR_Mardi1__c, LPCR_Mercredi1__c, LPCR_Jeudi1__c, LPCR_Vendredi1__c, LPCR_AmplitudeHoraireLundi1__c, LPCR_AmplitudeHoraireMardi1__c, LPCR_AmplitudeHoraireMercredi1__c, LPCR_AmplitudeHoraireJeudi1__c, LPCR_AmplitudeHoraireVendredi1__c,
                         LPCR_Lundi2__c, LPCR_Mardi2__c, LPCR_Mercredi2__c, LPCR_Jeudi2__c, LPCR_Vendredi2__c, LPCR_AmplitudeHoraireLundi2__c, LPCR_AmplitudeHoraireMardi2__c, LPCR_AmplitudeHoraireMercredi2__c, LPCR_AmplitudeHoraireJeudi2__c, LPCR_AmplitudeHoraireVendredi2__c, 
                         LPCR_Lundi3__c, LPCR_Mardi3__c, LPCR_Mercredi3__c, LPCR_Jeudi3__c, LPCR_Vendredi3__c, LPCR_AmplitudeHoraireLundi3__c, LPCR_AmplitudeHoraireMardi3__c, LPCR_AmplitudeHoraireMercredi3__c, LPCR_AmplitudeHoraireJeudi3__c, LPCR_AmplitudeHoraireVendredi3__c, 
-                        LPCR_NomEnfant1__c, LPCR_NomEnfant2__c, LPCR_NomEnfant3__c
+                        LPCR_NomEnfant1__c, LPCR_NomEnfant2__c, LPCR_NomEnfant3__c,
+                        LPCR_PrenomEnfant1__c, LPCR_PrenomEnfant2__c, LPCR_PrenomEnfant3__c,
+                        LPCR_CompteSociete__c, LPCR_CompteSocieteCoDemandeur__c
                 FROM Lead 
                 WHERE Id = :leadId 
                 LIMIT 1];

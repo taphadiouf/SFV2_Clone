@@ -57,9 +57,8 @@ public with sharing class APC001_LeadFaConverController{
             this.label = label;
         }
     } 
-    /*
     @AuraEnabled(cacheable=true)
-    public static List<Account> getAccountsByRecordtype(String recordTypeName) {
+    public static List<Account> getAccountsByRecordtypeName(String recordTypeName) {
        List<Account> accounts = new List<Account>();
        Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,recordTypeName);
        if(UM003_TypeManager.idNotNull(recordtypeId)){
@@ -67,9 +66,8 @@ public with sharing class APC001_LeadFaConverController{
         }
         return accounts;
     }
-    */
     @AuraEnabled()
-    public static void convertLead(Id leadId, List<Integer> enfantsIndexes, Id chosenCrecheId, Id chosenCompteId){
+    public static void convertLeadCtrl(Id leadId, List<Integer> enfantsIndexes, Id chosenCrecheId, Id chosenCompteId){
         Lead currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
         String prenomCoDemandeur = currentLead.LPCR_PrenomCoDemandeur__c;                                         
         String nomCoDemandeur = currentLead.LPCR_NomCoDemandeur__c;                                         
@@ -121,7 +119,6 @@ public with sharing class APC001_LeadFaConverController{
                     RecordTypeId = enfantContactRT
                     ));
         }
-
         insert newContactsMap.values();
 
         
@@ -139,7 +136,7 @@ public with sharing class APC001_LeadFaConverController{
             )
         );
         if(newContactsMap.get('contactRep2') != null){
-            accountContactRelations.add(
+            accountContactRelations.add(    
                 new AccountContactRelation(
                     ContactId = newContactsMap.get('contactRep2').Id,
                     AccountId = currentLead.LPCR_CompteSocieteCoDemandeur__c
@@ -147,7 +144,7 @@ public with sharing class APC001_LeadFaConverController{
         );
         }
         insert accountContactRelations;
-        
+
         //Convert the lead
         LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
             Database.LeadConvert lc = new Database.LeadConvert();

@@ -15,6 +15,13 @@
         <value>Lead</value>
     </labels>
     <labels>
+        <fullName>LPCR_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RecordType</shortDescription>
+        <value>RecordType</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Confirme</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -106,6 +113,13 @@
         <value>Famille</value>
     </labels>
     <labels>
+        <fullName>LPCR_Entreprise</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Entreprise</shortDescription>
+        <value>Entreprise</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Parent</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -148,11 +162,39 @@
         <value>Opportunity</value>
     </labels>
     <labels>
+        <fullName>LPCR_ContactEnfant</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContactEnfant</shortDescription>
+        <value>LPCR_ContactEnfant__c</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Prospecting</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LPCR_Prospecting</shortDescription>
         <value>Prospecting</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RecordTypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RecordTypeId</shortDescription>
+        <value>RecordTypeId</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ContactId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContactId</shortDescription>
+        <value>ContactId</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AccountId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AccountId</shortDescription>
+        <value>AccountId</value>
     </labels>
     <labels>
         <fullName>LPCR_PublicDSP</fullName>

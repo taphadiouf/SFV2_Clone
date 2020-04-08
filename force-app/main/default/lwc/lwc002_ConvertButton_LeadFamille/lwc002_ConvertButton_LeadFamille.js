@@ -9,7 +9,7 @@
 
 /* eslint-disable no-console */
 import { LightningElement, api, wire} from 'lwc';
-import  convertLead from '@salesforce/apex/APC001_LeadFaConverController.convertLead';
+import  convertLeadCtrl from '@salesforce/apex/APC001_LeadFaConverController.convertLeadCtrl';
 import { NavigationMixin } from 'lightning/navigation';
 import {CurrentPageReference} from 'lightning/navigation';
 import {registerListener, unregisterAllListeners} from 'c/pubsub';
@@ -19,11 +19,13 @@ export default class Lwc002_ConvertButton_LeadFamille extends NavigationMixin(Li
     contactId;
     enfantsIndexes;
     chosenCrecheId;
+    chosenCompteId
     @wire(CurrentPageReference)
     pageRef;
     connectedCallback(){
         registerListener("changedEnfants",this.handleChangedEnfants,this);
         registerListener("chosenCrecheChanged", this.handleChosenCrecheChanged, this);
+        registerListener("chosenCompteChanged", this.handleChosenCompteChanged, this);
     }
     disconnectedCallback(){
         unregisterAllListeners(this);
@@ -33,14 +35,19 @@ export default class Lwc002_ConvertButton_LeadFamille extends NavigationMixin(Li
     }
     handleChosenCrecheChanged(chosenCrecheId){
         this.chosenCrecheId = chosenCrecheId;
+        alert(this.chosenCrecheId);
     }
-    convertLeadF() {
+    handleChosenCompteChanged(chosenCompteId){
+        this.chosenCompteId = chosenCompteId;
+        alert(this.chosenCompteId);
+    }
+    convertLeadCtrlF() {
         console.log("recordId : " + this.recordId);
-        convertLead({
+        convertLeadCtrl({
             leadId : this.recordId,
             enfantsIndexes : this.enfantsIndexes,
             chosenCrecheId : this.chosenCrecheId,
-            chosenCompteId : this.chosenCrecheId
+            chosenCompteId : this.chosenCompteId
         })
         .then((result)=>{
             console.log('saveMethod: contactId:',result);

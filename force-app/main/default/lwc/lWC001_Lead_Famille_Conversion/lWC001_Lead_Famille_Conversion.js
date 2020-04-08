@@ -13,6 +13,7 @@
 /* eslint-disable no-alert */
 import { LightningElement, api, wire } from 'lwc';
 import  getRelatedCreches from '@salesforce/apex/APC001_LeadFaConverController.getRelatedCreches';
+import  getAccountsByRecordtypeName from '@salesforce/apex/APC001_LeadFaConverController.getAccountsByRecordtypeName';
 import  getEnfants from '@salesforce/apex/APC001_LeadFaConverController.getEnfants';
 import LPCR_PopConLT from '@salesforce/label/c.LPCR_PopConLT';
 import LPCR_PopConLT2 from '@salesforce/label/c.LPCR_PopConLT2';
@@ -27,7 +28,7 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     @api recordId;
     value;
     options;
-    recType;
+    accEntrepriseRT;
     chosenCrecheId;
     chosenCompteId;
     showCreches;
@@ -48,29 +49,15 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
             LPCR_CompteWA,
             LPCR_EnfantsWA
         };
-        this.recType = 'Creche';
+        this.accEntrepriseRT = 'Entreprise';
         this.showCreches = false;
         this.showComptes = false;
         this.creches = [];
+        this.comptes = [];
         this.enfants = [];
     }
     @wire(CurrentPageReference)
     pageRef;
-    /*
-    @wire(getAccountsByRecordtype, {recordTypeName : "$recType"})
-    getAccountsByRecordtypeF({error, data}){
-        if(data){
-            for(let i=0; i< data.length; i++){
-                this.creches.push({
-                    label: data[i].Name,
-                    value: data[i].Name
-                });
-            }
-        }
-        else if(error){
-            console.error(error);
-        }
-    }*/
     @wire(getRelatedCreches, {leadId : "$recordId"})
     getRelatedCrechesF({error, data}){
         if(data){
@@ -86,7 +73,21 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
             console.error(error);
         }
     }
-
+    @wire(getAccountsByRecordtypeName, {recordTypeName : "$accEntrepriseRT"})
+    getAccountsByRecordtypeNameF({error, data}){
+        if(data){
+            this.comptes = [];
+            for(let i=0; i< data.length; i++){
+                this.comptes.push({
+                    label: data[i].Name,
+                    value: data[i].Id
+                });
+            }
+        }
+        else if(error){
+            console.error(error);
+        }
+    }
     @wire(getEnfants, {leadId : "$recordId"})
     getEnfantsF({error, data}){
         if(data){
@@ -127,6 +128,7 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         this.showComptes = event.target.checked;
     }
     handleCompteChosen(event){
-
+        this.chosenCompteId = event.target.value;
+        fireEvent(this.pageRef, "chosenCompteChanged", this.chosenCompteId);
     }
 }
