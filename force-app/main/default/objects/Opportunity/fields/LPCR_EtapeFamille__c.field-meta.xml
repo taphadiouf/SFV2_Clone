@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_EtapeFamille__c</fullName>
+    <externalId>false</externalId>
+    <label>Etape Famille</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Négociation/ Contractualisation</fullName>
+                <default>false</default>
+                <label>Négociation/ Contractualisation</label>
+            </value>
+            <value>
+                <fullName>Signée</fullName>
+                <default>false</default>
+                <label>Signée</label>
+            </value>
+            <value>
+                <fullName>Perdue</fullName>
+                <default>false</default>
+                <label>Perdue</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

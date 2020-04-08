@@ -17,4 +17,14 @@ public with sharing class TM010_RessourceFamilleTrigger extends TM000_TriggerHan
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         SM011_RessourceFamilleServices.createNewRessourceFamilleRecord(newRessourceFamillesMap,oldRessourceFamillesMap);
     }
+     protected override void afterUpdate() {
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM011_RessourceFamilleServices job = new SM011_RessourceFamilleServices(oldRessourceFamillesMap,newRessourceFamillesMap);
+        ID jobID = System.enqueueJob(job);
+    }
+     protected override void afterInsert() {
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM011_RessourceFamilleServices job = new SM011_RessourceFamilleServices(newRessourceFamillesList);
+        ID jobID = System.enqueueJob(job);
+    }
 }
