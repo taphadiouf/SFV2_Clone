@@ -1,7 +1,8 @@
 /**
-* @ author Hanae Makboub
+* @author Hanae Makboub
 * @created 21/02/2020
 * @description Test Class  on APC001_LeadFaConverController
+* @Updated by: Achraf ABOUL(Salesforce) 08/04/2020
 */
 
 @isTest
@@ -17,7 +18,7 @@ public with sharing class APC001_LeadFaConverController_Test {
         accountsMap.put('Creche3', UM002_TestDataFactory.createAccByRT('Creche3', accountCrecheRTId));
         accountsMap.put('Entreprise1', UM002_TestDataFactory.createAccByRT('Entreprise1', accountEntrepriseRTId));
         insert accountsMap.values();
-
+        
         Id leadFamilleRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Lead, Label.LPCR_Famille); 
         Map<String, Object> fieldsMap = new Map<String, Object>();
         fieldsMap.put('LastName', 'CurrentLeadLastName');
@@ -38,7 +39,7 @@ public with sharing class APC001_LeadFaConverController_Test {
         fieldsMap.put('LPCR_PrenomEnfant3__c', 'PrenomEnfant3');
         fieldsMap.put('LPCR_CompteSociete__c', accountsMap.get('Entreprise1').Id);
         fieldsMap.put('LPCR_CompteSocieteCoDemandeur__c', accountsMap.get('Entreprise1').Id);
-
+        
         Lead currentLeadFamille = UM002_TestDataFactory.createLeads(1, fieldsMap).get(0);
         insert currentLeadFamille;
     }
@@ -66,7 +67,7 @@ public with sharing class APC001_LeadFaConverController_Test {
         System.assertEquals(3, crecheAccountsList.size());
         Test.stopTest();
     }
-
+    
     @isTest
     public static void convertLeadCtrl_Test() {
         System.runAs(UM002_TestDataFactory.createUser()){
@@ -78,22 +79,22 @@ public with sharing class APC001_LeadFaConverController_Test {
             leadFields.add('LPCR_CompteSociete__c');
             leadFields.add('LPCR_CompteSocieteCoDemandeur__c');
             Lead currentLead = (Lead) new EM002_LeadEntity().getAll(leadFields).get(0);
-
+            
             //Initialize the enfantsIndexes
             List<Integer> enfantsIndexes = new List<Integer>();
             enfantsIndexes.add(Integer.valueOf('1'));
             enfantsIndexes.add(Integer.valueOf('2'));
             enfantsIndexes.add(Integer.valueOf('3'));
-
+            
             //Get the account "Entreprise"
             Id accountEntrepriseRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
             Set<String> accountFilterSet = new Set<String>();
             accountFilterSet.add(String.valueOf(accountEntrepriseRTId));
             Account entrepriseAccount = (Account) new EM005_AccountEntity().getBy(Label.LPCR_RecordTypeId, accountFilterSet, null).get(0);
-
+            
             Test.startTest();
             APC001_LeadFaConverController.convertLeadCtrl(currentLead.Id, enfantsIndexes, currentLead.LPCR_CodeCreche1__c, entrepriseAccount.Id);
-
+            
             //Assert the creation of account Famille + The fields LPCR_Representant1__c and LPCR_Representant2__c are well filled
             Id accountFamilleRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
             accountFilterSet = new Set<String>();
@@ -105,29 +106,29 @@ public with sharing class APC001_LeadFaConverController_Test {
             System.assertEquals(1, accountFamilleMap.size());
             System.assertNotEquals(null, accountFamilleMap.values().get(0).LPCR_Representant1__c);
             System.assertNotEquals(null, accountFamilleMap.values().get(0).LPCR_Representant2__c);
-
+            
             //Assert the creation of contacts : "Representant1 and Representant 2"
             Id contactParentRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
             Set<String> contactFilterSet = new Set<String>();
             contactFilterSet.add(String.valueOf(contactParentRTId));
             Map<Id, Contact> representContactsMap = new Map<Id,Contact>((List<Contact>) new EM011_ContactEntity().getBy(Label.LPCR_RecordTypeId, contactFilterSet, null));
             System.assertEquals(2, representContactsMap.size());
-
+            
             //Assert the creation of contacts : "Enfants"
             Id contactEnfantRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Enfant);
             contactFilterSet = new Set<String>();
             contactFilterSet.add(String.valueOf(contactEnfantRTId));
             Map<Id, Contact> enfantsContactsMap = new Map<Id, Contact> ((List<Contact>) new EM011_ContactEntity().getBy(Label.LPCR_RecordTypeId, contactFilterSet, null));
             System.assertEquals(3, enfantsContactsMap.size());
-
+            
             //Assert the creation of AccountContactRelation for Representant1 and Representant2
             Set<Id> relatedAccountsIds = new Set<Id>();
             relatedAccountsIds.add(currentLead.LPCR_CompteSociete__c);
             relatedAccountsIds.add(currentLead.LPCR_CompteSocieteCoDemandeur__c);
-
+            
             List<AccountContactRelation> accContactRelations = [SELECT Id FROM AccountContactRelation WHERE ContactId IN :representContactsMap.keySet() AND AccountId IN :relatedAccountsIds];
             System.assertEquals(2, accContactRelations.size());
-
+            
             //Assert the creation of quotes
             List<SBQQ__Quote__c> quotesList = new EM006_QuoteEntity().getBy(Label.LPCR_ContactEnfant, enfantsContactsMap.keySet(), null);
             System.assertEquals(3, quotesList.size());
