@@ -14,7 +14,7 @@ public class SM006_PreinscriptionServices {
         
         List<Opportunity> listOpptys = new List<Opportunity>();
         List<SBQQ__Quote__c> listQuotes = new List<SBQQ__Quote__c>();
-        Id dspOpportunityRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndDeveloperName(System.Label.LPCR_Opportunity,System.Label.LPCR_PublicDSP);
+        Id dspOpportunityRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Opportunity,System.Label.LPCR_PublicDSP);
         for(LPCR_Preinscription__c eachNewPreinscri : newPreinscrisMap.values()){
             if((eachNewPreinscri.LPCR_Statut__c != oldPreinscrisMap.get(eachNewPreinscri.Id).LPCR_Statut__c && 
             Label.LPCR_Confirme.equals(eachNewPreinscri.LPCR_Statut__c))&& (Label.LPCR_OCC.equals(eachNewPreinscri.LPCR_TypePreinscription__c) || Label.LPCR_DEF.equals(eachNewPreinscri.LPCR_TypePreinscription__c) ||Label.LPCR_DSP.equals(eachNewPreinscri.LPCR_TypePreinscription__c) )){
@@ -23,7 +23,7 @@ public class SM006_PreinscriptionServices {
         }
         
         listOpptys= EM004_OpportunityEntity.saveOrUpdte(listOpptys);
-        Id accueilQuoteRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndDeveloperName(System.Label.LPCR_Quote,System.Label.LPCR_ContratA);
+        Id accueilQuoteRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Quote,System.Label.LPCR_ContratA);
         for(Opportunity eachOppty : listOpptys){
             listQuotes.add(new SBQQ__Quote__c(RecordTypeId=accueilQuoteRecordTypeId,SBQQ__Account__c=eachOppty.AccountId ,SBQQ__Opportunity2__c= eachOppty.Id));
         }
