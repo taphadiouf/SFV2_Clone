@@ -36,6 +36,18 @@
                 <field>SBQQ__Primary__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>RecordTypeId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_TypeEntreprise__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_NumeroDevis__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LPCR_BesoinApprobationDELETE__c</field>
             </layoutItems>
@@ -49,10 +61,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>SBQQ__PrimaryContact__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_TypeEntreprise__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -103,8 +111,20 @@
                 <field>LPCR_AValider__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_NumeroDevis__c</field>
+                <behavior>Edit</behavior>
+                <field>LPCR_DureeContrat__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_DateSignatureContrat__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeReconduction__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_DureePreavisMois__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

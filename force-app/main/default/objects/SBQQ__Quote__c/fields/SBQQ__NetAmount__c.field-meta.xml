@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Total Net Amount of each non-optional line item in this quote.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Total Net Amount of each non-optional line item in this quote.</inlineHelpText>
+    <inlineHelpText>Montant total net de chaque élément de ligne non facultatif dans ce devis.</inlineHelpText>
     <label>Net Amount</label>
     <summarizedField>SBQQ__QuoteLine__c.SBQQ__NetTotal__c</summarizedField>
     <summaryFilterItems>

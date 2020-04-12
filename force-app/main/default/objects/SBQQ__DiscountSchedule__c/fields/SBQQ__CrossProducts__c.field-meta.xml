@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Flag that indicates whether volume discount calculations should aggregate quantities of all products using this schedule.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Select the checkbox to aggregate quantities of all products using this schedule for the purpose of volume discount calculation. Slab discounts cannot be used for Cross Product discounts.</inlineHelpText>
+    <inlineHelpText>Sélectionnez la case pour agréger les quantités de tous les produits utilisant ce barème pour le calcul de remise sur volume. Les remises par palier ne peuvent être utilisées pour les remises sur les produits croisés.</inlineHelpText>
     <label>Cross Products</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
