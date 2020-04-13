@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Quote that this discount schedule applies to. Only used in combination with Discount Schedule Override on Quote Line Editor UI.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Quote that this discount schedule applies to. Only used in combination with Discount Schedule Override on Quote Line Editor UI.</inlineHelpText>
+    <inlineHelpText>Le devis auquel ce barème de remise s&#39;applique. Utilisé uniquement en combinaison de Remplacement du barème de remise dans l&#39;interface utilisateur de l&#39;éditeur de ligne de devis.</inlineHelpText>
     <label>Quote</label>
     <referenceTo>SBQQ__Quote__c</referenceTo>
     <relationshipLabel>Discount Schedules</relationshipLabel>

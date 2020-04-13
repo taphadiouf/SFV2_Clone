@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_NumeroBonCommande__c</fullName>
     <externalId>false</externalId>
-    <formula>SBQQ__Quote__r.LPCR_NumeroDevis__c &amp;&quot;-&quot;&amp; LPCR_NumeroPOAutomatique__c</formula>
+    <formula>SBQQ__Quote__r.LPCR_NumeroDevis__c  &amp;&quot;-&quot;&amp;  LPCR_NumeroPOAutomatique__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Numéro De Bon De Commande</label>
     <required>false</required>

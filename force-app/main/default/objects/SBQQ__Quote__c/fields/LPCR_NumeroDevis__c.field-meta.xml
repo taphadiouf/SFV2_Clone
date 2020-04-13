@@ -2,8 +2,8 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_NumeroDevis__c</fullName>
     <externalId>false</externalId>
-    <formula>IF( RecordType.DeveloperName = &quot;Reservataire&quot;, LPCR_RefDevisReservataire__c ,
-IF(RecordType.DeveloperName = &quot;Referencement&quot;, LPCR_RefDevisReferencement__c ,
+    <formula>IF(  RecordType.DeveloperName  = &quot;Reservataire&quot;,  LPCR_RefDevisReservataire__c  ,
+IF( RecordType.DeveloperName  = &quot;Referencement&quot;,  LPCR_RefDevisReferencement__c  ,
 NULL))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Numéro Du Devis</label>

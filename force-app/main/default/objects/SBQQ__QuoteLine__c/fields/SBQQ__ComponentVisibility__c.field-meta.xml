@@ -5,7 +5,7 @@
     <description>Visibility of this component line item.</description>
     <externalId>false</externalId>
     <formula>TEXT(SBQQ__ProductOption__r.SBQQ__QuoteLineVisibility__c)</formula>
-    <inlineHelpText>Indicates the visibility of the component line item.</inlineHelpText>
+    <inlineHelpText>Indique la visibilité de l&#39;élément de ligne du composant.</inlineHelpText>
     <label>Component Visibility</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

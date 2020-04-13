@@ -5,7 +5,7 @@
     <description>Number of days the quote has been opened.</description>
     <externalId>false</externalId>
     <formula>if(OR(ISPICKVAL( SBQQ__Status__c ,&quot;Draft&quot; ),ISPICKVAL( SBQQ__Status__c ,&quot;In Review&quot;),ISPICKVAL( SBQQ__Status__c , &quot;Approved&quot;), ISPICKVAL( SBQQ__Status__c , &quot;Presented&quot;)),Round(NOW() - CreatedDate,0) ,null)</formula>
-    <inlineHelpText>Number of days the quote has been opened.</inlineHelpText>
+    <inlineHelpText>Nombre de jours d&#39;ouverture du devis.</inlineHelpText>
     <label>Days Quote Open</label>
     <precision>18</precision>
     <required>false</required>
