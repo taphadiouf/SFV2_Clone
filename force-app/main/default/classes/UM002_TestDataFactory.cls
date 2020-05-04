@@ -633,6 +633,17 @@ newMe.FederationIdentifier = null;
         
         return preinscriptions;	
     }
+    public static List<LPCR_Preinscription__c> createPreinscriptions(Integer numRecords,String statut, String preinsType, Id contactEnfantId){	
+        List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
+        for(Integer i = 0; i < numRecords; i++){
+            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(   LPCR_Statut__c = statut,
+                                                                        LPCR_TypePreinscription__c = preinsType,
+                                                                        LPCR_ContactEnfant__c = contactEnfantId);	
+            preinscriptions.add(pre);
+        }
+        
+        return preinscriptions;	
+    }
     public static List<LPCR_Preinscription__c> createPreinscForEntreprise(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id entrepriseAccountId,Id contactId){	
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i=0;i<numPrei;i++){
