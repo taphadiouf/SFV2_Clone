@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Specify discounts in terms of % or Amt to be discounted off the product&#39;s price using quantity purchased or term. Set quantity/term ranges in tiers of different discount %. Discount is applied to List Price &amp; resulting total is stored in the Regular Price</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specify discounts in terms of % or Amt to be discounted off the product&#39;s price using quantity purchased or term. Set quantity/term ranges in tiers of different discount %. Discount is applied to List Price &amp; resulting total is stored in the Regular Price</inlineHelpText>
+    <inlineHelpText>Spécifiez les remises en pourcentage ou en montant à déduire du prix du produit en utilisant la quantité ou la durée achetée. Définissez des plages de quantité/de durée sur des niveaux avec différents pourcentages de remise. La remise s&#39;applique au prix catalogue et le total qui en résulte est stocké dans le prix normal.</inlineHelpText>
     <label>Discount Schedule</label>
     <referenceTo>SBQQ__DiscountSchedule__c</referenceTo>
     <relationshipLabel>Quote Lines</relationshipLabel>

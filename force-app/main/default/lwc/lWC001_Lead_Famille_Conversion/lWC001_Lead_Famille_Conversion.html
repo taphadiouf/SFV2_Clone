@@ -3,42 +3,40 @@
  * @created 17/02/2020
  * @description LWC : visual interface for a new convrsion process for Lead famille embeded by an aura component :"LC001_SF_LEAD_COMER"
  */-->
-
-
-
- <template>
+<template>
     <div class="slds-theme_default">
-        <div>
-            <div>
-                <div class="slds-p-around_medium">
-                    <lightning-card>
-                        <div class="slds-m-around_medium">
-                            <lightning-input type="checkbox" label={label.LPCR_PopConLT} onchange={handleChange}></lightning-input>
-                            <template if:true={areDetailsVisible}>
-                                <div class="slds-m-vertical_medium slds-p-left_xx-large slds-p-left_xx-large">  
-                                    <lightning-combobox name="Name"
-                                                        label={label.LPCR_CrecheWA}
-                                                        value={value}
-                                                        placeholder="-Select-"
-                                                        options={options}
-                                                        onchange={connectedCallback} ></lightning-combobox>
-                                    <lightning-input type="checkbox" label={label.LPCR_PopConLT2} onchange={handleChange2}></lightning-input>
-                                    <div class="slds-p-left_xx-large">
-                                        <template if:true={DetailsVisible}>
-                                            <lightning-combobox name="Name"
-                                                        label={label.LPCR_CrecheWA}
-                                                        value={value}
-                                                        placeholder="-Select-"
-                                                        options={options}
-                                                        onchange={connectedCallback} ></lightning-combobox>
-                                        </template>
-                                    </div>
-                                </div>
-                            </template>
+        <div class="slds-p-around_medium">
+            <lightning-card>
+                <div class="slds-m-around_medium">
+                    <lightning-input type="checkbox" label={label.LPCR_PopConLT} onchange={handleContrDaccCheckbox}>
+                    </lightning-input>
+                    <template if:true={showCreches}>
+                        <template if:true={showEnfants}>
+                            <lightning-checkbox-group name="Checkbox Group" label={label.LPCR_EnfantsWA}
+                                options={getEnfantsOptions} value={enfantsIndexes} onchange={handleEnfantCheckbox}>
+                            </lightning-checkbox-group>
+                        </template>
+                        <div class="slds-m-vertical_medium slds-p-left_xx-large slds-p-left_xx-large">
+
+                            <lightning-combobox name="Name" label={label.LPCR_CrecheWA} value={chosenCrecheId}
+                                placeholder="-Select-" options={creches} onchange={handleCrecheChosen}>
+                            </lightning-combobox>
+
+                            <lightning-input type="checkbox" label={label.LPCR_PopConLT2}
+                                onchange={handleSponsCheckbox}>
+                            </lightning-input>
+
+                            <div class="slds-p-left_xx-large">
+                                <template if:true={showComptes}>
+                                    <lightning-combobox name="Name" label={label.LPCR_CompteWA} value={chosenCompteId}
+                                        placeholder="-Select-" options={comptes} onchange={handleCompteChosen}>
+                                    </lightning-combobox>
+                                </template>
+                            </div>
                         </div>
-                    </lightning-card>
+                    </template>
                 </div>
-            </div>
+            </lightning-card>
         </div>
     </div>
 

@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Stores the type of special price offered on this line item. Null value indicates there is no special pricing. Under normal circumstances this field should not be modified via UI.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Stores the type of special price offered on this line item. Null value indicates there is no special pricing.</inlineHelpText>
+    <inlineHelpText>Stocke le type de prix spécial offert dans cet élément de ligne. Une valeur nulle indique l&#39;absence de prix spécial.</inlineHelpText>
     <label>Special Price Type</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

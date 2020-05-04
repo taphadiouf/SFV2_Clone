@@ -9,7 +9,7 @@
         IF(ISBLANK(SBQQ__Group__r.SBQQ__EndDate__c),SBQQ__Quote__r.SBQQ__EndDate__c,SBQQ__Group__r.SBQQ__EndDate__c),SBQQ__EndDate__c)
     )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Effective end date for this subscription.</inlineHelpText>
+    <inlineHelpText>Date de fin effective de cet abonnement.</inlineHelpText>
     <label>Effective End Date</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

@@ -3,8 +3,11 @@
 * @date 26/02/2020
 * @Description Queries about SBQQ__Quote__c
 */
-public with sharing class EM006_QuoteEntity {
+public with sharing class EM006_QuoteEntity extends EM001_AbstractObjectEntity{
 
+    public EM006_QuoteEntity(){
+        super('SBQQ__Quote__c');
+    }
     public static List<SBQQ__Quote__c> saveOrUpdte(List<SBQQ__Quote__c> quotes){
         if(UM003_TypeManager.isNotNullAndNotEmpty(quotes) ){
             upsert quotes;

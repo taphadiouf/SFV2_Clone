@@ -32,16 +32,82 @@ public abstract class EM001_AbstractObjectEntity{
     }
     public List<SObject> getByIds(Set<Id> idsSet, Set<String> fields){
         String queryString = 'SELECT Id';
-        for(String eachField : fields){
-            queryString += (',' + eachField);
+        if(fields != null){
+            for(String eachField : fields){
+                        queryString += (',' + eachField);
+                    }
         }
         queryString += (' FROM ' + this.sObjectAPIName + ' WHERE Id IN :idsSet');
         return Database.query(queryString);
     }
-    public List<SObject> getBy(String filterField, Set<Object> filterSet, Set<String> returnedFields){
+    public SObject getById(Id recId, Set<String> fields){
         String queryString = 'SELECT Id';
-        for(String eachField : returnedFields){
+        for(String eachField : fields){
             queryString += (',' + eachField);
+        }
+        queryString += (' FROM ' + this.sObjectAPIName + ' WHERE Id = :recId');
+        return Database.query(queryString);
+    }
+    public List<SObject> getBy(Set<String> returnedFields, Map<String, Set<String>> filtersMap){
+        String queryString = 'SELECT Id';
+        if(returnedFields != null){
+            for(String eachField : returnedFields){
+                queryString += (',' + eachField);
+            }
+        }
+        queryString += (' FROM ' + this.sObjectAPIName );
+        if(filtersMap != null && filtersMap.size()>0){
+            queryString += ' WHERE ';
+            for(String eachField : filtersMap.keySet()){
+                Set<String> filterValues = filtersMap.get(eachField);
+                queryString += (eachField + ' IN :filterValues AND ');
+            }
+            queryString = queryString.trim();
+            queryString = queryString.removeEnd('AND');
+        }
+        return Database.query(queryString);
+    }
+    public List<SObject> getBy(Set<String> returnedFields, Map<String, Set<Id>> filtersMap){
+        String queryString = 'SELECT Id';
+        if(returnedFields != null){
+            for(String eachField : returnedFields){
+                queryString += (',' + eachField);
+            }
+        }
+        queryString += (' FROM ' + this.sObjectAPIName );
+        if(filtersMap != null && filtersMap.size()>0){
+            queryString += ' WHERE ';
+            for(String eachField : filtersMap.keySet()){
+                Set<Id> filterValues = filtersMap.get(eachField);
+                queryString += (eachField + ' IN '+ filterValues + ' AND ');
+            }
+            queryString = queryString.trim();
+            queryString = queryString.removeEnd('AND');
+        }
+        queryString = queryString.replaceAll('{', '(');
+        queryString = queryString.replaceAll('}', ')');
+        System.debug(queryString);
+        System.debug(Database.query(queryString));
+        System.debug(queryString);
+        
+        return Database.query(queryString);
+    }
+    public List<SObject> getBy(String filterField, Set<String> filterSet, Set<String> returnedFields){
+        String queryString = 'SELECT Id';
+        if(returnedFields != null){
+            for(String eachField : returnedFields){
+                queryString += (',' + eachField);
+            }
+        }
+        queryString += (' FROM ' + this.sObjectAPIName + ' WHERE '+ filterField + ' IN :filterSet');
+        return Database.query(queryString);
+    }
+    public List<SObject> getBy(String filterField, Set<Id> filterSet, Set<String> returnedFields){
+        String queryString = 'SELECT Id';
+        if(returnedFields != null){
+            for(String eachField : returnedFields){
+                queryString += (',' + eachField);
+            }
         }
         queryString += (' FROM ' + this.sObjectAPIName + ' WHERE '+ filterField + ' IN :filterSet');
         return Database.query(queryString);
