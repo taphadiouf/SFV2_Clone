@@ -39,7 +39,10 @@ public with sharing class APC001_LeadFaConverController_Test {
         fieldsMap.put('LPCR_PrenomEnfant3__c', 'PrenomEnfant3');
         fieldsMap.put('LPCR_CompteSociete__c', accountsMap.get('Entreprise1').Id);
         fieldsMap.put('LPCR_CompteSocieteCoDemandeur__c', accountsMap.get('Entreprise1').Id);
-        
+        fieldsMap.put('Street', '3 Avenue Octave Greards');
+        fieldsMap.put('City', 'Paris');
+        fieldsMap.put('PostalCode', '75007');
+        fieldsMap.put('State', '');
         Lead currentLeadFamille = UM002_TestDataFactory.createLeads(1, fieldsMap).get(0);
         insert currentLeadFamille;
     }
