@@ -6,7 +6,6 @@
 
 public with sharing class VFC001_GenererDocAnn2 {
     public Annex2Wrapper annex{get;set;}
-    //SBQQ__Quote__c currentRecord;
     public VFC001_GenererDocAnn2() {
         //currentRecord = new SBQQ__Quote__c(id=Apexpages.currentPage().getParameters().get('recordId'));
         annex = new Annex2Wrapper(Apexpages.currentPage().getParameters().get('recordId'));
@@ -84,22 +83,14 @@ public with sharing class VFC001_GenererDocAnn2 {
                 if(p.LPCR_HeureFinVendredi__c == NULL && p.LPCR_HeureDebutVendredi__c == NULL ){
                     vendredi = 0 ;
                 }
-                system.debug('lundi'+lundi);
-                system.debug('mardi'+mardi);
-                system.debug('mercredi'+mercredi);
-                system.debug('jeudi'+jeudi);
-                system.debug('vendredi'+vendredi);
-                
                 Double avg = (lundi+mardi+mercredi+jeudi+vendredi); 
                 plAverage.add(avg);
             }
             
-            system.debug('tttt'+plAverage);
             if(plAverage != null){
                 for(Double a:plAverage){
                     sumavg += a ;
                 }
-                system.debug('hanae'+sumavg);
                 try{
                     averag = sumavg/plAverage.size();
                     if(Test.isRunningTest())
@@ -112,8 +103,6 @@ public with sharing class VFC001_GenererDocAnn2 {
                 }catch(Exception e){
                     system.debug('error'+e);
                 }
-                
-                system.debug('ha'+averag);
             }
             this.LPCR_AverageTime = averag;
         }
