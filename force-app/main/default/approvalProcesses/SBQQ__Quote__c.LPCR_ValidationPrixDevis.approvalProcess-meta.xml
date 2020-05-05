@@ -67,11 +67,11 @@
             <operation>equals</operation>
             <value>Draft</value>
         </criteriaItems>
-        <criteriaItems>
+       <!-- <criteriaItems>
             <field>SBQQ__Quote__c.LPCR_AValider__c</field>
             <operation>equals</operation>
             <value>Vrai</value>
-        </criteriaItems>
+        </criteriaItems>-->
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
             <operation>equals</operation>

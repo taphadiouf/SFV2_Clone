@@ -32,11 +32,11 @@
                         </div>
                         <div>
                             {!$Label.LPCR_NomEnfant  }
-                            {!annex.quote.LPCR_ContactEnfant__r.Name}
+                            {!annex.quote.LPCR_ContactEnfant__r.LastName}
                         </div>
                         <div>
                             {!$Label.LPCR_PrenomEnfant }
-                            {!annex.quote.LPCR_ContactEnfant__r.Name}
+                            {!annex.quote.LPCR_ContactEnfant__r.FirstName}
                         </div>
                         <div>
                             {!$Label.LPCR_Identifiant}
@@ -64,6 +64,7 @@
                     </div>
                     <div>
                         {!$Label.LPCR_PlanningType}
+                        {!annex.quote.LPCR_TypePlanning__c}
                     </div><br/>
                     
                     <apex:repeat value="{!annex.planningPrevisionnels}" var="pl">

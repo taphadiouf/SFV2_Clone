@@ -722,6 +722,18 @@ newMe.FederationIdentifier = null;
     }
     
     
+    public static List<LPCR_PlanningPrevisionnel__c> createPlanningsWithoutTime(Integer numPlann, Id idQuote){	
+        List<LPCR_PlanningPrevisionnel__c>  plannings = new List<LPCR_PlanningPrevisionnel__c>();
+        for(Integer i=0;i<numPlann;i++){
+            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Contrat__c  =idQuote);
+            plannings.add(pl);
+        }
+        return plannings;	
+    }
+    
+    
+    
+    
     
     /*
 public class AccountContactRelationTdf {
