@@ -367,7 +367,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_CodeReservataire__c</field>
+            <field>LPCR_CodePreinscription__c</field>
             <table>Account</table>
         </columns>
         <columns>
@@ -738,11 +738,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_EntiteJuridique__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_FormeJuridique__c</field>
             <table>Account</table>
         </columns>
         <columns>

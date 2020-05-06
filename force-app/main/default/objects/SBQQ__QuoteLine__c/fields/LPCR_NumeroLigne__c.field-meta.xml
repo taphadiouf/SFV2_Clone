@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_NumeroLigne__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(SBQQ__Quote__r.RecordType.DeveloperName = &quot;Reservataire&quot;,   SBQQ__Quote__r.LPCR_NumeroDevis__c  +  LPCR_NumeroPOAutomatique__c ,
+IF(SBQQ__Quote__r.RecordType.DeveloperName = &quot;Referencement&quot;,   SBQQ__Quote__r.LPCR_NumeroDevis__c  +  LPCR_NumeroPOAutomatique__c , NULL))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Numéro De La Ligne</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

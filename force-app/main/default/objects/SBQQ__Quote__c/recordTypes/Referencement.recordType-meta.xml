@@ -4,6 +4,32 @@
     <active>true</active>
     <label>Contrat de Référencement</label>
     <picklistValues>
+        <picklist>LPCR_DureeContrat__c</picklist>
+        <values>
+            <fullName>Durée déterminée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Durée indéterminée</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_DureePreavisMois__c</picklist>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_RenouvellementConvenu__c</picklist>
         <values>
             <fullName>Non</fullName>
@@ -18,10 +44,40 @@
         <picklist>LPCR_TypeFacturation__c</picklist>
         <values>
             <fullName>Advance</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Arrears</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypePlanning__c</picklist>
+        <values>
+            <fullName>Classique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Multi-planning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tournant</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeReconduction__c</picklist>
+        <values>
+            <fullName>Contrat non renouvelable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reconduction expresse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reconduction tacite</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -235,15 +291,11 @@
     <picklistValues>
         <picklist>SBQQ__Status__c</picklist>
         <values>
-            <fullName>Accepted</fullName>
+            <fullName>Actif</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Approved</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Denied</fullName>
+            <fullName>Annulé</fullName>
             <default>false</default>
         </values>
         <values>
@@ -255,15 +307,15 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>In Review</fullName>
+            <fullName>Prêt à envoyer</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Presented</fullName>
+            <fullName>Signé</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Rejected</fullName>
+            <fullName>Terminé</fullName>
             <default>false</default>
         </values>
     </picklistValues>

@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Status indicating where quote is in its lifecycle.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Status indicating where quote is in its lifecycle.</inlineHelpText>
+    <inlineHelpText>Statut indiquant la position du devis dans son cycle de vie.</inlineHelpText>
     <label>Status</label>
     <required>false</required>
     <trackHistory>true</trackHistory>
@@ -19,6 +19,46 @@
                 <label>Draft</label>
             </value>
             <value>
+                <fullName>Envoi directrice</fullName>
+                <default>false</default>
+                <label>Envoi directrice</label>
+            </value>
+            <value>
+                <fullName>Validé directrice</fullName>
+                <default>false</default>
+                <label>Validé directrice</label>
+            </value>
+            <value>
+                <fullName>Prêt à envoyer</fullName>
+                <default>false</default>
+                <label>Prêt à envoyer</label>
+            </value>
+            <value>
+                <fullName>Envoyé pour signature</fullName>
+                <default>false</default>
+                <label>Envoyé pour signature</label>
+            </value>
+            <value>
+                <fullName>Signé</fullName>
+                <default>false</default>
+                <label>Signé</label>
+            </value>
+            <value>
+                <fullName>Actif</fullName>
+                <default>false</default>
+                <label>Actif</label>
+            </value>
+            <value>
+                <fullName>Annulé</fullName>
+                <default>false</default>
+                <label>Annulé</label>
+            </value>
+            <value>
+                <fullName>Terminé</fullName>
+                <default>false</default>
+                <label>Terminé</label>
+            </value>
+            <value>
                 <fullName>In Review</fullName>
                 <default>false</default>
                 <label>In Review</label>
@@ -27,31 +67,6 @@
                 <fullName>Approved</fullName>
                 <default>false</default>
                 <label>Approved</label>
-            </value>
-            <value>
-                <fullName>Denied</fullName>
-                <default>false</default>
-                <label>Denied</label>
-            </value>
-            <value>
-                <fullName>Presented</fullName>
-                <default>false</default>
-                <label>Presented</label>
-            </value>
-            <value>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-                <label>Accepted</label>
-            </value>
-            <value>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-                <label>Rejected</label>
-            </value>
-            <value>
-                <fullName>Envoyé pour signature</fullName>
-                <default>false</default>
-                <label>Envoyé pour signature</label>
             </value>
         </valueSetDefinition>
     </valueSet>

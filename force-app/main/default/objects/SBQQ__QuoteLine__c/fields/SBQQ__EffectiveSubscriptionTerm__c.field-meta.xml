@@ -8,7 +8,7 @@
        IF(ISBLANK(SBQQ__Group__r.SBQQ__SubscriptionTerm__c),SBQQ__Quote__r.SBQQ__SubscriptionTerm__c,SBQQ__Group__r.SBQQ__SubscriptionTerm__c),
        SBQQ__SubscriptionTerm__c
     )</formula>
-    <inlineHelpText>Effective term for this subscription.</inlineHelpText>
+    <inlineHelpText>Durée effective pour cet abonnement.</inlineHelpText>
     <label>Effective Subscription Term</label>
     <precision>18</precision>
     <required>false</required>

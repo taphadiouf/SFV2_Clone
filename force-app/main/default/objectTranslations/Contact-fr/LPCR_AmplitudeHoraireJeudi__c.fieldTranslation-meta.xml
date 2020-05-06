@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Amplitude horaire jeudi --></label>
+    <name>LPCR_AmplitudeHoraireJeudi__c</name>
+    <picklistValues>
+        <masterLabel>Après-midi</masterLabel>
+        <translation><!-- Après-midi --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Journée entière</masterLabel>
+        <translation><!-- Journée entière --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Matin</masterLabel>
+        <translation><!-- Matin --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Non</masterLabel>
+        <translation><!-- Non --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

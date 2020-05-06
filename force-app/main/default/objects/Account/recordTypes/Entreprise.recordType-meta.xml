@@ -2,6 +2,7 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Entreprise</fullName>
     <active>true</active>
+    <compactLayoutAssignment>Entreprise</compactLayoutAssignment>
     <label>Entreprise</label>
     <picklistValues>
         <picklist>AccountSource</picklist>
@@ -178,6 +179,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_AllocataireCAF__c</picklist>
+        <values>
+            <fullName>Représentant 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Représentant 2</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_DispositifsExistants__c</picklist>
         <values>
             <fullName>Accompagnement scolaire</fullName>
@@ -285,6 +297,105 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_PrestataireActuel__c</picklist>
+        <values>
+            <fullName>AASBR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ADMR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AGDS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AGES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ALEF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ALFA 3A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Babilou</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crescendo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Croix St Simon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crèche attitude</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crèche de France</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enfance pour tous</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Envol</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Famille rurale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IFAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La croix rouge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La maison bleue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leo Lagrange</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Les petites canailles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Léa et léo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mutualité Française</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peoplenbaby</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SLEA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_PrivePublic__c</picklist>
         <values>
             <fullName>Privé</fullName>
@@ -319,6 +430,21 @@
         </values>
         <values>
             <fullName>Rhone Alpes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Region__c</picklist>
+        <values>
+            <fullName>IDF et Grandes villes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paris</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Province</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -372,7 +498,31 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ex-adhérent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fournisseur</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ne souhaite pas adhérer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rachat LPCR</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -408,21 +558,137 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_TypeCreche__c</picklist>
+        <values>
+            <fullName>ALSH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halte-Garderie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jardin d%E2%80%99enfants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MICRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RAM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeEntreprise__c</picklist>
+        <values>
+            <fullName>Grand Compte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PLAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PME-ETI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TPE</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeFacturation__c</picklist>
+        <values>
+            <fullName>Advance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Arrears</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeStructure__c</picklist>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crèche associative</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crèche municipale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crèches Familiales %2F Parentale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Micro crèches</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Ownership</picklist>
         <values>
-            <fullName>Other</fullName>
+            <fullName>Association</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Private</fullName>
+            <fullName>Autre</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Public</fullName>
+            <fullName>EURL</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Subsidiary</fullName>
+            <fullName>SA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SARL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SAS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SASU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SCIC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SCOP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SPRL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Société mutualiste</fullName>
             <default>false</default>
         </values>
     </picklistValues>

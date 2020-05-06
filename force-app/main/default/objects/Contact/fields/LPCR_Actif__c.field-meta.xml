@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Actif__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>champ permettant de marquer un contact comme Actif ou inactif (intégration avec Intranet)</description>
+    <externalId>false</externalId>
+    <label>Actif</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>
