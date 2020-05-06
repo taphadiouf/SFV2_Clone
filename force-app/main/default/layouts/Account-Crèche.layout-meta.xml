@@ -86,6 +86,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_NombreEnfantPrevuVendredi__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_NbreOptions__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -95,10 +99,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_BerceauxDisponibles__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_NombreOptions__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -408,7 +408,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000000S9VV</masterLabel>
+        <masterLabel>00h3N0000013QGS</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
