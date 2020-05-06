@@ -5,7 +5,7 @@
     <description>How you would categorize/group/organize this within Salesforce (whether it&#39;s a new or existing Product Family). Additionally, this field can be used during product selection to filter to the correct product or product SKU.</description>
     <externalId>false</externalId>
     <formula>TEXT(SBQQ__Product__r.Family)</formula>
-    <inlineHelpText>Méthode de classement/regroupement/organisation dans Salesforce (selon qu&#39;il s&#39;agit d&#39;une famille de produits nouvelle ou existante). De plus, ce champ peut être envoyé lors de la sélection des produits pour filtrer le produit ou l&#39;unité de gestion de stock produit approprié.</inlineHelpText>
+    <inlineHelpText>Méthode de classement/regroupement/organisation dans Salesforce (selon qu&#39;il s&#39;agit d&#39;une famille de produits nouvelle ou existante)...</inlineHelpText>
     <label>Product Family</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
