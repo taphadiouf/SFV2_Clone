@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Term length of the subscription, which only applies if the product is a subscription. It is copied from the Subscription Term of the related product when the line item is first generated.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Term length of the subscription, which only applies if the product is a subscription. It is copied from the Subscription Term of the related product when the line item is first generated.</inlineHelpText>
+    <inlineHelpText>La longueur de la durée d&#39;abonnement, qui s&#39;applique uniquement si le produit est un abonnement. Elle est copiée depuis la Durée d&#39;abonnement du produit associé lors de la génération de l&#39;élément de ligne.</inlineHelpText>
     <label>Default Subscription Term</label>
     <precision>5</precision>
     <required>false</required>

@@ -8,6 +8,20 @@
         <value>Account</value>
     </labels>
     <labels>
+        <fullName>LPCR_Lead</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Lead</shortDescription>
+        <value>Lead</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RecordType</shortDescription>
+        <value>RecordType</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Confirme</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -28,8 +42,6 @@
         <shortDescription>LPCR_ContratA</shortDescription>
         <value>Contrat_Accueil</value>
     </labels>
-
-
     <labels>
         <fullName>LPCR_PopConLT</fullName>
         <language>en_US</language>
@@ -51,11 +63,20 @@
         <shortDescription>LPCR_CrecheWA</shortDescription>
         <value>Crèche</value>
     </labels>
-
-
-
-
-
+    <labels>
+        <fullName>LPCR_CompteWA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_CompteWA</shortDescription>
+        <value>Compte</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_EnfantsWA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_EnfantsWA</shortDescription>
+        <value>Enfants</value>
+    </labels>
     <labels>
         <fullName>LPCR_ConvertLeadF</fullName>
         <language>en_US</language>
@@ -92,6 +113,27 @@
         <value>Famille</value>
     </labels>
     <labels>
+        <fullName>LPCR_Entreprise</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Entreprise</shortDescription>
+        <value>Entreprise</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Parent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Parent</shortDescription>
+        <value>Parent</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Enfant</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Enfant</shortDescription>
+        <value>Enfant</value>
+    </labels>
+    <labels>
         <fullName>LPCR_ListeAtt</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -120,11 +162,39 @@
         <value>Opportunity</value>
     </labels>
     <labels>
+        <fullName>LPCR_ContactEnfant</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContactEnfant</shortDescription>
+        <value>LPCR_ContactEnfant__c</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Prospecting</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LPCR_Prospecting</shortDescription>
         <value>Prospecting</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RecordTypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RecordTypeId</shortDescription>
+        <value>RecordTypeId</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ContactId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContactId</shortDescription>
+        <value>ContactId</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AccountId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AccountId</shortDescription>
+        <value>AccountId</value>
     </labels>
     <labels>
         <fullName>LPCR_PublicDSP</fullName>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type de contact détaillé --></label>
+    <name>LPCR_TypeContactDetaille__c</name>
+    <picklistValues>
+        <masterLabel>Autre</masterLabel>
+        <translation><!-- Autre --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Grand père</masterLabel>
+        <translation><!-- Grand père --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Grand-mère</masterLabel>
+        <translation><!-- Grand-mère --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mère</masterLabel>
+        <translation><!-- Mère --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Père</masterLabel>
+        <translation><!-- Père --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

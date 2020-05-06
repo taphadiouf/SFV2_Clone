@@ -367,7 +367,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_CodeReservataire__c</field>
+            <field>LPCR_CodePreinscription__c</field>
             <table>Account</table>
         </columns>
         <columns>
@@ -742,11 +742,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_FormeJuridique__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_RCS__c</field>
             <table>Account</table>
         </columns>
@@ -821,11 +816,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_ContactPartenaire__c</field>
-            <table>Account.ContratsPartenaires__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactLPCR__c</field>
             <table>Account.ContratsPartenaires__r</table>
         </columns>
         <columns>

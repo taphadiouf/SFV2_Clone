@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Dimensions within an MDQ Product that all each segment to be priced independently. Each Product may contain several Price Dimensions. Yearly Price Dimensions are treated as Subscriptions.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Dimensions within an MDQ Product that all each segment to be priced independently. Each Product may contain several Price Dimensions. Yearly Price Dimensions are treated as Subscriptions.</inlineHelpText>
+    <inlineHelpText>Dimensions avec un produit MDQ dont chaque segment doit être tarifé indépendamment. Chaque produit peut contenir plusieurs dimensions de prix. Les dimensions de prix annuelles sont traitées en tant qu&#39;abonnements.</inlineHelpText>
     <label>Price Dimension</label>
     <referenceTo>SBQQ__Dimension__c</referenceTo>
     <relationshipLabel>Quote Lines</relationshipLabel>
