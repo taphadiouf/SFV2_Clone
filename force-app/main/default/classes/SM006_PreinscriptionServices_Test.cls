@@ -2,8 +2,8 @@
 * @author Ayoub Ouarti
 * @created 27/02/2020
 * @description Test Class of SM006_PreinscriptionServices.
-* @Updated by hanae on the 12/03/2020
-* @Updated by Achraf ABOUL on the 04/05/2020
+* @Updated by hanae on 12/03/2020
+* @Updated by Achraf ABOUL on 04/05/2020
 */
 @isTest
 public class SM006_PreinscriptionServices_Test {
@@ -11,20 +11,39 @@ public class SM006_PreinscriptionServices_Test {
     @testSetup 
     
     static void testSetup(){
-        Id enfantContactRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contact', Label.LPCR_Enfant);
-        Account acc = UM002_TestDataFactory.createAccount('test');
-        insert acc;
+        Id enfantContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Enfant);
+        List<Contact> enfantsContactsListOCC= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname');
+        List<Contact> enfantsContactsListDEF= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname');
+        List<Contact> enfantsContactsListDSP= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname');
+        insert enfantsContactsListOCC;  
+        insert enfantsContactsListDEF;
+        insert enfantsContactsListDSP;
         
-        UM002_TestDataFactory.ContactTdf c = new UM002_TestDataFactory.ContactTdf();
-        Contact contactEnfant= c.create('Test','Test', acc);
-        contactEnfant.RecordTypeId = enfantContactRecordTypeId;
-        insert contactEnfant;
-        List<LPCR_Preinscription__c> lstPreinscritionsOCC = UM002_TestDataFactory.createPreinscriptions(50, Label.LPCR_NonTraite, Label.LPCR_OCC, contactEnfant.Id);
-        List<LPCR_Preinscription__c> lstPreinscritionsDEF = UM002_TestDataFactory.createPreinscriptions(50, Label.LPCR_NonTraite, Label.LPCR_DEF, contactEnfant.Id);
-        List<LPCR_Preinscription__c> lstPreinscritionsDSP = UM002_TestDataFactory.createPreinscriptions(50, Label.LPCR_NonTraite, Label.LPCR_DSP, contactEnfant.Id);
-        insert lstPreinscritionsOCC;
-        insert lstPreinscritionsDEF;
-        insert lstPreinscritionsDSP;
+        Id parentContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
+        List<Contact> parentContactsListOCC= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname');
+        List<Contact> parentContactsListDEF= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname');
+        List<Contact> parentContactsListDSP= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname');
+        insert parentContactsListOCC;
+        insert parentContactsListDEF;
+        insert parentContactsListDSP;
+
+        Id familleAccountRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
+        List<Account> famillesAccountListOCC= UM002_TestDataFactory.createAccounts(20, familleAccountRT, 'test_name');
+        List<Account> famillesAccountListDEF= UM002_TestDataFactory.createAccounts(20, familleAccountRT, 'test_name');
+        List<Account> famillesAccountListDSP= UM002_TestDataFactory.createAccounts(20, familleAccountRT, 'test_name');
+        insert famillesAccountListOCC;
+        insert famillesAccountListDEF;
+        insert famillesAccountListDSP;
+        
+        List<LPCR_Preinscription__c> allPreInscrList = new List<LPCR_Preinscription__c>();
+        //Add OCC Preinscription
+        allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListOCC, enfantsContactsListOCC, parentContactsListOCC, Label.LPCR_NonTraite, Label.LPCR_OCC));
+        //Add DEF Preinscription
+        allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListDEF, enfantsContactsListDEF, parentContactsListDEF, Label.LPCR_NonTraite, Label.LPCR_DEF));
+        //Add DSP Preinscription
+        allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListDSP, enfantsContactsListDSP, parentContactsListDSP, Label.LPCR_NonTraite, Label.LPCR_DSP));
+        
+        insert allPreInscrList;
     }        
     
     //Test the method createOpptyAndQuoteForPreinsc_Test from SM006_PreinscriptionServices class indirectly
@@ -41,16 +60,22 @@ public class SM006_PreinscriptionServices_Test {
             update allPreInscrList;
             List<Opportunity> opptys = [SELECT Id FROM Opportunity];
             List<SBQQ__Quote__c> quotes = [SELECT Id,RecordTypeId FROM SBQQ__Quote__c];
+            //Assert the creation of opportunities
             System.assertEquals(allPreInscrList.size(), opptys.size(),'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : Fail to create the exacte number of Opportunities');
+            //Assert the creation of the quotes
             System.assertEquals(allPreInscrList.size(), quotes.size(),'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : Fail to create the exacte number of Quotes');
-            Id accueilQuoteRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
+            Id accueilQuoteRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);
+            //Assert that the quotes have the good recordtype which is : Label.LPCR_ContratA (Contrat_Accueil)
             for(SBQQ__Quote__c eachQuote : quotes){
                 System.assertEquals(accueilQuoteRecordTypeId, eachQuote.RecordTypeId,'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : Fail to create the exacte record type for Quote');
             } 
+            //Assert that the Field LPCR_ContactParent__c of the "Famille" Account is set correctly
+            for(LPCR_Preinscription__c eachPreinsc : [SELECT LPCR_ContactParent__c, LPCR_CompteFamille__r.LPCR_Representant1__c FROM LPCR_Preinscription__c]){
+                System.assertEquals(eachPreinsc.LPCR_CompteFamille__r.LPCR_Representant1__c, eachPreinsc.LPCR_ContactParent__c, 'Error in SM006_PreinscriptionServices_Test.createOpptyAndQuoteForPreinsc_Test : Fail to update LPCR_Representant1__c of LPCR_CompteFamille__c');
+            }
             Test.stopTest();
         }
     }
-    
     
     //Test the method setStatusWhenValidateFormulaireIsTrue_Test from SM006_PreinscriptionServices class indirectly
     @isTest
@@ -64,12 +89,10 @@ public class SM006_PreinscriptionServices_Test {
                 eachPreinscr.LPCR_ValidationFormulaire__c = true;
             }
             update allPreInscrList;
-            allPreInscrList  = [SELECT LPCR_Statut__c FROM LPCR_Preinscription__c WHERE LPCR_Statut__c = :Label.LPCR_ListeAtt];
+            List<LPCR_Preinscription__c> listAttPreinscList  = [SELECT LPCR_Statut__c FROM LPCR_Preinscription__c WHERE LPCR_Statut__c = :Label.LPCR_ListeAtt];
             Test.stopTest(); 
-            System.assertEquals(allPreInscrList.size(), allPreInscrList.size(),'Error in SM006_PreinscriptionServices_Test.setStatusWhenValidateFormulaireIsTrue_Test : LPCR_Preinscription__c.LPCR_Statut__c not equals Liste d’attente ');            
+            System.assertEquals(allPreInscrList.size(), listAttPreinscList.size(),'Error in SM006_PreinscriptionServices_Test.setStatusWhenValidateFormulaireIsTrue_Test : LPCR_Preinscription__c.LPCR_Statut__c not equals Liste d’attente ');            
                
         }
-        
-        
     }
 }
