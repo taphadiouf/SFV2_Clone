@@ -334,7 +334,6 @@
             <field>LPCR_Activite__c</field>
             <table>Account</table>
         </columns>
-       
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_AutrePrestataire__c</field>
@@ -462,12 +461,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_JoindreEtatCAFFacture__c</field>
+            <field>LPCR_LibelleAPE__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_LibelleAPE__c</field>
+            <field>LPCR_JoindreEtatCAFFacture__c</field>
             <table>Account</table>
         </columns>
         <columns>
@@ -718,11 +717,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_NombreEnfantsMercredi__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_NombreOptions__c</field>
             <table>Account</table>
         </columns>
         <columns>
