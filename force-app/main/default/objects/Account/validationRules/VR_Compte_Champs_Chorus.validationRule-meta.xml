@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Compte_Champs_Chorus</fullName>
+    <active>true</active>
+    <description>Lorsqu’un compte Entreprise est marqué comme Public dans le champ “Public / Privé”, alors les champs SIRET Chorus et Code service Chorus sont obligatoires</description>
+    <errorConditionFormula>AND(
+NOT( $User.LPCR_BypassValidationRules__c ),
+ISPICKVAL( LPCR_PrivePublic__c ,&quot;Public&quot;),
+OR(
+ISBLANK( LPCR_SIRETChorus__c ),
+ISBLANK( LPCR_CodeServiceChorus__c )))</errorConditionFormula>
+    <errorDisplayField>LPCR_SIRETChorus__c</errorDisplayField>
+    <errorMessage>Pour les entreprises publiques, les champs SIRET Chorus et Code Service Chorus sont obligatoires.</errorMessage>
+</ValidationRule>

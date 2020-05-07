@@ -88,7 +88,12 @@ public with sharing class APC001_LeadFaConverController{
             FirstName = currentLead.FirstName, 
             OwnerId = currentLead.OwnerId, 
             Phone = currentLead.Phone, 
-            Email = currentLead.Email, 
+            Email = currentLead.Email,
+            MailingStreet = currentLead.Address.getStreet(),
+            MailingCity = currentLead.Address.getCity(),
+            MailingState = currentLead.Address.getState(),
+            MailingCountry = currentLead.Address.getCountry(),
+            MailingPostalCode = currentLead.Address.getPostalCode(),
             AccountId = newFamilleAccount.Id,
             RecordTypeId = parentContactRT
         ));
@@ -99,7 +104,12 @@ public with sharing class APC001_LeadFaConverController{
                 LastName = nomCoDemandeur, 
                 OwnerId = currentLead.OwnerId, 
                 Birthdate = currentLead.LPCR_DateNaissance1__c,
-                Email = currentLead.LPCR_EmailCoDemandeur__c, 
+                Email = currentLead.LPCR_EmailCoDemandeur__c,
+                MailingStreet = currentLead.Address.getStreet(),
+                MailingCity = currentLead.Address.getCity(),
+                MailingState = currentLead.Address.getState(),
+                MailingCountry = currentLead.Address.getCountry(),
+                MailingPostalCode = currentLead.Address.getPostalCode(),
                 AccountId = newFamilleAccount.Id,
                 RecordTypeId = parentContactRT
             ));
