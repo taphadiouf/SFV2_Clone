@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_LienChorus__c</fullName>
+    <externalId>false</externalId>
+    <formula>If (Text( LPCR_PrivePublic__c) = &quot;Public&quot;,  HYPERLINK(&quot;https://chorus-pro.gouv.fr/&quot;, &quot;https://chorus-pro.gouv.fr/&quot;, &quot;_blank&quot;) ,&quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Lien Chorus</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
