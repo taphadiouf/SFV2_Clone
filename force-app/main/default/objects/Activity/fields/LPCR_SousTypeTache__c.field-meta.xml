@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_SousTypeTache__c</fullName>
+    <externalId>false</externalId>
+    <label>Sous-type de tâche</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ADV</fullName>
+                <default>false</default>
+                <label>ADV</label>
+            </value>
+            <value>
+                <fullName>Attribution</fullName>
+                <default>false</default>
+                <label>Attribution</label>
+            </value>
+            <value>
+                <fullName>BDC</fullName>
+                <default>false</default>
+                <label>BDC</label>
+            </value>
+            <value>
+                <fullName>Contrat</fullName>
+                <default>false</default>
+                <label>Contrat</label>
+            </value>
+            <value>
+                <fullName>Préparation BDC/Contrat</fullName>
+                <default>false</default>
+                <label>Préparation BDC/Contrat</label>
+            </value>
+            <value>
+                <fullName>Proposition commerciale</fullName>
+                <default>false</default>
+                <label>Proposition commerciale</label>
+            </value>
+            <value>
+                <fullName>Prospection</fullName>
+                <default>false</default>
+                <label>Prospection</label>
+            </value>
+            <value>
+                <fullName>Relance</fullName>
+                <default>false</default>
+                <label>Relance</label>
+            </value>
+            <value>
+                <fullName>Suivi</fullName>
+                <default>false</default>
+                <label>Suivi</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
