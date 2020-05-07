@@ -2,15 +2,39 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>false</sorted>
     <standardValue>
-        <fullName>À faire</fullName>
+        <fullName>Not Started</fullName>
         <default>true</default>
-        <label>À faire</label>
+        <label>Non démarré</label>
         <closed>false</closed>
     </standardValue>
     <standardValue>
-        <fullName>Fait</fullName>
+        <fullName>In Progress</fullName>
         <default>false</default>
-        <label>Fait</label>
+        <label>En cours</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Completed</fullName>
+        <default>false</default>
+        <label>Terminé</label>
         <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Waiting on someone else</fullName>
+        <default>false</default>
+        <label>En attente d&#39;une autre personne</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Deferred</fullName>
+        <default>false</default>
+        <label>Reporté</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Open</fullName>
+        <default>false</default>
+        <label>Ouvert</label>
+        <closed>false</closed>
     </standardValue>
 </StandardValueSet>
