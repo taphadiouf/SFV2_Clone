@@ -183,9 +183,9 @@ public with sharing class APC001_LeadFaConverController{
         }
         insert quotesList;
         
-        if(currentLead.LPCR_TypePrestation__c == 'Occasionnel'){
+        if(currentLead.LPCR_TypePrestation__c == Label.LPCR_Occasionnel){
             for(SBQQ__Quote__c eachQuote : quotesList){
-                eachQuote.LPCR_TypeAccueil__c = 'Occasionnel';
+                eachQuote.LPCR_TypeAccueil__c = Label.LPCR_Occasionnel;
             }
             update quotesList;
         }
