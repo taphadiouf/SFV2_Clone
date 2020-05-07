@@ -77,17 +77,16 @@ public with sharing class APC001_LeadFaConverController{
             RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Famille)
         );
         insert newFamilleAccount;  
-        
         ///Create contacts (Enfants and Representants(Parent RT) )
         //Map : Contact Variable Name => Contact Record
         Map<String, Contact> newContactsMap = new Map<String, Contact>();
         //Representants part (Parent)
         Id parentContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Parent);
-        newContactsMap.put('contactRep1', new Contact(
+            newContactsMap.put('contactRep1', new Contact(
             LastName =currentLead.LastName, 
             FirstName = currentLead.FirstName, 
             OwnerId = currentLead.OwnerId, 
-            Phone = currentLead.Phone, 
+            Phone = currentLead.Phone,
             Email = currentLead.Email,
             MailingStreet = currentLead.Address.getStreet(),
             MailingCity = currentLead.Address.getCity(),
@@ -96,8 +95,7 @@ public with sharing class APC001_LeadFaConverController{
             MailingPostalCode = currentLead.Address.getPostalCode(),
             AccountId = newFamilleAccount.Id,
             RecordTypeId = parentContactRT
-        ));
-        
+        ));        
         if(String.isNotBlank(prenomCoDemandeur) && String.isNotBlank(nomCoDemandeur)){
             newContactsMap.put('contactRep2', new Contact(
                 FirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur,
@@ -130,12 +128,10 @@ public with sharing class APC001_LeadFaConverController{
         }
         insert newContactsMap.values();
         
-        
         //Set Reprsentants1 and Reprsentants2 fields for newFamilleAccount  
         newFamilleAccount.LPCR_Representant1__c = newContactsMap.get('contactRep1').Id;
         if(newContactsMap.get('contactRep2') != null) newFamilleAccount.LPCR_Representant2__c = newContactsMap.get('contactRep2').Id;
         update newFamilleAccount;
-        
         //Create AccountContactRelation for Reprsentants1 and Reprsentants2 contacts
         List<AccountContactRelation> accountContactRelations = new List<AccountContactRelation>();
         accountContactRelations.add(
@@ -153,7 +149,6 @@ public with sharing class APC001_LeadFaConverController{
             );
         }
         insert accountContactRelations;
-        
         //Convert the lead
         LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
         Database.LeadConvert lc = new Database.LeadConvert();
@@ -170,10 +165,10 @@ public with sharing class APC001_LeadFaConverController{
         Contact tmpContactRep1;
         Contact tmpContactRep2;
         currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
-        for(Integer eachIndex : enfantsIndexes){
+            for(Integer eachIndex : enfantsIndexes){
             tmpContactEnfant = newContactsMap.get('contactEnfant' + eachIndex);
             tmpContactRep1 = newContactsMap.get('contactRep1');
-            tmpContactRep2 = newContactsMap.get('contactRep2');
+            tmpContactRep2 = newContactsMap.get('contactRep2');   
             quotesList.add(
                 new SBQQ__Quote__c(
                     LPCR_DateDebut__c = (Date) currentLead.get('LPCR_DateEntreeCreche' + eachIndex + '__c'),
@@ -187,6 +182,13 @@ public with sharing class APC001_LeadFaConverController{
             );
         }
         insert quotesList;
+        
+        if(currentLead.LPCR_TypePrestation__c == 'Occasionnel'){
+            for(SBQQ__Quote__c eachQuote : quotesList){
+                eachQuote.LPCR_TypeAccueil__c = 'Occasionnel';
+            }
+            update quotesList;
+        }
     }
     
     
