@@ -638,7 +638,7 @@ newMe.FederationIdentifier = null;
         for(Integer i = 0; i < numRecords; i++){
             contacts.add(new Contact(   Lastname = lastname,
                                         RecordTypeId = recType,
-                                        MailingAddress = address
+                                        MailingCountry = address
                                         ));	
         }
         
