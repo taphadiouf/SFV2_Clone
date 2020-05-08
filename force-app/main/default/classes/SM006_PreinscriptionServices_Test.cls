@@ -12,17 +12,17 @@ public class SM006_PreinscriptionServices_Test {
     
     static void testSetup(){
         Id enfantContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Enfant);
-        List<Contact> enfantsContactsListOCC= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname');
-        List<Contact> enfantsContactsListDEF= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname');
-        List<Contact> enfantsContactsListDSP= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname');
+        List<Contact> enfantsContactsListOCC= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname', 'test_address');
+        List<Contact> enfantsContactsListDEF= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname', 'test_address');
+        List<Contact> enfantsContactsListDSP= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname', 'test_address');
         insert enfantsContactsListOCC;  
         insert enfantsContactsListDEF;
         insert enfantsContactsListDSP;
         
         Id parentContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
-        List<Contact> parentContactsListOCC= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname');
-        List<Contact> parentContactsListDEF= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname');
-        List<Contact> parentContactsListDSP= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname');
+        List<Contact> parentContactsListOCC= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname', 'test_address');
+        List<Contact> parentContactsListDEF= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname', 'test_address');
+        List<Contact> parentContactsListDSP= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname', 'test_address');
         insert parentContactsListOCC;
         insert parentContactsListDEF;
         insert parentContactsListDSP;

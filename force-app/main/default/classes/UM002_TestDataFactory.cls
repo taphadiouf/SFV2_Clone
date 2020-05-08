@@ -633,11 +633,13 @@ newMe.FederationIdentifier = null;
         
         return preinscriptions;	
     }
-    public static List<Contact> createContacts(Integer numRecords, Id recType, String lastname){	
+    public static List<Contact> createContacts(Integer numRecords, Id recType, String lastname, String address){	
         List<Contact> contacts = new List<Contact>();
         for(Integer i = 0; i < numRecords; i++){
             contacts.add(new Contact(   Lastname = lastname,
-                                        RecordTypeId = recType));	
+                                        RecordTypeId = recType,
+                                        MailingAddress = address
+                                        ));	
         }
         
         return contacts;	
