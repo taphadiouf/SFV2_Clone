@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_NombreOptions__c</fullName>
+    <fullName>LPCR_Nombredeplaces__c</fullName>
+    <description>Nombre de places demandées</description>
     <externalId>false</externalId>
-    <label>Nombre d&#39;options</label>
+    <label>Nombre de places</label>
     <precision>18</precision>
     <required>false</required>
     <scale>0</scale>
-    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Number</type>
     <unique>false</unique>
 </CustomField>

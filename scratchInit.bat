@@ -30,9 +30,7 @@ sfdx force:package:install -p 04tf20000003UBeAAM -u %YourAlias  -w 25 --noprompt
 echo "----------- Conga Invoices Generation :"
 sfdx force:package:install -p 04t2M000002mdK2QAI -u %YourAlias  -w 25 --noprompt
 
-
 echo "Finish installing all managed package"
-
 
 
 echo "scratchInit finished"
