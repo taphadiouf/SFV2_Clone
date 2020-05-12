@@ -20,6 +20,8 @@ public with sharing class VFC001_GenererDocAnn2_Test {
             Time finTime = Time.newInstance(16, 30, 2, 20);
             List<LPCR_PlanningPrevisionnel__c> plannings = UM002_TestDataFactory.createPlannings(100,quote.Id,debutTime,finTime,debutTime,finTime,debutTime,finTime,debutTime,finTime,debutTime,finTime);
             insert plannings;
+            List<LPCR_PlanningPrevisionnel__c> planningsWithNoTime = UM002_TestDataFactory.createPlanningsWithoutTime(100,quote.Id);
+            insert planningsWithNoTime;
             Test.startTest();
             PageReference pageRef = Page.VFP001_GenererDocAnn2; // Add your VF page Name here
             pageRef.getParameters().put('recordId', String.valueOf(quote.Id));
@@ -27,7 +29,6 @@ public with sharing class VFC001_GenererDocAnn2_Test {
             
             VFC001_GenererDocAnn2 planningController = new VFC001_GenererDocAnn2();
             List<LPCR_PlanningPrevisionnel__c> planing =[SELECT Id,LPCR_Contrat__c FROM LPCR_PlanningPrevisionnel__c];
-            planningController.getPlannings();
         }
         
     }
