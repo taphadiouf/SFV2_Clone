@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>For products sold in batches quantity in each batch. Defaulted from the product record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Si les produits sont vendus par lots, stocke la quantité de chaque lot, appliquée par défaut à partir du produit.</inlineHelpText>
+    <inlineHelpText>If products are sold in batches, this stores the quantity in each batch, defaulted from the product.</inlineHelpText>
     <label>Batch Quantity</label>
     <precision>12</precision>
     <required>false</required>

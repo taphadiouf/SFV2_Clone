@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Price Book associated with this Quote.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Catalogue de prix associé à ce devis.</inlineHelpText>
+    <inlineHelpText>Price Book associated with this Quote.</inlineHelpText>
     <label>Price Book</label>
     <referenceTo>Pricebook2</referenceTo>
     <relationshipLabel>Quotes</relationshipLabel>

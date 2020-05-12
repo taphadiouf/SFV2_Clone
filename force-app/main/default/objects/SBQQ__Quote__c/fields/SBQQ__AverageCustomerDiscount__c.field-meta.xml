@@ -6,7 +6,7 @@
     <externalId>false</externalId>
     <formula>IF(SBQQ__ListAmount__c = 0, 0, ((SBQQ__ListAmount__c - SBQQ__CustomerAmount__c) / SBQQ__ListAmount__c))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Moyenne de remise client (en pourcentage) de ce devis.</inlineHelpText>
+    <inlineHelpText>Average customer discount (in percent) for this quote.</inlineHelpText>
     <label>Avg. Customer Disc. (%)</label>
     <precision>18</precision>
     <required>false</required>

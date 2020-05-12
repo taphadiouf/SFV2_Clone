@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
-    <active>true</active>
+    <active>false</active>
     <allowRecall>true</allowRecall>
     <allowedSubmitters>
         <type>owner</type>
@@ -63,24 +63,29 @@
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>
-            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <field>SBQQ__Quote__c.LPCR_StatutApprobation__c</field>
             <operation>equals</operation>
-            <value>Draft</value>
+            <value>Brouillon</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.LPCR_AValider__c</field>
             <operation>equals</operation>
-            <value>Vrai</value>
+            <value>True</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
             <operation>equals</operation>
             <value>Quote</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Primary__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
     </entryCriteria>
     <finalApprovalActions>
         <action>
-            <name>LPCR_StatutValide</name>
+            <name>LPCR_StatutApprouve</name>
             <type>FieldUpdate</type>
         </action>
         <action>
@@ -95,14 +100,14 @@
             <type>Alert</type>
         </action>
         <action>
-            <name>LPCR_StatutBrouillon</name>
+            <name>LPCR_StatutRejete</name>
             <type>FieldUpdate</type>
         </action>
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <initialSubmissionActions>
         <action>
-            <name>LPCR_StatutEnRevue</name>
+            <name>LPCR_StatutAttente</name>
             <type>FieldUpdate</type>
         </action>
     </initialSubmissionActions>
@@ -113,7 +118,7 @@
     </nextAutomatedApprover>
     <recallActions>
         <action>
-            <name>LPCR_StatutBrouillon</name>
+            <name>LPCR_StatutRappel</name>
             <type>FieldUpdate</type>
         </action>
     </recallActions>
