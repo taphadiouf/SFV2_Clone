@@ -83,7 +83,7 @@ public with sharing class VFC001_GenererDocAnn2 {
                 if(p.LPCR_HeureFinVendredi__c == NULL && p.LPCR_HeureDebutVendredi__c == NULL ){
                     vendredi = 0 ;
                 }
-                Double avg = (lundi+mardi+mercredi+jeudi+vendredi); 
+                Double avg = (lundi+mardi+mercredi+jeudi+vendredi);
                 plAverage.add(avg);
             }
             

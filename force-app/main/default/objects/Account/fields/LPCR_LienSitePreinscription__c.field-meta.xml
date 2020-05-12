@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_FormeJuridique__c</fullName>
+    <fullName>LPCR_LienSitePreinscription__c</fullName>
     <externalId>false</externalId>
-    <label>Forme Juridique</label>
-    <length>30</length>
+    <inlineHelpText>URL du formulaire de préinscription pour le réservataire ou crèche</inlineHelpText>
+    <label>Lien Site Préinscription</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <type>Text</type>
-    <unique>false</unique>
+    <type>Url</type>
 </CustomField>

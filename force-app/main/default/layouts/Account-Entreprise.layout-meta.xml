@@ -65,6 +65,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Ownership</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LPCR_SIREN__c</field>
             </layoutItems>
             <layoutItems>
@@ -80,6 +84,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_PrivePublic__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_LienChorus__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -199,14 +207,19 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_CodeReservataire__c</field>
+                <field>LPCR_CodePreinscription__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_LienSitePreinscription__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_NombreMaximalPlaces__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -423,12 +436,12 @@
         <relatedList>RelatedOpportunityList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>ORDERS.ORDER_NUMBER</fields>
-        <fields>ORDERS.STATUS</fields>
-        <fields>ORDERS.EFFECTIVE_DATE</fields>
-        <fields>CONTRACT.CONTRACT_NUMBER</fields>
-        <fields>ORDERS.TOTAL_AMOUNT</fields>
-        <relatedList>RelatedOrderList</relatedList>
+        <fields>NAME</fields>
+        <fields>SBQQ__NetAmount__c</fields>
+        <fields>SBQQ__Status__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>SBQQ__Primary__c</fields>
+        <relatedList>SBQQ__Quote__c.SBQQ__Account__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>CONTRACT.CONTRACT_NUMBER</fields>
@@ -437,6 +450,44 @@
         <fields>CONTRACT.END_DATE</fields>
         <fields>CONTRACT.STATUS</fields>
         <relatedList>RelatedContractList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ORDERS.ORDER_NUMBER</fields>
+        <fields>ORDERS.STATUS</fields>
+        <fields>ORDERS.EFFECTIVE_DATE</fields>
+        <fields>CONTRACT.CONTRACT_NUMBER</fields>
+        <fields>ORDERS.TOTAL_AMOUNT</fields>
+        <relatedList>RelatedOrderList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>blng__InvoiceDate__c</fields>
+        <fields>blng__TotalAmount__c</fields>
+        <fields>blng__Balance__c</fields>
+        <fields>blng__ARStatus__c</fields>
+        <fields>blng__StatusFlag__c</fields>
+        <relatedList>blng__Invoice__c.blng__Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>FULL_NAME</fields>
+        <fields>LEAD.COMPANY</fields>
+        <fields>LEAD.PHONE</fields>
+        <relatedList>Lead.LPCR_CompteSociete__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>LPCR_Preinscription__c.LPCR_CompteEntreprise__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>CASES.CASE_NUMBER</fields>
+        <fields>CASES.SUBJECT</fields>
+        <fields>CASES.CREATED_DATE</fields>
+        <fields>CASES.PRIORITY</fields>
+        <relatedList>Case.LPCR_ChoixN1__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>LPCR_BonAchatPartenaire__c.LPCR_ComptePartenaire__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>CASES.CASE_NUMBER</fields>
@@ -485,7 +536,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3O000000XEq0</masterLabel>
+        <masterLabel>00h3N000000s2Jh</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

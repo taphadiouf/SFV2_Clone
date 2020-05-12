@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_AllocataireCAF__c</fullName>
+    <description>Pour un compte famille, désigne qui est l&#39;allocataire CAF</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Utiliser le représentant 1 ou le représentant 2 pour le numéro d&#39;allocataire CAF ?</inlineHelpText>
+    <label>Allocataire CAF</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Représentant 1</fullName>
+                <default>false</default>
+                <label>Représentant 1</label>
+            </value>
+            <value>
+                <fullName>Représentant 2</fullName>
+                <default>false</default>
+                <label>Représentant 2</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -5,6 +5,9 @@
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
+    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
     <excludeButtons>PartnerScorecard</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
@@ -86,6 +89,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_NombreEnfantPrevuVendredi__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_NbreOptions__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -95,10 +102,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_BerceauxDisponibles__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_NombreOptions__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -127,7 +130,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_CodeReservataire__c</field>
+                <field>LPCR_CodePreinscription__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -341,17 +344,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>LPCR_CompteFamille__c</fields>
-        <fields>LPCR_ContactEnfant__c</fields>
-        <fields>LPCR_ContactParent__c</fields>
-        <fields>LPCR_CompteEntreprise__c</fields>
-        <fields>LPCR_Statut__c</fields>
-        <relatedList>LPCR_Preinscription__c.LPCR_Creche__c</relatedList>
-        <sortField>LPCR_Statut__c</sortField>
-        <sortOrder>Asc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
         <fields>Account.ACC_NAME</fields>
         <fields>Opportunity.OPP_STAGE_NAME</fields>
         <fields>Opportunity.OPP_CLOSE_DATE</fields>
@@ -365,7 +357,41 @@
         <fields>SBQQ__Status__c</fields>
         <fields>CREATEDBY_USER</fields>
         <fields>SBQQ__Primary__c</fields>
+        <relatedList>SBQQ__Quote__c.SBQQ__Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>LPCR_CompteFamille__c</fields>
+        <fields>LPCR_ContactEnfant__c</fields>
+        <fields>LPCR_ContactParent__c</fields>
+        <fields>LPCR_CompteEntreprise__c</fields>
+        <fields>LPCR_Statut__c</fields>
+        <relatedList>LPCR_Preinscription__c.LPCR_Creche__c</relatedList>
+        <sortField>LPCR_Statut__c</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>SBQQ__NetAmount__c</fields>
+        <fields>SBQQ__Status__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>SBQQ__Primary__c</fields>
         <relatedList>SBQQ__Quote__c.LPCR_Creche__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>CONTRACT.CONTRACT_NUMBER</fields>
+        <fields>CONTRACT.NAME</fields>
+        <fields>CONTRACT.START_DATE</fields>
+        <fields>CONTRACT.END_DATE</fields>
+        <fields>CONTRACT.STATUS</fields>
+        <relatedList>RelatedContractList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>CASES.CASE_NUMBER</fields>
+        <fields>CASES.SUBJECT</fields>
+        <fields>CASES.CREATED_DATE</fields>
+        <fields>CASES.PRIORITY</fields>
+        <relatedList>Case.LPCR_ChoixN1__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -408,7 +434,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000000S9VV</masterLabel>
+        <masterLabel>00h3N000000s2Is</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

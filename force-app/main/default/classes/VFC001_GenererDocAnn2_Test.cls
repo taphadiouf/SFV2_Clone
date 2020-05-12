@@ -15,8 +15,6 @@ public with sharing class VFC001_GenererDocAnn2_Test {
             insert opps;
             List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(1, accounts, opps);
             insert quotes;
-            List<SBQQ__Quote__c> thequotes = UM002_TestDataFactory.createQuotes(1, accounts, opps);
-            insert thequotes;
             SBQQ__Quote__c quote = [SELECT Id FROM SBQQ__Quote__c WHERE id IN: quotes limit 1];
             Time debutTime = Time.newInstance(08, 30, 2, 20);
             Time finTime = Time.newInstance(16, 30, 2, 20);
