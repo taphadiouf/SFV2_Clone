@@ -8,7 +8,7 @@
         <field>LPCR_Preinscription__c$LPCR_DossierComplet__c</field>
     </columns>
     <columns>
-        <field>LPCR_Preinscription__c$Section__c</field>
+        <field>LPCR_Preinscription__c$LPCR_Section__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -23,6 +23,10 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>LPCR_Preinscription__c$Nombre__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>LPCR_Preinscription__c$LPCR_Jumeaux__c</field>
     </columns>
     <columns>
         <field>LPCR_Preinscription__c$LPCR_ContactEnfant__c.LastName</field>
