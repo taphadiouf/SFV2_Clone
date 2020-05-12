@@ -216,11 +216,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Account.NouveauContactEnfant</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Account.LPCR_NouveauContratAccueil</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
@@ -315,6 +310,11 @@
             <actionType>ProductivityAction</actionType>
             <sortOrder>19</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.NouveauContactEnfant</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <quickActionList>
         <quickActionListItems>
@@ -371,6 +371,14 @@
         <relatedList>RelatedAccountContactRelationList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>NAME</fields>
+        <fields>LPCR_ContactEnfant__c</fields>
+        <fields>LPCR_CompteEntreprise__c</fields>
+        <fields>LPCR_StatutCourt__c</fields>
+        <fields>LPCR_Creche__c</fields>
+        <relatedList>LPCR_Preinscription__c.LPCR_CompteFamille__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>OPPORTUNITY.STAGE_NAME</fields>
         <fields>OPPORTUNITY.AMOUNT</fields>
@@ -410,14 +418,6 @@
         <fields>blng__StatusFlag__c</fields>
         <relatedList>blng__Invoice__c.blng__Account__c</relatedList>
     </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>LPCR_Preinscription__c.LPCR_CompteFamille__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>LPCR_BonAchatPartenaire__c.LPCR_Client__c</relatedList>
-    </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
@@ -425,7 +425,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000000s2Ji</masterLabel>
+        <masterLabel>00h3N000000s2eC</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
