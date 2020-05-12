@@ -12,23 +12,23 @@ sfdx force:org:create --setdefaultusername -f config/project-scratch-def.json --
 
 echo "------> Starting managed package installation..."
 
-echo "----------- CPQ :"
-sfdx force:package:install -p 04t4N000000N5OyQAK -u $YourAlias  -w 25 --noprompt
+echo "----------- CPQ : ( w = 40)"
+sfdx force:package:install -p 04t4N000000N5OyQAK -u $YourAlias  -w 40 --noprompt
 
 echo "----------- Billing :"
-sfdx force:package:install -p 04t0K000001E2LoQAK -u $YourAlias  -w 25
+sfdx force:package:install -p 04t0K000001E2LoQAK -u $YourAlias  -w 40
 
 echo "----------- Sparklane :"
-sfdx force:package:install -p 04t4I000000gNw8QAE -u $YourAlias  -w 25
+sfdx force:package:install -p 04t4I000000gNw8QAE -u $YourAlias  -w 40
 
 echo "----------- Adobe Sign :"
-sfdx force:package:install -p 04t0g000000tOItAAM -u $YourAlias  -w 25
+sfdx force:package:install -p 04t0g000000tOItAAM -u $YourAlias  -w 40
 
 echo "----------- CPQ - Conga Quotes :"
-sfdx force:package:install -p 04tf20000003UBeAAM -u $YourAlias  -w 25 --noprompt
+sfdx force:package:install -p 04tf20000003UBeAAM -u $YourAlias  -w 40 --noprompt
 
 echo "----------- Conga Invoices Generation :"
-sfdx force:package:install -p 04t2M000002mdK2QAI -u $YourAlias  -w 25 --noprompt
+sfdx force:package:install -p 04t2M000002mdK2QAI -u $YourAlias  -w 40 --noprompt
 
 #echo "----------- FA :"
 #sfdx force:package:install -p 04t0M000001SbQHQA0 -u $YourAlias  -w 25
@@ -37,7 +37,7 @@ sfdx force:package:install -p 04t2M000002mdK2QAI -u $YourAlias  -w 25 --noprompt
 #sfdx force:package:install -p 04t0H000000p4jZQAQ -u $YourAlias  -w 25 --noprompt
 
 echo "----------- Salesforce Billing Reporting Add-on :"
-sfdx force:package:install -p 04t4P000002icr9QAA -u $YourAlias  -w 25
+sfdx force:package:install -p 04t4P000002icr9QAA -u $YourAlias  -w 40
 
 echo "Finish installing all managed package"
 
