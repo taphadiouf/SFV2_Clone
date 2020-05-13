@@ -216,11 +216,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Account.NouveauContactEnfant</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Account.LPCR_NouveauContratAccueil</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
@@ -315,6 +310,11 @@
             <actionType>ProductivityAction</actionType>
             <sortOrder>19</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.NouveauContactEnfant</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <quickActionList>
         <quickActionListItems>
@@ -372,15 +372,65 @@
         <relatedList>RelatedContactList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>CONTACT.FULL_NAME</fields>
+        <fields>CONTACT.ACCOUNT_NAME</fields>
+        <fields>CONTACT.TITLE</fields>
+        <fields>CONTACT.EMAIL</fields>
+        <fields>CONTACT.PHONE1</fields>
+        <fields>ACCCONRELATION.ROLES</fields>
+        <relatedList>RelatedAccountContactRelationList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>LPCR_ContactEnfant__c</fields>
+        <fields>LPCR_CompteEntreprise__c</fields>
+        <fields>LPCR_StatutCourt__c</fields>
+        <fields>LPCR_Creche__c</fields>
+        <relatedList>LPCR_Preinscription__c.LPCR_CompteFamille__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>OPPORTUNITY.NAME</fields>
+        <fields>OPPORTUNITY.STAGE_NAME</fields>
+        <fields>OPPORTUNITY.AMOUNT</fields>
+        <fields>OPPORTUNITY.CLOSE_DATE</fields>
+        <relatedList>RelatedOpportunityList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>SBQQ__NetAmount__c</fields>
+        <fields>SBQQ__Status__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>SBQQ__Primary__c</fields>
+        <relatedList>SBQQ__Quote__c.SBQQ__Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>CONTRACT.CONTRACT_NUMBER</fields>
+        <fields>CONTRACT.NAME</fields>
         <fields>LPCR_Enfant__c</fields>
         <fields>LPCR_Creche__c</fields>
         <fields>SBQQ__ActiveContract__c</fields>
-        <fields>CONTRACT.STATUS</fields>
         <fields>LPCR_SponsorEntreprise__c</fields>
         <fields>CONTRACT.START_DATE</fields>
         <fields>CONTRACT.END_DATE</fields>
+        <fields>CONTRACT.STATUS</fields>
         <relatedList>RelatedContractList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ORDERS.ORDER_NUMBER</fields>
+        <fields>ORDERS.STATUS</fields>
+        <fields>ORDERS.EFFECTIVE_DATE</fields>
+        <fields>CONTRACT.CONTRACT_NUMBER</fields>
+        <fields>ORDERS.TOTAL_AMOUNT</fields>
+        <relatedList>RelatedOrderList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>blng__InvoiceDate__c</fields>
+        <fields>blng__TotalAmount__c</fields>
+        <fields>blng__Balance__c</fields>
+        <fields>blng__ARStatus__c</fields>
+        <fields>blng__StatusFlag__c</fields>
+        <relatedList>blng__Invoice__c.blng__Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>

@@ -244,6 +244,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LPCR_LienChorus__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_LienSitePreinscription__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_LienSitePreinscription__c</field>
         <readable>true</readable>
@@ -3805,6 +3815,10 @@
         <recordType>SBQQ__Quote__c.Reservataire</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
+    <tabSettings>
+        <tab>LPCR_PlanningPrevisionnel__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
     <tabSettings>
         <tab>LPCR_PlanningPrevisionnel__c</tab>
         <visibility>Visible</visibility>
