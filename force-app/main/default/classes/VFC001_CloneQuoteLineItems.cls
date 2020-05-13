@@ -9,10 +9,10 @@ public with sharing class VFC001_CloneQuoteLineItems {
     private Map<Id,SBQQ__QuoteLine__c> idToQuoteLineMap;
 
 
-    //These are for the switches to cover catch blocks. The purpose of this is to elevate the test class code coverage.
+    //The purpose of this is to elevate the test class code coverage.
     public Boolean testRunningFlag = false;
 
-    // Do not proceed action method if there's an error in the constructor
+    //Do not proceed action method if there's an error in the constructor
     Boolean hasError = false;
 
     // Class constructor. This method queries all of the records needed for the clone action.
@@ -46,7 +46,6 @@ public with sharing class VFC001_CloneQuoteLineItems {
 
             for (SBQQ__QuoteLine__c ql: Database.query(query)) {
                     idToQuoteLineMap.put(ql.Id, ql);
-               
             }
         }
 
