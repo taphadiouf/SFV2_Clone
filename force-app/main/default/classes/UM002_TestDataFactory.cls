@@ -701,11 +701,21 @@ newMe.FederationIdentifier = null;
     
     //End of the part on the same day
     
-    //This part is added by hanae on the 19/03/2020
-    public static List<LPCR_PlanningPrevisionnel__c> createPlannings(Integer numPlann, Id idQuote, Time debutLundi, Time finLundi, Time DebutMardi, Time finMardi, Time DebutMercredi, Time finMercredi, Time DebutJeudi, Time finJeudi, Time DebutVendredi, Time finVendredi){	
+        //This part is added by hanae on the 19/03/2020
+    public static List<LPCR_PlanningPrevisionnel__c> createPlannings(Integer numPlann, Id idQuote, Time debutLundi, Time finLundi, Time DebutMardi, Time finMardi, Time DebutMercredi, Time finMercredi, Time DebutJeudi, Time finJeudi, Time DebutVendredi, Time finVendredi){ 
+        
+        LPCR_Planning__c tmpPlanning = new LPCR_Planning__c();
+        tmpPlanning.LPCR_Devis__c = idQuote;
+        tmpPlanning.LPCR_TypePlanning__c = 'Planning Classique';
+        insert tmpPlanning;
+
+
         List<LPCR_PlanningPrevisionnel__c>  plannings = new List<LPCR_PlanningPrevisionnel__c>();
+
         for(Integer i=0;i<numPlann;i++){
-            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Contrat__c  =idQuote,
+            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(
+                                                                               LPCR_Planning__c = tmpPlanning.Id,
+                                                                               LPCR_Contrat__c  =idQuote,
                                                                                LPCR_HeureDebutLundi__c = debutLundi,
                                                                                LPCR_HeureFinLundi__c   = finLundi,
                                                                                LPCR_HeureDebutMardi__c = DebutMardi,
@@ -718,17 +728,23 @@ newMe.FederationIdentifier = null;
                                                                                LPCR_HeureFinVendredi__c = finVendredi);
             plannings.add(pl);
         }
-        return plannings;	
+        return plannings;   
     }
     
+    public static List<LPCR_PlanningPrevisionnel__c> createPlanningsWithoutTime(Integer numPlann, Id idQuote){  
     
-    public static List<LPCR_PlanningPrevisionnel__c> createPlanningsWithoutTime(Integer numPlann, Id idQuote){	
+        LPCR_Planning__c tmpPlanning = new LPCR_Planning__c();
+        tmpPlanning.LPCR_Devis__c = idQuote;
+        tmpPlanning.LPCR_TypePlanning__c = 'Planning Classique';
+        insert tmpPlanning;
+
+    
         List<LPCR_PlanningPrevisionnel__c>  plannings = new List<LPCR_PlanningPrevisionnel__c>();
         for(Integer i=0;i<numPlann;i++){
-            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Contrat__c  =idQuote);
+            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Planning__c = tmpPlanning.id, LPCR_Contrat__c  = idQuote);
             plannings.add(pl);
         }
-        return plannings;	
+        return plannings;   
     }
     
     
