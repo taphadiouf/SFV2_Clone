@@ -15,13 +15,27 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     }
     protected override void afterInsert() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        List<OrderItem> orderItemToProcess = new List<OrderItem> ();
+        for(OrderItem oi : newOrderItemsList){
+            if(oi.blng__LegalEntity__c == null){
+                orderItemToProcess.add(oi);
+            }
+        }
+
+        if (orderItemToProcess.size() > 0) {
             SM012_OrderItemServices job = new SM012_OrderItemServices(newOrderItemsList);
             ID jobID = System.enqueueJob(job);
+        }
     }
     
     protected override void afterUpdate() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-            SM012_OrderItemServices.legalEntityOnOrderItemConSch(newOrderItemsMap);
+        SM012_OrderItemServices.legalEntityOnOrderItemConSch(newOrderItemsMap);
            
+    }
+
+    protected override void beforeUpdate() {
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM012_OrderItemServices.setupInvoiceDates(newOrderItemsMap);
     }
 }
