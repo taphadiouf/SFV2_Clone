@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Summary variable tested when evaluating this price condition.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Variable de synthèse testée par cette condition de prix.</inlineHelpText>
+    <inlineHelpText>Summary variable tested by this price condition.</inlineHelpText>
     <label>Tested Variable</label>
     <referenceTo>SBQQ__SummaryVariable__c</referenceTo>
     <relationshipLabel>Price Conditions (Tested Variable)</relationshipLabel>

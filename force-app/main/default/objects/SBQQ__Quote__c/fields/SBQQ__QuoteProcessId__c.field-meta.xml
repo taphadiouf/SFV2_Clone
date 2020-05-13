@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>ID of the quote process to use with this quote. This field is meant to be populated by a workflow rule.</description>
     <externalId>false</externalId>
-    <inlineHelpText>ID du processus de vente guidée à utiliser avec ce devis, le cas échéant.</inlineHelpText>
+    <inlineHelpText>Guided selling process ID to use with this quote, if any.</inlineHelpText>
     <label>Quote Process Id</label>
     <length>80</length>
     <required>false</required>

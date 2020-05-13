@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBQQ__FilterField__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Items that are filtered for inclusion in this summary variable.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select the field to use when filtering items for inclusion in this summary variable.</inlineHelpText>
+    <label>Filter Field</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Product Code</fullName>
+                <default>false</default>
+                <label>Product Code</label>
+            </value>
+            <value>
+                <fullName>Product Family</fullName>
+                <default>false</default>
+                <label>Product Family</label>
+            </value>
+            <value>
+                <fullName>LPCR_Region__c</fullName>
+                <default>false</default>
+                <label>LPCR_Region__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_CodeProduit__c</fullName>
+                <default>false</default>
+                <label>LPCR_CodeProduit__c</label>
+            </value>
+            <value>
+                <fullName>test_concat__c</fullName>
+                <default>false</default>
+                <label>test_concat__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_NumeroPurchaseOrder__c</fullName>
+                <default>false</default>
+                <label>LPCR_NumeroPurchaseOrder__c</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

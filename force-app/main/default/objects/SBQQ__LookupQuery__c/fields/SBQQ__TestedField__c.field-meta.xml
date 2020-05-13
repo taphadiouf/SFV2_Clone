@@ -42,6 +42,21 @@
                 <default>false</default>
                 <label>LPCR_Tranche__c</label>
             </value>
+            <value>
+                <fullName>LPCR_TotalRegion__c</fullName>
+                <default>false</default>
+                <label>LPCR_TotalRegion__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Quantity__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Quantity__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_MasterDevis__c</fullName>
+                <default>false</default>
+                <label>LPCR_MasterDevis__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
