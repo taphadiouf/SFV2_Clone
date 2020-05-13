@@ -47,6 +47,31 @@
                 <default>false</default>
                 <label>LPCR_Tranche__c</label>
             </value>
+            <value>
+                <fullName>LPCR_BorneInf__c</fullName>
+                <default>false</default>
+                <label>LPCR_BorneInf__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_BorneSup__c</fullName>
+                <default>false</default>
+                <label>LPCR_BorneSup__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Quantity__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Quantity__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_MasterDevis__c</fullName>
+                <default>false</default>
+                <label>LPCR_MasterDevis__c</label>
+            </value>
+            <value>
+                <fullName>ProductCode</fullName>
+                <default>false</default>
+                <label>ProductCode</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
