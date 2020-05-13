@@ -57,6 +57,56 @@
                 <default>false</default>
                 <label>SBQQ__BillingFrequency__c</label>
             </value>
+            <value>
+                <fullName>SBQQ__SpecialPrice__c</fullName>
+                <default>false</default>
+                <label>SBQQ__SpecialPrice__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__SpecialPriceType__c</fullName>
+                <default>false</default>
+                <label>SBQQ__SpecialPriceType__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TotalRegion__c</fullName>
+                <default>false</default>
+                <label>LPCR_TotalRegion__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__StartDate__c</fullName>
+                <default>false</default>
+                <label>SBQQ__StartDate__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__EndDate__c</fullName>
+                <default>false</default>
+                <label>SBQQ__EndDate__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_DateDebut__c</fullName>
+                <default>false</default>
+                <label>LPCR_DateDebut__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_DateFin__c</fullName>
+                <default>false</default>
+                <label>LPCR_DateFin__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_PrixPlancher__c</fullName>
+                <default>false</default>
+                <label>LPCR_PrixPlancher__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_MasterDevis__c</fullName>
+                <default>false</default>
+                <label>LPCR_MasterDevis__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_DepotGarantieMicro__c</fullName>
+                <default>false</default>
+                <label>LPCR_DepotGarantieMicro__c</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -86,6 +136,30 @@
             <valueName>SBQQ__BillingFrequency__c</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__StartDate__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__EndDate__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_DateDebut__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_DateFin__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_MasterDevis__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_DepotGarantieMicro__c</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>LPCR_PrixBerceau__c</valueName>
         </valueSettings>
@@ -100,6 +174,22 @@
         <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>SBQQ__DefaultSubscriptionTerm__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__SpecialPrice__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__SpecialPriceType__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_TotalRegion__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_PrixPlancher__c</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

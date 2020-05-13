@@ -6,7 +6,7 @@
     <externalId>false</externalId>
     <formula>SBQQ__RegularAmount__c - SBQQ__CustomerAmount__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Saisissez le montant après remise supplémentaire de ce devis.</inlineHelpText>
+    <inlineHelpText>Enter the amount additionally discounted on this quote.</inlineHelpText>
     <label>Addl. Disc. Amount</label>
     <precision>18</precision>
     <required>false</required>

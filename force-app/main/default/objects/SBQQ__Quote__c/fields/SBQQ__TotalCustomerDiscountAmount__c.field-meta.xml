@@ -6,7 +6,7 @@
     <externalId>false</externalId>
     <formula>SBQQ__ListAmount__c - SBQQ__CustomerAmount__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Montant total de la remise client. Elle comprend toute remise contractée, sur volume, à taux composé et supplémentaire.</inlineHelpText>
+    <inlineHelpText>Total amount of customer discount. This includes any contracted, volume, compound rate and additional discounts.</inlineHelpText>
     <label>Total Customer Disc. Amount</label>
     <precision>18</precision>
     <required>false</required>

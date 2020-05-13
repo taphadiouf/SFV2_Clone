@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_BerceauxReferencement</fullName>
+    <columns>NAME</columns>
+    <columns>LPCR_Produit__c</columns>
+    <columns>LPCR_MasterDevis__c</columns>
+    <columns>LPCR_Region__c</columns>
+    <columns>LPCR_BorneInf__c</columns>
+    <columns>LPCR_BorneSup__c</columns>
+    <columns>LPCR_Prix__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>LPCR_MasterDevis__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>Berceaux Référencement</label>
+</ListView>

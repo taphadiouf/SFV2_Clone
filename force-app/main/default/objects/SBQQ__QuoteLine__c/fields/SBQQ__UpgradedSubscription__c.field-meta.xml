@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Subscription being upgraded by this quote line.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Abonnement mis à niveau par cette ligne de devis. Lorsque le devis est contracté, la Date de résiliation de cet abonnement est renseignée.</inlineHelpText>
+    <inlineHelpText>Subscription being upgraded by this quote line. When the quote is contracted this subscription will have its Terminated Date field populated.</inlineHelpText>
     <label>Upgraded Subscription</label>
     <referenceTo>SBQQ__Subscription__c</referenceTo>
     <relationshipLabel>Quote Lines (Upgrade)</relationshipLabel>
