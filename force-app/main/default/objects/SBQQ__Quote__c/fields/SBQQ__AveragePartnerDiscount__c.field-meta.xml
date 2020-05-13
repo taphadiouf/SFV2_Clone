@@ -6,7 +6,7 @@
     <externalId>false</externalId>
     <formula>IF(SBQQ__CustomerAmount__c = 0, 0, (SBQQ__CustomerAmount__c -  SBQQ__NetAmount__c) / SBQQ__CustomerAmount__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Moyenne de la remise partenaire (en pourcentage) de ce devis.</inlineHelpText>
+    <inlineHelpText>Average partner discount (in percent) for this quote.</inlineHelpText>
     <label>Avg. Partner Disc. (%)</label>
     <precision>18</precision>
     <required>false</required>

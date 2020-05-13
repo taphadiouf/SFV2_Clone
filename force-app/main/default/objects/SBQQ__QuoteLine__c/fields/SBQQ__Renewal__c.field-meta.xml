@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Indicates this line item represents a product being renewed. Only non-subscription products for quote type &quot;Renewal&quot; will have this field set to true. Under normal circumstances this field should not be modified via UI.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indique que cet élément de ligne représente un produit renouvelé. Ce champ ne doit pas être modifié.</inlineHelpText>
+    <inlineHelpText>Indicates this line item represents a product being renewed. This field should not be modified.</inlineHelpText>
     <label>Renewal</label>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>

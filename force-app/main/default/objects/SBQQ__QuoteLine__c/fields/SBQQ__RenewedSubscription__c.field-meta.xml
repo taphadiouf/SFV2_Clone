@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Subscription being renewed by this quote line.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Abonnement renouvelé par cette ligne de devis.</inlineHelpText>
+    <inlineHelpText>Subscription being renewed by this quote line.</inlineHelpText>
     <label>Renewed Subscription</label>
     <referenceTo>SBQQ__Subscription__c</referenceTo>
     <relationshipLabel>Quote Lines</relationshipLabel>

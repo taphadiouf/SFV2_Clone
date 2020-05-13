@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Sum total of components in this configuration. This field is only populated if this line item references configurable product.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Total net des composants dans cette configuration. Ce champ est renseigné uniquement si l&#39;élément de ligne référence un produit configurable.</inlineHelpText>
+    <inlineHelpText>Sum total of components in this configuration. This field is only populated if this line item references a configurable product.</inlineHelpText>
     <label>Component Net Total</label>
     <precision>16</precision>
     <required>false</required>
