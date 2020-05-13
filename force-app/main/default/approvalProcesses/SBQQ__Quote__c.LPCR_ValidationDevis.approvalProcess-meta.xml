@@ -80,7 +80,7 @@
     </entryCriteria>
     <finalApprovalActions>
         <action>
-            <name>LPCR_StatutApprouve</name>
+            <name>LPCR_StatutValide</name>
             <type>FieldUpdate</type>
         </action>
         <action>
@@ -95,14 +95,14 @@
             <type>Alert</type>
         </action>
         <action>
-            <name>LPCR_StatutRejete</name>
+            <name>LPCR_StatutBrouillon</name>
             <type>FieldUpdate</type>
         </action>
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <initialSubmissionActions>
         <action>
-            <name>LPCR_StatutAttente</name>
+            <name>LPCR_StatutValide</name>
             <type>FieldUpdate</type>
         </action>
     </initialSubmissionActions>
@@ -113,7 +113,7 @@
     </nextAutomatedApprover>
     <recallActions>
         <action>
-            <name>LPCR_StatutRappel</name>
+            <name>LPCR_StatutBrouillon</name>
             <type>FieldUpdate</type>
         </action>
     </recallActions>
