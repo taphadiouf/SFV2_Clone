@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Equipes contrôles de gestion</description>
     <hasActivationRequired>false</hasActivationRequired>
-    <label>Contrôle de gestion</label>
+    <label>LPCR_Contrôle de gestion</label>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>false</allowDelete>

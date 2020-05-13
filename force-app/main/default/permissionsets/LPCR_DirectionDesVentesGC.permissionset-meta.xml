@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Direction des ventes et grands comptes</description>
     <hasActivationRequired>false</hasActivationRequired>
-    <label>Direction des ventes / GC​</label>
+    <label>LPCR_Direction des ventes / GC​</label>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>false</allowDelete>
