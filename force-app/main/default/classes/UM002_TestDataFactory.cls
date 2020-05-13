@@ -623,11 +623,46 @@ newMe.FederationIdentifier = null;
     public static List<LPCR_Preinscription__c> createPreinscriptions(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i=0;i<numPrei;i++){
-            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteFamille__c=compteFamilleId,	
-                                                                     LPCR_PrenomEnfant__c=prenomEnfant,	
-                                                                     NomEnfant__c=nomEnfant,	
-                                                                     LPCR_Statut__c = statut,
-                                                                     LPCR_ContactEnfant__c=contactId);	
+            preinscriptions.add(new LPCR_Preinscription__c(      
+                                                            LPCR_CompteFamille__c=compteFamilleId,	
+                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                            NomEnfant__c=nomEnfant,	
+                                                            LPCR_Statut__c = statut,
+                                                            LPCR_ContactEnfant__c=contactId));
+        }
+        
+        return preinscriptions;	
+    }
+    public static List<Contact> createContacts(Integer numRecords, Id recType, String lastname, String address){	
+        List<Contact> contacts = new List<Contact>();
+        for(Integer i = 0; i < numRecords; i++){
+            contacts.add(new Contact(   Lastname = lastname,
+                                        RecordTypeId = recType,
+                                        MailingCountry = address
+                                        ));	
+        }
+        
+        return contacts;	
+    }
+     public static List<Account> createAccounts(Integer numRecords, Id recType, String name){	
+        List<Account> accounts = new List<Account>();
+        for(Integer i = 0; i < numRecords; i++){
+            accounts.add(new Account(   
+                                        Name = name,
+                                        RecordTypeId = recType));	
+        }
+        
+        return accounts;	
+    }
+    public static List<LPCR_Preinscription__c> createPreinscriptions( List<Account> famillesAccountList, List<Contact> enfantsContactsList, List<Contact> parentContactsList,String statut, String preinsType){	
+        List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
+        for(Integer i = 0; i < famillesAccountList.size(); i++){
+            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(   LPCR_Statut__c = statut,
+                                                                        LPCR_TypePreinscription__c = preinsType,
+                                                                        LPCR_CompteFamille__c = famillesAccountList.get(i).Id,
+                                                                        LPCR_ContactEnfant__c = enfantsContactsList.get(i).Id,
+                                                                        LPCR_ContactParent__c = parentContactsList.get(i).Id
+                                                                        );	
             preinscriptions.add(pre);
         }
         
