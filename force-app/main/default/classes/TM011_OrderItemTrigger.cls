@@ -13,6 +13,18 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
         this.oldOrderItemsMap = (Map<Id, OrderItem>) Trigger.oldMap;
         this.newOrderItemsList = (List<OrderItem>) Trigger.new;
     }
+
+    protected override void beforeInsert() {
+        System.debug('#### check point 1');
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        System.debug('#### check point 2');
+        System.debug('#### check point 2.0 ' + oldOrderItemsMap);
+        System.debug('#### check point 2.1 ' + newOrderItemsList);
+        System.debug('#### check point 2.2 ' + newOrderItemsMap);
+        SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
+        System.debug('#### check point 3');
+    }
+
     protected override void afterInsert() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         List<OrderItem> orderItemToProcess = new List<OrderItem> ();
@@ -27,15 +39,15 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
             ID jobID = System.enqueueJob(job);
         }
     }
+
+    protected override void beforeUpdate() {
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
+    }
     
     protected override void afterUpdate() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         SM012_OrderItemServices.legalEntityOnOrderItemConSch(newOrderItemsMap);
            
-    }
-
-    protected override void beforeUpdate() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM012_OrderItemServices.setupInvoiceDates(newOrderItemsMap);
     }
 }

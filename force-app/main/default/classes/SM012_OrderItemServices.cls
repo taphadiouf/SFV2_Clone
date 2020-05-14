@@ -46,7 +46,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
         
     }
 
-    public static void setupInvoiceDates(Map<Id, OrderItem> newOrderItems) {
+    public static void setupInvoiceDates(List<OrderItem> newOrderItems) {
+
         PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'newOrderItems: ' + newOrderItems.size());
         if (newOrderItems != null) {
             Id accountEntrepriseRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
@@ -65,52 +66,74 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             Integer microInvoicingDay = mapTypeContractConf.containsKey('B2C_MICRO')
                 ? Integer.valueOf(mapTypeContractConf.get('B2C_MICRO').LPCR_JourFacturation__c)
                 : 27;
+
+            Integer invoiceDelta = mapTypeContractConf.containsKey('B2B')
+                ? -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c)
+                : -35;
             
+            /*
             // reload orderItems with relations
-            List<OrderItem> orderItems = [SELECT Id, SBQQ__BillingType__c, ServiceDate, blng__NextChargeDate__c, blng__OverrideNextBillingDate__c, 
+            List<OrderItem> orderItems = [SELECT Id, SBQQ__BillingType__c, ServiceDate, blng__NextChargeDate__c, blng__OverrideNextBillingDate__c, SBQQ__BillingFrequency__c,
                 blng__BillThroughDateOverride__c, OrderId, Order.LPCR_TypeCreche__c, Order.blng__BillingAccount__c, Order.blng__BillingAccount__r.RecordTypeId 
                 FROM OrderItem WHERE Id IN :newOrderItems.keySet()];
+            */
 
-            for (OrderItem item : orderItems) {
-                if(item.Order.blng__BillingAccount__c != null && item.Order.blng__BillingAccount__r.RecordTypeId == accountFamilleRTId && item.ServiceDate != null) {
+            Set<Id> orderIds = new Set<Id>();
+            for (OrderItem item : newOrderItems) {
+                orderIds.add(item.OrderId);
+            }
 
-                    Integer orderItemStartDay = item.ServiceDate.day();
-                    Integer invoiceDay = (item.Order.LPCR_TypeCreche__c == 'MAC')
-                        ? macInvoicingDay
-                        : microInvoicingDay;
-                    
-                    PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'item (BEFORE): ' + item);
-                    PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'invoiceDay: ' + invoiceDay);
-                    
-                    if (item.blng__NextChargeDate__c != null) {
+            Map<Id, Order> orderMap = new Map<Id, Order> ([SELECT Id, LPCR_TypeCreche__c, blng__BillingAccount__c, blng__BillingAccount__r.RecordTypeId 
+                FROM Order WHERE Id IN :orderIds]);
+
+            for (OrderItem item : newOrderItems) {
+                if (item.blng__NextChargeDate__c != null) {
+                    if(orderMap.get(item.OrderId).blng__BillingAccount__c != null && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountFamilleRTId && item.ServiceDate != null) {
+                        Integer orderItemStartDay = item.ServiceDate.day();
+                        Integer invoiceDay = (orderMap.get(item.OrderId).LPCR_TypeCreche__c == 'MAC')
+                            ? macInvoicingDay
+                            : microInvoicingDay;
+                        
+                        PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'item (BEFORE): ' + item);
+                        PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'invoiceDay: ' + invoiceDay);
+                        
                         if(item.SBQQ__BillingType__c == 'Advance') {
                             if(item.ServiceDate == item.blng__NextChargeDate__c) { 
                                 //update original record to make because of beforeUpdate event
-                                newOrderItems.get(item.Id).blng__OverrideNextBillingDate__c = (orderItemStartDay > invoiceDay)
+                                item.blng__OverrideNextBillingDate__c = (orderItemStartDay > invoiceDay)
                                     ? UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c.addMonths(1))
                                     : UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c);
 
-                                if(item.Order.LPCR_TypeCreche__c == 'MICRO') {
-                                    newOrderItems.get(item.Id).blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (newOrderItems.get(item.Id).blng__OverrideNextBillingDate__c.addMonths(1));
+                                if(orderMap.get(item.OrderId).LPCR_TypeCreche__c == 'MICRO') {
+                                    item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.blng__OverrideNextBillingDate__c.addMonths(1));
                                 } 
                             } else if(item.ServiceDate != item.blng__NextChargeDate__c) {
-                                newOrderItems.get(item.Id).blng__OverrideNextBillingDate__c = (item.Order.LPCR_TypeCreche__c =='MAC')
+                                item.blng__OverrideNextBillingDate__c = (orderMap.get(item.OrderId).LPCR_TypeCreche__c =='MAC')
                                     ? UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c)
                                     : UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c.addMonths(-1));
                             }
                         } else if(item.SBQQ__BillingType__c == 'Arrears') {
-                            newOrderItems.get(item.Id).blng__OverrideNextBillingDate__c = item.Order.LPCR_TypeCreche__c =='MAC' 
-                                || (item.Order.LPCR_TypeCreche__c =='MICRO' && item.ServiceDate == item.blng__NextChargeDate__c && orderItemStartDay > invoiceDay)
+                            item.blng__OverrideNextBillingDate__c = orderMap.get(item.OrderId).LPCR_TypeCreche__c =='MAC' 
+                                || (orderMap.get(item.OrderId).LPCR_TypeCreche__c =='MICRO' && item.ServiceDate == item.blng__NextChargeDate__c && orderItemStartDay > invoiceDay)
                                     ? UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c.addMonths(1))
                                     : UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c);
 
-                            if (item.Order.LPCR_TypeCreche__c =='MICRO' && item.ServiceDate == item.blng__NextChargeDate__c) {
-                                newOrderItems.get(item.Id).blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (newOrderItems.get(item.Id).blng__OverrideNextBillingDate__c);
+                            if (orderMap.get(item.OrderId).LPCR_TypeCreche__c =='MICRO' && item.ServiceDate == item.blng__NextChargeDate__c) {
+                                item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.blng__OverrideNextBillingDate__c);
                             }
+                        }
+                    } else if (orderMap.get(item.OrderId).blng__BillingAccount__c != null && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId && item.SBQQ__BillingType__c == 'Advance') {
+                        Date nextBillingDate = item.blng__NextChargeDate__c.addDays(invoiceDelta);
+                        item.blng__OverrideNextBillingDate__c = nextBillingDate;
+
+                        if (item.SBQQ__BillingFrequency__c == 'Quarterly' && !UM005_DateUtility.quarterlyMonths.contains(nextBillingDate.month())) {
+                            item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDayOfDatePeriod (nextBillingDate, UM005_DateUtility.quarterlyMonths); 
+                        } else if (item.SBQQ__BillingFrequency__c == 'Semiannual' && !UM005_DateUtility.semiannualMonths.contains(nextBillingDate.month())) {
+                            item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDayOfDatePeriod (nextBillingDate, UM005_DateUtility.semiannualMonths); 
                         }
                     }
                 }
-                PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'item (AFTER): ' + newOrderItems.get(item.Id));
+                PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'item (AFTER): ' + item);
             }
         }  
     }
