@@ -57,7 +57,7 @@ public with sharing class VFC001_CloneQuoteLineItems {
         if (hasError) return null;
         Savepoint sp = Database.setSavepoint();
         // Map : origin Id => cloner Quote Line record
-        List<Id, SBQQ__QuoteLine__c> originIdsToclonedQLMap = new List<Id, SBQQ__QuoteLine__c>();
+        Map<Id,SBQQ__QuoteLine__c> originIdsToclonedQLMap = new Map<Id, SBQQ__QuoteLine__c>();
        
         SBQQ__QuoteLine__c currentQL;
         // Clone every quote line
@@ -94,9 +94,9 @@ public with sharing class VFC001_CloneQuoteLineItems {
             if(currentClonedQL.SBQQ__RequiredBy__c != null){
                 //Origin quote line of the current cloned quote line
                 currentOriginQL = idToQuoteLineMap.get(eachId);
-                currentOriginParentQL = currentOriginQL.SBQQ__RequiredBy__c;
+                currentOriginParentQLId = currentOriginQL.SBQQ__RequiredBy__c;
                 //set the parent of the cloned QL to be => the cloned QL from the parent of the original QL
-                currentClonedQL.SBQQ__RequiredBy__c = originIdsToclonedQLMap.get(currentOriginParentQL);
+                currentClonedQL.SBQQ__RequiredBy__c = originIdsToclonedQLMap.get(currentOriginParentQLId).Id;
             }
         }
         // Update the RequiredBy fields of cloned QL 
