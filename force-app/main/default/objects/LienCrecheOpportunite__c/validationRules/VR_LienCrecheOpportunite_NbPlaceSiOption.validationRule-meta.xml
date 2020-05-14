@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_LienCrecheOpportunite_NbPlaceSiOption</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    !( $User.LPCR_BypassValidationRules__c ),
+    ISNULL(LPCR_Nombredeplaces__c),
+    LPCR_DemandeOption__c
+)</errorConditionFormula>
+    <errorDisplayField>LPCR_Nombredeplaces__c</errorDisplayField>
+    <errorMessage>Le nombre de places doit être renseigné s’il y a une demande d&#39;option</errorMessage>
+</ValidationRule>

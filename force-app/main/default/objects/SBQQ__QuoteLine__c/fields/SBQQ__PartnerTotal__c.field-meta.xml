@@ -5,7 +5,7 @@
     <description>Total of the Partner Discount. By default, partner discounts are applied after all automatic and discretionary discounts. The partner discount is taken into account in the Partner Price.</description>
     <externalId>false</externalId>
     <formula>IF(AND(SBQQ__Renewal__c, !SBQQ__Existing__c, ISBLANK(SBQQ__PriorQuantity__c)), 0, SBQQ__PartnerPrice__c * SBQQ__EffectiveQuantity__c)</formula>
-    <inlineHelpText>Total de la remise partenaire.</inlineHelpText>
+    <inlineHelpText>Total of the Partner Discount.</inlineHelpText>
     <label>Partner Total</label>
     <precision>18</precision>
     <required>false</required>

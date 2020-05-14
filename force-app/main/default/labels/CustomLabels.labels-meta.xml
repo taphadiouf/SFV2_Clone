@@ -8,60 +8,11 @@
         <value>Account</value>
     </labels>
     <labels>
-        <fullName>LPCR_Lead</fullName>
+        <fullName>LPCR_AccountId</fullName>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>LPCR_Lead</shortDescription>
-        <value>Lead</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_RecordType</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_RecordType</shortDescription>
-        <value>RecordType</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_Confirme</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Confirme</shortDescription>
-        <value>Confirmé</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_Contact</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Contact</shortDescription>
-        <value>Contact</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_ContratA</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_ContratA</shortDescription>
-        <value>Contrat_Accueil</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_PopConLT</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_PopConLT</shortDescription>
-        <value>Création contrat d'acceuil ?</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_PopConLT2</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_PopConLT2</shortDescription>
-        <value>Parent Sponsorisé ?</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_CrecheWA</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_CrecheWA</shortDescription>
-        <value>Crèche</value>
+        <shortDescription>LPCR_AccountId</shortDescription>
+        <value>AccountId</value>
     </labels>
     <labels>
         <fullName>LPCR_CompteWA</fullName>
@@ -71,11 +22,53 @@
         <value>Compte</value>
     </labels>
     <labels>
-        <fullName>LPCR_EnfantsWA</fullName>
+        <fullName>LPCR_Confirme</fullName>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>LPCR_EnfantsWA</shortDescription>
-        <value>Enfants</value>
+        <shortDescription>LPCR_Confirme</shortDescription>
+        <value>Confirmé</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Conge</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_Conge</shortDescription>
+        <value>Nombre de jours de congés déduits sur la durée du contrat :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Contact</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Contact</shortDescription>
+        <value>Contact</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ContactEnfant</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContactEnfant</shortDescription>
+        <value>LPCR_ContactEnfant__c</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ContactId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContactId</shortDescription>
+        <value>ContactId</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ContratA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContratA</shortDescription>
+        <value>Contrat_Accueil</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ContratEnfant</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_ContratEnfant</shortDescription>
+        <value>Contrat au bénéfice de l&#39;enfant :</value>
     </labels>
     <labels>
         <fullName>LPCR_ConvertLeadF</fullName>
@@ -92,6 +85,27 @@
         <value>Creche</value>
     </labels>
     <labels>
+        <fullName>LPCR_CrecheWA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_CrecheWA</shortDescription>
+        <value>Crèche</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_DEF</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_DEF</shortDescription>
+        <value>DEF</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_DSP</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_DSP</shortDescription>
+        <value>DSP</value>
+    </labels>
+    <labels>
         <fullName>LPCR_DocLPCR</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -106,11 +120,18 @@
         <value>En Cours</value>
     </labels>
     <labels>
-        <fullName>LPCR_Famille</fullName>
+        <fullName>LPCR_Enfant</fullName>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>LPCR_Famille</shortDescription>
-        <value>Famille</value>
+        <shortDescription>LPCR_Enfant</shortDescription>
+        <value>Enfant</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_EnfantsWA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_EnfantsWA</shortDescription>
+        <value>Enfants</value>
     </labels>
     <labels>
         <fullName>LPCR_Entreprise</fullName>
@@ -120,130 +141,18 @@
         <value>Entreprise</value>
     </labels>
     <labels>
-        <fullName>LPCR_Parent</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Parent</shortDescription>
-        <value>Parent</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_Enfant</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Enfant</shortDescription>
-        <value>Enfant</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_ListeAtt</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_ListeAtt</shortDescription>
-        <value>Liste d’attente</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_Nouveau</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Nouveau</shortDescription>
-        <value>Nouveau</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_OppFor</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_OppFor</shortDescription>
-        <value>Opportunité pour : </value>
-    </labels>
-    <labels>
-        <fullName>LPCR_Opportunity</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Opportunity</shortDescription>
-        <value>Opportunity</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_ContactEnfant</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_ContactEnfant</shortDescription>
-        <value>LPCR_ContactEnfant__c</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_Prospecting</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Prospecting</shortDescription>
-        <value>Prospecting</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_RecordTypeId</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_RecordTypeId</shortDescription>
-        <value>RecordTypeId</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_ContactId</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_ContactId</shortDescription>
-        <value>ContactId</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_AccountId</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_AccountId</shortDescription>
-        <value>AccountId</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_PublicDSP</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_PublicDSP</shortDescription>
-        <value>AOPublicDSP</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_Quote</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Quote</shortDescription>
-        <value>SBQQ__Quote__c</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_ResultS</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_ResultS</shortDescription>
-        <value>Sent</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_Sent</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Sent</shortDescription>
-        <value>Sent</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_Conge</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>LPCR_Conge</shortDescription>
-        <value>Nombre de jours de congés déduits sur la durée du contrat :</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_ContratEnfant</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>LPCR_ContratEnfant</shortDescription>
-        <value>Contrat au bénéfice de l&#39;enfant :</value>
-    </labels>
-    <labels>
         <fullName>LPCR_Etablissement</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_Etablissement</shortDescription>
-        <value>Au sein de l&#39;établissement de</value>
+        <value>Au sein de l&#39;établissement de :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Famille</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Famille</shortDescription>
+        <value>Famille</value>
     </labels>
     <labels>
         <fullName>LPCR_Identifiant</fullName>
@@ -251,6 +160,27 @@
         <protected>true</protected>
         <shortDescription>LPCR_Identifiant</shortDescription>
         <value>N° d&#39;identifiant :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_NonTraite</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_NonTraite</shortDescription>
+        <value>Non traité</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Lead</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Lead</shortDescription>
+        <value>Lead</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ListeAtt</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ListeAtt</shortDescription>
+        <value>Liste d’attente</value>
     </labels>
     <labels>
         <fullName>LPCR_MontantM</fullName>
@@ -281,18 +211,67 @@
         <value>Nom de l&#39;enfant :</value>
     </labels>
     <labels>
+        <fullName>LPCR_Nouveau</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Nouveau</shortDescription>
+        <value>Nouveau</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_OCC</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_OCC</shortDescription>
+        <value>OCC</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_OppFor</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_OppFor</shortDescription>
+        <value>Opportunité pour :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Opportunity</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Opportunity</shortDescription>
+        <value>Opportunity</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Parent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Parent</shortDescription>
+        <value>Parent</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Periode</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_Periode</shortDescription>
-        <value>Pour la période du</value>
+        <value>Pour la période du :</value>
     </labels>
     <labels>
         <fullName>LPCR_PlanningType</fullName>
         <language>en_US</language>
-        <protected>true</protected>
+        <protected>false</protected>
         <shortDescription>LPCR_PlanningType</shortDescription>
-        <value>Type Planning</value>
+        <value>Type Planning :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_PopConLT</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_PopConLT</shortDescription>
+        <value>Création contrat d&#39;acceuil ?</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_PopConLT2</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_PopConLT2</shortDescription>
+        <value>Parent Sponsorisé ?</value>
     </labels>
     <labels>
         <fullName>LPCR_PrenomEnfant</fullName>
@@ -302,11 +281,60 @@
         <value>Prénom de l&#39;enfant :</value>
     </labels>
     <labels>
+        <fullName>LPCR_Prospecting</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Prospecting</shortDescription>
+        <value>Prospecting</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_PublicDSP</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_PublicDSP</shortDescription>
+        <value>AOPublicDSP</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Quote</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Quote</shortDescription>
+        <value>SBQQ__Quote__c</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RecordType</shortDescription>
+        <value>RecordType</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RecordTypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RecordTypeId</shortDescription>
+        <value>RecordTypeId</value>
+    </labels>
+    <labels>
         <fullName>LPCR_RessourcesM</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_RessourcesM</shortDescription>
-        <value>Ressources mensuelles(sous conditions de plancher et de plafond):</value>
+        <value>Ressources mensuelles(sous conditions de plancher et de plafond) :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ResultS</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ResultS</shortDescription>
+        <value>Sent</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Sent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Sent</shortDescription>
+        <value>Sent</value>
     </labels>
     <labels>
         <fullName>LPCR_SignatureE</fullName>
@@ -349,26 +377,5 @@
         <protected>true</protected>
         <shortDescription>LPCR_Title2</shortDescription>
         <value>Montant Forfait</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_OCC</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>LPCR_OCC</shortDescription>
-        <value>OCC</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_DEF</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>LPCR_DEF</shortDescription>
-        <value>DEF</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_DSP</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>LPCR_DSP</shortDescription>
-        <value>DSP</value>
     </labels>
 </CustomLabels>

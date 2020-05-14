@@ -334,7 +334,6 @@
             <field>LPCR_Activite__c</field>
             <table>Account</table>
         </columns>
-       
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_AutrePrestataire__c</field>
@@ -367,7 +366,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_CodeReservataire__c</field>
+            <field>LPCR_CodePreinscription__c</field>
             <table>Account</table>
         </columns>
         <columns>
@@ -462,12 +461,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_JoindreEtatCAFFacture__c</field>
+            <field>LPCR_LibelleAPE__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_LibelleAPE__c</field>
+            <field>LPCR_JoindreEtatCAFFacture__c</field>
             <table>Account</table>
         </columns>
         <columns>
@@ -722,11 +721,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_NombreOptions__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_EstMigre__c</field>
             <table>Account</table>
         </columns>
@@ -738,11 +732,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_EntiteJuridique__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_FormeJuridique__c</field>
             <table>Account</table>
         </columns>
         <columns>
