@@ -86,10 +86,6 @@
                 <field>LPCR_AgrementGrands__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_NombreEnfantPrevuVendredi__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LPCR_NbreOptions__c</field>
             </layoutItems>
@@ -102,6 +98,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_BerceauxDisponibles__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_NombreOptions__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -119,6 +119,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_NombreEnfantPrevuJeudi__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_NombreEnfantPrevuVendredi__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -130,7 +134,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_CodePreinscription__c</field>
+                <field>LPCR_CodeReservataire__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>

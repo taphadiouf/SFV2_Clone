@@ -279,7 +279,7 @@ newMe.FederationIdentifier = null;
         return listParams;
         
     }
-    
+
     public static LPCR_RessourceFamille__c createRessourceFamille(Id productId, Id userId,String name,Decimal price){
         return new LPCR_RessourceFamille__c(   LPCR_DateDebut__c = date.today(),
                                             LPCR_CompteFamille__c=userId,
@@ -287,7 +287,7 @@ newMe.FederationIdentifier = null;
                                             LPCR_TauxMensuel__c=price,
                                             Name=name);
     } 
-    
+
     public static List<LPCR_RessourceFamille__c> createRessourceFamille(Integer nbr,Id productId, Id userId,Decimal price,List<Date> listStartDate,List<Decimal> listNbrEnfant,List<Decimal> listNbrEnfantHandicape){
         List<LPCR_RessourceFamille__c> listRessourceFamille = new List<LPCR_RessourceFamille__c>();
         for(Integer i=0;i<nbr;i++){
@@ -301,9 +301,9 @@ newMe.FederationIdentifier = null;
                 Name=i+1+''));
         }
         return listRessourceFamille;
-    } 
-    
-    
+    }
+
+
     public static Contract createContract(Id accountID){	
         Contract  contract = new Contract(AccountID = accountID);	
         return contract;	
@@ -585,8 +585,8 @@ newMe.FederationIdentifier = null;
         quoteLineInstance.SBQQ__BillingFrequency__c ='Invoice Plan';
         return quoteLineInstance;
     }
-    
-    
+
+
     public static List< LPCR_BaremeCAF__c > createBaremeCAF(Integer nbr, List<Date> listStartDates,List<Decimal> listTauxEffortParEnfant){
         List<LPCR_BaremeCAF__c> listBaremeCAF = new List<LPCR_BaremeCAF__c>();
         for(Date eachDate : listStartDates){
@@ -595,9 +595,9 @@ newMe.FederationIdentifier = null;
                                                         LPCR_DateFin__c =Date.newInstance(eachDate.Year(), 12, 31),
                                                         LPCR_NombresEnfants__c =i+1,
                                                         LPCR_TauxEffortParEnfant__c =listTauxEffortParEnfant.get(i)));
-            }  
+            }
         }
-        
+
         return listBaremeCAF;
     }
     //--- End Ayoub's Part
@@ -623,38 +623,38 @@ newMe.FederationIdentifier = null;
     public static List<LPCR_Preinscription__c> createPreinscriptions(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i=0;i<numPrei;i++){
-            preinscriptions.add(new LPCR_Preinscription__c(      
-                                                            LPCR_CompteFamille__c=compteFamilleId,	
-                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
-                                                            NomEnfant__c=nomEnfant,	
+            preinscriptions.add(new LPCR_Preinscription__c(
+                                                            LPCR_CompteFamille__c=compteFamilleId,
+                                                            LPCR_PrenomEnfant__c=prenomEnfant,
+                                                            NomEnfant__c=nomEnfant,
                                                             LPCR_Statut__c = statut,
                                                             LPCR_ContactEnfant__c=contactId));
         }
-        
-        return preinscriptions;	
+
+        return preinscriptions;
     }
-    public static List<Contact> createContacts(Integer numRecords, Id recType, String lastname, String address){	
+    public static List<Contact> createContacts(Integer numRecords, Id recType, String lastname, String address){
         List<Contact> contacts = new List<Contact>();
         for(Integer i = 0; i < numRecords; i++){
             contacts.add(new Contact(   Lastname = lastname,
                                         RecordTypeId = recType,
                                         MailingCountry = address
-                                        ));	
+                                        ));
         }
-        
-        return contacts;	
+
+        return contacts;
     }
-     public static List<Account> createAccounts(Integer numRecords, Id recType, String name){	
+     public static List<Account> createAccounts(Integer numRecords, Id recType, String name){
         List<Account> accounts = new List<Account>();
         for(Integer i = 0; i < numRecords; i++){
-            accounts.add(new Account(   
+            accounts.add(new Account(
                                         Name = name,
-                                        RecordTypeId = recType));	
+                                        RecordTypeId = recType));
         }
-        
-        return accounts;	
+
+        return accounts;
     }
-    public static List<LPCR_Preinscription__c> createPreinscriptions( List<Account> famillesAccountList, List<Contact> enfantsContactsList, List<Contact> parentContactsList,String statut, String preinsType){	
+    public static List<LPCR_Preinscription__c> createPreinscriptions( List<Account> famillesAccountList, List<Contact> enfantsContactsList, List<Contact> parentContactsList,String statut, String preinsType){
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i = 0; i < famillesAccountList.size(); i++){
             LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(   LPCR_Statut__c = statut,
@@ -662,7 +662,7 @@ newMe.FederationIdentifier = null;
                                                                         LPCR_CompteFamille__c = famillesAccountList.get(i).Id,
                                                                         LPCR_ContactEnfant__c = enfantsContactsList.get(i).Id,
                                                                         LPCR_ContactParent__c = parentContactsList.get(i).Id
-                                                                        );	
+                                                                        );
             preinscriptions.add(pre);
         }
         
@@ -672,10 +672,10 @@ newMe.FederationIdentifier = null;
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i=0;i<numPrei;i++){
             LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteEntreprise__c= entrepriseAccountId,	
-                                                                     LPCR_PrenomEnfant__c= prenomEnfant,	
-                                                                     NomEnfant__c= nomEnfant,	
+                                                                     LPCR_PrenomEnfant__c= prenomEnfant,
+                                                                     NomEnfant__c= nomEnfant,
                                                                      LPCR_Statut__c = statut,
-                                                                     LPCR_ContactEnfant__c=contactId);	
+                                                                     LPCR_ContactEnfant__c=contactId);
             preinscriptions.add(pre);
         }
         
@@ -723,8 +723,8 @@ newMe.FederationIdentifier = null;
     //End of the part on the same day
     
     // This part is added by hanae on the 12/03/2020
-    
-    
+
+
     public static LPCR_Preinscription__c createPreinscription(String nomEnfant, String prenomEnfant, String typePreinscription,Id compteFamilleId,Id contactId){	
         LPCR_Preinscription__c  preinsciption = new LPCR_Preinscription__c (LPCR_CompteFamille__c=compteFamilleId,	
                                                                             LPCR_PrenomEnfant__c=prenomEnfant,
@@ -733,12 +733,12 @@ newMe.FederationIdentifier = null;
                                                                             LPCR_ContactEnfant__c=contactId);	
         return preinsciption;	
     }
-    
+
     //End of the part on the same day
-    
+
         //This part is added by hanae on the 19/03/2020
-    public static List<LPCR_PlanningPrevisionnel__c> createPlannings(Integer numPlann, Id idQuote, Time debutLundi, Time finLundi, Time DebutMardi, Time finMardi, Time DebutMercredi, Time finMercredi, Time DebutJeudi, Time finJeudi, Time DebutVendredi, Time finVendredi){ 
-        
+    public static List<LPCR_PlanningPrevisionnel__c> createPlannings(Integer numPlann, Id idQuote, Time debutLundi, Time finLundi, Time DebutMardi, Time finMardi, Time DebutMercredi, Time finMercredi, Time DebutJeudi, Time finJeudi, Time DebutVendredi, Time finVendredi){
+
         LPCR_Planning__c tmpPlanning = new LPCR_Planning__c();
         tmpPlanning.LPCR_Devis__c = idQuote;
         tmpPlanning.LPCR_TypePlanning__c = 'Planning Classique';
@@ -763,29 +763,29 @@ newMe.FederationIdentifier = null;
                                                                                LPCR_HeureFinVendredi__c = finVendredi);
             plannings.add(pl);
         }
-        return plannings;   
+        return plannings;
     }
-    
-    public static List<LPCR_PlanningPrevisionnel__c> createPlanningsWithoutTime(Integer numPlann, Id idQuote){  
-    
+
+    public static List<LPCR_PlanningPrevisionnel__c> createPlanningsWithoutTime(Integer numPlann, Id idQuote){
+
         LPCR_Planning__c tmpPlanning = new LPCR_Planning__c();
         tmpPlanning.LPCR_Devis__c = idQuote;
         tmpPlanning.LPCR_TypePlanning__c = 'Planning Classique';
         insert tmpPlanning;
 
-    
+
         List<LPCR_PlanningPrevisionnel__c>  plannings = new List<LPCR_PlanningPrevisionnel__c>();
         for(Integer i=0;i<numPlann;i++){
             LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Planning__c = tmpPlanning.id, LPCR_Contrat__c  = idQuote);
             plannings.add(pl);
         }
-        return plannings;   
+        return plannings;
     }
-    
-    
-    
-    
-    
+
+
+
+
+
     /*
 public class AccountContactRelationTdf {
 
