@@ -98,23 +98,28 @@
                         </div><br/>
                         <div>
                             {!$Label.LPCR_NbrContractuelMois}
+                            {!annex.quote.LPCR_NombreHeuresMois__c}
                         </div><br/>
                     </div>
                     <div>
                         {!$Label.LPCR_RessourcesM }
-                        {!annex.quote.LPCR_RessourcesMensuelles__c}
+                        {!annex.quote.LPCR_RevenusFamille__c}
                     </div>
                     <div>
                         {!$Label.LPCR_Taux}
+                        {!annex.quote.LPCR_TauxEffort__c }
                     </div>
                     <div>
                         {!$Label.LPCR_Tarif}
+                        {!annex.quote.LPCR_TauxHoraire__c}
                     </div><br/>
                     <div>
                         {!$Label.LPCR_Conge}
+                        {!annex.quote.LPCR_CongesJours__c}
                     </div><br/>
                     <div>
                         {!$Label.LPCR_MontantM}
+                        {!annex.quote.LPCR_TauxMensuel__c}
                     </div>
                     <div>
                         Fait le:..../..../....
