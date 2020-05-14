@@ -37,11 +37,11 @@ public class SM006_PreinscriptionServices_Test {
         
         List<LPCR_Preinscription__c> allPreInscrList = new List<LPCR_Preinscription__c>();
         //Add OCC Preinscription
-        allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListOCC, enfantsContactsListOCC, parentContactsListOCC, Label.LPCR_NonTraite, Label.LPCR_OCC));
+        allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListOCC, enfantsContactsListOCC, parentContactsListOCC, Label.LPCR_Nouveau, Label.LPCR_OCC));
         //Add DEF Preinscription
-        allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListDEF, enfantsContactsListDEF, parentContactsListDEF, Label.LPCR_NonTraite, Label.LPCR_DEF));
+        allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListDEF, enfantsContactsListDEF, parentContactsListDEF, Label.LPCR_Nouveau, Label.LPCR_DEF));
         //Add DSP Preinscription
-        allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListDSP, enfantsContactsListDSP, parentContactsListDSP, Label.LPCR_NonTraite, Label.LPCR_DSP));
+        allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListDSP, enfantsContactsListDSP, parentContactsListDSP, Label.LPCR_Nouveau, Label.LPCR_DSP));
         
         insert allPreInscrList;
     }        
