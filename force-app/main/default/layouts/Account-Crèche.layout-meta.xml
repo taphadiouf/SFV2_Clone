@@ -105,10 +105,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_NombreOptions__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>LPCR_NombreEnfantsLundi__c</field>
             </layoutItems>
             <layoutItems>
@@ -373,15 +369,6 @@
         <relatedList>LPCR_Preinscription__c.LPCR_Creche__c</relatedList>
         <sortField>LPCR_Statut__c</sortField>
         <sortOrder>Asc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>Account.ACC_NAME</fields>
-        <fields>Opportunity.OPP_STAGE_NAME</fields>
-        <fields>Opportunity.OPP_CLOSE_DATE</fields>
-        <relatedList>LienCrecheOpportunite__c.Creche__c</relatedList>
-        <sortField>Opportunity.OPP_CLOSE_DATE</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
