@@ -12,7 +12,7 @@
         &quot;Annual&quot;, 12,
         0))) / ( SBQQ__ProrateMultiplier__c * SBQQ__DefaultSubscriptionTerm__c )
         )</formula>
-    <inlineHelpText>Le montant non proraté facturé à chaque période de facturation. Égal à ((Prix total * Fréquence de facturation) / (Multiplicateur au prorata * Durée d&#39;abonnement par défaut)).</inlineHelpText>
+    <inlineHelpText>The unprorated amount that will bill each billing period. Equals ((TotalPrice * BillingFrequency) / (ProrateMultiplier * DefaultSubscriptionTerm)).</inlineHelpText>
     <label>Billable Unit Price</label>
     <precision>18</precision>
     <required>false</required>

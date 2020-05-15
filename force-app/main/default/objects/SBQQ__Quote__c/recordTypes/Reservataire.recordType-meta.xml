@@ -30,6 +30,21 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_MethodeRenouvellement__c</picklist>
+        <values>
+            <fullName>Express</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sans renouvellement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tacite</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_RenouvellementConvenu__c</picklist>
         <values>
             <fullName>Non</fullName>
@@ -37,6 +52,40 @@
         </values>
         <values>
             <fullName>Oui</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_StatutApprobation__c</picklist>
+        <values>
+            <fullName>Approuvé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brouillon</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>En Attente</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeAvenant__c</picklist>
+        <values>
+            <fullName>Ajout%2FSuppression Berceau</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Changement de Prix</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Modification des termes du contrat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resiliation</fullName>
             <default>false</default>
         </values>
     </picklistValues>

@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>The customer account for this quote. Defaulted to the account for the opportunity when quote is created.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Le compte client de ce devis. Utilise par défaut le compte de l&#39;opportunité lors de la création d&#39;un devis.</inlineHelpText>
+    <inlineHelpText>The customer account for this quote. Defaults to the account for the opportunity when creating a quote.</inlineHelpText>
     <label>Account</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Quotes</relationshipLabel>

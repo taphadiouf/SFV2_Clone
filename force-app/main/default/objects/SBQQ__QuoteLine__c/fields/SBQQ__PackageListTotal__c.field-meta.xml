@@ -6,7 +6,7 @@
     <externalId>false</externalId>
     <formula>SBQQ__ComponentListTotal__c +  SBQQ__ListTotal__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Prix catalogue total de ce package, qui inclut les composants.</inlineHelpText>
+    <inlineHelpText>Total list price of this package including its components.</inlineHelpText>
     <label>Package List Total</label>
     <precision>18</precision>
     <required>false</required>

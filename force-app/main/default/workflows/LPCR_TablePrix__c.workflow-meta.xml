@@ -3,23 +3,10 @@
     <fieldUpdates>
         <fullName>LPCR_MajUnique</fullName>
         <field>LPCR_Unique__c</field>
-        <formula>LPCR_CodeProduit__c + TEXT(LPCR_Region__c) + TEXT(LPCR_TypeEntreprise__c) + TEXT( LPCR_JoursSemaine__c ) + TEXT( LPCR_Tranche__c ) + TEXT( LPCR_TypeAccueil__c )</formula>
+        <formula>LPCR_CodeProduit__c + TEXT(LPCR_Region__c) + TEXT(LPCR_TypeEntreprise__c) + TEXT( LPCR_JoursSemaine__c ) + TEXT( LPCR_Tranche__c ) + TEXT( LPCR_TypeAccueil__c ) +  TEXT(LPCR_BorneInf__c) +  TEXT(LPCR_BorneSup__c) + LPCR_MasterDevis__c</formula>
         <name>Mettre à jour le champ unique</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
         <protected>false</protected>
     </fieldUpdates>
-    <rules>
-        <fullName>Remplir le champ unique</fullName>
-        <actions>
-            <name>LPCR_MajUnique</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>true</active>
-        <criteriaItems>
-            <field>LPCR_TablePrix__c.LPCR_CodeProduit__c</field>
-            <operation>notEqual</operation>
-        </criteriaItems>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
 </Workflow>

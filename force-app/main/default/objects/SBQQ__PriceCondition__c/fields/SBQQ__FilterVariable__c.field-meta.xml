@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Summary variable that filters this condition.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Sélectionnez la Variable de synthèse que cette condition doit utiliser en tant que filtre.</inlineHelpText>
+    <inlineHelpText>Select the Summary Variable you want this condition to use as a filter.</inlineHelpText>
     <label>Filter Variable</label>
     <referenceTo>SBQQ__SummaryVariable__c</referenceTo>
     <relationshipLabel>Filtered Price Conditions</relationshipLabel>
