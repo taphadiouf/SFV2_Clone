@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_ContratActif__c</fullName>
+    <description>Coché si le date du jour est comprise entre date de début et date de fin</description>
+    <externalId>false</externalId>
+    <formula>AND(
+  TODAY() &gt;=StartDate,
+  TODAY() &lt;= EndDate
+)</formula>
+    <label>Contrat actif</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>
