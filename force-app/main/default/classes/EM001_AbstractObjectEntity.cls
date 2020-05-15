@@ -86,9 +86,6 @@ public abstract class EM001_AbstractObjectEntity{
         }
         queryString = queryString.replaceAll('{', '(');
         queryString = queryString.replaceAll('}', ')');
-        System.debug(queryString);
-        System.debug(Database.query(queryString));
-        System.debug(queryString);
         
         return Database.query(queryString);
     }
