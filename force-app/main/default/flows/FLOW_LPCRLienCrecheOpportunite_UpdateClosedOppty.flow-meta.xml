@@ -72,7 +72,7 @@
             <targetReference>LoopLienCrecheOppty</targetReference>
         </connector>
         <filters>
-            <field>Opportunite__c</field>
+            <field>LPCR_Opportunite__c</field>
             <operator>EqualTo</operator>
             <value>
                 <elementReference>IdOppty</elementReference>
