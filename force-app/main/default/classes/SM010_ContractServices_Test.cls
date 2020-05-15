@@ -88,7 +88,7 @@ public class SM010_ContractServices_Test {
             upsert contract;
         
             Test.stopTest();
-            contract = [SELECT Id,SBQQ__Order__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,LPCR_MasterDevis_c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
+            contract = [SELECT Id,SBQQ__Order__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,LPCR_MasterDevis__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
                         WHERE SBQQ__Order__c =:order.Id ]; 
             System.assertNotEquals(null, contract.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
 
@@ -102,7 +102,7 @@ public class SM010_ContractServices_Test {
 
             System.assertEquals(quote.SBQQ__BillingFrequency__c, contract.LPCR_BillingFrequency__c,'LPCR_BillingFrequency__c on the quote is not the same on the Contract');
 
-            System.assertEquals(quote.LPCR_MasterDevis_c, contract.LPCR_MasterDevis_c,'LPCR_MasterDevis_c on the quote is not the same on the Contract');
+            System.assertEquals(quote.LPCR_MasterDevis__c, contract.LPCR_MasterDevis__c,'LPCR_MasterDevis__c on the quote is not the same on the Contract');
 
         }
     }
