@@ -2,6 +2,7 @@
 * @author Ayoub Ouarti
 * @created 23/03/2020
 * @description Test Class for SM010_ContractServices
+* @updated by Achraf ABOUL(aaboul@salesforce.com) on 08/05/2020
 */
 @isTest
 public class SM010_ContractServices_Test {
@@ -58,12 +59,12 @@ public class SM010_ContractServices_Test {
     
     
     @isTest
-    private static void testSetContractFields(){
+    private static void setContractFieldsTest(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Date lastMonth=Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day()+1) ;
             Account acc = [SELECT Id, name from Account where name ='test' ];
             
-            SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
+            SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
             Order order = Database.query('SELECT Id , Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
             
             Test.startTest();
@@ -87,7 +88,7 @@ public class SM010_ContractServices_Test {
             upsert contract;
         
             Test.stopTest();
-            contract = [SELECT Id,SBQQ__Order__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
+            contract = [SELECT Id,SBQQ__Order__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,LPCR_MasterDevis__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
                         WHERE SBQQ__Order__c =:order.Id ]; 
             System.assertNotEquals(null, contract.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
 
@@ -100,6 +101,8 @@ public class SM010_ContractServices_Test {
             System.assertEquals(quote.LPCR_TypeFacturation__c, contract.LPCR_TypeFacturation__c,'LPCR_TypeFacturation__c on the quote is not the same on the Contract');
 
             System.assertEquals(quote.SBQQ__BillingFrequency__c, contract.LPCR_BillingFrequency__c,'LPCR_BillingFrequency__c on the quote is not the same on the Contract');
+
+            System.assertEquals(quote.LPCR_MasterDevis__c, contract.LPCR_MasterDevis__c,'LPCR_MasterDevis__c on the quote is not the same on the Contract');
 
         }
     }

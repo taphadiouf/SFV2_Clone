@@ -2,21 +2,23 @@
 * @author Ayoub Ouarti
 * @created 23/03/2020
 * @description Service class for Contract Object
+* @Updated By Achraf ABOUL(aaboul@salesforce.com) 08/05/2020
 */
 public class SM010_ContractServices {
 
     public static void setContractFields(List<Contract> contracts){
 		Set<String> quoteIds = UM003_TypeManager.getFieldsOfListObjects(contracts,'SBQQ__Quote__c');
-        Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_IndexationConvenue__c  from SBQQ__Quote__c WHERE Id in :quoteIds]);
+        Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_IndexationConvenue__c,LPCR_MasterDevis__c  from SBQQ__Quote__c WHERE Id in :quoteIds]);
         
         for (Contract eachContract : contracts){
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){
-                eachContract.LPCR_IndexationConvenue__c=quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_IndexationConvenue__c;
+                eachContract.LPCR_IndexationConvenue__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_IndexationConvenue__c;
 
-                eachContract.LPCR_TypeFacturation__c=quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_TypeFacturation__c;
+                eachContract.LPCR_TypeFacturation__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_TypeFacturation__c;
 
-                eachContract.LPCR_BillingFrequency__c=quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__BillingFrequency__c;
+                eachContract.LPCR_BillingFrequency__c = quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__BillingFrequency__c;
 
+                eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_MasterDevis__c;
             }
         }
     }
