@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Assign a fixed price to a product based on quantity and quantity range. This overrides the automatic calculation of quantity * unit price.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Attribuez un prix fixe à un produit en fonction de la quantité et de la plage de quantités. Il remplace le calcul automatique quantité x prix unitaire.</inlineHelpText>
+    <inlineHelpText>Assign a fixed price to a product based on quantity and quantity range. This overrides the automatic calculation of quantity * unit price.</inlineHelpText>
     <label>Block Price</label>
     <referenceTo>SBQQ__BlockPrice__c</referenceTo>
     <relationshipLabel>Quote Lines</relationshipLabel>

@@ -6,7 +6,7 @@
     <externalId>false</externalId>
     <formula>IF(NOT(ISBLANK(SBQQ__MarkupRate__c)), SBQQ__UnitCost__c * SBQQ__MarkupRate__c, SBQQ__UnitCost__c + SBQQ__MarkupAmount__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Montant de marge sur cet élément. Cette valeur est automatiquement calculée en appliquant le taux de marge ou un montant absolu au coût du produit.</inlineHelpText>
+    <inlineHelpText>Markup amount on this item. This value is automatically calculated by applying markup rate or absolute amount to the product cost.</inlineHelpText>
     <label>Markup</label>
     <precision>18</precision>
     <required>false</required>

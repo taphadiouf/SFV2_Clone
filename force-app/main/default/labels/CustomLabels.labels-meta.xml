@@ -134,6 +134,13 @@
         <value>Enfants</value>
     </labels>
     <labels>
+        <fullName>LPCR_EnfantsWA</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_EnfantsWA</shortDescription>
+        <value>Enfants</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Entreprise</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -145,7 +152,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_Etablissement</shortDescription>
-        <value>Au sein de l&#39;établissement de</value>
+        <value>Au sein de l&#39;établissement de :</value>
     </labels>
     <labels>
         <fullName>LPCR_Famille</fullName>
@@ -160,6 +167,13 @@
         <protected>true</protected>
         <shortDescription>LPCR_Identifiant</shortDescription>
         <value>N° d&#39;identifiant :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_NonTraite</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_NonTraite</shortDescription>
+        <value>Non traité</value>
     </labels>
     <labels>
         <fullName>LPCR_Lead</fullName>
@@ -250,14 +264,14 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_Periode</shortDescription>
-        <value>Pour la période du</value>
+        <value>Pour la période du :</value>
     </labels>
     <labels>
         <fullName>LPCR_PlanningType</fullName>
         <language>en_US</language>
-        <protected>true</protected>
+        <protected>false</protected>
         <shortDescription>LPCR_PlanningType</shortDescription>
-        <value>Type Planning</value>
+        <value>Type Planning :</value>
     </labels>
     <labels>
         <fullName>LPCR_PopConLT</fullName>
@@ -320,7 +334,21 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_RessourcesM</shortDescription>
-        <value>Ressources mensuelles(sous conditions de plancher et de plafond):</value>
+        <value>Ressources mensuelles(sous conditions de plancher et de plafond) :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ResultS</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ResultS</shortDescription>
+        <value>Sent</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Sent</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Sent</shortDescription>
+        <value>Sent</value>
     </labels>
     <labels>
         <fullName>LPCR_ResultS</fullName>

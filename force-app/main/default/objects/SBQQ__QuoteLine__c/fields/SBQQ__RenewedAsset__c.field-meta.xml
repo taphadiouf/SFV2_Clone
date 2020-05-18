@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Asset being renewed if this line item represents product renewal.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Ressource renouvelée si cet élément de ligne représente un renouvellement de produit.</inlineHelpText>
+    <inlineHelpText>Asset being renewed if this line item represents product renewal.</inlineHelpText>
     <label>Renewed Asset</label>
     <referenceTo>Asset</referenceTo>
     <relationshipLabel>Quote Lines</relationshipLabel>

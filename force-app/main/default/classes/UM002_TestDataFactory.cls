@@ -623,11 +623,46 @@ newMe.FederationIdentifier = null;
     public static List<LPCR_Preinscription__c> createPreinscriptions(Integer numPrei, String nomEnfant, String prenomEnfant,String statut,Id compteFamilleId,Id contactId){	
         List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
         for(Integer i=0;i<numPrei;i++){
-            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(      LPCR_CompteFamille__c=compteFamilleId,	
-                                                                     LPCR_PrenomEnfant__c=prenomEnfant,	
-                                                                     NomEnfant__c=nomEnfant,	
-                                                                     LPCR_Statut__c = statut,
-                                                                     LPCR_ContactEnfant__c=contactId);	
+            preinscriptions.add(new LPCR_Preinscription__c(      
+                                                            LPCR_CompteFamille__c=compteFamilleId,	
+                                                            LPCR_PrenomEnfant__c=prenomEnfant,	
+                                                            NomEnfant__c=nomEnfant,	
+                                                            LPCR_Statut__c = statut,
+                                                            LPCR_ContactEnfant__c=contactId));
+        }
+        
+        return preinscriptions;	
+    }
+    public static List<Contact> createContacts(Integer numRecords, Id recType, String lastname, String address){	
+        List<Contact> contacts = new List<Contact>();
+        for(Integer i = 0; i < numRecords; i++){
+            contacts.add(new Contact(   Lastname = lastname,
+                                        RecordTypeId = recType,
+                                        MailingCountry = address
+                                        ));	
+        }
+        
+        return contacts;	
+    }
+     public static List<Account> createAccounts(Integer numRecords, Id recType, String name){	
+        List<Account> accounts = new List<Account>();
+        for(Integer i = 0; i < numRecords; i++){
+            accounts.add(new Account(   
+                                        Name = name,
+                                        RecordTypeId = recType));	
+        }
+        
+        return accounts;	
+    }
+    public static List<LPCR_Preinscription__c> createPreinscriptions( List<Account> famillesAccountList, List<Contact> enfantsContactsList, List<Contact> parentContactsList,String statut, String preinsType){	
+        List<LPCR_Preinscription__c> preinscriptions = new List<LPCR_Preinscription__c>();
+        for(Integer i = 0; i < famillesAccountList.size(); i++){
+            LPCR_Preinscription__c  pre = new LPCR_Preinscription__c(   LPCR_Statut__c = statut,
+                                                                        LPCR_TypePreinscription__c = preinsType,
+                                                                        LPCR_CompteFamille__c = famillesAccountList.get(i).Id,
+                                                                        LPCR_ContactEnfant__c = enfantsContactsList.get(i).Id,
+                                                                        LPCR_ContactParent__c = parentContactsList.get(i).Id
+                                                                        );	
             preinscriptions.add(pre);
         }
         
@@ -646,7 +681,7 @@ newMe.FederationIdentifier = null;
         
         return preinscriptions;	
     }
-    
+
     public static EmailTemplate createEmailTemplate(String name, String developerName, String templateType){
         return new EmailTemplate(Name = name,
                                  DeveloperName = developerName,
@@ -701,11 +736,21 @@ newMe.FederationIdentifier = null;
     
     //End of the part on the same day
     
-    //This part is added by hanae on the 19/03/2020
-    public static List<LPCR_PlanningPrevisionnel__c> createPlannings(Integer numPlann, Id idQuote, Time debutLundi, Time finLundi, Time DebutMardi, Time finMardi, Time DebutMercredi, Time finMercredi, Time DebutJeudi, Time finJeudi, Time DebutVendredi, Time finVendredi){	
+        //This part is added by hanae on the 19/03/2020
+    public static List<LPCR_PlanningPrevisionnel__c> createPlannings(Integer numPlann, Id idQuote, Time debutLundi, Time finLundi, Time DebutMardi, Time finMardi, Time DebutMercredi, Time finMercredi, Time DebutJeudi, Time finJeudi, Time DebutVendredi, Time finVendredi){ 
+        
+        LPCR_Planning__c tmpPlanning = new LPCR_Planning__c();
+        tmpPlanning.LPCR_Devis__c = idQuote;
+        tmpPlanning.LPCR_TypePlanning__c = 'Planning Classique';
+        insert tmpPlanning;
+
+
         List<LPCR_PlanningPrevisionnel__c>  plannings = new List<LPCR_PlanningPrevisionnel__c>();
+
         for(Integer i=0;i<numPlann;i++){
-            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Contrat__c  =idQuote,
+            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(
+                                                                               LPCR_Planning__c = tmpPlanning.Id,
+                                                                               LPCR_Contrat__c  =idQuote,
                                                                                LPCR_HeureDebutLundi__c = debutLundi,
                                                                                LPCR_HeureFinLundi__c   = finLundi,
                                                                                LPCR_HeureDebutMardi__c = DebutMardi,
@@ -718,8 +763,26 @@ newMe.FederationIdentifier = null;
                                                                                LPCR_HeureFinVendredi__c = finVendredi);
             plannings.add(pl);
         }
-        return plannings;	
+        return plannings;   
     }
+    
+    public static List<LPCR_PlanningPrevisionnel__c> createPlanningsWithoutTime(Integer numPlann, Id idQuote){  
+    
+        LPCR_Planning__c tmpPlanning = new LPCR_Planning__c();
+        tmpPlanning.LPCR_Devis__c = idQuote;
+        tmpPlanning.LPCR_TypePlanning__c = 'Planning Classique';
+        insert tmpPlanning;
+
+    
+        List<LPCR_PlanningPrevisionnel__c>  plannings = new List<LPCR_PlanningPrevisionnel__c>();
+        for(Integer i=0;i<numPlann;i++){
+            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Planning__c = tmpPlanning.id, LPCR_Contrat__c  = idQuote);
+            plannings.add(pl);
+        }
+        return plannings;   
+    }
+    
+    
     
     
     
