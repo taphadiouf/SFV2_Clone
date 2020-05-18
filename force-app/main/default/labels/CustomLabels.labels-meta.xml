@@ -162,13 +162,6 @@
         <value>N° d&#39;identifiant :</value>
     </labels>
     <labels>
-        <fullName>LPCR_NonTraite</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_NonTraite</shortDescription>
-        <value>Non traité</value>
-    </labels>
-    <labels>
         <fullName>LPCR_Lead</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -209,6 +202,13 @@
         <protected>true</protected>
         <shortDescription>LPCR_NomEnfant</shortDescription>
         <value>Nom de l&#39;enfant :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_NonTraite</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_NonTraite</shortDescription>
+        <value>Non traité</value>
     </labels>
     <labels>
         <fullName>LPCR_Nouveau</fullName>
@@ -302,6 +302,13 @@
         <value>SBQQ__Quote__c</value>
     </labels>
     <labels>
+        <fullName>LPCR_QuoteValide</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_QuoteValide</shortDescription>
+        <value>Validé Directrice</value>
+    </labels>
+    <labels>
         <fullName>LPCR_RecordType</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -377,5 +384,12 @@
         <protected>true</protected>
         <shortDescription>LPCR_Title2</shortDescription>
         <value>Montant Forfait</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ValidationQuote</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ValidationQuote</shortDescription>
+        <value>Validation Contrat Directrice</value>
     </labels>
 </CustomLabels>
