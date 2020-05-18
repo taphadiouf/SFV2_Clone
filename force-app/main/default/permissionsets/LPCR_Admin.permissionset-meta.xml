@@ -3181,6 +3181,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.LPCR_TypePrestation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.SBQQ__GenerateContractedPrice__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3478,6 +3483,11 @@
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_TypePlanning__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_TypeAccueil__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
