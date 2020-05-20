@@ -31,11 +31,6 @@
         <field>LPCR_ParametrageScore__c.LPCR_Score__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>OrderItem.LPCR_NumeroPurchaseOrder__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <layoutAssignments>
         <layout>LPCR_ParametrageScore__c-Présentation Paramétrage Score</layout>
     </layoutAssignments>
