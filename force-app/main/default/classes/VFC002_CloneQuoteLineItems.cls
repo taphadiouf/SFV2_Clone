@@ -3,7 +3,7 @@
 * @Created 08/05/2020
 * @Description controller to clone quote line items for the vf page VFP002_CloneQuoteLineItems
 */
-public with sharing class VFC001_CloneQuoteLineItems {
+public with sharing class VFC002_CloneQuoteLineItems {
     private Id quoteId;
     //Map (existing quote line id => Quote line record)
     private Map<Id,SBQQ__QuoteLine__c> idToQuoteLineMap;
@@ -16,7 +16,7 @@ public with sharing class VFC001_CloneQuoteLineItems {
     Boolean hasError = false;
 
     // Class constructor. This method queries all of the records needed for the clone action.
-    public VFC001_CloneQuoteLineItems() {
+    public VFC002_CloneQuoteLineItems() {
         hasError = false;
 
         //Get the parameters
