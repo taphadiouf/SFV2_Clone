@@ -99,5 +99,14 @@
         <members>SBQQ__SummaryVariable__c</members>
         <name>CustomObject</name>
     </types>
+
+<types>
+    <members>SBQQ__Quote__c.LPCR_DirectionJuridique_Quote</members>
+    <name>ListView</name>
+</types>
+    <types>
+        <members>LPCR_DirectionJuridique</members>
+    <name>Queue</name>
+</types>
     <version>48.0</version>
 </Package>

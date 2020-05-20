@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_creche__c</fullName>
+    <fullName>LPCR_Creche__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>crèche</label>
+    <label>Crèche</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Ressources Familles (crèche)</relationshipLabel>
     <relationshipName>Ressources_Familles1</relationshipName>

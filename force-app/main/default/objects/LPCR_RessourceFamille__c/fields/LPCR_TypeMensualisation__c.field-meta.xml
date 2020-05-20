@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_TypeMensualisation__c</fullName>
     <externalId>false</externalId>
-    <formula>LPCR_creche__r.LPCR_TypeMensualisation__c</formula>
+    <formula>LPCR_Creche__r.LPCR_TypeMensualisation__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Type Mensualisation</label>
     <precision>18</precision>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>SBQQ__AggregateField__c</fullName>
     <deprecated>false</deprecated>
-    <description>Quote Line field that&#39;s acted upon by the aggregate function.</description>
+    <description>Quote Line field that&apos;s acted upon by the aggregate function.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Quote Line field that&#39;s acted upon by the aggregate function.</inlineHelpText>
+    <inlineHelpText>Quote Line field that&apos;s acted upon by the aggregate function.</inlineHelpText>
     <label>Aggregate Field</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
@@ -21,6 +21,16 @@
                 <fullName>LPCR_PrixBerceau__c</fullName>
                 <default>false</default>
                 <label>LPCR_PrixBerceau__c</label>
+            </value>
+            <value>
+                <fullName>Custom_Quantity__c</fullName>
+                <default>false</default>
+                <label>Custom_Quantity__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TotalQuantityFormule__c</fullName>
+                <default>false</default>
+                <label>LPCR_TotalQuantityFormule__c</label>
             </value>
         </valueSetDefinition>
     </valueSet>
