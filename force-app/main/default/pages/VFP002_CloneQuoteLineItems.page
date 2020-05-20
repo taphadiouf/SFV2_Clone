@@ -1,8 +1,0 @@
-<!--
-@Author Achraf ABOUL (aaboul@salesforce.com)
-@Created 08/05/2020
-@Description controller to clone quote line items for the vf page VFP002_CloneQuoteLineItems
--->
-<apex:page showHeader="true" sidebar="true" controller="VFC002_CloneQuoteLineItems" action="{!cloneAndResetQLI}">
-    <apex:pageMessages/>
-</apex:page>
