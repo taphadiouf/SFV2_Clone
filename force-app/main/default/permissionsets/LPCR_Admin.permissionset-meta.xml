@@ -3514,11 +3514,6 @@
         <field>echosign_dev1__SIGN_Agreement__c.LPCR_Devis__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>OrderItem.LPCR_NumeroPurchaseOrder__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>LPCR_Admin</label>
     <objectPermissions>
