@@ -19,6 +19,202 @@
         <members>APC004_SendMailController_Test</members>
         <members>APC005_PreinscriptionsEnCoursCtrl</members>
         <members>APC005_PreinscriptionsEnCoursCtrl_Test</members>
+        <members>APXTCFQ__AccountFieldMetadataFactory</members>
+        <members>APXTCFQ__AccountFieldMetadataFactoryTEST</members>
+        <members>APXTCFQ__ActivityLoggingBehaviorController</members>
+        <members>APXTCFQ__ActivityLoggingBehaviorControllerTEST</members>
+        <members>APXTCFQ__AttachmentBehaviorSettingsController</members>
+        <members>APXTCFQ__AttachmentBehaviorSettingsControllerTEST</members>
+        <members>APXTCFQ__attachmentController</members>
+        <members>APXTCFQ__attachmentControllerTEST</members>
+        <members>APXTCFQ__AttachmentService</members>
+        <members>APXTCFQ__AttachmentServiceTEST</members>
+        <members>APXTCFQ__BackgroundModeBehaviorController</members>
+        <members>APXTCFQ__BackgroundModeBehaviorControllerTEST</members>
+        <members>APXTCFQ__BaseStepController</members>
+        <members>APXTCFQ__BaseStepControllerTEST</members>
+        <members>APXTCFQ__BehaviorControllerHelper</members>
+        <members>APXTCFQ__CaseFieldMetadataFactory</members>
+        <members>APXTCFQ__CaseFieldMetadataFactoryTEST</members>
+        <members>APXTCFQ__CleanUpRecords2TestClass</members>
+        <members>APXTCFQ__CollectionEditingController</members>
+        <members>APXTCFQ__CollectionEditingControllerTEST</members>
+        <members>APXTCFQ__CollectionSelectionController</members>
+        <members>APXTCFQ__CollectionSelectionControllerTEST</members>
+        <members>APXTCFQ__ComposerActivity</members>
+        <members>APXTCFQ__ComposerButtonCreator</members>
+        <members>APXTCFQ__ComposerButtonCreatorLightning</members>
+        <members>APXTCFQ__ComposerButtonCreatorLightningTEST</members>
+        <members>APXTCFQ__ComposerButtonCreatorTEST</members>
+        <members>APXTCFQ__ComposerMergeRequest</members>
+        <members>APXTCFQ__ComposerMergeRequestTEST</members>
+        <members>APXTCFQ__ComposerPageController</members>
+        <members>APXTCFQ__ComposerPageControllerTest</members>
+        <members>APXTCFQ__ComposerQMLCreatorTESTClass</members>
+        <members>APXTCFQ__ComposerSaveCopy</members>
+        <members>APXTCFQ__ComposerSetupController</members>
+        <members>APXTCFQ__ComposerSetupControllerTEST</members>
+        <members>APXTCFQ__ComposerSolutionBadObjects</members>
+        <members>APXTCFQ__ComposerSolutionButtonAdder</members>
+        <members>APXTCFQ__ComposerSolutionButtonAdderTEST</members>
+        <members>APXTCFQ__ComposerSolutionCETAdder</members>
+        <members>APXTCFQ__ComposerSolutionEditExtension</members>
+        <members>APXTCFQ__ComposerSolutionExtension</members>
+        <members>APXTCFQ__ComposerSolutionExtensionLightning</members>
+        <members>APXTCFQ__ComposerSolutionExtensionLightningTEST</members>
+        <members>APXTCFQ__ComposerSolutionGetCongaOLogo</members>
+        <members>APXTCFQ__ComposerSolutionLandingPage</members>
+        <members>APXTCFQ__ComposerSolutionMergefieldHelper</members>
+        <members>APXTCFQ__ComposerSolutionNewSolutionRecord</members>
+        <members>APXTCFQ__ComposerSolutionParameterAdder</members>
+        <members>APXTCFQ__ComposerSolutionQueryAdder</members>
+        <members>APXTCFQ__ComposerSolutionReportAdder</members>
+        <members>APXTCFQ__ComposerSolutionSampleRecordPicker</members>
+        <members>APXTCFQ__ComposerSolutionTemplateAdder</members>
+        <members>APXTCFQ__ComposerSolutionTESTbadobjects</members>
+        <members>APXTCFQ__ComposerSolutionTESTButtonCreator</members>
+        <members>APXTCFQ__ComposerSolutionTESTcetadder</members>
+        <members>APXTCFQ__ComposerSolutionTESTgetcongaologo</members>
+        <members>APXTCFQ__ComposerSolutionTESTmergefieldhelper</members>
+        <members>APXTCFQ__ComposerSolutionTESTnewsolutionrecord</members>
+        <members>APXTCFQ__ComposerSolutionTESTparameteradder</members>
+        <members>APXTCFQ__ComposerSolutionTESTqueryadder</members>
+        <members>APXTCFQ__ComposerSolutionTESTreportadder</members>
+        <members>APXTCFQ__ComposerSolutionTESTsamplerecordpicker</members>
+        <members>APXTCFQ__ComposerSolutionTESTsmlandingpage</members>
+        <members>APXTCFQ__ComposerSolutionTESTsoleditextension</members>
+        <members>APXTCFQ__ComposerSolutionTESTsolutionextension</members>
+        <members>APXTCFQ__ComposerSolutionTESTtemplateadder</members>
+        <members>APXTCFQ__ComposerSolutionTESTweblinkurl</members>
+        <members>APXTCFQ__ComposerWeblinkURL</members>
+        <members>APXTCFQ__CongaHandledException</members>
+        <members>APXTCFQ__CongaSolutionModel</members>
+        <members>APXTCFQ__CongaSolutionModelTEST</members>
+        <members>APXTCFQ__congaSolutionWrapper</members>
+        <members>APXTCFQ__ContactFieldMetadataFactory</members>
+        <members>APXTCFQ__ContactFieldMetadataFactoryTEST</members>
+        <members>APXTCFQ__CreateCMQMLRecord</members>
+        <members>APXTCFQ__CreateStepController</members>
+        <members>APXTCFQ__CreateStepControllerTEST</members>
+        <members>APXTCFQ__DataManagementController</members>
+        <members>APXTCFQ__DataManagementControllerTEST</members>
+        <members>APXTCFQ__DataStepController</members>
+        <members>APXTCFQ__DataStepControllerTEST</members>
+        <members>APXTCFQ__DocuSignBehaviorController</members>
+        <members>APXTCFQ__DocuSignBehaviorControllerTEST</members>
+        <members>APXTCFQ__DocuSignBehaviorWrapper</members>
+        <members>APXTCFQ__DocuSignRecipientWrapper</members>
+        <members>APXTCFQ__EmailBehaviorController</members>
+        <members>APXTCFQ__EmailBehaviorControllerTEST</members>
+        <members>APXTCFQ__EmailBehaviorWrapper</members>
+        <members>APXTCFQ__EmailTemplateModel</members>
+        <members>APXTCFQ__EmailTemplateModelTEST</members>
+        <members>APXTCFQ__ESAPI</members>
+        <members>APXTCFQ__ESignatureBehaviorController</members>
+        <members>APXTCFQ__ESignatureBehaviorControllerTEST</members>
+        <members>APXTCFQ__ESignatureCongaSignBehaviorController</members>
+        <members>APXTCFQ__ESignatureCongaSignControllerTEST</members>
+        <members>APXTCFQ__ESignatureCongaSignRecipientWrapper</members>
+        <members>APXTCFQ__FieldMetadata</members>
+        <members>APXTCFQ__FieldMetadataFactory</members>
+        <members>APXTCFQ__FieldMetadataFactoryTEST</members>
+        <members>APXTCFQ__FieldMetadataTEST</members>
+        <members>APXTCFQ__FinishStepController</members>
+        <members>APXTCFQ__FinishStepControllerTEST</members>
+        <members>APXTCFQ__FlattenedSolutionTemplate</members>
+        <members>APXTCFQ__GeneratedFileBehaviorController</members>
+        <members>APXTCFQ__GeneratedFileBehaviorControllerTEST</members>
+        <members>APXTCFQ__GeneratedFileBehaviorWrapper</members>
+        <members>APXTCFQ__getCM8URLFromURLService</members>
+        <members>APXTCFQ__HttpCalloutClass</members>
+        <members>APXTCFQ__HttpCalloutClassTest</members>
+        <members>APXTCFQ__KeyValue</members>
+        <members>APXTCFQ__lightningTableWrapper</members>
+        <members>APXTCFQ__MergeController</members>
+        <members>APXTCFQ__MergeControllerGetAccessTokenMock</members>
+        <members>APXTCFQ__MergeControllerNewGetAccessTokenMock</members>
+        <members>APXTCFQ__MergeControllerRequestMergeMock</members>
+        <members>APXTCFQ__MergeControllerTEST</members>
+        <members>APXTCFQ__MergeRequestWrapper</members>
+        <members>APXTCFQ__MetadataController</members>
+        <members>APXTCFQ__MetadataControllerTEST</members>
+        <members>APXTCFQ__MetadataCreateJob</members>
+        <members>APXTCFQ__MetadataCreateJobTest</members>
+        <members>APXTCFQ__MetadataDataController</members>
+        <members>APXTCFQ__MetadataDeployController</members>
+        <members>APXTCFQ__MetadataRetrieveController</members>
+        <members>APXTCFQ__MetadataRetrieveControllerTEST</members>
+        <members>APXTCFQ__MetadataService</members>
+        <members>APXTCFQ__MetadataServiceExamples</members>
+        <members>APXTCFQ__MetadataServicePatcher</members>
+        <members>APXTCFQ__MetadataServicePatcherTEST</members>
+        <members>APXTCFQ__MetadataServiceTest</members>
+        <members>APXTCFQ__MetaDataUtils</members>
+        <members>APXTCFQ__MockHttpResponseGenerator</members>
+        <members>APXTCFQ__NSUtil</members>
+        <members>APXTCFQ__NSUtilTEST</members>
+        <members>APXTCFQ__ObjectMetadata</members>
+        <members>APXTCFQ__ObjectMetadataTEST</members>
+        <members>APXTCFQ__OpportunityFieldMetadataFactory</members>
+        <members>APXTCFQ__OpportunityFieldMetadataFactoryTEST</members>
+        <members>APXTCFQ__OrgInformation</members>
+        <members>APXTCFQ__OutputActionTextGenerator</members>
+        <members>APXTCFQ__ParameterEntryBehaviorControllerTEST</members>
+        <members>APXTCFQ__ParameterEntryBehaviorSettingsController</members>
+        <members>APXTCFQ__PermissionSetLicenseController</members>
+        <members>APXTCFQ__PopoverCardModel</members>
+        <members>APXTCFQ__PopoverCardService</members>
+        <members>APXTCFQ__PostInstall</members>
+        <members>APXTCFQ__PrimaryContactController</members>
+        <members>APXTCFQ__PrimaryContactControllerTEST</members>
+        <members>APXTCFQ__QueryParser</members>
+        <members>APXTCFQ__QueryParserTEST</members>
+        <members>APXTCFQ__QuickStartController</members>
+        <members>APXTCFQ__QuickStartControllerTEST</members>
+        <members>APXTCFQ__QuickStartExtractController</members>
+        <members>APXTCFQ__QuickStartExtractControllerTEST</members>
+        <members>APXTCFQ__QuickStartPackagesStepController</members>
+        <members>APXTCFQ__QuickStartPackagesStepControllerTEST</members>
+        <members>APXTCFQ__QuoteFieldMetadataFactory</members>
+        <members>APXTCFQ__ReassignWhatId2TestClass</members>
+        <members>APXTCFQ__RedirectPageController</members>
+        <members>APXTCFQ__SalesforceMergeField</members>
+        <members>APXTCFQ__SalesforceMergeService</members>
+        <members>APXTCFQ__SalesforceMergeServiceTEST</members>
+        <members>APXTCFQ__SaveACopyBehaviorController</members>
+        <members>APXTCFQ__SaveACopyBehaviorControllerTEST</members>
+        <members>APXTCFQ__SBQQQuoteFieldMetadataFactory</members>
+        <members>APXTCFQ__SBQQQuoteFieldMetadataFactoryTEST</members>
+        <members>APXTCFQ__SelectOptionSorter</members>
+        <members>APXTCFQ__SFDCAccessControlException</members>
+        <members>APXTCFQ__SFDCAccessControlExceptionTEST</members>
+        <members>APXTCFQ__SFDCAccessController</members>
+        <members>APXTCFQ__SFDCAccessControllerTEST</members>
+        <members>APXTCFQ__SFDCAccessControlResults</members>
+        <members>APXTCFQ__SFDCPlugins</members>
+        <members>APXTCFQ__sObjectRecordController</members>
+        <members>APXTCFQ__sObjectRecordControllerTEST</members>
+        <members>APXTCFQ__SolutionCollectionDesigner</members>
+        <members>APXTCFQ__SolutionCollectionDesignerTEST</members>
+        <members>APXTCFQ__SolutionController</members>
+        <members>APXTCFQ__SolutionControllerTEST</members>
+        <members>APXTCFQ__SolutionPackExtractController</members>
+        <members>APXTCFQ__SolutionPackLandingPageController</members>
+        <members>APXTCFQ__SolutionPackTEST</members>
+        <members>APXTCFQ__TemplateBuilderController</members>
+        <members>APXTCFQ__TemplateBuilderControllerTEST</members>
+        <members>APXTCFQ__TemplateFileSalesforceIO</members>
+        <members>APXTCFQ__TemplateFileSalesforceIOTEST</members>
+        <members>APXTCFQ__TemplateManagementController</members>
+        <members>APXTCFQ__TemplateManagementControllerTEST</members>
+        <members>APXTCFQ__testAccessController</members>
+        <members>APXTCFQ__TESTgetCM8URLFromURLService</members>
+        <members>APXTCFQ__TestUtilities</members>
+        <members>APXTCFQ__TreeItem</members>
+        <members>APXTCFQ__TreeItemTEST</members>
+        <members>APXTCFQ__UserInformation</members>
+        <members>APXTCFQ__UserInformationTEST</members>
+        <members>APXTCFQ__UserLookupUtility</members>
         <members>blng__AccountBalanceSnapshotDAO</members>
         <members>blng__AccountDAO</members>
         <members>blng__AccountDAOTest</members>
@@ -636,6 +832,106 @@
         <members>blng__UsageTestUtils</members>
         <members>blng__VolumePricingModel</members>
         <members>blng__VolumePricingTest</members>
+        <members>csfb__BaseStepController</members>
+        <members>csfb__BaseStepControllerTEST</members>
+        <members>csfb__CleanUpRecords2TestClass</members>
+        <members>csfb__CNMockHttpResponseGenerator</members>
+        <members>csfb__ComposerAboutController</members>
+        <members>csfb__ComposerAboutController_Test</members>
+        <members>csfb__ComposerButtonCreator</members>
+        <members>csfb__ComposerButtonCreatorLightning</members>
+        <members>csfb__ComposerButtonCreatorLightningTEST</members>
+        <members>csfb__ComposerPageController</members>
+        <members>csfb__ComposerPageControllerTest</members>
+        <members>csfb__ComposerQMLCreatorTESTClass</members>
+        <members>csfb__ComposerSolutionBadObjects</members>
+        <members>csfb__ComposerSolutionButtonAdder</members>
+        <members>csfb__ComposerSolutionCETAdder</members>
+        <members>csfb__ComposerSolutionEditExtension</members>
+        <members>csfb__ComposerSolutionExtension</members>
+        <members>csfb__ComposerSolutionExtensionLightning</members>
+        <members>csfb__ComposerSolutionExtensionLightningTEST</members>
+        <members>csfb__ComposerSolutionGetCongaOLogo</members>
+        <members>csfb__ComposerSolutionLandingPage</members>
+        <members>csfb__ComposerSolutionMergefieldHelper</members>
+        <members>csfb__ComposerSolutionNewSolutionRecord</members>
+        <members>csfb__ComposerSolutionParameterAdder</members>
+        <members>csfb__ComposerSolutionQueryAdder</members>
+        <members>csfb__ComposerSolutionReportAdder</members>
+        <members>csfb__ComposerSolutionSampleRecordPicker</members>
+        <members>csfb__ComposerSolutionTemplateAdder</members>
+        <members>csfb__ComposerSolutionTESTbadobjects</members>
+        <members>csfb__ComposerSolutionTESTButtonCreator</members>
+        <members>csfb__ComposerSolutionTESTcetadder</members>
+        <members>csfb__ComposerSolutionTESTgetcongaologo</members>
+        <members>csfb__ComposerSolutionTESTmergefieldhelper</members>
+        <members>csfb__ComposerSolutionTESTnewsolutionrecord</members>
+        <members>csfb__ComposerSolutionTESTparameteradder</members>
+        <members>csfb__ComposerSolutionTESTqueryadder</members>
+        <members>csfb__ComposerSolutionTESTreportadder</members>
+        <members>csfb__ComposerSolutionTESTsamplerecordpicker</members>
+        <members>csfb__ComposerSolutionTESTsmlandingpage</members>
+        <members>csfb__ComposerSolutionTESTsoleditextension</members>
+        <members>csfb__ComposerSolutionTESTsolutionextension</members>
+        <members>csfb__ComposerSolutionTESTtemplateadder</members>
+        <members>csfb__ComposerSolutionTESTweblinkurl</members>
+        <members>csfb__ComposerUrlController</members>
+        <members>csfb__ComposerWeblinkURL</members>
+        <members>csfb__Conductor_CtlExt</members>
+        <members>csfb__Conductor_CtlExt_Test</members>
+        <members>csfb__ConductorPageController</members>
+        <members>csfb__ConductorPageControllerTest</members>
+        <members>csfb__CongaGlobal</members>
+        <members>csfb__CongaGlobal_Test</members>
+        <members>csfb__CongaHandledException</members>
+        <members>csfb__CongaQueuedAction</members>
+        <members>csfb__congaSolutionWrapper</members>
+        <members>csfb__CreateCMQMLRecord</members>
+        <members>csfb__CreateStepController</members>
+        <members>csfb__CreateStepControllerTEST</members>
+        <members>csfb__ESAPI</members>
+        <members>csfb__getCM8URLFromURLService</members>
+        <members>csfb__lightningTableWrapper</members>
+        <members>csfb__MetadataController</members>
+        <members>csfb__MetadataCreateJob</members>
+        <members>csfb__MetadataCreateJobTest</members>
+        <members>csfb__MetadataDataController</members>
+        <members>csfb__MetadataDeployController</members>
+        <members>csfb__MetadataRetrieveController</members>
+        <members>csfb__MetadataService</members>
+        <members>csfb__MetadataServiceExamples</members>
+        <members>csfb__MetadataServicePatcher</members>
+        <members>csfb__MetadataServiceTest</members>
+        <members>csfb__MetaDataUtils</members>
+        <members>csfb__NSUtil</members>
+        <members>csfb__PostInstallSolutionExtract</members>
+        <members>csfb__PostInstallSPExtractorTEST</members>
+        <members>csfb__QuickStartController</members>
+        <members>csfb__QuickStartControllerTEST</members>
+        <members>csfb__QuickStartExtractController</members>
+        <members>csfb__QuickStartExtractControllerTEST</members>
+        <members>csfb__QuickStartPackagesStepController</members>
+        <members>csfb__QuickStartPackagesStepControllerTEST</members>
+        <members>csfb__ReassignWhatId2TestClass</members>
+        <members>csfb__SelectOptionSorter</members>
+        <members>csfb__SFDCAccessControlException</members>
+        <members>csfb__SFDCAccessController</members>
+        <members>csfb__SFDCAccessControlResults</members>
+        <members>csfb__SFDCPlugins</members>
+        <members>csfb__sObjectRecordController</members>
+        <members>csfb__sObjectRecordControllerTEST</members>
+        <members>csfb__SolutionPackExtractController</members>
+        <members>csfb__SolutionPackExtractTEST</members>
+        <members>csfb__SolutionPackLandingPageController</members>
+        <members>csfb__SolutionPackPackager</members>
+        <members>csfb__SolutionPackPackagerTEST</members>
+        <members>csfb__testAccessController</members>
+        <members>csfb__TESTgetCM8URLFromURLService</members>
+        <members>csfb__TestPasser</members>
+        <members>csfb__TestPasserTEST</members>
+        <members>csfb__TestUtilities</members>
+        <members>csfb__UserInformation</members>
+        <members>csfb__UserInformationTEST</members>
         <members>echosign_dev1__AccountAgreementActionController</members>
         <members>echosign_dev1__AdobeSignApiQueueableService</members>
         <members>echosign_dev1__AdobeSignCustomMetadataUtilities</members>
@@ -1991,6 +2287,36 @@
         <name>ApexComponent</name>
     </types>
     <types>
+        <members>APXTCFQ__BehaviorStep</members>
+        <members>APXTCFQ__Collection</members>
+        <members>APXTCFQ__CollectionStep</members>
+        <members>APXTCFQ__Composer_Setup</members>
+        <members>APXTCFQ__ComposerSolution</members>
+        <members>APXTCFQ__ComposerSolutionButtonAdder</members>
+        <members>APXTCFQ__ComposerSolutionCETAdder</members>
+        <members>APXTCFQ__ComposerSolutionEdit</members>
+        <members>APXTCFQ__ComposerSolutionLandingPage</members>
+        <members>APXTCFQ__ComposerSolutionNew</members>
+        <members>APXTCFQ__ComposerSolutionParameterAdder</members>
+        <members>APXTCFQ__ComposerSolutionQueryAdder</members>
+        <members>APXTCFQ__ComposerSolutionRecordPicker</members>
+        <members>APXTCFQ__ComposerSolutionReportAdder</members>
+        <members>APXTCFQ__ComposerSolutionTemplateAdder</members>
+        <members>APXTCFQ__Conga_Composer</members>
+        <members>APXTCFQ__Conga_Composer_Sf1</members>
+        <members>APXTCFQ__Conga_Composer_SF1_EU</members>
+        <members>APXTCFQ__CreateStep</members>
+        <members>APXTCFQ__DataStep</members>
+        <members>APXTCFQ__DocuSignUrlForEditEnvelopePage</members>
+        <members>APXTCFQ__DocuSignUrlForTagEnvelopePage</members>
+        <members>APXTCFQ__FinishStep</members>
+        <members>APXTCFQ__FinishStepQ</members>
+        <members>APXTCFQ__QuickStartPackagesStep</members>
+        <members>APXTCFQ__RedirectPage</members>
+        <members>APXTCFQ__SMComposer8Launcher</members>
+        <members>APXTCFQ__SolutionStep</members>
+        <members>APXTCFQ__TemplateStep</members>
+        <members>APXTCFQ__VisualforceOAuthProxy</members>
         <members>blng__accountVirtualTerminal</members>
         <members>blng__allocatePayment</members>
         <members>blng__ApplyTaxOnCreditNote</members>
@@ -2021,6 +2347,35 @@
         <members>blng__revenueTransactionHelp</members>
         <members>blng__ValidateRevenueTreatment</members>
         <members>blng__virtualterminal</members>
+        <members>csfb__ComposerAbout</members>
+        <members>csfb__ComposerSetupPage</members>
+        <members>csfb__ComposerSolution</members>
+        <members>csfb__ComposerSolutionButtonAdder</members>
+        <members>csfb__ComposerSolutionCETAdder</members>
+        <members>csfb__ComposerSolutionEdit</members>
+        <members>csfb__ComposerSolutionLandingPage</members>
+        <members>csfb__ComposerSolutionNew</members>
+        <members>csfb__ComposerSolutionParameterAdder</members>
+        <members>csfb__ComposerSolutionQueryAdder</members>
+        <members>csfb__ComposerSolutionRecordPicker</members>
+        <members>csfb__ComposerSolutionReportAdder</members>
+        <members>csfb__ComposerSolutionTemplateAdder</members>
+        <members>csfb__ConductorDashboardPage</members>
+        <members>csfb__Conductor_Launch</members>
+        <members>csfb__Conductor_Schedule</members>
+        <members>csfb__ConductorSetupPage</members>
+        <members>csfb__Conga_Composer</members>
+        <members>csfb__Conga_Composer_Premium</members>
+        <members>csfb__Conga_Composer_Sf1</members>
+        <members>csfb__Conga_Conductor_SFB</members>
+        <members>csfb__CreateStep</members>
+        <members>csfb__FinishStepQ</members>
+        <members>csfb__QuickStartPackagesStep</members>
+        <members>csfb__SMComposer8Launcher</members>
+        <members>csfb__SolutionPackExtractor</members>
+        <members>csfb__SolutionPackPackager</members>
+        <members>csfb__WorkflowDashboardPage</members>
+        <members>csfb__WorkflowSetupPage</members>
         <members>echosign_dev1__AboutEchoSign</members>
         <members>echosign_dev1__AccountAgreementAction</members>
         <members>echosign_dev1__AgreementEditor</members>
@@ -2267,6 +2622,8 @@
     </types>
     <types>
         <members>AccountTrigger</members>
+        <members>APXTCFQ__CleanUpRecords2</members>
+        <members>APXTCFQ__ReassignWhatId2</members>
         <members>blng__AgingBucketTrigger</members>
         <members>blng__BalanceSnapshotSchedulerTrigger</members>
         <members>blng__BillingRuleTrigger</members>
@@ -2312,6 +2669,8 @@
         <members>blng__UsageTrigger</members>
         <members>ContactTrigger</members>
         <members>ContractTrigger</members>
+        <members>csfb__CleanUpRecords2</members>
+        <members>csfb__ReassignWhatId2</members>
         <members>echosign_dev1__afterInsertUpdateSIGN_Trigger</members>
         <members>echosign_dev1__AgreementNotificationTrigger</members>
         <members>echosign_dev1__AgreementSentListener</members>
@@ -2422,6 +2781,7 @@
         <members>SBQQ__Quote__c.LPCR_ValidationDevis</members>
         <members>SBQQ__Quote__c.LPCR_ValidationPrix</members>
         <members>SBQQ__Quote__c.LPCR_ValidationPrixDevis</members>
+        <members>SBQQ__Quote__c.LPCR_Validationtermes</members>
         <name>ApprovalProcess</name>
     </types>
     <types>
@@ -2434,6 +2794,87 @@
         <name>AssignmentRules</name>
     </types>
     <types>
+        <members>APXTCFQ__ActivityLoggingBehaviorSettings</members>
+        <members>APXTCFQ__AdobeESignBehaviorSettings</members>
+        <members>APXTCFQ__AppForVisualForcePages</members>
+        <members>APXTCFQ__AppTemplate</members>
+        <members>APXTCFQ__AttachmentSettings</members>
+        <members>APXTCFQ__AttachmentsTable</members>
+        <members>APXTCFQ__BackgroundModeBehaviorSettings</members>
+        <members>APXTCFQ__Base</members>
+        <members>APXTCFQ__BaseHelper</members>
+        <members>APXTCFQ__BaseModal</members>
+        <members>APXTCFQ__BaseStep</members>
+        <members>APXTCFQ__BehaviorStep</members>
+        <members>APXTCFQ__BehaviorTree</members>
+        <members>APXTCFQ__CollectionEditing</members>
+        <members>APXTCFQ__CollectionPortal</members>
+        <members>APXTCFQ__CollectionSelectedList</members>
+        <members>APXTCFQ__CollectionSelection</members>
+        <members>APXTCFQ__ComposerMerge</members>
+        <members>APXTCFQ__ComposerMergeAttachmentTab</members>
+        <members>APXTCFQ__ComposerMergeTemplateTab</members>
+        <members>APXTCFQ__CongaComposerForSf1</members>
+        <members>APXTCFQ__CongaEvent</members>
+        <members>APXTCFQ__CreateStep</members>
+        <members>APXTCFQ__CreateTemplateModal</members>
+        <members>APXTCFQ__CustomRadioGroup</members>
+        <members>APXTCFQ__DataStep</members>
+        <members>APXTCFQ__DataStepHideAll</members>
+        <members>APXTCFQ__DataStepSelectItem</members>
+        <members>APXTCFQ__DataTable</members>
+        <members>APXTCFQ__DataTableComponent</members>
+        <members>APXTCFQ__DataTreeView</members>
+        <members>APXTCFQ__DocuSignBehaviorModal</members>
+        <members>APXTCFQ__DocuSignBehaviorSettings</members>
+        <members>APXTCFQ__DocuSignBehaviorTable</members>
+        <members>APXTCFQ__EditableColumn</members>
+        <members>APXTCFQ__EditableColumnInput</members>
+        <members>APXTCFQ__EmailBehaviorSettings</members>
+        <members>APXTCFQ__EmailTemplateBuilder</members>
+        <members>APXTCFQ__ESignatureBehaviorSettings</members>
+        <members>APXTCFQ__ESignatureCongaSignBehaviorSettings</members>
+        <members>APXTCFQ__FinishStep</members>
+        <members>APXTCFQ__FinishVideoModal</members>
+        <members>APXTCFQ__GeneratedFileBehaviorSettings</members>
+        <members>APXTCFQ__LightningTableBase</members>
+        <members>APXTCFQ__LightningTableQueries</members>
+        <members>APXTCFQ__LightningTableTemplates</members>
+        <members>APXTCFQ__PageChange</members>
+        <members>APXTCFQ__Paginator</members>
+        <members>APXTCFQ__ParameterEntryBehaviorSettings</members>
+        <members>APXTCFQ__PopoverBody</members>
+        <members>APXTCFQ__PopoverFrame</members>
+        <members>APXTCFQ__PopoverInput</members>
+        <members>APXTCFQ__PrimaryContact</members>
+        <members>APXTCFQ__QuickStartPackagesStep</members>
+        <members>APXTCFQ__RemoteSiteSettingsModal</members>
+        <members>APXTCFQ__SaveACopyBehaviorSettings</members>
+        <members>APXTCFQ__SearchAndSelectBase</members>
+        <members>APXTCFQ__SearchAndSelectPageChange</members>
+        <members>APXTCFQ__SearchAndSelectQuery</members>
+        <members>APXTCFQ__SearchAndSelectSampleRecord</members>
+        <members>APXTCFQ__SearchAndSelectTemplates</members>
+        <members>APXTCFQ__SertifiBehaviorSettings</members>
+        <members>APXTCFQ__showWizard</members>
+        <members>APXTCFQ__Solution</members>
+        <members>APXTCFQ__SolutionApp</members>
+        <members>APXTCFQ__SolutionEvent</members>
+        <members>APXTCFQ__SolutionStep</members>
+        <members>APXTCFQ__SolutionWizard</members>
+        <members>APXTCFQ__Spinner</members>
+        <members>APXTCFQ__SpinnerEvent</members>
+        <members>APXTCFQ__StepEvent</members>
+        <members>APXTCFQ__StepFooter</members>
+        <members>APXTCFQ__TemplateBuilderWordDaw</members>
+        <members>APXTCFQ__TemplateBuilderWordDawSave</members>
+        <members>APXTCFQ__TemplateManagement</members>
+        <members>APXTCFQ__TemplateStep</members>
+        <members>APXTCFQ__TemplateTreeView</members>
+        <members>APXTCFQ__Toast</members>
+        <members>APXTCFQ__TreeItem</members>
+        <members>APXTCFQ__TreeView</members>
+        <members>APXTCFQ__UploadTemplateModal</members>
         <members>blng__accountVirtualTerminal</members>
         <members>blng__accountVirtualTerminalApp</members>
         <members>blng__allocatePaymentToInvoiceAndLine</members>
@@ -2510,6 +2951,18 @@
         <members>blng__virtualterminal</members>
         <members>blng__virtualterminalApp</members>
         <members>blng__VirtualTerminalHome</members>
+        <members>csfb__AppForVisualForcePages</members>
+        <members>csfb__BaseModal</members>
+        <members>csfb__BaseStep</members>
+        <members>csfb__CongaEvent</members>
+        <members>csfb__CreateStep</members>
+        <members>csfb__FinishStep</members>
+        <members>csfb__FinishVideoModal</members>
+        <members>csfb__QuickStartPackagesStep</members>
+        <members>csfb__RemoteSiteSettingsModal</members>
+        <members>csfb__Spinner</members>
+        <members>csfb__StepEvent</members>
+        <members>csfb__Toast</members>
         <members>echosign_dev1__AgreementEditor</members>
         <members>echosign_dev1__AgreementEditorBridge</members>
         <members>echosign_dev1__AgreementEvents</members>
@@ -2611,6 +3064,11 @@
         <name>CampaignInfluenceModel</name>
     </types>
     <types>
+        <members>APXTCFQ__Conga_Composer_CFQ_oauth_c4s__Conga_Composer_CFQ_oauth_c4sCanvas</members>
+        <members>APXTConga4__Conga_Composer_oauth_c4s_2__Conga_Composer_oauth_c4s_2Canvas</members>
+        <members>csfb__Composer_For_S8e_Billing_oauth_c4s__Composer_For_S8e_Billing_oauth_c4sCanvas</members>
+        <members>csfb__Conga_Invoicing_Conductor_oauth_c4s__Conga_Invoicing_Conductor_oauth_c4sCanvas</members>
+        <members>csfb__P5m_Composer_For_S8e_Billing_oauth_c4s__P5m_Composer_For_S8e_Billing_oauth_c4sCanvas</members>
         <members>PDRI__Prodly_AppOps_oauth_c4s__Prodly_AppOps_oauth_c4sCanvas</members>
         <members>PDRI__Prodly_AppOps_Preview_oauth_c4s__Prodly_AppOps_Preview_oauth_c4sCanvas</members>
         <name>CanvasMetadata</name>
@@ -2645,6 +3103,7 @@
     </types>
     <types>
         <members>CPQIntegrationUserApp</members>
+        <members>DEVHUB_xq6d1yjmcjkgyayaqrvu</members>
         <members>LPCR</members>
         <name>ConnectedApp</name>
     </types>
@@ -2661,8 +3120,10 @@
         <name>CorsWhitelistOrigin</name>
     </types>
     <types>
+        <members>APXTCFQ__CongaMerge</members>
         <members>blng__QuotetoCash</members>
         <members>blng__SalesforceBillingConfiguration</members>
+        <members>csfb__CongaMerge</members>
         <members>echosign_dev1__Adobe_Sign_Salesforce</members>
         <members>echosign_dev1__EchoSign</members>
         <members>Lead_Generation</members>
@@ -2692,7 +3153,6 @@
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>Account.Agrement__c</members>
         <members>Account.blng__BillToContact__c</members>
         <members>Account.blng__CustomerProfileId__c</members>
         <members>Account.blng__DefaultPaymentType__c</members>
@@ -2701,8 +3161,6 @@
         <members>AccountContactRelation.LPCR_Facture__c</members>
         <members>AccountContactRelation.Relationship_Strength__c</members>
         <members>Account.Email__c</members>
-        <members>Account.LCPR_CompteAnalytiqueClient__c</members>
-        <members>Account.LCPR_IDCompteCreche__c</members>
         <members>Account.LPCR_Activite__c</members>
         <members>Account.LPCR_AgrementBebes__c</members>
         <members>Account.LPCR_AgrementGrands__c</members>
@@ -2718,6 +3176,7 @@
         <members>Account.LPCR_CodeAPE__c</members>
         <members>Account.LPCR_CodeReservataire__c</members>
         <members>Account.LPCR_CodeServiceChorus__c</members>
+        <members>Account.LPCR_CompteAnalytiqueClient__c</members>
         <members>Account.LPCR_Concurrence__c</members>
         <members>Account.LPCR_DateSignatureRUM__c</members>
         <members>Account.LPCR_DebutValiditePurchaseOrder__c</members>
@@ -2734,6 +3193,7 @@
         <members>Account.LPCR_Garde__c</members>
         <members>Account.LPCR_Handicap__c</members>
         <members>Account.LPCR_IBAN__c</members>
+        <members>Account.LPCR_IDCompteCreche__c</members>
         <members>Account.LPCR_IDCompteEntreprise__c</members>
         <members>Account.LPCR_IDCompteFamille__c</members>
         <members>Account.LPCR_IdExterne_Compte__c</members>
@@ -2786,7 +3246,6 @@
         <members>Account.LPCR_TauxEffort__c</members>
         <members>Account.LPCR_Top100__c</members>
         <members>Account.LPCR_TravailConcurrence__c</members>
-        <members>Account.LPCR_TypeClient__c</members>
         <members>Account.LPCR_TypeContratPrincipal__c</members>
         <members>Account.LPCR_TypeCreche__c</members>
         <members>Account.LPCR_TypeEntreprise__c</members>
@@ -2810,6 +3269,107 @@
         <members>Account.Sparklane_FR__ProfileName__c</members>
         <members>Activity.LPCR_EstMigre__c</members>
         <members>Activity.LPCR_IdExterne_Activite__c</members>
+        <members>APXTCFQ__Composer_QuickMerge__c.APXTCFQ__Conga_Solution__c</members>
+        <members>APXTCFQ__Composer_QuickMerge__c.APXTCFQ__Description__c</members>
+        <members>APXTCFQ__Composer_QuickMerge__c.APXTCFQ__Launch_CM8__c</members>
+        <members>APXTCFQ__Composer_QuickMerge__c.APXTCFQ__Weblink_ID__c</members>
+        <members>APXTCFQ__Composer_QuickMerge__c.APXTCFQ__Weblink_ID_Formula__c</members>
+        <members>APXTCFQ__Composer_QuickMerge__c.APXTCFQ__Weblink_Name__c</members>
+        <members>APXTCFQ__Composer_QuickMerge__c.APXTCFQ__Weblink_Name_Formula__c</members>
+        <members>APXTCFQ__Composer_Refresh_Token__mdt.APXTCFQ__Refresh_Token__c</members>
+        <members>APXTCFQ__Composer_Setting__mdt.APXTCFQ__Connected_App_Setting__c</members>
+        <members>APXTCFQ__Conga_Collection__c.APXTCFQ__Description__c</members>
+        <members>APXTCFQ__Conga_Collection__c.APXTCFQ__Is_SF1_Enabled__c</members>
+        <members>APXTCFQ__Conga_Collection__c.APXTCFQ__SF1_Binding_sObject_Type__c</members>
+        <members>APXTCFQ__Conga_Collection_Solution__c.APXTCFQ__Conga_Collection__c</members>
+        <members>APXTCFQ__Conga_Collection_Solution__c.APXTCFQ__Conga_Solution__c</members>
+        <members>APXTCFQ__Conga_Collection_Solution__c.APXTCFQ__Description__c</members>
+        <members>APXTCFQ__Conga_Collection_Solution__c.APXTCFQ__Sort_Order__c</members>
+        <members>APXTCFQ__Conga_Composer_Settings__c.APXTCFQ__Comments__c</members>
+        <members>APXTCFQ__Conga_Composer_Settings__c.APXTCFQ__Disable_C7_Triggers__c</members>
+        <members>APXTCFQ__Conga_Composer_Settings__c.APXTCFQ__Production_Org_Id__c</members>
+        <members>APXTCFQ__Conga_Composer_Settings__c.APXTCFQ__Server_Override__c</members>
+        <members>APXTCFQ__Conga_Email_Staging__c.APXTCFQ__HTMLBody__c</members>
+        <members>APXTCFQ__Conga_Email_Staging__c.APXTCFQ__Subject__c</members>
+        <members>APXTCFQ__Conga_Email_Staging__c.APXTCFQ__TextBody__c</members>
+        <members>APXTCFQ__Conga_Email_Staging__c.APXTCFQ__WhatId__c</members>
+        <members>APXTCFQ__Conga_Email_Staging__c.APXTCFQ__WhoId__c</members>
+        <members>APXTCFQ__Conga_Email_Template__c.APXTCFQ__Description__c</members>
+        <members>APXTCFQ__Conga_Email_Template__c.APXTCFQ__HTMLBody__c</members>
+        <members>APXTCFQ__Conga_Email_Template__c.APXTCFQ__Is_Body_Attachment__c</members>
+        <members>APXTCFQ__Conga_Email_Template__c.APXTCFQ__Name__c</members>
+        <members>APXTCFQ__Conga_Email_Template__c.APXTCFQ__Subject__c</members>
+        <members>APXTCFQ__Conga_Email_Template__c.APXTCFQ__Template_Group__c</members>
+        <members>APXTCFQ__Conga_Email_Template__c.APXTCFQ__TextBody__c</members>
+        <members>APXTCFQ__Conga_Merge_Query__c.APXTCFQ__Description__c</members>
+        <members>APXTCFQ__Conga_Merge_Query__c.APXTCFQ__Name__c</members>
+        <members>APXTCFQ__Conga_Merge_Query__c.APXTCFQ__Query__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Button_body_field__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Button_Link_API_Name__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Composer_Parameters__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__CongaEmailTemplateCount__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Custom_Object_Id__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Formula_body_field__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Formula_Field_API_Name__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Is_Quick_Start__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Launch_C8_Formula_Button__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Master_Object_Type__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Master_Object_Type_Validator__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Sample_Record_Id__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Sample_Record_Name__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Solution_Description__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Solution_Weblink_Syntax__c</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Weblink_Id__c</members>
+        <members>APXTCFQ__Conga_Solution_Email_Template__c.APXTCFQ__Comments__c</members>
+        <members>APXTCFQ__Conga_Solution_Email_Template__c.APXTCFQ__Conga_Email_Template__c</members>
+        <members>APXTCFQ__Conga_Solution_Email_Template__c.APXTCFQ__Conga_Email_Template_Group__c</members>
+        <members>APXTCFQ__Conga_Solution_Email_Template__c.APXTCFQ__Conga_Email_Template_Name__c</members>
+        <members>APXTCFQ__Conga_Solution_Email_Template__c.APXTCFQ__Conga_Solution__c</members>
+        <members>APXTCFQ__Conga_Solution_Export_Environment__mdt.APXTCFQ__Export_Endpoint__c</members>
+        <members>APXTCFQ__Conga_Solution_Export_Setting__mdt.APXTCFQ__Conga_Solution_Export_Environment__c</members>
+        <members>APXTCFQ__Conga_Solution_Parameter__c.APXTCFQ__Comments__c</members>
+        <members>APXTCFQ__Conga_Solution_Parameter__c.APXTCFQ__Conga_Solution__c</members>
+        <members>APXTCFQ__Conga_Solution_Parameter__c.APXTCFQ__Name__c</members>
+        <members>APXTCFQ__Conga_Solution_Parameter__c.APXTCFQ__Value__c</members>
+        <members>APXTCFQ__Conga_Solution_Query__c.APXTCFQ__Alias__c</members>
+        <members>APXTCFQ__Conga_Solution_Query__c.APXTCFQ__Comments__c</members>
+        <members>APXTCFQ__Conga_Solution_Query__c.APXTCFQ__Conga_Query__c</members>
+        <members>APXTCFQ__Conga_Solution_Query__c.APXTCFQ__Conga_Query_Name__c</members>
+        <members>APXTCFQ__Conga_Solution_Query__c.APXTCFQ__Conga_Solution__c</members>
+        <members>APXTCFQ__Conga_Solution_Query__c.APXTCFQ__pv0__c</members>
+        <members>APXTCFQ__Conga_Solution_Query__c.APXTCFQ__pv1__c</members>
+        <members>APXTCFQ__Conga_Solution_Query__c.APXTCFQ__pv2__c</members>
+        <members>APXTCFQ__Conga_Solution_Report__c.APXTCFQ__Alias__c</members>
+        <members>APXTCFQ__Conga_Solution_Report__c.APXTCFQ__Comments__c</members>
+        <members>APXTCFQ__Conga_Solution_Report__c.APXTCFQ__Conga_Solution__c</members>
+        <members>APXTCFQ__Conga_Solution_Report__c.APXTCFQ__pv0__c</members>
+        <members>APXTCFQ__Conga_Solution_Report__c.APXTCFQ__pv1__c</members>
+        <members>APXTCFQ__Conga_Solution_Report__c.APXTCFQ__pv2__c</members>
+        <members>APXTCFQ__Conga_Solution_Report__c.APXTCFQ__Report_Id__c</members>
+        <members>APXTCFQ__Conga_Solution_Report__c.APXTCFQ__Report_Id_Link__c</members>
+        <members>APXTCFQ__Conga_Solution_Report__c.APXTCFQ__Report_Name__c</members>
+        <members>APXTCFQ__Conga_Solutions_Settings__c.APXTCFQ__Enable_Button_To_Solution__c</members>
+        <members>APXTCFQ__Conga_Solutions_Settings__c.APXTCFQ__Server_Override__c</members>
+        <members>APXTCFQ__Conga_Solution_Template__c.APXTCFQ__Comments__c</members>
+        <members>APXTCFQ__Conga_Solution_Template__c.APXTCFQ__Conga_Solution__c</members>
+        <members>APXTCFQ__Conga_Solution_Template__c.APXTCFQ__Conga_Template__c</members>
+        <members>APXTCFQ__Conga_Solution_Template__c.APXTCFQ__Output_File_Name__c</members>
+        <members>APXTCFQ__Conga_Solution_Template__c.APXTCFQ__Sort_Order__c</members>
+        <members>APXTCFQ__Conga_Solution_Template__c.APXTCFQ__Template_Extension__c</members>
+        <members>APXTCFQ__Conga_Solution_Template__c.APXTCFQ__Template_Group__c</members>
+        <members>APXTCFQ__Conga_Solution_Template__c.APXTCFQ__Template_Name__c</members>
+        <members>APXTCFQ__Conga_Template__c.APXTCFQ__Description__c</members>
+        <members>APXTCFQ__Conga_Template__c.APXTCFQ__Label_Template_Use_Detail_Data__c</members>
+        <members>APXTCFQ__Conga_Template__c.APXTCFQ__Master_Field_to_Set_1__c</members>
+        <members>APXTCFQ__Conga_Template__c.APXTCFQ__Master_Field_to_Set_2__c</members>
+        <members>APXTCFQ__Conga_Template__c.APXTCFQ__Master_Field_to_Set_3__c</members>
+        <members>APXTCFQ__Conga_Template__c.APXTCFQ__Name__c</members>
+        <members>APXTCFQ__Conga_Template__c.APXTCFQ__Template_Extension__c</members>
+        <members>APXTCFQ__Conga_Template__c.APXTCFQ__Template_Group__c</members>
+        <members>APXTCFQ__Conga_Template__c.APXTCFQ__Template_Type__c</members>
+        <members>APXTCFQ__Connected_App_Setting__mdt.APXTCFQ__Connected_App_Name__c</members>
+        <members>APXTCFQ__Connected_App_Setting__mdt.APXTCFQ__Connected_App_Name_SF1__c</members>
+        <members>APXTCFQ__Connected_App_Setting__mdt.APXTCFQ__Hostname__c</members>
         <members>Asset.Current_Year__c</members>
         <members>Asset.LPCR_CodeProduit__c</members>
         <members>Asset.Product__c</members>
@@ -3878,20 +4438,20 @@
         <members>blng__RevenueTransaction__c.blng__RevenueSchedule__c</members>
         <members>blng__RevenueTransaction__c.blng__Status__c</members>
         <members>blng__RevenueTransaction__c.blng__SystemPeriodStartDate__c</members>
-        <members>blng__RevenueTransaction__c.LCPR_FAE__c</members>
-        <members>blng__RevenueTransaction__c.LCPR_IDCreche__c</members>
-        <members>blng__RevenueTransaction__c.LCPR_PCA__c</members>
         <members>blng__RevenueTransaction__c.LPCR_CATheorique__c</members>
         <members>blng__RevenueTransaction__c.LPCR_CompteAnalytiqueClient__c</members>
         <members>blng__RevenueTransaction__c.LPCR_Creche__c</members>
         <members>blng__RevenueTransaction__c.LPCR_DateDebut__c</members>
         <members>blng__RevenueTransaction__c.LPCR_DateFin__c</members>
         <members>blng__RevenueTransaction__c.LPCR_Facture__c</members>
+        <members>blng__RevenueTransaction__c.LPCR_FAE__c</members>
         <members>blng__RevenueTransaction__c.LPCR_FrequenceFacturation__c</members>
+        <members>blng__RevenueTransaction__c.LPCR_IDCreche__c</members>
         <members>blng__RevenueTransaction__c.LPCR_NombreMois__c</members>
         <members>blng__RevenueTransaction__c.LPCR_NombrePlaces__c</members>
         <members>blng__RevenueTransaction__c.LPCR_NomClient__c</members>
         <members>blng__RevenueTransaction__c.LPCR_NumeroDevis__c</members>
+        <members>blng__RevenueTransaction__c.LPCR_PCA__c</members>
         <members>blng__RevenueTransaction__c.LPCR_PrixAnnuel__c</members>
         <members>blng__RevenueTransaction__c.LPCR_PrixUnitaireBerceau__c</members>
         <members>blng__RevenueTransaction__c.LPCR_SocieteFacture__c</members>
@@ -4002,7 +4562,6 @@
         <members>blng__UsageSummary__c.blng__UnitOfMeasure__c</members>
         <members>blng__UsageSummary__c.blng__UnitPrice__c</members>
         <members>blng__UsageSummary__c.blng__UsageCount__c</members>
-        <members>Case.Lead__c</members>
         <members>Case.LPCR_AmplitudeHoraireJeudi__c</members>
         <members>Case.LPCR_AmplitudeHoraireLundi__c</members>
         <members>Case.LPCR_AmplitudeHoraireMardi__c</members>
@@ -4019,6 +4578,7 @@
         <members>Case.LPCR_DateVisite__c</members>
         <members>Case.LPCR_Departement__c</members>
         <members>Case.LPCR_Enfant__c</members>
+        <members>Case.LPCR_Lead__c</members>
         <members>Case.LPCR_MotifSansSuite__c</members>
         <members>Case.LPCR_MoyenTransport__c</members>
         <members>Case.LPCR_PrixAchat__c</members>
@@ -4101,6 +4661,123 @@
         <members>Contract.SBQQ__RenewalTerm__c</members>
         <members>Contract.SBQQ__RenewalUpliftRate__c</members>
         <members>Contract.SBQQ__SubscriptionQuantitiesCombined__c</members>
+        <members>csfb__Composer_QuickMerge__c.csfb__Conga_Solution__c</members>
+        <members>csfb__Composer_QuickMerge__c.csfb__Description__c</members>
+        <members>csfb__Composer_QuickMerge__c.csfb__Launch_CM8__c</members>
+        <members>csfb__Composer_QuickMerge__c.csfb__Weblink_ID__c</members>
+        <members>csfb__Composer_QuickMerge__c.csfb__Weblink_ID_Formula__c</members>
+        <members>csfb__Composer_QuickMerge__c.csfb__Weblink_Name__c</members>
+        <members>csfb__Composer_QuickMerge__c.csfb__Weblink_Name_Formula__c</members>
+        <members>csfb__Conductor__c.csfb__Conductor_Environment__c</members>
+        <members>csfb__Conductor__c.csfb__Consolidated_PDF_Output_File__c</members>
+        <members>csfb__Conductor__c.csfb__Content_Workspace_Id__c</members>
+        <members>csfb__Conductor__c.csfb__Description__c</members>
+        <members>csfb__Conductor__c.csfb__Has_Query_Id__c</members>
+        <members>csfb__Conductor__c.csfb__Has_Record_Id__c</members>
+        <members>csfb__Conductor__c.csfb__Has_Report_Id__c</members>
+        <members>csfb__Conductor__c.csfb__Next_Run_Date__c</members>
+        <members>csfb__Conductor__c.csfb__Next_Run_Date_Display__c</members>
+        <members>csfb__Conductor__c.csfb__Query_Id__c</members>
+        <members>csfb__Conductor__c.csfb__Record_Id__c</members>
+        <members>csfb__Conductor__c.csfb__Report_Id__c</members>
+        <members>csfb__Conductor__c.csfb__Schedule_Description__c</members>
+        <members>csfb__Conductor__c.csfb__Schedule_Description_Display__c</members>
+        <members>csfb__Conductor__c.csfb__Title__c</members>
+        <members>csfb__Conductor__c.csfb__URL_Field_Name__c</members>
+        <members>csfb__Conductor__c.csfb__Version__c</members>
+        <members>csfb__Conga_Composer_Settings__c.csfb__Comments__c</members>
+        <members>csfb__Conga_Composer_Settings__c.csfb__Disable_C7_Triggers__c</members>
+        <members>csfb__Conga_Composer_Settings__c.csfb__Production_Org_Id__c</members>
+        <members>csfb__Conga_Composer_Settings__c.csfb__Server_Override__c</members>
+        <members>csfb__Conga_Email_Staging__c.csfb__HTMLBody__c</members>
+        <members>csfb__Conga_Email_Staging__c.csfb__Subject__c</members>
+        <members>csfb__Conga_Email_Staging__c.csfb__TextBody__c</members>
+        <members>csfb__Conga_Email_Staging__c.csfb__WhatId__c</members>
+        <members>csfb__Conga_Email_Staging__c.csfb__WhoId__c</members>
+        <members>csfb__Conga_Email_Template__c.csfb__Description__c</members>
+        <members>csfb__Conga_Email_Template__c.csfb__HTMLBody__c</members>
+        <members>csfb__Conga_Email_Template__c.csfb__Is_Body_Attachment__c</members>
+        <members>csfb__Conga_Email_Template__c.csfb__Name__c</members>
+        <members>csfb__Conga_Email_Template__c.csfb__Subject__c</members>
+        <members>csfb__Conga_Email_Template__c.csfb__Template_Group__c</members>
+        <members>csfb__Conga_Email_Template__c.csfb__TextBody__c</members>
+        <members>csfb__CongaInvoicingSettings__c.csfb__BaseCNVFPage__c</members>
+        <members>csfb__CongaInvoicingSettings__c.csfb__BaseVFPage__c</members>
+        <members>csfb__CongaInvoicingSettings__c.csfb__Name_Space__c</members>
+        <members>csfb__CongaInvoicingSettings__c.csfb__Set_by_UserName__c</members>
+        <members>csfb__Conga_Merge_Query__c.csfb__Description__c</members>
+        <members>csfb__Conga_Merge_Query__c.csfb__Name__c</members>
+        <members>csfb__Conga_Merge_Query__c.csfb__Query__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Button_body_field__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Button_Link_API_Name__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Composer_Parameters__c</members>
+        <members>csfb__Conga_Solution__c.csfb__CongaEmailTemplateCount__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Custom_Object_Id__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Formula_body_field__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Formula_Field_API_Name__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Is_Quick_Start__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Launch_C8_Formula_Button__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Master_Object_Type__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Master_Object_Type_Validator__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Sample_Record_Id__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Sample_Record_Name__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Solution_Description__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Solution_Weblink_Syntax__c</members>
+        <members>csfb__Conga_Solution__c.csfb__Weblink_Id__c</members>
+        <members>csfb__Conga_Solution_Email_Template__c.csfb__Comments__c</members>
+        <members>csfb__Conga_Solution_Email_Template__c.csfb__Conga_Email_Template__c</members>
+        <members>csfb__Conga_Solution_Email_Template__c.csfb__Conga_Email_Template_Group__c</members>
+        <members>csfb__Conga_Solution_Email_Template__c.csfb__Conga_Email_Template_Name__c</members>
+        <members>csfb__Conga_Solution_Email_Template__c.csfb__Conga_Solution__c</members>
+        <members>csfb__Conga_Solution_Parameter__c.csfb__Comments__c</members>
+        <members>csfb__Conga_Solution_Parameter__c.csfb__Conga_Solution__c</members>
+        <members>csfb__Conga_Solution_Parameter__c.csfb__Name__c</members>
+        <members>csfb__Conga_Solution_Parameter__c.csfb__Value__c</members>
+        <members>csfb__Conga_Solution_Query__c.csfb__Alias__c</members>
+        <members>csfb__Conga_Solution_Query__c.csfb__Comments__c</members>
+        <members>csfb__Conga_Solution_Query__c.csfb__Conga_Query__c</members>
+        <members>csfb__Conga_Solution_Query__c.csfb__Conga_Query_Name__c</members>
+        <members>csfb__Conga_Solution_Query__c.csfb__Conga_Solution__c</members>
+        <members>csfb__Conga_Solution_Query__c.csfb__pv0__c</members>
+        <members>csfb__Conga_Solution_Query__c.csfb__pv1__c</members>
+        <members>csfb__Conga_Solution_Query__c.csfb__pv2__c</members>
+        <members>csfb__Conga_Solution_Report__c.csfb__Alias__c</members>
+        <members>csfb__Conga_Solution_Report__c.csfb__Comments__c</members>
+        <members>csfb__Conga_Solution_Report__c.csfb__Conga_Solution__c</members>
+        <members>csfb__Conga_Solution_Report__c.csfb__pv0__c</members>
+        <members>csfb__Conga_Solution_Report__c.csfb__pv1__c</members>
+        <members>csfb__Conga_Solution_Report__c.csfb__pv2__c</members>
+        <members>csfb__Conga_Solution_Report__c.csfb__Report_Id__c</members>
+        <members>csfb__Conga_Solution_Report__c.csfb__Report_Id_Link__c</members>
+        <members>csfb__Conga_Solution_Report__c.csfb__Report_Name__c</members>
+        <members>csfb__Conga_Solutions_Settings__c.csfb__Enable_Button_To_Solution__c</members>
+        <members>csfb__Conga_Solutions_Settings__c.csfb__Server_Override__c</members>
+        <members>csfb__Conga_Solution_Template__c.csfb__Comments__c</members>
+        <members>csfb__Conga_Solution_Template__c.csfb__Conga_Solution__c</members>
+        <members>csfb__Conga_Solution_Template__c.csfb__Conga_Template__c</members>
+        <members>csfb__Conga_Solution_Template__c.csfb__Output_File_Name__c</members>
+        <members>csfb__Conga_Solution_Template__c.csfb__Sort_Order__c</members>
+        <members>csfb__Conga_Solution_Template__c.csfb__Template_Extension__c</members>
+        <members>csfb__Conga_Solution_Template__c.csfb__Template_Group__c</members>
+        <members>csfb__Conga_Solution_Template__c.csfb__Template_Name__c</members>
+        <members>csfb__Conga_Template__c.csfb__Description__c</members>
+        <members>csfb__Conga_Template__c.csfb__Label_Template_Use_Detail_Data__c</members>
+        <members>csfb__Conga_Template__c.csfb__Master_Field_to_Set_1__c</members>
+        <members>csfb__Conga_Template__c.csfb__Master_Field_to_Set_2__c</members>
+        <members>csfb__Conga_Template__c.csfb__Master_Field_to_Set_3__c</members>
+        <members>csfb__Conga_Template__c.csfb__Name__c</members>
+        <members>csfb__Conga_Template__c.csfb__Template_Group__c</members>
+        <members>csfb__Conga_Template__c.csfb__Template_Type__c</members>
+        <members>csfb__Scheduled_Conductor_History__c.csfb__Conga_Conductor__c</members>
+        <members>csfb__Scheduled_Conductor_History__c.csfb__Dashboard_Link__c</members>
+        <members>csfb__Scheduled_Conductor_History__c.csfb__Date__c</members>
+        <members>csfb__Scheduled_Conductor_History__c.csfb__Description__c</members>
+        <members>csfb__Scheduled_Conductor_History__c.csfb__Number_of_Failures__c</members>
+        <members>csfb__Scheduled_Conductor_History__c.csfb__Number_of_Service_Events__c</members>
+        <members>csfb__Scheduled_Conductor_History__c.csfb__Number_of_Successes__c</members>
+        <members>csfb__Scheduled_Conductor_History__c.csfb__Output_File_Link__c</members>
+        <members>csfb__Scheduled_Conductor_History__c.csfb__Ran_as__c</members>
+        <members>csfb__Scheduled_Conductor_History__c.csfb__Total_Number_of_Records__c</members>
         <members>echosign_dev1__Adobe_Sign_API_Client__mdt.echosign_dev1__Client_ID__c</members>
         <members>echosign_dev1__Adobe_Sign_API_Client__mdt.echosign_dev1__Client_Secret__c</members>
         <members>echosign_dev1__Agreement_Notification__c.echosign_dev1__Agreement__c</members>
@@ -4743,7 +5420,7 @@
         <members>LPCR_BaremeCAF__c.LPCR_RessourcePlafond__c</members>
         <members>LPCR_BaremeCAF__c.LPCR_RessourcePlancher__c</members>
         <members>LPCR_BaremeCAF__c.LPCR_TauxEffortParEnfant__c</members>
-        <members>LPCR_BonAchatPartenaire__c.LPCR_ANatitre__c</members>
+        <members>LPCR_BonAchatPartenaire__c.LPCR_ANaitre__c</members>
         <members>LPCR_BonAchatPartenaire__c.LPCR_Client__c</members>
         <members>LPCR_BonAchatPartenaire__c.LPCR_Commentaire__c</members>
         <members>LPCR_BonAchatPartenaire__c.LPCR_ComptePartenaire__c</members>
@@ -4789,10 +5466,11 @@
         <members>LPCR_LienCrecheLead__c.LPCR_Lead__c</members>
         <members>LPCR_LienCrecheLead__c.LPCR_OrdrePreference__c</members>
         <members>LPCR_LienCrecheLead__c.LPCR_StatutLead__c</members>
-        <members>LPCR_LienFamilleFacture__c.LCPR_Devis__c</members>
-        <members>LPCR_LienFamilleFacture__c.LCPR_Facture__c</members>
-        <members>LPCR_LienFamilleFacture__c.LCPR_LineFacture__c</members>
-        <members>LPCR_LienFamilleFacture__c.LCPR_RevenueTransaction__c</members>
+        <members>LPCR_LienFamilleFacture__c.LPCR_ContactEnfant__c</members>
+        <members>LPCR_LienFamilleFacture__c.LPCR_Devis__c</members>
+        <members>LPCR_LienFamilleFacture__c.LPCR_Facture__c</members>
+        <members>LPCR_LienFamilleFacture__c.LPCR_LigneFacture__c</members>
+        <members>LPCR_LienFamilleFacture__c.LPCR_RevenueTransaction__c</members>
         <members>LPCR_Log__c.LPCR_ActionName__c</members>
         <members>LPCR_Log__c.LPCR_Message__c</members>
         <members>LPCR_Log__c.LPCR_Result__c</members>
@@ -4879,13 +5557,15 @@
         <members>LPCR_Preinscription__c.LPCR_Vendredi__c</members>
         <members>LPCR_Preinscription__c.NomEnfant__c</members>
         <members>LPCR_Preinscription__c.Section__c</members>
+        <members>LPCR_RessourceFamille__c.LPCR_Active__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_AnneeRevenu__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_BaremeCaf__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_Commentaire__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_CompteFamille__c</members>
-        <members>LPCR_RessourceFamille__c.LPCR_CongesJours__c</members>
+        <members>LPCR_RessourceFamille__c.LPCR_CongesJoursdel__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_CongesSemaine__c</members>
-        <members>LPCR_RessourceFamille__c.LPCR_creche__c</members>
+        <members>LPCR_RessourceFamille__c.LPCR_ContactEnfant__c</members>
+        <members>LPCR_RessourceFamille__c.LPCR_Creche__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_DateDebut__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_DateFin__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_DureeContratJour__c</members>
@@ -4898,7 +5578,7 @@
         <members>LPCR_RessourceFamille__c.LPCR_NombreHeuresSemaine__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_NombreJoursAccueilSemaine__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_Planning__c</members>
-        <members>LPCR_RessourceFamille__c.LPCR_PrixMensuel__c</members>
+        <members>LPCR_RessourceFamille__c.LPCR_PrixMensuel_del__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_Produit__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_RessourcePlafond__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_RessourcesPrixPlancher__c</members>
@@ -4909,6 +5589,7 @@
         <members>LPCR_RessourceFamille__c.LPCR_TauxHoraire__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_TauxHorairedel__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_TauxMensuel__c</members>
+        <members>LPCR_RessourceFamille__c.LPCR_TypeCreche__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_TypeMensualisation__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_TypePlanning__c</members>
         <members>LPCR_Structure_AO__c.LPCR_Creation__c</members>
@@ -4952,6 +5633,8 @@
         <members>Opportunity.LPCR_BillingFrequency__c</members>
         <members>Opportunity.LPCR_CandidatureEnvoyee__c</members>
         <members>Opportunity.LPCR_Collectivite__c</members>
+        <members>Opportunity.LPCR_ContactCommercial__c</members>
+        <members>Opportunity.LPCR_ContactInscriptions__c</members>
         <members>Opportunity.LPCR_DateCandidature__c</members>
         <members>Opportunity.LPCR_DateLimiteQuestion__c</members>
         <members>Opportunity.LPCR_DateLimiteRelance__c</members>
@@ -5108,6 +5791,7 @@
         <members>OrderItem.SBQQ__UnproratedNetPrice__c</members>
         <members>OrderItem.SBQQ__UpgradedSubscription__c</members>
         <members>Order.LPCR_MasterDevis__c</members>
+        <members>Order.LPCR_TypeCreche__c</members>
         <members>Order.SBQQ__Contracted__c</members>
         <members>Order.SBQQ__ContractingMethod__c</members>
         <members>Order.SBQQ__OrderBookings__c</members>
@@ -5492,6 +6176,8 @@
         <members>Product2.SBQQ__UpgradeSource__c</members>
         <members>Product2.SBQQ__UpgradeTarget__c</members>
         <members>Quote.LPCR_ApprobationRequise__c</members>
+        <members>Quote.LPCR_RessourcePlafond__c</members>
+        <members>Quote.LPCR_RessourcesPrixPlancher__c</members>
         <members>SBQQ__AttributeValue__c.SBQQ__Asset__c</members>
         <members>SBQQ__AttributeValue__c.SBQQ__Attribute__c</members>
         <members>SBQQ__AttributeValue__c.SBQQ__FavoriteProduct__c</members>
@@ -6119,6 +6805,7 @@
         <members>SBQQ__Quote__c.LPCR_ContactRepresentant1__c</members>
         <members>SBQQ__Quote__c.LPCR_ContactRepresentant2__c</members>
         <members>SBQQ__Quote__c.LPCR_Creche__c</members>
+        <members>SBQQ__Quote__c.LPCR_CrecheNonOuverte__c</members>
         <members>SBQQ__Quote__c.LPCR_DateDebut__c</members>
         <members>SBQQ__Quote__c.LPCR_DateFin__c</members>
         <members>SBQQ__Quote__c.LPCR_DateResiliation__c</members>
@@ -6132,24 +6819,32 @@
         <members>SBQQ__Quote__c.LPCR_LIGNESUPERIEUREPRIXPLANCHER__c</members>
         <members>SBQQ__Quote__c.LPCR_MasterDevis__c</members>
         <members>SBQQ__Quote__c.LPCR_MethodeRenouvellement__c</members>
+        <members>SBQQ__Quote__c.LPCR_MontantFraisDossier__c</members>
+        <members>SBQQ__Quote__c.LPCR_Nombre_de_lignes_sans_PO__c</members>
+        <members>SBQQ__Quote__c.LPCR_NombreFraisDossier__c</members>
         <members>SBQQ__Quote__c.LPCR_NombreLignesDevis__c</members>
         <members>SBQQ__Quote__c.LPCR_NombreMois__c</members>
         <members>SBQQ__Quote__c.LPCR_NumeroActeEngagement__c</members>
         <members>SBQQ__Quote__c.LPCR_NumeroAllocataire__c</members>
         <members>SBQQ__Quote__c.LPCR_NumeroDevis__c</members>
+        <members>SBQQ__Quote__c.LPCR_PlanningEnfant__c</members>
         <members>SBQQ__Quote__c.LPCR_RefDevisReferencement__c</members>
         <members>SBQQ__Quote__c.LPCR_RefDevisReservataire__c</members>
         <members>SBQQ__Quote__c.LPCR_Region__c</members>
         <members>SBQQ__Quote__c.LPCR_RenouvellementConvenu__c</members>
+        <members>SBQQ__Quote__c.LPCR_ResiliationAnticipe__c</members>
         <members>SBQQ__Quote__c.LPCR_ResponsableADV__c</members>
         <members>SBQQ__Quote__c.LPCR_ResponsableServiceFamille__c</members>
+        <members>SBQQ__Quote__c.LPCR_RessourcePlafond__c</members>
         <members>SBQQ__Quote__c.LPCR_RessourcesMensuelles__c</members>
+        <members>SBQQ__Quote__c.LPCR_RessourcesPrixPlancher__c</members>
         <members>SBQQ__Quote__c.LPCR_RevenusFamille__c</members>
         <members>SBQQ__Quote__c.LPCR_StatutApprobation__c</members>
         <members>SBQQ__Quote__c.LPCR_TauxEffort__c</members>
         <members>SBQQ__Quote__c.LPCR_TauxHoraire__c</members>
         <members>SBQQ__Quote__c.LPCR_TauxMensuel__c</members>
         <members>SBQQ__Quote__c.LPCR_TypeAvenant__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeCreche__c</members>
         <members>SBQQ__Quote__c.LPCR_TypeEntreprise__c</members>
         <members>SBQQ__Quote__c.LPCR_TypeFacturation__c</members>
         <members>SBQQ__Quote__c.LPCR_TypePlanning__c</members>
@@ -6250,6 +6945,7 @@
         <members>SBQQ__QuoteLine__c.blng__BillableUnitPrice__c</members>
         <members>SBQQ__QuoteLine__c.Custom_Quantity__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_ApprobationPrix__c</members>
+        <members>SBQQ__QuoteLine__c.LPCR_CloneCancel__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_CongesJours__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_Creche__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_EntiteJuridique__c</members>
@@ -6269,10 +6965,15 @@
         <members>SBQQ__QuoteLine__c.LPCR_PrixPlancherProvince__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_PRIXSUPERIEUREPLANCHER__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_Region__c</members>
+        <members>SBQQ__QuoteLine__c.LPCR_RessourcePlafond__c</members>
+        <members>SBQQ__QuoteLine__c.LPCR_RessourcesPrixPlancher__c</members>
+        <members>SBQQ__QuoteLine__c.LPCR_RevenuFamille__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_RevenusFamille__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_SuperieuPP__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_TauxEffort__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_TauxHoraire__c</members>
+        <members>SBQQ__QuoteLine__c.LPCR_TotalBerceauGratuitRegion__c</members>
+        <members>SBQQ__QuoteLine__c.LPCR_Total_Quantity_formule__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_TotalRegion__c</members>
         <members>SBQQ__QuoteLineConsumptionRate__c.SBQQ__Description__c</members>
         <members>SBQQ__QuoteLineConsumptionRate__c.SBQQ__LowerBound__c</members>
@@ -6428,6 +7129,7 @@
         <members>SBQQ__QuoteLine__c.SBQQ__UpliftAmount__c</members>
         <members>SBQQ__QuoteLine__c.SBQQ__Uplift__c</members>
         <members>SBQQ__QuoteLine__c.SBQQ__VolumeDiscount__c</members>
+        <members>SBQQ__QuoteLine__c.TECH_ProductCode__c</members>
         <members>SBQQ__QuoteLineGroup__c.SBQQ__Account__c</members>
         <members>SBQQ__QuoteLineGroup__c.SBQQ__AdditionalDiscountRate__c</members>
         <members>SBQQ__QuoteLineGroup__c.SBQQ__BillingFrequency__c</members>
@@ -7205,6 +7907,570 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>APXTCFQ__A_Button_Link_Text</members>
+        <members>APXTCFQ__Access_Attachment_CSP_Conga_CT_Text</members>
+        <members>APXTCFQ__Access_Control_Violation</members>
+        <members>APXTCFQ__Access_Control_Violation_Header</members>
+        <members>APXTCFQ__Access_Control_Violation_NotAuthorizedToCreate</members>
+        <members>APXTCFQ__Access_Control_Violation_NotAuthorizedToDelete</members>
+        <members>APXTCFQ__Access_Control_Violation_NotAuthorizedToDelete_Solution</members>
+        <members>APXTCFQ__Access_Control_Violation_NotAuthorizedToUpdate</members>
+        <members>APXTCFQ__Access_Control_Violation_NotAuthorizedToView</members>
+        <members>APXTCFQ__Access_Control_Violation_NotAuthorizedToView_Query</members>
+        <members>APXTCFQ__Access_Control_Violation_NotAuthorizedToView_SolutionQuery</members>
+        <members>APXTCFQ__Access_Control_Violation_Null_Objects_Text</members>
+        <members>APXTCFQ__Access_Control_Violation_Specific_Text</members>
+        <members>APXTCFQ__Access_CSP_Conga_CT_Text</members>
+        <members>APXTCFQ__Access_The_Button_Text</members>
+        <members>APXTCFQ__Access_Violation_Text</members>
+        <members>APXTCFQ__Account_Brief_Description</members>
+        <members>APXTCFQ__Account_Brief_Label</members>
+        <members>APXTCFQ__Account_Name_Title</members>
+        <members>APXTCFQ__Actions_Label</members>
+        <members>APXTCFQ__Action_Will_Overwrite_Text</members>
+        <members>APXTCFQ__Activity_Days_Followup</members>
+        <members>APXTCFQ__Activity_Log_After_Merging_Ask</members>
+        <members>APXTCFQ__Activity_Logging_Description</members>
+        <members>APXTCFQ__Activity_Logging_IO_Error</members>
+        <members>APXTCFQ__Activity_Logging_Node</members>
+        <members>APXTCFQ__Activity_Logging_Settings</members>
+        <members>APXTCFQ__Activity_Logging_Text</members>
+        <members>APXTCFQ__Activity_Subject</members>
+        <members>APXTCFQ__Add_Button_To_Page_Layout_Text</members>
+        <members>APXTCFQ__Add_Details_Text</members>
+        <members>APXTCFQ__Add_Field</members>
+        <members>APXTCFQ__Add_Field_Text</members>
+        <members>APXTCFQ__Additional_To_Label</members>
+        <members>APXTCFQ__Add_Product_Text</members>
+        <members>APXTCFQ__Add_Recipient_Label</members>
+        <members>APXTCFQ__Add_Site_Text</members>
+        <members>APXTCFQ__Add_Solution_Details_Header</members>
+        <members>APXTCFQ__Add_Templates_Text</members>
+        <members>APXTCFQ__Add_Text</members>
+        <members>APXTCFQ__Add_To_Solution_Label</members>
+        <members>APXTCFQ__Adobe_Sign_Label</members>
+        <members>APXTCFQ__Advanced_Filter_Available_Label</members>
+        <members>APXTCFQ__Advanced_Filter_Now_Available_Label</members>
+        <members>APXTCFQ__Alias_Alphanumeric_Text</members>
+        <members>APXTCFQ__Alias_Already_Used_Text</members>
+        <members>APXTCFQ__Alias_Column_Width_Label</members>
+        <members>APXTCFQ__Alias_Label</members>
+        <members>APXTCFQ__Alias_Required_Text</members>
+        <members>APXTCFQ__Alias_Reserved_Text</members>
+        <members>APXTCFQ__All_Changes_Text</members>
+        <members>APXTCFQ__Analyzing_Templates_Label</members>
+        <members>APXTCFQ__Another_Opened_Org_Merge_Error</members>
+        <members>APXTCFQ__Assembling_Data_Label</members>
+        <members>APXTCFQ__Assign_Behaviors_Text</members>
+        <members>APXTCFQ__Attachment_Name</members>
+        <members>APXTCFQ__Attachment_Retrieval_Error</members>
+        <members>APXTCFQ__Attachments</members>
+        <members>APXTCFQ__Attachment_Save_Error</members>
+        <members>APXTCFQ__Attachment_Settings_Header</members>
+        <members>APXTCFQ__Attachments_Info</members>
+        <members>APXTCFQ__Attachments_Search</members>
+        <members>APXTCFQ__Attachments_Table_Section_Description</members>
+        <members>APXTCFQ__Attachment_Text</members>
+        <members>APXTCFQ__Attachment_Warning</members>
+        <members>APXTCFQ__Authorization_Apex_Class_Text</members>
+        <members>APXTCFQ__Authorization_Composer_QuickMerge_Fields_Text</members>
+        <members>APXTCFQ__Authorization_Conga_Email_Template_Text</members>
+        <members>APXTCFQ__Authorization_Conga_Merge_Query_Text</members>
+        <members>APXTCFQ__Authorization_Conga_Objects_Text</members>
+        <members>APXTCFQ__Authorization_Conga_Solution_Or_Email_Template_Text</members>
+        <members>APXTCFQ__Authorization_Conga_Solution_Organization_Text</members>
+        <members>APXTCFQ__Authorization_Conga_Solution_Or_Query_Text</members>
+        <members>APXTCFQ__Authorization_Conga_Solution_Or_Weblink_Text</members>
+        <members>APXTCFQ__Authorization_Conga_Solution_Parameter_Text</members>
+        <members>APXTCFQ__Authorization_Conga_Solution_Query_Text</members>
+        <members>APXTCFQ__Authorization_Conga_Solution_Report_Text</members>
+        <members>APXTCFQ__Authorization_Conga_Solution_Text</members>
+        <members>APXTCFQ__Authorization_Conga_Template_Objects_Text</members>
+        <members>APXTCFQ__Authorization_Document_Fields_Text</members>
+        <members>APXTCFQ__Authorization_Document_Report_Text</members>
+        <members>APXTCFQ__Authorization_Folder_Fields_Text</members>
+        <members>APXTCFQ__Authorization_OpportunityLineItem_Text</members>
+        <members>APXTCFQ__Authorization_Opportunity_Text</members>
+        <members>APXTCFQ__Authorization_Organization_Object_Text</members>
+        <members>APXTCFQ__Authorization_PriceBookEntry_Text</members>
+        <members>APXTCFQ__Authorization_Report_Text</members>
+        <members>APXTCFQ__Authorization_Sobject_Text</members>
+        <members>APXTCFQ__Authorization_Weblink_Text</members>
+        <members>APXTCFQ__Available_Solution_Collection_Text</members>
+        <members>APXTCFQ__Available_Solutions_Text</members>
+        <members>APXTCFQ__Background_Mode_Label</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_1</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_11</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_111</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_112</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_1141</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_1142</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_12</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_14</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_17</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_2</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_3</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_4</members>
+        <members>APXTCFQ__Background_Mode_Select_DS7_7</members>
+        <members>APXTCFQ__Background_Mode_Select_Label</members>
+        <members>APXTCFQ__Background_Mode_Settings_Description</members>
+        <members>APXTCFQ__Background_Mode_Settings_Header</members>
+        <members>APXTCFQ__Background_Mode_Settings_Node</members>
+        <members>APXTCFQ__Back_Label</members>
+        <members>APXTCFQ__BCC_Label</members>
+        <members>APXTCFQ__Behavior_Settings_Description</members>
+        <members>APXTCFQ__Behavior_Settings_Header</members>
+        <members>APXTCFQ__Button_Already_On_Page_Layout_Text</members>
+        <members>APXTCFQ__Button_Create_Error</members>
+        <members>APXTCFQ__Button_Is_Not_On_Page_Layout_Text</members>
+        <members>APXTCFQ__Button_Lightning_App_Builder_Finish_Step</members>
+        <members>APXTCFQ__Button_Managed_Package_Text</members>
+        <members>APXTCFQ__Button_Not_Found_Text</members>
+        <members>APXTCFQ__Button_Page_Layout_Finish_Step</members>
+        <members>APXTCFQ__Buttons_May_Not_Be_Removed_Text</members>
+        <members>APXTCFQ__Button_Successfully_Added_To_Page_Layout_Text</members>
+        <members>APXTCFQ__Button_Updated_Text</members>
+        <members>APXTCFQ__Button_Url_Field_Updated_Text</members>
+        <members>APXTCFQ__Cancel_Button_Text</members>
+        <members>APXTCFQ__CC_Label</members>
+        <members>APXTCFQ__Check_Field_Level_Security_Setings_Text</members>
+        <members>APXTCFQ__Check_The_Name_Field_Text</members>
+        <members>APXTCFQ__Choose_Template_Type_Text</members>
+        <members>APXTCFQ__Click_Here_Text</members>
+        <members>APXTCFQ__Client_Letter_Description</members>
+        <members>APXTCFQ__Client_Letter_Label</members>
+        <members>APXTCFQ__Close_Date_Title</members>
+        <members>APXTCFQ__Close_Text</members>
+        <members>APXTCFQ__Collection_Failed_To_Get_Solution_List</members>
+        <members>APXTCFQ__Collection_Name_Already_Exists_Error_Text</members>
+        <members>APXTCFQ__Collection_Name_Error_Text</members>
+        <members>APXTCFQ__Collection_Name_Text</members>
+        <members>APXTCFQ__Collection_Selection_No_Record</members>
+        <members>APXTCFQ__Collection_Sf1_Ajax_sObjectsList_Error_Toast</members>
+        <members>APXTCFQ__Collection_Sf1_Checkbox_Lable</members>
+        <members>APXTCFQ__Collection_Sf1_Duplicate_sObject_Error_Toast_Body</members>
+        <members>APXTCFQ__Collection_Sf1_Duplicate_sObject_Error_Toast_Header</members>
+        <members>APXTCFQ__Collection_SF1_Need_To_Pick_A_sObject</members>
+        <members>APXTCFQ__Collection_Step_Text</members>
+        <members>APXTCFQ__Collection_Text</members>
+        <members>APXTCFQ__Composer_Solution_Name_Already_Exists_Text</members>
+        <members>APXTCFQ__Conga_Composer_Button_Custom_Text</members>
+        <members>APXTCFQ__Conga_Composer_Description_Label</members>
+        <members>APXTCFQ__Conga_Composer_Header</members>
+        <members>APXTCFQ__Conga_Composer_Label</members>
+        <members>APXTCFQ__Conga_Composer_Link_Custom_Text</members>
+        <members>APXTCFQ__Conga_Composer_Link_Master_Text</members>
+        <members>APXTCFQ__Conga_Composer_Merge_Field_Select_Label</members>
+        <members>APXTCFQ__Conga_Composer_Merge_Field_Select_Option_Word_Label</members>
+        <members>APXTCFQ__Conga_Composer_Overview_Label</members>
+        <members>APXTCFQ__Conga_Email_Template_Id_Text</members>
+        <members>APXTCFQ__Conga_Email_Template_Required</members>
+        <members>APXTCFQ__Conga_Global_Merge_Text</members>
+        <members>APXTCFQ__Conga_Query_Added_Successfully_Text</members>
+        <members>APXTCFQ__Conga_Query_Id_Text</members>
+        <members>APXTCFQ__Conga_Query_Required_Text</members>
+        <members>APXTCFQ__Conga_Report_Id_Text</members>
+        <members>APXTCFQ__Conga_Sign_Label</members>
+        <members>APXTCFQ__Conga_Solution_Already_Exists_Text</members>
+        <members>APXTCFQ__Conga_Solution_Name_Required_Text</members>
+        <members>APXTCFQ__Conga_Solution_Template_Limit_Text</members>
+        <members>APXTCFQ__Conga_Support_Link</members>
+        <members>APXTCFQ__Conga_Template_Id_Text</members>
+        <members>APXTCFQ__Conga_Template_Required_Text</members>
+        <members>APXTCFQ__Contact_Text</members>
+        <members>APXTCFQ__Convert_To_PDF_Label</members>
+        <members>APXTCFQ__Create_Account_Brief_Label</members>
+        <members>APXTCFQ__Create_Collection_Label</members>
+        <members>APXTCFQ__Create_Email_Quote_Label</members>
+        <members>APXTCFQ__Create_New_Query_Button_Text</members>
+        <members>APXTCFQ__Create_New_Template_Button_Text</members>
+        <members>APXTCFQ__Create_Step_Delete_Solution_Modal_Body</members>
+        <members>APXTCFQ__Create_Step_Delete_Solution_Modal_Header</members>
+        <members>APXTCFQ__Create_Step_Solution_Table_Delete_Button_Label</members>
+        <members>APXTCFQ__Create_Step_Solution_Table_Edit_Button_Label</members>
+        <members>APXTCFQ__Create_Step_Solution_Table_Header_Description</members>
+        <members>APXTCFQ__Create_Step_Solution_Table_Header_LastModifiedBy</members>
+        <members>APXTCFQ__Create_Step_Solution_Table_Header_SolutionName</members>
+        <members>APXTCFQ__Create_Text</members>
+        <members>APXTCFQ__Current_Button_Url_Text</members>
+        <members>APXTCFQ__Data_Invalid_Alias_Error</members>
+        <members>APXTCFQ__Data_Step_Description</members>
+        <members>APXTCFQ__Data_Step_Description_Odyssey</members>
+        <members>APXTCFQ__Data_Step_Header</members>
+        <members>APXTCFQ__Data_Step_Table_Section_Description</members>
+        <members>APXTCFQ__Data_Step_Table_Section_Header</members>
+        <members>APXTCFQ__Data_Unique_Error</members>
+        <members>APXTCFQ__Delete_Button_Text</members>
+        <members>APXTCFQ__Delete_Modal_Body</members>
+        <members>APXTCFQ__Delete_Modal_Header</members>
+        <members>APXTCFQ__Delete_Recipient</members>
+        <members>APXTCFQ__Deploying_Text</members>
+        <members>APXTCFQ__Deployment_Complete_Text</members>
+        <members>APXTCFQ__Deployment_Generic_Error_Text</members>
+        <members>APXTCFQ__Description_Date_Label</members>
+        <members>APXTCFQ__Description_Here_Label</members>
+        <members>APXTCFQ__Description_Label</members>
+        <members>APXTCFQ__Details</members>
+        <members>APXTCFQ__DML_Execution_Failure</members>
+        <members>APXTCFQ__DML_Execution_Failure_Header</members>
+        <members>APXTCFQ__Doc_Replace_Error_Text</members>
+        <members>APXTCFQ__Document_Automation_Wizard_Description_Label</members>
+        <members>APXTCFQ__Document_Automation_Wizard_Label</members>
+        <members>APXTCFQ__DocuSign_Label</members>
+        <members>APXTCFQ__Docusign_Retrieval_Error</members>
+        <members>APXTCFQ__Done_Button_Text</members>
+        <members>APXTCFQ__Download_Didnt_Start_Text</members>
+        <members>APXTCFQ__Download_Label</members>
+        <members>APXTCFQ__Drop_Files_Text</members>
+        <members>APXTCFQ__Dynamic_Merge_Field_Description_Text</members>
+        <members>APXTCFQ__Dynamic_Merge_Field_Text</members>
+        <members>APXTCFQ__Dynamic_Merge_Field_Validation_Text</members>
+        <members>APXTCFQ__Dynamic_Template_Retrieval_Error</members>
+        <members>APXTCFQ__Dynamic_Template_Selection_Text</members>
+        <members>APXTCFQ__Dynamic_Templates_Table_Section_Description</members>
+        <members>APXTCFQ__Edit_Recipient</members>
+        <members>APXTCFQ__EmailBehaviorSettings_Message_Default</members>
+        <members>APXTCFQ__Email_Button_Description</members>
+        <members>APXTCFQ__Email_Description</members>
+        <members>APXTCFQ__Email_Node</members>
+        <members>APXTCFQ__Email_Retrieve_Error</members>
+        <members>APXTCFQ__Email_Save_Error</members>
+        <members>APXTCFQ__Email_Settings_Header</members>
+        <members>APXTCFQ__Email_Settings_Popover_Header</members>
+        <members>APXTCFQ__Email_Template_Builder_Label</members>
+        <members>APXTCFQ__Email_Template_Label</members>
+        <members>APXTCFQ__Email_Templates_Info</members>
+        <members>APXTCFQ__Email_Templates_Search</members>
+        <members>APXTCFQ__Email_Text</members>
+        <members>APXTCFQ__Email_To_Label</members>
+        <members>APXTCFQ__Enter_Merge_Field_Text</members>
+        <members>APXTCFQ__Error_Composer_Create_Button_Individually_Text</members>
+        <members>APXTCFQ__Error_Composer_Create_Button_Text</members>
+        <members>APXTCFQ__Error_Required_Document_Folder_Not_Found_Text</members>
+        <members>APXTCFQ__Error_Retrieving_Salesforce_Related_List_Text</members>
+        <members>APXTCFQ__ESignature_Add_Recipient_Button_Lable</members>
+        <members>APXTCFQ__ESignature_Conga_Sign_Add_Recipient_Validation_Fail</members>
+        <members>APXTCFQ__ESignature_Conga_Sign_Delete_Recipient_Title</members>
+        <members>APXTCFQ__ESignature_Conga_Sign_Find_Name_Fail_Text</members>
+        <members>APXTCFQ__ESignature_Conga_Sign_Initialize_ApexCall_Fail</members>
+        <members>APXTCFQ__ESignature_CongaSign_Label</members>
+        <members>APXTCFQ__ESignature_Conga_Sign_No_Signing_Order_Text</members>
+        <members>APXTCFQ__ESignature_Conga_Sign_Reach_Maximum_Number_Recipients</members>
+        <members>APXTCFQ__ESignature_Conga_Sign_Recipient_Table_Name_Header</members>
+        <members>APXTCFQ__ESignature_Conga_Sign_Retrieval_Error</members>
+        <members>APXTCFQ__ESignature_Conga_Sign_Save_Recipient_Fail_Toast</members>
+        <members>APXTCFQ__ESignature_Conga_Sign_Search_Name_Label</members>
+        <members>APXTCFQ__ESignature_Conga_Sign_Signing_Order_CheckBox</members>
+        <members>APXTCFQ__ESignature_Conga_Sign_Title</members>
+        <members>APXTCFQ__ESignature_Description</members>
+        <members>APXTCFQ__eSignature_Node</members>
+        <members>APXTCFQ__eSignature_Retrieve_Error</members>
+        <members>APXTCFQ__eSignature_Save_Error</members>
+        <members>APXTCFQ__ESignature_Save_Parameters_Button_Lable</members>
+        <members>APXTCFQ__eSignature_Settings_Header</members>
+        <members>APXTCFQ__Expanding_Text</members>
+        <members>APXTCFQ__Failed_To_Delete_Object_Text</members>
+        <members>APXTCFQ__Failed_To_Find_Object_Text</members>
+        <members>APXTCFQ__Failed_To_Insert_Object_Text</members>
+        <members>APXTCFQ__Failed_To_Query_Object_Text</members>
+        <members>APXTCFQ__Failed_To_Retrive_Url_Text</members>
+        <members>APXTCFQ__Failed_To_Update_Object_Text</members>
+        <members>APXTCFQ__Field_Does_Not_Exist_Text</members>
+        <members>APXTCFQ__Field_Not_Found_Text</members>
+        <members>APXTCFQ__File_Download_Failed_Toast</members>
+        <members>APXTCFQ__File_Max_Limit_Text</members>
+        <members>APXTCFQ__Filename_Label</members>
+        <members>APXTCFQ__Filename_Note_Label</members>
+        <members>APXTCFQ__File_Not_Selected_Text</members>
+        <members>APXTCFQ__Files_Button_Description</members>
+        <members>APXTCFQ__Filesettings_Retrieval_Error_Msg</members>
+        <members>APXTCFQ__Filesettings_Save_Error_Msg</members>
+        <members>APXTCFQ__Files_Text</members>
+        <members>APXTCFQ__File_Type</members>
+        <members>APXTCFQ__Find_A_Sample_Record_Text</members>
+        <members>APXTCFQ__Find_A_Sample_Text</members>
+        <members>APXTCFQ__Follow_Up_Text</members>
+        <members>APXTCFQ__For_More_Information_Label</members>
+        <members>APXTCFQ__Functionality_Limited_CampaignMember_Text</members>
+        <members>APXTCFQ__Functionality_Limited_OrderItem_Text</members>
+        <members>APXTCFQ__Gather_Data_Text</members>
+        <members>APXTCFQ__Gathering_Templates_Label</members>
+        <members>APXTCFQ__General_Node</members>
+        <members>APXTCFQ__Generated_File_Description</members>
+        <members>APXTCFQ__Generated_File_Settings_Node</members>
+        <members>APXTCFQ__GenerateFile_Settings_Header</members>
+        <members>APXTCFQ__Generic_Exception_Text</members>
+        <members>APXTCFQ__Go_To_Conga_Solution_Tab_Text</members>
+        <members>APXTCFQ__Green_Checkmarks_Text</members>
+        <members>APXTCFQ__Group_Text</members>
+        <members>APXTCFQ__Has_Been_Deleted_Text</members>
+        <members>APXTCFQ__If_One_Or_More_Pages_Text</members>
+        <members>APXTCFQ__Ignore_Any_Success_Message_Text</members>
+        <members>APXTCFQ__Insert_Button_Text</members>
+        <members>APXTCFQ__Insert_Button_Text_Attachment</members>
+        <members>APXTCFQ__Insert_Button_Text_Email_Template</members>
+        <members>APXTCFQ__In_Text</members>
+        <members>APXTCFQ__Invalid_Conga_Query_Id_Text</members>
+        <members>APXTCFQ__Invalid_Value_For_SharingMode_Text</members>
+        <members>APXTCFQ__Is_Mandatory_Label</members>
+        <members>APXTCFQ__Just_Master_Object_Label</members>
+        <members>APXTCFQ__Last_Modified_Label</members>
+        <members>APXTCFQ__Launch_Quick_Start_Label</members>
+        <members>APXTCFQ__Launch_Wizard_Label</members>
+        <members>APXTCFQ__Learn_More_Label</members>
+        <members>APXTCFQ__Link_Updated_Text</members>
+        <members>APXTCFQ__Master_Object_Required_Text</members>
+        <members>APXTCFQ__Maximum_Reports_Shown_Text</members>
+        <members>APXTCFQ__Merge_And_Download_Label</members>
+        <members>APXTCFQ__Merge_Button_Disabled_Text</members>
+        <members>APXTCFQ__Merge_Button_Text</members>
+        <members>APXTCFQ__MergeController_Failed_To_Get_CollectionId_For_SF1</members>
+        <members>APXTCFQ__Merge_Error_Describe_Text</members>
+        <members>APXTCFQ__Merge_Error_Text</members>
+        <members>APXTCFQ__Merge_Error_Try_Again</members>
+        <members>APXTCFQ__Merge_Field_Helper_Available_Text</members>
+        <members>APXTCFQ__Merge_Successful_Text</members>
+        <members>APXTCFQ__Merging_Data_With_Templates_Label</members>
+        <members>APXTCFQ__Metadata_Api_Not_Available_Text</members>
+        <members>APXTCFQ__Name_Column_Width_Label</members>
+        <members>APXTCFQ__Name_Label</members>
+        <members>APXTCFQ__Next_Label</members>
+        <members>APXTCFQ__No_Label</members>
+        <members>APXTCFQ__No_Page_Layout_Selected_Text</members>
+        <members>APXTCFQ__No_Recipients</members>
+        <members>APXTCFQ__Not_Quite_Sure_Finish_Step_Label</members>
+        <members>APXTCFQ__No_Valid_Conga_Email_Template_Records_Found_Text</members>
+        <members>APXTCFQ__No_Valid_Conga_Query_Records_Found_Text</members>
+        <members>APXTCFQ__No_Valid_Conga_Teplate_Records_Found_Text</members>
+        <members>APXTCFQ__No_Valid_Report_Found_Text</members>
+        <members>APXTCFQ__No_Valid_Sample_Record_For_Sobject_Text</members>
+        <members>APXTCFQ__No_Valid_Sample_Record_Text</members>
+        <members>APXTCFQ__Null_Or_Empty_Parameter_Text</members>
+        <members>APXTCFQ__Oauth_Success_Sf1_0</members>
+        <members>APXTCFQ__Oauth_Success_Sf1_1</members>
+        <members>APXTCFQ__Oauth_Success_Sf1_2</members>
+        <members>APXTCFQ__Off_Label</members>
+        <members>APXTCFQ__One_Time_Setup_Label</members>
+        <members>APXTCFQ__Only_One_Conga_Email_Template_Allowed_Text</members>
+        <members>APXTCFQ__Opp_Label</members>
+        <members>APXTCFQ__Opportunity_Master_Object_Label</members>
+        <members>APXTCFQ__Opportunity_Quote_Label</members>
+        <members>APXTCFQ__Opportunity_Text</members>
+        <members>APXTCFQ__Output_Action</members>
+        <members>APXTCFQ__Page_Label</members>
+        <members>APXTCFQ__Parameter_Entry_Add_Behavior</members>
+        <members>APXTCFQ__Parameter_Entry_Add_Behavior_Button_Label</members>
+        <members>APXTCFQ__Parameter_Entry_Delete_Parameter_Icon_Title</members>
+        <members>APXTCFQ__Parameter_Entry_Delete_Parameter_Modal_Body</members>
+        <members>APXTCFQ__Parameter_Entry_Delete_Parameter_Modal_Header</members>
+        <members>APXTCFQ__Parameter_Entry_Initialization_Fail_Toast</members>
+        <members>APXTCFQ__Parameter_Entry_No_Parameter</members>
+        <members>APXTCFQ__Parameter_Entry_Parameter_Must_Use_UI</members>
+        <members>APXTCFQ__Parameter_Entry_Parameter_Not_Allowed</members>
+        <members>APXTCFQ__Parameter_Entry_Save</members>
+        <members>APXTCFQ__Parameter_Entry_Save_Dupilicate_Fail_Toast</members>
+        <members>APXTCFQ__Parameter_Entry_Save_Fail_Toast</members>
+        <members>APXTCFQ__Parameter_Entry_Table_Name_Header</members>
+        <members>APXTCFQ__Parameter_Entry_Table_Value_Header</members>
+        <members>APXTCFQ__Parameter_Entry_Value_Input_Label</members>
+        <members>APXTCFQ__Parameters_Missing</members>
+        <members>APXTCFQ__Please_Change_Solution_Name_Text</members>
+        <members>APXTCFQ__Please_Choose_Different_Solution_Name_Text</members>
+        <members>APXTCFQ__Please_Confirm_Merge_Field_Text</members>
+        <members>APXTCFQ__Please_Select_Solutions_Text</members>
+        <members>APXTCFQ__Post_Install_Email_Message_1_text</members>
+        <members>APXTCFQ__Post_Install_Email_Message_2_text</members>
+        <members>APXTCFQ__Post_Install_Email_Message_3_text</members>
+        <members>APXTCFQ__Post_Install_Email_Message_4_text</members>
+        <members>APXTCFQ__Post_Install_Email_Message_5_text</members>
+        <members>APXTCFQ__Post_Install_Email_Message_6_text</members>
+        <members>APXTCFQ__Post_Merge_Distribution_Node</members>
+        <members>APXTCFQ__Preview_Solution</members>
+        <members>APXTCFQ__Previous_Label</members>
+        <members>APXTCFQ__Primary_Contact_Custom_Field_Label</members>
+        <members>APXTCFQ__Primary_Contact_Default_Label</members>
+        <members>APXTCFQ__Primary_Contact_Description</members>
+        <members>APXTCFQ__Primary_Contact_Enter_Custom_Field_Label</members>
+        <members>APXTCFQ__Primary_Contact_Node</members>
+        <members>APXTCFQ__Primary_Contact_Retrieval_Error</members>
+        <members>APXTCFQ__Processing_Error_Header</members>
+        <members>APXTCFQ__Processing_Label</members>
+        <members>APXTCFQ__PV_Replacement_Error</members>
+        <members>APXTCFQ__QS_Basic_Account_Description</members>
+        <members>APXTCFQ__QS_Basic_Account_Label</members>
+        <members>APXTCFQ__QS_Product_Family_Discount_Quote_Description</members>
+        <members>APXTCFQ__QS_Product_Family_Discount_Quote_Label</members>
+        <members>APXTCFQ__QS_Product_Family_Quote_Description</members>
+        <members>APXTCFQ__QS_Product_Family_Quote_Label</members>
+        <members>APXTCFQ__Query_Retrieve_Error</members>
+        <members>APXTCFQ__Query_Save_Error</members>
+        <members>APXTCFQ__Quick_Start_Description_Label</members>
+        <members>APXTCFQ__Quick_Start_Label</members>
+        <members>APXTCFQ__Quote_Object_Warning</members>
+        <members>APXTCFQ__Quote_Text</members>
+        <members>APXTCFQ__Recipient_Address_Recipients</members>
+        <members>APXTCFQ__Recipient_Carbon_Copy</members>
+        <members>APXTCFQ__Recipient_Certified_Delivery</members>
+        <members>APXTCFQ__Recipient_Id</members>
+        <members>APXTCFQ__Recipient_Message_Envelope</members>
+        <members>APXTCFQ__Recipient_Role</members>
+        <members>APXTCFQ__Recipient_Signer</members>
+        <members>APXTCFQ__Recipient_Signing_Order</members>
+        <members>APXTCFQ__Recipient_Text</members>
+        <members>APXTCFQ__Recipient_Type</members>
+        <members>APXTCFQ__Record_Does_Not_Exist_Text</members>
+        <members>APXTCFQ__Record_Retrieve_Error</members>
+        <members>APXTCFQ__Records_Label</members>
+        <members>APXTCFQ__Record_Text</members>
+        <members>APXTCFQ__Remote_Site_Settings_Auto_Button_Label</members>
+        <members>APXTCFQ__Remote_Site_Settings_Auto_Label</members>
+        <members>APXTCFQ__Remote_Site_Settings_Manual_Label</members>
+        <members>APXTCFQ__Remote_Site_Settings_Modal_Header</members>
+        <members>APXTCFQ__Replacement_Text_Required_Label</members>
+        <members>APXTCFQ__Report_Id_Must_Start_Text</members>
+        <members>APXTCFQ__Report_Required_Text</members>
+        <members>APXTCFQ__Reports_Added_Manually_Text</members>
+        <members>APXTCFQ__Request_Completed_Text</members>
+        <members>APXTCFQ__Request_In_Progress_Text</members>
+        <members>APXTCFQ__Retrieving_Metadata_Text</members>
+        <members>APXTCFQ__Salesforce_Files_Text</members>
+        <members>APXTCFQ__Salesforce_Limitation_Page_Layout_Max_Text</members>
+        <members>APXTCFQ__Salesforce_Object</members>
+        <members>APXTCFQ__Sales_Proposal_Description</members>
+        <members>APXTCFQ__Sales_Proposal_Label</members>
+        <members>APXTCFQ__Sales_Quote_Description</members>
+        <members>APXTCFQ__Sales_Quote_Label</members>
+        <members>APXTCFQ__Same_As_Template</members>
+        <members>APXTCFQ__Sample_Record_Id_Text</members>
+        <members>APXTCFQ__Sample_Record_Missing</members>
+        <members>APXTCFQ__Sample_Record_Text</members>
+        <members>APXTCFQ__Save_A_Copy_Header</members>
+        <members>APXTCFQ__Save_A_Copy_Node</members>
+        <members>APXTCFQ__Save_A_Copy_Select_Label</members>
+        <members>APXTCFQ__Save_A_Copy_Select_Salesforce_Chatter</members>
+        <members>APXTCFQ__Save_A_Copy_Select_Salesforce_Content</members>
+        <members>APXTCFQ__Save_A_Copy_Select_Salesforce_Documents</members>
+        <members>APXTCFQ__Save_A_Copy_Select_Salesforce_Files</members>
+        <members>APXTCFQ__Save_A_Copy_Select_Salesforce_Notes_Attachments</members>
+        <members>APXTCFQ__Save_A_Copy_Text</members>
+        <members>APXTCFQ__Save_A_Copy_Toggle_Label</members>
+        <members>APXTCFQ__Saved_Successfully_Text</members>
+        <members>APXTCFQ__Saved_Text</members>
+        <members>APXTCFQ__Save_Text</members>
+        <members>APXTCFQ__Save_To_Text</members>
+        <members>APXTCFQ__Search_Label</members>
+        <members>APXTCFQ__Search_Related_Contact_Text</members>
+        <members>APXTCFQ__Select_All_Label</members>
+        <members>APXTCFQ__Select_A_Sample_Record_Table_Text</members>
+        <members>APXTCFQ__Select_A_Sample_Record_Text</members>
+        <members>APXTCFQ__Select_File_Type</members>
+        <members>APXTCFQ__Select_Item_1_Label</members>
+        <members>APXTCFQ__Select_Item_2_Label</members>
+        <members>APXTCFQ__Select_Item_3_Label</members>
+        <members>APXTCFQ__Select_Option_None</members>
+        <members>APXTCFQ__Select_Output_Action_Download</members>
+        <members>APXTCFQ__Select_Sample_Record_And_Click_Text</members>
+        <members>APXTCFQ__Select_Sample_Record_Text</members>
+        <members>APXTCFQ__Sf1_Action_Collection_Not_Found_Toast_Body1</members>
+        <members>APXTCFQ__Sf1_Action_Collection_Not_Found_Toast_Body2</members>
+        <members>APXTCFQ__Sf1_Action_Collection_Not_Found_Toast_Title</members>
+        <members>APXTCFQ__SharingMode_Must_Not_Be_Null_Text</members>
+        <members>APXTCFQ__Show_More_Label</members>
+        <members>APXTCFQ__Solution_Collection_Text</members>
+        <members>APXTCFQ__Solution_Create_Error</members>
+        <members>APXTCFQ__Solution_Detail_Description</members>
+        <members>APXTCFQ__Solution_Name_Label</members>
+        <members>APXTCFQ__Solution_Retrieve_Error</members>
+        <members>APXTCFQ__SolutionStep_Object_SBQQ_Label</members>
+        <members>APXTCFQ__Sort_Label</members>
+        <members>APXTCFQ__Stage_Complete_Label</members>
+        <members>APXTCFQ__Success_Extracted_Conga_Templates_Text</members>
+        <members>APXTCFQ__Template_Builder_Apex_Call_ToGetObjMetatData</members>
+        <members>APXTCFQ__Template_Builder_Apex_Call_ToGetSolutionDetails</members>
+        <members>APXTCFQ__Template_Builder_Field_Picker_Alternate_Text</members>
+        <members>APXTCFQ__Template_Builder_Field_Picker_Description</members>
+        <members>APXTCFQ__Template_Builder_Field_Picker_Title</members>
+        <members>APXTCFQ__Template_Builder_No_TestRecord_Description</members>
+        <members>APXTCFQ__Template_Builder_Popover_Input_Replacement_Text_Label</members>
+        <members>APXTCFQ__Template_Builder_Popover_Input_Search_InputSObjectMetadata_Text_Label</members>
+        <members>APXTCFQ__Template_Description</members>
+        <members>APXTCFQ__Template_File_Type_Validation</members>
+        <members>APXTCFQ__Template_Group</members>
+        <members>APXTCFQ__Template_Group_Defined_Text</members>
+        <members>APXTCFQ__Template_Id_Invalid</members>
+        <members>APXTCFQ__Template_List</members>
+        <members>APXTCFQ__Template_Name</members>
+        <members>APXTCFQ__Template_Retrieve_Error</members>
+        <members>APXTCFQ__Templates_Added_Text</members>
+        <members>APXTCFQ__Template_Save_Error</members>
+        <members>APXTCFQ__Template_Save_Page_Description1</members>
+        <members>APXTCFQ__Template_Save_Page_Description2</members>
+        <members>APXTCFQ__Template_Save_Page_Save_Button_Label</members>
+        <members>APXTCFQ__Template_Save_Page_Title</members>
+        <members>APXTCFQ__Templates_Header</members>
+        <members>APXTCFQ__Templates_Maximum_Message</members>
+        <members>APXTCFQ__Templates_Save_To_Clipboard</members>
+        <members>APXTCFQ__Templates_Table</members>
+        <members>APXTCFQ__Templates_Table_Section_Description</members>
+        <members>APXTCFQ__Templates_Table_Section_Header</members>
+        <members>APXTCFQ__Template_Warning</members>
+        <members>APXTCFQ__Test_Sample_Data_Text</members>
+        <members>APXTCFQ__The_Conga_Email_Template_Id_Invalid_Text</members>
+        <members>APXTCFQ__The_Conga_Global_Merge_Button_Text</members>
+        <members>APXTCFQ__The_Custom_Link_Deleted_Text</members>
+        <members>APXTCFQ__The_Selected_Sample_Record_Text</members>
+        <members>APXTCFQ__This_Functionality_Not_Currently_Available_Text</members>
+        <members>APXTCFQ__This_Page_Designed_Text</members>
+        <members>APXTCFQ__Toast_Authentication_Error</members>
+        <members>APXTCFQ__Toast_General_Merge_Error</members>
+        <members>APXTCFQ__Toast_Maximum_Recipients_Message</members>
+        <members>APXTCFQ__Toast_MyDomains_Message</members>
+        <members>APXTCFQ__Toast_Post_Merge_Redirect_Failed_Error</members>
+        <members>APXTCFQ__Toast_Solution_Error</members>
+        <members>APXTCFQ__Toast_Title</members>
+        <members>APXTCFQ__Toast_Title_Success</members>
+        <members>APXTCFQ__To_Correct_This_Issue_Text</members>
+        <members>APXTCFQ__To_Fully_Utilize_Solution_Manager_Text</members>
+        <members>APXTCFQ__Toggle_Text</members>
+        <members>APXTCFQ__To_Launch_Compsoer_Button_Text</members>
+        <members>APXTCFQ__Unable_To_Create_Button_Field_Missing_Text</members>
+        <members>APXTCFQ__Unable_To_Create_Button_Text</members>
+        <members>APXTCFQ__Unable_To_Create_Conga_QuickMerge_Field_Missing_Text</members>
+        <members>APXTCFQ__Unable_To_Create_Conga_QuickMerge_Text</members>
+        <members>APXTCFQ__Unable_To_Create_Field_Integrity_Text</members>
+        <members>APXTCFQ__Unable_To_Create_Link_Field_Integrity_Text</members>
+        <members>APXTCFQ__Unable_To_Create_Link_Field_Missing_Text</members>
+        <members>APXTCFQ__Unable_To_Create_Link_Text</members>
+        <members>APXTCFQ__Unable_To_Create_Text</members>
+        <members>APXTCFQ__Unable_To_Determine_Component_Type_Text</members>
+        <members>APXTCFQ__Unable_Update_Solution_Text</members>
+        <members>APXTCFQ__Unable_Update_Text</members>
+        <members>APXTCFQ__Upload_Files_Button_Text</members>
+        <members>APXTCFQ__Upload_New_Template_Button_Text</members>
+        <members>APXTCFQ__Upload_Template_Text</members>
+        <members>APXTCFQ__User_Does_Not_Have_A_License</members>
+        <members>APXTCFQ__Validation_1_To_120_Characters_Text</members>
+        <members>APXTCFQ__Validation_255_Characters_Text</members>
+        <members>APXTCFQ__Validation_300_Characters_Text</members>
+        <members>APXTCFQ__Validation_3_To_20_Characters_Text</members>
+        <members>APXTCFQ__Validation_80_Characters_Text</members>
+        <members>APXTCFQ__Validation_Bad_Text</members>
+        <members>APXTCFQ__Validation_Letters_Numbers_Spaces_Text</members>
+        <members>APXTCFQ__Validation_Letters_Numbers_Spaces_Underscores_Text</members>
+        <members>APXTCFQ__Validation_Special_Characters_Text</members>
+        <members>APXTCFQ__Verify_Button_Or_Link_Text</members>
+        <members>APXTCFQ__Verify_Remote_Sites_Text</members>
+        <members>APXTCFQ__Video_Text</members>
+        <members>APXTCFQ__Watch_Video_Finish_Step_Label</members>
+        <members>APXTCFQ__Weblink_Deleted_Text</members>
+        <members>APXTCFQ__Welcome_Label</members>
+        <members>APXTCFQ__Wistia_Video_Player_Title</members>
+        <members>APXTCFQ__Word_Templates_Only</members>
+        <members>APXTCFQ__Yes_Label</members>
+        <members>APXTCFQ__You_Must_Select_Button_First_Text</members>
+        <members>APXTCFQ__Your_Almost_Done_Classic_Text</members>
+        <members>APXTCFQ__Your_Almost_Done_Lightning_Text</members>
+        <members>APXTCFQ__Your_Almost_Done_Text</members>
         <members>blng__ACCOUNT_CAN_ONLY_HAVE_ONE_AUTO_PAY_PAYMENT_METHOD</members>
         <members>blng__AGINGBUCKET_VALIDATION_BUCKETNUMBERBETWEENONEANDTEN</members>
         <members>blng__AGINGBUCKET_VALIDATION_NOOFRECOREDS</members>
@@ -8020,6 +9286,68 @@
         <members>blng__USAGE_VALIDATION_USAGESUMMARYCANNOTCHANGE</members>
         <members>blng__USAGE_VALIDATION_USAGESUMMARYCURRENCYMISMATCH</members>
         <members>blng__VALIDATION_FOR_OVERRIDE_REVENUE_ENDDATE</members>
+        <members>csfb__Access_Control_Violation</members>
+        <members>csfb__Access_Control_Violation_Header</members>
+        <members>csfb__Access_Control_Violation_Specific_Text</members>
+        <members>csfb__Add_Button_To_Page_Layout_Text</members>
+        <members>csfb__Add_Details_Text</members>
+        <members>csfb__Add_Site_Text</members>
+        <members>csfb__Add_Templates_Text</members>
+        <members>csfb__Assign_Behaviors_Text</members>
+        <members>csfb__Authorization_Composer_QuickMerge_Fields_Text</members>
+        <members>csfb__Authorization_Conga_Objects_Text</members>
+        <members>csfb__Authorization_Conga_Solution_Organization_Text</members>
+        <members>csfb__Authorization_Conga_Solution_Text</members>
+        <members>csfb__Authorization_Conga_Template_Objects_Text</members>
+        <members>csfb__Authorization_Document_Fields_Text</members>
+        <members>csfb__Authorization_Report_Text</members>
+        <members>csfb__Authorization_Weblink_Text</members>
+        <members>csfb__Button_Create_Error</members>
+        <members>csfb__Button_Page_Layout_Finish_Step</members>
+        <members>csfb__Close_Text</members>
+        <members>csfb__Conga_Support_Link</members>
+        <members>csfb__Error_Composer_Create_Button_Individually_Text</members>
+        <members>csfb__Error_Composer_Create_Button_Text</members>
+        <members>csfb__For_More_Information_Label</members>
+        <members>csfb__Gather_Data_Text</members>
+        <members>csfb__Generic_Exception_Text</members>
+        <members>csfb__Go_To_Conga_Solution_Tab_Text</members>
+        <members>csfb__Ignore_Any_Success_Message_Text</members>
+        <members>csfb__Launch_Quick_Start_Label</members>
+        <members>csfb__Not_Quite_Sure_Finish_Step_Label</members>
+        <members>csfb__One_Time_Setup_Label</members>
+        <members>csfb__Please_Confirm_Merge_Field_Text</members>
+        <members>csfb__Processing_Error_Header</members>
+        <members>csfb__Quick_Start_Description_Label</members>
+        <members>csfb__Quick_Start_Label</members>
+        <members>csfb__Quote_Object_Warning</members>
+        <members>csfb__Record_Retrieve_Error</members>
+        <members>csfb__Remote_Site_Settings_Auto_Button_Label</members>
+        <members>csfb__Remote_Site_Settings_Auto_Label</members>
+        <members>csfb__Remote_Site_Settings_Manual_Label</members>
+        <members>csfb__Remote_Site_Settings_Modal_Header</members>
+        <members>csfb__Solution_Create_Error</members>
+        <members>csfb__Solution_Retrieve_Error</members>
+        <members>csfb__Template_Save_Error</members>
+        <members>csfb__Toast_MyDomains_Message</members>
+        <members>csfb__Toast_Title</members>
+        <members>csfb__To_Correct_This_Issue_Text</members>
+        <members>csfb__Unable_To_Create_Button_Field_Missing_Text</members>
+        <members>csfb__Unable_To_Create_Button_Text</members>
+        <members>csfb__Unable_To_Create_Conga_QuickMerge_Field_Missing_Text</members>
+        <members>csfb__Unable_To_Create_Conga_QuickMerge_Text</members>
+        <members>csfb__Unable_To_Create_Field_Integrity_Text</members>
+        <members>csfb__Unable_To_Create_Link_Field_Integrity_Text</members>
+        <members>csfb__Unable_To_Create_Link_Field_Missing_Text</members>
+        <members>csfb__Unable_To_Create_Link_Text</members>
+        <members>csfb__Unable_To_Create_Text</members>
+        <members>csfb__Unable_Update_Solution_Text</members>
+        <members>csfb__Video_Text</members>
+        <members>csfb__Watch_Video_Finish_Step_Label</members>
+        <members>csfb__Weblink_Deleted_Text</members>
+        <members>csfb__Welcome_Label</members>
+        <members>csfb__Wistia_Video_Player_Title</members>
+        <members>csfb__Your_Almost_Done_Text</members>
         <members>echosign_dev1__Acceptor_Role_Not_Enabled_Error</members>
         <members>echosign_dev1__Action_Library_Upload_Label</members>
         <members>echosign_dev1__Actions_Column_Header</members>
@@ -10855,6 +12183,13 @@
         <name>CustomLabels</name>
     </types>
     <types>
+        <members>APXTCFQ__Composer_Setting.Settings</members>
+        <members>APXTCFQ__Conga_Solution_Export_Environment.NA_Production</members>
+        <members>APXTCFQ__Conga_Solution_Export_Setting.Setting</members>
+        <members>APXTCFQ__Connected_App_Setting.AP_Production</members>
+        <members>APXTCFQ__Connected_App_Setting.EU_Producrtion</members>
+        <members>APXTCFQ__Connected_App_Setting.EU_Production</members>
+        <members>APXTCFQ__Connected_App_Setting.NA_Production</members>
         <members>LPCR_LeadConversionRTMapping.Lead_AO_PublicDSP</members>
         <members>LPCR_LeadConversionRTMapping.Lead_AO_PublicReservation</members>
         <members>LPCR_LeadConversionRTMapping.Lead_Entreprise</members>
@@ -10866,6 +12201,25 @@
         <members>AccountContactRelation</members>
         <members>AccountContactRole</members>
         <members>Activity</members>
+        <members>APXTCFQ__Composer_QuickMerge__c</members>
+        <members>APXTCFQ__Composer_Setting__mdt</members>
+        <members>APXTCFQ__Conga_Collection__c</members>
+        <members>APXTCFQ__Conga_Collection_Solution__c</members>
+        <members>APXTCFQ__Conga_Composer_Settings__c</members>
+        <members>APXTCFQ__Conga_Email_Staging__c</members>
+        <members>APXTCFQ__Conga_Email_Template__c</members>
+        <members>APXTCFQ__Conga_Merge_Query__c</members>
+        <members>APXTCFQ__Conga_Solution__c</members>
+        <members>APXTCFQ__Conga_Solution_Email_Template__c</members>
+        <members>APXTCFQ__Conga_Solution_Export_Environment__mdt</members>
+        <members>APXTCFQ__Conga_Solution_Export_Setting__mdt</members>
+        <members>APXTCFQ__Conga_Solution_Parameter__c</members>
+        <members>APXTCFQ__Conga_Solution_Query__c</members>
+        <members>APXTCFQ__Conga_Solution_Report__c</members>
+        <members>APXTCFQ__Conga_Solutions_Settings__c</members>
+        <members>APXTCFQ__Conga_Solution_Template__c</members>
+        <members>APXTCFQ__Conga_Template__c</members>
+        <members>APXTCFQ__Connected_App_Setting__mdt</members>
         <members>Asset</members>
         <members>AssetRelationship</members>
         <members>AssistantProgress</members>
@@ -10958,6 +12312,22 @@
         <members>ContentVersion</members>
         <members>Contract</members>
         <members>ContractContactRole</members>
+        <members>csfb__Composer_QuickMerge__c</members>
+        <members>csfb__Conductor__c</members>
+        <members>csfb__Conga_Composer_Settings__c</members>
+        <members>csfb__Conga_Email_Staging__c</members>
+        <members>csfb__Conga_Email_Template__c</members>
+        <members>csfb__CongaInvoicingSettings__c</members>
+        <members>csfb__Conga_Merge_Query__c</members>
+        <members>csfb__Conga_Solution__c</members>
+        <members>csfb__Conga_Solution_Email_Template__c</members>
+        <members>csfb__Conga_Solution_Parameter__c</members>
+        <members>csfb__Conga_Solution_Query__c</members>
+        <members>csfb__Conga_Solution_Report__c</members>
+        <members>csfb__Conga_Solutions_Settings__c</members>
+        <members>csfb__Conga_Solution_Template__c</members>
+        <members>csfb__Conga_Template__c</members>
+        <members>csfb__Scheduled_Conductor_History__c</members>
         <members>DataUseLegalBasis</members>
         <members>DataUsePurpose</members>
         <members>DuplicateRecordItem</members>
@@ -11218,6 +12588,25 @@
         <members>Account-th</members>
         <members>Account-zh_CN</members>
         <members>Account-zh_TW</members>
+        <members>APXTCFQ__Composer_QuickMerge__c-en_US</members>
+        <members>APXTCFQ__Composer_Setting__mdt-fr</members>
+        <members>APXTCFQ__Conga_Collection__c-en_US</members>
+        <members>APXTCFQ__Conga_Collection_Solution__c-en_US</members>
+        <members>APXTCFQ__Conga_Composer_Settings__c-fr</members>
+        <members>APXTCFQ__Conga_Email_Staging__c-en_US</members>
+        <members>APXTCFQ__Conga_Email_Template__c-en_US</members>
+        <members>APXTCFQ__Conga_Merge_Query__c-en_US</members>
+        <members>APXTCFQ__Conga_Solution__c-en_US</members>
+        <members>APXTCFQ__Conga_Solution_Email_Template__c-en_US</members>
+        <members>APXTCFQ__Conga_Solution_Export_Environment__mdt-fr</members>
+        <members>APXTCFQ__Conga_Solution_Export_Setting__mdt-fr</members>
+        <members>APXTCFQ__Conga_Solution_Parameter__c-en_US</members>
+        <members>APXTCFQ__Conga_Solution_Query__c-en_US</members>
+        <members>APXTCFQ__Conga_Solution_Report__c-en_US</members>
+        <members>APXTCFQ__Conga_Solutions_Settings__c-fr</members>
+        <members>APXTCFQ__Conga_Solution_Template__c-en_US</members>
+        <members>APXTCFQ__Conga_Template__c-en_US</members>
+        <members>APXTCFQ__Connected_App_Setting__mdt-fr</members>
         <members>Asset-de</members>
         <members>Asset-es_MX</members>
         <members>Asset-fr</members>
@@ -11620,6 +13009,22 @@
         <members>Contract-th</members>
         <members>Contract-zh_CN</members>
         <members>Contract-zh_TW</members>
+        <members>csfb__Composer_QuickMerge__c-en_US</members>
+        <members>csfb__Conductor__c-en_US</members>
+        <members>csfb__Conga_Composer_Settings__c-fr</members>
+        <members>csfb__Conga_Email_Staging__c-en_US</members>
+        <members>csfb__Conga_Email_Template__c-en_US</members>
+        <members>csfb__CongaInvoicingSettings__c-fr</members>
+        <members>csfb__Conga_Merge_Query__c-en_US</members>
+        <members>csfb__Conga_Solution__c-en_US</members>
+        <members>csfb__Conga_Solution_Email_Template__c-en_US</members>
+        <members>csfb__Conga_Solution_Parameter__c-en_US</members>
+        <members>csfb__Conga_Solution_Query__c-en_US</members>
+        <members>csfb__Conga_Solution_Report__c-en_US</members>
+        <members>csfb__Conga_Solutions_Settings__c-fr</members>
+        <members>csfb__Conga_Solution_Template__c-en_US</members>
+        <members>csfb__Conga_Template__c-en_US</members>
+        <members>csfb__Scheduled_Conductor_History__c-en_US</members>
         <members>echosign_dev1__Agreement_Notification__c-da</members>
         <members>echosign_dev1__Agreement_Notification__c-de</members>
         <members>echosign_dev1__Agreement_Notification__c-en_US</members>
@@ -12728,6 +14133,8 @@
         <name>CustomObjectTranslation</name>
     </types>
     <types>
+        <members>APXTCFQ__Conga_Configuration_Guide</members>
+        <members>APXTCFQ__Conga_Setup_Page</members>
         <members>blng__BillingConfigureLink</members>
         <members>echosign_dev1__Configuration_Guide</members>
         <members>SBQQ__ConfigureQuoteQuickly</members>
@@ -12735,11 +14142,17 @@
         <name>CustomPageWebLink</name>
     </types>
     <types>
+        <members>APXTCFQ__Conga_Quote_Generation_for_Salesforce_CPQ</members>
         <members>SBQQ__CPQStandardPerm</members>
         <members>SBQQ__HideGlobalHeader</members>
         <name>CustomPermission</name>
     </types>
     <types>
+        <members>APXTCFQ__Conga_Composer_Setup</members>
+        <members>APXTCFQ__Conga_Merge_Query__c</members>
+        <members>APXTCFQ__Conga_Solution_Collection</members>
+        <members>APXTCFQ__Conga_Template__c</members>
+        <members>APXTCFQ__CreateStep</members>
         <members>blng__AccountBalanceSnapshot__c</members>
         <members>blng__AgingBuckets__c</members>
         <members>blng__BalanceSnapShotScheduler__c</members>
@@ -12778,6 +14191,21 @@
         <members>blng__TaxTreatment__c</members>
         <members>blng__Usage__c</members>
         <members>blng__UsageSummary__c</members>
+        <members>csfb__About_Composer</members>
+        <members>csfb__Composer_QuickMerge__c</members>
+        <members>csfb__Conductor__c</members>
+        <members>csfb__Conductor_Dashboard</members>
+        <members>csfb__Conductor_Setup</members>
+        <members>csfb__Conga_Email_Template__c</members>
+        <members>csfb__CongaMerge</members>
+        <members>csfb__Conga_Merge_Query__c</members>
+        <members>csfb__Conga_Setup</members>
+        <members>csfb__Conga_Solution__c</members>
+        <members>csfb__Conga_Solutions_Setup_vf</members>
+        <members>csfb__Conga_Template__c</members>
+        <members>csfb__Conga_Workflow_Dashboard</members>
+        <members>csfb__CreateStep</members>
+        <members>csfb__Workflow_Setup</members>
         <members>echosign_dev1__Adobe_Sign_Admin</members>
         <members>echosign_dev1__Adobe_Sign_Admin_Component_Tab</members>
         <members>echosign_dev1__Agreement_Mobile</members>
@@ -12875,7 +14303,82 @@
         <name>Dashboard</name>
     </types>
     <types>
+        <members>APXTCFQ__Conga</members>
+        <members>APXTCFQ__Conga/APXTCFQ__CongaLogo.png</members>
+        <members>APXTCFQ__Conga/APXTCFQ__Conga_O.svg</members>
+        <members>APXTCFQ__Conga/APXTCFQ__Page_Logo.png</members>
+        <members>APXTCFQ__CongaSP_Account_Brief</members>
+        <members>APXTCFQ__CongaSP_Account_Brief_QS</members>
+        <members>APXTCFQ__CongaSP_Account_Brief_QS/APXTCFQ__CongaSP_Account_Brief_Parameters.txt</members>
+        <members>APXTCFQ__CongaSP_Account_Brief_QS/APXTCFQ__CongaSP_Account_Brief_Queries.txt</members>
+        <members>APXTCFQ__CongaSP_Account_Brief_QS/APXTCFQ__CongaSP_Account_Brief_Template_ft1.docx</members>
+        <members>APXTCFQ__CongaSP_Basic_Quote_QS</members>
+        <members>APXTCFQ__CongaSP_Basic_Quote_QS/APXTCFQ__CongaSP_Basic_Quote_Parameters.txt</members>
+        <members>APXTCFQ__CongaSP_Basic_Quote_QS/APXTCFQ__CongaSP_Basic_Quote_Template_ft1.docx</members>
+        <members>APXTCFQ__CongaSP_Client_Letter</members>
+        <members>APXTCFQ__CongaSP_Client_Letter_QS</members>
+        <members>APXTCFQ__CongaSP_Client_Letter_QS/APXTCFQ__CongaSP_Client_Letter_Parameters.txt</members>
+        <members>APXTCFQ__CongaSP_Client_Letter_QS/APXTCFQ__CongaSP_Client_Letter_Template_ft1.docx</members>
+        <members>APXTCFQ__CongaSP_Discount_Quote_QS</members>
+        <members>APXTCFQ__CongaSP_Discount_Quote_QS/APXTCFQ__CongaSP_Discount_Quote_Parameters.txt</members>
+        <members>APXTCFQ__CongaSP_Discount_Quote_QS/APXTCFQ__CongaSP_Discount_Quote_Template_ft1.docx</members>
+        <members>APXTCFQ__CongaSP_Invoice_Opportunity</members>
+        <members>APXTCFQ__CongaSP_Invoice_Opportunity_QS</members>
+        <members>APXTCFQ__CongaSP_Invoice_Opportunity_QS/APXTCFQ__CongaSP_Invoice_Email_Template_CET.html</members>
+        <members>APXTCFQ__CongaSP_Invoice_Opportunity_QS/APXTCFQ__CongaSP_Invoice_Parameters.txt</members>
+        <members>APXTCFQ__CongaSP_Invoice_Opportunity_QS/APXTCFQ__CongaSP_Invoice_Template_ft1.docx</members>
+        <members>APXTCFQ__CongaSP_Product_Family_Quote_QS</members>
+        <members>APXTCFQ__CongaSP_Product_Family_Quote_QS/APXTCFQ__CongaSP_Product_Family_Quote_Parameters.txt</members>
+        <members>APXTCFQ__CongaSP_Product_Family_Quote_QS/APXTCFQ__CongaSP_Product_Family_Quote_Template_ft1.docx</members>
+        <members>APXTCFQ__CongaSP_Proposal</members>
+        <members>APXTCFQ__CongaSP_Proposal_QS</members>
+        <members>APXTCFQ__CongaSP_Proposal_QS/APXTCFQ__CongaSP_Proposal_Email_Template_CET.html</members>
+        <members>APXTCFQ__CongaSP_Proposal_QS/APXTCFQ__CongaSP_Proposal_Parameters.txt</members>
+        <members>APXTCFQ__CongaSP_Proposal_QS/APXTCFQ__CongaSP_Proposal_Template_ft1.docx</members>
+        <members>APXTCFQ__CongaSP_Sales_Quote</members>
+        <members>APXTCFQ__CongaSP_Sales_Quote_QS</members>
+        <members>APXTCFQ__CongaSP_Sales_Quote_QS/APXTCFQ__CongaSP_Sales_Quote_Parameters.txt</members>
+        <members>APXTCFQ__CongaSP_Sales_Quote_QS/APXTCFQ__CongaSP_Sales_Quote_Template_ft1.xlsx</members>
         <members>blng__SalesforceBillingAssets</members>
+        <members>csfb__Conga</members>
+        <members>csfb__Conga/csfb__Conga_Composer_For_Salesforce_Billing_Logo.png</members>
+        <members>csfb__Conga/csfb__CongaLogo.png</members>
+        <members>csfb__Conga/csfb__Conga_O.svg</members>
+        <members>csfb__Conga/csfb__Page_Logo.png</members>
+        <members>csfb__CongaSP_Account_Statement_blng_Invoice_c</members>
+        <members>csfb__CongaSP_Account_Statement_blng_Invoice_c/csfb__FT1_SPT_1523547733329.docx</members>
+        <members>csfb__CongaSP_Account_Statement_blng_Invoice_c/csfb__Parameters_8484684615318.txt</members>
+        <members>csfb__CongaSP_Account_Statement_blng_Invoice_c/csfb__Queries_1523547733324.txt</members>
+        <members>csfb__CongaSP_Create_Receipt_blng_Invoice_c</members>
+        <members>csfb__CongaSP_Create_Receipt_blng_Invoice_c/csfb__CET_1523548116969.html</members>
+        <members>csfb__CongaSP_Create_Receipt_blng_Invoice_c/csfb__FT1_SPT_1523548116961.docx</members>
+        <members>csfb__CongaSP_Create_Receipt_blng_Invoice_c/csfb__Parameters_574864618.txt</members>
+        <members>csfb__CongaSP_Create_Receipt_blng_Invoice_c/csfb__Queries_1523548116947.txt</members>
+        <members>csfb__CongaSP_Credit_Memo_blng_CreditNote_c</members>
+        <members>csfb__CongaSP_Credit_Memo_blng_CreditNote_c/csfb__FT1_SPT_1523548599814.docx</members>
+        <members>csfb__CongaSP_Credit_Memo_blng_CreditNote_c/csfb__Parameters_156186131.txt</members>
+        <members>csfb__CongaSP_Credit_Memo_blng_CreditNote_c/csfb__Queries_1523548599803.txt</members>
+        <members>csfb__CongaSP_Debit_Memo_blng_DebitNote_c</members>
+        <members>csfb__CongaSP_Debit_Memo_blng_DebitNote_c/csfb__FT1_SPT_1523548713589.docx</members>
+        <members>csfb__CongaSP_Debit_Memo_blng_DebitNote_c/csfb__Parameter_1846861384.txt</members>
+        <members>csfb__CongaSP_Debit_Memo_blng_DebitNote_c/csfb__Queries_1523548713584.txt</members>
+        <members>csfb__CongaSP_Example_Starter_Pack</members>
+        <members>csfb__CongaSP_Example_Starter_Pack/csfb__CET_Email_Template.html</members>
+        <members>csfb__CongaSP_Example_Starter_Pack/csfb__CongaSP_Queries.txt</members>
+        <members>csfb__CongaSP_Example_Starter_Pack/csfb__Letter_File_ft1_SPT11547513.doc</members>
+        <members>csfb__CongaSP_Example_Starter_Pack/csfb__Parameters.txt</members>
+        <members>csfb__CongaSP_Example_Starter_Pack/csfb__Qvars.txt</members>
+        <members>csfb__CongaSP_Example_Starter_Pack/csfb__Reports.txt</members>
+        <members>csfb__CongaSP_Example_Starter_Pack/csfb__Template_2_ft2.docx</members>
+        <members>csfb__CongaSP_Example_Starter_Pack/csfb__Template_With_Bad_Sort_Order_fta_SPT114888413.docx</members>
+        <members>csfb__CongaSP_Example_Starter_Pack/csfb__Template_Without_Sort_Order_ft0.docx</members>
+        <members>csfb__CongaSP_Generate_Invoice_blng_Invoice_c</members>
+        <members>csfb__CongaSP_Generate_Invoice_blng_Invoice_c/csfb__CET_1523548829655.html</members>
+        <members>csfb__CongaSP_Generate_Invoice_blng_Invoice_c/csfb__FT1_SPT_1523548829650.docx</members>
+        <members>csfb__CongaSP_Generate_Invoice_blng_Invoice_c/csfb__Parameters_14529414.txt</members>
+        <members>csfb__CongaSP_Generate_Invoice_blng_Invoice_c/csfb__Queries_1523548829637.txt</members>
+        <members>csfb__CongaSP_Templates_Folder</members>
+        <members>csfb__CongaSP_Test_Document_Folder_Account</members>
         <members>echosign_dev1__Adobe_Samples</members>
         <members>echosign_dev1__Adobe_Templates</members>
         <members>echosign_dev1__ButtonsLogosImages</members>
@@ -12906,6 +14409,10 @@
         <name>EmailServicesFunction</name>
     </types>
     <types>
+        <members>APXTCFQ__Conga_Email_Staging_Templates</members>
+        <members>APXTCFQ__Conga_Email_Staging_Templates/APXTCFQ__Conga_Email_Staging_Template</members>
+        <members>csfb__Conga_Email_Staging_Templates</members>
+        <members>csfb__Conga_Email_Staging_Templates/csfb__Conga_Email_Staging_Template</members>
         <members>PDRI__Prodly_Moover_Email_Templates</members>
         <members>PDRI__Prodly_Moover_Email_Templates/PDRI__Notify_Deployment_Failed_Template</members>
         <members>PDRI__Prodly_Moover_Email_Templates/PDRI__Notify_Deployment_Started_Template</members>
@@ -13043,7 +14550,6 @@
         <members>LPCR_UpdatePricebook</members>
         <members>PB_Demande_NotificationChatter</members>
         <members>PB_Lead</members>
-        <members>Update_Prix_Mac</members>
         <name>Flow</name>
     </types>
     <types>
@@ -13054,7 +14560,6 @@
         <members>LPCR_UpdatePricebook</members>
         <members>PB_Demande_NotificationChatter</members>
         <members>PB_Lead</members>
-        <members>Update_Prix_Mac</members>
         <name>FlowDefinition</name>
     </types>
     <types>
@@ -13203,8 +14708,25 @@
         <name>HomePageLayout</name>
     </types>
     <types>
+        <members>APXTCFQ</members>
+        <members>APXTCFQ</members>
+        <members>APXTCFQ</members>
+        <members>APXTCFQ</members>
+        <members>APXTCFQ</members>
+        <members>APXTCFQ</members>
+        <members>APXTConga4</members>
         <members>blng</members>
         <members>blngDash</members>
+        <members>csfb</members>
+        <members>csfb</members>
+        <members>csfb</members>
+        <members>csfb</members>
+        <members>csfb</members>
+        <members>csfb</members>
+        <members>csfb</members>
+        <members>csfb</members>
+        <members>csfb</members>
+        <members>csfb</members>
         <members>echosign_dev1</members>
         <members>PDRI</members>
         <members>PDRI</members>
@@ -13229,6 +14751,24 @@
         <members>Account-Famille</members>
         <members>Account-Partenaire</members>
         <members>Account-PR_Account_Creche</members>
+        <members>APXTCFQ__Composer_QuickMerge__c-Composer QuickMerge Layout</members>
+        <members>APXTCFQ__Composer_Refresh_Token__mdt-Composer Refresh Token Layout</members>
+        <members>APXTCFQ__Composer_Setting__mdt-Composer Setting Layout</members>
+        <members>APXTCFQ__Conga_Collection__c-Conga Collection Layout</members>
+        <members>APXTCFQ__Conga_Collection_Solution__c-Conga Collection Solution Layout</members>
+        <members>APXTCFQ__Conga_Email_Staging__c-Conga Email Staging Layout</members>
+        <members>APXTCFQ__Conga_Email_Template__c-Conga Email Template Layout</members>
+        <members>APXTCFQ__Conga_Merge_Query__c-Conga Query Layout</members>
+        <members>APXTCFQ__Conga_Solution__c-Conga Solution Layout</members>
+        <members>APXTCFQ__Conga_Solution_Email_Template__c-Conga Solution Email Template Layout</members>
+        <members>APXTCFQ__Conga_Solution_Export_Environment__mdt-Conga Solution Export Environment Layout</members>
+        <members>APXTCFQ__Conga_Solution_Export_Setting__mdt-Conga Solution Export Setting Layout</members>
+        <members>APXTCFQ__Conga_Solution_Parameter__c-Conga Solution Parameter Layout</members>
+        <members>APXTCFQ__Conga_Solution_Query__c-Conga Solution Query Layout</members>
+        <members>APXTCFQ__Conga_Solution_Report__c-Conga Solution Report Layout</members>
+        <members>APXTCFQ__Conga_Solution_Template__c-Conga Solution Template Layout</members>
+        <members>APXTCFQ__Conga_Template__c-Conga Template Layout</members>
+        <members>APXTCFQ__Connected_App_Setting__mdt-Connected App Setting Layout</members>
         <members>Asset-Asset Layout</members>
         <members>AssetRelationship-Asset Relationship Layout</members>
         <members>AuthorizationForm-Authorization Form Layout</members>
@@ -13317,6 +14857,19 @@
         <members>Contract-Contract Layout</members>
         <members>Contract-CPQ Contract Layout</members>
         <members>Contract-Pr&#233;sentation du contrat</members>
+        <members>csfb__Composer_QuickMerge__c-Composer QuickMerge Layout</members>
+        <members>csfb__Conductor__c-Conductor Layout</members>
+        <members>csfb__Conga_Email_Staging__c-Conga Email Staging Layout</members>
+        <members>csfb__Conga_Email_Template__c-Conga Email Template Layout</members>
+        <members>csfb__Conga_Merge_Query__c-Conga Query Layout</members>
+        <members>csfb__Conga_Solution__c-Conga Solution Layout</members>
+        <members>csfb__Conga_Solution_Email_Template__c-Conga Solution Email Template Layout</members>
+        <members>csfb__Conga_Solution_Parameter__c-Conga Solution Parameter Layout</members>
+        <members>csfb__Conga_Solution_Query__c-Conga Solution Query Layout</members>
+        <members>csfb__Conga_Solution_Report__c-Conga Solution Report Layout</members>
+        <members>csfb__Conga_Solution_Template__c-Conga Solution Template Layout</members>
+        <members>csfb__Conga_Template__c-Conga Template Layout</members>
+        <members>csfb__Scheduled_Conductor_History__c-Conga Conductor History Layout</members>
         <members>DataUseLegalBasis-Data Use Legal Basis Layout</members>
         <members>DataUsePurpose-Data Use Purpose Layout</members>
         <members>DuplicateRecordSet-Duplicate Record Set Layout</members>
@@ -13379,7 +14932,7 @@
         <members>LPCR_Planning__c-Planning Layout</members>
         <members>LPCR_PlanningPrevisionnel__c-Planning Pr&#233;visionnel Layout</members>
         <members>LPCR_Preinscription__c-Pr&#233;sentation Pr&#233;inscription</members>
-        <members>LPCR_RessourceFamille__c-Ressource Famille Layout</members>
+        <members>LPCR_RessourceFamille__c-Ressource Famille MAC Layout</members>
         <members>LPCR_RessourceFamille__c-Ressource Famille Micro Layout</members>
         <members>LPCR_Structure_AO__c-Pr&#233;sentation Structure AO</members>
         <members>LPCR_TablePrix__c-ALSH</members>
@@ -13544,6 +15097,7 @@
         <members>SocialPersona-Social Persona Layout</members>
         <members>SocialPost-Social Post Layout</members>
         <members>Solution-Solution Layout</members>
+        <members>Solution-Solution Layout</members>
         <members>Sparklane_FR__IFTD_FieldMapping__c-IFTD_FieldMapping_Layout</members>
         <members>Task-Task Layout</members>
         <members>UserAlt-User Profile Layout</members>
@@ -13558,6 +15112,8 @@
         <name>Layout</name>
     </types>
     <types>
+        <members>APXTCFQ__Conga_Email_Letterhead</members>
+        <members>csfb__Conga_Email_Letterhead</members>
         <members>PDRI__Prodly_Moover_Letterhead</members>
         <name>Letterhead</name>
     </types>
@@ -13580,6 +15136,8 @@
         <members>Activity.MyTeamsActivities</members>
         <members>Activity.TodaysTasks</members>
         <members>Activity.UpcomingEvents</members>
+        <members>APXTCFQ__Conga_Merge_Query__c.APXTCFQ__All</members>
+        <members>APXTCFQ__Conga_Template__c.APXTCFQ__All</members>
         <members>Asset.AllAssets</members>
         <members>AuthorizationForm.All_AuthorizationForms</members>
         <members>AuthorizationFormConsent.All_AuthorizationFormConsents</members>
@@ -13656,6 +15214,12 @@
         <members>Contract.MyActivatedContracts</members>
         <members>Contract.MyDraftContracts</members>
         <members>Contract.MyInApprovalContracts</members>
+        <members>csfb__Composer_QuickMerge__c.csfb__All</members>
+        <members>csfb__Conductor__c.csfb__All</members>
+        <members>csfb__Conga_Email_Template__c.csfb__All</members>
+        <members>csfb__Conga_Merge_Query__c.csfb__All</members>
+        <members>csfb__Conga_Solution__c.csfb__All</members>
+        <members>csfb__Conga_Template__c.csfb__All</members>
         <members>DataUseLegalBasis.All_DataUseLegalBases</members>
         <members>DataUsePurpose.All_DataUsePurposes</members>
         <members>echosign_dev1__Agreement_Template__c.echosign_dev1__All</members>
@@ -13743,12 +15307,14 @@
         <members>SBQQ__InstallProcessorLog__c.SBQQ__All</members>
         <members>SBQQ__Localization__c.SBQQ__All</members>
         <members>SBQQ__LookupData__c.All</members>
+        <members>SBQQ__PriceRule__c.Active_price_rules</members>
         <members>SBQQ__PriceRule__c.SBQQ__All</members>
         <members>SBQQ__PriceSchedule__c.SBQQ__All</members>
         <members>SBQQ__PriceSchedule__c.SBQQ__All1</members>
         <members>SBQQ__PricingGuidance__c.SBQQ__All</members>
         <members>SBQQ__ProcessInput__c.SBQQ__All</members>
         <members>SBQQ__ProductRule__c.SBQQ__All</members>
+        <members>SBQQ__Quote__c.LPCR_DirectionJuridique_Quote</members>
         <members>SBQQ__Quote__c.LPCR_Management_Quote</members>
         <members>SBQQ__Quote__c.SBQQ__All</members>
         <members>SBQQ__QuoteProcess__c.LPCR_ApprobateursPrix_QuoteProcess</members>
@@ -13811,8 +15377,13 @@
         <name>PathAssistant</name>
     </types>
     <types>
+        <members>APXTCFQ__Composer_Administrator</members>
+        <members>APXTCFQ__Composer_User</members>
+        <members>APXTCFQ__CongaQuoteGenerationSalesforceCPQ</members>
         <members>blng__HostedPaymentUser</members>
         <members>blng__SalesforceBillingAdmin</members>
+        <members>csfb__Composer_Administrator</members>
+        <members>csfb__Composer_User</members>
         <members>echosign_dev1__Adobe_Sign_Admin</members>
         <members>echosign_dev1__Adobe_Sign_Community_User</members>
         <members>echosign_dev1__Adobe_Sign_Integration_User</members>
@@ -13862,6 +15433,7 @@
         <members>LPCR_ApprobateursPrix</members>
         <members>LPCR_AubinSalon</members>
         <members>LPCR_ClementineCourrier</members>
+        <members>LPCR_DirectionJuridique</members>
         <members>LPCR_ElodieRault</members>
         <members>LPCR_FatimalLaid</members>
         <members>LPCR_JimmyBuffo</members>
@@ -13895,6 +15467,8 @@
         <members>Case.NewChildCase</members>
         <members>CollaborationGroup.NewGroupMember</members>
         <members>CollaborationGroup.NewGroupRecord</members>
+        <members>Conga_Composer_Sf1</members>
+        <members>Conga_Composer_SF1_EU</members>
         <members>Contact.EchoSign_Contact_Publisher_Action</members>
         <members>Contact.NouvelleDemandeReseauGrandir</members>
         <members>EchoSign_Global_Publisher_Action</members>
@@ -13998,8 +15572,15 @@
         <members>adobeesign_api</members>
         <members>adobeesign_mdapi_v18</members>
         <members>API_Sparklane</members>
+        <members>APXTCFQ__CongaComposer8</members>
+        <members>APXTCFQ__CongaSolutionExport</members>
+        <members>APXTCFQ__SalesforceOAuth</members>
+        <members>APXTCFQ__SalesforceOAuthTest</members>
         <members>Composer_VisualForce</members>
+        <members>Composer_VisualForce_CFQ</members>
         <members>Conga_Front_End</members>
+        <members>Conga_Front_End_CFQ</members>
+        <members>csfb__CongaInvoicing</members>
         <members>nlpcr</members>
         <members>PDRI__AWS_Production</members>
         <members>PDRI__ProdlyServer</members>
@@ -14024,9 +15605,17 @@
         <members>SBQQ__RestSbShield</members>
         <members>SBQQ__RestShield</members>
         <members>Standard_VisualForce</members>
+        <members>Standard_VisualForce_CFQ</members>
         <name>RemoteSiteSetting</name>
     </types>
     <types>
+        <members>APXTCFQ__Conga_PointMerge_Reports</members>
+        <members>APXTCFQ__Conga_Reports</members>
+        <members>APXTCFQ__CongaSP_Composer_Starter_Pack_Reports</members>
+        <members>APXTCFQ__CongaSP_Composer_Starter_Pack_Reports/APXTCFQ__CongaSP_AccountBrief_Activities</members>
+        <members>APXTCFQ__CongaSP_Composer_Starter_Pack_Reports/APXTCFQ__CongaSP_AccountBrief_Cases</members>
+        <members>APXTCFQ__CongaSP_Composer_Starter_Pack_Reports/APXTCFQ__CongaSP_AccountBrief_Contacts</members>
+        <members>APXTCFQ__CongaSP_Composer_Starter_Pack_Reports/APXTCFQ__CongaSP_AccountBrief_Opptys</members>
         <members>blng__CreditNoteReports</members>
         <members>blng__CreditNoteReports/blng__CanceledCreditNotes</members>
         <members>blng__CreditNoteReports/blng__CreditNoteTotals</members>
@@ -14153,6 +15742,14 @@
         <members>blng__InvoicingReports/blng__InvoicingbyProduct</members>
         <members>blng__InvoicingReports/blng__OpenInvoices</members>
         <members>blng__InvoicingReports/LPCR_Rapport_Export_Paiement_Mthode_CB_Mpr</members>
+        <members>csfb__Conga_PointMerge_Reports</members>
+        <members>csfb__Conga_Reports</members>
+        <members>csfb__CongaSP_Conga_Solution_Utilities_Reports</members>
+        <members>csfb__CongaSP_Conga_Solution_Utilities_Reports/csfb__CongaSP_This_Contacts_Activities</members>
+        <members>csfb__CongaSP_Conga_Solution_Utilities_Reports/csfb__Last_3_Years_Case_Details</members>
+        <members>csfb__CongaSP_Conga_Solution_Utilities_Reports/csfb__Last_3_Years_Case_Details_By_Acct</members>
+        <members>csfb__CongaSP_Conga_Solution_Utilities_Reports/csfb__Last_3_Years_Case_Details_By_Owner</members>
+        <members>csfb__CongaSP_Conga_Solution_Utilities_Reports/csfb__This_Product_s_Price_Book_Details</members>
         <members>DashboardReportsAdoption</members>
         <members>DashboardReportsAdoption/UsageActivitiesCompleted</members>
         <members>echosign_dev1__EchoSignReports</members>
@@ -14486,6 +16083,41 @@
         <name>SharingRules</name>
     </types>
     <types>
+        <members>APXTCFQ__AddSiteButton</members>
+        <members>APXTCFQ__adobeesign</members>
+        <members>APXTCFQ__Composer_App_Icon</members>
+        <members>APXTCFQ__Composer_App_Logo</members>
+        <members>APXTCFQ__ComposerLaunchButton</members>
+        <members>APXTCFQ__ComposerLogoRed</members>
+        <members>APXTCFQ__ComposerParameters</members>
+        <members>APXTCFQ__ComposerResources</members>
+        <members>APXTCFQ__Composer_SF1_Icon</members>
+        <members>APXTCFQ__Composer_SF1_Icon_small</members>
+        <members>APXTCFQ__ComposerSolutionCheckMark</members>
+        <members>APXTCFQ__CongaC</members>
+        <members>APXTCFQ__congaLogoPng</members>
+        <members>APXTCFQ__Conga_O_Logo_SM</members>
+        <members>APXTCFQ__CustomSolutionBackground</members>
+        <members>APXTCFQ__DisabledLaunchButton</members>
+        <members>APXTCFQ__DocumentStencil</members>
+        <members>APXTCFQ__docusign</members>
+        <members>APXTCFQ__ErrorHandler</members>
+        <members>APXTCFQ__jQuery</members>
+        <members>APXTCFQ__LightningUtils</members>
+        <members>APXTCFQ__Lodash</members>
+        <members>APXTCFQ__MixPanelLibrary</members>
+        <members>APXTCFQ__MomentJS</members>
+        <members>APXTCFQ__ParameterGridResources</members>
+        <members>APXTCFQ__PdfDocumentStencil</members>
+        <members>APXTCFQ__QuickStartBackground</members>
+        <members>APXTCFQ__RefreshIcon</members>
+        <members>APXTCFQ__Rounder</members>
+        <members>APXTCFQ__sertifi</members>
+        <members>APXTCFQ__SLDS080</members>
+        <members>APXTCFQ__Sortable</members>
+        <members>APXTCFQ__TemplateBuilder</members>
+        <members>APXTCFQ__VidImage</members>
+        <members>APXTCFQ__WordDocumentStencil</members>
         <members>blng__blng_slds</members>
         <members>blng__Images</members>
         <members>blng__logo</members>
@@ -14493,6 +16125,24 @@
         <members>blng__rocket</members>
         <members>blng__setPaymentMethod</members>
         <members>blng__sortBy</members>
+        <members>csfb__AddSiteButton</members>
+        <members>csfb__Composer_App_Icon</members>
+        <members>csfb__Composer_App_Logo</members>
+        <members>csfb__ComposerLaunchButton</members>
+        <members>csfb__ComposerParameters</members>
+        <members>csfb__ComposerResources</members>
+        <members>csfb__Composer_SF1_Icon</members>
+        <members>csfb__Composer_SF1_Icon_small</members>
+        <members>csfb__ComposerSolutionCheckMark</members>
+        <members>csfb__Conga_O_Logo_SM</members>
+        <members>csfb__DisabledLaunchButton</members>
+        <members>csfb__LightningUtils</members>
+        <members>csfb__ParameterGridResources</members>
+        <members>csfb__QuickStartBackground</members>
+        <members>csfb__RefreshIcon</members>
+        <members>csfb__Rounder</members>
+        <members>csfb__TemplateBuilder</members>
+        <members>csfb__VidImage</members>
         <members>echosign_dev1__A12_Alert</members>
         <members>echosign_dev1__A12_FullCheck</members>
         <members>echosign_dev1__ActionAdd</members>
@@ -14678,6 +16328,19 @@
     </types>
     <types>
         <members>Account</members>
+        <members>APXTCFQ__Composer_QuickMerge__c</members>
+        <members>APXTCFQ__Conga_Collection__c</members>
+        <members>APXTCFQ__Conga_Collection_Solution__c</members>
+        <members>APXTCFQ__Conga_Email_Staging__c</members>
+        <members>APXTCFQ__Conga_Email_Template__c</members>
+        <members>APXTCFQ__Conga_Merge_Query__c</members>
+        <members>APXTCFQ__Conga_Solution__c</members>
+        <members>APXTCFQ__Conga_Solution_Email_Template__c</members>
+        <members>APXTCFQ__Conga_Solution_Parameter__c</members>
+        <members>APXTCFQ__Conga_Solution_Query__c</members>
+        <members>APXTCFQ__Conga_Solution_Report__c</members>
+        <members>APXTCFQ__Conga_Solution_Template__c</members>
+        <members>APXTCFQ__Conga_Template__c</members>
         <members>Asset</members>
         <members>blng__AccountBalanceSnapshot__c</members>
         <members>blng__AgingBuckets__c</members>
@@ -14742,6 +16405,19 @@
         <members>Contact</members>
         <members>ContentDocument</members>
         <members>Contract</members>
+        <members>csfb__Composer_QuickMerge__c</members>
+        <members>csfb__Conductor__c</members>
+        <members>csfb__Conga_Email_Staging__c</members>
+        <members>csfb__Conga_Email_Template__c</members>
+        <members>csfb__Conga_Merge_Query__c</members>
+        <members>csfb__Conga_Solution__c</members>
+        <members>csfb__Conga_Solution_Email_Template__c</members>
+        <members>csfb__Conga_Solution_Parameter__c</members>
+        <members>csfb__Conga_Solution_Query__c</members>
+        <members>csfb__Conga_Solution_Report__c</members>
+        <members>csfb__Conga_Solution_Template__c</members>
+        <members>csfb__Conga_Template__c</members>
+        <members>csfb__Scheduled_Conductor_History__c</members>
         <members>echosign_dev1__Agreement_Notification__c</members>
         <members>echosign_dev1__Agreement_Template__c</members>
         <members>echosign_dev1__Agreement_Type__c</members>
@@ -14913,6 +16589,7 @@
     </types>
     <types>
         <members>Account.VR_Compte_AutrePrestataire</members>
+        <members>APXTCFQ__Conga_Solution_Email_Template__c.APXTCFQ__CET_Count_Validator</members>
         <members>blng__RefundLinePayment__c.blng__Rule_on_Refund_Amount</members>
         <members>blng__RevenueDistributionMethod__c.blng__CannotSpecifyRevDatesifTransTypeAutomati</members>
         <members>blng__RevenueDistributionMethod__c.blng__DontSpecifyDatesIfCreationProcessManual</members>
@@ -14934,6 +16611,14 @@
         <members>blng__RevenueRecognitionTreatment__c.blng__PERCENTAGE_MUST_BE_LESS_THAN_HUNDRED</members>
         <members>blng__RevenueRecognitionTreatment__c.blng__Percentage_Value_more_than_zero</members>
         <members>blng__RevenueRecognitionTreatment__c.blng__Processing_Order_Cannot_be_negative</members>
+        <members>csfb__Conductor__c.csfb__Either_Report_or_Query_Id_must_be_suppli</members>
+        <members>csfb__Conductor__c.csfb__Not_Both_a_Report_Id_and_a_Query_Id</members>
+        <members>csfb__Conductor__c.csfb__Query_Id_Length</members>
+        <members>csfb__Conductor__c.csfb__Record_Id_Length</members>
+        <members>csfb__Conductor__c.csfb__Report_Id_Length</members>
+        <members>csfb__Conductor__c.csfb__URL_Field_Name_Required</members>
+        <members>csfb__Conductor__c.csfb__Workspace_Id_Length</members>
+        <members>csfb__Conga_Solution_Email_Template__c.csfb__CET_Count_Validator</members>
         <members>echosign_dev1__Agreement_Template__c.echosign_dev1__Confirm_Password</members>
         <members>echosign_dev1__Agreement_Template__c.echosign_dev1__Enabled_Password_Set</members>
         <members>echosign_dev1__Agreement_Template__c.echosign_dev1__Maximum_Expiration_Days</members>
@@ -15004,6 +16689,7 @@
         <members>SBQQ__ProductRule__c.SBQQ__FilterTypeScope</members>
         <members>SBQQ__ProductRule__c.SBQQ__ProductEvaluationEventValidation</members>
         <members>SBQQ__ProductRule__c.SBQQ__RequiredEvaluationEvent</members>
+        <members>SBQQ__Quote__c.LPCR_Quote_lines_sans_PO</members>
         <members>SBQQ__Quote__c.SBQQ__End_Date_Before_Start_Date</members>
         <members>SBQQ__Quote__c.SBQQ__Invalid_First_Segment_Term_End_Date</members>
         <members>SBQQ__Quote__c.SBQQ__Invalid_Subscription_Term</members>
@@ -15028,6 +16714,8 @@
     </types>
     <types>
         <members>Account.Activer_D_sactiver_Commandes</members>
+        <members>Account.APXTCFQ__Conga_Composer_OAuth</members>
+        <members>Account.APXTCFQ__Conga_Mail_Merge</members>
         <members>Account.blng__CreditCenter</members>
         <members>Account.blng__PaymentVirtualTerminal</members>
         <members>Account.blng__Refund</members>
@@ -15039,6 +16727,17 @@
         <members>Account.MAJ_Preinscriptions</members>
         <members>Account.SBQQ__Amend_Assets</members>
         <members>Account.SBQQ__Renew_Assets</members>
+        <members>APXTCFQ__Conga_Email_Template__c.APXTCFQ__Advanced_Editor</members>
+        <members>APXTCFQ__Conga_Merge_Query__c.APXTCFQ__Conga_Query_Builder</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Add_Conga_Email_Template</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Add_Parameters</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Add_Queries</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Add_Reports</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Add_Templates</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Button_Adder</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__CM_Launch_Button</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Create_New_Guided</members>
+        <members>APXTCFQ__Conga_Solution__c.APXTCFQ__Sample_Record_Selector</members>
         <members>blng__CreditNote__c.blng__Allocations</members>
         <members>blng__CreditNote__c.blng__ApplyTax</members>
         <members>blng__CreditNote__c.blng__CancelTax</members>
@@ -15062,13 +16761,41 @@
         <members>blng__RevenueSchedule__c.blng__RevenueAdjustment</members>
         <members>Campaign.ViewAllCampaignMembers</members>
         <members>Campaign.ViewCampaignInfluenceReport</members>
+        <members>Case.APXTCFQ__Conga_Composer_OAuth</members>
+        <members>Case.APXTCFQ__Conga_Mail_Merge</members>
+        <members>Contact.APXTCFQ__Conga_Composer_OAuth</members>
+        <members>Contact.APXTCFQ__Conga_Mail_Merge</members>
         <members>Contact.echosign_dev1__Send_to_EchoSign</members>
         <members>Contact.GoogleMaps</members>
         <members>Contact.GoogleSearch</members>
+        <members>Contract.APXTCFQ__Conga_Composer_OAuth</members>
+        <members>Contract.APXTCFQ__Conga_Mail_Merge</members>
+        <members>Contract.APXTCFQ__Conga_Merge</members>
         <members>Contract.echosign_dev1__Send_to_EchoSign</members>
         <members>Contract.SBQQ__Amend</members>
         <members>Contract.SBQQ__RenewContracts</members>
         <members>Contract.Suspendres_les_commandes_du_compte</members>
+        <members>csfb__Conductor__c.csfb__Launch</members>
+        <members>csfb__Conductor__c.csfb__Launch_C7</members>
+        <members>csfb__Conductor__c.csfb__Launch_C8</members>
+        <members>csfb__Conductor__c.csfb__Launch_Dev</members>
+        <members>csfb__Conductor__c.csfb__Sample_List_View_Button</members>
+        <members>csfb__Conductor__c.csfb__Schedule</members>
+        <members>csfb__Conductor__c.csfb__Schedule_C7</members>
+        <members>csfb__Conductor__c.csfb__Schedule_C8</members>
+        <members>csfb__Conductor__c.csfb__View_Conga_Conductor_Dashboard</members>
+        <members>csfb__Conductor__c.csfb__View_Query</members>
+        <members>csfb__Conductor__c.csfb__View_Report</members>
+        <members>csfb__Conga_Email_Template__c.csfb__Advanced_Editor</members>
+        <members>csfb__Conga_Merge_Query__c.csfb__Conga_Query_Builder</members>
+        <members>csfb__Conga_Solution__c.csfb__Add_Conga_Email_Template</members>
+        <members>csfb__Conga_Solution__c.csfb__Add_Parameters</members>
+        <members>csfb__Conga_Solution__c.csfb__Add_Queries</members>
+        <members>csfb__Conga_Solution__c.csfb__Add_Reports</members>
+        <members>csfb__Conga_Solution__c.csfb__Add_Templates</members>
+        <members>csfb__Conga_Solution__c.csfb__Button_Adder</members>
+        <members>csfb__Conga_Solution__c.csfb__CM_Launch_Button</members>
+        <members>csfb__Conga_Solution__c.csfb__Sample_Record_Selector</members>
         <members>echosign_dev1__SIGN_Agreement__c.echosign_dev1__Cancel_Agreement_Bulk</members>
         <members>echosign_dev1__SIGN_Agreement__c.echosign_dev1__Delete_Agreement</members>
         <members>echosign_dev1__SIGN_Agreement__c.echosign_dev1__Delete_Agreement_Bulk</members>
@@ -15078,6 +16805,8 @@
         <members>echosign_dev1__SIGN_Agreement__c.echosign_dev1__SendReminder</members>
         <members>echosign_dev1__SIGN_Agreement__c.echosign_dev1__Send_Reminder_Bulk</members>
         <members>echosign_dev1__SIGN_Agreement__c.echosign_dev1__Update_Agreement_Bulk</members>
+        <members>Lead.APXTCFQ__Conga_Composer_OAuth</members>
+        <members>Lead.APXTCFQ__Conga_Mail_Merge</members>
         <members>Lead.echosign_dev1__Send_to_EchoSign</members>
         <members>Lead.GoogleMaps</members>
         <members>Lead.GoogleNews</members>
@@ -15085,6 +16814,8 @@
         <members>Lead.Sparklane_FR__IFTD_UI_Lead_findCompany_button</members>
         <members>LPCR_BonAchatPartenaire__c.EnvoyerPourSignature</members>
         <members>LPCR_ContratPartenaire__c.EnvoyerPourSignature</members>
+        <members>Opportunity.APXTCFQ__Conga_Composer_OAuth</members>
+        <members>Opportunity.APXTCFQ__Conga_Mail_Merge</members>
         <members>Opportunity.echosign_dev1__Conga_Send_to_EchoSign</members>
         <members>Opportunity.echosign_dev1__Send_to_EchoSign</members>
         <members>Opportunity.SBQQ__Amend_Assets</members>
@@ -15113,6 +16844,7 @@
         <members>SBQQ__ProductOption__c.SBQQ__Translate</members>
         <members>SBQQ__ProductRule__c.SBQQ__CloneWithRelated</members>
         <members>SBQQ__ProductRule__c.SBQQ__CloneWithRelatedClassic</members>
+        <members>SBQQ__Quote__c.Conga_Composer_Composer_Basic_Quote</members>
         <members>SBQQ__Quote__c.Doc_Annexe_2</members>
         <members>SBQQ__Quote__c.SBQQ__CalculateQuote</members>
         <members>SBQQ__Quote__c.SBQQ__CloneWithRelated</members>
@@ -15141,6 +16873,12 @@
         <members>SBQQ__WebQuote__c.SBQQ__GenerateDocument</members>
         <members>SBQQ__WebQuote__c.SBQQ__RefreshMultiplePrices</members>
         <members>SBQQ__WebQuote__c.SBQQ__RefreshPrices</members>
+        <members>Solution.APXTCFQ__Conga_Composer_OAuth</members>
+        <members>Solution.APXTCFQ__Conga_Mail_Merge</members>
+        <members>Solution.csfb__Conga_Composer_OAuth</members>
+        <members>Solution.csfb__Conga_Mail_Merge</members>
+        <members>User.APXTCFQ__Conga_Composer_OAuth</members>
+        <members>User.APXTCFQ__Conga_Mail_Merge</members>
         <members>User.echosign_dev1__Sync_EchoSign_User</members>
         <members>User.SBQQ__Select_Theme</members>
         <name>WebLink</name>
@@ -15166,6 +16904,8 @@
         <members>SBQQ__Quote__c.LPCR_AlerteContratToujoursAttenteSignature</members>
         <members>SBQQ__Quote__c.LPCR_ContratRejete</members>
         <members>SBQQ__Quote__c.LPCR_Contratvalide</members>
+        <members>SBQQ__Quote__c.LPCR_DevisAccepte</members>
+        <members>SBQQ__Quote__c.LPCR_DevisRejete</members>
         <members>SBQQ__Quote__c.LPCR_InformerSFResiliation</members>
         <members>SBQQ__Quote__c.LPCR_ValidationAcceptee</members>
         <members>SBQQ__Quote__c.Signature_Contrat</members>
@@ -15187,6 +16927,7 @@
         <members>SBQQ__Quote__c.LPCR_StatutValide</members>
         <members>SBQQ__Quote__c.LPCR_UpdateRTQuote</members>
         <members>SBQQ__QuoteLine__c.Definirprixplancher</members>
+        <members>SBQQ__QuoteLine__c.LPCR_Fill_Tech_ProductCode</members>
         <name>WorkflowFieldUpdate</name>
     </types>
     <types>
@@ -15198,10 +16939,12 @@
         <members>PDRI__Deployment_Result__c.PDRI__Deployment Failed Workflow</members>
         <members>PDRI__Deployment_Result__c.PDRI__Deployment Started Workflow</members>
         <members>PDRI__Deployment_Result__c.PDRI__Deployment Succeeded Workflow</members>
+        <members>SBQQ__Quote__c.Alerte Service Famille</members>
         <members>SBQQ__Quote__c.Indexation Des Prix</members>
         <members>SBQQ__Quote__c.LPCR_ContratNonSign&#233;</members>
         <members>SBQQ__Quote__c.Update RT Quote</members>
         <members>SBQQ__QuoteLine__c.D&#233;finir le prix plancher</members>
+        <members>SBQQ__QuoteLine__c.WF_SBQQQuoteLine_FillTechProdcutCode</members>
         <name>WorkflowRule</name>
     </types>
     <types>
