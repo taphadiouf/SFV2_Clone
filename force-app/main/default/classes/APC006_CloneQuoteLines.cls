@@ -38,7 +38,7 @@ public with sharing class APC006_CloneQuoteLines {
                 fieldsList.add(f.getFieldPath());
             }
 
-            query += String.join(fieldsList, ',') + ' FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = :quoteId ORDER BY Name';
+            query += String.join(fieldsList, ',') + ' FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = :quoteId AND LPCR_CloneCancel__c = True ORDER BY Name';
 
             for (SBQQ__QuoteLine__c ql: Database.query(query)) {
                     idToQuoteLineMap.put(ql.Id, ql);
