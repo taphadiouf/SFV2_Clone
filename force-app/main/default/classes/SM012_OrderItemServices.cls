@@ -16,17 +16,17 @@ public with sharing class SM012_OrderItemServices implements Queueable{
     public static void setLegalEntityOnOrderItem(List<OrderItem> newOrderItem){
         Set<Id> orderItemId = UM003_TypeManager.getIdsOfListObjects(newOrderItem);
         List<OrderItem> listOrderItem = [SELECT Id,blng__LegalEntity__c, SBQQ__QuoteLine__r.LPCR_EntiteJuridique__c	 FROM OrderItem WHERE ID in :orderItemId];
-        Boolean updateOrderItem = false;
+        //Boolean updateOrderItem = false;
         for(OrderItem eachOrderItem : listOrderItem){
             if(eachOrderItem.blng__LegalEntity__c ==null){
-                updateOrderItem = true;
+        //        updateOrderItem = true;
                 eachOrderItem.blng__LegalEntity__c = eachOrderItem.SBQQ__QuoteLine__r.LPCR_EntiteJuridique__c;
                 system.debug('setting legal entity on Order item '+eachOrderItem.blng__LegalEntity__c);
             }
         }
-        if (updateOrderItem) {
+        //if (updateOrderItem) {
             update listOrderItem;
-        }
+        //}
     }
     
     public static void legalEntityOnOrderItemConSch( Map<Id,OrderItem> mapOrderItem){

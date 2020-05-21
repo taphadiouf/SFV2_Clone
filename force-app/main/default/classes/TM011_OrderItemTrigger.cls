@@ -15,14 +15,8 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     }
 
     protected override void beforeInsert() {
-        System.debug('#### check point 1');
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        System.debug('#### check point 2');
-        System.debug('#### check point 2.0 ' + oldOrderItemsMap);
-        System.debug('#### check point 2.1 ' + newOrderItemsList);
-        System.debug('#### check point 2.2 ' + newOrderItemsMap);
         SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
-        System.debug('#### check point 3');
     }
 
     protected override void afterInsert() {
