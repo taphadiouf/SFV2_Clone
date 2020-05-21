@@ -385,4 +385,18 @@
         <shortDescription>LPCR_Title2</shortDescription>
         <value>Montant Forfait</value>
     </labels>
+    <labels>
+        <fullName>LPCR_RegistrationFeeErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RegistrationFeeErrorMessage</shortDescription>
+        <value>Registration Fee already included</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RegistrationFeeMac</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RegistrationFeeMac</shortDescription>
+        <value>FraisInscriptionMac</value>
+    </labels>
 </CustomLabels>
