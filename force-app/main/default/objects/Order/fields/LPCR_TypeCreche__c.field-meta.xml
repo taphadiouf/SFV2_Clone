@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_TypeCreche__c</fullName>
+    <description>Valeurs de Type de Creche recoupere depuis Account Creche</description>
     <externalId>false</externalId>
     <label>Type de crèche</label>
     <required>false</required>

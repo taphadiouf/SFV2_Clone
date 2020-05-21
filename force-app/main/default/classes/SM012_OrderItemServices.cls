@@ -47,7 +47,6 @@ public with sharing class SM012_OrderItemServices implements Queueable{
     }
 
     public static void setupInvoiceDates(List<OrderItem> newOrderItems) {
-
         PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'newOrderItems: ' + newOrderItems.size());
         if (newOrderItems != null) {
             Id accountEntrepriseRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
@@ -135,6 +134,24 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                 }
                 PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'item (AFTER): ' + item);
             }
-        }  
+        }
+    }
+
+
+    public static void setInvoiceGroupingOnOrderItem(Map<Id,OrderItem> mapOrderItem){
+        Id recordTypeId = UM003_TypeManager.getQuoteRecordTypeIdByDeveloperName('Referencement');
+        List<OrderItem> listOrderItem = [SELECT Id, LPCR_NumeroPurchaseOrder__c, Order.SBQQ__Quote__r.RecordTypeId, blng__InvoiceGrouping__c, blng__InvoiceGroupId__c FROM OrderItem WHERE ID in :mapOrderItem.keySet() AND Order.SBQQ__Quote__r.RecordTypeId =: recordTypeId];
+        List<OrderItem> listOrderItemtoSave = new List<OrderItem>();
+        for(OrderItem eachOrderItem : listOrderItem){
+            eachOrderItem.blng__InvoiceGrouping__c = 'Invoice Group ID';
+            if(String.isNotBlank(eachOrderItem.LPCR_NumeroPurchaseOrder__c)){
+                eachOrderItem.blng__InvoiceGroupId__c = eachOrderItem.LPCR_NumeroPurchaseOrder__c;
+                system.debug('invoice group id update on OrderItem '+eachOrderItem.blng__InvoiceGroupId__c);
+            }
+            listOrderItemtoSave.add(eachOrderItem);
+        }
+        if(listOrderItemtoSave.size()>0){
+            update listOrderItemtoSave;
+        }
     }
 }

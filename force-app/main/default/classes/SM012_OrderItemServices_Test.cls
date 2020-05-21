@@ -15,6 +15,9 @@ public with sharing class SM012_OrderItemServices_Test {
 
     @TestSetup
     static void setup(){
+        Id standardPricebookId = Test.getStandardPricebookId();
+        //Id recordTypeId = UM003_TypeManager.getQuoteRecordTypeIdByDeveloperName('Referencement');
+        Id recordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, 'Referencement');
         UM002_TestDataFactory.insertBillingCustomSettings();
         
         blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
@@ -119,6 +122,7 @@ public with sharing class SM012_OrderItemServices_Test {
             'SBQQ__ChargeType__c' => 'Recurring',
             'SBQQ__BillingType__c' => 'Advance',
             'SBQQ__BillingFrequency__c' => 'Monthly',
+            'LPCR_NumeroPurchaseOrder__c' => '12345678',
             'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
         };
 
@@ -633,18 +637,8 @@ public with sharing class SM012_OrderItemServices_Test {
             Date expectedDate = (todaytDay > invoicingDay)
                 ? UM005_DateUtility.setDayOnDate (invoicingDay, System.today().addMonths(1))
                 : UM005_DateUtility.setDayOnDate (invoicingDay, System.today());
-            System.debug('### assertion replacement - expectedDate: ' + expectedDate);
 
-            System.debug('### mapOrderItem: ' + mapOrderItem.keySet().size());
             for (OrderItem oi : mapOrderItem.values()) {
-                System.debug('### assertion replacement - oi: ' + oi.SBQQ__BillingType__c);
-                System.debug('### assertion replacement - oi: ' + oi.ServiceDate);
-                System.debug('### assertion replacement - oi: ' + oi.blng__NextChargeDate__c);
-                System.debug('### assertion replacement - oi: ' + oi.blng__OverrideNextBillingDate__c);
-                System.debug('### assertion replacement - oi: ' + oi.blng__BillThroughDateOverride__c);
-                System.debug('### assertion replacement - oi: ' + oi.OrderId);
-                System.debug('### assertion replacement - oi: ' + oi.Order.LPCR_TypeCreche__c);
-                System.debug('### assertion replacement - oi: ' + oi.Order.blng__BillingAccount__r.RecordTypeId);
 
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
@@ -1008,5 +1002,37 @@ public with sharing class SM012_OrderItemServices_Test {
                 System.assertEquals(expectedBillThrought, oi.blng__BillThroughDateOverride__c);
             }
         }
+    }
+
+    @IsTest
+    //Do This test an additional quote of type Referencement?
+    static void setInvoiceGroupingOnOrderItem_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            
+            blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+            
+            blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+            
+            blng__BillingRule__c   billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+            
+            blng__TaxRule__c   taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
+            
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Ordered__c FROM SBQQ__Quote__c];
+            
+            Test.startTest(); 
+            quote.SBQQ__Ordered__c  = true; 
+            update quote;
+            
+            
+            Order order = [SELECT Id , Status,SBQQ__Quote__c  FROM Order WHERE SBQQ__Quote__c = :quote.Id];            
+            
+            Map<Id,OrderItem> mapOrderItem = new Map<Id,OrderItem>([SELECT Id, LPCR_NumeroPurchaseOrder__c, blng__InvoiceGrouping__c, blng__InvoiceGroupId__c FROM OrderItem WHERE OrderId = :order.Id]);
+        	Test.stopTest();
+            
+            for(OrderItem eachOrderItem : mapOrderItem.values()){
+                System.assertNotEquals(null, eachOrderItem.blng__InvoiceGroupId__c,'Invoice group id is Null in the OrderItem');
+                System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.blng__InvoiceGroupId__c,'Invoice group id in order item is not  equal to PO Numero');
+            }
+        }                
     }
 }

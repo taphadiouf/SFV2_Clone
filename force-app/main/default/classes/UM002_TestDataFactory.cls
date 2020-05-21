@@ -450,6 +450,12 @@ newMe.FederationIdentifier = null;
         return acc;	
     }	
     
+    public static Account createAccount(String name, Id recId){	
+        Account  acc = new Account(Name = name,
+                                   RecordTypeId = recId);	
+        return acc;	
+    }
+    
     public static List<LPCR_ParametrageScore__c> createParametrageScores(Id accId){
         List<LPCR_ParametrageScore__c> listParams =new List<LPCR_ParametrageScore__c>();
         listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_Anciennete__c =1,LPCR_Score__c=100));

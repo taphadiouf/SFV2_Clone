@@ -362,6 +362,16 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
+        <excludeButtons>MassAddToCampaign</excludeButtons>
+        <excludeButtons>Merge</excludeButtons>
+        <fields>FULL_NAME</fields>
+        <fields>CONTACT.BIRTHDATE</fields>
+        <fields>LPCR_DatePreinscription__c</fields>
+        <fields>LPCR_Representant1__c</fields>
+        <fields>LPCR_Representant2__c</fields>
+        <relatedList>RelatedContactList</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>CONTACT.FULL_NAME</fields>
         <fields>CONTACT.ACCOUNT_NAME</fields>
         <fields>CONTACT.TITLE</fields>
@@ -396,6 +406,10 @@
     <relatedLists>
         <fields>CONTRACT.CONTRACT_NUMBER</fields>
         <fields>CONTRACT.NAME</fields>
+        <fields>LPCR_Enfant__c</fields>
+        <fields>LPCR_Creche__c</fields>
+        <fields>SBQQ__ActiveContract__c</fields>
+        <fields>LPCR_SponsorEntreprise__c</fields>
         <fields>CONTRACT.START_DATE</fields>
         <fields>CONTRACT.END_DATE</fields>
         <fields>CONTRACT.STATUS</fields>
@@ -425,7 +439,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000000s2eC</masterLabel>
+        <masterLabel>00h3N0000018tXZ</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
