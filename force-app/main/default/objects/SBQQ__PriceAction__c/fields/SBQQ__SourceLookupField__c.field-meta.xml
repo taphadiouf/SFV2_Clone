@@ -37,6 +37,36 @@
                 <default>false</default>
                 <label>LPCR_EntiteJuridique__c</label>
             </value>
+            <value>
+                <fullName>LPCR_RevenusFamille__c</fullName>
+                <default>false</default>
+                <label>LPCR_RevenusFamille__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TauxHoraire__c</fullName>
+                <default>false</default>
+                <label>LPCR_TauxHoraire__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TauxEffort__c</fullName>
+                <default>false</default>
+                <label>LPCR_TauxEffort__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_CongesJours__c</fullName>
+                <default>false</default>
+                <label>LPCR_CongesJours__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_RessourcesPrixPlancher__c</fullName>
+                <default>false</default>
+                <label>LPCR_RessourcesPrixPlancher__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_RessourcePlafond__c</fullName>
+                <default>false</default>
+                <label>LPCR_RessourcePlafond__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

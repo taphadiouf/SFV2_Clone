@@ -214,7 +214,7 @@
     <relatedLists>
         <fields>CASES.CASE_NUMBER</fields>
         <fields>LPCR_Enfant__c</fields>
-        <fields>Lead__c</fields>
+        <fields>LPCR_Lead__c</fields>
         <fields>CASES.STATUS</fields>
         <relatedList>Case.Opportunite__c</relatedList>
         <sortField>CASES.STATUS</sortField>

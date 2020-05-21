@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_TypeAllocataire__c</fullName>
     <externalId>false</externalId>
-    <label>Type d&#39;allocataire</label>
+    <label>Type d&apos;allocataire</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Picklist</type>
@@ -19,6 +19,11 @@
                 <fullName>MSA</fullName>
                 <default>false</default>
                 <label>MSA</label>
+            </value>
+            <value>
+                <fullName>PSU</fullName>
+                <default>false</default>
+                <label>PSU</label>
             </value>
             <value>
                 <fullName>SNCF</fullName>

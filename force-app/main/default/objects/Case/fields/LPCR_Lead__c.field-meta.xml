@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LCPR_Devis__c</fullName>
+    <fullName>LPCR_Lead__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Devis</label>
-    <referenceTo>SBQQ__Quote__c</referenceTo>
-    <relationshipLabel>Liens Familles et Factures</relationshipLabel>
-    <relationshipName>Liens_Familles_et_Factures</relationshipName>
+    <inlineHelpText>Veuillez renseigner un lead ou un contact enfant</inlineHelpText>
+    <label>Lead</label>
+    <referenceTo>Lead</referenceTo>
+    <relationshipLabel>DemandeRG</relationshipLabel>
+    <relationshipName>DemandeRG</relationshipName>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>

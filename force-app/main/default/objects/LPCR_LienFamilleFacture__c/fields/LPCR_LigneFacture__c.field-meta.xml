@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LCPR_Facture__c</fullName>
+    <fullName>LPCR_LigneFacture__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Facture</label>
-    <referenceTo>blng__Invoice__c</referenceTo>
+    <label>Ligne de Facture</label>
+    <referenceTo>blng__InvoiceLine__c</referenceTo>
     <relationshipLabel>Liens Familles et Factures</relationshipLabel>
-    <relationshipName>Liens_Familles_et_Factures</relationshipName>
+    <relationshipName>Liens_Familles_et_Factures3</relationshipName>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
