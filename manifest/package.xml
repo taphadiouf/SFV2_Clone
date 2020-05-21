@@ -4058,6 +4058,7 @@
         <members>Contact.LPCR_TypeContactDetaille__c</members>
         <members>Contact.LPCR_TypeFonction__c</members>
         <members>Contract.LPCR_BillingFrequency__c</members>
+        <members>Contract.LPCR_AjoutFraisGestion__c</members>
         <members>Contract.LPCR_ChiffreAffaire__c</members>
         <members>Contract.LPCR_DateDebut__c</members>
         <members>Contract.LPCR_DateFin__c</members>
@@ -4948,6 +4949,7 @@
         <members>Opportunity.Loss_Reason__c</members>
         <members>Opportunity.LPCR_AnneeImpactBudget__c</members>
         <members>Opportunity.LPCR_AOSansCreche__c</members>
+        <members>Opportunity.LPCR_Contract_CheckBox__c</members>
         <members>Opportunity.LPCR_AutreRaisonPerte__c</members>
         <members>Opportunity.LPCR_BillingFrequency__c</members>
         <members>Opportunity.LPCR_CandidatureEnvoyee__c</members>
@@ -6109,6 +6111,8 @@
         <members>SBQQ__ProductRule__c.SBQQ__Scope__c</members>
         <members>SBQQ__ProductRule__c.SBQQ__Type__c</members>
         <members>SBQQ__Quote__c.LPCR_AccountPurchaseOrder__c</members>
+        <members>SBQQ__Quote__c.LPCR_Contracted_Checkbox__c</members>
+        <members>SBQQ__Quote__c.LPCR_Added_Product_Using_QCP__c</members>
         <members>SBQQ__Quote__c.LPCR_AValider__c</members>
         <members>SBQQ__Quote__c.LPCR_BesoinApprobation__c</members>
         <members>SBQQ__Quote__c.LPCR_BesoinApprobationDELETE__c</members>
