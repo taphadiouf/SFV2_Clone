@@ -9,7 +9,7 @@ public with sharing class SM012_OrderItemServices_Test {
     @TestSetup
     static void setup(){
         Id standardPricebookId = Test.getStandardPricebookId();
-        
+        Id recordTypeId = UM003_TypeManager.getQuoteRecordTypeIdByDeveloperName('Referencement');
         UM002_TestDataFactory.insertBillingCustomSettings();
         
         blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
@@ -29,6 +29,7 @@ public with sharing class SM012_OrderItemServices_Test {
         SBQQ__Quote__c quote = UM002_TestDataFactory.createQuote('test',opp.Id, acc.Id, standardPricebookId, 'Quote');
         
         quote.SBQQ__Primary__c =true;
+        quote.RecordTypeId = recordTypeId;
         insert quote;
         
         Product2 prod = UM002_TestDataFactory.createProduct('test', billingRule.Id, revRecRule.Id,taxRule.Id );
@@ -40,10 +41,10 @@ public with sharing class SM012_OrderItemServices_Test {
         
         SBQQ__QuoteLine__c quoteLine = UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, priceBookEntry1.Id, 200,1);
         quoteLine.LPCR_EntiteJuridique__c= UM002_TestDataFactory.setupLegalEntity().Id;
+        quoteLine.LPCR_NumeroPurchaseOrder__c = '12345678';
         insert quoteLine;
         opp.SBQQ__PrimaryQuote__c =quote.Id;
         update opp;
-        
         
         
         
@@ -98,5 +99,36 @@ public with sharing class SM012_OrderItemServices_Test {
         }
         
         
+    }
+
+    @IsTest
+    static void setInvoiceGroupingOnOrderItem_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            
+            blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+            
+            blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+            
+            blng__BillingRule__c   billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+            
+            blng__TaxRule__c   taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
+            
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Ordered__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = 'test'];
+            
+            Test.startTest(); 
+            quote.SBQQ__Ordered__c  = true; 
+            update quote;
+            
+            
+            Order order = [SELECT Id , Status,SBQQ__Quote__c  FROM Order WHERE SBQQ__Quote__c = :quote.Id];            
+            
+            Map<Id,OrderItem> mapOrderItem = new Map<Id,OrderItem>([SELECT Id, LPCR_NumeroPurchaseOrder__c, blng__InvoiceGrouping__c, blng__InvoiceGroupId__c FROM OrderItem WHERE OrderId = :order.Id]);
+        	Test.stopTest();
+            
+            for(OrderItem eachOrderItem : mapOrderItem.values()){
+                System.assertNotEquals(null, eachOrderItem.blng__InvoiceGroupId__c,'Invoice group id is Null in the OrderItem');
+                System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.blng__InvoiceGroupId__c,'Invoice group id in order item is not  equal to PO Numero');
+            }
+        }                
     }
 }

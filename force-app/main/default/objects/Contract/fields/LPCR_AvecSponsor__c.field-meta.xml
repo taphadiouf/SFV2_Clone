@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_AvecSponsor__c</fullName>
+    <description>Coché si un sponsor est présent sur le contrat. Utilisé dans rapports</description>
+    <externalId>false</externalId>
+    <formula>!ISBLANK(LPCR_SponsorEntreprise__c)</formula>
+    <label>Avec sponsor</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>
