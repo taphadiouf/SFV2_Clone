@@ -5,6 +5,10 @@
 */
 public with sharing class EM003_RecordTypeEntity {
     public static Id getRecTypeIdByObjectAndName(String SobjectType, String developerName) {
-        return [SELECT Id FROM RecordType WHERE SObjectType = :SobjectType AND DeveloperName = :developerName].Id;
+        Id result = String.isNotBlank(SobjectType) && String.isNotBlank(developerName)
+            ? Schema.getGlobalDescribe().get(SobjectType).getDescribe().getRecordTypeInfosByDeveloperName().get(developerName).getRecordTypeId()
+            : null;
+        
+        return result;
     }
 }
