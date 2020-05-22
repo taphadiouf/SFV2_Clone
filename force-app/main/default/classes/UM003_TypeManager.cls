@@ -50,5 +50,5 @@ public with sharing class UM003_TypeManager{
     public static Id getQuoteRecordTypeIdByDeveloperName(String recordTypeDeveloperName){
         return Schema.SObjectType.SBQQ__Quote__c.getRecordTypeInfosByDeveloperName().get(recordTypeDeveloperName).getRecordTypeId();
     }
-    *?
+    */
 }
