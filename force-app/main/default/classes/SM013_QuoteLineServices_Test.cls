@@ -31,7 +31,8 @@ public with sharing class SM013_QuoteLineServices_Test {
         defaultVal = new Map<String, Object> {
             'RecordTypeId' => CRECHE_RT_ID,
             'Name' => 'Creche',
-            'LPCR_TypeCreche__c' => 'MAC'
+            'LPCR_TypeCreche__c' => 'MAC',
+            'LPCR_Region__c' => 'Paris'
         };
         Account creche = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
         accounts.add (creche);
@@ -112,6 +113,7 @@ public with sharing class SM013_QuoteLineServices_Test {
             'SBQQ__ChargeType__c' => 'Recurring',
             'SBQQ__BillingType__c' => 'Advance',
             'SBQQ__BillingFrequency__c' => 'Monthly',
+            'LPCR_Region__c' => 'Paris',
             'LPCR_Creche__c' => creche.Id,
             'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
         };
@@ -249,6 +251,7 @@ public with sharing class SM013_QuoteLineServices_Test {
                 'SBQQ__ChargeType__c' => 'Recurring',
                 'SBQQ__BillingType__c' => 'Advance',
                 'SBQQ__BillingFrequency__c' => 'Monthly',
+                'LPCR_Region__c' => 'Paris',
                 'LPCR_Creche__c' => creche.get(0).Id,
                 'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
             };
