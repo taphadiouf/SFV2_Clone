@@ -5,7 +5,6 @@
 */
 //@isTest
 public with sharing class UM002_TestDataFactory {
-    
     //public AccountContactRelationTdf accountContactRelationTdf;
     public AccountTdf accountTdf;
     public CaseTdf caseTdf;
@@ -29,7 +28,7 @@ public with sharing class UM002_TestDataFactory {
 	public static map<String, set<String>> IncludedFields = new map<String, set<String>>{
 		'Case' => new set<String>{'Description', 'Subject', 'Origin'}
     };
-
+    
     public UM002_TestDataFactory() {
         
         //accountContactRelationTdf = new AccountContactRelationTdf();
@@ -39,7 +38,7 @@ public with sharing class UM002_TestDataFactory {
         contactTdf = new ContactTdf();
         userTdf = new UserTdf();
     }
-    
+
     /*
     public static SObject createSObject(String objectType) {
 		return createSObject(objectType, null);
@@ -751,7 +750,7 @@ newMe.FederationIdentifier = null;
         
         return taxRule;
     }
-    
+
     public static SBQQ__Quote__c createQuote(String city ,String opportunityId, String accountId, String priceBookId, String type) 
     {
         SBQQ__Quote__c cpqQuote = new SBQQ__Quote__c();
