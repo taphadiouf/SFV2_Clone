@@ -139,7 +139,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
 
 
     public static void setInvoiceGroupingOnOrderItem(Map<Id,OrderItem> mapOrderItem){
-        Id recordTypeId = UM003_TypeManager.getQuoteRecordTypeIdByDeveloperName('Referencement');
+        //Id recordTypeId = UM003_TypeManager.getQuoteRecordTypeIdByDeveloperName('Referencement');
+        Id recordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, 'Referencement')
         List<OrderItem> listOrderItem = [SELECT Id, LPCR_NumeroPurchaseOrder__c, Order.SBQQ__Quote__r.RecordTypeId, blng__InvoiceGrouping__c, blng__InvoiceGroupId__c FROM OrderItem WHERE ID in :mapOrderItem.keySet() AND Order.SBQQ__Quote__r.RecordTypeId =: recordTypeId];
         List<OrderItem> listOrderItemtoSave = new List<OrderItem>();
         for(OrderItem eachOrderItem : listOrderItem){
