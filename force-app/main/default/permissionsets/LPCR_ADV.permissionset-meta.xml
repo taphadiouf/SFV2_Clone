@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>LPCR_ADV</name>
+    </customPermissions>
     <description>Equipe Administration des ventes</description>
     <fieldPermissions>
         <editable>true</editable>
@@ -4019,11 +4023,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_AccountPurchaseOrder__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_BesoinApprobationDELETE__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
