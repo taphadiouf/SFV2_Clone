@@ -1057,7 +1057,7 @@ public with sharing class SM012_OrderItemServices_Test {
                 System.assertNotEquals(null, eachOrderItem.blng__InvoiceGroupId__c,'Invoice group id is Null in the OrderItem');
                 System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.blng__InvoiceGroupId__c,'Invoice group id in order item is not  equal to PO Numero');
             }
-            *?
+            */
         }                
     }
 }
