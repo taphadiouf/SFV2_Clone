@@ -84,6 +84,7 @@ public class APB006_PrepaRenewalContract_Test {
             q.LPCR_IndexationConvenue__c = 'Oui';
             q.LPCR_TypeFacturation__c = 'Arrears';
             q.SBQQ__BillingFrequency__c = 'Invoice Plan';
+            q.SBQQ__RenewalUpliftRate__c = 2;
         }
         insert qlines;
         update opptToUpdate;
