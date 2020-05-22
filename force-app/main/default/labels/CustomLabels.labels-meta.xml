@@ -176,6 +176,20 @@
         <value>Liste d’attente</value>
     </labels>
     <labels>
+        <fullName>LPCR_MAC</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_MAC</shortDescription>
+        <value>MAC</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_MICRO</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_MICRO</shortDescription>
+        <value>MICRO</value>
+    </labels>
+    <labels>
         <fullName>LPCR_MontantM</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -391,5 +405,12 @@
         <protected>false</protected>
         <shortDescription>LPCR_ValidationQuote</shortDescription>
         <value>Validation Contrat Directrice</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ValideDirectrice</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ValideDirectrice</shortDescription>
+        <value>Validé Directrice</value>
     </labels>
 </CustomLabels>

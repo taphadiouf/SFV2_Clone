@@ -783,6 +783,46 @@ newMe.FederationIdentifier = null;
     }
     
     
+    //This part is added by Hanae on the 19/05/2020
+    public static List<LPCR_ModificationEntrante__c> createModificationsEntrantes(Integer numRecs, List<SBQQ__Quote__c> quotes, String event){
+        List<LPCR_ModificationEntrante__c> ModifEntrantes = new List<LPCR_ModificationEntrante__c>();
+        LPCR_ModificationEntrante__c tempModif;
+        for(Integer i = 0; i<numRecs; i++){
+            tempModif = new LPCR_ModificationEntrante__c(
+                LPCR_Devis__c  = quotes.get(i).Id,
+                LPCR_Evenement__c  = event
+            );
+            ModifEntrantes.add(tempModif);
+        }
+        return ModifEntrantes;
+    }
+    
+    
+    public static List<Account> createAccountswithtype(Integer numAccs, String name, String typeCreche, String rTDevName){
+        List<Account> accounts = new List<Account>();
+       	Id recTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, rTDevName);
+        Account tempAcc;
+        for(Integer i = 0; i<numAccs; i++){
+            tempAcc = new Account(Name = name, LPCR_TypeCreche__c  = typeCreche, RecordTypeId = recTypeId);
+            accounts.add(tempAcc);
+        }
+        return accounts;
+    }
+    public static List<SBQQ__Quote__c> createQuoteswithStatus(Integer numRecs, List<Account> accs, List<Opportunity> opps, String status){
+        List<SBQQ__Quote__c> quotes = new List<SBQQ__Quote__c>();
+        SBQQ__Quote__c tempQuote;
+        for(Integer i = 0; i<numRecs; i++){
+            tempQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = opps.get(i).Id,
+                LPCR_Creche__c = accs.get(i).Id,
+                SBQQ__Status__c = status
+            );
+            quotes.add(tempQuote);
+        }
+        return quotes;
+    }
+    
+    
     
     
     
