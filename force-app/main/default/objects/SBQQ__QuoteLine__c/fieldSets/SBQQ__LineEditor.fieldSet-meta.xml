@@ -203,11 +203,6 @@
     </availableFields>
     <description>Fields displayed on Edit Lines page.</description>
     <displayedFields>
-        <field>LPCR_CloneCancel__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
         <field>SBQQ__ProductCode__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
@@ -218,12 +213,7 @@
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
-        <field>LPCR_TotalQuantityFormule__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
-        <field>LPCR_TotalBerceauGratuitRegion__c</field>
+        <field>Custom_Quantity__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
@@ -249,11 +239,6 @@
     </displayedFields>
     <displayedFields>
         <field>LPCR_PrixBerceau__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
-        <field>LPCR_TauxHoraire__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
