@@ -4,13 +4,14 @@
     <description>Compte le nombre de quote ligne de type frais dossier pour calcul des frais de dossier dans le contrat (Conga)</description>
     <externalId>false</externalId>
     <label>Nombre de frais de dossier</label>
+    <summarizedField>SBQQ__QuoteLine__c.SBQQ__Quantity__c</summarizedField>
     <summaryFilterItems>
         <field>SBQQ__QuoteLine__c.TECH_ProductCode__c</field>
         <operation>equals</operation>
         <value>Fraisdedossier</value>
     </summaryFilterItems>
     <summaryForeignKey>SBQQ__QuoteLine__c.SBQQ__Quote__c</summaryForeignKey>
-    <summaryOperation>count</summaryOperation>
+    <summaryOperation>sum</summaryOperation>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Summary</type>

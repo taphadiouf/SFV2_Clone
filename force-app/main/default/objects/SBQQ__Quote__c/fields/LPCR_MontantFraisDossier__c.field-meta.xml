@@ -4,7 +4,7 @@
     <description>Compte le montant des quote ligne de type frais dossier pour calcul des frais de dossier dans le contrat (Conga)</description>
     <externalId>false</externalId>
     <label>Montant Frais de Dossier</label>
-    <summarizedField>SBQQ__QuoteLine__c.SBQQ__NetPrice__c</summarizedField>
+    <summarizedField>SBQQ__QuoteLine__c.SBQQ__NetTotal__c</summarizedField>
     <summaryFilterItems>
         <field>SBQQ__QuoteLine__c.TECH_ProductCode__c</field>
         <operation>equals</operation>
