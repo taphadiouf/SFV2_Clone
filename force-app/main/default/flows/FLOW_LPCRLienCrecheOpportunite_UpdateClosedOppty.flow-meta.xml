@@ -33,7 +33,7 @@
         </connector>
     </assignments>
     <interviewLabel>FLOW_ {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>FLOW_ LienCrecheOpportunite_UpdateClosedOppty</label>
+    <label>FLOW_LPCRLienCrecheOpportunite_UpdateClosedOppty</label>
     <loops>
         <name>LoopLienCrecheOppty</name>
         <label>LoopLienCrecheOppty</label>
@@ -72,13 +72,13 @@
             <targetReference>LoopLienCrecheOppty</targetReference>
         </connector>
         <filters>
-            <field>Opportunite__c</field>
+            <field>LPCR_Opportunite__c</field>
             <operator>EqualTo</operator>
             <value>
                 <elementReference>IdOppty</elementReference>
             </value>
         </filters>
-        <object>LienCrecheOpportunite__c</object>
+        <object>LPCR_LienCrecheOpportunite__c</object>
         <outputReference>IdLienOpptys</outputReference>
         <queriedFields>Id</queriedFields>
         <queriedFields>Tech_Opportunite_Fermee__c</queriedFields>
@@ -118,14 +118,14 @@
             <targetReference>Id_Oppty</targetReference>
         </connector>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>colUpdateLienCrecheOppty</name>
         <dataType>SObject</dataType>
         <isCollection>true</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-        <objectType>LienCrecheOpportunite__c</objectType>
+        <objectType>LPCR_LienCrecheOpportunite__c</objectType>
     </variables>
     <variables>
         <name>idLienCrecheOppty</name>
@@ -133,7 +133,7 @@
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-        <objectType>LienCrecheOpportunite__c</objectType>
+        <objectType>LPCR_LienCrecheOpportunite__c</objectType>
     </variables>
     <variables>
         <name>IdLienOpptys</name>
@@ -141,7 +141,7 @@
         <isCollection>true</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-        <objectType>LienCrecheOpportunite__c</objectType>
+        <objectType>LPCR_LienCrecheOpportunite__c</objectType>
     </variables>
     <variables>
         <name>IdOppty</name>

@@ -347,7 +347,7 @@
         <fields>Account.ACC_NAME</fields>
         <fields>Opportunity.OPP_STAGE_NAME</fields>
         <fields>Opportunity.OPP_CLOSE_DATE</fields>
-        <relatedList>LienCrecheOpportunite__c.Creche__c</relatedList>
+        <relatedList>LPCR_LienCrecheOpportunite__c.LPCR_Creche__c</relatedList>
         <sortField>Opportunity.OPP_CLOSE_DATE</sortField>
         <sortOrder>Desc</sortOrder>
     </relatedLists>
