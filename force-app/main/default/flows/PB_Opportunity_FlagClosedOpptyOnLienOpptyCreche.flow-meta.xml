@@ -10,14 +10,14 @@
         <processMetadataValues>
             <name>flowSelection</name>
             <value>
-                <stringValue>FLOW_ LienCrecheOpportunite_UpdateClosedOppty</stringValue>
+                <stringValue>FLOW_LPCRLienCrecheOpportunite_UpdateClosedOppty</stringValue>
             </value>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>FLOW_ LienCrecheOpportunite_UpdateClosedOppty</label>
+        <label>FLOW_ LPCRLienCrecheOpportunite_UpdateClosedOppty</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
-        <actionName>FLOW_LienCrecheOpportunite_UpdateClosedOppty</actionName>
+        <actionName>FLOW_LPCRLienCrecheOpportunite_UpdateClosedOppty</actionName>
         <actionType>flow</actionType>
         <inputParameters>
             <processMetadataValues>
@@ -175,7 +175,7 @@
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>isChangedDecision2_myRule_1_IsClosed</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
