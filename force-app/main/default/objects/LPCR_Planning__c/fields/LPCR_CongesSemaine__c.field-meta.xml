@@ -3,8 +3,8 @@
     <fullName>LPCR_CongesSemaine__c</fullName>
     <externalId>false</externalId>
     <formula>CASE( LPCR_TypePlanning__c,
-&quot;Planning Classique&quot;, (LPCR_Devis__r.LPCR_CongesJours__c  / LPCR_NombreJoursAccueil__c ) * (365/ LPCR_DureeContratJour__c ),
-&quot;Multi-Planning&quot;, (LPCR_Devis__r.LPCR_CongesJours__c  / LPCR_MoyenneJoursSemaine__c ) * (365/ LPCR_DureeContratJour__c ),
+&quot;Planning Classique&quot;, (LPCR_CongesJours__c / LPCR_NombreJoursAccueil__c ) * (365/ LPCR_DureeContratJour__c ),
+&quot;Multi-Planning&quot;, (LPCR_CongesJours__c / LPCR_MoyenneJoursSemaine__c ) * (365/ LPCR_DureeContratJour__c ),
 NULL)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Congés en semaine</label>
