@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_TypePlanning__c</fullName>
+    <externalId>false</externalId>
+    <label>Type de planning</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Classique</fullName>
+                <default>false</default>
+                <label>Classique</label>
+            </value>
+            <value>
+                <fullName>Tournant</fullName>
+                <default>false</default>
+                <label>Tournant</label>
+            </value>
+            <value>
+                <fullName>Multi-planning</fullName>
+                <default>false</default>
+                <label>Multi-planning</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
