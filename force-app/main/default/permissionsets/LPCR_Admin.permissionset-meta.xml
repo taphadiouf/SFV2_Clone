@@ -1100,9 +1100,19 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>	
+        <field>Contract.LPCR_AvecSponsor__c</field>	
+        <readable>false</readable>	
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Contract.LPCR_BillingFrequency__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>	
+        <editable>false</editable>	
+        <field>Contract.LPCR_ContratActif__c</field>	
+        <readable>false</readable>	
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -3027,6 +3037,26 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Order.SBQQ__ContractingMethod__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_RevenusFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_TauxEffort__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_TauxHoraire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_TauxMensuel__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5324,6 +5354,11 @@
         <field>SBQQ__QuoteLine__c.SBQQ__SubscriptionType__c</field>
         <readable>true</readable>
     </fieldPermissions>
+      <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.SBQQ__TargetCustomerAmount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.SBQQ__TaxCode__c</field>
@@ -5362,6 +5397,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.SBQQ__UnitCost__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.SBQQ__Unopened__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
