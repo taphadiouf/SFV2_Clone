@@ -25,6 +25,11 @@ global class APB006_PrepaRenewalContract implements Database.Batchable<sObject>,
         return Database.getQueryLocator(query);
     }
     
+    /*
+	*	@description : this execute method simply flg contract (TECH_AjoutFraisGestion__c) to add the registration fee just to one contract in case of several contracts are renewd in parallell for the same customer / nurserey (for instance in case of renewal 2 children).
+	*	@param List<Contract> scope to process
+    *	@returns void
+    */
     global void execute (Database.BatchableContext BC, List<Contract> scope) {
         PAD.log('APB006_PrepaRenewalContract', 'execute', 'scope size: ' + scope.size());
         PAD.log('APB006_PrepaRenewalContract', 'execute', 'setContractKeyAccountAndNursery size: ' + setContractKeyAccountAndNursery.size());

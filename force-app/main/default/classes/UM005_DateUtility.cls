@@ -24,22 +24,6 @@ public with sharing class UM005_DateUtility {
         return newDate;
     }
 
-        /*
-    public static Date lastDayOfQuarterPeriod (Date theDate) {
-        Date newDate = null;
-        if (theDate != null) {
-            Double dQuarter = Double.valueOf(theDate.month()) / Double.valueOf(3);
-            Integer quarterIndex = Integer.valueOf(Math.floor(dQuarter));
-            Date firstDateNextQuarter = quarterIndex < quarterlyMonths.size() - 1
-                ? Date.newinstance(theDate.year(), quarterlyMonths.get(quarterIndex + 1), 1)
-                : Date.newinstance(theDate.addYears(1).year(), quarterlyMonths.get(0), 1);
-
-            newDate = firstDateNextQuarter.addDays(-1);  // add -1 day to the 1st day of next quarter
-        }
-        return newDate;
-    }
-    */
-
     public static Date lastDayOfDatePeriod (Date theDate, List<Integer> periodsMonths) { // Quaterly / Semiannual periods
         Date newDate = null;
         if (theDate != null) {

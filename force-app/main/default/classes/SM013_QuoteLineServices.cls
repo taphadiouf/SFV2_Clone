@@ -5,6 +5,11 @@
 */
 public with sharing class SM013_QuoteLineServices {
     
+    /*
+	*	@description : this method check if any registration fee had been alredy applied for a given customer / nursery.
+	*	@param List<SBQQ__QuoteLine__c> quoteLineList to process
+    *	@returns void
+    */
     public static void checkExistingRegistrationFee (List<SBQQ__QuoteLine__c> quoteLineList) {
         PAD.log('SM013_QuoteLineServices', 'checkExistingRegistrationFee', 'start method with quoteLineList: ' + quoteLineList.size());
         Set<Id> quoteIds = new Set<Id>();
