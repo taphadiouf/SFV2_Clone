@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_ContratReservataire__c</fullName>
+    <fullName>LPCR_ContratClient__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>lien vers le contrat du client réservataire</description>
     <externalId>false</externalId>
-    <label>Contrat Réservataire</label>
-    <referenceTo>Contract</referenceTo>
+    <label>Contrat Client</label>
+    <referenceTo>SBQQ__Quote__c</referenceTo>
     <relationshipLabel>Bons d&#39;achat partenaires</relationshipLabel>
-    <relationshipName>BonsAchatsPartenaires</relationshipName>
+    <relationshipName>BonsAchatspartenaires</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
