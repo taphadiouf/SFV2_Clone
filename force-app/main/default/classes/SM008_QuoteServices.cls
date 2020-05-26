@@ -50,7 +50,7 @@ public with sharing class SM008_QuoteServices {
         
     }
 
-    
+    //added by Saurabh
     public static void setQuoteFieldsFromContract(List<SBQQ__Quote__c> quotesList){
         Integer quoteRenewalTerm = 12;
         Set<String> oppIds = UM003_TypeManager.getFieldsOfListObjects(quotesList,'SBQQ__Opportunity2__c');
@@ -91,6 +91,7 @@ public with sharing class SM008_QuoteServices {
         
     }
     
+    //added by Saurabh
     public static void updatQuoteFields(List<SBQQ__Quote__c> quotesList){
         Integer quoteRenewalTerm = 12;
         for(SBQQ__Quote__c eachQuote : quotesList){
@@ -108,7 +109,7 @@ public with sharing class SM008_QuoteServices {
                 }                
             }
         }
-
+    } 
     //added by hanae
     
 
