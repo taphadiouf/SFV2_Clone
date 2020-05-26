@@ -4,18 +4,18 @@
     <description>Nombre de demande d&#39;option sur l&#39;objet Lien Opportunité Crèche</description>
     <externalId>false</externalId>
     <label>Nombre d&#39;options</label>
-    <summarizedField>LienCrecheOpportunite__c.LPCR_Nombredeplaces__c</summarizedField>
+    <summarizedField>LPCR_LienCrecheOpportunite__c.LPCR_Nombredeplaces__c</summarizedField>
     <summaryFilterItems>
-        <field>LienCrecheOpportunite__c.Tech_Opportunite_Fermee__c</field>
+        <field>LPCR_LienCrecheOpportunite__c.Tech_Opportunite_Fermee__c</field>
         <operation>equals</operation>
         <value>False</value>
     </summaryFilterItems>
     <summaryFilterItems>
-        <field>LienCrecheOpportunite__c.LPCR_DemandeOption__c</field>
+        <field>LPCR_LienCrecheOpportunite__c.LPCR_DemandeOption__c</field>
         <operation>equals</operation>
         <value>True</value>
     </summaryFilterItems>
-    <summaryForeignKey>LienCrecheOpportunite__c.Creche__c</summaryForeignKey>
+    <summaryForeignKey>LPCR_LienCrecheOpportunite__c.LPCR_Creche__c</summaryForeignKey>
     <summaryOperation>sum</summaryOperation>
     <type>Summary</type>
 </CustomField>
