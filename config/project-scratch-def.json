@@ -1,8 +1,11 @@
 {
   "orgName": "LPCR SFV2",
   "edition": "Enterprise",
-  "features": ["ContactsToMultipleAccounts","CPQ"],
-  "settings": {   
+  "features": [
+    "ContactsToMultipleAccounts",
+    "CPQ"
+  ],
+  "settings": {
     "entitlementSettings": {
       "enableEntitlements": false
     }
