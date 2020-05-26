@@ -2,6 +2,7 @@
 * @author Achraf ABOUL
 * @created 28/02/2020
 * @description Test Class of SM008_QuoteServices.
+* @Modified by Hanae
 */
 @isTest
 public class SM008_QuoteServices_Test {
@@ -19,6 +20,15 @@ public class SM008_QuoteServices_Test {
         insert UM002_TestDataFactory.createAccounts(1, 'test').get(0);
         insert UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
         
+        //added by Hanae
+        List<Account> accountsMac = UM002_TestDataFactory.createAccountswithtype(100, 'Accounts', 'MAC', Label.LPCR_Creche);
+        insert accountsMac;
+        List<Account> accountsMicro = UM002_TestDataFactory.createAccountswithtype(100, 'Accounts', 'MICRO' ,Label.LPCR_Creche);
+        insert accountsMicro;
+        List<SBQQ__Quote__c> quotesMac = UM002_TestDataFactory.createQuoteswithStatus(100, accountsMac, opps, 'Draft');
+        insert quotesMac;
+        List<SBQQ__Quote__c> quotesMicro = UM002_TestDataFactory.createQuoteswithStatus(100, accountsMicro, opps, 'Draft');
+        insert quotesMicro;     
     } 
     @isTest
     public static void updateOppsFromQuotes_Test(){
@@ -28,7 +38,7 @@ public class SM008_QuoteServices_Test {
             eachQuote.SBQQ__Status__c = 'Accepted';
         }
         update quotes;
-        List<Account> resultAccounts = [SELECT Id, LPCR_Statut__c FROM Account WHERE LPCR_Statut__c= 'Client'];
+        List<Account> resultAccounts = [SELECT Id,Name, LPCR_Statut__c FROM Account WHERE LPCR_Statut__c= 'Client' AND Name = 'testAccount'];
         List<Opportunity> resultOpps = [SELECT Id, StageName FROM Opportunity WHERE StageName = 'Signée'];
         System.assertEquals(100, resultAccounts.size(), 'Error in SM008_QuoteServices_Test : problem in updating Account');
         System.assertEquals(100, resultOpps.size(), 'Error in SM008_QuoteServices_Test : problem in updating Opportunity');
@@ -54,7 +64,7 @@ public class SM008_QuoteServices_Test {
             update opp;
             SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
             quote.SBQQ__Type__c='Renewal';
-            
+
             insert quote;
             
             quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
@@ -66,6 +76,7 @@ public class SM008_QuoteServices_Test {
             
         } }
     
+
     @isTest
     public static void setQuoteFieldsFromContract_Test(){
         User usr = UM002_TestDataFactory.createUser();
@@ -107,4 +118,26 @@ public class SM008_QuoteServices_Test {
             Test.stopTest();   
         }
     } 
+
+    
+    //added by Hanae
+    @isTest
+    public static void generateAgreementTemp_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
+            List<SBQQ__Quote__c> macQuotesList = [Select Id,SBQQ__Status__c,LPCR_Creche__c, LPCR_Creche__r.LPCR_TypeCreche__c From SBQQ__Quote__c  ];
+            Map<Id,SBQQ__Quote__c> oldQuoteMap = new Map<Id,SBQQ__Quote__c>();
+            for(SBQQ__Quote__c eachQuote: macQuotesList){
+                oldQuoteMap.put(eachQuote.Id,eachQuote);
+            }
+            for(SBQQ__Quote__c eachQuote: macQuotesList){
+                eachQuote.SBQQ__Status__c = 'Validé directrice';
+            }
+            update macQuotesList;
+            Map<Id,SBQQ__Quote__c> newQuoteMap = new Map<Id,SBQQ__Quote__c>([Select Id,SBQQ__Status__c,LPCR_Creche__c, LPCR_Creche__r.LPCR_TypeCreche__c From SBQQ__Quote__c Where SBQQ__Status__c = 'Validé directrice' ]);
+            Map<Id,Set<Id>> mapQuoteIDAgreementID = SM008_QuoteServices.generateAgreementTemp(newQuoteMap,oldQuoteMap);
+            Test.stopTest();
+        }
+    }
+    
 }

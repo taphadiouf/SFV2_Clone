@@ -26,4 +26,10 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
         SM008_QuoteServices.setQuoteFields(newQuotesList);
         SM008_QuoteServices.setQuoteFieldsFromContract(newQuotesList);
     }
+    
+    //added by Hanae
+    protected override void afterUpdate(){
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM008_QuoteServices.generateAgreementTemp(this.newQuotesMap,this.oldQuotesMap);
+    }
 }

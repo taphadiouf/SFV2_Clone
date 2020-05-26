@@ -30,6 +30,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_IndexationConvenue__c</picklist>
+        <values>
+            <fullName>Non</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oui</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_MethodeRenouvellement__c</picklist>
         <values>
             <fullName>Express</fullName>
@@ -71,6 +82,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_TypeAccueil__c</picklist>
+        <values>
+            <fullName>Occasionnel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Régulier</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_TypeAvenant__c</picklist>
         <values>
             <fullName>Ajout%2FSuppression Berceau</fullName>
@@ -85,7 +107,46 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Resiliation</fullName>
+            <fullName>Modification du type%2Ffréquence de facturation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Résiliation</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeCreche__c</picklist>
+        <values>
+            <fullName>ALSH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halte-Garderie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jardin d%E2%80%99enfants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MICRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RAM</fullName>
             <default>false</default>
         </values>
     </picklistValues>
