@@ -6,7 +6,7 @@
 */
 @isTest
 public class SM008_QuoteServices_Test {
-    
+    private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     @testSetup 
     static void testSetup(){
         List<Account> accounts = UM002_TestDataFactory.createAccounts(100, 'testAccount');
@@ -17,7 +17,9 @@ public class SM008_QuoteServices_Test {
         insert opps;
         List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(100, accounts, opps);
         insert quotes;
-        insert UM002_TestDataFactory.createAccounts(1, 'test').get(0);
+        Account acc = UM002_TestDataFactory.createAccounts(1, 'test').get(0);
+        acc.RecordTypeId = B2C_RT_ID;
+        insert acc;
         insert UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
         
         //added by Hanae
@@ -76,7 +78,7 @@ public class SM008_QuoteServices_Test {
             
         } }
     
-
+    //added by Saurabh     
     @isTest
     public static void setQuoteFieldsFromContract_Test(){
         User usr = UM002_TestDataFactory.createUser();
