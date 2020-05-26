@@ -127,6 +127,7 @@
         <formula>SBQQ__Account__r.RecordType.DeveloperName = &quot;Famille&quot;</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
+    <!--
     <tasks>
         <fullName>LPCR_MiseaJourValeurIndexation</fullName>
         <assignedTo>Quote Owner</assignedTo>
@@ -148,4 +149,5 @@ Admin LPCR</description>
         <status>Open</status>
         <subject>Mise à Jour De La Valeur De l&#39;indexation</subject>
     </tasks>
+    -->
 </Workflow>
