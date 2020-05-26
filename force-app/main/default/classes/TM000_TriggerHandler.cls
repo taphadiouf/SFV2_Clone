@@ -4,7 +4,7 @@
  * @description Trigger action handler
  */
 public without sharing virtual class TM000_TriggerHandler {
-
+	private static Map<String, LoopCount> loopCountMap;
 	public static Boolean ByPassAllTriggers = false;
 
 	// the current context of the trigger, overridable in tests
@@ -15,6 +15,11 @@ public without sharing virtual class TM000_TriggerHandler {
 	@TestVisible
 	private Boolean isTriggerExecuting;
 
+	static {
+        loopCountMap = new Map<String, LoopCount>();
+        //bypassedHandlers = new Set<String>();
+	}
+	
 	// constructor
 	public TM000_TriggerHandler() {
 		this.setTriggerContext();
@@ -31,6 +36,8 @@ public without sharing virtual class TM000_TriggerHandler {
 		System.debug('>> TM000_TriggerHandler - run : enter the run trigger');
 		if(!validateRun()) return;
 		System.debug('>> TM000_TriggerHandler - run : Trigger is validated');
+
+		addToLoopCount();
 
 		// dispatch to the correct handler method
 		if(this.context == TriggerContext.BEFORE_INSERT) {
@@ -51,6 +58,19 @@ public without sharing virtual class TM000_TriggerHandler {
 
 	}
 
+	public void setMaxLoopCount(Integer max) {
+        String handlerName = getHandlerName();
+        if(!TM000_TriggerHandler.loopCountMap.containsKey(handlerName)) {
+            TM000_TriggerHandler.loopCountMap.put(handlerName, new LoopCount(max));
+        } else {
+            TM000_TriggerHandler.loopCountMap.get(handlerName).setMax(max);
+        }
+    }
+
+    public void clearMaxLoopCount() {
+        this.setMaxLoopCount(-1);
+	}
+	
 	/***************************************
 	 * private instancemethods
 	 ***************************************/
@@ -93,6 +113,19 @@ public without sharing virtual class TM000_TriggerHandler {
 		}
 	}
 
+	// increment the loop count
+    @TestVisible
+    private void addToLoopCount() {
+        String handlerName = getHandlerName();
+        if(TM000_TriggerHandler.loopCountMap.containsKey(handlerName)) {
+            Boolean exceeded = TM000_TriggerHandler.loopCountMap.get(handlerName).increment();
+            if(exceeded) {
+                Integer max = TM000_TriggerHandler.loopCountMap.get(handlerName).max;
+                throw new TriggerHandlerException('Maximum loop count of ' + String.valueOf(max) + ' reached in ' + handlerName);
+            }
+        }
+	}
+	
 	// make sure this trigger should continue to run
 	@TestVisible
 	private Boolean validateRun() {
@@ -139,6 +172,43 @@ public without sharing virtual class TM000_TriggerHandler {
 	 * inner classes
 	 ***************************************/
 
+    // inner class for managing the loop count per handler
+    @TestVisible
+    private class LoopCount {
+        private Integer max;
+        private Integer count;
+
+        public LoopCount() {
+            this.max = 3;
+            this.count = 0;
+        }
+
+        public LoopCount(Integer max) {
+            this.max = max;
+            this.count = 0;
+        }
+
+        public Boolean increment() {
+            this.count++;
+            return this.exceeded();
+        }
+
+        public Boolean exceeded() {
+            return this.max > 0 && this.count > this.max;
+        }
+
+        public Integer getMax() {
+            return this.max;
+        }
+
+        public Integer getCount() {
+            return this.count;
+        }
+
+        public void setMax(Integer max) {
+            this.max = max;
+        }
+    }
 	// possible trigger contexts
 	@TestVisible
 	private enum TriggerContext {
