@@ -53,4 +53,8 @@ public with sharing class EM006_QuoteEntity extends EM001_AbstractObjectEntity{
                      WHERE Id=:quoteId];
             
         }
+    
+    public static List<SBQQ__Quote__c> getQuoteModifById (Set<Id> quoteId){
+        return [SELECT Id, SBQQ__Status__c  FROM SBQQ__Quote__c WHERE Id =: quoteId];
+    }
 }

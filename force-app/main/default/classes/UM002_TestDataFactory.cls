@@ -5,13 +5,29 @@
 */
 //@isTest
 public with sharing class UM002_TestDataFactory {
-    
     //public AccountContactRelationTdf accountContactRelationTdf;
     public AccountTdf accountTdf;
     public CaseTdf caseTdf;
     public OpportunityTdf opportunityTdf;
     public ContactTdf contactTdf;
     public UserTdf userTdf;
+    
+    private static final Map<String, Map<String, Schema.SObjectField>> FieldMapCache = new Map<String, Map<String, Schema.SObjectField>>();
+	private static final Map<String, Id> defaultRecTypeCache = new Map<String, Id>();
+	private static final Map<String, Id> referenceObjectCache = new Map<String, Id>();
+    private static final Map<String, Schema.SObjectType> GlobalDescribe = Schema.getGlobalDescribe();
+    
+    public static map<String, set<String>> ExcludedFields = new map<String, set<String>>{
+		'All' => new set<String>{'OwnerId', 'LastModifiedById', 'CreatedById', 'LastModifiedDate', 'CreatedDate'},
+		'Account' => new set<String>{'FirstName', 'LastName', 'BillingStateCode', 'BillingCountryCode', 'ShippingStateCode', 'ShippingCountryCode', 'OtherStateCode', 'OtherCountryCode', 'BillingState', 'BillingCountry', 'ShippingState', 'ShippingCountry', 'OtherState', 'OtherCountry'},
+		'Contact' => new set<String>{'MailingStateCode', 'MailingCountryCode', 'MailingState', 'MailingCountry', 'OtherStateCode', 'OtherCountryCode', 'OtherState', 'OtherCountry'},
+		'User' => new set<String>{'IsActive','DelegatedApproverId','CallCenterId','ContactId','DelegatedApproverId','ManagerId','UserRoleId','FederationIdentifier', 'State', 'StateCode', 'Country', 'CountryCode'}
+	};
+
+	// to fill nillable fields, specify them here
+	public static map<String, set<String>> IncludedFields = new map<String, set<String>>{
+		'Case' => new set<String>{'Description', 'Subject', 'Origin'}
+    };
     
     public UM002_TestDataFactory() {
         
@@ -22,6 +38,225 @@ public with sharing class UM002_TestDataFactory {
         contactTdf = new ContactTdf();
         userTdf = new UserTdf();
     }
+
+    /*
+    public static SObject createSObject(String objectType) {
+		return createSObject(objectType, null);
+	}
+    */
+
+    /*
+    * @description generic test data factory method with default value
+    * various simplified signatures for flexibility and backward compatibility 
+    *
+    * Refer SM013_QuoteLineServices_Test for usage example
+    * Refer the original version for additional info / features : https://github.com/SalesforceFoundation/SmartFactory
+    */
+	public static SObject createSObject(String objectType, Map<String, Object> fieldValues) {
+		return createSObject(objectType, 1, fieldValues);
+    }
+
+    /*
+    public static List<SObject> createSObjectList(String objectType, Integer numberOfObjects) {
+		return createSObjectList(objectType, numberOfObjects, null);
+	}
+    */
+
+    /*
+    * @description generic test data factory method with default value
+    * main method to create a list of object
+    * fieldValues here work as above, but can optionally be a list of objects, in which case they will each be used 
+    *
+    * Refer SM013_QuoteLineServices_Test for usage example
+    * Refer the original version for additional info / features : https://github.com/SalesforceFoundation/SmartFactory
+    */
+	public static List<SObject> createSObjectList(String objectType, Integer numberOfObjects, Map<String, Object> fieldValues) {
+		List<SObject> soList = new List<SObject>();
+		for (Integer i = 0; i < numberOfObjects; i++) {
+            soList.add(createSObject(objectType, i, fieldValues));
+        }
+		return soList;  
+	}
+    
+    /*
+    * @description generic test data factory method with default value
+    * full service signature
+	* by passing in fieldValues, you can set defaults for any fields you like (data types must match)
+	* for reference fields, fieldValues can optionally be actual parent objects to which you want the new objects to be related
+    *
+    * Refer SM013_QuoteLineServices_Test for usage example
+    * Refer the original version for additional info / features : https://github.com/SalesforceFoundation/SmartFactory
+    */
+    public static SObject createSObject(String objectType, Integer counter, Map<String, Object> fieldValues) {
+		SObject obj = GlobalDescribe.get(objectType).newSObject();
+
+		set<String> exclude = new set<String>(); 
+		if (ExcludedFields.get('All') != null)
+			exclude.addAll(ExcludedFields.get('All'));
+		if (ExcludedFields.get(objectType) != null)
+			exclude.addAll(ExcludedFields.get(objectType));
+		set<String> include = new set<String>(); 
+		if (IncludedFields.get(objectType) != null)
+			include.addAll(IncludedFields.get(objectType));		
+		if (fieldValues != null)
+			include.addAll(fieldValues.keyset());		
+
+		for (Schema.SObjectField field : fieldMapFor(objectType).values()) {
+			setFieldValue(obj, field, counter, include, exclude, fieldValues);
+		}
+		return obj;
+    }
+    
+    /*
+    * @description set field value based on the default provided by fieldValues map
+	*
+    * Refer SM013_QuoteLineServices_Test for usage example
+    * Refer the original version for additional info / features : https://github.com/SalesforceFoundation/SmartFactory
+    */
+    static void setFieldValue(SObject obj, Schema.SObjectField field, Integer counter, Set<String> include, Set<String> exclude, Map<String, Object> fieldValues) {
+		Schema.DescribeFieldResult fieldDescribe = field.getDescribe();
+		Schema.DisplayType ft = fieldDescribe.getType();
+		String fn = fieldDescribe.getName();
+		//System.debug('### Excluding exclude: ' + exclude);
+		if (fieldDescribe.isCreateable() && 
+				(
+					(
+						!exclude.contains(fn) &&
+						(!fieldDescribe.isNillable() || (ft == Schema.DisplayType.Reference))
+					) 
+				|| include.contains(fn))
+			) {
+
+			//System.debug(LOGGINGLEVEL.warn, obj.getSObjectType().getDescribe().getName() + '.' + fn + ': ' + ft.name());
+
+			// look for a default value provided for this field
+			if (fieldValues != null && fieldValues.containsKey(fn)) {
+
+				// set the field to the default provided, whether it is a value or a list of values
+				// also supports getting the Id of an sobject if that is what is provided as a default
+				setFieldOverrideValue( obj, field, fieldValues.get(fn), counter );
+
+			} /* else if (ft == Schema.DisplayType.String) {
+				if (fn == 'CommunityNickname') { 
+					obj.put(field, 't'+ string.valueof(math.roundtolong(math.random()*1000000)) ); 
+				} else if (fn == 'Username') { 
+					obj.put(field, 'test'+ string.valueof(Userinfo.getOrganizationId())+ string.valueof(math.roundtolong(math.random()*1000000))+ string.valueof(Datetime.now()).replace('-','').replace(':','').replace(' ','')+'@test.com'); // was a@a.com
+				} else {
+					String s = (fn + counter.format());
+					obj.put(field, (fieldDescribe.getLength() > s.length()) ? s : counter.format()); 
+				}
+			} else if (ft == Schema.DisplayType.Picklist) {
+				obj.put(field, getDefaultPicklistValue(obj, fieldDescribe));
+			} else if (ft == Schema.DisplayType.Integer) {
+				obj.put(field, counter);
+			} else if (ft == Schema.DisplayType.Boolean) {
+				obj.put(field, false);
+			} else if (ft == Schema.DisplayType.Currency) {
+				obj.put(field, counter);
+			} else if (ft == Schema.DisplayType.Date) {
+				obj.put(field, Date.today().addDays(-1));
+			} else if (ft == Schema.DisplayType.DateTime) {
+				obj.put(field, DateTime.now());
+			} else if (ft == Schema.DisplayType.Double) {
+				obj.put(field, counter);
+			} else if (ft == Schema.DisplayType.Email) {
+				obj.put(field, 'test' + counter.format() + '@test.com');
+			} else if (ft == Schema.DisplayType.TextArea) {
+				obj.put(field, fn + counter.format()); 
+			} else if (ft == Schema.DisplayType.Reference) {
+				String objName = obj.getSObjectType().getDescribe().getName();
+				String referenceObjectType = fieldDescribe.getReferenceTo()[0].getDescribe().getName();
+
+				if (referenceObjectType == 'RecordType') {
+					setRecordType(obj);
+				} else if (referenceObjectType == 'Profile') { 
+					obj.put(field, userProfile.Id);
+				} else if (referenceObjectType == 'User') { 
+					obj.put(field, UserInfo.getUserId());
+				} else if (cascade && referenceObjectType != objName) {
+					// TODO avoid infinite loop for same-type references
+					//System.debug(LOGGINGLEVEL.warn, 'Creating reference to ' + referenceObjectType + ' for field ' + objName + '.' + fn);
+					if (referenceObjectCache.containsKey(referenceObjectType)) {
+						obj.put(field, referenceObjectCache.get(referenceObjectType));
+					} else {
+						SObject reference = createSObject(referenceObjectType, fieldValues);
+						insert reference;
+						obj.put(field, reference.Id);
+						referenceObjectCache.put(referenceObjectType, reference.Id);
+					}
+				}
+			} else if (ft == Schema.DisplayType.MultiPicklist) {
+				obj.put(field, getDefaultPicklistValue(obj, fieldDescribe));
+			} else if (ft == Schema.DisplayType.Percent) {
+				obj.put(field, counter);
+			} else if (ft == Schema.DisplayType.Phone) {
+				obj.put(field, '(123) 456-7890');
+			} else if (ft == Schema.DisplayType.Combobox) {
+				obj.put(field, counter.format());
+			} else if (ft == Schema.DisplayType.EncryptedString) {
+				obj.put(field, 's');
+			} else if (ft == Schema.DisplayType.Time) {
+				obj.put(field, Time.newInstance(0, 0, 0, 0)); 
+			} else if (ft == Schema.DisplayType.URL) {
+				obj.put(field, 'http://test' + counter + '.com'); 
+			} else if (ft == Schema.DisplayType.base64) {
+				obj.put(field, blob.valueOf(counter.format()));
+			//} else if (ft == Schema.DisplayType.Id) {
+				//System.debug('Id field ' + fn);
+			} else {
+				System.debug('Unhandled field type ' + ft);
+            }
+            */
+		}	
+    }
+    
+    static void setFieldOverrideValue( SObject obj, Schema.SObjectField field, Object v, Integer counter ) {
+
+		// first try to cast the object to a list of objects and use the right one
+		// failing that, assume it is a single object or value
+		try { 
+			list<Object> oo = (list<Object>)(v);
+			Integer i = (counter < oo.size()) ? counter : Math.mod(counter, oo.size());
+			try { 
+				obj.put(field, oo[i]);
+			} catch (Exception ex1) {
+				// if it isn't a value, try it as an sObject
+				obj.put(field, ((sObject)(oo[i])).get('Id'));
+			}
+		} catch (Exception ex) {
+			try { 
+				// try the sObject first
+				obj.put(field, ((sObject)(v)).get('Id'));
+			} catch (Exception ex2) {
+				// finally the object itself - this will throw an error if the datatype doesn't match
+				obj.put(field, v);
+			}
+		}	
+    }
+    
+    /*
+	*	Returns a field map for a given sobject. 
+	*	Note : this method is kept public for Test cases to share the same field map info, without requiring a field desribe.
+	*	@param objectType sobject api name for ex. Account
+    *	@returns FieldMap [Key:FieldName,Value:Schema.SObjectField]
+    
+    * Refer the original version for additional info / features : https://github.com/SalesforceFoundation/SmartFactory
+    */
+    public static  Map<String, Schema.SObjectField> fieldMapFor(String objectType) {
+		Map<String, Schema.SObjectField> fieldMap = null;
+		String normalizedObjectType = objectType.toLowerCase();
+
+		if (FieldMapCache.containsKey(normalizedObjectType)) {
+			fieldMap = FieldMapCache.get(normalizedObjectType);
+		} else {
+			fieldMap = GlobalDescribe.get(objectType).getDescribe().fields.getMap();
+			//System.debug('### fieldMap: ' + fieldMap);
+			// cache it for next use
+			FieldMapCache.put(normalizedObjectType, fieldMap);
+		}
+
+		return fieldMap;
+	}
     
     public class AccountTdf {
         public Account create(String accountName){           
@@ -553,7 +788,7 @@ newMe.FederationIdentifier = null;
         
         return taxRule;
     }
-    
+
     public static SBQQ__Quote__c createQuote(String city ,String opportunityId, String accountId, String priceBookId, String type) 
     {
         SBQQ__Quote__c cpqQuote = new SBQQ__Quote__c();
@@ -786,6 +1021,46 @@ newMe.FederationIdentifier = null;
             plannings.add(pl);
         }
         return plannings;   
+    }
+    
+    
+    //This part is added by Hanae on the 19/05/2020
+    public static List<LPCR_ModificationEntrante__c> createModificationsEntrantes(Integer numRecs, List<SBQQ__Quote__c> quotes, String event){
+        List<LPCR_ModificationEntrante__c> ModifEntrantes = new List<LPCR_ModificationEntrante__c>();
+        LPCR_ModificationEntrante__c tempModif;
+        for(Integer i = 0; i<numRecs; i++){
+            tempModif = new LPCR_ModificationEntrante__c(
+                LPCR_Devis__c  = quotes.get(i).Id,
+                LPCR_Evenement__c  = event
+            );
+            ModifEntrantes.add(tempModif);
+        }
+        return ModifEntrantes;
+    }
+    
+    
+    public static List<Account> createAccountswithtype(Integer numAccs, String name, String typeCreche, String rTDevName){
+        List<Account> accounts = new List<Account>();
+       	Id recTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, rTDevName);
+        Account tempAcc;
+        for(Integer i = 0; i<numAccs; i++){
+            tempAcc = new Account(Name = name, LPCR_TypeCreche__c  = typeCreche, RecordTypeId = recTypeId);
+            accounts.add(tempAcc);
+        }
+        return accounts;
+    }
+    public static List<SBQQ__Quote__c> createQuoteswithStatus(Integer numRecs, List<Account> accs, List<Opportunity> opps, String status){
+        List<SBQQ__Quote__c> quotes = new List<SBQQ__Quote__c>();
+        SBQQ__Quote__c tempQuote;
+        for(Integer i = 0; i<numRecs; i++){
+            tempQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = opps.get(i).Id,
+                LPCR_Creche__c = accs.get(i).Id,
+                SBQQ__Status__c = status
+            );
+            quotes.add(tempQuote);
+        }
+        return quotes;
     }
     
     
