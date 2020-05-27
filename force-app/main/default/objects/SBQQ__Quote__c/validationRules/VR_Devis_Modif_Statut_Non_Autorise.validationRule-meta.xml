@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Devis_Modif_Statut_Non_Autorise</fullName>
+    <active>true</active>
+    <description>Si le modèle de devis LPCR est utilisé (contrat manuel = false), alors le passage au statut &quot;SIgné&quot; ou &quot;Prêt à commander&quot; est automatique et ne peut pas être fait à la main par un utilisateur.</description>
+    <errorConditionFormula>AND(
+NOT( $User.LPCR_BypassValidationRules__c ),
+NOT(CONTAINS($Profile.Name,&#39;Admin&#39;)),
+NOT(LPCR_ContratManuel__c),
+ISCHANGED( SBQQ__Status__c ),
+OR(TEXT(SBQQ__Status__c) = &#39;Signé&#39;,
+TEXT(SBQQ__Status__c) = &#39;Prêt à commander&#39;)
+)</errorConditionFormula>
+    <errorDisplayField>SBQQ__Status__c</errorDisplayField>
+    <errorMessage>Dans le cas de l&#39;utilsation du modèle LPCR,  le passage statut &quot;SIgné&quot; ou &quot;Prêt à commander&quot; est automatique.</errorMessage>
+</ValidationRule>
