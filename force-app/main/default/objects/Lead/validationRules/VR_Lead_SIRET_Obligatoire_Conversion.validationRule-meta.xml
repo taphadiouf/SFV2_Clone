@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Lead_SIRET_Obligatoire_Conversion</fullName>
+    <active>true</active>
+    <description>Lors de la conversion d&#39;un lead en ( compte/ contact / opportunité ), je dois obligatoirement renseigner le numéro SIRET  de l&#39;entreprise. Le cas  non échéant un message d&#39;erreur s&#39;affiche avec l&#39;obligation de cocher la case « Pas de numéro de SIRET ».</description>
+    <errorConditionFormula>AND(
+NOT($User.LPCR_BypassValidationRules__c),
+ISCHANGED(IsConverted),
+IsConverted,
+RecordType.DeveloperName = &#39;Entreprise&#39;,
+ISBLANK(LPCR_SIRET__c),
+NOT( LPCR_PasDeSIRET__c ))</errorConditionFormula>
+    <errorDisplayField>LPCR_SIRET__c</errorDisplayField>
+    <errorMessage>Pour la conversion du lead entreprise,  le champ SIRET doit être rempli ou &quot;Pas de SIRET&quot; coché.</errorMessage>
+</ValidationRule>
