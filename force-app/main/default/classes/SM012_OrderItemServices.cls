@@ -100,33 +100,35 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                 item.blng__OverrideNextBillingDate__c = (orderItemStartDay > invoiceDay)
                                     ? UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c.addMonths(1))
                                     : UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c);
-
-                                if(orderMap.get(item.OrderId).LPCR_TypeCreche__c == 'MICRO') {
-                                    item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.blng__OverrideNextBillingDate__c.addMonths(1));
+                                
+                                if(orderMap.get(item.OrderId).LPCR_TypeCreche__c == 'MICRO' && item.blng__NextBillingDate__c != null) {
+                                    item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.blng__NextBillingDate__c.addMonths(1));
                                 } 
                             } else if(item.ServiceDate != item.blng__NextChargeDate__c) {
-                                item.blng__OverrideNextBillingDate__c = (orderMap.get(item.OrderId).LPCR_TypeCreche__c =='MAC')
+                                item.blng__OverrideNextBillingDate__c = (orderMap.get(item.OrderId).LPCR_TypeCreche__c == 'MAC')
                                     ? UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c)
                                     : UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c.addMonths(-1));
                             }
                         } else if(item.SBQQ__BillingType__c == 'Arrears') {
-                            item.blng__OverrideNextBillingDate__c = orderMap.get(item.OrderId).LPCR_TypeCreche__c =='MAC' 
-                                || (orderMap.get(item.OrderId).LPCR_TypeCreche__c =='MICRO' && item.ServiceDate == item.blng__NextChargeDate__c && orderItemStartDay > invoiceDay)
+                            item.blng__OverrideNextBillingDate__c = orderMap.get(item.OrderId).LPCR_TypeCreche__c == 'MAC' 
+                                || (orderMap.get(item.OrderId).LPCR_TypeCreche__c == 'MICRO' && item.ServiceDate == item.blng__NextChargeDate__c && orderItemStartDay > invoiceDay)
                                     ? UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c.addMonths(1))
                                     : UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c);
 
-                            if (orderMap.get(item.OrderId).LPCR_TypeCreche__c =='MICRO' && item.ServiceDate == item.blng__NextChargeDate__c) {
-                                item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.blng__OverrideNextBillingDate__c);
+                            if (orderMap.get(item.OrderId).LPCR_TypeCreche__c == 'MICRO' && item.ServiceDate == item.blng__NextChargeDate__c) {
+                                item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.blng__NextBillingDate__c);
                             }
                         }
                     } else if (orderMap.get(item.OrderId).blng__BillingAccount__c != null && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId && item.SBQQ__BillingType__c == 'Advance') {
                         Date nextBillingDate = item.blng__NextChargeDate__c.addDays(invoiceDelta);
                         item.blng__OverrideNextBillingDate__c = nextBillingDate;
-
-                        if (item.SBQQ__BillingFrequency__c == 'Quarterly' && !UM005_DateUtility.quarterlyMonths.contains(nextBillingDate.month())) {
-                            item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDayOfDatePeriod (nextBillingDate, UM005_DateUtility.quarterlyMonths); 
-                        } else if (item.SBQQ__BillingFrequency__c == 'Semiannual' && !UM005_DateUtility.semiannualMonths.contains(nextBillingDate.month())) {
-                            item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDayOfDatePeriod (nextBillingDate, UM005_DateUtility.semiannualMonths); 
+                        
+                        if (item.blng__NextBillingDate__c != null) {
+                            if (item.SBQQ__BillingFrequency__c == 'Quarterly' && !UM005_DateUtility.quarterlyMonths.contains(item.blng__NextBillingDate__c.month())) {
+                                item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextBillingDate__c, UM005_DateUtility.quarterlyMonths); 
+                            } else if (item.SBQQ__BillingFrequency__c == 'Semiannual' && !UM005_DateUtility.semiannualMonths.contains(item.blng__NextBillingDate__c.month())) {
+                                item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextBillingDate__c, UM005_DateUtility.semiannualMonths); 
+                            }
                         }
                     }
                 }

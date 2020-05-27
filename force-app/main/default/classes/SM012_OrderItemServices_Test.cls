@@ -425,7 +425,7 @@ public with sharing class SM012_OrderItemServices_Test {
             Test.stopTest();
 
             Map<Id,OrderItem> mapOrderItem = new Map<Id,OrderItem>([SELECT Id, SBQQ__BillingType__c, ServiceDate, blng__NextChargeDate__c, blng__OverrideNextBillingDate__c,
-            blng__BillThroughDateOverride__c, OrderId, Order.LPCR_TypeCreche__c, blng__BillingAccount__c, Order.blng__BillingAccount__r.RecordTypeId FROM OrderItem]);
+            blng__NextBillingDate__c, blng__BillThroughDateOverride__c, OrderId, Order.LPCR_TypeCreche__c, blng__BillingAccount__c, Order.blng__BillingAccount__r.RecordTypeId FROM OrderItem]);
 
             Integer todaytDay = System.today().day();
             Date expectedDate = (todaytDay > invoicingDay)
@@ -436,7 +436,7 @@ public with sharing class SM012_OrderItemServices_Test {
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 System.assertEquals(expectedDate, oi.blng__OverrideNextBillingDate__c);
-                System.assertEquals(UM005_DateUtility.lastDateOfMonth (oi.blng__OverrideNextBillingDate__c.addMonths(1)), oi.blng__BillThroughDateOverride__c);
+                System.assertEquals(UM005_DateUtility.lastDateOfMonth (oi.blng__NextBillingDate__c.addMonths(1)), oi.blng__BillThroughDateOverride__c);
             }
         }
     }
@@ -663,7 +663,7 @@ public with sharing class SM012_OrderItemServices_Test {
             Test.stopTest();
 
             Map<Id,OrderItem> mapOrderItem = new Map<Id,OrderItem>([SELECT Id, SBQQ__BillingType__c, ServiceDate, blng__NextChargeDate__c, blng__OverrideNextBillingDate__c,
-            blng__BillThroughDateOverride__c, OrderId, Order.LPCR_TypeCreche__c, blng__BillingAccount__c, Order.blng__BillingAccount__r.RecordTypeId FROM OrderItem]);
+            blng__NextBillingDate__c, blng__BillThroughDateOverride__c, OrderId, Order.LPCR_TypeCreche__c, blng__BillingAccount__c, Order.blng__BillingAccount__r.RecordTypeId FROM OrderItem]);
 
             Integer todaytDay = System.today().day();
             Date expectedDate = (todaytDay > invoicingDay)
@@ -675,7 +675,7 @@ public with sharing class SM012_OrderItemServices_Test {
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 System.assertEquals(expectedDate, oi.blng__OverrideNextBillingDate__c);
-                System.assertEquals(UM005_DateUtility.lastDateOfMonth (oi.blng__OverrideNextBillingDate__c), oi.blng__BillThroughDateOverride__c);
+                System.assertEquals(UM005_DateUtility.lastDateOfMonth (oi.blng__NextBillingDate__c), oi.blng__BillThroughDateOverride__c);
             }
         }
     }
@@ -901,7 +901,7 @@ public with sharing class SM012_OrderItemServices_Test {
             Test.stopTest();
 
             Map<Id,OrderItem> mapOrderItem = new Map<Id,OrderItem>([SELECT Id, SBQQ__BillingType__c, ServiceDate, blng__NextChargeDate__c, blng__OverrideNextBillingDate__c,
-            blng__BillThroughDateOverride__c, OrderId, Order.LPCR_TypeCreche__c, blng__BillingAccount__c, Order.blng__BillingAccount__r.RecordTypeId FROM OrderItem]);
+            blng__NextBillingDate__c, blng__BillThroughDateOverride__c, OrderId, Order.LPCR_TypeCreche__c, blng__BillingAccount__c, Order.blng__BillingAccount__r.RecordTypeId FROM OrderItem]);
 
             Date expectedDate = System.today().addDays(invoiceDelta);
 
@@ -910,8 +910,8 @@ public with sharing class SM012_OrderItemServices_Test {
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 System.assertEquals(expectedDate, oi.blng__OverrideNextBillingDate__c);
 
-                Date expectedBillThrought = !UM005_DateUtility.quarterlyMonths.contains(expectedDate.month())
-                    ? UM005_DateUtility.lastDayOfDatePeriod (expectedDate, UM005_DateUtility.quarterlyMonths)
+                Date expectedBillThrought = !UM005_DateUtility.quarterlyMonths.contains(oi.blng__NextBillingDate__c.month())
+                    ? UM005_DateUtility.lastDayOfDatePeriod (oi.blng__NextBillingDate__c, UM005_DateUtility.quarterlyMonths)
                     : null;
                 System.assertEquals(expectedBillThrought, oi.blng__BillThroughDateOverride__c);
             }
@@ -1022,7 +1022,7 @@ public with sharing class SM012_OrderItemServices_Test {
             Test.stopTest();
 
             Map<Id,OrderItem> mapOrderItem = new Map<Id,OrderItem>([SELECT Id, SBQQ__BillingType__c, ServiceDate, blng__NextChargeDate__c, blng__OverrideNextBillingDate__c,
-            blng__BillThroughDateOverride__c, OrderId, Order.LPCR_TypeCreche__c, blng__BillingAccount__c, Order.blng__BillingAccount__r.RecordTypeId FROM OrderItem]);
+            blng__NextBillingDate__c, blng__BillThroughDateOverride__c, OrderId, Order.LPCR_TypeCreche__c, blng__BillingAccount__c, Order.blng__BillingAccount__r.RecordTypeId FROM OrderItem]);
 
             Date expectedDate = System.today().addDays(invoiceDelta);
             
@@ -1031,8 +1031,8 @@ public with sharing class SM012_OrderItemServices_Test {
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 System.assertEquals(expectedDate, oi.blng__OverrideNextBillingDate__c);
 
-                Date expectedBillThrought = !UM005_DateUtility.semiannualMonths.contains(expectedDate.month())
-                    ? UM005_DateUtility.lastDayOfDatePeriod (expectedDate, UM005_DateUtility.semiannualMonths)
+                Date expectedBillThrought = !UM005_DateUtility.semiannualMonths.contains(oi.blng__NextBillingDate__c.month())
+                    ? UM005_DateUtility.lastDayOfDatePeriod (oi.blng__NextBillingDate__c, UM005_DateUtility.semiannualMonths)
                     : null;
                 System.assertEquals(expectedBillThrought, oi.blng__BillThroughDateOverride__c);
             }
