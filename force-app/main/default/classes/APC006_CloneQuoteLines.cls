@@ -5,15 +5,13 @@
 */
 public with sharing class APC006_CloneQuoteLines {
     
-
-    @AuraEnabled
+ //The purpose of this is to elevate the test class code coverage.
+ public static Boolean testRunningFlag1 = false;
+ public static Boolean testRunningFlag2 = false;
+ @AuraEnabled
     public static Boolean cloneAndResetQL(Id quoteId){
         //Map (existing quote line id => Quote line record)
         Map<Id,SBQQ__QuoteLine__c> idToQuoteLineMap;
-
-
-        //The purpose of this is to elevate the test class code coverage.
-        Boolean testRunningFlag = false;
 
         //Do not proceed action method if there's an error in the constructor
         Boolean hasError = false;
@@ -39,12 +37,17 @@ public with sharing class APC006_CloneQuoteLines {
             }
 
             query += String.join(fieldsList, ',') + ' FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = :quoteId AND LPCR_CloneCancel__c = True ORDER BY Name';
-
-            for (SBQQ__QuoteLine__c ql: Database.query(query)) {
+            List<SBQQ__QuoteLine__c> targetQLList = Database.query(query);
+            if(targetQLList != null && targetQLList.size()>0){
+                for (SBQQ__QuoteLine__c ql:targetQLList) {
                     idToQuoteLineMap.put(ql.Id, ql);
             }
+            }
+            
         }
-
+        if(idToQuoteLineMap.size() == 0){
+            return false;
+        }
 
         SBQQ.TriggerControl.disable();
         if (hasError) return false;
@@ -57,14 +60,18 @@ public with sharing class APC006_CloneQuoteLines {
         for (SBQQ__QuoteLine__c ql: idToQuoteLineMap.values()) {
                 currentQL = ql.clone(false, true, false, false);
                 //To insure the order
-                currentQL.SBQQ__Number__c = ql.SBQQ__Number__c + 1000;
+                if(currentQL.SBQQ__Number__c != null){
+                    currentQL.SBQQ__Number__c = ql.SBQQ__Number__c + 1000;
+                }
                 originIdsToclonedQLMap.put(ql.Id, currentQL);
                 ql.SBQQ__Quantity__c = 0;
+                ql.LPCR_TotalBerceauGratuitRegion__c = 0;
+
         }
         // Insert the new cloned QL records, we will update their requiredby fields later in this code
         try {
             insert originIdsToclonedQLMap.values();
-            if (Test.isRunningTest() && testRunningFlag) {
+            if (Test.isRunningTest() && testRunningFlag1) {
                 throw new CustomException('Error message in Test Class.');
             }
         } catch (Exception ex) {
@@ -97,7 +104,7 @@ public with sharing class APC006_CloneQuoteLines {
         try {
             update originIdsToclonedQLMap.values();
             update idToQuoteLineMap.values();
-            if (Test.isRunningTest() && testRunningFlag) {
+            if (Test.isRunningTest() && testRunningFlag2) {
                 throw new CustomException('Error message in Test Class.');
             }
         } catch (Exception ex) {
