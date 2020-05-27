@@ -17,5 +17,5 @@
     <protected>false</protected>
     <showsLocation>false</showsLocation>
     <showsStatus>false</showsStatus>
-    <url>{!LEFT($Api.Enterprise_Server_URL_470,FIND(&#39;%2F&#39;, $Api.Enterprise_Server_URL_470))}/apex/echosign_dev1__AgreementTemplateProcess?masterid={!LPCR_BonAchatPartenaire__c.Id}&amp;templateId={!$Setup.LPCR_TemplateSignatureElectronique__c.IDTemplateBonAchat__c}</url>
+    <url>{!LEFT($Api.Enterprise_Server_URL_470,FIND(&#39;%2F&#39;, $Api.Enterprise_Server_URL_470))}/apex/echosign_dev1__AgreementTemplateProcess?masterid={!LPCR_BonAchatPartenaire__c.Id}&amp;templateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateBonAchat__c}</url>
 </WebLink>
