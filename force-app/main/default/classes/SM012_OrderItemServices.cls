@@ -46,6 +46,11 @@ public with sharing class SM012_OrderItemServices implements Queueable{
         
     }
 
+    /*
+	*	@description : this method set the right invoces dates on orde items.
+	*	@param List<OrderItem> newOrderItems to process
+    *	@returns void
+    */
     public static void setupInvoiceDates(List<OrderItem> newOrderItems) {
         PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'newOrderItems: ' + newOrderItems.size());
         if (newOrderItems != null) {
@@ -70,13 +75,6 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                 ? -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c)
                 : -35;
             
-            /*
-            // reload orderItems with relations
-            List<OrderItem> orderItems = [SELECT Id, SBQQ__BillingType__c, ServiceDate, blng__NextChargeDate__c, blng__OverrideNextBillingDate__c, SBQQ__BillingFrequency__c,
-                blng__BillThroughDateOverride__c, OrderId, Order.LPCR_TypeCreche__c, Order.blng__BillingAccount__c, Order.blng__BillingAccount__r.RecordTypeId 
-                FROM OrderItem WHERE Id IN :newOrderItems.keySet()];
-            */
-
             Set<Id> orderIds = new Set<Id>();
             for (OrderItem item : newOrderItems) {
                 orderIds.add(item.OrderId);
@@ -139,7 +137,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
 
 
     public static void setInvoiceGroupingOnOrderItem(Map<Id,OrderItem> mapOrderItem){
-        Id recordTypeId = UM003_TypeManager.getQuoteRecordTypeIdByDeveloperName('Referencement');
+        //Id recordTypeId = UM003_TypeManager.getQuoteRecordTypeIdByDeveloperName('Referencement');
+        Id recordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, 'Referencement');
         List<OrderItem> listOrderItem = [SELECT Id, LPCR_NumeroPurchaseOrder__c, Order.SBQQ__Quote__r.RecordTypeId, blng__InvoiceGrouping__c, blng__InvoiceGroupId__c FROM OrderItem WHERE ID in :mapOrderItem.keySet() AND Order.SBQQ__Quote__r.RecordTypeId =: recordTypeId];
         List<OrderItem> listOrderItemtoSave = new List<OrderItem>();
         for(OrderItem eachOrderItem : listOrderItem){

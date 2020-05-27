@@ -7,7 +7,7 @@
 public class APB006_PrepaRenewalContract_Test {
     
     private static final Integer NUMBER_OF_B2C = 3;
-    private static final Integer NUMBER_OF_B2B = 3;
+    private static final Integer NUMBER_OF_B2B = 0; // we set this to 0 due to the lookupfilter on Contract.AccountId which force the RT of the related account to (and just to) Famille
     private static final Integer NUMBER_OF_CRECHE = 3;
     private static final Id B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
     private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
@@ -37,8 +37,9 @@ public class APB006_PrepaRenewalContract_Test {
             
             accountsCreche.add(tmpAccount);
         }
-        accounts.addAll(accountsCreche);
+        //accounts.addAll(accountsCreche);
         insert accounts;
+        insert accountsCreche;
 
         Id standardPricebookId = Test.getStandardPricebookId();
         UM002_TestDataFactory.insertBillingCustomSettings();
@@ -83,6 +84,7 @@ public class APB006_PrepaRenewalContract_Test {
             q.LPCR_IndexationConvenue__c = 'Oui';
             q.LPCR_TypeFacturation__c = 'Arrears';
             q.SBQQ__BillingFrequency__c = 'Invoice Plan';
+            q.SBQQ__RenewalUpliftRate__c = 2;
         }
         insert qlines;
         update opptToUpdate;

@@ -45,6 +45,13 @@ public with sharing class UM002_TestDataFactory {
 	}
     */
 
+    /*
+    * @description generic test data factory method with default value
+    * various simplified signatures for flexibility and backward compatibility 
+    *
+    * Refer SM013_QuoteLineServices_Test for usage example
+    * Refer the original version for additional info / features : https://github.com/SalesforceFoundation/SmartFactory
+    */
 	public static SObject createSObject(String objectType, Map<String, Object> fieldValues) {
 		return createSObject(objectType, 1, fieldValues);
     }
@@ -55,6 +62,14 @@ public with sharing class UM002_TestDataFactory {
 	}
     */
 
+    /*
+    * @description generic test data factory method with default value
+    * main method to create a list of object
+    * fieldValues here work as above, but can optionally be a list of objects, in which case they will each be used 
+    *
+    * Refer SM013_QuoteLineServices_Test for usage example
+    * Refer the original version for additional info / features : https://github.com/SalesforceFoundation/SmartFactory
+    */
 	public static List<SObject> createSObjectList(String objectType, Integer numberOfObjects, Map<String, Object> fieldValues) {
 		List<SObject> soList = new List<SObject>();
 		for (Integer i = 0; i < numberOfObjects; i++) {
@@ -63,6 +78,15 @@ public with sharing class UM002_TestDataFactory {
 		return soList;  
 	}
     
+    /*
+    * @description generic test data factory method with default value
+    * full service signature
+	* by passing in fieldValues, you can set defaults for any fields you like (data types must match)
+	* for reference fields, fieldValues can optionally be actual parent objects to which you want the new objects to be related
+    *
+    * Refer SM013_QuoteLineServices_Test for usage example
+    * Refer the original version for additional info / features : https://github.com/SalesforceFoundation/SmartFactory
+    */
     public static SObject createSObject(String objectType, Integer counter, Map<String, Object> fieldValues) {
 		SObject obj = GlobalDescribe.get(objectType).newSObject();
 
@@ -83,6 +107,12 @@ public with sharing class UM002_TestDataFactory {
 		return obj;
     }
     
+    /*
+    * @description set field value based on the default provided by fieldValues map
+	*
+    * Refer SM013_QuoteLineServices_Test for usage example
+    * Refer the original version for additional info / features : https://github.com/SalesforceFoundation/SmartFactory
+    */
     static void setFieldValue(SObject obj, Schema.SObjectField field, Integer counter, Set<String> include, Set<String> exclude, Map<String, Object> fieldValues) {
 		Schema.DescribeFieldResult fieldDescribe = field.getDescribe();
 		Schema.DisplayType ft = fieldDescribe.getType();
@@ -204,6 +234,14 @@ public with sharing class UM002_TestDataFactory {
 		}	
     }
     
+    /*
+	*	Returns a field map for a given sobject. 
+	*	Note : this method is kept public for Test cases to share the same field map info, without requiring a field desribe.
+	*	@param objectType sobject api name for ex. Account
+    *	@returns FieldMap [Key:FieldName,Value:Schema.SObjectField]
+    
+    * Refer the original version for additional info / features : https://github.com/SalesforceFoundation/SmartFactory
+    */
     public static  Map<String, Schema.SObjectField> fieldMapFor(String objectType) {
 		Map<String, Schema.SObjectField> fieldMap = null;
 		String normalizedObjectType = objectType.toLowerCase();
@@ -983,6 +1021,46 @@ newMe.FederationIdentifier = null;
             plannings.add(pl);
         }
         return plannings;   
+    }
+    
+    
+    //This part is added by Hanae on the 19/05/2020
+    public static List<LPCR_ModificationEntrante__c> createModificationsEntrantes(Integer numRecs, List<SBQQ__Quote__c> quotes, String event){
+        List<LPCR_ModificationEntrante__c> ModifEntrantes = new List<LPCR_ModificationEntrante__c>();
+        LPCR_ModificationEntrante__c tempModif;
+        for(Integer i = 0; i<numRecs; i++){
+            tempModif = new LPCR_ModificationEntrante__c(
+                LPCR_Devis__c  = quotes.get(i).Id,
+                LPCR_Evenement__c  = event
+            );
+            ModifEntrantes.add(tempModif);
+        }
+        return ModifEntrantes;
+    }
+    
+    
+    public static List<Account> createAccountswithtype(Integer numAccs, String name, String typeCreche, String rTDevName){
+        List<Account> accounts = new List<Account>();
+       	Id recTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, rTDevName);
+        Account tempAcc;
+        for(Integer i = 0; i<numAccs; i++){
+            tempAcc = new Account(Name = name, LPCR_TypeCreche__c  = typeCreche, RecordTypeId = recTypeId);
+            accounts.add(tempAcc);
+        }
+        return accounts;
+    }
+    public static List<SBQQ__Quote__c> createQuoteswithStatus(Integer numRecs, List<Account> accs, List<Opportunity> opps, String status){
+        List<SBQQ__Quote__c> quotes = new List<SBQQ__Quote__c>();
+        SBQQ__Quote__c tempQuote;
+        for(Integer i = 0; i<numRecs; i++){
+            tempQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = opps.get(i).Id,
+                LPCR_Creche__c = accs.get(i).Id,
+                SBQQ__Status__c = status
+            );
+            quotes.add(tempQuote);
+        }
+        return quotes;
     }
     
     

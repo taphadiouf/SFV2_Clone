@@ -5,8 +5,7 @@
         <description>Alerte Fin De Contrat Dans 5 jours</description>
         <protected>false</protected>
         <recipients>
-            <recipient>lalia.thiam@lpcr.fr</recipient>
-            <type>user</type>
+            <type>owner</type>
         </recipients>
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/LPCR_FinContratDans5Jours</template>
@@ -16,8 +15,7 @@
         <description>Alerte Fin De Contrat Dans 90 jours</description>
         <protected>false</protected>
         <recipients>
-            <recipient>lalia.thiam@lpcr.fr</recipient>
-            <type>user</type>
+            <type>owner</type>
         </recipients>
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/LPCR_FinContratDans90Jours</template>
