@@ -82,10 +82,12 @@
     </fieldUpdates>
     <rules>
         <fullName>Indexation Des Prix</fullName>
+        <!--
         <actions>
             <name>LPCR_MiseaJourValeurIndexation</name>
             <type>Task</type>
         </actions>
+        -->
         <active>false</active>
         <criteriaItems>
             <field>SBQQ__Quote__c.LPCR_RenouvellementConvenu__c</field>
@@ -127,9 +129,10 @@
         <formula>SBQQ__Account__r.RecordType.DeveloperName = &quot;Famille&quot;</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
+    <!--
     <tasks>
         <fullName>LPCR_MiseaJourValeurIndexation</fullName>
-        <assignedTo>owner</assignedTo>
+        <assignedTo>Quote Owner</assignedTo>
         <assignedToType>user</assignedToType>
         <description>Bonjour,
 
@@ -148,4 +151,5 @@ Admin LPCR</description>
         <status>Open</status>
         <subject>Mise à Jour De La Valeur De l&#39;indexation</subject>
     </tasks>
+    -->
 </Workflow>
