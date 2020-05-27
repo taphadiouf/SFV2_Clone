@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
-        <application>standard__Sales</application>
+        <application>LPCR_Commerce</application>
         <visible>true</visible>
     </applicationVisibilities>
     <fieldPermissions>
@@ -3040,26 +3040,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_RevenusFamille__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_TauxEffort__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_TauxHoraire__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_TauxMensuel__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Order.SBQQ__OrderBookings__c</field>
         <readable>true</readable>
@@ -5354,11 +5334,6 @@
         <field>SBQQ__QuoteLine__c.SBQQ__SubscriptionType__c</field>
         <readable>true</readable>
     </fieldPermissions>
-      <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.SBQQ__TargetCustomerAmount__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.SBQQ__TaxCode__c</field>
@@ -5397,11 +5372,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.SBQQ__UnitCost__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.SBQQ__Unopened__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
