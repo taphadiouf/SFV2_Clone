@@ -1,0 +1,79 @@
+<!--
+ * @ author Ayoub Ouarti
+ * @created 28/02/2020
+ * @description LWC : The goal of this part is to realize the component which will allow the management of document sending + document consultation of the LPCR document repository
+     */-->
+
+     <template>
+            <lightning-card>
+              <lightning-button onclick={handlePopup} label={uploadFile} slot="actions"></lightning-button>
+            </lightning-card>
+            <div class="chart slds-m-around_medium" lwc:dom="manual"></div>
+            <section id="modal" role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+              aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-hide">
+              <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                  <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                      <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Close</span>
+                  </button>
+                  <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                    {uploadFileHeader}
+                  </h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium  myModalContent" id="modal-content-id-1">
+                  <div class="slds-p-bottom_large slds-p-left_large" >
+                    <fieldset class="slds-form-element slds-form-element_compound">
+                      <div class="slds-form-element__control">
+                        <div class=" slds-form-element__row">
+                          <div class="slds-size_1-of-2">
+                            <div class="slds-form-element">
+                              <span class="slds-form-element__label" id="file-selector-primary-type">{type}</span>
+                              <div class="slds-form-element__control">
+                                <lightning-combobox placeholder="Choisir un type" options={picklistTypeValue} name="type"
+                                  onchange={handleChangeFields}>
+                                </lightning-combobox>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="slds-size_1-of-2">
+                            <div class="slds-form-element">
+                              <span class="slds-form-element__label" id="file-selector-primary-label">{attachment}</span>
+                              <div class="slds-form-element__control"  style="width:400px ; margin-top: -3px;">
+                                <div >
+                                  <lightning-input label="" name="file uploader" onchange={handleFilesChange} type="file"
+                                    multiple>
+                                </lightning-input>
+                                </div><br />
+                                <div class="slds-text-body_small slds-text-color_weak">{fileName}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <template if:true={showLoadingSpinner} >
+                          <div class="slds-size_2-of-2" >
+                              <lightning-spinner alternative-text="Uploading......" size="medium"></lightning-spinner>
+                          </div>
+                        </template>
+                    </fieldset>
+                  </div>
+                </div>
+                <footer class="slds-modal__footer ">
+                  <button class="slds-button slds-button_neutral" onclick={handleSkip}>
+                    {skip}
+                  </button>
+                  <button class="slds-button slds-button_neutral" onclick={handleSave}>
+                    {submit}
+                  </button>
+                </footer>
+              </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open slds-hide modalBackdrops" id="modalBackdrops"></div>
+          </template>
+
+
+

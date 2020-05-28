@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <gender>Feminine</gender>
+    <label>Structure AO</label>
+    <nameField>
+        <displayFormat>S-{0000}</displayFormat>
+        <label>Numéro</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Structures AO</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <fields>
+        <fullName>LPCR_Creation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Création</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_GestionnaireActuelAutre__c</fullName>
+        <externalId>false</externalId>
+        <label>Gestionnaire actuel &quot;Autre&quot;</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_GestionnaireActuel__c</fullName>
+        <externalId>false</externalId>
+        <label>Gestionnaire actuel</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Babilou</fullName>
+                    <default>false</default>
+                    <label>Babilou</label>
+                </value>
+                <value>
+                    <fullName>La maison bleue</fullName>
+                    <default>false</default>
+                    <label>La maison bleue</label>
+                </value>
+                <value>
+                    <fullName>Peoplenbaby</fullName>
+                    <default>false</default>
+                    <label>Peoplenbaby</label>
+                </value>
+                <value>
+                    <fullName>Enfance pour tous</fullName>
+                    <default>false</default>
+                    <label>Enfance pour tous</label>
+                </value>
+                <value>
+                    <fullName>Crèche attitude</fullName>
+                    <default>false</default>
+                    <label>Crèche attitude</label>
+                </value>
+                <value>
+                    <fullName>Crèche de france</fullName>
+                    <default>false</default>
+                    <label>Crèche de france</label>
+                </value>
+                <value>
+                    <fullName>AASBR</fullName>
+                    <default>false</default>
+                    <label>AASBR</label>
+                </value>
+                <value>
+                    <fullName>ADMR</fullName>
+                    <default>false</default>
+                    <label>ADMR</label>
+                </value>
+                <value>
+                    <fullName>AGDS</fullName>
+                    <default>false</default>
+                    <label>AGDS</label>
+                </value>
+                <value>
+                    <fullName>AGES</fullName>
+                    <default>false</default>
+                    <label>AGES</label>
+                </value>
+                <value>
+                    <fullName>ALEF</fullName>
+                    <default>false</default>
+                    <label>ALEF</label>
+                </value>
+                <value>
+                    <fullName>ALFA 3A</fullName>
+                    <default>false</default>
+                    <label>ALFA 3A</label>
+                </value>
+                <value>
+                    <fullName>SLEA</fullName>
+                    <default>false</default>
+                    <label>SLEA</label>
+                </value>
+                <value>
+                    <fullName>Mutualité française</fullName>
+                    <default>false</default>
+                    <label>Mutualité française</label>
+                </value>
+                <value>
+                    <fullName>Les petites canailles</fullName>
+                    <default>false</default>
+                    <label>Les petites canailles</label>
+                </value>
+                <value>
+                    <fullName>Crescendo</fullName>
+                    <default>false</default>
+                    <label>Crescendo</label>
+                </value>
+                <value>
+                    <fullName>Envol</fullName>
+                    <default>false</default>
+                    <label>Envol</label>
+                </value>
+                <value>
+                    <fullName>Leo Lagrange</fullName>
+                    <default>false</default>
+                    <label>Leo Lagrange</label>
+                </value>
+                <value>
+                    <fullName>Famille rurale</fullName>
+                    <default>false</default>
+                    <label>Famille rurale</label>
+                </value>
+                <value>
+                    <fullName>Croix St Simon</fullName>
+                    <default>false</default>
+                    <label>Croix St Simon</label>
+                </value>
+                <value>
+                    <fullName>IFAC</fullName>
+                    <default>false</default>
+                    <label>IFAC</label>
+                </value>
+                <value>
+                    <fullName>La croix rouge</fullName>
+                    <default>false</default>
+                    <label>La croix rouge</label>
+                </value>
+                <value>
+                    <fullName>Léa et léo</fullName>
+                    <default>false</default>
+                    <label>Léa et léo</label>
+                </value>
+                <value>
+                    <fullName>Autre</fullName>
+                    <default>false</default>
+                    <label>Autre</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_GestionnaireRetenuAutre__c</fullName>
+        <externalId>false</externalId>
+        <label>Gestionnaire retenu &quot;Autre&quot;</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_GestionnaireRetenu__c</fullName>
+        <externalId>false</externalId>
+        <label>Gestionnaire retenu</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Babilou</fullName>
+                    <default>false</default>
+                    <label>Babilou</label>
+                </value>
+                <value>
+                    <fullName>La maison bleue</fullName>
+                    <default>false</default>
+                    <label>La maison bleue</label>
+                </value>
+                <value>
+                    <fullName>Peoplenbaby</fullName>
+                    <default>false</default>
+                    <label>Peoplenbaby</label>
+                </value>
+                <value>
+                    <fullName>Enfance pour tous</fullName>
+                    <default>false</default>
+                    <label>Enfance pour tous</label>
+                </value>
+                <value>
+                    <fullName>Crèche attitude</fullName>
+                    <default>false</default>
+                    <label>Crèche attitude</label>
+                </value>
+                <value>
+                    <fullName>Crèche de france</fullName>
+                    <default>false</default>
+                    <label>Crèche de france</label>
+                </value>
+                <value>
+                    <fullName>AASBR</fullName>
+                    <default>false</default>
+                    <label>AASBR</label>
+                </value>
+                <value>
+                    <fullName>ADMR</fullName>
+                    <default>false</default>
+                    <label>ADMR</label>
+                </value>
+                <value>
+                    <fullName>AGDS</fullName>
+                    <default>false</default>
+                    <label>AGDS</label>
+                </value>
+                <value>
+                    <fullName>AGES</fullName>
+                    <default>false</default>
+                    <label>AGES</label>
+                </value>
+                <value>
+                    <fullName>ALEF</fullName>
+                    <default>false</default>
+                    <label>ALEF</label>
+                </value>
+                <value>
+                    <fullName>ALFA 3A</fullName>
+                    <default>false</default>
+                    <label>ALFA 3A</label>
+                </value>
+                <value>
+                    <fullName>SLEA</fullName>
+                    <default>false</default>
+                    <label>SLEA</label>
+                </value>
+                <value>
+                    <fullName>Mutualité française</fullName>
+                    <default>false</default>
+                    <label>Mutualité française</label>
+                </value>
+                <value>
+                    <fullName>Les petites canailles</fullName>
+                    <default>false</default>
+                    <label>Les petites canailles</label>
+                </value>
+                <value>
+                    <fullName>Crescendo</fullName>
+                    <default>false</default>
+                    <label>Crescendo</label>
+                </value>
+                <value>
+                    <fullName>Envol</fullName>
+                    <default>false</default>
+                    <label>Envol</label>
+                </value>
+                <value>
+                    <fullName>Leo Lagrange</fullName>
+                    <default>false</default>
+                    <label>Leo Lagrange</label>
+                </value>
+                <value>
+                    <fullName>Famille rurale</fullName>
+                    <default>false</default>
+                    <label>Famille rurale</label>
+                </value>
+                <value>
+                    <fullName>Croix St Simon</fullName>
+                    <default>false</default>
+                    <label>Croix St Simon</label>
+                </value>
+                <value>
+                    <fullName>IFAC</fullName>
+                    <default>false</default>
+                    <label>IFAC</label>
+                </value>
+                <value>
+                    <fullName>La croix rouge</fullName>
+                    <default>false</default>
+                    <label>La croix rouge</label>
+                </value>
+                <value>
+                    <fullName>Léa et léo</fullName>
+                    <default>false</default>
+                    <label>Léa et léo</label>
+                </value>
+                <value>
+                    <fullName>Autre</fullName>
+                    <default>false</default>
+                    <label>Autre</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Lead</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipLabel>Structures AO</relationshipLabel>
+        <relationshipName>Structures_AO</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_NomCreche__c</fullName>
+        <externalId>false</externalId>
+        <label>Nom de la crèche</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_NombrePlaces__c</fullName>
+        <externalId>false</externalId>
+        <label>Nombre de places</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_PrixConcurrent__c</fullName>
+        <externalId>false</externalId>
+        <label>Prix concurrent</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_PrixLPCRPlace__c</fullName>
+        <externalId>false</externalId>
+        <label>Prix LPCR / place</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_TypeGestionnaireActuel__c</fullName>
+        <externalId>false</externalId>
+        <label>Type de gestionnaire actuel</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Associatif</fullName>
+                    <default>false</default>
+                    <label>Associatif</label>
+                </value>
+                <value>
+                    <fullName>Privé</fullName>
+                    <default>false</default>
+                    <label>Privé</label>
+                </value>
+                <value>
+                    <fullName>Régie directe</fullName>
+                    <default>false</default>
+                    <label>Régie directe</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type de structure</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Mac</fullName>
+                    <default>false</default>
+                    <label>Mac</label>
+                </value>
+                <value>
+                    <fullName>HG</fullName>
+                    <default>false</default>
+                    <label>HG</label>
+                </value>
+                <value>
+                    <fullName>Micro</fullName>
+                    <default>false</default>
+                    <label>Micro</label>
+                </value>
+                <value>
+                    <fullName>MAF</fullName>
+                    <default>false</default>
+                    <label>MAF</label>
+                </value>
+                <value>
+                    <fullName>RAM</fullName>
+                    <default>false</default>
+                    <label>RAM</label>
+                </value>
+                <value>
+                    <fullName>ALSH</fullName>
+                    <default>false</default>
+                    <label>ALSH</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Opportunite__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Opportunité</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Structures AO</relationshipLabel>
+        <relationshipName>Structures_AO</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+</CustomObject>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>LPCR_AlerteFinDeContratDans5jours</fullName>
+        <description>Alerte Fin De Contrat Dans 5 jours</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_FinContratDans5Jours</template>
+    </alerts>
+    <alerts>
+        <fullName>LPCR_AlerteFinDeContratDans90jours</fullName>
+        <description>Alerte Fin De Contrat Dans 90 jours</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_FinContratDans90Jours</template>
+    </alerts>
+    <rules>
+        <fullName>LPCR_FinContratProche</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Contract.LPCR_StatutContrat__c</field>
+            <operation>equals</operation>
+            <value>Actif</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>LPCR_AlerteFinDeContratDans5jours</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Contract.LPCR_DateFin__c</offsetFromField>
+            <timeLength>-5</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>LPCR_AlerteFinDeContratDans90jours</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Contract.LPCR_DateFin__c</offsetFromField>
+            <timeLength>-90</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+</Workflow>

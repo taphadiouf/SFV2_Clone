@@ -1,0 +1,1113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Crèche</layout>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+        <sections>
+            <label><!-- Occupation de la crèche --></label>
+            <section>Occupation de la crèche</section>
+        </sections>
+        <sections>
+            <label><!-- Préinscription --></label>
+            <section>Préinscription</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Entreprise</layout>
+        <sections>
+            <label><!-- Facturation --></label>
+            <section>Facturation</section>
+        </sections>
+        <sections>
+            <label><!-- Informations sur la préinscripton --></label>
+            <section>Informations sur la préinscripton</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+        <sections>
+            <label><!-- Purchase Order --></label>
+            <section>Purchase Order</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Famille</layout>
+        <sections>
+            <label><!-- Informations CAF --></label>
+            <section>Informations CAF</section>
+        </sections>
+        <sections>
+            <label><!-- Informations Financières --></label>
+            <section>Informations Financières</section>
+        </sections>
+        <sections>
+            <label><!-- Informations Système --></label>
+            <section>Informations Système</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Partenaire</layout>
+        <sections>
+            <label><!-- Champs --></label>
+            <section>Champs</section>
+        </sections>
+        <sections>
+            <label><!-- Informations Crèche --></label>
+            <section>Informations Crèche</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Mettre à jour le compte --></label>
+        <name>ModifierComptePartenaire</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Nouvelle Demande Réseau Grandir --></label>
+        <name>NouvelleDemandeReseauGrandir</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Adobe Sign --></label>
+        <name>echosign_dev1__EchoSign_Account_Publisher_Action</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Crèche --></label>
+        <name>Creche</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Entreprise --></label>
+        <name>Entreprise</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Famille --></label>
+        <name>Famille</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Partenaire --></label>
+        <name>Partenaire</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Veuillez renseigner le prestataire actuel --></errorMessage>
+        <name>VR_Compte_AutrePrestataire</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- MAJ_Preinscriptions --></label>
+        <name>MAJ_Preinscriptions</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Amend_Assets --></label>
+        <name>SBQQ__Amend_Assets</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Renew_Assets --></label>
+        <name>SBQQ__Renew_Assets</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreditCenter --></label>
+        <name>blng__CreditCenter</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- PaymentVirtualTerminal --></label>
+        <name>blng__PaymentVirtualTerminal</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Refund --></label>
+        <name>blng__Refund</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_to_EchoSign --></label>
+        <name>echosign_dev1__Send_to_EchoSign</name>
+    </webLinks>
+    <fields>
+        <label><!-- Email --></label>
+        <name>Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activité --></label>
+        <name>LPCR_Activite__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agrément Bébés --></label>
+        <name>LPCR_AgrementBebes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agrément Grands --></label>
+        <name>LPCR_AgrementGrands__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agrément Moyens --></label>
+        <name>LPCR_AgrementMoyens__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agrément Total --></label>
+        <name>LPCR_AgrementTotal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Autre prestataire --></label>
+        <name>LPCR_AutrePrestataire__c</name>
+    </fields>
+    <fields>
+        <label><!-- BIC --></label>
+        <name>LPCR_BIC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre de berceaux commercialisable --></label>
+        <name>LPCR_BerceauxCommercialisables__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre de berceaux disponible --></label>
+        <name>LPCR_BerceauxDisponibles__c</name>
+    </fields>
+    <fields>
+        <label><!-- Capital --></label>
+        <name>LPCR_Capital__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lien Chorus --></label>
+        <name>LPCR_Chorus__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client international --></label>
+        <name>LPCR_ClientInternational__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code APE --></label>
+        <name>LPCR_CodeAPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code service Chorus --></label>
+        <name>LPCR_CodeServiceChorus__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tarif concurrence --></label>
+        <name>LPCR_Concurrence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date de signature RUM --></label>
+        <name>LPCR_DateSignatureRUM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Début de validité Purchase Order --></label>
+        <name>LPCR_DebutValiditePurchaseOrder__c</name>
+    </fields>
+    <fields>
+        <label><!-- Département --></label>
+        <name>LPCR_Departement__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dispositifs existant --></label>
+        <name>LPCR_DispositifsExistants__c</name>
+        <picklistValues>
+            <masterLabel>Accompagnement scolaire</masterLabel>
+            <translation><!-- Accompagnement scolaire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chéque CESU</masterLabel>
+            <translation><!-- Chéque CESU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conciergerie</masterLabel>
+            <translation><!-- Conciergerie --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conférences / Ateliers parentalité</masterLabel>
+            <translation><!-- Conférences / Ateliers parentalité --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Garde d’enfants périscolaire</masterLabel>
+            <translation><!-- Garde d’enfants périscolaire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Place en crèche</masterLabel>
+            <translation><!-- Place en crèche --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plateforme service à la personne</masterLabel>
+            <translation><!-- Plateforme service à la personne --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- En cours de création --></label>
+        <name>LPCR_EnCoursCreation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enjeux --></label>
+        <name>LPCR_Enjeux__c</name>
+        <picklistValues>
+            <masterLabel>Amélioration de la marque employeur</masterLabel>
+            <translation><!-- Amélioration de la marque employeur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Efficacité /engagement des collaborateurs</masterLabel>
+            <translation><!-- Efficacité /engagement des collaborateurs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fidélisation des talents</masterLabel>
+            <translation><!-- Fidélisation des talents --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qualité de vie au travail</masterLabel>
+            <translation><!-- Qualité de vie au travail --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Enseigne --></label>
+        <name>LPCR_Enseigne__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entité Juridique --></label>
+        <name>LPCR_EntiteJuridique__c</name>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Est migré --></label>
+        <name>LPCR_EstMigre__c</name>
+    </fields>
+    <fields>
+        <label><!-- Autorisation FILOUE --></label>
+        <name>LPCR_FILOUE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fin de validité Purchase Order --></label>
+        <name>LPCR_FinValiditePurchaseOrder__c</name>
+    </fields>
+    <fields>
+        <label><!-- Garde --></label>
+        <name>LPCR_Garde__c</name>
+        <picklistValues>
+            <masterLabel>Autorité parentale conjointe</masterLabel>
+            <translation><!-- Autorité parentale conjointe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Garde alternée</masterLabel>
+            <translation><!-- Garde alternée --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Garde parent unique</masterLabel>
+            <translation><!-- Garde parent unique --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Handicap enfant dans la fraterie --></label>
+        <name>LPCR_Handicap__c</name>
+    </fields>
+    <fields>
+        <label><!-- IBAN --></label>
+        <name>LPCR_IBAN__c</name>
+    </fields>
+    <fields>
+        <label><!-- ID Compte Entreprise --></label>
+        <name>LPCR_IDCompteEntreprise__c</name>
+    </fields>
+    <fields>
+        <label><!-- ID compte famille --></label>
+        <name>LPCR_IDCompteFamille__c</name>
+    </fields>
+    <fields>
+        <label><!-- ID Sage --></label>
+        <name>LPCR_IDSage__c</name>
+    </fields>
+    <fields>
+        <label><!-- ID externe --></label>
+        <name>LPCR_IdExterne_Compte__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interlocuteur service famille --></label>
+        <name>LPCR_InterlocuteurServiceFamille__c</name>
+        <relationshipLabel><!-- Comptes --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Joindre état CAF facture --></label>
+        <name>LPCR_JoindreEtatCAFFacture__c</name>
+    </fields>
+    <fields>
+        <label><!-- Libellé APE --></label>
+        <name>LPCR_LibelleAPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mail de livraison de la facture --></label>
+        <name>LPCR_MailLivraisonFacture__c</name>
+    </fields>
+    <fields>
+        <label><!-- Moyen de transport --></label>
+        <name>LPCR_MoyenDeTransport__c</name>
+        <picklistValues>
+            <masterLabel>Transports en commun</masterLabel>
+            <translation><!-- Transports en commun --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voiture</masterLabel>
+            <translation><!-- Voiture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>À pied</masterLabel>
+            <translation><!-- À pied --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Nombre de berceaux à la concurrence --></label>
+        <name>LPCR_NombreBerceauxConcurrence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre d&apos;enfants prévu le jeudi --></label>
+        <name>LPCR_NombreEnfantPrevuJeudi__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre d&apos;enfants prévu le vendredi --></label>
+        <name>LPCR_NombreEnfantPrevuVendredi__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre d&apos;enfants à charge --></label>
+        <name>LPCR_NombreEnfantsCharge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre d&apos;enfants prévu le lundi --></label>
+        <name>LPCR_NombreEnfantsLundi__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre d&apos;enfants prévu le mardi --></label>
+        <name>LPCR_NombreEnfantsMardi__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre d&apos;enfants prévu le mercredi --></label>
+        <name>LPCR_NombreEnfantsMercredi__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre maximal de places --></label>
+        <name>LPCR_NombreMaximalPlaces__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre de places achetées --></label>
+        <name>LPCR_NombrePlacesAchetees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre de places vendues --></label>
+        <name>LPCR_NombrePlacesVendues__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre de places --></label>
+        <name>LPCR_NombrePlaces__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nombre de structures --></label>
+        <name>LPCR_NombreStructures__c</name>
+    </fields>
+    <fields>
+        <label><!-- Numéro d&apos;allocataire --></label>
+        <name>LPCR_NumeroAllocataire__c</name>
+    </fields>
+    <fields>
+        <label><!-- Numéro du Purchase Order --></label>
+        <name>LPCR_NumeroPurchaseOrder__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pas de numéro de SIRET --></label>
+        <name>LPCR_PasDeSIRET__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prestataire actuel crèche --></label>
+        <name>LPCR_PrestataireActuelCreche__c</name>
+        <picklistValues>
+            <masterLabel>Babilou</masterLabel>
+            <translation><!-- Babilou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crèche attitude</masterLabel>
+            <translation><!-- Crèche attitude --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crèches de France</masterLabel>
+            <translation><!-- Crèches de France --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>La maison bleue</masterLabel>
+            <translation><!-- La maison bleue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ma place en crèche</masterLabel>
+            <translation><!-- Ma place en crèche --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>People and Baby</masterLabel>
+            <translation><!-- People and Baby --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Prestataire actuel --></label>
+        <name>LPCR_PrestataireActuel__c</name>
+        <picklistValues>
+            <masterLabel>AASBR</masterLabel>
+            <translation><!-- AASBR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ADMR</masterLabel>
+            <translation><!-- ADMR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AGDS</masterLabel>
+            <translation><!-- AGDS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AGES</masterLabel>
+            <translation><!-- AGES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALEF</masterLabel>
+            <translation><!-- ALEF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALFA 3A</masterLabel>
+            <translation><!-- ALFA 3A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Autre</masterLabel>
+            <translation><!-- Autre --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Babilou</masterLabel>
+            <translation><!-- Babilou --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crescendo</masterLabel>
+            <translation><!-- Crescendo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Croix St Simon</masterLabel>
+            <translation><!-- Croix St Simon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crèche attitude</masterLabel>
+            <translation><!-- Crèche attitude --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crèche de France</masterLabel>
+            <translation><!-- Crèche de France --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enfance pour tous</masterLabel>
+            <translation><!-- Enfance pour tous --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Envol</masterLabel>
+            <translation><!-- Envol --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Famille rurale</masterLabel>
+            <translation><!-- Famille rurale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IFAC</masterLabel>
+            <translation><!-- IFAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>La croix rouge</masterLabel>
+            <translation><!-- La croix rouge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>La maison bleue</masterLabel>
+            <translation><!-- La maison bleue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Leo Lagrange</masterLabel>
+            <translation><!-- Leo Lagrange --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Les petites canailles</masterLabel>
+            <translation><!-- Les petites canailles --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Léa et léo</masterLabel>
+            <translation><!-- Léa et léo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mutualité Française</masterLabel>
+            <translation><!-- Mutualité Française --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Peoplenbaby</masterLabel>
+            <translation><!-- Peoplenbaby --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SLEA</masterLabel>
+            <translation><!-- SLEA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Privé/Public --></label>
+        <name>LPCR_PrivePublic__c</name>
+        <picklistValues>
+            <masterLabel>Privé</masterLabel>
+            <translation><!-- Privé --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public</masterLabel>
+            <translation><!-- Public --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Purchase Order --></label>
+        <name>LPCR_PurchaseOrder__c</name>
+    </fields>
+    <fields>
+        <label><!-- RFA --></label>
+        <name>LPCR_RFA__c</name>
+    </fields>
+    <fields>
+        <label><!-- RIB --></label>
+        <name>LPCR_RIB__c</name>
+    </fields>
+    <fields>
+        <label><!-- RUM --></label>
+        <name>LPCR_RUM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Raison sociale --></label>
+        <name>LPCR_RaisonSociale__c</name>
+    </fields>
+    <fields>
+        <label><!-- Région  commerciale --></label>
+        <name>LPCR_RegionCommerciale__c</name>
+        <picklistValues>
+            <masterLabel>Grand Ouest</masterLabel>
+            <translation><!-- Grand Ouest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IDF</masterLabel>
+            <translation><!-- IDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LR</masterLabel>
+            <translation><!-- LR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nord Est</masterLabel>
+            <translation><!-- Nord Est --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PACA</masterLabel>
+            <translation><!-- PACA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rhone Alpes</masterLabel>
+            <translation><!-- Rhone Alpes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Région --></label>
+        <name>LPCR_Region__c</name>
+        <picklistValues>
+            <masterLabel>IDF et Grandes villes</masterLabel>
+            <translation><!-- IDF et Grandes villes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paris</masterLabel>
+            <translation><!-- Paris --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Province</masterLabel>
+            <translation><!-- Province --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- date prév. de remise en concurrence --></label>
+        <name>LPCR_RemiseConcurrence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Représentant 1 --></label>
+        <name>LPCR_Representant1__c</name>
+        <relationshipLabel><!-- Représentant N°1 --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Représentant 2 --></label>
+        <name>LPCR_Representant2__c</name>
+        <relationshipLabel><!-- Représentant N°2 --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SIREN --></label>
+        <name>LPCR_SIREN__c</name>
+    </fields>
+    <fields>
+        <label><!-- SIRET Chorus --></label>
+        <name>LPCR_SIRETChorus__c</name>
+    </fields>
+    <fields>
+        <label><!-- SIRET --></label>
+        <name>LPCR_SIRET__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scoring --></label>
+        <name>LPCR_Scoring__c</name>
+    </fields>
+    <fields>
+        <label><!-- Siège --></label>
+        <name>LPCR_Siege__c</name>
+    </fields>
+    <fields>
+        <label><!-- Situation familiale --></label>
+        <name>LPCR_SituationFamiliale__c</name>
+        <picklistValues>
+            <masterLabel>Autre</masterLabel>
+            <translation><!-- Autre --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Célibataire géographique</masterLabel>
+            <translation><!-- Célibataire géographique --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Divorcé</masterLabel>
+            <translation><!-- Divorcé --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>En couple</masterLabel>
+            <translation><!-- En couple --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Famille recomposée</masterLabel>
+            <translation><!-- Famille recomposée --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marié / Pacsé</masterLabel>
+            <translation><!-- Marié / Pacsé --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monoparentale</masterLabel>
+            <translation><!-- Monoparentale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Séparé</masterLabel>
+            <translation><!-- Séparé --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Veuf / Veuve</masterLabel>
+            <translation><!-- Veuf / Veuve --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sous activité --></label>
+        <name>LPCR_SousActivite__c</name>
+    </fields>
+    <fields>
+        <label><!-- Statut --></label>
+        <name>LPCR_Statut__c</name>
+        <picklistValues>
+            <masterLabel>Ancien client</masterLabel>
+            <translation><!-- Ancien client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact</masterLabel>
+            <translation><!-- Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ex-adhérent</masterLabel>
+            <translation><!-- Ex-adhérent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fournisseur</masterLabel>
+            <translation><!-- Fournisseur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ne souhaite pas adhérer</masterLabel>
+            <translation><!-- Ne souhaite pas adhérer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partenaire</masterLabel>
+            <translation><!-- Partenaire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prospect</masterLabel>
+            <translation><!-- Prospect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rachat LPCR</masterLabel>
+            <translation><!-- Rachat LPCR --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Taux d&apos;effort --></label>
+        <name>LPCR_TauxEffort__c</name>
+    </fields>
+    <fields>
+        <label><!-- TOP 100 --></label>
+        <name>LPCR_Top100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Travaille avec la concurrence --></label>
+        <name>LPCR_TravailConcurrence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type de client --></label>
+        <name>LPCR_TypeClient__c</name>
+        <picklistValues>
+            <masterLabel>CE</masterLabel>
+            <translation><!-- CE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collectivité</masterLabel>
+            <translation><!-- Collectivité --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grand Compte</masterLabel>
+            <translation><!-- Grand Compte --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PLAC</masterLabel>
+            <translation><!-- PLAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PME-ETI</masterLabel>
+            <translation><!-- PME-ETI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partenaire</masterLabel>
+            <translation><!-- Partenaire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TPE</masterLabel>
+            <translation><!-- TPE --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- type de contrat principal --></label>
+        <name>LPCR_TypeContratPrincipal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type de crèche --></label>
+        <name>LPCR_TypeCreche__c</name>
+        <picklistValues>
+            <masterLabel>ALSH</masterLabel>
+            <translation><!-- ALSH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Halte-Garderie</masterLabel>
+            <translation><!-- Halte-Garderie --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jardin d’enfants</masterLabel>
+            <translation><!-- Jardin d’enfants --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MAC</masterLabel>
+            <translation><!-- MAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MAF</masterLabel>
+            <translation><!-- MAF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MICRO</masterLabel>
+            <translation><!-- MICRO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partenaire</masterLabel>
+            <translation><!-- Partenaire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAM</masterLabel>
+            <translation><!-- RAM --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type d&apos;entreprise --></label>
+        <name>LPCR_TypeEntreprise__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type de facturation --></label>
+        <name>LPCR_TypeFacturation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type de structure --></label>
+        <name>LPCR_TypeStructure__c</name>
+        <picklistValues>
+            <masterLabel>Autre</masterLabel>
+            <translation><!-- Autre --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crèche associative</masterLabel>
+            <translation><!-- Crèche associative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crèche municipale</masterLabel>
+            <translation><!-- Crèche municipale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Crèches Familiales / Parentale</masterLabel>
+            <translation><!-- Crèches Familiales / Parentale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Micro crèches</masterLabel>
+            <translation><!-- Micro crèches --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Option qui permet de combiner les quantités de plusieurs ressources d&apos;un même produit sur une seule ligne lors de la génération du devis de renouvellement.</help>
+        <label><!-- Combine Asset Quantities --></label>
+        <name>SBQQ__AssetQuantitiesCombined__c</name>
+    </fields>
+    <fields>
+        <help>Activez pour combiner les ressources et les abonnements de plusieurs contrats à durée identique. Par défaut, chaque contrat à durée identique génère un groupe séparé dans un devis de renouvellement.</help>
+        <label><!-- Combine Co-Termed Contracts --></label>
+        <name>SBQQ__CoTermedContractsCombined__c</name>
+    </fields>
+    <fields>
+        <help>Détermine des contrats à durée identique.</help>
+        <label><!-- Co-Termination Event --></label>
+        <name>SBQQ__CoTerminationEvent__c</name>
+        <picklistValues>
+            <masterLabel>Add-on</masterLabel>
+            <translation>Complément</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewal</masterLabel>
+            <translation>Renouvellement</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Détermine comment les contrats de service et d&apos;abonnement de ce client sont définis avec des durées identiques.</help>
+        <label><!-- Contract Co-Termination --></label>
+        <name>SBQQ__ContractCoTermination__c</name>
+        <picklistValues>
+            <masterLabel>Always</masterLabel>
+            <translation>Toujours</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Never</masterLabel>
+            <translation>Jamais</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prompt</masterLabel>
+            <translation>Demander</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Opportunité par défaut de ce compte utilisée dans un module e-Commerce pour obtenir le prix catalogue du client et associer aux devis « panier d&apos;achat ».</help>
+        <label><!-- Default Opportunity --></label>
+        <name>SBQQ__DefaultOpportunity__c</name>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Sélectionnez si les prix contractés doivent être hérités du compte parent.</help>
+        <label><!-- Ignore Parent Contracted Prices --></label>
+        <name>SBQQ__IgnoreParentContractedPrices__c</name>
+    </fields>
+    <fields>
+        <help>Sélectionnez cette case pour préserver la hiérarchie des offres groupées dans les devis de renouvellement et les amendements.</help>
+        <label><!-- Preserve Bundle Structure --></label>
+        <name>SBQQ__PreserveBundle__c</name>
+    </fields>
+    <fields>
+        <help>Saisissez la date limite de maintien des prix.</help>
+        <label><!-- Price Hold End --></label>
+        <name>SBQQ__PriceHoldEnd__c</name>
+    </fields>
+    <fields>
+        <help>Sélectionnez Basé sur les ressources pour générer les renouvellements en fonction des ressources d&apos;un compte ou Basé sur le contrat pour générer les renouvellements en fonction du contrat créé à partir d&apos;un devis.</help>
+        <label><!-- Renewal Model --></label>
+        <name>SBQQ__RenewalModel__c</name>
+        <picklistValues>
+            <masterLabel>Asset Based</masterLabel>
+            <translation>Basé sur les ressources</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract Based</masterLabel>
+            <translation>Basé sur le contrat</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Utilisez « Identique » pour conserver le dernier prix payé, « Catalogue » pour utiliser le prix catalogue actuel ou « Augmentation » pour utiliser le dernier prix payé avec une augmentation.</help>
+        <label><!-- Renewal Pricing Method --></label>
+        <name>SBQQ__RenewalPricingMethod__c</name>
+        <picklistValues>
+            <masterLabel>List</masterLabel>
+            <translation>Catalogue</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Same</masterLabel>
+            <translation>Identique</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uplift</masterLabel>
+            <translation>Augmentation</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Sélectionner si ce compte a des certificats actifs</help>
+        <label><!-- Tax-Exempt --></label>
+        <name>SBQQ__TaxExempt__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation>Non</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation>Oui</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Identifiant Profil --></label>
+        <name>Sparklane_FR__ProfileId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nom Profil --></label>
+        <name>Sparklane_FR__ProfileName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inactif Sparklane --></label>
+        <name>Sparklane_FR__inactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bill To Contact --></label>
+        <name>blng__BillToContact__c</name>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Customer Profile Id --></label>
+        <name>blng__CustomerProfileId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default Payment Type --></label>
+        <name>blng__DefaultPaymentType__c</name>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Commentaire</value>
+        </caseValues>
+        <gender>Masculine</gender>
+        <name>description_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Effectif</value>
+        </caseValues>
+        <gender>Masculine</gender>
+        <name>employees_account</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Compte parent</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Comptes principaux</value>
+        </caseValues>
+        <gender>Masculine</gender>
+        <name>parent_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Adresse de contact</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>shipping_address_account</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Ville</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>shipping_city_account</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Pays</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>shipping_country_account</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Code de pays</value>
+        </caseValues>
+        <gender>Masculine</gender>
+        <name>shipping_country_code_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Latitude de l&apos;adresse de contact</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Latitudes des adresses de contact</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>shipping_latitude_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Longitude de l&apos;adresse de contact</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Longitudes des adresses de contact</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>shipping_longitude_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Région/Province</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>shipping_state_account</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Code de région/province</value>
+        </caseValues>
+        <gender>Masculine</gender>
+        <name>shipping_state_code_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Rue</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>shipping_street_account</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Code postal</value>
+        </caseValues>
+        <gender>Feminine</gender>
+        <name>shipping_zip_account</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+</CustomObjectTranslation>

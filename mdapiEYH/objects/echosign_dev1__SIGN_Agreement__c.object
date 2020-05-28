@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>LPCR_BonAchatPartenaire__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Bon d&apos;achat partenaire</label>
+        <referenceTo>LPCR_BonAchatPartenaire__c</referenceTo>
+        <relationshipLabel>Accords</relationshipLabel>
+        <relationshipName>Accords</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_ContratPartenaire__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Contrat Partenaire</label>
+        <referenceTo>LPCR_ContratPartenaire__c</referenceTo>
+        <relationshipLabel>Accords</relationshipLabel>
+        <relationshipName>Accords</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_Devis__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Devis</label>
+        <referenceTo>SBQQ__Quote__c</referenceTo>
+        <relationshipLabel>Accords</relationshipLabel>
+        <relationshipName>Accords</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+</CustomObject>

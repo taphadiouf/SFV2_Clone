@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>LPCR_ANaitre__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>A naitre</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_AmplitudeHoraireJeudi__c</fullName>
+        <externalId>false</externalId>
+        <label>Amplitude horaire jeudi</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Matin</fullName>
+                    <default>false</default>
+                    <label>Matin</label>
+                </value>
+                <value>
+                    <fullName>Après-midi</fullName>
+                    <default>false</default>
+                    <label>Après-midi</label>
+                </value>
+                <value>
+                    <fullName>Journée entière</fullName>
+                    <default>false</default>
+                    <label>Journée entière</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_AmplitudeHoraireLundi__c</fullName>
+        <externalId>false</externalId>
+        <label>Amplitude horaire lundi</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Matin</fullName>
+                    <default>false</default>
+                    <label>Matin</label>
+                </value>
+                <value>
+                    <fullName>Après-midi</fullName>
+                    <default>false</default>
+                    <label>Après-midi</label>
+                </value>
+                <value>
+                    <fullName>Journée entière</fullName>
+                    <default>false</default>
+                    <label>Journée entière</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_AmplitudeHoraireMardi__c</fullName>
+        <externalId>false</externalId>
+        <label>Amplitude horaire mardi</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Matin</fullName>
+                    <default>false</default>
+                    <label>Matin</label>
+                </value>
+                <value>
+                    <fullName>Après-midi</fullName>
+                    <default>false</default>
+                    <label>Après-midi</label>
+                </value>
+                <value>
+                    <fullName>Journée entière</fullName>
+                    <default>false</default>
+                    <label>Journée entière</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_AmplitudeHoraireMercredi__c</fullName>
+        <externalId>false</externalId>
+        <label>Amplitude horaire mercredi</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Matin</fullName>
+                    <default>false</default>
+                    <label>Matin</label>
+                </value>
+                <value>
+                    <fullName>Après-midi</fullName>
+                    <default>false</default>
+                    <label>Après-midi</label>
+                </value>
+                <value>
+                    <fullName>Journée entière</fullName>
+                    <default>false</default>
+                    <label>Journée entière</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_AmplitudeHoraireVendredi__c</fullName>
+        <externalId>false</externalId>
+        <label>Amplitude horaire vendredi</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Matin</fullName>
+                    <default>false</default>
+                    <label>Matin</label>
+                </value>
+                <value>
+                    <fullName>Après-midi</fullName>
+                    <default>false</default>
+                    <label>Après-midi</label>
+                </value>
+                <value>
+                    <fullName>Journée entière</fullName>
+                    <default>false</default>
+                    <label>Journée entière</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_ChoixN1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Choix de crèche N°1</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Demandes Réseau Grandir</relationshipLabel>
+        <relationshipName>Demandes_Reseau_Grandir</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_ChoixN2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Choix de crèche N°2</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Demandes Réseau Grandir</relationshipLabel>
+        <relationshipName>Demandes_Reseau_Grandir2</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_ChoixN3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Choix de crèche N°3</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Demandes Réseau Grandir</relationshipLabel>
+        <relationshipName>Demandes_Reseau_Grandir3</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_CodePostalDomicile__c</fullName>
+        <externalId>false</externalId>
+        <label>Code postal du domicile</label>
+        <length>10</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_CodePostalTravail__c</fullName>
+        <externalId>false</externalId>
+        <label>Code postal du travail</label>
+        <length>10</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_ContratEntreprise__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Contrat Entreprise</label>
+        <referenceTo>Contract</referenceTo>
+        <relationshipLabel>Demandes Réseau Grandir</relationshipLabel>
+        <relationshipName>Demandes_Reseau_Grandir</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_DateEntreeSouhaitee__c</fullName>
+        <externalId>false</externalId>
+        <label>Date d&apos;entrée souhaitée</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_DateVisite__c</fullName>
+        <externalId>false</externalId>
+        <label>Date de visite</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_Departement__c</fullName>
+        <externalId>false</externalId>
+        <formula>LEFT(LPCR_CodePostalDomicile__c,2)</formula>
+        <label>Département</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_Enfant__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Enfant</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Demandes Réseau Grandir</relationshipLabel>
+        <relationshipName>Demandes_RG_Enfant</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_MotifSansSuite__c</fullName>
+        <externalId>false</externalId>
+        <label>Motif du sans suite</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Annulation famille</fullName>
+                    <default>false</default>
+                    <label>Annulation famille</label>
+                </value>
+                <value>
+                    <fullName>Pas de solution réseau</fullName>
+                    <default>false</default>
+                    <label>Pas de solution réseau</label>
+                </value>
+                <value>
+                    <fullName>Retour LPCR</fullName>
+                    <default>false</default>
+                    <label>Retour LPCR</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_MoyenTransport__c</fullName>
+        <externalId>false</externalId>
+        <label>Moyen de transport</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>A pied</fullName>
+                    <default>false</default>
+                    <label>A pied</label>
+                </value>
+                <value>
+                    <fullName>Transports en commun</fullName>
+                    <default>false</default>
+                    <label>Transports en commun</label>
+                </value>
+                <value>
+                    <fullName>Voiture</fullName>
+                    <default>false</default>
+                    <label>Voiture</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_PrixAchat__c</fullName>
+        <externalId>false</externalId>
+        <label>Prix d&apos;achat</label>
+        <precision>9</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_PrixVente__c</fullName>
+        <externalId>false</externalId>
+        <label>Prix de vente</label>
+        <precision>9</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_RepresentantN1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Représentant N°1</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Demandes Réseau Grandir</relationshipLabel>
+        <relationshipName>Demandes_RG_Representant1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_RepresentantN2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Représentant N°2</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Demandes (Représentant N°2)</relationshipLabel>
+        <relationshipName>Demandes_RG_Representant2</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_RueDomicile__c</fullName>
+        <externalId>false</externalId>
+        <label>Rue du domicile</label>
+        <length>300</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>LPCR_RueTravail__c</fullName>
+        <externalId>false</externalId>
+        <label>Rue du travail</label>
+        <length>300</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>LPCR_VilleDomicile__c</fullName>
+        <externalId>false</externalId>
+        <label>Ville du domicile</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_VilleTravail__c</fullName>
+        <externalId>false</externalId>
+        <label>Ville du travail</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>Veuillez renseigner un lead ou un contact enfant</inlineHelpText>
+        <label>Lead</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipLabel>DemandeRG</relationshipLabel>
+        <relationshipName>DemandeRG</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Opportunite__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Opportunité</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>DemandeRG</relationshipLabel>
+        <relationshipName>DemandeRG</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+</CustomObject>

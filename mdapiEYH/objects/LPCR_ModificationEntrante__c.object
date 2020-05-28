@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Cet objet nous permettra de collecter les données en provenance d&apos;Intranet et de la GTA  concernant des événements et liés à de l&apos;usage sur SF (absences, heures déduites, maladie ...)</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <gender>Feminine</gender>
+    <label>Modification Entrante</label>
+    <nameField>
+        <displayFormat>ME-{0000}</displayFormat>
+        <label>Numéro</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Modifications Entrantes</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <fields>
+        <fullName>CreatedDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Date de création</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_CodePostal__c</fullName>
+        <externalId>false</externalId>
+        <label>Code postal</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_Commentaire__c</fullName>
+        <externalId>false</externalId>
+        <label>Commentaire</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_Compte__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Compte</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Modifications Entrantes</relationshipLabel>
+        <relationshipName>RelationModificationEntranteCompte</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Enfant, Parent 1 et 2</description>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Modifications Entrantes</relationshipLabel>
+        <relationshipName>RelationModificationEntranteContact</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_Contract__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Contrat Salesforce</description>
+        <externalId>false</externalId>
+        <label>Contrat</label>
+        <referenceTo>Contract</referenceTo>
+        <relationshipLabel>Modifications Entrantes</relationshipLabel>
+        <relationshipName>RelationModificationEntranteContrat</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_Devis__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Devis</label>
+        <referenceTo>SBQQ__Quote__c</referenceTo>
+        <relationshipLabel>Modifications Entrantes</relationshipLabel>
+        <relationshipName>RelationModificationEntranteDevis</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_EstMigre__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Migré</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_Evenement__c</fullName>
+        <externalId>false</externalId>
+        <label>Evènement</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Modification Adresse Contact Parent</fullName>
+                    <default>false</default>
+                    <label>Modification Adresse Contact Parent</label>
+                </value>
+                <value>
+                    <fullName>Modification Autorité Parentale</fullName>
+                    <default>false</default>
+                    <label>Modification Autorité Parentale</label>
+                </value>
+                <value>
+                    <fullName>Modification Numéro Allocataire</fullName>
+                    <default>false</default>
+                    <label>Modification Numéro Allocataire</label>
+                </value>
+                <value>
+                    <fullName>Modification Situation Handicapé Enfant Fratrie</fullName>
+                    <default>false</default>
+                    <label>Modification Situation Handicapé Enfant Fratrie</label>
+                </value>
+                <value>
+                    <fullName>Modification Type Accueil</fullName>
+                    <default>false</default>
+                    <label>Modification Type Accueil</label>
+                </value>
+                <value>
+                    <fullName>Modification Type Planning</fullName>
+                    <default>false</default>
+                    <label>Modification Type Planning</label>
+                </value>
+                <value>
+                    <fullName>Modification Nombre Enfant Fratrie</fullName>
+                    <default>false</default>
+                    <label>Modification Nombre Enfant Fratrie</label>
+                </value>
+                <value>
+                    <fullName>Modification Montant Ressource</fullName>
+                    <default>false</default>
+                    <label>Modification Montant Ressource</label>
+                </value>
+                <value>
+                    <fullName>Modification Nombre Jour Congé</fullName>
+                    <default>false</default>
+                    <label>Modification Nombre Jour Congé</label>
+                </value>
+                <value>
+                    <fullName>Date Fin Contrat</fullName>
+                    <default>false</default>
+                    <label>Date Fin Contrat</label>
+                </value>
+                <value>
+                    <fullName>Modification Section</fullName>
+                    <default>false</default>
+                    <label>Modification Section</label>
+                </value>
+                <value>
+                    <fullName>Date Naissance Enfant</fullName>
+                    <default>false</default>
+                    <label>Date Naissance Enfant</label>
+                </value>
+                <value>
+                    <fullName>Modification Mode Garde</fullName>
+                    <default>false</default>
+                    <label>Modification Mode Garde</label>
+                </value>
+                <value>
+                    <fullName>Modification Situation Familiale</fullName>
+                    <default>false</default>
+                    <label>Modification Situation Familiale</label>
+                </value>
+                <value>
+                    <fullName>Modification Nombre Mois Mensualisé</fullName>
+                    <default>false</default>
+                    <label>Modification Nombre Mois Mensualisé</label>
+                </value>
+                <value>
+                    <fullName>Modification Traitement Jour férié</fullName>
+                    <default>false</default>
+                    <label>Modification Traitement Jour férié</label>
+                </value>
+                <value>
+                    <fullName>Modification</fullName>
+                    <default>false</default>
+                    <label>Modification</label>
+                </value>
+                <value>
+                    <fullName>Modification Délai Carence</fullName>
+                    <default>false</default>
+                    <label>Modification Délai Carence</label>
+                </value>
+                <value>
+                    <fullName>Modification Heure Supplémentaire MAC</fullName>
+                    <default>false</default>
+                    <label>Modification Heure Supplémentaire MAC</label>
+                </value>
+                <value>
+                    <fullName>Modification Heure Occasionnel MAC</fullName>
+                    <default>false</default>
+                    <label>Modification Heure Occasionnel MAC</label>
+                </value>
+                <value>
+                    <fullName>Modification Nombre Congés MAC</fullName>
+                    <default>false</default>
+                    <label>Modification Nombre Congés MAC</label>
+                </value>
+                <value>
+                    <fullName>Modification Heure Déduite MAC</fullName>
+                    <default>false</default>
+                    <label>Modification Heure Déduite MAC</label>
+                </value>
+                <value>
+                    <fullName>Validation Contrat Directrice</fullName>
+                    <default>false</default>
+                    <label>Validation Contrat Directrice</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_ExternalId__c</fullName>
+        <externalId>false</externalId>
+        <label>ID externe</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_HeureDateDebut__c</fullName>
+        <externalId>false</externalId>
+        <label>Date et heure de début</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_HeureDateFin__c</fullName>
+        <externalId>false</externalId>
+        <label>Date et heure de fin</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_IDUnique__c</fullName>
+        <externalId>false</externalId>
+        <label>ID Unique</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_Nom__c</fullName>
+        <externalId>false</externalId>
+        <label>Nom</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_OuiNon__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Oui/Non</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_Pays__c</fullName>
+        <externalId>false</externalId>
+        <label>Pays</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_Prenom__c</fullName>
+        <externalId>false</externalId>
+        <label>Prénom</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_Quantite__c</fullName>
+        <externalId>false</externalId>
+        <label>Quantité</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_RessourceFamille__c</fullName>
+        <externalId>false</externalId>
+        <label>Ressource Famille</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>LPCR_Rue__c</fullName>
+        <externalId>false</externalId>
+        <label>Rue</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LPCR_Section__c</fullName>
+        <externalId>false</externalId>
+        <label>Section</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Bébé</fullName>
+                    <default>false</default>
+                    <label>Bébé</label>
+                </value>
+                <value>
+                    <fullName>Moyen</fullName>
+                    <default>false</default>
+                    <label>Moyen</label>
+                </value>
+                <value>
+                    <fullName>Grand</fullName>
+                    <default>false</default>
+                    <label>Grand</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_Statut__c</fullName>
+        <externalId>false</externalId>
+        <label>Statut</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>A valider</fullName>
+                    <default>true</default>
+                    <label>A valider</label>
+                </value>
+                <value>
+                    <fullName>Validée</fullName>
+                    <default>false</default>
+                    <label>Validée</label>
+                </value>
+                <value>
+                    <fullName>Refusée</fullName>
+                    <default>false</default>
+                    <label>Refusée</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_TypeAccueil__c</fullName>
+        <externalId>false</externalId>
+        <label>Type Accueil</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Normal</fullName>
+                    <default>false</default>
+                    <label>Normal</label>
+                </value>
+                <value>
+                    <fullName>Tournant</fullName>
+                    <default>false</default>
+                    <label>Tournant</label>
+                </value>
+                <value>
+                    <fullName>Multiplanning</fullName>
+                    <default>false</default>
+                    <label>Multiplanning</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_TypePlanning__c</fullName>
+        <externalId>false</externalId>
+        <label>Type de planning</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Classique</fullName>
+                    <default>false</default>
+                    <label>Classique</label>
+                </value>
+                <value>
+                    <fullName>Tournant</fullName>
+                    <default>false</default>
+                    <label>Tournant</label>
+                </value>
+                <value>
+                    <fullName>Multi-planning</fullName>
+                    <default>false</default>
+                    <label>Multi-planning</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>LPCR_Ville__c</fullName>
+        <externalId>false</externalId>
+        <label>Ville</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LastModifiedDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Date de modification</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+</CustomObject>

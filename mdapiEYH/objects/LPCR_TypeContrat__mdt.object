@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Ce Custom meta contient tous les paramètres relatifs au type de contrat</description>
+    <label>LPCR_TypeContrat</label>
+    <pluralLabel>LPCR_TypeContrats</pluralLabel>
+    <visibility>Public</visibility>
+    <fields>
+        <fullName>LPCR_JourFacturation__c</fullName>
+        <description>le jour de facturation relatif a ce type de contrat</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>JourFacturation</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+</CustomObject>

@@ -1,0 +1,20 @@
+/**
+* @author Hanae Makboub
+* @created 15/05/2020
+* @description Trigger action handler on LPCR_ModificationEntrante__c Object
+*/
+public class TM012_ModificationEntranteTrigger extends TM000_TriggerHandler{
+	private Map<Id, LPCR_ModificationEntrante__c> newModificationsentrantesMap;
+    private Map<Id, LPCR_ModificationEntrante__c> oldModificationsentrantesMap;
+    private List<LPCR_ModificationEntrante__c> newModificationsentrantesList;
+    
+    public TM012_ModificationEntranteTrigger() {
+        this.newModificationsentrantesMap = (Map<Id, LPCR_ModificationEntrante__c>) Trigger.newMap;
+        this.oldModificationsentrantesMap = (Map<Id, LPCR_ModificationEntrante__c>) Trigger.oldMap;
+        this.newModificationsentrantesList = (List<LPCR_ModificationEntrante__c>) Trigger.new;
+    }
+    protected override void afterInsert() {
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM013_ModificationEntranteServices.updateQuotesFromModifEntrantes(newModificationsentrantesList);
+    }
+}
