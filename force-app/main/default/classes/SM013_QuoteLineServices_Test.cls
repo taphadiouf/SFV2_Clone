@@ -268,7 +268,7 @@ public with sharing class SM013_QuoteLineServices_Test {
 
             System.assertEquals(false, excepThrowed);
             System.assert(String.isBlank(excepMessage));
-            System.assert(excepMessage.contains(Label.LPCR_RegistrationFeeErrorMessage));
+            System.assert(!excepMessage.contains(Label.LPCR_RegistrationFeeErrorMessage));
         }
     }
 }
