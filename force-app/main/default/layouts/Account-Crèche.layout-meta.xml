@@ -24,8 +24,16 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>ParentId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_Region__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>LPCR_EntiteJuridique__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -36,6 +44,18 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_TypeCreche__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeMensualisation__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeFacturation__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TauxEffort__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -131,6 +151,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_CodePreinscription__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_LienSitePreinscription__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -325,11 +349,19 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
-        <fields>CONTACT.FULL_NAME</fields>
-        <fields>CONTACT.ACCOUNT_NAME</fields>
+        <fields>FULL_NAME</fields>
         <fields>CONTACT.TITLE</fields>
         <fields>CONTACT.EMAIL</fields>
         <fields>CONTACT.PHONE1</fields>
+        <relatedList>RelatedContactList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>CONTACT.FULL_NAME</fields>
+        <fields>CONTACT.ACCOUNT_NAME</fields>
+        <fields>CONTACT.RECORDTYPE</fields>
+        <fields>CONTACT.EMAIL</fields>
+        <fields>CONTACT.PHONE1</fields>
+        <fields>CONTACT.BIRTHDATE</fields>
         <fields>ACCCONRELATION.ROLES</fields>
         <relatedList>RelatedAccountContactRelationList</relatedList>
     </relatedLists>
@@ -427,6 +459,14 @@
         <fields>TASK.LAST_UPDATE</fields>
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>SBQQ__NetAmount__c</fields>
+        <fields>SBQQ__Status__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>SBQQ__Primary__c</fields>
+        <relatedList>SBQQ__Quote__c.LPCR_CompteFacturation__c</relatedList>
+    </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
@@ -434,7 +474,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000000s2Is</masterLabel>
+        <masterLabel>00h3O000000XEpz</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

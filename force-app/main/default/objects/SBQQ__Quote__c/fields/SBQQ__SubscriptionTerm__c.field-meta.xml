@@ -4,11 +4,12 @@
     <deprecated>false</deprecated>
     <description>Subscription term used to prorate eligible products by day or month.  This has been set by your administrator.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Subscription term used to prorate eligible products by day or month.  This has been set by your administrator.</inlineHelpText>
+    <inlineHelpText>Cette durée d&apos;abonnement servira à calculer les prix au prorata.</inlineHelpText>
     <label>Subscription Term</label>
     <precision>5</precision>
     <required>false</required>
     <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Number</type>
