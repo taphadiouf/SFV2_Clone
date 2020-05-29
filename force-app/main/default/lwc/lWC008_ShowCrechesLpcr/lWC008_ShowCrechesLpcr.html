@@ -1,0 +1,11 @@
+<!--* @author Achraf ABOUL (aaboul@salesforce.com)
+ 	* @created 29/05/2020
+ 	* @description LWC : Show the "creches" accounts
+-->
+<template>
+    <h6> Google Maps Example </h6>
+    <template if:true={accounts}>
+        <lightning-map map-markers={accounts}  markers-title={accounts}>
+        </lightning-map>
+    </template>
+</template>
