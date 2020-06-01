@@ -26,29 +26,41 @@
     </types>
     <types>
         <members>SBQQ__Quote__c.LPCR_StatutAttente</members>
+        <members>SBQQ__Quote__c.LPCR_StatutRappel</members>
+        <members>SBQQ__Quote__c.LPCR_StatutApprouve</members>
+        <members>SBQQ__Quote__c.LPCR_StatutRejete</members>
+        <members>SBQQ__Quote__c.Statut_standard_approuv</members>
+        <members>SBQQ__Quote__c.LPCR_StatutEnRevue</members>
+        <members>SBQQ__Quote__c.LPCR_StatutBrouillon</members>
+        <members>SBQQ__Quote__c.LPCR_StatutValide</members>
+
         <name>WorkflowFieldUpdate</name>
     </types>
-
+    <types>
+        <members>SBQQ__Quote__c.LPCR_ValidationAcceptee</members>
+        <members>SBQQ__Quote__c.LPCR_DevisAccepte</members>
+        <members>SBQQ__Quote__c.LPCR_DevisRejete</members>
+        <members>SBQQ__Quote__c.LPCR_ContratRejete</members>
+        <name>WorkflowAlert</name>
+    </types>
     <types>
         <members>Opportunity.NouveauContratReferecement</members>
         <members>Opportunity.NouveauContratReservation</members>
         <members>Opportunity.NouvelleDemandeReseauGrandir</members>
         <name>QuickAction</name>
     </types>
-
     <types>
         <members>APC006_CloneQuoteLines</members>
         <members>APC006_CloneQuoteLines_Test</members>
+        <members>UM002_TestDataFactory</members>
         <name>ApexClass</name>
     </types>
-
     <types>
         <members>SBQQ__Quote__c.LPCR_ValidationDevis</members>
         <members>SBQQ__Quote__c.LPCR_ValidationAvenant</members>
         <members>SBQQ__Quote__c.LPCR_Validationtermes</members>
         <name>ApprovalProcess</name>
     </types>
-
     <types>
         <members>LC003_CloneQuoteLines</members>
         <name>AuraDefinitionBundle</name>
@@ -58,13 +70,11 @@
         <members>unfiled$public/LPCR_DemandeApprobationModification</members>
         <name>EmailTemplate</name>
     </types>
-
     <types>
         <members>Account.CPQ_Lookup</members>
         <members>SBQQ__ProductOption__c.SBQQ__OptionConfiguration</members>
         <name>FieldSet</name>
     </types>
-
     <types>
         <members>Case-Pr&#233;sentation de la Demande R&#233;seau Grandir</members>
         <members>Opportunity-Pr&#233;sentation Opportunit&#233; AO public DSP</members>
@@ -76,11 +86,9 @@
         <members>LPCR_PlanningPrevisionnel__c-Planning Pr&#233;visionnel Layout</members>
         <name>Layout</name>
     </types>
-
     <types>
         <members>LPCR_TablePrix__c.Reservataire</members>
         <name>RecordType</name>
     </types>
-
     <version>49.0</version>
 </Package>

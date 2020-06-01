@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
+        <fullName>LPCR_ContratRejete</fullName>
+        <description>Validation de prix rejeté</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_DevisRejete</template>
+    </alerts>
+    <alerts>
         <fullName>LPCR_DevisAccepte</fullName>
         <description>Devis Accepté</description>
         <protected>false</protected>
@@ -19,6 +29,16 @@
         </recipients>
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/LPCR_DevisRejete</template>
+    </alerts>
+    <alerts>
+        <fullName>LPCR_ValidationAcceptee</fullName>
+        <description>Validation de prix acceptée</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_DevisAccepte</template>
     </alerts>
     <fieldUpdates>
         <fullName>LPCR_StatutApprouve</fullName>
@@ -39,6 +59,26 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>LPCR_StatutBrouillon</fullName>
+        <field>SBQQ__Status__c</field>
+        <literalValue>Draft</literalValue>
+        <name>STATUTBROUILLON</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>LPCR_StatutEnRevue</fullName>
+        <field>SBQQ__Status__c</field>
+        <literalValue>In Review</literalValue>
+        <name>STATUTENREVUE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>LPCR_StatutRappel</fullName>
         <field>LPCR_StatutApprobation__c</field>
         <literalValue>Brouillon</literalValue>
@@ -55,6 +95,16 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>LPCR_StatutValide</fullName>
+        <field>SBQQ__Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>STATUTVALIDE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Statut_standard_approuv</fullName>
