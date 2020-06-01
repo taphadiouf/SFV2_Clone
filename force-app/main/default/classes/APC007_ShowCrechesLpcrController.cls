@@ -11,9 +11,9 @@ public with sharing class APC007_ShowCrechesLpcrController {
                 Id reseauCrecheAccountRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_ReseauLPCR);
                 List<Account> accs =  [Select Id, Name,Type, Industry, ShippingAddress,ShippingStreet,
                                         ShippingCity, ShippingCountry, ShippingPostalCode,
-                                        ShippingState,Phone from Account where ShippingStreet!=NULL AND
+                                        ShippingState,Phone from Account where /*ShippingStreet!=NULL AND
                                         ShippingCity!=NULL AND ShippingCountry!=NULL AND  ShippingPostalCode!=NULL AND
-                                        ShippingState!=NULL AND RecordTypeId =: reseauCrecheAccountRT] ;
+                                        ShippingState!=NULL AND*/ RecordTypeId =: reseauCrecheAccountRT] ;
                 
                 List<Location> locations = new List<Location>();
                 for(Account acc :accs){
@@ -56,5 +56,5 @@ public with sharing class APC007_ShowCrechesLpcrController {
                 @AuraEnabled 
                 public String Country{get;set;}
             }
-    }
+   
 }

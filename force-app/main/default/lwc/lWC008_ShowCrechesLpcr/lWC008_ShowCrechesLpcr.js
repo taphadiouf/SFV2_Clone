@@ -1,8 +1,8 @@
-import { LightningElement, wire } from 'lwc';
-import getAccount from '@salesforce/apex/APC007_ShowCrechesLpcrController.getAccounts';
+import { LightningElement, api, wire } from 'lwc';
+import getAccounts from '@salesforce/apex/APC007_ShowCrechesLpcrController.getAccounts';
 
 export default class LWC008_ShowCrechesLpcr extends LightningElement {
-    modeAffich;
+    @api modeAffich;
     accounts;
     error;
     showFooter = true ;
