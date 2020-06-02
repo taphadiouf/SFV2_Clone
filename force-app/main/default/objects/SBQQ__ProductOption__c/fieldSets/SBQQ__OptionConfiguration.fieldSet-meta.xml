@@ -16,6 +16,11 @@
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </availableFields>
+    <availableFields>
+        <field>SBQQ__UnitPrice__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </availableFields>
     <description>Determines fields presented to users during option configuration.</description>
     <displayedFields>
         <field>SBQQ__Quantity__c</field>
@@ -34,11 +39,6 @@
     </displayedFields>
     <displayedFields>
         <field>SBQQ__ProductDescription__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
-        <field>SBQQ__UnitPrice__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>

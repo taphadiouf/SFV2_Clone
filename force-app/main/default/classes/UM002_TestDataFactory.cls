@@ -356,14 +356,14 @@ newMe.FederationIdentifier = null;
     public static List<Lead> createLeads(Integer numLeads, String recTypeId, String lastName, String company, String status,String Email){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0;i<numLeads;i++){
-            leads.add(new Lead(RecordTypeId = recTypeId, LastName=lastName,Company=company ,Status = status, Email=email));
+            leads.add(new Lead(RecordTypeId = recTypeId, LastName=lastName,Company=company ,Status = status, Email=email, LPCR_PasDeSIRET__c = true));
         }
         return leads;
     }
     public static List<Lead> createLeads(Integer numLeads, Map<String, Object> fieldsMap){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0; i<numLeads; i++){
-            Lead l= new Lead();
+            Lead l= new Lead(LPCR_PasDeSIRET__c = true);
             for(String eachFieldName : fieldsMap.keySet()){
                 l.put(eachFieldName, fieldsMap.get(eachFieldName));
             }
@@ -374,7 +374,7 @@ newMe.FederationIdentifier = null;
     public static List<Lead> createLeadsWithCrecheLink(Integer numLeads, String lastName, String company, String status,String Email, Id crecheId, String crecheNumber){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0;i<numLeads;i++){
-            Lead l= new Lead(LastName=lastName,Company=company ,Status = status, Email=email);
+            Lead l= new Lead(LastName=lastName,Company=company ,Status = status, Email=email, LPCR_PasDeSIRET__c = true);
             if(crecheNumber.equals('1')){
                 l.LPCR_CodeCreche1__c = crecheId;
             }
@@ -463,7 +463,7 @@ newMe.FederationIdentifier = null;
     public static List<Lead> createLeadsWithAllFields(Integer numLeads, String recTypeId, String lastName,String firstName, String PrenomCoDemandeur,String company, String status,String Email, String NomCoDemandeur, Date DateNaissance1, String EmailCoDemandeur, String Phone, String CiviliteCoDemandeur){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0;i<numLeads;i++){
-            Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName, FirstName=firstName, LPCR_PrenomCoDemandeur__c =PrenomCoDemandeur,Company=company ,Status = status, Email=email, LPCR_NomCoDemandeur__c= NomCoDemandeur,  LPCR_DateNaissance1__c= DateNaissance1 , LPCR_EmailCoDemandeur__c =EmailCoDemandeur, Phone=Phone, LPCR_CiviliteCoDemandeur__c = CiviliteCoDemandeur);
+            Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName, FirstName=firstName, LPCR_PrenomCoDemandeur__c =PrenomCoDemandeur,Company=company ,Status = status, Email=email, LPCR_NomCoDemandeur__c= NomCoDemandeur,  LPCR_DateNaissance1__c= DateNaissance1 , LPCR_EmailCoDemandeur__c =EmailCoDemandeur, Phone=Phone, LPCR_CiviliteCoDemandeur__c = CiviliteCoDemandeur, LPCR_PasDeSIRET__c = true);
             leads.add(l);
         }
         return leads;
@@ -577,7 +577,14 @@ newMe.FederationIdentifier = null;
         prod.blng__TaxRule__c =taxeRuleId;
         return prod;
     }
-    
+
+        public static Product2 createProduct(String name){
+        Product2 prod = new Product2();
+        prod.isActive = true;
+        prod.Name = name;
+        return prod;
+    }
+
     public static OrderItem createOrderProduct(Id standardPricebookId,ID orderID, Id productId,String chargeType,Decimal unitPrice ){
         OrderItem orderItem = new OrderItem();
         orderItem.OrderId = orderID;
@@ -805,7 +812,20 @@ newMe.FederationIdentifier = null;
         cpqQuote.SBQQ__BillingCity__c = city;
         return cpqQuote;
     }
-    
+
+        public static SBQQ__Quote__c createQuote(Id priceBookId, String type)
+    {
+        SBQQ__Quote__c cpqQuote = new SBQQ__Quote__c();
+        cpqQuote.SBQQ__Primary__c = false;
+        cpqQuote.SBQQ__StartDate__c = System.Today();
+        cpqQuote.SBQQ__SubscriptionTerm__c = 12;
+        cpqQuote.SBQQ__BillingFrequency__c = 'Invoice Plan';
+        cpqQuote.SBQQ__Type__c = type;
+        cpqQuote.SBQQ__PriceBook__c = priceBookId;
+        cpqQuote.SBQQ__PricebookId__c = priceBookId;
+        cpqQuote.SBQQ__QuoteLanguage__c = 'English';
+        return cpqQuote;
+    }
     public static SBQQ__QuoteLine__c createQuoteLine(String productId, String quoteId, String pricebookEntryId, Decimal price,Integer qte) 
     {
         SBQQ__QuoteLine__c quoteLineInstance = new SBQQ__QuoteLine__c();

@@ -193,17 +193,12 @@
     </availableFields>
     <description>Quote fields displayed in Edit Lines page above the line items table.</description>
     <displayedFields>
-        <field>LPCR_MasterDevis__c</field>
+        <field>LPCR_TypeAvenant__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
         <field>LPCR_DateDebut__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
-        <field>LPCR_TypeAvenant__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>

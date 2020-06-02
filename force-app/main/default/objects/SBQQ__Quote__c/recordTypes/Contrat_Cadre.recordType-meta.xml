@@ -67,6 +67,25 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_ResiliationAnticipe__c</picklist>
+        <values>
+            <fullName>1 an ferme</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 ans ferme</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 ans ferme</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Immédiate</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_StatutApprobation__c</picklist>
         <values>
             <fullName>Approuvé</fullName>
