@@ -7,6 +7,9 @@
 public class APB004_ActivateOrder_Test {
     @testsetup
     static void setup() {
+        //This setup is in the APB007_AllPriceBookClasses_Tests class 
+
+        /*
         Id standardPricebookId = Test.getStandardPricebookId();
 
          UM002_TestDataFactory.insertBillingCustomSettings();
@@ -44,10 +47,13 @@ public class APB004_ActivateOrder_Test {
        
         quote.SBQQ__Ordered__c  = true;     
         update quote;
+        */
         
     }
     @isTest
-    private static void test(){
+    private static void activateOrderBatch_Test(){
+        //This method is called in APB007_AllPriceBookClasses_Tests class with the same name
+        /*
         System.runAs(UM002_TestDataFactory.createUser()){            
             Test.startTest();            
             SBQQ__Quote__c quote = Database.query('SELECT Id FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
@@ -61,5 +67,6 @@ public class APB004_ActivateOrder_Test {
             System.assertEquals('Activated', order.Status,'status is not get activated');
             
         }
+    */
     }
 }
