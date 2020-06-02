@@ -3,7 +3,7 @@
     <fullName>blng__PaymentsAgainstInvoiceLines__c</fullName>
     <deprecated>false</deprecated>
     <externalId>false</externalId>
-    <inlineHelpText>Somme des montants de paiements alloués aux lignes de facture dans la facture.</inlineHelpText>
+    <inlineHelpText>Sum of payment amounts allocated to Invoice Lines in the Invoice.</inlineHelpText>
     <label>Allocations Against Invoice Lines</label>
     <summarizedField>blng__InvoiceLine__c.blng__PaymentsAgainstInvoiceLines__c</summarizedField>
     <summaryForeignKey>blng__InvoiceLine__c.blng__Invoice__c</summaryForeignKey>

@@ -3,7 +3,7 @@
     <fullName>blng__RefundsAgainstInvoiceLines__c</fullName>
     <deprecated>false</deprecated>
     <externalId>false</externalId>
-    <inlineHelpText>Annulations d’allocations précédentes aux lignes de facture</inlineHelpText>
+    <inlineHelpText>Cancellations of previous allocations to the Invoice Lines</inlineHelpText>
     <label>Unallocations Against Invoice Lines</label>
     <summarizedField>blng__InvoiceLine__c.blng__RefundsAgainstInvoiceLines__c</summarizedField>
     <summaryForeignKey>blng__InvoiceLine__c.blng__Invoice__c</summaryForeignKey>

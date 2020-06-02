@@ -2,8 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>TECH_ProductCode__c</fullName>
     <description>Utilisé dans workflow pour avoir dans un champ texte le product code et l&apos;utiliser en tant que
-        filter criteria dans rollup summary fields sur l&apos;objet SBQQ_Quote
-    </description>
+        filter criteria dans rollup summary fields sur l&apos;objet SBQQ_Quote</description>
     <externalId>false</externalId>
     <label>ProductCode</label>
     <length>255</length>
