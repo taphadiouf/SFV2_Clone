@@ -5,7 +5,7 @@
 */
 @isTest
 public class APB006_PrepaRenewalContract_Test {
-    //These attributes are migrated to the APB007_AllPriceBookClasses_Tests test class
+    //These attributes are migrated to the APB007_AllPriceBookClasses_Tests test
     /*
     private static final Integer NUMBER_OF_B2C = 3;
     private static final Integer NUMBER_OF_B2B = 0; // we set this to 0 due to the lookupfilter on Contract.AccountId which force the RT of the related account to (and just to) Famille
