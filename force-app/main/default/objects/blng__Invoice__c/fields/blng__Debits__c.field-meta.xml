@@ -3,7 +3,7 @@
     <fullName>blng__Debits__c</fullName>
     <deprecated>false</deprecated>
     <externalId>false</externalId>
-    <inlineHelpText>Somme de tous les montants de la note de débit appliqués à cette facture</inlineHelpText>
+    <inlineHelpText>Sum of all debit note amounts applied to this invoice</inlineHelpText>
     <label>Debits</label>
     <summarizedField>blng__InvoiceLine__c.blng__Debits__c</summarizedField>
     <summaryForeignKey>blng__InvoiceLine__c.blng__Invoice__c</summaryForeignKey>

@@ -183,8 +183,6 @@
         <searchFilterFields>SBQQ__NetTotal__c</searchFilterFields>
         <searchFilterFields>LPCR_indicateur_Approbation__c</searchFilterFields>
     </searchLayouts>
-     <!-- To review -->
-    <!-- <sharingModel>ControlledByParent</sharingModel> -->
-     <sharingModel>ReadWrite</sharingModel> 
+    <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

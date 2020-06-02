@@ -166,6 +166,7 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Invoices</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <searchLayouts>
         <customTabListAdditionalFields>blng__Account__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>blng__InvoiceDate__c</customTabListAdditionalFields>
@@ -187,8 +188,7 @@
         <searchResultsAdditionalFields>blng__StatusFlag__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>blng__PaymentStatus__c</searchResultsAdditionalFields>
     </searchLayouts>
-     <!-- To review -->
-    <!-- <sharingModel>ControlledByParent</sharingModel> -->
+    <sharingModel>ControlledByParent</sharingModel>
     <startsWith>Vowel</startsWith>
     <visibility>Public</visibility>
 </CustomObject>

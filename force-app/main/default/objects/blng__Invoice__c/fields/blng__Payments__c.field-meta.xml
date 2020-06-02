@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <formula>blng__PaymentsAgainstInvoice__c +  blng__PaymentsAgainstInvoiceLines__c - blng__RefundsAgainstInvoice__c - blng__RefundsAgainstInvoiceLines__c + blng__DebitPayments__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Paiement nets contre cette facture</inlineHelpText>
+    <inlineHelpText>Net payments against this invoice</inlineHelpText>
     <label>Payments</label>
     <precision>18</precision>
     <required>false</required>

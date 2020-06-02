@@ -5,8 +5,7 @@
     <formula>IF( OR(SBQQ__ProductCode__c == &apos;BerceauContratCadre&apos;,SBQQ__ProductCode__c == &apos;BerceauReservataire&apos;),
         IF (ISBLANK(LPCR_TotalBerceauGratuitRegion__c),SBQQ__Quantity__c,SBQQ__Quantity__c +
         LPCR_TotalBerceauGratuitRegion__c),
-        null)
-    </formula>
+        null)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Total Quantity</label>
     <precision>18</precision>
