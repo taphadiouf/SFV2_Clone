@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Order.LPCR_Creche__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContractEntreprise__c</members>
+        <members>Contract.LPCR_ContractEntreprise__c</members>
+        <members>Contract.LPCR_Sales_Rep__c</members>
+        <members>Contract.LPCR_ResponsableServiceFamille__C</members>
+        <members>Contract.LPCR_ResponsableADV__c</members>
+        <members>Account.LPCR_Solde__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeAvenant__c</members>
+        <members>SBQQ__Quote__c.LPCR_Nombreberceauxgratuits__c</members>
+        <members>SBQQ__Quote__c.LPCR_BerceauGratuitAmendment__c</members>
+        <members>SBQQ__Quote__c.LPCR_Berceauxgratuitsquote__c</members>
+        <members>Account.LPCR_Departement__c</members>
+        <members>SBQQ__PriceAction__c.SBQQ__Field__c</members>
+        <name>CustomField</name>
+    </types>
+
+    <types>
+        <members>LPCR_ADV</members>
+        <name>CustomApplication</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c.PresentationCompacteDevis</members>
+        <name>CompactLayout</name>
+    </types>
+
+    <types>
+        <members>blng__Invoice__c</members>
+        <members>SBQQ__Quote__c</members>
+        <name>Workflow</name>
+    </types>
+
+    <types>
+        <members>blng__Invoice__c.Update_record_type</members>
+        <name>WorkflowFieldUpdate</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c.LPCR_Alerte_Service_Famille_devis_annule</members>
+        <members>SBQQ__Quote__c.LPCR_Alerte_service_famille_avenant_contrat</members>
+        <members>SBQQ__Quote__c.AlerteContratterminMAC</members>
+        <members>SBQQ__Quote__c.LPCR_AlerteContratterminmicro</members>
+        <name>WorkflowAlert</name>
+    </types>
+
+    <types>
+
+        <members>SBQQ__Quote__c.Alerte Service Famille %28avenant contrat%29</members>
+        <members>SBQQ__Quote__c.Alerte Service Famille %28 devis annul&#233;%29</members>
+        <members>blng__Invoice__c.Update Invoice Record type upon invoicing posting</members>
+        <members>SBQQ__Quote__c.Alerte contrat termin&#233; %28MAC%29</members>
+        <members>SBQQ__Quote__c.Alerte contrat termin&#233; %28Micro%29</members>
+        <name>WorkflowRule</name>
+    </types>
+
+    <types>
+        <members>unfiled$public/LPCR_DevisAnnule</members>
+        <members>unfiled$public/LPCR_ResiliationContrat</members>
+        <members>unfiled$public/LPCR_AmendContrat</members>
+        <name>EmailTemplate</name>
+    </types>
+
+
+    <types>
+        <members>SBQQ__QuoteLine__c.SBQQ__LineEditor</members>
+        <name>FieldSet</name>
+    </types>
+    <types>
+        <members>PL_Produit</members>
+        <members>PL_Contact</members>
+        <members>PL_Opportunite</members>
+        <members>ADV_UtilityBar</members>
+        <members>Accueil_ADV</members>
+        <name>FlexiPage</name>
+    </types>
+
+    <types>
+        <members>Attacher_BerceauContratCadre_a_table_de_prix_Ref</members>
+        <members>LPCR_NouveauContratAccueil</members>
+        <members>LPCR_AttacherBerceauContratCadreTabledeprixref</members>
+        <name>Flow</name>
+    </types>
+
+    <types>
+        <members>Attacher_BerceauContratCadre_a_table_de_prix_Ref</members>
+        <members>LPCR_AttacherBerceauContratCadreTabledeprixref</members>
+        <members>LPCR_NouveauContratAccueil</members>
+        <name>FlowDefinition</name>
+    </types>
+
+    <types>
+        <members>ServiceADV</members>
+        <members>ServiceADV/CommandesAnneeEnCours</members>
+        <members>ServiceADV/FacturationB2BAnneeEncours</members>
+        <members>ServiceADV/FacturationB2CAnneeEnCours</members>
+        <name>Report</name>
+    </types>
+
+    <types>
+        <members>Logolpcrofficiel02_31</members>
+        <name>ContentAsset</name>
+    </types>
+    <types>
+        <members>blng__InvoiceBatch</members>
+        <name>GlobalValueSet</name>
+    </types>
+
+    <types>
+        <members>LPCR_ContratReferencement</members>
+        <members>LPCR_ContratReservataire</members>
+        <members>LPCR_Famille</members>
+        <name>PathAssistant</name>
+    </types>
+
+    <types>
+        <members>Product2.LPCR_B2B</members>
+        <members>Product2.LPCR_B2C</members>
+        <name>ListView</name>
+    </types>
+
+    <types>
+        <members>blng__Invoice__c.LCPR_DraftInvoice</members>
+        <members>blng__Invoice__c.LPCR_PostedInvoice</members>
+        <name>RecordType</name>
+    </types>
+
+    <types>
+        <members>LPCR_PlanningPrevisionnel__c-Planning Pr&#233;visionnel Layout</members>
+        <members>Product2-Billing Product Layout</members>
+        <members>SBQQ__Quote__c-Contrat d%27accueil</members>
+        <members>SBQQ__Quote__c-R&#233;servataire</members>
+        <members>Order-Billing Order Layout</members>
+        <members>OrderItem-Billing Order Product Layout</members>
+        <members>SBQQ__QuoteLine__c-Quote Line Layout</members>
+        <members>Account-Cr&#232;che</members>
+        <members>Account-Entreprise</members>
+        <members>Account-Famille</members>
+        <name>Layout</name>
+    </types>
+
+
+    <version>48.0</version>
+</Package>
