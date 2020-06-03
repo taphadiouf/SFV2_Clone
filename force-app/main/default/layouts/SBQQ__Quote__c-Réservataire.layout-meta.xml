@@ -22,10 +22,6 @@
                 <showScrollbars>false</showScrollbars>
                 <width>100%</width>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_Creche__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
@@ -36,39 +32,16 @@
         <label>Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__Primary__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>RecordTypeId</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LPCR_NumeroDevis__c</field>
             </layoutItems>
             <layoutItems>
-                <emptySpace>true</emptySpace>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
-                <field>SBQQ__SalesRep__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__PrimaryContact__c</field>
+                <field>SBQQ__Primary__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LPCR_TypeEntreprise__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_LigneSuperieurePP__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_LigneInferieurePP__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -79,40 +52,32 @@
                 <field>LPCR_DateFin__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_NombreMois__c</field>
+                <behavior>Edit</behavior>
+                <field>LPCR_EntiteJuridique__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_EntiteJuridique__c</field>
+                <field>SBQQ__BillingFrequency__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_TypeFacturation__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ChiffreAffaire__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ResiliationAnticipe__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_AValider__c</field>
+                <field>LPCR_Nombre_de_lignes_sans_PO__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_DureeContrat__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_DateSignatureContrat__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_TypeReconduction__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_DureePreavisMois__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_NumeroActeEngagement__c</field>
+                <field>LPCR_ContratManuel__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -134,11 +99,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>LPCR_StatutApprobation__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>SBQQ__Ordered__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>SBQQ__BillingFrequency__c</field>
+                <field>LPCR_DateSignatureContrat__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>RecordTypeId</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -147,19 +120,15 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Contract Information</label>
+        <label>Test</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>SBQQ__MasterContract__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__MasterEvergreenContract__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>SBQQ__StartDate__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SBQQ__EndDate__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -169,19 +138,72 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>SBQQ__PrimaryContact__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Contacts</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SBQQ__SalesRep__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ResponsableServiceFamille__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ResponsableADV__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns/>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Contract Information</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeReconduction__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SBQQ__MasterContract__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_MethodeRenouvellement__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_DureePreavisMois__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_DateResiliation__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeAvenant__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>SBQQ__PaymentTerms__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>SBQQ__DeliveryMethod__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__ExpirationDate__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__MarkupRate__c</field>
+                <field>SBQQ__RenewalUpliftRate__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -193,53 +215,15 @@
         <label>Discount Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__CustomerDiscount__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>SBQQ__AverageCustomerDiscount__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>SBQQ__TotalCustomerDiscountAmount__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>SBQQ__AdditionalDiscountAmount__c</field>
             </layoutItems>
-            <layoutItems>
-                <emptySpace>true</emptySpace>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__TargetCustomerAmount__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>SBQQ__ListAmount__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>SBQQ__RegularAmount__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>SBQQ__CustomerAmount__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>SBQQ__NetAmount__c</field>
             </layoutItems>
-            <layoutItems>
-                <emptySpace>true</emptySpace>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__PriceBook__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -247,38 +231,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Partner Information</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__Partner__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__PartnerDiscount__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>SBQQ__AveragePartnerDiscount__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__Distributor__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__DistributorDiscount__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Address Information</label>
+        <label>Adresse</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -290,6 +243,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>SBQQ__BillingPostalCode__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>SBQQ__BillingCity__c</field>
             </layoutItems>
             <layoutItems>
@@ -298,62 +255,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>SBQQ__BillingPostalCode__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>SBQQ__BillingCountry__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__ShippingName__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__ShippingStreet__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__ShippingCity__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__ShippingState__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__ShippingPostalCode__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__ShippingCountry__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Quote Options</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__LineItemsGrouped__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__LineItemsPrinted__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__WatermarkShown__c</field>
-            </layoutItems>
-        </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -374,33 +279,8 @@
                 <behavior>Edit</behavior>
                 <field>SBQQ__Source__c</field>
             </layoutItems>
-            <layoutItems>
-                <emptySpace>true</emptySpace>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__GenerateContractedPrice__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__PricebookId__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__QuoteProcessId__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__QuoteTemplateId__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <emptySpace>true</emptySpace>
-            </layoutItems>
-            <layoutItems>
-                <emptySpace>true</emptySpace>
-            </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>CreatedById</field>
@@ -410,19 +290,8 @@
                 <field>LastModifiedById</field>
             </layoutItems>
             <layoutItems>
-                <emptySpace>true</emptySpace>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>SBQQ__DaysQuoteOpen__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>SBQQ__LineItemCount__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
-                <field>SBQQ__EndDate__c</field>
+                <field>LPCR_Conditionsparticulieres__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -446,6 +315,167 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <platformActionList>
+        <actionListContext>Record</actionListContext>
+        <platformActionListItems>
+            <actionName>NewTask</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>NewEvent</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>LogACall</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>2</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SendEmail</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>3</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.PollPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>4</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.ContentPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>5</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Submit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>6</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>NewContact</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>7</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>NewOpportunity</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>8</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>NewLead</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>9</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.TextPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>10</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>ChangeOwnerOne</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>11</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>PrintableView</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>12</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Share</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>13</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Delete</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>14</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>15</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Clone</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>16</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>ChangeRecordType</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>17</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__CalculateQuote</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>18</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__CloneWithRelated</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>19</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__EditLines</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>20</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__GenerateDocument</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>21</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__ImportLines</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>22</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__IncludeDocument</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>23</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__ModifyQuoteTerms</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>24</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__PreviewDocument</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>25</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__RefreshPrices</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>26</sortOrder>
+        </platformActionListItems>
+    </platformActionList>
+    <quickActionList>
+        <quickActionListItems>
+            <quickActionName>FeedItem.TextPost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.ContentPost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.MobileSmartActions</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.RypplePost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.LinkPost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.PollPost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.QuestionPost</quickActionName>
+        </quickActionListItems>
+    </quickActionList>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
@@ -530,13 +560,21 @@
         <fields>Comments</fields>
         <relatedList>RelatedProcessHistoryList</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>LPCR_Planning__c.LPCR_Devis__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>LPCR_LienFamilleFacture__c.LPCR_Devis__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3O000000XSnx</masterLabel>
+        <masterLabel>00h3N000001KLLF</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
