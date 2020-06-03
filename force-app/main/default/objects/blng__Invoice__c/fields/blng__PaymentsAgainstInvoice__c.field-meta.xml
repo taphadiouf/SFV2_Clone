@@ -3,7 +3,7 @@
     <fullName>blng__PaymentsAgainstInvoice__c</fullName>
     <deprecated>false</deprecated>
     <externalId>false</externalId>
-    <inlineHelpText>Somme des montants de paiement alloués à l&#39;en-tête de facture. Ne doit être utilisé que lorsque vous n&#39;utilisez pas les allocations de niveau ligne.</inlineHelpText>
+    <inlineHelpText>Sum of Payment amounts allocated to the Invoice Header. Should only be used when not using line level allocations.</inlineHelpText>
     <label>Allocations Against Invoice</label>
     <summarizedField>blng__PaymentAllocationInvoice__c.blng__Amount__c</summarizedField>
     <summaryFilterItems>
