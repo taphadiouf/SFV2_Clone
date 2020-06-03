@@ -17,6 +17,7 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     protected override void beforeInsert() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
+        SM012_OrderItemServices.setInvoiceGrouping(newOrderItemsList);
     }
 
     protected override void afterInsert() {
