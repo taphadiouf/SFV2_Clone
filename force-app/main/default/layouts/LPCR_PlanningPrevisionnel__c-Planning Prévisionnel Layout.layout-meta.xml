@@ -19,16 +19,7 @@
                 <field>LPCR_Contrat__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_NombreHeuresSemaine__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_JourSemaine__c</field>
-            </layoutItems>
-        </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
@@ -39,7 +30,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureFinLundi__c</field>
+                <field>LPCR_HeureDebutLundi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -51,7 +42,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureFinJeudi__c</field>
+                <field>LPCR_HeureDebutJeudi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -61,7 +52,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureDebutLundi__c</field>
+                <field>LPCR_HeureFinLundi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -73,7 +64,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureDebutJeudi__c</field>
+                <field>LPCR_HeureFinJeudi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -109,6 +100,25 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LPCR_NombreHeuresVendredi__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>false</detailHeading>
+        <editHeading>false</editHeading>
+        <label>Nouvelle section</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_JourSemaine__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_NombreHeuresSemaine__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
