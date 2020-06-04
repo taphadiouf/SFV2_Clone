@@ -7,7 +7,7 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
-            <property name="modeAffich" type="String" default="LeadFamille" label="Mode d'affichage" datasource="LeadFamille,CompteFamille,Preinscription" />
+            <property name="modeAffich" type="String" default="CompteFamille" label="Mode d'affichage" datasource="LeadFamille,CompteFamille,Preinscription" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
