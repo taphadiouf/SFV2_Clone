@@ -29,6 +29,13 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
+                <name>displayOption</name>
+                <value>BOTH</value>
+            </componentInstanceProperties>
+            <componentName>runtime_sales_merge:mergeCandidatesPreviewCard</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
                 <name>hideHeader</name>
                 <value>false</value>
             </componentInstanceProperties>
@@ -37,7 +44,7 @@
         <componentInstances>
             <componentInstanceProperties>
                 <name>relatedListComponentOverride</name>
-                <value>NONE</value>
+                <value>ADVGRID</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>rowsToDisplay</name>
@@ -49,18 +56,15 @@
             </componentInstanceProperties>
             <componentName>force:relatedListContainer</componentName>
         </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>displayOption</name>
-                <value>BOTH</value>
-            </componentInstanceProperties>
-            <componentName>runtime_sales_merge:mergeCandidatesPreviewCard</componentName>
-        </componentInstances>
         <name>Facet-db344bda-98c9-43c3-956a-a156caf3081a</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
+            <componentInstanceProperties>
+                <name>active</name>
+                <value>true</value>
+            </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>body</name>
                 <value>Facet-6a7733e3-c03c-4def-8dc6-f0a5f3d272c8</value>
@@ -74,7 +78,7 @@
         <componentInstances>
             <componentInstanceProperties>
                 <name>active</name>
-                <value>true</value>
+                <value>false</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>body</name>
@@ -99,52 +103,6 @@
         </componentInstances>
         <name>main</name>
         <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>parentFieldApiName</name>
-                <value>Contact.Id</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>relatedListApiName</name>
-                <value>AccountContactRelations</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>relatedListComponentOverride</name>
-                <value>NONE</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>rowsToDisplay</name>
-                <value>10</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>showActionBar</name>
-                <value>true</value>
-            </componentInstanceProperties>
-            <componentName>force:relatedListSingleContainer</componentName>
-        </componentInstances>
-        <name>Facet-b6068541-5168-4497-af07-d471b62aba63</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>active</name>
-                <value>true</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>Facet-b6068541-5168-4497-af07-d471b62aba63</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
-                <value>Relations</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <name>Facet-d8330e57-30df-4c3e-a98c-b054582e935a</name>
-        <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
@@ -191,13 +149,6 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>tabs</name>
-                <value>Facet-d8330e57-30df-4c3e-a98c-b054582e935a</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tabset</componentName>
-        </componentInstances>
         <componentInstances>
             <componentInstanceProperties>
                 <name>tabs</name>

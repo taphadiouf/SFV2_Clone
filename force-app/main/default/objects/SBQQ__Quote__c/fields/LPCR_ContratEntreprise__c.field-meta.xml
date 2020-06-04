@@ -3,7 +3,7 @@
     <fullName>LPCR_ContratEntreprise__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Contrat Entreprise</label>
+    <label>Contrat Entreprise_Del</label>
     <referenceTo>SBQQ__Quote__c</referenceTo>
     <relationshipLabel>Devis (LPCR_ContratEntreprise)</relationshipLabel>
     <relationshipName>Devis</relationshipName>

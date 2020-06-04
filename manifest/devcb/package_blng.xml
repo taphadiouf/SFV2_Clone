@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>blng__InvoiceLine__c</members>
-        <members>blng__Invoice__c</members>
-        <members>SBQQ__QuoteLine__c</members>
-
-        <name>CustomObject</name>
+        <members>*</members>
+        <name>CustomObjectTranslation</name>
     </types>
-    <version>49.0</version>
+    <version>48.0</version>
 </Package>

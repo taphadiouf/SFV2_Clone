@@ -13,6 +13,7 @@
         <members>SBQQ__Quote__c.LPCR_BerceauGratuitAmendment__c</members>
         <members>SBQQ__Quote__c.LPCR_Berceauxgratuitsquote__c</members>
         <members>Account.LPCR_Departement__c</members>
+        <members>Product2.LPCR_TypeEvenement__c</members>
         <members>SBQQ__PriceAction__c.SBQQ__Field__c</members>
         <name>CustomField</name>
     </types>
@@ -139,7 +140,10 @@
         <members>Account-Famille</members>
         <name>Layout</name>
     </types>
-
+    <types>
+        <members>Account.NouvelleOpportuniteEntreprise</members>
+        <name>QuickAction</name>
+    </types>
 
     <version>48.0</version>
 </Package>
