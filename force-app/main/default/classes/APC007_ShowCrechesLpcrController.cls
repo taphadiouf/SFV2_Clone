@@ -27,7 +27,7 @@ public with sharing class APC007_ShowCrechesLpcrController {
                     geoInfo.State = acc.ShippingState;
                     geoInfo.Country = acc.ShippingCountry;
                     Location locDetail = new Location();
-                    locDetail.icon = 'action:map'; 
+                    locDetail.icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'; 
                     locDetail.title = acc.Name;
                     locDetail.description = acc.Name;
                     locDetail.location = geoInfo;
@@ -45,7 +45,7 @@ public with sharing class APC007_ShowCrechesLpcrController {
                         centerLocation.State = currentRecord.ShippingState;
                         centerLocation.Country = currentRecord.ShippingCountry;
                         Location locDetail = new Location();
-                        locDetail.icon = 'action:map'; 
+                        locDetail.icon = 'url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"'; 
                         locDetail.title = currentRecord.Name;
                         locDetail.description = currentRecord.Name;
                         locDetail.location = centerLocation;
@@ -61,7 +61,7 @@ public with sharing class APC007_ShowCrechesLpcrController {
                         centerLocation.State = currentRecord.State;
                         centerLocation.Country = currentRecord.Country;
                         Location locDetail = new Location();
-                        locDetail.icon = 'action:map'; 
+                        locDetail.icon = 'url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"'; 
                         locDetail.title = currentRecord.Name;
                         locDetail.description = currentRecord.Name;
                         locDetail.location = centerLocation;
@@ -77,7 +77,7 @@ public with sharing class APC007_ShowCrechesLpcrController {
                         centerLocation.State = currentRecord.LPCR_ContactParent__r.MailingState;
                         centerLocation.Country = currentRecord.LPCR_ContactParent__r.MailingCountry;
                         Location locDetail = new Location();
-                        locDetail.icon = 'action:map'; 
+                        locDetail.icon = 'url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"'; 
                         locDetail.title = currentRecord.LPCR_ContactParent__r.Name;
                         locDetail.description = currentRecord.LPCR_ContactParent__r.Name;
                         locDetail.location = centerLocation;

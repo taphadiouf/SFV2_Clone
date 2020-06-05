@@ -6,6 +6,7 @@ export default class LWC008_ShowCrechesLpcr extends LightningElement {
     @api modeAffich;
     accounts;
     center;
+    zoomLevel = 12;
      connectedCallback(){
         getAccounts({currentId : this.recordId, modeAffich: this.modeAffich})
         .then(res=>{
