@@ -4,8 +4,6 @@
 * @Description Controller for Show creches LWC 
 */
 public with sharing class APC007_ShowCrechesLpcrController {
-    public APC007_ShowCrechesLpcrController() {
-    }
             @AuraEnabled(cacheable=true)
             public static String getAccounts(String currentId,String modeAffich){
                 Id reseauCrecheAccountRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_ReseauLPCR);
