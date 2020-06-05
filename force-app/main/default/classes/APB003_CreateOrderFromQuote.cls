@@ -9,33 +9,44 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
     global APB003_CreateOrderFromQuote() {
         
     }
-    
+     /*
+	*	@description : this method search the Quotes with SBQQ__Status__c = 'Prêt pour commande\' AND SBQQ__Ordered__c  = false', to generate order
+	*	@param Database.BatchableContext BC
+    *	@returns Database.QueryLocator
+    */
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        
-        query = 'SELECT Id,SBQQ__Status__c ,SBQQ__Ordered__c  FROM SBQQ__Quote__c WHERE SBQQ__Status__c =\'Activated\' AND SBQQ__Ordered__c  = false';
+        PAD.log('APB003_CreateOrderFromQuote', 'start','Database.BatchableContext BC');        
+        query = 'SELECT Id,SBQQ__Status__c ,SBQQ__Ordered__c  FROM SBQQ__Quote__c WHERE SBQQ__Status__c =\'Prêt pour commande\' AND SBQQ__Ordered__c  = false';
         
         return Database.getQueryLocator(query);
     }
-    
+    /*
+	*	@description : this method generate Orders for the Quotes with SBQQ__Status__c = 'Prêt pour commande\' AND SBQQ__Ordered__c  = false', to generate order
+	*	@param Database.BatchableContext BC, List<SBQQ__Quote__c> scope
+    *	@returns void
+    */
     global void execute(Database.BatchableContext BC, List<SBQQ__Quote__c> scope) {
-        System.debug('scope to execute : '+scope);
-        
+        PAD.log('APB003_CreateOrderFromQuote', 'execute','scope :'+ scope.size()+'');        
         Set<Id> quoteIds = UM003_TypeManager.getIdsOfListObjects(scope);
         List<SBQQ__Quote__c> listOfquote = [SELECT Id,SBQQ__Status__c ,SBQQ__Ordered__c  FROM SBQQ__Quote__c WHERE 
                                             Id in :quoteIds ];   
         for (SBQQ__Quote__c eachquote : listOfquote) {
-            eachquote.SBQQ__Ordered__c =true;
-            System.debug('Updating quote '+eachquote.SBQQ__Ordered__c );
-        }
+           
+                 eachquote.SBQQ__Ordered__c =true;
         
+        }
         update listOfquote;        
     }
     
     global void finish(Database.BatchableContext BC) {
     }
-    
+    /*
+	*	@description : this method execute the batch
+	*	@param SchedulableContext sc
+    *	@returns void
+    */
     global void execute(SchedulableContext sc) {
-        
+        PAD.log('APB003_CreateOrderFromQuote', 'execute','sc ');    
         APB003_CreateOrderFromQuote sc1 = new APB003_CreateOrderFromQuote();
         
         // schedule the apex class only if their is not existing job running

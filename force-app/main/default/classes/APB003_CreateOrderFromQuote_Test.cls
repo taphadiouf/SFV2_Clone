@@ -27,7 +27,7 @@ public class APB003_CreateOrderFromQuote_Test {
             
             SBQQ__Quote__c quote = [SELECT Id ,SBQQ__Primary__c,SBQQ__Status__c,SBQQ__Opportunity2__c from SBQQ__Quote__c where Id = :oppty.SBQQ__PrimaryQuote__c ];
             quote.SBQQ__Primary__c=true;
-            quote.SBQQ__Status__c='Activated';
+            quote.SBQQ__Status__c='Prêt pour commande';
             update quote;
             APB003_CreateOrderFromQuote createOrderFromQuoteBatch = new APB003_CreateOrderFromQuote();
             createOrderFromQuoteBatch.execute(null);
