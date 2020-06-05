@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_Departement__c</fullName>
     <externalId>false</externalId>
-    <formula>IF(BEGINS(BillingPostalCode,&#39;97&#39;),LEFT(BillingPostalCode,3),LEFT(BillingPostalCode,2))</formula>
+    <formula>IF(BEGINS(ShippingPostalCode,&apos;97&apos;),LEFT(ShippingPostalCode,3),LEFT(ShippingPostalCode,2))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Département</label>
     <required>false</required>

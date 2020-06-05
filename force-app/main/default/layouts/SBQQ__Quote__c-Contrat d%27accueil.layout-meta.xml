@@ -63,6 +63,10 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_Region__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ContractEntreprise__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -110,25 +114,8 @@
                 <behavior>Edit</behavior>
                 <field>SBQQ__EndDate__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__SubscriptionTerm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_RessourcePlafond__c</field>
-            </layoutItems>
         </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_LigneSuperieurePP__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_LigneInferieurePP__c</field>
-            </layoutItems>
-        </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -153,15 +140,11 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>SBQQ__SalesRep__c</field>
+                <field>LPCR_ResponsableServiceFamille__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_ResponsableADV__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_ResponsableServiceFamille__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -538,12 +521,6 @@
         <fields>SBQQ__NetTotal__c</fields>
         <fields>SBQQ__ListPrice__c</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
-        <sortField>SBQQ__Product__c</sortField>
-        <sortOrder>Asc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>LPCR_Planning__c.LPCR_Devis__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>ORDERS.ORDER_NUMBER</fields>

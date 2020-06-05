@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>InvoiceGrouping_SeperateInvoice</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>InvoiceGrouping_SeperateInvoice</shortDescription>
+        <value>Separate Invoice</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Account</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -68,7 +75,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_ContratEnfant</shortDescription>
-        <value>Contrat au bénéfice de l&#39;enfant :</value>
+        <value>Contrat au bénéfice de l&apos;enfant :</value>
     </labels>
     <labels>
         <fullName>LPCR_ConvertLeadF</fullName>
@@ -145,7 +152,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_Etablissement</shortDescription>
-        <value>Au sein de l&#39;établissement de :</value>
+        <value>Au sein de l&apos;établissement de :</value>
     </labels>
     <labels>
         <fullName>LPCR_Famille</fullName>
@@ -159,7 +166,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_Identifiant</shortDescription>
-        <value>N° d&#39;identifiant :</value>
+        <value>N° d&apos;identifiant :</value>
     </labels>
     <labels>
         <fullName>LPCR_Lead</fullName>
@@ -201,21 +208,21 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_NbrContractuelMois</shortDescription>
-        <value>Nombre contractuel d&#39;heures d&#39;accueil par mois =</value>
+        <value>Nombre contractuel d&apos;heures d&apos;accueil par mois =</value>
     </labels>
     <labels>
         <fullName>LPCR_NbrContractuelSemaine</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_NbrContractuelSemaine</shortDescription>
-        <value>Nombre contractuel moyen d&#39;heures d&#39;accueil par semaine =</value>
+        <value>Nombre contractuel moyen d&apos;heures d&apos;accueil par semaine =</value>
     </labels>
     <labels>
         <fullName>LPCR_NomEnfant</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_NomEnfant</shortDescription>
-        <value>Nom de l&#39;enfant :</value>
+        <value>Nom de l&apos;enfant :</value>
     </labels>
     <labels>
         <fullName>LPCR_NonTraite</fullName>
@@ -285,7 +292,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LPCR_PopConLT</shortDescription>
-        <value>Création contrat d&#39;acceuil ?</value>
+        <value>Création contrat d&apos;acceuil ?</value>
     </labels>
     <labels>
         <fullName>LPCR_PopConLT2</fullName>
@@ -299,7 +306,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_PrenomEnfant</shortDescription>
-        <value>Prénom de l&#39;enfant :</value>
+        <value>Prénom de l&apos;enfant :</value>
     </labels>
     <labels>
         <fullName>LPCR_Prospecting</fullName>
@@ -344,6 +351,20 @@
         <value>RecordTypeId</value>
     </labels>
     <labels>
+        <fullName>LPCR_RegistrationFeeErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RegistrationFeeErrorMessage</shortDescription>
+        <value>Registration Fee already included</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RegistrationFeeMac</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RegistrationFeeMac</shortDescription>
+        <value>FraisInscriptionMac</value>
+    </labels>
+    <labels>
         <fullName>LPCR_RessourcesM</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -369,14 +390,14 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_SignatureE</shortDescription>
-        <value>Signature et tampon de la direction de l&#39;établissement</value>
+        <value>Signature et tampon de la direction de l&apos;établissement</value>
     </labels>
     <labels>
         <fullName>LPCR_SignatureR</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_SignatureR</shortDescription>
-        <value>Signature des représentants de l&#39;enfant (précédée de la mention lu et approuvé)</value>
+        <value>Signature des représentants de l&apos;enfant (précédée de la mention lu et approuvé)</value>
     </labels>
     <labels>
         <fullName>LPCR_Tarif</fullName>
@@ -390,7 +411,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_Taux</shortDescription>
-        <value>Taux d&#39;effort :</value>
+        <value>Taux d&apos;effort :</value>
     </labels>
     <labels>
         <fullName>LPCR_Title1</fullName>
@@ -421,17 +442,10 @@
         <value>Validé Directrice</value>
     </labels>
     <labels>
-        <fullName>LPCR_RegistrationFeeErrorMessage</fullName>
-        <language>en_US</language>
+        <fullName>Product_Code_Depot_Garantie</fullName>
+        <language>fr</language>
         <protected>false</protected>
-        <shortDescription>LPCR_RegistrationFeeErrorMessage</shortDescription>
-        <value>Registration Fee already included</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_RegistrationFeeMac</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_RegistrationFeeMac</shortDescription>
-        <value>FraisInscriptionMac</value>
+        <shortDescription>Product Code Depot Garantie</shortDescription>
+        <value>DepotDeGarantie</value>
     </labels>
 </CustomLabels>

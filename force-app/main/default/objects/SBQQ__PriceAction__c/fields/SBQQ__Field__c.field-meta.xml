@@ -73,26 +73,6 @@
                 <label>LPCR_TotalRegion__c</label>
             </value>
             <value>
-                <fullName>SBQQ__StartDate__c</fullName>
-                <default>false</default>
-                <label>SBQQ__StartDate__c</label>
-            </value>
-            <value>
-                <fullName>SBQQ__EndDate__c</fullName>
-                <default>false</default>
-                <label>SBQQ__EndDate__c</label>
-            </value>
-            <value>
-                <fullName>LPCR_DateDebut__c</fullName>
-                <default>false</default>
-                <label>LPCR_DateDebut__c</label>
-            </value>
-            <value>
-                <fullName>LPCR_DateFin__c</fullName>
-                <default>false</default>
-                <label>LPCR_DateFin__c</label>
-            </value>
-            <value>
                 <fullName>LPCR_PrixPlancher__c</fullName>
                 <default>false</default>
                 <label>LPCR_PrixPlancher__c</label>
@@ -163,11 +143,6 @@
                 <label>LPCR_TauxMensuel__c</label>
             </value>
             <value>
-                <fullName>Discount (Amt)</fullName>
-                <default>false</default>
-                <label>Discount (Amt)</label>
-            </value>
-            <value>
                 <fullName>SBQQ__Quantity__c</fullName>
                 <default>false</default>
                 <label>SBQQ__Quantity__c</label>
@@ -196,6 +171,46 @@
                 <fullName>LPCR_Region__c</fullName>
                 <default>false</default>
                 <label>LPCR_Region__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Type__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Type__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeAvenant__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeAvenant__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_StatutApprobation__c</fullName>
+                <default>false</default>
+                <label>LPCR_StatutApprobation__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__PriorQuantity__c</fullName>
+                <default>false</default>
+                <label>SBQQ__PriorQuantity__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__UpgradedSubscription__c</fullName>
+                <default>false</default>
+                <label>SBQQ__UpgradedSubscription__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Status__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Status__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__MasterContract__c</fullName>
+                <default>false</default>
+                <label>SBQQ__MasterContract__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Opportunity2__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Opportunity2__c</label>
             </value>
         </valueSetDefinition>
         <valueSettings>
@@ -259,26 +274,6 @@
             <controllingFieldValue>Quote</controllingFieldValue>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>LPCR_TotalRegion__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote</controllingFieldValue>
-            <controllingFieldValue>Quote Line</controllingFieldValue>
-            <valueName>SBQQ__StartDate__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote</controllingFieldValue>
-            <controllingFieldValue>Quote Line</controllingFieldValue>
-            <valueName>SBQQ__EndDate__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote</controllingFieldValue>
-            <controllingFieldValue>Quote Line</controllingFieldValue>
-            <valueName>LPCR_DateDebut__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote</controllingFieldValue>
-            <controllingFieldValue>Quote Line</controllingFieldValue>
-            <valueName>LPCR_DateFin__c</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -351,12 +346,52 @@
             <valueName>LPCR_TauxMensuel__c</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__Primary__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__Type__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_TypeAvenant__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_StatutApprobation__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__Status__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__MasterContract__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__Opportunity2__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__Quantity__c</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>LPCR_Creche__c</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>LPCR_Region__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__PriorQuantity__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__UpgradedSubscription__c</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

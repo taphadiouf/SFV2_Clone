@@ -75,7 +75,7 @@ public with sharing class SM011_RessourceFamilleServices_Test {
             
             Test.stopTest();
             System.assertEquals(ressourceFamille.LPCR_CompteFamille__c, newRessourceFamille.LPCR_CompteFamille__c,'not the same account');
-            System.assertEquals(ressourceFamille.LPCR_Produit__c, newRessourceFamille.LPCR_Produit__c,'not the sama product');
+            System.assertEquals(ressourceFamille.LPCR_Produit__c, newRessourceFamille.LPCR_Produit__c,'not the same product');
             System.assertEquals(firstDayOfNextMonthDate, newRessourceFamille.LPCR_DateDebut__c,'Date is wrong');
             System.assertEquals(lastDayOfCurrentMonthDate, ressourceFamille.LPCR_DateFin__c,'Date is wrong');
         }
@@ -112,12 +112,14 @@ public with sharing class SM011_RessourceFamilleServices_Test {
             insert listRessourceFamille;
             
             Test.stopTest();
-            listRessourceFamille = [SELECT LPCR_BaremeCaf__r.LPCR_TauxEffortParEnfant__c,LPCR_BaremeCaf__c,LPCR_BaremeCaf__r.Name,Name,LPCR_BaremeCaf__r.LPCR_NombresEnfants__c,LPCR_NombreEnfantHandicape__c,LPCR_NombreEnfants__c from  LPCR_RessourceFamille__c WHERE name <> :'test'];
+            listRessourceFamille = [SELECT LPCR_TauxEffort__c,LPCR_BaremeCaf__r.LPCR_TauxEffortParEnfant__c,LPCR_BaremeCaf__c,LPCR_BaremeCaf__r.Name,Name,LPCR_BaremeCaf__r.LPCR_NombresEnfants__c,LPCR_NombreEnfantHandicape__c,LPCR_NombreEnfants__c from  LPCR_RessourceFamille__c WHERE name <> :'test'];
             
             for(LPCR_RessourceFamille__c  eachRessourceFamille : listRessourceFamille){
                 
                 System.assertNotEquals(null, eachRessourceFamille.LPCR_BaremeCaf__c,'LPCR_BaremeCaf__c is null on the RessourceFamille');
-                
+                System.assertNotEquals(null, eachRessourceFamille.LPCR_TauxEffort__c,'LPCR_TauxEffort__c is null on the RessourceFamille');
+                System.assertEquals(eachRessourceFamille.LPCR_BaremeCaf__r.LPCR_TauxEffortParEnfant__c, eachRessourceFamille.LPCR_TauxEffort__c,'LPCR_TauxEffortParEnfant__c on LPCR_TauxEffort__c is not equals to LPCR_TauxEffort__c on the RessourceFamille');
+
                 if(eachRessourceFamille.Name.equals('1')){                    
                     System.assertEquals(3,eachRessourceFamille.LPCR_BaremeCaf__r.LPCR_TauxEffortParEnfant__c,'LPCR_BaremeCaf__c is wrong on the RessourceFamille');
                 }

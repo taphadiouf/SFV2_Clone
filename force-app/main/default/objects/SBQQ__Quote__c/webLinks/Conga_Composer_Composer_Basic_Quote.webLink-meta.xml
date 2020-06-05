@@ -2,9 +2,7 @@
 <WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Conga_Composer_Composer_Basic_Quote</fullName>
     <availability>online</availability>
-    <description>Created by Conga Solution Manager. Record link:
-        https://nlpcr--devcb--apxtcfq.visualforce.com/a4C3O00000004gnUAA.
-    </description>
+    <description>Created by Conga Solution Manager. Record link: https://nlpcr--devcb--apxtcfq.visualforce.com/a4C3O00000004gnUAA.</description>
     <displayType>button</displayType>
     <encodingKey>UTF-8</encodingKey>
     <hasMenubar>false</hasMenubar>
@@ -20,15 +18,14 @@
     <showsLocation>false</showsLocation>
     <showsStatus>false</showsStatus>
     <url>/apex/APXTCFQ__Conga_Composer?SolMgr=1
-        &amp;serverUrl={!API.Partner_Server_URL_370}
-        &amp;Id={!SBQQ__Quote__c.Id}
+&amp;serverUrl={!API.Partner_Server_URL_370}
+&amp;Id={!SBQQ__Quote__c.Id}
 
-        &amp;TemplateId=a4E3O00000003CL
+&amp;TemplateId=a4E3O00000003CL
 
-        &amp;DefaultPDF=1
-        &amp;SC0=1
-        &amp;SC1=SalesforceFile
-        &amp;OFN=Quote - {!Today}
-    </url>
+&amp;DefaultPDF=1
+&amp;SC0=1
+&amp;SC1=SalesforceFile
+&amp;OFN=Quote - {!Today}</url>
     <width>900</width>
 </WebLink>
