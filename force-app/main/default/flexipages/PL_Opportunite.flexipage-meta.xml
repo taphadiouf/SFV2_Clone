@@ -12,7 +12,7 @@
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>numVisibleActions</name>
-                <value>3</value>
+                <value>4</value>
             </componentInstanceProperties>
             <componentName>force:highlightsPanel</componentName>
         </componentInstances>
@@ -65,13 +65,6 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
-            <componentName>lWC003_RefDoc</componentName>
-        </componentInstances>
-        <name>Facet-2d57dab1-989c-45d6-8e0e-d136c9f8c0b6</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
             <componentInstanceProperties>
                 <name>active</name>
                 <value>true</value>
@@ -94,17 +87,6 @@
             <componentInstanceProperties>
                 <name>title</name>
                 <value>Standard.Tab.relatedLists</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>Facet-2d57dab1-989c-45d6-8e0e-d136c9f8c0b6</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
-                <value>Documents</value>
             </componentInstanceProperties>
             <componentName>flexipage:tab</componentName>
         </componentInstances>

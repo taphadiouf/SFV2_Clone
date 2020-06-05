@@ -2,12 +2,9 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_Quote_lines_sans_PO</fullName>
     <active>true</active>
-    <description>Cette régle de validation empêche le user de générer une commande (cliquer sur &apos;ordered&apos;) si:
-        - PO obligatoire pour le account
-        - lignes de devis sans PO &gt; 0
-    </description>
-    <errorConditionFormula>AND( LPCR_AccountPurchaseOrder__c = TRUE , LPCR_Nombre_de_lignes_sans_PO__c &gt; 0 ,
-        SBQQ__Ordered__c = TRUE )
-    </errorConditionFormula>
+    <description>Cette régle de validation empêche le user de générer une commande (cliquer sur &apos;ordered&apos;) si: 
+- PO obligatoire pour le account
+- lignes de devis sans PO &gt; 0</description>
+    <errorConditionFormula>AND( LPCR_AccountPurchaseOrder__c = TRUE , LPCR_Nombre_de_lignes_sans_PO__c &gt; 0 , SBQQ__Ordered__c = TRUE )</errorConditionFormula>
     <errorMessage>Vous ne pouvez pas générer de commande car il existe des lignes de devis sans PO</errorMessage>
 </ValidationRule>

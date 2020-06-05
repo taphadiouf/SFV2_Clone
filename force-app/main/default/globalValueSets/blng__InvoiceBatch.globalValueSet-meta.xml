@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>MAC</fullName>
+        <default>false</default>
+        <label>MAC</label>
+    </customValue>
+    <customValue>
+        <fullName>MICRO</fullName>
+        <default>false</default>
+        <label>MICRO</label>
+    </customValue>
+    <customValue>
+        <fullName>B2B</fullName>
+        <default>false</default>
+        <label>B2B</label>
+    </customValue>
+    <customValue>
+        <fullName>En Attente</fullName>
+        <default>false</default>
+        <label>En Attente</label>
+    </customValue>
+    <customValue>
+        <fullName>Ad-hoc</fullName>
+        <default>false</default>
+        <label>Ad-hoc</label>
+    </customValue>
+    <customValue>
+        <fullName>Batch 1</fullName>
+        <default>false</default>
+        <label>Batch 1</label>
+    </customValue>
+    <customValue>
+        <fullName>Batch 2</fullName>
+        <default>false</default>
+        <label>Batch 2</label>
+    </customValue>
+    <customValue>
+        <fullName>Batch 3</fullName>
+        <default>false</default>
+        <label>Batch 3</label>
+    </customValue>
+    <customValue>
+        <fullName>Batch 4</fullName>
+        <default>false</default>
+        <label>Batch 4</label>
+    </customValue>
+    <customValue>
+        <fullName>Batch 5</fullName>
+        <default>false</default>
+        <label>Batch 5</label>
+    </customValue>
+    <customValue>
+        <fullName>Batch 6</fullName>
+        <default>false</default>
+        <label>Batch 6</label>
+    </customValue>
+    <masterLabel>Invoice Batch</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

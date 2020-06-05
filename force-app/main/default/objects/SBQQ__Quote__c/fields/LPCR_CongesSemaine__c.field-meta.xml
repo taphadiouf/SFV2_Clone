@@ -3,12 +3,9 @@
     <fullName>LPCR_CongesSemaine__c</fullName>
     <externalId>false</externalId>
     <formula>CASE( LPCR_PlanningEnfant__r.LPCR_TypePlanning__c,
-        &quot;Planning Classique&quot;, (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_NombreJoursAccueil__c ) *
-        (365/ LPCR_DureeContratJour__c ),
-        &quot;Multi-Planning&quot;, (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_MoyenneJoursSemaine__c ) * (365/
-        LPCR_DureeContratJour__c ),
-        NULL)
-    </formula>
+&quot;Planning Classique&quot;, (LPCR_CongesJours__c  / LPCR_PlanningEnfant__r.LPCR_NombreJoursAccueil__c ) * (365/ LPCR_DureeContratJour__c ),
+&quot;Multi-Planning&quot;, (LPCR_CongesJours__c  / LPCR_PlanningEnfant__r.LPCR_MoyenneJoursSemaine__c ) * (365/ LPCR_DureeContratJour__c ),
+NULL)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Conges Semaine</label>
     <precision>18</precision>

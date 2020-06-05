@@ -153,7 +153,21 @@ public with sharing class SM012_OrderItemServices implements Queueable{
         }
     }
     
-    
+    public static void setInvoiceGrouping(List<OrderItem> newOrderItem){
+        Set<string> productIdSet = new Set<string>();
+        for(OrderItem orderitem: newOrderItem){
+            productIdSet.add(orderitem.product2Id);
+        }
+        Map<Id, product2> ProductMap = new Map<Id,product2>([select id, productcode from product2 where id in : productIdSet]);
+        for(OrderItem eachOrderItem : newOrderItem){ 
+
+            if(ProductMap.get(eachOrderItem.Product2Id).productCode == Label.Product_Code_Depot_Garantie ){
+                eachOrderItem.blng__InvoiceGrouping__c = Label.InvoiceGrouping_SeperateInvoice;
+            }
+        }
+    }
+
+
     public static void setInvoiceGroupingOnOrderItem(Map<Id,OrderItem> mapOrderItem){
         //Id recordTypeId = UM003_TypeManager.getQuoteRecordTypeIdByDeveloperName('Referencement');
         Id recordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, 'Referencement');

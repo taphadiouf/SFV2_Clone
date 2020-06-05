@@ -2,6 +2,7 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contrat_Accueil</fullName>
     <active>true</active>
+    <compactLayoutAssignment>PresentationCompacteDevis</compactLayoutAssignment>
     <label>Contrat D’accueil</label>
     <picklistValues>
         <picklist>LPCR_DureeContrat__c</picklist>
@@ -123,6 +124,10 @@
         </values>
         <values>
             <fullName>Modification des termes du contrat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mouvement Interne Berceau %28MIB%29</fullName>
             <default>false</default>
         </values>
         <values>
@@ -432,7 +437,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Envoyé pour signature</fullName>
+            <fullName>Prêt à envoyer</fullName>
             <default>false</default>
         </values>
         <values>
