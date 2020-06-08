@@ -7,6 +7,8 @@ export default class LWC008_ShowCrechesLpcr extends LightningElement {
     accounts;
     center;
     zoomLevel = 12;
+    showFooter = false;
+    listView = 'hidden';
      connectedCallback(){
         getAccounts({currentId : this.recordId, modeAffich: this.modeAffich})
         .then(res=>{

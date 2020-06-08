@@ -4,7 +4,7 @@
 -->
 <template>
     <template if:true={accounts}>
-        <lightning-map map-markers={accounts} zoom-level={zoomLevel} show-footer="false" list-view="hidden" markers-title={accounts} center={center}>
+        <lightning-map map-markers={accounts} zoom-level={zoomLevel} show-footer={showFooter} list-view={listView} markers-title={accounts} center={center}>
         </lightning-map>
     </template>
 </template>
