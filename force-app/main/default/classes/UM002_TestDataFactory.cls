@@ -1003,7 +1003,7 @@ newMe.FederationIdentifier = null;
     
     public static List<Account> createAccountswithtype(Integer numAccs, String name, String typeCreche, String rTDevName){
         List<Account> accounts = new List<Account>();
-       	Id recTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, rTDevName);
+       	Id recTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account', rTDevName);
         Account tempAcc;
         for(Integer i = 0; i<numAccs; i++){
             tempAcc = new Account(Name = name, LPCR_TypeCreche__c  = typeCreche, RecordTypeId = recTypeId);

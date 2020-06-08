@@ -2,32 +2,33 @@
 * @author Achraf ABOUL
 * @date 28/02/2020
 * @description Service class for SBQQ__Quote__c
+* @edited by hanae
 */
 public with sharing class SM008_QuoteServices {
     
     
     //added by hanae
     public static void updateQuotes(List<SBQQ__Quote__c> quotesList){
-        Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
-        Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Referencement');
-        Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Reservataire');
+        Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_ContratA);
+        Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement);
+        Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Reservataire);
         List<SBQQ__Quote__c> renewalOppList = new List<SBQQ__Quote__c>();
         List<SBQQ__Quote__c> cummonQuoteList = new List<SBQQ__Quote__c>();
         List<SBQQ__Quote__c> B2CQuoteList = new List<SBQQ__Quote__c>();
         List<SBQQ__Quote__c> B2BQuoteList = new List<SBQQ__Quote__c>();
         List<SBQQ__Quote__c> B2BInsertQuoteList = new List<SBQQ__Quote__c>();
-        Set<String> opptyIds = UM003_TypeManager.getFieldsOfListObjects(quotesList,'SBQQ__Opportunity2__c');
-        Set<String> acctIds = UM003_TypeManager.getFieldsOfListObjects(quotesList,'LPCR_Creche__c');
+        Set<String> opptyIds = UM003_TypeManager.getFieldsOfListObjects(quotesList,Label.LPCR_Opportunity2);
+        Set<String> acctIds = UM003_TypeManager.getFieldsOfListObjects(quotesList,Label.LPCR_CrecheF);
         Map<ID,Account> acctMap = new Map<ID,Account>([SELECT Id, LPCR_TypeCreche__c, LPCR_EntiteJuridique__c, LPCR_TypeFacturation__c  FROM Account WHERE Id in:acctIds]);
         Map<Id,Opportunity> opptyMap = new  Map<Id,Opportunity>([SELECT Id,LPCR_BillingFrequency__c, LPCR_TypeFacturation__c,LPCR_IndexationConvenue__c, SBQQ__RenewedContract__c, SBQQ__AmendedContract__c  from Opportunity WHERE Id in :opptyIds]);
-        Set<String> renewedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),'SBQQ__RenewedContract__c');
-        Set<String> amendedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),'SBQQ__AmendedContract__c');
-        Map<Id,Contract> contractMap = new Map<Id,Contract>([SELECT Id, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c ,LPCR_RenouvellementConvenu__c, LPCR_DureeContratJour__c   From Contract Where Id =: renewedContractIds]);
+        Set<String> renewedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_RenewedContract);
+        Set<String> amendedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_AmendedContract);
+        Map<Id,Contract> contractMap = new Map<Id,Contract>([SELECT Id, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c ,LPCR_RenouvellementConvenu__c   From Contract Where Id =: renewedContractIds]);
         Map<Id,Contract> amendedContractMap = new Map<Id,Contract>([SELECT Id, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c ,LPCR_RenouvellementConvenu__c,SBQQ__RenewalUpliftRate__c   From Contract Where Id =: amendedContractIds]);
         if (Trigger.isBefore) {
             if (Trigger.isInsert) {
                 for (SBQQ__Quote__c eachQuote : quotesList){
-                       renewalOppList.add(eachQuote);
+                    renewalOppList.add(eachQuote);
                     if(eachQuote.RecordTypeId == acceuilRecTypeId || eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == reservataireRecTypeId){
                         B2BInsertQuoteList.add(eachQuote);
                     }
@@ -63,28 +64,34 @@ public with sharing class SM008_QuoteServices {
     public static void setB2BandB2CQuotesFromContract(List<SBQQ__Quote__c> quotesList,  Map<ID,Account> acctMap, Map<Id,Opportunity> opptyMap,  Map<Id,Contract> contractMap, Map<Id,Contract> amendedContractMap){
         for (SBQQ__Quote__c eachQuote : quotesList){
             if(acctMap.containsKey(eachQuote.LPCR_Creche__c)){
+                system.debug('eeee');
                 eachQuote.LPCR_TypeCreche__c = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c;
             }
             Date dueDateRenewal = date.newInstance(System.Today().year(), 08, 31);
             Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
-            if('Renewal'.equals(eachQuote.SBQQ__Type__c)){
+            if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
-                    Date endDate = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DateFin__c;
-                    eachQuote.LPCR_DateDebut__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DateDebut__c;
-                    eachQuote.LPCR_DateFin__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DateFin__c ;
-                    eachQuote.LPCR_ChiffreAffaire__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_ChiffreAffaire__c  ;
+                    if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
+                        Date endDate = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DateFin__c;
+                        eachQuote.LPCR_DateDebut__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DateDebut__c;
+                        eachQuote.LPCR_DateFin__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DateFin__c ;
+                        eachQuote.LPCR_ChiffreAffaire__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_ChiffreAffaire__c  ;
+                    }
                 }
             }
-            if('Quote'.equals(eachQuote.SBQQ__Type__c)){
-                eachQuote.SBQQ__StartDate__c = eachQuote.LPCR_DateDebut__c ;
+            if(Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c)){
+                if(eachQuote.LPCR_DateDebut__c != Null){
+                    eachQuote.SBQQ__StartDate__c = eachQuote.LPCR_DateDebut__c ;
+                }
             }
-            if('Amendment'.equals(eachQuote.SBQQ__Type__c)){
-                system.debug('aaaaaa');
-                eachQuote.LPCR_DateDebut__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_DateDebut__c;
-                system.debug('eachQuote.LPCR_DateDebut__c'+eachQuote.LPCR_DateDebut__c);
-                eachQuote.LPCR_DateFin__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_DateFin__c ;
-                system.debug('eachQuote.LPCR_DateFin__c'+eachQuote.LPCR_DateFin__c);
-                eachQuote.LPCR_ChiffreAffaire__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_ChiffreAffaire__c  ;
+            if(Label.LPCR_Amendment.equals(eachQuote.SBQQ__Type__c)){
+                if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
+                    if(amendedContractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c)){
+                        eachQuote.LPCR_DateDebut__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_DateDebut__c;
+                        eachQuote.LPCR_DateFin__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_DateFin__c ;
+                        eachQuote.LPCR_ChiffreAffaire__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_ChiffreAffaire__c  ;
+                    }
+                }
             }
         }
     }
@@ -97,41 +104,48 @@ public with sharing class SM008_QuoteServices {
                 eachQuote.LPCR_TypeCreche__c = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c;
                 eachQuote.LPCR_EntiteJuridique__c  = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_EntiteJuridique__c ;
             }
-            if('Renewal'.equals(eachQuote.SBQQ__Type__c) || 'Quote'.equals(eachQuote.SBQQ__Type__c)){
+            if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c) || Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) && acctMap.containsKey(eachQuote.LPCR_Creche__c)){
-                    eachQuote.LPCR_RenouvellementConvenu__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_RenouvellementConvenu__c  ;
-                    if('Non'.equals(contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_RenouvellementConvenu__c)){
-                        eachQuote.SBQQ__RenewalUpliftRate__c = 0;
-                    }
-                    Date endDate = eachQuote.LPCR_DateFin__c;
-                    if('MAC'.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
-                        if(eachQuote.LPCR_DateFin__c < dueDateQuote){
-                            eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                    if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
+                        eachQuote.LPCR_RenouvellementConvenu__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_RenouvellementConvenu__c  ;
+                        if(Label.LPCR_Non.equals(contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_RenouvellementConvenu__c)){
+                            eachQuote.SBQQ__RenewalUpliftRate__c = 0;
                         }
-                        else{
-                            eachQuote.SBQQ__EndDate__c = dueDateQuote;
-                        } 
-                    }
-                    else if('MICRO'.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
-                        if(eachQuote.LPCR_DateFin__c < dueDateRenewal){
-                            eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                        Date endDate = eachQuote.LPCR_DateFin__c;
+                        if(acctMap.containsKey(eachQuote.LPCR_Creche__c)){
+                            if(Label.LPCR_MAC.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
+                                if(eachQuote.LPCR_DateFin__c < dueDateQuote){
+                                    eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                                }
+                                else{
+                                    eachQuote.SBQQ__EndDate__c = dueDateQuote;
+                                } 
+                            }
+                            else if(Label.LPCR_MICRO.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
+                                if(eachQuote.LPCR_DateFin__c < dueDateRenewal){
+                                    eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                                }
+                                else{
+                                    eachQuote.SBQQ__EndDate__c = dueDateRenewal;
+                                }  
+                            }
                         }
-                        else{
-                            eachQuote.SBQQ__EndDate__c = dueDateRenewal;
-                        } 
                     }
                 } 
             }
-            if('Amendment'.equals(eachQuote.SBQQ__Type__c)){
+            if(Label.LPCR_Amendment.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
-                    eachQuote.LPCR_RenouvellementConvenu__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_RenouvellementConvenu__c  ;
-                    eachQuote.LPCR_TypeFacturation__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_TypeFacturation__c;
-                    if('Non'.equals(amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_RenouvellementConvenu__c)){
-                        eachQuote.SBQQ__RenewalUpliftRate__c = 0;
+                    if(amendedContractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c)){
+                        eachQuote.LPCR_RenouvellementConvenu__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_RenouvellementConvenu__c  ;
+                        eachQuote.LPCR_TypeFacturation__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_TypeFacturation__c;
+                        if(Label.LPCR_Non.equals(amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_RenouvellementConvenu__c)){
+                            eachQuote.SBQQ__RenewalUpliftRate__c = 0;
+                        } 
                     }
+                    
                 }
             }
-            if('Quote'.equals(eachQuote.SBQQ__Type__c) && acctMap.containsKey(eachQuote.LPCR_Creche__c)){
+            if(Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c) && acctMap.containsKey(eachQuote.LPCR_Creche__c)){
                 eachQuote.LPCR_TypeFacturation__c   = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeFacturation__c ;
             }
         }
@@ -143,26 +157,26 @@ public with sharing class SM008_QuoteServices {
     public static void setB2BQuotesFromContract(List<SBQQ__Quote__c> quotesList,  Map<ID,Account> acctMap, Map<Id,Opportunity> opptyMap,  Map<Id,Contract> contractMap){
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
         for (SBQQ__Quote__c eachQuote : quotesList){
-            if('Renewal'.equals(eachQuote.SBQQ__Type__c)){
+            if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) ){
-                    eachQuote.LPCR_MethodeRenouvellement__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_MethodeRenouvellement__c;
-                    //eachQuote.LPCR_DureeContratJour__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DureeContratJour__c;
-                    system.debug('eachQuote.LPCR_MethodeRenouvellement__c'+eachQuote.LPCR_MethodeRenouvellement__c);
-                    Date endDate = eachQuote.LPCR_DateFin__c;
-                    if('Express'.equals(eachQuote.LPCR_MethodeRenouvellement__c) ||'Sans renouvellement'.equals(eachQuote.LPCR_MethodeRenouvellement__c) ){
-                        if(eachQuote.LPCR_DateFin__c.year() == System.Today().year()){
-                            eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                    if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
+                        eachQuote.LPCR_MethodeRenouvellement__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_MethodeRenouvellement__c;
+                        Date endDate = eachQuote.LPCR_DateFin__c;
+                        if(Label.LPCR_Express.equals(eachQuote.LPCR_MethodeRenouvellement__c) ||Label.LPCR_SansRenouvellement.equals(eachQuote.LPCR_MethodeRenouvellement__c) ){
+                            if(eachQuote.LPCR_DateFin__c.year() == System.Today().year()){
+                                eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                            }
+                            else{
+                                eachQuote.SBQQ__EndDate__c = dueDateQuote;
+                            } 
                         }
-                        else{
+                        else if(Label.LPCR_Tacite.equals(eachQuote.LPCR_MethodeRenouvellement__c)){
                             eachQuote.SBQQ__EndDate__c = dueDateQuote;
-                        } 
-                    }
-                    else if('Tacite'.equals(eachQuote.LPCR_MethodeRenouvellement__c)){
-                        eachQuote.SBQQ__EndDate__c = dueDateQuote;
+                        }
                     }
                 } 
             }
-            if('Quote'.equals(eachQuote.SBQQ__Type__c)){
+            if(Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c)){
                 if(eachQuote.LPCR_DateFin__c < dueDateQuote){
                     eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                 }
@@ -179,18 +193,20 @@ public with sharing class SM008_QuoteServices {
     public static void setB2BbeforInsertBQuotesFromContract(List<SBQQ__Quote__c> quotesList,  Map<ID,Account> acctMap, Map<Id,Opportunity> opptyMap,  Map<Id,Contract> contractMap){
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
         for (SBQQ__Quote__c eachQuote : quotesList){
-            if('Renewal'.equals(eachQuote.SBQQ__Type__c)){
+            if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) ){
-                     eachQuote.LPCR_RenouvellementConvenu__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_RenouvellementConvenu__c  ;
-                    if('Non'.equals(contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_RenouvellementConvenu__c)){
-                        eachQuote.SBQQ__RenewalUpliftRate__c = 0;
+                    if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
+                        eachQuote.LPCR_RenouvellementConvenu__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_RenouvellementConvenu__c  ;
+                        if(Label.LPCR_Non.equals(contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_RenouvellementConvenu__c)){
+                            eachQuote.SBQQ__RenewalUpliftRate__c = 0;
+                        } 
                     }
                 }
             }
         }
     }
     
-
+    
     
     //end of hanae's part
     
@@ -248,7 +264,7 @@ public with sharing class SM008_QuoteServices {
         }
         
     }
-
+    
     //added by hanae
     
     
