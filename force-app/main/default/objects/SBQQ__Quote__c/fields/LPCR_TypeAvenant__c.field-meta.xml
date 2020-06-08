@@ -4,6 +4,7 @@
     <externalId>false</externalId>
     <label>Type d&apos;avenant</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
@@ -35,6 +36,11 @@
                 <fullName>Modification du type/fréquence de facturation</fullName>
                 <default>false</default>
                 <label>Modification du type/fréquence de facturation</label>
+            </value>
+            <value>
+                <fullName>Mouvement Interne Berceau (MIB)</fullName>
+                <default>false</default>
+                <label>Mouvement Interne Berceau (MIB)</label>
             </value>
         </valueSetDefinition>
     </valueSet>

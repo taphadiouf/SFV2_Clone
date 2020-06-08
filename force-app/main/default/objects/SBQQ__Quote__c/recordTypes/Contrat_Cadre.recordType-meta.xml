@@ -2,6 +2,7 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contrat_Cadre</fullName>
     <active>true</active>
+    <compactLayoutAssignment>PresentationCompacteDevis</compactLayoutAssignment>
     <label>Contrat Cadre</label>
     <picklistValues>
         <picklist>LPCR_DureeContrat__c</picklist>
@@ -67,6 +68,25 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_ResiliationAnticipe__c</picklist>
+        <values>
+            <fullName>1 an ferme</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 ans ferme</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 ans ferme</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Immédiate</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_StatutApprobation__c</picklist>
         <values>
             <fullName>Approuvé</fullName>
@@ -108,6 +128,10 @@
         </values>
         <values>
             <fullName>Modification du type%2Ffréquence de facturation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mouvement Interne Berceau %28MIB%29</fullName>
             <default>false</default>
         </values>
         <values>

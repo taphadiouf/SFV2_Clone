@@ -5,16 +5,19 @@
 */
 @isTest
 public class APB006_PrepaRenewalContract_Test {
-    
+    //These attributes are migrated to the APB007_AllPriceBookClasses_Tests test
+    /*
     private static final Integer NUMBER_OF_B2C = 3;
     private static final Integer NUMBER_OF_B2B = 0; // we set this to 0 due to the lookupfilter on Contract.AccountId which force the RT of the related account to (and just to) Famille
     private static final Integer NUMBER_OF_CRECHE = 3;
     private static final Id B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
     private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     private static final Id CRECHE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
-        
+        */
     @testsetup
     static void setup() {
+        //This setup is used in APB007_AllPriceBookClasses_Tests.testAPB006PrepaRenewalContract method
+        /*
         List<Account> accountsCreche = new List<Account>();
         List<Account> accounts = new List<Account>();
 
@@ -133,10 +136,13 @@ public class APB006_PrepaRenewalContract_Test {
             c.Status='Activated';
         }
         update contracts;
+        */
     }
 
     @isTest
     private static void testAPB006PrepaRenewalContract(){
+        //This method is called in APB007_AllPriceBookClasses_Tests class with the same name, it also includes its necessary setup
+        /*
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
             APB006_PrepaRenewalContract btch = new APB006_PrepaRenewalContract();
@@ -150,5 +156,6 @@ public class APB006_PrepaRenewalContract_Test {
             System.assertEquals((NUMBER_OF_B2C + NUMBER_OF_B2B) * 2, listAllContracts.size());
             System.assertEquals(NUMBER_OF_B2C + NUMBER_OF_B2B, listContractsWithFees.size());
         }
+        */
     }
 }

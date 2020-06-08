@@ -62,6 +62,41 @@
                 <default>false</default>
                 <label>RecordTypeId</label>
             </value>
+            <value>
+                <fullName>LPCR_TypeCreche__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeCreche__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__ListPrice__c</fullName>
+                <default>false</default>
+                <label>SBQQ__ListPrice__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeAvenant__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeAvenant__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_DateResiliation__c</fullName>
+                <default>false</default>
+                <label>LPCR_DateResiliation__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_DateDebut__c</fullName>
+                <default>false</default>
+                <label>LPCR_DateDebut__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_Cloned__c</fullName>
+                <default>false</default>
+                <label>LPCR_Cloned__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__HasConsumptionSchedule__c</fullName>
+                <default>false</default>
+                <label>SBQQ__HasConsumptionSchedule__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

@@ -11,6 +11,10 @@ public with sharing class UM002_TestDataFactory {
     public OpportunityTdf opportunityTdf;
     public ContactTdf contactTdf;
     public UserTdf userTdf;
+
+    public static boolean FillAllFields = false;
+    public static Profile userProfile = [SELECT Id FROM Profile WHERE UserType = 'Standard' AND PermissionsCustomizeApplication = true LIMIT 1];
+    private static final Map<String, String> DefaultPicklistValue = new Map<String, String>();
     
     private static final Map<String, Map<String, Schema.SObjectField>> FieldMapCache = new Map<String, Map<String, Schema.SObjectField>>();
 	private static final Map<String, Id> defaultRecTypeCache = new Map<String, Id>();
@@ -19,14 +23,17 @@ public with sharing class UM002_TestDataFactory {
     
     public static map<String, set<String>> ExcludedFields = new map<String, set<String>>{
 		'All' => new set<String>{'OwnerId', 'LastModifiedById', 'CreatedById', 'LastModifiedDate', 'CreatedDate'},
-		'Account' => new set<String>{'FirstName', 'LastName', 'BillingStateCode', 'BillingCountryCode', 'ShippingStateCode', 'ShippingCountryCode', 'OtherStateCode', 'OtherCountryCode', 'BillingState', 'BillingCountry', 'ShippingState', 'ShippingCountry', 'OtherState', 'OtherCountry'},
-		'Contact' => new set<String>{'MailingStateCode', 'MailingCountryCode', 'MailingState', 'MailingCountry', 'OtherStateCode', 'OtherCountryCode', 'OtherState', 'OtherCountry'},
-		'User' => new set<String>{'IsActive','DelegatedApproverId','CallCenterId','ContactId','DelegatedApproverId','ManagerId','UserRoleId','FederationIdentifier', 'State', 'StateCode', 'Country', 'CountryCode'}
+		'Account' => new set<String>{'LPCR_Garde__c', 'FirstName', 'LastName', 'BillingStateCode', 'BillingCountryCode', 'ShippingStateCode', 'ShippingCountryCode', 'OtherStateCode', 'OtherCountryCode', 'BillingState', 'BillingCountry', 'ShippingState', 'ShippingCountry', 'OtherState', 'OtherCountry'},
+        'Contact' => new set<String>{'RecordTypeId', 'MailingStateCode', 'MailingCountryCode', 'MailingState', 'MailingCountry', 'OtherStateCode', 'OtherCountryCode', 'OtherState', 'OtherCountry'},
+        'User' => new set<String>{'IsActive','DelegatedApproverId','CallCenterId','ContactId','DelegatedApproverId','ManagerId','UserRoleId','FederationIdentifier', 'State', 'StateCode', 'Country', 'CountryCode'}
 	};
 
 	// to fill nillable fields, specify them here
 	public static map<String, set<String>> IncludedFields = new map<String, set<String>>{
-		'Case' => new set<String>{'Description', 'Subject', 'Origin'}
+		'Case' => new set<String>{'Description', 'Subject', 'Origin'},
+        'User' => new set<String>{'Username','LastName','Email','Alias','TimeZoneSidKey','LocaleSidKey','EmailEncodingKey','ProfileId','LanguageLocaleKey'},
+        'Contact' => new set<String>{'LastName'},
+        'Account' => new set<String>{'Name'}
     };
     
     public UM002_TestDataFactory() {
@@ -39,11 +46,11 @@ public with sharing class UM002_TestDataFactory {
         userTdf = new UserTdf();
     }
 
-    /*
+    // various simplified signatures for flexibility and backward compatibility
     public static SObject createSObject(String objectType) {
 		return createSObject(objectType, null);
 	}
-    */
+    
 
     /*
     * @description generic test data factory method with default value
@@ -56,11 +63,11 @@ public with sharing class UM002_TestDataFactory {
 		return createSObject(objectType, 1, fieldValues);
     }
 
-    /*
+    // various simplified signatures for flexibility and backward compatibility
     public static List<SObject> createSObjectList(String objectType, Integer numberOfObjects) {
 		return createSObjectList(objectType, numberOfObjects, null);
 	}
-    */
+    
 
     /*
     * @description generic test data factory method with default value
@@ -122,8 +129,8 @@ public with sharing class UM002_TestDataFactory {
 				(
 					(
 						!exclude.contains(fn) &&
-						(!fieldDescribe.isNillable() || (ft == Schema.DisplayType.Reference))
-					) 
+						(!fieldDescribe.isNillable() || FillAllFields || (ft == Schema.DisplayType.Reference))
+                    ) 
 				|| include.contains(fn))
 			) {
 
@@ -136,7 +143,7 @@ public with sharing class UM002_TestDataFactory {
 				// also supports getting the Id of an sobject if that is what is provided as a default
 				setFieldOverrideValue( obj, field, fieldValues.get(fn), counter );
 
-			} /* else if (ft == Schema.DisplayType.String) {
+			}  else if (ft == Schema.DisplayType.String) {
 				if (fn == 'CommunityNickname') { 
 					obj.put(field, 't'+ string.valueof(math.roundtolong(math.random()*1000000)) ); 
 				} else if (fn == 'Username') { 
@@ -173,7 +180,7 @@ public with sharing class UM002_TestDataFactory {
 					obj.put(field, userProfile.Id);
 				} else if (referenceObjectType == 'User') { 
 					obj.put(field, UserInfo.getUserId());
-				} else if (cascade && referenceObjectType != objName) {
+				} /* else if (cascade && referenceObjectType != objName) {
 					// TODO avoid infinite loop for same-type references
 					//System.debug(LOGGINGLEVEL.warn, 'Creating reference to ' + referenceObjectType + ' for field ' + objName + '.' + fn);
 					if (referenceObjectCache.containsKey(referenceObjectType)) {
@@ -184,7 +191,7 @@ public with sharing class UM002_TestDataFactory {
 						obj.put(field, reference.Id);
 						referenceObjectCache.put(referenceObjectType, reference.Id);
 					}
-				}
+				} */
 			} else if (ft == Schema.DisplayType.MultiPicklist) {
 				obj.put(field, getDefaultPicklistValue(obj, fieldDescribe));
 			} else if (ft == Schema.DisplayType.Percent) {
@@ -206,7 +213,6 @@ public with sharing class UM002_TestDataFactory {
 			} else {
 				System.debug('Unhandled field type ' + ft);
             }
-            */
 		}	
     }
     
@@ -257,6 +263,54 @@ public with sharing class UM002_TestDataFactory {
 
 		return fieldMap;
 	}
+
+    static String getDefaultPicklistValue(SObject obj, Schema.DescribeFieldResult fieldDescribe) {
+        String key = obj.getSObjectType() + '.' + fieldDescribe.getName();
+
+        if (!DefaultPicklistValue.containsKey(key)) {
+            List<Schema.PicklistEntry> entries = fieldDescribe.getPicklistValues();
+            String value = entries.size() > 0 ? entries[0].getValue() : null;
+            DefaultPicklistValue.put(key, value);
+        }
+        DefaultPicklistValue.put('Account.SBQQ__RenewalModel__c', 'Contract Based');
+        DefaultPicklistValue.put('Account.LPCR_Garde__c', 'Contract Based');
+
+        /*
+        DefaultPicklistValue.put('Account.BillingStateCode', null); //'AL');
+        DefaultPicklistValue.put('Account.BillingCountryCode', null); //,'US');
+        DefaultPicklistValue.put('Account.ShippingStateCode', null); //,'AL');
+        DefaultPicklistValue.put('Account.ShippingCountryCode', null); //,'US');
+        DefaultPicklistValue.put('Account.OtherStateCode', null); //,'AL');
+        DefaultPicklistValue.put('Account.OtherCountryCode', null); //,'US');
+
+        DefaultPicklistValue.put('Contact.MailingStateCode', null); //,'AL');
+        DefaultPicklistValue.put('Contact.MailingCountryCode', null); //,'US');
+        DefaultPicklistValue.put('Contact.OtherStateCode', null); //,'AL');
+        DefaultPicklistValue.put('Contact.OtherCountryCode', null); //,'US');
+        */
+        return DefaultPicklistValue.get(key);
+    }
+    
+    static void setRecordType(SObject obj) {
+        Schema.DescribeSObjectResult objDR = obj.getSObjectType().getDescribe();
+        String otn = objDR.getName();
+
+        List<Schema.RecordTypeInfo> recordTypes;
+        if (defaultRecTypeCache.containsKey( otn )) {
+            obj.put('RecordTypeId', defaultRecTypeCache.get( otn ));
+        } else {
+            recordTypes = objDR.getRecordTypeInfos();
+            if (recordTypes.size() > 1) { // all objects have default Master type
+                for (Schema.RecordTypeInfo recordType : recordTypes) {
+                    if (recordType.isAvailable() && recordType.isDefaultRecordTypeMapping()) {
+                        obj.put('RecordTypeId', recordType.getRecordTypeId());
+                        defaultRecTypeCache.put( otn, recordType.getRecordTypeId() );
+                        break;
+                    }
+                }
+            }
+        }
+    }
     
     public class AccountTdf {
         public Account create(String accountName){           
@@ -363,14 +417,14 @@ newMe.FederationIdentifier = null;
     public static List<Lead> createLeads(Integer numLeads, String recTypeId, String lastName, String company, String status,String Email){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0;i<numLeads;i++){
-            leads.add(new Lead(RecordTypeId = recTypeId, LastName=lastName,Company=company ,Status = status, Email=email));
+            leads.add(new Lead(RecordTypeId = recTypeId, LastName=lastName,Company=company ,Status = status, Email=email, LPCR_PasDeSIRET__c = true));
         }
         return leads;
     }
     public static List<Lead> createLeads(Integer numLeads, Map<String, Object> fieldsMap){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0; i<numLeads; i++){
-            Lead l= new Lead();
+            Lead l= new Lead(LPCR_PasDeSIRET__c = true);
             for(String eachFieldName : fieldsMap.keySet()){
                 l.put(eachFieldName, fieldsMap.get(eachFieldName));
             }
@@ -381,7 +435,7 @@ newMe.FederationIdentifier = null;
     public static List<Lead> createLeadsWithCrecheLink(Integer numLeads, String lastName, String company, String status,String Email, Id crecheId, String crecheNumber){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0;i<numLeads;i++){
-            Lead l= new Lead(LastName=lastName,Company=company ,Status = status, Email=email);
+            Lead l= new Lead(LastName=lastName,Company=company ,Status = status, Email=email, LPCR_PasDeSIRET__c = true);
             if(crecheNumber.equals('1')){
                 l.LPCR_CodeCreche1__c = crecheId;
             }
@@ -470,7 +524,7 @@ newMe.FederationIdentifier = null;
     public static List<Lead> createLeadsWithAllFields(Integer numLeads, String recTypeId, String lastName,String firstName, String PrenomCoDemandeur,String company, String status,String Email, String NomCoDemandeur, Date DateNaissance1, String EmailCoDemandeur, String Phone, String CiviliteCoDemandeur){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0;i<numLeads;i++){
-            Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName, FirstName=firstName, LPCR_PrenomCoDemandeur__c =PrenomCoDemandeur,Company=company ,Status = status, Email=email, LPCR_NomCoDemandeur__c= NomCoDemandeur,  LPCR_DateNaissance1__c= DateNaissance1 , LPCR_EmailCoDemandeur__c =EmailCoDemandeur, Phone=Phone, LPCR_CiviliteCoDemandeur__c = CiviliteCoDemandeur);
+            Lead l= new Lead(RecordTypeId = recTypeId, LastName=lastName, FirstName=firstName, LPCR_PrenomCoDemandeur__c =PrenomCoDemandeur,Company=company ,Status = status, Email=email, LPCR_NomCoDemandeur__c= NomCoDemandeur,  LPCR_DateNaissance1__c= DateNaissance1 , LPCR_EmailCoDemandeur__c =EmailCoDemandeur, Phone=Phone, LPCR_CiviliteCoDemandeur__c = CiviliteCoDemandeur, LPCR_PasDeSIRET__c = true);
             leads.add(l);
         }
         return leads;
@@ -584,7 +638,14 @@ newMe.FederationIdentifier = null;
         prod.blng__TaxRule__c =taxeRuleId;
         return prod;
     }
-    
+
+        public static Product2 createProduct(String name){
+        Product2 prod = new Product2();
+        prod.isActive = true;
+        prod.Name = name;
+        return prod;
+    }
+
     public static OrderItem createOrderProduct(Id standardPricebookId,ID orderID, Id productId,String chargeType,Decimal unitPrice ){
         OrderItem orderItem = new OrderItem();
         orderItem.OrderId = orderID;
@@ -812,7 +873,20 @@ newMe.FederationIdentifier = null;
         cpqQuote.SBQQ__BillingCity__c = city;
         return cpqQuote;
     }
-    
+
+        public static SBQQ__Quote__c createQuote(Id priceBookId, String type)
+    {
+        SBQQ__Quote__c cpqQuote = new SBQQ__Quote__c();
+        cpqQuote.SBQQ__Primary__c = false;
+        cpqQuote.SBQQ__StartDate__c = System.Today();
+        cpqQuote.SBQQ__SubscriptionTerm__c = 12;
+        cpqQuote.SBQQ__BillingFrequency__c = 'Invoice Plan';
+        cpqQuote.SBQQ__Type__c = type;
+        cpqQuote.SBQQ__PriceBook__c = priceBookId;
+        cpqQuote.SBQQ__PricebookId__c = priceBookId;
+        cpqQuote.SBQQ__QuoteLanguage__c = 'English';
+        return cpqQuote;
+    }
     public static SBQQ__QuoteLine__c createQuoteLine(String productId, String quoteId, String pricebookEntryId, Decimal price,Integer qte) 
     {
         SBQQ__QuoteLine__c quoteLineInstance = new SBQQ__QuoteLine__c();

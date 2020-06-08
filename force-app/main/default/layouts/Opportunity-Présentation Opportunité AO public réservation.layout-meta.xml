@@ -82,6 +82,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_Dedie__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_TechIdQuote__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

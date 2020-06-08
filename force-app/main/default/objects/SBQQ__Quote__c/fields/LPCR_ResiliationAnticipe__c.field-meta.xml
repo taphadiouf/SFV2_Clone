@@ -2,13 +2,11 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_ResiliationAnticipe__c</fullName>
     <description>Conditionne la condition de résiliation anticipé dans le contrat:
-        peut mettre fin au contrat ou diminuer le nombre de berceaux réservés, avant le terme du contrat, au 31 décembre
-        et au 31 août de chaque année sous réserve de l’envoi d’une lettre recommandée avec accusé de réception (LRAR)
-        reçue au siège social de LPCR GROUPE au moins 3 mois avant l’échéance.
-    </description>
+peut mettre fin au contrat ou diminuer le nombre de berceaux réservés, avant le terme du contrat, au 31 décembre et au 31 août de chaque année sous réserve de l’envoi d’une lettre recommandée avec accusé de réception (LRAR) reçue au siège social de LPCR GROUPE au moins 3 mois avant l’échéance.</description>
     <externalId>false</externalId>
     <label>Résiliation anticipé</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>

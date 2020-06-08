@@ -4,7 +4,7 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <deprecated>false</deprecated>
     <externalId>false</externalId>
-    <inlineHelpText>Rechercher dans le contact de facturation pour cette facture</inlineHelpText>
+    <inlineHelpText>Lookup to the Bill To contact for this invoice</inlineHelpText>
     <label>Bill To Contact</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Invoices (BillToContact)</relationshipLabel>

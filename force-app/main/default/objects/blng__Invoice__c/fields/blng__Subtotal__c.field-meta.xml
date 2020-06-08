@@ -3,7 +3,7 @@
     <fullName>blng__Subtotal__c</fullName>
     <deprecated>false</deprecated>
     <externalId>false</externalId>
-    <inlineHelpText>Total facture (hors taxes)</inlineHelpText>
+    <inlineHelpText>Invoice total (excluding tax)</inlineHelpText>
     <label>Subtotal</label>
     <summarizedField>blng__InvoiceLine__c.blng__Subtotal__c</summarizedField>
     <summaryForeignKey>blng__InvoiceLine__c.blng__Invoice__c</summaryForeignKey>

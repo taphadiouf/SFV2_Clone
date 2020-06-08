@@ -1,0 +1,9 @@
+<!--
+@Author Achraf ABOUL (aaboul@salesforce.com)
+@Created 20/05/2020
+@Description Lightning component to clone quote line items 
+-->
+<aura:component implements="lightning:isUrlAddressable" controller="APC006_CloneQuoteLines">
+    <aura:attribute name='quoteId' type='String'/>
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+</aura:component>

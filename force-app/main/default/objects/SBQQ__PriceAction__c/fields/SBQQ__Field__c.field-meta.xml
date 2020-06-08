@@ -73,26 +73,6 @@
                 <label>LPCR_TotalRegion__c</label>
             </value>
             <value>
-                <fullName>SBQQ__StartDate__c</fullName>
-                <default>false</default>
-                <label>SBQQ__StartDate__c</label>
-            </value>
-            <value>
-                <fullName>SBQQ__EndDate__c</fullName>
-                <default>false</default>
-                <label>SBQQ__EndDate__c</label>
-            </value>
-            <value>
-                <fullName>LPCR_DateDebut__c</fullName>
-                <default>false</default>
-                <label>LPCR_DateDebut__c</label>
-            </value>
-            <value>
-                <fullName>LPCR_DateFin__c</fullName>
-                <default>false</default>
-                <label>LPCR_DateFin__c</label>
-            </value>
-            <value>
                 <fullName>LPCR_PrixPlancher__c</fullName>
                 <default>false</default>
                 <label>LPCR_PrixPlancher__c</label>
@@ -107,6 +87,131 @@
                 <default>false</default>
                 <label>LPCR_DepotGarantieMicro__c</label>
             </value>
+            <value>
+                <fullName>LPCR_Cloned__c</fullName>
+                <default>false</default>
+                <label>LPCR_Cloned__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_RevenusFamille__c</fullName>
+                <default>false</default>
+                <label>LPCR_RevenusFamille__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TauxHoraire__c</fullName>
+                <default>false</default>
+                <label>LPCR_TauxHoraire__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TauxEffort__c</fullName>
+                <default>false</default>
+                <label>LPCR_TauxEffort__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_CongesJours__c</fullName>
+                <default>false</default>
+                <label>LPCR_CongesJours__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_RessourcePlafond__c</fullName>
+                <default>false</default>
+                <label>LPCR_RessourcePlafond__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_RessourcesPrixPlancher__c</fullName>
+                <default>false</default>
+                <label>LPCR_RessourcesPrixPlancher__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_CloneCancel__c</fullName>
+                <default>false</default>
+                <label>LPCR_CloneCancel__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TotalBerceauGratuitRegion__c</fullName>
+                <default>false</default>
+                <label>LPCR_TotalBerceauGratuitRegion__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_CongesSemaine__c</fullName>
+                <default>false</default>
+                <label>LPCR_CongesSemaine__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TauxMensuel__c</fullName>
+                <default>false</default>
+                <label>LPCR_TauxMensuel__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Quantity__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Quantity__c</label>
+            </value>
+            <value>
+                <fullName>Custom_Quantity__c</fullName>
+                <default>false</default>
+                <label>Custom_Quantity__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Primary__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Primary__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__NetTotal__c</fullName>
+                <default>false</default>
+                <label>SBQQ__NetTotal__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_Creche__c</fullName>
+                <default>false</default>
+                <label>LPCR_Creche__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_Region__c</fullName>
+                <default>false</default>
+                <label>LPCR_Region__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Type__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Type__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeAvenant__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeAvenant__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_StatutApprobation__c</fullName>
+                <default>false</default>
+                <label>LPCR_StatutApprobation__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__PriorQuantity__c</fullName>
+                <default>false</default>
+                <label>SBQQ__PriorQuantity__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__UpgradedSubscription__c</fullName>
+                <default>false</default>
+                <label>SBQQ__UpgradedSubscription__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Status__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Status__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__MasterContract__c</fullName>
+                <default>false</default>
+                <label>SBQQ__MasterContract__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Opportunity2__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Opportunity2__c</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -119,6 +224,26 @@
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <controllingFieldValue>Product Option</controllingFieldValue>
             <valueName>Discount (%)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_PrixBerceau__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__ListPrice__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__DiscountSchedule__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__DefaultSubscriptionTerm__c</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -137,59 +262,136 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
-            <valueName>SBQQ__StartDate__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote</controllingFieldValue>
-            <valueName>SBQQ__EndDate__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote</controllingFieldValue>
-            <valueName>LPCR_DateDebut__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote</controllingFieldValue>
-            <valueName>LPCR_DateFin__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote</controllingFieldValue>
-            <valueName>LPCR_MasterDevis__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote</controllingFieldValue>
-            <valueName>LPCR_DepotGarantieMicro__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote Line</controllingFieldValue>
-            <valueName>LPCR_PrixBerceau__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote Line</controllingFieldValue>
-            <valueName>SBQQ__ListPrice__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote Line</controllingFieldValue>
-            <valueName>SBQQ__DiscountSchedule__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote Line</controllingFieldValue>
-            <valueName>SBQQ__DefaultSubscriptionTerm__c</valueName>
-        </valueSettings>
-        <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>SBQQ__SpecialPrice__c</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>SBQQ__SpecialPriceType__c</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>LPCR_TotalRegion__c</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>LPCR_PrixPlancher__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_MasterDevis__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_DepotGarantieMicro__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_Cloned__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_RevenusFamille__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_TauxHoraire__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_TauxEffort__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_CongesJours__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_RessourcePlafond__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_RessourcesPrixPlancher__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_CloneCancel__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_TotalBerceauGratuitRegion__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_CongesSemaine__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_TauxMensuel__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__Primary__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__Type__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_TypeAvenant__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_StatutApprobation__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__Status__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__MasterContract__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__Opportunity2__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__Quantity__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_Creche__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_Region__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__PriorQuantity__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__UpgradedSubscription__c</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>
