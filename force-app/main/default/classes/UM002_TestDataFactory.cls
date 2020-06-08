@@ -493,7 +493,8 @@ newMe.FederationIdentifier = null;
         for(Integer i = 0; i<numRecs; i++){
             tempQuote = new SBQQ__Quote__c(
                 SBQQ__Opportunity2__c = opps.get(i).Id,
-                SBQQ__Account__c = accs.get(i).Id
+                SBQQ__Account__c = accs.get(i).Id,
+                SBQQ__PriceBook__c = Test.getStandardPricebookId()
             );
             quotes.add(tempQuote);
         }
@@ -582,7 +583,11 @@ newMe.FederationIdentifier = null;
                                             LPCR_TauxMensuel__c=price,
                                             Name=name);
     } 
-    
+    public static LPCR_RessourceFamille__c createRessourceFamille(Date debutDate,Id userId,String name){
+        return new LPCR_RessourceFamille__c(   LPCR_DateDebut__c = debutDate,
+                                            LPCR_CompteFamille__c=userId,
+                                            Name=name);
+    }
     public static List<LPCR_RessourceFamille__c> createRessourceFamille(Integer nbr,Id productId, Id userId,Decimal price,List<Date> listStartDate,List<Decimal> listNbrEnfant,List<Decimal> listNbrEnfantHandicape){
         List<LPCR_RessourceFamille__c> listRessourceFamille = new List<LPCR_RessourceFamille__c>();
         for(Integer i=0;i<nbr;i++){
@@ -608,7 +613,12 @@ newMe.FederationIdentifier = null;
         Contract  contract = new Contract(AccountID = accountID,SBQQ__Quote__c=quoteId,SBQQ__Order__c =orderId);	
         return contract;	
     }	
-    
+    public static Contract createContract(Id accountID,Id quoteId, Id opportunityId, Date dateFin){	
+        Contract  contract = new Contract(AccountID = accountID,SBQQ__Quote__c = quoteId,SBQQ__Opportunity__c = opportunityId,
+                                        StartDate =System.today(),ContractTerm = 12,LPCR_DateDebut__c = System.today(),
+                                        LPCR_DateFin__c = dateFin,LPCR_RenouvellementConvenu__c = 'Non',LPCR_MethodeRenouvellement__c = 'Express' );	
+        return contract;	
+    }
     public static Order createOrder(Id accountID,Id contractID,Date orderStartDate,String name ,String status,String billindDayOfMonth){	
         Order  order = new Order(blng__BillingDayOfMonth__c = billindDayOfMonth,AccountID = accountID,ContractId =contractID,EffectiveDate=orderStartDate,Status=status,Name=name);	
         return order;	
@@ -638,7 +648,21 @@ newMe.FederationIdentifier = null;
         prod.Name = name;
         return prod;
     }
-
+    public static Product2 createFixedPriceProduct(String name, Id billingRuleId,Id revenueRecognitionRuleId,Id taxeRuleId ){
+        Product2 prod = new Product2();
+        prod.isActive = true;
+        prod.Name = name;
+        prod.blng__BillingRule__c =billingRuleId;
+        prod.blng__RevenueRecognitionRule__c  =revenueRecognitionRuleId ;
+        prod.blng__TaxRule__c =taxeRuleId;
+        prod.SBQQ__SubscriptionPricing__c ='Fixed Price';
+        prod.SBQQ__BillingFrequency__c = 'Monthly';
+        prod.SBQQ__BillingType__c = 'Advance';
+        prod.SBQQ__ChargeType__c = 'Recurring';
+        prod.SBQQ__SubscriptionTerm__c = 12;
+        prod.SBQQ__SubscriptionType__c = 'Renewable';
+        return prod;
+    }
     public static OrderItem createOrderProduct(Id standardPricebookId,ID orderID, Id productId,String chargeType,Decimal unitPrice ){
         OrderItem orderItem = new OrderItem();
         orderItem.OrderId = orderID;
@@ -648,7 +672,20 @@ newMe.FederationIdentifier = null;
         orderItem.UnitPrice =unitPrice;
         return orderItem;
     }
-    
+    public static OrderItem createOrderProduct(Id standardPricebookId,ID orderID, Id productId,String chargeType,String billingFrequency, Decimal unitPrice ){
+        OrderItem orderItem = new OrderItem();
+        orderItem.OrderId = orderID;
+        orderItem.Product2ID = productId;
+        orderItem.PricebookEntryId=standardPricebookId;
+        orderItem.SBQQ__ChargeType__c =chargeType;
+        orderItem.SBQQ__BillingFrequency__c = billingFrequency;
+        orderItem.SBQQ__BillingType__c = 'Advance';
+        orderItem.Quantity = 1;
+        orderItem.SBQQ__SubscriptionTerm__c = 12;
+        orderItem.SBQQ__DefaultSubscriptionTerm__c = 12;
+        orderItem.UnitPrice =unitPrice;
+        return orderItem;
+    }
     public static void insertBillingCustomSettings() {
         
         List<blng__BillingConfig__c> listofConfiguration = new List<blng__BillingConfig__c>();
@@ -1112,7 +1149,15 @@ newMe.FederationIdentifier = null;
         return ModifEntrantes;
     }
     
-    
+    //added by saurabh
+    public static LPCR_ModificationEntrante__c createModificationsEntrante(String event, Id quoteId,Id accountId, Id contactId, Id contractId,Date dateEffet,Decimal revenusFamille){
+        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Devis__c = quoteId, LPCR_Evenement__c = event,
+                                                                                     LPCR_DateEffet__c = dateEffet, LPCR_Compte__c = accountId,
+                                                                                     LPCR_Quantite__c = 1, LPCR_Contract__c = contractId,
+                                                                                     LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = 'Faux',
+                                                                                     LPCR_RessourceFamille__c = revenusFamille);       
+        return modifEntrante;
+    }
     public static List<Account> createAccountswithtype(Integer numAccs, String name, String typeCreche, String rTDevName){
         List<Account> accounts = new List<Account>();
        	Id recTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, rTDevName);

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_Section__c</fullName>
+    <fullName>LPCR_EtatTraitement__c</fullName>
     <externalId>false</externalId>
-    <label>Section</label>
+    <label>EtatTraitement</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
@@ -11,19 +11,14 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Bébé</fullName>
+                <fullName>Faux</fullName>
                 <default>false</default>
-                <label>Bébé</label>
+                <label>Faux</label>
             </value>
             <value>
-                <fullName>Moyen</fullName>
+                <fullName>Vrai</fullName>
                 <default>false</default>
-                <label>Moyen</label>
-            </value>
-            <value>
-                <fullName>Grands</fullName>
-                <default>false</default>
-                <label>Grands</label>
+                <label>Vrai</label>
             </value>
         </valueSetDefinition>
     </valueSet>
