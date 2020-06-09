@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Situation professionnelle --></label>
+    <name>LPCR_SituationProfessionnelle__c</name>
+    <picklistValues>
+        <masterLabel>Autres</masterLabel>
+        <translation><!-- Autres --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>En activité professionnelle</masterLabel>
+        <translation><!-- En activité professionnelle --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>En formation</masterLabel>
+        <translation><!-- En formation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>En recherche d&apos;emploi</masterLabel>
+        <translation><!-- En recherche d&apos;emploi --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Étudiant</masterLabel>
+        <translation><!-- Étudiant --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

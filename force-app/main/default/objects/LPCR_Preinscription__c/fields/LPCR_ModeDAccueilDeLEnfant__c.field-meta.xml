@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_ModeDAccueilDeLEnfant__c</fullName>
+    <externalId>false</externalId>
+    <label>Mode d&apos;accueil de l&apos;enfant</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Assistante maternelle (hors crèche familiale)</fullName>
+                <default>false</default>
+                <label>Assistante maternelle (hors crèche familiale)</label>
+            </value>
+            <value>
+                <fullName>Nourrice à domicile</fullName>
+                <default>false</default>
+                <label>Nourrice à domicile</label>
+            </value>
+            <value>
+                <fullName>Crèche</fullName>
+                <default>false</default>
+                <label>Crèche</label>
+            </value>
+            <value>
+                <fullName>Multi-accueil</fullName>
+                <default>false</default>
+                <label>Multi-accueil</label>
+            </value>
+            <value>
+                <fullName>Halte-garderie</fullName>
+                <default>false</default>
+                <label>Halte-garderie</label>
+            </value>
+            <value>
+                <fullName>Conjoint</fullName>
+                <default>false</default>
+                <label>Conjoint</label>
+            </value>
+            <value>
+                <fullName>Autre membre de la famille</fullName>
+                <default>false</default>
+                <label>Autre membre de la famille</label>
+            </value>
+            <value>
+                <fullName>Amis</fullName>
+                <default>false</default>
+                <label>Amis</label>
+            </value>
+            <value>
+                <fullName>Autre</fullName>
+                <default>false</default>
+                <label>Autre</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>
