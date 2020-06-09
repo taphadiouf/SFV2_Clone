@@ -13,8 +13,15 @@ public class TM009_ContractTrigger extends TM000_TriggerHandler{
         this.oldContractMap = (Map<Id, Contract>) Trigger.oldMap;
         this.newContractList = (List<Contract>) Trigger.new;
     }
+   
     protected override void beforeInsert() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         SM010_ContractServices.setContractFields(newContractList);
+    }
+     
+     
+    protected override void beforeUpdate() {
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM010_ContractServices.setContractFields(oldContractMap,newContractMap);
     }
 }
