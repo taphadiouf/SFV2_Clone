@@ -13,7 +13,7 @@ global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<s
         Date today = date.today();
         Id accountEntrepriseRTId  = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
         String methodeRenouvellementValue='Tacite';
-        String query = 'SELECT Id, LPCR_DateFin__c ,LPCR_JoursAvance__c ,LPCR_DateDebut__c ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId  FROM Contract WHERE Account.RecordTypeId = :accountEntrepriseRTId AND LPCR_MethodeRenouvellement__c = :methodeRenouvellementValue AND LPCR_DateFin__c  =:today';
+        String query = 'SELECT Id, LPCR_DateFin__c ,LPCR_DureeContratJour__c ,LPCR_DateDebut__c ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId  FROM Contract WHERE Account.RecordTypeId = :accountEntrepriseRTId AND LPCR_MethodeRenouvellement__c = :methodeRenouvellementValue AND LPCR_DateFin__c  =:today';
         
         return Database.getQueryLocator(query);
     }
@@ -22,11 +22,11 @@ global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<s
         PAD.log('APB008_ResetStartEndDatesOnContract','execute','scope to execute : '+scope);
         
         Set<Id> contractIds = UM003_TypeManager.getIdsOfListObjects(scope);
-        List<Contract> listOfContract = [SELECT Id, LPCR_JoursAvance__c ,LPCR_DateFin__c ,LPCR_DateDebut__c ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId FROM Contract 
+        List<Contract> listOfContract = [SELECT Id, LPCR_DureeContratJour__c ,LPCR_DateFin__c ,LPCR_DateDebut__c ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId FROM Contract 
                                          WHERE Id in :contractIds ];   
         for (Contract eachContract : listOfContract) {
             eachContract.LPCR_DateDebut__c =eachContract.LPCR_DateFin__c.addDays(1);
-            eachContract.LPCR_DateFin__c=eachContract.LPCR_DateDebut__c.addDays(Integer.valueOf(eachContract.LPCR_JoursAvance__c)); 
+            eachContract.LPCR_DateFin__c=eachContract.LPCR_DateDebut__c.addDays(Integer.valueOf(eachContract.LPCR_DureeContratJour__c)); 
         }
         
         update listOfContract;        

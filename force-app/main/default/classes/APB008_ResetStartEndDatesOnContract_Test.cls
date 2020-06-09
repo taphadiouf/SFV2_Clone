@@ -23,7 +23,7 @@ public class APB008_ResetStartEndDatesOnContract_Test {
         Contract contract = UM002_TestDataFactory.createContract(b2bAccount.Id);
         contract.LPCR_MethodeRenouvellement__c=methodeRenouvellementValue;
         contract.LPCR_DateFin__c=todayDate;
-        contract.LPCR_JoursAvance__c=100;
+        contract.LPCR_DureeContratJour__c=100;
         insert contract;
        
     }
@@ -34,7 +34,7 @@ public class APB008_ResetStartEndDatesOnContract_Test {
            
             Account acc = [SELECT Id, name from Account where name ='Test-B2B' LIMIT 1];
            
-            Contract contract = [SELECT Id, LPCR_JoursAvance__c ,LPCR_DateFin__c ,LPCR_DateDebut__c ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId FROM Contract
+            Contract contract = [SELECT Id, LPCR_DureeContratJour__c ,LPCR_DateFin__c ,LPCR_DateDebut__c ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId FROM Contract
                                  WHERE AccountId =:acc.Id ];
            
             Test.startTest();
@@ -42,10 +42,10 @@ public class APB008_ResetStartEndDatesOnContract_Test {
             resetStartEndDatesOnContract.execute(null);
            
             Test.stopTest();
-            contract = [SELECT Id, LPCR_JoursAvance__c ,LPCR_DateFin__c ,LPCR_DateDebut__c ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId FROM Contract
+            contract = [SELECT Id, LPCR_DureeContratJour__c ,LPCR_DateFin__c ,LPCR_DateDebut__c ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId FROM Contract
                                  WHERE AccountId =:acc.Id ];
            System.assertEquals(todayDate.addDays(1), contract.LPCR_DateDebut__c,'LPCR_DateDebut__c is not today');
-           System.assertEquals(contract.LPCR_DateDebut__c.addDays(Integer.valueOf(contract.LPCR_JoursAvance__c)), contract.LPCR_DateFin__c,'LPCR_DateFin__c is not LPCR_DateDebut__c +LPCR_JoursAvance__c ');
+           System.assertEquals(contract.LPCR_DateDebut__c.addDays(Integer.valueOf(contract.LPCR_DureeContratJour__c)), contract.LPCR_DateFin__c,'LPCR_DateFin__c is not LPCR_DateDebut__c +LPCR_DureeContratJour__c ');
            
         }
     }
