@@ -5,12 +5,17 @@
     <description>Si le modèle de devis LPCR est utilisé (contrat manuel = false), alors le passage au statut &quot;SIgné&quot; ou &quot;Prêt à commander&quot; est automatique et ne peut pas être fait à la main par un utilisateur.</description>
     <errorConditionFormula>AND(
 NOT( $User.LPCR_BypassValidationRules__c ),
-NOT(CONTAINS($Profile.Name,&#39;Admin&#39;)),
+NOT(CONTAINS($Profile.Name,&apos;Admin&apos;)),
 NOT(LPCR_ContratManuel__c),
 ISCHANGED( SBQQ__Status__c ),
-OR(TEXT(SBQQ__Status__c) = &#39;Signé&#39;,
-TEXT(SBQQ__Status__c) = &#39;Prêt à commander&#39;)
-)</errorConditionFormula>
+OR(
+TEXT(SBQQ__Status__c) = &apos;Terminé&apos;,
+TEXT(SBQQ__Status__c) = &apos;Signé&apos;,
+TEXT(SBQQ__Status__c) = &apos;Prêt à envoyer&apos;,
+TEXT(SBQQ__Status__c) = &apos;Actif&apos;,
+TEXT(SBQQ__Status__c) = &apos;Annulé&apos;,
+TEXT(SBQQ__Status__c) = &apos;Prêt à commander&apos;)
+				)</errorConditionFormula>
     <errorDisplayField>SBQQ__Status__c</errorDisplayField>
-    <errorMessage>Dans le cas de l&#39;utilsation du modèle LPCR,  le passage statut &quot;SIgné&quot; ou &quot;Prêt à commander&quot; est automatique.</errorMessage>
+    <errorMessage>Dans le cas de l&apos;utilisation du modèle LPCR,  le passage à cette valeur de statut &quot; est automatique.</errorMessage>
 </ValidationRule>
