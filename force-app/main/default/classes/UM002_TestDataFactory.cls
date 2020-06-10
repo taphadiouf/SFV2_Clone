@@ -608,6 +608,10 @@ newMe.FederationIdentifier = null;
         Contract  contract = new Contract(AccountID = accountID,SBQQ__Quote__c=quoteId,SBQQ__Order__c =orderId);	
         return contract;	
     }	
+    public static Contract createContract(Id accountID, Id orderId){	
+        Contract  contract = new Contract(AccountID = accountID,SBQQ__Order__c =orderId);	
+        return contract;	
+    }	
     
     public static Order createOrder(Id accountID,Id contractID,Date orderStartDate,String name ,String status,String billindDayOfMonth){	
         Order  order = new Order(blng__BillingDayOfMonth__c = billindDayOfMonth,AccountID = accountID,ContractId =contractID,EffectiveDate=orderStartDate,Status=status,Name=name);	

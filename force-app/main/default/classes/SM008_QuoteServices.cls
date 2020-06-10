@@ -155,4 +155,17 @@ public with sharing class SM008_QuoteServices {
         SM008_QuoteServices.loadAgreement(mapQuoteIDAgreementID);
         return mapQuoteIDAgreementID;
     } 
+    public static void setTypeEnregistrement(List<SBQQ__Quote__c> quotesList){
+        Set<Id> opportunitiesIdsSet = new Set<Id>();
+        for(SBQQ__Quote__c eachQuote : quotesList){
+            opportunitiesIdsSet.add(eachQuote.SBQQ__Opportunity2__c);
+        }
+        //Map : Id=>Order (Parent records of the current contracts)
+        Map<Id, Opportunity> parentOpportunitiesMap = new Map<Id, Opportunity>([SELECT Id, LPCR_TypeEnregistrement__c FROM Opportunity WHERE Id IN :opportunitiesIdsSet]);
+        for(SBQQ__Quote__c eachContract : quotesList){
+            if(parentOpportunitiesMap.containsKey(eachContract.SBQQ__Opportunity2__c)){
+                eachContract.LPCR_TypeEnregistrement__c = parentOpportunitiesMap.get(eachContract.SBQQ__Opportunity2__c).LPCR_TypeEnregistrement__c;
+            }
+        }
+    }
 }
