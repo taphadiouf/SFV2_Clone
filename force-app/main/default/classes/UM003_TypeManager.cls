@@ -44,4 +44,11 @@ public with sharing class UM003_TypeManager{
             }
         return fields;
     }
+
+    /*
+    //DCO this must be delete, use EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(objName, rtName) instead
+    public static Id getQuoteRecordTypeIdByDeveloperName(String recordTypeDeveloperName){
+        return Schema.SObjectType.SBQQ__Quote__c.getRecordTypeInfosByDeveloperName().get(recordTypeDeveloperName).getRecordTypeId();
+    }
+    */
 }

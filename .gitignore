@@ -1,4 +1,12 @@
 .sfdx/
 .vscode/
 .history/
-.DS_Store
+/.idea/*
+/IlluminatedCloud/*
+**/*.DS_Store 
+
+
+# Added by VSCode Plugin - SFDC QCP
+.qcp
+.env
+

@@ -57,6 +57,36 @@
                 <default>false</default>
                 <label>LPCR_MasterDevis__c</label>
             </value>
+            <value>
+                <fullName>LPCR_ContactEnfant__c</fullName>
+                <default>false</default>
+                <label>LPCR_ContactEnfant__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Account__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Account__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeCreche__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeCreche__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_Creche__c</fullName>
+                <default>false</default>
+                <label>LPCR_Creche__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_Active__c</fullName>
+                <default>false</default>
+                <label>LPCR_Active__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Quote__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Quote__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

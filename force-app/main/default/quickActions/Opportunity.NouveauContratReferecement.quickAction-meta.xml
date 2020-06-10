@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldOverrides>
+        <field>LPCR_CompteFacturation__c</field>
+        <formula>Opportunity.AccountId</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>LPCR_ResponsableADV__c</field>
         <formula>Opportunity.Account.LPCR_ResponsableADV__c</formula>
     </fieldOverrides>
@@ -16,7 +20,11 @@
         <field>SBQQ__Opportunity2__c</field>
         <formula>Opportunity.Id</formula>
     </fieldOverrides>
-    <label>Nouveau Contrat Cadre</label>
+    <fieldOverrides>
+        <field>SBQQ__Primary__c</field>
+        <formula>True</formula>
+    </fieldOverrides>
+    <label>Nouveau contrat de référencement</label>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
     <quickActionLayout>
         <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
@@ -57,6 +65,6 @@
     </quickActionLayout>
     <targetObject>SBQQ__Quote__c</targetObject>
     <targetParentField>SBQQ__Opportunity2__c</targetParentField>
-    <targetRecordType>SBQQ__Quote__c.Contrat_Cadre</targetRecordType>
+    <targetRecordType>SBQQ__Quote__c.Referencement</targetRecordType>
     <type>Create</type>
 </QuickAction>

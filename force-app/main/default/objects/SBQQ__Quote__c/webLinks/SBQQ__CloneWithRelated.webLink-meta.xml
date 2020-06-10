@@ -9,5 +9,5 @@
     <masterLabel>Clone with Related</masterLabel>
     <openType>replace</openType>
     <protected>false</protected>
-    <url>{!URLFOR($Site.Prefix)}/apex/SBQQ__CloneLineItems?id={!SBQQ__Quote__c.Id}</url>
+    <url>/apex/SBQQ__CloneLineItems?id={!SBQQ__Quote__c.Id}</url>
 </WebLink>

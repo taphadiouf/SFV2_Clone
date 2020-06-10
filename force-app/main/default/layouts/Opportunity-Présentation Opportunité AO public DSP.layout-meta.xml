@@ -159,6 +159,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_BillingFrequency__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_TechIdQuote__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>
@@ -291,7 +295,7 @@
         <fields>Account.NAME</fields>
         <fields>Account.LPCR_TypeCreche__c</fields>
         <fields>Account.LPCR_TypeStructure__c</fields>
-        <relatedList>LienCrecheOpportunite__c.Opportunite__c</relatedList>
+        <relatedList>LPCR_LienCrecheOpportunite__c.LPCR_Opportunite__c</relatedList>
         <sortField>Account.NAME</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>

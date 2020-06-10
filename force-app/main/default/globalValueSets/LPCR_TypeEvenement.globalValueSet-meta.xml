@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Modification Absence</fullName>
+        <default>false</default>
+        <label>Modification Absence</label>
+    </customValue>
+    <customValue>
+        <fullName>Modification Heure Supplémentaire MAC</fullName>
+        <default>false</default>
+        <label>Modification Heure Supplémentaire MAC</label>
+    </customValue>
+    <customValue>
+        <fullName>Modification Heure Occasionnel MAC</fullName>
+        <default>false</default>
+        <label>Modification Heure Occasionnel MAC</label>
+    </customValue>
+    <customValue>
+        <fullName>Modification Heure Déduite MAC</fullName>
+        <default>false</default>
+        <label>Modification Heure Déduite MAC</label>
+    </customValue>
+    <customValue>
+        <fullName>Nombre de repas</fullName>
+        <default>false</default>
+        <label>Nombre de repas</label>
+    </customValue>
+    <customValue>
+        <fullName>Modification Période d&apos;Adaptation</fullName>
+        <default>false</default>
+        <label>Modification Période d&apos;Adaptation</label>
+    </customValue>
+    <customValue>
+        <fullName>Modification Accueil Jour Supplémentaire Micro</fullName>
+        <default>false</default>
+        <label>Modification Accueil Jour Supplémentaire Micro</label>
+    </customValue>
+    <customValue>
+        <fullName>Modification Accueil Occasionnel Micro</fullName>
+        <default>false</default>
+        <label>Modification Accueil Occasionnel Micro</label>
+    </customValue>
+    <customValue>
+        <fullName>Modification Heures Déduites Micro</fullName>
+        <default>false</default>
+        <label>Modification Heures Déduites Micro</label>
+    </customValue>
+    <customValue>
+        <fullName>Modification Accueil d&apos;Urgence</fullName>
+        <default>false</default>
+        <label>Modification Accueil d&apos;Urgence</label>
+    </customValue>
+    <customValue>
+        <fullName>Modification Congés non pris MAC</fullName>
+        <default>false</default>
+        <label>Modification Congés non pris MAC</label>
+    </customValue>
+    <masterLabel>Type d&apos;événement</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

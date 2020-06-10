@@ -21,7 +21,7 @@
             </approver>
         </assignedApprover>
         <entryCriteria>
-            <booleanFilter>1 OR 2</booleanFilter>
+            <booleanFilter>(1 OR 2) AND (3 OR 4)</booleanFilter>
             <criteriaItems>
                 <field>SBQQ__Quote__c.LPCR_LigneInferieurePP__c</field>
                 <operation>notEqual</operation>
@@ -31,6 +31,16 @@
                 <field>SBQQ__Quote__c.LPCR_LigneSuperieurePP__c</field>
                 <operation>notEqual</operation>
                 <value>0</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>SBQQ__Quote__c.RecordType</field>
+                <operation>equals</operation>
+                <value>Contrat D’accueil</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>SBQQ__Quote__c.RecordType</field>
+                <operation>equals</operation>
+                <value>Contrat Réservataire</value>
             </criteriaItems>
         </entryCriteria>
         <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
@@ -62,6 +72,7 @@
     <emailTemplate>unfiled$public/LPCR_ApprouverModificationPrix</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
+        <booleanFilter>1 AND 2 AND (3 OR (4 AND 5))</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.LPCR_StatutApprobation__c</field>
             <operation>equals</operation>
@@ -77,15 +88,29 @@
             <operation>equals</operation>
             <value>Quote</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>equals</operation>
+            <value>Changement de Prix</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Amendment</value>
+        </criteriaItems>
     </entryCriteria>
     <finalApprovalActions>
         <action>
-            <name>LPCR_StatutValide</name>
+            <name>LPCR_StatutApprouve</name>
             <type>FieldUpdate</type>
         </action>
         <action>
             <name>LPCR_ValidationAcceptee</name>
             <type>Alert</type>
+        </action>
+        <action>
+            <name>Statut_standard_approuv</name>
+            <type>FieldUpdate</type>
         </action>
     </finalApprovalActions>
     <finalApprovalRecordLock>false</finalApprovalRecordLock>
@@ -95,14 +120,14 @@
             <type>Alert</type>
         </action>
         <action>
-            <name>LPCR_StatutBrouillon</name>
+            <name>LPCR_StatutRejete</name>
             <type>FieldUpdate</type>
         </action>
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <initialSubmissionActions>
         <action>
-            <name>LPCR_StatutValide</name>
+            <name>LPCR_StatutAttente</name>
             <type>FieldUpdate</type>
         </action>
     </initialSubmissionActions>
@@ -113,7 +138,7 @@
     </nextAutomatedApprover>
     <recallActions>
         <action>
-            <name>LPCR_StatutBrouillon</name>
+            <name>LPCR_StatutRappel</name>
             <type>FieldUpdate</type>
         </action>
     </recallActions>

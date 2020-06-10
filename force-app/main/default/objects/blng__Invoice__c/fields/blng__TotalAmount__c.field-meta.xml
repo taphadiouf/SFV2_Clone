@@ -3,7 +3,7 @@
     <fullName>blng__TotalAmount__c</fullName>
     <deprecated>false</deprecated>
     <externalId>false</externalId>
-    <inlineHelpText>Total facture (taxes comprises). Égal au sous-total + taxes.</inlineHelpText>
+    <inlineHelpText>Invoice total (including tax). Equals SubTotal + Tax.</inlineHelpText>
     <label>Total Amount (With Tax)</label>
     <summarizedField>blng__InvoiceLine__c.blng__TotalAmount__c</summarizedField>
     <summaryForeignKey>blng__InvoiceLine__c.blng__Invoice__c</summaryForeignKey>

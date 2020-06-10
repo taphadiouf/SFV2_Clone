@@ -72,6 +72,31 @@
                 <default>false</default>
                 <label>ProductCode</label>
             </value>
+            <value>
+                <fullName>LPCR_ContactEnfant__c</fullName>
+                <default>false</default>
+                <label>LPCR_ContactEnfant__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_CompteFamille__c</fullName>
+                <default>false</default>
+                <label>LPCR_CompteFamille__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeCreche__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeCreche__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_creche__c</fullName>
+                <default>false</default>
+                <label>LPCR_creche__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_Active__c</fullName>
+                <default>false</default>
+                <label>LPCR_Active__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

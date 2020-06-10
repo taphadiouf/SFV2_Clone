@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>ALSH</fullName>
+        <default>false</default>
+        <label>ALSH</label>
+    </customValue>
+    <customValue>
+        <fullName>MAF</fullName>
+        <default>false</default>
+        <label>MAF</label>
+    </customValue>
+    <customValue>
+        <fullName>MAC</fullName>
+        <default>false</default>
+        <label>MAC</label>
+    </customValue>
+    <customValue>
+        <fullName>MICRO</fullName>
+        <default>false</default>
+        <label>MICRO</label>
+    </customValue>
+    <customValue>
+        <fullName>Halte-Garderie</fullName>
+        <default>false</default>
+        <label>Halte-Garderie</label>
+    </customValue>
+    <customValue>
+        <fullName>Jardin d’enfants</fullName>
+        <default>false</default>
+        <label>Jardin d’enfants</label>
+    </customValue>
+    <customValue>
+        <fullName>RAM</fullName>
+        <default>false</default>
+        <label>RAM</label>
+    </customValue>
+    <customValue>
+        <fullName>Partenaire</fullName>
+        <default>false</default>
+        <label>Partenaire</label>
+    </customValue>
+    <masterLabel>Type de crèche</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

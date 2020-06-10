@@ -30,6 +30,12 @@ public with sharing class EM006_QuoteEntity extends EM001_AbstractObjectEntity{
                      LPCR_Creche__r.ShippingCity, 
                      LPCR_TypePlanning__c,
                      LPCR_RessourcesMensuelles__c,
+                     LPCR_TauxEffort__c,
+                     LPCR_TauxHoraire__c,
+                     LPCR_TauxMensuel__c ,
+                     LPCR_RevenusFamille__c,
+                     LPCR_CongesJours__c,
+                     LPCR_NombreHeuresMois__c,
                      (Select Id, 
                       LPCR_Contrat__c,
                       LPCR_HeureDebutLundi__c, 
@@ -47,4 +53,8 @@ public with sharing class EM006_QuoteEntity extends EM001_AbstractObjectEntity{
                      WHERE Id=:quoteId];
             
         }
+    
+    public static List<SBQQ__Quote__c> getQuoteModifById (Set<Id> quoteId){
+        return [SELECT Id, SBQQ__Status__c  FROM SBQQ__Quote__c WHERE Id =: quoteId];
+    }
 }

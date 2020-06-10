@@ -132,6 +132,11 @@
         <isRequired>false</isRequired>
     </availableFields>
     <availableFields>
+        <field>SBQQ__ProductCode__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </availableFields>
+    <availableFields>
         <field>SBQQ__ProratedListPrice__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
@@ -203,7 +208,7 @@
     </availableFields>
     <description>Fields displayed on Edit Lines page.</description>
     <displayedFields>
-        <field>SBQQ__ProductCode__c</field>
+        <field>LPCR_CloneCancel__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
@@ -213,7 +218,7 @@
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
-        <field>Custom_Quantity__c</field>
+        <field>LPCR_Region__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
@@ -223,22 +228,12 @@
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
-        <field>LPCR_Region__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
-        <field>LPCR_TotalRegion__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
         <field>SBQQ__Quantity__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
-        <field>LPCR_PrixBerceau__c</field>
+        <field>LPCR_TotalBerceauGratuitRegion__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>

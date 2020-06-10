@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <formula>blng__TotalAmount__c - blng__Payments__c - blng__Credits__c + blng__Debits__c + blng__NegativeLineConversion__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Solde = montant total - paiements nets totaux - notes de crédit appliquées + notes de débit appliquées + conversions de ligne négatives</inlineHelpText>
+    <inlineHelpText>Balance = Total Amount - Total Net Payments - Credit Notes Applied + Debit Notes Applied + Negative Line Conversions</inlineHelpText>
     <label>Balance</label>
     <precision>18</precision>
     <required>false</required>

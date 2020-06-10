@@ -1,6 +1,21 @@
 {
   "orgName": "LPCR SFV2",
   "edition": "Enterprise",
-  "features": ["ContactsToMultipleAccounts","CPQ"],
+  "features": [
+    "ContactsToMultipleAccounts",
+    "CPQ"
+  ],
+  "settings": {
+    "entitlementSettings": {
+      "enableEntitlements": false
+    },
+    "enhancedNotesSettings": {
+      "enableEnhancedNotes": true
+    },
+    "languageSettings": {
+      "enableTranslationWorkbench":  true,
+      "enableEndUserLanguages": true
+    }
+  },
   "language": "fr"
 }

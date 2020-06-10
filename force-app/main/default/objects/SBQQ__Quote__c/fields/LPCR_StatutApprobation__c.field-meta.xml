@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_StatutApprobation__c</fullName>
     <externalId>false</externalId>
-    <label>Statut D&#39;approbation</label>
+    <label>Statut D&apos;approbation</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>

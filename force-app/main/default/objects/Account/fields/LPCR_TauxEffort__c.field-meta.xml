@@ -2,10 +2,10 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_TauxEffort__c</fullName>
     <externalId>false</externalId>
-    <label>Taux d&#39;effort</label>
-    <precision>3</precision>
+    <label>Taux d&apos;effort</label>
+    <precision>5</precision>
     <required>false</required>
-    <scale>0</scale>
+    <scale>4</scale>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Percent</type>
 </CustomField>

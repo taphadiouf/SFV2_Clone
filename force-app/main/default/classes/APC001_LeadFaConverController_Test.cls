@@ -43,6 +43,7 @@ public with sharing class APC001_LeadFaConverController_Test {
         fieldsMap.put('City', 'Paris');
         fieldsMap.put('PostalCode', '75007');
         fieldsMap.put('State', '');
+        fieldsMap.put('LPCR_TypePrestation__c', 'Occasionnel');
         Lead currentLeadFamille = UM002_TestDataFactory.createLeads(1, fieldsMap).get(0);
         insert currentLeadFamille;
     }
@@ -81,6 +82,7 @@ public with sharing class APC001_LeadFaConverController_Test {
             leadFields.add('LPCR_CodeCreche3__c');
             leadFields.add('LPCR_CompteSociete__c');
             leadFields.add('LPCR_CompteSocieteCoDemandeur__c');
+            leadFields.add('LPCR_TypePrestation__c');
             Lead currentLead = (Lead) new EM002_LeadEntity().getAll(leadFields).get(0);
             
             //Initialize the enfantsIndexes

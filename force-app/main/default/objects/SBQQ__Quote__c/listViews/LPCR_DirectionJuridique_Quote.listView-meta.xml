@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_DirectionJuridique_Quote</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Direction Juridique</label>
+    <queue>LPCR_DirectionJuridique</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>
