@@ -6,9 +6,69 @@
 */
 @isTest
 public class SM008_QuoteServices_Test {
-    private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
+    
     @testSetup 
     static void testSetup(){
+        
+        /////////////*****************/////////////
+        
+        Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
+        Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Referencement');
+        Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Reservataire');
+        Id recTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account', 'Creche' );
+        Id recTypeFamilleId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account', 'Famille' );
+
+        
+        List<Account> accCreche = UM002_TestDataFactory.createAccountWithRecType(1, 'Compte Crèche MAC1', recTypeId, 'MAC');
+        insert accCreche;
+        List<Account> accFamille = UM002_TestDataFactory.createAccountWithRecType(1, 'Compte Famille MAC1', recTypeFamilleId, '');
+        insert accFamille;
+        Account acc = accFamille.get(0);
+        List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,acc.Id,'0001',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year(), 06, 31),123, 'Sans renouvellement', 'Non', Null );
+        insert Renewalcontract;
+        Contract con = Renewalcontract.get(0);
+        List<Opportunity> renwalOpps = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MAC1', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con.Id, Null );
+        insert renwalOpps;
+        
+        //////////
+        List<Contract> Renewalcontract2 = UM002_TestDataFactory.createContracts(1,acc.Id,'0002',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year()+1, 05, 25),123, 'Express', 'Non', Null );
+        insert Renewalcontract2;
+        Contract con2 = Renewalcontract2.get(0);
+        List<Opportunity> renwalOpps2 = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MAC2', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con2.Id, Null );
+        insert renwalOpps2;
+        
+        
+        //////////
+        List<Account> accCreche3 = UM002_TestDataFactory.createAccountWithRecType(1, 'Compte Crèche MICRO', recTypeId, 'MICRO');
+        insert accCreche3;
+        List<Contract> Renewalcontract3 = UM002_TestDataFactory.createContracts(1,acc.Id,'0003',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year(), 06, 31),123, 'Tacite', 'Non', Null );
+        insert Renewalcontract3;
+        Contract con3 = Renewalcontract3.get(0);
+        List<Opportunity> renwalOpps3 = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MICRO', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con3.Id,Null );
+        insert renwalOpps3;
+        
+        
+        ////////
+        List<Contract> Renewalcontract4 = UM002_TestDataFactory.createContracts(1,acc.Id,'0004',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year()+1, 09, 15),123, 'Express', 'Non', Null );
+        insert Renewalcontract4;
+        Contract con4 = Renewalcontract4.get(0);
+        List<Opportunity> renwalOpps4 = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MICRO2', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con4.Id,Null );
+        insert renwalOpps4;
+        
+        
+        
+        //////
+        List<Contract> Renewalcontract6 = UM002_TestDataFactory.createContracts(1,acc.Id,'0006',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year(), 06, 31),123, 'Express', 'Non', Null );
+        insert Renewalcontract6;
+        Contract con6 = Renewalcontract6.get(0);
+        List<Opportunity> renwalOpps6 = UM002_TestDataFactory.createOpportunities(1, 'opp NON', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan', Null ,con6.Id );
+        insert renwalOpps6;
+        /////////////*****************/////////////
+        
+        
+        
+        
+        
         List<Account> accounts = UM002_TestDataFactory.createAccounts(100, 'testAccount');
         
         List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(100, 'testOpp', 'Prospecting');
@@ -17,20 +77,22 @@ public class SM008_QuoteServices_Test {
         insert opps;
         List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(100, accounts, opps);
         insert quotes;
-        Account acc = UM002_TestDataFactory.createAccounts(1, 'test').get(0);
-        acc.RecordTypeId = B2C_RT_ID;
-        insert acc;
+        insert UM002_TestDataFactory.createAccounts(1, 'test').get(0);
         insert UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
         
+        
+        
         //added by Hanae
-        List<Account> accountsMac = UM002_TestDataFactory.createAccountswithtype(100, 'Accounts', 'MAC', Label.LPCR_Creche);
+        List<Account> accountsMac = UM002_TestDataFactory.createAccountWithRecType(10, 'Accounts',recTypeId, 'MAC');
         insert accountsMac;
-        List<Account> accountsMicro = UM002_TestDataFactory.createAccountswithtype(100, 'Accounts', 'MICRO' ,Label.LPCR_Creche);
+        List<Account> accountsMicro = UM002_TestDataFactory.createAccountWithRecType(10, 'Accounts', recTypeId, 'MICRO');
         insert accountsMicro;
-        List<SBQQ__Quote__c> quotesMac = UM002_TestDataFactory.createQuoteswithStatus(100, accountsMac, opps, 'Draft');
+        List<SBQQ__Quote__c> quotesMac = UM002_TestDataFactory.createQuoteswithStatus(10, accountsMac, opps, 'Draft');
         insert quotesMac;
-        List<SBQQ__Quote__c> quotesMicro = UM002_TestDataFactory.createQuoteswithStatus(100, accountsMicro, opps, 'Draft');
-        insert quotesMicro;     
+        List<SBQQ__Quote__c> quotesMicro = UM002_TestDataFactory.createQuoteswithStatus(10, accountsMicro, opps, 'Draft');
+        insert quotesMicro;    
+        
+        
     } 
     @isTest
     public static void updateOppsFromQuotes_Test(){
@@ -53,11 +115,9 @@ public class SM008_QuoteServices_Test {
     
     
     @isTest //added by Ayoub
-    public static void setQuoteFields_Test(){
+    public static void setQuoteFields_Test(){    
         
         System.runAs(UM002_TestDataFactory.createUser()){
-            LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
-            insert planningEnfant;
             Test.startTest();
             List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
             List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
@@ -65,66 +125,23 @@ public class SM008_QuoteServices_Test {
             opp.LPCR_IndexationConvenue__c='Oui';
             opp.LPCR_TypeFacturation__c='Arrears';
             opp.LPCR_BillingFrequency__c='Invoice Plan';
-            opp.LPCR_PlanningEnfant__c = planningEnfant.id;
             update opp;
             SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
             quote.SBQQ__Type__c='Renewal';
-
+            
             insert quote;
             
-            quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
+            quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
             System.assertNotEquals(null,quote.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
             System.assertEquals(quote.LPCR_IndexationConvenue__c, opp.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
             System.assertEquals(quote.LPCR_TypeFacturation__c, opp.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
             System.assertEquals(quote.SBQQ__BillingFrequency__c, opp.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
-            System.assertEquals(quote.LPCR_PlanningEnfant__c, opp.LPCR_PlanningEnfant__c, 'Quote LPCR_PlanningEnfant__c not equals to oppt LPCR_PlanningEnfant__c');
             Test.stopTest();
             
         } }
     
-    //added by Saurabh     
-    @isTest
-    public static void setQuoteFieldsFromContract_Test(){
-        User usr = UM002_TestDataFactory.createUser();
-        PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'LPCR_Admin' LIMIT 1];
-        insert new PermissionSetAssignment(AssigneeId = usr.id, PermissionSetId = ps.Id);
-        System.runAs(usr){
-            Test.startTest();
-            List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
-            List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
-            Opportunity opp = oppties.get(0);
-            opp.LPCR_IndexationConvenue__c='Oui';
-            opp.LPCR_TypeFacturation__c='Arrears';
-            opp.LPCR_BillingFrequency__c='Invoice Plan';
-            update opp;
-            
-            SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
-            quote.SBQQ__Type__c='Renewal';
-            quote.SBQQ__Primary__c = true;
-            quote.SBQQ__StartDate__c = System.today();
-            quote.SBQQ__SubscriptionTerm__c = 12;
-            insert quote;
-            
-            Contract con = new Contract(AccountID = accs.get(0).id,SBQQ__Quote__c = quote.id,SBQQ__Opportunity__c = oppties.get(0).id,
-                                        StartDate =System.today(),ContractTerm = 12,LPCR_DateDebut__c =Date.newInstance(2020, 05, 01),
-                                        LPCR_DateFin__c = Date.newInstance(2020, 05, 30),LPCR_RenouvellementConvenu__c = 'Non',LPCR_MethodeRenouvellement__c = 'Express' );
-            Insert con;
-            List<Contract> conList = [select id, SBQQ__RenewalForecast__c,SBQQ__RenewalQuoted__c,LPCR_DateFin__c,LPCR_DateDebut__c,LPCR_MethodeRenouvellement__c,LPCR_RenouvellementConvenu__c from Contract WHERE AccountID =: accs.get(0).Id LIMIT 1 ];
-            Contract conInsert = conList.get(0);
-            conInsert.SBQQ__RenewalForecast__c = true;
-            conInsert.SBQQ__RenewalQuoted__c = true;
-            
-            Update conInsert;
-            Opportunity opportunityRenewal = [SELECT Id ,SBQQ__RenewedContract__c from Opportunity WHERE SBQQ__RenewedContract__c = :conInsert.id Limit 1]; 
-            SBQQ__Quote__c quoteRenewal = [select id,LPCR_DateFin__c,LPCR_DateDebut__c,LPCR_MethodeRenouvellement__c,LPCR_RenouvellementConvenu__c  from SBQQ__Quote__c where SBQQ__Opportunity2__c = :opportunityRenewal.id and SBQQ__Type__c ='Renewal'];
-            System.assertEquals(quoteRenewal.LPCR_DateFin__c, conInsert.LPCR_DateFin__c, 'Quote LPCR_DateFin__c  equals to contract LPCR_DateFin__c');
-            System.assertEquals(quoteRenewal.LPCR_DateDebut__c, conInsert.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c  equals to contract LPCR_DateDebut__c');
-            System.assertEquals(quoteRenewal.LPCR_MethodeRenouvellement__c, conInsert.LPCR_MethodeRenouvellement__c, 'Quote LPCR_MethodeRenouvellement__c  equals to contract LPCR_MethodeRenouvellement__c');
-            
-            Test.stopTest();   
-        }
-    } 
-
+    
+    
     
     //added by Hanae
     @isTest
@@ -145,5 +162,297 @@ public class SM008_QuoteServices_Test {
             Test.stopTest();
         }
     }
+    
+    
+    
+    
+    
+    
+    ////////////*******************///////////////////
+    @isTest()
+    public static void updateQuotesB2C_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
+            Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
+            
+            //B2C Renewal Mac less than Current Year
+            List<Account> accs = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c, LPCR_TypeFacturation__c from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
+            Account acc = accs.get(0);
+            List<Opportunity> oppties = [SELECT Id , Name , LPCR_IndexationConvenue__c , LPCR_TypeFacturation__c , LPCR_BillingFrequency__c from Opportunity WHERE name ='opp Famille MAC1' LIMIT 1 ];
+            Opportunity opp = oppties.get(0);
+            List<Contract> contract = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c  , LPCR_RenouvellementConvenu__c From Contract WHERE Name = '0001' Limit 1];
+            Contract con = contract.get(0);
+            SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties,'Renewal', acceuilRecTypeId, acc.Id).get(0);
+            insert quote;
+            quote = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_RenouvellementConvenu__c, SBQQ__RenewalUpliftRate__c, LPCR_EntiteJuridique__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
+            System.assertNotEquals(null,quote.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
+            System.assertEquals(quote.LPCR_TypeCreche__c, acc.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
+            System.assertEquals(quote.LPCR_IndexationConvenue__c, opp.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
+            System.assertEquals(quote.LPCR_TypeFacturation__c, opp.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
+            System.assertEquals(quote.SBQQ__BillingFrequency__c, opp.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
+            System.assertEquals(quote.LPCR_DateDebut__c, con.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
+            System.assertEquals(quote.LPCR_DateFin__c, con.LPCR_DateFin__c, 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
+            System.assertEquals(quote.SBQQ__EndDate__c, con.LPCR_DateFin__c, 'Quote SBQQ__EndDate__c not equals to con LPCR_DateFin__c');
+            System.assertEquals(quote.LPCR_ChiffreAffaire__c, con.LPCR_ChiffreAffaire__c, 'Quote LPCR_ChiffreAffaire__c not equals to con LPCR_ChiffreAffaire__c');
+            System.assertEquals(quote.LPCR_EntiteJuridique__c, acc.LPCR_EntiteJuridique__c, 'Quote LPCR_EntiteJuridique__c not equals to acc LPCR_EntiteJuridique__c');
+            System.assertEquals(quote.LPCR_RenouvellementConvenu__c, con.LPCR_RenouvellementConvenu__c, 'Quote LPCR_MethodeRenouvellement__c not equals to con LPCR_MethodeRenouvellement__c');
+            System.assertEquals(quote.SBQQ__RenewalUpliftRate__c, 0, 'Quote SBQQ__RenewalUpliftRate__c not equals to 0');
+            
+            
+            
+            
+            
+            
+            
+            //B2C Renwal Mac more than Current Year 
+            Date quoteDate = date.newInstance(System.Today().year(), 12, 31);
+            List<Opportunity> oppties2 = [SELECT Id , Name , LPCR_IndexationConvenue__c , LPCR_TypeFacturation__c , LPCR_BillingFrequency__c from Opportunity WHERE name ='opp Famille MAC2' LIMIT 1 ];
+            Opportunity opp2 = oppties2.get(0);
+            List<Contract> contract2 = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c  , LPCR_RenouvellementConvenu__c From Contract WHERE Name = '0002' Limit 1];
+            Contract con2 = contract2.get(0);
+            SBQQ__Quote__c quote2 = UM002_TestDataFactory.createQuotes(1, accs, oppties2,'Renewal', acceuilRecTypeId, acc.Id).get(0);
+            insert quote2;
+            quote2 = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_EntiteJuridique__c, LPCR_RenouvellementConvenu__c, SBQQ__RenewalUpliftRate__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote2.Id];
+            System.assertNotEquals(null,quote2.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
+            System.assertEquals(quote2.LPCR_TypeCreche__c, acc.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
+            System.assertEquals(quote2.LPCR_IndexationConvenue__c, opp2.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
+            System.assertEquals(quote2.LPCR_TypeFacturation__c, opp2.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
+            System.assertEquals(quote2.SBQQ__BillingFrequency__c, opp2.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
+            System.assertEquals(quote2.LPCR_DateDebut__c, con2.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
+            System.assertEquals(quote2.LPCR_DateFin__c, con2.LPCR_DateFin__c , 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
+            System.assertEquals(quote2.LPCR_ChiffreAffaire__c, con2.LPCR_ChiffreAffaire__c, 'Quote LPCR_ChiffreAffaire__c not equals to con LPCR_ChiffreAffaire__c');
+            System.assertEquals(quote2.LPCR_EntiteJuridique__c, acc.LPCR_EntiteJuridique__c, 'Quote LPCR_EntiteJuridique__c not equals to acc LPCR_EntiteJuridique__c');
+            System.assertEquals(quote2.LPCR_RenouvellementConvenu__c, con2.LPCR_RenouvellementConvenu__c, 'Quote LPCR_MethodeRenouvellement__c not equals to con LPCR_MethodeRenouvellement__c');
+            System.assertEquals(quote2.SBQQ__RenewalUpliftRate__c, 0, 'Quote SBQQ__RenewalUpliftRate__c not equals to 0');
+            System.assertEquals(quoteDate, quote2.SBQQ__EndDate__c);
+            
+            
+            
+            
+            
+            
+            //B2C Renwal Micro less than Sep
+            List<Account> accs3 = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c from Account WHERE name ='Compte Crèche MICRO' LIMIT 1];
+            Account acc3 = accs3.get(0);
+            List<Opportunity> oppties3 = [SELECT Id , Name , LPCR_IndexationConvenue__c , LPCR_TypeFacturation__c , LPCR_BillingFrequency__c from Opportunity WHERE name ='opp Famille MICRO' LIMIT 1 ];
+            Opportunity opp3 = oppties3.get(0);
+            List<Contract> contract3 = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c  , LPCR_RenouvellementConvenu__c, SBQQ__RenewalUpliftRate__c From Contract WHERE Name = '0003' Limit 1];
+            Contract con3 = contract3.get(0);
+            SBQQ__Quote__c quote3 = UM002_TestDataFactory.createQuotes(1, accs3, oppties3,'Renewal', acceuilRecTypeId, acc3.Id).get(0);
+            insert quote3;
+            quote3 = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_EntiteJuridique__c, LPCR_RenouvellementConvenu__c, SBQQ__RenewalUpliftRate__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote3.Id];
+            System.assertNotEquals(null,quote3.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
+            System.assertEquals(quote3.LPCR_TypeCreche__c, acc3.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
+            System.assertEquals(quote3.LPCR_IndexationConvenue__c, opp3.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
+            System.assertEquals(quote3.LPCR_TypeFacturation__c, opp3.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
+            System.assertEquals(quote3.SBQQ__BillingFrequency__c, opp3.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
+            System.assertEquals(quote3.LPCR_DateDebut__c, con3.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
+            System.assertEquals(quote3.LPCR_DateFin__c, con3.LPCR_DateFin__c , 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
+            System.assertEquals(quote3.SBQQ__EndDate__c, con3.LPCR_DateFin__c , 'Quote SBQQ__EndDate__c not equals to con3 LPCR_DateFin__c');
+            System.assertEquals(quote3.LPCR_ChiffreAffaire__c, con3.LPCR_ChiffreAffaire__c, 'Quote LPCR_ChiffreAffaire__c not equals to con LPCR_ChiffreAffaire__c');
+            System.assertEquals(quote3.LPCR_EntiteJuridique__c, acc3.LPCR_EntiteJuridique__c, 'Quote LPCR_EntiteJuridique__c not equals to acc LPCR_EntiteJuridique__c');
+            System.assertEquals(quote3.LPCR_RenouvellementConvenu__c, con3.LPCR_RenouvellementConvenu__c, 'Quote LPCR_MethodeRenouvellement__c not equals to con LPCR_MethodeRenouvellement__c');
+            System.assertEquals(quote3.SBQQ__RenewalUpliftRate__c, 0, 'Quote SBQQ__RenewalUpliftRate__c not equals to 0');
+            
+            
+            //B2C Renwal Micro More than Sep
+            
+            List<Opportunity> oppties4 = [SELECT Id , Name , LPCR_IndexationConvenue__c , LPCR_TypeFacturation__c , LPCR_BillingFrequency__c from Opportunity WHERE name ='opp Famille MICRO2' LIMIT 1 ];
+            Opportunity opp4 = oppties4.get(0);
+            List<Contract> contract4 = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c  , LPCR_RenouvellementConvenu__c From Contract WHERE Name = '0004' Limit 1];
+            Contract con4 = contract4.get(0);
+            SBQQ__Quote__c quote4 = UM002_TestDataFactory.createQuotes(1, accs3, oppties4,'Renewal', acceuilRecTypeId, acc3.Id).get(0);
+            insert quote4;
+            quote4 = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_EntiteJuridique__c, LPCR_RenouvellementConvenu__c, SBQQ__RenewalUpliftRate__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote4.Id];
+            System.assertNotEquals(null,quote4.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
+            System.assertEquals(quote4.LPCR_TypeCreche__c, acc3.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
+            System.assertEquals(quote4.LPCR_IndexationConvenue__c, opp4.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
+            System.assertEquals(quote4.LPCR_TypeFacturation__c, opp4.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
+            System.assertEquals(quote4.SBQQ__BillingFrequency__c, opp4.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
+            System.assertEquals(quote4.LPCR_DateDebut__c, con4.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
+            System.assertEquals(quote4.LPCR_DateFin__c, con4.LPCR_DateFin__c , 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
+            System.assertEquals(quote4.SBQQ__EndDate__c, date.newInstance(System.Today().year(), 08, 31) , 'Quote SBQQ__EndDate__c not equals to con3 LPCR_DateFin__c');
+            System.assertEquals(quote4.LPCR_ChiffreAffaire__c, con4.LPCR_ChiffreAffaire__c, 'Quote LPCR_ChiffreAffaire__c not equals to con LPCR_ChiffreAffaire__c');
+            System.assertEquals(quote4.LPCR_EntiteJuridique__c, acc3.LPCR_EntiteJuridique__c, 'Quote LPCR_EntiteJuridique__c not equals to acc LPCR_EntiteJuridique__c');
+            System.assertEquals(quote4.LPCR_RenouvellementConvenu__c, con4.LPCR_RenouvellementConvenu__c, 'Quote LPCR_MethodeRenouvellement__c not equals to con LPCR_MethodeRenouvellement__c');
+            System.assertEquals(quote4.SBQQ__RenewalUpliftRate__c, 0, 'Quote SBQQ__RenewalUpliftRate__c not equals to 0');
+            
+            
+            
+            
+            
+            //B2C Quote Mac less than Current Year
+            SBQQ__Quote__c quoteQ = UM002_TestDataFactory.createQuotes(1, accs, oppties,'Quote', acceuilRecTypeId, acc.Id).get(0);
+            quoteQ.LPCR_DateDebut__c = date.newInstance(System.Today().year(), 06, 02);
+            quoteQ.LPCR_DateFin__c = date.newInstance(System.Today().year(), 06, 31);
+            insert quoteQ;
+            quoteQ = [SELECT Id ,LPCR_TypeCreche__c , SBQQ__StartDate__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c, LPCR_TypeFacturation__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Quote' AND  Id = :quoteQ.Id];
+            System.assertEquals(quoteQ.LPCR_TypeCreche__c, acc.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
+            System.assertEquals(quoteQ.LPCR_TypeFacturation__c, acc.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to acc LPCR_TypeFacturation__c');
+            System.assertEquals(quoteQ.SBQQ__StartDate__c, quoteQ.LPCR_DateDebut__c, 'Quote SBQQ__StartDate__c not equals to quoteQ LPCR_DateDebut__c');
+            System.assertEquals(quoteQ.SBQQ__EndDate__c, quoteQ.LPCR_DateFin__c, 'Quote SBQQ__EndDate__c not equals to quoteQ LPCR_DateFin__c');
+            
+            //B2C Quote MAC more than Current Year before update
+            SBQQ__Quote__c quoteQ1 = UM002_TestDataFactory.createQuotes(1, accs, oppties,'Re-Quote', acceuilRecTypeId, acc.Id).get(0);
+            quoteQ1.LPCR_DateDebut__c = date.newInstance(System.Today().year(), 06, 04);
+            quoteQ1.LPCR_DateFin__c = date.newInstance(System.Today().year()+1, 06, 31);
+            insert quoteQ1;
+            quoteQ1.SBQQ__Type__c = 'Quote';
+            update quoteQ1;
+            quoteQ1 = [SELECT Id ,LPCR_TypeCreche__c , SBQQ__StartDate__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c , LPCR_TypeFacturation__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Quote' AND  Id = :quoteQ1.Id];
+            System.assertEquals(quoteQ1.LPCR_TypeFacturation__c, acc.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to acc LPCR_TypeFacturation__c');
+            System.assertEquals(quoteQ1.LPCR_TypeCreche__c, acc.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
+            System.assertEquals(quoteQ1.SBQQ__StartDate__c, quoteQ1.LPCR_DateDebut__c, 'Quote SBQQ__StartDate__c not equals to quoteQ LPCR_DateDebut__c');
+            System.assertEquals(quoteQ1.SBQQ__EndDate__c, date.newInstance(System.Today().year(), 12, 31), 'Quote SBQQ__EndDate__c not equals to quote Date');
+            
+            //B2C Quote Micro less than Current Year
+            SBQQ__Quote__c quoteQ2 = UM002_TestDataFactory.createQuotes(1, accs, oppties,'Quote', acceuilRecTypeId, acc3.Id).get(0);
+            quoteQ2.LPCR_DateDebut__c = date.newInstance(System.Today().year(), 06, 02);
+            quoteQ2.LPCR_DateFin__c = date.newInstance(System.Today().year(), 06, 31);
+            insert quoteQ2;
+            quoteQ2 = [SELECT Id ,LPCR_TypeCreche__c , SBQQ__StartDate__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Quote' AND  Id = :quoteQ2.Id];
+            System.assertEquals(quoteQ2.LPCR_TypeCreche__c, acc3.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
+            System.assertEquals(quoteQ2.SBQQ__StartDate__c, quoteQ2.LPCR_DateDebut__c, 'Quote SBQQ__StartDate__c not equals to quoteQ LPCR_DateDebut__c');
+            System.assertEquals(quoteQ2.SBQQ__EndDate__c, quoteQ2.LPCR_DateFin__c, 'Quote SBQQ__EndDate__c not equals to quoteQ LPCR_DateFin__c');
+            
+            //B2C Quote Micro more than Current Year
+            SBQQ__Quote__c quoteQ3 = UM002_TestDataFactory.createQuotes(1, accs, oppties,'Quote', acceuilRecTypeId, acc3.Id).get(0);
+            quoteQ3.LPCR_DateDebut__c = date.newInstance(System.Today().year(), 06, 04);
+            quoteQ3.LPCR_DateFin__c = date.newInstance(System.Today().year()+1, 09, 31);
+            insert quoteQ3;
+            quoteQ3 = [SELECT Id ,LPCR_TypeCreche__c , SBQQ__StartDate__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Quote' AND  Id = :quoteQ3.Id];
+            System.assertEquals(quoteQ3.LPCR_TypeCreche__c, acc3.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
+            System.assertEquals(quoteQ3.SBQQ__StartDate__c, quoteQ1.LPCR_DateDebut__c, 'Quote SBQQ__StartDate__c not equals to quoteQ LPCR_DateDebut__c');
+            System.assertEquals(quoteQ3.SBQQ__EndDate__c, date.newInstance(System.Today().year(), 08, 31), 'Quote SBQQ__EndDate__c not equals to quote Date');
+            
+            
+          
+            
+            //B2C Amendment Non
+            List<Contract> contract6 = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c  , LPCR_RenouvellementConvenu__c, SBQQ__RenewalUpliftRate__c From Contract WHERE Name = '0006' Limit 1];
+            Contract con6 = contract6.get(0);
+            List<Opportunity> oppties6 = [SELECT Id , Name, LPCR_TypeFacturation__c  from Opportunity WHERE name ='opp NON' LIMIT 1 ];
+            Opportunity opp6 = oppties6.get(0);
+            SBQQ__Quote__c quote6 = UM002_TestDataFactory.createQuotes(1, accs3, oppties6,'Amendment', acceuilRecTypeId, acc3.Id).get(0);
+            insert quote6;
+            quote6 = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c, LPCR_RenouvellementConvenu__c, SBQQ__RenewalUpliftRate__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Amendment' AND  Id = :quote6.Id];
+            System.assertEquals(quote6.LPCR_DateDebut__c, con6.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
+            System.assertEquals(quote6.LPCR_DateFin__c, con6.LPCR_DateFin__c , 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
+            System.assertEquals(quote6.LPCR_ChiffreAffaire__c, con6.LPCR_ChiffreAffaire__c, 'Quote LPCR_ChiffreAffaire__c not equals to con LPCR_ChiffreAffaire__c');
+            System.assertEquals(quote6.LPCR_TypeFacturation__c, opp6.LPCR_TypeFacturation__c, 'Quote LPCR_MethodeRenouvellement__c not equals to con LPCR_MethodeRenouvellement__c');
+            System.assertEquals(quote6.LPCR_RenouvellementConvenu__c, con6.LPCR_RenouvellementConvenu__c, 'Quote LPCR_MethodeRenouvellement__c not equals to con LPCR_MethodeRenouvellement__c');
+            System.assertEquals(quote6.SBQQ__RenewalUpliftRate__c, 0, 'Quote SBQQ__RenewalUpliftRate__c not equals to 0');
+            Test.stopTest();
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    ////////////////////////////////////////
+    
+    @isTest()
+    public static void updateQuotesB2B_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
+            Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Referencement');
+            Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Reservataire');
+            //B2B Renewal Sans renouvellement More than Current Year
+            List<Account> accs = [SELECT Id, name   from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
+            Account acc = accs.get(0);
+            List<Opportunity> oppties2 = [SELECT Id , Name , LPCR_IndexationConvenue__c , LPCR_TypeFacturation__c , LPCR_BillingFrequency__c from Opportunity WHERE name ='opp Famille MAC2' LIMIT 1 ];
+            Opportunity opp2 = oppties2.get(0);
+            List<Contract> contract2 = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c , LPCR_RenouvellementConvenu__c From Contract WHERE Name = '0002' Limit 1];
+            Contract con2 = contract2.get(0);
+            SBQQ__Quote__c quote7 = UM002_TestDataFactory.createQuotes(1, accs, oppties2,'Renewal', referencementRecTypeId, acc.Id).get(0);
+            insert quote7;
+            quote7 = [SELECT Id ,LPCR_IndexationConvenue__c, LPCR_TypeFacturation__c, SBQQ__BillingFrequency__c , LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c, LPCR_RenouvellementConvenu__c, SBQQ__RenewalUpliftRate__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote7.Id];
+            System.assertEquals(quote7.LPCR_IndexationConvenue__c, opp2.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
+            System.assertEquals(quote7.LPCR_TypeFacturation__c, opp2.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
+            System.assertEquals(quote7.SBQQ__BillingFrequency__c, opp2.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
+            System.assertEquals(quote7.LPCR_DateDebut__c, con2.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
+            System.assertEquals(quote7.LPCR_DateFin__c, con2.LPCR_DateFin__c , 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
+            System.assertEquals(quote7.LPCR_ChiffreAffaire__c, con2.LPCR_ChiffreAffaire__c, 'Quote LPCR_ChiffreAffaire__c not equals to con LPCR_ChiffreAffaire__c');
+            System.assertEquals(quote7.LPCR_MethodeRenouvellement__c, con2.LPCR_MethodeRenouvellement__c, 'Quote LPCR_MethodeRenouvellement__c not equals to oppt LPCR_MethodeRenouvellement__c');
+            System.assertEquals(quote7.SBQQ__EndDate__c, date.newInstance(System.Today().year(), 12, 31), 'Quote SBQQ__EndDate__c not equals to date.newInstance(System.Today().year(), 06, 31)');
+            System.assertEquals(quote7.LPCR_RenouvellementConvenu__c, con2.LPCR_RenouvellementConvenu__c, 'Quote LPCR_MethodeRenouvellement__c not equals to con LPCR_MethodeRenouvellement__c');
+            System.assertEquals(quote7.SBQQ__RenewalUpliftRate__c, 0, 'Quote SBQQ__RenewalUpliftRate__c not equals to 0');
+            
+            
+            
+            //B2B Renewal Express Current Year before update
+            List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name ='opp Famille MAC1' LIMIT 1 ];
+            Opportunity opp = oppties.get(0);
+            List<Contract> contract = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c , LPCR_RenouvellementConvenu__c From Contract WHERE Name = '0001' Limit 1];
+            Contract con = contract.get(0);
+            SBQQ__Quote__c quote8 = UM002_TestDataFactory.createQuotes(1, accs, oppties,'Re-Quote', reservataireRecTypeId, acc.Id).get(0);
+            insert quote8;
+            quote8.SBQQ__Type__c = 'Renewal';
+            update quote8;
+            quote8 = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote8.Id];
+            System.assertEquals(quote8.LPCR_DateDebut__c, con.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
+            System.assertEquals(quote8.LPCR_DateFin__c, con.LPCR_DateFin__c, 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
+            System.assertEquals(quote8.LPCR_ChiffreAffaire__c, con.LPCR_ChiffreAffaire__c, 'Quote LPCR_ChiffreAffaire__c not equals to con LPCR_ChiffreAffaire__c');
+            System.assertEquals(quote8.LPCR_MethodeRenouvellement__c, con.LPCR_MethodeRenouvellement__c, 'Quote LPCR_MethodeRenouvellement__c not equals to oppt LPCR_MethodeRenouvellement__c');
+            System.assertEquals(quote8.SBQQ__EndDate__c, quote8.LPCR_DateFin__c, 'Quote SBQQ__EndDate__c not equals to Quote LPCR_DateFin__c');
+            
+            
+            //B2B Renewal Tacite 
+            List<Opportunity> oppties3 = [SELECT Id , Name , LPCR_IndexationConvenue__c , LPCR_TypeFacturation__c , LPCR_BillingFrequency__c from Opportunity WHERE name ='opp Famille MICRO' LIMIT 1 ];
+            Opportunity opp3 = oppties3.get(0);
+            List<Contract> contract3 = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c , LPCR_RenouvellementConvenu__c, SBQQ__RenewalUpliftRate__c From Contract WHERE Name = '0003' Limit 1];
+            Contract con3 = contract3.get(0);
+            SBQQ__Quote__c quote9 = UM002_TestDataFactory.createQuotes(1, accs, oppties3,'Renewal', referencementRecTypeId, acc.Id).get(0);
+            insert quote9;
+            quote9 = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c, LPCR_RenouvellementConvenu__c, SBQQ__RenewalUpliftRate__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote9.Id];
+            System.assertEquals(quote9.LPCR_IndexationConvenue__c, opp3.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
+            System.assertEquals(quote9.LPCR_TypeFacturation__c, opp3.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
+            System.assertEquals(quote9.SBQQ__BillingFrequency__c, opp3.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
+            System.assertEquals(quote9.LPCR_DateDebut__c, con3.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
+            System.assertEquals(quote9.LPCR_DateFin__c, con3.LPCR_DateFin__c , 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
+            System.assertEquals(quote9.LPCR_ChiffreAffaire__c, con3.LPCR_ChiffreAffaire__c, 'Quote LPCR_ChiffreAffaire__c not equals to con LPCR_ChiffreAffaire__c');
+            System.assertEquals(quote9.LPCR_MethodeRenouvellement__c, con3.LPCR_MethodeRenouvellement__c, 'Quote LPCR_MethodeRenouvellement__c not equals to oppt LPCR_MethodeRenouvellement__c');
+            System.assertEquals(quote9.SBQQ__EndDate__c, date.newInstance(System.Today().year(), 12, 31), 'Quote SBQQ__EndDate__c not equals to date.newInstance(System.Today().year(), 06, 31)');
+            System.assertEquals(quote9.LPCR_RenouvellementConvenu__c, con3.LPCR_RenouvellementConvenu__c, 'Quote LPCR_MethodeRenouvellement__c not equals to con LPCR_MethodeRenouvellement__c');
+            System.assertEquals(quote9.SBQQ__RenewalUpliftRate__c, 0, 'Quote SBQQ__RenewalUpliftRate__c not equals to 0');
+            
+            
+            
+            //B2B Quote less than Current Year
+            SBQQ__Quote__c quote10 = UM002_TestDataFactory.createQuotes(1, accs, oppties3,'Quote', referencementRecTypeId, acc.Id).get(0);
+            quote10.LPCR_DateDebut__c = date.newInstance(System.Today().year(), 06, 02);
+            quote10.LPCR_DateFin__c = date.newInstance(System.Today().year(), 06, 31);
+            insert quote10;
+            quote10 = [SELECT Id ,LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,SBQQ__StartDate__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Quote' AND  Id = :quote10.Id];
+            System.assertEquals(quote10.SBQQ__StartDate__c, quote10.LPCR_DateDebut__c, 'Quote SBQQ__StartDate__c not equals to Quote LPCR_DateDebut__c');
+            System.assertEquals(quote10.SBQQ__EndDate__c, quote10.LPCR_DateFin__c, 'Quote SBQQ__EndDate__c not equals to Quote LPCR_DateFin__c');
+            
+            //B2B Quote more than Current Year
+            SBQQ__Quote__c quote11 = UM002_TestDataFactory.createQuotes(1, accs, oppties3,'Quote', reservataireRecTypeId, acc.Id).get(0);
+            quote11.LPCR_DateDebut__c = date.newInstance(System.Today().year(), 06, 02);
+            quote11.LPCR_DateFin__c = date.newInstance(System.Today().year()+1, 06, 31);
+            insert quote11;
+            quote11 = [SELECT Id  , LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,SBQQ__StartDate__c   from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Quote' AND  Id = :quote11.Id];
+            System.assertEquals(quote11.SBQQ__StartDate__c, quote11.LPCR_DateDebut__c, 'Quote SBQQ__StartDate__c not equals to Quote LPCR_DateDebut__c');
+            System.assertEquals(quote11.SBQQ__EndDate__c, date.newInstance(System.Today().year(), 12, 31), 'Quote SBQQ__EndDate__c not equals todate.newInstance(System.Today().year()+1, 06, 31);');
+            
+            //B2B Amendment
+            List<Opportunity> oppties4 = [SELECT Id  from Opportunity WHERE name ='opp NON' LIMIT 1 ];
+            Opportunity opp4 = oppties4.get(0);
+            List<Contract> contract4 = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c   From Contract WHERE Name = '0006' Limit 1];
+            Contract con4 = contract4.get(0);
+            SBQQ__Quote__c quote12 = UM002_TestDataFactory.createQuotes(1, accs, oppties4,'Amendment', referencementRecTypeId, acc.Id).get(0);
+            insert quote12;
+            quote12 = [SELECT Id, LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Amendment' AND  Id = :quote12.Id];
+            System.assertEquals(quote12.LPCR_DateDebut__c, con4.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
+            System.assertEquals(quote12.LPCR_DateFin__c, con4.LPCR_DateFin__c , 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
+            System.assertEquals(quote12.LPCR_ChiffreAffaire__c, con4.LPCR_ChiffreAffaire__c, 'Quote LPCR_ChiffreAffaire__c not equals to con LPCR_ChiffreAffaire__c');
+            Test.stopTest();
+            
+            
+        } }
     
 }
