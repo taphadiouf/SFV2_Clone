@@ -59,7 +59,10 @@ public class SM010_ContractServices {
         
         //  Check if the Order is getting changed, If so , updating the fields 
         for(Contract eachContract : newContractMap.values()){
-            eachContract=setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
+            if(mapOrders.containsKey(eachContract.SBQQ__Order__c) && 
+               quoteMap.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
+                eachContract=setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
+            }
         }
     }
 /**

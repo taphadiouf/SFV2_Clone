@@ -1070,14 +1070,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-<<<<<<< HEAD
-=======
         <editable>true</editable>
         <field>Contact.LPCR_DetailHandicap__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
->>>>>>> ab15ef629168724d30c9b5ba4643f7ab9bffb38f
         <editable>false</editable>
         <field>Contact.LPCR_EstMigre__c</field>
         <readable>false</readable>
@@ -1138,14 +1135,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-<<<<<<< HEAD
-=======
         <editable>true</editable>
         <field>Contact.LPCR_SituationProfessionnelle__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
->>>>>>> ab15ef629168724d30c9b5ba4643f7ab9bffb38f
         <editable>false</editable>
         <field>Contact.LPCR_TypeAllocataire__c</field>
         <readable>false</readable>
@@ -2116,14 +2110,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-<<<<<<< HEAD
-=======
         <editable>true</editable>
         <field>LPCR_Preinscription__c.LPCR_ContactParent2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
->>>>>>> ab15ef629168724d30c9b5ba4643f7ab9bffb38f
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_ContactParent__c</field>
         <readable>false</readable>
@@ -2176,10 +2167,13 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_HandicapEnfantDansLaFraterie__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_HeureDebutJeudi__c</field>
         <readable>false</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_HeureDebutLundi__c</field>
@@ -3481,6 +3475,14 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_TypeCreche__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>OrderItem.LPCR_EstMigre__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -7481,8 +7483,6 @@
         <layout>AccountContactRelation-Présentation Relation du contact du compte</layout>
     </layoutAssignments>
     <layoutAssignments>
-<<<<<<< HEAD
-=======
         <layout>Contact-Collaborateur</layout>
         <recordType>Contact.Collaborateur</recordType>
     </layoutAssignments>
@@ -7503,7 +7503,6 @@
         <recordType>Contact.Parent</recordType>
     </layoutAssignments>
     <layoutAssignments>
->>>>>>> ab15ef629168724d30c9b5ba4643f7ab9bffb38f
         <layout>Contract-Présentation du contrat</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -7949,15 +7948,17 @@
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Account.Partenaire</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
+        <default>true</default>
         <personAccountDefault>true</personAccountDefault>
         <recordType>Contact.Collaborateur</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
+        <recordType>Contact.Enfant</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
@@ -8159,14 +8160,6 @@
     </userPermissions>S
     <userPermissions>
         <enabled>true</enabled>
-        <name>AllowUniversalSearch</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>AllowViewKnowledge</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>ApexRestServices</name>
     </userPermissions>
     <userPermissions>
@@ -8335,10 +8328,6 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>EditKnowledge</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>EditMyDashboards</name>
     </userPermissions>
     <userPermissions>
@@ -8380,10 +8369,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>EmailSingle</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>EnableCommunityAppLauncher</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -8527,14 +8512,6 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>ManageKnowledge</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ManageKnowledgeImportExport</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>ManageLeads</name>
     </userPermissions>
     <userPermissions>
@@ -8584,10 +8561,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ManageRoles</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ManageSearchPromotionRules</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
