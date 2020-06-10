@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_SituationProfessionnelle__c</fullName>
+    <externalId>false</externalId>
+    <label>Situation professionnelle</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>En activité professionnelle</fullName>
+                <default>false</default>
+                <label>En activité professionnelle</label>
+            </value>
+            <value>
+                <fullName>En formation</fullName>
+                <default>false</default>
+                <label>En formation</label>
+            </value>
+            <value>
+                <fullName>Étudiant</fullName>
+                <default>false</default>
+                <label>Étudiant</label>
+            </value>
+            <value>
+                <fullName>En recherche d&apos;emploi</fullName>
+                <default>false</default>
+                <label>En recherche d&apos;emploi</label>
+            </value>
+            <value>
+                <fullName>Autres</fullName>
+                <default>false</default>
+                <label>Autres</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
