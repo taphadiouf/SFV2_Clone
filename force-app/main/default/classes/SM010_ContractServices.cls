@@ -20,7 +20,7 @@ public class SM010_ContractServices {
         
         for (Contract eachContract : contracts){
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){                
-                eachContract =setContractFieldsFromQuoteHelper(eachContract,quoteMap.get(eachContract.SBQQ__Quote__c));
+                eachContract =setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(eachContract.SBQQ__Quote__c));
                 Pad.log('SM010_ContractServices','setContractFields(List<Contract> contracts)','eachContract before insert'+eachContract);
 
             }
@@ -50,18 +50,18 @@ public class SM010_ContractServices {
         
         //  Check if the Order is getting changed, If so , updating the fields 
         for(Contract eachContract : newContractMap.values()){
-            eachContract=setContractFieldsFromQuoteHelper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
+            eachContract=setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
         }
     }
     /**
 * @Author Ayoub Ouarti
 * @Created 08/06/2020
-* @Description methode setContractFieldsFromQuoteHelper to help setting Contract fields from Quote
+* @Description methode setContractFieldsFromQuoteMaper to help setting Contract fields from Quote
 * @Inputs Contract contract , SBQQ__Quote__c quote
 * Updated by Achraf Aboul adding new fields to set
 */
-    public static Contract setContractFieldsFromQuoteHelper(Contract contract,SBQQ__Quote__c quote){
-        Pad.log('SM010_ContractServices','setContractFieldsFromQuoteHelper(SBQQ__Quote__c quote)','quote : '+quote);
+    public static Contract setContractFieldsFromQuoteMaper(Contract contract,SBQQ__Quote__c quote){
+        Pad.log('SM010_ContractServices','setContractFieldsFromQuoteMaper(SBQQ__Quote__c quote)','quote : '+quote);
 
       
         contract.LPCR_IndexationConvenue__c = quote.LPCR_IndexationConvenue__c;
