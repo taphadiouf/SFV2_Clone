@@ -21,21 +21,10 @@
         <field>LPCR_Preinscription__c$LPCR_Creche__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>LPCR_Preinscription__c$LPCR_NombreInscrits__c</field>
+        <field>LPCR_Preinscription__c$LPCR_ContactEnfant__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>LPCR_Preinscription__c$LPCR_Jumeaux__c</field>
-    </columns>
-    <columns>
-        <field>LPCR_Preinscription__c$LPCR_ContactEnfant__c.LastName</field>
-    </columns>
-    <columns>
-        <field>LPCR_Preinscription__c$LPCR_ContactEnfant__c.FirstName</field>
-    </columns>
-    <columns>
-        <field>LPCR_Preinscription__c$LPCR_DateNaissance__c</field>
+        <field>LPCR_Preinscription__c$LPCR_ContactEnfant__c.Birthdate</field>
     </columns>
     <columns>
         <field>LPCR_Preinscription__c$LPCR_DateEntreeCreche__c</field>
@@ -74,18 +63,15 @@
         <field>LPCR_Preinscription__c$Name</field>
     </columns>
     <description>Rapport sur les préinscriptions liées à une entreprise réservataire.</description>
-    <filter>
-        <criteriaItems>
-            <column>LPCR_Preinscription__c$LPCR_CompteEntreprise__c.Id</column>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0013N00000H9InF</value>
-        </criteriaItems>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>LPCR_Preinscription__c$LPCR_CompteEntreprise__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>LPCR_Preinscription__c$LPCR_CompteFamille__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Liste Attribution Préinscriptions</name>

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
-        <application>LPCR_ADV</application>
-        <default>false</default>
-        <visible>false</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
         <application>LPCR_Commerce</application>
         <default>false</default>
         <visible>false</visible>
@@ -801,11 +796,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Account.LPCR_Solde__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Account.LPCR_SousActivite__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1080,6 +1070,14 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+<<<<<<< HEAD
+=======
+        <editable>true</editable>
+        <field>Contact.LPCR_DetailHandicap__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+>>>>>>> ab15ef629168724d30c9b5ba4643f7ab9bffb38f
         <editable>false</editable>
         <field>Contact.LPCR_EstMigre__c</field>
         <readable>false</readable>
@@ -1100,9 +1098,24 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.LPCR_NomEntreprise__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Contact.LPCR_NumeroAllocataire__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.LPCR_OffresPartFamillePetiteEnfance__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.LPCR_PrecisionAutreSituationPro__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -1125,6 +1138,14 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+<<<<<<< HEAD
+=======
+        <editable>true</editable>
+        <field>Contact.LPCR_SituationProfessionnelle__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+>>>>>>> ab15ef629168724d30c9b5ba4643f7ab9bffb38f
         <editable>false</editable>
         <field>Contact.LPCR_TypeAllocataire__c</field>
         <readable>false</readable>
@@ -1141,11 +1162,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Contract.LPCR_AjoutFraisGestion__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Contract.LPCR_AvecSponsor__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1157,11 +1173,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_ChiffreAffaire__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Contract.LPCR_ContractEntreprise__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1267,21 +1278,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_RenouvellementConvenu__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Contract.LPCR_ResponsableADV__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Contract.LPCR_ResponsableServiceFamille__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Contract.LPCR_Sales_Rep__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2120,6 +2116,14 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+<<<<<<< HEAD
+=======
+        <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_ContactParent2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+>>>>>>> ab15ef629168724d30c9b5ba4643f7ab9bffb38f
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_ContactParent__c</field>
         <readable>false</readable>
@@ -2155,6 +2159,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_DetailHandicapEnfant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_DossierComplet__c</field>
         <readable>false</readable>
@@ -2166,9 +2175,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>LPCR_Preinscription__c.LPCR_HandicapEnfantDansLaFraterie__c</field>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_HeureDebutJeudi__c</field>
         <readable>false</readable>
-    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_HeureDebutLundi__c</field>
@@ -2240,6 +2251,16 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_ModeDAccueilDeLEnfant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_MutationRecenteOuProchainement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_NombreInscrits__c</field>
         <readable>false</readable>
@@ -2253,6 +2274,16 @@
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_OrdreTri__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_PossedeUnModeDAccueilPourLEnfant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_PrecisionMutation__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -2298,6 +2329,11 @@
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_TypePreinscription__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_UnDesEnfantDansCrecheDuReseau__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -3241,11 +3277,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Opportunity.LPCR_Contract_CheckBox__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Opportunity.LPCR_DateCandidature__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -3436,11 +3467,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Order.LPCR_Creche__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Order.LPCR_EstMigre__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -3455,19 +3481,6 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Order.LPCR_TypeAvenant__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Order.LPCR_TypeCreche__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>OrderItem.LPCR_EstMigre__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -5041,26 +5054,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_Added_Product_Using_QCP__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_AmendmentDateOK__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_BerceauGratuitAmendment__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_Berceauxgratuitsquote__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_BesoinApprobationDELETE__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -5112,16 +5105,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_ContactRepresentant2__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_ContractEntreprise__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_Contracted_Checkbox__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5262,11 +5245,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_Nombre_de_lignes_sans_PO__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_Nombreberceauxgratuits__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7371,11 +7349,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>blng__Usage__c.LPCR_TypeEvenement_DEL__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>blng__Usage__c.LPCR_TypeEvenement__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -7508,6 +7481,29 @@
         <layout>AccountContactRelation-Présentation Relation du contact du compte</layout>
     </layoutAssignments>
     <layoutAssignments>
+<<<<<<< HEAD
+=======
+        <layout>Contact-Collaborateur</layout>
+        <recordType>Contact.Collaborateur</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Enfant</layout>
+        <recordType>Contact.Enfant</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Entreprise</layout>
+        <recordType>Contact.Entreprise</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Famille</layout>
+        <recordType>Contact.Famille</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Parent</layout>
+        <recordType>Contact.Parent</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+>>>>>>> ab15ef629168724d30c9b5ba4643f7ab9bffb38f
         <layout>Contract-Présentation du contrat</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -7616,9 +7612,6 @@
     <layoutAssignments>
         <layout>Opportunity-Présentation de l%27opportunité</layout>
         <recordType>Opportunity.Partenaire</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Order-Présentation de commande</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>SBQQ__QuoteLine__c-SBQQ__Quote Line Layout</layout>
@@ -7938,19 +7931,20 @@
         <enabled>true</enabled>
     </pageAccesses>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
+        <personAccountDefault>true</personAccountDefault>
         <recordType>Account.Creche</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Account.Entreprise</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Account.Famille</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -7958,29 +7952,28 @@
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
+        <personAccountDefault>true</personAccountDefault>
         <recordType>Contact.Collaborateur</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Contact.Enfant</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Contact.Entreprise</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Contact.Famille</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Contact.Parent</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -8107,16 +8100,6 @@
         <recordType>SBQQ__Quote__c.Reservataire</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>blng__Invoice__c.LCPR_DraftInvoice</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>blng__Invoice__c.LPCR_PostedInvoice</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
     <tabVisibilities>
         <tab>LPCR_PlanningPrevisionnel__c</tab>
         <visibility>Hidden</visibility>
@@ -8173,7 +8156,7 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>AddDirectMessageMembers</name>
-    </userPermissions>
+    </userPermissions>S
     <userPermissions>
         <enabled>true</enabled>
         <name>AllowUniversalSearch</name>
@@ -8624,10 +8607,6 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>ManageTranslation</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>ManageUnlistedGroups</name>
     </userPermissions>
     <userPermissions>
@@ -8701,10 +8680,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>SendSitRequests</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ShareInternalArticles</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

@@ -1003,11 +1003,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contract.LPCR_FrequenceFacturation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Contract.LPCR_IndexationConvenue__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2359,11 +2354,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.LPCR_FinContrat__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Opportunity.LPCR_FrequenceFacturation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

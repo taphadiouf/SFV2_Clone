@@ -6,7 +6,7 @@
 */
 public class SM010_ContractServices {
     
-    /**
+/**
 * @Author Ayoub Ouarti
 * @Created 23/03/2020
 * @Description methode setContractFields to set Contract fields from Quote before Insert
@@ -16,19 +16,28 @@ public class SM010_ContractServices {
         Pad.log('SM010_ContractServices','setContractFields(List<Contract> contracts)','contracts size '+contracts.size());
 
         Set<String> quoteIds = UM003_TypeManager.getFieldsOfListObjects(contracts,'SBQQ__Quote__c');
+        Set<String> orderIds = UM003_TypeManager.getFieldsOfListObjects(contracts,'SBQQ__Order__c');
         Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_IndexationConvenue__c,LPCR_MasterDevis__c,LPCR_RenouvellementConvenu__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c, LPCR_ContratEntreprise__c , recordtype.name, LPCR_PlanningEnfant__c  from SBQQ__Quote__c WHERE Id in :quoteIds]);
+        Map<Id,Order> orderMap = new  Map<Id,Order>([SELECT id,SBQQ__Quote__c,SBQQ__Quote__r.LPCR_BatchCommande__c from Order WHERE Id in :orderIds]);
         
         for (Contract eachContract : contracts){
+
+            // fix merge by ayoub to add akshayeSF code  
+            if(orderMap.containsKey(eachContract.SBQQ__Order__c)){
+                if(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c != null && orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c != null ){
+                    eachContract.LPCR_BatchCommande__c = orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c;
+                }
+            }
+
+
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){                
                 eachContract =setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(eachContract.SBQQ__Quote__c));
-                Pad.log('SM010_ContractServices','setContractFields(List<Contract> contracts)','eachContract before insert'+eachContract);
-
             }
         }
     }
     
     
-    /**
+/**
 * @Author Ayoub Ouarti
 * @Created 08/06/2020
 * @Description methode setContractFields to set Contract fields from new Order's quote if the Order is getting changed before Update
@@ -53,7 +62,7 @@ public class SM010_ContractServices {
             eachContract=setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
         }
     }
-    /**
+/**
 * @Author Ayoub Ouarti
 * @Created 08/06/2020
 * @Description methode setContractFieldsFromQuoteMaper to help setting Contract fields from Quote
@@ -90,6 +99,30 @@ public class SM010_ContractServices {
             contract.LPCR_ContratEntreprise__c = quote.LPCR_ContratEntreprise__c;
         }
         return contract;
+    }
+    
+    public static void setOrderFields(Map<Id, Contract> newContractMap, Map<Id, Contract> oldContractMap){
+        Map<Id,Contract> contractMap = new Map<Id,Contract>(); 
+        Set<Id> orderIds = new Set<Id>();
+        List<Order> orderList = new List<Order>();
+        for(Contract eachNewContract : newContractMap.values()){ //get all contracts where LPCR_batchCommande is changed
+            if(eachNewContract.LPCR_BatchCommande__c != oldContractMap.get(eachNewContract.Id).LPCR_BatchCommande__c) {
+                contractMap.put(eachNewContract.Id, eachNewContract);
+            }
+        }
+        //get order items and create a list of orders to be updated
+        for(OrderItem orderItem:[Select id, orderId, SBQQ__Contract__c from orderItem where SBQQ__Contract__c in:contractMap.keyset()]){
+            if(!OrderIds.contains(orderItem.OrderId)){
+                Order order= new Order(Id = orderItem.OrderId);
+                order.blng__InvoiceBatch__c = contractMap.get(orderItem.SBQQ__Contract__c).LPCR_BatchCommande__c;
+                orderList.add(order);
+            }
+        }
+        
+        if(orderList.size()>0){
+            update orderList;
+        }
+        
     }
     
 }

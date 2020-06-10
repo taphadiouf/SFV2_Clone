@@ -2,10 +2,11 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_NumeroAllocataire__c</fullName>
     <externalId>false</externalId>
-    <label>Numéro d&#39;allocataire</label>
+    <label>Numéro d&apos;allocataire</label>
     <length>128</length>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>
