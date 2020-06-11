@@ -5,6 +5,7 @@
 */
 @isTest
 public class SM013_ModificationEntranteServices_Test {
+    private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
     @testSetup 
     static void testSetup(){
         List<Account> accounts = UM002_TestDataFactory.createAccounts(100, 'testAccount');
@@ -22,11 +23,29 @@ public class SM013_ModificationEntranteServices_Test {
     public static void updateQuotesFromModifEntrantes_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-        List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
-        System.assertEquals(50, quotesValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesValides');
-        List<SBQQ__Quote__c> quotesNonValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c != 'Validé Directrice'];
-        System.assertEquals(50, quotesNonValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesNonValides');
-        Test.stopTest();
+            List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
+            System.assertEquals(50, quotesValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesValides');
+            List<SBQQ__Quote__c> quotesNonValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c != 'Validé Directrice'];
+            System.assertEquals(50, quotesNonValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesNonValides');
+            Test.stopTest();
         }
+    }
+    @isTest
+    public static void createUsageFromModifEntrantes_Test(){
+        Test.startTest();
+        Account acc = UM002_TestDataFactory.createAccounts(1, 'tAccount').get(0);
+        insert acc;
+        Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+        insert cont;
+        LPCR_ModificationEntrante__c modifEntrantesValides = new LPCR_ModificationEntrante__c();
+        modifEntrantesValides.LPCR_Contact__c= cont.id;
+        modifEntrantesValides.LPCR_Compte__c = acc.id;
+        modifEntrantesValides.LPCR_Evenement__c= 'Modification Heure Occasionnel MAC';
+        modifEntrantesValides.LPCR_HeureDateDebut__c = System.today();
+        modifEntrantesValides.LPCR_HeureDateFin__c = System.today().addDays(60);
+        modifEntrantesValides.LPCR_Quantite__c = 1;
+        insert modifEntrantesValides;
+        
+        Test.stopTest();
     }
 }
