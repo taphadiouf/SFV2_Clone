@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>LPCR_AlerteServiceFamilleModificationEntrante</fullName>
+        <description>Alerte service famille ( modification entrante)</description>
+        <protected>false</protected>
+        <recipients>
+            <field>LPCR_ResponsableServiceFamille__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_ModificationEntranteAValider</template>
+    </alerts>
+</Workflow>
