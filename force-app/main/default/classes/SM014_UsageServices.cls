@@ -23,6 +23,9 @@ public with sharing class SM014_UsageServices {
         Set<String> productIds = UM003_TypeManager.getFieldsOfListObjects(usageList,'LPCR_Product__c');
         Map<Id,Product2> mapProducts = new Map<Id,Product2>([SELECT Id,Name FROM Product2 WHERE ID in :productIds]);
 
+        Set<String> contactsIds = UM003_TypeManager.getFieldsOfListObjects(usageList,'LPCR_ContactEnfant__c'); 
+        Map<Id,Contact> mapContacts= new Map<Id,Contact>([SELECT Id,Name FROM Contact WHERE ID in :contactsIds]);
+
         
         for(blng__Usage__c eachUsage : usageList){
             //B2B case
@@ -33,7 +36,7 @@ public with sharing class SM014_UsageServices {
             }
             //B2C & MIRCO case
             else if(mapAccounts.get(eachUsage.blng__Account__c).RecordTypeId ==accountCrecheTId && 'MICRO'.equals(mapAccounts.get(eachUsage.blng__Account__c).LPCR_TypeCreche__c)){
-                
+               eachUsage.blng__MatchingId__c =  mapContacts.get(eachUsage.LPCR_ContactEnfant__c).Name + eachUsage.LPCR_TypeEvenement__c + mapAccounts.get(eachUsage.blng__Account__c).Name;
             }
             
             
