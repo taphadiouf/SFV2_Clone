@@ -6,7 +6,7 @@
 public with sharing class SM014_UsageServices {
     
     /*
-*	@description : this method check if any registration fee had been alredy applied for a given customer / nursery.
+*	@description : this method Update the Matching ID field on Usage object for B2B and Micro	
 *	@param List<blng__Usage__c> usageList to process
 *	@returns void
 */
@@ -29,8 +29,6 @@ public with sharing class SM014_UsageServices {
         
         for(blng__Usage__c eachUsage : usageList){
             //B2B case
-            Pad.log('SM014_UsageServices', 'setUsageFields(List<blng__Usage__c> usageList)', 'eachUsage.blng__Account__r.RecordTypeId '+eachUsage.blng__Account__r.RecordTypeId);
-			Pad.log('SM014_UsageServices', 'setUsageFields(List<blng__Usage__c> usageList)', 'accountEntrepriseRTId '+accountEntrepriseRTId);
             if(mapAccounts.get(eachUsage.blng__Account__c).RecordTypeId ==accountEntrepriseRTId ){
                 eachUsage.blng__MatchingId__c = mapProducts.get(eachUsage.LPCR_Product__c).Name + mapAccounts.get(eachUsage.blng__Account__c).Name;
             }
