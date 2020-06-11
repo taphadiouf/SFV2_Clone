@@ -63,6 +63,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -110,6 +111,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -163,6 +165,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -210,6 +213,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -257,6 +261,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -305,6 +310,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -357,6 +363,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -406,6 +413,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -455,6 +463,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -504,6 +513,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -553,6 +563,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -602,6 +613,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -651,6 +663,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -701,6 +714,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -751,6 +765,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -802,6 +817,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -883,6 +899,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -929,6 +946,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -980,6 +998,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -1062,6 +1081,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -1143,6 +1163,7 @@ public class SM013_ModificationEntranteServices_Test {
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
