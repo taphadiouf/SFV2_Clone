@@ -2,15 +2,20 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>VR_Devis_ContratManuel_Modif_Statut_ADV</fullName>
     <active>true</active>
-    <description>Dans le cas d&#39;un contrat manuel, l&#39;équipe ADV doit être la seule à pouvoir passer un devis manuellement au statut &quot;SIgné&quot; &quot;Prêt à commander&quot;.</description>
+    <description>Dans le cas d&apos;un contrat manuel, l&apos;équipe ADV doit être la seule à pouvoir passer un devis manuellement au statut &quot;SIgné&quot; &quot;Prêt à commander&quot;.</description>
     <errorConditionFormula>AND(
 NOT( $User.LPCR_BypassValidationRules__c ),
 LPCR_ContratManuel__c,
 ISCHANGED( SBQQ__Status__c ),
-OR(TEXT(SBQQ__Status__c) = &#39;Signé&#39;,
-TEXT(SBQQ__Status__c) = &#39;Prêt à commander&#39;),
+OR(
+	    TEXT(SBQQ__Status__c) = &apos;Terminé&apos;,
+					TEXT(SBQQ__Status__c) = &apos;Signé&apos;,
+					TEXT(SBQQ__Status__c) = &apos;Prêt à envoyer&apos;,
+					TEXT(SBQQ__Status__c) = &apos;Actif&apos;,
+					TEXT(SBQQ__Status__c) = &apos;Annulé&apos;,
+TEXT(SBQQ__Status__c) = &apos;Prêt à commander&apos;),
 NOT( $Permission.LPCR_ADV)
 )</errorConditionFormula>
     <errorDisplayField>SBQQ__Status__c</errorDisplayField>
-    <errorMessage>Dans le cas d&#39;un contrat manuel, seul l&#39;ADV est autorisée à mettre à jour ce statut.</errorMessage>
+    <errorMessage>Dans le cas d&apos;un contrat manuel, seul l&apos;ADV est autorisée à mettre à jour ce statut.</errorMessage>
 </ValidationRule>

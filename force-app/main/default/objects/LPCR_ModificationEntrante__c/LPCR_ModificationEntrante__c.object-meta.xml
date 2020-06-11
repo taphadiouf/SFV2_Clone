@@ -143,17 +143,16 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Cet objet nous permettra de collecter les données en provenance d&#39;Intranet et de la GTA  concernant des événements et liés à de l&#39;usage sur SF (absences, heures déduites, maladie ...)</description>
+    <description>Cet objet nous permettra de collecter les données en provenance d&apos;Intranet et de la GTA  concernant des événements et liés à de l&apos;usage sur SF (absences, heures déduites, maladie ...)</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
     <gender>Feminine</gender>
     <label>Modification Entrante</label>
     <nameField>

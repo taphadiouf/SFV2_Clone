@@ -1,0 +1,9 @@
+<!--
+@Author Achraf ABOUL (aaboul@salesforce.com)
+@Created 08/06/2020
+@Description Lightning component to reset quantities of clone quote lines 
+-->
+<aura:component implements="lightning:isUrlAddressable" controller="APC008_ResetQuoteLines">
+    <aura:attribute name='quoteId' type='String'/>
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+</aura:component>
