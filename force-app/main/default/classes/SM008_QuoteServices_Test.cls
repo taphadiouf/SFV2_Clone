@@ -6,7 +6,7 @@
 */
 @isTest
 public class SM008_QuoteServices_Test {
-    
+    private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     @testSetup 
     static void testSetup(){
         
@@ -23,15 +23,15 @@ public class SM008_QuoteServices_Test {
         insert accCreche;
         List<Account> accFamille = UM002_TestDataFactory.createAccountWithRecType(1, 'Compte Famille MAC1', recTypeFamilleId, '');
         insert accFamille;
-        Account acc = accFamille.get(0);
-        List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,acc.Id,'0001',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year(), 06, 31),123, 'Sans renouvellement', 'Non', Null );
+        Account accc = accFamille.get(0);
+        List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,accc.Id,'0001',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year(), 06, 31),123, 'Sans renouvellement', 'Non', Null );
         insert Renewalcontract;
         Contract con = Renewalcontract.get(0);
         List<Opportunity> renwalOpps = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MAC1', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con.Id, Null );
         insert renwalOpps;
         
         //////////
-        List<Contract> Renewalcontract2 = UM002_TestDataFactory.createContracts(1,acc.Id,'0002',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year()+1, 05, 25),123, 'Express', 'Non', Null );
+        List<Contract> Renewalcontract2 = UM002_TestDataFactory.createContracts(1,accc.Id,'0002',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year()+1, 05, 25),123, 'Express', 'Non', Null );
         insert Renewalcontract2;
         Contract con2 = Renewalcontract2.get(0);
         List<Opportunity> renwalOpps2 = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MAC2', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con2.Id, Null );
@@ -41,7 +41,7 @@ public class SM008_QuoteServices_Test {
         //////////
         List<Account> accCreche3 = UM002_TestDataFactory.createAccountWithRecType(1, 'Compte Crèche MICRO', recTypeId, 'MICRO');
         insert accCreche3;
-        List<Contract> Renewalcontract3 = UM002_TestDataFactory.createContracts(1,acc.Id,'0003',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year(), 06, 31),123, 'Tacite', 'Non', Null );
+        List<Contract> Renewalcontract3 = UM002_TestDataFactory.createContracts(1,accc.Id,'0003',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year(), 06, 31),123, 'Tacite', 'Non', Null );
         insert Renewalcontract3;
         Contract con3 = Renewalcontract3.get(0);
         List<Opportunity> renwalOpps3 = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MICRO', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con3.Id,Null );
@@ -49,7 +49,7 @@ public class SM008_QuoteServices_Test {
         
         
         ////////
-        List<Contract> Renewalcontract4 = UM002_TestDataFactory.createContracts(1,acc.Id,'0004',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year()+1, 09, 15),123, 'Express', 'Non', Null );
+        List<Contract> Renewalcontract4 = UM002_TestDataFactory.createContracts(1,accc.Id,'0004',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year()+1, 09, 15),123, 'Express', 'Non', Null );
         insert Renewalcontract4;
         Contract con4 = Renewalcontract4.get(0);
         List<Opportunity> renwalOpps4 = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MICRO2', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con4.Id,Null );
@@ -58,7 +58,7 @@ public class SM008_QuoteServices_Test {
         
         
         //////
-        List<Contract> Renewalcontract6 = UM002_TestDataFactory.createContracts(1,acc.Id,'0006',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year(), 06, 31),123, 'Express', 'Non', Null );
+        List<Contract> Renewalcontract6 = UM002_TestDataFactory.createContracts(1,accc.Id,'0006',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year(), 06, 31),123, 'Express', 'Non', Null );
         insert Renewalcontract6;
         Contract con6 = Renewalcontract6.get(0);
         List<Opportunity> renwalOpps6 = UM002_TestDataFactory.createOpportunities(1, 'opp NON', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan', Null ,con6.Id );
@@ -77,7 +77,9 @@ public class SM008_QuoteServices_Test {
         insert opps;
         List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(100, accounts, opps);
         insert quotes;
-        insert UM002_TestDataFactory.createAccounts(1, 'test').get(0);
+        Account acc = UM002_TestDataFactory.createAccounts(1, 'test').get(0);
+        acc.RecordTypeId = B2C_RT_ID;
+        insert acc;
         insert UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
         
         
@@ -118,6 +120,8 @@ public class SM008_QuoteServices_Test {
     public static void setQuoteFields_Test(){    
         
         System.runAs(UM002_TestDataFactory.createUser()){
+            LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
+            insert planningEnfant;
             Test.startTest();
             List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
             List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
@@ -125,17 +129,19 @@ public class SM008_QuoteServices_Test {
             opp.LPCR_IndexationConvenue__c='Oui';
             opp.LPCR_TypeFacturation__c='Arrears';
             opp.LPCR_BillingFrequency__c='Invoice Plan';
+            opp.LPCR_PlanningEnfant__c = planningEnfant.id;
             update opp;
             SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
             quote.SBQQ__Type__c='Renewal';
             
             insert quote;
             
-            quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
+            quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
             System.assertNotEquals(null,quote.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
             System.assertEquals(quote.LPCR_IndexationConvenue__c, opp.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
             System.assertEquals(quote.LPCR_TypeFacturation__c, opp.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
             System.assertEquals(quote.SBQQ__BillingFrequency__c, opp.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
+            System.assertEquals(quote.LPCR_PlanningEnfant__c, opp.LPCR_PlanningEnfant__c, 'Quote LPCR_PlanningEnfant__c not equals to oppt LPCR_PlanningEnfant__c');
             Test.stopTest();
             
         } }
