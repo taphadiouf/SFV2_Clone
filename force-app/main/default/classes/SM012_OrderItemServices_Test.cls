@@ -676,7 +676,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 System.assertEquals(expectedDate, oi.blng__OverrideNextBillingDate__c);
-                System.assertEquals(UM005_DateUtility.lastDateOfMonth (oi.blng__NextBillingDate__c), oi.blng__BillThroughDateOverride__c);
+                System.assertEquals(UM005_DateUtility.lastDateOfMonth (oi.blng__BillThroughDateOverride__c), oi.blng__BillThroughDateOverride__c);
             }
         }
     }
