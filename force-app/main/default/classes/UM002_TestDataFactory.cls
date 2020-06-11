@@ -1144,7 +1144,49 @@ newMe.FederationIdentifier = null;
         return quotes;
     }
     
-    
+    ///////////////***********///////////    
+    public static List<Account> createAccountWithRecType(Integer numAccs, String name, Id recTypeId, String type){
+        List<Account> accounts = new List<Account>();
+        Account tempAcc;
+        for(Integer i = 0; i<numAccs; i++){
+            tempAcc = new Account(Name = name, RecordTypeId  = recTypeId, LPCR_TypeCreche__c = type);
+            accounts.add(tempAcc);
+        }
+        return accounts;
+    }
+    public static List<Contract> createContracts(Integer numConts, Id accountID, String name, Date dateDebut, Date dateFin, Integer chiffreAffaire, String methodeRen, String renouvellementConvenu, Integer renewalUplift){    
+        List<Contract>  contracts = new List<Contract>();
+        Contract tempCont;
+        for(Integer i = 0; i<numConts; i++){
+            tempCont = new Contract(AccountID = accountID, Name = name, LPCR_DateDebut__c = dateDebut, LPCR_DateFin__c = dateFin, LPCR_ChiffreAffaire__c = chiffreAffaire, LPCR_MethodeRenouvellement__c = methodeRen, LPCR_RenouvellementConvenu__c = renouvellementConvenu, SBQQ__RenewalUpliftRate__c  = renewalUplift);
+            contracts.add(tempCont);
+        }
+        return contracts;   
+    }
+    public static List<Opportunity> createOpportunities(Integer numOpps, String name, String stageName, String indexation, String typeFacturation, String billingFrequency, Id renewalId, Id amendedID){
+        List<Opportunity> opps = new List<Opportunity>();
+        Opportunity tempOpp;
+        for(Integer i = 0; i<numOpps; i++){
+            tempOpp = new Opportunity(Name = name, StageName = stageName, CloseDate = Date.today(), LPCR_IndexationConvenue__c = indexation, LPCR_TypeFacturation__c = typeFacturation, LPCR_BillingFrequency__c = billingFrequency, SBQQ__RenewedContract__c= renewalId, SBQQ__AmendedContract__c = amendedID );
+            opps.add(tempOpp);
+        }
+        return opps;
+    }
+    public static List<SBQQ__Quote__c> createQuotes(Integer numRecs, List<Account> accs, List<Opportunity> opps, String type, Id recTypeId, Id crecheId){
+        List<SBQQ__Quote__c> quotes = new List<SBQQ__Quote__c>();
+        SBQQ__Quote__c tempQuote;
+        for(Integer i = 0; i<numRecs; i++){
+            tempQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = opps.get(i).Id,
+                SBQQ__Account__c = accs.get(i).Id,
+                SBQQ__Type__c = type,
+                RecordTypeId = recTypeId,
+                LPCR_Creche__c = crecheId
+            );
+            quotes.add(tempQuote);
+        }
+        return quotes;
+    }
     
     
     
