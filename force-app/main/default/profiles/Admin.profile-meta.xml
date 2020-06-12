@@ -8016,7 +8016,6 @@
     </pageAccesses>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Account.Creche</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8037,7 +8036,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Contact.Collaborateur</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8063,7 +8061,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Contract.Contrat_B2B</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8074,7 +8071,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>LPCR_RessourceFamille__c.Mac</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8085,7 +8081,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>LPCR_TablePrix__c.ALSH</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8111,7 +8106,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Lead.AO_PublicDSP</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8136,8 +8130,7 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
+        <default>false</default>
         <recordType>Opportunity.AOPublicDSP</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8147,7 +8140,7 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
         <recordType>Opportunity.Entreprise</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8163,7 +8156,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>SBQQ__ConfigurationAttribute__c.SBQQ__Configuration_Attribute</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8174,7 +8166,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>SBQQ__Quote__c.Contrat_Accueil</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8195,7 +8186,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>blng__Invoice__c.LCPR_DraftInvoice</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
