@@ -120,9 +120,9 @@ public class SM008_QuoteServices_Test {
     public static void setQuoteFields_Test(){    
         
         System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
             LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
             insert planningEnfant;
-            Test.startTest();
             List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
             List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
             Opportunity opp = oppties.get(0);
@@ -185,9 +185,10 @@ public class SM008_QuoteServices_Test {
 
         SBQQ__Quote__c newQuote = UM002_TestDataFactory.createQuoteswithStatus(1, accs, opps, 'Draft').get(0);
         insert newQuote;
-        Test.stopTest();
         newQuote = [SELECT Id,LPCR_TypeEnregistrement__c FROM SBQQ__Quote__c WHERE Id = :newQuote.Id limit 1];
         System.assertEquals('TestTypeEnregistrement', newQuote.LPCR_TypeEnregistrement__c);
+        Test.stopTest();
+       
         
     }
     
