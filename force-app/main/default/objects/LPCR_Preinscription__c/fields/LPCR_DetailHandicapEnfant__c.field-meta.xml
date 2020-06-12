@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_DetailHandicapEnfant__c</fullName>
+    <externalId>false</externalId>
+    <label>Détail Handicap Enfant</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>L&apos;enfant à inscrire</fullName>
+                <default>false</default>
+                <label>L&apos;enfant à inscrire</label>
+            </value>
+            <value>
+                <fullName>Un autre enfant dans la fratrie</fullName>
+                <default>false</default>
+                <label>Un autre enfant dans la fratrie</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

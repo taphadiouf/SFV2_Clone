@@ -38,7 +38,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>LPCR_Creche__c</field>
+                <field>LPCR_creche__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -101,7 +101,7 @@
         <label>CAF</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>LPCR_BaremeCaf__c</field>
             </layoutItems>
             <layoutItems>

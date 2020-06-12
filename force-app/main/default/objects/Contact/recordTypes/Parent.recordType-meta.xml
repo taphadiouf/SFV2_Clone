@@ -498,6 +498,29 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_SituationProfessionnelle__c</picklist>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>En activité professionnelle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>En formation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>En recherche d%27emploi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Étudiant</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_TypeAllocataire__c</picklist>
         <values>
             <fullName>Autre</fullName>
