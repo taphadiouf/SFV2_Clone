@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
-        <application>LPCR_Commerce</application>
+        <application>LPCR_ADV</application>
         <default>false</default>
         <visible>false</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
+        <application>LPCR_Commerce</application>
+        <default>true</default>
+        <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
         <apexClass>APB001_ProcessLPCR_Log</apexClass>
@@ -796,6 +801,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.LPCR_Solde__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.LPCR_SousActivite__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1156,6 +1166,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contract.LPCR_AjoutFraisGestion__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contract.LPCR_AvecSponsor__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1167,6 +1182,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_ChiffreAffaire__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.LPCR_ContractEntreprise__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1272,6 +1292,21 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_RenouvellementConvenu__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.LPCR_ResponsableADV__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.LPCR_ResponsableServiceFamille__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.LPCR_Sales_Rep__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3271,6 +3306,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Opportunity.LPCR_Contract_CheckBox__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Opportunity.LPCR_DateCandidature__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -3457,6 +3497,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.LPCR_ZoneGeographique__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_Creche__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5056,6 +5101,26 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_Added_Product_Using_QCP__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_AmendmentDateOK__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_BerceauGratuitAmendment__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_Berceauxgratuitsquote__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_BesoinApprobationDELETE__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -5107,6 +5172,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_ContactRepresentant2__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_ContractEntreprise__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_Contracted_Checkbox__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5247,6 +5322,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_Nombre_de_lignes_sans_PO__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_Nombreberceauxgratuits__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7351,6 +7431,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>blng__Usage__c.LPCR_TypeEvenement_DEL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>blng__Usage__c.LPCR_TypeEvenement__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -7503,7 +7588,7 @@
         <recordType>Contact.Parent</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contract-Présentation du contrat</layout>
+      <layout>Contract-Présentation du contrat</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contract-Présentation du contrat</layout>
@@ -7931,7 +8016,6 @@
     </pageAccesses>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Account.Creche</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -7952,7 +8036,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
-        <personAccountDefault>true</personAccountDefault>
         <recordType>Contact.Collaborateur</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -7977,74 +8060,74 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
         <recordType>Contract.Contrat_B2B</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Contract.Contrat_B2C</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
         <recordType>LPCR_RessourceFamille__c.Mac</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>LPCR_RessourceFamille__c.Micro</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
         <recordType>LPCR_TablePrix__c.ALSH</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>LPCR_TablePrix__c.B2B</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>LPCR_TablePrix__c.Micro</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>LPCR_TablePrix__c.Referencement</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>LPCR_TablePrix__c.Reservataire</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
         <recordType>Lead.AO_PublicDSP</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Lead.AO_PublicReservation</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Lead.Entreprise</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Lead.Famille</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Lead.Partenaire</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -8072,34 +8155,44 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
         <recordType>SBQQ__ConfigurationAttribute__c.SBQQ__Configuration_Attribute</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>SBQQ__ConfigurationAttribute__c.SBQQ__Global_Attribute</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
         <recordType>SBQQ__Quote__c.Contrat_Accueil</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>SBQQ__Quote__c.Contrat_Cadre</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>SBQQ__Quote__c.Referencement</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>SBQQ__Quote__c.Reservataire</recordType>
-        <visible>false</visible>
+      <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>blng__Invoice__c.LCPR_DraftInvoice</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>blng__Invoice__c.LPCR_PostedInvoice</recordType>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
         <tab>LPCR_PlanningPrevisionnel__c</tab>
