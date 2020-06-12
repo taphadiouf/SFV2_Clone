@@ -17,4 +17,8 @@ public class TM012_ModificationEntranteTrigger extends TM000_TriggerHandler{
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         SM013_ModificationEntranteServices.updateQuotesFromModifEntrantes(newModificationsentrantesList);
     }
+    protected override void afterUpdate() {
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM013_ModificationEntranteServices.sendAgreementFromModifEntrantes(newModificationsentrantesList, oldModificationsentrantesMap);
+    }
 }
