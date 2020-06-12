@@ -132,7 +132,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                 : UM005_DateUtility.setDayOnDate (invoiceDay, item.blng__NextChargeDate__c);
                             
                             if (orderMap.get(item.OrderId).LPCR_TypeCreche__c == 'MICRO' && item.ServiceDate == item.blng__NextChargeDate__c) {
-                                item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.blng__NextBillingDate__c);
+                                 // added code from IS-1074, change blng__NextChargeDate__c by blng__OverrideNextBillingDate__c
+                                item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.blng__OverrideNextBillingDate__c);
                             }
                         }
                     } else if (orderMap.get(item.OrderId).blng__BillingAccount__c != null && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId && item.SBQQ__BillingType__c == 'Advance') {
