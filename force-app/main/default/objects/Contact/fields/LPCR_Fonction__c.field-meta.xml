@@ -5,6 +5,7 @@
     <label>Fonction</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
@@ -111,9 +112,9 @@
                 <label>Directeur relations sociales</label>
             </value>
             <value>
-                <fullName>Directeur de l&#39;actions sociale</fullName>
+                <fullName>Directeur de l&apos;actions sociale</fullName>
                 <default>false</default>
-                <label>Directeur de l&#39;actions sociale</label>
+                <label>Directeur de l&apos;actions sociale</label>
             </value>
             <value>
                 <fullName>Directeur formation</fullName>
@@ -151,9 +152,9 @@
                 <label>Responsable relations sociales</label>
             </value>
             <value>
-                <fullName>Responsable de l&#39;actions sociale</fullName>
+                <fullName>Responsable de l&apos;actions sociale</fullName>
                 <default>false</default>
-                <label>Responsable de l&#39;actions sociale</label>
+                <label>Responsable de l&apos;actions sociale</label>
             </value>
             <value>
                 <fullName>Responsable formation</fullName>
@@ -256,9 +257,9 @@
                 <label>Responsable juridique</label>
             </value>
             <value>
-                <fullName>Directeur des systèmes d&#39;information</fullName>
+                <fullName>Directeur des systèmes d&apos;information</fullName>
                 <default>false</default>
-                <label>Directeur des systèmes d&#39;information</label>
+                <label>Directeur des systèmes d&apos;information</label>
             </value>
             <value>
                 <fullName>Directeur sécurité informatique</fullName>
@@ -326,9 +327,9 @@
                 <label>Directeur surfaces commerciales (magasin, hypermarché)</label>
             </value>
             <value>
-                <fullName>Directeur d&#39;hôtel ou palace</fullName>
+                <fullName>Directeur d&apos;hôtel ou palace</fullName>
                 <default>false</default>
-                <label>Directeur d&#39;hôtel ou palace</label>
+                <label>Directeur d&apos;hôtel ou palace</label>
             </value>
             <value>
                 <fullName>Responsable commercial</fullName>
@@ -346,9 +347,9 @@
                 <label>Responsable surfaces commerciales (magasin, hypermarché)</label>
             </value>
             <value>
-                <fullName>Responsable d&#39;hôtel ou palace</fullName>
+                <fullName>Responsable d&apos;hôtel ou palace</fullName>
                 <default>false</default>
-                <label>Responsable d&#39;hôtel ou palace</label>
+                <label>Responsable d&apos;hôtel ou palace</label>
             </value>
             <value>
                 <fullName>Directeur marketing</fullName>

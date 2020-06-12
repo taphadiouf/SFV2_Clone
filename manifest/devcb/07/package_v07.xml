@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Contract.LPCR_DateRenouvellement__c</members>
+        <members>blng__Usage__c.LPCR_TypeEvenement__c</members>
+        <members>Product2.LPCR_TypeEvenement__c</members>
+        <members>SBQQ__Quote__c.LPCR_AmendmentDateOK__c</members>
+        <members>SBQQ__PriceAction__c.SBQQ__Field__c</members>
+        <members>LPCR_ModificationEntrante__c.LPCR_ResponsableServiceFamille__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeAvenant__c</members>
+        <members>Opportunity.LPCR_FrequenceFacturation__c</members>
+        <name>CustomField</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c</members>
+        <name>CustomObject</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c.Contrat_Accueil</members>
+        <members>SBQQ__Quote__c.Contrat_Cadre</members>
+        <members>SBQQ__Quote__c.Referencement</members>
+        <members>SBQQ__Quote__c.Reservataire</members>
+        <name>RecordType</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c.LPCR_UpdateStatutDevis</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateStatusDevisMIB</members>
+        <members>SBQQ__Quote__c.LPCR_StatutRappel</members>
+        <members>SBQQ__Quote__c.LPCR_StatutEnRevue</members>
+        <members>SBQQ__Quote__c.LPCR_StatutAttente</members>
+        <members>SBQQ__Quote__c.LPCR_StatutBrouillon</members>
+        <members>SBQQ__Quote__c.LPCR_StatutValide</members>
+        <members>SBQQ__Quote__c.LPCR_StatutApprouve</members>
+        <members>SBQQ__Quote__c.LPCR_StatutRejete</members>
+        <members>SBQQ__Quote__c.Statut_standard_approuv</members>
+        <name>WorkflowFieldUpdate</name>
+    </types>
+
+    <types>
+        <members>LPCR_TypeEvenement</members>
+        <name>GlobalValueSet</name>
+    </types>
+
+    <types>
+        <members>LPCR_RessourceFamille__c-Ressource Famille MAC Layout</members>
+        <members>LPCR_TablePrix__c-R&#233;f&#233;rencement</members>
+        <name>Layout</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c.Status Devis MIB Changement Region Prix</members>
+        <members>SBQQ__Quote__c.Status Devis Resiliation ou MIB Meme Region Prix</members>
+        <name>WorkflowRule</name>
+    </types>
+
+    <types>
+        <members>unfiled$public/LPCR_ModificationEntranteAValider</members>
+        <name>EmailTemplate</name>
+    </types>
+
+    <types>
+        <members>LPCR_ModificationEntrante__c.LPCR_AlerteServiceFamilleModificationEntrante</members>
+        <members>SBQQ__Quote__c.LPCR_DevisAccepte</members>
+        <members>SBQQ__Quote__c.LPCR_DevisRejete</members>
+        <members>SBQQ__Quote__c.LPCR_ValidationAcceptee</members>
+        <members>SBQQ__Quote__c.LPCR_ContratRejete</members>
+        <name>WorkflowAlert</name>
+    </types>
+
+    <types>
+        <members>LPCR_RecupererServiceFamille</members>
+        <name>FlowDefinition</name>
+    </types>
+
+    <types>
+        <members>LPCR_RecupererServiceFamille</members>
+        <name>Flow</name>
+    </types>
+
+    <types>
+        <members>APC006_CloneQuoteLines</members>
+        <members>APC008_ResetQuoteLines</members>
+        <members>APC008_ResetQuoteLines_Test</members>
+        <name>ApexClass</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c.VR_Devis_ContratManuel_Modif_Statut_ADV</members>
+        <members>SBQQ__Quote__c.VR_Devis_Modif_Statut_Non_Autorise</members>
+        <name>ValidationRule</name>
+    </types>
+
+    <types>
+        <members>PL_Devis</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>LC004_ResetQuoteLines</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+
+    <version>48.0</version>
+</Package>

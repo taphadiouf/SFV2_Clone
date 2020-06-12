@@ -14,6 +14,10 @@
             <section>Commentaire</section>
         </sections>
         <sections>
+            <label><!-- Informations supplémentaires --></label>
+            <section>Informations supplémentaires</section>
+        </sections>
+        <sections>
             <label><!-- Liens Personnalisés --></label>
             <section>Liens Personnalisés</section>
         </sections>
@@ -60,6 +64,18 @@
         <name>NouvelleDemandeReseauGrandir</name>
     </quickActions>
     <quickActions>
+        <label><!-- UpdateEnfant --></label>
+        <name>UpdateEnfant</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- UpdateParent1 --></label>
+        <name>UpdateParent1</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- UpdateParent2 --></label>
+        <name>UpdateParent2</name>
+    </quickActions>
+    <quickActions>
         <label><!-- Adobe Sign --></label>
         <name>echosign_dev1__EchoSign_Contact_Publisher_Action</name>
     </quickActions>
@@ -87,6 +103,14 @@
         <errorMessage><!-- Pour déclarer un contact handicapé associé au compte Famille, Le champ Handicap enfant dans la fratrie doit être coché sur le compte Famille. --></errorMessage>
         <name>VR_Contact_Handicap_Fratrie</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Conga_Composer_OAuth --></label>
+        <name>APXTCFQ__Conga_Composer_OAuth</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Conga_Mail_Merge --></label>
+        <name>APXTCFQ__Conga_Mail_Merge</name>
+    </webLinks>
     <webLinks>
         <label><!-- Send_to_EchoSign --></label>
         <name>echosign_dev1__Send_to_EchoSign</name>
