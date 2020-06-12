@@ -5509,6 +5509,11 @@
         <field>LPCR_DetailModificationPlanning__c.LPCR_OrdreTri__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Usage__c.LPCR_ContactEnfant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>LPCR_Admin</label>
     <objectPermissions>
