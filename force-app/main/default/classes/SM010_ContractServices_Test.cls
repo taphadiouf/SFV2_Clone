@@ -57,9 +57,33 @@ public class SM010_ContractServices_Test {
         quote.LPCR_ChiffreAffaire__c = 1000;
         quote.SBQQ__RenewalUpliftRate__c = 2; 
         quote.LPCR_PlanningEnfant__c = planningEnfant.id;
+        quote.LPCR_BatchCommande__c = 'Batch 2';
 
         update quote;
         
+        Integer price = 200;
+        Map<String, Object> defaultVal = new Map<String, Object> {
+            'Name' => 'prod-test',
+                'SBQQ__StartDate__c' => System.Today(),
+                'SBQQ__Product__c' => prod.Id,
+                'SBQQ__Quantity__c' => 1,
+                'SBQQ__ListPrice__c' => price,
+                'SBQQ__CustomerPrice__c' => price,
+                'SBQQ__NetPrice__c' => price,
+                'SBQQ__SpecialPrice__c' => price,
+                'SBQQ__Quote__c' => quote.Id,
+                'SBQQ__PricebookEntryId__c' => priceBookEntry1.Id,
+                'SBQQ__PricingMethod__c' => 'List',
+                'SBQQ__ChargeType__c' => 'Recurring',
+                'SBQQ__BillingType__c' => 'Advance',
+                'SBQQ__BillingFrequency__c' => 'Monthly',
+                'LPCR_Region__c' => 'Paris',
+                'LPCR_NumeroPurchaseOrder__c' => '12345678',
+                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                };
+
+
+
         Order order = Database.query('SELECT Id ,SBQQ__Contracted__c , Status ,OpportunityId,EffectiveDate FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
         order.status ='Activated';
         update order;
@@ -98,7 +122,7 @@ public class SM010_ContractServices_Test {
             upsert contract;
         
             Test.stopTest();
-            contract = [SELECT Id,LPCR_DureeContratJour__c,SBQQ__Order__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,LPCR_MasterDevis__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c,LPCR_RenouvellementConvenu__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_PlanningEnfant__c FROM Contract 
+            contract = [SELECT Id,LPCR_DureeContratJour__c,SBQQ__Order__c,LPCR_BatchCommande__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,LPCR_MasterDevis__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c,LPCR_RenouvellementConvenu__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_PlanningEnfant__c FROM Contract
                         WHERE SBQQ__Order__c =:order.Id ]; 
             System.assertNotEquals(null, contract.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
 
@@ -127,8 +151,62 @@ public class SM010_ContractServices_Test {
             System.assertEquals(quote.LPCR_PlanningEnfant__c, contract.LPCR_PlanningEnfant__c,'LPCR_PlanningEnfant__c on the quote is not the same on the Contract');
             
             System.assertEquals(true, contract.LPCR_RenouvellementAutomatique__c,'LPCR_RenouvellementAutomatique__c on the quote is not the same on the Contract');
-        
+
+            System.assertEquals('Batch 2', contract.LPCR_BatchCommande__c,'LPCR_BatchCommande__c on the order.quote is not the same on the Contract');
+
             System.assertEquals(quote.LPCR_DureeContratJour__c, contract.LPCR_DureeContratJour__c,'LPCR_DureeContratJour__c on the quote is not the same on the Contract');
+
+        }
+    }
+
+    @isTest
+    private static void setOrderFieldsTest(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date lastMonth=Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day()+1) ;
+            Account acc = [SELECT Id, name from Account where name ='test' ];
+
+            SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_RenouvellementConvenu__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
+            Order order = Database.query('SELECT Id , Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
+
+            Test.startTest();
+
+            order.SBQQ__Contracted__c=true;
+            update order;
+
+            Contract contract =null;
+            try{
+                contract = [SELECT Id,SBQQ__Order__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c, LPCR_PlanningEnfant__c FROM Contract
+                            WHERE SBQQ__Order__c =:order.Id ];
+            }catch(Exception e){
+                system.debug('Error , Contract not get generated');
+                contract = UM002_TestDataFactory.createContract(acc.Id,quote.Id,order.Id);
+            }
+
+            //contract.LPCR_RenouvellementAutomatique__c=true;
+            contract.StartDate=lastMonth;
+            contract.ContractTerm =1;
+            contract.SBQQ__RenewalQuoted__c=false;
+            upsert contract;
+
+            OrderItem orderItem = [Select id, orderId, SBQQ__Contract__c from orderItem where orderId =:order.Id];
+
+
+            contract = [SELECT Id,SBQQ__Order__c,LPCR_BatchCommande__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,LPCR_MasterDevis__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c,LPCR_RenouvellementConvenu__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_PlanningEnfant__c FROM Contract
+                        WHERE SBQQ__Order__c =:order.Id ];
+
+            orderItem.SBQQ__Contract__c = contract.id;
+            update orderItem;
+
+            contract.LPCR_BatchCommande__c = 'Batch 1';
+            update contract;
+
+
+
+            Order order1 = [Select blng__InvoiceBatch__c from order where id =: order.Id ];
+
+
+            Test.stopTest();
+			System.assertEquals('Batch 1', order1.blng__InvoiceBatch__c,'blng__InvoiceBatch__c not updated on order');
 
         }
     }

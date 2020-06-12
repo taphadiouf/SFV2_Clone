@@ -1,0 +1,10 @@
+<!--* @author Achraf ABOUL (aaboul@salesforce.com)
+ 	* @created 29/05/2020
+ 	* @description LWC : Show the "creches" accounts
+-->
+<template>
+    <template if:true={accounts}>
+        <lightning-map map-markers={accounts} zoom-level={zoomLevel} show-footer={showFooter} list-view={listView} markers-title={accounts} center={center}>
+        </lightning-map>
+    </template>
+</template>
