@@ -22,6 +22,20 @@
         <value>AccountId</value>
     </labels>
     <labels>
+        <fullName>LPCR_AmendedContract</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AmendedContract</shortDescription>
+        <value>SBQQ__AmendedContract__c</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Amendment</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Amendment</shortDescription>
+        <value>Amendment</value>
+    </labels>
+    <labels>
         <fullName>LPCR_CompteWA</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -92,6 +106,20 @@
         <value>Creche</value>
     </labels>
     <labels>
+        <fullName>LPCR_CrecheF</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_CrecheF</shortDescription>
+        <value>LPCR_Creche__c</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ReseauLPCR</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ReseauLPCR</shortDescription>
+        <value>ReseauLPCR</value>
+    </labels>
+    <labels>
         <fullName>LPCR_CrecheWA</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -153,6 +181,13 @@
         <protected>true</protected>
         <shortDescription>LPCR_Etablissement</shortDescription>
         <value>Au sein de l&apos;établissement de :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Express</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Express</shortDescription>
+        <value>Express</value>
     </labels>
     <labels>
         <fullName>LPCR_Famille</fullName>
@@ -225,6 +260,13 @@
         <value>Nom de l&apos;enfant :</value>
     </labels>
     <labels>
+        <fullName>LPCR_Non</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Non</shortDescription>
+        <value>Non</value>
+    </labels>
+    <labels>
         <fullName>LPCR_NonTraite</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -265,6 +307,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_Opportunity</shortDescription>
         <value>Opportunity</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Opportunity2</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Opportunity2</shortDescription>
+        <value>SBQQ__Opportunity2__c</value>
     </labels>
     <labels>
         <fullName>LPCR_Parent</fullName>
@@ -330,6 +379,13 @@
         <value>SBQQ__Quote__c</value>
     </labels>
     <labels>
+        <fullName>LPCR_QuoteT</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_QuoteT</shortDescription>
+        <value>Quote</value>
+    </labels>
+    <labels>
         <fullName>LPCR_QuoteValide</fullName>
         <language>fr</language>
         <protected>false</protected>
@@ -351,6 +407,13 @@
         <value>RecordTypeId</value>
     </labels>
     <labels>
+        <fullName>LPCR_Referencement</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Referencement</shortDescription>
+        <value>Referencement</value>
+    </labels>
+    <labels>
         <fullName>LPCR_RegistrationFeeErrorMessage</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -365,6 +428,27 @@
         <value>FraisInscriptionMac</value>
     </labels>
     <labels>
+        <fullName>LPCR_Renewal</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Renewal</shortDescription>
+        <value>Renewal</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RenewedContract</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RenewedContract</shortDescription>
+        <value>SBQQ__RenewedContract__c</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Reservataire</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Reservataire</shortDescription>
+        <value>Reservataire</value>
+    </labels>
+    <labels>
         <fullName>LPCR_RessourcesM</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -377,6 +461,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_ResultS</shortDescription>
         <value>Sent</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_SansRenouvellement</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_SansRenouvellement</shortDescription>
+        <value>Sans renouvellement</value>
     </labels>
     <labels>
         <fullName>LPCR_Sent</fullName>
@@ -398,6 +489,13 @@
         <protected>true</protected>
         <shortDescription>LPCR_SignatureR</shortDescription>
         <value>Signature des représentants de l&apos;enfant (précédée de la mention lu et approuvé)</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Tacite</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Tacite</shortDescription>
+        <value>Tacite</value>
     </labels>
     <labels>
         <fullName>LPCR_Tarif</fullName>

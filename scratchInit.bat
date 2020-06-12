@@ -18,6 +18,9 @@ sfdx force:package:install -p 04t4N000000ceDxQAI -u %YourAlias  -w 40 --noprompt
 echo "----------- Billing :"
 sfdx force:package:install -p 04t0K000001E2m7QAC -u %YourAlias  -w 40
 
+echo "----------- Salesforce Billing Reporting Add-on :"
+sfdx force:package:install -p 04t4P000002icr9QAA -u %YourAlias  -w 40
+
 echo "----------- Sparklane :"
 sfdx force:package:install -p 04t4I000000gNw8QAE -u %YourAlias  -w 40
 
@@ -35,9 +38,6 @@ sfdx force:package:install -p 04t2M000002mdK2QAI -u %YourAlias  -w 40 --noprompt
 
 #echo "----------- Prodly :"
 #sfdx force:package:install -p 04t0H000000p4jZQAQ -u %YourAlias  -w 25 --noprompt
-
-echo "----------- Salesforce Billing Reporting Add-on :"
-sfdx force:package:install -p 04t4P000002icr9QAA -u %YourAlias  -w 40
 
 echo "Finish installing all managed package"
 
