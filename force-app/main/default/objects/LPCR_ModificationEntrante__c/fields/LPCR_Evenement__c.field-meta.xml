@@ -125,6 +125,36 @@
                 <default>false</default>
                 <label>Validation Contrat Directrice</label>
             </value>
+            <value>
+                <fullName>Nombre de repas</fullName>
+                <default>false</default>
+                <label>Nombre de repas</label>
+            </value>
+            <value>
+                <fullName>Modification Facturation Adaptation</fullName>
+                <default>false</default>
+                <label>Modification Facturation Adaptation</label>
+            </value>
+            <value>
+                <fullName>Commentaire individuel facture</fullName>
+                <default>false</default>
+                <label>Commentaire individuel facture</label>
+            </value>
+            <value>
+                <fullName>Commentaire global facture</fullName>
+                <default>false</default>
+                <label>Commentaire global facture</label>
+            </value>
+            <value>
+                <fullName>Abscence</fullName>
+                <default>false</default>
+                <label>Abscence</label>
+            </value>
+            <value>
+                <fullName>NB Heures réalisées</fullName>
+                <default>false</default>
+                <label>NB Heures réalisées</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
