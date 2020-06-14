@@ -39,6 +39,8 @@ sfdx force:package:install -p 04t2M000002mdK2QAI -u $YourAlias  -w 40 --noprompt
 #echo "----------- Prodly :"
 #sfdx force:package:install -p 04t0H000000p4jZQAQ -u $YourAlias  -w 25 --noprompt
 
+echo "----------- Advanced Approvals :"
+sfdx force:package:install -p 04t0L000000EjC7QAK -u $YourAlias  -w 40 --noprompt
 
 echo "Finish installing all managed package"
 
