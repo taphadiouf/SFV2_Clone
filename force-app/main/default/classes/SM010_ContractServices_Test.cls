@@ -28,11 +28,17 @@ public class SM010_ContractServices_Test {
         
         Opportunity opp = UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
         insert opp;
-        SBQQ__Quote__c quote = UM002_TestDataFactory.createQuote('test',opp.Id, acc.Id, standardPricebookId, 'Quote');
+        Opportunity opp2 = UM002_TestDataFactory.createOpportunities(1, 'test2', 'Prospecting').get(0);
+        insert opp2;
         
+        SBQQ__Quote__c quote = UM002_TestDataFactory.createQuote('test',opp.Id, acc.Id, standardPricebookId, 'Quote');
         quote.SBQQ__Primary__c =true;
         insert quote;
-                
+               
+        SBQQ__Quote__c quote2 = UM002_TestDataFactory.createQuote('test2',opp2.Id, acc.Id, standardPricebookId, 'Quote');
+        quote2.SBQQ__Primary__c =true;
+        insert quote2;
+        
         Product2 prod = UM002_TestDataFactory.createProduct('test', billingRule.Id, revRecRule.Id,taxRule.Id );
         prod.SBQQ__SubscriptionPricing__c ='Fixed Price';
         insert prod;
@@ -44,6 +50,14 @@ public class SM010_ContractServices_Test {
         insert quoteLine;
         opp.SBQQ__PrimaryQuote__c =quote.Id;
         update opp;
+        
+        
+        SBQQ__QuoteLine__c quoteLine2 = UM002_TestDataFactory.createQuoteLine(prod.Id, quote2.Id, priceBookEntry1.Id, 150,1);
+        insert quoteLine2;
+        opp2.SBQQ__PrimaryQuote__c =quote2.Id;
+        update opp2;
+        
+        
         LPCR_Planning__c planningEnfant = new LPCR_Planning__c();
         insert planningEnfant;
         
@@ -60,6 +74,22 @@ public class SM010_ContractServices_Test {
         quote.LPCR_BatchCommande__c = 'Batch 2';
 
         update quote;
+        
+        quote2.SBQQ__Ordered__c  = true; 
+        quote2.LPCR_IndexationConvenue__c='non';
+        quote2.LPCR_TypeFacturation__c='Arrears';
+        quote2.SBQQ__BillingFrequency__c='Invoice Plan';
+        quote2.LPCR_RenouvellementConvenu__c = 'non';
+        quote2.LPCR_DateDebut__c = Date.today();
+        quote2.LPCR_DateFin__c = Date.today() + 100;
+        quote2.LPCR_ChiffreAffaire__c = 100;
+        quote2.SBQQ__RenewalUpliftRate__c = 2; 
+        quote2.LPCR_PlanningEnfant__c = planningEnfant.id;
+        quote2.LPCR_BatchCommande__c = 'Batch 2';
+
+        update quote2;
+        
+        
         
         Integer price = 200;
         Map<String, Object> defaultVal = new Map<String, Object> {
@@ -87,6 +117,11 @@ public class SM010_ContractServices_Test {
         Order order = Database.query('SELECT Id ,SBQQ__Contracted__c , Status ,OpportunityId,EffectiveDate FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
         order.status ='Activated';
         update order;
+        
+        
+        Order order2 = Database.query('SELECT Id ,SBQQ__Contracted__c , Status ,OpportunityId,EffectiveDate FROM Order WHERE SBQQ__Quote__c  = \''+quote2.Id+'\'');
+        order2.status ='Activated';
+        update order2;
         
         
     }
@@ -158,7 +193,6 @@ public class SM010_ContractServices_Test {
 
         }
     }
-
     @isTest
     private static void setOrderFieldsTest(){
         System.runAs(UM002_TestDataFactory.createUser()){
