@@ -1161,7 +1161,7 @@ newMe.FederationIdentifier = null;
         LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Devis__c = quoteId, LPCR_Evenement__c = event,
                                                                                      LPCR_DateEffet__c = dateEffet, LPCR_Compte__c = accountId,
                                                                                      LPCR_Quantite__c = 1, LPCR_Contract__c = contractId,
-                                                                                     LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = 'Faux',
+                                                                                     LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = false,
                                                                                      LPCR_RessourceFamille__c = revenusFamille);       
         return modifEntrante;
     }
