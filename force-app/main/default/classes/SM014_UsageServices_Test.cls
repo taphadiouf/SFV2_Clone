@@ -5,18 +5,13 @@
 */
 @isTest
 public class SM014_UsageServices_Test {
-    
-    
-    
-    
+   
     @testSetup 
     static void setup() {
         Id accountEntrepriseRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
         Id accountCrecheTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
 		Id contactEnfantTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Enfant);
-
-
-        Id standardPricebookId = Test.getStandardPricebookId();
+		Id standardPricebookId = Test.getStandardPricebookId();
         
         UM002_TestDataFactory.insertBillingCustomSettings();
         
