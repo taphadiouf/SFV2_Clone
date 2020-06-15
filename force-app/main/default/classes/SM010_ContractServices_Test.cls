@@ -72,6 +72,9 @@ public class SM010_ContractServices_Test {
         quote.SBQQ__RenewalUpliftRate__c = 2; 
         quote.LPCR_PlanningEnfant__c = planningEnfant.id;
         quote.LPCR_BatchCommande__c = 'Batch 2';
+        quote.LPCR_ResponsableADV__c = UserInfo.getUserId();
+        quote.SBQQ__SalesRep__c = UserInfo.getUserId();
+        quote.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
 
         update quote;
         
@@ -86,6 +89,7 @@ public class SM010_ContractServices_Test {
         quote2.SBQQ__RenewalUpliftRate__c = 2; 
         quote2.LPCR_PlanningEnfant__c = planningEnfant.id;
         quote2.LPCR_BatchCommande__c = 'Batch 2';
+        
 
         update quote2;
         
@@ -133,7 +137,7 @@ public class SM010_ContractServices_Test {
             Date lastMonth=Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day()+1) ;
             Account acc = [SELECT Id, name from Account where name ='test' ];
             
-            SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_DureeContratJour__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_RenouvellementConvenu__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
+            SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_DureeContratJour__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_RenouvellementConvenu__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
             Order order = Database.query('SELECT Id , Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
             
             Test.startTest();
@@ -143,7 +147,7 @@ public class SM010_ContractServices_Test {
             
             Contract contract =null; 
            try{
-                contract = [SELECT Id,SBQQ__Order__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c, LPCR_PlanningEnfant__c FROM Contract 
+                contract = [SELECT Id,SBQQ__Order__c, LPCR_Sales_Rep__c ,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c, LPCR_PlanningEnfant__c FROM Contract 
                             WHERE SBQQ__Order__c =:order.Id ]; 
             }catch(Exception e){
                 system.debug('Error , Contract not get generated');
@@ -157,7 +161,7 @@ public class SM010_ContractServices_Test {
             upsert contract;
         
             Test.stopTest();
-            contract = [SELECT Id,LPCR_DureeContratJour__c,SBQQ__Order__c,LPCR_BatchCommande__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,LPCR_MasterDevis__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c,LPCR_RenouvellementConvenu__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_PlanningEnfant__c FROM Contract
+            contract = [SELECT Id,LPCR_DureeContratJour__c,LPCR_Sales_Rep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, SBQQ__Order__c,LPCR_BatchCommande__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,LPCR_MasterDevis__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c,LPCR_RenouvellementConvenu__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_PlanningEnfant__c FROM Contract
                         WHERE SBQQ__Order__c =:order.Id ]; 
             System.assertNotEquals(null, contract.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
 
@@ -190,7 +194,13 @@ public class SM010_ContractServices_Test {
             System.assertEquals('Batch 2', contract.LPCR_BatchCommande__c,'LPCR_BatchCommande__c on the order.quote is not the same on the Contract');
 
             System.assertEquals(quote.LPCR_DureeContratJour__c, contract.LPCR_DureeContratJour__c,'LPCR_DureeContratJour__c on the quote is not the same on the Contract');
-
+           
+            System.assertEquals(quote.SBQQ__SalesRep__c, contract.LPCR_Sales_Rep__c,'LPCR_Sales_Rep__c on the quote is not the same on the Contract');
+            
+            System.assertEquals(quote.LPCR_ResponsableADV__c, contract.LPCR_ResponsableADV__c,'LPCR_ResponsableADV__c on the quote is not the same on the Contract');
+            
+            System.assertEquals(quote.LPCR_ResponsableServiceFamille__c, contract.LPCR_ResponsableServiceFamille__c,'LPCR_ResponsableServiceFamille__c on the quote is not the same on the Contract');
+            
         }
     }
     
