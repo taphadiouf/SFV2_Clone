@@ -40,6 +40,28 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/LPCR_DevisAccepte</template>
     </alerts>
+    <alerts>
+        <fullName>LPCR_MIBB2B</fullName>
+        <description>MIB B2B</description>
+        <protected>false</protected>
+        <recipients>
+            <field>LPCR_ResponsableServiceFamille__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_MIBB2B</template>
+    </alerts>
+    <alerts>
+        <fullName>Signature_Contrat</fullName>
+        <description>Signature Contrat</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>ataib@lpcr.fr</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_Contrat_NonSigne</template>
+    </alerts>
     <fieldUpdates>
         <fullName>LPCR_StatutApprouve</fullName>
         <field>LPCR_StatutApprobation__c</field>

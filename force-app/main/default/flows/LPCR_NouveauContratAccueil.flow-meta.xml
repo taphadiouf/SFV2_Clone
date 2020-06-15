@@ -3,7 +3,7 @@
     <actionCalls>
         <name>RedirectToDetailPage</name>
         <label>RedirectToDetailPage</label>
-        <locationX>1030</locationX>
+        <locationX>1205</locationX>
         <locationY>62</locationY>
         <actionName>c:RedirectDetailPage</actionName>
         <actionType>component</actionType>
@@ -21,7 +21,7 @@
     <assignments>
         <name>Assign_ID</name>
         <label>Assign ID</label>
-        <locationX>320</locationX>
+        <locationX>495</locationX>
         <locationY>74</locationY>
         <assignmentItems>
             <assignToReference>$Flow.CurrentRecord</assignToReference>
@@ -73,7 +73,7 @@
     <recordCreates>
         <name>Creer_Devis</name>
         <label>Créer Devis</label>
-        <locationX>849</locationX>
+        <locationX>1024</locationX>
         <locationY>62</locationY>
         <assignRecordIdToReference>QuoteID</assignRecordIdToReference>
         <connector>
@@ -110,9 +110,33 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>LPCR_ContractEntreprise__c</field>
+            <value>
+                <elementReference>ContratB2B.recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>LPCR_Creche__c</field>
             <value>
                 <elementReference>Creche.recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LPCR_ResponsableADV__c</field>
+            <value>
+                <elementReference>ResponsableADV</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LPCR_ResponsableServiceFamille__c</field>
+            <value>
+                <elementReference>ResponsableSF</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LPCR_TypeEnregistrement__c</field>
+            <value>
+                <stringValue>Contrat_Accueil</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -156,7 +180,7 @@
     <recordCreates>
         <name>Creer_Opportunite</name>
         <label>Créer l&apos;opportunité</label>
-        <locationX>676</locationX>
+        <locationX>851</locationX>
         <locationY>62</locationY>
         <assignRecordIdToReference>OpportunityID</assignRecordIdToReference>
         <connector>
@@ -197,8 +221,8 @@
     <recordLookups>
         <name>Get_ID_Record_Type_Famille_Oppty</name>
         <label>Get ID Record Type Famille Oppty</label>
-        <locationX>473</locationX>
-        <locationY>293</locationY>
+        <locationX>496</locationX>
+        <locationY>296</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_ID_Record_Type_Quote_Famille</targetReference>
@@ -226,8 +250,8 @@
     <recordLookups>
         <name>Get_ID_Record_Type_Quote_Famille</name>
         <label>Get ID Record Type Quote Famille</label>
-        <locationX>684</locationX>
-        <locationY>310</locationY>
+        <locationX>676</locationX>
+        <locationY>296</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Informations_Opportunite_Devis</targetReference>
@@ -252,16 +276,42 @@
             <field>Id</field>
         </outputAssignments>
     </recordLookups>
+    <recordLookups>
+        <name>Get_responsable_ID</name>
+        <label>Get responsable ID</label>
+        <locationX>857</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Creer_Opportunite</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ContratB2B.recordId</elementReference>
+            </value>
+        </filters>
+        <object>Contract</object>
+        <outputAssignments>
+            <assignToReference>ResponsableADV</assignToReference>
+            <field>LPCR_ResponsableADV__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ResponsableSF</assignToReference>
+            <field>LPCR_ResponsableServiceFamille__c</field>
+        </outputAssignments>
+    </recordLookups>
     <screens>
         <name>Informations_Opportunite_Devis</name>
         <label>Informations Opportunité et Devis</label>
-        <locationX>502</locationX>
+        <locationX>677</locationX>
         <locationY>65</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Creer_Opportunite</targetReference>
+            <targetReference>Get_responsable_ID</targetReference>
         </connector>
         <fields>
             <name>Details_Opportunite</name>
@@ -387,6 +437,31 @@
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
         <fields>
+            <name>ContratB2B</name>
+            <extensionName>flowruntime:lookup</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Contrat Entreprise</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>objectApiName</name>
+                <value>
+                    <stringValue>SBQQ__Quote__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>fieldApiName</name>
+                <value>
+                    <stringValue>LPCR_ContractEntreprise__c</stringValue>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
             <name>Representant1</name>
             <extensionName>flowruntime:lookup</extensionName>
             <fieldType>ComponentInstance</fieldType>
@@ -485,6 +560,13 @@
         <isOutput>true</isOutput>
     </variables>
     <variables>
+        <name>ContratEntreprise</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
         <name>OpportunityID</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
@@ -534,5 +616,27 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>ResponsableADV</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>ResponsableSF</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>ResponsablesId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Contract</objectType>
     </variables>
 </Flow>
