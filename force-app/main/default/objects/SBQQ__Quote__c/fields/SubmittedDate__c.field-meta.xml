@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_Conditionsparticulieres__c</fullName>
+    <fullName>SubmittedDate__c</fullName>
     <externalId>false</externalId>
-    <label>Conditions particulères</label>
-    <length>32768</length>
+    <label>Date d&apos;envoi pour approbation</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>LongTextArea</type>
-    <visibleLines>3</visibleLines>
+    <type>Date</type>
 </CustomField>
