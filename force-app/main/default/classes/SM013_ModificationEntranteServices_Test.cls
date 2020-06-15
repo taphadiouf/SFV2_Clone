@@ -5,7 +5,10 @@
 */
 @isTest
 public class SM013_ModificationEntranteServices_Test {
-    @testSetup 
+    private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
+    private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
+    private static final Id standardPricebookId = Test.getStandardPricebookId();
+    @testSetup
     static void testSetup(){
         List<Account> accounts = UM002_TestDataFactory.createAccounts(100, 'testAccount');
         List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(100, 'testOpp', 'Prospecting');
@@ -17,16 +20,1205 @@ public class SM013_ModificationEntranteServices_Test {
         insert modifEntrantesValides;
         List<LPCR_ModificationEntrante__c> modifEntrantes = UM002_TestDataFactory.createModificationsEntrantes(50,quotes,'Modification Adresse Contact Parent	');
         insert modifEntrantes;
+
+        Id standardPricebookId = Test.getStandardPricebookId();
+        UM002_TestDataFactory.insertBillingCustomSettings();
+        blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+        blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+        blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+        blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
+
+        Product2 prod = UM002_TestDataFactory.createFixedPriceProduct('test', billingRule.Id, revRecRule.Id,taxRule.Id );
+        prod.SBQQ__SubscriptionPricing__c ='Fixed Price';
+        prod.SBQQ__BillingFrequency__c = 'Monthly';
+        prod.SBQQ__BillingType__c = 'Advance';
+        prod.SBQQ__ChargeType__c = 'Recurring';
+        prod.SBQQ__SubscriptionTerm__c = 12;
+        prod.SBQQ__SubscriptionType__c = 'Renewable';
+        insert prod;
+
+        PricebookEntry priceBookEntry1 = UM002_TestDataFactory.createPricebookEntry(standardPricebookId,prod.Id);
+        insert priceBookEntry1;
+
     }
     @isTest
     public static void updateQuotesFromModifEntrantes_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-        List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
-        System.assertEquals(50, quotesValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesValides');
-        List<SBQQ__Quote__c> quotesNonValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c != 'Validé Directrice'];
-        System.assertEquals(50, quotesNonValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesNonValides');
-        Test.stopTest();
+            List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
+            System.assertEquals(50, quotesValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesValides');
+            List<SBQQ__Quote__c> quotesNonValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c != 'Validé Directrice'];
+            System.assertEquals(50, quotesNonValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesNonValides');
+            Test.stopTest();
         }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_1_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Situation Handicapé Enfant Fratrie',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_2_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Type Planning',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            insert modif;
+
+            Time debutTime = Time.newInstance(08, 30, 2, 20);
+            Time finTime = Time.newInstance(16, 30, 2, 20);
+            LPCR_DetailModificationPlanning__c detailModifPlan = new LPCR_DetailModificationPlanning__c(LPCR_HeureDebutJeudi__c = debutTime, LPCR_HeureDebutLundi__c = debutTime, LPCR_HeureDebutMardi__c = debutTime, LPCR_HeureDebutMercredi__c = debutTime, LPCR_HeureDebutVendredi__c =debutTime, LPCR_HeureFinJeudi__c = finTime, LPCR_HeureFinLundi__c = finTime, LPCR_HeureFinMardi__c = finTime, LPCR_HeureFinMercredi__c = finTime, LPCR_HeureFinVendredi__c = finTime);
+            detailModifPlan.LPCR_ModificationEntrante__c = modif.id;
+            insert detailModifPlan;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_3_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Nombre Jour Congé',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_4_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Fin Contrat',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_5_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Type Accueil',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_TypeAccueil__c = 'Normal';
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_6_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Adresse Contact Parent',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_Rue__c = 'test';
+            modif.LPCR_Ville__c = 'test';
+            modif.LPCR_Pays__c = 'test';
+            modif.LPCR_CodePostal__c = 'AAAA77';
+
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_7_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Autorité Parentale',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_OuiNon__c = true;
+
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_8_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Numéro Allocataire',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_IDUnique__c = 'test';
+
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_9_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Naissance Enfant',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_Date__c = Date.newInstance(1992, 01, 01);
+
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_10_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Section',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_Section__c = 'Grands';
+
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_11_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Mode Garde',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_SituationFamiliale__c = 'Divorcé';
+            modif.LPCR_Garde__c = 'Autorité parentale conjointe';
+
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_12_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Situation Familiale',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_SituationFamiliale__c = 'En couple';
+
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_13_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Heure Supplémentaire MAC',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
+            modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
+
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_14_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Heure Occasionnel MAC',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
+            modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
+
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_15_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Heure Déduite MAC',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
+            modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
+
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+   @isTest
+    public static void updateQuotesFromModifEntrantesBatch_16_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+            Date lastDayOfCurrentMonthDate=Date.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month())) ;
+
+            Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+            PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            quote.SBQQ__Primary__c = true;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+            System.debug('**** qlines '+qlines);
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            contract.Status = 'Draft';
+            Insert contract;
+
+            contract.Status = 'Activated';
+            update contract;
+
+            Order order = UM002_TestDataFactory.createOrder(acc.Id, contract.id,date.today(),'test','Draft','1');
+            order.Pricebook2Id = standardPricebookId;
+            order.SBQQ__Quote__c = quote.id;
+            insert order;
+
+            OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
+            orderItem.SBQQ__QuoteLine__c = qlines.get(0).id;
+            orderItem.SBQQ__Activated__c = false;
+            insert orderItem;
+            orderItem.SBQQ__Activated__c = true;
+            update orderItem;
+            order.status ='Activated';
+            update order;
+            order.blng__BillNow__c = true;
+            update order;
+
+            blng__Invoice__c invoice = new blng__Invoice__c();
+            invoice.blng__Account__c = acc.Id;
+            invoice.blng__BillToContact__c = cont.id;
+            invoice.blng__InvoiceDate__c = Date.today();
+            invoice.blng__DueDate__c = Date.today();
+            invoice.blng__Order__c = order.id;
+            invoice.blng__PaymentBatch__c = 'Batch 1';
+            insert invoice;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('NB Heures réalisées',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
+            modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
+            modif.LPCR_Invoice__c = invoice.id;
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_17_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_18_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Abscence',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
+            modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
+
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_19_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+            Date lastDayOfCurrentMonthDate=Date.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month())) ;
+
+            Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+            PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            quote.SBQQ__Primary__c = true;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+            System.debug('**** qlines '+qlines);
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            contract.Status = 'Draft';
+            Insert contract;
+
+            contract.Status = 'Activated';
+            update contract;
+
+            Order order = UM002_TestDataFactory.createOrder(acc.Id, contract.id,date.today(),'test','Draft','1');
+            order.Pricebook2Id = standardPricebookId;
+            order.SBQQ__Quote__c = quote.id;
+            insert order;
+
+            OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
+            orderItem.SBQQ__QuoteLine__c = qlines.get(0).id;
+            orderItem.SBQQ__Activated__c = false;
+            insert orderItem;
+            orderItem.SBQQ__Activated__c = true;
+            update orderItem;
+            order.status ='Activated';
+            update order;
+            order.blng__BillNow__c = true;
+            update order;
+
+            blng__Invoice__c invoice = new blng__Invoice__c();
+            invoice.blng__Account__c = acc.Id;
+            invoice.blng__BillToContact__c = cont.id;
+            invoice.blng__InvoiceDate__c = Date.today();
+            invoice.blng__DueDate__c = Date.today();
+            invoice.blng__Order__c = order.id;
+            invoice.blng__PaymentBatch__c = 'Batch 1';
+            insert invoice;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Commentaire individuel facture',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
+            modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
+            modif.LPCR_Invoice__c = invoice.id;
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_20_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+            Date lastDayOfCurrentMonthDate=Date.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month())) ;
+
+            Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+            PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            quote.SBQQ__Primary__c = true;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+            System.debug('**** qlines '+qlines);
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            contract.Status = 'Draft';
+            Insert contract;
+
+            contract.Status = 'Activated';
+            update contract;
+
+            Order order = UM002_TestDataFactory.createOrder(acc.Id, contract.id,date.today(),'test','Draft','1');
+            order.Pricebook2Id = standardPricebookId;
+            order.SBQQ__Quote__c = quote.id;
+            insert order;
+
+            OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
+            orderItem.SBQQ__QuoteLine__c = qlines.get(0).id;
+            orderItem.SBQQ__Activated__c = false;
+            insert orderItem;
+            orderItem.SBQQ__Activated__c = true;
+            update orderItem;
+            order.status ='Activated';
+            update order;
+            order.blng__BillNow__c = true;
+            update order;
+
+            blng__Invoice__c invoice = new blng__Invoice__c();
+            invoice.blng__Account__c = acc.Id;
+            invoice.blng__BillToContact__c = cont.id;
+            invoice.blng__InvoiceDate__c = Date.today();
+            invoice.blng__DueDate__c = Date.today();
+            invoice.blng__Order__c = order.id;
+            invoice.blng__PaymentBatch__c = 'Batch 1';
+            insert invoice;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Commentaire global facture',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
+            modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
+            modif.LPCR_Invoice__c = invoice.id;
+            modif.LPCR_Commentaire__c = 'Test';
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_21_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Nombre de repas',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
+            modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
+
+            insert modif;
+
+            Test.startTest();
+
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+    @isTest
+    public static void createUsageFromModifEntrantes_Test(){
+        Test.startTest();
+        Account acc = UM002_TestDataFactory.createAccounts(1, 'tAccount').get(0);
+        insert acc;
+        Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+        insert cont;
+        LPCR_ModificationEntrante__c modifEntrantesValides = new LPCR_ModificationEntrante__c();
+        modifEntrantesValides.LPCR_Contact__c= cont.id;
+        modifEntrantesValides.LPCR_Compte__c = acc.id;
+        modifEntrantesValides.LPCR_Evenement__c= 'Modification Heure Occasionnel MAC';
+        modifEntrantesValides.LPCR_HeureDateDebut__c = System.today();
+        modifEntrantesValides.LPCR_HeureDateFin__c = System.today().addDays(60);
+        modifEntrantesValides.LPCR_Quantite__c = 1;
+        insert modifEntrantesValides;
+
+        Test.stopTest();
     }
 }
