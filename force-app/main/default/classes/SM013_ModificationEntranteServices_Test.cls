@@ -5,11 +5,10 @@
 */
 @isTest
 public class SM013_ModificationEntranteServices_Test {
-    private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
-    @testSetup 
     private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
     private static final Id standardPricebookId = Test.getStandardPricebookId();
+    
     @testSetup
     static void testSetup(){
         List<Account> accounts = UM002_TestDataFactory.createAccounts(100, 'testAccount');
