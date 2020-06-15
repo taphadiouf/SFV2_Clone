@@ -8,12 +8,11 @@ public class SM010_ContractServices {
     
     public static void setContractFields(List<Contract> contracts){
         Set<String> quoteIds = UM003_TypeManager.getFieldsOfListObjects(contracts,'SBQQ__Quote__c');
-        Id B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contrat, Label.LPCR_Contrat_B2B);
-
         Set<String> orderIds = UM003_TypeManager.getFieldsOfListObjects(contracts,'SBQQ__Order__c');
         Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_DureeContratJour__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_IndexationConvenue__c,LPCR_MasterDevis__c,LPCR_RenouvellementConvenu__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c, LPCR_ContratEntreprise__c , recordtype.name, LPCR_PlanningEnfant__c  from SBQQ__Quote__c WHERE Id in :quoteIds]);
         Map<Id,Order> orderMap = new  Map<Id,Order>([SELECT id,SBQQ__Quote__c,SBQQ__Quote__r.LPCR_BatchCommande__c from Order WHERE Id in :orderIds]);
-        
+        Id B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contrat, Label.LPCR_Contrat_B2B);
+
         for (Contract eachContract : contracts){
             if(orderMap.containsKey(eachContract.SBQQ__Order__c)){
                 if(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c != null && orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c != null ){
@@ -27,6 +26,8 @@ public class SM010_ContractServices {
                 eachContract.LPCR_TypeFacturation__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_TypeFacturation__c;
                 
                 eachContract.LPCR_BillingFrequency__c = quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__BillingFrequency__c;
+                
+                eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_MasterDevis__c;
                 
                 eachContract.LPCR_RenouvellementConvenu__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_RenouvellementConvenu__c;
                 
@@ -42,10 +43,11 @@ public class SM010_ContractServices {
                 
                 eachContract.LPCR_RenouvellementAutomatique__c = quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__RenewalUpliftRate__c == null ? false : true;
                 
+                eachContract.LPCR_DureeContratJour__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_DureeContratJour__c;
+
                 if(quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_Contrat_B2B) {
                     eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_MasterDevis__c;
                 }
-                eachContract.LPCR_DureeContratJour__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_DureeContratJour__c;
 
                 if(quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_ContratA) {
                     eachContract.LPCR_ContratEntreprise__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_ContratEntreprise__c;
