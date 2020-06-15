@@ -2,13 +2,13 @@
 <WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>ExporterListeAttribution</fullName>
     <availability>online</availability>
-    <description>Bouton permettant d&#39;exécuter le rapport &quot;Liste d&#39;attribution&quot; pour un compte entreprise réservataire</description>
+    <description>Bouton permettant d&apos;exécuter le rapport &quot;Liste d&apos;attribution&quot; pour un compte entreprise réservataire</description>
     <displayType>massActionButton</displayType>
     <encodingKey>UTF-8</encodingKey>
     <linkType>url</linkType>
-    <masterLabel>Exporter Liste d&#39;attribution</masterLabel>
+    <masterLabel>Exporter Liste d&apos;attribution</masterLabel>
     <openType>replace</openType>
     <protected>false</protected>
     <requireRowSelection>false</requireRowSelection>
-    <url>/lightning/r/Report/00O3N000000mw8bUAA/view?fv0={!Account.Id}</url>
+    <url>/lightning/r/Report/{!$Setup.LPCR_ParametrePreinscription__c.LPCR_IdRapportListeAttribution__c}/view?fv0={!Account.Id}</url>
 </WebLink>
