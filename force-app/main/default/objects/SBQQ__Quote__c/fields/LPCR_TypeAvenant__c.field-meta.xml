@@ -38,9 +38,14 @@
                 <label>Modification du type/fréquence de facturation</label>
             </value>
             <value>
-                <fullName>Mouvement Interne Berceau (MIB)</fullName>
+                <fullName>MIB Meme Region/Prix</fullName>
                 <default>false</default>
-                <label>Mouvement Interne Berceau (MIB)</label>
+                <label>MIB Meme Region/Prix</label>
+            </value>
+            <value>
+                <fullName>MIB Changement Region/Prix</fullName>
+                <default>false</default>
+                <label>MIB Changement Region/Prix</label>
             </value>
         </valueSetDefinition>
     </valueSet>

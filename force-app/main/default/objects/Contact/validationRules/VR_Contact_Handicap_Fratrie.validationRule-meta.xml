@@ -5,7 +5,7 @@
     <description>Pour déclarer un contact handicapé associé au compte Famille, Le champ Handicap enfant dans la fratrie doit être coché sur le compte famille</description>
     <errorConditionFormula>AND(
 NOT( $User.LPCR_BypassValidationRules__c ),
-RecordType.DeveloperName = &#39;Enfant&#39;,
+RecordType.DeveloperName = &apos;Enfant&apos;,
 LPCR_Handicape__c ,
 NOT( Account.LPCR_Handicap__c )
 

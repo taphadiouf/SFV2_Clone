@@ -5,6 +5,17 @@
     <compactLayoutAssignment>PresentationCompacteDevis</compactLayoutAssignment>
     <label>Contrat D’accueil</label>
     <picklistValues>
+        <picklist>EditLinesFieldSetName__c</picklist>
+        <values>
+            <fullName>Amendment_FieldSet_test_only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SBQQ%5F%5FLineEditor</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_DureeContrat__c</picklist>
         <values>
             <fullName>Durée déterminée</fullName>
@@ -123,11 +134,15 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Modification des termes du contrat</fullName>
+            <fullName>MIB Changement Region%2FPrix</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Mouvement Interne Berceau %28MIB%29</fullName>
+            <fullName>MIB Meme Region%2FPrix</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Modification des termes du contrat</fullName>
             <default>false</default>
         </values>
         <values>
