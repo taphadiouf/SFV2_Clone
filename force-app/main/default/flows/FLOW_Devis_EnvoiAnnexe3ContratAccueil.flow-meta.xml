@@ -25,6 +25,10 @@
                 <elementReference>recordId</elementReference>
             </value>
         </inputParameters>
+        <outputParameters>
+            <assignToReference>agreementId</assignToReference>
+            <name>agreementId</name>
+        </outputParameters>
     </actionCalls>
     <actionCalls>
         <description>Ouvrir la page de l&apos;accord Adobe sign généré</description>
@@ -37,7 +41,7 @@
         <inputParameters>
             <name>recordId</name>
             <value>
-                <elementReference>Creation_Accord.agreementId</elementReference>
+                <elementReference>agreementId</elementReference>
             </value>
         </inputParameters>
     </actionCalls>
@@ -123,6 +127,13 @@
         </connector>
     </start>
     <status>Active</status>
+    <variables>
+        <name>agreementId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <description>ID du devis</description>
         <name>recordId</name>
