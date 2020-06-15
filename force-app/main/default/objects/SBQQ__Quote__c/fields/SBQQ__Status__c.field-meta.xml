@@ -7,13 +7,17 @@
     <inlineHelpText>Status indicating where quote is in its lifecycle.</inlineHelpText>
     <label>Status</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
             <sorted>false</sorted>
+            <value>
+                <fullName>Brouillon</fullName>
+                <default>false</default>
+                <label>Brouillon</label>
+            </value>
             <value>
                 <fullName>Draft</fullName>
                 <default>true</default>
