@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Régulier</fullName>
+        <default>false</default>
+        <label>Régulier</label>
+    </customValue>
+    <customValue>
+        <fullName>Occasionnel</fullName>
+        <default>false</default>
+        <label>Occasionnel</label>
+    </customValue>
+    <masterLabel>Type d&apos;accueil</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
