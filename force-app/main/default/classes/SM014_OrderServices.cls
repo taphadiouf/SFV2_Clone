@@ -13,10 +13,11 @@ public with sharing class SM014_OrderServices {
     public static void setOrderFields (List<order> orderList) {
         Set<String> quoteIds = UM003_TypeManager.getFieldsOfListObjects(orderList,'SBQQ__Quote__c');
         
-        Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_BatchCommande__c from SBQQ__Quote__c WHERE Id in :quoteIds]);
+        Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,SBQQ__BillingFrequency__c  ,LPCR_BatchCommande__c from SBQQ__Quote__c WHERE Id in :quoteIds]);
         
         for (Order eachOrder : orderList){
             eachOrder.blng__InvoiceBatch__c = quoteMap.get(eachOrder.SBQQ__Quote__c).LPCR_BatchCommande__c;
+            eachOrder.LPCR_FrequenceFacturation__c  = quoteMap.get(eachOrder.SBQQ__Quote__c).SBQQ__BillingFrequency__c;
         }
     }
 }
