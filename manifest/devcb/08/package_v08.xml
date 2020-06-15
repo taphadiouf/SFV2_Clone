@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+        <members>SBQQ__Quote__c</members>
+        <name>CustomObject</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c.LPCR_ConditionsParticulieres__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeEnregistrement__c</members>
+        <members>sbaa__Approval__c.Quote__c</members>
+        <members>SBQQ__Quote__c.ApprovalStatus__c</members>
+        <members>SBQQ__Quote__c.SubmittedDate__c</members>
+        <members>SBQQ__Quote__c.SubmittedUser__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>LPCR_NouveauContratAccueil</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>LPCR_NouveauContratAccueil</members>
+        <name>FlowDefinition</name>
+    </types>
+
+    <types>
+        <members>unfiled$public/LPCR_MIBB2B</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+        <members>Opportunity.NouveauContratReferecement</members>
+        <members>Opportunity.NouveauContratReservation</members>
+        <name>QuickAction</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c.LPCR_MIBB2B</members>
+        <members>SBQQ__Quote__c.LPCR_ValidationAcceptee</members>
+        <members>SBQQ__Quote__c.Signature_Contrat</members>
+        <name>WorkflowAlert</name>
+    </types>
+    <version>48.0</version>
+</Package>
