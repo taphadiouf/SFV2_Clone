@@ -29,7 +29,6 @@ public class SM010_ContractServices {
                 }
             }
 
-
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){                
                 eachContract =setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(eachContract.SBQQ__Quote__c));
             }
@@ -93,7 +92,9 @@ public class SM010_ContractServices {
         
         contract.LPCR_BillingFrequency__c = quote.SBQQ__BillingFrequency__c;
         
-        contract.LPCR_MasterDevis__c = quote.LPCR_MasterDevis__c;
+        if(quote.recordtype.name == Label.LPCR_Contrat_B2B) {
+            contract.LPCR_MasterDevis__c = quote.LPCR_MasterDevis__c;
+        }
         
         contract.LPCR_RenouvellementConvenu__c = quote.LPCR_RenouvellementConvenu__c;
         
