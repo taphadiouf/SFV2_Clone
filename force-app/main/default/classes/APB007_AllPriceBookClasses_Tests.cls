@@ -192,7 +192,7 @@ public with sharing class APB007_AllPriceBookClasses_Tests {
             } 
 
             tmpContract.LPCR_Creche__c = crecheByCustomer.get(order.AccountId);
-            //tmpContract.Status='Activated';
+            tmpContract.Status='Draft';
 
             contracts.add(tmpContract);
         }
