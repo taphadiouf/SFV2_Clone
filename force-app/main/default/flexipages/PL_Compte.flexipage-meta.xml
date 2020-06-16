@@ -328,43 +328,10 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
-                <name>modeAffich</name>
-                <value>CompteFamille</value>
-            </componentInstanceProperties>
-            <componentName>lWC008_ShowCrechesLpcr</componentName>
-        </componentInstances>
-        <name>Facet-483aaf6b-5bc7-4f2d-adc8-551e5d37db14</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
-                <name>body</name>
-                <value>Facet-483aaf6b-5bc7-4f2d-adc8-551e5d37db14</value>
-            </componentInstanceProperties>
-            <componentInstanceProperties>
-                <name>title</name>
-                <value>Crèches à proximité</value>
-            </componentInstanceProperties>
-            <componentName>flexipage:tab</componentName>
-        </componentInstances>
-        <name>Facet-1614aad7-b564-4a5f-9621-60d35519de9b</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <componentInstances>
-            <componentInstanceProperties>
                 <name>tabs</name>
                 <value>Facet-ee64fc90-585d-46b4-92b6-8b9e4dd51e92</value>
             </componentInstanceProperties>
             <componentName>flexipage:tabset</componentName>
-            <visibilityRule>
-                <criteria>
-                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                    <operator>EQUAL</operator>
-                    <rightValue>Famille</rightValue>
-                </criteria>
-            </visibilityRule>
         </componentInstances>
         <name>sidebar</name>
         <type>Region</type>
