@@ -3,6 +3,18 @@
     <label>Modification Montant Ressource</label>
     <protected>false</protected>
     <values>
+        <field>LPCR_Annexe2__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>LPCR_Annexe3__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>LPCR_ContratAccueil__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
         <field>LPCR_Processus__c</field>
         <value xsi:type="xsd:string">Avenant</value>
     </values>
