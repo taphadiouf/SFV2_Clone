@@ -20,9 +20,11 @@ export default class Lwc002_ConvertButton_LeadFamille extends NavigationMixin(Li
     contactId;
     enfantsIndexes;
     chosenCrecheId;
-    chosenCompteId
+    chosenCompteId;
+    
     @wire(CurrentPageReference)
     pageRef;
+
     connectedCallback(){
         registerListener("changedEnfants",this.handleChangedEnfants,this);
         registerListener("chosenCrecheChanged", this.handleChosenCrecheChanged, this);
@@ -60,11 +62,13 @@ export default class Lwc002_ConvertButton_LeadFamille extends NavigationMixin(Li
         })
         .catch(err=>{
             console.error(err);
-            this.dispatchEvent(new ShowToastEvent({
-                title: "Erreur!",
-                message: "Une erreur est survenue lors de la conversion!",
-                variant: "error"
-            }));
+                this.dispatchEvent(new ShowToastEvent({
+                    title: "Erreur!",
+                    message: err.body.message,
+                    variant: "error"
+                
+                }));
+         
         });
     }
     redirect(){
