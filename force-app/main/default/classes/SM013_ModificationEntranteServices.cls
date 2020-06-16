@@ -80,7 +80,6 @@ public with sharing class SM013_ModificationEntranteServices {
     public static void createUsageFromModifEntrantes(List<LPCR_ModificationEntrante__c> ModifEntrantesList){
         System.debug('SM013_ModificationEntranteServices');
         List<blng__Usage__c> lstBillingUsage = new List<blng__Usage__c>();
-
         for(LPCR_ModificationEntrante__c eachModification : ModifEntrantesList){
             if('Modification Heure Supplémentaire MAC'.equals(eachModification.LPCR_Evenement__c) &&
                'Modification Heure Occasionnel MAC'.equals(eachModification.LPCR_Evenement__c) &&

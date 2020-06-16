@@ -1265,7 +1265,6 @@ public class SM013_ModificationEntranteServices_Test {
         modifEntrantesValides.LPCR_HeureDateFin__c = System.today().addDays(60);
         modifEntrantesValides.LPCR_Quantite__c = 1;
         insert modifEntrantesValides;
-
         Test.stopTest();
     }
 }

@@ -213,13 +213,13 @@
         </connector>
         <fields>
             <name>Informations_opty</name>
-            <fieldText>&lt;p&gt;&lt;b&gt;Détails de l&#39;opportunité&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;b&gt;Détails de l&apos;opportunité&lt;/b&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
             <name>Nom_de_l_opportunit</name>
             <dataType>String</dataType>
-            <fieldText>Nom de l&#39;opportunité</fieldText>
+            <fieldText>Nom de l&apos;opportunité</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
         </fields>
@@ -270,7 +270,7 @@
             <targetReference>Get_quote</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>AccountId</name>
         <dataType>String</dataType>
