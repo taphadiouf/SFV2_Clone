@@ -7,6 +7,7 @@
 @isTest
 public class SM008_QuoteServices_Test {
     private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
+    private static final Id ContratA_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c', Label.LPCR_ContratA);
     @testSetup 
     static void testSetup(){
         
@@ -133,15 +134,27 @@ public class SM008_QuoteServices_Test {
             update opp;
             SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
             quote.SBQQ__Type__c='Renewal';
+            quote.RecordTypeId = ContratA_RT_ID;
+            
+            Contract con = new Contract(AccountID = accs.get(0).id,SBQQ__Opportunity__c = oppties.get(0).id,
+                                        LPCR_Sales_Rep__c = UserInfo.getUserId(), LPCR_ResponsableADV__c = UserInfo.getUserId(), LPCR_ResponsableServiceFamille__c = UserInfo.getUserId(),
+                                        StartDate =System.today(),ContractTerm = 12,LPCR_DateDebut__c =Date.newInstance(2020, 05, 01),
+                                        LPCR_DateFin__c = Date.newInstance(2020, 05, 30),LPCR_RenouvellementConvenu__c = 'Non',LPCR_MethodeRenouvellement__c = 'Express' );
+            Insert con;
+            
+            quote.LPCR_ContractEntreprise__c  = con.Id;
             
             insert quote;
             
-            quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
+            quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
             System.assertNotEquals(null,quote.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
             System.assertEquals(quote.LPCR_IndexationConvenue__c, opp.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
             System.assertEquals(quote.LPCR_TypeFacturation__c, opp.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
             System.assertEquals(quote.SBQQ__BillingFrequency__c, opp.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
             System.assertEquals(quote.LPCR_PlanningEnfant__c, opp.LPCR_PlanningEnfant__c, 'Quote LPCR_PlanningEnfant__c not equals to oppt LPCR_PlanningEnfant__c');
+            System.assertEquals(quote.SBQQ__SalesRep__c,  UserInfo.getUserId(), 'Quote SBQQ__SalesRep__c not equals to oppt LPCR_PlanningEnfant__c');
+            System.assertEquals(quote.LPCR_ResponsableADV__c,  UserInfo.getUserId(), 'Quote LPCR_ResponsableADV__c not equals to oppt LPCR_PlanningEnfant__c');
+            System.assertEquals(quote.LPCR_ResponsableServiceFamille__c,  UserInfo.getUserId(), 'Quote LPCR_ResponsableServiceFamille__c not equals to oppt LPCR_PlanningEnfant__c');
             Test.stopTest();
             
         } }
