@@ -620,12 +620,14 @@ newMe.FederationIdentifier = null;
         Contract  contract = new Contract(AccountID = accountID,SBQQ__Quote__c=quoteId,SBQQ__Order__c =orderId);	
         return contract;	
     }	
+  
     public static Contract createContract(Id accountID,Id quoteId, Id opportunityId, Date dateFin){	
         Contract  contract = new Contract(AccountID = accountID,SBQQ__Quote__c = quoteId,SBQQ__Opportunity__c = opportunityId,
                                         StartDate =System.today(),ContractTerm = 12,LPCR_DateDebut__c = System.today(),
                                         LPCR_DateFin__c = dateFin,LPCR_RenouvellementConvenu__c = 'Non',LPCR_MethodeRenouvellement__c = 'Express' );	
         return contract;	
     }
+
     public static Order createOrder(Id accountID,Id contractID,Date orderStartDate,String name ,String status,String billindDayOfMonth){	
         Order  order = new Order(blng__BillingDayOfMonth__c = billindDayOfMonth,AccountID = accountID,ContractId =contractID,EffectiveDate=orderStartDate,Status=status,Name=name);	
         return order;	
@@ -655,6 +657,7 @@ newMe.FederationIdentifier = null;
         prod.Name = name;
         return prod;
     }
+
     public static Product2 createFixedPriceProduct(String name, Id billingRuleId,Id revenueRecognitionRuleId,Id taxeRuleId ){
         Product2 prod = new Product2();
         prod.isActive = true;
@@ -1156,15 +1159,25 @@ newMe.FederationIdentifier = null;
         return ModifEntrantes;
     }
     
+    public static LPCR_ModificationEntrante__c createModificationsEntrante(String event, Id quoteId,Id accountId, Id contactId, Id contractId,Decimal revenusFamille){
+        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Devis__c = quoteId, LPCR_Evenement__c = event,
+                                                                                     LPCR_Compte__c = accountId,
+                                                                                     LPCR_Quantite__c = 1, LPCR_Contract__c = contractId,
+                                                                                     LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = false,
+                                                                                     LPCR_RessourceFamille__c = revenusFamille);       
+        return modifEntrante;
+    }
+    
     //added by saurabh
     public static LPCR_ModificationEntrante__c createModificationsEntrante(String event, Id quoteId,Id accountId, Id contactId, Id contractId,Date dateEffet,Decimal revenusFamille){
         LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Devis__c = quoteId, LPCR_Evenement__c = event,
                                                                                      LPCR_DateEffet__c = dateEffet, LPCR_Compte__c = accountId,
                                                                                      LPCR_Quantite__c = 1, LPCR_Contract__c = contractId,
-                                                                                     LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = 'Faux',
+                                                                                     LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = false,
                                                                                      LPCR_RessourceFamille__c = revenusFamille);       
         return modifEntrante;
     }
+
     public static List<Account> createAccountswithtype(Integer numAccs, String name, String typeCreche, String rTDevName){
         List<Account> accounts = new List<Account>();
        	Id recTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, rTDevName);
