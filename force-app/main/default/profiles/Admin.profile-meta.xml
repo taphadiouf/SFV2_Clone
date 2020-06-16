@@ -300,6 +300,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>SM014_UsageServices</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SM014_UsageServices_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SM014_OrderServices</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -361,6 +369,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>TM012_QuoteLineItemTrigger</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TM013_UsageTrigger</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -7495,6 +7507,16 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Usage__c.LPCR_Product__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Usage__c.LPCR_TypeEvenement_DEL__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>blng__Usage__c.LPCR_TypeEvenement_DEL__c</field>
         <readable>false</readable>
@@ -7683,6 +7705,9 @@
         <layout>Event-Présentation d%27événement</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>LPCR_AdobeAgreementTemplate__mdt-LPCR Agreement Template Mapping Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>LPCR_BonAchatPartenaire__c-Présentation Bon d%27achat partenaire</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -7802,6 +7827,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Task-Présentation de la tâche</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>blng__Usage__c-blng__Usage Layout</layout>
     </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
