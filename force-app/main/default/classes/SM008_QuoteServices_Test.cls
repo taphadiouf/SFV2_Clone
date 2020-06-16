@@ -120,9 +120,9 @@ public class SM008_QuoteServices_Test {
     public static void setQuoteFields_Test(){    
         
         System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
             LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
             insert planningEnfant;
-            Test.startTest();
             List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
             List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
             Opportunity opp = oppties.get(0);
@@ -167,6 +167,29 @@ public class SM008_QuoteServices_Test {
             Map<Id,Set<Id>> mapQuoteIDAgreementID = SM008_QuoteServices.generateAgreementTemp(newQuoteMap,oldQuoteMap);
             Test.stopTest();
         }
+    }
+    @IsTest
+    static void setTypeEnregistrement_Test(){
+        
+        Test.startTest();
+        
+        Opportunity currentOpportunity = [SELECT Id, LPCR_TypeEnregistrement__c FROM Opportunity limit 1];
+        currentOpportunity.LPCR_TypeEnregistrement__c = 'TestTypeEnregistrement';
+        update currentOpportunity;
+        List<Opportunity> opps = new List<Opportunity>();
+        opps.add(currentOpportunity);
+        Id accountCrecheRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
+        Account currentAccount = [SELECT Id FROM Account WHERE RecordTypeId= :accountCrecheRTId limit 1];
+        List<Account> accs = new List<Account>();
+        accs.add(currentAccount);
+
+        SBQQ__Quote__c newQuote = UM002_TestDataFactory.createQuoteswithStatus(1, accs, opps, 'Draft').get(0);
+        insert newQuote;
+        newQuote = [SELECT Id,LPCR_TypeEnregistrement__c FROM SBQQ__Quote__c WHERE Id = :newQuote.Id limit 1];
+        System.assertEquals('TestTypeEnregistrement', newQuote.LPCR_TypeEnregistrement__c);
+        Test.stopTest();
+       
+        
     }
     
     

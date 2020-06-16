@@ -34,8 +34,19 @@ public class SM010_ContractServices {
             }
         }
     }
-    
-    
+    public static void setTypeEnregistrement(List<Contract> contracts){
+        Set<Id> orderIdsSet = new Set<Id>();
+        for(Contract eachContract : contracts){
+            orderIdsSet.add(eachContract.SBQQ__Order__c);
+        }
+        //Map : Id=>Order (Parent records of the current contracts)
+        Map<Id, Order> parentOrdersMap = new Map<Id, Order>([SELECT Id, LPCR_TypeEnregistrement__c FROM Order WHERE Id IN :orderIdsSet]);
+        for(Contract eachContract : contracts){
+            if(parentOrdersMap.containsKey(eachContract.SBQQ__Order__c)){
+                eachContract.LPCR_TypeEnregistrement__c = parentOrdersMap.get(eachContract.SBQQ__Order__c).LPCR_TypeEnregistrement__c;
+            }
+        }
+    }
 /**
 * @Author Ayoub Ouarti
 * @Created 08/06/2020

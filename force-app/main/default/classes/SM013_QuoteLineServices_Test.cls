@@ -151,8 +151,8 @@ public with sharing class SM013_QuoteLineServices_Test {
                 'StartDate' => System.today().addMonths(-1),
                 'SBQQ__RenewalQuoted__c' => false,
                 'ContractTerm' => 1,
-                'LPCR_Creche__c' => creche.Id,
-                'Status' => 'Activated'
+                'Status' => 'Draft',
+                'LPCR_Creche__c' => creche.Id
             };
 
             contracts.add((Contract) UM002_TestDataFactory.createSObject('Contract', defaultVal));

@@ -620,7 +620,10 @@ newMe.FederationIdentifier = null;
         Contract  contract = new Contract(AccountID = accountID,SBQQ__Quote__c=quoteId,SBQQ__Order__c =orderId);	
         return contract;	
     }	
-  
+    public static Contract createContract(Id accountID, Id orderId){	
+        Contract  contract = new Contract(AccountID = accountID,SBQQ__Order__c =orderId);	
+        return contract;	
+    }	
     public static Contract createContract(Id accountID,Id quoteId, Id opportunityId, Date dateFin){	
         Contract  contract = new Contract(AccountID = accountID,SBQQ__Quote__c = quoteId,SBQQ__Opportunity__c = opportunityId,
                                         StartDate =System.today(),ContractTerm = 12,LPCR_DateDebut__c = System.today(),
