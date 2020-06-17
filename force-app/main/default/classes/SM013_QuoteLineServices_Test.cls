@@ -151,6 +151,7 @@ public with sharing class SM013_QuoteLineServices_Test {
                 'StartDate' => System.today().addMonths(-1),
                 'SBQQ__RenewalQuoted__c' => false,
                 'ContractTerm' => 1,
+                'Status' => 'Draft',
                 'LPCR_Creche__c' => creche.Id
             };
 
