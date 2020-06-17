@@ -29,14 +29,24 @@ public class SM010_ContractServices {
                 }
             }
 
-
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){                
                 eachContract =setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(eachContract.SBQQ__Quote__c));
             }
         }
     }
-    
-    
+    public static void setTypeEnregistrement(List<Contract> contracts){
+        Set<Id> orderIdsSet = new Set<Id>();
+        for(Contract eachContract : contracts){
+            orderIdsSet.add(eachContract.SBQQ__Order__c);
+        }
+        //Map : Id=>Order (Parent records of the current contracts)
+        Map<Id, Order> parentOrdersMap = new Map<Id, Order>([SELECT Id, LPCR_TypeEnregistrement__c FROM Order WHERE Id IN :orderIdsSet]);
+        for(Contract eachContract : contracts){
+            if(parentOrdersMap.containsKey(eachContract.SBQQ__Order__c)){
+                eachContract.LPCR_TypeEnregistrement__c = parentOrdersMap.get(eachContract.SBQQ__Order__c).LPCR_TypeEnregistrement__c;
+            }
+        }
+    }
 /**
 * @Author Ayoub Ouarti
 * @Created 08/06/2020
@@ -82,7 +92,9 @@ public class SM010_ContractServices {
         
         contract.LPCR_BillingFrequency__c = quote.SBQQ__BillingFrequency__c;
         
-        contract.LPCR_MasterDevis__c = quote.LPCR_MasterDevis__c;
+        if(quote.recordtype.name == Label.LPCR_Contrat_B2B) {
+            contract.LPCR_MasterDevis__c = quote.LPCR_MasterDevis__c;
+        }
         
         contract.LPCR_RenouvellementConvenu__c = quote.LPCR_RenouvellementConvenu__c;
         

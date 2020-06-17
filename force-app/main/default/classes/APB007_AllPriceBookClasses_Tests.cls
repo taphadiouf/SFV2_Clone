@@ -72,11 +72,10 @@ public with sharing class APB007_AllPriceBookClasses_Tests {
       
             APB004_ActivateOrder activateOrderBatch = new APB004_ActivateOrder();
             activateOrderBatch.execute(null);
-            Test.stopTest();
             
         	order = Database.query('SELECT Id , Status ,OpportunityId,EffectiveDate FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
             System.assertEquals('Activated', order.Status,'status is not get activated');
-            
+            Test.stopTest();
         }
     }
     //This test is from APB005_GenerateContractFromOrder_Test
@@ -100,6 +99,8 @@ public with sharing class APB007_AllPriceBookClasses_Tests {
     //This test is from the APB006 Test Class
     @isTest
     private static void testAPB006PrepaRenewalContract(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
         //Data setup from The APB006 Test Class
 
         List<Account> accountsCreche = new List<Account>();
@@ -191,7 +192,7 @@ public with sharing class APB007_AllPriceBookClasses_Tests {
             } 
 
             tmpContract.LPCR_Creche__c = crecheByCustomer.get(order.AccountId);
-            //tmpContract.Status='Activated';
+            tmpContract.Status='Draft';
 
             contracts.add(tmpContract);
         }
@@ -215,18 +216,18 @@ public with sharing class APB007_AllPriceBookClasses_Tests {
         //End Of Data setup from The APB006 Test Class
 
         
-        System.runAs(UM002_TestDataFactory.createUser()){
-            Test.startTest();
+       
             APB006_PrepaRenewalContract btch = new APB006_PrepaRenewalContract();
             Database.executeBatch(btch, 2000);
-            Test.stopTest();
-
             List<Contract> listAllContracts = [SELECT Id, SBQQ__Order__c, TECH_AjoutFraisGestion__c, LPCR_TypeFacturation__c, Status, StartDate, ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c, LPCR_JoursAvance__c, SBQQ__RenewalForecast__c, EndDate FROM Contract];
             List<Contract> listContractsWithFees = [SELECT Id, SBQQ__Order__c, TECH_AjoutFraisGestion__c, LPCR_TypeFacturation__c, Status, StartDate, ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c, LPCR_JoursAvance__c, SBQQ__RenewalForecast__c, EndDate FROM Contract WHERE TECH_AjoutFraisGestion__c = true];
             System.debug('listAllContracts' + listAllContracts);
             // Assert to verify that just a subset of contract (50% - 1 for each pair customer / creche) have been updated by the batch 
             System.assertEquals((NUMBER_OF_B2C + NUMBER_OF_B2B) * 2, listAllContracts.size());
             System.assertEquals(NUMBER_OF_B2C + NUMBER_OF_B2B, listContractsWithFees.size());
+            Test.stopTest();
+
+            
         }
     }
 }
