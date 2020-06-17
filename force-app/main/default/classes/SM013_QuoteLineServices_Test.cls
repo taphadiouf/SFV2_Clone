@@ -152,7 +152,7 @@ public with sharing class SM013_QuoteLineServices_Test {
                 'SBQQ__RenewalQuoted__c' => false,
                 'ContractTerm' => 1,
                 'LPCR_Creche__c' => creche.Id,
-                'Status' => 'Activated'
+                'Status'=>'Draft'
             };
 
             contracts.add((Contract) UM002_TestDataFactory.createSObject('Contract', defaultVal));

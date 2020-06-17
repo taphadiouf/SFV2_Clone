@@ -7,6 +7,7 @@
 @isTest
 public class SM008_QuoteServices_Test {
     private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
+    private static final Id ContratA_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c', Label.LPCR_ContratA);
     @testSetup 
     static void testSetup(){
         
@@ -120,9 +121,9 @@ public class SM008_QuoteServices_Test {
     public static void setQuoteFields_Test(){    
         
         System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
             LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
             insert planningEnfant;
-            Test.startTest();
             List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
             List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
             Opportunity opp = oppties.get(0);
@@ -133,15 +134,27 @@ public class SM008_QuoteServices_Test {
             update opp;
             SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
             quote.SBQQ__Type__c='Renewal';
+            quote.RecordTypeId = ContratA_RT_ID;
+            
+            Contract con = new Contract(AccountID = accs.get(0).id,SBQQ__Opportunity__c = oppties.get(0).id,
+                                        LPCR_Sales_Rep__c = UserInfo.getUserId(), LPCR_ResponsableADV__c = UserInfo.getUserId(), LPCR_ResponsableServiceFamille__c = UserInfo.getUserId(),
+                                        StartDate =System.today(),ContractTerm = 12,LPCR_DateDebut__c =Date.newInstance(2020, 05, 01),
+                                        LPCR_DateFin__c = Date.newInstance(2020, 05, 30),LPCR_RenouvellementConvenu__c = 'Non',LPCR_MethodeRenouvellement__c = 'Express' );
+            Insert con;
+            
+            quote.LPCR_ContractEntreprise__c  = con.Id;
             
             insert quote;
             
-            quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
+            quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
             System.assertNotEquals(null,quote.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
             System.assertEquals(quote.LPCR_IndexationConvenue__c, opp.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
             System.assertEquals(quote.LPCR_TypeFacturation__c, opp.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
             System.assertEquals(quote.SBQQ__BillingFrequency__c, opp.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
             System.assertEquals(quote.LPCR_PlanningEnfant__c, opp.LPCR_PlanningEnfant__c, 'Quote LPCR_PlanningEnfant__c not equals to oppt LPCR_PlanningEnfant__c');
+            System.assertEquals(quote.SBQQ__SalesRep__c,  UserInfo.getUserId(), 'Quote SBQQ__SalesRep__c not equals to oppt LPCR_PlanningEnfant__c');
+            System.assertEquals(quote.LPCR_ResponsableADV__c,  UserInfo.getUserId(), 'Quote LPCR_ResponsableADV__c not equals to oppt LPCR_PlanningEnfant__c');
+            System.assertEquals(quote.LPCR_ResponsableServiceFamille__c,  UserInfo.getUserId(), 'Quote LPCR_ResponsableServiceFamille__c not equals to oppt LPCR_PlanningEnfant__c');
             Test.stopTest();
             
         } }
@@ -167,6 +180,29 @@ public class SM008_QuoteServices_Test {
             Map<Id,Set<Id>> mapQuoteIDAgreementID = SM008_QuoteServices.generateAgreementTemp(newQuoteMap,oldQuoteMap);
             Test.stopTest();
         }
+    }
+    @IsTest
+    static void setTypeEnregistrement_Test(){
+        
+        Test.startTest();
+        
+        Opportunity currentOpportunity = [SELECT Id, LPCR_TypeEnregistrement__c FROM Opportunity limit 1];
+        currentOpportunity.LPCR_TypeEnregistrement__c = 'TestTypeEnregistrement';
+        update currentOpportunity;
+        List<Opportunity> opps = new List<Opportunity>();
+        opps.add(currentOpportunity);
+        Id accountCrecheRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
+        Account currentAccount = [SELECT Id FROM Account WHERE RecordTypeId= :accountCrecheRTId limit 1];
+        List<Account> accs = new List<Account>();
+        accs.add(currentAccount);
+
+        SBQQ__Quote__c newQuote = UM002_TestDataFactory.createQuoteswithStatus(1, accs, opps, 'Draft').get(0);
+        insert newQuote;
+        newQuote = [SELECT Id,LPCR_TypeEnregistrement__c FROM SBQQ__Quote__c WHERE Id = :newQuote.Id limit 1];
+        System.assertEquals('TestTypeEnregistrement', newQuote.LPCR_TypeEnregistrement__c);
+        Test.stopTest();
+       
+        
     }
     
     
