@@ -254,5 +254,21 @@ public class SM010_ContractServices_Test {
 
         }
     }
+    @IsTest
+    static void setTypeEnregistrement_Test(){
+        
+        Test.startTest();
+        
+        Order currentOrder = [SELECT Id, LPCR_TypeEnregistrement__c FROM Order limit 1];
+        currentOrder.LPCR_TypeEnregistrement__c = 'TestTypeEnregistrement';
+        update currentOrder;
+        Account currentAccount = [SELECT Id FROM Account limit 1];
+        Contract newContract = UM002_TestDataFactory.createContract(currentAccount.Id, currentOrder.Id);
+        insert newContract;
+        Test.stopTest();
+        newContract = [SELECT Id,LPCR_TypeEnregistrement__c FROM Contract WHERE Id = :newContract.Id limit 1];
+        System.assertEquals('TestTypeEnregistrement', newContract.LPCR_TypeEnregistrement__c);
+        
+    }
     
 }

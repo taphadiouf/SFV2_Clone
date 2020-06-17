@@ -17,6 +17,7 @@ public class TM009_ContractTrigger extends TM000_TriggerHandler{
     protected override void beforeInsert() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         SM010_ContractServices.setContractFields(newContractList);
+        SM010_ContractServices.setTypeEnregistrement(newContractList);
     }
      
      
