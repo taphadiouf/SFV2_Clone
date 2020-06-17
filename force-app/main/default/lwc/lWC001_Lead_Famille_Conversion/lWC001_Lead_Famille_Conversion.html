@@ -16,21 +16,40 @@
                                 options={getEnfantsOptions} value={enfantsIndexes} onchange={handleEnfantCheckbox}>
                             </lightning-checkbox-group>
                         </template>
+                        
                         <div class="slds-m-vertical_medium slds-p-left_xx-large slds-p-left_xx-large">
-
-                            <lightning-combobox name="Name" label={label.LPCR_CrecheWA} value={chosenCrecheId}
-                                placeholder="-Select-" options={creches} onchange={handleCrecheChosen}>
-                            </lightning-combobox>
-
-                            <lightning-input type="checkbox" label={label.LPCR_PopConLT2}
+                            <div class="slds-form-element__control">
+                                <div class="slds-select_container">
+                                    <div>{label.LPCR_CrecheWA}</div>
+                                    <select class="slds-select" 
+                                    onchange={handleCrecheChosen} 
+                                    disabled={isPicklistDisabled}
+                                    >
+                                <option value="chosenCrecheId">Select</option>
+                                <template for:each={creches} for:item="option">
+                                    <option key={creches.label} class="uiInputSelectOption" value={creches.value}>{option.value}</option>
+                                </template>
+                            </select>
+                                </div>
+                            </div>
+                            <lightning-input class="slds-m-around_medium" type="checkbox" label={label.LPCR_PopConLT2}
                                 onchange={handleSponsCheckbox}>
                             </lightning-input>
+                                <div class="slds-form-slds-m-around_medium" style="margin-left: 70px;">
 
-                            <div class="slds-p-left_xx-large">
                                 <template if:true={showComptes}>
-                                    <lightning-combobox name="Name" label={label.LPCR_CompteWA} value={chosenCompteId}
-                                        placeholder="-Select-" options={comptes} onchange={handleCompteChosen}>
-                                    </lightning-combobox>
+                                    <div>{label.LPCR_CompteWA}</div>
+                                    <div class="slds-select_container">
+                                        <select class="slds-select" 
+                                        onchange={handleCompteChosen} 
+                                        disabled={isPicklistDisabled}
+                                        >
+                                    <option value="chosenCompteId">Select</option>
+                                    <template for:each={comptes} for:item="option">
+                                        <option key={comptes.label} class="uiInputSelectOption" value={comptes.value}>{option.value}</option>
+                                    </template>
+                                </select>
+                                    </div>                                    
                                 </template>
                             </div>
                         </div>

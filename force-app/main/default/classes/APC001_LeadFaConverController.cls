@@ -87,6 +87,12 @@ public with sharing class APC001_LeadFaConverController{
             errMsg += 'Compte Société, ';
             
         }
+
+        if(currentLead.LPCR_CompteSocieteCoDemandeur__c == Null){
+            isvalid = False ;
+            errMsg += 'Compte Société Co-Demandeur, ';
+            
+        }
         
         if(currentLead.Address == Null){
             isvalid = False ;
