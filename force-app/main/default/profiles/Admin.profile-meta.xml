@@ -7702,6 +7702,12 @@
         <layout>LPCR_ModificationEntrante__c-Présentation Modification Entrante</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>LPCR_LignePlanFacturation__c-Billing Plan Line Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>LPCR_PlanFacturation__c-Billing Plan Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>LPCR_ParametrageScore__c-Présentation Paramétrage Score</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -7880,6 +7886,24 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>LPCR_ModificationEntrante__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>LPCR_PlanFacturation__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>LPCR_LignePlanFacturation__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
