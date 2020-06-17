@@ -177,49 +177,9 @@
             <field>LPCR_CompteFamille__c</field>
             <table>LPCR_Preinscription__c</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactParent2__c</field>
-            <table>LPCR_Preinscription__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_DetailHandicapEnfant__c</field>
-            <table>LPCR_Preinscription__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ModeDAccueilDeLEnfant__c</field>
-            <table>LPCR_Preinscription__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_MutationRecenteOuProchainement__c</field>
-            <table>LPCR_Preinscription__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_PrecisionMutation__c</field>
-            <table>LPCR_Preinscription__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_PossedeUnModeDAccueilPourLEnfant__c</field>
-            <table>LPCR_Preinscription__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_UnDesEnfantDansCrecheDuReseau__c</field>
-            <table>LPCR_Preinscription__c</table>
-        </columns>
         <masterLabel>Préinscriptions</masterLabel>
     </sections>
     <sections>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactEnfant__c.Name</field>
-            <table>LPCR_Preinscription__c</table>
-        </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
             <displayNameOverride>Nom Enfant</displayNameOverride>
@@ -230,16 +190,6 @@
             <checkedByDefault>true</checkedByDefault>
             <displayNameOverride>Prénom Enfant</displayNameOverride>
             <field>LPCR_ContactEnfant__c.FirstName</field>
-            <table>LPCR_Preinscription__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactEnfant__c.Birthdate</field>
-            <table>LPCR_Preinscription__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactEnfant__c.LPCR_Handicape__c</field>
             <table>LPCR_Preinscription__c</table>
         </columns>
         <columns>
