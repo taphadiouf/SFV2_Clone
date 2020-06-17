@@ -12,7 +12,7 @@ global class APB007_TraitementModificationEntrante implements Database.Batchable
     }
     global Database.QueryLocator start(Database.BatchableContext BC) {
         Date today = date.today();
-        query = 'SELECT Id,LPCR_EtatTraitement__c,LPCR_Invoice__c,LPCR_TypePlanning__c,LPCR_Garde__c,LPCR_Rue__c,LPCR_Ville__c,LPCR_Pays__c,LPCR_CodePostal__c,LPCR_SituationFamiliale__c,LPCR_TypeAccueil__c,LPCR_DateEffet__c,LPCR_Evenement__c,LPCR_Quantite__c,LPCR_Compte__c,LPCR_RessourceFamille__c,LPCR_IDUnique__c,LPCR_OuiNon__c,LPCR_Contact__c,LPCR_Date__c,LPCR_Section__c,LPCR_Contract__c,LPCR_HeureDateDebut__c,LPCR_HeureDateFin__c,LPCR_Commentaire__c,LPCR_Devis__c FROM LPCR_ModificationEntrante__c WHERE LPCR_DateEffet__c =: today AND LPCR_EtatTraitement__c = false ';
+        query = 'SELECT Id,LPCR_EtatTraitement__c,LPCR_Invoice__c,LPCR_TypePlanning__c,LPCR_Garde__c,LPCR_Rue__c,LPCR_Ville__c,LPCR_Pays__c,LPCR_CodePostal__c,LPCR_SituationFamiliale__c,LPCR_TypeAccueil__c,LPCR_DateEffet__c,LPCR_Evenement__c,LPCR_Quantite__c,LPCR_Compte__c,LPCR_RessourceFamille__c,LPCR_IDUnique__c,LPCR_OuiNon__c,LPCR_Contact__c,LPCR_Date__c,LPCR_Section__c,LPCR_Contract__c,LPCR_HeureDateDebut__c,LPCR_HeureDateFin__c,LPCR_Commentaire__c,LPCR_Devis__c,LPCR_Statut__c FROM LPCR_ModificationEntrante__c WHERE LPCR_DateEffet__c =: today AND LPCR_EtatTraitement__c = false AND LPCR_Statut__c = \'Validé\' ';
         
         return Database.getQueryLocator(query);
     }

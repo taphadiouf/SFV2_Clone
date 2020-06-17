@@ -343,11 +343,11 @@ public with sharing class SM013_ModificationEntranteServices {
                 allInvoiceList.add(updateInvoice);
             }else if('Commentaire individuel facture'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Invoice__c != null && eachModifEntrante.LPCR_Commentaire__c != null ){
                 blng__Invoice__c updateInvoice = new blng__Invoice__c(Id = eachModifEntrante.LPCR_Invoice__c);
-                updateInvoice.blng__Notes__c = eachModifEntrante.LPCR_Commentaire__c;
+                updateInvoice.LPCR_CommentaireIndividuel__c = eachModifEntrante.LPCR_Commentaire__c;
                 allInvoiceList.add(updateInvoice);
             }else if('Commentaire global facture'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Invoice__c != null && eachModifEntrante.LPCR_Commentaire__c != null ){
                 blng__Invoice__c updateInvoice = new blng__Invoice__c(Id = eachModifEntrante.LPCR_Invoice__c);
-                updateInvoice.blng__Notes__c = eachModifEntrante.LPCR_Commentaire__c;
+                updateInvoice.LPCR_CommentaireGlobal__c = eachModifEntrante.LPCR_Commentaire__c;
                 allInvoiceList.add(updateInvoice);
             }else if('Abscence'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
                 blng__Usage__c newUsage = createBlngUsage(eachModifEntrante,'Hour');
