@@ -3,7 +3,12 @@
     <applicationVisibilities>
         <application>LPCR_ADV</application>
         <default>false</default>
-        <visible>false</visible>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
+        <application>LPCR_Commerce</application>
+        <default>false</default>
+        <visible>true</visible>
     </applicationVisibilities>
     <applicationVisibilities>
         <application>LPCR_Commerce</application>
@@ -8459,28 +8464,51 @@
         <layout>LPCR_Type_Evenement_Intranet__mdt-Présentation LPCR Type Evènement Intranet</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité Entreprise</layout>
+        <recordType>Opportunity.Entreprise</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation de l%27opportunité</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation de l%27opportunité</layout>
+        <recordType>Opportunity.AOPublicDSP</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation de l%27opportunité</layout>
+        <recordType>Opportunity.AOPublicReservation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation de l%27opportunité</layout>
+        <recordType>Opportunity.Famille</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation de l%27opportunité</layout>
+        <recordType>Opportunity.Partenaire</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Order-Présentation de commande</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>SBQQ__QuoteLine__c-SBQQ__Quote Line Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SBQQ__Quote__c-SBQQ__Quote Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>SBQQ__Quote__c-SBQQ__Quote Layout</layout>
+        <layout>SBQQ__Quote__c-Contrat d%27accueil</layout>
         <recordType>SBQQ__Quote__c.Contrat_Accueil</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SBQQ__Quote__c-SBQQ__Quote Layout</layout>
+        <layout>SBQQ__Quote__c-Référencement</layout>
         <recordType>SBQQ__Quote__c.Contrat_Cadre</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SBQQ__Quote__c-SBQQ__Quote Layout</layout>
+        <layout>SBQQ__Quote__c-Référencement</layout>
         <recordType>SBQQ__Quote__c.Referencement</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SBQQ__Quote__c-SBQQ__Quote Layout</layout>
+        <layout>SBQQ__Quote__c-Réservataire</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>SBQQ__Quote__c-Réservataire</layout>
         <recordType>SBQQ__Quote__c.Reservataire</recordType>
     </layoutAssignments>
     <layoutAssignments>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nouveau</fullName>
+    <availability>online</availability>
+    <description>Bouton affiché sur la liste associée Bons d&apos;achats depuis l&apos;objet Contrat Partenaire</description>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Nouveau</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/lightning/o/LPCR_BonAchatPartenaire__c/new?defaultFieldValues=LPCR_ContratPartenaire__c={!LPCR_ContratPartenaire__c.Id},LPCR_ComptePartenaire__c={!LPCR_ContratPartenaire__c.LPCR_CompteId__c},LPCR_ContactPartenaire__c={!LPCR_ContratPartenaire__c.LPCR_ContactPartenaireId__c},Name={!LPCR_ContratPartenaire__c.Name+&quot;.&quot;+TEXT(LPCR_ContratPartenaire__c.LPCR_NombreBonsAchat__c + 1)},LPCR_Statut__c=En cours&amp;backgroundContext=%2Flightning%2Fr%2FLPCR_ContratPartenaire__c%2F{!LPCR_ContratPartenaire__c.Id}%2Fview</url>
+</WebLink>
