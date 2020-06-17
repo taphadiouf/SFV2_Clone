@@ -56,6 +56,7 @@ public with sharing class SM008_QuoteServices {
                 }
             }
 
+
             if(renewalOppList.size()>0){
                 SM008_QuoteServices.setQuoteFields(renewalOppList,contractMap,amendedContractMap);
             }
@@ -74,7 +75,7 @@ public with sharing class SM008_QuoteServices {
             if(B2BInsertQuoteList.size()>0){
                 SM008_QuoteServices.setB2BbeforInsertBQuotesFromContract(B2BInsertQuoteList, acctMap, opptyMap, contractMap);
             }
-            
+
         }
     }
     
