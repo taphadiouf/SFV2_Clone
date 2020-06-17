@@ -23,6 +23,7 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
     //added by Ayoub
     protected override void beforeInsert() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM008_QuoteServices.setTypeEnregistrement(newQuotesList);
         SM008_QuoteServices.updateQuotes(newQuotesList);
     }
     

@@ -14,6 +14,9 @@
         <members>APB006_PrepaRenewalContract</members>
         <members>APB006_PrepaRenewalContract_Test</members>
         <members>APB007_AllPriceBookClasses_Tests</members>
+        <members>APB007_TraitementModificationEntrante</members>
+        <members>APB008_ResetStartEndDatesOnContract</members>
+        <members>APB008_ResetStartEndDatesOnContract_Test</members>
         <members>APC001_LeadFaConverController</members>
         <members>APC001_LeadFaConverController_Test</members>
         <members>APC002_AttachmentController</members>
@@ -24,6 +27,8 @@
         <members>APC005_PreinscriptionsEnCoursCtrl_Test</members>
         <members>APC006_CloneQuoteLines</members>
         <members>APC006_CloneQuoteLines_Test</members>
+        <members>APC007_ShowCrechesLpcrController</members>
+        <members>APC007_ShowCrechesLpcrController_Test</members>
         <members>APC008_ResetQuoteLines</members>
         <members>APC008_ResetQuoteLines_Test</members>
         <members>APXTCFQ__AccountFieldMetadataFactory</members>
@@ -2303,8 +2308,15 @@
         <members>UM003_TypeManager</members>
         <members>UM004_BatchUtility</members>
         <members>UM005_DateUtility</members>
+        <members>UM006_ContractAmender</members>
+        <members>UM007_QuoteReader</members>
+        <members>UM008_QuoteCalculator</members>
+        <members>UM009_Callback</members>
         <members>VFC001_GenererDocAnn2</members>
         <members>VFC001_GenererDocAnn2_Test</members>
+        <members>WRP001_QuoteModel</members>
+        <members>WRP002_QuoteLineModel</members>
+        <members>WRP003_QuoteLineGroupModel</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -3396,6 +3408,7 @@
         <members>Account.LPCR_LienSitePreinscription__c</members>
         <members>Account.LPCR_MailLivraisonFacture__c</members>
         <members>Account.LPCR_MoyenDeTransport__c</members>
+        <members>Account.LPCR_MoyenPaiement__c</members>
         <members>Account.LPCR_NbreOptions__c</members>
         <members>Account.LPCR_NombreBerceauxConcurrence__c</members>
         <members>Account.LPCR_NombreEnfantPrevuJeudi__c</members>
@@ -3443,7 +3456,7 @@
         <members>Account.LPCR_TravailConcurrence__c</members>
         <members>Account.LPCR_TypeClient__c</members>
         <members>Account.LPCR_TypeContratPrincipal__c</members>
-        <members>Account.LPCR_TypeCreche__c</members>
+
         <members>Account.LPCR_TypeEntreprise__c</members>
         <members>Account.LPCR_TypeFacturation__c</members>
         <members>Account.LPCR_TypeMensualisation__c</members>
@@ -4114,6 +4127,7 @@
         <members>blng__Invoice__c.LPCR_EstMigre__c</members>
         <members>blng__Invoice__c.LPCR_IdExterne__c</members>
         <members>blng__Invoice__c.LPCR_MethodesPaiement__c</members>
+        <members>blng__Invoice__c.LPCR_NbHeuresRealise__c</members>
         <members>blng__Invoice__c.LPCR_StatutFacture__c</members>
         <members>blng__InvoiceLine__c.blng__AllocatedRevenueAmount__c</members>
         <members>blng__InvoiceLine__c.blng__ARStatus__c</members>
@@ -4729,6 +4743,7 @@
         <members>blng__Usage__c.blng__UnitOfMeasure__c</members>
         <members>blng__Usage__c.blng__UnitPrice__c</members>
         <members>blng__Usage__c.blng__UsageSummary__c</members>
+        <members>blng__Usage__c.LPCR_ContactEnfant__c</members>
         <members>blng__Usage__c.LPCR_TypeEvenement__c</members>
         <members>blng__Usage__c.LPCR_TypeEvenement_DEL__c</members>
         <members>blng__UsageSummary__c.blng__Account__c</members>
@@ -4839,6 +4854,9 @@
         <members>Contract.LPCR_BatchCommande__c</members>
         <members>Contract.LPCR_BillingFrequency__c</members>
         <members>Contract.LPCR_ChiffreAffaire__c</members>
+        <members>Contract.LPCR_CongesJours__c</members>
+        <members>Contract.LPCR_ContactRepresentant1__c</members>
+        <members>Contract.LPCR_ContactRepresentant2__c</members>
         <members>Contract.LPCR_ContractEntreprise__c</members>
         <members>Contract.LPCR_ContratActif__c</members>
         <members>Contract.LPCR_ContratEntreprise__c</members>
@@ -4849,7 +4867,10 @@
         <members>Contract.LPCR_DateLiberationBerceau__c</members>
         <members>Contract.LPCR_DateReceptionDemandeFinContrat__c</members>
         <members>Contract.LPCR_DateRenouvellement__c</members>
+        <members>Contract.LPCR_DureeContratJour__c</members>
+        <members>Contract.LPCR_DureePreavisMois__c</members>
         <members>Contract.LPCR_Enfant__c</members>
+        <members>Contract.LPCR_EntiteJuridique__c</members>
         <members>Contract.LPCR_EstMigre__c</members>
         <members>Contract.LPCR_FrequenceFacturation__c</members>
         <members>Contract.LPCR_IdExterne__c</members>
@@ -4867,6 +4888,8 @@
         <members>Contract.LPCR_Section__c</members>
         <members>Contract.LPCR_SponsorEntreprise__c</members>
         <members>Contract.LPCR_StatutContrat__c</members>
+        <members>Contract.LPCR_TypeAccueil__c</members>
+        <members>Contract.LPCR_TypeCreche__c</members>
         <members>Contract.LPCR_TypeFacturation__c</members>
         <members>Contract.SBQQ__ActiveContract__c</members>
         <members>Contract.SBQQ__AmendmentOpportunityRecordTypeId__c</members>
@@ -5706,6 +5729,18 @@
         <members>LPCR_ContratPartenaire__c.LPCR_TypeReconduction__c</members>
         <members>LPCR_ContratPartenaire__c.LPCR_Ville__c</members>
         <members>LPCR_ContratPartenaire__c.LPCR_Visite__c</members>
+        <members>LPCR_DetailModificationPlanning__c.LPCR_HeureDebutJeudi__c</members>
+        <members>LPCR_DetailModificationPlanning__c.LPCR_HeureDebutLundi__c</members>
+        <members>LPCR_DetailModificationPlanning__c.LPCR_HeureDebutMardi__c</members>
+        <members>LPCR_DetailModificationPlanning__c.LPCR_HeureDebutMercredi__c</members>
+        <members>LPCR_DetailModificationPlanning__c.LPCR_HeureDebutVendredi__c</members>
+        <members>LPCR_DetailModificationPlanning__c.LPCR_HeureFinJeudi__c</members>
+        <members>LPCR_DetailModificationPlanning__c.LPCR_HeureFinLundi__c</members>
+        <members>LPCR_DetailModificationPlanning__c.LPCR_HeureFinMardi__c</members>
+        <members>LPCR_DetailModificationPlanning__c.LPCR_HeureFinMercredi__c</members>
+        <members>LPCR_DetailModificationPlanning__c.LPCR_HeureFinVendredi__c</members>
+        <members>LPCR_DetailModificationPlanning__c.LPCR_ModificationEntrante__c</members>
+        <members>LPCR_DetailModificationPlanning__c.LPCR_OrdreTri__c</members>
         <members>LPCR_LeadConversionRTMapping__mdt.LPCR_AccountRT__c</members>
         <members>LPCR_LeadConversionRTMapping__mdt.LPCR_ContactRT__c</members>
         <members>LPCR_LeadConversionRTMapping__mdt.LPCR_LeadRT__c</members>
@@ -5741,13 +5776,17 @@
         <members>LPCR_ModificationEntrante__c.LPCR_Contact__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_Contract__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_Date__c</members>
+        <members>LPCR_ModificationEntrante__c.LPCR_DateEffet__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_Devis__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_EstMigre__c</members>
+        <members>LPCR_ModificationEntrante__c.LPCR_EtatTraitement__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_Evenement__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_ExternalId__c</members>
+        <members>LPCR_ModificationEntrante__c.LPCR_Garde__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_HeureDateDebut__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_HeureDateFin__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_IDUnique__c</members>
+        <members>LPCR_ModificationEntrante__c.LPCR_Invoice__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_Nom__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_OuiNon__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_Pays__c</members>
@@ -5757,6 +5796,7 @@
         <members>LPCR_ModificationEntrante__c.LPCR_RessourceFamille__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_Rue__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_Section__c</members>
+        <members>LPCR_ModificationEntrante__c.LPCR_SituationFamiliale__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_Statut__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_TypeAccueil__c</members>
         <members>LPCR_ModificationEntrante__c.LPCR_TypePlanning__c</members>
@@ -5773,6 +5813,7 @@
         <members>LPCR_Planning__c.LPCR_Devis__c</members>
         <members>LPCR_Planning__c.LPCR_DureeContratJour__c</members>
         <members>LPCR_Planning__c.LPCR_DureeContratJourdel__c</members>
+        <members>LPCR_Planning__c.LPCR_Enfant__c</members>
         <members>LPCR_Planning__c.LPCR_EstMigre__c</members>
         <members>LPCR_Planning__c.LPCR_IdExterne__c</members>
         <members>LPCR_Planning__c.LPCR_MoyenneHeuresSemaine__c</members>
@@ -5782,6 +5823,7 @@
         <members>LPCR_Planning__c.LPCR_NombreJoursAccueil__c</members>
         <members>LPCR_Planning__c.LPCR_NombrePlanning__c</members>
         <members>LPCR_Planning__c.LPCR_NombreSemaineAccueilAn__c</members>
+        <members>LPCR_Planning__c.LPCR_Preinscription__c</members>
         <members>LPCR_Planning__c.LPCR_TypePlanning__c</members>
         <members>LPCR_PlanningPrevisionnel__c.LPCR_Contrat__c</members>
         <members>LPCR_PlanningPrevisionnel__c.LPCR_EstMigre__c</members>
@@ -5818,6 +5860,7 @@
         <members>LPCR_Preinscription__c.LPCR_DateEntreeEntreprise__c</members>
         <members>LPCR_Preinscription__c.LPCR_DateNaissance__c</members>
         <members>LPCR_Preinscription__c.LPCR_DateSortie__c</members>
+        <members>LPCR_Preinscription__c.LPCR_DemandeInscriptionCrecheMunicipal__c</members>
         <members>LPCR_Preinscription__c.LPCR_DetailHandicapEnfant__c</members>
         <members>LPCR_Preinscription__c.LPCR_DossierComplet__c</members>
         <members>LPCR_Preinscription__c.LPCR_ExistenceCrecheMunicipale__c</members>
@@ -5841,6 +5884,7 @@
         <members>LPCR_Preinscription__c.LPCR_MutationRecenteOuProchainement__c</members>
         <members>LPCR_Preinscription__c.LPCR_NombreInscrits__c</members>
         <members>LPCR_Preinscription__c.LPCR_NombreJours__c</members>
+        <members>LPCR_Preinscription__c.LPCR_NomPrenomEnfant__c</members>
         <members>LPCR_Preinscription__c.LPCR_OrdreTri__c</members>
         <members>LPCR_Preinscription__c.LPCR_PossedeUnModeDAccueilPourLEnfant__c</members>
         <members>LPCR_Preinscription__c.LPCR_PrecisionMutation__c</members>
@@ -5852,6 +5896,7 @@
         <members>LPCR_Preinscription__c.LPCR_SituationFamiliale__c</members>
         <members>LPCR_Preinscription__c.LPCR_Statut__c</members>
         <members>LPCR_Preinscription__c.LPCR_StatutCourt__c</members>
+        <members>LPCR_Preinscription__c.LPCR_TypeAccueil__c</members>
         <members>LPCR_Preinscription__c.LPCR_TypePreinscription__c</members>
         <members>LPCR_Preinscription__c.LPCR_UnDesEnfantDansCrecheDuReseau__c</members>
         <members>LPCR_Preinscription__c.LPCR_ValidationFormulaire__c</members>
@@ -5871,6 +5916,7 @@
         <members>LPCR_RessourceFamille__c.LPCR_DateDebut__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_DateFin__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_DureeContratJour__c</members>
+        <members>LPCR_RessourceFamille__c.LPCR_FinContrat__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_ForfaitMensuel__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_Indice__c</members>
         <members>LPCR_RessourceFamille__c.LPCR_MoyenneHeuresSemaine__c</members>
@@ -5920,7 +5966,6 @@
         <members>LPCR_TablePrix__c.LPCR_TypeAccueil__c</members>
         <members>LPCR_TablePrix__c.LPCR_TypeEntreprise__c</members>
         <members>LPCR_TablePrix__c.LPCR_Unique__c</members>
-        <members>LPCR_TemplateSignatureElectronique__c.IDTemplateBonAchat__c</members>
         <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateBonAchat__c</members>
         <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratAccueilMAC__c</members>
         <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratAccueilMICRO__c</members>
@@ -6067,11 +6112,13 @@
         <members>OrderItem.blng__TotalBilling__c</members>
         <members>OrderItem.blng__UniqueId__c</members>
         <members>OrderItem.blng__UsageFloorQuantity__c</members>
+        <members>OrderItem.LPCR_Creche__c</members>
         <members>OrderItem.LPCR_EstMigre__c</members>
         <members>OrderItem.LPCR_IdExterne__c</members>
         <members>OrderItem.LPCR_NumeroPurchaseOrder__c</members>
         <members>OrderItem.LPCR_Region__c</members>
         <members>OrderItem.LPCR_TotalBerceauGratuitRegion__c</members>
+        <members>OrderItem.LPCR_TypeCreche__c</members>
         <members>OrderItem.SBQQ__Activated__c</members>
         <members>OrderItem.SBQQ__Asset__c</members>
         <members>OrderItem.SBQQ__BillingFrequency__c</members>
@@ -6117,6 +6164,7 @@
         <members>Order.LPCR_EstMigre__c</members>
         <members>Order.LPCR_IdExterne__c</members>
         <members>Order.LPCR_MasterDevis__c</members>
+        <members>Order.LPCR_TypeCompte__c</members>
         <members>Order.LPCR_TypeCreche__c</members>
         <members>Order.SBQQ__Contracted__c</members>
         <members>Order.SBQQ__ContractingMethod__c</members>
@@ -7241,16 +7289,14 @@
         <members>SBQQ__Quote__c.LPCR_BatchCommande__c</members>
         <members>SBQQ__Quote__c.LPCR_BerceauGratuitAmendment__c</members>
         <members>SBQQ__Quote__c.LPCR_Berceauxgratuitsquote__c</members>
-        <members>SBQQ__Quote__c.LPCR_BesoinApprobation__c</members>
-        <members>SBQQ__Quote__c.LPCR_BesoinApprobationDELETE__c</members>
         <members>SBQQ__Quote__c.LPCR_Bypass__c</members>
         <members>SBQQ__Quote__c.LPCR_ChiffreAffaire__c</members>
         <members>SBQQ__Quote__c.LPCR_Cloned__c</members>
+        <members>SBQQ__Quote__c.LPCR_CommercialB2B__c</members>
         <members>SBQQ__Quote__c.LPCR_CompteFacturation__c</members>
         <members>SBQQ__Quote__c.LPCR_ConditionsParticulieres__c</members>
         <members>SBQQ__Quote__c.LPCR_CongesJours__c</members>
         <members>SBQQ__Quote__c.LPCR_CongesSemaine__c</members>
-        <members>SBQQ__Quote__c.LPCR_CongesSemaine_Del__c</members>
         <members>SBQQ__Quote__c.LPCR_ContactEnfant__c</members>
         <members>SBQQ__Quote__c.LPCR_ContactRepresentant1__c</members>
         <members>SBQQ__Quote__c.LPCR_ContactRepresentant2__c</members>
@@ -7271,10 +7317,9 @@
         <members>SBQQ__Quote__c.LPCR_EstMigre__c</members>
         <members>SBQQ__Quote__c.LPCR_IdExterne__c</members>
         <members>SBQQ__Quote__c.LPCR_IndexationConvenue__c</members>
+        <members>SBQQ__Quote__c.LPCR_LaunchRecalculation__c</members>
         <members>SBQQ__Quote__c.LPCR_LigneInferieurePP__c</members>
-        <members>SBQQ__Quote__c.LPCR_LIGNEINFERIEURPRIXPLANCHER__c</members>
         <members>SBQQ__Quote__c.LPCR_LigneSuperieurePP__c</members>
-        <members>SBQQ__Quote__c.LPCR_LIGNESUPERIEUREPRIXPLANCHER__c</members>
         <members>SBQQ__Quote__c.LPCR_MasterDevis__c</members>
         <members>SBQQ__Quote__c.LPCR_MethodeRenouvellement__c</members>
         <members>SBQQ__Quote__c.LPCR_MontantFraisDossier__c</members>
@@ -7288,6 +7333,7 @@
         <members>SBQQ__Quote__c.LPCR_NumeroActeEngagement__c</members>
         <members>SBQQ__Quote__c.LPCR_NumeroAllocataire__c</members>
         <members>SBQQ__Quote__c.LPCR_NumeroDevis__c</members>
+        <members>SBQQ__Quote__c.LPCR_OwnerManager__c</members>
         <members>SBQQ__Quote__c.LPCR_PlanningEnfant__c</members>
         <members>SBQQ__Quote__c.LPCR_RefDevisReferencement__c</members>
         <members>SBQQ__Quote__c.LPCR_RefDevisReservataire__c</members>
@@ -7300,6 +7346,7 @@
         <members>SBQQ__Quote__c.LPCR_RessourcesMensuelles__c</members>
         <members>SBQQ__Quote__c.LPCR_RessourcesPrixPlancher__c</members>
         <members>SBQQ__Quote__c.LPCR_RevenusFamille__c</members>
+        <members>SBQQ__Quote__c.LPCR_RTContratEntreprise__c</members>
         <members>SBQQ__Quote__c.LPCR_StatutApprobation__c</members>
         <members>SBQQ__Quote__c.LPCR_TauxEffort__c</members>
         <members>SBQQ__Quote__c.LPCR_TauxHoraire__c</members>
@@ -7768,6 +7815,7 @@
         <members>SBQQ__SubscribedQuoteLine__c.SBQQ__SubscriptionBasePrice__c</members>
         <members>SBQQ__SubscribedQuoteLine__c.SBQQ__SubscriptionNetTotal__c</members>
         <members>SBQQ__SubscribedQuoteLine__c.SBQQ__SubscriptionQuoteLine__c</members>
+        <members>SBQQ__Subscription__c.LPCR_JoursSemaine__c</members>
         <members>SBQQ__Subscription__c.LPCR_Region__c</members>
         <members>SBQQ__Subscription__c.LPCR_TotalBerceauGratuitRegion__c</members>
         <members>SBQQ__SubscriptionConsumptionRate__c.SBQQ__Description__c</members>
@@ -11068,6 +11116,8 @@
         <members>InvoiceGrouping_SeperateInvoice</members>
         <members>LPCR_Account</members>
         <members>LPCR_AccountId</members>
+        <members>LPCR_AmendedContract</members>
+        <members>LPCR_Amendment</members>
         <members>LPCR_CompteWA</members>
         <members>LPCR_Confirme</members>
         <members>LPCR_Conge</members>
@@ -11078,6 +11128,7 @@
         <members>LPCR_ContratEnfant</members>
         <members>LPCR_ConvertLeadF</members>
         <members>LPCR_Creche</members>
+        <members>LPCR_CrecheF</members>
         <members>LPCR_CrecheWA</members>
         <members>LPCR_DEF</members>
         <members>LPCR_DocLPCR</members>
@@ -11087,6 +11138,7 @@
         <members>LPCR_EnfantsWA</members>
         <members>LPCR_Entreprise</members>
         <members>LPCR_Etablissement</members>
+        <members>LPCR_Express</members>
         <members>LPCR_Famille</members>
         <members>LPCR_Identifiant</members>
         <members>LPCR_Lead</members>
@@ -11097,12 +11149,14 @@
         <members>LPCR_NbrContractuelMois</members>
         <members>LPCR_NbrContractuelSemaine</members>
         <members>LPCR_NomEnfant</members>
+        <members>LPCR_Non</members>
         <members>LPCR_NonTraite</members>
         <members>LPCR_Nouveau</members>
         <members>LPCR_OCC</members>
         <members>LPCR_Occasionnel</members>
         <members>LPCR_OppFor</members>
         <members>LPCR_Opportunity</members>
+        <members>LPCR_Opportunity2</members>
         <members>LPCR_Parent</members>
         <members>LPCR_Periode</members>
         <members>LPCR_PlanningType</members>
@@ -11112,16 +11166,24 @@
         <members>LPCR_Prospecting</members>
         <members>LPCR_PublicDSP</members>
         <members>LPCR_Quote</members>
+        <members>LPCR_QuoteT</members>
         <members>LPCR_QuoteValide</members>
         <members>LPCR_RecordType</members>
         <members>LPCR_RecordTypeId</members>
+        <members>LPCR_Referencement</members>
         <members>LPCR_RegistrationFeeErrorMessage</members>
         <members>LPCR_RegistrationFeeMac</members>
+        <members>LPCR_Renewal</members>
+        <members>LPCR_RenewedContract</members>
+        <members>LPCR_ReseauLPCR</members>
+        <members>LPCR_Reservataire</members>
         <members>LPCR_RessourcesM</members>
         <members>LPCR_ResultS</members>
+        <members>LPCR_SansRenouvellement</members>
         <members>LPCR_Sent</members>
         <members>LPCR_SignatureE</members>
         <members>LPCR_SignatureR</members>
+        <members>LPCR_Tacite</members>
         <members>LPCR_Tarif</members>
         <members>LPCR_Taux</members>
         <members>LPCR_Title1</members>
@@ -13054,6 +13116,7 @@
         <members>LPCR_BaremeCAF__c</members>
         <members>LPCR_BonAchatPartenaire__c</members>
         <members>LPCR_ContratPartenaire__c</members>
+        <members>LPCR_DetailModificationPlanning__c</members>
         <members>LPCR_LeadConversionRTMapping__mdt</members>
         <members>LPCR_LienCrecheLead__c</members>
         <members>LPCR_LienCrecheOpportunite__c</members>
@@ -14244,6 +14307,7 @@
         <members>LPCR_BaremeCAF__c-fr</members>
         <members>LPCR_BonAchatPartenaire__c-fr</members>
         <members>LPCR_ContratPartenaire__c-fr</members>
+        <members>LPCR_DetailModificationPlanning__c-fr</members>
         <members>LPCR_LeadConversionRTMapping__mdt-fr</members>
         <members>LPCR_LienCrecheLead__c-fr</members>
         <members>LPCR_LienCrecheOpportunite__c-fr</members>
@@ -15294,6 +15358,7 @@
         <members>Commerce_UtilityBar</members>
         <members>Contact_Record_Page</members>
         <members>Contact_Record_Page1</members>
+        <members>Contract_Record_Page</members>
         <members>echosign_dev1__Adobe_Sign_for_Salesforce_UtilityBar</members>
         <members>Facture_Page_d_enregistrement</members>
         <members>Facture_Page_d_enregistrement1</members>
@@ -15320,6 +15385,7 @@
         <members>PDRI__Deployment_Result_Record_Page</members>
         <members>PDRI__Folder_Record_Page</members>
         <members>PDRI__Test_Case_Record_Page</members>
+        <members>Planning_Enfant_Page_d_enregistrement</members>
         <members>PL_BonAchatPartenaire</members>
         <members>PL_Compte</members>
         <members>PL_Contact</members>
@@ -15331,6 +15397,7 @@
         <members>PL_Pr_inscription</members>
         <members>PL_Produit</members>
         <members>PL_T_che</members>
+        <members>Pr_inscription_Record_Page</members>
         <members>Quote_Record_Page</members>
         <members>Quote_Record_Page1</members>
         <members>Relationship_Management_UtilityBar</members>
@@ -15346,6 +15413,7 @@
         <members>FLOW_ContratPartenaire_CreationAvenant</members>
         <members>FLOW_LienCrecheOpportunite_UpdateClosedOppty</members>
         <members>FLOW_LPCRLienCrecheOpportunite_UpdateClosedOppty</members>
+        <members>FLOW_PreinscriptionCreeContratAccueil</members>
         <members>LPCR_AttacherBerceauContratCadreTabledeprixref</members>
         <members>LPCR_Definir_le_master_devis</members>
         <members>LPCR_NouveauContratAccueil</members>
@@ -15367,6 +15435,7 @@
         <members>FLOW_ContratPartenaire_CreationAvenant</members>
         <members>FLOW_LienCrecheOpportunite_UpdateClosedOppty</members>
         <members>FLOW_LPCRLienCrecheOpportunite_UpdateClosedOppty</members>
+        <members>FLOW_PreinscriptionCreeContratAccueil</members>
         <members>LPCR_AttacherBerceauContratCadreTabledeprixref</members>
         <members>LPCR_Definir_le_master_devis</members>
         <members>LPCR_NouveauContratAccueil</members>
@@ -15495,6 +15564,7 @@
         <members>LPCR_JoursSemaine</members>
         <members>LPCR_Region</members>
         <members>LPCR_TrancheALSH</members>
+        <members>LPCR_TypeAccueil</members>
         <members>LPCR_TypeAccueilALSH</members>
         <members>LPCR_TypeCreche</members>
         <members>LPCR_TypeEntreprise</members>
@@ -15518,6 +15588,11 @@
         <members>SBQQ__SubscriptionType</members>
         <members>Section</members>
         <name>GlobalValueSet</name>
+    </types>
+    <types>
+        <members>LPCR_DirectionJuridique</members>
+        <members>LPCR_Management</members>
+        <name>Group</name>
     </types>
     <types>
         <members>tfa__FormAssembly Setup</members>
@@ -15769,6 +15844,7 @@
         <members>LPCR_BaremeCAF__c-Bar&#232;me CAF Layout</members>
         <members>LPCR_BonAchatPartenaire__c-Pr&#233;sentation Bon d%27achat partenaire</members>
         <members>LPCR_ContratPartenaire__c-Pr&#233;sentation Contrat Partenaire</members>
+        <members>LPCR_DetailModificationPlanning__c-Pr&#233;sentation D&#233;tail Modification Planning</members>
         <members>LPCR_LeadConversionRTMapping__mdt-Pr&#233;sentation LPCR_LeadConversionRTMapping</members>
         <members>LPCR_LienCrecheLead__c-LPCR_LienCrecheLead Layout</members>
         <members>LPCR_LienCrecheOpportunite__c-Pr&#233;sentation Lien Cr&#232;che Opportunit&#233;</members>
@@ -15976,6 +16052,10 @@
         <name>Layout</name>
     </types>
     <types>
+        <members>LeadConvertSettings</members>
+        <name>LeadConvertSettings</name>
+    </types>
+    <types>
         <members>APXTCFQ__Conga_Email_Letterhead</members>
         <members>csfb__Conga_Email_Letterhead</members>
         <members>PDRI__Prodly_Moover_Letterhead</members>
@@ -15989,6 +16069,7 @@
         <members>lWC005_UpdateStatus</members>
         <members>lWC006_SendMail</members>
         <members>lWC007_PreinscriptionsEnCours</members>
+        <members>lWC008_ShowCrechesLpcr</members>
         <members>pubsub</members>
         <name>LightningComponentBundle</name>
     </types>
@@ -16400,6 +16481,7 @@
         <members>LogACall</members>
         <members>LPCR_ContratPartenaire__c.NouveauBonAchat</members>
         <members>LPCR_ContratPartenaire__c.NouvelAvenant</members>
+        <members>LPCR_Preinscription__c.CreerContratAccueil</members>
         <members>NewAccount</members>
         <members>NewCase</members>
         <members>NewContact</members>
@@ -16464,6 +16546,7 @@
         <members>Account.Entreprise</members>
         <members>Account.Famille</members>
         <members>Account.Partenaire</members>
+        <members>Account.ReseauLPCR</members>
         <members>blng__Invoice__c.LCPR_DraftInvoice</members>
         <members>blng__Invoice__c.LPCR_PostedInvoice</members>
         <members>Contact.Collaborateur</members>
@@ -16795,6 +16878,7 @@
         <members>Tech_GraphiquesSurLayouts/Copie_de_Taux_occupation_total_cbn</members>
         <members>Tech_GraphiquesSurLayouts/Nouveau_rapport_Crches_avec_Contrats_rhc</members>
         <members>unfiled$public</members>
+        <members>unfiled$public/CA_New_biz_national</members>
         <members>unfiled$public/flow_screen_prebuilt_report</members>
         <members>unfiled$public/Opportunity_Amount_by_Stage_Sample</members>
         <members>unfiled$public/SampleReportActiveUsers</members>
@@ -17463,6 +17547,7 @@
         <members>LPCR_BaremeCAF__c</members>
         <members>LPCR_BonAchatPartenaire__c</members>
         <members>LPCR_ContratPartenaire__c</members>
+        <members>LPCR_DetailModificationPlanning__c</members>
         <members>LPCR_LienCrecheLead__c</members>
         <members>LPCR_LienCrecheOpportunite__c</members>
         <members>LPCR_LienFamilleFacture__c</members>
@@ -17942,6 +18027,7 @@
         <members>blng__Invoice__c</members>
         <members>Contract</members>
         <members>LPCR_ModificationEntrante__c</members>
+        <members>LPCR_PlanningPrevisionnel__c</members>
         <members>LPCR_RessourceFamille__c</members>
         <members>LPCR_TablePrix__c</members>
         <members>Opportunity</members>
@@ -17976,6 +18062,16 @@
     </types>
     <types>
         <members>blng__Invoice__c.Update_record_type</members>
+        <members>LPCR_PlanningPrevisionnel__c.MAJ_HeureDebutJeudi</members>
+        <members>LPCR_PlanningPrevisionnel__c.MAJ_HeureDebutLundi</members>
+        <members>LPCR_PlanningPrevisionnel__c.MAJ_HeureDebutMardi</members>
+        <members>LPCR_PlanningPrevisionnel__c.MAJ_HeureDebutMercredi</members>
+        <members>LPCR_PlanningPrevisionnel__c.MAJ_HeureDebutVendredi</members>
+        <members>LPCR_PlanningPrevisionnel__c.MAJ_HeureFinJeudi</members>
+        <members>LPCR_PlanningPrevisionnel__c.MAJ_HeureFinLundi</members>
+        <members>LPCR_PlanningPrevisionnel__c.MAJ_HeureFinMardi</members>
+        <members>LPCR_PlanningPrevisionnel__c.MAJ_HeureFinMercredi</members>
+        <members>LPCR_PlanningPrevisionnel__c.MAJ_HeureFinVendredi</members>
         <members>LPCR_RessourceFamille__c.LPCR_CalCongesSemaines</members>
         <members>LPCR_RessourceFamille__c.LPCR_CalTauxEffort</members>
         <members>LPCR_RessourceFamille__c.LPCR_CalTauxMensuel</members>
@@ -18001,6 +18097,7 @@
         <members>blng__Invoice__c.Update Invoice Record type upon invoicing posting</members>
         <members>Contract.Contrat R&#233;sili&#233;</members>
         <members>Contract.LPCR_FinContratProche</members>
+        <members>LPCR_PlanningPrevisionnel__c.WF_PlanningPrevisonnel_MAJ-Horaires</members>
         <members>LPCR_RessourceFamille__c.Calcul Prix Mac</members>
         <members>LPCR_TablePrix__c.Remplir le champ unique</members>
         <members>Opportunity.Update RT Oppty</members>
