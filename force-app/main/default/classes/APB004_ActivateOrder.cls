@@ -27,7 +27,59 @@ global class APB004_ActivateOrder  implements Database.Batchable<sObject>,Schedu
             System.debug('Updating order '+eachOrder.status );
         }
         
-        update listOforder;        
+        update listOforder;    
+
+        Set<Id> orderItemId = UM003_TypeManager.getIdsOfListObjects(listOforder);
+        Integer typeMensualisation = 11;
+        String billingFrequency = 'Invoice Plan';
+        Map<Id,OrderItem> orderItemMap = new Map<Id,OrderItem>([SELECT Id,OrderItemNumber,LPCR_Creche__r.LPCR_TypeMensualisation__c,
+        SBQQ__BillingFrequency__c,TotalPrice,ServiceDate,EndDate FROM OrderItem 
+        WHERE LPCR_Creche__r.LPCR_TypeMensualisation__c =:typeMensualisation
+        AND  SBQQ__BillingFrequency__c = :billingFrequency
+        AND Activated ='Yes'] );
+    
+
+        List<blng__BillingSchedule__c> listOfBillingSchedule = new List<blng__BillingSchedule__c>();
+        List<blng__BillingTransaction__c> listOfBillingTransaction = new List<blng__BillingTransaction__c>();
+
+        for( OrderItem eachOrderItem : orderItemMap.values()){
+
+            blng__BillingSchedule__c billingSchedule = new blng__BillingSchedule__c(Name ='BS-'+eachOrderItem.OrderItemNumber ,
+                                                                            blng_Amount_c=eachOrderItem.TotalPrice,
+                                                                            blng_OrderProduct_c=eachOrderItem.Id);
+            listOfBillingSchedule.add(billingSchedule);
+           }
+           insert listOfBillingSchedule;
+           for(blng__BillingSchedule__c eachBS : listOfBillingSchedule){
+            // insert the Billing Transactions
+            Date startDate = orderItemMap.get(eachBS.blng_OrderProduct_c).ServiceDate;
+            Date endDate = orderItemMap.get(eachBS.blng_OrderProduct_c).EndDate;
+            Integer monthsBetween = startDate.monthsBetween(endDate);
+            monthsBetween=endDate.day() > startDate.day()? ++monthsBetween:monthsBetween;
+
+            Integer StartDateMonth = orderItemMap.get(eachBS.blng_OrderProduct_c).ServiceDate.month();
+            if(StartDateMonth != 8) {
+            for(integer i =1;i <= monthsBetween;i++) {
+                blng__BillingTransaction__c billingTransaction =new blng__BillingTransaction__c(
+                                                            blng__BillingSchedule__c=eachBS.Id,
+                                                            blng_Amount_c =orderItemMap.get(eachBS.blng_OrderProduct_c).TotalPrice,
+                                                            Name = +StartDateMonth,
+                                                            blng_Status_c ='Pending',
+                                                            blng__BillingTargetDate__c= (i==1 && orderItemMap.get(eachBS.blng_OrderProduct_c).ServiceDate.day() > 5)? Date.newInstance(5,StartDateMonth+1,Date.today().Year()):Date.newInstance(5,StartDateMonth,Date.today().Year()),
+                                                            blng_Quantity_c = 1,
+                                                            blng__ServicePeriodStart__c=(i==1 && blng_ServicePeriodStart_c == null)? orderItemMap.get(eachBS.blng_OrderProduct_c).ServiceDate : Date.newInstance(1,StartDateMonth,Date.today().Year()),
+                                                            blng__ServicePeriodEnd__c= UM005_DateUtility.lastDateOfMonth(StartDateMonth));
+
+            listOfBillingTransaction.add(billingTransaction);
+            }
+            StartDateMonth++;
+
+        } 
+        
+    }
+    insert listOfBillingTransaction;
+
+
     }
     
     global void finish(Database.BatchableContext BC) {
