@@ -6,7 +6,7 @@
 **/
 
 public with sharing class SM003_TaskServices {
-    public static List<Lead> LEAD_RG03_IS250(list<Task> newTasksList) {
+    public static List<Lead> updateLeadsWithNewTasks(list<Task> newTasksList) {
         
         set<Id> setLeadIds = new set<Id> ();
         
