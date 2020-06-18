@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+        <members>Contract.LPCR_TypeAccueil__c</members>
+        <members>Contract.LPCR_TypeCreche__c</members>
+        <members>Contract.LPCR_EntiteJuridique__c</members>
+        <members>Opportunity.LPCR_PlanningEnfant__c</members>
+        <members>Contract.LPCR_ContactRepresentant1__c</members>
+        <members>Contract.LPCR_ContactRepresentant2__c</members>
+        <members>Contract.LPCR_CongesJours__c</members>
+        <members>Contract.LPCR_DureePreavisMois__c</members>
+
+        <name>CustomField</name>
+    </types>
+
+    <types>
+        <members>blng__UnitOfMeasure</members>
+        <name>GlobalValueSet</name>
+    </types>
+
+    <version>48.0</version>
+</Package>

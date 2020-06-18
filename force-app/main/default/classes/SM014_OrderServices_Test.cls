@@ -67,8 +67,10 @@ public class SM014_OrderServices_Test {
             update quote;
             Test.stopTest();
             
-            Order order = Database.query('SELECT Id , Status ,blng__InvoiceBatch__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
+            Order order = Database.query('SELECT Id ,LPCR_TypeFacturation__c,LPCR_FrequenceFacturation__c , Status ,blng__InvoiceBatch__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
             System.assertEquals('Batch 2', order.blng__InvoiceBatch__c,'blng__InvoiceBatch__c on the quote is not the same on the order');
+			System.assertEquals(quote.SBQQ__BillingFrequency__c, order.LPCR_FrequenceFacturation__c,'SBQQ__BillingFrequency__c on the quote is not the same on the order');
+			System.assertEquals(quote.LPCR_TypeFacturation__c, order.LPCR_TypeFacturation__c,'LPCR_TypeFacturation__c on the quote is not the same on the order');
 
             
         }

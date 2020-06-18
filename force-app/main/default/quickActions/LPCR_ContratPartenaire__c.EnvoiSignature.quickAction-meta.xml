@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Envoi pour signature électronique avec Adobe Sign</description>
+    <flowDefinition>FLOW_ContratPartenaire_EnvoiContratPartenaire</flowDefinition>
+    <label>Envoi pour Signature</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

@@ -83,6 +83,14 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_ContratManuel__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_SystemeFacturationStandard__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_InitAutoAvecDateDebut__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -279,6 +287,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>SBQQ__Notes__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_Conditionsparticulieres__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
