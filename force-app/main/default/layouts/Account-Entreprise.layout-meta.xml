@@ -464,6 +464,14 @@
         <relatedList>blng__Invoice__c.blng__Account__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>NAME</fields>
+        <fields>LPCR_Score__c</fields>
+        <fields>LPCR_Anciennete__c</fields>
+        <fields>LPCR_DateEntree__c</fields>
+        <fields>LPCR_Revenu__c</fields>
+        <relatedList>LPCR_ParametrageScore__c.LPCR_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <customButtons>ExporterListeAttribution</customButtons>
         <excludeButtons>MassChangeOwner</excludeButtons>
         <fields>NAME</fields>
@@ -523,7 +531,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3O000000XEq0</masterLabel>
+        <masterLabel>00h1j000000tA16</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
