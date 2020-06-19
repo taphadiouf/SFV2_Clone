@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_SuperieuPP__c</fullName>
     <externalId>false</externalId>
-    <formula>IF( AND(SBQQ__AdditionalDiscount__c  &lt;&gt; 0,  (LPCR_PrixBerceau__c - (SBQQ__AdditionalDiscount__c /  SBQQ__Quantity__c ))  &gt;=  LPCR_PrixPlancher__c), TRUE, FALSE)</formula>
+    <formula>IF( AND(SBQQ__AdditionalDiscount__c  &lt;&gt; 0, (LPCR_PrixBerceau__c - ((SBQQ__AdditionalDiscount__c /  SBQQ__Quantity__c) /  SBQQ__ProrateMultiplier__c  ))  &gt;=  LPCR_PrixPlancher__c,  OR( SBQQ__PriorQuantity__c =0, SBQQ__PriorQuantity__c = NULL ) ), TRUE, FALSE)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Supérieur au Prix Plancher</label>
     <trackHistory>false</trackHistory>

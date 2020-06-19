@@ -1,0 +1,16 @@
+<messaging:emailTemplate subject="Demande d'approbation du devis: {!relatedTo.Quote__r.Name} est acceptée"
+relatedToType="sbaa__Approval__c">
+<messaging:HtmlEmailBody >
+<html>
+<body>
+Bonjour {!relatedTo.Quote__r.SBQQ__SalesRep__r.Name}, <br /><br />
+
+<p> Votre devis &nbsp;<apex:outputLink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)}/{!relatedTo.Quote__r.Id}" >{!relatedTo.Quote__r.Name}</apex:outputLink> a été approuvé. </p> <br />
+
+
+
+Admin LPCR,
+</body>
+</html>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>
