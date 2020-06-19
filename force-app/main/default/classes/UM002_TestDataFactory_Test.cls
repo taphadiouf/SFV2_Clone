@@ -102,7 +102,7 @@ private class UM002_TestDataFactory_Test {
             System.assert(c.Department.startsWith('Dept'));
             System.assertEquals(Date.newInstance(1980, 1, 1), c.Birthdate);
         }
-        system.debug(loggingLevel.WARN, (Contact)(contactsAsSObjects[0]));
+        PAD.log('UM002_TestDataFactory_Test','creatingRecordsWithSpecificDefaults','loggingLevel'+loggingLevel.WARN, (Contact)(contactsAsSObjects[0]));
     }  
 
     static testMethod void creatingRecordsForSpecificParentId() {

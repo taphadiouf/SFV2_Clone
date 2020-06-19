@@ -14,11 +14,6 @@ public class TM007_LeadTrigger extends TM000_TriggerHandler{
     }
     protected override void beforeUpdate() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        /*
-        System.debug('SM007_LeadServices.opportunitiesIds' + SM007_LeadServices.opportunitiesIds);
-        System.debug('SM007_LeadServices.accountsIds' + SM007_LeadServices.accountsIds);
-        System.debug('SM007_LeadServices.contactsIds' + SM007_LeadServices.contactsIds);
-        */
         List<Lead> convertedLeadsList = new List<Lead>();
         for(Lead eachLead : newLeadsList){
             if(eachLead.isConverted){
