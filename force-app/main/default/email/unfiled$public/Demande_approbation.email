@@ -1,0 +1,26 @@
+<messaging:emailTemplate subject="Demande d'approbation: {!relatedTo.Quote__r.Name}, {!relatedTo.Quote__r.SBQQ__Opportunity2__r.Owner.Name}"  relatedToType="sbaa__Approval__c">
+<messaging:HtmlEmailBody >
+<html>
+<body>
+
+Bonjour, <br /><br />
+
+Il est porté à votre connaissance que le devis &nbsp;<apex:outputLink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)}/{!relatedTo.Quote__r.Id}" >{!relatedTo.Quote__r.Name}</apex:outputLink>  vous a été soumis pour approbation. <br /><br /> 
+
+Merci d'approuver ou rejeter cette requête.
+
+
+<p><br />
+
+Admin LPCR,
+
+
+
+
+
+<p style="color:white"><apex:outputText value="{!relatedTo.Id}"/></p>
+</p>
+</body>
+</html>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>

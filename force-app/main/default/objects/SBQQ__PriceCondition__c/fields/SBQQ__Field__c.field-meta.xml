@@ -97,6 +97,21 @@
                 <default>false</default>
                 <label>SBQQ__HasConsumptionSchedule__c</label>
             </value>
+            <value>
+                <fullName>SBQQ__StartDate__c</fullName>
+                <default>false</default>
+                <label>SBQQ__StartDate__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__PriorQuantity__c</fullName>
+                <default>false</default>
+                <label>SBQQ__PriorQuantity__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__RenewedSubscription__c</fullName>
+                <default>false</default>
+                <label>SBQQ__RenewedSubscription__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
