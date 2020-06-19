@@ -7,6 +7,7 @@
     <inlineHelpText>Status indicating where quote is in its lifecycle.</inlineHelpText>
     <label>Status</label>
     <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
@@ -47,6 +48,11 @@
                 <fullName>Signé</fullName>
                 <default>false</default>
                 <label>Signé</label>
+            </value>
+            <value>
+                <fullName>Prêt pour commande</fullName>
+                <default>false</default>
+                <label>Prêt pour commande</label>
             </value>
             <value>
                 <fullName>Actif</fullName>

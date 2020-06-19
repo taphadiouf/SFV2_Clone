@@ -5,6 +5,21 @@
     <compactLayoutAssignment>PresentationCompacteDevis</compactLayoutAssignment>
     <label>Contrat Réservataire</label>
     <picklistValues>
+        <picklist>ApprovalStatus__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>EditLinesFieldSetName__c</picklist>
         <values>
             <fullName>Amendment_FieldSet_test_only</fullName>
@@ -12,6 +27,53 @@
         </values>
         <values>
             <fullName>SBQQ%5F%5FLineEditor</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_BatchCommande__c</picklist>
+        <values>
+            <fullName>Ad-hoc</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch 5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Batch 6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>En Attente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MICRO</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -134,15 +196,15 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>MIB Changement Region%2FPrix</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MIB Meme Region%2FPrix</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Modification des termes du contrat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Modification du type%2Ffréquence de facturation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mouvement Interne Berceau</fullName>
             <default>false</default>
         </values>
         <values>

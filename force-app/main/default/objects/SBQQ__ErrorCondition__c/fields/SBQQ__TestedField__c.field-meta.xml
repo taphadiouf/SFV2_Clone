@@ -48,6 +48,11 @@
                 <default>false</default>
                 <label>LPCR_AccountPurchaseOrder__c</label>
             </value>
+            <value>
+                <fullName>SBQQ__StartDate__c</fullName>
+                <default>false</default>
+                <label>SBQQ__StartDate__c</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -72,6 +77,10 @@
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
             <valueName>LPCR_AccountPurchaseOrder__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SBQQ__StartDate__c</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Product Option</controllingFieldValue>
