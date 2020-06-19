@@ -7,8 +7,18 @@
     </applicationVisibilities>
     <applicationVisibilities>
         <application>LPCR_Commerce</application>
+        <default>true</default>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
+        <application>Service_Famille</application>
         <default>false</default>
-        <visible>false</visible>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
+        <application>Service_Partenaires</application>
+        <default>false</default>
+        <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
         <apexClass>APB001_ProcessLPCR_Log</apexClass>
@@ -1160,9 +1170,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Contact.LPCR_DetailHandicap__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -1185,9 +1195,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Contact.LPCR_NomEntreprise__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -1195,14 +1205,14 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Contact.LPCR_OffresPartFamillePetiteEnfance__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Contact.LPCR_PrecisionAutreSituationPro__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -1225,9 +1235,9 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Contact.LPCR_SituationProfessionnelle__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -2500,14 +2510,14 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_ModeDAccueilDeLEnfant__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_MutationRecenteOuProchainement__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -2525,14 +2535,14 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_PossedeUnModeDAccueilPourLEnfant__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_PrecisionMutation__c</field>
-        <readable>true</readable>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -3036,11 +3046,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_ChargeAffaire__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Lead.LPCR_CiviliteCoDemandeur__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -3498,6 +3503,11 @@
         <editable>false</editable>
         <field>Lead.LPCR_VilleSociete__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LeadSource</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -5376,6 +5386,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_BatchCommande__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_BerceauGratuitAmendment__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -6621,7 +6636,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>blng__CreditNoteLine__c.LPCR_TypeEvenement__c</field>
+        <field>blng__CreditNoteLine__c.LPCR_TypeEvenement_DEL__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7746,11 +7761,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>blng__Usage__c.LPCR_TypeEvenement_DEL__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>blng__Usage__c.LPCR_ContactEnfant__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -8094,22 +8104,22 @@
         <layout>SBQQ__QuoteLine__c-SBQQ__Quote Line Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SBQQ__Quote__c-SBQQ__Quote Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>SBQQ__Quote__c-SBQQ__Quote Layout</layout>
+        <layout>SBQQ__Quote__c-Contrat d%27accueil</layout>
         <recordType>SBQQ__Quote__c.Contrat_Accueil</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SBQQ__Quote__c-SBQQ__Quote Layout</layout>
+        <layout>SBQQ__Quote__c-Référencement</layout>
         <recordType>SBQQ__Quote__c.Contrat_Cadre</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SBQQ__Quote__c-SBQQ__Quote Layout</layout>
+        <layout>SBQQ__Quote__c-Référencement</layout>
         <recordType>SBQQ__Quote__c.Referencement</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SBQQ__Quote__c-SBQQ__Quote Layout</layout>
+        <layout>SBQQ__Quote__c-Réservataire</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>SBQQ__Quote__c-Réservataire</layout>
         <recordType>SBQQ__Quote__c.Reservataire</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -8308,6 +8318,10 @@
         <visible>false</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
+        <tab>LPCR_BaremeCAF__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>LPCR_PlanningPrevisionnel__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -8363,7 +8377,7 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>AddDirectMessageMembers</name>
-    </userPermissions>
+    </userPermissions>>
     <userPermissions>
         <enabled>true</enabled>
         <name>ApexRestServices</name>

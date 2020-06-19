@@ -31,6 +31,11 @@
                 <default>false</default>
                 <label>Rappel</label>
             </value>
+            <value>
+                <fullName>Draft</fullName>
+                <default>true</default>
+                <label>Brouillon</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

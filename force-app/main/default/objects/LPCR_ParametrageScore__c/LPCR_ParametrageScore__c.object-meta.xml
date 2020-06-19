@@ -156,8 +156,9 @@
     <gender>Masculine</gender>
     <label>Paramétrage Score</label>
     <nameField>
+        <displayFormat>PS-{0000}</displayFormat>
         <label>Nom de Paramétrage Score</label>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Paramétrages Score</pluralLabel>
     <searchLayouts/>
