@@ -17,7 +17,6 @@ public with sharing class APC007_ShowCrechesLpcrController {
                 GeoLocation centerLocation = new GeoLocation();
 
                 for(Account acc :accs){
-                    System.debug(acc);
                     GeoLocation geoInfo = new GeoLocation();
                     geoInfo.Street = acc.ShippingStreet;
                     geoInfo.PostalCode = acc.ShippingPostalCode;

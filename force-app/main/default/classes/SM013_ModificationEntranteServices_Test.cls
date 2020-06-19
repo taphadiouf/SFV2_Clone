@@ -884,7 +884,6 @@ public class SM013_ModificationEntranteServices_Test {
             List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
-            System.debug('**** qlines '+qlines);
 
             LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
             insert ressourceFamille;
@@ -1065,7 +1064,6 @@ public class SM013_ModificationEntranteServices_Test {
             List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
-            System.debug('**** qlines '+qlines);
 
             LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
             insert ressourceFamille;
@@ -1148,7 +1146,6 @@ public class SM013_ModificationEntranteServices_Test {
             List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
-            System.debug('**** qlines '+qlines);
 
             LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
             insert ressourceFamille;

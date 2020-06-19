@@ -261,7 +261,6 @@ public with sharing class SM013_QuoteLineServices_Test {
             try {
                 insert quoteLine;
             } catch (Exception e) {
-                System.debug('### Exception throwed by QuoteLine insert trigger');
                 excepThrowed = true;
                 excepMessage = e.getMessage();
             }

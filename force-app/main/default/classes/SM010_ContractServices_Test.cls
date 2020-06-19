@@ -150,7 +150,7 @@ public class SM010_ContractServices_Test {
                 contract = [SELECT Id,SBQQ__Order__c, LPCR_Sales_Rep__c ,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c, LPCR_PlanningEnfant__c FROM Contract 
                             WHERE SBQQ__Order__c =:order.Id ]; 
             }catch(Exception e){
-                system.debug('Error , Contract not get generated');
+                PAD.log('SM010_ContractServices_Test','setContractFieldsTest','Error , Contract not get generated');
                 contract = UM002_TestDataFactory.createContract(acc.Id,quote.Id,order.Id);
             }
            
@@ -231,7 +231,7 @@ public class SM010_ContractServices_Test {
                 contract = [SELECT Id,LPCR_DureeContratJour__c,SBQQ__Order__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c, LPCR_PlanningEnfant__c FROM Contract 
                             WHERE SBQQ__Order__c =:order.Id ]; 
             }catch(Exception e){
-                system.debug('Error , Contract not get generated');
+                PAD.log('SM010_ContractServices_Test','setContractFieldsTest2','Error , Contract not get generated');
                 contract = UM002_TestDataFactory.createContract(acc.Id,quote.Id,order.Id);
             }
            
@@ -275,7 +275,7 @@ public class SM010_ContractServices_Test {
                 contract = [SELECT Id,SBQQ__Order__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c, LPCR_PlanningEnfant__c FROM Contract
                             WHERE SBQQ__Order__c =:order.Id ];
             }catch(Exception e){
-                system.debug('Error , Contract not get generated');
+                PAD.log('SM010_ContractServices_Test','setOrderFieldsTest','Error , Contract not get generated');
                 contract = UM002_TestDataFactory.createContract(acc.Id,quote.Id,order.Id);
             }
 
