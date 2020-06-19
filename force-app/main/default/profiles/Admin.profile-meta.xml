@@ -7,11 +7,6 @@
     </applicationVisibilities>
     <applicationVisibilities>
         <application>LPCR_Commerce</application>
-        <default>false</default>
-        <visible>true</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>LPCR_Commerce</application>
         <default>true</default>
         <visible>true</visible>
     </applicationVisibilities>
@@ -722,6 +717,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_MoyenDeTransport__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_MoyenPaiement__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3720,7 +3720,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Opportunity.Concurrent__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4011,6 +4011,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Order.LPCR_TypeCompte__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Order.LPCR_TypeCreche__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4037,6 +4042,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>OrderItem.LPCR_ContractStartDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_Creche__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4081,6 +4091,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>OrderItem.LPCR_JoursSemaineFormule__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_JoursSemaine__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>OrderItem.LPCR_NumeroPurchaseOrder__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4097,6 +4117,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>OrderItem.LPCR_TotalContractValue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_TypeCreche__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5741,6 +5766,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_CommercialB2B__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_CompteFacturation__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6016,7 +6046,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_OwnerManager__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_PlanningEnfant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_RTContratEntreprise__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -6536,6 +6576,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_JoursSemaine__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Subscription__c.LPCR_Region__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -7012,6 +7057,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__CreditNoteAllocation__c.LPCR_TypeEvenement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__CreditNoteLine__c.LPCR_TypeEvenement_DEL__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8186,12 +8236,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>blng__Usage__c.LPCR_Product__c</field>
+        <field>blng__Usage__c.LPCR_ContactEnfant__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>blng__Usage__c.LPCR_ContactEnfant__c</field>
+        <field>blng__Usage__c.LPCR_Product__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8327,6 +8377,31 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>echosign_dev1__SIGN_Agreement__c.LPCR_Devis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>sbaa__ApprovalChain__c.sbaa__TargetObject__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>sbaa__ApprovalCondition__c.sbaa__TestedField__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>sbaa__ApprovalRule__c.sbaa__ApproverField__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>sbaa__ApprovalRule__c.sbaa__TargetObject__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>sbaa__ApprovalVariable__c.sbaa__TargetObject__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9036,10 +9111,6 @@
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>LPCR_BaremeCAF__c</tab>
-        <visibility>Hidden</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
         <tab>LPCR_PlanningPrevisionnel__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
@@ -9524,10 +9595,10 @@
         <enabled>true</enabled>
         <name>ManageSynonyms</name>
     </userPermissions>
-        <userPermissions>
-            <enabled>true</enabled>
-            <name>ManageTranslation</name>
-        </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ManageTranslation</name>
+    </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
         <name>ManageUnlistedGroups</name>

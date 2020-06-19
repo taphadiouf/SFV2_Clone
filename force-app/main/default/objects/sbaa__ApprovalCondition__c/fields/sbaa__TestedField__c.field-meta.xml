@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sbaa__TestedField__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Field tested when evaluating the Condition</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Field tested when evaluating the Condition</inlineHelpText>
+    <label>Tested Field</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>LPCR_TypeEnregistrement__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeEnregistrement__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__Type__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Type__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_LigneInferieurePP__c</fullName>
+                <default>false</default>
+                <label>LPCR_LigneInferieurePP__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_LigneSuperieurePP__c</fullName>
+                <default>false</default>
+                <label>LPCR_LigneSuperieurePP__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_Nombreberceauxgratuits__c</fullName>
+                <default>false</default>
+                <label>LPCR_Nombreberceauxgratuits__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_ConditionsParticulieres__c</fullName>
+                <default>false</default>
+                <label>LPCR_ConditionsParticulieres__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeAvenant__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeAvenant__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_AmendmentDateOK__c</fullName>
+                <default>false</default>
+                <label>LPCR_AmendmentDateOK__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeCreche__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeCreche__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_RTContratEntreprise__c</fullName>
+                <default>false</default>
+                <label>LPCR_RTContratEntreprise__c</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

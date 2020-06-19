@@ -33,19 +33,20 @@
                 <label>Modification des termes du contrat</label>
             </value>
             <value>
+                <fullName>Mouvement Interne Berceau</fullName>
+                <default>false</default>
+                <label>Mouvement Interne Berceau</label>
+            </value>
+            <value>
                 <fullName>Modification du type/fréquence de facturation</fullName>
                 <default>false</default>
                 <label>Modification du type/fréquence de facturation</label>
             </value>
             <value>
-                <fullName>MIB Meme Region/Prix</fullName>
+                <fullName>MIB Changement Région/Prix</fullName>
                 <default>false</default>
-                <label>MIB Meme Region/Prix</label>
-            </value>
-            <value>
-                <fullName>MIB Changement Region/Prix</fullName>
-                <default>false</default>
-                <label>MIB Changement Region/Prix</label>
+                <isActive>false</isActive>
+                <label>MIB Changement Région/Prix</label>
             </value>
         </valueSetDefinition>
     </valueSet>
