@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_NomClient__c</fullName>
     <externalId>false</externalId>
-    <formula>blng__InvoiceLine__r.blng__Invoice__r.blng__Account__r.Name</formula>
+    <formula>blng__OrderProduct__r.Order.Account.Name</formula>
     <label>Nom du Client</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
