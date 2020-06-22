@@ -142,6 +142,7 @@ public class SM010_ContractServices {
                 Order order= new Order(Id = orderItem.OrderId);
                 order.blng__InvoiceBatch__c = contractMap.get(orderItem.SBQQ__Contract__c).LPCR_BatchCommande__c;
                 orderList.add(order);
+                OrderIds.add(orderItem.OrderId);
             }
         }
 
