@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_GroupeEtablissement__c</fullName>
+    <externalId>false</externalId>
+    <label>Groupe Etablissement</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Crèche</fullName>
+                <default>false</default>
+                <label>Crèche</label>
+            </value>
+            <value>
+                <fullName>Siège</fullName>
+                <default>false</default>
+                <label>Siège</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
