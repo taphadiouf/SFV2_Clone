@@ -487,7 +487,7 @@
     <classAccesses>
         <apexClass>WRP003_QuoteLineGroupModel</apexClass>
         <enabled>true</enabled>
-    </classAccesses>
+    </classAccesses>    
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
@@ -2035,28 +2035,28 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_LienFamilleFacture__c.LCPR_Devis__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_LienFamilleFacture__c.LCPR_Facture__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_LienFamilleFacture__c.LCPR_LigneFacture__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_LienFamilleFacture__c.LCPR_RevenueTransaction__c</field>
-        <readable>true</readable>
+        <editable>false</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_Contrat__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_LienFamilleFacture__c.LPCR_Devis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_Facture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_LigneFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_RevenueTransaction__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7060,6 +7060,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__CreditNoteLine__c.LPCR_TypeEvenement__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>blng__CreditNoteLine__c.blngDash__Credit_GL_Account__c</field>
         <readable>true</readable>
@@ -8472,6 +8477,9 @@
         <layout>LPCR_LienCrecheOpportunite__c-Présentation Lien Crèche Opportunité</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>LPCR_LienFamilleFacture__c-Présentation Lien Famille et Facture</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>LPCR_LignePlanFacturation__c-Billing Plan Line Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -8541,25 +8549,6 @@
     <layoutAssignments>
         <layout>Opportunity-Présentation Opportunité Entreprise</layout>
         <recordType>Opportunity.Entreprise</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Présentation de l%27opportunité</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Présentation de l%27opportunité</layout>
-        <recordType>Opportunity.AOPublicDSP</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Présentation de l%27opportunité</layout>
-        <recordType>Opportunity.AOPublicReservation</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Présentation de l%27opportunité</layout>
-        <recordType>Opportunity.Famille</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Présentation de l%27opportunité</layout>
-        <recordType>Opportunity.Partenaire</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Order-Présentation de commande</layout>
@@ -8962,6 +8951,11 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Contact.Partenaire</recordType>
+        <visible>false</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
         <default>true</default>
         <recordType>Contract.Contrat_B2B</recordType>
         <visible>true</visible>
@@ -9332,6 +9326,10 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>EditHtmlTemplates</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>EditKnowledge</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
