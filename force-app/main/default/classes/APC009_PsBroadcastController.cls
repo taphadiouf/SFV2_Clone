@@ -9,7 +9,6 @@ public with sharing class APC009_PsBroadcastController {
     @AuraEnabled(cacheable=true)
     public static List<PermissionSet> getAllPermissionSet() {
         
-        System.Debug('>>> APC009_PsBroadcastController - getAllPermissionSet');
         return [SELECT Id,Name,Label FROM PermissionSet where name like 'LPCR%'];
 
     }
@@ -21,10 +20,6 @@ public with sharing class APC009_PsBroadcastController {
         Boolean pDelete = (tmpDelete == 'true') ? true : false;
         Boolean pRead = (tmpRead == 'true') ? true : false;
         Boolean pEdit = (tmpEdit == 'true') ? true : false;
-
-        System.Debug('>>> APC009_PsBroadcastController - executeAsyncPsUpdate - pRead:' + pRead);
-        System.Debug('>>> APC009_PsBroadcastController - executeAsyncPsUpdate - pEdit:' + pEdit);
-        System.Debug('>>> APC009_PsBroadcastController - executeAsyncPsUpdate - tmpPsName:' + tmpPsName);
 
         execAsync(pCreate, pDelete, pRead, pEdit, tmpPsName);
         return true;
@@ -54,12 +49,10 @@ public with sharing class APC009_PsBroadcastController {
         for (FieldPermissions f : tmpList) {
                     
             List<String> parts = f.field.split('\\.' , 2);
-
-			System.Debug('>>> cleanFpList - parts[0]:' + parts[0]); 
-            System.Debug('>>> cleanFpList - parts[1]:' + parts[1]);        
+        
             
             if (tmpMapFields.get(parts[1]) == null) {
-            	System.Debug('### cleaning parts[1]:' + parts[1]);
+                PAD.log('APC009_PsBroadcastController', 'cleanFpList', 'cleanFpList', parts[1]) ;
             }
             else {
                 if (tmpMapFields.get(parts[1]) != null) {
@@ -80,9 +73,7 @@ public with sharing class APC009_PsBroadcastController {
                 List<String> parts = f.field.split('\\.' , 2);
                 Schema.Sobjectfield field = tmpMapfields.get(parts[1]);
                 Schema.Describefieldresult fieldDesc = field.getDescribe();
-                String fieldAPIName = fieldDesc.getName();
-                System.Debug('>>> fieldPermissionAlreadyExists - tmpObj - fieldAPIName: ' + tmpObj + ' - ' + fieldAPIName);
-                System.Debug('>>> fieldPermissionAlreadyExists - tmpObj - ***fieldName: ' + tmpObj + ' - ' + fieldName);                
+                String fieldAPIName = fieldDesc.getName();             
                 
                 if (fieldAPIName == fieldName) {
                     return true;
@@ -129,9 +120,6 @@ public with sharing class APC009_PsBroadcastController {
             
             Schema.SobjectType sobjecttype = gd.get(OBKey);
             Schema.DescribeSObjectResult r = sobjecttype.getDescribe();   
-
-            System.Debug('>>> *** r.isCreateable():' + r.isCreateable());
-            System.Debug('>>> *** r.isAccessible():' + r.isAccessible());
 
             if (!r.isCreateable()) {
                 continue;
@@ -201,8 +189,7 @@ public with sharing class APC009_PsBroadcastController {
                 tmpOp.PermissionsCreate = tmpCreate;
                 tmpOp.PermissionsRead   = tmpRead;
                 tmpOp.PermissionsEdit   = tmpEdit;
-
-                tmpOp.PermissionsDelete = false;
+                tmpOp.PermissionsDelete = tmpDelete;
                 tmpOp.PermissionsModifyAllRecords = false;
                 tmpOp.PermissionsViewAllRecords = false;
 
@@ -212,18 +199,10 @@ public with sharing class APC009_PsBroadcastController {
         update tmpUpdate;
         insert tmpInsert;
         
-        
-        
         List<FieldPermissions> tmpFpListToInsert = new List<FieldPermissions>();
         List<FieldPermissions> tmpFpListToUpdate = new List<FieldPermissions>();
         List<FieldPermissions> tmpFpList = [Select Id, Field, ParentId, SobjectType, PermissionsEdit, PermissionsRead from FieldPermissions where ParentId = :TmpPs.Id  and SobjectType in :tmpObjSet];
-        //List<FieldPermissions> tmpFpList = [Select Id, Field, ParentId, SobjectType, PermissionsEdit, PermissionsRead from FieldPermissions where Parent.Name = 'LPCR_Commercial'  and SobjectType = 'LPCR_Preinscription__c'];
-        
-        System.Debug('>>> tmpFpList.size():' + tmpFpList.size());
-        
         Map<String, FieldPermissions> tmpMapFp = new Map<String, FieldPermissions>();
-        
-        System.Debug('>>> tmpFpList.size():' + tmpMapFp.size());
         
         for (String obj : tmpObjSet) { // Nom Objet
             
@@ -240,14 +219,11 @@ public with sharing class APC009_PsBroadcastController {
                 if (field == null || !fieldAPIName.startsWith('LPCR_')) {
                     continue;
                 }
-                
-                System.Debug('*** PART II : obj - fieldAPIName:' + obj + ' - ' + fieldAPIName);
-                
+                                
                 List<FieldPermissions> tmpFpListRes = new List<FieldPermissions>();
                 tmpFpListRes = cleanFpList(tmpFpList, obj);              
                
                 if (fieldDesc.isAccessible() && fieldDesc.isPermissionable() && !fieldDesc.isRestrictedPicklist()) {  
-                //if (fieldDesc.isAccessible() ) {  
                     
                     FieldPermissions tmpFp = new FieldPermissions();
                     tmpFp.PermissionsRead   = tmpRead; 
@@ -256,44 +232,31 @@ public with sharing class APC009_PsBroadcastController {
                         tmpFp.PermissionsEdit   = tmpEdit;
                     }
                     
-                    System.Debug('*** PART III : obj - fieldAPIName:' + obj + ' - ' + fieldAPIName);
-                    
-                    for (FieldPermissions fpt : tmpFpListRes) {
-                        
-                        System.Debug('*** PART IV : fpt.SobjectType:' + fpt.SobjectType + ' - ' + fpt.Field);
-                    }
-                    
                     if (fieldPermissionAlreadyExists(fieldAPIName, tmpFpListRes, mfields, obj)) {
                         
                         tmpFp.Id = getFieldPermissionByFieldNameAndPermissionSet(fieldAPIName, TmpPs.Id, tmpFpListRes, mfields, obj);
-                        System.Debug('*** Field setted by upd :' + obj + '.' + fieldAPIName);
+                        PAD.log('APC009_PsBroadcastController', 'execAsync', 'Field setted by upd :', obj + '.' + fieldAPIName) ;
                         tmpFpListToUpdate.add(tmpFp);
                     }
                     else {
                         
-                        //if (!fieldPermissionAlreadyExists(fieldAPIName, tmpFpListToInsert, mfields)) {
-                        
                             tmpFp.ParentId = TmpPs.Id;
                             tmpFp.SobjectType = obj;
                             tmpFp.Field = obj + '.' + fieldAPIName;
-                            System.Debug('*** Field setted by ins :' + obj + '.' + fieldAPIName);
+                            PAD.log('APC009_PsBroadcastController', 'execAsync', 'Field setted by ins :', obj + '.' + fieldAPIName) ;
                             tmpFpListToInsert.add(tmpFp);
-                            
-                        //}
                     }
                 }  
             }
         }
 
-
-        for (FieldPermissions f : tmpFpListToInsert) {
-        	System.debug('>>> FieldPermissions tmpFpListToInsert f:' + f);
-        }
-
-        System.Debug('>>> tmpFpListToUpdate.size():' + tmpFpListToUpdate.size());
-        System.Debug('>>> tmpFpListToInsert.size():' + tmpFpListToInsert.size());  
-        update tmpFpListToUpdate; System.debug('>>> tmpFpListToUpdate finished');
-        insert tmpFpListToInsert; System.debug('>>> tmpFpListToInsert finished');
-        System.debug('>>> Finished');
+        PAD.log('APC009_PsBroadcastController', 'execAsync', 'tmpFpListToUpdate.size():', String.valueOf(tmpFpListToUpdate.size()));
+        PAD.log('APC009_PsBroadcastController', 'execAsync', 'tmpFpListToInsert.size():', String.valueOf(tmpFpListToInsert.size()));
+        
+        update tmpFpListToUpdate;
+        PAD.log('APC009_PsBroadcastController', 'execAsync', 'tmpFpListToUpdate finished');
+        insert tmpFpListToInsert;
+        PAD.log('APC009_PsBroadcastController', 'execAsync', 'tmpFpListToInsert finished');
+        PAD.log('APC009_PsBroadcastController', 'execAsync', 'process finished');
     }  
 }
