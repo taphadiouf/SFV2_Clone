@@ -227,4 +227,110 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             update listOrderItemtoSave;
         }
     }
+/**
+* @Author Ayoub Ouarti
+* @Created 19/06/2020
+* @Description methode generateBillingTransactions 
+* @Inputs Map<Id, OrderItem> oldMapOrderItem,Map<Id, OrderItem> newMapOrderItem
+*/
+    
+    public static void generateBillingTransactions(Map<Id,OrderItem> oldMapOrderItem,Map<Id,OrderItem> newMapOrderItem){
+        Pad.log('SM012_OrderItemServices','generateBillingTransaction','oldMapOrderItem size '+oldMapOrderItem.size(),'newMapOrderItem size '+newMapOrderItem.size());
+
+        Set<Id> orderItemIds = new Set<Id>();
+        for(OrderItem eachOrderItem : newMapOrderItem.values()){
+            if('Activated'.equals(eachOrderItem.SBQQ__Status__c) && oldMapOrderItem.get(eachOrderItem.Id).SBQQ__Status__c !=eachOrderItem.SBQQ__Status__c  ){
+                orderItemIds.add(eachOrderItem.Id);
+            }
+        }
+        
+      
+        Integer typeMensualisation = 11;
+        String billingFrequency = 'Invoice Plan';
+        String status = 'Activated';
+        Map<Id,OrderItem> orderItemMap = new Map<Id,OrderItem>([SELECT Id,OrderItemNumber,/*LPCR_Creche__r.LPCR_TypeMensualisation__c,*/
+                                                                SBQQ__BillingFrequency__c,TotalPrice,ServiceDate,EndDate,
+                                                                SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c ,SBQQ__QuoteLine__r.SBQQ__DefaultSubscriptionTerm__c
+                                                                FROM OrderItem 
+                                                                WHERE /*LPCR_Creche__r.LPCR_TypeMensualisation__c =:typeMensualisation AND*/
+                                                                SBQQ__BillingFrequency__c = :billingFrequency
+                                                                AND SBQQ__Status__c = :status AND Id IN :orderItemIds] );
+        
+        
+        List<blng__BillingSchedule__c> listOfBillingSchedule = new List<blng__BillingSchedule__c>();
+        List<blng__BillingTransaction__c> listOfBillingTransaction = new List<blng__BillingTransaction__c>();
+        
+        for( OrderItem eachOrderItem : orderItemMap.values()){
+            
+            blng__BillingSchedule__c billingSchedule = new blng__BillingSchedule__c(Name ='BS-'+eachOrderItem.OrderItemNumber ,
+                                                                                    blng__Amount__c=eachOrderItem.TotalPrice,
+                                                                                    blng__OrderProduct__c=eachOrderItem.Id);
+            listOfBillingSchedule.add(billingSchedule);
+        }
+        
+        
+        insert listOfBillingSchedule;
+        
+        Date startDate ;
+        Date endDate ;
+        Integer monthsBetween ;
+        Integer StartDateMonth ;
+        Decimal totalPrice ;
+        Decimal billingFrequencyUnit =1;
+        Decimal prorateMultiplier  ;
+        Decimal defaultSubscriptionTerm ;
+        Decimal billableUnitPrice ;
+        
+        
+        for(blng__BillingSchedule__c eachBS : listOfBillingSchedule){
+            System.debug('$$$$ eachBS '+ eachBS);
+            // insert the Billing Transactions
+            startDate = orderItemMap.get(eachBS.blng__OrderProduct__c).ServiceDate;
+            endDate = orderItemMap.get(eachBS.blng__OrderProduct__c).EndDate;
+            monthsBetween = startDate.monthsBetween(endDate);
+            monthsBetween=endDate.day() > startDate.day()? ++monthsBetween:monthsBetween;
+            StartDateMonth = orderItemMap.get(eachBS.blng__OrderProduct__c).ServiceDate.month();
+            totalPrice = orderItemMap.get(eachBS.blng__OrderProduct__c).TotalPrice ;
+            prorateMultiplier =orderItemMap.get(eachBS.blng__OrderProduct__c).SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c  ;
+            defaultSubscriptionTerm = orderItemMap.get(eachBS.blng__OrderProduct__c).SBQQ__QuoteLine__r.SBQQ__DefaultSubscriptionTerm__c  ;
+            System.debug('$$$$ billableUnitPrice ==== ( '+totalPrice+' * '+ billingFrequencyUnit+' ) / ( '+prorateMultiplier+' * '+defaultSubscriptionTerm+' )');
+
+            billableUnitPrice = ((totalPrice * billingFrequencyUnit)/ (prorateMultiplier * defaultSubscriptionTerm));
+
+            System.debug('$$$$ billableUnitPrice ==== '+billableUnitPrice);
+            //TotalPrice = 1100, BT = 100 * 11 BT,  
+            for(integer i =1;i <= monthsBetween;i++) {
+                if(StartDateMonth != 8) {
+                    blng__BillingTransaction__c billingTransaction =new blng__BillingTransaction__c(
+                        blng__BillingSchedule__c=eachBS.Id,
+                       // blng__Amount__c =orderItemMap.get(eachBS.blng__OrderProduct__c).TotalPrice,
+                        Name = StartDateMonth+'',
+                        blng__Status__c ='Pending',
+                        blng__BillingTargetDate__c= (i==1 && orderItemMap.get(eachBS.blng__OrderProduct__c).ServiceDate.day() > 5)? Date.newInstance(Date.today().Year(),StartDateMonth+1,5):Date.newInstance(Date.today().Year(),StartDateMonth,5),
+                        blng__Quantity__c = 1,
+                        blng__ServicePeriodStart__c=(i==1 )? orderItemMap.get(eachBS.blng__OrderProduct__c).ServiceDate : Date.newInstance(Date.today().Year(),StartDateMonth,1),
+                        blng__ServicePeriodEnd__c= UM005_DateUtility.lastDateOfMonth(Date.newInstance(Date.today().Year(),StartDateMonth,1)));                    
+                   
+                    billingTransaction.blng__Amount__c=  calculateBTAmount(billableUnitPrice,billingTransaction);
+                    System.debug('$$$$ billingTransaction '+ billingTransaction);
+
+                    listOfBillingTransaction.add(billingTransaction);
+                }
+                StartDateMonth++;
+                
+            } 
+            
+        }
+        insert listOfBillingTransaction;
+        
+    }
+    
+     static Decimal calculateBTAmount(Decimal billableUnitPrice,blng__BillingTransaction__c bt){
+        
+        if(bt.blng__ServicePeriodStart__c.day() == 1 && bt.blng__ServicePeriodEnd__c.day() ==  UM005_DateUtility.lastDateOfMonth(bt.blng__ServicePeriodEnd__c).Day()){
+            return billableUnitPrice;
+        }else{
+           return billableUnitPrice* (bt.blng__ServicePeriodStart__c.daysBetween(bt.blng__ServicePeriodEnd__c)+1) / UM005_DateUtility.lastDateOfMonth(bt.blng__ServicePeriodEnd__c).Day();
+        }
+    } 
 }

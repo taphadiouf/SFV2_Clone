@@ -153,6 +153,108 @@ public with sharing class SM012_OrderItemServices_Test {
         update new List<Opportunity> {oppForAccuel, oppForRef};
             }
     
+    
+    
+        
+    @isTest
+    private static void generateBillingTransactions_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){            
+             Test.startTest();
+            Account customerAcc=[SELECT Id, RecordTypeId FROM Account].get(0);
+            //setup data for this particular test
+            
+            
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            prod.SBQQ__SubscriptionTerm__c =1;
+            update prod;
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                //  'RecordTypeId' => OPPT_FAMILE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                //'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Invoice Plan',
+                    'LPCR_TypeFacturation__c' => 'Advance',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id
+                    };
+                        
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            System.debug('$$$ priceBookEntry.Id '+priceBookEntry.Id);
+            Integer price = 1100;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                 'SBQQ__ListPrice__c' => price,
+                  'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                   'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Advance',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingFrequency__c' => 'Invoice Plan',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+            SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            System.debug('$$$ quoteLine.priceBookEntry '+quoteLine.SBQQ__PricebookEntryId__c);
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            quote.SBQQ__Ordered__c=true;
+            update  quote ;
+           
+            Order order = Database.query('SELECT Id , Status ,OpportunityId,EffectiveDate FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
+			order.Status='Activated';
+            update order;
+            Test.stopTest();
+            
+            
+            order = Database.query('SELECT Id , Status ,OpportunityId,EffectiveDate FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
+            System.assertEquals('Activated', order.Status,'status is not get activated');
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @IsTest
     static void setLegalEntityOnOrderItem_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
@@ -1813,5 +1915,8 @@ System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.bln
         Test.stopTest();
         
     }
+    
+    
+
 
 }
