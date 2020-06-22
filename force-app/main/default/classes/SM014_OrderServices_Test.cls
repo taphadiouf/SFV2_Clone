@@ -51,12 +51,11 @@ public class SM014_OrderServices_Test {
     private static void setOrderFieldsTest(){
         System.runAs(UM002_TestDataFactory.createUser()){
             
-            SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_RenouvellementConvenu__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
+            SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
             quote.SBQQ__Ordered__c  = true; 
             quote.LPCR_IndexationConvenue__c='Oui';
             quote.LPCR_TypeFacturation__c='Arrears';
             quote.SBQQ__BillingFrequency__c='Invoice Plan';
-            quote.LPCR_RenouvellementConvenu__c = 'Oui';
             quote.LPCR_DateDebut__c = Date.today();
             quote.LPCR_DateFin__c = Date.today() + 10;
             quote.LPCR_ChiffreAffaire__c = 1000;

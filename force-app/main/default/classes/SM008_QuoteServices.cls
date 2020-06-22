@@ -25,8 +25,8 @@ public with sharing class SM008_QuoteServices {
         Set<String> renewedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_RenewedContract);
         Set<String> amendedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_AmendedContract);
 
-        Map<Id,Contract> contractMap = new Map<Id,Contract>([SELECT Id, LPCR_InitAutoAvecDateDebut__c,LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c ,LPCR_RenouvellementConvenu__c   From Contract Where Id =: renewedContractIds]);
-        Map<Id,Contract> amendedContractMap = new Map<Id,Contract>([SELECT Id,LPCR_InitAutoAvecDateDebut__c, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c ,LPCR_RenouvellementConvenu__c,SBQQ__RenewalUpliftRate__c   From Contract Where Id =: amendedContractIds]);
+        Map<Id,Contract> contractMap = new Map<Id,Contract>([SELECT Id, LPCR_InitAutoAvecDateDebut__c,LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c    From Contract Where Id =: renewedContractIds]);
+        Map<Id,Contract> amendedContractMap = new Map<Id,Contract>([SELECT Id,LPCR_InitAutoAvecDateDebut__c, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c ,SBQQ__RenewalUpliftRate__c   From Contract Where Id =: amendedContractIds]);
 
         if (Trigger.isBefore) {
             if (Trigger.isInsert) {
@@ -124,10 +124,7 @@ public with sharing class SM008_QuoteServices {
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
                     if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
-                        eachQuote.LPCR_RenouvellementConvenu__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_RenouvellementConvenu__c  ;
-                        if(Label.LPCR_Non.equals(contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_RenouvellementConvenu__c)){
                             eachQuote.SBQQ__RenewalUpliftRate__c = 0;
-                        }
                     }
                 }
             }
@@ -155,11 +152,8 @@ public with sharing class SM008_QuoteServices {
             if(Label.LPCR_Amendment.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
                     if(amendedContractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c)){
-                        eachQuote.LPCR_RenouvellementConvenu__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_RenouvellementConvenu__c  ;
                         eachQuote.LPCR_TypeFacturation__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_TypeFacturation__c;
-                        if(Label.LPCR_Non.equals(amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_RenouvellementConvenu__c)){
                             eachQuote.SBQQ__RenewalUpliftRate__c = 0;
-                        } 
                     }
                     
                 }
@@ -235,10 +229,7 @@ public with sharing class SM008_QuoteServices {
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) ){
                     if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
-                        eachQuote.LPCR_RenouvellementConvenu__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_RenouvellementConvenu__c  ;
-                        if(Label.LPCR_Non.equals(contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_RenouvellementConvenu__c)){
                             eachQuote.SBQQ__RenewalUpliftRate__c = 0;
-                        } 
                     }
                 }
             }
