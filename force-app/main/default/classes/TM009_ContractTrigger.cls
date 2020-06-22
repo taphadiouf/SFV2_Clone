@@ -29,5 +29,7 @@ public class TM009_ContractTrigger extends TM000_TriggerHandler{
     protected override void afterUpdate(){
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         SM010_ContractServices.setOrderFields(this.newContractMap,this.oldContractMap);
+        // added by saurabh
+        SM010_ContractServices.setOrderItemFields(this.newContractMap,this.oldContractMap);
     }
 }

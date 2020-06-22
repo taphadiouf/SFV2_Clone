@@ -294,7 +294,12 @@ public class SM010_ContractServices_Test {
             orderItem.SBQQ__Contract__c = contract.id;
             update orderItem;
 
+            LPCR_PlanFacturation__c billingPlan = new LPCR_PlanFacturation__c();
+            billingPlan.LPCR_OrderItem__c = orderItem.id;
+            insert billingPlan;
+
             contract.LPCR_BatchCommande__c = 'Batch 1';
+            contract.SBQQ__RenewalUpliftRate__c = 5;
             update contract;
 
             Order order1 = [Select blng__InvoiceBatch__c from order where id =: order.Id ];

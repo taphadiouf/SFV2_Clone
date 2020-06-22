@@ -151,4 +151,33 @@ public class SM010_ContractServices {
 
     }
 
+    //added by saurabh
+    public static void setOrderItemFields(Map<Id, Contract> newContractMap, Map<Id, Contract> oldContractMap){
+        Map<Id,Contract> contractMap = new Map<Id,Contract>();
+        Set<Id> orderItemIds = new Set<Id>();
+        List<OrderItem> orderItemList = new List<OrderItem>();
+        for(Contract eachNewContract : newContractMap.values()){ //get all contracts where Uplift is changed
+            if(eachNewContract.SBQQ__RenewalUpliftRate__c != oldContractMap.get(eachNewContract.Id).SBQQ__RenewalUpliftRate__c) {
+                contractMap.put(eachNewContract.Id, eachNewContract);
+            }
+        }
+        //get order items to be updated
+        for(OrderItem orderItem:[Select id, orderId, SBQQ__Contract__c from orderItem where SBQQ__Contract__c in:contractMap.keyset()]){
+            orderItem.LPCR_BillingPlanProcessment__c = false;
+            orderItemIds.add(orderItem.id);
+            orderItemList.add(orderItem);
+        }
+
+        if(orderItemList.size() > 0){
+            update orderItemList;
+        }
+
+        List<LPCR_PlanFacturation__c> delBillingPlanList = [select id, LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c IN: orderItemIds ];
+
+        if(delBillingPlanList.size() > 0){
+            delete delBillingPlanList;
+        }       
+
+    }
+
 }
