@@ -80,6 +80,27 @@ public with sharing class APC001_LeadFaConverController{
         ///Create contacts (Enfants and Representants(Parent RT) )
         //Map : Contact Variable Name => Contact Record
         Map<String, Contact> newContactsMap = new Map<String, Contact>();
+        boolean isvalid = true;
+       String errMsg = 'Veuillez saisir les champs manquant : ';
+        if(currentLead.LPCR_CompteSociete__c == Null){
+            isvalid = False ;
+            errMsg += 'Compte Société, ';
+            
+        }
+
+        if(currentLead.LPCR_CompteSocieteCoDemandeur__c == Null){
+            isvalid = False ;
+            errMsg += 'Compte Société Co-Demandeur, ';
+            
+        }
+        
+        if(currentLead.Address == Null){
+            isvalid = False ;
+            errMsg += 'Adresse ';
+        }
+        if(!isvalid){
+            throw new AuraHandledException(errMsg);
+        }
         //Representants part (Parent)
         Id parentContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Parent);
             newContactsMap.put('contactRep1', new Contact(
