@@ -55,6 +55,11 @@
         <default>false</default>
         <label>Modification Congés non pris MAC</label>
     </customValue>
+    <customValue>
+        <fullName>Mouvement Interne de Berceau</fullName>
+        <default>false</default>
+        <label>Mouvement Interne de Berceau</label>
+    </customValue>
     <masterLabel>Type d&apos;événement</masterLabel>
     <sorted>false</sorted>
 </GlobalValueSet>

@@ -61,8 +61,8 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
             this.creches = [];
             for(let i = 0; i < data.length ; i++){
                 this.creches.push({
-                    label : data[i].Name,
-                    value : data[i].Id
+                    label : data[i].Id,
+                    value : data[i].Name
                 });
             }
         }
@@ -76,8 +76,8 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
             this.comptes = [];
             for(let i=0; i< data.length; i++){
                 this.comptes.push({
-                    label: data[i].Name,
-                    value: data[i].Id
+                    label: data[i].Id,
+                    value: data[i].Name
                 });
             }
         }
@@ -118,14 +118,14 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         fireEvent(this.pageRef, "changedEnfants", this.enfantsIndexes);
     }
     handleCrecheChosen(event){
-        this.chosenCrecheId = event.target.value;
+        this.chosenCrecheId = event.target.value.Id;
         fireEvent(this.pageRef, "chosenCrecheChanged", this.chosenCrecheId);
     }
     handleSponsCheckbox(event) {
         this.showComptes = event.target.checked;
     }
     handleCompteChosen(event){
-        this.chosenCompteId = event.target.value;
+        this.chosenCompteId = event.target.value.Id;
         fireEvent(this.pageRef, "chosenCompteChanged", this.chosenCompteId);
     }
 }
