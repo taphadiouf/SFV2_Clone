@@ -133,12 +133,13 @@ public class SM010_ContractServices_Test {
     private static void setContractFieldsTest(){        
         System.runAs(UM002_TestDataFactory.createUser()){
             Date lastMonth=Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day()+1) ;
+            
+            Test.startTest();
+            
             Account acc = [SELECT Id, name from Account where name ='test' ];
             
             SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_DureeContratJour__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
-            Order order = Database.query('SELECT Id , Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
-            
-            Test.startTest();
+            Order order = Database.query('SELECT Id , Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');       
             
             order.SBQQ__Contracted__c=true; 
             update order;
@@ -256,12 +257,13 @@ public class SM010_ContractServices_Test {
     private static void setOrderFieldsTest(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Date lastMonth=Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day()+1) ;
+            
+            Test.startTest();
+
             Account acc = [SELECT Id, name from Account where name ='test' ];
 
             SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
             Order order = Database.query('SELECT Id , Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
-
-            Test.startTest();
 
             order.SBQQ__Contracted__c=true;
             update order;
@@ -290,7 +292,12 @@ public class SM010_ContractServices_Test {
             orderItem.SBQQ__Contract__c = contract.id;
             update orderItem;
 
+            LPCR_PlanFacturation__c billingPlan = new LPCR_PlanFacturation__c();
+            billingPlan.LPCR_OrderItem__c = orderItem.id;
+            insert billingPlan;
+
             contract.LPCR_BatchCommande__c = 'Batch 1';
+            contract.SBQQ__RenewalUpliftRate__c = 5;
             update contract;
 
             Order order1 = [Select blng__InvoiceBatch__c from order where id =: order.Id ];
