@@ -1057,11 +1057,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contract.LPCR_RenouvellementConvenu__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Contract.LPCR_Section__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4168,11 +4163,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_Region__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_RenouvellementConvenu__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
