@@ -41,8 +41,8 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
             insert billingPlanMap.values();
         }
         
-        for(!blng__BillingTransaction__c eachTransaction : [SELECT Id, Name, blng__BillingSchedule__r.blng__OrderProduct__c, blng__BillingTargetDate__c FROM blng__BillingTransaction__c WHERE blng__BillingSchedule__r.blng__OrderProduct__c IN: selectedOrderItemId ]){
-            if(billingTransactionMap.containsKey(eachTransaction.blng__BillingSchedule__r.blng__OrderProduct__c)){
+        for(blng__BillingTransaction__c eachTransaction : [SELECT Id, Name, blng__BillingSchedule__r.blng__OrderProduct__c, blng__BillingTargetDate__c FROM blng__BillingTransaction__c WHERE blng__BillingSchedule__r.blng__OrderProduct__c IN: selectedOrderItemId ]){
+            if(!billingTransactionMap.containsKey(eachTransaction.blng__BillingSchedule__r.blng__OrderProduct__c)){
                 billingTransactionMap.put(eachTransaction.blng__BillingSchedule__r.blng__OrderProduct__c, new List<blng__BillingTransaction__c>());
             }
             billingTransactionMap.get(eachTransaction.blng__BillingSchedule__r.blng__OrderProduct__c).add(eachTransaction);
