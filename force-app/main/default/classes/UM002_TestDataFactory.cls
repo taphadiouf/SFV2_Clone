@@ -572,8 +572,8 @@ newMe.FederationIdentifier = null;
         listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =10000,LPCR_Score__c=100));
         listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =100000,LPCR_Score__c=500));
         
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_ReponseCrecheMunicipale__c=true,LPCR_Score__c=20));        
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_ReponseCrecheMunicipale__c=False,LPCR_Score__c=50));
+       listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_ReponseCrecheMunicipale__c='Autre',LPCR_Score__c=20));        
+       listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_ReponseCrecheMunicipale__c='Refus',LPCR_Score__c=50));
         
         listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2019,12,31),LPCR_Score__c=100));
         listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2020,12,31),LPCR_Score__c=10));

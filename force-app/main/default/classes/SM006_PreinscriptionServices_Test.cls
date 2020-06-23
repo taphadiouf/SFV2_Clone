@@ -12,34 +12,34 @@ public class SM006_PreinscriptionServices_Test {
     
     static void testSetup(){
         Id enfantContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Enfant);
-        List<Contact> enfantsContactsListOCC= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname', 'test_address');
-        List<Contact> enfantsContactsListDEF= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname', 'test_address');
+      //  List<Contact> enfantsContactsListOCC= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname', 'test_address');
+      //  List<Contact> enfantsContactsListDEF= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname', 'test_address');
         List<Contact> enfantsContactsListDSP= UM002_TestDataFactory.createContacts(20, enfantContactRT, 'test_lastname', 'test_address');
-        insert enfantsContactsListOCC;  
-        insert enfantsContactsListDEF;
+     //   insert enfantsContactsListOCC;  
+      //  insert enfantsContactsListDEF;
         insert enfantsContactsListDSP;
         
         Id parentContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
-        List<Contact> parentContactsListOCC= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname', 'test_address');
+     //   List<Contact> parentContactsListOCC= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname', 'test_address');
         List<Contact> parentContactsListDEF= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname', 'test_address');
         List<Contact> parentContactsListDSP= UM002_TestDataFactory.createContacts(20, parentContactRT, 'test_lastname', 'test_address');
-        insert parentContactsListOCC;
-        insert parentContactsListDEF;
+      //  insert parentContactsListOCC;
+      //  insert parentContactsListDEF;
         insert parentContactsListDSP;
 
         Id familleAccountRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
-        List<Account> famillesAccountListOCC= UM002_TestDataFactory.createAccounts(20, familleAccountRT, 'test_name');
-        List<Account> famillesAccountListDEF= UM002_TestDataFactory.createAccounts(20, familleAccountRT, 'test_name');
+      //  List<Account> famillesAccountListOCC= UM002_TestDataFactory.createAccounts(20, familleAccountRT, 'test_name');
+     //   List<Account> famillesAccountListDEF= UM002_TestDataFactory.createAccounts(20, familleAccountRT, 'test_name');
         List<Account> famillesAccountListDSP= UM002_TestDataFactory.createAccounts(20, familleAccountRT, 'test_name');
-        insert famillesAccountListOCC;
-        insert famillesAccountListDEF;
+    //    insert famillesAccountListOCC;
+     //   insert famillesAccountListDEF;
         insert famillesAccountListDSP;
         
         List<LPCR_Preinscription__c> allPreInscrList = new List<LPCR_Preinscription__c>();
         //Add OCC Preinscription
-        allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListOCC, enfantsContactsListOCC, parentContactsListOCC, Label.LPCR_Nouveau, Label.LPCR_OCC));
+      //  allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListOCC, enfantsContactsListOCC, parentContactsListOCC, Label.LPCR_Nouveau, Label.LPCR_OCC));
         //Add DEF Preinscription
-        allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListDEF, enfantsContactsListDEF, parentContactsListDEF, Label.LPCR_Nouveau, Label.LPCR_DEF));
+    //    allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListDEF, enfantsContactsListDEF, parentContactsListDEF, Label.LPCR_Nouveau, Label.LPCR_DEF));
         //Add DSP Preinscription
         allPreInscrList.addAll(UM002_TestDataFactory.createPreinscriptions(famillesAccountListDSP, enfantsContactsListDSP, parentContactsListDSP, Label.LPCR_Nouveau, Label.LPCR_DSP));
         

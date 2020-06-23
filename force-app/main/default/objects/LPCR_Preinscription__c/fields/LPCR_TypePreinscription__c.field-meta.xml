@@ -12,19 +12,14 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>DEF</fullName>
-                <default>true</default>
-                <label>DEF</label>
-            </value>
-            <value>
                 <fullName>DSP</fullName>
                 <default>false</default>
                 <label>DSP</label>
             </value>
             <value>
-                <fullName>OCC</fullName>
+                <fullName>Entreprise</fullName>
                 <default>false</default>
-                <label>OCC</label>
+                <label>Entreprise</label>
             </value>
         </valueSetDefinition>
     </valueSet>
