@@ -1,0 +1,24 @@
+<template>
+    <div class="back">
+        <div class="inside">
+                <br>
+                (Small LWC made for mass updating a Permission Set with common access right for all custom field of all
+                object)
+                <br><br>
+                <lightning-input type="checkbox" label="Create" onchange={handleCreateCheckbox}>
+                </lightning-input>
+                <lightning-input type="checkbox" label="Delete" onchange={handleDeleteCheckbox}>
+                </lightning-input>
+                <lightning-input type="checkbox" label="Read" onchange={handleReadCheckbox}>
+                </lightning-input>
+                <lightning-input type="checkbox" label="Edit" onchange={handleEditCheckbox}></lightning-input>
+                <br>
+                <lightning-combobox name="Name" label="Select a Permission Set" value={PsApiNameSelected}
+                    placeholder="-Select-" options={permissionSetlist} onchange={handlePsChosen}></lightning-combobox>
+                <br>
+                <lightning-button variant="brand" label="Validate Permission Set Mass Modification"
+                    name="Validate Permission Set Mass Modification" onclick={handelValidation}></lightning-button>
+                <br>
+        </div>
+    </div>
+</template>
