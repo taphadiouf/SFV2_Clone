@@ -627,7 +627,7 @@ newMe.FederationIdentifier = null;
     public static Contract createContract(Id accountID,Id quoteId, Id opportunityId, Date dateFin){	
         Contract  contract = new Contract(AccountID = accountID,SBQQ__Quote__c = quoteId,SBQQ__Opportunity__c = opportunityId,
                                         StartDate =System.today(),ContractTerm = 12,LPCR_DateDebut__c = System.today(),
-                                        LPCR_DateFin__c = dateFin,LPCR_RenouvellementConvenu__c = 'Non',LPCR_MethodeRenouvellement__c = 'Express' );	
+                                        LPCR_DateFin__c = dateFin,LPCR_MethodeRenouvellement__c = 'Express' );	
         return contract;	
     }
 
@@ -1219,7 +1219,7 @@ newMe.FederationIdentifier = null;
         List<Contract>  contracts = new List<Contract>();
         Contract tempCont;
         for(Integer i = 0; i<numConts; i++){
-            tempCont = new Contract(AccountID = accountID, Name = name, LPCR_DateDebut__c = dateDebut, LPCR_DateFin__c = dateFin, LPCR_ChiffreAffaire__c = chiffreAffaire, LPCR_MethodeRenouvellement__c = methodeRen, LPCR_RenouvellementConvenu__c = renouvellementConvenu, SBQQ__RenewalUpliftRate__c  = renewalUplift);
+            tempCont = new Contract(AccountID = accountID, Name = name, LPCR_DateDebut__c = dateDebut, LPCR_DateFin__c = dateFin, LPCR_ChiffreAffaire__c = chiffreAffaire, LPCR_MethodeRenouvellement__c = methodeRen, SBQQ__RenewalUpliftRate__c  = renewalUplift);
             contracts.add(tempCont);
         }
         return contracts;   
