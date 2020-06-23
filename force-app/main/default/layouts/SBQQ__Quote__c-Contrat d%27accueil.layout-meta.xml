@@ -109,10 +109,6 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_RTContratEntreprise__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_RenouvellementConvenu__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -522,9 +518,7 @@
         <quickActionListItems>
             <quickActionName>FeedItem.MobileSmartActions</quickActionName>
         </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>FeedItem.RypplePost</quickActionName>
-        </quickActionListItems>
+
         <quickActionListItems>
             <quickActionName>FeedItem.LinkPost</quickActionName>
         </quickActionListItems>
