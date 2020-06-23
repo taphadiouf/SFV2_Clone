@@ -5,13 +5,13 @@
 * @edited by hanae
 */
 public with sharing class SM008_QuoteServices {
-    
+    public static Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_ContratA);
+    public static Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement);
+    public static Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Reservataire);
     
     //added by hanae
     public static void updateQuotes(List<SBQQ__Quote__c> quotesList){
-        Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_ContratA);
-        Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement);
-        Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Reservataire);
+        
         List<SBQQ__Quote__c> renewalOppList = new List<SBQQ__Quote__c>();
         List<SBQQ__Quote__c> cummonQuoteList = new List<SBQQ__Quote__c>();
         List<SBQQ__Quote__c> B2CQuoteList = new List<SBQQ__Quote__c>();
@@ -25,8 +25,8 @@ public with sharing class SM008_QuoteServices {
         Set<String> renewedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_RenewedContract);
         Set<String> amendedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_AmendedContract);
 
-        Map<Id,Contract> contractMap = new Map<Id,Contract>([SELECT Id, LPCR_InitAutoAvecDateDebut__c,LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c    From Contract Where Id =: renewedContractIds]);
-        Map<Id,Contract> amendedContractMap = new Map<Id,Contract>([SELECT Id,LPCR_InitAutoAvecDateDebut__c, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c ,SBQQ__RenewalUpliftRate__c   From Contract Where Id =: amendedContractIds]);
+        Map<Id,Contract> contractMap = new Map<Id,Contract>([SELECT Id, LPCR_InitAutoAvecDateDebut__c,LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c,LPCR_MasterDevis__c    From Contract Where Id =: renewedContractIds]);
+        Map<Id,Contract> amendedContractMap = new Map<Id,Contract>([SELECT Id,LPCR_InitAutoAvecDateDebut__c, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c ,SBQQ__RenewalUpliftRate__c,LPCR_MasterDevis__c   From Contract Where Id =: amendedContractIds]);
 
         if (Trigger.isBefore) {
             if (Trigger.isInsert) {
@@ -92,7 +92,12 @@ public with sharing class SM008_QuoteServices {
                     if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
                         eachQuote.LPCR_DateDebut__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DateDebut__c;
                         eachQuote.LPCR_DateFin__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DateFin__c ;
-                        eachQuote.LPCR_ChiffreAffaire__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_ChiffreAffaire__c  ;
+                        if(eachQuote.RecordTypeId != referencementRecTypeId && eachQuote.RecordTypeId != reservataireRecTypeId){
+                            eachQuote.LPCR_ChiffreAffaire__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_ChiffreAffaire__c  ;
+                        }
+                        if(eachQuote.RecordTypeId == referencementRecTypeId){
+                            eachQuote.LPCR_MasterDevis__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_MasterDevis__c;
+                        }
                     }
                 }
             }
@@ -106,7 +111,12 @@ public with sharing class SM008_QuoteServices {
                     if(amendedContractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c)){
                         eachQuote.LPCR_DateDebut__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_DateDebut__c;
                         eachQuote.LPCR_DateFin__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_DateFin__c ;
-                        eachQuote.LPCR_ChiffreAffaire__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_ChiffreAffaire__c  ;
+                        if(eachQuote.RecordTypeId != referencementRecTypeId && eachQuote.RecordTypeId != reservataireRecTypeId){
+                            eachQuote.LPCR_ChiffreAffaire__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_ChiffreAffaire__c  ;
+                        }
+                        if(eachQuote.RecordTypeId == referencementRecTypeId){
+                            eachQuote.LPCR_MasterDevis__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_MasterDevis__c;
+                        }
                     }
                 }
             }
@@ -287,7 +297,9 @@ public with sharing class SM008_QuoteServices {
                 eachQuote.SBQQ__BillingFrequency__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_BillingFrequency__c;
                 eachQuote.LPCR_TypeFacturation__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_TypeFacturation__c;
                 eachQuote.LPCR_IndexationConvenue__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_IndexationConvenue__c;
-                eachQuote.LPCR_PlanningEnfant__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_PlanningEnfant__c;
+                if(eachQuote.RecordTypeId != referencementRecTypeId && eachQuote.RecordTypeId != reservataireRecTypeId){
+                    eachQuote.LPCR_PlanningEnfant__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_PlanningEnfant__c;
+                }
                 if('Non'.equals(eachQuote.LPCR_IndexationConvenue__c)){
                     eachQuote.SBQQ__RenewalUpliftRate__c=null;
                 }
@@ -297,7 +309,12 @@ public with sharing class SM008_QuoteServices {
                 }
             }
             else if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) && 'Amendment'.equals(eachQuote.SBQQ__Type__c)){	
-                eachQuote.LPCR_PlanningEnfant__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_PlanningEnfant__c;
+                if(eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == reservataireRecTypeId){
+                    eachQuote.LPCR_TypeFacturation__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_TypeFacturation__c;
+                }else{
+                    eachQuote.LPCR_PlanningEnfant__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_PlanningEnfant__c;
+                }
+                
                       if(renewedContract.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c)){
                     eachQuote.LPCR_InitAutoAvecDateDebut__c =amendedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_InitAutoAvecDateDebut__c;
                 }
