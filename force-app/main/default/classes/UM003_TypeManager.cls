@@ -100,48 +100,5 @@ public with sharing class UM003_TypeManager{
 
         return new Date[]{minDate,maxDate};
     }
-/*
-    public static Map<String,List<SObject>> generateKeyValuesMapOfListObjects(String fieldKeyAPI,List<SObject> listSObject){
-    Map<String,List<SObject>> mapOfSObject = new Map<String,List<SObject>>();
-     if(UM003_TypeManager.isNotNullAndNotEmpty(listSObject))
-            for(SObject eachObj: listSObject){
-                if(mapOfSObject.containsKey(fieldKeyAPI)){
-                    if(!listContainsValue(mapOfSObject.get(fieldKeyAPI),eachObj,'Id')){
-                        mapOfSObject.get(fieldKeyAPI).add(eachObj);
-                    }
-                }else{
 
-                }
-                minDate=(minDate==null || minDate> (Date)eachObj.get(fieldAPI)) ? minDate=(Date)eachObj.get(fieldAPI):minDate;
-                 maxDate=(maxDate==null || maxDate< (Date)eachObj.get(fieldAPI)) ? maxDate=(Date)eachObj.get(fieldAPI):maxDate;
-            }
-
-        return new Date[]{minDate,maxDate};
-    }
-*/
-     
-        /**
-* @Author Ayoub Ouarti
-* @Created 22/06/2020
-* @Description methode listContainsValue to check if a list contains an object using a fieldIdentifierKey
-* @Inputs Boolean listContainsValue(List<SObject> listSObject,SObject obj,String fieldIdentifierKey)
-*/
-    public static Boolean listContainsValue(List<SObject> listSObject,SObject obj,String fieldIdentifierKey){
-    
-     if(UM003_TypeManager.isNotNullAndNotEmpty(listSObject))
-            for(SObject eachObj: listSObject){
-               if(((String)obj.get(fieldIdentifierKey)).equals( ((String) eachObj.get(fieldIdentifierKey)) ) ){
-                   return true;
-               }
-            }
-        return false;
-    }
-
-
-    /*
-    //DCO this must be delete, use EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(objName, rtName) instead
-    public static Id getQuoteRecordTypeIdByDeveloperName(String recordTypeDeveloperName){
-        return Schema.SObjectType.SBQQ__Quote__c.getRecordTypeInfosByDeveloperName().get(recordTypeDeveloperName).getRecordTypeId();
-    }
-    */
 }

@@ -62,7 +62,8 @@ public with sharing class SM012_OrderItemServices_Test {
                 'blng__BillingRule__c' => billingRule.Id,
                 'blng__RevenueRecognitionRule__c' => revRecRule.Id,
                 'blng__TaxRule__c' => taxRule.Id,
-                'SBQQ__SubscriptionPricing__c' => 'Fixed Price'
+                'SBQQ__SubscriptionPricing__c' => 'Fixed Price',
+                 'SBQQ__SubscriptionTerm__c' => 1
                 };
                     
                     Product2 prod = (Product2) UM002_TestDataFactory.createSObject('Product2', defaultVal);
@@ -142,7 +143,7 @@ public with sharing class SM012_OrderItemServices_Test {
                 'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
                 };
                     
-                    SBQQ__QuoteLine__c quoteLineForAccueil = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+         SBQQ__QuoteLine__c quoteLineForAccueil = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
         
         defaultVal.put('SBQQ__Quote__c', quoteForRef.Id);
         SBQQ__QuoteLine__c quoteLineForRef = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
