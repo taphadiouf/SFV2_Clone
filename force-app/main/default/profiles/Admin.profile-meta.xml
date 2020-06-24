@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
-    <applicationVisibilities>
-        <application>LPCR_ADV</application>
-        <default>false</default>
-        <visible>true</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>LPCR_Commerce</application>
-        <default>true</default>
-        <visible>true</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>Service_Famille</application>
-        <default>false</default>
-        <visible>true</visible>
-    </applicationVisibilities>
-    <applicationVisibilities>
-        <application>Service_Partenaires</application>
-        <default>false</default>
-        <visible>true</visible>
+    <applicationVisibilities>	
+        <application>LPCR_ADV</application>	
+        <default>false</default>	
+        <visible>true</visible>	
+    </applicationVisibilities>	
+    <applicationVisibilities>	
+        <application>LPCR_Commerce</application>	
+        <default>true</default>	
+        <visible>true</visible>	
+    </applicationVisibilities>	
+    <applicationVisibilities>	
+        <application>Service_Famille</application>	
+        <default>false</default>	
+        <visible>true</visible>	
+    </applicationVisibilities>	
+    <applicationVisibilities>	
+        <application>Service_Partenaires</application>	
+        <default>false</default>	
+        <visible>true</visible>	
     </applicationVisibilities>
     <classAccesses>
         <apexClass>APB001_ProcessLPCR_Log</apexClass>
@@ -252,13 +252,13 @@
         <apexClass>SM003_TaskServices_TEST</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>SM004_OpportunityServices</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>SM004_OpportunityServices_Test</apexClass>
-        <enabled>true</enabled>
+    <classAccesses>	
+        <apexClass>SM004_OpportunityServices</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>SM004_OpportunityServices_Test</apexClass>	
+        <enabled>true</enabled>	
     </classAccesses>
     <classAccesses>
         <apexClass>SM006_PreinscriptionServices</apexClass>
@@ -268,13 +268,13 @@
         <apexClass>SM006_PreinscriptionServices_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>SM007_LeadServices</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>SM007_LeadServices_Test</apexClass>
-        <enabled>true</enabled>
+    <classAccesses>	
+        <apexClass>SM007_LeadServices</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>SM007_LeadServices_Test</apexClass>	
+        <enabled>true</enabled>	
     </classAccesses>
     <classAccesses>
         <apexClass>SM008_QuoteServices</apexClass>
@@ -300,13 +300,13 @@
         <apexClass>SM010_ContractServices_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>SM011_RessourceFamilleServices</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>SM011_RessourceFamilleServices_Test</apexClass>
-        <enabled>true</enabled>
+    <classAccesses>	
+        <apexClass>SM011_RessourceFamilleServices</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>SM011_RessourceFamilleServices_Test</apexClass>	
+        <enabled>true</enabled>	
     </classAccesses>
     <classAccesses>
         <apexClass>SM012_OrderItemServices</apexClass>
@@ -356,49 +356,49 @@
         <apexClass>SM015_InvoiceServices_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>TM000_TriggerHandler</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TM001_AccountTriggerHandler</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TM002_EventTrigger</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TM003_TaskTrigger</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TM004_OpportunityTrigger</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TM005_ContactTrigger</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TM006_PreinscriptionTrigger</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TM007_LeadTrigger</apexClass>
-        <enabled>true</enabled>
+    <classAccesses>	
+        <apexClass>TM000_TriggerHandler</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>TM001_AccountTriggerHandler</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>TM002_EventTrigger</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>TM003_TaskTrigger</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>TM004_OpportunityTrigger</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>TM005_ContactTrigger</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>TM006_PreinscriptionTrigger</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>TM007_LeadTrigger</apexClass>	
+        <enabled>true</enabled>	
     </classAccesses>
     <classAccesses>
         <apexClass>TM008_QuoteTrigger</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>TM009_ContractTrigger</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>TM010_RessourceFamilleTrigger</apexClass>
-        <enabled>true</enabled>
+    <classAccesses>	
+        <apexClass>TM009_ContractTrigger</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>TM010_RessourceFamilleTrigger</apexClass>	
+        <enabled>true</enabled>	
     </classAccesses>
     <classAccesses>
         <apexClass>TM011_OrderItemTrigger</apexClass>
@@ -408,49 +408,49 @@
         <apexClass>TM012_ModificationEntranteTrigger</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
+    <classAccesses>	
         <apexClass>TM012_QuoteLineItemTrigger</apexClass>
-        <enabled>true</enabled>
+        <enabled>true</enabled>	
     </classAccesses>
     <classAccesses>
         <apexClass>TM013_OrderTrigger</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
+    <classAccesses>	
         <apexClass>TM013_UsageTrigger</apexClass>
-        <enabled>true</enabled>
+        <enabled>true</enabled>	
     </classAccesses>
     <classAccesses>
         <apexClass>TM014_InvoiceTrigger</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>UM001_LogManager</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>UM001_LogManager_Test</apexClass>
-        <enabled>true</enabled>
+    <classAccesses>	
+        <apexClass>UM001_LogManager</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>UM001_LogManager_Test</apexClass>	
+        <enabled>true</enabled>	
     </classAccesses>
     <classAccesses>
         <apexClass>UM002_TestDataFactory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>UM002_TestDataFactory_Test</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>UM003_TypeManager</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>UM004_BatchUtility</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>UM005_DateUtility</apexClass>
-        <enabled>true</enabled>
+    <classAccesses>	
+        <apexClass>UM002_TestDataFactory_Test</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>UM003_TypeManager</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>UM004_BatchUtility</apexClass>	
+        <enabled>true</enabled>	
+    </classAccesses>	
+    <classAccesses>	
+        <apexClass>UM005_DateUtility</apexClass>	
+        <enabled>true</enabled>	
     </classAccesses>
     <classAccesses>
         <apexClass>UM006_ContractAmender</apexClass>
@@ -574,6 +574,7 @@
         <field>Account.LPCR_CodeAPE__c</field>
         <readable>true</readable>
     </fieldPermissions>
+   
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_CodePreinscription__c</field>
@@ -584,6 +585,7 @@
         <field>Account.LPCR_CodeServiceChorus__c</field>
         <readable>true</readable>
     </fieldPermissions>
+   
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_Concurrence__c</field>
@@ -649,6 +651,7 @@
         <field>Account.LPCR_Garde__c</field>
         <readable>true</readable>
     </fieldPermissions>
+   
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_Handicap__c</field>
@@ -724,6 +727,7 @@
         <field>Account.LPCR_MoyenPaiement__c</field>
         <readable>true</readable>
     </fieldPermissions>
+   
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_NbreOptions__c</field>
@@ -794,6 +798,7 @@
         <field>Account.LPCR_NumeroAllocataire__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_NumeroPurchaseOrder__c</field>
@@ -934,6 +939,7 @@
         <field>Account.LPCR_TauxEffort__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_Top100__c</field>
@@ -1492,11 +1498,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contract.LPCR_RenouvellementAutomatique__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contract.LPCR_RenouvellementConvenu__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2664,6 +2665,7 @@
         <field>LPCR_Preinscription__c.LPCR_HeureFinVendredi__c</field>
         <readable>true</readable>
     </fieldPermissions>
+  
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_Preinscription__c.LPCR_Jeudi__c</field>
@@ -3239,6 +3241,7 @@
         <field>Lead.LPCR_Capital__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_CiviliteCoDemandeur__c</field>
@@ -3714,10 +3717,10 @@
         <field>Lead.LPCR_VilleSociete__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Lead.LeadSource</field>
-        <readable>true</readable>
+    <fieldPermissions>	
+        <editable>true</editable>	
+        <field>Lead.LeadSource</field>	
+        <readable>true</readable>	
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -6076,11 +6079,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_RenouvellementConvenu__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_ResiliationAnticipe__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -7059,16 +7057,7 @@
         <field>blng__CreditNoteAllocation__c.LPCR_TypeEvenement__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__CreditNoteLine__c.LPCR_TypeEvenement_DEL__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__CreditNoteLine__c.LPCR_TypeEvenement_DEL__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
+   
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__CreditNoteLine__c.blngDash__Credit_GL_Account__c</field>
@@ -8552,24 +8541,24 @@
         <layout>Opportunity-Présentation Opportunité Entreprise</layout>
         <recordType>Opportunity.Entreprise</recordType>
     </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Présentation de l%27opportunité</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Présentation de l%27opportunité</layout>
-        <recordType>Opportunity.AOPublicDSP</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Présentation de l%27opportunité</layout>
-        <recordType>Opportunity.AOPublicReservation</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Présentation de l%27opportunité</layout>
-        <recordType>Opportunity.Famille</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Opportunity-Présentation de l%27opportunité</layout>
-        <recordType>Opportunity.Partenaire</recordType>
+    <layoutAssignments>	
+        <layout>Opportunity-Présentation de l%27opportunité</layout>	
+    </layoutAssignments>	
+    <layoutAssignments>	
+        <layout>Opportunity-Présentation de l%27opportunité</layout>	
+        <recordType>Opportunity.AOPublicDSP</recordType>	
+    </layoutAssignments>	
+    <layoutAssignments>	
+        <layout>Opportunity-Présentation de l%27opportunité</layout>	
+        <recordType>Opportunity.AOPublicReservation</recordType>	
+    </layoutAssignments>	
+    <layoutAssignments>	
+        <layout>Opportunity-Présentation de l%27opportunité</layout>	
+        <recordType>Opportunity.Famille</recordType>	
+    </layoutAssignments>	
+    <layoutAssignments>	
+        <layout>Opportunity-Présentation de l%27opportunité</layout>	
+        <recordType>Opportunity.Partenaire</recordType>	
     </layoutAssignments>
     <layoutAssignments>
         <layout>Order-Présentation de commande</layout>
@@ -8917,20 +8906,22 @@
         <object>blng__Usage__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
-    <pageAccesses>
-        <apexPage>VFP001_GenererDocAnn2</apexPage>
-        <enabled>true</enabled>
-    </pageAccesses>
+    <pageAccesses>	
+        <apexPage>VFP001_GenererDocAnn2</apexPage>	
+        <enabled>true</enabled>	
+    </pageAccesses>	
     <recordTypeVisibilities>
         <default>true</default>
         <recordType>Account.Creche</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
+    
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Account.Entreprise</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
+    
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Account.Famille</recordType>
@@ -8970,6 +8961,11 @@
         <default>false</default>
         <recordType>Contact.Parent</recordType>
         <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Contact.Partenaire</recordType>
+        <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
@@ -9291,9 +9287,9 @@
         <enabled>true</enabled>
         <name>CreateTopics</name>
     </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>CreateWorkBadgeDefinition</name>
+    <userPermissions>	
+        <enabled>true</enabled>	
+        <name>CreateWorkBadgeDefinition</name>	
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -9343,6 +9339,7 @@
         <enabled>true</enabled>
         <name>EditHtmlTemplates</name>
     </userPermissions>
+   
     <userPermissions>
         <enabled>true</enabled>
         <name>EditMyDashboards</name>
@@ -9387,6 +9384,7 @@
         <enabled>true</enabled>
         <name>EmailSingle</name>
     </userPermissions>
+    
     <userPermissions>
         <enabled>true</enabled>
         <name>EnableNotifications</name>
@@ -9527,6 +9525,7 @@
         <enabled>true</enabled>
         <name>ManageIpAddresses</name>
     </userPermissions>
+   
     <userPermissions>
         <enabled>true</enabled>
         <name>ManageLeads</name>
@@ -9579,6 +9578,7 @@
         <enabled>true</enabled>
         <name>ManageRoles</name>
     </userPermissions>
+   
     <userPermissions>
         <enabled>true</enabled>
         <name>ManageSharing</name>
@@ -9675,6 +9675,7 @@
         <enabled>true</enabled>
         <name>SendSitRequests</name>
     </userPermissions>
+  
     <userPermissions>
         <enabled>true</enabled>
         <name>ShowCompanyNameAsUserBadge</name>

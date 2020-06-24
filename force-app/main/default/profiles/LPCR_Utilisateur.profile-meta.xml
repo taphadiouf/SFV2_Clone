@@ -1431,11 +1431,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Contract.LPCR_RenouvellementConvenu__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Contract.LPCR_ResponsableADV__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -5666,11 +5661,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_RenouvellementConvenu__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_ResiliationAnticipe__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -6632,11 +6622,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__CreditNoteAllocation__c.LPCR_TypeEvenement__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>blng__CreditNoteLine__c.LPCR_TypeEvenement_DEL__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
