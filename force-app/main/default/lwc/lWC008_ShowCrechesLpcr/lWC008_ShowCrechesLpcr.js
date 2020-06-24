@@ -22,6 +22,7 @@ export default class LWC008_ShowCrechesLpcr extends LightningElement {
                 let jsonLocationsConfig = JSON.parse(result);
                 this.locations = jsonLocationsConfig.locations;
                 for(let i in this.locations){
+                    let location = this.locations[i];
                     this.locations[i].content = 'This is ' + location.name + '<br/><di style="text-align:center"><a href="/' + location.locationId + '" target="_blank">View Record</a></div>'
 
                 }
