@@ -269,6 +269,20 @@
             </componentInstanceProperties>
             <componentName>flexipage:tabset</componentName>
         </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>modeAffich</name>
+                <value>LeadFamille</value>
+            </componentInstanceProperties>
+            <componentName>lWC008_ShowCrechesLpcr</componentName>
+            <visibilityRule>
+                <criteria>
+                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                    <operator>EQUAL</operator>
+                    <rightValue>Famille</rightValue>
+                </criteria>
+            </visibilityRule>
+        </componentInstances>
         <mode>Replace</mode>
         <name>sidebar</name>
         <type>Region</type>
