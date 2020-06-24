@@ -12,14 +12,29 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Oui</fullName>
+                <fullName>Attribution d&apos;une place</fullName>
                 <default>false</default>
-                <label>Oui</label>
+                <label>Attribution d&apos;une place</label>
             </value>
             <value>
-                <fullName>Non</fullName>
+                <fullName>Refus</fullName>
                 <default>false</default>
-                <label>Non</label>
+                <label>Refus</label>
+            </value>
+            <value>
+                <fullName>Liste d&apos;attente</fullName>
+                <default>false</default>
+                <label>Liste d&apos;attente</label>
+            </value>
+            <value>
+                <fullName>Pas de réponse</fullName>
+                <default>false</default>
+                <label>Pas de réponse</label>
+            </value>
+            <value>
+                <fullName>Autre</fullName>
+                <default>false</default>
+                <label>Autre</label>
             </value>
         </valueSetDefinition>
     </valueSet>

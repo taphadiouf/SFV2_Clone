@@ -227,4 +227,19 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             update listOrderItemtoSave;
         }
     }
+
+    //added by saurabh
+    public static void setOrderItemFieldsFromContract(List<OrderItem> newOrderItemsList){
+        Set<String> contractId = UM003_TypeManager.getFieldsOfListObjects(newOrderItemsList,'SBQQ__Contract__c');
+        Map<Id, Contract> contractMap = new Map<Id, Contract>([SELECT Id, LPCR_DateDebut__c, LPCR_DateFin__c, SBQQ__RenewalUpliftRate__c FROM Contract WHERE Id IN: contractId]);
+
+        for(OrderItem eachOrderItem : newOrderItemsList){
+            if(eachOrderItem.SBQQ__Contract__c != null){
+                eachOrderItem.LPCR_ContractStartDate__c = contractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_DateDebut__c;
+                eachOrderItem.LPCR_ContractEndDate__c = contractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_DateFin__c;
+                eachOrderItem.LPCR_Uplift__c = contractMap.get(eachOrderItem.SBQQ__Contract__c).SBQQ__RenewalUpliftRate__c;
+                //eachOrderItem.LPCR_TotalContractValue = <TO BE DEFINED>
+            }
+        }
+    }
 }
