@@ -49,7 +49,7 @@ public with sharing class APC007_ShowCrechesLpcrController {
         for(Account eachAcc : [Select Id, Name, ShippingLatitude, ShippingLongitude from Account where RecordTypeId =: reseauCrecheAccountRT]){
             System.debug(eachAcc);
             currentLocation = new Location();
-            centerLocation.locationId = currentRecord.Id;
+            centerLocation.locationId = eachAcc.Id;
             currentLocation.name = eachAcc.name;
             currentLocation.latitude =  eachAcc.ShippingLatitude;
             currentLocation.longitude =  eachAcc.ShippingLongitude;
