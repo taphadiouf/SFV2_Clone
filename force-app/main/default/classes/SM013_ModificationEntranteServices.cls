@@ -179,7 +179,7 @@ public with sharing class SM013_ModificationEntranteServices {
 
                     if(detailModifPlanningMap.containsKey(eachModifEntrante.Id)){
                         LPCR_Planning__c tmpPlanning = new LPCR_Planning__c();
-                        tmpPlanning.LPCR_Devis__c = eachModifEntrante.LPCR_Devis__c;
+                        //tmpPlanning.LPCR_Devis__c = eachModifEntrante.LPCR_Devis__c;
                         tmpPlanning.LPCR_TypePlanning__c = eachModifEntrante.LPCR_TypePlanning__c;
                         allPlanningInsertList.add(tmpPlanning);
 
@@ -188,7 +188,7 @@ public with sharing class SM013_ModificationEntranteServices {
                         for(LPCR_DetailModificationPlanning__c eachDetailModifPlan : detailModifPlanningMap.get(eachModifEntrante.Id)){
                             LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(
                                                                                //LPCR_Planning__c = tmpPlanning.Id,
-                                                                               LPCR_Contrat__c  =eachModifEntrante.LPCR_Devis__c,
+                                                                               //LPCR_Contrat__c  =eachModifEntrante.LPCR_Devis__c,
                                                                                LPCR_HeureDebutLundi__c = eachDetailModifPlan.LPCR_HeureDebutLundi__c,
                                                                                LPCR_HeureFinLundi__c   = eachDetailModifPlan.LPCR_HeureFinLundi__c,
                                                                                LPCR_HeureDebutMardi__c = eachDetailModifPlan.LPCR_HeureDebutMardi__c,
@@ -376,13 +376,14 @@ public with sharing class SM013_ModificationEntranteServices {
         if(allPlanningInsertList.size() > 0){
             insert allPlanningInsertList;
             List<LPCR_PlanningPrevisionnel__c> insertPlanningPrevisionnelList = new List<LPCR_PlanningPrevisionnel__c>();
+            /*
             for(LPCR_Planning__c eachPlan : allPlanningInsertList){
                 for(LPCR_PlanningPrevisionnel__c eachPlanPre : allPlanningPrevisionnelInsertMap.get(eachPlan.LPCR_Devis__c)){
                     eachPlanPre.LPCR_Planning__c = eachPlan.Id;
                     insertPlanningPrevisionnelList.add(eachPlanPre);
                 }
             }
-
+            */
             if(insertPlanningPrevisionnelList.size() > 0){
                 insert insertPlanningPrevisionnelList;
             }

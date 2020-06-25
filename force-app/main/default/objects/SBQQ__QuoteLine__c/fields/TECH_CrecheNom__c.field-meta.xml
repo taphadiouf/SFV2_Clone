@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_NombreJoursAccueilSemaine__c</fullName>
+    <fullName>TECH_CrecheNom__c</fullName>
     <externalId>false</externalId>
-    <label>Nombre de jours d&#39;accueil par semaine</label>
-    <precision>3</precision>
+    <formula>SBQQ__RequiredBy__r.LPCR_Creche__r.Name</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Crèche Nom</label>
     <required>false</required>
-    <scale>2</scale>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>Number</type>
+    <type>Text</type>
     <unique>false</unique>
 </CustomField>

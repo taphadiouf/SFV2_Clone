@@ -13,10 +13,6 @@
         <formula>Opportunity.Account.LPCR_ResponsableServiceFamille__c</formula>
     </fieldOverrides>
     <fieldOverrides>
-        <field>LPCR_TypeEnregistrement__c</field>
-        <formula>&quot;Referencement&quot;</formula>
-    </fieldOverrides>
-    <fieldOverrides>
         <field>SBQQ__Account__c</field>
         <formula>Opportunity.Account.Id</formula>
     </fieldOverrides>
