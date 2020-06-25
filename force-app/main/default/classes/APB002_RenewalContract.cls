@@ -13,7 +13,7 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
     global Database.QueryLocator start(Database.BatchableContext BC) {
         Date today = date.today();
         
-        query = 'SELECT Id FROM Contract WHERE Status =\'Activated\' AND LPCR_RenouvellementAutomatique__c = true AND  LPCR_DateRenouvellement__c = :today AND LPCR_DateRenouvellement__c != null AND (SBQQ__RenewalQuoted__c = false OR SBQQ__RenewalForecast__c = false) ';//AND Termination_Date__c = null' ;
+        query = 'SELECT Id FROM Contract WHERE Status =\'Activated\' AND LPCR_RenouvellementAutomatique__c = true AND  LPCR_DateRenouvellement__c <= :today AND LPCR_DateRenouvellement__c != null AND (SBQQ__RenewalQuoted__c = false OR SBQQ__RenewalForecast__c = false) ';//AND Termination_Date__c = null' ;
         
         return Database.getQueryLocator(query);
     }
