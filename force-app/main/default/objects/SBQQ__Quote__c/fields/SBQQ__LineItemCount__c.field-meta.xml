@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Number of line items in this quote.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Number of line items in this quote.</inlineHelpText>
+    <inlineHelpText>Nombre d&apos;éléments de ligne dans ce devis.</inlineHelpText>
     <label>Line Item Count</label>
     <summaryForeignKey>SBQQ__QuoteLine__c.SBQQ__Quote__c</summaryForeignKey>
     <summaryOperation>count</summaryOperation>

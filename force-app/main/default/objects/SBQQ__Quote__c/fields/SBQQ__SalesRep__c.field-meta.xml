@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Sales rep responsible for this quote if different from the user who owns the quote record.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Sales rep responsible for this quote if different from the user who owns the quote record.</inlineHelpText>
+    <inlineHelpText>Commercial responsable de ce devis, s&apos;il est différent de l&apos;utilisateur propriétaire de l&apos;enregistrement du devis.</inlineHelpText>
     <label>Sales Rep</label>
     <referenceTo>User</referenceTo>
     <relationshipName>Quotes</relationshipName>
