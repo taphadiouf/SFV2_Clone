@@ -18,7 +18,8 @@ public with sharing class TM003_TaskTrigger extends TM000_TriggerHandler{
 
     protected override void afterInsert() {
 
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM003_TaskServices.updateLeadsWithNewTasks(newTasksList);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM003_TaskServices.updateLeadsWithNewTasks(newTasksList);
+        }
     }
 }

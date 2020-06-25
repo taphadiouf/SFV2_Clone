@@ -16,7 +16,8 @@ public with sharing class TM005_ContactTrigger extends TM000_TriggerHandler{
         this.newContactsList = (List<Contact>) Trigger.new;
     }
     protected override void afterInsert() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM007_LeadServices.contactsIds = new Set<Id>(newContactsMap.keySet());
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM007_LeadServices.contactsIds = new Set<Id>(newContactsMap.keySet());
         }
+    }
 }
