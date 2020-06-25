@@ -12,24 +12,12 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_Devis__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Required</behavior>
                 <field>LPCR_TypePlanning__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LPCR_NombrePlanning__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_DureeContratJour__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_CongesSemaine__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -98,10 +86,6 @@
         <editHeading>true</editHeading>
         <label>Détail par an</label>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_NombreSemaineAccueilAn__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
@@ -160,10 +144,6 @@
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>LPCR_PlanningPrevisionnel__c.LPCR_Planning__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>LPCR_RessourceFamille__c.LPCR_Planning__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
