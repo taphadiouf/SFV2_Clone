@@ -34,6 +34,7 @@ public with sharing class SM011_RessourceFamilleServices implements Queueable{
         
         for(LPCR_RessourceFamille__c eachRessourceFamille : newMapRessourceFamille.values()){
             // Check if the LPCR_TauxMensuel__c has changed
+            /*
             if(oldMapRessourceFamille.get(eachRessourceFamille.Id).LPCR_TauxMensuel__c != eachRessourceFamille.LPCR_TauxMensuel__c ){
                 // Set LPCR_DateFin__c to lastDayOfCurrentMonthDate for the current essourceFamille
                 eachRessourceFamille.LPCR_DateFin__c=lastDayOfCurrentMonthDate;  
@@ -42,7 +43,7 @@ public with sharing class SM011_RessourceFamilleServices implements Queueable{
                     LPCR_TauxMensuel__c=eachRessourceFamille.LPCR_TauxMensuel__c,
                     LPCR_DateDebut__c=firstDayOfNextMonthDate,
                     LPCR_CompteFamille__c=eachRessourceFamille.LPCR_CompteFamille__c,
-                    LPCR_Produit__c=eachRessourceFamille.LPCR_Produit__c,
+                    //LPCR_Produit__c=eachRessourceFamille.LPCR_Produit__c,
                     Name=eachRessourceFamille.Name);
                 if(eachRessourceFamille.RecordTypeId!=null){
                     ressourceFamilleToInsert.RecordTypeId=eachRessourceFamille.RecordTypeId;
@@ -50,6 +51,7 @@ public with sharing class SM011_RessourceFamilleServices implements Queueable{
                 
                 listRessourceFamilleToInsert.add(ressourceFamilleToInsert);   
             }
+             */
         }
         
         EM012_RessourceFamilleEntity.saveOrUpdte(listRessourceFamilleToInsert);

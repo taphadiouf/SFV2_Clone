@@ -1931,26 +1931,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>LPCR_LienFamilleFacture__c.LCPR_Devis__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_LienFamilleFacture__c.LCPR_Facture__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_LienFamilleFacture__c.LCPR_LigneFacture__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_LienFamilleFacture__c.LCPR_RevenueTransaction__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>LPCR_LienFamilleFacture__c.LPCR_Devis__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2271,31 +2251,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>LPCR_Planning__c.LPCR_CongesJours__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_Planning__c.LPCR_CongesSemaine__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_Planning__c.LPCR_Devis__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_Planning__c.LPCR_DureeContratJour__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_Planning__c.LPCR_DureeContratJourdel__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>LPCR_Planning__c.LPCR_EstMigre__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2332,11 +2287,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Planning__c.LPCR_NombrePlanning__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_Planning__c.LPCR_NombreSemaineAccueilAn__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2636,16 +2586,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_CongesJours__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_CongesSemaine__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>LPCR_RessourceFamille__c.LPCR_ContactEnfant__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -2666,57 +2606,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_FinContrat__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_ForfaitMensuel__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_Indice__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_MoyenneHeuresSemaine__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>LPCR_RessourceFamille__c.LPCR_NombreEnfantHandicape__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_RessourceFamille__c.LPCR_NombreEnfants__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_NombreHeuresMois__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_NombreHeuresSemaine__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_NombreJoursAccueilSemaine__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_Planning__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_Produit__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2747,16 +2642,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_RessourceFamille__c.LPCR_TauxEffort__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_TauxHoraire__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_TauxMensuel__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4571,16 +4456,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__QuoteLine__c.LPCR_PRIXINFERIEURPLANCHER__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__QuoteLine__c.LPCR_PRIXSUPERIEUREPLANCHER__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>SBQQ__QuoteLine__c.LPCR_PourcentagePlancherMicro__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -5361,11 +5236,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_AValider__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_AccountPurchaseOrder__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -5392,16 +5262,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_Berceauxgratuitsquote__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_BesoinApprobationDELETE__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_BesoinApprobation__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5436,11 +5296,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_CongesSemaine_Del__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_CongesSemaine__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -5467,11 +5322,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_Contracted_Checkbox__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_ContratEntreprise__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5551,16 +5401,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_LIGNEINFERIEURPRIXPLANCHER__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_LIGNESUPERIEUREPRIXPLANCHER__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_LaunchRecalculation__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -5607,11 +5447,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_NombreMois__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_NombreSemaineAccueilAn__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5736,11 +5571,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_TypeCreche_old__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_TypeEnregistrement__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -5758,12 +5588,7 @@
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_TypePlanning__c</field>
         <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_TypeReconduction__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
+    </fieldPermissions>>
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.SBQQ__Account__c</field>
@@ -7751,11 +7576,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>blng__Usage__c.LPCR_TypeEvenement_DEL__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>blng__Usage__c.LPCR_TypeEvenement__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -8039,10 +7859,6 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>LPCR_TablePrix__c-Référencement</layout>
-        <recordType>LPCR_TablePrix__c.B2B</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>LPCR_TablePrix__c-Référencement</layout>
         <recordType>LPCR_TablePrix__c.Micro</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -8091,10 +7907,6 @@
     <layoutAssignments>
         <layout>SBQQ__Quote__c-Contrat d%27accueil</layout>
         <recordType>SBQQ__Quote__c.Contrat_Accueil</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>SBQQ__Quote__c-Référencement</layout>
-        <recordType>SBQQ__Quote__c.Contrat_Cadre</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>SBQQ__Quote__c-Référencement</layout>
@@ -8194,11 +8006,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>LPCR_TablePrix__c.B2B</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
         <recordType>LPCR_TablePrix__c.Micro</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
@@ -8275,11 +8082,6 @@
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>SBQQ__Quote__c.Contrat_Accueil</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>SBQQ__Quote__c.Contrat_Cadre</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
