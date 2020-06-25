@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Source of cloned quote.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Source of cloned quote. If cloned, this references the original quote cloned.</inlineHelpText>
+    <inlineHelpText>Source du devis cloné. S&apos;il est cloné, référence le devis d&apos;origine cloné.</inlineHelpText>
     <label>Source</label>
     <referenceTo>SBQQ__Quote__c</referenceTo>
     <relationshipLabel>Quotes (Source)</relationshipLabel>

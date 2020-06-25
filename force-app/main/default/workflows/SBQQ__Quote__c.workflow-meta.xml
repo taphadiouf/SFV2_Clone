@@ -1,140 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <alerts>
-        <fullName>LPCR_ContratRejete</fullName>
-        <description>Validation de prix rejeté</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_DevisRejete</template>
-    </alerts>
-    <alerts>
-        <fullName>LPCR_DevisAccepte</fullName>
-        <description>Devis Accepté</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_DevisAccepte</template>
-    </alerts>
-    <alerts>
-        <fullName>LPCR_DevisRejete</fullName>
-        <description>Devis Rejeté</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_DevisRejete</template>
-    </alerts>
-    <alerts>
-        <fullName>LPCR_ValidationAcceptee</fullName>
-        <description>Validation de prix acceptée</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_DevisAccepte</template>
-    </alerts>
-    <alerts>
-        <fullName>LPCR_MIBB2B</fullName>
-        <description>MIB B2B</description>
-        <protected>false</protected>
-        <recipients>
-            <field>LPCR_ResponsableServiceFamille__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_MIBB2B</template>
-    </alerts>
-    <alerts>
-        <fullName>Signature_Contrat</fullName>
-        <description>Signature Contrat</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>ataib@lpcr.fr</recipient>
-            <type>user</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_Contrat_NonSigne</template>
-    </alerts>
     <fieldUpdates>
-        <fullName>LPCR_StatutApprouve</fullName>
-        <field>LPCR_StatutApprobation__c</field>
-        <literalValue>Approuvé</literalValue>
-        <name>Statut Approuvé</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutAttente</fullName>
-        <field>LPCR_StatutApprobation__c</field>
-        <literalValue>En Attente</literalValue>
-        <name>Statut En Attente</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutBrouillon</fullName>
-        <field>SBQQ__Status__c</field>
-        <literalValue>Draft</literalValue>
-        <name>STATUTBROUILLON</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutEnRevue</fullName>
-        <field>SBQQ__Status__c</field>
-        <literalValue>In Review</literalValue>
-        <name>STATUTENREVUE</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutRappel</fullName>
-        <field>LPCR_StatutApprobation__c</field>
-        <literalValue>Brouillon</literalValue>
-        <name>Statut Brouillon</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutRejete</fullName>
-        <field>LPCR_StatutApprobation__c</field>
-        <literalValue>Brouillon</literalValue>
-        <name>Statut Rejeté</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutValide</fullName>
-        <field>SBQQ__Status__c</field>
-        <literalValue>Approved</literalValue>
-        <name>STATUTVALIDE</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Statut_standard_approuv</fullName>
+        <fullName>LPCR_StatutPretAEnvoyer</fullName>
         <field>SBQQ__Status__c</field>
         <literalValue>Prêt à envoyer</literalValue>
-        <name>Statut standard approuvé</name>
+        <name>Statut Pret a envoyer</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
+    <fieldUpdates>
+        <fullName>LPCR_StatutPretCommande</fullName>
+        <field>SBQQ__Status__c</field>
+        <literalValue>Prêt pour commande</literalValue>
+        <name>Statut Pret Pour Commande</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Statut du quote apres Avenant MIB ou Resiliation</fullName>
+        <actions>
+            <name>LPCR_StatutPretCommande</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 3 AND 4 AND (2 OR 5)</booleanFilter>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Amendment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>equals</operation>
+            <value>Résiliation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Brouillon</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>equals</operation>
+            <value>Mouvement Interne Berceau</value>
+        </criteriaItems>
+        <description>Definition du statut du devis apres validation de l&apos;avenant pour MIB et Resiliation.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Statut du quote apres Avenant ou Devis</fullName>
+        <actions>
+            <name>LPCR_StatutPretAEnvoyer</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 5) AND( 2 OR 6) AND (3 AND 4)</booleanFilter>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Amendment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>notEqual</operation>
+            <value>Résiliation,Mouvement Interne Berceau</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Draft</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Quote</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <description>Definition du statut du devis apres validation de l&apos;avenant. Cette update ne comprend pas le MIB et Resiliation.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
 </Workflow>
