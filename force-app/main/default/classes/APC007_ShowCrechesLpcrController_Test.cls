@@ -28,15 +28,15 @@ public with sharing class APC007_ShowCrechesLpcrController_Test {
         insert newpreinscrition;
     }
     @isTest
-    public static void getAccountsTest(){
+    public static void getLocationsTest(){
         
         Test.startTest();
         Id accountId = [SELECT Id FROM Account WHERE Name = 'testAccount' limit 1].Id;
         Id leadId = [SELECT Id FROM Lead  limit 1].Id;
         Id preinscriptionId = [SELECT Id FROM LPCR_Preinscription__c limit 1].Id;
-        APC007_ShowCrechesLpcrController.getAccounts(accountId, 'CompteFamille');
-        APC007_ShowCrechesLpcrController.getAccounts(leadId, 'LeadFamille');
-        APC007_ShowCrechesLpcrController.getAccounts(preinscriptionId, 'Preinscription');
+        APC007_ShowCrechesLpcrController.getLocations(accountId, 'CompteFamille');
+        APC007_ShowCrechesLpcrController.getLocations(leadId, 'LeadFamille');
+        APC007_ShowCrechesLpcrController.getLocations(preinscriptionId, 'Preinscription');
         Test.stopTest();
         
     }

@@ -333,6 +333,20 @@
             </componentInstanceProperties>
             <componentName>flexipage:tabset</componentName>
         </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>modeAffich</name>
+                <value>CompteFamille</value>
+            </componentInstanceProperties>
+            <componentName>lWC008_ShowCrechesLpcr</componentName>
+            <visibilityRule>
+                <criteria>
+                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                    <operator>EQUAL</operator>
+                    <rightValue>Famille</rightValue>
+                </criteria>
+            </visibilityRule>
+        </componentInstances>
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
