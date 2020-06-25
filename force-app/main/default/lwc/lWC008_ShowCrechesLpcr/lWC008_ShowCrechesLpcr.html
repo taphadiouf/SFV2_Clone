@@ -3,8 +3,12 @@
  	* @description LWC : Show the "creches" accounts
 -->
 <template>
-    <template if:true={accounts}>
-        <lightning-map map-markers={accounts} zoom-level={zoomLevel} show-footer={showFooter} list-view={listView} markers-title={accounts} center={center}>
-        </lightning-map>
+    <template if:true={showMap}>
+        <c-leaflet-map markers={locations} center={center} zoom="16" icon={icon}>
+        </c-leaflet-map>
     </template>
+    
+    <!-- <lightning-map map-markers={accounts} zoom-level={zoomLevel} show-footer={showFooter} list-view={listView}
+        markers-title={accounts} center={center}>
+    </lightning-map> -->
 </template>
