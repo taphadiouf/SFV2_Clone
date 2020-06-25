@@ -112,5 +112,23 @@ public class SM015_InvoiceServices_Test {
             Test.stopTest();
             
         }
+    }
+    @isTest
+    public static void setStatutFacture_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+       
+            Test.startTest();
+            List<blng__Invoice__c> invoicesLst = [SELECT Id,blng__InvoiceStatus__c,LPCR_StatutFacture__c FROM blng__Invoice__c
+                                                 WHERE blng__InvoiceStatus__c != 'Posted'];
+            for(blng__Invoice__c eachInvoice : invoicesLst){
+                eachInvoice.blng__InvoiceStatus__c = 'Posted';
+            }
+            update invoicesLst;
+            List<blng__Invoice__c> newInvoices = [SELECT Id,blng__InvoiceStatus__c,LPCR_StatutFacture__c FROM blng__Invoice__c
+                                                    WHERE LPCR_StatutFacture__c != 'Prêt à valider'];
+            System.assertEquals(invoicesLst.size(), newInvoices.size());
+            Test.stopTest();
+        }
+       
     }    
 }

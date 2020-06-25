@@ -14,6 +14,10 @@ public with sharing class TM014_InvoiceTrigger extends TM000_TriggerHandler {
         this.oldInvoiceMap = (Map<Id, blng__Invoice__c>) Trigger.oldMap;
         this.newInvoiceList = (List<blng__Invoice__c>) Trigger.new;
     }
+    protected override void beforeUpdate() {
+        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
+        SM015_InvoiceServices.setStatutFacture(newInvoiceList, oldInvoiceMap);
+    }
     protected override void afterUpdate() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         SM015_InvoiceServices.createPaymentAndPaymentAllocation(newInvoiceList, oldInvoiceMap);
