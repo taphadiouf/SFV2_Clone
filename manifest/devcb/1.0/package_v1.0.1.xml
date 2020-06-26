@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+
+    <types>
+        <members>SBQQ__Quote__c.LPCR_StatutAttente</members>
+        <members>SBQQ__Quote__c.LPCR_StatutBrouillon</members>
+        <members>SBQQ__Quote__c.LPCR_StatutEnRevue</members>
+        <members>SBQQ__Quote__c.LPCR_StatutPretAEnvoyer</members>
+        <members>SBQQ__Quote__c.LPCR_StatutPretCommande</members>
+        <members>SBQQ__Quote__c.LPCR_StatutRappel</members>
+        <members>SBQQ__Quote__c.LPCR_StatutRejete</members>
+        <members>SBQQ__Quote__c.LPCR_StatutValide</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateRTQuote</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateStatusDevisMIB</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateStatutDevis</members>
+        <members>SBQQ__Quote__c.Statut_standard_approuv</members>
+        <name>WorkflowFieldUpdate</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c.Alerte contrat termin&#233; %28MAC%29</members>
+        <members>SBQQ__Quote__c.Alerte contrat termin&#233; %28Micro%29</members>
+        <members>SBQQ__Quote__c.Alerte Service Famille</members>
+        <members>SBQQ__Quote__c.Alerte Service Famille %28avenant contrat%29</members>
+        <members>SBQQ__Quote__c.Alerte Service Famille %28 devis annul&#233;%29</members>
+        <members>SBQQ__Quote__c.Indexation Des Prix</members>
+        <members>SBQQ__Quote__c.LPCR_ContratNonSign&#233;</members>
+        <members>SBQQ__Quote__c.MIB B2B - Notifier le service famille</members>
+        <members>SBQQ__Quote__c.Status Devis MIB Changement Region Prix</members>
+        <members>SBQQ__Quote__c.Status Devis Resiliation ou MIB Meme Region Prix</members>
+        <members>SBQQ__Quote__c.Statut du quote apres Avenant MIB ou Resiliation</members>
+        <members>SBQQ__Quote__c.Statut du quote apres Avenant ou Devis</members>
+        <members>SBQQ__Quote__c.Update RT Quote</members>
+        <name>WorkflowRule</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c.AlerteContratterminMAC</members>
+        <members>SBQQ__Quote__c.LPCR_AlerteContratterminmicro</members>
+        <members>SBQQ__Quote__c.LPCR_AlerteContratToujoursAttenteSignature</members>
+        <members>SBQQ__Quote__c.LPCR_Alerte_service_famille_avenant_contrat</members>
+        <members>SBQQ__Quote__c.LPCR_Alerte_Service_Famille_devis_annule</members>
+        <members>SBQQ__Quote__c.LPCR_ContratRejete</members>
+        <members>SBQQ__Quote__c.LPCR_Contratvalide</members>
+        <members>SBQQ__Quote__c.LPCR_DevisAccepte</members>
+        <members>SBQQ__Quote__c.LPCR_DevisRejete</members>
+        <members>SBQQ__Quote__c.LPCR_InformerSFResiliation</members>
+        <members>SBQQ__Quote__c.LPCR_MIBB2B</members>
+        <members>SBQQ__Quote__c.LPCR_ValidationAcceptee</members>
+        <members>SBQQ__Quote__c.Signature_Contrat</members>
+        <name>WorkflowAlert</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c</members>
+        <name>Workflow</name>
+    </types>
+    <version>48.0</version>
+</Package>
