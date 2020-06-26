@@ -71,6 +71,14 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_BatchCommande__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_NouveauPlanFacture__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_RenouvellementPlanFacture__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -503,6 +511,11 @@
             <actionType>CustomButton</actionType>
             <sortOrder>29</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.ContentPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>9</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <quickActionList>
         <quickActionListItems>
@@ -514,8 +527,7 @@
         <quickActionListItems>
             <quickActionName>FeedItem.MobileSmartActions</quickActionName>
         </quickActionListItems>
-
-        <quickActionListItems>
+         <quickActionListItems>
             <quickActionName>FeedItem.LinkPost</quickActionName>
         </quickActionListItems>
         <quickActionListItems>

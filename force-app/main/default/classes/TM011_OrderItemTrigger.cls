@@ -18,6 +18,8 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
         SM012_OrderItemServices.setInvoiceGrouping(newOrderItemsList);
+        SM012_OrderItemServices.setOrderItemFields(newOrderItemsList);
+
     }
 
     protected override void afterInsert() {
@@ -46,6 +48,7 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     protected override void afterUpdate() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         SM012_OrderItemServices.legalEntityOnOrderItemConSch(newOrderItemsMap);
+        SM012_OrderItemServices.updateFiledsOnBillingTransaction(oldOrderItemsMap,newOrderItemsMap);
            
     }
 }
