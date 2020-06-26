@@ -142,7 +142,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                && !orderMap.get(item.OrderId).LPCR_InitAutoAvecDateDebut__c  
                                && item.blng__NextChargeDate__c != null) {
                                    //Advance
-                                   if( item.SBQQ__ChargeType__c !='One-Time' &&  orderMap.get(item.OrderId).LPCR_TypeFacturation__c  == 'Advance'){
+                                   if( orderMap.get(item.OrderId).LPCR_TypeFacturation__c  == 'Advance'){
                                        Date nextBillingDate = item.blng__NextChargeDate__c.addDays(invoiceDelta);
                                        item.blng__OverrideNextBillingDate__c = nextBillingDate;
                                        
@@ -178,8 +178,9 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                        else if (item.SBQQ__BillingFrequency__c == 'Monthly' && item.blng__NextChargeDate__c.day() != 1 ){
                                            // lastDateOfMonth
                                            item.blng__BillThroughDateOverride__c = item.SBQQ__ChargeType__c !='One-Time' ? UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c):null;
+                                       		item.blng__OverrideNextBillingDate__c = item.SBQQ__ChargeType__c =='One-Time'? UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c).addDays(1):null;
                                        }
-                                        
+                                       
                                        else  if ((item.SBQQ__BillingFrequency__c == 'Semiannual' || (item.SBQQ__ChargeType__c =='One-Time' && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == 'Semiannual') ) 
                                                  && (!UM005_DateUtility.semiannualMonths.contains(item.blng__NextChargeDate__c.month()) 
                                                      || item.blng__NextChargeDate__c.day() != 1)){ 
