@@ -125,24 +125,28 @@ public class SM008_QuoteServices_Test {
             LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
             insert planningEnfant;
             List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
+            List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,accs[0].Id,'0006',date.newInstance(System.Today().year(), 06, 02), date.newInstance(System.Today().year(), 06, 31),123, 'Express', 'Non', Null );
+            insert Renewalcontract;
+            Contract con2 = Renewalcontract.get(0);
+            con2.LPCR_Sales_Rep__c = UserInfo.getUserId();
+            con2.LPCR_ResponsableADV__c = UserInfo.getUserId();
+            con2.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update con2;
+            
+            
             List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
             Opportunity opp = oppties.get(0);
             opp.LPCR_IndexationConvenue__c='Oui';
             opp.LPCR_TypeFacturation__c='Arrears';
             opp.LPCR_BillingFrequency__c='Invoice Plan';
             opp.LPCR_PlanningEnfant__c = planningEnfant.id;
+            opp.SBQQ__RenewedContract__c = con2.id;
+            opp.SBQQ__RenewedContract__c = con2.id;
             update opp;
             SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
             quote.SBQQ__Type__c='Renewal';
             quote.RecordTypeId = ContratA_RT_ID;
             
-            Contract con = new Contract(AccountID = accs.get(0).id,SBQQ__Opportunity__c = oppties.get(0).id,
-                                        LPCR_Sales_Rep__c = UserInfo.getUserId(), LPCR_ResponsableADV__c = UserInfo.getUserId(), LPCR_ResponsableServiceFamille__c = UserInfo.getUserId(),
-                                        StartDate =System.today(),ContractTerm = 12,LPCR_DateDebut__c =Date.newInstance(2020, 05, 01),
-                                        LPCR_DateFin__c = Date.newInstance(2020, 05, 30),LPCR_MethodeRenouvellement__c = 'Express' );
-            Insert con;
-            
-            quote.LPCR_ContractEntreprise__c  = con.Id;
             
             insert quote;
             
@@ -158,7 +162,37 @@ public class SM008_QuoteServices_Test {
             Test.stopTest();
             
         } }
-    
+     @isTest //added by Ayoub
+    public static void setQuoteFields_Test2(){    
+        
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
+            LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
+            insert planningEnfant;
+            List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
+            List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
+            Opportunity opp = oppties.get(0);
+            update opp;
+            SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
+            quote.RecordTypeId = ContratA_RT_ID;
+            
+            Contract con = new Contract(AccountID = accs.get(0).id,SBQQ__Opportunity__c = oppties.get(0).id,
+                                        LPCR_Sales_Rep__c = UserInfo.getUserId(), LPCR_ResponsableADV__c = UserInfo.getUserId(), LPCR_ResponsableServiceFamille__c = UserInfo.getUserId(),
+                                        StartDate =System.today(),ContractTerm = 12,LPCR_DateDebut__c =Date.newInstance(2020, 05, 01),
+                                        LPCR_DateFin__c = Date.newInstance(2020, 05, 30),LPCR_MethodeRenouvellement__c = 'Express' );
+            Insert con;
+            
+            quote.LPCR_ContractEntreprise__c  = con.Id;
+            
+            insert quote;
+            
+            quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c from SBQQ__Quote__c WHERE  Id = :quote.Id];
+            System.assertEquals(quote.SBQQ__SalesRep__c,  UserInfo.getUserId(), 'Quote SBQQ__SalesRep__c not equals to oppt LPCR_PlanningEnfant__c');
+            System.assertEquals(quote.LPCR_ResponsableADV__c,  UserInfo.getUserId(), 'Quote LPCR_ResponsableADV__c not equals to oppt LPCR_PlanningEnfant__c');
+            System.assertEquals(quote.LPCR_ResponsableServiceFamille__c,  UserInfo.getUserId(), 'Quote LPCR_ResponsableServiceFamille__c not equals to oppt LPCR_PlanningEnfant__c');
+            Test.stopTest();
+            
+        } }
     
     
     
