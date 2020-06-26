@@ -5,7 +5,7 @@
 */
 
 public with sharing class SM002_EventServices {
-    public static List<Lead> LEAD_RG03_IS250(list<Event> newEventsList) {
+    public static List<Lead> updateLeadsWithNewEvents(list<Event> newEventsList) {
         
         set<Id> setLeadIds = new set<Id> ();
         

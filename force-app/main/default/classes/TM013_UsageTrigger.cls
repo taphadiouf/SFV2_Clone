@@ -10,7 +10,8 @@ public with sharing class TM013_UsageTrigger extends TM000_TriggerHandler {
         this.newUsageList = (List<blng__Usage__c>) Trigger.new;
     }
     protected override void beforeInsert() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM014_UsageServices.setUsageFields(newUsageList);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM014_UsageServices.setUsageFields(newUsageList);
+        }
     }
 }

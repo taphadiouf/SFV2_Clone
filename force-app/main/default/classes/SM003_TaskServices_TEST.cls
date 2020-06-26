@@ -17,7 +17,7 @@ public with sharing class SM003_TaskServices_TEST {
     }
 
     @isTest
-    public static void LEAD_RG03_IS250_Test(){
+    public static void updateLeadsWithNewTasks_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             
             Test.startTest();

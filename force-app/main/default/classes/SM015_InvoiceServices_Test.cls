@@ -69,7 +69,6 @@ public class SM015_InvoiceServices_Test {
             List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
-            System.debug('**** qlines '+qlines);
             
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             contract.Status = 'Draft';

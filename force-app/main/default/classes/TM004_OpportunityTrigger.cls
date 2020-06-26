@@ -14,7 +14,8 @@ public class TM004_OpportunityTrigger extends TM000_TriggerHandler{
         this.newOpportunitiesList = (List<Opportunity>) Trigger.new;
     }
     protected override void afterInsert() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM007_LeadServices.opportunitiesIds = new Set<Id>(newOpportunitiesMap.keySet());
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM007_LeadServices.opportunitiesIds = new Set<Id>(newOpportunitiesMap.keySet());
         }
+    }
 }

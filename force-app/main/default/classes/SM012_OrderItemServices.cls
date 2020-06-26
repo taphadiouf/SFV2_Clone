@@ -21,7 +21,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             if(eachOrderItem.blng__LegalEntity__c ==null){
                 //        updateOrderItem = true;
                 eachOrderItem.blng__LegalEntity__c = eachOrderItem.SBQQ__QuoteLine__r.LPCR_EntiteJuridique__c;
-                system.debug('setting legal entity on Order item '+eachOrderItem.blng__LegalEntity__c);
+                PAD.log('SM012_OrderItemServices', 'setLegalEntityOnOrderItem' , 'setting legal entity on Order item ' +eachOrderItem.blng__LegalEntity__c);
             }
         }
         //if (updateOrderItem) {
@@ -35,8 +35,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
         for(SBQQ__OrderItemConsumptionSchedule__c eachOrderItemConSch : listOrderItemConSch){
             if(eachOrderItemConSch.SBQQ__OrderItem__r.blng__LegalEntity__c != null ){
                 eachOrderItemConSch.blng__LegalEntity__c  = eachOrderItemConSch.SBQQ__OrderItem__r.blng__LegalEntity__c;
-                system.debug('setting legal entity on Order item ConSch '+eachOrderItemConSch.blng__LegalEntity__c);
-                
+                PAD.log('SM012_OrderItemServices', 'legalEntityOnOrderItemConSch', 'setting legal entity on Order item ConSch '+eachOrderItemConSch.blng__LegalEntity__c);
+
                 listOrderItemConSchtoSave.add(eachOrderItemConSch);
             }
         }
@@ -166,7 +166,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                    }
                                    //Arrears 
                                   else if(  orderMap.get(item.OrderId).LPCR_TypeFacturation__c  == 'Arrears'){
-                                       System.debug('$$$$$$$ item.SBQQ__BillingFrequency__c '+item.SBQQ__BillingFrequency__c);
+                                       PAD.log('SM012_OrderItemServices','setupInvoiceDates','$$$$$$$ item.SBQQ__BillingFrequency__c '+item.SBQQ__BillingFrequency__c);
                                      if ( (item.SBQQ__BillingFrequency__c == 'Quarterly' || (item.SBQQ__ChargeType__c =='One-Time' && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == 'Quarterly') )
                                            && ((UM005_DateUtility.quarterlyMonths.contains(item.blng__NextChargeDate__c.month()) 
                                                 && item.blng__NextChargeDate__c.day() != 1) 
@@ -220,7 +220,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             eachOrderItem.blng__InvoiceGrouping__c = 'Invoice Group ID';
             if(String.isNotBlank(eachOrderItem.LPCR_NumeroPurchaseOrder__c)){
                 eachOrderItem.blng__InvoiceGroupId__c = eachOrderItem.LPCR_NumeroPurchaseOrder__c;
-                system.debug('invoice group id update on OrderItem '+eachOrderItem.blng__InvoiceGroupId__c);
+                PAD.log('SM012_OrderItemServices' , 'setInvoiceGroupingOnOrderItem', 'invoice group id update on OrderItem '+eachOrderItem.blng__InvoiceGroupId__c);
             }
             listOrderItemtoSave.add(eachOrderItem);
         }

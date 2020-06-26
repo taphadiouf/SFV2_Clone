@@ -28,7 +28,7 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject> {
             }
             update lstPurgedDoc;
         }else{
-            System.debug('The documents are not deleted');
+            PAD.log('APB001_ProcessLPCR_Log', 'execute', 'The documents are not deleted');
         }
     }
     global void finish(Database.BatchableContext bc){

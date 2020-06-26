@@ -101,7 +101,7 @@ public with sharing class VFC001_GenererDocAnn2 {
                     }
                     
                 }catch(Exception e){
-                    system.debug('error'+e);
+                    PAD.log('VFC001_GenererDocAnn2','Annex2Wrapper','error'+e);
                 }
             }
             this.LPCR_AverageTime = averag;

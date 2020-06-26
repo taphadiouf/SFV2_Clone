@@ -73,12 +73,13 @@ public with sharing class SM013_ModificationEntranteServices {
                 echosign_dev1.EchoSignApiService.SendDocumentResult tmp = echosign_dev1.EchoSignApiService.sendDocument(tmpIdAggree);  
             }
             
-        } catch (Exception E) { System.debug('Exception: ' + e.getStackTraceString());}       
+        } catch (Exception E) { 
+            PAD.log('SM013_ModificationEntranteServices', 'sendAgreement', 'Exception: ' + e.getStackTraceString());
+        }       
     }   
     
     //added by saurabh
     public static void createUsageFromModifEntrantes(List<LPCR_ModificationEntrante__c> ModifEntrantesList){
-        System.debug('SM013_ModificationEntranteServices');
         List<blng__Usage__c> lstBillingUsage = new List<blng__Usage__c>();
         for(LPCR_ModificationEntrante__c eachModification : ModifEntrantesList){
             if('Modification Heure Supplémentaire MAC'.equals(eachModification.LPCR_Evenement__c) &&
@@ -89,7 +90,6 @@ public with sharing class SM013_ModificationEntranteServices {
                'Abscence'.equals(eachModification.LPCR_Evenement__c)
               ){
                   blng__Usage__c newUsage = EM016_ModificationEntranteEntity.createBlngUsage(eachModification,'Hour');
-                  System.debug('**** newUsage : '+ newUsage);
                   if(newUsage != null){
                       lstBillingUsage.add(newUsage);
                   }
@@ -97,14 +97,11 @@ public with sharing class SM013_ModificationEntranteServices {
         }
         if(lstBillingUsage.size() > 0){
             insert lstBillingUsage;
-            System.debug('SM013_ModificationEntranteServices billing usage insertd'+lstBillingUsage.size());
         }
     }
 
     // added by saurabh
     public static void updateQuotesFromModifEntrantesBatch(List<LPCR_ModificationEntrante__c> ModifEntrantesList){
-        System.debug('updateQuotesFromModifEntrantesBatch::');
-        System.debug('size of ModifEntrantesList : '+ ModifEntrantesList.size());
 
         Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
         Date firstDayOfNextMonthDate = Date.newInstance(Date.today().Year(), Date.today().month()+1 ,1) ;
@@ -134,17 +131,14 @@ public with sharing class SM013_ModificationEntranteServices {
                 ressourceFamilleMap.put(eachRessourceFamille.LPCR_CompteFamille__c, eachRessourceFamille);
             }
         }
-        System.debug('size of ressourceFamilleMap : '+ ressourceFamilleMap.size());
         for(Contact contact : [SELECT Id,LPCR_NumeroAllocataire__c, LPCR_AutoriteParentale__c, MailingStreet, MailingCity, MailingState, MailingPostalCode, MailingCountry FROM Contact WHERE Id IN: contactIds]){
             modifEntrantesContactMap.put(contact.Id, contact);
         }
-        System.debug('size of modifEntrantesContactMap : '+ modifEntrantesContactMap.size());
 
         detailModifPlanningMap = SM013_ModificationEntranteServices.getDetailModificationPlanningList(modifEntrantesIds,'Modification Type Planning');
 
         for(LPCR_ModificationEntrante__c eachModifEntrante : ModifEntrantesList){
             if('Modification Situation Handicapé Enfant Fratrie'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
-                System.debug('Event = Modification Situation Handicapé Enfant Fratrie | '+ eachModifEntrante.Id);
                 if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Compte__c)){
                     // 1) Update previous LPCR_FamilyRessource_c with an effective end date (LPCR_DateFin_c) corresponding to last day of current month
                     // 2) Insert a LPCR_FamilyRessource__c record dwith effective start date as 1st of next month
