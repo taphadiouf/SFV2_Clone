@@ -33,10 +33,9 @@ public without sharing virtual class TM000_TriggerHandler {
 
 	// main method that will be called during execution
 	public void run() {
-		System.debug('>> TM000_TriggerHandler - run : enter the run trigger');
+		PAD.log('TM000_TriggerHandler','run','>> TM000_TriggerHandler - run : enter the run trigger');
 		if(!validateRun()) return;
-		System.debug('>> TM000_TriggerHandler - run : Trigger is validated');
-
+		PAD.log('TM000_TriggerHandler','run','>> TM000_TriggerHandler - run : Trigger is validated');
 		addToLoopCount();
 
 		// dispatch to the correct handler method
@@ -144,7 +143,7 @@ public without sharing virtual class TM000_TriggerHandler {
 
 	@TestVisible
 	private String getHandlerName() {
-		System.debug('>> TM000_TriggerHandler - getHandlerName : ' + String.valueOf(this));
+		PAD.log('TM000_TriggerHandler','getHandlerName','>> TM000_TriggerHandler - getHandlerName : ' + String.valueOf(this));
 		return String.valueOf(this).substring(0,String.valueOf(this).indexOf(':'));
 	}
 

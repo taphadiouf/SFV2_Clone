@@ -10,6 +10,26 @@ public with sharing class APC002_AttachmentController {
         // Decoding base64Data
         base64Data = EncodingUtil.urlDecode(base64Data, 'UTF-8');
         
+
+        boolean isvalid = true;
+        String errMsg = 'Veuillez  ';
+        if(idParent == Null){
+            isvalid = False ;
+            errMsg += 'attacher le fichier à un enregistrement père ';
+            
+        }
+
+        if(strFileName == Null){
+            isvalid = False ;
+            errMsg += 'saisir le nom du fichier ';
+            
+        }
+        
+        
+        if(!isvalid){
+            throw new AuraHandledException(errMsg);
+        }
+
         // inserting file
         Attachment att = new Attachment();
         att.Name = strFileName;

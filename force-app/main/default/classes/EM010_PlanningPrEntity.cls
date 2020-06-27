@@ -5,7 +5,8 @@
 */
 public with sharing class EM010_PlanningPrEntity {
     public static List<LPCR_PlanningPrevisionnel__c> getPlanningsByQuoteId(Id idQuote) {
-        return [SELECT Id, 
+     /*
+        return [SELECT Id,
                		   LPCR_Contrat__c,
                 	   LPCR_HeureDebutLundi__c, 
                 	   LPCR_HeureFinLundi__c , 
@@ -19,5 +20,8 @@ public with sharing class EM010_PlanningPrEntity {
                 	   LPCR_HeureFinVendredi__c 
                 FROM LPCR_PlanningPrevisionnel__c
                 Where LPCR_Contrat__c =: idQuote ];
+
+      */
+        return null;
     }
 }

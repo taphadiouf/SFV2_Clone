@@ -73,7 +73,7 @@
     <recordCreates>
         <name>Creer_Devis</name>
         <label>Créer Devis</label>
-        <locationX>1024</locationX>
+        <locationX>1023</locationX>
         <locationY>62</locationY>
         <assignRecordIdToReference>QuoteID</assignRecordIdToReference>
         <connector>
@@ -122,21 +122,15 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>LPCR_ResponsableADV__c</field>
+            <field>LPCR_DateDebut__c</field>
             <value>
-                <elementReference>ResponsableADV</elementReference>
+                <elementReference>StartDate</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>LPCR_ResponsableServiceFamille__c</field>
+            <field>LPCR_DateFin__c</field>
             <value>
-                <elementReference>ResponsableSF</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>LPCR_TypeEnregistrement__c</field>
-            <value>
-                <stringValue>Contrat_Accueil</stringValue>
+                <elementReference>EndDate</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -152,12 +146,6 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>SBQQ__EndDate__c</field>
-            <value>
-                <elementReference>EndDate</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>SBQQ__Opportunity2__c</field>
             <value>
                 <elementReference>OpportunityID</elementReference>
@@ -167,12 +155,6 @@
             <field>SBQQ__Primary__c</field>
             <value>
                 <booleanValue>true</booleanValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>SBQQ__StartDate__c</field>
-            <value>
-                <elementReference>StartDate</elementReference>
             </value>
         </inputAssignments>
         <object>SBQQ__Quote__c</object>
@@ -276,42 +258,16 @@
             <field>Id</field>
         </outputAssignments>
     </recordLookups>
-    <recordLookups>
-        <name>Get_responsable_ID</name>
-        <label>Get responsable ID</label>
-        <locationX>857</locationX>
-        <locationY>287</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Creer_Opportunite</targetReference>
-        </connector>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>ContratB2B.recordId</elementReference>
-            </value>
-        </filters>
-        <object>Contract</object>
-        <outputAssignments>
-            <assignToReference>ResponsableADV</assignToReference>
-            <field>LPCR_ResponsableADV__c</field>
-        </outputAssignments>
-        <outputAssignments>
-            <assignToReference>ResponsableSF</assignToReference>
-            <field>LPCR_ResponsableServiceFamille__c</field>
-        </outputAssignments>
-    </recordLookups>
     <screens>
         <name>Informations_Opportunite_Devis</name>
         <label>Informations Opportunité et Devis</label>
-        <locationX>677</locationX>
-        <locationY>65</locationY>
+        <locationX>676</locationX>
+        <locationY>66</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Get_responsable_ID</targetReference>
+            <targetReference>Creer_Opportunite</targetReference>
         </connector>
         <fields>
             <name>Details_Opportunite</name>
@@ -387,56 +343,6 @@
             <isRequired>true</isRequired>
         </fields>
         <fields>
-            <name>Creche</name>
-            <extensionName>flowruntime:lookup</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>fieldApiName</name>
-                <value>
-                    <stringValue>LPCR_Creche__c</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>label</name>
-                <value>
-                    <stringValue>Crèche</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>objectApiName</name>
-                <value>
-                    <stringValue>SBQQ__Quote__c</stringValue>
-                </value>
-            </inputParameters>
-            <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
-        </fields>
-        <fields>
-            <name>Enfant</name>
-            <extensionName>flowruntime:lookup</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>fieldApiName</name>
-                <value>
-                    <stringValue>LPCR_ContactEnfant__c</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>objectApiName</name>
-                <value>
-                    <stringValue>SBQQ__Quote__c</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>label</name>
-                <value>
-                    <stringValue>Enfant</stringValue>
-                </value>
-            </inputParameters>
-            <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
-        </fields>
-        <fields>
             <name>ContratB2B</name>
             <extensionName>flowruntime:lookup</extensionName>
             <fieldType>ComponentInstance</fieldType>
@@ -456,6 +362,31 @@
                 <name>fieldApiName</name>
                 <value>
                     <stringValue>LPCR_ContractEntreprise__c</stringValue>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>Creche</name>
+            <extensionName>flowruntime:lookup</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>fieldApiName</name>
+                <value>
+                    <stringValue>LPCR_Creche__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Crèche</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>objectApiName</name>
+                <value>
+                    <stringValue>SBQQ__Quote__c</stringValue>
                 </value>
             </inputParameters>
             <isRequired>true</isRequired>
@@ -506,6 +437,31 @@
                 <name>objectApiName</name>
                 <value>
                     <stringValue>SBQQ__Quote__c</stringValue>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>Enfant</name>
+            <extensionName>flowruntime:lookup</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>fieldApiName</name>
+                <value>
+                    <stringValue>LPCR_ContactEnfant__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>objectApiName</name>
+                <value>
+                    <stringValue>SBQQ__Quote__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Enfant</stringValue>
                 </value>
             </inputParameters>
             <isRequired>true</isRequired>

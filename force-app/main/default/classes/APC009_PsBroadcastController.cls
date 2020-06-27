@@ -160,8 +160,6 @@ public with sharing class APC009_PsBroadcastController {
         List<ObjectPermissions> tmpOpList = [Select Id, parent.Name, parentId, SobjectType, PermissionsCreate, PermissionsRead, PermissionsEdit from ObjectPermissions where Parent.Id = :TmpPs.Id  and SobjectType in :tmpObjSet ];
         Map<String, ObjectPermissions> tmpMapOp = new Map<String, ObjectPermissions>();
         
-        System.Debug('>>> tmpObjSet:' + tmpObjSet);        
-        System.Debug('>>> tmpOpList.size():' + tmpOpList.size());
         
         for (ObjectPermissions tmpOp : tmpOpList) {
             tmpMapOp.put(tmpOp.SobjectType, tmpOp);
@@ -172,7 +170,6 @@ public with sharing class APC009_PsBroadcastController {
         
         for (String s : tmpObjSet) {
             
-            System.Debug('>>> s:' + s);
             
             if (objectPermissionAlreadyExists(s, tmpOpList) == true) {
                 ObjectPermissions tmpOp = new ObjectPermissions();

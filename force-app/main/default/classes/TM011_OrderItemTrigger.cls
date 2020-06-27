@@ -15,37 +15,41 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     }
 
     protected override void beforeInsert() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
-        SM012_OrderItemServices.setInvoiceGrouping(newOrderItemsList);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
+            SM012_OrderItemServices.setInvoiceGrouping(newOrderItemsList);
+        }
     }
 
     protected override void afterInsert() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM012_OrderItemServices.setInvoiceGroupingOnOrderItem(newOrderItemsMap);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM012_OrderItemServices.setInvoiceGroupingOnOrderItem(newOrderItemsMap);
         
-        List<OrderItem> orderItemToProcess = new List<OrderItem> ();
-        for(OrderItem oi : newOrderItemsList){
-            if(oi.blng__LegalEntity__c == null){
-                orderItemToProcess.add(oi);
+            List<OrderItem> orderItemToProcess = new List<OrderItem> ();
+            for(OrderItem oi : newOrderItemsList){
+                if(oi.blng__LegalEntity__c == null){
+                    orderItemToProcess.add(oi);
+                }
             }
-        }
 
-        if (orderItemToProcess.size() > 0) {
-            SM012_OrderItemServices job = new SM012_OrderItemServices(newOrderItemsList);
-            ID jobID = System.enqueueJob(job);
+            if (orderItemToProcess.size() > 0) {
+                SM012_OrderItemServices job = new SM012_OrderItemServices(newOrderItemsList);
+                ID jobID = System.enqueueJob(job);
+            }
         }
     }
 
     protected override void beforeUpdate() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
-        SM012_OrderItemServices.setOrderItemFieldsFromContract(newOrderItemsList);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
+            SM012_OrderItemServices.setOrderItemFieldsFromContract(newOrderItemsList);
+        }
     }
     
     protected override void afterUpdate() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM012_OrderItemServices.legalEntityOnOrderItemConSch(newOrderItemsMap);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM012_OrderItemServices.legalEntityOnOrderItemConSch(newOrderItemsMap);
+        }
            
     }
 }

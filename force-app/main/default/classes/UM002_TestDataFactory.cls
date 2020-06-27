@@ -211,7 +211,7 @@ public with sharing class UM002_TestDataFactory {
 			//} else if (ft == Schema.DisplayType.Id) {
 				//System.debug('Id field ' + fn);
 			} else {
-				System.debug('Unhandled field type ' + ft);
+                PAD.log('UM002_TestDataFactory','setFieldValue','Unhandled field type ' + ft);
             }
 		}	
     }
@@ -586,8 +586,8 @@ newMe.FederationIdentifier = null;
     public static LPCR_RessourceFamille__c createRessourceFamille(Id productId, Id userId,String name,Decimal price){
         return new LPCR_RessourceFamille__c(   LPCR_DateDebut__c = date.today(),
                                             LPCR_CompteFamille__c=userId,
-                                            LPCR_Produit__c=productId,
-                                            LPCR_TauxMensuel__c=price,
+                                            //LPCR_Produit__c=productId,
+                                            //LPCR_TauxMensuel__c=price,
                                             Name=name);
     } 
     public static LPCR_RessourceFamille__c createRessourceFamille(Date debutDate,Id userId,String name){
@@ -600,8 +600,8 @@ newMe.FederationIdentifier = null;
         for(Integer i=0;i<nbr;i++){
             listRessourceFamille.add(new LPCR_RessourceFamille__c(
                 LPCR_CompteFamille__c=userId,
-                LPCR_Produit__c=productId,
-                LPCR_TauxMensuel__c=price,
+                //LPCR_Produit__c=productId,
+                //LPCR_TauxMensuel__c=price,
                 LPCR_DateDebut__c =listStartDate.get(i),
                 LPCR_NombreEnfants__c=listNbrEnfant.get(i),
                 LPCR_NombreEnfantHandicape__c=listNbrEnfantHandicape.get(i),
@@ -1105,7 +1105,6 @@ newMe.FederationIdentifier = null;
     public static List<LPCR_PlanningPrevisionnel__c> createPlannings(Integer numPlann, Id idQuote, Time debutLundi, Time finLundi, Time DebutMardi, Time finMardi, Time DebutMercredi, Time finMercredi, Time DebutJeudi, Time finJeudi, Time DebutVendredi, Time finVendredi){ 
         
         LPCR_Planning__c tmpPlanning = new LPCR_Planning__c();
-        tmpPlanning.LPCR_Devis__c = idQuote;
         tmpPlanning.LPCR_TypePlanning__c = 'Planning Classique';
         insert tmpPlanning;
 
@@ -1115,7 +1114,6 @@ newMe.FederationIdentifier = null;
         for(Integer i=0;i<numPlann;i++){
             LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(
                                                                                LPCR_Planning__c = tmpPlanning.Id,
-                                                                               LPCR_Contrat__c  =idQuote,
                                                                                LPCR_HeureDebutLundi__c = debutLundi,
                                                                                LPCR_HeureFinLundi__c   = finLundi,
                                                                                LPCR_HeureDebutMardi__c = DebutMardi,
@@ -1131,17 +1129,16 @@ newMe.FederationIdentifier = null;
         return plannings;   
     }
     
-    public static List<LPCR_PlanningPrevisionnel__c> createPlanningsWithoutTime(Integer numPlann, Id idQuote){  
+    public static List<LPCR_PlanningPrevisionnel__c> createPlanningsWithoutTime(Integer numPlann){
     
         LPCR_Planning__c tmpPlanning = new LPCR_Planning__c();
-        tmpPlanning.LPCR_Devis__c = idQuote;
         tmpPlanning.LPCR_TypePlanning__c = 'Planning Classique';
         insert tmpPlanning;
 
     
         List<LPCR_PlanningPrevisionnel__c>  plannings = new List<LPCR_PlanningPrevisionnel__c>();
         for(Integer i=0;i<numPlann;i++){
-            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Planning__c = tmpPlanning.id, LPCR_Contrat__c  = idQuote);
+            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Planning__c = tmpPlanning.id);
             plannings.add(pl);
         }
         return plannings;   
@@ -1154,7 +1151,7 @@ newMe.FederationIdentifier = null;
         LPCR_ModificationEntrante__c tempModif;
         for(Integer i = 0; i<numRecs; i++){
             tempModif = new LPCR_ModificationEntrante__c(
-                LPCR_Devis__c  = quotes.get(i).Id,
+                //LPCR_Devis__c  = quotes.get(i).Id,
                 LPCR_Evenement__c  = event
             );
             ModifEntrantes.add(tempModif);
