@@ -8,7 +8,7 @@ public with sharing class SM016_SendMail_Callout {
     public static HttpResponse sendMailCallout(String from1, String to, String subject, String body, Integer[] docsId) {
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('http://azure-api-dev.lpcr.fr/api/mail/SendMail/');
+        request.setEndpoint('callout:SendMailService');
         request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json;charset=UTF-8');
         EmailStructureWrapper emailStructure = new EmailStructureWrapper(from1, to, subject, body, docsId);
