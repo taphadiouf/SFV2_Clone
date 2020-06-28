@@ -111,5 +111,53 @@ public class SM015_InvoiceServices_Test {
             Test.stopTest();
             
         }
+    }
+    @isTest
+    public static void setStatutFacture_Test(){
+       
+            Test.startTest();
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            quote.SBQQ__Primary__c = true;
+            update quote;
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            contract.Status = 'Draft';
+            Insert contract;
+
+            Order order = UM002_TestDataFactory.createOrder(acc.Id, contract.id,Date.today(),'test','Draft','1');
+            order.Pricebook2Id = standardPricebookId;
+            order.SBQQ__Quote__c = quote.id;
+            insert order;
+
+            blng__Invoice__c invoice = new blng__Invoice__c();
+            invoice.blng__Account__c = acc.Id;
+            invoice.blng__BillToContact__c = cont.id;
+            invoice.blng__InvoiceDate__c = Date.today();
+            invoice.blng__DueDate__c = Date.today();
+            invoice.blng__Order__c = order.id;
+            invoice.blng__PaymentBatch__c = 'Batch 1';
+            insert invoice;
+
+            List<blng__Invoice__c> invoicesLst = [SELECT Id,blng__InvoiceStatus__c,LPCR_StatutFacture__c FROM blng__Invoice__c];
+            System.debug('invoicesLst  => ' + invoicesLst);
+            for(Integer i = 0; i< invoicesLst.size(); i++){
+                blng__Invoice__c eachInvoice = invoicesLst.get(i);
+                eachInvoice.blng__InvoiceStatus__c = 'Posted';
+            }
+            update invoicesLst;
+            List<blng__Invoice__c> newInvoices = [SELECT Id,blng__InvoiceStatus__c,LPCR_StatutFacture__c FROM blng__Invoice__c
+                                                    WHERE LPCR_StatutFacture__c != 'Prêt à valider'];
+            System.assertEquals(invoicesLst.size(), newInvoices.size());
+            Test.stopTest();
+       
     }    
 }
