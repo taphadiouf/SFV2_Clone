@@ -211,7 +211,7 @@ public with sharing class UM002_TestDataFactory {
 			//} else if (ft == Schema.DisplayType.Id) {
 				//System.debug('Id field ' + fn);
 			} else {
-				System.debug('Unhandled field type ' + ft);
+                PAD.log('UM002_TestDataFactory','setFieldValue','Unhandled field type ' + ft);
             }
 		}	
     }

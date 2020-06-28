@@ -154,6 +154,40 @@ public with sharing class SM012_OrderItemServices_Test {
             }
     
     @IsTest
+    private static void lastDayOfDatePeriod_test(){
+        Date[] expected = new Date[]{
+            Date.newInstance(2020,4,1),
+                Date.newInstance(2020,7,1),
+                Date.newInstance(2020,10,1),
+                Date.newInstance(2021,1,1)};
+                    for(integer x = 1; x <= 12; x++){
+                        if(1<= x && x <4 )  System.assertEquals(expected[0],
+                                                                UM005_DateUtility.lastDayOfDatePeriod (Date.newInstance(2020,x,10), UM005_DateUtility.quarterlyMonths).addDays(1));
+                        else if(4 <= x && x<7 )  System.assertEquals(expected[1],
+                                                                     UM005_DateUtility.lastDayOfDatePeriod (Date.newInstance(2020,x,10), UM005_DateUtility.quarterlyMonths).addDays(1));
+                        else if(7 <= x && x<10 )  System.assertEquals(expected[2],
+                                                                      UM005_DateUtility.lastDayOfDatePeriod (Date.newInstance(2020,x,10), UM005_DateUtility.quarterlyMonths).addDays(1));
+                        else if(10 <= x && x<=12 )  System.assertEquals(expected[3],
+                                                                        UM005_DateUtility.lastDayOfDatePeriod (Date.newInstance(2020,x,10), UM005_DateUtility.quarterlyMonths).addDays(1));
+
+                    }
+
+        expected = new Date[]{
+            Date.newInstance(2020,7,1),
+                Date.newInstance(2021,1,1)
+                };
+                    for(integer x = 1; x <= 12; x++){
+                        if(1<= x && x <7 )  System.assertEquals(expected[0],
+                                                                UM005_DateUtility.lastDayOfDatePeriod (Date.newInstance(2020,x,10), UM005_DateUtility.semiannualMonths).addDays(1));
+                        else if(7 <= x && x<=12 )  System.assertEquals(expected[1],
+                                                                       UM005_DateUtility.lastDayOfDatePeriod (Date.newInstance(2020,x,10), UM005_DateUtility.semiannualMonths).addDays(1));
+                    }
+    }
+
+
+
+
+    @IsTest
     static void setLegalEntityOnOrderItem_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
@@ -436,8 +470,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             for (OrderItem oi : mapOrderItem.values()) {
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
-                    System.assertEquals(expectedDate, oi.blng__OverrideNextBillingDate__c);
-                    System.assertEquals(expectedDate.addMonths(1), oi.blng__BillThroughDateOverride__c);                
+                System.assertEquals(expectedDate, oi.blng__OverrideNextBillingDate__c);
+                System.assertEquals(expectedDate.addMonths(1), oi.blng__BillThroughDateOverride__c);
             }
         }
     }
@@ -480,7 +514,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
         insert opp;
         
         defaultVal = new Map<String, Object> {
-                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
                 'SBQQ__Account__c' => customerAcc.Id,
                 'SBQQ__SubscriptionTerm__c' => 12,
                 'SBQQ__BillingFrequency__c' => 'Monthly',
@@ -501,7 +535,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
         
         Integer price = 200;
         defaultVal = new Map<String, Object> {
-                'Name' => 'prod-test',
+            'Name' => 'prod-test',
                 'SBQQ__StartDate__c' => System.Today(),
                 'SBQQ__Product__c' => prod.Id,
                 'SBQQ__Quantity__c' => 1,
@@ -798,7 +832,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
     }
     
     
-     @isTest
+    @isTest
     private static void testSetupInvoiceDatesEnterpriseMonthlyArrears () {     
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
@@ -889,7 +923,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order];
             for (Order order : orders) {
-                 order.LPCR_TypeFacturation__c='Arrears';
+                order.LPCR_TypeFacturation__c='Arrears';
                 order.blng__BillingAccount__c = order.blng__BillingAccount__c == null && order.AccountId != null 
                     ? order.AccountId
                     : order.blng__BillingAccount__c;
@@ -910,7 +944,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 if(oi.blng__NextChargeDate__c.day() != 1){
-                System.assertEquals(UM005_DateUtility.lastDateOfMonth(oi.blng__NextChargeDate__c), oi.blng__BillThroughDateOverride__c);
+                    System.assertEquals(UM005_DateUtility.lastDateOfMonth(oi.blng__NextChargeDate__c), oi.blng__BillThroughDateOverride__c);
                 }
             }
         }
@@ -972,7 +1006,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
         insert quote;
         
-   
+
         Integer price = 200;
         defaultVal = new Map<String, Object> {
             'Name' => 'prod-test',
@@ -1073,7 +1107,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'LPCR_TypeFacturation__c'=>'Arrears'
                 };
                     
-        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
         insert opp;
         
         defaultVal = new Map<String, Object> {
@@ -1094,14 +1128,12 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__Opportunity2__c' => opp.Id
                 };
                     
-               
-        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+
+                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
         insert quote;
         quote = [SELECT SBQQ__BillingFrequency__c,LPCR_TypeFacturation__c FROM SBQQ__Quote__c where Id = :quote.Id ];
-        system.debug('quote : SBQQ__BillingType__c ===== '+quote.SBQQ__BillingFrequency__c);
-        system.debug('quote : LPCR_TypeFacturation__c ===== '+quote.LPCR_TypeFacturation__c);
-  
-   
+
+
         Integer price = 200;
         defaultVal = new Map<String, Object> {
             'Name' => 'prod-test',
@@ -1122,7 +1154,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
                 };
                     
-        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
         insert quoteLine;
         
         opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -1418,7 +1450,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
     }
     
     
-     @isTest
+    @isTest
     private static void testSetupInvoiceDatesEnterpriseSemiannualArrearsOneTime() {      
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
@@ -1526,11 +1558,11 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             Date expectedDate = System.today().addDays(invoiceDelta);
             
             for (OrderItem oi : mapOrderItem.values()) {
-                                   
+
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 
-               
+
                 System.assertEquals(null, oi.blng__BillThroughDateOverride__c);
                 
                 Date expectedOverrideNextBillingDate = !UM005_DateUtility.semiannualMonths.contains(oi.blng__NextBillingDate__c.month()) || oi.blng__NextChargeDate__c.day() != 1
@@ -1650,11 +1682,11 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             Date expectedDate = System.today().addDays(invoiceDelta);
             
             for (OrderItem oi : mapOrderItem.values()) {
-                                   
+
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 
-               
+
                 System.assertEquals(null, oi.blng__BillThroughDateOverride__c);
                 
                 Date expectedOverrideNextBillingDate = !UM005_DateUtility.quarterlyMonths.contains(oi.blng__NextBillingDate__c.month()) || oi.blng__NextChargeDate__c.day() != 1

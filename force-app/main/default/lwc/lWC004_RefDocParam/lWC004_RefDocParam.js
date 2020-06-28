@@ -177,17 +177,16 @@ export default class LWC004_RefDocParam extends LightningElement {
 
         fireEvent(this.pageRef, 'handleCreatedAttachment', result);
       })
-      .catch(error => {
-        // Showing errors if any while inserting the files
-        window.console.log(error);
-        this.dispatchEvent(
-          new ShowToastEvent({
-            title: 'Error de chargement du fichier',
-            message: error.message,
-            variant: 'error',
-          }),
-        );
-      });
+      .catch(err=>{
+        console.error(err);
+            this.dispatchEvent(new ShowToastEvent({
+                title: "Erreur!",
+                message: err.body.message,
+                variant: "error"
+            
+            }));
+     
+    });
   }
 
 }

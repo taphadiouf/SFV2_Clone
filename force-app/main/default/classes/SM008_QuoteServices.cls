@@ -334,7 +334,7 @@ public with sharing class SM008_QuoteServices {
                 }
             }
         } catch (Exception E) { 
-            System.debug('Exception: ' + e.getStackTraceString());
+            PAD.log('SM008_QuoteServices','loadAgreement', 'Exception: ' + e.getStackTraceString() );
         }  
         
     }

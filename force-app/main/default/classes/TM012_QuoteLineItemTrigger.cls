@@ -12,7 +12,8 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
         this.newQuoteLineList = (List<SBQQ__QuoteLine__c>) Trigger.new;
     }
     protected override void beforeInsert() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM013_QuoteLineServices.checkExistingRegistrationFee(newQuoteLineList);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM013_QuoteLineServices.checkExistingRegistrationFee(newQuoteLineList);
+        }
     }
 }

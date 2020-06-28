@@ -13,20 +13,20 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
     global Database.QueryLocator start(Database.BatchableContext BC) {
         Date today = date.today();
         
-        query = 'SELECT Id FROM Contract WHERE Status =\'Activated\' AND LPCR_RenouvellementAutomatique__c = true AND  LPCR_DateRenouvellement__c = :today AND LPCR_DateRenouvellement__c != null AND (SBQQ__RenewalQuoted__c = false OR SBQQ__RenewalForecast__c = false) ';//AND Termination_Date__c = null' ;
+        query = 'SELECT Id FROM Contract WHERE Status =\'Activated\' AND LPCR_RenouvellementAutomatique__c = true AND  LPCR_DateRenouvellement__c <= :today AND LPCR_DateRenouvellement__c != null AND (SBQQ__RenewalQuoted__c = false OR SBQQ__RenewalForecast__c = false) ';//AND Termination_Date__c = null' ;
         
         return Database.getQueryLocator(query);
     }
     
     global void execute(Database.BatchableContext BC, List<Contract> scope) {
-       	System.debug('scope to execute : '+scope);
+           PAd.log('APB002_RenewalContract', 'execute', 'scope to execute : '+scope);
 
         Set<Id> contractIds = UM003_TypeManager.getIdsOfListObjects(scope);
         List<Contract> listOfContract = [SELECT Id,Name,EndDate,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
                                          WHERE Id in :contractIds ];   
         for (Contract eachContract : listOfContract) {
             eachContract.SBQQ__RenewalQuoted__c=true;
-            System.debug('Updating contract '+eachContract);
+            PAd.log('APB002_RenewalContract', 'execute', 'Updating contract '+eachContract);
         }
         
         update listOfContract;        

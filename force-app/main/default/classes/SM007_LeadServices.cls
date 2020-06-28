@@ -88,7 +88,7 @@ public class SM007_LeadServices {
             }
             recordsToUpdate.addAll(targetRecordsMap.get(eachObjectName));
         }
-        System.debug(recordsToUpdate.size());
+        PAD.log('SM007_LeadServices','syncRecordTypesWithLeads','recordsToUpdate list size'+recordsToUpdate.size());
         update recordsToUpdate;
         
     }

@@ -14,7 +14,6 @@ public class APB002_RenewalContract_Test {
             lastMonth= System.today().addDays(-30) ;
         }
        
-      system.debug(System.today()+' ===== lastMonth ====== '+lastMonth);
         Id familleAccountRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
         Account acc = UM002_TestDataFactory.createAccount('test', familleAccountRT);
         insert acc;
