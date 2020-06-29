@@ -67,7 +67,16 @@ export default class LWC006_SendMail extends LightningElement {
                     variant: "success"
                 }));
             })
-            .catch();
+            .catch(err=>{
+                console.error(err);
+                    this.dispatchEvent(new ShowToastEvent({
+                        title: "Erreur!",
+                        message: err.body.message,
+                        variant: "error"
+                    
+                    }));
+             
+            });
         this.openmodal = false
     }
     closeModal() {

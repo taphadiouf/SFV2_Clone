@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Distributor for this quote. Defaulted from partner on opportunity with role of &quot;Distributor&quot;.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Distributor for this quote. Defaulted from partner on opportunity with role of &quot;Distributor&quot;.</inlineHelpText>
+    <inlineHelpText>Distributeur de ce devis. Utilise par défaut le partenaire de l&apos;opportunité qui dispose du rôle « Distributeur ».</inlineHelpText>
     <label>Distributor</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Distributor Quotes</relationshipLabel>

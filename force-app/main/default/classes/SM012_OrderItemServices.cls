@@ -21,7 +21,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             if(eachOrderItem.blng__LegalEntity__c ==null){
                 //        updateOrderItem = true;
                 eachOrderItem.blng__LegalEntity__c = eachOrderItem.SBQQ__QuoteLine__r.LPCR_EntiteJuridique__c;
-                system.debug('setting legal entity on Order item '+eachOrderItem.blng__LegalEntity__c);
+                PAD.log('SM012_OrderItemServices', 'setLegalEntityOnOrderItem' , 'setting legal entity on Order item ' +eachOrderItem.blng__LegalEntity__c);
             }
         }
         //if (updateOrderItem) {
@@ -35,8 +35,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
         for(SBQQ__OrderItemConsumptionSchedule__c eachOrderItemConSch : listOrderItemConSch){
             if(eachOrderItemConSch.SBQQ__OrderItem__r.blng__LegalEntity__c != null ){
                 eachOrderItemConSch.blng__LegalEntity__c  = eachOrderItemConSch.SBQQ__OrderItem__r.blng__LegalEntity__c;
-                system.debug('setting legal entity on Order item ConSch '+eachOrderItemConSch.blng__LegalEntity__c);
-                
+                PAD.log('SM012_OrderItemServices', 'legalEntityOnOrderItemConSch', 'setting legal entity on Order item ConSch '+eachOrderItemConSch.blng__LegalEntity__c);
+
                 listOrderItemConSchtoSave.add(eachOrderItemConSch);
             }
         }
@@ -142,7 +142,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                && !orderMap.get(item.OrderId).LPCR_InitAutoAvecDateDebut__c  
                                && item.blng__NextChargeDate__c != null) {
                                    //Advance
-                                   if( item.SBQQ__ChargeType__c !='One-Time' &&  orderMap.get(item.OrderId).LPCR_TypeFacturation__c  == 'Advance'){
+                                   if( orderMap.get(item.OrderId).LPCR_TypeFacturation__c  == 'Advance'){
                                        Date nextBillingDate = item.blng__NextChargeDate__c.addDays(invoiceDelta);
                                        item.blng__OverrideNextBillingDate__c = nextBillingDate;
                                        
@@ -166,7 +166,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                    }
                                    //Arrears 
                                   else if(  orderMap.get(item.OrderId).LPCR_TypeFacturation__c  == 'Arrears'){
-                                       System.debug('$$$$$$$ item.SBQQ__BillingFrequency__c '+item.SBQQ__BillingFrequency__c);
+                                       PAD.log('SM012_OrderItemServices','setupInvoiceDates','$$$$$$$ item.SBQQ__BillingFrequency__c '+item.SBQQ__BillingFrequency__c);
                                      if ( (item.SBQQ__BillingFrequency__c == 'Quarterly' || (item.SBQQ__ChargeType__c =='One-Time' && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == 'Quarterly') )
                                            && ((UM005_DateUtility.quarterlyMonths.contains(item.blng__NextChargeDate__c.month()) 
                                                 && item.blng__NextChargeDate__c.day() != 1) 
@@ -178,8 +178,9 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                        else if (item.SBQQ__BillingFrequency__c == 'Monthly' && item.blng__NextChargeDate__c.day() != 1 ){
                                            // lastDateOfMonth
                                            item.blng__BillThroughDateOverride__c = item.SBQQ__ChargeType__c !='One-Time' ? UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c):null;
+                                       		item.blng__OverrideNextBillingDate__c = item.SBQQ__ChargeType__c =='One-Time'? UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c).addDays(1):null;
                                        }
-                                        
+                                       
                                        else  if ((item.SBQQ__BillingFrequency__c == 'Semiannual' || (item.SBQQ__ChargeType__c =='One-Time' && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == 'Semiannual') ) 
                                                  && (!UM005_DateUtility.semiannualMonths.contains(item.blng__NextChargeDate__c.month()) 
                                                      || item.blng__NextChargeDate__c.day() != 1)){ 
@@ -219,12 +220,27 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             eachOrderItem.blng__InvoiceGrouping__c = 'Invoice Group ID';
             if(String.isNotBlank(eachOrderItem.LPCR_NumeroPurchaseOrder__c)){
                 eachOrderItem.blng__InvoiceGroupId__c = eachOrderItem.LPCR_NumeroPurchaseOrder__c;
-                system.debug('invoice group id update on OrderItem '+eachOrderItem.blng__InvoiceGroupId__c);
+                PAD.log('SM012_OrderItemServices' , 'setInvoiceGroupingOnOrderItem', 'invoice group id update on OrderItem '+eachOrderItem.blng__InvoiceGroupId__c);
             }
             listOrderItemtoSave.add(eachOrderItem);
         }
         if(listOrderItemtoSave.size()>0){
             update listOrderItemtoSave;
+        }
+    }
+
+    //added by saurabh
+    public static void setOrderItemFieldsFromContract(List<OrderItem> newOrderItemsList){
+        Set<String> contractId = UM003_TypeManager.getFieldsOfListObjects(newOrderItemsList,'SBQQ__Contract__c');
+        Map<Id, Contract> contractMap = new Map<Id, Contract>([SELECT Id, LPCR_DateDebut__c, LPCR_DateFin__c, SBQQ__RenewalUpliftRate__c FROM Contract WHERE Id IN: contractId]);
+
+        for(OrderItem eachOrderItem : newOrderItemsList){
+            if(eachOrderItem.SBQQ__Contract__c != null){
+                eachOrderItem.LPCR_ContractStartDate__c = contractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_DateDebut__c;
+                eachOrderItem.LPCR_ContractEndDate__c = contractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_DateFin__c;
+                eachOrderItem.LPCR_Uplift__c = contractMap.get(eachOrderItem.SBQQ__Contract__c).SBQQ__RenewalUpliftRate__c;
+                //eachOrderItem.LPCR_TotalContractValue = <TO BE DEFINED>
+            }
         }
     }
 }

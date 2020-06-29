@@ -33,7 +33,7 @@ public class SM009_ParametrageScoreServices_Test {
         preinsciption.LPCR_HeureFinVendredi__c    = DateTime.newInstance(2020, 01, 01, 16, 0, 0).Time();
         
         
-        preinsciption.LPCR_ReponseCrecheMunicipale__c='Non';
+        preinsciption.LPCR_ReponseCrecheMunicipale__c='Refus';
         preinsciption.LPCR_DateEntreeCreche__c= Date.newInstance(2020, 09, 01);
         preinsciption.LPCR_DateEntreeEntreprise__c = Date.today().addDays(-3);
         preinsciption.LPCR_Revenu__c =12000;
@@ -51,20 +51,29 @@ public class SM009_ParametrageScoreServices_Test {
     public static void setPreinscriptionScore_Test(){
         
         LPCR_Preinscription__c  preinsciption  = [SELECT LPCR_Score__c, LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'];
-        
-        Test.startTest();
+        Decimal score450=450;
+        Decimal score420=420;
+      
         System.runAs(UM002_TestDataFactory.createUser()){
+              Test.startTest();
             preinsciption.LPCR_Statut__c = 'Confirmé';
+            preinsciption.LPCR_ReponseCrecheMunicipale__c='Refus';
             update preinsciption;
             preinsciption  = [SELECT LPCR_ReponseCrecheMunicipale__c,LPCR_Score__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'];
-            System.assertEquals(450,preinsciption.LPCR_Score__c,'Error in SM009_ParametrageScoreServices_Test.setPreinscriptionScore_Test : LPCR_Preinscription__c.LPCR_Score__c is wrong');
-            preinsciption.LPCR_ReponseCrecheMunicipale__c='Oui';
+            score450 = preinsciption.LPCR_Score__c;
+            
+            preinsciption.LPCR_ReponseCrecheMunicipale__c='Autre';
             update preinsciption; 
             preinsciption  = [SELECT LPCR_ReponseCrecheMunicipale__c,LPCR_Score__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'];
-            System.assertEquals(420,preinsciption.LPCR_Score__c,'Error in SM009_ParametrageScoreServices_Test.setPreinscriptionScore_Test : LPCR_Preinscription__c.LPCR_Score__c is wrong');
+          
+            score420 = preinsciption.LPCR_Score__c;
+            Test.stopTest();
+            System.assertEquals(450,score450,'Error in SM009_ParametrageScoreServices_Test.setPreinscriptionScore_Test : LPCR_Preinscription__c.LPCR_Score__c is wrong');
+            
+            System.assertEquals(420,score420,'Error in SM009_ParametrageScoreServices_Test.setPreinscriptionScore_Test : LPCR_Preinscription__c.LPCR_Score__c is wrong');
           
         }
-        Test.stopTest();
+       
         
     }
 }

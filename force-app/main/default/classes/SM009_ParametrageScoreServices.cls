@@ -22,7 +22,6 @@ public with sharing class SM009_ParametrageScoreServices {
         Date previousDate = null;
         Decimal[] scoreTab= new Decimal[]{-1,-1,-1,-1,-1};
         Decimal finalScore =0;
-        Integer x  =0;
         for(LPCR_ParametrageScore__c eachParam : mapParametrageScore.values()){
             
            //Anciennete
@@ -70,15 +69,11 @@ public with sharing class SM009_ParametrageScoreServices {
                // La demande et/ou réponse de la crèche municipale 
             if(eachParam.LPCR_Anciennete__c==null && eachParam.LPCR_NbJourGarde__c==null && eachParam.LPCR_Revenu__c ==null && eachParam.LPCR_DateEntree__c==null  
                && eachParam.LPCR_ReponseCrecheMunicipale__c!=null &&  scoreTab[3]==-1  ){
-                if('Oui'.equals(preinscription.LPCR_ReponseCrecheMunicipale__c)  && eachParam.LPCR_ReponseCrecheMunicipale__c ){
+                if(preinscription.LPCR_ReponseCrecheMunicipale__c ==  eachParam.LPCR_ReponseCrecheMunicipale__c){
                     scoreTab[3] = eachParam.LPCR_Score__c;
                     continue;
                 }
-                if('Non'.equals(preinscription.LPCR_ReponseCrecheMunicipale__c)  && !eachParam.LPCR_ReponseCrecheMunicipale__c){
-                    scoreTab[3] = eachParam.LPCR_Score__c;
-                    continue;
-                }
-                
+               
                 
             }
             

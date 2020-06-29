@@ -69,6 +69,12 @@ export default class LWC005_UpdateStatus extends NavigationMixin(LightningElemen
             })
             .catch(err => {
                 console.error(err);
+                this.dispatchEvent(new ShowToastEvent({
+                    title: "Erreur!",
+                    message: "Le champ Compte Famille des préinscriptions est vide !",
+                    variant: "error"
+                
+                }));
             });
     }
     closeModal() {

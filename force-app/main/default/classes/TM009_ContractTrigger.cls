@@ -15,19 +15,24 @@ public class TM009_ContractTrigger extends TM000_TriggerHandler{
     }
    
     protected override void beforeInsert() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM010_ContractServices.setContractFields(newContractList);
-        SM010_ContractServices.setTypeEnregistrement(newContractList);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM010_ContractServices.setContractFields(newContractList);
+            SM010_ContractServices.setTypeEnregistrement(newContractList);
+        }
     }
      
      
     protected override void beforeUpdate() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM010_ContractServices.setContractFields(oldContractMap,newContractMap);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM010_ContractServices.setContractFields(oldContractMap,newContractMap);
+        }
     }
     //added by Akshaye
     protected override void afterUpdate(){
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM010_ContractServices.setOrderFields(this.newContractMap,this.oldContractMap);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM010_ContractServices.setOrderFields(this.newContractMap,this.oldContractMap);
+            // added by saurabh
+            SM010_ContractServices.setOrderItemFields(this.newContractMap,this.oldContractMap);
+        }
     }
 }

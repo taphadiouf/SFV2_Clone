@@ -13,15 +13,7 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_CompteFamille__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_CongesSemaine__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_CongesJours__c</field>
-            </layoutItems>
+            </layoutItems>>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_NombreEnfants__c</field>
@@ -49,22 +41,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_StatutValidation__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_TauxHoraire__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_ForfaitMensuel__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_Produit__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_TauxMensuel__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

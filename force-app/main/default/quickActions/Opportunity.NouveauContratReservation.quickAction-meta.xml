@@ -13,10 +13,6 @@
         <formula>Opportunity.Account.LPCR_ResponsableServiceFamille__c</formula>
     </fieldOverrides>
     <fieldOverrides>
-        <field>LPCR_TypeEnregistrement__c</field>
-        <formula>&quot;Reservataire&quot;</formula>
-    </fieldOverrides>
-    <fieldOverrides>
         <field>SBQQ__Account__c</field>
         <formula>Opportunity.AccountId</formula>
     </fieldOverrides>
@@ -40,7 +36,12 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>SBQQ__StartDate__c</field>
+                <field>LPCR_DateDebut__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>SBQQ__BillingFrequency__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
@@ -52,7 +53,12 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>SBQQ__EndDate__c</field>
+                <field>LPCR_DateFin__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_TypeFacturation__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>

@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Subscription term used to prorate eligible products by day or month.  This has been set by your administrator.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Cette durée d&apos;abonnement servira à calculer les prix au prorata.</inlineHelpText>
+    <inlineHelpText>Durée d&apos;abonnement utilisée pour calculer les produits éligibles au prorata par jour ou par mois. Ce paramètre doit être défini par votre administrateur.</inlineHelpText>
     <label>Subscription Term</label>
     <precision>5</precision>
     <required>false</required>
