@@ -108,7 +108,8 @@ public with sharing class SM012_OrderItemServices_Test {
                     'SBQQ__QuoteLanguage__c' => 'English',
                     'SBQQ__BillingCity__c' => 'Paris',
                     'SBQQ__Primary__c' => true,
-                    'SBQQ__Opportunity2__c' => oppForAccuel.Id
+                    'SBQQ__Opportunity2__c' => oppForAccuel.Id,
+                    'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
                         SBQQ__Quote__c quoteForAccueil = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -286,7 +287,9 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -406,7 +409,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -527,7 +531,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -645,7 +650,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -766,7 +772,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -883,7 +890,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -1000,7 +1008,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -1125,7 +1134,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
 
@@ -1253,7 +1263,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -1374,7 +1385,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -1501,7 +1513,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -1625,7 +1638,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -1805,7 +1819,8 @@ System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.bln
                 'SBQQ__QuoteLanguage__c' => 'English',
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
                     SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);

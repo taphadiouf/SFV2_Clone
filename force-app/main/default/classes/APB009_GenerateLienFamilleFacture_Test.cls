@@ -111,7 +111,8 @@
                     'SBQQ__Primary__c' => true,
                     'SBQQ__Opportunity2__c' => oppB2C.Id,
                     'LPCR_DateDebut__c'=>todayDate,
-                    'LPCR_DateFin__c'=>todayDate.addDays(60)
+                    'LPCR_DateFin__c'=>todayDate.addDays(60),
+                    'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
                         SBQQ__Quote__c quoteB2C = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -161,7 +162,8 @@
                     'SBQQ__Primary__c' => true,
                     'SBQQ__Opportunity2__c' => oppB2B.Id,
                     'LPCR_DateDebut__c'=>todayDate,
-                    'LPCR_DateFin__c'=>todayDate.addDays(60)
+                    'LPCR_DateFin__c'=>todayDate.addDays(60),
+                    'SBQQ__RenewalUpliftRate__c' => 10
                     
                     };
                         
