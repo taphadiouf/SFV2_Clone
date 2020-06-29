@@ -125,7 +125,7 @@ public with sharing class SM013_ModificationEntranteServices {
         List<LPCR_Planning__c> allPlanningInsertList = new List<LPCR_Planning__c>();
         Map<String, List<LPCR_PlanningPrevisionnel__c>> allPlanningPrevisionnelInsertMap = new Map<String, List<LPCR_PlanningPrevisionnel__c>>();
 
-        for(LPCR_RessourceFamille__c eachRessourceFamille : [SELECT Id,Name,RecordTypeId,LPCR_NombreEnfants__c,LPCR_NombreEnfantHandicape__c,LPCR_CompteFamille__c,LPCR_DateFin__c FROM LPCR_RessourceFamille__c WHERE LPCR_CompteFamille__c IN : compteIds AND LPCR_Active__c = true AND LPCR_DateDebut__c >=: firstDayOfCurrentMonthDate AND LPCR_DateDebut__c <=: lastDayOfCurrentMonthDate]){
+        for(LPCR_RessourceFamille__c eachRessourceFamille : [SELECT Id,Name,RecordTypeId,LPCR_NombreEnfants__c,LPCR_NombreEnfantHandicape__c,LPCR_CompteFamille__c,LPCR_DateFin__c,LPCR_FinContrat__c FROM LPCR_RessourceFamille__c WHERE LPCR_CompteFamille__c IN : compteIds AND LPCR_Active__c = true AND LPCR_DateDebut__c >=: firstDayOfCurrentMonthDate AND LPCR_DateDebut__c <=: lastDayOfCurrentMonthDate]){
             if(eachRessourceFamille.LPCR_CompteFamille__c != null){
                 ressourceFamilleMap.put(eachRessourceFamille.LPCR_CompteFamille__c, eachRessourceFamille);
             }
