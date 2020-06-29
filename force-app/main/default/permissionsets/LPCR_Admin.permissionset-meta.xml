@@ -2984,7 +2984,7 @@
         <field>Order.BillToContactId</field>
         <readable>true</readable>
     </fieldPermissions>
-       <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Order.BillingAddress</field>
         <readable>true</readable>
@@ -2994,7 +2994,7 @@
         <field>Order.CompanyAuthorizedById</field>
         <readable>true</readable>
     </fieldPermissions>
-     <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Order.CompanyAuthorizedDate</field>
         <readable>true</readable>
@@ -4187,12 +4187,12 @@
         <field>Product2.SBQQ__SubscriptionPricing__c</field>
         <readable>true</readable>
     </fieldPermissions>
-     <fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_AccountPurchaseOrder__c</field>
         <readable>true</readable>
     </fieldPermissions>
-     <fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_ChiffreAffaire__c</field>
         <readable>true</readable>
@@ -4207,7 +4207,7 @@
         <field>SBQQ__Quote__c.LPCR_CongesSemaine__c</field>
         <readable>true</readable>
     </fieldPermissions>
-     <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_ContactEnfant__c</field>
         <readable>true</readable>
@@ -4277,7 +4277,7 @@
         <field>SBQQ__Quote__c.LPCR_LigneSuperieurePP__c</field>
         <readable>true</readable>
     </fieldPermissions>
-     <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_MethodeRenouvellement__c</field>
         <readable>true</readable>
@@ -4332,7 +4332,7 @@
         <field>SBQQ__Quote__c.LPCR_RevenusFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
-     <fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_StatutApprobation__c</field>
         <readable>false</readable>
@@ -4745,7 +4745,7 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.SBQQ__Unopened__c</field>
-          <readable>true</readable>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -5532,7 +5532,7 @@
         <field>LPCR_Type_Evenement_Intranet__mdt.LPCR_ContratAccueil__c</field>
         <readable>true</readable>
     </fieldPermissions>
-  <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_DetailModificationPlanning__c.LPCR_HeureDebutJeudi__c</field>
         <readable>true</readable>
@@ -5542,7 +5542,7 @@
         <field>LPCR_Type_Evenement_Intranet__mdt.LPCR_Annexe2__c</field>
         <readable>true</readable>
     </fieldPermissions>
-  <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_DetailModificationPlanning__c.LPCR_HeureDebutLundi__c</field>
         <readable>true</readable>
@@ -5552,7 +5552,7 @@
         <field>LPCR_Type_Evenement_Intranet__mdt.LPCR_Annexe3__c</field>
         <readable>true</readable>
     </fieldPermissions>
-  <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_DetailModificationPlanning__c.LPCR_HeureDebutMardi__c</field>
         <readable>true</readable>
@@ -5562,7 +5562,7 @@
         <field>LPCR_AdobeAgreementTemplate__mdt.LPCR_Agreeement_Template_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
-  <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_DetailModificationPlanning__c.LPCR_HeureDebutMercredi__c</field>
         <readable>true</readable>
@@ -5572,7 +5572,7 @@
         <field>LPCR_AdobeAgreementTemplate__mdt.LPCR_Agreement_Template_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
-  <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_DetailModificationPlanning__c.LPCR_HeureDebutVendredi__c</field>
         <readable>true</readable>
