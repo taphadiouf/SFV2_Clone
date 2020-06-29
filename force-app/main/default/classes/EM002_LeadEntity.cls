@@ -28,36 +28,25 @@ public with sharing class EM002_LeadEntity extends EM001_AbstractObjectEntity{
                 AND Status = :status];
     }
     public static Lead getAllLeadfielsById(Id leadId){
-        return [SELECT  Id,
-                		Status,
-                        LastName,
-                		FirstName,
-                        Name, 
-                        OwnerId, 
-                        Phone, 
-                        Email,
-                        ConvertedOpportunityId, 
-                        LPCR_CiviliteCoDemandeur__c, 
-                        LPCR_PrenomCoDemandeur__c, 
-                        LPCR_NomCoDemandeur__c, 
-                        LPCR_DateNaissance1__c, LPCR_DateNaissance2__c, LPCR_DateNaissance3__c, 
-                        //LPCR_ProfessionCoDemandeur__c,
-                        LPCR_SocieteCoDemandeur__c, 
-                        LPCR_EmailCoDemandeur__c,
-                        LPCR_TypePrestation__c, 
-                        LPCR_SituationFamiliale__c, 
-                        LPCR_AgeEnfants__c,
-                        Address,
-                        LPCR_DateEntreeCreche1__c,LPCR_DateEntreeCreche2__c, LPCR_DateEntreeCreche3__c,
-                        LPCR_AmplitudeHoraireLundi1__c, LPCR_AmplitudeHoraireMardi1__c, LPCR_AmplitudeHoraireMercredi1__c, LPCR_AmplitudeHoraireJeudi1__c, LPCR_AmplitudeHoraireVendredi1__c,
-                        LPCR_AmplitudeHoraireLundi2__c, LPCR_AmplitudeHoraireMardi2__c, LPCR_AmplitudeHoraireMercredi2__c, LPCR_AmplitudeHoraireJeudi2__c, LPCR_AmplitudeHoraireVendredi2__c, 
-                        LPCR_AmplitudeHoraireLundi3__c, LPCR_AmplitudeHoraireMardi3__c, LPCR_AmplitudeHoraireMercredi3__c, LPCR_AmplitudeHoraireJeudi3__c, LPCR_AmplitudeHoraireVendredi3__c, 
-                        LPCR_NomEnfant1__c, LPCR_NomEnfant2__c, LPCR_NomEnfant3__c,
-                        LPCR_PrenomEnfant1__c, LPCR_PrenomEnfant2__c, LPCR_PrenomEnfant3__c,
-                        LPCR_CompteSociete__c, LPCR_CompteSocieteCoDemandeur__c
-                FROM Lead 
-                WHERE Id = :leadId 
-                LIMIT 1];
+        
+            String SobjectApiName = 'Lead';
+            Map<String, Schema.SObjectType> schemaMap = Schema.getGlobalDescribe();
+            Map<String, Schema.SObjectField> fieldMap = schemaMap.get(SobjectApiName).getDescribe().fields.getMap();
+     
+            String commaSepratedFields = '';
+            for(String fieldName : fieldMap.keyset()){
+                if(commaSepratedFields == null || commaSepratedFields == ''){
+                    commaSepratedFields = fieldName;
+                }else{
+                    commaSepratedFields = commaSepratedFields + ', ' + fieldName;
+                }
+            }
+     
+            String query = 'select ' + commaSepratedFields + ' from ' + SobjectApiName + ' WHERE Id = :leadId Limit 1';
+     
+            Lead leadLst = Database.query(query);
+         
+        return leadLst;    
     }
      
 }

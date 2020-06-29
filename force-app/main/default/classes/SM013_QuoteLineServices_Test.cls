@@ -91,7 +91,8 @@ public with sharing class SM013_QuoteLineServices_Test {
             'LPCR_TypeCreche__c' => 'MAC',
             'SBQQ__Primary__c' => true,
             'LPCR_Creche__c' => creche.Id,
-            'SBQQ__Opportunity2__c' => opp.Id
+            'SBQQ__Opportunity2__c' => opp.Id,
+            'SBQQ__RenewalUpliftRate__c' => 10
         };
 
         SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -230,7 +231,8 @@ public with sharing class SM013_QuoteLineServices_Test {
                 'SBQQ__Primary__c' => true,
                 'LPCR_TypeCreche__c' => 'MAC',
                 'LPCR_Creche__c' => creche.get(0).Id,
-                'SBQQ__Opportunity2__c' => opp.Id
+                'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
             };
 
             SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -261,7 +263,6 @@ public with sharing class SM013_QuoteLineServices_Test {
             try {
                 insert quoteLine;
             } catch (Exception e) {
-                System.debug('### Exception throwed by QuoteLine insert trigger');
                 excepThrowed = true;
                 excepMessage = e.getMessage();
             }

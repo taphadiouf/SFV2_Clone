@@ -102,7 +102,7 @@ public with sharing class APC001_LeadFaConverController{
             throw new AuraHandledException(errMsg);
         }
         //Representants part (Parent)
-        Id parentContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Parent);
+        Id familleContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Famille);
             newContactsMap.put('contactRep1', new Contact(
             LastName =currentLead.LastName, 
             FirstName = currentLead.FirstName, 
@@ -115,7 +115,7 @@ public with sharing class APC001_LeadFaConverController{
             MailingCountry = currentLead.Address.getCountry(),
             MailingPostalCode = currentLead.Address.getPostalCode(),
             AccountId = newFamilleAccount.Id,
-            RecordTypeId = parentContactRT
+            RecordTypeId = familleContactRT
         ));        
         if(String.isNotBlank(prenomCoDemandeur) && String.isNotBlank(nomCoDemandeur)){
             newContactsMap.put('contactRep2', new Contact(
@@ -130,7 +130,7 @@ public with sharing class APC001_LeadFaConverController{
                 MailingCountry = currentLead.Address.getCountry(),
                 MailingPostalCode = currentLead.Address.getPostalCode(),
                 AccountId = newFamilleAccount.Id,
-                RecordTypeId = parentContactRT
+                RecordTypeId = familleContactRT
             ));
         }
         //Enfants part

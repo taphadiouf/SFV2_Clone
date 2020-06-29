@@ -23,7 +23,7 @@ public with sharing class UM005_DateUtility {
         }
         return newDate;
     }
-
+/*
     public static Date lastDayOfDatePeriod (Date theDate, List<Integer> periodsMonths) { // Quaterly / Semiannual periods
         Date newDate = null;
         if (theDate != null) {
@@ -37,5 +37,28 @@ public with sharing class UM005_DateUtility {
         }
         return newDate;
     }
+*/
+
+    
+    public static Date lastDayOfDatePeriod(Date theDate,List<Integer>  periodsMonths){
+        Date newDate = null;
+        Integer theDateMonth;
+        if(theDate !=null){
+            theDateMonth=theDate.month();
+            for(Integer x=0;x<periodsMonths.size();x++){
+               if (x == periodsMonths.size()-1 ){
+                     newDate = Date.newinstance(theDate.addYears(1).year(), periodsMonths.get(0), 1);
+                	 break;
+                }
+                else if( periodsMonths.get(x)<=theDateMonth && theDateMonth <periodsMonths.get(x+1)){
+                    newDate = Date.newinstance(theDate.year(), periodsMonths.get(x+1), 1);
+                    break;
+                } 
+            }
+        }
+        return newDate.addDays(-1);
+    }
+    
+
 
 }

@@ -39,8 +39,6 @@ public class SM004_OpportunityServices_Test {
             }
             Id entrepriseOppRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Opportunity','Entreprise');
             List<Opportunity> oppp = [SELECT Id,Name,RecordTypeId FROM Opportunity];
-            system.debug(oppp);
-            System.debug(leads);
             
             List<Opportunity> entrepriseOpps = [SELECT Id FROM Opportunity WHERE RecordTypeId = :entrepriseOppRecTypeId];
             System.assertEquals(leads.size(), entrepriseOpps.size(), 'Error in TM004_OpportunityTrigger_Test.afterInsert_Test : problem in synchronizing Opportunity and Lead Entreprise RecordType');

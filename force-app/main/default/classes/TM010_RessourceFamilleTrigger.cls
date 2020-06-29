@@ -14,19 +14,22 @@ public with sharing class TM010_RessourceFamilleTrigger extends TM000_TriggerHan
         this.newRessourceFamillesList = (List<LPCR_RessourceFamille__c>) Trigger.new;
     }
     protected override void beforeUpdate() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM011_RessourceFamilleServices.createNewRessourceFamilleRecord(newRessourceFamillesMap,oldRessourceFamillesMap);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM011_RessourceFamilleServices.createNewRessourceFamilleRecord(newRessourceFamillesMap,oldRessourceFamillesMap);
+        }
     }
      protected override void afterUpdate() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM011_RessourceFamilleServices job = new SM011_RessourceFamilleServices(oldRessourceFamillesMap,newRessourceFamillesMap);
-        List<AsyncApexJob> asyncJobs =  [SELECT Id, JobType, ApexClassId, Status, MethodName, ParentJobId FROM AsyncApexJob WHERE ApexClass.Name =:'APB007_TraitementModificationEntrante'];
-         if(asyncJobs == null)
-         ID jobID = System.enqueueJob(job);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM011_RessourceFamilleServices job = new SM011_RessourceFamilleServices(oldRessourceFamillesMap,newRessourceFamillesMap);
+            List<AsyncApexJob> asyncJobs =  [SELECT Id, JobType, ApexClassId, Status, MethodName, ParentJobId FROM AsyncApexJob WHERE ApexClass.Name =:'APB007_TraitementModificationEntrante'];
+            if(asyncJobs == null)
+            ID jobID = System.enqueueJob(job);
+        }
     }
      protected override void afterInsert() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM011_RessourceFamilleServices job = new SM011_RessourceFamilleServices(newRessourceFamillesList);
-        ID jobID = System.enqueueJob(job); 
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM011_RessourceFamilleServices job = new SM011_RessourceFamilleServices(newRessourceFamillesList);
+            ID jobID = System.enqueueJob(job); 
+        }
     }
 }

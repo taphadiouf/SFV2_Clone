@@ -84,7 +84,6 @@ public class APB010_ProcessDailyOrderProduct_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod1.Id, quote.Id, pbEntry1.Id, 200, 1));
             insert qlines;
-            System.debug('**** qlines '+qlines);
             
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             contract.Status = 'Draft';
@@ -131,7 +130,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
             try{
                 insert billingSchedule;
             }catch(Exception ex){
-                System.debug('**** Exception : '+ ex.getMessage());
+                PAD.log('APB010_ProcessDailyOrderProduct_Test', 'APB010_ProcessDailyOrderProduct_Test', '**** Exception : '+ ex.getMessage());
             }            
             
             blng__BillingTransaction__c billingTrans = new blng__BillingTransaction__c();
@@ -143,7 +142,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
             try{
                 insert billingTrans;
             }catch(Exception ex){
-                System.debug('**** Exception : '+ ex.getMessage());
+                PAD.log('APB010_ProcessDailyOrderProduct_Test', 'APB010_ProcessDailyOrderProduct_Test', '**** Exception : '+ ex.getMessage());
             }
 
             APB010_ProcessDailyOrderProduct ss = new APB010_ProcessDailyOrderProduct();

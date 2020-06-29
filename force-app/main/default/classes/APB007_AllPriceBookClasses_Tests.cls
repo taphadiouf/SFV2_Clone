@@ -171,7 +171,6 @@ public with sharing class APB007_AllPriceBookClasses_Tests {
         update quotes;
         //The ' WHERE Name != 'from_setup' statement is to get just the orders created in this method and not the ones created in setup method
         List<Order> orders = [SELECT Id, Name, SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c FROM Order WHERE Name != 'from_setup'];
-        System.debug('### check 000 orders : ' + orders.size());
         for (Order order : orders) {
             order.status = 'Activated';
             //order.SBQQ__Contracted__c=true; 
@@ -221,7 +220,6 @@ public with sharing class APB007_AllPriceBookClasses_Tests {
             Database.executeBatch(btch, 2000);
             List<Contract> listAllContracts = [SELECT Id, SBQQ__Order__c, TECH_AjoutFraisGestion__c, LPCR_TypeFacturation__c, Status, StartDate, ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c, LPCR_JoursAvance__c, SBQQ__RenewalForecast__c, EndDate FROM Contract];
             List<Contract> listContractsWithFees = [SELECT Id, SBQQ__Order__c, TECH_AjoutFraisGestion__c, LPCR_TypeFacturation__c, Status, StartDate, ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c, LPCR_JoursAvance__c, SBQQ__RenewalForecast__c, EndDate FROM Contract WHERE TECH_AjoutFraisGestion__c = true];
-            System.debug('listAllContracts' + listAllContracts);
             // Assert to verify that just a subset of contract (50% - 1 for each pair customer / creche) have been updated by the batch 
             System.assertEquals((NUMBER_OF_B2C + NUMBER_OF_B2B) * 2, listAllContracts.size());
             System.assertEquals(NUMBER_OF_B2C + NUMBER_OF_B2B, listContractsWithFees.size());

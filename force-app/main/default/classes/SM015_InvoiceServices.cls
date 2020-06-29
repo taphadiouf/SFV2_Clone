@@ -44,4 +44,14 @@ public class SM015_InvoiceServices {
         return new blng__PaymentAllocationInvoice__c(blng__Invoice__c = invoiceId,blng__Payment__c = paymentId, blng__Amount__c = amount, blng__Type__c = 'Allocation');
     }
     
+    public static void setStatutFacture(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> oldInvoiceMap){
+        for(blng__Invoice__c eachNewInvoice : newInvoiceList){
+            System.debug('eachNewInvoice => ' + eachNewInvoice);
+            if(String.isNotBlank(eachNewInvoice.blng__InvoiceStatus__c) 
+            && !eachNewInvoice.blng__InvoiceStatus__c.equals(oldInvoiceMap.get(eachNewInvoice.Id).blng__InvoiceStatus__c)
+            &&  'Posted'.equals(eachNewInvoice.blng__InvoiceStatus__c)){
+                eachNewInvoice.LPCR_StatutFacture__c = 'Prêt à valider';
+            }
+        }
+    }
 }

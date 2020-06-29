@@ -10,7 +10,8 @@ public with sharing class TM013_OrderTrigger extends TM000_TriggerHandler {
         this.newOrderList = (List<Order>) Trigger.new;
     }
     protected override void beforeInsert() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM014_OrderServices.setOrderFields(newOrderList);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM014_OrderServices.setOrderFields(newOrderList);
+        }
     }
 }

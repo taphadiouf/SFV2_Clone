@@ -18,7 +18,8 @@ public with sharing class TM002_EventTrigger extends TM000_TriggerHandler{
 
     protected override void afterInsert() {
 
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM002_EventServices.LEAD_RG03_IS250(newEventsList);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM002_EventServices.updateLeadsWithNewEvents(newEventsList);
+        }
     }
 }

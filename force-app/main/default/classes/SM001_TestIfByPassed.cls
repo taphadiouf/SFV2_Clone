@@ -2,7 +2,7 @@ public with sharing class SM001_TestIfByPassed {
     
     public static void executeMethod() {
 
-        System.Debug('>> SM001_TestIfByPassed : Not by passed');
+        PAD.log('SM001_TestIfByPassed','executeMethod','>> SM001_TestIfByPassed : Not by passed');
 
     }
 }

@@ -8,7 +8,7 @@ public with sharing class SM002_EventServices_TEST {
     
 
     @isTest
-    public static void LEAD_RG03_IS250_Test(){
+    public static void updateLeadsWithNewEvents_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             RecordType rc = [SELECT Id, DeveloperName FROM RecordType WHERE DeveloperName='Famille' AND SobjectType='Lead' limit 1];
             List<Lead> leads = UM002_TestDataFactory.createLeads(100,rc.Id,'test','test','Nouveau','test@test.com');

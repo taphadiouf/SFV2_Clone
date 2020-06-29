@@ -14,23 +14,26 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
         this.newQuotesList = (List<SBQQ__Quote__c>) Trigger.new;
     }
     protected override void beforeUpdate() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM008_QuoteServices.updateOppsFromQuotes(newQuotesList);
-        SM008_QuoteServices.updateAccountsFromQuotes(newQuotesList);
-        SM008_QuoteServices.updateQuotes(newQuotesList);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM008_QuoteServices.updateOppsFromQuotes(newQuotesList);
+            SM008_QuoteServices.updateAccountsFromQuotes(newQuotesList);
+            SM008_QuoteServices.updateQuotes(newQuotesList);
+        }
     }
     
     //added by Ayoub
     protected override void beforeInsert() {
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM008_QuoteServices.setTypeEnregistrement(newQuotesList);
-        SM008_QuoteServices.updateQuotes(newQuotesList);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM008_QuoteServices.setTypeEnregistrement(newQuotesList);
+            SM008_QuoteServices.updateQuotes(newQuotesList);
+        }
     }
     
     //added by Hanae
     protected override void afterUpdate(){
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-        SM008_QuoteServices.generateAgreementTemp(this.newQuotesMap,this.oldQuotesMap);
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM008_QuoteServices.generateAgreementTemp(this.newQuotesMap,this.oldQuotesMap);
+        }
     }
     
     

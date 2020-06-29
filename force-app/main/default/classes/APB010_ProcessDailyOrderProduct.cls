@@ -15,7 +15,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
     }
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
-        System.debug('scope to execute : '+scope);
+        PAD.log('APB010_ProcessDailyOrderProduct', 'execute', 'scope to execute : '+scope);
         
         Set<Id> orderItemIds = UM003_TypeManager.getIdsOfListObjects(scope);
         Set<Id> selectedOrderItemId = new Set<Id>();

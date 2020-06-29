@@ -18,13 +18,13 @@ global class APB005_GenerateContractFromOrder  implements Database.Batchable<sOb
     }
     
     global void execute(Database.BatchableContext BC, List<Order> scope) {
-        System.debug('scope to execute : '+scope);
+        PAD.log('APB005_GenerateContractFromOrder', 'execute', 'scope to execute : '+scope);
         
         Set<Id> orderIds = UM003_TypeManager.getIdsOfListObjects(scope);
         List<Order> listOforder = [SELECT Id,Status,SBQQ__Contracted__c FROM Order WHERE Id in :orderIds ];   
         for (Order eachOrder : listOforder) {
             eachOrder.SBQQ__Contracted__c =true;
-            System.debug('Updating order '+eachOrder.SBQQ__Contracted__c);
+            PAD.log('APB005_GenerateContractFromOrder', 'execute', 'Updating order '+eachOrder.SBQQ__Contracted__c);
         }
         
         update listOforder;        

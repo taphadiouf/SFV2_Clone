@@ -15,9 +15,14 @@ public class APC004_SendMailController_Test {
         UM002_TestDataFactory.ContactTdf c = new UM002_TestDataFactory.ContactTdf();
         Contact contact= c.create('Test','Test', acc);
         contact.RecordTypeId = enfantContactRecordTypeId;
+        contact.Email = 'test@gmail.com';
         insert contact;
         List<LPCR_Preinscription__c> lstPreinscrition = UM002_TestDataFactory.createPreinscriptions(200,'test1','test2','Recommandation validée',acc.Id,contact.Id);
         insert lstPreinscrition;
+        for(LPCR_Preinscription__c eachPreinscription : lstPreinscrition){
+            eachPreinscription.LPCR_ContactParent__c = contact.Id;
+        }
+        update lstPreinscrition;
         User u = UM002_TestDataFactory.createUser();
         System.runAs(u){
         EmailTemplate emTemplate = UM002_TestDataFactory.createEmailTemplate('Test', 'Test', 'custom');
