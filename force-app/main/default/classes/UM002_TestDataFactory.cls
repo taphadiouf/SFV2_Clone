@@ -1247,6 +1247,44 @@ newMe.FederationIdentifier = null;
     }
     
     
+    public static List<blng__InvoiceRun__c> createInvoiceRuns(Integer numRecs, String name, date targetDate){
+        List<blng__InvoiceRun__c> invoiceRuns = new List<blng__InvoiceRun__c>();
+        blng__InvoiceRun__c tempInvoiceRun;
+        for(Integer i = 0; i<numRecs; i++){
+            tempInvoiceRun = new blng__InvoiceRun__c(
+                Name = name,
+            	blng__TargetDate__c = targetDate
+            );
+            invoiceRuns.add(tempInvoiceRun);
+        }
+        return invoiceRuns;
+            
+        }
+    
+    
+    
+    public static List<blng__Invoice__c> createInvoices(Integer numRecs, Id accId, Id execFacId, String statut, String statutFacture){
+        List<blng__Invoice__c> invoices = new List<blng__Invoice__c>();
+        blng__Invoice__c tempInvoice;
+        for(Integer i = 0; i<numRecs; i++){
+            tempInvoice = new blng__Invoice__c(
+                blng__Account__c  = accId,
+            	blng__InvoiceRunCreatedBy__c  = execFacId,
+                blng__InvoiceStatus__c = statut,
+                LPCR_StatutFacture__c = statutFacture
+            );
+            invoices.add(tempInvoice);
+        }
+        return invoices;
+            
+        }
+    
+    
+    
+   
+
+
+
     
     /*
 public class AccountContactRelationTdf {

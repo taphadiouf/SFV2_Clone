@@ -8,6 +8,13 @@
         <value>Separate Invoice</value>
     </labels>
     <labels>
+        <fullName>LPCR_AEnvoyer</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AEnvoyer</shortDescription>
+        <value>A Envoyer</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Account</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -85,11 +92,11 @@
         <value>Contrat_Accueil</value>
     </labels>
     <labels>
-        <fullName>LPCR_Contrat_B2C</fullName>
+        <fullName>LPCR_ContratEnfant</fullName>
         <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Contrat_B2C</shortDescription>
-        <value>Contrat_B2C</value>
+        <protected>true</protected>
+        <shortDescription>LPCR_ContratEnfant</shortDescription>
+        <value>Contrat au bénéfice de l&apos;enfant :</value>
     </labels>
     <labels>
         <fullName>LPCR_Contrat_B2B</fullName>
@@ -99,11 +106,11 @@
         <value>Contrat_B2B</value>
     </labels>
     <labels>
-        <fullName>LPCR_ContratEnfant</fullName>
+        <fullName>LPCR_Contrat_B2C</fullName>
         <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>LPCR_ContratEnfant</shortDescription>
-        <value>Contrat au bénéfice de l&apos;enfant :</value>
+        <protected>false</protected>
+        <shortDescription>LPCR_Contrat_B2C</shortDescription>
+        <value>Contrat_B2C</value>
     </labels>
     <labels>
         <fullName>LPCR_ConvertLeadF</fullName>
@@ -125,13 +132,6 @@
         <protected>false</protected>
         <shortDescription>LPCR_CrecheF</shortDescription>
         <value>LPCR_Creche__c</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_ReseauLPCR</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_ReseauLPCR</shortDescription>
-        <value>ReseauLPCR</value>
     </labels>
     <labels>
         <fullName>LPCR_CrecheWA</fullName>
@@ -355,7 +355,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LPCR_PopConLT</shortDescription>
-        <value> Création contrat d&apos;accueil ?</value>
+        <value>Création contrat d&apos;accueil ?</value>
     </labels>
     <labels>
         <fullName>LPCR_PopConLT2</fullName>
@@ -370,6 +370,13 @@
         <protected>true</protected>
         <shortDescription>LPCR_PrenomEnfant</shortDescription>
         <value>Prénom de l&apos;enfant :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_PretAValider</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_PretAValider</shortDescription>
+        <value>Prêt à valider</value>
     </labels>
     <labels>
         <fullName>LPCR_Prospecting</fullName>
@@ -454,6 +461,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_RenewedContract</shortDescription>
         <value>SBQQ__RenewedContract__c</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ReseauLPCR</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ReseauLPCR</shortDescription>
+        <value>ReseauLPCR</value>
     </labels>
     <labels>
         <fullName>LPCR_Reservataire</fullName>
@@ -552,6 +566,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_ValideDirectrice</shortDescription>
         <value>Validé Directrice</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_commentaireStatut</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_commentaireStatut</shortDescription>
+        <value>Le statut des factures devrait être Prêt à valider pour pouvoir les envoyer</value>
     </labels>
     <labels>
         <fullName>Product_Code_Depot_Garantie</fullName>
