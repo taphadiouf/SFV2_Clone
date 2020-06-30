@@ -1939,6 +1939,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_Facture__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_LigneFacture__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_RevenueTransaction__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+  <fieldPermissions>
+        <editable>false</editable>
         <field>LPCR_LignePlanFacturation__c.LPCR_Amount__c</field>
         <readable>false</readable>
     </fieldPermissions>
