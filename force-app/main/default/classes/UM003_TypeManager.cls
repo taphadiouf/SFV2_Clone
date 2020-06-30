@@ -78,7 +78,7 @@ public with sharing class UM003_TypeManager{
      Set<String> fields = new Set<String>();
      if(UM003_TypeManager.isNotNullAndNotEmpty(listSObject))
             for(SObject eachObj: listSObject){
-                fields.add((String)eachObj.get(fieldAPI));
+                    fields.add((String)eachObj.get(fieldAPI));                
             }
         return fields;
     }
@@ -101,4 +101,22 @@ public with sharing class UM003_TypeManager{
         return new Date[]{minDate,maxDate};
     }
 
+    /*
+* 	@Author : Ayoub Ouarti
+* 	@Created 26/06/2020
+*	@Description : this method generate a Map By a choosen field KeyField
+* 	@Inputs	Map<String,SObject> generateMapOfObjectsByKeyField(List<SObject> listSObject,String keyField)
+*/
+     public static Map<String,SObject> generateMapOfObjectsByKeyField(List<SObject> listSObject,String keyField){
+     Map<String,SObject> mapSObject = new Map<String,SObject>();
+         if(UM003_TypeManager.isNotNullAndNotEmpty(listSObject)){
+             for(SObject eachObj: listSObject){
+                 if(!mapSObject.containsKey((String)eachObj.get(keyField))){
+                    mapSObject.put((String)eachObj.get(keyField),eachObj);
+                 }
+             }
+         }
+        return mapSObject;
+    }
+    
 }
