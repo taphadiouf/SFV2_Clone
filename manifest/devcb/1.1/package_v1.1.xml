@@ -5,12 +5,12 @@
         <members>SBQQ__Quote__c-Contrat d%27accueil Approuv&#233;</members>
         <members>SBQQ__Quote__c-R&#233;f&#233;rencement Approuv&#233;</members>
         <members>SBQQ__Quote__c-R&#233;servataire Approuv&#233;</members>
-        <members>Account-Entreprise</members>
-        <members>Account-Famille</members>
-        <members>SBQQ__QuoteLine__c-Quote Line Layout</members>
         <members>SBQQ__Quote__c-Contrat d%27accueil</members>
         <members>SBQQ__Quote__c-R&#233;servataire</members>
         <members>SBQQ__Quote__c-R&#233;f&#233;rencement</members>
+        <members>SBQQ__QuoteLine__c-Quote Line Layout</members>
+        <members>Account-Entreprise</members>
+        <members>Account-Famille</members>
         <name>Layout</name>
     </types>
     <types>
@@ -34,6 +34,9 @@
     <types>
         <members>Opportunity.NouveauContratReferecement</members>
         <members>Opportunity.NouveauContratReservation</members>
+        <members>SBQQ__Quote__c.Conga_Composer_ContratReferencement</members>
+        <members>SBQQ__Quote__c.Conga_Composer_ContratReservation</members>
+
         <name>QuickAction</name>
     </types>
     <types>
@@ -45,6 +48,11 @@
         <members>SBQQ__Quote__c.Reservataire_Approuve</members>
 
         <name>RecordType</name>
+    </types>
+
+    <types>
+        <members>PL_Devis</members>
+        <name>FlexiPage</name>
     </types>
     <!--
 <types>
@@ -64,16 +72,15 @@
         <name>WorkflowRule</name>
     </types>
 
-
+    <types>
+        <members>SBQQ__Quote__c</members>
+        <members>SBQQ__QuoteLine__c</members>
+        <name>CustomObject</name>
+    </types>
 
 <!--
 
-    <types>
-    <members>SBQQ__Quote__c</members>
-    <members>SBQQ__QuoteLine__c</members>
-    <members>LPCR_Preinscriptions</members>
-    <name>CustomObject</name>
-</types>
+
 
 <types>
     <members>SBQQ__Quote__c.LPCR_StatutPretAEnvoyer</members>
