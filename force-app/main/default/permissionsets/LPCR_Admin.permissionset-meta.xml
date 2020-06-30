@@ -1896,6 +1896,31 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_Contrat__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_Devis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_Facture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_LigneFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_RevenueTransaction__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_LignePlanFacturation__c.LPCR_Amount__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6175,6 +6200,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>LPCR_LienCrecheOpportunite__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>LPCR_LienFamilleFacture__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
