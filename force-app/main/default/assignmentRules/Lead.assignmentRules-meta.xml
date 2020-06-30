@@ -2,7 +2,7 @@
 <AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <assignmentRule>
         <fullName>Leads</fullName>
-        <active>false</active>
+        <active>true</active>
         <ruleEntry>
             <assignedTo>LPCR_ClementineCourrier</assignedTo>
             <assignedToType>Queue</assignedToType>
