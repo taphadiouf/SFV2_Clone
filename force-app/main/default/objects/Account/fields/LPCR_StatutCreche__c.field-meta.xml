@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_StatutCreche__c</fullName>
+    <externalId>false</externalId>
+    <label>Statut crèche</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Prospect</fullName>
+                <default>false</default>
+                <label>Prospect</label>
+            </value>
+            <value>
+                <fullName>Projet</fullName>
+                <default>false</default>
+                <label>Projet</label>
+            </value>
+            <value>
+                <fullName>Fournisseur</fullName>
+                <default>false</default>
+                <label>Fournisseur</label>
+            </value>
+            <value>
+                <fullName>Rachat concurrence</fullName>
+                <default>false</default>
+                <label>Rachat concurrence</label>
+            </value>
+            <value>
+                <fullName>Fermeture</fullName>
+                <default>false</default>
+                <label>Fermeture</label>
+            </value>
+            <value>
+                <fullName>Désactivé</fullName>
+                <default>false</default>
+                <label>Désactivé</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

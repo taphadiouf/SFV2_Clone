@@ -20,6 +20,31 @@
         <default>false</default>
         <label>PLAC</label>
     </customValue>
-    <masterLabel>Type d&#39;entreprise</masterLabel>
+    <customValue>
+        <fullName>MID</fullName>
+        <default>false</default>
+        <label>MID</label>
+    </customValue>
+    <customValue>
+        <fullName>Public</fullName>
+        <default>false</default>
+        <label>Public</label>
+    </customValue>
+    <customValue>
+        <fullName>Partenaire</fullName>
+        <default>false</default>
+        <label>Partenaire</label>
+    </customValue>
+    <customValue>
+        <fullName>Collectivité</fullName>
+        <default>false</default>
+        <label>Collectivité</label>
+    </customValue>
+    <customValue>
+        <fullName>CE</fullName>
+        <default>false</default>
+        <label>CE</label>
+    </customValue>
+    <masterLabel>Type d&apos;entreprise</masterLabel>
     <sorted>false</sorted>
 </GlobalValueSet>

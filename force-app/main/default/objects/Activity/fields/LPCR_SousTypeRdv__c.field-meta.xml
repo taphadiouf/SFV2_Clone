@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_SousTypeRdv__c</fullName>
+    <externalId>false</externalId>
+    <label>Sous-type de RDV</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Découverte</fullName>
+                <default>false</default>
+                <label>Découverte</label>
+            </value>
+            <value>
+                <fullName>Visite de Crèche</fullName>
+                <default>false</default>
+                <label>Visite de Crèche</label>
+            </value>
+            <value>
+                <fullName>Soutenance/Négociation</fullName>
+                <default>false</default>
+                <label>Soutenance/Négociation</label>
+            </value>
+            <value>
+                <fullName>Négociation</fullName>
+                <default>false</default>
+                <label>Négociation</label>
+            </value>
+            <value>
+                <fullName>Remise d&apos;Offre</fullName>
+                <default>false</default>
+                <label>Remise d&apos;Offre</label>
+            </value>
+            <value>
+                <fullName>Suivi</fullName>
+                <default>false</default>
+                <label>Suivi</label>
+            </value>
+            <value>
+                <fullName>Atelier Parentalité</fullName>
+                <default>false</default>
+                <label>Atelier Parentalité</label>
+            </value>
+            <value>
+                <fullName>Commission d&apos;attribution</fullName>
+                <default>false</default>
+                <label>Commission d&apos;attribution</label>
+            </value>
+            <value>
+                <fullName>Immobilier</fullName>
+                <default>false</default>
+                <label>Immobilier</label>
+            </value>
+            <value>
+                <fullName>Post-Mortem (perte client)</fullName>
+                <default>false</default>
+                <label>Post-Mortem (perte client)</label>
+            </value>
+            <value>
+                <fullName>RP (Evenements)</fullName>
+                <default>false</default>
+                <label>RP (Evenements)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
