@@ -298,9 +298,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
         Id accountEntrepriseRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
         for(OrderItem eachNewOrderItem : newMapOrderItem.values()){
             if('Activated'.equals(eachNewOrderItem.SBQQ__Status__c) && oldMapOrderItem.get(eachNewOrderItem.Id).SBQQ__Status__c != eachNewOrderItem.SBQQ__Status__c){
-                orderItemIds.add(eachNewOrderItem.Id);
-                System.debug('$$$$ == SBQQ__RevisedOrderProduct__c '+eachNewOrderItem.SBQQ__RevisedOrderProduct__c);
-                
+                orderItemIds.add(eachNewOrderItem.Id);                
             }
         }
         if(orderItemIds.size()>0){
