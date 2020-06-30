@@ -1105,6 +1105,26 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_Devis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_Facture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_LigneFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_RevenueTransaction__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_ParametrageScore__c.LPCR_Anciennete__c</field>
         <readable>false</readable>
