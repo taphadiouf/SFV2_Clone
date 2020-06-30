@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_RTContratEntreprise__c</fullName>
+    <fullName>LPCR_SecondOptionStartDate__c</fullName>
     <externalId>false</externalId>
-    <formula>LPCR_ContractEntreprise__r.LPCR_TypeEnregistrement__c</formula>
+    <formula>DATE( YEAR( SBQQ__StartDate__c ) , 09, 01)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Type Enregistrement Contrat Entreprise</label>
+    <label>Second Option Start Date</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>Text</type>
-    <unique>false</unique>
+    <type>Date</type>
 </CustomField>
