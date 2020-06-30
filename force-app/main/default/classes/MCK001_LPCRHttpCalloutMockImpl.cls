@@ -29,7 +29,18 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
                 res.setBody('{"result":"400"}');
                 res.setStatusCode(400);
             } 
-        }        
+        }else if(req.getEndpoint().contains('LPCR_API_DocList')){
+            System.debug(req.getBody());
+            System.debug(req.getEndpoint());
+            SM019_DocumentList_Callout.DocumentListStructureWrapper data = (SM019_DocumentList_Callout.DocumentListStructureWrapper) JSON.deserialize(req.getBody(), SM019_DocumentList_Callout.DocumentListStructureWrapper.class);
+            if(String.isNotBlank(data.ownerid)){
+                res.setBody('{"result":"200"},[{"id":"000000000000000","Facture"}]');
+                res.setStatusCode(200);
+            }else{
+                res.setBody('{"result":"400"}');
+                res.setStatusCode(400);
+            }
+        }              
         return res;
     }
 }
