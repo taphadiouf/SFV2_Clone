@@ -45,6 +45,51 @@
                 <default>false</default>
                 <label>Partenaire</label>
             </value>
+            <value>
+                <fullName>Entreprise</fullName>
+                <default>false</default>
+                <label>Entreprise</label>
+            </value>
+            <value>
+                <fullName>Ville</fullName>
+                <default>false</default>
+                <label>Ville</label>
+            </value>
+            <value>
+                <fullName>Administration</fullName>
+                <default>false</default>
+                <label>Administration</label>
+            </value>
+            <value>
+                <fullName>Hopital/Clinique</fullName>
+                <default>false</default>
+                <label>Hopital/Clinique</label>
+            </value>
+            <value>
+                <fullName>CAF</fullName>
+                <default>false</default>
+                <label>CAF</label>
+            </value>
+            <value>
+                <fullName>Extérieur/LPCR</fullName>
+                <default>false</default>
+                <label>Extérieur/LPCR</label>
+            </value>
+            <value>
+                <fullName>Distributeur (partenaire)</fullName>
+                <default>false</default>
+                <label>Distributeur (partenaire)</label>
+            </value>
+            <value>
+                <fullName>PAJE parents solo (libéral)</fullName>
+                <default>false</default>
+                <label>PAJE parents solo (libéral)</label>
+            </value>
+            <value>
+                <fullName>Autre</fullName>
+                <default>false</default>
+                <label>Autre</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

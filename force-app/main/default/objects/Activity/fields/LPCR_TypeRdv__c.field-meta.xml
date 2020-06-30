@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_TypeRdv__c</fullName>
+    <externalId>false</externalId>
+    <label>Type de RDV</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>RDV Téléphonique</fullName>
+                <default>false</default>
+                <label>RDV Téléphonique</label>
+            </value>
+            <value>
+                <fullName>RDV Physique</fullName>
+                <default>false</default>
+                <label>RDV Physique</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

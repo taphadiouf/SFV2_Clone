@@ -255,6 +255,47 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_GroupeEtablissement__c</picklist>
+        <values>
+            <fullName>Crèche</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Siège</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_IncidentPaiement__c</picklist>
+        <values>
+            <fullName>Contentieux</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Incident</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Juridique</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_ModeFinancement__c</picklist>
+        <values>
+            <fullName>Autre PS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PAJE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PSU</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_MoyenDeTransport__c</picklist>
         <values>
             <fullName>Transports en commun</fullName>
@@ -266,6 +307,21 @@
         </values>
         <values>
             <fullName>À pied</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_MoyenPaiement__c</picklist>
+        <values>
+            <fullName>Carte Bancaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chèque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virement</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -488,6 +544,33 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_StatutCreche__c</picklist>
+        <values>
+            <fullName>Désactivé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fermeture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fournisseur</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Projet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rachat concurrence</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_Statut__c</picklist>
         <values>
             <fullName>Ancien client</fullName>
@@ -527,7 +610,30 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_TermeFacturation__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_TypeClient__c</picklist>
+        <values>
+            <fullName>Administration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAF</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>CE</fullName>
             <default>false</default>
@@ -537,7 +643,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Distributeur %28partenaire%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entreprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extérieur%2FLPCR</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Grand Compte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hopital%2FClinique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PAJE parents solo %28libéral%29</fullName>
             <default>false</default>
         </values>
         <values>
@@ -554,6 +680,10 @@
         </values>
         <values>
             <fullName>TPE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ville</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -595,7 +725,19 @@
     <picklistValues>
         <picklist>LPCR_TypeEntreprise__c</picklist>
         <values>
+            <fullName>CE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collectivité</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Grand Compte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MID</fullName>
             <default>false</default>
         </values>
         <values>
@@ -604,6 +746,14 @@
         </values>
         <values>
             <fullName>PME-ETI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public</fullName>
             <default>false</default>
         </values>
         <values>

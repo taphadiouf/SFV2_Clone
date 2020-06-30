@@ -358,6 +358,7 @@ public with sharing class SM008_QuoteServices {
                 }
             }
         }
+        if(mapQuoteIDAgreementID.get(agreementMac).size() > 0 || mapQuoteIDAgreementID.get(agreementMicro).size() > 0)
         SM008_QuoteServices.loadAgreement(mapQuoteIDAgreementID);
         return mapQuoteIDAgreementID;
     } 

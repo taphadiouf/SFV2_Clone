@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_ModeFinancement__c</fullName>
+    <externalId>false</externalId>
+    <label>Mode de financement</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>PAJE</fullName>
+                <default>false</default>
+                <label>PAJE</label>
+            </value>
+            <value>
+                <fullName>PSU</fullName>
+                <default>false</default>
+                <label>PSU</label>
+            </value>
+            <value>
+                <fullName>Autre PS</fullName>
+                <default>false</default>
+                <label>Autre PS</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Metier__c</fullName>
+    <externalId>false</externalId>
+    <label>Métier</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ASPE</fullName>
+                <default>false</default>
+                <label>ASPE</label>
+            </value>
+            <value>
+                <fullName>ARCHITECTES SALARIÉS</fullName>
+                <default>false</default>
+                <label>ARCHITECTES SALARIÉS</label>
+            </value>
+            <value>
+                <fullName>AUXILIAIRE DE PUERICULTURE</fullName>
+                <default>false</default>
+                <label>AUXILIAIRE DE PUERICULTURE</label>
+            </value>
+            <value>
+                <fullName>CAD. ORGANISATION OU DU CONTRÔLE</fullName>
+                <default>false</default>
+                <label>CAD. ORGANISATION OU DU CONTRÔLE</label>
+            </value>
+            <value>
+                <fullName>CAD.CHARGÉ ÉTUDES ECO/FIN/CIALES</fullName>
+                <default>false</default>
+                <label>CAD.CHARGÉ ÉTUDES ECO/FIN/CIALES</label>
+            </value>
+            <value>
+                <fullName>CADRES REL. PUB. &amp; COMMUNICAT.</fullName>
+                <default>false</default>
+                <label>CADRES REL. PUB. &amp; COMMUNICAT.</label>
+            </value>
+            <value>
+                <fullName>CADRES SCES FINANC./COMPT. PME</fullName>
+                <default>false</default>
+                <label>CADRES SCES FINANC./COMPT. PME</label>
+            </value>
+            <value>
+                <fullName>CADRES SPÉCIALISTES RH ET RECRUT</fullName>
+                <default>false</default>
+                <label>CADRES SPÉCIALISTES RH ET RECRUT</label>
+            </value>
+            <value>
+                <fullName>CHEFS PROJETS\ RESPONS. INFORM.</fullName>
+                <default>false</default>
+                <label>CHEFS PROJETS\ RESPONS. INFORM.</label>
+            </value>
+            <value>
+                <fullName>CIAUX &amp; TC REP. EN BIENS CONSOM</fullName>
+                <default>false</default>
+                <label>CIAUX &amp; TC REP. EN BIENS CONSOM</label>
+            </value>
+            <value>
+                <fullName>CIAUX &amp; TC REP. EN SERVICES</fullName>
+                <default>false</default>
+                <label>CIAUX &amp; TC REP. EN SERVICES</label>
+            </value>
+            <value>
+                <fullName>CONCEPT.&amp;ASSIST.TECHN.ART GRAPH</fullName>
+                <default>false</default>
+                <label>CONCEPT.&amp;ASSIST.TECHN.ART GRAPH</label>
+            </value>
+            <value>
+                <fullName>DIR.CENTRE SOCIOCULTUR&amp;LOISIRS</fullName>
+                <default>false</default>
+                <label>DIR.CENTRE SOCIOCULTUR&amp;LOISIRS</label>
+            </value>
+            <value>
+                <fullName>EJE</fullName>
+                <default>false</default>
+                <label>EJE</label>
+            </value>
+            <value>
+                <fullName>EDUCATEURS SPÉCIALISÉS</fullName>
+                <default>false</default>
+                <label>EDUCATEURS SPÉCIALISÉS</label>
+            </value>
+            <value>
+                <fullName>ING.&amp;CAD.MÉTHODES DE PROD.</fullName>
+                <default>false</default>
+                <label>ING.&amp;CAD.MÉTHODES DE PROD.</label>
+            </value>
+            <value>
+                <fullName>JURISTES</fullName>
+                <default>false</default>
+                <label>JURISTES</label>
+            </value>
+            <value>
+                <fullName>MANUTENTIONNAIRES NON QUALIFIÉS</fullName>
+                <default>false</default>
+                <label>MANUTENTIONNAIRES NON QUALIFIÉS</label>
+            </value>
+            <value>
+                <fullName>MEDECIN</fullName>
+                <default>false</default>
+                <label>MEDECIN</label>
+            </value>
+            <value>
+                <fullName>MONTEURS\ METTEUR POINT TQUAL</fullName>
+                <default>false</default>
+                <label>MONTEURS\ METTEUR POINT TQUAL</label>
+            </value>
+            <value>
+                <fullName>OUV.QUAL. MANUTENTION\ CARISTES</fullName>
+                <default>false</default>
+                <label>OUV.QUAL. MANUTENTION\ CARISTES</label>
+            </value>
+            <value>
+                <fullName>PUÉRICULTRICES</fullName>
+                <default>false</default>
+                <label>PUÉRICULTRICES</label>
+            </value>
+            <value>
+                <fullName>RESP.D&apos;ENTREPOT\ DE MAGASINAGE</fullName>
+                <default>false</default>
+                <label>RESP.D&apos;ENTREPOT\ DE MAGASINAGE</label>
+            </value>
+            <value>
+                <fullName>SECRÉTAIRES</fullName>
+                <default>false</default>
+                <label>SECRÉTAIRES</label>
+            </value>
+            <value>
+                <fullName>TECHN.LOGIST.PLANNING\ORDONN.</fullName>
+                <default>false</default>
+                <label>TECHN.LOGIST.PLANNING\ORDONN.</label>
+            </value>
+            <value>
+                <fullName>AIDE AUXILIAIRE</fullName>
+                <default>false</default>
+                <label>AIDE AUXILIAIRE</label>
+            </value>
+            <value>
+                <fullName>LINGERE</fullName>
+                <default>false</default>
+                <label>LINGERE</label>
+            </value>
+            <value>
+                <fullName>DIRECTEUR DE CRECHE</fullName>
+                <default>false</default>
+                <label>DIRECTEUR DE CRECHE</label>
+            </value>
+            <value>
+                <fullName>DIRECTEUR ADJOINT</fullName>
+                <default>false</default>
+                <label>DIRECTEUR ADJOINT</label>
+            </value>
+            <value>
+                <fullName>AGENT DE PUERICULTURE</fullName>
+                <default>false</default>
+                <label>AGENT DE PUERICULTURE</label>
+            </value>
+            <value>
+                <fullName>APPRENTI</fullName>
+                <default>false</default>
+                <label>APPRENTI</label>
+            </value>
+            <value>
+                <fullName>AGT.ACCOMPT.SOCIAL ET FAMILIAL</fullName>
+                <default>false</default>
+                <label>AGT.ACCOMPT.SOCIAL ET FAMILIAL</label>
+            </value>
+            <value>
+                <fullName>ASSIST.RESSOURCES HUMAINES</fullName>
+                <default>false</default>
+                <label>ASSIST.RESSOURCES HUMAINES</label>
+            </value>
+            <value>
+                <fullName>CHEF SCE LOGISTIQUE ET IMMO</fullName>
+                <default>false</default>
+                <label>CHEF SCE LOGISTIQUE ET IMMO</label>
+            </value>
+            <value>
+                <fullName>COORDINATRICE SCE INSC.FACT.</fullName>
+                <default>false</default>
+                <label>COORDINATRICE SCE INSC.FACT.</label>
+            </value>
+            <value>
+                <fullName>RESPONSABLE SCE  PREVENTION</fullName>
+                <default>false</default>
+                <label>RESPONSABLE SCE  PREVENTION</label>
+            </value>
+            <value>
+                <fullName>SECRETAIRE GENER.DE DIRECTION</fullName>
+                <default>false</default>
+                <label>SECRETAIRE GENER.DE DIRECTION</label>
+            </value>
+            <value>
+                <fullName>COUTURIERE</fullName>
+                <default>false</default>
+                <label>COUTURIERE</label>
+            </value>
+            <value>
+                <fullName>AGENT DE SERVICE</fullName>
+                <default>false</default>
+                <label>AGENT DE SERVICE</label>
+            </value>
+            <value>
+                <fullName>AGENT POLYVALENT</fullName>
+                <default>false</default>
+                <label>AGENT POLYVALENT</label>
+            </value>
+            <value>
+                <fullName>AGENT QUALIFIE</fullName>
+                <default>false</default>
+                <label>AGENT QUALIFIE</label>
+            </value>
+            <value>
+                <fullName>AGT ACCOMPT SOCIAL ET FAMILIAL</fullName>
+                <default>false</default>
+                <label>AGT ACCOMPT SOCIAL ET FAMILIAL</label>
+            </value>
+            <value>
+                <fullName>ANIMATEUR</fullName>
+                <default>false</default>
+                <label>ANIMATEUR</label>
+            </value>
+            <value>
+                <fullName>ANIMATRICE</fullName>
+                <default>false</default>
+                <label>ANIMATRICE</label>
+            </value>
+            <value>
+                <fullName>ASSIST. RESSOURCES HUMAINES</fullName>
+                <default>false</default>
+                <label>ASSIST. RESSOURCES HUMAINES</label>
+            </value>
+            <value>
+                <fullName>ASSISTANTE ARTISTIQUE</fullName>
+                <default>false</default>
+                <label>ASSISTANTE ARTISTIQUE</label>
+            </value>
+            <value>
+                <fullName>ASSISTANTE COMPTABLE</fullName>
+                <default>false</default>
+                <label>ASSISTANTE COMPTABLE</label>
+            </value>
+            <value>
+                <fullName>ASSISTANTE MATERNELLE</fullName>
+                <default>false</default>
+                <label>ASSISTANTE MATERNELLE</label>
+            </value>
+            <value>
+                <fullName>AUXILIAIRE</fullName>
+                <default>false</default>
+                <label>AUXILIAIRE</label>
+            </value>
+            <value>
+                <fullName>AUXILIAIRE ADMINISTRATIF</fullName>
+                <default>false</default>
+                <label>AUXILIAIRE ADMINISTRATIF</label>
+            </value>
+            <value>
+                <fullName>AUXILIAIRE CERTIFIEE</fullName>
+                <default>false</default>
+                <label>AUXILIAIRE CERTIFIEE</label>
+            </value>
+            <value>
+                <fullName>AUXILIAIRE CERTIFIEE ASF</fullName>
+                <default>false</default>
+                <label>AUXILIAIRE CERTIFIEE ASF</label>
+            </value>
+            <value>
+                <fullName>AUXILIAIRE DE CRECHE</fullName>
+                <default>false</default>
+                <label>AUXILIAIRE DE CRECHE</label>
+            </value>
+            <value>
+                <fullName>CHEF SERVICE INFORMATIQUE</fullName>
+                <default>false</default>
+                <label>CHEF SERVICE INFORMATIQUE</label>
+            </value>
+            <value>
+                <fullName>CHEF SVCE LOGISTIQUE ET IMMOB</fullName>
+                <default>false</default>
+                <label>CHEF SVCE LOGISTIQUE ET IMMOB</label>
+            </value>
+            <value>
+                <fullName>COMMIS DE CUISINE</fullName>
+                <default>false</default>
+                <label>COMMIS DE CUISINE</label>
+            </value>
+            <value>
+                <fullName>COORDINATRICE SVCE INSC. FACT.</fullName>
+                <default>false</default>
+                <label>COORDINATRICE SVCE INSC. FACT.</label>
+            </value>
+            <value>
+                <fullName>DIRECTEUR</fullName>
+                <default>false</default>
+                <label>DIRECTEUR</label>
+            </value>
+            <value>
+                <fullName>DIRECTEUR FINANCIER</fullName>
+                <default>false</default>
+                <label>DIRECTEUR FINANCIER</label>
+            </value>
+            <value>
+                <fullName>DIRECTEUR GENERAL</fullName>
+                <default>false</default>
+                <label>DIRECTEUR GENERAL</label>
+            </value>
+            <value>
+                <fullName>DIRECTEUR RESSOURCES HUMAINES</fullName>
+                <default>false</default>
+                <label>DIRECTEUR RESSOURCES HUMAINES</label>
+            </value>
+            <value>
+                <fullName>DIRECTRICE</fullName>
+                <default>false</default>
+                <label>DIRECTRICE</label>
+            </value>
+            <value>
+                <fullName>DIRECTRICE DE CRECHE</fullName>
+                <default>false</default>
+                <label>DIRECTRICE DE CRECHE</label>
+            </value>
+            <value>
+                <fullName>EDUCATEUR DE JEUNES ENFANTS</fullName>
+                <default>false</default>
+                <label>EDUCATEUR DE JEUNES ENFANTS</label>
+            </value>
+            <value>
+                <fullName>EDUCATEUR SPORTIF</fullName>
+                <default>false</default>
+                <label>EDUCATEUR SPORTIF</label>
+            </value>
+            <value>
+                <fullName>EDUCATRICE DE JEUNES ENFANTS</fullName>
+                <default>false</default>
+                <label>EDUCATRICE DE JEUNES ENFANTS</label>
+            </value>
+            <value>
+                <fullName>INFIRMIERE</fullName>
+                <default>false</default>
+                <label>INFIRMIERE</label>
+            </value>
+            <value>
+                <fullName>INFORMATICIEN</fullName>
+                <default>false</default>
+                <label>INFORMATICIEN</label>
+            </value>
+            <value>
+                <fullName>INTERVENANT ARTISTIQUE</fullName>
+                <default>false</default>
+                <label>INTERVENANT ARTISTIQUE</label>
+            </value>
+            <value>
+                <fullName>MEDECIN GENERALISTE</fullName>
+                <default>false</default>
+                <label>MEDECIN GENERALISTE</label>
+            </value>
+            <value>
+                <fullName>OUVRIER HAUTEMENT QUALIFIE</fullName>
+                <default>false</default>
+                <label>OUVRIER HAUTEMENT QUALIFIE</label>
+            </value>
+            <value>
+                <fullName>PSYCHOLOGUE</fullName>
+                <default>false</default>
+                <label>PSYCHOLOGUE</label>
+            </value>
+            <value>
+                <fullName>PSYCHOMOTRICIEN</fullName>
+                <default>false</default>
+                <label>PSYCHOMOTRICIEN</label>
+            </value>
+            <value>
+                <fullName>PSYCHOMOTRICIENNE</fullName>
+                <default>false</default>
+                <label>PSYCHOMOTRICIENNE</label>
+            </value>
+            <value>
+                <fullName>PUERICULTRICE</fullName>
+                <default>false</default>
+                <label>PUERICULTRICE</label>
+            </value>
+            <value>
+                <fullName>RESPONSABLE ARTISTIQUE</fullName>
+                <default>false</default>
+                <label>RESPONSABLE ARTISTIQUE</label>
+            </value>
+            <value>
+                <fullName>RESPONSABLE SERVICE PREVENTION</fullName>
+                <default>false</default>
+                <label>RESPONSABLE SERVICE PREVENTION</label>
+            </value>
+            <value>
+                <fullName>SECRETAIRE GENER. DE DIRECTION</fullName>
+                <default>false</default>
+                <label>SECRETAIRE GENER. DE DIRECTION</label>
+            </value>
+            <value>
+                <fullName>TECHNICIEN ADMINISTRATIF</fullName>
+                <default>false</default>
+                <label>TECHNICIEN ADMINISTRATIF</label>
+            </value>
+            <value>
+                <fullName>TECHNICIEN LOGISTIQUE</fullName>
+                <default>false</default>
+                <label>TECHNICIEN LOGISTIQUE</label>
+            </value>
+            <value>
+                <fullName>DIRECTRICE ADJOINTE</fullName>
+                <default>false</default>
+                <label>DIRECTRICE ADJOINTE</label>
+            </value>
+            <value>
+                <fullName>PEINTRE EN BATIMENT</fullName>
+                <default>false</default>
+                <label>PEINTRE EN BATIMENT</label>
+            </value>
+            <value>
+                <fullName>FORMATRICE</fullName>
+                <default>false</default>
+                <label>FORMATRICE</label>
+            </value>
+            <value>
+                <fullName>RESPONSABLE SANTE</fullName>
+                <default>false</default>
+                <label>RESPONSABLE SANTE</label>
+            </value>
+            <value>
+                <fullName>EMPLOYEE ADMINISTRATIVE</fullName>
+                <default>false</default>
+                <label>EMPLOYEE ADMINISTRATIVE</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

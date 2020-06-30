@@ -55,6 +55,26 @@
                 <default>false</default>
                 <label>Ne souhaite pas adhérer</label>
             </value>
+            <value>
+                <fullName>Associatif</fullName>
+                <default>false</default>
+                <label>Associatif</label>
+            </value>
+            <value>
+                <fullName>Privé</fullName>
+                <default>false</default>
+                <label>Privé</label>
+            </value>
+            <value>
+                <fullName>Municipal</fullName>
+                <default>false</default>
+                <label>Municipal</label>
+            </value>
+            <value>
+                <fullName>Hospitalière</fullName>
+                <default>false</default>
+                <label>Hospitalière</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

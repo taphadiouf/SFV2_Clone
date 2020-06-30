@@ -3,4 +3,123 @@
     <fullName>Referencement</fullName>
     <active>true</active>
     <label>Référencement</label>
+    <picklistValues>
+        <picklist>LPCR_JoursSemaine__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Region__c</picklist>
+        <values>
+            <fullName>IDF et Grandes villes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paris</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Province</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Tranche__c</picklist>
+        <values>
+            <fullName>A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeAccueil__c</picklist>
+        <values>
+            <fullName>Journée %28période vacances%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mercredi 1%2F2 journée %28hors vacances%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mercredi journée %28hors vacances%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Périscolaire matin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Périscolaire soir après étude</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Périscolaire soir sans études</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeEntreprise__c</picklist>
+        <values>
+            <fullName>CE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collectivité</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grand Compte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PLAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PME-ETI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TPE</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
 </RecordType>

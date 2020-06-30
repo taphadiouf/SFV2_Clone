@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Statut__c</fullName>
+    <externalId>false</externalId>
+    <label>Statut</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Tenu</fullName>
+                <default>false</default>
+                <label>Tenu</label>
+            </value>
+            <value>
+                <fullName>Annulé</fullName>
+                <default>false</default>
+                <label>Annulé</label>
+            </value>
+            <value>
+                <fullName>Planifié</fullName>
+                <default>false</default>
+                <label>Planifié</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
