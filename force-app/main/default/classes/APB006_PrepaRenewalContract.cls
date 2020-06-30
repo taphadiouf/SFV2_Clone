@@ -7,7 +7,7 @@ global class APB006_PrepaRenewalContract implements Database.Batchable<sObject>,
     public static final String CONTRACT_TO_RENEW_BASE_QUERY = 'SELECT Id, AccountId, Account.RecordTypeId, LPCR_Creche__c, Name, ' + 
         ' EndDate, LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c, LPCR_JoursAvance__c ' +
         ' FROM Contract WHERE Status =\'Activated\' AND LPCR_RenouvellementAutomatique__c = true AND ' + 
-        ' LPCR_DateRenouvellement__c = :today AND (SBQQ__RenewalQuoted__c = false OR SBQQ__RenewalForecast__c = false)';
+        ' LPCR_DateRenouvellement__c <= :today AND (SBQQ__RenewalQuoted__c = false OR SBQQ__RenewalForecast__c = false)';
     
     Set<String> setContractKeyAccountAndNursery;
 
