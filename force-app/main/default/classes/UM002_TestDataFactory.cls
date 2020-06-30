@@ -1067,6 +1067,16 @@ newMe.FederationIdentifier = null;
         return atts;
     }
     
+    public static Attachment createAttachement(String name,String body,String parentId, String Description){
+        Attachment atts = new Attachment();
+        atts.Name = name;
+        Blob bodyBlob = Blob.valueOf(body);
+        atts.body = bodyBlob;
+        atts.ParentId = parentId;
+        atts.Description = Description;
+        return atts;
+    }
+    
     public static List<LPCR_Log__c> createLogsFromAttachments( String name,String result, String typ,List<Attachment> attsList){
         List<LPCR_Log__c> logsList = new List<LPCR_Log__c>();
         LPCR_Log__c tempLog;
