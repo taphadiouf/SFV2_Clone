@@ -8,6 +8,13 @@
         <value>Separate Invoice</value>
     </labels>
     <labels>
+        <fullName>LPCR_AEnvoyer</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AEnvoyer</shortDescription>
+        <value>A Envoyer</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Account</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -372,6 +379,13 @@
         <value>Prénom de l&apos;enfant :</value>
     </labels>
     <labels>
+        <fullName>LPCR_PretAValider</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_PretAValider</shortDescription>
+        <value>Prêt à valider</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Prospecting</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -559,6 +573,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_ValideDirectrice</shortDescription>
         <value>Validé Directrice</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_commentaireStatut</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_commentaireStatut</shortDescription>
+        <value>Le statut des factures devrait être Prêt à valider pour pouvoir les envoyer</value>
     </labels>
     <labels>
         <fullName>Product_Code_Depot_Garantie</fullName>
