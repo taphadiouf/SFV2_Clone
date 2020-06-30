@@ -155,7 +155,7 @@ public class SM015_InvoiceServices_Test {
             }
             update invoicesLst;
             List<blng__Invoice__c> newInvoices = [SELECT Id,blng__InvoiceStatus__c,LPCR_StatutFacture__c FROM blng__Invoice__c
-                                                    WHERE LPCR_StatutFacture__c != 'Prêt à valider'];
+                                                    WHERE LPCR_StatutFacture__c = 'Prêt à valider'];
             System.assertEquals(invoicesLst.size(), newInvoices.size());
             Test.stopTest();
        
