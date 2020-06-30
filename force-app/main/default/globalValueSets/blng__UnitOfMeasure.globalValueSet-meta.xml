@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>None</fullName>
+        <fullName>Jours</fullName>
         <default>false</default>
-        <label>None</label>
+        <label>Jours</label>
+    </customValue>
+    <customValue>
+        <fullName>Heures</fullName>
+        <default>false</default>
+        <label>Heures</label>
     </customValue>
     <customValue>
         <fullName>Hueres</fullName>
         <default>false</default>
+        <isActive>false</isActive>
         <label>Hueres</label>
+    </customValue>
+    <customValue>
+        <fullName>None</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>None</label>
     </customValue>
     <customValue>
         <fullName>Number (Unit)</fullName>
         <default>false</default>
+        <isActive>false</isActive>
         <label>Number (Unit)</label>
     </customValue>
     <masterLabel>Unit Of Measure</masterLabel>
