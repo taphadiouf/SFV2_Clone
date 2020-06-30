@@ -36,7 +36,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             if(eachOrderItemConSch.SBQQ__OrderItem__r.blng__LegalEntity__c != null ){
                 eachOrderItemConSch.blng__LegalEntity__c  = eachOrderItemConSch.SBQQ__OrderItem__r.blng__LegalEntity__c;
                 PAD.log('SM012_OrderItemServices', 'legalEntityOnOrderItemConSch', 'setting legal entity on Order item ConSch '+eachOrderItemConSch.blng__LegalEntity__c);
-
+                
                 listOrderItemConSchtoSave.add(eachOrderItemConSch);
             }
         }
@@ -165,9 +165,9 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                                                         }
                                    }
                                    //Arrears 
-                                  else if(  orderMap.get(item.OrderId).LPCR_TypeFacturation__c  == 'Arrears'){
+                                   else if(  orderMap.get(item.OrderId).LPCR_TypeFacturation__c  == 'Arrears'){
                                        PAD.log('SM012_OrderItemServices','setupInvoiceDates','$$$$$$$ item.SBQQ__BillingFrequency__c '+item.SBQQ__BillingFrequency__c);
-                                     if ( (item.SBQQ__BillingFrequency__c == 'Quarterly' || (item.SBQQ__ChargeType__c =='One-Time' && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == 'Quarterly') )
+                                       if ( (item.SBQQ__BillingFrequency__c == 'Quarterly' || (item.SBQQ__ChargeType__c =='One-Time' && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == 'Quarterly') )
                                            && ((UM005_DateUtility.quarterlyMonths.contains(item.blng__NextChargeDate__c.month()) 
                                                 && item.blng__NextChargeDate__c.day() != 1) 
                                                || !UM005_DateUtility.quarterlyMonths.contains(item.blng__NextChargeDate__c.month()) )) {
@@ -178,7 +178,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                        else if (item.SBQQ__BillingFrequency__c == 'Monthly' && item.blng__NextChargeDate__c.day() != 1 ){
                                            // lastDateOfMonth
                                            item.blng__BillThroughDateOverride__c = item.SBQQ__ChargeType__c !='One-Time' ? UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c):null;
-                                       		item.blng__OverrideNextBillingDate__c = item.SBQQ__ChargeType__c =='One-Time'? UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c).addDays(1):null;
+                                           item.blng__OverrideNextBillingDate__c = item.SBQQ__ChargeType__c =='One-Time'? UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c).addDays(1):null;
                                        }
                                        
                                        else  if ((item.SBQQ__BillingFrequency__c == 'Semiannual' || (item.SBQQ__ChargeType__c =='One-Time' && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == 'Semiannual') ) 
@@ -188,7 +188,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                                          // lastDayOfHalfYearPeriod return the last date of the given Half Year period (1,7) 
                                                          item.blng__BillThroughDateOverride__c =item.SBQQ__ChargeType__c !='One-Time' ? UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths):null; 
                                                      }
-                                       }
+                                   }
                                }
                 }
                 PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'item (AFTER): ' + item);
@@ -228,12 +228,12 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             update listOrderItemtoSave;
         }
     }
-
+    
     //added by saurabh
     public static void setOrderItemFieldsFromContract(List<OrderItem> newOrderItemsList){
         Set<String> contractId = UM003_TypeManager.getFieldsOfListObjects(newOrderItemsList,'SBQQ__Contract__c');
         Map<Id, Contract> contractMap = new Map<Id, Contract>([SELECT Id, LPCR_DateDebut__c, LPCR_DateFin__c, SBQQ__RenewalUpliftRate__c FROM Contract WHERE Id IN: contractId]);
-
+        
         for(OrderItem eachOrderItem : newOrderItemsList){
             if(eachOrderItem.SBQQ__Contract__c != null){
                 eachOrderItem.LPCR_ContractStartDate__c = contractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_DateDebut__c;
@@ -241,6 +241,101 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                 eachOrderItem.LPCR_Uplift__c = contractMap.get(eachOrderItem.SBQQ__Contract__c).SBQQ__RenewalUpliftRate__c;
                 //eachOrderItem.LPCR_TotalContractValue = <TO BE DEFINED>
             }
+        }
+    }
+    
+    
+    /*
+* @author : Ayoub Ouarti
+*	@description : this method set orderItem's blng__BillingRule__c 
+*	@param List<OrderItem> newOrderItemsList
+*	@returns void
+*/
+    public static void setOrderItemFields(List<OrderItem> newOrderItemsList){
+        Set<String> orderIds = UM003_TypeManager.getFieldsOfListObjects(newOrderItemsList,'OrderId');
+        Map<Id, Order> ordersMap = new Map<Id, Order>([SELECT Id, LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c,  SBQQ__Quote__r.SBQQ__Type__c FROM Order WHERE Id IN :orderIds]);
+        Map<String,SObject> mapSobject = null;
+        Set<String> nouveauPlanFactureIds = UM003_TypeManager.getFieldsOfListObjects(ordersMap.values(),'LPCR_NouveauPlanFacture__c');
+        Set<String> renouvellementPlanFactureIds = UM003_TypeManager.getFieldsOfListObjects(ordersMap.values(),'LPCR_RenouvellementPlanFacture__c');
+        
+        List<blng__BillingTreatment__c> billingTreatmentsForQuote =  [select blng__BillingRule__c ,blng__InvoicePlan__c from blng__BillingTreatment__c where blng__InvoicePlan__c IN :nouveauPlanFactureIds];
+        List<blng__BillingTreatment__c> billingTreatmentsForRenewal =  [select blng__BillingRule__c ,blng__InvoicePlan__c from blng__BillingTreatment__c where blng__InvoicePlan__c IN :renouvellementPlanFactureIds];
+        
+        Map<String,blng__BillingTreatment__c> mapBillingTreatmentWithInvoicePlanQuote = new Map<String,blng__BillingTreatment__c>() ;
+        mapSobject = UM003_TypeManager.generateMapOfObjectsByKeyField(billingTreatmentsForQuote,'blng__InvoicePlan__c');
+        for(String eachkey : mapSobject.keyset()){
+            mapBillingTreatmentWithInvoicePlanQuote.put(eachkey,(blng__BillingTreatment__c)mapSobject.get(eachkey));
+        }
+        
+        Map<String,blng__BillingTreatment__c> mapBillingTreatmentWithInvoicePlanRenewal = new  Map<String,blng__BillingTreatment__c>();
+        mapSobject = UM003_TypeManager.generateMapOfObjectsByKeyField(billingTreatmentsForRenewal,'blng__InvoicePlan__c');
+        for(String eachkey : mapSobject.keyset()){
+            mapBillingTreatmentWithInvoicePlanRenewal.put(eachkey,(blng__BillingTreatment__c)mapSobject.get(eachkey));
+        }
+        
+        for(OrderItem eachOrderItem : newOrderItemsList){
+            if('Quote'.equals(ordersMap.get(eachOrderItem.OrderId).SBQQ__Quote__r.SBQQ__Type__c )){
+                if(mapBillingTreatmentWithInvoicePlanQuote.containsKey(ordersMap.get(eachOrderItem.OrderId).LPCR_NouveauPlanFacture__c)){
+                    eachOrderItem.blng__BillingRule__c  = mapBillingTreatmentWithInvoicePlanQuote.get(ordersMap.get(eachOrderItem.OrderId).LPCR_NouveauPlanFacture__c).blng__BillingRule__c;
+                }
+            }else if('Renewal'.equals(ordersMap.get(eachOrderItem.OrderId).SBQQ__Quote__r.SBQQ__Type__c )){
+                if(mapBillingTreatmentWithInvoicePlanRenewal.containsKey(ordersMap.get(eachOrderItem.OrderId).LPCR_RenouvellementPlanFacture__c)){
+                    eachOrderItem.blng__BillingRule__c  = mapBillingTreatmentWithInvoicePlanRenewal.get(ordersMap.get(eachOrderItem.OrderId).LPCR_RenouvellementPlanFacture__c).blng__BillingRule__c;
+                }  
+            }
+            
+        }
+    }
+    
+    /*
+* @author : Ayoub Ouarti
+*	@description : this method update Billing transaction for RevisedOrderProduct on orderItem
+*	@param List<OrderItem> newOrderItemsList
+*	@returns void
+*/
+    public static void updateFiledsOnBillingTransaction(Map<Id,OrderItem> oldMapOrderItem,Map<Id,OrderItem> newMapOrderItem){
+        Set<Id> orderItemIds=new Set<Id>();
+        Id accountEntrepriseRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
+        for(OrderItem eachNewOrderItem : newMapOrderItem.values()){
+            if('Activated'.equals(eachNewOrderItem.SBQQ__Status__c) && oldMapOrderItem.get(eachNewOrderItem.Id).SBQQ__Status__c != eachNewOrderItem.SBQQ__Status__c){
+                orderItemIds.add(eachNewOrderItem.Id);
+                System.debug('$$$$ == SBQQ__RevisedOrderProduct__c '+eachNewOrderItem.SBQQ__RevisedOrderProduct__c);
+                
+            }
+        }
+        if(orderItemIds.size()>0){
+            Map<Id,OrderItem> mapOrderItems = new Map<Id,OrderItem>([SELECT Id,SBQQ__BillingFrequency__c,SBQQ__RevisedOrderProduct__c,ServiceDate
+                                                                     FROM OrderItem 
+                                                                     WHERE Order.blng__BillingAccount__r.RecordTypeId = :accountEntrepriseRTId
+                                                                     AND SBQQ__BillingFrequency__c = 'Invoice Plan' 
+                                                                     AND orderItem.Quantity < 0
+                                                                     AND Id IN :orderItemIds]);
+            
+            Map<String,OrderItem> mapOrderItemsWithSBQQRevisedOP = new Map<String,OrderItem>();
+            
+            Map<String,SObject> mapSobject = UM003_TypeManager.generateMapOfObjectsByKeyField(mapOrderItems.values(),'SBQQ__RevisedOrderProduct__c');
+            for(String eachkey : mapSobject.keyset()){
+                mapOrderItemsWithSBQQRevisedOP.put(eachkey,(OrderItem)mapSobject.get(eachkey));
+            }
+            
+            Set<String> revisedOrderItemIds = UM003_TypeManager.getFieldsOfListObjects(mapOrderItems.values(),'SBQQ__RevisedOrderProduct__c');
+            Map<Id,blng__BillingSchedule__c> mapBillingSchedule = new Map<Id,blng__BillingSchedule__c> ([ SELECT id ,blng__OrderProduct__c FROM blng__BillingSchedule__c WHERE blng__OrderProduct__c IN :revisedOrderItemIds]);   
+            if(UM003_TypeManager.isNotNullAndNotEmpty(mapBillingSchedule.values())){
+                List<blng__BillingTransaction__c> listBT = [SELECT id,blng__OverrideBillingTargetDate__c,blng__BillingSchedule__c, blng__ServicePeriodEnd__c, blng__ServicePeriodStart__c FROM blng__BillingTransaction__c
+                                                            WHERE blng__BillingSchedule__c IN :mapBillingSchedule.keySet()]; 
+                if(UM003_TypeManager.isNotNullAndNotEmpty(listBT)){
+                    for(blng__BillingTransaction__c eachBT : listBT){
+                        if(mapBillingSchedule.containsKey(eachBT.blng__BillingSchedule__c) &&
+                           mapOrderItemsWithSBQQRevisedOP.containsKey(mapBillingSchedule.get(eachBT.blng__BillingSchedule__c).blng__OrderProduct__c)){
+                               eachBT.blng__OverrideBillingTargetDate__c = mapOrderItemsWithSBQQRevisedOP.get(mapBillingSchedule.get(eachBT.blng__BillingSchedule__c).blng__OrderProduct__c).ServiceDate ;   
+                               eachBT.blng__ServicePeriodStart__c = mapOrderItemsWithSBQQRevisedOP.get(mapBillingSchedule.get(eachBT.blng__BillingSchedule__c).blng__OrderProduct__c).ServiceDate;   
+                               eachBT.blng__ServicePeriodEnd__c = mapOrderItemsWithSBQQRevisedOP.get(mapBillingSchedule.get(eachBT.blng__BillingSchedule__c).blng__OrderProduct__c).ServiceDate;  
+                           }
+                    }  
+                    update listBT;
+                }
+                
+            }   
         }
     }
 }

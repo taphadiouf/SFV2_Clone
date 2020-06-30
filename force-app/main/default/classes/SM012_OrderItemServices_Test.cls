@@ -109,7 +109,7 @@ public with sharing class SM012_OrderItemServices_Test {
                     'SBQQ__BillingCity__c' => 'Paris',
                     'SBQQ__Primary__c' => true,
                     'SBQQ__Opportunity2__c' => oppForAccuel.Id,
-                    'SBQQ__RenewalUpliftRate__c' => 10
+                     'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
                         SBQQ__Quote__c quoteForAccueil = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
@@ -153,8 +153,7 @@ public with sharing class SM012_OrderItemServices_Test {
         oppForRef.SBQQ__PrimaryQuote__c = quoteForRef.Id;
         update new List<Opportunity> {oppForAccuel, oppForRef};
             }
-    
-    @IsTest
+     @IsTest
     private static void lastDayOfDatePeriod_test(){
         Date[] expected = new Date[]{
             Date.newInstance(2020,4,1),
@@ -170,9 +169,7 @@ public with sharing class SM012_OrderItemServices_Test {
                                                                       UM005_DateUtility.lastDayOfDatePeriod (Date.newInstance(2020,x,10), UM005_DateUtility.quarterlyMonths).addDays(1));
                         else if(10 <= x && x<=12 )  System.assertEquals(expected[3],
                                                                         UM005_DateUtility.lastDayOfDatePeriod (Date.newInstance(2020,x,10), UM005_DateUtility.quarterlyMonths).addDays(1));
-
-                    }
-
+          }
         expected = new Date[]{
             Date.newInstance(2020,7,1),
                 Date.newInstance(2021,1,1)
@@ -184,10 +181,168 @@ public with sharing class SM012_OrderItemServices_Test {
                                                                        UM005_DateUtility.lastDayOfDatePeriod (Date.newInstance(2020,x,10), UM005_DateUtility.semiannualMonths).addDays(1));
                     }
     }
+   
 
-
-
-
+         
+    
+    @isTest
+    private static void setOrderItemFields_Test () {     
+        Account customerAcc = null; 
+        Account billingAccount = [SELECT id  FROM Account WHERE name = 'Test-B2B'];
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
+            //setup data for this particular test
+            
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_FAMILE_RT_ID,
+                    'AccountId' => billingAccount.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            Opportunity oppRenewal = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            
+            insert new List<Opportunity>{opp,oppRenewal};
+                
+                blng__InvoicePlan__c invoicePlan =   new blng__InvoicePlan__c(blng__BillingScheduleCreation__c='Manual',blng__Active__c =true);
+            insert    invoicePlan;
+            defaultVal = new Map<String, Object> {
+                'LPCR_NouveauPlanFacture__c'=>invoicePlan.Id,
+                    'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => billingAccount.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Invoice Plan' ,
+                    'LPCR_TypeFacturation__c' => 'Advance',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            defaultVal.put('SBQQ__Type__c','Renewal');
+            defaultVal.put('SBQQ__Opportunity2__c',oppRenewal.Id);
+            SBQQ__Quote__c quoteRenewal = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            
+            insert new List<SBQQ__Quote__c>{quote,quoteRenewal};
+                
+                Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Advance',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingFrequency__c' => 'Invoice Plan' ,
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            defaultVal.put('SBQQ__Quote__c',quoteRenewal.Id);    
+            SBQQ__QuoteLine__c quoteLineRenewal = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            
+            insert new List<SBQQ__QuoteLine__c>{quoteLine,quoteLineRenewal};
+                
+                opp.SBQQ__PrimaryQuote__c = quote.Id;
+            oppRenewal.SBQQ__PrimaryQuote__c = quoteRenewal.Id;
+            
+            update new List<Opportunity>{opp,oppRenewal};
+                
+                //Order the quote to create Order / OrderItems
+                update new List<SBQQ__Quote__c> {new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true),new SBQQ__Quote__c (Id = quoteRenewal.Id, SBQQ__Ordered__c = true)};
+                    
+                    Order order = [SELECT Id ,LPCR_NouveauPlanFacture__c, SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order WHERE SBQQ__Quote__c =:quote.Id];
+            OrderItem  ordrItem = Database.query('SELECT Id , blng__HoldBilling__c  FROM OrderItem  WHERE OrderId = \''+order.Id+'\'');
+            
+            
+            
+            blng__BillingRule__c br = [SELECT Id FROM blng__BillingRule__c LIMIT 1];
+            blng__FinanceBook__c accoutingFinanceBook = new blng__FinanceBook__c(blng__Active__c = true, Name = 'Accounting Finance Book', blng__PeriodType__c = 'Accounting');
+            insert accoutingFinanceBook;
+            
+            
+            blng__BillingTreatment__c billingTreatmentsForRenewal = new blng__BillingTreatment__c(blng__BillingRule__c = br.Id,blng__InvoicePlan__c=invoicePlan.Id,blng__BillingFinanceBook__c = accoutingFinanceBook.Id);
+            insert billingTreatmentsForRenewal;
+            
+            
+            List<OrderItem> orderItems = new List<OrderItem>([SELECT Id,OrderItemNumber,ServiceDate,TotalPrice,blng__BillingRule__c,SBQQ__RevisedOrderProduct__c FROM OrderItem WHERE
+                                                              SBQQ__BillingFrequency__c = 'Invoice Plan' 
+                                                              AND OrderId = :order.Id]);
+            List<blng__BillingSchedule__c> listBillingSchedule = new  List<blng__BillingSchedule__c>();
+            OrderItem originalOrderItem = orderItems.get(0);
+            originalOrderItem.ServiceDate = Date.today();
+            update originalOrderItem;
+            System.assertNotEquals(null,originalOrderItem.blng__BillingRule__c,'blng__BillingRule__c on OrderItem is null');
+            System.assertEquals(billingTreatmentsForRenewal.blng__BillingRule__c,originalOrderItem.blng__BillingRule__c,'blng__BillingRule__c on OrderItem is null');
+            
+        /*    listBillingSchedule.add(new blng__BillingSchedule__c( Name = 'BS-' + originalOrderItem.OrderItemNumber,
+                                                                 blng__Amount__c = originalOrderItem.TotalPrice,
+                                                                 blng__OrderProduct__c = originalOrderItem.Id));
+            insert listBillingSchedule;
+            
+            
+            order = [SELECT Id ,LPCR_NouveauPlanFacture__c, blng__BillingAccount__c,SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c FROM Order WHERE SBQQ__Quote__c =:quoteRenewal.Id];
+            order.blng__BillingAccount__c = billingAccount.Id;
+            update order;
+            OrderItem orderItem = [SELECT Id,Quantity,SBQQ__BillingFrequency__c,SBQQ__RevisedOrderProduct__c,Order.blng__BillingAccount__c FROM OrderItem WHERE
+                                   OrderId = :order.Id];
+            orderItem.SBQQ__RevisedOrderProduct__c = originalOrderItem.Id;
+            update  orderItem;
+            
+            List<blng__BillingTransaction__c> listBT = new  List<blng__BillingTransaction__c>();
+            
+            for(blng__BillingSchedule__c eachBS : listBillingSchedule){
+                listBT.add(new blng__BillingTransaction__c(blng__Amount__c = eachBS.blng__Amount__c, 
+                                                           Name = 'BT for '+eachBS.Name,
+                                                           blng__Status__c = 'Pending',
+                                                           blng__BillingSchedule__c =eachBS.Id) );
+            }
+            insert listBT;
+            Set<Id> BTids = UM003_TypeManager.getIdsOfListObjects(listBT);
+            
+            
+            order.Status='Activated'; 
+            update order;
+            orderItem = [SELECT Id,Quantity,SBQQ__RevisedOrderProduct__c FROM OrderItem WHERE
+                         OrderId = :order.Id];
+            
+            System.debug(orderItem.SBQQ__RevisedOrderProduct__c);
+            
+           
+            for(blng__BillingTransaction__c eachBT :  [SELECT Id,blng__OverrideBillingTargetDate__c,blng__ServicePeriodStart__c,blng__ServicePeriodEnd__c FROM blng__BillingTransaction__c WHERE Id IN :BTids]){
+                System.assertNotEquals(null,eachBT.blng__OverrideBillingTargetDate__c,'blng__OverrideBillingTargetDate__c on BT is null');
+                System.assertNotEquals(null,eachBT.blng__ServicePeriodStart__c,'blng__OverrideBillingTargetDate__c on BT is null');
+                System.assertNotEquals(null,eachBT.blng__ServicePeriodEnd__c,'blng__OverrideBillingTargetDate__c on BT is null');
+                
+            }*/
+           Test.stopTest();       
+        }
+    }
+    
+    
+    
     @IsTest
     static void setLegalEntityOnOrderItem_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
@@ -240,92 +395,91 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
     private static void testSetupInvoiceDatesFamilyMacAdvance () {      //IS-507
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
-        
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MAC').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2C_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
-            }
-        }
-        Product2 prod = [SELECT Id FROM Product2].get(0);
-        PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-        
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_FAMILE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_TypeFacturation__c' => 'Advance',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'Recurring',
-                'SBQQ__BillingType__c' => 'Advance',
-                'LPCR_Region__c' => 'Paris',
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
+            }
+            Integer invoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MAC').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2C_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_FAMILE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_TypeFacturation__c' => 'Advance',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Advance',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            
+            
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order];
             for (Order order : orders) {
@@ -363,90 +517,91 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
         
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MICRO').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2C_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
-            }
-        }
-        Product2 prod = [SELECT Id FROM Product2].get(0);
-        PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-        
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_FAMILE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_TypeFacturation__c' => 'Advance',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'Recurring',
-                'SBQQ__BillingType__c' => 'Advance',
-                'LPCR_Region__c' => 'Paris',
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
+            }
+            Integer invoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MICRO').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2C_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_FAMILE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_TypeFacturation__c' => 'Advance',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
+                       'SBQQ__RenewalUpliftRate__c' => 10
+
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Advance',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c,Type FROM Order];
             for (Order order : orders) {
@@ -475,7 +630,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 System.assertEquals(expectedDate, oi.blng__OverrideNextBillingDate__c);
-                System.assertEquals(expectedDate.addMonths(1), oi.blng__BillThroughDateOverride__c);
+                System.assertEquals(expectedDate.addMonths(1), oi.blng__BillThroughDateOverride__c);                
             }
         }
     }
@@ -484,91 +639,92 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
     private static void testSetupInvoiceDatesFamilyMacArrears () {      //IS-507
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
-        
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MAC').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2C_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
-            }
-        }
-        Product2 prod = [SELECT Id FROM Product2].get(0);
-        PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-        
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_FAMILE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_TypeFacturation__c' => 'Arrears',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'Recurring',
-                'LPCR_Region__c' => 'Paris',
-                'SBQQ__BillingType__c' => 'Arrears',
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
+            }
+            Integer invoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MAC').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2C_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_FAMILE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_TypeFacturation__c' => 'Arrears',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
+                                    'SBQQ__RenewalUpliftRate__c' => 10
+
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingType__c' => 'Arrears',
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            
+            
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order];
             for (Order order : orders) {
@@ -603,91 +759,91 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
     private static void testSetupInvoiceDatesFamilyMicroArrears () {      //IS-507
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
-        
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MICRO').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2C_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
-            }
-        }
-        Product2 prod = [SELECT Id FROM Product2].get(0);
-        PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-        
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_FAMILE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_TypeFacturation__c' => 'Arrears',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'Recurring',
-                'SBQQ__BillingType__c' => 'Arrears',
-                'LPCR_Region__c' => 'Paris',
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
+            }
+            Integer invoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MICRO').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2C_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_FAMILE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_TypeFacturation__c' => 'Arrears',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Arrears',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order];
             for (Order order : orders) {
@@ -726,90 +882,89 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
         
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2B_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
-            }
-        }
-        Product2 prod = [SELECT Id FROM Product2].get(0);
-        PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-        
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_TypeFacturation__c' => 'Advance',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'Recurring',
-                'SBQQ__BillingType__c' => 'Advance',
-                'LPCR_Region__c' => 'Paris',
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
+            }
+            Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2B_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_TypeFacturation__c' => 'Advance',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Advance',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order];
             for (Order order : orders) {
@@ -843,91 +998,91 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
     private static void testSetupInvoiceDatesEnterpriseMonthlyArrears () {     
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
-        
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2B_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
-            }
-        }
-        Product2 prod = [SELECT Id FROM Product2].get(0);
-        PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-        
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_TypeFacturation__c' => 'Arrears',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'Recurring',
-                'SBQQ__BillingType__c' => 'Arrears',
-                'LPCR_Region__c' => 'Paris',
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
+            }
+            Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2B_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_TypeFacturation__c' => 'Arrears',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Arrears',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            
+            
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order];
             for (Order order : orders) {
@@ -961,92 +1116,92 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
     private static void testSetupInvoiceDatesEnterpriseQuaterlyAdvance () {      //IS-529
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
-        
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2B_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
-            }
-        }
-        Product2 prod = [SELECT Id FROM Product2].get(0);
-        PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-        
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Quarterly',
-                'LPCR_TypeFacturation__c' => 'Advance',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        
-
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'Recurring',
-                'SBQQ__BillingType__c' => 'Advance',
-                'LPCR_Region__c' => 'Paris',
-                'SBQQ__BillingFrequency__c' => 'Quarterly',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
+            }
+            Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2B_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Quarterly',
+                    'LPCR_TypeFacturation__c' => 'Advance',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Advance',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingFrequency__c' => 'Quarterly',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            
+            
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order];
             for (Order order : orders) {
@@ -1086,100 +1241,102 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
         
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2B_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
-            }
-        }
-        Product2 prod = [SELECT Id FROM Product2].get(0);
-        PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-        
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business',
-                'LPCR_TypeFacturation__c'=>'Arrears'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Quarterly',
-                'LPCR_TypeFacturation__c' => 'Arrears',
-                'SBQQ__BillingType__c' => 'Arrears',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        quote = [SELECT SBQQ__BillingFrequency__c,LPCR_TypeFacturation__c FROM SBQQ__Quote__c where Id = :quote.Id ];
-
-
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'Recurring',
-                'SBQQ__BillingType__c' => 'Arrears',
-                'LPCR_Region__c' => 'Paris',
-                'SBQQ__BillingFrequency__c' => 'Quarterly',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
+            }
+            Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2B_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business',
+                    'LPCR_TypeFacturation__c'=>'Arrears'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Quarterly',
+                    'LPCR_TypeFacturation__c' => 'Arrears',
+                    'SBQQ__BillingType__c' => 'Arrears',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
+                    };
+                        
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            quote = [SELECT SBQQ__BillingFrequency__c,LPCR_TypeFacturation__c FROM SBQQ__Quote__c where Id = :quote.Id ];
+            system.debug('quote : SBQQ__BillingType__c ===== '+quote.SBQQ__BillingFrequency__c);
+            system.debug('quote : LPCR_TypeFacturation__c ===== '+quote.LPCR_TypeFacturation__c);
+            
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Arrears',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingFrequency__c' => 'Quarterly',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , LPCR_TypeFacturation__c,SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order WHERE SBQQ__Quote__c= :quote.Id];
             for (Order order : orders) {
                 order.LPCR_TypeFacturation__c='Arrears';
-
+                
                 order.blng__BillingAccount__c = order.blng__BillingAccount__c == null && order.AccountId != null 
                     ? order.AccountId
                     : order.blng__BillingAccount__c;
@@ -1216,91 +1373,91 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
     private static void testSetupInvoiceDatesEnterpriseSemiannualAdvance () {      //IS-529
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
-        
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2B_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
-            }
-        }
-        Product2 prod = [SELECT Id FROM Product2].get(0);
-        PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-        
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Semiannual',
-                'LPCR_TypeFacturation__c' => 'Advance',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'Recurring',
-                'SBQQ__BillingType__c' => 'Advance',
-                'LPCR_Region__c' => 'Paris',
-                'SBQQ__BillingFrequency__c' => 'Semiannual',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
+            }
+            Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2B_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Semiannual',
+                    'LPCR_TypeFacturation__c' => 'Advance',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Advance',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingFrequency__c' => 'Semiannual',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            
+            
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order];
             for (Order order : orders) {
@@ -1338,91 +1495,91 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
     private static void testSetupInvoiceDatesEnterpriseSemiannualArrears () {      
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
-        
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2B_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
-            }
-        }
-        Product2 prod = [SELECT Id FROM Product2].get(0);
-        PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-        
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Semiannual',
-                'LPCR_TypeFacturation__c' => 'Arrears',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'Recurring',
-                'SBQQ__BillingType__c' => 'Arrears',
-                'LPCR_Region__c' => 'Paris',
-                'SBQQ__BillingFrequency__c' => 'Semiannual',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
+            }
+            Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2B_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Semiannual',
+                    'LPCR_TypeFacturation__c' => 'Arrears',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Arrears',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingFrequency__c' => 'Semiannual',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            
+            
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order];
             for (Order order : orders) {
@@ -1466,89 +1623,89 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
     private static void testSetupInvoiceDatesEnterpriseSemiannualArrearsOneTime() {      
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
-        
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2B_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
-            }
-        }
-        Product2 prod = [SELECT Id FROM Product2].get(0);
-        PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-        
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Semiannual',
-                'LPCR_TypeFacturation__c' => 'Arrears',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'One-Time',
-                'LPCR_Region__c' => 'Paris',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
+            }
+            Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2B_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Semiannual',
+                    'LPCR_TypeFacturation__c' => 'Arrears',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'One-Time',
+                    'LPCR_Region__c' => 'Paris',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            
+            
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order];
             for (Order order : orders) {
@@ -1571,11 +1728,11 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             Date expectedDate = System.today().addDays(invoiceDelta);
             
             for (OrderItem oi : mapOrderItem.values()) {
-
+                
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 
-
+                
                 System.assertEquals(null, oi.blng__BillThroughDateOverride__c);
                 
                 Date expectedOverrideNextBillingDate = !UM005_DateUtility.semiannualMonths.contains(oi.blng__NextBillingDate__c.month()) || oi.blng__NextChargeDate__c.day() != 1
@@ -1591,89 +1748,89 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
     private static void testSetupInvoiceDatesEnterpriseQuarterlyArrearsOneTime() {      
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
-        
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2B_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
-            }
-        }
-        Product2 prod = [SELECT Id FROM Product2].get(0);
-        PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-        
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Quarterly',
-                'LPCR_TypeFacturation__c' => 'Arrears',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'One-Time',
-                'LPCR_Region__c' => 'Paris',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
+            }
+            Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2B_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Product2 prod = [SELECT Id FROM Product2].get(0);
+            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
+            
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Quarterly',
+                    'LPCR_TypeFacturation__c' => 'Arrears',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
+                'SBQQ__RenewalUpliftRate__c' => 10
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'One-Time',
+                    'LPCR_Region__c' => 'Paris',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            
+            
             //Update orders to trigger OrderItem Update => test setupInvoiceDates
             List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order];
             for (Order order : orders) {
@@ -1696,11 +1853,11 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             Date expectedDate = System.today().addDays(invoiceDelta);
             
             for (OrderItem oi : mapOrderItem.values()) {
-
+                
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 
-
+                
                 System.assertEquals(null, oi.blng__BillThroughDateOverride__c);
                 
                 Date expectedOverrideNextBillingDate = !UM005_DateUtility.quarterlyMonths.contains(oi.blng__NextBillingDate__c.month()) || oi.blng__NextChargeDate__c.day() != 1
@@ -1710,7 +1867,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             }
         }
     }
-
+    
     
     
     @IsTest
@@ -1747,118 +1904,120 @@ System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.bln
     static void setInvoiceGrouping_Test(){
         Account customerAcc = null;
         List<Account> creches = new List<Account> ();
-        
-        blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
-        blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
-        blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
-        blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
-        
-        // Load Contract Type Conf
-        Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-        for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-            mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-        }
-        Integer invoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MICRO').LPCR_JourFacturation__c);
-        
-        //setup data for this particular test
-        List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-        for (Account a : accounts) {
-            if (a.RecordTypeId == B2C_RT_ID) {
-                customerAcc = a;
-            } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                creches.add (a);
+        System.runAs(UM002_TestDataFactory.createUser()){    
+            Test.startTest();
+            blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+            blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+            blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+            blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
+            
+            // Load Contract Type Conf
+            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
+            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
+                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
             }
-        }
-        Map<String, Object> defaultVal = new Map<String, Object> {
-            'Name' => 'prod2-test',
+            Integer invoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MICRO').LPCR_JourFacturation__c);
+            
+            //setup data for this particular test
+            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
+            for (Account a : accounts) {
+                if (a.RecordTypeId == B2C_RT_ID) {
+                    customerAcc = a;
+                } else if (a.RecordTypeId == CRECHE_RT_ID) {
+                    creches.add (a);
+                }
+            }
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'Name' => 'prod2-test',
+                    'isActive' => true,
+                    'blng__BillingRule__c' => billingRule.Id,
+                    'blng__RevenueRecognitionRule__c' => revRecRule.Id,
+                    'blng__TaxRule__c' => taxRule.Id,
+                    'SBQQ__SubscriptionPricing__c' => 'Fixed Price',
+                    'ProductCode' => Label.Product_Code_Depot_Garantie
+                    };
+                        
+                        Product2 prod2 = (Product2) UM002_TestDataFactory.createSObject('Product2', defaultVal);
+            insert prod2;
+            
+            defaultVal = new Map<String, Object> {
                 'isActive' => true,
-                'blng__BillingRule__c' => billingRule.Id,
-                'blng__RevenueRecognitionRule__c' => revRecRule.Id,
-                'blng__TaxRule__c' => taxRule.Id,
-                'SBQQ__SubscriptionPricing__c' => 'Fixed Price',
-                'ProductCode' => Label.Product_Code_Depot_Garantie
-                };
-                    
-                    Product2 prod2 = (Product2) UM002_TestDataFactory.createSObject('Product2', defaultVal);
-        insert prod2;
-        
-        defaultVal = new Map<String, Object> {
-            'isActive' => true,
-                'UnitPrice' => 100,
-                'Product2Id' => prod2.Id,
-                'Pricebook2Id' => standardPricebookId
-                };
-                    
-                    PricebookEntry priceBookEntry = (PricebookEntry) UM002_TestDataFactory.createSObject('PricebookEntry', defaultVal);
-        insert priceBookEntry;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => OPPT_FAMILE_RT_ID,
-                'AccountId' => customerAcc.Id,
-                'Name' => 'test-oppt',
-                'StageName' => 'Signée',
-                'CloseDate' => System.today(),
-                'Pricebook2Id' => standardPricebookId,
-                'Type' => 'New Business'
-                };
-                    
-                    Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert opp;
-        
-        defaultVal = new Map<String, Object> {
-            'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                'SBQQ__Account__c' => customerAcc.Id,
-                'SBQQ__SubscriptionTerm__c' => 12,
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_TypeFacturation__c' => 'Advance',
-                'LPCR_IndexationConvenue__c' => 'Oui',
-                'SBQQ__StartDate__c' => System.today(),
-                'SBQQ__PricebookId__c' => standardPricebookId,
-                'SBQQ__PriceBook__c' => standardPricebookId,
-                'SBQQ__Type__c' => 'Quote',
-                'SBQQ__QuoteLanguage__c' => 'English',
-                'SBQQ__BillingCity__c' => 'Paris',
-                'SBQQ__Primary__c' => true,
-                'SBQQ__Opportunity2__c' => opp.Id,
+                    'UnitPrice' => 100,
+                    'Product2Id' => prod2.Id,
+                    'Pricebook2Id' => standardPricebookId
+                    };
+                        
+                        PricebookEntry priceBookEntry = (PricebookEntry) UM002_TestDataFactory.createSObject('PricebookEntry', defaultVal);
+            insert priceBookEntry;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_FAMILE_RT_ID,
+                    'AccountId' => customerAcc.Id,
+                    'Name' => 'test-oppt',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => standardPricebookId,
+                    'Type' => 'New Business'
+                    };
+                        
+                        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert opp;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
+                    'SBQQ__Account__c' => customerAcc.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_TypeFacturation__c' => 'Advance',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => standardPricebookId,
+                    'SBQQ__PriceBook__c' => standardPricebookId,
+                    'SBQQ__Type__c' => 'Quote',
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => opp.Id,
                 'SBQQ__RenewalUpliftRate__c' => 10
-                };
-                    
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        insert quote;
-        
-        Integer price = 200;
-        defaultVal = new Map<String, Object> {
-            'Name' => 'prod2-test',
-                'SBQQ__StartDate__c' => System.Today(),
-                'SBQQ__Product__c' => prod2.Id,
-                'SBQQ__Quantity__c' => 1,
-                'SBQQ__ListPrice__c' => price,
-                'SBQQ__CustomerPrice__c' => price,
-                'SBQQ__NetPrice__c' => price,
-                'SBQQ__SpecialPrice__c' => price,
-                'SBQQ__Quote__c' => quote.Id,
-                'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                'SBQQ__PricingMethod__c' => 'List',
-                'SBQQ__ChargeType__c' => 'Recurring',
-                'SBQQ__BillingType__c' => 'Advance',
-                'LPCR_Region__c' => 'Paris',
-                'SBQQ__BillingFrequency__c' => 'Monthly',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
-                };
-                    
-                    SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
-        
-        opp.SBQQ__PrimaryQuote__c = quote.Id;
-        update opp;
-        
-        
-        Test.startTest();
-        //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-        System.assertEquals(Label.InvoiceGrouping_SeperateInvoice, [select id,blng__InvoiceGrouping__c from orderitem limit 1].blng__InvoiceGrouping__c);
-        Test.stopTest();
-        
+                    };
+                        
+                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quote;
+            
+            Integer price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'prod2-test',
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod2.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quote.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Advance',
+                    'LPCR_Region__c' => 'Paris',
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert quoteLine;
+            
+            opp.SBQQ__PrimaryQuote__c = quote.Id;
+            update opp;
+            
+            
+            
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+            System.assertEquals(Label.InvoiceGrouping_SeperateInvoice, [select id,blng__InvoiceGrouping__c from orderitem limit 1].blng__InvoiceGrouping__c);
+            Test.stopTest();
+            
+        }    
     }
-
+    
 }
