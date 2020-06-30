@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_SecteurGeoGraphique__c</fullName>
+    <externalId>false</externalId>
+    <label>Département</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Île de France</fullName>
+                <default>false</default>
+                <label>Île de France</label>
+            </value>
+            <value>
+                <fullName>Autres régions</fullName>
+                <default>false</default>
+                <label>Autres régions</label>
+            </value>
+            <value>
+                <fullName>A l&apos;étranger</fullName>
+                <default>false</default>
+                <label>A l&apos;étranger</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
