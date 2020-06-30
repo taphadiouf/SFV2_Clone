@@ -266,6 +266,36 @@
         <operation>Literal</operation>
         <protected>false</protected>
     </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RT_Contrat_accueil_approuve</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Contrat_Accueil_Approuve</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>RT Contrat d&apos;accueil approuvé</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RT_Contrat_referencement_approuve</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Referencement_Approuve</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>RT Contrat de référencement approuvé</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RT_Contrat_reservataire_approuve</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Reservataire_Approuve</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>RT Contrat réservataire approuvé</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
     <rules>
         <fullName>Alerte Service Famille</fullName>
         <actions>
