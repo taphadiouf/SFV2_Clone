@@ -9,7 +9,7 @@ public class SM010_ContractServices {
 /**
 * @Author Ayoub Ouarti
 * @Created 23/03/2020
-* @Description methode setContractFields to set Contract fields from Quote before Insert
+* @Description methode setContractFields to set Contract fields from Quote, Order before Insert
 * @Inputs List<Contract> contracts
 */
     public static void setContractFields(List<Contract> contracts){
@@ -17,26 +17,13 @@ public class SM010_ContractServices {
 
         Set<String> quoteIds = UM003_TypeManager.getFieldsOfListObjects(contracts,'SBQQ__Quote__c');
         Set<String> orderIds = UM003_TypeManager.getFieldsOfListObjects(contracts,'SBQQ__Order__c');
-        Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_InitAutoAvecDateDebut__c,LPCR_DureeContratJour__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_IndexationConvenue__c,LPCR_MasterDevis__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c , recordtype.DeveloperName, LPCR_PlanningEnfant__c, SBQQ__SalesRep__c,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, SBQQ__Type__c, recordtype.name, LPCR_ContractEntreprise__c   from SBQQ__Quote__c WHERE Id in :quoteIds]);
-        Map<Id,Order> orderMap = new  Map<Id,Order>([SELECT id,SBQQ__Quote__c,SBQQ__Quote__r.LPCR_BatchCommande__c from Order WHERE Id in :orderIds]);
-        
-        
-        
-        
+        Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_InitAutoAvecDateDebut__c,LPCR_DureeContratJour__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_IndexationConvenue__c,LPCR_MasterDevis__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c , recordtype.DeveloperName, LPCR_PlanningEnfant__c, SBQQ__SalesRep__c,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, SBQQ__Type__c, recordtype.name, LPCR_ContractEntreprise__c  from SBQQ__Quote__c WHERE Id in :quoteIds]);
+        Map<Id,Order> orderMap = new  Map<Id,Order>([SELECT id,LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c,SBQQ__Quote__r.SBQQ__Type__c,SBQQ__Quote__r.LPCR_NouveauPlanFacture__c ,SBQQ__Quote__r.LPCR_RenouvellementPlanFacture__c, SBQQ__Quote__c,SBQQ__Quote__r.LPCR_BatchCommande__c from Order WHERE Id in :orderIds]);
+
         Set<String> quoteOrderIds = UM003_TypeManager.getFieldsOfListObjects(orderMap.values(),'SBQQ__Quote__c');
-        Map<Id,SBQQ__Quote__c> quoteOrderMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id, recordtype.DeveloperName, LPCR_PlanningEnfant__c, LPCR_EntiteJuridique__c , recordtype.name, LPCR_ContractEntreprise__c, LPCR_Creche__c, LPCR_TypeCreche__c, LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Region__c, LPCR_CompteFacturation__c, LPCR_ContactEnfant__c  from SBQQ__Quote__c WHERE Id in :quoteOrderIds]);
-        
-        
-        
+        Map<Id,SBQQ__Quote__c> quoteOrderMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id, recordtype.DeveloperName, LPCR_PlanningEnfant__c, LPCR_EntiteJuridique__c , recordtype.name, LPCR_ContractEntreprise__c, LPCR_Creche__c, LPCR_TypeCreche__c, LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Region__c, LPCR_CompteFacturation__c, LPCR_ContactEnfant__c, SBQQ__Type__c   from SBQQ__Quote__c WHERE Id in :quoteOrderIds]);
 
         for (Contract eachContract : contracts){
-
-            // fix merge by ayoub to add akshayeSF code  
-            if(orderMap.containsKey(eachContract.SBQQ__Order__c)){
-                if(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c != null && orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c != null ){
-                    eachContract.LPCR_BatchCommande__c = orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c;
-                }
-            }
 
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){
                 // IS-1115 fixes added by saurabh
@@ -47,31 +34,29 @@ public class SM010_ContractServices {
                         eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_MasterDevis__c;
                     }                   
                 } 
-                system.debug('first method');
                 eachContract =setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(eachContract.SBQQ__Quote__c));
-                system.debug('eachContract'+eachContract);
                } 
-                
-            
-            
-            
-            
+
                 if(orderMap.containsKey(eachContract.SBQQ__Order__c) && 
                	quoteOrderMap.containsKey(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
-                    system.debug('second Method');
                 	eachContract=setContractFieldsFromOrderQuoteMaper(eachContract,quoteOrderMap.get(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
-                    system.debug('aaaa'+eachContract);
             	}
-            
-            
-            
+
+            if(orderMap.containsKey(eachContract.SBQQ__Order__c)){
+                if(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c != null && orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c != null ){
+                    eachContract.LPCR_BatchCommande__c = orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c;
+                }
+                if(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.SBQQ__Type__c  != 'Renewal'){
+                    eachContract.LPCR_NouveauPlanFacture__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_NouveauPlanFacture__c;
+                    eachContract.LPCR_RenouvellementPlanFacture__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_RenouvellementPlanFacture__c;
+                
+                }else{
+                    eachContract.LPCR_NouveauPlanFacture__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_NouveauPlanFacture__c;
+                    eachContract.LPCR_RenouvellementPlanFacture__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_RenouvellementPlanFacture__c;
+
+                }
             }
-            
-            
-           
-            
-            
-        
+        }
     }
     public static void setTypeEnregistrement(List<Contract> contracts){
         Set<Id> orderIdsSet = new Set<Id>();
@@ -104,7 +89,7 @@ public class SM010_ContractServices {
         
         Map<Id,Order> mapOrders = new Map<Id,Order>([SELECT Id,SBQQ__Quote__c from Order WHERE Id in :orderIds ]);
         Set<String> quoteIds = UM003_TypeManager.getFieldsOfListObjects(mapOrders.values(),'SBQQ__Quote__c');
-        Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_InitAutoAvecDateDebut__c,LPCR_DureeContratJour__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_IndexationConvenue__c,LPCR_MasterDevis__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c, recordtype.name, LPCR_PlanningEnfant__c,SBQQ__SalesRep__c,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, LPCR_EntiteJuridique__c, recordtype.DeveloperName, LPCR_ContractEntreprise__c, LPCR_Creche__c, LPCR_TypeCreche__c, LPCR_ContactRepresentant1__c, LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Region__c, LPCR_CompteFacturation__c, LPCR_ContactEnfant__c  from SBQQ__Quote__c WHERE Id in :quoteIds]);
+        Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_InitAutoAvecDateDebut__c,LPCR_DureeContratJour__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_IndexationConvenue__c,LPCR_MasterDevis__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c, recordtype.name, LPCR_PlanningEnfant__c,SBQQ__SalesRep__c,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, LPCR_EntiteJuridique__c, recordtype.DeveloperName, LPCR_ContractEntreprise__c, LPCR_Creche__c, LPCR_TypeCreche__c, LPCR_ContactRepresentant1__c, LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Region__c, LPCR_CompteFacturation__c, LPCR_ContactEnfant__c, SBQQ__Type__c   from SBQQ__Quote__c WHERE Id in :quoteIds]);
         
         //  Check if the Order is getting changed, If so , updating the fields 
         for(Contract eachContract : newContractMap.values()){
@@ -124,12 +109,9 @@ public class SM010_ContractServices {
 * Updated by Hanae Makboub deleting some fields 
 */
     public static Contract setContractFieldsFromQuoteMaper(Contract contract,SBQQ__Quote__c quote){
-        system.debug('azerty');
-        system.debug('quote'+quote);
-        system.debug('quote.RectyPe'+quote.recordtype.DeveloperName);
+        
         Pad.log('SM010_ContractServices','setContractFieldsFromQuoteMaper(SBQQ__Quote__c quote)','quote : '+quote);
 
-      
         contract.LPCR_IndexationConvenue__c = quote.LPCR_IndexationConvenue__c;
         
         contract.LPCR_TypeFacturation__c = quote.LPCR_TypeFacturation__c;
@@ -141,9 +123,7 @@ public class SM010_ContractServices {
         contract.LPCR_DateFin__c = quote.LPCR_DateFin__c;
         
         contract.LPCR_ChiffreAffaire__c = quote.LPCR_ChiffreAffaire__c;
-        
-        //contract.LPCR_PlanningEnfant__c = quote.LPCR_PlanningEnfant__c;
-        
+                
         contract.LPCR_MethodeRenouvellement__c = quote.LPCR_MethodeRenouvellement__c;
         
         contract.LPCR_RenouvellementAutomatique__c = quote.SBQQ__RenewalUpliftRate__c == null ? false : true;
@@ -159,13 +139,6 @@ public class SM010_ContractServices {
         
         contract.LPCR_ResponsableServiceFamille__c = quote.LPCR_ResponsableServiceFamille__c;
 
-        /////////////
-        /*if(quote.recordtype.DeveloperName == Label.LPCR_ContratA) {
-            system.debug('eeeee');
-            contract.LPCR_ContractEntreprise__c = quote.LPCR_ContractEntreprise__c;
-            system.debug('contract.LPCR_ContractEntreprise__c'+contract.LPCR_ContractEntreprise__c);
-            
-        }*/
         return contract;
     }
     
@@ -180,7 +153,7 @@ public class SM010_ContractServices {
     public static Contract setContractFieldsFromOrderQuoteMaper(Contract contract,SBQQ__Quote__c quote){
         contract.LPCR_CompteFacturation__c = quote.LPCR_CompteFacturation__c ;
         if(quote.recordtype.DeveloperName == Label.LPCR_ContratA) {
-            system.debug('xxxxxx');
+            
             contract.LPCR_EntiteJuridique__c  = quote.LPCR_EntiteJuridique__c ;
             
             contract.LPCR_Creche__c = quote.LPCR_Creche__c ;
@@ -188,16 +161,16 @@ public class SM010_ContractServices {
             contract.LPCR_Region__c  = quote.LPCR_Region__c ;
             
             contract.LPCR_ContactEnfant__c = quote.LPCR_ContactEnfant__c ;
-                        
+                         
             contract.LPCR_TypeCreche__c = quote.LPCR_TypeCreche__c ;
             
             contract.LPCR_PlanningEnfant__c = quote.LPCR_PlanningEnfant__c;
             
             contract.LPCR_ContractEntreprise__c = quote.LPCR_ContractEntreprise__c;
             
-           	//contact.LPCR_ContactRepresentant1__c   = quote.LPCR_ContactRepresentant1__c  ;
+           	contract.LPCR_ContactRepresentant1__c   = quote.LPCR_ContactRepresentant1__c  ;
             
-            //contact.LPCR_ContactRepresentant2__c  = quote.LPCR_ContactRepresentant2__c  ;
+            contract.LPCR_ContactRepresentant2__c  = quote.LPCR_ContactRepresentant2__c  ;
             
             contract.LPCR_CongesJours__c = quote.LPCR_CongesJours__c ;
             

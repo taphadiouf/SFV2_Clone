@@ -8,13 +8,8 @@ public class MCK001_LPCRHttpCalloutMockImpl_Test {
 	@isTest
     static void SaveDocumentCallout_1_Test(){
         Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-        WRP004_APISaveDocument data = new WRP004_APISaveDocument();
-        data.doc_sf_id = '000000000000000000'; 
-        data.doc_type = 'test';  // obligatoitre
-        data.doc_owner_sf_id = '000000000000000000'; // obligatoitre   
-        data.doc_status = 'draft'; // obligatoitre
-        data.doc_name = 'test'; // obligatoitre
-        data.doc_file_type = 'pdf'; // obligatoitre         
+        WRP004_APISaveDocument data = new WRP004_APISaveDocument('Facture','000000000000000000','Validé','Test','PDF');  
+             
         String body = JSON.serialize(data);
         Http http = new Http();
         HttpRequest req = new HttpRequest();
@@ -29,12 +24,7 @@ public class MCK001_LPCRHttpCalloutMockImpl_Test {
     @isTest
     static void SaveDocumentCallout_2_Test(){
         Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-        WRP004_APISaveDocument data = new WRP004_APISaveDocument();
-        data.doc_sf_id = '000000000000000000'; 
-        data.doc_type = 'test';  // obligatoitre
-        data.doc_owner_sf_id = '000000000000000000'; // obligatoitre   
-        data.doc_status = 'draft'; // obligatoitre
-        data.doc_name = 'test'; // obligatoitre         
+        WRP004_APISaveDocument data = new WRP004_APISaveDocument('Test','000000000000000000','Validé','Test','PDF');        
         String body = JSON.serialize(data);
         
         Http http = new Http();
