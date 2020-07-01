@@ -16,7 +16,9 @@ public with sharing class SM014_OrderServices {
         Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_CompteFacturation__c,SBQQ__BillingFrequency__c  ,LPCR_BatchCommande__c from SBQQ__Quote__c WHERE Id in :quoteIds]);
         
         for (Order eachOrder : orderList){
-            if(quoteMap.containsKey(eachOrder.SBQQ__Quote__c)){
+           eachOrder.blng__BillingDayOfMonth__c  =  eachOrder.LPCR_InitAutoAvecDateDebut__c ?  eachOrder.EffectiveDate.day()+'' : eachOrder.blng__BillingDayOfMonth__c;
+
+            if(Trigger.isInsert && quoteMap.containsKey(eachOrder.SBQQ__Quote__c)){
                 eachOrder.blng__InvoiceBatch__c = quoteMap.get(eachOrder.SBQQ__Quote__c).LPCR_BatchCommande__c;
                 eachOrder.LPCR_FrequenceFacturation__c  = quoteMap.get(eachOrder.SBQQ__Quote__c).SBQQ__BillingFrequency__c;
                 eachOrder.blng__BillingAccount__c = quoteMap.get(eachOrder.SBQQ__Quote__c).LPCR_CompteFacturation__c;

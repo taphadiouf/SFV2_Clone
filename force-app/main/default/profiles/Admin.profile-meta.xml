@@ -8493,8 +8493,16 @@
         <recordType>SBQQ__Quote__c.Contrat_Accueil</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>SBQQ__Quote__c-Contrat d%27accueil Approuvé</layout>
+        <recordType>SBQQ__Quote__c.Contrat_Accueil_Approuve</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>SBQQ__Quote__c-Référencement</layout>
         <recordType>SBQQ__Quote__c.Referencement</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>SBQQ__Quote__c-Référencement Approuvé</layout>
+        <recordType>SBQQ__Quote__c.Referencement_Approuve</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>SBQQ__Quote__c-Réservataire</layout>
@@ -8502,6 +8510,10 @@
     <layoutAssignments>
         <layout>SBQQ__Quote__c-Réservataire</layout>
         <recordType>SBQQ__Quote__c.Reservataire</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>SBQQ__Quote__c-Réservataire Approuvé</layout>
+        <recordType>SBQQ__Quote__c.Reservataire_Approuve</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Task-Présentation de la tâche</layout>
@@ -8996,12 +9008,27 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
+        <recordType>SBQQ__Quote__c.Contrat_Accueil_Approuve</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
         <recordType>SBQQ__Quote__c.Referencement</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
+        <recordType>SBQQ__Quote__c.Referencement_Approuve</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
         <recordType>SBQQ__Quote__c.Reservataire</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>SBQQ__Quote__c.Reservataire_Approuve</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
