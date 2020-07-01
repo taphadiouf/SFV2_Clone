@@ -5,7 +5,7 @@
 */
 public with sharing class SM016_SendMail_Callout {
 
-    public static HttpResponse sendMailCallout(String from1, String to, String subject, String body, Integer[] docsId) {
+    public static HttpResponse sendMailCallout(String from1, String to, String subject, String body, Set<String> docsId) {
         Http http = new Http();
         HttpRequest request = new HttpRequest();
         request.setEndpoint('callout:SendMailService');
@@ -28,8 +28,8 @@ public with sharing class SM016_SendMail_Callout {
         private String to;
         private String subject;
         private String body;
-        private Integer[] docsId;
-        public EmailStructureWrapper(String from1, String to, String subject, String body, Integer[] docsId){
+        private Set<String> docsId;
+        public EmailStructureWrapper(String from1, String to, String subject, String body, Set<String> docsId){
             this.from1 = from1;
             this.to = to;
             this.subject = subject;

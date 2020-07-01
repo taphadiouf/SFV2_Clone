@@ -124,7 +124,9 @@ public class SM010_ContractServices {
         
         contract.LPCR_ChiffreAffaire__c = quote.LPCR_ChiffreAffaire__c;
                 
-        contract.LPCR_MethodeRenouvellement__c = quote.LPCR_MethodeRenouvellement__c;
+        if(quote.recordtype.name == Label.LPCR_Referencement || quote.recordtype.name == Label.LPCR_Reservataire ) {
+            contract.LPCR_MethodeRenouvellement__c = quote.LPCR_MethodeRenouvellement__c;
+        }
         
         contract.LPCR_RenouvellementAutomatique__c = quote.SBQQ__RenewalUpliftRate__c == null ? false : true;
         
