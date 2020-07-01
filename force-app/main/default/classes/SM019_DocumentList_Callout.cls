@@ -4,7 +4,7 @@
 * @Description Document List external service callout
 */
 public with sharing class SM019_DocumentList_Callout {
-    public static HttpResponse getDocumentListCallout(String ownerid, String doc_type) {
+    public static DocumentListFullResponse getDocumentListCallout(String ownerid, String doc_type) {
         
         DocumentListFullResponse documentListFullResponse = new DocumentListFullResponse();
         
@@ -23,8 +23,9 @@ public with sharing class SM019_DocumentList_Callout {
                 documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         } else {
             System.debug(response.getBody());
+            documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         }
-        return response;
+        return documentListFullResponse;
     }
 
     public class DocumentListStructureWrapper{

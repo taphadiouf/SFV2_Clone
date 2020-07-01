@@ -11,11 +11,11 @@ public class SM019_DocumentList_Callout_Test {
 		Test.startTest();
         
         Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-      	HttpResponse result = SM019_DocumentList_Callout.getDocumentListCallout('000000000000000', 'Facture');
+      	SM019_DocumentList_Callout.DocumentListFullResponse documentListFullResponse = SM019_DocumentList_Callout.getDocumentListCallout('000000000000000', 'Facture');
         // Verify mock response is not null
-        System.assertNotEquals(null, result, 'The callout result returned is null.');
+        System.assertNotEquals(null, documentListFullResponse, 'The callout result returned is null.');
         // Verify status code
-        System.assertEquals(200,result.getStatusCode(), 'The status code is not 200.'); 
+        System.assertEquals('200',documentListFullResponse.result, 'The status code is not 200.'); 
         Test.stopTest();
               
     }
@@ -24,11 +24,11 @@ public class SM019_DocumentList_Callout_Test {
 		Test.startTest();
         
         Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-      	HttpResponse result = SM019_DocumentList_Callout.getDocumentListCallout('', 'Facture');
+      	SM019_DocumentList_Callout.DocumentListFullResponse documentListFullResponse = SM019_DocumentList_Callout.getDocumentListCallout('', 'Facture');
         // Verify mock response is not null
-        System.assertNotEquals(null, result, 'The callout result returned is null.');
+        System.assertNotEquals(null, documentListFullResponse, 'The callout result returned is null.');
         // Verify status code
-        System.assertEquals(400,result.getStatusCode(), 'The status code is not 400.'); 
+        System.assertEquals('400',documentListFullResponse.result, 'The status code is not 400.'); 
         Test.stopTest();
               
     }
