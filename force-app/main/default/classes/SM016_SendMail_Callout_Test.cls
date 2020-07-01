@@ -9,7 +9,7 @@ public with sharing class SM016_SendMail_Callout_Test {
     private final static String to;
     private final static String subject;
     private final static String body;
-    private final static Integer[] docsId;
+    private final static Set<String> docsId;
 
     @isTest static void sendMailCallout_200_Test() {
         MCK001_SendMailMock sendMailMock = new MCK001_SendMailMock();
