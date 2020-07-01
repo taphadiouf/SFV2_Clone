@@ -7,6 +7,23 @@
     <members>Standard</members>
     <name>Profile</name>
   </types>
-
+    <types>
+        <members>SBQQ__Quote__c.Contrat_Accueil</members>
+        <members>SBQQ__Quote__c.Contrat_Accueil_Approuve</members>
+        <members>SBQQ__Quote__c.Referencement</members>
+        <members>SBQQ__Quote__c.Referencement_Approuve</members>
+        <members>SBQQ__Quote__c.Reservataire</members>
+        <members>SBQQ__Quote__c.Reservataire_Approuve</members>
+        <name>RecordType</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c-Contrat d%27accueil Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;servataire Approuv&#233;</members>
+        <members>SBQQ__Quote__c-Contrat d%27accueil</members>
+        <members>SBQQ__Quote__c-R&#233;servataire</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement</members>
+        <name>Layout</name>
+    </types>
     <version>48.0</version>
 </Package>
