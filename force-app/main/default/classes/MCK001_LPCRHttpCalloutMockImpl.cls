@@ -34,7 +34,7 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
             System.debug(req.getEndpoint());
             SM019_DocumentList_Callout.DocumentListStructureWrapper data = (SM019_DocumentList_Callout.DocumentListStructureWrapper) JSON.deserialize(req.getBody(), SM019_DocumentList_Callout.DocumentListStructureWrapper.class);
             if(String.isNotBlank(data.ownerid)){
-                res.setBody('{"result":"200"},[{"id":"000000000000000","Facture"}]');
+                res.setBody('{"result":"200","response":[{"id":"102120210212021021","doc_type":"Facture"}]}');
                 res.setStatusCode(200);
             }else{
                 res.setBody('{"result":"400"}');
