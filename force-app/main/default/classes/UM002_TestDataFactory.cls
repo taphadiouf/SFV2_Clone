@@ -1152,7 +1152,7 @@ newMe.FederationIdentifier = null;
         LPCR_ModificationEntrante__c tempModif;
         for(Integer i = 0; i<numRecs; i++){
             tempModif = new LPCR_ModificationEntrante__c(
-                LPCR_Devis__c  = quotes.get(i).Id,
+                //LPCR_Devis__c  = quotes.get(i).Id,
                 LPCR_Evenement__c  = event
             );
             ModifEntrantes.add(tempModif);
