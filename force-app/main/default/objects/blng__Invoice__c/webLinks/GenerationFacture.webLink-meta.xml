@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GenerationFacture</fullName>
+    <availability>online</availability>
+    <description>Génération du document de la facture</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>false</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>660</height>
+    <isResizable>false</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>Génération Facture</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>/apex/csfb__Conga_Composer?SolMgr=1
+&amp;serverUrl={!API.Partner_Server_URL_370}
+&amp;userName={!$User.Username}
+&amp;Id={!blng__Invoice__c.Id}
+
+&amp;QueryId=[LineItems]a4J3O0000008RQg,
+[Usages]a4J3O0000008RQh,
+[CompanyDets]a4J3O0000008RQi
+
+&amp;TemplateId=a4R3O0000008SwF
+
+&amp;FP0=0
+&amp;SC0=1
+&amp;SC1=SalesforceFile
+&amp;OFN=Facture+{!blng__Invoice__c.blng__Account__c}+-+{!TEXT(TODAY())}
+&amp;TemplateGroup=Invoice
+&amp;XDO=CIA
+&amp;ContactId={!blng__Invoice__c.blng__BillToContactId__c}
+&amp;XDO2=GenerateInvoice
+&amp;GEO={!$User.Country}
+&amp;UF0=1
+&amp;MFTS0=LPCR_StatutFacture__c
+&amp;MFTSValue0=Envoyée</url>
+    <width>900</width>
+</WebLink>
