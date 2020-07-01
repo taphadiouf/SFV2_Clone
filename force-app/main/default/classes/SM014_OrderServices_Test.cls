@@ -50,8 +50,11 @@ public class SM014_OrderServices_Test {
     @isTest
     private static void setOrderFieldsTest(){
         System.runAs(UM002_TestDataFactory.createUser()){
+
+            Account acc = [SELECT Id from Account WHERE name ='test' LIMIT 1];
+            SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_CompteFacturation__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
             Test.startTest();
-            SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
+
             quote.SBQQ__Ordered__c  = true; 
             quote.LPCR_IndexationConvenue__c='Oui';
             quote.LPCR_TypeFacturation__c='Arrears';
@@ -61,19 +64,21 @@ public class SM014_OrderServices_Test {
             quote.LPCR_ChiffreAffaire__c = 1000;
             quote.SBQQ__RenewalUpliftRate__c = 2; 
             quote.LPCR_BatchCommande__c = 'Batch 2';
+            quote.LPCR_CompteFacturation__c = acc.Id;
             quote.LPCR_InitAutoAvecDateDebut__c = true;
-            
-        
+
             update quote;
             Test.stopTest();
             
-            Order order = Database.query('SELECT Id, blng__BillingDayOfMonth__c,EffectiveDate,LPCR_TypeFacturation__c,LPCR_FrequenceFacturation__c , Status ,blng__InvoiceBatch__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
-            System.assertEquals('Batch 2', order.blng__InvoiceBatch__c,'blng__InvoiceBatch__c on the quote is not the same on the order');
-			System.assertEquals(quote.SBQQ__BillingFrequency__c, order.LPCR_FrequenceFacturation__c,'SBQQ__BillingFrequency__c on the quote is not the same on the order');
-			System.assertEquals(quote.LPCR_TypeFacturation__c, order.LPCR_TypeFacturation__c,'LPCR_TypeFacturation__c on the quote is not the same on the order');
-            System.assertEquals(order.EffectiveDate.day()+'', order.blng__BillingDayOfMonth__c,'blng__BillingDayOfMonth__c on the Order wrong');
 
-            
+            Order order = Database.query('SELECT Id,blng__BillingAccount__c, blng__BillingDayOfMonth__c,EffectiveDate,LPCR_TypeFacturation__c,LPCR_FrequenceFacturation__c , Status ,blng__InvoiceBatch__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
+            System.assertEquals('Batch 2', order.blng__InvoiceBatch__c,'blng__InvoiceBatch__c on the quote is not the same on the order');
+			      System.assertEquals(quote.SBQQ__BillingFrequency__c, order.LPCR_FrequenceFacturation__c,'SBQQ__BillingFrequency__c on the quote is not the same on the order');
+			      System.assertEquals(quote.LPCR_TypeFacturation__c, order.LPCR_TypeFacturation__c,'LPCR_TypeFacturation__c on the quote is not the same on the order');
+            System.assertEquals(order.EffectiveDate.day()+'', order.blng__BillingDayOfMonth__c,'blng__BillingDayOfMonth__c on the Order wrong');
+            System.assertEquals(quote.LPCR_CompteFacturation__c, order.blng__BillingAccount__c,'blng__BillingAccount__c on the Order is not the same on the Quote LPCR_CompteFacturation__c');
+
+
         }
     }
     
