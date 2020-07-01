@@ -5,9 +5,6 @@
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
     <excludeButtons>PartnerScorecard</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
@@ -412,11 +409,15 @@
     </relatedLists>
     <relatedLists>
         <fields>CONTRACT.CONTRACT_NUMBER</fields>
-        <fields>CONTRACT.NAME</fields>
-        <fields>CONTRACT.START_DATE</fields>
-        <fields>CONTRACT.END_DATE</fields>
-        <fields>CONTRACT.STATUS</fields>
-        <relatedList>RelatedContractList</relatedList>
+        <fields>SALES.ACCOUNT.NAME</fields>
+        <fields>LPCR_Enfant__c</fields>
+        <fields>LPCR_Section__c</fields>
+        <fields>LPCR_SponsorEntreprise__c</fields>
+        <fields>LPCR_ContractEntreprise__c</fields>
+        <fields>LPCR_StatutContrat__c</fields>
+        <relatedList>Contract.LPCR_Creche__c</relatedList>
+        <sortField>LPCR_StatutContrat__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>CASES.CASE_NUMBER</fields>
@@ -474,7 +475,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3O000000XEpz</masterLabel>
+        <masterLabel>00h1X000001CzeH</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
