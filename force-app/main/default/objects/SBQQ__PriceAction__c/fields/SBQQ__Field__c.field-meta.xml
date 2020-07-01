@@ -212,6 +212,26 @@
                 <default>false</default>
                 <label>SBQQ__Opportunity2__c</label>
             </value>
+            <value>
+                <fullName>SBQQ__StartDate__c</fullName>
+                <default>false</default>
+                <label>SBQQ__StartDate__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__EndDate__c</fullName>
+                <default>false</default>
+                <label>SBQQ__EndDate__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_HoldBilling__c</fullName>
+                <default>false</default>
+                <label>LPCR_HoldBilling__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_HoldReason__c</fullName>
+                <default>false</default>
+                <label>LPCR_HoldReason__c</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -392,6 +412,22 @@
         <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>SBQQ__UpgradedSubscription__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__StartDate__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__EndDate__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_HoldBilling__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_HoldReason__c</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

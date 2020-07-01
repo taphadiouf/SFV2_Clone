@@ -5,6 +5,10 @@
         <formula>Opportunity.AccountId</formula>
     </fieldOverrides>
     <fieldOverrides>
+        <field>LPCR_ResiliationAnticipe__c</field>
+        <literalValue>1 an ferme</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>LPCR_ResponsableADV__c</field>
         <formula>Opportunity.Account.LPCR_ResponsableADV__c</formula>
     </fieldOverrides>
@@ -23,6 +27,10 @@
     <fieldOverrides>
         <field>SBQQ__Primary__c</field>
         <formula>True</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>SBQQ__RenewalUpliftRate__c</field>
+        <formula>3</formula>
     </fieldOverrides>
     <label>Nouveau contrat de référencement</label>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>

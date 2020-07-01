@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Contrat_Accueil</fullName>
+    <fullName>Referencement_Approuve</fullName>
     <active>true</active>
-    <compactLayoutAssignment>PresentationCompacteDevis</compactLayoutAssignment>
-    <label>Contrat D’accueil</label>
+    <description>Type d&apos;enregistrement pour les contrats de référencement approuvés.</description>
+    <label>Référencement Approuvé</label>
     <picklistValues>
         <picklist>ApprovalStatus__c</picklist>
         <values>
@@ -282,11 +282,11 @@
         </values>
         <values>
             <fullName>Monthly</fullName>
-            <default>true</default>
+            <default>false</default>
         </values>
         <values>
             <fullName>Quarterly</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Semiannual</fullName>
@@ -492,7 +492,7 @@
             <default>true</default>
         </values>
         <values>
-            <fullName>Envoi directrice</fullName>
+            <fullName>Envoyé pour signature</fullName>
             <default>false</default>
         </values>
         <values>
@@ -505,10 +505,6 @@
         </values>
         <values>
             <fullName>Terminé</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Validé directrice</fullName>
             <default>false</default>
         </values>
     </picklistValues>
