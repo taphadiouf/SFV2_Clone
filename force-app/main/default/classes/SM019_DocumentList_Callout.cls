@@ -4,8 +4,9 @@
 * @Description Document List external service callout
 */
 public with sharing class SM019_DocumentList_Callout {
+            
+    @AuraEnabled
     public static DocumentListFullResponse getDocumentListCallout(String ownerid, String doc_type) {
-        
         DocumentListFullResponse documentListFullResponse = new DocumentListFullResponse();
         
         Http http = new Http();
@@ -37,12 +38,24 @@ public with sharing class SM019_DocumentList_Callout {
         }
     }
     public class DocumentListFullResponse{
-        public String result;
-        public List<DocumentListResponse> response;
+        @AuraEnabled
+        public String result {get;set;} 
+        @AuraEnabled
+        public List<DocumentListResponse> response {get;set;} 
     }
     public class DocumentListResponse{
-        public String id;
-        public String doc_type;
+        @AuraEnabled
+        public String id {get;set;} 
+        @AuraEnabled
+        public String doc_type {get;set;}
+        @AuraEnabled 
+        public DateTime doc_creation_date {get;set;} 
+        @AuraEnabled
+        public String doc_status {get;set;} 
+        @AuraEnabled
+        public String doc_name {get;set;} 
+        @AuraEnabled
+        public String doc_file_type{get;set;} 
     }
 
 
