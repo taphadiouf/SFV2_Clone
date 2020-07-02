@@ -145,12 +145,15 @@ public class SM008_QuoteServices_Test {
             update opp;
             SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
             quote.SBQQ__Type__c='Renewal';
-            quote.RecordTypeId = ContratA_RT_ID;
+            //quote.RecordTypeId = ContratA_RT_ID;
+            quote.LPCR_TypeEnregistrement__c = Label.LPCR_ContratA;
             
             
             insert quote;
             
-            quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
+            quote = [SELECT Id ,LPCR_IndexationConvenue__c,ApprovalStatus__c, recordtype.developername, recordtypeid,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
+            System.assertEquals('Contrat_Accueil_Approuve',quote.recordtype.developername,'Type enregistrement not updated');
+            System.assertEquals(Label.LPCR_ApprovalStatusApproved,quote.ApprovalStatus__c,'Approval status not updated');
             System.assertNotEquals(null,quote.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
             System.assertEquals(quote.LPCR_IndexationConvenue__c, opp.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
             System.assertEquals(quote.LPCR_TypeFacturation__c, opp.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to oppt LPCR_TypeFacturation__c');
@@ -162,7 +165,7 @@ public class SM008_QuoteServices_Test {
             Test.stopTest();
             
         } }
-     @isTest //added by Ayoub
+    @isTest 
     public static void setQuoteFields_Test2(){    
         
         System.runAs(UM002_TestDataFactory.createUser()){
@@ -231,8 +234,11 @@ public class SM008_QuoteServices_Test {
         accs.add(currentAccount);
 
         SBQQ__Quote__c newQuote = UM002_TestDataFactory.createQuoteswithStatus(1, accs, opps, 'Draft').get(0);
+        newQuote.SBQQ__Type__c = 'Renewal';
         insert newQuote;
+        
         newQuote = [SELECT Id,LPCR_TypeEnregistrement__c FROM SBQQ__Quote__c WHERE Id = :newQuote.Id limit 1];
+      
         System.assertEquals('TestTypeEnregistrement', newQuote.LPCR_TypeEnregistrement__c);
         Test.stopTest();
        

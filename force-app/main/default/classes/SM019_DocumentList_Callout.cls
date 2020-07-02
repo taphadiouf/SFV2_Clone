@@ -19,14 +19,25 @@ public with sharing class SM019_DocumentList_Callout {
         HttpResponse response = http.send(request);
         // Parse the JSON response
         if (response.getStatusCode() == 200) {
-            System.debug('The status code returned was not expected: ' +
-                response.getStatusCode() + ' ' + response.getStatus());
-                documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
+            documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         } else {
-            System.debug(response.getBody());
             documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         }
         return documentListFullResponse;
+    }
+
+    @future(callout=true)
+    public static void getDocumentListFutureCallout(String ownerid, String doc_type, String email) {
+        DocumentListFullResponse documentListFullResponse = getDocumentListCallout(ownerid, doc_type);  
+        Set<String> docTmp = new Set<String>();
+        if (documentListFullResponse.result == '200') {
+            System.debug('**** documentListFullResponse');
+            System.debug(documentListFullResponse);
+            for(DocumentListResponse eachDoc : documentListFullResponse.response){
+                docTmp.add(eachDoc.id);
+            }	
+            SM016_SendMail_Callout.sendMailCallout('lpcr@lpcr.fr', email, 'LPCR : Facture', 'Bonjour, Voici votre facture ci-joint. Cordialement, LPCR', docTmp);
+        }
     }
 
     public class DocumentListStructureWrapper{

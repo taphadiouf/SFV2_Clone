@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tech_FormuleCongaBatch__c</fullName>
+    <description>champ technique utilisé pour la génération automatique des factures</description>
+    <externalId>false</externalId>
+    <formula>&apos;&amp;Id=&apos;&amp;Id&amp;&apos;&amp;QueryId=[LineItems]a4J3O0000008RQg,[Usages]a4J3O0000008RQh,[CompanyDets]a4J3O0000008RQi&amp;TemplateId=a4R3O0000008SwF&amp;FP0=0&amp;SC0=1&amp;SC1=SalesforceFile&amp;OFN=Facture+&apos;&amp;blng__Account__c&amp;&apos;+-+&apos;&amp;TEXT(TODAY())&amp;&apos;&amp;TemplateGroup=Invoice&amp;XDO=CIA&amp;ContactId=&apos;&amp;blng__BillToContact__c&amp;&apos;&amp;XDO2=GenerateInvoice&amp;GEO=&apos;&amp;$User.Country&amp;&apos;&amp;UF0=1&amp;MFTS0=LPCR_StatutFacture__c&amp;MFTSValue0=Envoyée&apos;</formula>
+    <label>Tech_Formule Conga Batch</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

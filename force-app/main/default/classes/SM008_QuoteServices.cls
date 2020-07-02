@@ -282,7 +282,17 @@ public with sharing class SM008_QuoteServices {
     //added by Ayoub
     public static void setQuoteFields(List<SBQQ__Quote__c> quotesList,Map<Id,Contract> renewedContract,Map<Id,Contract> amendedContract, Map<Id,Opportunity> opptyMap){
         for (SBQQ__Quote__c eachQuote : quotesList){
+            Id quoteRecTypeId = null;
+            if(eachQuote.LPCR_TypeEnregistrement__c != '' && Schema.getGlobalDescribe().get(Label.LPCR_Quote).getDescribe().getRecordTypeInfosByDeveloperName().get(eachQuote.LPCR_TypeEnregistrement__c)!=null){
+                quoteRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,eachQuote.LPCR_TypeEnregistrement__c);
+            }
+            
+            if(quoteRecTypeId != null){
+                eachQuote.RecordTypeId = quoteRecTypeId;
+            }
+      
             if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) && 'Renewal'.equals(eachQuote.SBQQ__Type__c)){
+                eachQuote.ApprovalStatus__c = Label.LPCR_ApprovalStatusApproved;
                 eachQuote.SBQQ__BillingFrequency__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_BillingFrequency__c;
                 eachQuote.LPCR_TypeFacturation__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_TypeFacturation__c;
                 eachQuote.LPCR_IndexationConvenue__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_IndexationConvenue__c;
@@ -366,18 +376,22 @@ public with sharing class SM008_QuoteServices {
         SM008_QuoteServices.loadAgreement(mapQuoteIDAgreementID);
         return mapQuoteIDAgreementID;
     } 
+   
     public static void setTypeEnregistrement(List<SBQQ__Quote__c> quotesList){
         Set<Id> opportunitiesIdsSet = new Set<Id>();
         for(SBQQ__Quote__c eachQuote : quotesList){
             opportunitiesIdsSet.add(eachQuote.SBQQ__Opportunity2__c);
         }
         //Map : Id=>Order (Parent records of the current contracts)
-        Map<Id, Opportunity> parentOpportunitiesMap = new Map<Id, Opportunity>([SELECT Id, LPCR_TypeEnregistrement__c FROM Opportunity WHERE Id IN :opportunitiesIdsSet]);
-        for(SBQQ__Quote__c eachContract : quotesList){
-            if(parentOpportunitiesMap.containsKey(eachContract.SBQQ__Opportunity2__c)){
-                eachContract.LPCR_TypeEnregistrement__c = parentOpportunitiesMap.get(eachContract.SBQQ__Opportunity2__c).LPCR_TypeEnregistrement__c;
+        Map<Id, Opportunity> parentOpportunitiesMap = new Map<Id, Opportunity>([SELECT Id, LPCR_TypeEnregistrement__c FROM Opportunity WHERE Id IN :opportunitiesIdsSet and LPCR_TypeEnregistrement__c !='']);
+        if(parentOpportunitiesMap.size()>0){
+            for(SBQQ__Quote__c eachQuote: quotesList){
+                if(parentOpportunitiesMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
+                    eachQuote.LPCR_TypeEnregistrement__c = parentOpportunitiesMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_TypeEnregistrement__c;
+                }
             }
         }
+      
     }
     
 }
