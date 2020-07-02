@@ -40,6 +40,11 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
                 res.setBody('{"result":"400"}');
                 res.setStatusCode(400);
             }
+        }else if(req.getEndpoint().contains('SendMailService')){
+            System.debug(req.getBody());
+            System.debug(req.getEndpoint());
+            res.setBody('{"result":"200"}');
+            res.setStatusCode(200);
         }              
         return res;
     }
