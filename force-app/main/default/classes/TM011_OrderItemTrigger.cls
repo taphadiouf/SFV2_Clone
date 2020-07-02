@@ -44,7 +44,8 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     protected override void beforeUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass')){	        
             SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
-        SM012_OrderItemServices.setOrderItemFieldsFromContract(newOrderItemsList);
+            SM012_OrderItemServices.setOrderItemFieldsFromContract(newOrderItemsList);
+            SM012_OrderItemServices.updateHoldBillingFromQuote(newOrderItemsList, oldOrderItemsMap,newOrderItemsMap);
         }
     }
     
