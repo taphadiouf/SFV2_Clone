@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_AfficherNomsFamillesFacture__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>case à cocher si on souhaite faire apparaître les noms des familles sur la facture B2B</description>
+    <externalId>false</externalId>
+    <inlineHelpText>case à cocher si on doit faire apparaître les noms des familles sur la facture B2B</inlineHelpText>
+    <label>Afficher noms familles facture</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

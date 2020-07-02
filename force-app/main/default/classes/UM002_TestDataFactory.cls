@@ -1062,6 +1062,7 @@ newMe.FederationIdentifier = null;
             Blob bodyBlob = Blob.valueOf(body);
             a.body = bodyBlob;
             a.ParentId = parentId;
+            a.Description = 'Facture';
             atts.add(a);
         }
         return atts;
