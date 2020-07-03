@@ -1,5 +1,7 @@
 <template>
+    
     <div class="back">
+        <div class="slds-border_top"></div>
         <div class="inside">
                 <br>
                 (Small LWC made for mass updating a Permission Set with common access right for all custom field of all
@@ -13,12 +15,17 @@
                 </lightning-input>
                 <lightning-input type="checkbox" label="Edit" onchange={handleEditCheckbox}></lightning-input>
                 <br>
-                <lightning-combobox name="Name" label="Select a Permission Set" value={PsApiNameSelected}
-                    placeholder="-Select-" options={permissionSetlist} onchange={handlePsChosen}></lightning-combobox>
+                <lightning-combobox name="Name" label="Select a Permission Set"  value={PsApiNameSelected}
+                    placeholder="-Select-" options={permissionSetlist} onchange={handlePsChosen} ></lightning-combobox>
+                <br>
+                <lightning-combobox name="Object Name" label="Select an Object"  value={ObjectApiNameSelected}
+                    placeholder="-Select-" options={objectlist} onchange={handleObjectChosen} ></lightning-combobox>
                 <br>
                 <lightning-button variant="brand" label="Validate Permission Set Mass Modification"
                     name="Validate Permission Set Mass Modification" onclick={handelValidation}></lightning-button>
                 <br>
         </div>
+        <div class="slds-border_bottom"></div>
     </div>
+    
 </template>
