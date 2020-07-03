@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_NumeroCompteBancaire__c</fullName>
+    <description>numéro de compte bancaire affiché sur les factures pour lesquels il y a un paiement par prélèvement automatique</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(blng__Account__r.LPCR_IBAN__c),NULL, &apos;XXX&apos;&amp;  RIGHT(blng__Account__r.LPCR_IBAN__c,4 ))</formula>
+    <inlineHelpText>numéro de compte bancaire affiché sur les factures pour lesquels il y a un paiement par prélèvement automatique</inlineHelpText>
+    <label>Numéro de compte bancaire</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
