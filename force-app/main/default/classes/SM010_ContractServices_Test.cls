@@ -110,7 +110,8 @@ public class SM010_ContractServices_Test {
             Test.startTest();
             
             Account acc = [SELECT Id, name from Account where name ='test' ];
-            
+            blng__InvoicePlan__c invoicePlan =   new blng__InvoicePlan__c(blng__BillingScheduleCreation__c='Manual',blng__Active__c =true);
+            insert    invoicePlan;
             SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_DureeContratJour__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
             Order order = [SELECT Id ,LPCR_NouveauPlanFacture__c, LPCR_RenouvellementPlanFacture__c,Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = :quote.Id];       
             
