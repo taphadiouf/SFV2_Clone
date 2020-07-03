@@ -1333,9 +1333,9 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 System.assertEquals(expectedDate, oi.blng__OverrideNextBillingDate__c);
                 
 
-                Date expectedBillThrought = ((UM005_DateUtility.quarterlyMonths.contains(item.blng__NextChargeDate__c.month()) 
-                                                && item.blng__NextChargeDate__c.day() != 1) 
-                                               || !UM005_DateUtility.quarterlyMonths.contains(item.blng__NextChargeDate__c.month()) )
+                Date expectedBillThrought = ((UM005_DateUtility.quarterlyMonths.contains(oi.blng__NextChargeDate__c.month()) 
+                                                && oi.blng__NextChargeDate__c.day() != 1) 
+                                               || !UM005_DateUtility.quarterlyMonths.contains(oi.blng__NextChargeDate__c.month()) )
 
                     ? UM005_DateUtility.lastDayOfDatePeriod (oi.blng__NextBillingDate__c, UM005_DateUtility.quarterlyMonths)
                     : null;
