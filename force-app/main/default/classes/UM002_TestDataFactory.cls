@@ -1062,8 +1062,19 @@ newMe.FederationIdentifier = null;
             Blob bodyBlob = Blob.valueOf(body);
             a.body = bodyBlob;
             a.ParentId = parentId;
+            a.Description = 'Facture';
             atts.add(a);
         }
+        return atts;
+    }
+    
+    public static Attachment createAttachement(String name,String body,String parentId, String Description){
+        Attachment atts = new Attachment();
+        atts.Name = name;
+        Blob bodyBlob = Blob.valueOf(body);
+        atts.body = bodyBlob;
+        atts.ParentId = parentId;
+        atts.Description = Description;
         return atts;
     }
     
@@ -1113,6 +1124,7 @@ newMe.FederationIdentifier = null;
 
         for(Integer i=0;i<numPlann;i++){
             LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(
+                                                                                LPCR_Contrat__c = idQuote,
                                                                                LPCR_Planning__c = tmpPlanning.Id,
                                                                                LPCR_HeureDebutLundi__c = debutLundi,
                                                                                LPCR_HeureFinLundi__c   = finLundi,
@@ -1129,7 +1141,7 @@ newMe.FederationIdentifier = null;
         return plannings;   
     }
     
-    public static List<LPCR_PlanningPrevisionnel__c> createPlanningsWithoutTime(Integer numPlann){
+    public static List<LPCR_PlanningPrevisionnel__c> createPlanningsWithoutTime(Integer numPlann,  Id idQuote){
     
         LPCR_Planning__c tmpPlanning = new LPCR_Planning__c();
         tmpPlanning.LPCR_TypePlanning__c = 'Planning Classique';
@@ -1138,7 +1150,7 @@ newMe.FederationIdentifier = null;
     
         List<LPCR_PlanningPrevisionnel__c>  plannings = new List<LPCR_PlanningPrevisionnel__c>();
         for(Integer i=0;i<numPlann;i++){
-            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Planning__c = tmpPlanning.id);
+            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Planning__c = tmpPlanning.id, LPCR_Contrat__c = idQuote);
             plannings.add(pl);
         }
         return plannings;   

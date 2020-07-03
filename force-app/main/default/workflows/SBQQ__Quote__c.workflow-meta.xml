@@ -266,6 +266,36 @@
         <operation>Literal</operation>
         <protected>false</protected>
     </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RT_Contrat_accueil_approuve</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Contrat_Accueil_Approuve</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>RT Contrat d&apos;accueil approuvé</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RT_Contrat_referencement_approuve</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Referencement_Approuve</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>RT Contrat de référencement approuvé</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RT_Contrat_reservataire_approuve</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Reservataire_Approuve</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>RT Contrat réservataire approuvé</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
     <rules>
         <fullName>Alerte Service Famille</fullName>
         <actions>
@@ -543,6 +573,66 @@
             <operation>equals</operation>
         </criteriaItems>
         <description>Definition du statut du devis apres validation de l&apos;avenant. Cette update ne comprend pas le MIB et Resiliation.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WF_Quote_Update RT Contrat d%27accueil approuvé</fullName>
+        <actions>
+            <name>RT_Contrat_accueil_approuve</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Contrat D’accueil</value>
+        </criteriaItems>
+        <description>Update RT quand le contrat d&apos;accueil est approuvé.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WF_Quote_Update RT Contrat de référencement approuvé</fullName>
+        <actions>
+            <name>RT_Contrat_referencement_approuve</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Contrat de Référencement</value>
+        </criteriaItems>
+        <description>Update RT quand le contrat de référencement est approuvé.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WF_Quote_Update RT Contrat réservataire approuvé</fullName>
+        <actions>
+            <name>RT_Contrat_reservataire_approuve</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Contrat Réservataire</value>
+        </criteriaItems>
+        <description>Update RT quand le contrat réservataire est approuvé.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>

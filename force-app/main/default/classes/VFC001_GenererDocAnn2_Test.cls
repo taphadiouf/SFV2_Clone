@@ -20,7 +20,7 @@ public with sharing class VFC001_GenererDocAnn2_Test {
             Time finTime = Time.newInstance(16, 30, 2, 20);
             List<LPCR_PlanningPrevisionnel__c> plannings = UM002_TestDataFactory.createPlannings(100,quote.Id,debutTime,finTime,debutTime,finTime,debutTime,finTime,debutTime,finTime,debutTime,finTime);
             insert plannings;
-            List<LPCR_PlanningPrevisionnel__c> planningsWithNoTime = UM002_TestDataFactory.createPlanningsWithoutTime(100);
+            List<LPCR_PlanningPrevisionnel__c> planningsWithNoTime = UM002_TestDataFactory.createPlanningsWithoutTime(100, quote.Id);
             insert planningsWithNoTime;
             Test.startTest();
             PageReference pageRef = Page.VFP001_GenererDocAnn2; // Add your VF page Name here

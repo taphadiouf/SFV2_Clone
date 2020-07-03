@@ -16,4 +16,18 @@ public class WRP004_APISaveDocument {
     public string doc_status; // obligatoitre
     public string doc_name; // obligatoitre
     public string doc_file_type; // obligatoitre    
+    
+    public WRP004_APISaveDocument(String doc_type, String doc_owner_sf_id, String doc_status, String doc_name, String doc_file_type ){
+        if(doc_type.contains('Facture')){
+           this.doc_type = 'Facture';
+        }else if(doc_type.contains('Contrat')){
+            this.doc_type = 'Contrat';
+        }else if(doc_type.contains('Pièce')){
+            this.doc_type = 'PJ';
+        }
+        this.doc_status = doc_status;
+        this.doc_owner_sf_id = doc_owner_sf_id;
+        this.doc_name = doc_name;
+        this.doc_file_type = doc_file_type;
+    }
 }

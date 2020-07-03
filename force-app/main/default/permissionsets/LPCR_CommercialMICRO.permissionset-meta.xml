@@ -198,6 +198,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_InformationsFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_InterlocuteurServiceFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -297,7 +302,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Account.LPCR_PrivePublic__c</field>
         <readable>true</readable>
     </fieldPermissions>

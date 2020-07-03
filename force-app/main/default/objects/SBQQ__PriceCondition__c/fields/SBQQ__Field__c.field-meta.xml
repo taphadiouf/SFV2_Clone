@@ -112,6 +112,16 @@
                 <default>false</default>
                 <label>SBQQ__RenewedSubscription__c</label>
             </value>
+            <value>
+                <fullName>LPCR_OptionNumber__c</fullName>
+                <default>false</default>
+                <label>LPCR_OptionNumber__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_FraisDossier__c</fullName>
+                <default>false</default>
+                <label>LPCR_FraisDossier__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

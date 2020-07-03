@@ -287,6 +287,25 @@ public with sharing class SM012_OrderItemServices implements Queueable{
         }
     }
     
+    public static void updateHoldBillingFromQuote(List<OrderItem> newOrderItemsList, Map<Id,OrderItem> oldMapOrderItem,Map<Id,OrderItem> newMapOrderItem){
+        Set<String> quoteLineIds = UM003_TypeManager.getFieldsOfListObjects(newOrderItemsList,'SBQQ__QuoteLine__c');
+        map<id,string> mapQuoteLine = new map<Id,String>();
+        List<OrderItem> listOrderItem = [SELECT Id,SBQQ__Status__c,SBQQ__QuoteLine__c, SBQQ__QuoteLine__r.LPCR_HoldBilling__c FROM OrderItem WHERE ID in :newMapOrderItem.keyset()];
+        for(SBQQ__QuoteLine__c quoteLine: [Select id,LPCR_HoldBilling__c from SBQQ__QuoteLine__c where id in: quoteLineIds]){
+            mapQuoteLine.put(quoteLine.id, quoteLine.LPCR_HoldBilling__c);
+        }
+        
+        for(OrderItem eachNewOrderItem : newMapOrderItem.values()){
+            
+            if('Activated'.equals(eachNewOrderItem.SBQQ__Status__c) && oldMapOrderItem.get(eachNewOrderItem.Id).SBQQ__Status__c != eachNewOrderItem.SBQQ__Status__c 
+               && mapQuoteLine.containsKey(eachNewOrderItem.SBQQ__QuoteLine__c) && mapQuoteLine.get(eachNewOrderItem.SBQQ__QuoteLine__c) == 'Yes'){
+                eachNewOrderItem.blng__HoldBilling__c = mapQuoteLine.get(eachNewOrderItem.SBQQ__QuoteLine__c);
+            }
+        }
+    }
+    
+    
+    
     /*
 * @author : Ayoub Ouarti
 *	@description : this method update Billing transaction for RevisedOrderProduct on orderItem

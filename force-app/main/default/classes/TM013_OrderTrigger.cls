@@ -14,4 +14,9 @@ public with sharing class TM013_OrderTrigger extends TM000_TriggerHandler {
             SM014_OrderServices.setOrderFields(newOrderList);
         }
     }
+    protected override void beforeUpdate() {
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM014_OrderServices.setOrderFields(newOrderList);
+        }
+    }
 }

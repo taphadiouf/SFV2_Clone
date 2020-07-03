@@ -62,6 +62,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_AfficherInfosFamillesFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_AfficherNomsEnfantsFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_AfficherNomsFamillesFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_AgrementBebes__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -207,6 +222,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_InformationsFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_JoindreEtatCAFFacture__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -301,7 +321,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Account.LPCR_PrivePublic__c</field>
         <readable>true</readable>
     </fieldPermissions>

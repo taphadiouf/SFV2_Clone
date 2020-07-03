@@ -22,10 +22,6 @@
                 <showScrollbars>false</showScrollbars>
                 <width>100%</width>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>ApprovalStatus__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
@@ -41,6 +37,22 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>SBQQ__Opportunity2__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SBQQ__Account__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_CompteFacturation__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_Region__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LPCR_DateDebut__c</field>
             </layoutItems>
             <layoutItems>
@@ -51,32 +63,8 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_ChiffreAffaire__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__Opportunity2__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__Account__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_Region__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_ContractEntreprise__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_BatchCommande__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_CompteFacturation__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>SBQQ__Type__c</field>
@@ -87,7 +75,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_StatutApprobation__c</field>
+                <field>ApprovalStatus__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -101,30 +89,8 @@
                 <behavior>Edit</behavior>
                 <field>RecordTypeId</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_RTContratEntreprise__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Test Data</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__StartDate__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SBQQ__EndDate__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns/>
-        <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -239,15 +205,11 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_MethodeRenouvellement__c</field>
+                <field>LPCR_ContractEntreprise__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>SBQQ__MasterContract__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_TypeAvenant__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -259,6 +221,14 @@
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ConditionsParticulieres__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeAvenant__c</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>SBQQ__PaymentTerms__c</field>
@@ -514,7 +484,6 @@
         <quickActionListItems>
             <quickActionName>FeedItem.MobileSmartActions</quickActionName>
         </quickActionListItems>
-
         <quickActionListItems>
             <quickActionName>FeedItem.LinkPost</quickActionName>
         </quickActionListItems>
@@ -532,10 +501,11 @@
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>SBQQ__Product__c</fields>
+        <fields>SBQQ__StartDate__c</fields>
+        <fields>SBQQ__EndDate__c</fields>
         <fields>SBQQ__NetPrice__c</fields>
         <fields>SBQQ__Quantity__c</fields>
         <fields>SBQQ__NetTotal__c</fields>
-        <fields>SBQQ__ListPrice__c</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
     </relatedLists>
     <relatedLists>
