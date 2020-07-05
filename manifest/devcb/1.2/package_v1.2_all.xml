@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+        <members>SBQQ__Quote__c-Contrat d%27accueil Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;servataire Approuv&#233;</members>
+        <members>SBQQ__Quote__c-Contrat d%27accueil</members>
+        <members>SBQQ__Quote__c-R&#233;servataire</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement</members>
+        <members>SBQQ__QuoteLine__c-Quote Line Layout</members>
+        <members>Account-Entreprise</members>
+        <members>Account-Famille</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Tech_GraphiquesSurLayouts</members>
+        <members>Tech_GraphiquesSurLayouts/Compte_Taux_d_Occupation_gWQ</members>
+        <name>Report</name>
+    </types>
+    <types>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratReservation__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratReferencement__c</members>
+        <members>Contract.LPCR_FraisDossier__c</members>
+        <members>Contract.LPCR_DateDeDepart__c</members>
+        <members>LPCR_PlanningPrevisionnel__c.LPCR_Lundi__c</members>
+        <members>LPCR_PlanningPrevisionnel__c.LPCR_Mardi__c</members>
+        <members>LPCR_PlanningPrevisionnel__c.LPCR_Mercredi__c</members>
+        <members>LPCR_PlanningPrevisionnel__c.LPCR_Jeudi__c</members>
+        <members>LPCR_PlanningPrevisionnel__c.LPCR_Vendredi__c</members>
+        <members>LPCR_Preinscription__c.LPCR_Lundi__c</members>
+        <members>LPCR_Preinscription__c.LPCR_Mardi__c</members>
+        <members>LPCR_Preinscription__c.LPCR_Mercredi__c</members>
+        <members>LPCR_Preinscription__c.LPCR_Jeudi__c</members>
+        <members>LPCR_Preinscription__c.LPCR_Vendredi__c</members>
+        <members>LPCR_Planning__c.LPCR_Vendredi__c</members>
+        <members>LPCR_Planning__c.TECH_SommeJeudi__c</members>
+        <members>LPCR_Planning__c.TECH_SommeLundi__c</members>
+        <members>LPCR_Planning__c.TECH_SommeMardi__c</members>
+        <members>LPCR_Planning__c.TECH_SommeMercredi__c</members>
+        <members>LPCR_Planning__c.TECH_SommeVendredi__c</members>
+        <members>Contract.LPCR_DateDeDepart__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContactRepresentant1__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContactRepresentant2__c</members>
+        <members>blng__Invoice__c.LPCR_NomCompletRepresentant1__c</members>
+        <members>blng__Invoice__c.LPCR_NomCompletRepresentant2__c</members>
+        <members>blng__Invoice__c.LPCR_NumeroFacture__c</members>
+        <members>Contract.LPCR_Region__c</members>
+        <members>Contract.LPCR_ContactEnfant__c</members>
+        <members>Contract.LPCR_CompteFacturation__c</members>
+        <members>Contract.LPCR_ContactRepresentant1__c</members>
+        <members>Contract.LPCR_ContactRepresentant2__c</members>
+        <members>blng__Invoice__c.LPCR_NumeroCompteBancaire__c</members>
+        <members>SBQQ__Quote__c.LPCR_AmendmentDateOK__c</members>
+        <members>blng__Usage__c.LPCR_Product__c</members>
+        <members>SBQQ__Quote__c.LPCR_NouveauPlanFacture__c</members>
+        <members>SBQQ__Quote__c.LPCR_RenouvellementPlanFacture__c</members>
+
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Opportunity.NouveauContratReferecement</members>
+        <members>Opportunity.NouveauContratReservation</members>
+        <members>SBQQ__Quote__c.Conga_Composer_ContratReferencement</members>
+        <members>SBQQ__Quote__c.Conga_Composer_ContratReservation</members>
+
+        <name>QuickAction</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c.Contrat_Accueil</members>
+        <members>SBQQ__Quote__c.Contrat_Accueil_Approuve</members>
+        <members>SBQQ__Quote__c.Referencement</members>
+        <members>SBQQ__Quote__c.Referencement_Approuve</members>
+        <members>SBQQ__Quote__c.Reservataire</members>
+        <members>SBQQ__Quote__c.Reservataire_Approuve</members>
+
+        <name>RecordType</name>
+    </types>
+
+    <types>
+        <members>PL_Devis</members>
+        <name>FlexiPage</name>
+    </types>
+    <!--
+<types>
+    <members>LPCR_Preinscriptions</members>
+
+    <name>ReportType</name>
+</types>
+-->
+    <types>
+        <members>SBQQ__Quote__c.LPCR_IndexationConvenueUpliftObligatoire</members>
+        <name>ValidationRule</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c.WF_Quote_Update RT Contrat d%27accueil approuv&#233;</members>
+        <members>SBQQ__Quote__c.WF_Quote_Update RT Contrat de r&#233;f&#233;rencement approuv&#233;</members>
+        <members>SBQQ__Quote__c.WF_Quote_Update RT Contrat r&#233;servataire approuv&#233;</members>
+        <name>WorkflowRule</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c.RT_Contrat_referencement_approuve</members>
+
+        <name>WorkflowFieldUpdate</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c</members>
+        <members>SBQQ__QuoteLine__c</members>
+        <name>CustomObject</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c.Conga_Composer_ContratReferencement</members>
+        <name>WebLink</name>
+    </types>
+<!--
+
+
+
+<types>
+    <members>SBQQ__Quote__c.LPCR_StatutPretAEnvoyer</members>
+    <members>SBQQ__Quote__c.LPCR_StatutPretCommande</members>
+    <name>WorkflowFieldUpdate</name>
+</types>
+<types>
+    <members>LPCR_NouveauContratAccueil</members>
+    <members>LPCR_RenseignerTypeEnregistrementQuote</members>
+    <name>Flow</name>
+</types>
+<types>
+    <members>LPCR_NouveauContratAccueil</members>
+    <members>LPCR_RenseignerTypeEnregistrementQuote</members>
+    <name>FlowDefinition</name>
+</types>
+<types>
+    <members>blng__Invoice__c.LPCR_FactureAValider</members>
+    <name>ListView</name>
+</types>
+
+
+
+-->
+
+    <version>48.0</version>
+</Package>
