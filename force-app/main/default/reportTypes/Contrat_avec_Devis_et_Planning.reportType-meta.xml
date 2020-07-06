@@ -538,11 +538,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_RenouvellementConvenu__c</field>
-            <table>Contract</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_ResponsableADV__c</field>
             <table>Contract</table>
         </columns>
@@ -678,17 +673,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>DELLPCR_RenouvellementPlanFacture__c</field>
-            <table>Contract</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_Region__c</field>
-            <table>Contract</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>DELLPCR_NouveauPlanFacture__c</field>
             <table>Contract</table>
         </columns>
         <masterLabel>Contrats</masterLabel>
@@ -800,11 +785,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__Quote__c.LPCR_CongesSemaine__c</field>
-            <table>Contract</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__Quote__c.LPCR_NombreSemaineAccueilAn__c</field>
             <table>Contract</table>
         </columns>
         <columns>

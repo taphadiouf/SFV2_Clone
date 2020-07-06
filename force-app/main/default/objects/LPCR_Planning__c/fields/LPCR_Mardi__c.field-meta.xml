@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_RTContratEntreprise__c</fullName>
+    <fullName>LPCR_Mardi__c</fullName>
     <externalId>false</externalId>
-    <formula>LPCR_ContractEntreprise__r.RecordType.DeveloperName</formula>
+    <formula>IF(LPCR_NombrePlanning__c&gt;=1,TECH_SommeMardi__c/LPCR_NombrePlanning__c,0)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Type Enregistrement Contrat Entreprise</label>
+    <label>Mardi</label>
+    <precision>18</precision>
     <required>false</required>
+    <scale>1</scale>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>Text</type>
+    <type>Number</type>
     <unique>false</unique>
 </CustomField>

@@ -244,11 +244,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Section__c</field>
-            <table>LPCR_Preinscription__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_TypeAccueil__c</field>
             <table>LPCR_Preinscription__c</table>
         </columns>
@@ -403,11 +398,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_ContactParent__c.LPCR_Fonction__c</field>
-            <table>LPCR_Preinscription__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactParent__c.LPCR_AllocataireCAF__c</field>
             <table>LPCR_Preinscription__c</table>
         </columns>
         <columns>
