@@ -1231,9 +1231,11 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 System.assertEquals(expectedDate, oi.blng__OverrideNextBillingDate__c);
                 
-                Date expectedBillThrought = (!UM005_DateUtility.quarterlyMonths.contains(oi.blng__NextBillingDate__c.month()) ||
-                      (UM005_DateUtility.quarterlyMonths.contains(oi.blng__NextBillingDate__c.month()) 
-                                                && oi.blng__NextBillingDate__c.day() != 1) )                     
+
+                Date expectedBillThrought = ((UM005_DateUtility.quarterlyMonths.contains(oi.blng__NextChargeDate__c.month()) 
+                                                && oi.blng__NextChargeDate__c.day() != 1) 
+                                               || !UM005_DateUtility.quarterlyMonths.contains(oi.blng__NextChargeDate__c.month()) )
+
                     ? UM005_DateUtility.lastDayOfDatePeriod (oi.blng__NextBillingDate__c, UM005_DateUtility.quarterlyMonths)
                     : null;
                 System.assertEquals(expectedBillThrought, oi.blng__BillThroughDateOverride__c);
@@ -1364,7 +1366,9 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 System.assertEquals(UM005_DateUtility.lastDayOfDatePeriod (System.today(), UM005_DateUtility.quarterlyMonths).addDays(1), oi.blng__OverrideNextBillingDate__c);
-                Date expectedBillThrought = !UM005_DateUtility.quarterlyMonths.contains(oi.blng__NextBillingDate__c.month())
+                Date expectedBillThrought = ((UM005_DateUtility.semiannualMonths.contains(oi.blng__NextChargeDate__c.month()) 
+                                                                         && oi.blng__NextChargeDate__c.day() != 1) 
+                                                                        || !UM005_DateUtility.semiannualMonths.contains(oi.blng__NextChargeDate__c.month()))
                     ? UM005_DateUtility.lastDayOfDatePeriod (oi.blng__NextBillingDate__c, UM005_DateUtility.quarterlyMonths)
                     : null;
                 System.assertEquals(UM005_DateUtility.lastDayOfDatePeriod(oi.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths), oi.blng__BillThroughDateOverride__c);
@@ -1489,9 +1493,11 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 System.assertEquals(expectedDate, oi.blng__OverrideNextBillingDate__c);
                 
-                Date expectedBillThrought = (!UM005_DateUtility.semiannualMonths.contains(oi.blng__NextBillingDate__c.month()) ||
-                    (UM005_DateUtility.semiannualMonths.contains(oi.blng__NextBillingDate__c.month()) 
-                                                && oi.blng__NextBillingDate__c.day() != 1) )  
+
+                Date expectedBillThrought =  ((UM005_DateUtility.semiannualMonths.contains(oi.blng__NextChargeDate__c.month()) 
+                                               && oi.blng__NextChargeDate__c.day() != 1) 
+                                               || !UM005_DateUtility.semiannualMonths.contains(oi.blng__NextChargeDate__c.month()))
+
                     ? UM005_DateUtility.lastDayOfDatePeriod (oi.blng__NextBillingDate__c, UM005_DateUtility.semiannualMonths)
                     : null;
                 System.assertEquals(expectedBillThrought, oi.blng__BillThroughDateOverride__c);

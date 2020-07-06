@@ -7,6 +7,7 @@ public with sharing class UM005_DateUtility {
     public static final List<Integer> quarterlyMonths = new List<Integer> {1, 4, 7, 10};
     public static final List<Integer> semiannualMonths = new List<Integer> {1, 7};
 
+
     public static Date setDayOnDate (Integer day, Date theDate) {
         Date newDate = null;
         if (day != null && day <= 31 && theDate != null) {
@@ -57,6 +58,11 @@ public with sharing class UM005_DateUtility {
             }
         }
         return newDate.addDays(-1);
+    }
+    
+
+ public static Date lastDayOfYear(Date theDate){
+      return Date.newinstance(theDate.Year(),12,31);
     }
     
 
