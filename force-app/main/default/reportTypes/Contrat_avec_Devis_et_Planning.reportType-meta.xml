@@ -701,11 +701,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_PlanningEnfant__c.LPCR_CongesSemaine__c</field>
-            <table>Contract</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_PlanningEnfant__c.Name</field>
             <table>Contract</table>
         </columns>
@@ -717,11 +712,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_PlanningEnfant__c.LPCR_NombreHeuresSemaine__c</field>
-            <table>Contract</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_PlanningEnfant__c.LPCR_DureeContratJour__c</field>
             <table>Contract</table>
         </columns>
         <columns>
