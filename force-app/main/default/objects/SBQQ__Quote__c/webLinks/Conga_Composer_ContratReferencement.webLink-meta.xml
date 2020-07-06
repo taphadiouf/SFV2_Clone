@@ -22,16 +22,14 @@
 &amp;serverUrl={!API.Partner_Server_URL_370}
 &amp;Id={!SBQQ__Quote__c.Id}
 &amp;ContactId={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}
-&amp;TemplateId=a4E3O0000000AsR
+&amp;QueryId=[ListTablePrix]a463O0000004Ejz
 
-&amp;QueryId=[ListPriceParis]a463O0000004Ee5,
-[ListPriceIDFGV]a463O0000004EeA,
-[ListPriceProv]a463O0000004EeF
+&amp;TemplateId=a4E3O0000000EH5
 
 &amp;DefaultPDF=1
 &amp;FP0=1
 &amp;ESVisible=1
-&amp;ESAgreementTemplateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratAccueilMAC__c}
+&amp;ESAgreementTemplateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratReferencement__c}
 &amp;ESCustomField=LPCR_Devis__c
 ESCustomFieldValue={!SBQQ__Quote__c.Id}
 &amp;ESContactId1={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}

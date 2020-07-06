@@ -9,8 +9,8 @@
          if(ISPICKVAL(SBQQ__BillingFrequency__c, &apos;Quarterly&apos;), 
             if( AND(SBQQ__StartDate__c &gt;= TODAY(), DAY(SBQQ__StartDate__c)= 1, OR(MONTH(SBQQ__StartDate__c)= 1, MONTH(SBQQ__StartDate__c)= 4, MONTH(SBQQ__StartDate__c)= 7, MONTH(SBQQ__StartDate__c)= 12)) , &apos;OK&apos;, &apos;KO&apos;), 
         &apos;KO&apos; )),
-    &apos;OK&apos;),
-&apos;OK&apos;)</formula>
+    NULL),
+NULL)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Amendment Date OK</label>
     <required>false</required>
