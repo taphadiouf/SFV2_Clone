@@ -15,7 +15,7 @@ public with sharing class TM010_RessourceFamilleTrigger extends TM000_TriggerHan
     }
     protected override void beforeUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass')){
-            SM011_RessourceFamilleServices.createNewRessourceFamilleRecord(newRessourceFamillesMap,oldRessourceFamillesMap);
+            //SM011_RessourceFamilleServices.createNewRessourceFamilleRecord(newRessourceFamillesMap,oldRessourceFamillesMap);
         }
     }
      protected override void afterUpdate() {

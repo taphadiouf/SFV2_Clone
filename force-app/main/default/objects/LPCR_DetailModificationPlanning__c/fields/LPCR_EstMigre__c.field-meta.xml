@@ -3,10 +3,7 @@
     <fullName>LPCR_EstMigre__c</fullName>
     <defaultValue>false</defaultValue>
     <externalId>false</externalId>
-    <label>Est migré</label>
-    <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <label>Est Migré</label>
+    <trackTrending>false</trackTrending>
     <type>Checkbox</type>
-    <unique>false</unique>
 </CustomField>

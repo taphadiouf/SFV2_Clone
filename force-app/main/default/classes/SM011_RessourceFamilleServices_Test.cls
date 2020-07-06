@@ -43,42 +43,6 @@ public with sharing class SM011_RessourceFamilleServices_Test {
         insert listBaremeCAF;
     }
     
-    
-    @IsTest
-    static void createNewRessourceFamilleRecord_Test(){
-        
-        System.runAs(UM002_TestDataFactory.createUser()){
-            Test.startTest();
-            Date lastDayOfCurrentMonthDate=Date.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month())) ;
-            Date firstDayOfNextMonthDate=Date.newInstance(Date.today().Year(), Date.today().month()+1 ,1) ;
-            LPCR_RessourceFamille__c ressourceFamille =[SELECT  LPCR_DateFin__c,LPCR_DateDebut__c ,
-                                                        LPCR_CompteFamille__c,
-                                                        RecordTypeId
-                                                        FROM LPCR_RessourceFamille__c WHERE name = 'test' LIMIT 1];
-
-            
-            //ressourceFamille.LPCR_TauxMensuel__c*=2;
-            update ressourceFamille;
-            
-            
-            
-            ressourceFamille =[SELECT  LPCR_DateFin__c,LPCR_DateDebut__c ,
-                               LPCR_CompteFamille__c,
-                               RecordTypeId
-                                FROM LPCR_RessourceFamille__c WHERE name = 'test' AND Id=:ressourceFamille.Id];
-            LPCR_RessourceFamille__c newRessourceFamille =  [SELECT LPCR_DateFin__c, LPCR_DateDebut__c ,
-                                                             LPCR_CompteFamille__c,
-                                                             RecordTypeId FROM LPCR_RessourceFamille__c WHERE name = 'test' AND Id<>:ressourceFamille.Id];
-            
-            Test.stopTest();
-            System.assertEquals(ressourceFamille.LPCR_CompteFamille__c, newRessourceFamille.LPCR_CompteFamille__c,'not the same account');
-            //System.assertEquals(ressourceFamille.LPCR_Produit__c, newRessourceFamille.LPCR_Produit__c,'not the same product');
-            System.assertEquals(firstDayOfNextMonthDate, newRessourceFamille.LPCR_DateDebut__c,'Date is wrong');
-            System.assertEquals(lastDayOfCurrentMonthDate, ressourceFamille.LPCR_DateFin__c,'Date is wrong');
-        }
-        
-    }
-    
     @IsTest
     static void updateTheBaremeCaf_Test(){
         
