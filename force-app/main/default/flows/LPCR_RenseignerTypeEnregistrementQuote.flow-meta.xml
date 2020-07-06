@@ -246,7 +246,7 @@
                 <leftValueReference>myVariable_current.RecordType.DeveloperName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Contrat_Accueil</stringValue>
+                    <stringValue>Accueil</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -517,7 +517,7 @@
             </processMetadataValues>
             <field>LPCR_TypeEnregistrement__c</field>
             <value>
-                <stringValue>Contrat_Accueil</stringValue>
+                <stringValue>Accueil</stringValue>
             </value>
         </inputAssignments>
         <object>SBQQ__Quote__c</object>
