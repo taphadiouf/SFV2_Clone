@@ -140,9 +140,7 @@ public with sharing class SM008_QuoteServices {
                 }
             }
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c) || Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c)){
-                Date endDate = eachQuote.LPCR_DateFin__c;
-                if(acctMap.containsKey(eachQuote.LPCR_Creche__c)){
-                    if(Label.LPCR_MAC.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
+                    if(Label.LPCR_MAC.equals(eachQuote.LPCR_TypeCreche__c)){
                         if(eachQuote.LPCR_DateFin__c < dueDateQuote){
                             eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                         }
@@ -150,7 +148,7 @@ public with sharing class SM008_QuoteServices {
                             eachQuote.SBQQ__EndDate__c = dueDateQuote;
                         } 
                     }
-                    else if(Label.LPCR_MICRO.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
+                    else if(Label.LPCR_MICRO.equals(eachQuote.LPCR_TypeCreche__c)){
                         if(eachQuote.LPCR_DateFin__c < dueDateRenewal){
                             eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                         }
@@ -158,7 +156,6 @@ public with sharing class SM008_QuoteServices {
                             eachQuote.SBQQ__EndDate__c = dueDateRenewal;
                         }  
                     }
-                }
             }
             if(Label.LPCR_Amendment.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
