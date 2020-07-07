@@ -385,9 +385,9 @@ public with sharing class SM008_QuoteServices {
         }
         
         if(mapQuoteIDAgreementID.get(agreementMac).size() > 0 || mapQuoteIDAgreementID.get(agreementMicro).size() > 0)
-            SM008_QuoteServices.loadAgreement(mapQuoteIDAgreementID);
+        SM008_QuoteServices.loadAgreement(mapQuoteIDAgreementID);
         return mapQuoteIDAgreementID;
-    } 
+    }  
     
     public static void setTypeEnregistrement(List<SBQQ__Quote__c> quotesList){
         Set<Id> opportunitiesIdsSet = new Set<Id>();

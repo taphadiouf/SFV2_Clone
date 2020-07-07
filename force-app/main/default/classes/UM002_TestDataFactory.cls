@@ -1292,7 +1292,10 @@ newMe.FederationIdentifier = null;
         }
     
     
-    
+    public static Contact createContact(String name, ID rectypeId){
+        Contact con = new Contact(LastName = name , RecordTypeId = rectypeId);
+        return con;
+    }
    
 
 
