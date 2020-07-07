@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Field on Quote Line or Product Option object that is evaluated by this condition.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Choose the field that should contain the value you enter in the Value field.</inlineHelpText>
+    <inlineHelpText>Sélectionnez le champ qui doit contenir la valeur que vous saisissez dans le champ Valeur.</inlineHelpText>
     <label>Field</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
@@ -121,6 +121,11 @@
                 <fullName>LPCR_FraisDossier__c</fullName>
                 <default>false</default>
                 <label>LPCR_FraisDossier__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__EndDate__c</fullName>
+                <default>false</default>
+                <label>SBQQ__EndDate__c</label>
             </value>
         </valueSetDefinition>
     </valueSet>
