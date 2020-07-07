@@ -186,7 +186,7 @@ public with sharing class SM008_QuoteServices {
                         eachQuote.LPCR_MethodeRenouvellement__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_MethodeRenouvellement__c;
                         //Date endDate = eachQuote.LPCR_DateFin__c;
                         if(Label.LPCR_Express.equals(eachQuote.LPCR_MethodeRenouvellement__c) ||Label.LPCR_SansRenouvellement.equals(eachQuote.LPCR_MethodeRenouvellement__c) ){
-                            if(eachQuote.LPCR_DateFin__c.year() == System.Today().year()){
+                            if(eachQuote.LPCR_DateFin__c < dueDateQuote){
                                 eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                             }
                             else{
@@ -200,6 +200,9 @@ public with sharing class SM008_QuoteServices {
                 } 
             }
             if(Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c)){
+                if(eachQuote.LPCR_DateDebut__c != Null){
+                    eachQuote.SBQQ__StartDate__c = eachQuote.LPCR_DateDebut__c ;
+                }
                 if(eachQuote.LPCR_DateFin__c < dueDateQuote){
                     eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                 }
