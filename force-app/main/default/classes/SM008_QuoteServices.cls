@@ -8,7 +8,8 @@ public with sharing class SM008_QuoteServices {
     public static Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_ContratA);
     public static Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement);
     public static Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Reservataire);
-    
+    public static Id referencementApprouveRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement_Approuve);
+    public static Id reservataireApprouveRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Reservataire_Approuve);
     //added by hanae
     public static void updateQuotes(List<SBQQ__Quote__c> quotesList){
         
@@ -50,7 +51,7 @@ public with sharing class SM008_QuoteServices {
                     if(eachQuote.RecordTypeId == acceuilRecTypeId){
                         B2CQuoteList.add(eachQuote);
                     }
-                    if(eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == reservataireRecTypeId){
+                    if(eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == reservataireRecTypeId || eachQuote.RecordTypeId == referencementApprouveRecTypeId || eachQuote.RecordTypeId == reservataireApprouveRecTypeId ){
                         B2BQuoteList.add(eachQuote);
                     }
                 }
