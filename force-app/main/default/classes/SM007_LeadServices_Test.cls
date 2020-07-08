@@ -12,10 +12,10 @@ public class SM007_LeadServices_Test {
         Id aoPublicReservLeadRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'AO_PublicReservation');
         Id aoPublicDSPLeadRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'AO_PublicDSP');
         Id partenaireLeadRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'Partenaire');
-        List<Lead> entrepriseLeads = UM002_TestDataFactory.createLeads(100, entrepriseLeadRecordType, 'entrepriseLead', 'entrepriseLead', 'Nouveau', 'test@test.com');
-        List<Lead> aoPublicReservLeads = UM002_TestDataFactory.createLeads(100, aoPublicReservLeadRT, 'aoPublicReservLeads', 'aoPublicReservLeads', 'Nouveau', 'test@test.com');
-        List<Lead> aoPublicDSPLeads = UM002_TestDataFactory.createLeads(100, aoPublicDSPLeadRT, 'aoPublicDSPLeads', 'aoPublicDSPLeads', 'Nouveau', 'test@test.com');
-        List<Lead> aoPartenaireLeads = UM002_TestDataFactory.createLeads(100, partenaireLeadRT, 'aoPartenaireLeads', 'aoPartenaireLeads', 'Nouveau', 'test@test.com');
+        List<Lead> entrepriseLeads = UM002_TestDataFactory.createLeads(5, entrepriseLeadRecordType, 'entrepriseLead', 'entrepriseLead', 'Nouveau', 'test@test.com');
+        List<Lead> aoPublicReservLeads = UM002_TestDataFactory.createLeads(5, aoPublicReservLeadRT, 'aoPublicReservLeads', 'aoPublicReservLeads', 'Nouveau', 'test@test.com');
+        List<Lead> aoPublicDSPLeads = UM002_TestDataFactory.createLeads(5, aoPublicDSPLeadRT, 'aoPublicDSPLeads', 'aoPublicDSPLeads', 'Nouveau', 'test@test.com');
+        List<Lead> aoPartenaireLeads = UM002_TestDataFactory.createLeads(5, partenaireLeadRT, 'aoPartenaireLeads', 'aoPartenaireLeads', 'Nouveau', 'test@test.com');
 
         insert entrepriseLeads;
         insert aoPublicReservLeads;
@@ -119,7 +119,7 @@ public class SM007_LeadServices_Test {
         List<Lead> entrepriseLeads = [SELECT Id,RecordTypeId FROM Lead WHERE Name = 'entrepriseLead'];
         List<Lead> aoPublicReservLeads = [SELECT Id,RecordTypeId FROM Lead WHERE Name = 'aoPublicReservLeads'];
         List<Lead> aoPublicDSPLeads = [SELECT Id,RecordTypeId FROM Lead WHERE Name = 'aoPublicDSPLeads'];
-        
+         Test.startTest();
         LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
         List<Database.LeadConvert> leadsToConvert = new List<Database.LeadConvert>();
         Database.LeadConvert tempLc;
@@ -144,13 +144,13 @@ public class SM007_LeadServices_Test {
             tempLc.setConvertedStatus(convertStatus.MasterLabel);
             leadsToConvert.add(tempLc);
         }
-        Test.startTest();
+       
         List<Database.LeadConvertResult> lcr = Database.convertLead(leadsToConvert);
         for(Database.LeadConvertResult eachResult : lcr){
             System.assert(eachResult.isSuccess());
         }
         List<LPCR_Structure_AO__c> structuresWithOpp = [SELECT Id, opportunite__c FROM LPCR_Structure_AO__c WHERE opportunite__c != null];
-        System.assertEquals(600, structuresWithOpp.size());
+        System.assertEquals(30, structuresWithOpp.size());
         Test.stopTest();
     }
     /*

@@ -60,7 +60,9 @@ public with sharing class SM013_QuoteLineServices {
                 + ql.SBQQ__EffectiveStartDate__c.year();
                 
             PAD.log('SM013_QuoteLineServices', 'checkExistingRegistrationFee', 'relatedAssetKey: ' + relatedAssetKey);
-
+			System.debug('$$$$$$$ assetsByCustomerNurseryYear  ===== '+assetsByCustomerNurseryYear);
+            
+            System.debug('$$$$$$$ relatedAssetKey  ===== '+relatedAssetKey);
             if (assetsByCustomerNurseryYear.containsKey(relatedAssetKey)) {
                 ql.addError(Label.LPCR_RegistrationFeeErrorMessage);
             }
