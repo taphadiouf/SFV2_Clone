@@ -139,23 +139,43 @@ public with sharing class SM008_QuoteServices {
                     }
                 }
             }
+            
+            
+            
+            
+            if(Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c) && acctMap.containsKey(eachQuote.LPCR_Creche__c)){
+                eachQuote.LPCR_TypeFacturation__c   = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeFacturation__c ;
+                eachQuote.LPCR_EntiteJuridique__c  = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_EntiteJuridique__c ;
+                eachQuote.LPCR_TypeCreche__c = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c;
+                if(Label.LPCR_MAC.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
+                    eachQuote.LPCR_IndexationConvenue__c = 'Non';
+                }
+                if(Label.LPCR_MICRO.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
+                    eachQuote.LPCR_IndexationConvenue__c = 'Oui';
+                }
+            }
+            
+            
+            
+            
+            
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c) || Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c)){
-                    if(Label.LPCR_MAC.equals(eachQuote.LPCR_TypeCreche__c)){
-                        if(eachQuote.LPCR_DateFin__c < dueDateQuote){
-                            eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
-                        }
-                        else{
-                            eachQuote.SBQQ__EndDate__c = dueDateQuote;
-                        } 
+                if(Label.LPCR_MAC.equals(eachQuote.LPCR_TypeCreche__c)){
+                    if(eachQuote.LPCR_DateFin__c < dueDateQuote){
+                        eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                     }
-                    else if(Label.LPCR_MICRO.equals(eachQuote.LPCR_TypeCreche__c)){
-                        if(eachQuote.LPCR_DateFin__c < dueDateRenewal){
-                            eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
-                        }
-                        else{
-                            eachQuote.SBQQ__EndDate__c = dueDateRenewal;
-                        }  
+                    else{
+                        eachQuote.SBQQ__EndDate__c = dueDateQuote;
+                    } 
+                }
+                else if(Label.LPCR_MICRO.equals(eachQuote.LPCR_TypeCreche__c)){
+                    if(eachQuote.LPCR_DateFin__c < dueDateRenewal){
+                        eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                     }
+                    else{
+                        eachQuote.SBQQ__EndDate__c = dueDateRenewal;
+                    }  
+                }
             }
             if(Label.LPCR_Amendment.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
@@ -177,17 +197,6 @@ public with sharing class SM008_QuoteServices {
                     }
                     
                 }
-            }
-            if(Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c) && acctMap.containsKey(eachQuote.LPCR_Creche__c)){
-                eachQuote.LPCR_TypeFacturation__c   = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeFacturation__c ;
-                    eachQuote.LPCR_EntiteJuridique__c  = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_EntiteJuridique__c ;
-                    eachQuote.LPCR_TypeCreche__c = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c;
-                    if(Label.LPCR_MAC.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
-                        eachQuote.LPCR_IndexationConvenue__c = 'Non';
-                    }
-                    if(Label.LPCR_MICRO.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
-                        eachQuote.LPCR_IndexationConvenue__c = 'Oui';
-                    }
             }
         }
     }
@@ -385,7 +394,7 @@ public with sharing class SM008_QuoteServices {
         }
         
         if(mapQuoteIDAgreementID.get(agreementMac).size() > 0 || mapQuoteIDAgreementID.get(agreementMicro).size() > 0)
-        SM008_QuoteServices.loadAgreement(mapQuoteIDAgreementID);
+            SM008_QuoteServices.loadAgreement(mapQuoteIDAgreementID);
         return mapQuoteIDAgreementID;
     }  
     

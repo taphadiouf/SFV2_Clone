@@ -137,24 +137,13 @@ public class SM008_QuoteServices_Test {
         insert accountsMac;
         List<Account> accountsMicro = UM002_TestDataFactory.createAccountWithRecType(10, 'Accounts', recTypeId, 'MICRO');
         insert accountsMicro;
-        //List<SBQQ__Quote__c> quotesMac = UM002_TestDataFactory.createQuoteswithStatus(10, accountsMac, opps, 'Draft');
-        //insert quotesMac;
-        //List<SBQQ__Quote__c> quotesMicro = UM002_TestDataFactory.createQuoteswithStatus(10, accountsMicro, opps, 'Draft');
-        //for(SBQQ__Quote__c eachQuote: quotesMicro){
-        //    eachQuote.SBQQ__RenewalUpliftRate__c = 10;
-        //    eachQuote.LPCR_TypeEnregistrement__c = 'test';
-        //}
-        //insert quotesMicro;  
-        
-        List<SBQQ__Quote__c> quotesMac = UM002_TestDataFactory.createQuotes(10, accountsMac, opps);
-        for(SBQQ__Quote__c eachQuote:quotesMac){
-            eachQuote.SBQQ__Status__c = 'Draft';
-            eachQuote.LPCR_TypeCreche__c = 'MAC';
-        }
+        List<SBQQ__Quote__c> quotesMac = UM002_TestDataFactory.createQuoteswithStatus(10, accountsMac, opps, 'Draft');
         insert quotesMac;
-        
-        
-        
+        List<SBQQ__Quote__c> quotesMicro = UM002_TestDataFactory.createQuoteswithStatus(10, accountsMicro, opps, 'Draft');
+        for(SBQQ__Quote__c eachContract : quotesMicro){
+            eachContract.SBQQ__Type__c = 'Renewal';
+        }
+        insert quotesMicro;  
         
         
     } 
@@ -247,7 +236,7 @@ public class SM008_QuoteServices_Test {
             insert quote;
             
             quote = [SELECT Id ,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c from SBQQ__Quote__c WHERE  Id = :quote.Id];
-            //System.assertEquals(quote.SBQQ__SalesRep__c,  UserInfo.getUserId(), 'Quote SBQQ__SalesRep__c not equals to oppt LPCR_PlanningEnfant__c');
+            System.assertEquals(quote.SBQQ__SalesRep__c,  UserInfo.getUserId(), 'Quote SBQQ__SalesRep__c not equals to oppt LPCR_PlanningEnfant__c');
             System.assertEquals(quote.LPCR_ResponsableADV__c,  UserInfo.getUserId(), 'Quote LPCR_ResponsableADV__c not equals to oppt LPCR_PlanningEnfant__c');
             System.assertEquals(quote.LPCR_ResponsableServiceFamille__c,  UserInfo.getUserId(), 'Quote LPCR_ResponsableServiceFamille__c not equals to oppt LPCR_PlanningEnfant__c');
             Test.stopTest();
