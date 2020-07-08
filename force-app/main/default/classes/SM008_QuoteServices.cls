@@ -182,21 +182,22 @@ public with sharing class SM008_QuoteServices {
     public static void setB2BQuotesFromContract(List<SBQQ__Quote__c> quotesList,  Map<ID,Account> acctMap, Map<Id,Opportunity> opptyMap,  Map<Id,Contract> contractMap){
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
         for (SBQQ__Quote__c eachQuote : quotesList){
+            Date dueStartDateQuote = date.newInstance(eachQuote.SBQQ__StartDate__c.year(), 12, 31);  
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) ){
                     if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
                         eachQuote.LPCR_MethodeRenouvellement__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_MethodeRenouvellement__c;
                         //Date endDate = eachQuote.LPCR_DateFin__c;
                         if(Label.LPCR_Express.equals(eachQuote.LPCR_MethodeRenouvellement__c) ||Label.LPCR_SansRenouvellement.equals(eachQuote.LPCR_MethodeRenouvellement__c) ){
-                            if(eachQuote.LPCR_DateFin__c < dueDateQuote){
+                            if(eachQuote.LPCR_DateFin__c < dueStartDateQuote){
                                 eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                             }
                             else{
-                                eachQuote.SBQQ__EndDate__c = dueDateQuote;
+                                eachQuote.SBQQ__EndDate__c = dueStartDateQuote;
                             } 
                         }
                         else if(Label.LPCR_Tacite.equals(eachQuote.LPCR_MethodeRenouvellement__c)){
-                            eachQuote.SBQQ__EndDate__c = dueDateQuote;
+                            eachQuote.SBQQ__EndDate__c = dueStartDateQuote;
                         }
                     }
                 } 
