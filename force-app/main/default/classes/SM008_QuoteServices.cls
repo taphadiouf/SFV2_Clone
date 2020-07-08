@@ -193,37 +193,7 @@ public with sharing class SM008_QuoteServices {
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
         Date nextYearDueDateRenewal = date.newInstance(System.Today().year()+1, 08, 31);
 
-        for (SBQQ__Quote__c eachQuote : quotesList){
-            if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c) || Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c)){
-                Date endDate = eachQuote.LPCR_DateFin__c;
-                if(acctMap.containsKey(eachQuote.LPCR_Creche__c)){
-                    if(Label.LPCR_MAC.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
-                        if(eachQuote.LPCR_DateFin__c < dueDateQuote){
-                            eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
-                        }
-                        else{
-                            eachQuote.SBQQ__EndDate__c = dueDateQuote;
-                        } 
-                    }
-                    else if(Label.LPCR_MICRO.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
-                        if(eachQuote.LPCR_DateFin__c < dueDateRenewal){
-                            eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
-                        }
-                        else{
-                            if(eachQuote.SBQQ__StartDate__c < dueDateRenewal){
-                                eachQuote.SBQQ__EndDate__c = dueDateRenewal;
-                            }else{
-                                if(eachQuote.LPCR_DateFin__c < nextYearDueDateRenewal){
-                                    eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
-                                }else{
-                                    eachQuote.SBQQ__EndDate__c = nextYearDueDateRenewal;
-                                }
-                            }
-                            
-                        }  
-                    }
-                }
-            }
+        for (SBQQ__Quote__c eachQuote : quotesList){           
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) ){
                     if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
