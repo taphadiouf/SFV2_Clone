@@ -340,14 +340,7 @@
         <apexClass>SM014_OrderServices_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>SM014_UsageServices</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>SM014_UsageServices_Test</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
+    
     <classAccesses>
         <apexClass>SM015_InvoiceServices</apexClass>
         <enabled>true</enabled>

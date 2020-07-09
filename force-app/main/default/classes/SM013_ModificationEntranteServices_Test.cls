@@ -45,12 +45,12 @@ public class SM013_ModificationEntranteServices_Test {
     @isTest
     public static void updateQuotesFromModifEntrantes_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
-            Test.startTest();
-            List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
+             
+            List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = :Label.LPCR_QuoteValide];
             System.assertEquals(50, quotesValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesValides');
-            List<SBQQ__Quote__c> quotesNonValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c != 'Validé Directrice'];
+            List<SBQQ__Quote__c> quotesNonValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c != :Label.LPCR_QuoteValide];
             System.assertEquals(50, quotesNonValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesNonValides');
-            Test.stopTest();
+           
         }
     }
 	@isTest 
