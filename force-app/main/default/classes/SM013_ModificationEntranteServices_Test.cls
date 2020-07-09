@@ -45,12 +45,60 @@ public class SM013_ModificationEntranteServices_Test {
     @isTest
     public static void updateQuotesFromModifEntrantes_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
-             
-            List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = :Label.LPCR_QuoteValide];
+            Test.startTest();
+            List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
             System.assertEquals(50, quotesValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesValides');
-            List<SBQQ__Quote__c> quotesNonValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c != :Label.LPCR_QuoteValide];
+            List<SBQQ__Quote__c> quotesNonValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c != 'Validé Directrice'];
             System.assertEquals(50, quotesNonValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesNonValides');
-           
+            Test.stopTest();
+        }
+    }
+    
+    @isTest 
+    public static void sendAgreementFromModifEntrantesReglementCreche_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+            Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+            PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];            
+            
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+            
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+            
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+            
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+            
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+            
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+            
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+            
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Traitement jour férié',quote.id,acc.id,cont.id,contract.id,10);
+            insert modif;           
+            
+            Test.startTest();
+            Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
+ 		    modif.LPCR_EtatTraitement__c = true;
+            update modif;      
+            Test.stopTest();
+            
         }
     }
 	@isTest 

@@ -155,6 +155,11 @@
                 <default>false</default>
                 <label>NB Heures réalisées</label>
             </value>
+            <value>
+                <fullName>Traitement jour férié</fullName>
+                <default>false</default>
+                <label>Traitement jour férié</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

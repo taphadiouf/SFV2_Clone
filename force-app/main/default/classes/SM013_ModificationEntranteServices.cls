@@ -18,7 +18,7 @@ public with sharing class SM013_ModificationEntranteServices {
         return quotesToUpdate;
     }
     
-    // added by saurabh    
+    // added by saurabh updated by Ayoub IS-1273
     public static void sendAgreementFromModifEntrantes(List<LPCR_ModificationEntrante__c> ModifEntrantesList, Map<Id, LPCR_ModificationEntrante__c> oldModificationsentrantesMap){
         Map<String,LPCR_Type_Evenement_Intranet__mdt> mapTypeEvenement = new Map<String,LPCR_Type_Evenement_Intranet__mdt>();
         Map<String, String> mapAgreementTemplate = new Map<String, String>();
@@ -26,7 +26,7 @@ public with sharing class SM013_ModificationEntranteServices {
         
         Set<Id> modifEntranteIds = UM003_TypeManager.getIdsOfListObjects(ModifEntrantesList);
         Map<Id,LPCR_Type_Evenement_Intranet__mdt> mapModEentIdWithTypeEve = new Map<Id,LPCR_Type_Evenement_Intranet__mdt>();
-        Map<Id,LPCR_ModificationEntrante__c> mapModificationEntrante = new Map<Id,LPCR_ModificationEntrante__c>([SELECT Id , LPCR_Contract__r.OwnerId ,LPCR_Contract__r.Account.Email__c  From LPCR_ModificationEntrante__c WHERE Id IN :modifEntranteIds ]);
+        Map<Id,LPCR_ModificationEntrante__c> mapModificationEntrante = new Map<Id,LPCR_ModificationEntrante__c>([SELECT Id , LPCR_Contract__r.OwnerId ,LPCR_Contract__r.LPCR_Creche__c,LPCR_Contract__r.Account.Email__c  From LPCR_ModificationEntrante__c WHERE Id IN :modifEntranteIds ]);
         
         for(LPCR_Type_Evenement_Intranet__mdt eachTypeEvenement : [SELECT Id, LPCR_ReglementCreche__c ,DeveloperName, MasterLabel, Label, QualifiedApiName, LPCR_Processus__c, LPCR_Validation__c, LPCR_ContratAccueil__c, LPCR_Annexe2__c, LPCR_Annexe3__c FROM LPCR_Type_Evenement_Intranet__mdt]){
             mapTypeEvenement.put(eachTypeEvenement.MasterLabel, eachTypeEvenement);
@@ -63,30 +63,23 @@ public with sharing class SM013_ModificationEntranteServices {
                 }
             }
         }
-        SM019_DocumentList_Callout.DocumentListFullResponse docListFullResponse = null;
-        SM019_DocumentList_Callout.DocumentListResponse documentListResponse= null;
+        //IS-1273
         final String REGLEMENT_FONCTIONNEMENT_CRECHE_NAME = 'Reglement Fonctionnement creche';
         final String REGLEMENT_FONCTIONNEMENT_CRECHE_LABEL ='Règlement Fonctionnement Crèche';
         final String EMAIL_BODY ='Bonjour, Veuillez trouvez les règle de fonctionnement de votre crèche';
         final String SEND_FROM_EMAIL ='lpcr@lpcr.fr';
         if(mapSendAgreementTemplate.size() > 0){
-             System.debug('$$$ mapSendAgreementTemplate = '+mapSendAgreementTemplate.size());
             sendAgreement(mapSendAgreementTemplate);
             if(UM003_TypeManager.isNotNullAndNotEmpty(mapModEentIdWithTypeEve.values())){
                 for(Id eachModEnt : mapModEentIdWithTypeEve.keySet()){
-                System.debug('$$$ eachModEnt = '+eachModEnt);
-
-                    docListFullResponse = SM019_DocumentList_Callout.getDocumentListCallout(mapModificationEntrante.get(eachModEnt).LPCR_Contract__r.LPCR_Creche__c,REGLEMENT_FONCTIONNEMENT_CRECHE_NAME);
-                       System.debug('$$$ docListFullResponse = '+docListFullResponse);
-                    if(docListFullResponse != null && docListFullResponse.response != null && docListFullResponse.response.size()>0){
-                        documentListResponse = docListFullResponse.response.get(0);
-                        System.debug('$$$ documentListResponse = '+documentListResponse);
-                        SM016_SendMail_Callout.sendMailCallout(SEND_FROM_EMAIL, 
-                                                               mapModificationEntrante.get(eachModEnt).LPCR_Contract__r.Account.Email__c,
-                                                               REGLEMENT_FONCTIONNEMENT_CRECHE_LABEL, 
-                                                               EMAIL_BODY,
-                                                               new Set<String>{documentListResponse.Id});
-                    }
+                    SM019_DocumentList_Callout.getDocumentListFutureCallout(SEND_FROM_EMAIL,
+                                                                            mapModificationEntrante.get(eachModEnt).LPCR_Contract__r.Account.Email__c,
+                                                                            REGLEMENT_FONCTIONNEMENT_CRECHE_LABEL,
+                                                                            EMAIL_BODY,
+                                                                            mapModificationEntrante.get(eachModEnt).LPCR_Contract__r.OwnerId,
+                                                                            REGLEMENT_FONCTIONNEMENT_CRECHE_NAME
+                                                                           );
+                    
                 }
             }
         }
