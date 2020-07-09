@@ -54,7 +54,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
     @isTest
     public static void APB010_ProcessDailyOrderProduct_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
-            
+              Test.startTest();
             Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
             PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
             Product2 prod1 = [SELECT Id FROM Product2 WHERE Name =: 'test1' LIMIT 1];
@@ -122,7 +122,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
             
             order.status ='Activated';
             update order;
-            Test.startTest();
+          
             blng__BillingSchedule__c billingSchedule = new blng__BillingSchedule__c();
             billingSchedule.blng__OrderProduct__c = orderItem1.id;
             billingSchedule.name = 'Test';
