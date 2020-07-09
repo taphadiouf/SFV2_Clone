@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_DateDeDepart__c</fullName>
+    <description>Rempli manuellement par le service famille. Utilisé dans reporting</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Rempli manuellement par le service famille. Utilisé dans reporting</inlineHelpText>
+    <label>Date de Départ</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>
