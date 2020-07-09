@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Jeudi__c</fullName>
+    <description>dépend des heures de début et de fin : 1 si toute la journée et 0,5 pour une demi journée</description>
+    <externalId>false</externalId>
+    <formula>IF(OR(ISBLANK(LPCR_HeureFinJeudi__c),ISBLANK(LPCR_HeureDebutJeudi__c )),0,
+IF(
+((LPCR_HeureFinJeudi__c-LPCR_HeureDebutJeudi__c)/3600000&gt;=5),1,
+IF((LPCR_HeureFinJeudi__c-LPCR_HeureDebutJeudi__c)/3600000&gt;0,0.5,0)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Jeudi</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

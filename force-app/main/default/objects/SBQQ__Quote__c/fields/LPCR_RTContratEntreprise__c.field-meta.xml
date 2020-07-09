@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_RTContratEntreprise__c</fullName>
     <externalId>false</externalId>
-    <formula>LPCR_ContractEntreprise__r.LPCR_TypeEnregistrement__c</formula>
+    <formula>LPCR_ContractEntreprise__r.RecordType.DeveloperName</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Type Enregistrement Contrat Entreprise</label>
     <required>false</required>

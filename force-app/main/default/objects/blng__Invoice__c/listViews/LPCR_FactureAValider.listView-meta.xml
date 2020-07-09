@@ -3,7 +3,7 @@
     <fullName>LPCR_FactureAValider</fullName>
     <columns>NAME</columns>
     <columns>blng__Account__c</columns>
-    <columns>blng__InvoiceStatus__c</columns>
+    <columns>LPCR_StatutFacture__c</columns>
     <columns>blng__InvoiceDate__c</columns>
     <columns>blng__DueDate__c</columns>
     <columns>blng__TotalAmount__c</columns>
@@ -24,5 +24,4 @@
         <value>TODAY</value>
     </filters>
     <label>Factures - Prêt à valider</label>
-    <language>en_US</language>
 </ListView>
