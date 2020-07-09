@@ -21,7 +21,7 @@ public class SM010_ContractServices {
         Map<Id,Order> orderMap = new  Map<Id,Order>([SELECT id,LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c,SBQQ__Quote__r.SBQQ__Type__c,SBQQ__Quote__r.LPCR_NouveauPlanFacture__c ,SBQQ__Quote__r.LPCR_RenouvellementPlanFacture__c, SBQQ__Quote__c,SBQQ__Quote__r.LPCR_BatchCommande__c from Order WHERE Id in :orderIds]);
 
         Set<String> quoteOrderIds = UM003_TypeManager.getFieldsOfListObjects(orderMap.values(),'SBQQ__Quote__c');
-        Map<Id,SBQQ__Quote__c> quoteOrderMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id, recordtype.DeveloperName, LPCR_PlanningEnfant__c, LPCR_EntiteJuridique__c, LPCR_ContractEntreprise__c, LPCR_Creche__c, LPCR_TypeCreche__c, LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Region__c, LPCR_CompteFacturation__c, LPCR_ContactEnfant__c, SBQQ__Type__c   from SBQQ__Quote__c WHERE Id in :quoteOrderIds]);
+        Map<Id,SBQQ__Quote__c> quoteOrderMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id, recordtype.DeveloperName, LPCR_PlanningEnfant__c, LPCR_EntiteJuridique__c, LPCR_ContractEntreprise__c, LPCR_Creche__c, LPCR_TypeCreche__c, LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Region__c, LPCR_CompteFacturation__c, LPCR_ContactEnfant__c, SBQQ__Type__c,LPCR_FraisDossier__c   from SBQQ__Quote__c WHERE Id in :quoteOrderIds]);
         String contractRTDevName;
         for (Contract eachContract : contracts){
 
@@ -40,6 +40,9 @@ public class SM010_ContractServices {
 
                 if(orderMap.containsKey(eachContract.SBQQ__Order__c) && 
                	quoteOrderMap.containsKey(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
+                    if(quoteMap.containsKey(eachContract.SBQQ__Quote__c) && quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement) {
+                        eachContract.LPCR_FraisDossier__c = quoteOrderMap.get(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;                	
+                    }
                 	eachContract=setContractFieldsFromOrderQuoteMaper(eachContract,quoteOrderMap.get(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
             	}
 
@@ -90,12 +93,15 @@ public class SM010_ContractServices {
         
         Map<Id,Order> mapOrders = new Map<Id,Order>([SELECT Id,SBQQ__Quote__c from Order WHERE Id in :orderIds ]);
         Set<String> quoteIds = UM003_TypeManager.getFieldsOfListObjects(mapOrders.values(),'SBQQ__Quote__c');
-        Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_InitAutoAvecDateDebut__c,LPCR_DureeContratJour__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_IndexationConvenue__c,LPCR_MasterDevis__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c, LPCR_PlanningEnfant__c,SBQQ__SalesRep__c,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, LPCR_EntiteJuridique__c, recordtype.DeveloperName, LPCR_ContractEntreprise__c, LPCR_Creche__c, LPCR_TypeCreche__c, LPCR_ContactRepresentant1__c, LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Region__c, LPCR_CompteFacturation__c, LPCR_ContactEnfant__c, SBQQ__Type__c   from SBQQ__Quote__c WHERE Id in :quoteIds]);
+        Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_InitAutoAvecDateDebut__c,LPCR_DureeContratJour__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_IndexationConvenue__c,LPCR_MasterDevis__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c, LPCR_PlanningEnfant__c,SBQQ__SalesRep__c,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, LPCR_EntiteJuridique__c, recordtype.DeveloperName, LPCR_ContractEntreprise__c, LPCR_Creche__c, LPCR_TypeCreche__c, LPCR_ContactRepresentant1__c, LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Region__c, LPCR_CompteFacturation__c, LPCR_ContactEnfant__c, SBQQ__Type__c,LPCR_FraisDossier__c   from SBQQ__Quote__c WHERE Id in :quoteIds]);
         
         //  Check if the Order is getting changed, If so , updating the fields 
         for(Contract eachContract : newContractMap.values()){
             if(mapOrders.containsKey(eachContract.SBQQ__Order__c) && 
                quoteMap.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
+                if(quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement) {
+                    eachContract.LPCR_FraisDossier__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;                	
+                }
                 eachContract=setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
                 eachContract=setContractFieldsFromOrderQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
             }
