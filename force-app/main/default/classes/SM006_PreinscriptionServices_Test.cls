@@ -19,7 +19,7 @@ public class SM006_PreinscriptionServices_Test {
       //  insert enfantsContactsListDEF;
         insert enfantsContactsListDSP;
         
-        Id familleContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Famille);
+        Id familleContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
      //   List<Contact> parentContactsListOCC= UM002_TestDataFactory.createContacts(20, familleContactRT, 'test_lastname', 'test_address');
         List<Contact> parentContactsListDEF= UM002_TestDataFactory.createContacts(20, familleContactRT, 'test_lastname', 'test_address');
         List<Contact> parentContactsListDSP= UM002_TestDataFactory.createContacts(20, familleContactRT, 'test_lastname', 'test_address');

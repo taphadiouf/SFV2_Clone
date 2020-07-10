@@ -122,7 +122,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
             
             order.status ='Activated';
             update order;
-            
+
             blng__BillingSchedule__c billingSchedule = new blng__BillingSchedule__c();
             billingSchedule.blng__OrderProduct__c = orderItem1.id;
             billingSchedule.name = 'Test';
