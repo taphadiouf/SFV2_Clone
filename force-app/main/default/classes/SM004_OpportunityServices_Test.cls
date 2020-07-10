@@ -46,4 +46,26 @@ public class SM004_OpportunityServices_Test {
         Test.stopTest();
         
     }
+    
+    @isTest
+    public static void setAccountStatus_Test(){
+        List<Account> accs = UM002_TestDataFactory.createAccounts(1,'test');
+        insert accs;
+        
+        List<Opportunity> oppties = UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting');
+        oppties[0].AccountId = accs[0].Id;
+        insert oppties;
+        
+   
+        Test.startTest();
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Opportunity opp = oppties[0];
+            opp.StageName = 'Gagnée';
+           	update opp;
+        }
+        
+        Test.stopTest();
+        
+        System.assertEquals('Client',[select LPCR_statut__c from account where id =: accs[0].Id].LPCR_statut__c );
+    }
 }
