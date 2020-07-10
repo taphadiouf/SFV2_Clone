@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-
+<!--
     <types>
         <members>SBQQ__Quote__c.LPCR_First_Option_Mac_End_Date__c</members>
         <members>SBQQ__Quote__c.LPCR_First_Option_Mac_Start_Date__c</members>
@@ -25,6 +25,37 @@
         <members>blng__Invoice__c.LPCR_MoyenPaiement__c</members>
         <name>CustomField</name>
     </types>
+    <types>
+        <members>Contract-Contrat B2B</members>
+        <members>Contract-Contrat B2C</members>
+        <members>Account-Famille</members>
+        <members>Account-Entreprise</members>
+
+        <members>SBQQ__Quote__c-Contrat d%27accueil</members>
+        <members>SBQQ__Quote__c-Contrat d%27accueil Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;servataire</members>
+        <members>SBQQ__Quote__c-R&#233;servataire Approuv&#233;</members>
+        <members>blng__Invoice__c-LPCR Posted Invoice</members>
+        <members>blng__Invoice__c-LPCR Draft Invoice</members>
+        <members>order-Billing Order Layout</members>
+        <members>OrderItem-Billing Order Product Layout</members>
+        <members>SBQQ__QuoteLine__c-Quote Line Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c.SBQQ__All</members>
+        <name>ListView</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c</members>
+        <members>Order</members>
+        <members>Order</members>
+        <name>Contract</name>
+    </types>
+    -->
+
 
     <version>48.0</version>
 </Package>
