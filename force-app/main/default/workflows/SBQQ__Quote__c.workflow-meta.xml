@@ -306,16 +306,6 @@
         <protected>false</protected>
         <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_UpdateNumeroContratAmendment</fullName>
-        <field>LPCR_NumeroContrat__c</field>
-        <formula>SBQQ__MasterContract__r.LPCR_NumeroContrat__c</formula>
-        <name>UpdateNumeroContratAmendment</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
     <rules>
         <fullName>Alerte Service Famille</fullName>
         <actions>
@@ -556,46 +546,6 @@
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
-        <fullName>Statut du quote apres Avenant ou Devis</fullName>
-        <actions>
-            <name>LPCR_StatutPretAEnvoyer</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>true</active>
-        <booleanFilter>(1 OR 5) AND( 2 OR 6) AND (3 AND 4)</booleanFilter>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
-            <operation>equals</operation>
-            <value>Amendment</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
-            <operation>notEqual</operation>
-            <value>Résiliation,Mouvement Interne Berceau</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
-            <operation>equals</operation>
-            <value>Draft</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
-            <operation>equals</operation>
-            <value>Approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
-            <operation>equals</operation>
-            <value>Quote</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
-            <operation>equals</operation>
-        </criteriaItems>
-        <description>Definition du statut du devis apres validation de l&apos;avenant. Cette update ne comprend pas le MIB et Resiliation.</description>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
-    <rules>
         <fullName>WF_Quote_Update RT Contrat d%27accueil approuvé</fullName>
         <actions>
             <name>RT_Contrat_accueil_approuve</name>
@@ -689,20 +639,6 @@
         </criteriaItems>
         <description>Definition du statut du devis apres validation de l&apos;avenant. Cette update ne comprend pas le MIB et Resiliation.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
-    <rules>
-        <fullName>Update Numero Contrat sur Amendment Quote</fullName>
-        <actions>
-            <name>LPCR_UpdateNumeroContratAmendment</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>true</active>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
-            <operation>equals</operation>
-            <value>Amendment</value>
-        </criteriaItems>
-        <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
         <fullName>Update Numero Contrat sur New Quote</fullName>

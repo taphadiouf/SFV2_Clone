@@ -60,9 +60,6 @@
         <members>Contract</members>
         <name>CustomObject</name>
     </types>
-    -->
-
-
     <types>
         <members>SBQQ__ErrorCondition__c.SBQQ__TestedField__c</members>
         <members>blng__Invoice__c.LPCR_ConversionLigneNegative__c</members>
@@ -144,6 +141,13 @@
         <members>unfiled$public/LPCR_RapportExportCICCB</members>
         <name>Report</name>
     </types>
+    -->
 
+    <types>
+
+        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContratAmendment</members>
+
+        <name>WorkflowFieldUpdate</name>
+    </types>
     <version>48.0</version>
 </Package>

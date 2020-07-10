@@ -106,6 +106,20 @@
         <value>Accueil</value>
     </labels>
     <labels>
+        <fullName>LPCR_Contrat_B2B</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Contrat_B2B</shortDescription>
+        <value>Contrat_B2B</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Contrat_B2C</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Contrat_B2C</shortDescription>
+        <value>Contrat_B2C</value>
+    </labels>
+    <labels>
         <fullName>LPCR_ContratEnfant</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -442,6 +456,13 @@
         <value>Referencement</value>
     </labels>
     <labels>
+        <fullName>LPCR_Referencement_Approuve</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Referencement</shortDescription>
+        <value>Referencement_Approuve</value>
+    </labels>
+    <labels>
         <fullName>LPCR_RegistrationFeeErrorMessage</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -475,6 +496,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_ReseauLPCR</shortDescription>
         <value>ReseauLPCR</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Reservataire_Approuve</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Reservataire</shortDescription>
+        <value>Reservataire_Approuve</value>
     </labels>
     <labels>
         <fullName>LPCR_Reservataire</fullName>
