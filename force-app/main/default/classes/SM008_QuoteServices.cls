@@ -27,8 +27,8 @@ public with sharing class SM008_QuoteServices {
         Set<String> renewedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_RenewedContract);
         Set<String> amendedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_AmendedContract);
 
-        Map<Id,Contract> contractMap = new Map<Id,Contract>([SELECT Id, LPCR_RenouvellementPlanFacture__c,LPCR_NouveauPlanFacture__c,LPCR_InitAutoAvecDateDebut__c,LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c,LPCR_MasterDevis__c, LPCR_Sales_Rep__c,LPCR_ResponsableADV__c,LPCR_ResponsableServiceFamille__c    From Contract Where Id =: renewedContractIds]);
-        Map<Id,Contract> amendedContractMap = new Map<Id,Contract>([SELECT Id,LPCR_RenouvellementPlanFacture__c,LPCR_NouveauPlanFacture__c,LPCR_InitAutoAvecDateDebut__c, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c ,SBQQ__RenewalUpliftRate__c,LPCR_MasterDevis__c, LPCR_Sales_Rep__c,LPCR_ResponsableADV__c,LPCR_ResponsableServiceFamille__c   From Contract Where Id =: amendedContractIds]);
+        Map<Id,Contract> contractMap = new Map<Id,Contract>([SELECT Id, LPCR_FraisDossier__c,LPCR_RenouvellementPlanFacture__c,LPCR_NouveauPlanFacture__c,LPCR_InitAutoAvecDateDebut__c,LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c,LPCR_MasterDevis__c, LPCR_Sales_Rep__c,LPCR_ResponsableADV__c,LPCR_ResponsableServiceFamille__c    From Contract Where Id =: renewedContractIds]);
+        Map<Id,Contract> amendedContractMap = new Map<Id,Contract>([SELECT Id,LPCR_FraisDossier__c,LPCR_RenouvellementPlanFacture__c,LPCR_NouveauPlanFacture__c,LPCR_InitAutoAvecDateDebut__c, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_ChiffreAffaire__c ,LPCR_MethodeRenouvellement__c ,SBQQ__RenewalUpliftRate__c,LPCR_MasterDevis__c, LPCR_Sales_Rep__c,LPCR_ResponsableADV__c,LPCR_ResponsableServiceFamille__c   From Contract Where Id =: amendedContractIds]);
 
         if (Trigger.isBefore) {
             if (Trigger.isInsert) {
