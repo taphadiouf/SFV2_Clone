@@ -54,13 +54,14 @@
         <members>Order</members>
         <name>Contract</name>
     </types>
-    -->
-    <types>
+        <types>
         <members>SBQQ__Quote__c</members>
         <members>Order</members>
         <members>Contract</members>
         <name>CustomObject</name>
     </types>
+    -->
+
 
     <types>
         <members>SBQQ__ErrorCondition__c.SBQQ__TestedField__c</members>
