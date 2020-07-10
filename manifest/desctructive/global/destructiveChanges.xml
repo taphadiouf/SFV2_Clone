@@ -79,6 +79,16 @@
         <members>LPCR_LienFamilleFacture__c.LCPR_Facture__c</members>
         <members>LPCR_LienFamilleFacture__c.LCPR_LigneFacture__c</members>
         <members>LPCR_LienFamilleFacture__c.LCPR_RevenueTransaction__c</members>
+        <members>Contract.LPCR_NouveauPlanFacture__c</members>
+        <members>Contract.PCR_RenouvellementPlanFacture__c</members>
+        <members>Contact.Parent</members>
+
+        <members>LPCR_Planning__c.LPCR_Lundi__c</members>
+        <members>LPCR_Planning__c.LPCR_Mardi__c</members>
+        <members>LPCR_Planning__c.LPCR_Mercredi__c</members>
+        <members>LPCR_Planning__c.LPCR_Vendredi__c</members>
+
+        <members>Contract.LPCR_FrequenceFacturation__c</members>
 
         <name>CustomField</name>
     </types>

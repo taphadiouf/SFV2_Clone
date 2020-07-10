@@ -3,7 +3,7 @@
     <fullName>LPCR_AmendmentDateOK__c</fullName>
     <externalId>false</externalId>
     <formula>if(ISPICKVAL(SBQQ__Type__c, &apos;Amendment&apos;), 
-    if( RecordType.DeveloperName = &apos;Reservataire&apos;, 
+    if( Or(RecordType.DeveloperName = &apos;Reservataire&apos;, RecordType.DeveloperName = &apos;Reservataire_Approuve&apos;),
         if( ISPICKVAL(SBQQ__BillingFrequency__c, &apos;Monthly&apos;), 
             if( AND(SBQQ__StartDate__c &gt;= TODAY(), DAY(SBQQ__StartDate__c)= 1) , &apos;OK&apos;, &apos;KO&apos;),
          if(ISPICKVAL(SBQQ__BillingFrequency__c, &apos;Quarterly&apos;), 
