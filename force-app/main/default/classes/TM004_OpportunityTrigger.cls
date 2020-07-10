@@ -18,4 +18,10 @@ public class TM004_OpportunityTrigger extends TM000_TriggerHandler{
             SM007_LeadServices.opportunitiesIds = new Set<Id>(newOpportunitiesMap.keySet());
         }
     }
+    
+    protected override void afterUpdate() {
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM004_OpportunityServices.setAccountStatus(newOpportunitiesMap,oldOpportunitiesMap);
+        }
+    }
 }
