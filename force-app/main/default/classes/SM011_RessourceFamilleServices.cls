@@ -20,43 +20,6 @@ public with sharing class SM011_RessourceFamilleServices implements Queueable{
     }
     
     /*
-	*	@description : this method create New RessourceFamille for each RessourceFamille getting a change on LPCR_TauxMensuel__c 
-	*	@param Map<Id,LPCR_RessourceFamille__c> newMapRessourceFamille,Map<Id,LPCR_RessourceFamille__c> oldMapRessourceFamille
-    *	@returns void
-    */
-    public static void createNewRessourceFamilleRecord(Map<Id,LPCR_RessourceFamille__c> newMapRessourceFamille,Map<Id,LPCR_RessourceFamille__c> oldMapRessourceFamille){
-        PAD.log('SM011_RessourceFamilleServices', 'createNewRessourceFamilleRecord', 'newMapRessourceFamille: ' + newMapRessourceFamille.values().size(), 'oldMapRessourceFamille: ' + oldMapRessourceFamille.values().size());
-        
-        List<LPCR_RessourceFamille__c> listRessourceFamilleToInsert = new List<LPCR_RessourceFamille__c> ();
-        LPCR_RessourceFamille__c ressourceFamilleToInsert = new LPCR_RessourceFamille__c();
-        Date lastDayOfCurrentMonthDate=Date.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month())) ;
-        Date firstDayOfNextMonthDate=Date.newInstance(Date.today().Year(), Date.today().month()+1 ,1) ;
-        
-        for(LPCR_RessourceFamille__c eachRessourceFamille : newMapRessourceFamille.values()){
-            // Check if the LPCR_TauxMensuel__c has changed
-            /*
-            if(oldMapRessourceFamille.get(eachRessourceFamille.Id).LPCR_TauxMensuel__c != eachRessourceFamille.LPCR_TauxMensuel__c ){
-                // Set LPCR_DateFin__c to lastDayOfCurrentMonthDate for the current essourceFamille
-                eachRessourceFamille.LPCR_DateFin__c=lastDayOfCurrentMonthDate;  
-                // Create new RessourceFamille from the ended RessourceFamille
-                ressourceFamilleToInsert = new LPCR_RessourceFamille__c(
-                    LPCR_TauxMensuel__c=eachRessourceFamille.LPCR_TauxMensuel__c,
-                    LPCR_DateDebut__c=firstDayOfNextMonthDate,
-                    LPCR_CompteFamille__c=eachRessourceFamille.LPCR_CompteFamille__c,
-                    //LPCR_Produit__c=eachRessourceFamille.LPCR_Produit__c,
-                    Name=eachRessourceFamille.Name);
-                if(eachRessourceFamille.RecordTypeId!=null){
-                    ressourceFamilleToInsert.RecordTypeId=eachRessourceFamille.RecordTypeId;
-                }
-                
-                listRessourceFamilleToInsert.add(ressourceFamilleToInsert);   
-            }
-             */
-        }
-        
-        EM012_RessourceFamilleEntity.saveOrUpdte(listRessourceFamilleToInsert);
-    }
-    /*
 	*	@description : this method set for the RessourceFamille the appropriate BaremCaf 
 	*	@param List<LPCR_RessourceFamille__c> listRessFamiToAdjustBaremCaf, Map<Id,LPCR_RessourceFamille__c> newMapRessourceFamille,Map<Id,LPCR_RessourceFamille__c> oldMapRessourceFamille
     *	@returns void

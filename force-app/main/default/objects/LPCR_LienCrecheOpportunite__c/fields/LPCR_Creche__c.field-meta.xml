@@ -8,7 +8,7 @@
         <filterItems>
             <field>Account.RecordType.Name</field>
             <operation>equals</operation>
-            <valueField>Account.RecordType.Name</valueField>
+            <value>Crèche</value>
         </filterItems>
         <isOptional>false</isOptional>
     </lookupFilter>

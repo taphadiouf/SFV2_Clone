@@ -9,13 +9,15 @@
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 import { LightningElement, track, api,wire } from 'lwc';
-import getAllAttachments from "@salesforce/apex/APC002_AttachmentController.getAllAttachments";
+import getDocumentListCallout from "@salesforce/apex/SM019_DocumentList_Callout.getDocumentListCallout";
 import { CurrentPageReference } from "lightning/navigation";
 import { registerListener, unregisterAllListeners } from "c/pubsub";
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+
 const columns = [
-    { label: 'Titre', fieldName: 'Name' ,sortable: true},
-    { label: 'Type', fieldName: 'Description',sortable: true},
-    { label: 'Date de création', fieldName: 'CreatedDate', type: 'date' ,sortable: true}
+    { label: 'Titre', fieldName: 'doc_name' ,sortable: true},
+    { label: 'Type', fieldName: 'doc_file_type',sortable: true},
+    { label: 'Date de création', fieldName: 'doc_creation_date', type: 'date' ,sortable: true}
 ];
 
 export default class LWC003_RefDoc extends LightningElement {
@@ -23,13 +25,14 @@ export default class LWC003_RefDoc extends LightningElement {
     value;
 
     @track
-    title ='Gestion document LPCR';
-
+    title ='Gestion des documents';
+    Lines='Lignes';
+    In='sur';
     @track data = [];
     @track columns = columns;
 
-    attachmentsFromDB = [];
-    @track attachments = [];
+    recordsFromWS = [];
+    @track records = [];
 
     @track errorMsg;
     @track sortBy;
@@ -37,8 +40,7 @@ export default class LWC003_RefDoc extends LightningElement {
     @wire(CurrentPageReference) pageRef;
     @track numberOfData = 10;
     @track currentPage = 1;
-    @track numberOfAllPages;
-    paginationApex = false;
+    @track numberOfAllPages=1;
 
     
 
@@ -48,67 +50,92 @@ export default class LWC003_RefDoc extends LightningElement {
       }
     
       async connectedCallback() {
-        // get All attachments from DB
-        if (!this.paginationApex) {
-          this.attachmentsFromDB = await getAllAttachments();
-        }
-        this.totalData = this.attachmentsFromDB.length;
-        this.dataTreatment(this.attachmentsFromDB);
+        // get All records from DB
+       
+        getDocumentListCallout(
+          { ownerid: this.recordId,doc_type:"Facture"})
+          .then(result => {  
+            if(result.result=='200'){
+              console.log(result);
+              console.log(result.response);
+             
+              //this.recordsFromWS =JSON.parse(result);
+              this.recordsFromWS = result.response;
+              this.recordsLength =  this.recordsFromWS.length;
+              console.log(this.recordsLength);
+              this.dataTreatment(this.recordsFromWS);
+            }  else{
+              console.log(result);
+               // Showing errors if any while inserting the files
+               this.dispatchEvent(
+                new ShowToastEvent({
+                  title: 'Error ',
+                  message: result,
+                  variant: 'error'
+                }),
+              );
+            }
+          
+          }).
+            catch(error => {
+              console.error(error);
+              // Showing errors if any while inserting the files
+              this.dispatchEvent(
+                new ShowToastEvent({
+                  title: 'Error ',
+                  message: error,
+                  variant: 'error'
+                }),
+              );
+            });
+
     
         // Subscribe to handleOrderListResult event to receive data from The Search Component
-        registerListener("handleCreatedAttachment", this.handleCreatedAttachment, this);
+        registerListener("handleCreateddocument", this.handleCreateddocument, this);
       }
     
   //Handle Data from the Search Component
-  handleCreatedAttachment(attachment) {
+  handleCreateddocument(document) {
       
-      this.attachments = [ attachment, ...this.attachments ];
+      this.records = [ document, ...this.records ];
       this.errorMsg = undefined;
-      this.attachmentsFromDB = attachments;
-      this.totalData = attachments.length;
-      this.dataTreatment(attachments);
+      this.recordsFromWS = records;
+      this.recordsLength = records.length;
+      this.dataTreatment(records);
 
   }
 
 
-      dataTreatment(attachments) {
-        if (this.paginationApex) {
-          getAllattachmentsWithOffset({
-            numberOfData: this.numberOfData,
-            currentPage: this.currentPage
-          }).then(result => {
-            attachments = result;
-            this.attachments = attachments;
-          });
-        }
-        if (attachments !== undefined) {
+      dataTreatment(records) {
+       
+        if (records !== undefined) {
           // reset numberOfAllPages to 1
           if (this.numberOfData === 0 || this.numberOfData === "") {
             this.numberOfAllPages = 1;
-          } else if (this.totalData <= this.numberOfData) {
+          } else if (this.recordsLength <= this.numberOfData) {
             // reset numberOfAllPages & currentPage to 1
             this.numberOfAllPages = 1;
             this.currentPage = 1;
-          } else if (this.totalData > this.numberOfData) {
-            //calculate number of all pages from the size of attachments
-            this.numberOfAllPages = Math.ceil(this.totalData / this.numberOfData);
+          } else if (this.recordsLength > this.numberOfData) {
+            //calculate number of all pages from the size of records
+            this.numberOfAllPages = Math.ceil(this.recordsLength / this.numberOfData);
             this.currentPage = 1;
           }
         }
     
-        if (!this.paginationApex) {
-          //get the range  of attachments from  currentPage , numberOfData
-          this.attachments = attachments.slice(
+      
+          //get the range  of records from  currentPage , numberOfData
+          this.records = records.slice(
             this.currentPage * this.numberOfData - this.numberOfData,
             this.currentPage * this.numberOfData
           );
-        }
+      
       }
       handlNumberOfData(event) {
         this.numberOfData = event.detail.value;
         //Preparing data with the new value of lines to print
-        if (this.numberOfData !== "" && this.attachmentsFromDB !== undefined) {
-          this.dataTreatment(this.attachmentsFromDB);
+        if (this.numberOfData !== "" && this.recordsFromWS !== undefined) {
+          this.dataTreatment(this.recordsFromWS);
         }
         if (this.numberOfData === "" || this.numberOfData === 0) {
           this.numberOfAllPages = 1;
@@ -119,46 +146,32 @@ export default class LWC003_RefDoc extends LightningElement {
       handelPrevious() {
         if (this.currentPage !== 1) {
           this.currentPage -= 1;
-          if (!this.paginationApex) {
-            //get the range  of attachments from  currentPage , numberOfData
-            this.attachments = this.attachmentsFromDB.slice(
+         
+            //get the range  of records from  currentPage , numberOfData
+            this.records = this.recordsFromWS.slice(
               this.currentPage * this.numberOfData - this.numberOfData,
               this.currentPage * this.numberOfData
             );
-          } else {
-            getAllattachmentsWithOffset({
-              numberOfData: this.numberOfData,
-              currentPage: this.currentPage
-            }).then(result => {
-              this.attachments = result;
-            });
-          }
+          
         }
       }
       handelForward() {
         if (this.currentPage !== this.numberOfAllPages) {
           this.currentPage += 1;
-          if (!this.paginationApex) {
-            //get the range  of attachments from  currentPage , numberOfData
-            this.attachments = this.attachmentsFromDB.slice(
+         
+            //get the range  of records from  currentPage , numberOfData
+            this.records = this.recordsFromWS.slice(
               this.currentPage * this.numberOfData - this.numberOfData,
               this.currentPage * this.numberOfData
             );
-          } else {
-            getAllattachmentsWithOffset({
-              numberOfData: this.numberOfData,
-              currentPage: this.currentPage
-            }).then(result => {
-              this.attachments = result;
-            });
-          }
+          
         }
       }
     
     
     
       handleSortdata(event) {
-        if (this.attachments !== undefined) {
+        if (this.records !== undefined) {
           // field name
           this.sortBy = event.detail.fieldName;
     
@@ -172,7 +185,7 @@ export default class LWC003_RefDoc extends LightningElement {
     
       sortData(fieldname, direction) {
         // serialize the data before calling sort function
-        let parseData = JSON.parse(JSON.stringify(this.attachments));
+        let parseData = JSON.parse(JSON.stringify(this.records));
     
         // Return the value stored in the field
         let keyValue = a => {
@@ -192,6 +205,6 @@ export default class LWC003_RefDoc extends LightningElement {
         });
     
         // set the sorted data to data table data
-        this.attachments = parseData;
+        this.records = parseData;
       }
 }

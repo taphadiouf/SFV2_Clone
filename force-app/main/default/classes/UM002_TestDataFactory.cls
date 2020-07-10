@@ -1062,6 +1062,7 @@ newMe.FederationIdentifier = null;
             Blob bodyBlob = Blob.valueOf(body);
             a.body = bodyBlob;
             a.ParentId = parentId;
+            a.Description = 'Facture';
             atts.add(a);
         }
         return atts;
@@ -1162,7 +1163,7 @@ newMe.FederationIdentifier = null;
         LPCR_ModificationEntrante__c tempModif;
         for(Integer i = 0; i<numRecs; i++){
             tempModif = new LPCR_ModificationEntrante__c(
-                //LPCR_Devis__c  = quotes.get(i).Id,
+                LPCR_Devis__c  = quotes.get(i).Id,
                 LPCR_Evenement__c  = event
             );
             ModifEntrantes.add(tempModif);
@@ -1223,11 +1224,11 @@ newMe.FederationIdentifier = null;
         }
         return accounts;
     }
-    public static List<Contract> createContracts(Integer numConts, Id accountID, String name, Date dateDebut, Date dateFin, Integer chiffreAffaire, String methodeRen, String renouvellementConvenu, Integer renewalUplift){    
+    public static List<Contract> createContracts(Integer numConts, Id accountID, String name, Date dateDebut, Date dateFin, Integer chiffreAffaire, String methodeRen, String renouvellementConvenu, Integer renewalUplift, String typeCreche){    
         List<Contract>  contracts = new List<Contract>();
         Contract tempCont;
         for(Integer i = 0; i<numConts; i++){
-            tempCont = new Contract(AccountID = accountID, Name = name, LPCR_DateDebut__c = dateDebut, LPCR_DateFin__c = dateFin, LPCR_ChiffreAffaire__c = chiffreAffaire, LPCR_MethodeRenouvellement__c = methodeRen, SBQQ__RenewalUpliftRate__c  = renewalUplift);
+            tempCont = new Contract(AccountID = accountID, Name = name, LPCR_DateDebut__c = dateDebut, LPCR_DateFin__c = dateFin, LPCR_ChiffreAffaire__c = chiffreAffaire, LPCR_MethodeRenouvellement__c = methodeRen, SBQQ__RenewalUpliftRate__c  = renewalUplift, LPCR_TypeCreche__c = typeCreche);
             contracts.add(tempCont);
         }
         return contracts;   
@@ -1291,7 +1292,10 @@ newMe.FederationIdentifier = null;
         }
     
     
-    
+    public static Contact createContact(String name, ID rectypeId){
+        Contact con = new Contact(LastName = name , RecordTypeId = rectypeId);
+        return con;
+    }
    
 
 
