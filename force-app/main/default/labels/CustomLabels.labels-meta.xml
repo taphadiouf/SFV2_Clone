@@ -103,7 +103,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LPCR_ContratA</shortDescription>
-        <value>Contrat_Accueil</value>
+        <value>Accueil</value>
     </labels>
     <labels>
         <fullName>LPCR_ContratEnfant</fullName>
@@ -342,6 +342,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_Opportunity2</shortDescription>
         <value>SBQQ__Opportunity2__c</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Order</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Order</shortDescription>
+        <value>Order</value>
     </labels>
     <labels>
         <fullName>LPCR_Parent</fullName>

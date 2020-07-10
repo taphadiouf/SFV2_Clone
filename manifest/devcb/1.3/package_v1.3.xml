@@ -55,7 +55,94 @@
         <name>Contract</name>
     </types>
     -->
+    <types>
+        <members>SBQQ__Quote__c</members>
+        <members>Order</members>
+        <members>Contract</members>
+        <name>CustomObject</name>
+    </types>
 
+    <types>
+        <members>SBQQ__ErrorCondition__c.SBQQ__TestedField__c</members>
+        <members>blng__Invoice__c.LPCR_ConversionLigneNegative__c</members>
+
+        <name>CustomField</name>
+    </types>
+
+    <types>
+        <members>LPCR_Famille</members>
+        <name>PathAssistant</name>
+    </types>
+
+    <types>
+        <members>LPCR_PBConvertirLigneNegative</members>
+        <members>LPCR_RenseignerTypeEnregistrementQuote</members>
+        <members>PB_UsageSummary_UpdateMatchingId</members>
+        <members>LPCR_NouveauContratAccueil</members>
+        <members>Definir_le_terme_de_facturation_en_fonction_du_terme_de_la_creche</members>
+        <members>LPCR_RenseignerTypeEnregistrementQuote</members>
+        <members>FLOW_Usage_PopulateMatchingID</members>
+
+        <name>Flow</name>
+    </types>
+
+    <types>
+        <members>LPCR_RenseignerTypeEnregistrementQuote</members>
+        <name>FlowDefinition</name>
+    </types>
+
+    <types>
+        <members>Contract.Accueil</members>
+        <members>Contract.Referencement</members>
+        <members>Contract.Reservataire</members>
+        <members>Order.Accueil</members>
+        <members>Order.Referencement</members>
+        <members>Order.Reservataire</members>
+        <members>SBQQ__Quote__c.Accueil</members>
+        <name>RecordType</name>
+    </types>
+
+    <types>
+        <members>TM009_ContractTrigger</members>
+        <members>TM008_QuoteTrigger</members>
+        <name>ApexClass</name>
+    </types>
+    
+    <types>
+        <members>blng__Invoice__c.VR_InvoiceModifStatutNonAutorise</members>
+        <name>ValidationRule</name>
+    </types>
+
+    <types>
+        <members>blng__Invoice__c.Set Statut Facture a Annul&#233;e</members>
+        <members>SBQQ__Quote__c.Update Numero Contrat sur Amendment Quote</members>
+        <members>SBQQ__Quote__c.Update Numero Contrat sur New Quote</members>
+        <members>SBQQ__QuoteLine__c.Remplissage du champs LPCR_NumBonCommande</members>
+        <members>SBQQ__Quote__c.Statut du quote apres Avenant ou Devis</members>
+        <members>blng__Invoice__c.Update Invoice Record type upon invoicing posting</members>
+        <members>Contract.Activer le contrat</members>
+        <name>WorkflowRule</name>
+    </types>
+
+    <types>
+        <members>blng__Invoice__c.LPCR_StatutFactureAnnuleee</members>
+        <members>Contract.LPCR_UpdateContrat</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContratAmendment</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContrat</members>
+        <members>SBQQ__QuoteLine__c.LPCR_RemplissageNumBonCommande</members>
+        <members>blng__Invoice__c.Update_record_type</members>
+        <name>WorkflowFieldUpdate</name>
+    </types>
+
+    <types>
+        <members>CustomLabels</members>
+        <name>CustomLabels</name>
+    </types>
+
+    <types>
+        <members>unfiled$public/LPCR_RapportExportCICCB</members>
+        <name>Report</name>
+    </types>
 
     <version>48.0</version>
 </Package>

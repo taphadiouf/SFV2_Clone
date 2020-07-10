@@ -31,7 +31,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Get_ID_Record_Type_Famille_Oppty</targetReference>
+            <targetReference>Get_Account</targetReference>
         </connector>
     </assignments>
     <dynamicChoiceSets>
@@ -134,6 +134,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>LPCR_MoyenPaiement__c</field>
+            <value>
+                <elementReference>MoyenPaiement</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>RecordTypeId</field>
             <value>
                 <elementReference>QuoteRTFamille</elementReference>
@@ -201,6 +207,36 @@
         <object>Opportunity</object>
     </recordCreates>
     <recordLookups>
+        <name>Get_Account</name>
+        <label>Get Account</label>
+        <locationX>348</locationX>
+        <locationY>299</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_ID_Record_Type_Famille_Oppty</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <object>Account</object>
+        <outputAssignments>
+            <assignToReference>MoyenPaiement</assignToReference>
+            <field>LPCR_MoyenPaiement__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>Representant1id</assignToReference>
+            <field>LPCR_Representant1__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>Representant2id</assignToReference>
+            <field>LPCR_Representant2__c</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
         <name>Get_ID_Record_Type_Famille_Oppty</name>
         <label>Get ID Record Type Famille Oppty</label>
         <locationX>496</locationX>
@@ -242,7 +278,7 @@
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Contrat_Accueil</stringValue>
+                <stringValue>Accueil</stringValue>
             </value>
         </filters>
         <filters>
@@ -414,6 +450,12 @@
                     <stringValue>SBQQ__Quote__c</stringValue>
                 </value>
             </inputParameters>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>Representant1id</elementReference>
+                </value>
+            </inputParameters>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
@@ -437,6 +479,12 @@
                 <name>objectApiName</name>
                 <value>
                     <stringValue>SBQQ__Quote__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>Representant2id</elementReference>
                 </value>
             </inputParameters>
             <isRequired>true</isRequired>
@@ -523,6 +571,13 @@
         <isOutput>true</isOutput>
     </variables>
     <variables>
+        <name>MoyenPaiement</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
         <name>OpportunityID</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
@@ -572,6 +627,20 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>Representant1id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Representant2id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
     </variables>
     <variables>
         <name>ResponsableADV</name>

@@ -138,6 +138,32 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_MoyenPaiement__c</picklist>
+        <values>
+            <fullName>Carte Bancaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chèque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virement</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_RenouvellementConvenu__c</picklist>
+        <values>
+            <fullName>Non</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oui</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_ResiliationAnticipe__c</picklist>
         <values>
             <fullName>1 an ferme</fullName>
@@ -379,7 +405,7 @@
         <picklist>SBQQ__PaymentTerms__c</picklist>
         <values>
             <fullName>Due on receipt</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Net 15</fullName>
@@ -387,7 +413,7 @@
         </values>
         <values>
             <fullName>Net 30</fullName>
-            <default>true</default>
+            <default>false</default>
         </values>
         <values>
             <fullName>Net 45</fullName>
@@ -493,6 +519,10 @@
         </values>
         <values>
             <fullName>Envoi directrice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prêt pour commande</fullName>
             <default>false</default>
         </values>
         <values>
