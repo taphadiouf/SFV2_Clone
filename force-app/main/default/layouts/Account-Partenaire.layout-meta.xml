@@ -5,6 +5,9 @@
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
+    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>DisableCustomerPortalAccount</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
     <excludeButtons>PartnerScorecard</excludeButtons>
@@ -26,11 +29,7 @@
                 <field>ParentId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>RecordTypeId</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>LPCR_Statut__c</field>
             </layoutItems>
             <layoutItems>
@@ -47,6 +46,10 @@
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>RecordTypeId</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_RaisonSociale__c</field>
@@ -209,7 +212,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000000s2Jj</masterLabel>
+        <masterLabel>00h1j000001C03z</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
