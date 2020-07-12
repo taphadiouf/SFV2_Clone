@@ -146,7 +146,7 @@
         <members>SBQQ__Quote__c.LPCR_UpdateNumeroContratAmendment</members>
         <name>WorkflowFieldUpdate</name>
     </types>
-    -->
+
 
     <types>
         <members>LPCR_SalesforceBillingAdmin</members>
@@ -160,6 +160,23 @@
 
         <name>PermissionSet</name>
     </types>
+    -->
+    <types>
+        <members>Opportunity.NouveauContratReferecement</members>
+        <members>Opportunity.NouveauContratReservation</members>
+        <name>QuickAction</name>
+    </types>
+    <types>
+        <members>SM008_QuoteServices_Test</members>
+        <members>APB009_GenerateLienFamilleFacture_Test</members>
+        <members>APB009_GenerateLienFamilleFacture</members>
+        <members>SM014_OrderServices</members>
+        <members>SM014_OrderServices_Test</members>
+        <members>SM010_ContractServices_Test</members>
+        <members>SM010_ContractServices</members>
+        <name>ApexClass</name>
+    </types>
+
 
     <version>48.0</version>
 </Package>
