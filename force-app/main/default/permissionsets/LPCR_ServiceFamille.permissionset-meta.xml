@@ -3554,6 +3554,7 @@
         <field>SBQQ__QuoteLine__c.LPCR_Majoration__c</field>
         <readable>true</readable>
     </fieldPermissions>
+
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__QuoteLine__c.LPCR_NumeroLigne__c</field>
@@ -4448,7 +4449,7 @@
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_Region__c</field>
         <readable>true</readable>
-    </fieldPermissions>>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_ResponsableADV__c</field>
@@ -4891,7 +4892,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>blng__Invoice__c.LPCR_MethodesPaiement__c</field>
+        <field>blng__Invoice__c.LPCR_MoyenPaiement__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

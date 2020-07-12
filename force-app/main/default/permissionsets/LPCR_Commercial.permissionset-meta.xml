@@ -4,6 +4,14 @@
         <application>LPCR_Commerce</application>
         <visible>true</visible>
     </applicationVisibilities>
+    <classAccesses>
+        <apexClass>QuoteExtController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>QuoteExtControllerTests</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <description>Equipe commerciale LPCR</description>
     <fieldPermissions>
         <editable>true</editable>
@@ -1694,61 +1702,6 @@
         <editable>true</editable>
         <field>LPCR_LienFamilleFacture__c.LPCR_RevenueTransaction__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_PlanningPrevisionnel__c.LPCR_Jeudi__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_PlanningPrevisionnel__c.LPCR_Lundi__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_PlanningPrevisionnel__c.LPCR_Mardi__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_PlanningPrevisionnel__c.LPCR_Mercredi__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_PlanningPrevisionnel__c.LPCR_Vendredi__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_Planning__c.LPCR_Vendredi__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_Planning__c.TECH_SommeJeudi__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_Planning__c.TECH_SommeLundi__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_Planning__c.TECH_SommeMardi__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_Planning__c.TECH_SommeMercredi__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_Planning__c.TECH_SommeVendredi__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -4391,11 +4344,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__PriceCondition__c.SBQQ__Field__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLineConsumptionRate__c.SBQQ__Description__c</field>
         <readable>true</readable>
@@ -4490,6 +4438,7 @@
         <field>SBQQ__QuoteLine__c.LPCR_Majoration__c</field>
         <readable>true</readable>
     </fieldPermissions>
+
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__QuoteLine__c.LPCR_NumeroLigne__c</field>
@@ -5472,11 +5421,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_RenouvellementPlanFacture__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_ResiliationAnticipe__c</field>
         <readable>true</readable>
@@ -6343,11 +6287,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__SummaryVariable__c.SBQQ__AggregateField__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>blng__Invoice__c.LPCR_CommentaireGlobal__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6373,7 +6312,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>blng__Invoice__c.LPCR_MethodesPaiement__c</field>
+        <field>blng__Invoice__c.LPCR_MoyenPaiement__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -6390,16 +6329,6 @@
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_NomCompletRepresentant2__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>blng__Invoice__c.LPCR_NumeroCompteBancaire__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>blng__Invoice__c.LPCR_NumeroFacture__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -6650,11 +6579,6 @@
         <editable>true</editable>
         <field>blng__Invoice__c.blng__UniqueId__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>blng__Usage__c.LPCR_Product__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>

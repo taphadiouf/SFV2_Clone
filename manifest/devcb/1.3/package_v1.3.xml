@@ -141,13 +141,25 @@
         <members>unfiled$public/LPCR_RapportExportCICCB</members>
         <name>Report</name>
     </types>
+
+    <types>
+        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContratAmendment</members>
+        <name>WorkflowFieldUpdate</name>
+    </types>
     -->
 
     <types>
+        <members>LPCR_SalesforceBillingAdmin</members>
+        <members>LPCR_SalesforceCPQAdmin</members>
+        <members>LPCR_Commercial</members>
+        <members>LPCR_CommercialMICRO</members>
+        <members>LPCR_ADV</members>
+        <members>LPCR_Admin</members>
+        <members>LPCR_Reprise</members>
+        <members>LPCR_ServiceFamille</members>
 
-        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContratAmendment</members>
-
-        <name>WorkflowFieldUpdate</name>
+        <name>PermissionSet</name>
     </types>
+
     <version>48.0</version>
 </Package>
