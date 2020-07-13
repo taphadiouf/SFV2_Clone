@@ -8,10 +8,17 @@ public class SM004_OpportunityServices {
         List<Account> accountList = new List<Account>();
         Set<Id> setAccountIds = new Set<Id>();
         for(Opportunity opp: newOpportunitiesMap.values()){
-            if(opp.IsWon == true && oldOpportunitiesMap.get(opp.id).IsWon == false){
-                if(!setAccountIds.contains(opp.AccountId) && opp.AccountId != null){
-                    accountList.add(new Account(id=opp.AccountId, lpcr_statut__c = 'Client'));
-                    setAccountIds.add(opp.AccountId);
+            if(
+                opp.AccountId != null 
+                && !setAccountIds.contains(opp.AccountId)
+                && opp.IsWon != oldOpportunitiesMap.get(opp.id).IsWon
+                ){
+                setAccountIds.add(opp.AccountId);
+                if( opp.IsWon == true){
+                    accountList.add(new Account(id=opp.AccountId, lpcr_statut__c = Label.LPCR_Client));
+                }
+                else{
+                    accountList.add(new Account(id=opp.AccountId, lpcr_statut__c = Label.LPCR_Prospect));
                 }
             }
         }
@@ -21,10 +28,13 @@ public class SM004_OpportunityServices {
         List<Account> accountList = new List<Account>();
         Set<Id> setAccountIds = new Set<Id>();
         for(Opportunity opp: newOpportunitiesMap.values()){
-            if(opp.IsWon == true){
-                if(!setAccountIds.contains(opp.AccountId) && opp.AccountId != null){
-                    accountList.add(new Account(id=opp.AccountId, lpcr_statut__c = 'Client'));
-                    setAccountIds.add(opp.AccountId);
+            if(opp.AccountId != null && !setAccountIds.contains(opp.AccountId) ){
+                setAccountIds.add(opp.AccountId);
+                if(opp.IsWon == true){
+                    accountList.add(new Account(id=opp.AccountId, lpcr_statut__c = Label.LPCR_Client));   
+                }
+                else{
+                    accountList.add(new Account(id=opp.AccountId, lpcr_statut__c = Label.LPCR_Prospect));
                 }
             }
         }
