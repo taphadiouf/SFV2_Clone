@@ -34,7 +34,11 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_Region__c</field>
-            </layoutItems>           
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_MoyenPaiement__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -150,7 +154,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Facturation</label> 
+        <label>Facturation</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -400,6 +404,10 @@
         <relatedList>LPCR_Preinscription__c.LPCR_CompteFamille__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>LPCR_RessourceFamille__c.LPCR_CompteFamille__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>OPPORTUNITY.STAGE_NAME</fields>
         <fields>OPPORTUNITY.AMOUNT</fields>
@@ -442,6 +450,20 @@
         <fields>blng__ARStatus__c</fields>
         <fields>blng__StatusFlag__c</fields>
         <relatedList>blng__Invoice__c.blng__Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>blng__CreditNoteDate__c</fields>
+        <fields>blng__TotalAmount__c</fields>
+        <fields>blng__Allocations__c</fields>
+        <fields>blng__Unallocations__c</fields>
+        <fields>blng__Balance__c</fields>
+        <fields>blng__Status__c</fields>
+        <relatedList>blng__CreditNote__c.blng__Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>blng__Usage__c.blng__Account__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>

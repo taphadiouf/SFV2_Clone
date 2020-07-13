@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TECH_SommeMercredi__c</fullName>
+    <externalId>false</externalId>
+    <label>Somme Mercredi</label>
+    <summarizedField>LPCR_PlanningPrevisionnel__c.LPCR_Mercredi__c</summarizedField>
+    <summaryForeignKey>LPCR_PlanningPrevisionnel__c.LPCR_Planning__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

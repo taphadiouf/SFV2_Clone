@@ -113,7 +113,7 @@ public with sharing class APC001_LeadFaConverController_Test {
             System.assertNotEquals(null, accountFamilleMap.values().get(0).LPCR_Representant2__c);
             
             //Assert the creation of contacts : "Representant1 and Representant 2"
-            Id contactFamilleRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Famille);
+            Id contactFamilleRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
             Set<String> contactFilterSet = new Set<String>();
             contactFilterSet.add(String.valueOf(contactFamilleRTId));
             Map<Id, Contact> representContactsMap = new Map<Id,Contact>((List<Contact>) new EM011_ContactEntity().getBy(Label.LPCR_RecordTypeId, contactFilterSet, null));

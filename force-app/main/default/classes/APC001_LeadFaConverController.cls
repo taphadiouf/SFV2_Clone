@@ -102,7 +102,7 @@ public with sharing class APC001_LeadFaConverController{
             throw new AuraHandledException(errMsg);
         }
         //Representants part (Parent)
-        Id familleContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Famille);
+        Id familleContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Parent);
             newContactsMap.put('contactRep1', new Contact(
             LastName =currentLead.LastName, 
             FirstName = currentLead.FirstName, 
