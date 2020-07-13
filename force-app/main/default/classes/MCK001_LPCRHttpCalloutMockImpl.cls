@@ -15,8 +15,8 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
                 res.setBody('{"result":"200"}');
                 res.setStatusCode(200);
             }else{
-                res.setBody('{"result":"400"}');
-                res.setStatusCode(400);
+                res.setBody('{"result":"503"}');
+                res.setStatusCode(503);
             }                        
         }else if(req.getEndpoint().contains('LPCR_API_GetBySfId/')){
             System.debug(req.getBody());
@@ -26,8 +26,8 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
                 res.setBody('{"result":"200"}');
                 res.setStatusCode(200);
             }else{
-                res.setBody('{"result":"400"}');
-                res.setStatusCode(400);
+                res.setBody('{"result":"503"}');
+                res.setStatusCode(503);
             } 
         }else if(req.getEndpoint().contains('LPCR_API_DocList')){
             System.debug(req.getBody());
@@ -37,14 +37,14 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
                 res.setBody('{"result":"200","response":[{"id":"102120210212021021","doc_type":"Facture"}]}');
                 res.setStatusCode(200);
             }else{
-                res.setBody('{"result":"400"}');
-                res.setStatusCode(400);
+                res.setBody('{"result":"503"}');
+                res.setStatusCode(503);
             }
         }else if(req.getEndpoint().contains('SendMailService')){
             System.debug(req.getBody());
             System.debug(req.getEndpoint());
-            res.setBody('{"result":"200"}');
-            res.setStatusCode(200);
+            res.setBody('{"result":"503"}');
+            res.setStatusCode(503);
         }              
         return res;
     }
