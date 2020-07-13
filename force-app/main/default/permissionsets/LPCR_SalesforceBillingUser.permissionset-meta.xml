@@ -2210,11 +2210,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Account.LPCR_FormeJuridique__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Account.LPCR_Garde__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2351,11 +2346,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.LPCR_NombreMaximalPlaces__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Account.LPCR_NombreOptions__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9251,4 +9241,12 @@
         <tab>blng__Usage__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>RunFlow</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>RunReports</name>
+    </userPermissions>
 </PermissionSet>

@@ -160,8 +160,7 @@
 
         <name>PermissionSet</name>
     </types>
-    -->
-    <types>
+        <types>
         <members>Opportunity.NouveauContratReferecement</members>
         <members>Opportunity.NouveauContratReservation</members>
         <name>QuickAction</name>
@@ -176,6 +175,16 @@
         <members>SM010_ContractServices</members>
         <name>ApexClass</name>
     </types>
+     <types>
+        <members>Contact.LPCR_TypeAllocataire__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>LPCR_SalesforceCPQUser</members>
+        <members>LPCR_SalesforceBillingUser</members>
+        <name>PermissionSet</name>
+    </types>
+    -->
 
 
     <version>48.0</version>
