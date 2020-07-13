@@ -20,8 +20,7 @@ public with sharing class SM019_DocumentList_Callout {
         HttpResponse response = http.send(request);
         // Parse the JSON response
         String statusCode = response.getStatusCode()+'';
-        System.debug(' $$$ '+statusCode);
-        System.debug(' $$$ '+response.getBody());
+       
         if (statusCode.equals('200')) {
             documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         } else {
