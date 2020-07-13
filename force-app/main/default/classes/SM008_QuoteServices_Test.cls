@@ -129,9 +129,9 @@ public class SM008_QuoteServices_Test {
         acc.RecordTypeId = B2C_RT_ID;
         insert acc;
         insert UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
-        
-        
-        
+
+
+
         //added by Hanae
         List<Account> accountsMac = UM002_TestDataFactory.createAccountWithRecType(10, 'Accounts',recTypeId, 'MAC');
         insert accountsMac;
