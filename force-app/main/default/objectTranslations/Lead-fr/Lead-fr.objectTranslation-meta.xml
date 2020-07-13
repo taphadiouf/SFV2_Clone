@@ -157,13 +157,29 @@
     </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
+        <errorMessage><!-- Veuillez renseigner un motif de non candidature pour passer le lead au statut abandonné. --></errorMessage>
+        <name>VR_Lead_AO_MotifNonCandidature</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Au moins un numéro de téléphone fixe, de téléphone mobile ou un email doit être renseigné. --></errorMessage>
         <name>VR_Lead_ContactMandatory</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Renseignez un motif de disqualification pour passer le lead au statut abandonné --></errorMessage>
+        <errorMessage><!-- Veuillez renseigner un motif de disqualification pour passer le lead au statut abandonné. --></errorMessage>
         <name>VR_Lead_MotifAbandon</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Pour la conversion du lead entreprise,  le champ SIRET doit être rempli ou &quot;Pas de SIRET&quot; coché. --></errorMessage>
+        <name>VR_Lead_SIRET_Obligatoire_Conversion</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Conga_Composer_OAuth --></label>
+        <name>APXTCFQ__Conga_Composer_OAuth</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Conga_Mail_Merge --></label>
+        <name>APXTCFQ__Conga_Mail_Merge</name>
+    </webLinks>
     <webLinks>
         <label><!-- IFTD_UI_Lead_findCompany_button --></label>
         <name>Sparklane_FR__IFTD_UI_Lead_findCompany_button</name>

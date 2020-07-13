@@ -410,10 +410,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TM013_UsageTrigger</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>TM014_InvoiceTrigger</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -480,7 +476,15 @@
     <classAccesses>
         <apexClass>WRP003_QuoteLineGroupModel</apexClass>
         <enabled>true</enabled>
-    </classAccesses>    
+    </classAccesses>
+    <classAccesses>
+        <apexClass>blng__SecurityUtils</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>blng__SecurityUtilsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
@@ -4864,11 +4868,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SBQQ__QuoteLine__c.LPCR_NumeroBonCommande__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>SBQQ__QuoteLine__c.LPCR_NumeroLigne__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5667,11 +5666,7 @@
         <field>SBQQ__Quote__c.EditLinesFieldSetName__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_AValider__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
+
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_AccountPurchaseOrder__c</field>
@@ -5700,11 +5695,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_Berceauxgratuitsquote__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_Bypass__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5965,11 +5955,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_NumeroAllocataire__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_NumeroDevis__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8004,6 +7989,61 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_Commentaire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_ConversionLigneNegative__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_LiaisonFamilleFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_NomCompletRepresentant1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_NomCompletRepresentant2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_MoyenPaiement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_NbHeuresRealise__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_NumeroCompteBancaire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_NumeroFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_TypeCreche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.Tech_FormuleCongaBatch__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>blng__LegalEntity__c.LPCR_RaisonSociale__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8373,6 +8413,29 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Event-Présentation d%27événement</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Lead-Famille</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Lead-AO Public DSP</layout>
+        <recordType>Lead.AO_PublicDSP</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Lead-AO Public Réservation</layout>
+        <recordType>Lead.AO_PublicReservation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Lead-Entreprise</layout>
+        <recordType>Lead.Entreprise</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Lead-Famille</layout>
+        <recordType>Lead.Famille</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Lead-Partenaire</layout>
+        <recordType>Lead.Partenaire</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>LPCR_AdobeAgreementTemplate__mdt-LPCR Agreement Template Mapping Layout</layout>
