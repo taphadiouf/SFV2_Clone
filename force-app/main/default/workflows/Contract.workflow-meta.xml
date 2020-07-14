@@ -20,6 +20,29 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/LPCR_FinContratDans90Jours</template>
     </alerts>
+    <fieldUpdates>
+        <fullName>LPCR_UpdateContrat</fullName>
+        <field>Status</field>
+        <literalValue>Activated</literalValue>
+        <name>UpdateContrat</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Activer le contrat</fullName>
+        <actions>
+            <name>LPCR_UpdateContrat</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contract.LPCR_DateDebut__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
     <rules>
         <fullName>LPCR_FinContratProche</fullName>
         <active>false</active>

@@ -106,13 +106,6 @@
         <value>Contrat_Accueil</value>
     </labels>
     <labels>
-        <fullName>LPCR_ContratEnfant</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>LPCR_ContratEnfant</shortDescription>
-        <value>Contrat au bénéfice de l&apos;enfant :</value>
-    </labels>
-    <labels>
         <fullName>LPCR_Contrat_B2B</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -125,6 +118,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_Contrat_B2C</shortDescription>
         <value>Contrat_B2C</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ContratEnfant</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_ContratEnfant</shortDescription>
+        <value>Contrat au bénéfice de l&apos;enfant :</value>
     </labels>
     <labels>
         <fullName>LPCR_ConvertLeadF</fullName>
@@ -344,6 +344,13 @@
         <value>SBQQ__Opportunity2__c</value>
     </labels>
     <labels>
+        <fullName>LPCR_Order</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Order</shortDescription>
+        <value>Order</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Parent</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -452,7 +459,7 @@
         <fullName>LPCR_Referencement_Approuve</fullName>
         <language>fr</language>
         <protected>false</protected>
-        <shortDescription>LPCR_Referencement_Approuve</shortDescription>
+        <shortDescription>LPCR_Referencement</shortDescription>
         <value>Referencement_Approuve</value>
     </labels>
     <labels>
@@ -491,18 +498,18 @@
         <value>ReseauLPCR</value>
     </labels>
     <labels>
+        <fullName>LPCR_Reservataire_Approuve</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Reservataire</shortDescription>
+        <value>Reservataire_Approuve</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Reservataire</fullName>
         <language>fr</language>
         <protected>false</protected>
         <shortDescription>LPCR_Reservataire</shortDescription>
         <value>Reservataire</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_Reservataire_Approuve</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Reservataire_Approuve</shortDescription>
-        <value>Reservataire_Approuve</value>
     </labels>
     <labels>
         <fullName>LPCR_RessourcesM</fullName>

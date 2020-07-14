@@ -138,6 +138,21 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_MoyenPaiement__c</picklist>
+        <values>
+            <fullName>Carte Bancaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chèque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virement</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_ResiliationAnticipe__c</picklist>
         <values>
             <fullName>1 an ferme</fullName>
@@ -493,6 +508,10 @@
         </values>
         <values>
             <fullName>Envoyé pour signature</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prêt pour commande</fullName>
             <default>false</default>
         </values>
         <values>
