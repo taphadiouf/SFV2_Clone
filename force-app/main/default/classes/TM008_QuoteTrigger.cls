@@ -20,7 +20,7 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
             SM008_QuoteServices.updateQuotes(newQuotesList);
         }
     }
-    
+
     //added by Ayoub
     protected override void beforeInsert() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass')){
@@ -28,7 +28,7 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
             SM008_QuoteServices.updateQuotes(newQuotesList);
         }
     }
-    
+
     //added by Hanae
     protected override void afterUpdate(){
         if (!FeatureManagement.checkPermission('LPCR_ByPass')){

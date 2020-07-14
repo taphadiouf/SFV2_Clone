@@ -54,36 +54,18 @@ export default class LWC003_RefDoc extends LightningElement {
        
         getDocumentListCallout(
           { ownerid: this.recordId,doc_type:"Facture"})
-          .then(result => {  
-            if(result.result=='200'){
-              console.log(result);
-              console.log(result.response);
-             
-              //this.recordsFromWS =JSON.parse(result);
+          .then(result => { 
+            if(result.result && result.result=='200'){
               this.recordsFromWS = result.response;
               this.recordsLength =  this.recordsFromWS.length;
-              console.log(this.recordsLength);
               this.dataTreatment(this.recordsFromWS);
-            }  else{
-              console.log(result);
-               // Showing errors if any while inserting the files
-               this.dispatchEvent(
-                new ShowToastEvent({
-                  title: 'Error ',
-                  message: result,
-                  variant: 'error'
-                }),
-              );
-            }
-          
+            } 
           }).
             catch(error => {
-              console.error(error);
-              // Showing errors if any while inserting the files
               this.dispatchEvent(
                 new ShowToastEvent({
-                  title: 'Error ',
-                  message: error,
+                  title: 'Erreur',
+                  message: error.body.message,
                   variant: 'error'
                 }),
               );

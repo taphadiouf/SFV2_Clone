@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldUpdates>
+        <fullName>LPCR_StatutFactureAnnuleee</fullName>
+        <field>LPCR_StatutFacture__c</field>
+        <literalValue>Annulée</literalValue>
+        <name>LPCR_StatutFactureAnnuleee</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Update_record_type</fullName>
         <field>RecordTypeId</field>
         <lookupValue>LPCR_PostedInvoice</lookupValue>
@@ -9,7 +18,23 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
+    <rules>
+        <fullName>Set Statut Facture a Annulée</fullName>
+        <actions>
+            <name>LPCR_StatutFactureAnnuleee</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>blng__Invoice__c.blng__InvoiceStatus__c</field>
+            <operation>equals</operation>
+            <value>Cancelled</value>
+        </criteriaItems>
+        <description>Lorsque le status standard de l&apos;invoice est &apos;cancelled&apos;, le statut custom doit passer à &apos;Annulée&apos;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
     <rules>
         <fullName>Update Invoice Record type upon invoicing posting</fullName>
         <actions>
@@ -18,9 +43,9 @@
         </actions>
         <active>true</active>
         <criteriaItems>
-            <field>blng__Invoice__c.blng__InvoiceStatus__c</field>
+            <field>blng__Invoice__c.LPCR_StatutFacture__c</field>
             <operation>equals</operation>
-            <value>Posted</value>
+            <value>Envoyée</value>
         </criteriaItems>
         <criteriaItems>
             <field>blng__Invoice__c.RecordTypeId</field>

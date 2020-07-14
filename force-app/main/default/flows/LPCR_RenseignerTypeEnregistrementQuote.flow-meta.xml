@@ -255,7 +255,7 @@
             <label>If Type = &apos;quote&apos; andd RT = &apos;contrat accueil&apos;</label>
         </rules>
     </decisions>
-    <interviewLabel>LPCR_RenseignerTypeEnregistrementQuote-1_InterviewLabel</interviewLabel>
+    <interviewLabel>LPCR_RenseignerTypeEnregistrementQuote-3_InterviewLabel</interviewLabel>
     <label>Renseigner le champs &apos;Type Enregistrement&apos;</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -517,13 +517,13 @@
             </processMetadataValues>
             <field>LPCR_TypeEnregistrement__c</field>
             <value>
-                <stringValue>Contrat_Accueil</stringValue>
+                <stringValue>Accueil</stringValue>
             </value>
         </inputAssignments>
         <object>SBQQ__Quote__c</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Active</status>
+    <status>Obsolete</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
