@@ -27,6 +27,12 @@ public with sharing class EM002_LeadEntity extends EM001_AbstractObjectEntity{
                 AND RecordType.Name= :recordTypeName 
                 AND Status = :status];
     }
+    public static List<Lead> getLeadsByIdsAndStatus(set<Id> setLeadIds, String status) {
+        return [SELECT Id, Status,RecordType.Name ,LPCR_DatePriseEnChargeCommercial__c
+                FROM Lead 
+                WHERE Id In :setLeadIds 
+                AND Status = :status];
+    }
     public static Lead getAllLeadfielsById(Id leadId){
         
             String SobjectApiName = 'Lead';
