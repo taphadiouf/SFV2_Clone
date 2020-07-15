@@ -17,6 +17,7 @@ public class SM018_AttachmentService_Test {
         insert accounts;
         insert opps;
         List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(1, accounts, opps);
+        quotes.get(0).SBQQ__StartDate__c = date.today();
         insert quotes;
         
         Id standardPricebookId = Test.getStandardPricebookId();

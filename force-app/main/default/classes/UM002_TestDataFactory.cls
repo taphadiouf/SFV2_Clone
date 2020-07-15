@@ -501,7 +501,8 @@ newMe.FederationIdentifier = null;
             tempQuote = new SBQQ__Quote__c(
                 SBQQ__Opportunity2__c = opps.get(i).Id,
                 SBQQ__Account__c = accs.get(i).Id,
-                SBQQ__PriceBook__c = Test.getStandardPricebookId()
+                SBQQ__PriceBook__c = Test.getStandardPricebookId(),
+                SBQQ__StartDate__c = date.today()
             );
             quotes.add(tempQuote);
         }
@@ -1207,7 +1208,9 @@ newMe.FederationIdentifier = null;
             tempQuote = new SBQQ__Quote__c(
                 SBQQ__Opportunity2__c = opps.get(i).Id,
                 LPCR_Creche__c = accs.get(i).Id,
-                SBQQ__Status__c = status
+                SBQQ__Status__c = status,
+                SBQQ__StartDate__c = date.today(),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31)
             );
             quotes.add(tempQuote);
         }
@@ -1251,7 +1254,9 @@ newMe.FederationIdentifier = null;
                 SBQQ__Account__c = accs.get(i).Id,
                 SBQQ__Type__c = type,
                 RecordTypeId = recTypeId,
-                LPCR_Creche__c = crecheId
+                LPCR_Creche__c = crecheId,
+                SBQQ__StartDate__c = date.today(),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31)
             );
             quotes.add(tempQuote);
         }

@@ -35,6 +35,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_Region__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_MoyenPaiement__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -69,10 +73,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>ShippingAddress</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_Departement__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -407,6 +407,10 @@
         <fields>LPCR_StatutCourt__c</fields>
         <fields>LPCR_Creche__c</fields>
         <relatedList>LPCR_Preinscription__c.LPCR_CompteFamille__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>LPCR_RessourceFamille__c.LPCR_CompteFamille__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>OPPORTUNITY.NAME</fields>
