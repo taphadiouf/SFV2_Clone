@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+
+        <members>Tech_GraphiquesSurLayouts/ListeAttributionPreinscriptions1</members>
+
+        <name>Report</name>
+    </types>
+    <types>
+        <members>Opportunity.NouveauContratReferecement</members>
+        <members>Opportunity.NouveauContratReservation</members>
+        <name>QuickAction</name>
+    </types>
+
+    <version>48.0</version>
+</Package>

@@ -20,8 +20,8 @@ public class TM009_ContractTrigger extends TM000_TriggerHandler{
             SM010_ContractServices.setTypeEnregistrement(newContractList);
         }
     }
-     
-     
+
+
     protected override void beforeUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass')){
             SM010_ContractServices.setContractFields(oldContractMap,newContractMap);
