@@ -8182,13 +8182,18 @@
     <layoutAssignments>
         <layout>Contract-Présentation du contrat</layout>
     </layoutAssignments>
+
     <layoutAssignments>
         <layout>Contract-Présentation du contrat</layout>
-        <recordType>Contract.Contrat_B2B</recordType>
+        <recordType>Contract.Referencement</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contract-Présentation du contrat</layout>
-        <recordType>Contract.Contrat_B2C</recordType>
+        <recordType>Contract.Reservataire</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contract-Présentation du contrat</layout>
+        <recordType>Contract.Accueil</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Event-Présentation d%27événement</layout>
@@ -8322,7 +8327,7 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>SBQQ__Quote__c-Contrat d%27accueil</layout>
-        <recordType>SBQQ__Quote__c.Contrat_Accueil</recordType>
+        <recordType>SBQQ__Quote__c.Accueil</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>SBQQ__Quote__c-Référencement</layout>
@@ -8407,14 +8412,16 @@
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Contract.Contrat_B2B</recordType>
-        <visible>false</visible>
+        <recordType>Contract.Referencement</recordType>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Contract.Contrat_B2C</recordType>
-        <visible>false</visible>
+        <recordType>Contract.Reservataire</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Contract.Accueil</recordType>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
@@ -8508,7 +8515,7 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>SBQQ__Quote__c.Contrat_Accueil</recordType>
+        <recordType>SBQQ__Quote__c.Accueil</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
