@@ -408,7 +408,7 @@ public class SM008_QuoteServices_Test {
             Account acc3 = accs3.get(0);
             List<Opportunity> oppties3 = [SELECT Id , Name , LPCR_IndexationConvenue__c , LPCR_TypeFacturation__c , LPCR_BillingFrequency__c from Opportunity WHERE name ='opp Famille MICRO' LIMIT 1 ];
             Opportunity opp3 = oppties3.get(0);
-            List<Contract> contract3 = [Select Id,RecordTypeId, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c  , SBQQ__RenewalUpliftRate__c ,LPCR_TypeCreche__cFrom Contract WHERE Name = '0003' Limit 1];
+            List<Contract> contract3 = [Select Id,RecordTypeId, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c  , SBQQ__RenewalUpliftRate__c ,LPCR_TypeCreche__c From Contract WHERE Name = '0003' Limit 1];
             Contract con3 = contract3.get(0);
              
             con3.RecordTypeId = CONTRACT_CONTRAT_ACCUEIL_RT_ID;
@@ -481,7 +481,7 @@ public class SM008_QuoteServices_Test {
             quoteQ.LPCR_DateDebut__c = date.newInstance(System.Today().year(), 06, 02);
             quoteQ.LPCR_DateFin__c = date.newInstance(System.Today().year(), 06, 31);
             insert quoteQ;
-            quoteQ = [SELECT Id ,LPCR_TypeCreche__c , SBQQ__StartDate__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c, LPCR_TypeFacturation__c LPCR_IndexationConvenue__c,LPCR_EntiteJuridique__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Quote' AND  Id = :quoteQ.Id];
+            quoteQ = [SELECT Id ,LPCR_TypeCreche__c , SBQQ__StartDate__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c, LPCR_TypeFacturation__c, LPCR_IndexationConvenue__c,LPCR_EntiteJuridique__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Quote' AND  Id = :quoteQ.Id];
             System.assertEquals(quoteQ.LPCR_TypeCreche__c, acc.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
             System.assertEquals(quoteQ.LPCR_TypeFacturation__c, acc.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to acc LPCR_TypeFacturation__c');
             System.assertEquals(quoteQ.SBQQ__StartDate__c, quoteQ.LPCR_DateDebut__c, 'Quote SBQQ__StartDate__c not equals to quoteQ LPCR_DateDebut__c');
@@ -575,13 +575,11 @@ insert quoteQ3;
             //B2C Amendment Non
             List<Account> accs3 = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c from Account WHERE name ='Compte Crèche MICRO' LIMIT 1];
             Account acc3 = accs3.get(0);
-            List<Contract> contract6 = [Select Id,RecordTypeId, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c  , SBQQ__RenewalUpliftRate__c  LPCR_TypeCreche__c,LPCR_EntiteJuridique__c,LPCR_ContactEnfant__c,LPCR_Creche__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c,LPCR_DureePreavisMois__c,LPCR_CongesJours__c,LPCR_TypeAccueil__c  From Contract WHERE Name = '0006' Limit 1];
+            List<Contract> contract6 = [Select Id,RecordTypeId, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c  , SBQQ__RenewalUpliftRate__c, LPCR_TypeCreche__c,LPCR_EntiteJuridique__c,LPCR_ContactEnfant__c,LPCR_Creche__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c,LPCR_DureePreavisMois__c,LPCR_CongesJours__c,LPCR_TypeAccueil__c  From Contract WHERE Name = '0006' Limit 1];
             Contract con6 = contract6.get(0);
-            List<Opportunity> oppties6 = [SELECT Id , Name, LPCR_TypeFacturation__c ,LPCR_PlanningEnfant__c from Opportunity WHERE name ='opp NON' LIMIT 1 ];
-
             con6.RecordTypeId =CONTRACT_CONTRAT_ACCUEIL_RT_ID;
             update con6;
-            List<Opportunity> oppties6 = [SELECT Id , Name, LPCR_TypeFacturation__c  from Opportunity WHERE name ='opp NON' LIMIT 1 ];
+            List<Opportunity> oppties6 = [SELECT Id , Name, LPCR_TypeFacturation__c ,LPCR_PlanningEnfant__c from Opportunity WHERE name ='opp NON' LIMIT 1 ];
             Opportunity opp6 = oppties6.get(0);
             SBQQ__Quote__c quote6 = UM002_TestDataFactory.createQuotes(1, accs3, oppties6,'Amendment', acceuilRecTypeId, acc3.Id).get(0);
             quote6.RecordTypeId = acceuilRecTypeId;
