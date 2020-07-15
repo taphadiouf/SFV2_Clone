@@ -1172,8 +1172,8 @@ newMe.FederationIdentifier = null;
         return ModifEntrantes;
     }
     
-    public static LPCR_ModificationEntrante__c createModificationsEntrante(String event, Id quoteId,Id accountId, Id contactId, Id contractId,Decimal revenusFamille){
-        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Devis__c = quoteId, LPCR_Evenement__c = event,
+    public static LPCR_ModificationEntrante__c createModificationsEntrante(String event,Id accountId, Id contactId, Id contractId,Decimal revenusFamille){
+        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Evenement__c = event,
                                                                                      LPCR_Compte__c = accountId,
                                                                                      LPCR_Quantite__c = 1, LPCR_Contract__c = contractId,
                                                                                      LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = false,
@@ -1182,8 +1182,8 @@ newMe.FederationIdentifier = null;
     }
     
     //added by saurabh
-    public static LPCR_ModificationEntrante__c createModificationsEntrante(String event, Id quoteId,Id accountId, Id contactId, Id contractId,Date dateEffet,Decimal revenusFamille){
-        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Devis__c = quoteId, LPCR_Evenement__c = event,
+    public static LPCR_ModificationEntrante__c createModificationsEntrante(String event,Id accountId, Id contactId, Id contractId,Date dateEffet,Decimal revenusFamille){
+        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Evenement__c = event,
                                                                                      LPCR_DateEffet__c = dateEffet, LPCR_Compte__c = accountId,
                                                                                      LPCR_Quantite__c = 1, LPCR_Contract__c = contractId,
                                                                                      LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = false,
