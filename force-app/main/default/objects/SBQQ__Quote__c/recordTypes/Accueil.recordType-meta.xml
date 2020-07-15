@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Contrat_Accueil</fullName>
+    <fullName>Accueil</fullName>
     <active>true</active>
     <compactLayoutAssignment>PresentationCompacteDevis</compactLayoutAssignment>
     <label>Contrat D’accueil</label>
@@ -134,6 +134,21 @@
         </values>
         <values>
             <fullName>Tacite</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_MoyenPaiement__c</picklist>
+        <values>
+            <fullName>Carte Bancaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chèque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virement</fullName>
             <default>false</default>
         </values>
     </picklistValues>

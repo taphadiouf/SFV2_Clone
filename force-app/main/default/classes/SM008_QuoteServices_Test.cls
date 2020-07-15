@@ -321,9 +321,9 @@ public class SM008_QuoteServices_Test {
             //B2C Renewal Mac less than Current Year
             List<Account> accs = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c, LPCR_TypeFacturation__c from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
             Account acc = accs.get(0);
-            List<Opportunity> oppties = [SELECT Id , Name , LPCR_IndexationConvenue__c , LPCR_TypeFacturation__c , LPCR_BillingFrequency__c from Opportunity WHERE name ='opp Famille MAC1' LIMIT 1 ];
+            List<Opportunity> oppties = [SELECT Id ,LPCR_PlanningEnfant__c, Name , LPCR_IndexationConvenue__c , LPCR_TypeFacturation__c , LPCR_BillingFrequency__c from Opportunity WHERE name ='opp Famille MAC1' LIMIT 1 ];
             Opportunity opp = oppties.get(0);
-            List<Contract> contract = [Select Id,RecordTypeId, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c   From Contract WHERE Name = '0001' Limit 1];
+            List<Contract> contract = [Select Id,LPCR_EntiteJuridique__c,LPCR_DureePreavisMois__c,LPCR_Creche__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c,LPCR_ContractEntreprise__c,LPCR_TypeCreche__c,RecordTypeId, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c,LPCR_ContactEnfant__c,LPCR_CongesJours__c,LPCR_TypeAccueil__c   From Contract WHERE Name = '0001' Limit 1];
             Contract con = contract.get(0);
             con.RecordTypeId = CONTRACT_CONTRAT_ACCUEIL_RT_ID;
             update con;
