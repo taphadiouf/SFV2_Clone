@@ -22,7 +22,7 @@ public class SM010_ContractServices {
         
         Set<String> quoteOrderIds = UM003_TypeManager.getFieldsOfListObjects(orderMap.values(),'SBQQ__Quote__c');
         Map<Id,SBQQ__Quote__c> quoteOrderMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_FraisDossier__c,LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c, recordtype.DeveloperName, LPCR_PlanningEnfant__c, LPCR_EntiteJuridique__c , recordtype.name, LPCR_ContractEntreprise__c, LPCR_Creche__c, LPCR_TypeCreche__c, LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Region__c, LPCR_CompteFacturation__c, LPCR_ContactEnfant__c, SBQQ__Type__c   from SBQQ__Quote__c WHERE Id in :quoteOrderIds]);
-        
+         String contractRTDevName;
         for (Contract eachContract : contracts){
             
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){
