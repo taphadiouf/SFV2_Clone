@@ -1917,6 +1917,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_ModificationEntrante__c.LPCR_MotifRegularisation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_ModificationEntrante__c.LPCR_MotifHeureDeduire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_ModificationEntrante__c.LPCR_CodePostal__c</field>
         <readable>true</readable>
     </fieldPermissions>
