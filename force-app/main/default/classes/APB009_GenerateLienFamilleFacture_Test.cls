@@ -8,8 +8,8 @@
         private static final Id ACC_B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
         private static final Id ACC_B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
         private static final Id ACC_CRECHE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
-        private static final Id CONTRACT_B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Contrat_B2B);
-        private static final Id CONTRACT_B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Contrat_B2C);
+        private static final Id CONTRACT_B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_ContratA);
+        private static final Id CONTRACT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_ContratA);
         private static final Id OPPT_FAMILE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Opportunity, Label.LPCR_Famille);
         private static final Id OPPT_ENTERPRISE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Opportunity, Label.LPCR_Entreprise);
         private static final Id STANDARD_PRICEBOOK_ID = Test.getStandardPricebookId();
@@ -214,14 +214,14 @@
         @isTest
         private static void APB009_GenerateLienFamilleFacture_Test(){
             System.runAs(UM002_TestDataFactory.createUser()){
-                  Test.startTest();
+                 Test.startTest();
                 Account accB2B = [SELECT Id, name from Account where name ='Test-B2B' LIMIT 1];
                 Account accB2C = [SELECT Id, name from Account where name ='Test-B2C' LIMIT 1];
                 Account accCreche = [SELECT Id, name from Account where name ='Test-Creche' LIMIT 1];
                 SBQQ__Quote__c quoteB2C = [SELECT Id,SBQQ__Account__c FROM SBQQ__Quote__c WHERE SBQQ__Account__c=:accB2C.Id];
                 SBQQ__Quote__c quoteB2B = [SELECT Id,SBQQ__Account__c FROM SBQQ__Quote__c WHERE SBQQ__Account__c=:accB2B.Id];
               
-                
+                 
                 Order  orderB2B = [SELECT Id, blng__BillNow__c ,Status,SBQQ__Quote__c FROM Order WHERE SBQQ__Quote__c = :quoteB2B.Id];  
                 orderB2B.status='Activated';
                 update orderB2B;
@@ -240,7 +240,7 @@
                 
                 
                 defaultVal = new Map<String, Object> {
-                    'RecordTypeId'=>CONTRACT_B2C_RT_ID,
+                    'RecordTypeId'=>CONTRACT_ACCUEIL_RT_ID,
                         'AccountId' => accB2C.Id,
                         
                         'LPCR_DureeContratJour__c'=>100,
@@ -254,7 +254,7 @@
                 
                 orderB2B.blng__BillNow__c=true;
                 update orderB2B;
-                
+               
                 Map<Id,blng__Invoice__c> mapOfInvoice = new Map<Id,blng__Invoice__c>([SELECT Id, blng__Account__c,blng__Account__r.Name ,LPCR_LiaisonFamilleFacture__c
                                                                                       FROM blng__Invoice__c
                                                                                       WHERE  blng__Order__c  = :orderB2B.Id ]);   
@@ -276,9 +276,10 @@
                 blng__Invoice__c invoice = [SELECT Id,LPCR_LiaisonFamilleFacture__c
                                             FROM blng__Invoice__c
                                             WHERE  Id  = :mapOfInvoice.values().get(0).Id ];   
-                
+               
                 System.assertEquals(2,listOfLienFamilleFactureFromBD.size());
                 System.assertEquals(true,invoice.LPCR_LiaisonFamilleFacture__c);
+                  
                 
             }
         }
