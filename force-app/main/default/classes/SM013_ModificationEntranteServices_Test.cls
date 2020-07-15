@@ -1415,6 +1415,7 @@ public class SM013_ModificationEntranteServices_Test {
 
             Test.stopTest();
         }
+    }
     @isTest
     public static void createUsageFromModifEntrantes_Test(){
         Test.startTest();
