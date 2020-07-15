@@ -8403,18 +8403,19 @@
     <layoutAssignments>
         <layout>Contract-Présentation du contrat</layout>
     </layoutAssignments>
-    <recordTypeVisibilities>
-        <recordType>Contract.LPCR_Referencement</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Contract.LPCR_Reservataire</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
+
+    <layoutAssignments>
+        <layout>Contract-Présentation du contrat</layout>
         <recordType>Contract.Accueil</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contract-Présentation du contrat</layout>
+        <recordType>Contract.Reservataire</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contract-Présentation du contrat</layout>
+        <recordType>Contract.Referencement</recordType>
+    </layoutAssignments>
     <layoutAssignments>
         <layout>Event-Présentation d%27événement</layout>
     </layoutAssignments>
@@ -8963,15 +8964,18 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Contract.Referencement</recordType>
-        <visible>true</visible>
+        <visible>false</visible>
+        <default>false</default>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Contract.Reservataire</recordType>
-        <visible>true</visible>
+        <visible>false</visible>
+        <default>false</default>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Contract.Accueil</recordType>
         <visible>true</visible>
+        <default>true</default>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>

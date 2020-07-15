@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<types>
+        <members>Contract.Contract_B2B</members>
+        <members>Contract_B2B</members>
+        <name>RecordType</name>
+    </types>
+
+    <types>
+        <members>Contract.Contract_B2C</members>
+        <members>Contract_B2B</members>
+        <name>RecordType</name>
+    </types>
+</Package>
