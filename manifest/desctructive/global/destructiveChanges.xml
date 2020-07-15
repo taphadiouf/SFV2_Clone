@@ -107,7 +107,17 @@
         <members>LPCR_TablePrix__c.B2B</members>
         <name>RecordType</name>
     </types>
+<types>
+        <members>Contract.Contract_B2B</members>
+        <members>Contract_B2B</members>
+        <name>RecordType</name>
+    </types>
 
+    <types>
+        <members>Contract.Contract_B2C</members>
+        <members>Contract_B2B</members>
+        <name>RecordType</name>
+    </types>
 
     <types>
         <members>SBQQ__Quote__c.Status Devis MIB Changement Region Prix</members>
