@@ -14,7 +14,7 @@ public with sharing class APC007_ShowCrechesLpcrController {
 
         if(String.isNotBlank(modeAffich) && String.isNotBlank(currentId)){
             if('CompteFamille'.equals(modeAffich)){
-                Account currentRecord = [SELECT Id, Name, ShippingLatitude, ShippingLongitude from Account where  Id =: currentId limit 1];
+                Account currentRecord = [SELECT Id, Name, ShippingLatitude, ShippingLongitude from Account where ShippingLatitude != Null AND ShippingLongitude != Null AND Id =: currentId limit 1];
                 centerLocation.name = currentRecord.name;
                 centerLocation.locationId = currentRecord.Id;
                 centerLocation.latitude =  currentRecord.ShippingLatitude;
@@ -24,7 +24,7 @@ public with sharing class APC007_ShowCrechesLpcrController {
                 locations.add(centerLocation);
             }
             else if('LeadFamille'.equals(modeAffich)){
-                Lead currentRecord = [SELECT Id, Name, latitude, longitude from Lead where Id =: currentId limit 1];
+                Lead currentRecord = [SELECT Id, Name, latitude, longitude from Lead where latitude != Null AND longitude != Null AND Id =: currentId limit 1];
                 centerLocation.name = currentRecord.name;
                 centerLocation.locationId = currentRecord.Id;
                 centerLocation.latitude =  currentRecord.latitude;
@@ -35,7 +35,7 @@ public with sharing class APC007_ShowCrechesLpcrController {
             }
             
             else if('Preinscription'.equals(modeAffich)){
-                LPCR_Preinscription__c currentRecord = [SELECT Id, Name, LPCR_Latitude__c, LPCR_Longitude__c  FROM LPCR_Preinscription__c  WHERE Id =: currentId limit 1];
+                LPCR_Preinscription__c currentRecord = [SELECT Id, Name, LPCR_Latitude__c, LPCR_Longitude__c  FROM LPCR_Preinscription__c  WHERE LPCR_Longitude__c != Null AND LPCR_Latitude__c != Null AND Id =: currentId limit 1];
                 centerLocation.name = currentRecord.Name;
                 centerLocation.locationId = currentRecord.Id;
                 centerLocation.latitude =  currentRecord.LPCR_Latitude__c;
@@ -46,7 +46,7 @@ public with sharing class APC007_ShowCrechesLpcrController {
             }
         }
         Location currentLocation;
-        for(Account eachAcc : [Select Id, Name, ShippingLatitude, ShippingLongitude from Account where RecordTypeId =: reseauCrecheAccountRT]){
+        for(Account eachAcc : [Select Id, Name, ShippingLatitude, ShippingLongitude from Account where ShippingLatitude != Null AND ShippingLongitude != Null AND RecordTypeId =: reseauCrecheAccountRT]){
             System.debug(eachAcc);
             currentLocation = new Location();
             currentLocation.locationId = eachAcc.Id;

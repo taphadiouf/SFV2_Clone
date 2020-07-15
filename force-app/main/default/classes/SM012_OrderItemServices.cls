@@ -63,17 +63,13 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                 mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
             }
             
-            Integer macInvoicingDay = mapTypeContractConf.containsKey('B2C_MAC')
-                ? Integer.valueOf(mapTypeContractConf.get('B2C_MAC').LPCR_JourFacturation__c)
-                : 5;
+           
             
-            Integer microInvoicingDay = mapTypeContractConf.containsKey('B2C_MICRO')
-                ? Integer.valueOf(mapTypeContractConf.get('B2C_MICRO').LPCR_JourFacturation__c)
-                : 27;
+            Integer macInvoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MAC').LPCR_JourFacturation__c);
+			Integer microInvoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MICRO').LPCR_JourFacturation__c);
+			Integer invoiceDelta = -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c);
             
-            Integer invoiceDelta = mapTypeContractConf.containsKey('B2B')
-                ? -1 * Integer.valueOf(mapTypeContractConf.get('B2B').LPCR_JourFacturation__c)
-                : -35;
+            
             
             Set<Id> orderIds = new Set<Id>();
             for (OrderItem item : newOrderItems) {

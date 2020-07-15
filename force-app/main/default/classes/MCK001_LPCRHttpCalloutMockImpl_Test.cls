@@ -35,7 +35,7 @@ public class MCK001_LPCRHttpCalloutMockImpl_Test {
         req.setTimeout(30000);
         
         HttpResponse res = http.send(req);
-        System.assertEquals(400, res.getStatusCode(), 'SaveDocumentCallout_2_Test callout status code not correct');
+        System.assertEquals(503, res.getStatusCode(), 'SaveDocumentCallout_2_Test callout status code not correct');
     }
     @isTest
     static void GetBySfId_1_Test(){
@@ -69,6 +69,6 @@ public class MCK001_LPCRHttpCalloutMockImpl_Test {
         req.setTimeout(30000);
         
         HttpResponse res = http.send(req);
-        System.assertEquals(400, res.getStatusCode(), 'GetBySfId_2_Test callout status code not correct');
+        System.assertEquals(503, res.getStatusCode(), 'GetBySfId_2_Test callout status code not correct');
     }
 }
