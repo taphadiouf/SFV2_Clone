@@ -1,220 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>AOPublicDSP</fullName>
+    <fullName>Accueil_Approuve</fullName>
     <active>true</active>
-    <businessProcess>Opportunité AO Public</businessProcess>
-    <label>AO Public DSP</label>
+    <description>Type d&apos;enregistrement pour les contrats d&apos;accueil approuvés.</description>
+    <label>Contrat D&apos;accueil Approuvé.</label>
     <picklistValues>
-        <picklist>ForecastCategoryName</picklist>
+        <picklist>ApprovalStatus__c</picklist>
         <values>
-            <fullName>Best Case</fullName>
+            <fullName>Approved</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Closed</fullName>
+            <fullName>Draft</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Commit</fullName>
+            <fullName>Recalled</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Omitted</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pipeline</fullName>
+            <fullName>Rejected</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_BillingFrequency__c</picklist>
+        <picklist>EditLinesFieldSetName__c</picklist>
         <values>
-            <fullName>Annual</fullName>
+            <fullName>Amendment_FieldSet_test_only</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Invoice Plan</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Monthly</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Quarterly</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Semiannual</fullName>
+            <fullName>SBQQ%5F%5FLineEditor</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_DispositifExistant__c</picklist>
+        <picklist>LPCR_BatchCommande__c</picklist>
         <values>
-            <fullName>Accompagnement scolaire</fullName>
+            <fullName>Ad-hoc</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Chèque CESU</fullName>
+            <fullName>B2B</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Conciergerie</fullName>
+            <fullName>Batch 1</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Conférences %2F Atelier parentalité</fullName>
+            <fullName>Batch 2</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Garde d%E2%80%99enfants périscolaire</fullName>
+            <fullName>Batch 3</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Places en crèche</fullName>
+            <fullName>Batch 4</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Plateforme de service à la personne</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_EtapeFamille__c</picklist>
-        <values>
-            <fullName>Négociation%2F Contractualisation</fullName>
+            <fullName>Batch 5</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Perdue</fullName>
+            <fullName>Batch 6</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Signée</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_FrequenceFacturation__c</picklist>
-        <values>
-            <fullName>Annual</fullName>
+            <fullName>En Attente</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Invoice Plan</fullName>
+            <fullName>MAC</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Monthly</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Quarterly</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Semiannual</fullName>
+            <fullName>MICRO</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_GestionnaireRetenu__c</picklist>
+        <picklist>LPCR_DureeContrat__c</picklist>
         <values>
-            <fullName>AASBR</fullName>
+            <fullName>Durée déterminée</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>ADMR</fullName>
+            <fullName>Durée indéterminée</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_DureePreavisMois__c</picklist>
+        <values>
+            <fullName>2</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>AGDS</fullName>
+            <fullName>3</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>AGES</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>ALEF</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>ALFA 3A</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Autre</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Babilou</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Crescendo</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Croix St Simon</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Crèche attitude</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Crèche de france</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Enfance pour tous</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Envol</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Famille rurale</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>IFAC</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>La croix rouge</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>La maison bleue</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Leo Lagrange</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Les petites canailles</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Léa et léo</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Mutualité française</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Peoplenbaby</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>SLEA</fullName>
+            <fullName>6</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -230,113 +123,139 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_Micro__c</picklist>
+        <picklist>LPCR_MethodeRenouvellement__c</picklist>
         <values>
-            <fullName>Non</fullName>
+            <fullName>Express</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Oui</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_RaisonPerteOpportunite__c</picklist>
-        <values>
-            <fullName>Autre</fullName>
+            <fullName>Sans renouvellement</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Autre mode de garde</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Budget</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Concurrence</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Non disponibilité LPCR</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Non disponibilité partenaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Prix partenaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Report du projet</fullName>
+            <fullName>Tacite</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_TypeAO__c</picklist>
+        <picklist>LPCR_MoyenPaiement__c</picklist>
         <values>
-            <fullName>Ouvert</fullName>
+            <fullName>Carte Bancaire</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Procédure adaptée</fullName>
+            <fullName>Chèque</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Procédure simplifiée</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Restreint</fullName>
+            <fullName>Virement</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_TypeAttribution__c</picklist>
+        <picklist>LPCR_ResiliationAnticipe__c</picklist>
         <values>
-            <fullName>Mono attribution</fullName>
+            <fullName>1 an ferme</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Multi attribution</fullName>
+            <fullName>2 ans ferme</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 ans ferme</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Immédiate</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_TypeContrat__c</picklist>
+        <picklist>LPCR_StatutApprobation__c</picklist>
         <values>
-            <fullName>Afermage</fullName>
+            <fullName>Approuvé</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Appel à projet</fullName>
+            <fullName>Brouillon</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>En Attente</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeAccueil__c</picklist>
+        <values>
+            <fullName>Occasionnel</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Autre</fullName>
+            <fullName>Régulier</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeAvenant__c</picklist>
+        <values>
+            <fullName>Ajout%2FSuppression Berceau</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Concession</fullName>
+            <fullName>Changement de Prix</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>MAPA</fullName>
+            <fullName>Modification des termes du contrat</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Marché</fullName>
+            <fullName>Modification du type%2Ffréquence de facturation</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Partenariat</fullName>
+            <fullName>Mouvement Interne Berceau</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Régie intéréssée</fullName>
+            <fullName>Résiliation</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeCreche__c</picklist>
+        <values>
+            <fullName>ALSH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halte-Garderie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jardin d%E2%80%99enfants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MICRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RAM</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -344,7 +263,7 @@
         <picklist>LPCR_TypeFacturation__c</picklist>
         <values>
             <fullName>Advance</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Arrears</fullName>
@@ -352,131 +271,69 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_TypeMarche__c</picklist>
+        <picklist>LPCR_TypePlanning__c</picklist>
         <values>
-            <fullName>A%26E</fullName>
+            <fullName>Classique</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>C%26E</fullName>
+            <fullName>Multi-planning</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>C%2BE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>E</fullName>
+            <fullName>Tournant</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_TypeOffre__c</picklist>
+        <picklist>SBQQ__BillingFrequency__c</picklist>
         <values>
-            <fullName>Offre dédiée</fullName>
+            <fullName>Annual</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Offre réseau</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_VisiteObligatoire__c</picklist>
-        <values>
-            <fullName>Non</fullName>
+            <fullName>Invoice Plan</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Oui</fullName>
-            <default>false</default>
+            <fullName>Monthly</fullName>
+            <default>true</default>
         </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_ZoneGeographique__c</picklist>
         <values>
-            <fullName>Grand Ouest</fullName>
+            <fullName>Quarterly</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>IDF</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>LR%22</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Nord Est</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>PACA</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Rhone Alpes</fullName>
+            <fullName>Semiannual</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LeadSource</picklist>
+        <picklist>SBQQ__ContractingMethod__c</picklist>
         <values>
-            <fullName>Appel d%27Offre</fullName>
+            <fullName>By Subscription End Date</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Autre</fullName>
+            <fullName>Single Contract</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__DeliveryMethod__c</picklist>
+        <values>
+            <fullName>Download</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Challenge</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Chargé d%27affaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Directrice de crèche</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Evènement</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Publicité</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Recherche Internet</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Site Internet Grandir</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Siège</fullName>
+            <fullName>Ship</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>Type</picklist>
+        <picklist>SBQQ__DocumentStatus__c</picklist>
         <values>
-            <fullName>Existing Business</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>New Business</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>sbaa__ApprovalStatus__c</picklist>
-        <values>
-            <fullName>Approved</fullName>
+            <fullName>Failed</fullName>
             <default>false</default>
         </values>
         <values>
@@ -484,11 +341,212 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Recalled</fullName>
+            <fullName>Sent</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__GenerateContractedPrice__c</picklist>
+        <values>
+            <fullName>Discount Schedule</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Rejected</fullName>
+            <fullName>Do Not Generate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__OrderBy__c</picklist>
+        <values>
+            <fullName>ProductFamily%5F%5Fc</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>QuantityBasedFormulaField%5F%5Fc</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__PaperSize__c</picklist>
+        <values>
+            <fullName>A4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Default</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Legal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Letter</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__PaymentTerms__c</picklist>
+        <values>
+            <fullName>Due on receipt</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Net 15</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net 30</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net 45</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net 60</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net 90</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__QuoteLanguage__c</picklist>
+        <values>
+            <fullName>Chinese %28Simplified%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chinese %28Traditional%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Danish</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dutch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>English</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finnish</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>French</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>German</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Italian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Japanese</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Korean</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Norwegian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portuguese %28Brazilian%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Russian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spanish</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spanish %28Mexican%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Swedish</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thai</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__Status__c</picklist>
+        <values>
+            <fullName>Actif</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Annulé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Envoi directrice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prêt pour commande</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prêt à envoyer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Signé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terminé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Validé directrice</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__Type__c</picklist>
+        <values>
+            <fullName>Amendment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quote</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Re-Quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renewal</fullName>
             <default>false</default>
         </values>
     </picklistValues>
