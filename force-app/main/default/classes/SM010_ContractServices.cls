@@ -39,7 +39,7 @@ public class SM010_ContractServices {
                 } 
              }
                 eachContract =setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(eachContract.SBQQ__Quote__c));
-            
+          
             
             if(orderMap.containsKey(eachContract.SBQQ__Order__c) && 
                quoteOrderMap.containsKey(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
