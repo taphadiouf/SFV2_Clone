@@ -9,6 +9,8 @@ public with sharing class SM008_QuoteServices {
     public static Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement);
     public static Id referencementApprRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement_Approuve);
     public static Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Reservataire);
+    public static Id referencementApprouveRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement_Approuve);
+    public static Id reservataireApprouveRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Reservataire_Approuve);
     public static Id reservataireApprRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Reservataire_Approuve);
     
     //added by hanae
@@ -128,7 +130,10 @@ public with sharing class SM008_QuoteServices {
         Date dueDateRenewal = date.newInstance(System.Today().year(), 08, 31);
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
         for (SBQQ__Quote__c eachQuote : quotesList){
-            
+            if(acctMap.containsKey(eachQuote.LPCR_Creche__c)){
+                eachQuote.LPCR_TypeCreche__c = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c;
+                eachQuote.LPCR_EntiteJuridique__c  = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_EntiteJuridique__c ;
+            }
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
                     if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
@@ -168,21 +173,27 @@ public with sharing class SM008_QuoteServices {
             
             
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c) || Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c)){
-                if(Label.LPCR_MAC.equals(eachQuote.LPCR_TypeCreche__c)){
-                    if(eachQuote.LPCR_DateFin__c < dueDateQuote){
-                        eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
-                    }
-                    else{
-                        eachQuote.SBQQ__EndDate__c = dueDateQuote;
-                    } 
-                }
-                else if(Label.LPCR_MICRO.equals(eachQuote.LPCR_TypeCreche__c)){
-                    if(eachQuote.LPCR_DateFin__c < dueDateRenewal){
-                        eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
-                    }
-                    else{
-                        eachQuote.SBQQ__EndDate__c = dueDateRenewal;
-                    }  
+                if(eachQuote.SBQQ__StartDate__c != null){
+                    Date dueStartDateQuote = date.newInstance(eachQuote.SBQQ__StartDate__c.year(), 12, 31);                               
+                    Date endDate = eachQuote.LPCR_DateFin__c;
+                        if(acctMap.containsKey(eachQuote.LPCR_Creche__c)){
+                            if(Label.LPCR_MAC.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
+                                if(eachQuote.LPCR_DateFin__c < dueStartDateQuote){
+                                    eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                                }
+                                else{
+                                    eachQuote.SBQQ__EndDate__c = dueStartDateQuote;
+                                } 
+                            }
+                            else if(Label.LPCR_MICRO.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
+                                if(eachQuote.LPCR_DateFin__c < dueDateRenewal){
+                                    eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                                }
+                                else{
+                                    eachQuote.SBQQ__EndDate__c = dueDateRenewal;
+                                }  
+                            }
+                        }
                 }
             }
             if(Label.LPCR_Amendment.equals(eachQuote.SBQQ__Type__c)){
@@ -216,31 +227,41 @@ public with sharing class SM008_QuoteServices {
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
         for (SBQQ__Quote__c eachQuote : quotesList){
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
-                if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) ){
-                    if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
-                        eachQuote.LPCR_MethodeRenouvellement__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_MethodeRenouvellement__c;
-                        //Date endDate = eachQuote.LPCR_DateFin__c;
-                        if(Label.LPCR_Express.equals(eachQuote.LPCR_MethodeRenouvellement__c) ||Label.LPCR_SansRenouvellement.equals(eachQuote.LPCR_MethodeRenouvellement__c) ){
-                            if(eachQuote.LPCR_DateFin__c.year() == System.Today().year()){
-                                eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                if(eachQuote.SBQQ__StartDate__c != null){
+                    Date dueStartDateQuote = date.newInstance(eachQuote.SBQQ__StartDate__c.year(), 12, 31);
+                    if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) ){
+                        if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
+                            eachQuote.LPCR_MethodeRenouvellement__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_MethodeRenouvellement__c;
+                            //Date endDate = eachQuote.LPCR_DateFin__c;
+                            if(Label.LPCR_Express.equals(eachQuote.LPCR_MethodeRenouvellement__c) ||Label.LPCR_SansRenouvellement.equals(eachQuote.LPCR_MethodeRenouvellement__c) ){
+                                if(eachQuote.LPCR_DateFin__c < dueStartDateQuote){
+                                    eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                                }
+                                else{
+                                    eachQuote.SBQQ__EndDate__c = dueStartDateQuote;
+                                } 
                             }
-                            else{
-                                eachQuote.SBQQ__EndDate__c = dueDateQuote;
-                            } 
+                            else if(Label.LPCR_Tacite.equals(eachQuote.LPCR_MethodeRenouvellement__c)){
+                                eachQuote.SBQQ__EndDate__c = dueStartDateQuote;
+                            }
                         }
-                        else if(Label.LPCR_Tacite.equals(eachQuote.LPCR_MethodeRenouvellement__c)){
-                            eachQuote.SBQQ__EndDate__c = dueDateQuote;
-                        }
-                    }
-                } 
+                    } 
+                }               
             }
+            
             if(Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c)){
-                if(eachQuote.LPCR_DateFin__c < dueDateQuote){
-                    eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
-                }
-                else{
-                    eachQuote.SBQQ__EndDate__c = dueDateQuote;
-                }
+                if(eachQuote.SBQQ__StartDate__c != null){
+                    Date dueStartDateQuote = date.newInstance(eachQuote.SBQQ__StartDate__c.year(), 12, 31);
+                    if(eachQuote.LPCR_DateDebut__c != Null){
+                        eachQuote.SBQQ__StartDate__c = eachQuote.LPCR_DateDebut__c ;
+                    }
+                    if(eachQuote.LPCR_DateFin__c < dueStartDateQuote){
+                        eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                    }
+                    else{
+                        eachQuote.SBQQ__EndDate__c = dueStartDateQuote;
+                    }
+                }               
             }
         }
     }
