@@ -6,6 +6,7 @@
 */
 public with sharing class SM008_QuoteServices {
     public static Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_ContratA);
+    public static Id acceuilApprRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Accueil_Approuve);
     public static Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement);
     public static Id referencementApprRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement_Approuve);
     public static Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Reservataire);
@@ -40,17 +41,17 @@ public with sharing class SM008_QuoteServices {
                     if(eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == referencementApprRecTypeId || eachQuote.RecordTypeId == reservataireRecTypeId || eachQuote.RecordTypeId == reservataireApprRecTypeId){
                         B2BInsertQuoteList.add(eachQuote);
                     }
-                    if(eachQuote.RecordTypeId == acceuilRecTypeId){
+                    if(eachQuote.RecordTypeId == acceuilRecTypeId || eachQuote.RecordTypeId == acceuilApprRecTypeId){
                         B2CInsertQuoteList.add(eachQuote);
                     }
                 }
             }
             if(Trigger.isInsert || Trigger.isUpdate){
                 for(SBQQ__Quote__c eachQuote : quotesList){
-                    if(eachQuote.RecordTypeId == acceuilRecTypeId || eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == referencementApprRecTypeId || eachQuote.RecordTypeId == reservataireRecTypeId || eachQuote.RecordTypeId == reservataireApprRecTypeId){
+                    if(eachQuote.RecordTypeId == acceuilRecTypeId || eachQuote.RecordTypeId == acceuilApprRecTypeId || eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == referencementApprRecTypeId || eachQuote.RecordTypeId == reservataireRecTypeId || eachQuote.RecordTypeId == reservataireApprRecTypeId){
                         cummonQuoteList.add(eachQuote);
                     }
-                    if(eachQuote.RecordTypeId == acceuilRecTypeId){
+                    if(eachQuote.RecordTypeId == acceuilRecTypeId || eachQuote.RecordTypeId == acceuilApprRecTypeId){
                         B2CQuoteList.add(eachQuote);
                     }
                     if(eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == referencementApprRecTypeId || eachQuote.RecordTypeId == reservataireRecTypeId || eachQuote.RecordTypeId == reservataireApprRecTypeId){
