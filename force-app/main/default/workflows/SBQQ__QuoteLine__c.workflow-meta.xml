@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>LPCR_RemplissageNumBonCommande</fullName>
+        <field>LPCR_NumBonCommande__c</field>
+        <formula>SBQQ__Quote__r.LPCR_NumeroContrat__c &amp;&quot;-&quot;&amp; LPCR_NumeroPOAutomatique__c</formula>
+        <name>Remplissage NumBonCommande</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>Remplissage du champs LPCR_NumBonCommande</fullName>
+        <actions>
+            <name>LPCR_RemplissageNumBonCommande</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__QuoteLine__c.LPCR_NumeroPOAutomatique__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Ce WF se déclenche à la création du Quote line afin de renseigner le champs &apos;LPCR_NumBonCommande__c&apos;</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

@@ -96,12 +96,12 @@
     <formulas>
         <name>Matching_Id</name>
         <dataType>String</dataType>
-        <expression>{!Get_Contact_Details.FirstName} + {!Get_Contact_Details.LastName} +TEXT( {!$Record.LPCR_TypeEvenement__c}) + {!Get_Account_Detail.Name}</expression>
+        <expression>{!Get_Contact_Details.Id} +TEXT( {!$Record.LPCR_TypeEvenement__c}) + {!Get_Account_Detail.Id}</expression>
     </formulas>
     <formulas>
         <name>Matching_Id_B2B</name>
         <dataType>String</dataType>
-        <expression>{!Get_Product_Detail.Name} + {!Get_Account_Detail.Name}</expression>
+        <expression>{!Get_Product_Detail.Id} + {!Get_Account_Detail.Id}</expression>
     </formulas>
     <interviewLabel>FLOW_Usage_Populate Matching ID {!$Flow.CurrentDateTime}</interviewLabel>
     <label>FLOW_Usage_Populate Matching ID</label>

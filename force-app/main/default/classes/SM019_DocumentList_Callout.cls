@@ -7,6 +7,7 @@ public with sharing class SM019_DocumentList_Callout {
             
     @AuraEnabled
     public static DocumentListFullResponse getDocumentListCallout(String ownerid, String doc_type) {
+        final String WS_NOM_SERVICE  = 'LPCR_RECUPERATION_DOCUMENT';
         DocumentListFullResponse documentListFullResponse = new DocumentListFullResponse();
         
         Http http = new Http();
@@ -18,10 +19,16 @@ public with sharing class SM019_DocumentList_Callout {
         request.setBody(JSON.serialize(docListStructure));
         HttpResponse response = http.send(request);
         // Parse the JSON response
-        if (response.getStatusCode() == 200) {
+        String statusCode = response.getStatusCode()+'';
+       
+        if (statusCode.equals('200')) {
             documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         } else {
-            documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
+            //documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
+        LPCR_AppelServiceExterne__mdt appelServiceExterne = [SELECT LPCR_CodeRetour__c ,LPCR_MessageRetour__c , LPCR_NomService__c  
+                                                             FROM LPCR_AppelServiceExterne__mdt  
+                                                             WHERE LPCR_CodeRetour__c = :statusCode AND LPCR_NomService__c = :WS_NOM_SERVICE ];
+            throw new AuraHandledException(appelServiceExterne.LPCR_MessageRetour__c);
         }
         return documentListFullResponse;
     }

@@ -10,7 +10,7 @@ public with sharing class EM016_ModificationEntranteEntity extends EM001_Abstrac
     }
     
     public static List<LPCR_ModificationEntrante__c> getModifEntranteById(List<LPCR_ModificationEntrante__c> modifId){
-        return [SELECT Id, LPCR_Evenement__c,LPCR_Devis__c  FROM LPCR_ModificationEntrante__c WHERE LPCR_Evenement__c  = 'Validation Contrat Directrice' AND id =:modifId];
+        return [SELECT Id, LPCR_Evenement__c,LPCR_Contract__c,LPCR_Contract__r.SBQQ__Quote__c  FROM LPCR_ModificationEntrante__c WHERE LPCR_Evenement__c  = 'Validation Contrat Directrice' AND id =:modifId];
     }
 
     public static blng__Usage__c createBlngUsage(LPCR_ModificationEntrante__c modifEntrante, String UnitOfMeasure){

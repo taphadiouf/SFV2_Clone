@@ -18,8 +18,8 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
     }
     
     global void execute(Database.BatchableContext BC, List<blng__Invoice__c> scope) {
-        PAD.log('$$$$ APB009_GenerateLienFamilleFacture','execute','scope to execute : '+scope);
-        Id contratB2CRTId  = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Contrat_B2C);
+        PAD.log('APB009_GenerateLienFamilleFacture','execute','scope to execute : '+scope);
+        Id contratB2CRTId  = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_ContratA);
         
         Set<Id> invoiceIds = UM003_TypeManager.getIdsOfListObjects(scope);
         Map<Id,blng__Invoice__c> mapOfInvoice = new Map<Id,blng__Invoice__c>([SELECT Id, blng__Account__c ,LPCR_LiaisonFamilleFacture__c
