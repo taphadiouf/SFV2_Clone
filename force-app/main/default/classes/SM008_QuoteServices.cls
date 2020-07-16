@@ -132,7 +132,7 @@ public with sharing class SM008_QuoteServices {
         Date nextYearDueDateRenewal = date.newInstance(System.Today().year()+1, 08, 31);
 
         for (SBQQ__Quote__c eachQuote : quotesList){
-            Date dueStartDateQuote = date.newInstance(eachQuote.SBQQ__StartDate__c.year(), 12, 31);
+            
             if(acctMap.containsKey(eachQuote.LPCR_Creche__c)){
                 eachQuote.LPCR_TypeCreche__c = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c;
                 eachQuote.LPCR_EntiteJuridique__c  = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_EntiteJuridique__c ;
