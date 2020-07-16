@@ -205,6 +205,7 @@ public with sharing class SM008_QuoteServices {
                                 }  
                             }
                         }
+                }
             }
             if(Label.LPCR_Amendment.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
