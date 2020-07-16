@@ -501,7 +501,8 @@ newMe.FederationIdentifier = null;
             tempQuote = new SBQQ__Quote__c(
                 SBQQ__Opportunity2__c = opps.get(i).Id,
                 SBQQ__Account__c = accs.get(i).Id,
-                SBQQ__PriceBook__c = Test.getStandardPricebookId()
+                SBQQ__PriceBook__c = Test.getStandardPricebookId(),
+                SBQQ__StartDate__c = date.today()
             );
             quotes.add(tempQuote);
         }
@@ -1171,8 +1172,8 @@ newMe.FederationIdentifier = null;
         return ModifEntrantes;
     }
     
-    public static LPCR_ModificationEntrante__c createModificationsEntrante(String event, Id quoteId,Id accountId, Id contactId, Id contractId,Decimal revenusFamille){
-        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Devis__c = quoteId, LPCR_Evenement__c = event,
+    public static LPCR_ModificationEntrante__c createModificationsEntrante(String event,Id accountId, Id contactId, Id contractId,Decimal revenusFamille){
+        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Evenement__c = event,
                                                                                      LPCR_Compte__c = accountId,
                                                                                      LPCR_Quantite__c = 1, LPCR_Contract__c = contractId,
                                                                                      LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = false,
@@ -1181,8 +1182,8 @@ newMe.FederationIdentifier = null;
     }
     
     //added by saurabh
-    public static LPCR_ModificationEntrante__c createModificationsEntrante(String event, Id quoteId,Id accountId, Id contactId, Id contractId,Date dateEffet,Decimal revenusFamille){
-        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Devis__c = quoteId, LPCR_Evenement__c = event,
+    public static LPCR_ModificationEntrante__c createModificationsEntrante(String event,Id accountId, Id contactId, Id contractId,Date dateEffet,Decimal revenusFamille){
+        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Evenement__c = event,
                                                                                      LPCR_DateEffet__c = dateEffet, LPCR_Compte__c = accountId,
                                                                                      LPCR_Quantite__c = 1, LPCR_Contract__c = contractId,
                                                                                      LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = false,
@@ -1207,7 +1208,9 @@ newMe.FederationIdentifier = null;
             tempQuote = new SBQQ__Quote__c(
                 SBQQ__Opportunity2__c = opps.get(i).Id,
                 LPCR_Creche__c = accs.get(i).Id,
-                SBQQ__Status__c = status
+                SBQQ__Status__c = status,
+                SBQQ__StartDate__c = date.today(),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31)
             );
             quotes.add(tempQuote);
         }
@@ -1251,7 +1254,9 @@ newMe.FederationIdentifier = null;
                 SBQQ__Account__c = accs.get(i).Id,
                 SBQQ__Type__c = type,
                 RecordTypeId = recTypeId,
-                LPCR_Creche__c = crecheId
+                LPCR_Creche__c = crecheId,
+                SBQQ__StartDate__c = date.today(),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31)
             );
             quotes.add(tempQuote);
         }
