@@ -13,8 +13,7 @@ public class SM021_CreditNoteServices {
 */
     public static void updateReleatedObjectsFields(List<blng__CreditNote__c> creditNoteList){
         Pad.log('SM021_CreditNoteServices','updateReleatedObjectsFields(List<blng__CreditNote__c> creditNoteList)','creditNoteList size '+creditNoteList.size());
-        //to be replaced by the new B2B Contract RTs ( LPCR_Referencement & LPCR_Referencement_Approuve) after merging the IS-1165
-         Id accountEntrepriseRTId  = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
+        Id accountEntrepriseRTId  = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
         Set<Id> creditNoteListIds = UM003_TypeManager.getIdsOfListObjects(creditNoteList);
         List<blng__CreditNote__c> creditNoteListB2B = [SELECT Id  ,blng__Account__c FROM blng__CreditNote__c WHERE Id IN :creditNoteListIds AND blng__Account__r.RecordTypeId =:accountEntrepriseRTId ];
         Set<String> accountIds =     UM003_TypeManager.getFieldsOfListObjects(creditNoteListB2B, 'blng__Account__c');

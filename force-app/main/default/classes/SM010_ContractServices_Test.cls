@@ -206,9 +206,9 @@ public class SM010_ContractServices_Test {
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
              
-            //to be replaced by the new B2B Contract RTs ( LPCR_Referencement & LPCR_Referencement_Approuve) after merging the IS-1165
-            List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Contrat_B2B)};
-
+List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement),
+        EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)};
+         
 
             Date lastMonth=Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day()+1) ;
             Account acc = [SELECT Id, name from Account where name ='test' ];

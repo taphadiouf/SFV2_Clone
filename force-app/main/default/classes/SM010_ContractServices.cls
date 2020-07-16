@@ -14,7 +14,6 @@ public class SM010_ContractServices {
 */
     public static void setContractFields(List<Contract> contracts){
         Pad.log('SM010_ContractServices','setContractFields(List<Contract> contracts)','contracts size '+contracts.size());
-        //to be replaced by the new B2B Contract RTs ( LPCR_Referencement & LPCR_Referencement_Approuve) after merging the IS-1165
         List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement),
         EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)};
             
@@ -102,7 +101,6 @@ public class SM010_ContractServices {
     public static void setContractFields(Map<Id, Contract> oldContractMap,Map<Id, Contract> newContractMap){
         Pad.log('SM010_ContractServices','setContractFields(Map<Id, Contract> oldContractMap,Map<Id, Contract> newContractMap)','oldContractMap size '+oldContractMap.size(),'oldContractMap size '+newContractMap.size());
         
-        //to be replaced by the new B2B Contract RTs ( LPCR_Referencement & LPCR_Referencement_Approuve) after merging the IS-1165
         List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement),
          EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)};
         List<String> accountIds = new List<String>();
