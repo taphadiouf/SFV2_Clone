@@ -56,9 +56,7 @@ public class SM013_ModificationEntranteServices_Test {
             Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
             Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
             PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];            
-            Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
-			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
-            
+             
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
@@ -88,7 +86,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Traitement jour férié',quote.id,acc.id,cont.id,contract.id,10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Traitement jour férié',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;           
             
             LPCR_ModificationEntrante__c modif2 = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',acc.id,cont.id,contract.id,Date.today(),10);
@@ -140,7 +138,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Fin Contrat',acc.id,cont.id,contract.id,10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Fin Contrat',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;           
             
             Test.startTest();
