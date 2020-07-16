@@ -179,6 +179,7 @@ public with sharing class SM008_QuoteServices {
                 if(eachQuote.SBQQ__StartDate__c != null){
                     Date dueStartDateQuote = date.newInstance(eachQuote.SBQQ__StartDate__c.year(), 12, 31);                               
                     Date endDate = eachQuote.LPCR_DateFin__c;
+
                         if(acctMap.containsKey(eachQuote.LPCR_Creche__c)){
                             if(Label.LPCR_MAC.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
                                 if(eachQuote.LPCR_DateFin__c < dueStartDateQuote){
