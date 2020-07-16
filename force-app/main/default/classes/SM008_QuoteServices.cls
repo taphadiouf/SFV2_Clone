@@ -28,8 +28,8 @@ public with sharing class SM008_QuoteServices {
         Set<String> renewedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_RenewedContract);
         Set<String> amendedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_AmendedContract);
         
-        Map<Id,Contract> contractMap = new Map<Id,Contract>([SELECT Id, LPCR_RenouvellementPlanFacture__c,LPCR_NouveauPlanFacture__c,LPCR_InitAutoAvecDateDebut__c,LPCR_DateDebut__c, LPCR_DateFin__c ,LPCR_MethodeRenouvellement__c,LPCR_MasterDevis__c, LPCR_Sales_Rep__c,LPCR_ResponsableADV__c,LPCR_ResponsableServiceFamille__c,LPCR_EntiteJuridique__c,LPCR_TypeCreche__c, LPCR_PlanningEnfant__c,LPCR_ContactEnfant__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c,LPCR_CongesJours__c,LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Creche__c, LPCR_ChiffreAffaire__c, LPCR_FraisDossier__c  From Contract Where Id =: renewedContractIds]);
-        Map<Id,Contract> amendedContractMap = new Map<Id,Contract>([SELECT Id,LPCR_RenouvellementPlanFacture__c,LPCR_NouveauPlanFacture__c,LPCR_InitAutoAvecDateDebut__c, LPCR_DateDebut__c, LPCR_DateFin__c ,LPCR_MethodeRenouvellement__c ,SBQQ__RenewalUpliftRate__c,LPCR_MasterDevis__c, LPCR_Sales_Rep__c,LPCR_ResponsableADV__c,LPCR_ResponsableServiceFamille__c,LPCR_EntiteJuridique__c, LPCR_TypeCreche__c, LPCR_Creche__c, LPCR_ContactEnfant__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_ChiffreAffaire__c,LPCR_FraisDossier__c  From Contract Where Id =: amendedContractIds]);
+        Map<Id,Contract> contractMap = new Map<Id,Contract>([SELECT Id, RecordType.DeveloperName,LPCR_RenouvellementPlanFacture__c,LPCR_NouveauPlanFacture__c,LPCR_InitAutoAvecDateDebut__c,LPCR_DateDebut__c, LPCR_DateFin__c ,LPCR_MethodeRenouvellement__c,LPCR_MasterDevis__c, LPCR_Sales_Rep__c,LPCR_ResponsableADV__c,LPCR_ResponsableServiceFamille__c,LPCR_EntiteJuridique__c,LPCR_TypeCreche__c, LPCR_PlanningEnfant__c,LPCR_ContactEnfant__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c,LPCR_CongesJours__c,LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Creche__c, LPCR_ChiffreAffaire__c, LPCR_FraisDossier__c  From Contract Where Id =: renewedContractIds]);
+        Map<Id,Contract> amendedContractMap = new Map<Id,Contract>([SELECT Id,RecordType.DeveloperName,LPCR_RenouvellementPlanFacture__c,LPCR_NouveauPlanFacture__c,LPCR_InitAutoAvecDateDebut__c, LPCR_DateDebut__c, LPCR_DateFin__c ,LPCR_MethodeRenouvellement__c ,SBQQ__RenewalUpliftRate__c,LPCR_MasterDevis__c, LPCR_Sales_Rep__c,LPCR_ResponsableADV__c,LPCR_ResponsableServiceFamille__c,LPCR_EntiteJuridique__c, LPCR_TypeCreche__c, LPCR_Creche__c, LPCR_ContactEnfant__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_ChiffreAffaire__c,LPCR_FraisDossier__c  From Contract Where Id =: amendedContractIds]);
         
         if (Trigger.isBefore) {
             if (Trigger.isInsert) {
@@ -337,6 +337,8 @@ public with sharing class SM008_QuoteServices {
     
     //added by Ayoub
     public static void setQuoteFields(List<SBQQ__Quote__c> quotesList,Map<Id,Contract> renewedContract,Map<Id,Contract> amendedContract, Map<Id,Opportunity> opptyMap){
+         Map<String,Schema.RecordTypeInfo> mapQuoteRT = Schema.getGlobalDescribe().get(Label.LPCR_Quote).getDescribe().getRecordTypeInfosByDeveloperName();
+		
         for (SBQQ__Quote__c eachQuote : quotesList){
             /* deleted in IS-1165 
             Id quoteRecTypeId = null;
