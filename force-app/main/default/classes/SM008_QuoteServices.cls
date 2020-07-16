@@ -129,7 +129,10 @@ public with sharing class SM008_QuoteServices {
     public static void setB2CQuotesFromContract(List<SBQQ__Quote__c> quotesList,  Map<ID,Account> acctMap, Map<Id,Opportunity> opptyMap,  Map<Id,Contract> amendedContractMap,Map<Id,Contract> contractMap){
         Date dueDateRenewal = date.newInstance(System.Today().year(), 08, 31);
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
+        Date nextYearDueDateRenewal = date.newInstance(System.Today().year()+1, 08, 31);
+
         for (SBQQ__Quote__c eachQuote : quotesList){
+            
             if(acctMap.containsKey(eachQuote.LPCR_Creche__c)){
                 eachQuote.LPCR_TypeCreche__c = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c;
                 eachQuote.LPCR_EntiteJuridique__c  = acctMap.get(eachQuote.LPCR_Creche__c).LPCR_EntiteJuridique__c ;
@@ -190,7 +193,15 @@ public with sharing class SM008_QuoteServices {
                                     eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                                 }
                                 else{
-                                    eachQuote.SBQQ__EndDate__c = dueDateRenewal;
+                                        if(eachQuote.SBQQ__StartDate__c < dueDateRenewal){
+                                            eachQuote.SBQQ__EndDate__c = dueDateRenewal;
+                                        }else{
+                                            if(eachQuote.LPCR_DateFin__c < nextYearDueDateRenewal){
+                                                eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                                            }else{
+                                                eachQuote.SBQQ__EndDate__c = nextYearDueDateRenewal;
+                                            }
+                                        }
                                 }  
                             }
                         }
@@ -224,8 +235,11 @@ public with sharing class SM008_QuoteServices {
     
     
     public static void setB2BQuotesFromContract(List<SBQQ__Quote__c> quotesList,  Map<ID,Account> acctMap, Map<Id,Opportunity> opptyMap,  Map<Id,Contract> contractMap){
+        Date dueDateRenewal = date.newInstance(System.Today().year(), 08, 31);
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
-        for (SBQQ__Quote__c eachQuote : quotesList){
+        Date nextYearDueDateRenewal = date.newInstance(System.Today().year()+1, 08, 31);
+
+        for (SBQQ__Quote__c eachQuote : quotesList){           
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
                 if(eachQuote.SBQQ__StartDate__c != null){
                     Date dueStartDateQuote = date.newInstance(eachQuote.SBQQ__StartDate__c.year(), 12, 31);
