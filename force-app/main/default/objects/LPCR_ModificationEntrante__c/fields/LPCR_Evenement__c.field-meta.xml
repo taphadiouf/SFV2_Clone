@@ -160,6 +160,11 @@
                 <default>false</default>
                 <label>Traitement jour férié</label>
             </value>
+            <value>
+            <fullName>Regularisation</fullName>
+            <default>false</default>
+            <label>Regularisation</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

@@ -17,10 +17,6 @@ public class SM013_ModificationEntranteServices_Test {
         insert opps;
         List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(100, accounts, opps);
         insert quotes;
-        List<LPCR_ModificationEntrante__c> modifEntrantesValides = UM002_TestDataFactory.createModificationsEntrantes(50,quotes,'Validation Contrat Directrice');
-        insert modifEntrantesValides;
-        List<LPCR_ModificationEntrante__c> modifEntrantes = UM002_TestDataFactory.createModificationsEntrantes(50,quotes,'Modification Adresse Contact Parent	');
-        insert modifEntrantes;
 
         Id standardPricebookId = Test.getStandardPricebookId();
         UM002_TestDataFactory.insertBillingCustomSettings();
@@ -60,6 +56,8 @@ public class SM013_ModificationEntranteServices_Test {
             Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
             Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
             PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];            
+            Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
             
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
@@ -93,7 +91,12 @@ public class SM013_ModificationEntranteServices_Test {
             LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Traitement jour férié',quote.id,acc.id,cont.id,contract.id,10);
             insert modif;           
             
+            LPCR_ModificationEntrante__c modif2 = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',acc.id,cont.id,contract.id,Date.today(),10);
+            insert modif2;
             Test.startTest();
+            List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
+            System.assertEquals(1, quotesValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesValides');
+            
             Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
  		    modif.LPCR_EtatTraitement__c = true;
             update modif;      
@@ -137,7 +140,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Fin Contrat',quote.id,acc.id,cont.id,contract.id,10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Fin Contrat',acc.id,cont.id,contract.id,10);
             insert modif;           
             
             Test.startTest();
@@ -184,7 +187,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Situation Handicapé Enfant Fratrie',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Situation Handicapé Enfant Fratrie',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;
             
             Test.startTest();
@@ -232,7 +235,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Type Planning',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Type Planning',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;
 
             Time debutTime = Time.newInstance(08, 30, 2, 20);
@@ -286,7 +289,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Nombre Jour Congé',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Nombre Jour Congé',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;
 
             Test.startTest();
@@ -334,7 +337,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Fin Contrat',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Fin Contrat',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;
 
             Test.startTest();
@@ -382,7 +385,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Type Accueil',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Type Accueil',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_TypeAccueil__c = 'Normal';
             insert modif;
 
@@ -431,7 +434,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Adresse Contact Parent',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Adresse Contact Parent',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_Rue__c = 'test';
             modif.LPCR_Ville__c = 'test';
             modif.LPCR_Pays__c = 'test';
@@ -484,7 +487,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Autorité Parentale',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Autorité Parentale',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_OuiNon__c = true;
 
             insert modif;
@@ -534,7 +537,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Numéro Allocataire',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Numéro Allocataire',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_IDUnique__c = 'test';
 
             insert modif;
@@ -584,7 +587,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Naissance Enfant',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Naissance Enfant',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_Date__c = Date.newInstance(1992, 01, 01);
 
             insert modif;
@@ -636,7 +639,7 @@ public class SM013_ModificationEntranteServices_Test {
 
             Test.startTest();
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Section',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Section',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_Section__c = 'Grands';
 
             insert modif;           
@@ -686,7 +689,7 @@ public class SM013_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Mode Garde',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Mode Garde',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_SituationFamiliale__c = 'Divorcé';
             modif.LPCR_Garde__c = 'Autorité parentale conjointe';
 
@@ -736,7 +739,7 @@ public class SM013_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Situation Familiale',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Situation Familiale',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_SituationFamiliale__c = 'En couple';
 
             insert modif;            
@@ -786,7 +789,7 @@ public class SM013_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Heure Supplémentaire MAC',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Heure Supplémentaire MAC',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
 
@@ -837,7 +840,7 @@ public class SM013_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Heure Occasionnel MAC',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Heure Occasionnel MAC',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
 
@@ -888,7 +891,7 @@ public class SM013_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Heure Déduite MAC',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Heure Déduite MAC',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
 
@@ -970,7 +973,7 @@ public class SM013_ModificationEntranteServices_Test {
             invoice.blng__PaymentBatch__c = 'Batch 1';
             insert invoice;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('NB Heures réalisées',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('NB Heures réalisées',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
             modif.LPCR_Invoice__c = invoice.id;
@@ -1021,7 +1024,7 @@ public class SM013_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;            
 
             APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
@@ -1068,7 +1071,7 @@ public class SM013_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Abscence',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Abscence',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
 
@@ -1150,7 +1153,7 @@ public class SM013_ModificationEntranteServices_Test {
             invoice.blng__PaymentBatch__c = 'Batch 1';
             insert invoice;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Commentaire individuel facture',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Commentaire individuel facture',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
             modif.LPCR_Invoice__c = invoice.id;
@@ -1232,7 +1235,7 @@ public class SM013_ModificationEntranteServices_Test {
             invoice.blng__PaymentBatch__c = 'Batch 1';
             insert invoice;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Commentaire global facture',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Commentaire global facture',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
             modif.LPCR_Invoice__c = invoice.id;
@@ -1283,7 +1286,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Nombre de repas',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Nombre de repas',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
 
@@ -1331,7 +1334,7 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Nombre Enfant Fratrie',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Nombre Enfant Fratrie',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;
             
             Test.startTest();
@@ -1378,11 +1381,61 @@ public class SM013_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Montant Ressource',quote.id,acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Montant Ressource',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;
             
             Test.startTest();
             
+            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            DataBase.executeBatch(ss);
+
+            Test.stopTest();
+        }
+    }
+    @isTest
+    public static void updateQuotesFromModifEntrantesBatch_24_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
+			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;
+
+            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            insert ressourceFamille;
+
+            Test.startTest();
+
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;
+
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Regularisation',acc.id,cont.id,contract.id,Date.today(),10);
+            modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
+            modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
+
+            insert modif;            
+
             APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
