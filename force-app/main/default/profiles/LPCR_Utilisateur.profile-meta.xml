@@ -32744,6 +32744,15 @@
         <layout>Macro-Macro Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>SBQQ__QuoteLine__c-SBQQ__Quote Line Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>blng__Invoice__c-blng__Invoice Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>blng__Usage__c-blng__Usage Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Opportunity-Présentation Opportunité AO public DSP</layout>
         <recordType>Opportunity.AOPublicDSP</recordType>
     </layoutAssignments>
@@ -35107,10 +35116,6 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>OverrideForecasts</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>RemoveDirectMessageMembers</name>
     </userPermissions>
     <userPermissions>
@@ -35120,10 +35125,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>SelectFilesFromSalesforce</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>SendExternalEmailAvailable</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
