@@ -156,9 +156,14 @@
                 <label>NB Heures réalisées</label>
             </value>
             <value>
-                <fullName>Regularisation</fullName>
+                <fullName>Traitement jour férié</fullName>
                 <default>false</default>
-                <label>Regularisation</label>
+                <label>Traitement jour férié</label>
+            </value>
+            <value>
+            <fullName>Regularisation</fullName>
+            <default>false</default>
+            <label>Regularisation</label>
             </value>
         </valueSetDefinition>
     </valueSet>

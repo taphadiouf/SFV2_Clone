@@ -2734,11 +2734,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Contact.LPCR_TypeAllocataire__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_BaremeCAF__c.LPCR_DateDebut__c</field>
         <readable>true</readable>
@@ -8957,6 +8952,10 @@
         <object>sbaa__Approver__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <pageAccesses>
+        <apexPage>VFP002_AEnvoyerBatchButton</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
     <pageAccesses>
         <apexPage>blng__ApplyTaxOnCreditNote</apexPage>
         <enabled>true</enabled>
