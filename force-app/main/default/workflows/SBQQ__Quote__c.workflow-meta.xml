@@ -230,7 +230,7 @@
     <fieldUpdates>
         <fullName>LPCR_UpdateRTQuote</fullName>
         <field>RecordTypeId</field>
-        <lookupValue>Contrat_Accueil</lookupValue>
+        <lookupValue>Accueil</lookupValue>
         <lookupValueType>RecordType</lookupValueType>
         <name>Update RT Quote</name>
         <notifyAssignee>false</notifyAssignee>
@@ -267,9 +267,9 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
-        <fullName>RT_Contrat_accueil_approuve</fullName>
+        <fullName>RT_Accueil_approuve</fullName>
         <field>RecordTypeId</field>
-        <lookupValue>Contrat_Accueil_Approuve</lookupValue>
+        <lookupValue>Accueil_Approuve</lookupValue>
         <lookupValueType>RecordType</lookupValueType>
         <name>RT Contrat d&apos;accueil approuvé</name>
         <notifyAssignee>false</notifyAssignee>
@@ -299,7 +299,7 @@
     <fieldUpdates>
         <fullName>LPCR_UpdateNumeroContrat</fullName>
         <field>LPCR_NumeroContrat__c</field>
-        <formula>IF(OR(RecordType.DeveloperName = &quot;Reservataire&quot;,RecordType.DeveloperName = &quot;Reservataire_Approuve&quot;), LPCR_RefDevisReservataire__c,IF(OR(RecordType.DeveloperName = &quot;Referencement&quot;,RecordType.DeveloperName = &quot;Referencement_Approuve&quot;), LPCR_RefDevisReferencement__c,IF(OR(RecordType.DeveloperName = &quot;Accueil&quot; ,RecordType.DeveloperName = &quot;Contrat_Accueil_Approuve&quot;), LPCR_RefDevisAccueil__c, NULL)))</formula>
+        <formula>IF(OR(RecordType.DeveloperName = &quot;Reservataire&quot;,RecordType.DeveloperName = &quot;Reservataire_Approuve&quot;), LPCR_RefDevisReservataire__c,IF(OR(RecordType.DeveloperName = &quot;Referencement&quot;,RecordType.DeveloperName = &quot;Referencement_Approuve&quot;), LPCR_RefDevisReferencement__c,IF(OR(RecordType.DeveloperName = &quot;Accueil&quot; ,RecordType.DeveloperName = &quot;Accueil_Approuve&quot;), LPCR_RefDevisAccueil__c, NULL)))</formula>
         <name>Update Numero Contrat</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
@@ -548,7 +548,7 @@
     <rules>
         <fullName>WF_Quote_Update RT Contrat d%27accueil approuvé</fullName>
         <actions>
-            <name>RT_Contrat_accueil_approuve</name>
+            <name>RT_Accueil_approuve</name>
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
@@ -655,7 +655,3 @@
         <triggerType>onCreateOnly</triggerType>
     </rules>
 </Workflow>
-
-
-
-

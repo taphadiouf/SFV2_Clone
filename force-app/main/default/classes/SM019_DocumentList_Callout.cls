@@ -34,6 +34,19 @@ public with sharing class SM019_DocumentList_Callout {
     }
 
     @future(callout=true)
+    public static void getDocumentListFutureCallout(String fromEmail,String toEmail,String subject, String emailBody,String ownerid, String doc_type) {
+        DocumentListFullResponse documentListFullResponse = getDocumentListCallout(ownerid, doc_type);  
+        Set<String> docTmp = new Set<String>();
+        if (documentListFullResponse.result == '200') {
+            System.debug('$$$'+documentListFullResponse.response);
+            for(DocumentListResponse eachDoc : documentListFullResponse.response){
+                docTmp.add(eachDoc.id);
+            }	
+            SM016_SendMail_Callout.sendMailCallout(fromEmail, toEmail, subject, emailBody, docTmp);
+        }
+    }
+    
+     @future(callout=true)
     public static void getDocumentListFutureCallout(String ownerid, String doc_type, String email) {
         DocumentListFullResponse documentListFullResponse = getDocumentListCallout(ownerid, doc_type);  
         Set<String> docTmp = new Set<String>();
@@ -55,13 +68,13 @@ public with sharing class SM019_DocumentList_Callout {
             this.doc_type = doc_type;      
         }
     }
-    public class DocumentListFullResponse{
+    public class DocumentListFullResponse {
         @AuraEnabled
         public String result {get;set;} 
         @AuraEnabled
         public List<DocumentListResponse> response {get;set;} 
     }
-    public class DocumentListResponse{
+    public class DocumentListResponse {
         @AuraEnabled
         public String id {get;set;} 
         @AuraEnabled
