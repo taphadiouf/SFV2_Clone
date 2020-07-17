@@ -59,16 +59,17 @@ public class SM010_ContractServices {
                     eachContract.LPCR_BatchCommande__c = orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c;
                 }
 
-                }
+                
                 if(eachContract.RecordTypeId == referencementRecTypeId|| eachContract.RecordTypeId == reservataireRecTypeId || eachContract.RecordTypeId == acceuilRecTypeId){
                     eachContract.LPCR_NumeroContrat__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_NumeroContrat__c;
                 }
                 eachContract.LPCR_NouveauPlanFacture__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_NouveauPlanFacture__c;
                 eachContract.LPCR_RenouvellementPlanFacture__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_RenouvellementPlanFacture__c;
             }
+            }
         }
     }
-    }
+    
     /* deleted in IS-1165
     public static void setTypeEnregistrement(List<Contract> contracts){
         Set<Id> orderIdsSet = new Set<Id>();
