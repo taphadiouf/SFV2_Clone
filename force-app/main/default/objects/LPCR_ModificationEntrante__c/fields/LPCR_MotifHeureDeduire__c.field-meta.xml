@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_MotifHeureDeduire__c</fullName>
+    <externalId>false</externalId>
+    <label>Motif Heure à déduire</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Maladie</fullName>
+                <default>false</default>
+                <label>Maladie</label>
+            </value>
+            <value>
+                <fullName>Sans pointage</fullName>
+                <default>false</default>
+                <label>Sans pointage</label>
+            </value>
+            <value>
+                <fullName>Hospitalisation</fullName>
+                <default>false</default>
+                <label>Hospitalisation</label>
+            </value>
+            <value>
+                <fullName>Eviction</fullName>
+                <default>false</default>
+                <label>Eviction</label>
+            </value>
+            <value>
+                <fullName>Fermeture crèche exceptionnelle</fullName>
+                <default>false</default>
+                <label>Fermeture crèche exceptionnelle</label>
+            </value>
+            <value>
+                <fullName>Période d&apos;adaptation</fullName>
+                <default>false</default>
+                <label>Période d&apos;adaptation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -185,12 +185,18 @@
         <name>PermissionSet</name>
     </types>
     -->
-
-
     <types>
-        <members>LPCR_SalesforceCPQAdmin</members>
-        <members>LPCR_SalesforceCPQUser</members>
-        <name>PermissionSet</name>
+        <members>SM008_QuoteServices_Test</members>
+        <members>APB009_GenerateLienFamilleFacture_Test</members>
+        <members>APB009_GenerateLienFamilleFacture</members>
+        <members>SM014_OrderServices</members>
+        <members>SM014_OrderServices_Test</members>
+        <members>SM010_ContractServices_Test</members>
+        <members>SM010_ContractServices</members>
+        <members>TM009_ContractTrigger</members>
+        <members>TM008_QuoteTrigger</members>
+        <name>ApexClass</name>
     </types>
+
     <version>48.0</version>
 </Package>

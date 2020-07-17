@@ -96,6 +96,12 @@
         <members>SBQQ__Quote__c.LPCR_NumeroDevis__c</members>
         <members>SBQQ__QuoteLine__c.LPCR_NumeroBonCommande__c</members>
         <members>Account.LPCR_NombreOptions__c</members>
+        <members>SBQQ__Quote__c.TECH_ContactCommercialTelephone__c</members>
+        <members>SBQQ__Quote__c.TECH_ContactCommercialNom__c</members>
+        <members>SBQQ__Quote__c.TECH_ContactInscriptionsEmail__c</members>
+        <members>SBQQ__Quote__c.TECH_ContactCommercialEmail__c</members>
+        <members>SBQQ__Quote__c.TECH_ContactInscriptionsTelephone__c</members>
+        <members>SBQQ__Quote__c.TECH_ContactInscriptionsNom__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -107,7 +113,16 @@
         <members>LPCR_TablePrix__c.B2B</members>
         <name>RecordType</name>
     </types>
-
+<types>
+        <members>Contract.Contrat_B2B</members>
+        <members>Contrat_B2B</members>
+        <name>RecordType</name>
+    </types>
+  <types>
+        <members>Contract.Contrat_B2C</members>
+        <members>Contrat_B2B</members>
+        <name>RecordType</name>
+    </types>
 
     <types>
         <members>SBQQ__Quote__c.Status Devis MIB Changement Region Prix</members>
