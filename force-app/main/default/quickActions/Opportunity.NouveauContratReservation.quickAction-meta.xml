@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldOverrides>
+        <field>LPCR_CompteFacturation__c</field>
+        <formula>Opportunity.AccountId</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>LPCR_ResiliationAnticipe__c</field>
         <literalValue>1 an ferme</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_ResponsableADV__c</field>
+        <formula>Opportunity.Account.LPCR_ResponsableADV__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_ResponsableServiceFamille__c</field>
+        <formula>Opportunity.Account.LPCR_ResponsableServiceFamille__c</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>SBQQ__Account__c</field>
