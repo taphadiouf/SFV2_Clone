@@ -1290,16 +1290,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Contract.ActivatedById</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contract.LPCR_FraisDossier__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Contract.BillingAddress</field>
         <readable>true</readable>
@@ -1387,6 +1377,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_DateRenouvellement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract.LPCR_FraisDossier__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2011,16 +2006,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>LPCR_ModificationEntrante__c.LPCR_MotifRegularisation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_ModificationEntrante__c.LPCR_MotifHeureDeduire__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>LPCR_PlanFacturation__c.LPCR_BillingFrequency__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2611,6 +2596,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.LPCR_CompteSocieteCoIdExterne__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_CompteSocieteIdExterne__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Lead.LPCR_CompteSociete__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2700,6 +2695,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_DelaiPriseChargeServiceFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_DelaiPriseEnChargeCommercial__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_DelaiTraitement__c</field>
         <readable>true</readable>
@@ -2737,6 +2742,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_EstMigre__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_FicheSparklane__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2786,6 +2796,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.LPCR_IdExterne_Creche1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_IdExterne_Creche2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_IdExterne_Creche3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Lead.LPCR_IdExterne_Lead__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2802,6 +2827,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Lead.LPCR_JoursRestantServiceFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_LeadFamilleIdExterne__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2952,6 +2982,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_PrivePublic__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_ProfessionCoDemandeur__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4726,6 +4761,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_NumeroBonCommande__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SBQQ__QuoteLine__c.LPCR_NumeroLigne__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5441,11 +5481,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_FraisDossier__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_Added_Product_Using_QCP__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5536,6 +5571,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_FraisDossier__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_IdExterne_Opportunite__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5587,6 +5627,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_NumeroAllocataire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_NumeroDevis__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -6471,7 +6516,7 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <recordType>SBQQ__Quote__c.Accueil</recordType>
+        <recordType>SBQQ__Quote__c.Contrat_Accueil</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

@@ -1121,6 +1121,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.Jigsaw</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_Activite__c</field>
         <readable>true</readable>
@@ -1211,6 +1216,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_AutreOrigine__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_AutrePrestataire__c</field>
         <readable>true</readable>
@@ -1233,6 +1243,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_Capital__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_ChargeAffaire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_ChoixEntrepriseConversion__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1278,6 +1298,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_CompteSocieteCoDemandeur__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_CompteSocieteCoIdExterne__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_CompteSocieteIdExterne__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1331,6 +1361,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_DatePreinscription__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_DatePriseEnChargeCommercial__c</field>
         <readable>true</readable>
@@ -1363,6 +1398,21 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_Dedie__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_DelaiPriseChargeServiceFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_DelaiPriseEnChargeCommercial__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_DelaiTraitement__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1401,6 +1451,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_FicheSparklane__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_FinContrat__c</field>
         <readable>true</readable>
@@ -1416,6 +1471,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_FormeJuridique__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_Garde__c</field>
         <readable>true</readable>
@@ -1426,8 +1486,43 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_IdExterne_ConvertedAccountId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_IdExterne_ConvertedContactId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_IdExterne_ConvertedOpportunityId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_IdExterne_Creche1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_IdExterne_Creche2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_IdExterne_Creche3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_IdExterne_Lead__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_IdentifiantTeteGroupe__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1441,6 +1536,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_LeadFamilleIdExterne__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_LeadFamille__c</field>
         <readable>true</readable>
@@ -1448,6 +1548,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_LibelleAPE__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_ListeAttente__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1492,7 +1597,42 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Lead.LPCR_NomOrigine__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Lead.LPCR_NomSociete__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_NombreJourEnfant1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_NombreJourEnfant2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_NombreJourEnfant3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_NombrePlaceAchete__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_NombrePlaceVendue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_NombrePlace__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1508,6 +1648,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_ObjetMessage__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_PardotRecordType__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1543,6 +1688,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_PrivePublic__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_ProfessionCoDemandeur__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1586,6 +1736,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_SecteurGeoGraphique__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_SituationFamiliale__c</field>
         <readable>true</readable>
@@ -1598,6 +1753,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_SousActivite__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_Sparklane_ProfileId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_Sparklane_ProfileName__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1698,6 +1863,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.Phone</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.Rating</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2273,6 +2443,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.LPCR_Majoration__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_NumeroBonCommande__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3153,6 +3328,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_NumeroAllocataire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_NumeroDevis__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
