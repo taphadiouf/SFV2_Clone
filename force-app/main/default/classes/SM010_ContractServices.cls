@@ -169,7 +169,7 @@ public class SM010_ContractServices {
     
     public static Contract setContractFieldsFromOrderQuoteMaper(Contract contract,SBQQ__Quote__c quote){
         contract.LPCR_CompteFacturation__c = quote.LPCR_CompteFacturation__c ;
-        if(quote.recordtype.DeveloperName == Label.LPCR_ContratA) {
+        if(quote.recordtype.DeveloperName == Label.LPCR_ContratA || quote.recordtype.DeveloperName == Label.LPCR_Accueil_Approuve) {
             
             contract.LPCR_EntiteJuridique__c  = quote.LPCR_EntiteJuridique__c ;
             
