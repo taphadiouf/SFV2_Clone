@@ -30,7 +30,7 @@
     <picklistValues>
         <picklist>EditLinesFieldSetName__c</picklist>
         <values>
-            <fullName>Amendment_FieldSet_test_only</fullName>
+            <fullName>LPCR_Amendment</fullName>
             <default>false</default>
         </values>
         <values>
@@ -149,6 +149,17 @@
         </values>
         <values>
             <fullName>Virement</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_RenouvellementConvenu__c</picklist>
+        <values>
+            <fullName>Non</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oui</fullName>
             <default>false</default>
         </values>
     </picklistValues>
