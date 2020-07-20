@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+<!--
+    <types>
+        <members>SBQQ__Quote__c.LPCR_First_Option_Mac_End_Date__c</members>
+        <members>SBQQ__Quote__c.LPCR_First_Option_Mac_Start_Date__c</members>
+        <members>SBQQ__Quote__c.LPCR_Second_Option_Mac_End_Date__c</members>
+        <members>SBQQ__Quote__c.LPCR_Second_Option_Mac_Start_Date__c</members>
+        <members>Order.LPCR_NumeroContrat__c</members>
+        <members>Contract.LPCR_NumeroContrat__c</members>
+        <members>SBQQ__Quote__c.LPCR_NumeroContrat__c</members>
+        <members>SBQQ__QuoteLine__c.LPCR_NumBonCommande__c</members>
+        <members>OrderItem.LPCR_NumBonCommande__c</members>
+        <members>SBQQ__Subscription__c.LPCR_NumBonCommande__c</members>
+        <members>SBQQ__Quote__c.LPCR_RefDevisAccueil__c</members>
+        <members>SBQQ__Quote__c.LPCR_MoyenPaiement__c</members>
+        <members>Order.LPCR_MoyenPaiement__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeMensualisation__c</members>
+        <members>SBQQ__Quote__c.LPCR_NumeroDevis__c</members>
+        <members>SBQQ__Quote__c.LPCR_AmendmentDateOK__c</members>
+        <members>SBQQ__Quote__c.LPCR_CongesSemaine__c</members>
+        <members>blng__Invoice__c.LPCR_TypeCreche__c</members>
+        <members>blng__Invoice__c.LPCR_StatutFacture__c</members>
+        <members>blng__Invoice__c.LPCR_MoyenPaiement__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Contract-Contrat B2B</members>
+        <members>Contract-Contrat B2C</members>
+        <members>Account-Famille</members>
+        <members>Account-Entreprise</members>
+
+        <members>SBQQ__Quote__c-Contrat d%27accueil</members>
+        <members>SBQQ__Quote__c-Contrat d%27accueil Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;servataire</members>
+        <members>SBQQ__Quote__c-R&#233;servataire Approuv&#233;</members>
+        <members>blng__Invoice__c-LPCR Posted Invoice</members>
+        <members>blng__Invoice__c-LPCR Draft Invoice</members>
+        <members>order-Billing Order Layout</members>
+        <members>OrderItem-Billing Order Product Layout</members>
+        <members>SBQQ__QuoteLine__c-Quote Line Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c.SBQQ__All</members>
+        <name>ListView</name>
+    </types>
+    <types>
+        <members>SBQQ__Quote__c</members>
+        <members>Order</members>
+        <members>Order</members>
+        <name>Contract</name>
+    </types>
+        <types>
+        <members>SBQQ__Quote__c</members>
+        <members>Order</members>
+        <members>Contract</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>SBQQ__ErrorCondition__c.SBQQ__TestedField__c</members>
+        <members>blng__Invoice__c.LPCR_ConversionLigneNegative__c</members>
+
+        <name>CustomField</name>
+    </types>
+
+    <types>
+        <members>LPCR_Famille</members>
+        <name>PathAssistant</name>
+    </types>
+
+    <types>
+        <members>LPCR_PBConvertirLigneNegative</members>
+        <members>LPCR_RenseignerTypeEnregistrementQuote</members>
+        <members>PB_UsageSummary_UpdateMatchingId</members>
+        <members>LPCR_NouveauContratAccueil</members>
+        <members>Definir_le_terme_de_facturation_en_fonction_du_terme_de_la_creche</members>
+        <members>LPCR_RenseignerTypeEnregistrementQuote</members>
+        <members>FLOW_Usage_PopulateMatchingID</members>
+
+        <name>Flow</name>
+    </types>
+
+    <types>
+        <members>LPCR_RenseignerTypeEnregistrementQuote</members>
+        <name>FlowDefinition</name>
+    </types>
+
+    <types>
+        <members>Contract.Accueil</members>
+        <members>Contract.Referencement</members>
+        <members>Contract.Reservataire</members>
+        <members>Order.Accueil</members>
+        <members>Order.Referencement</members>
+        <members>Order.Reservataire</members>
+        <members>SBQQ__Quote__c.Accueil</members>
+        <name>RecordType</name>
+    </types>
+
+    <types>
+        <members>TM009_ContractTrigger</members>
+        <members>TM008_QuoteTrigger</members>
+        <name>ApexClass</name>
+    </types>
+    
+    <types>
+        <members>blng__Invoice__c.VR_InvoiceModifStatutNonAutorise</members>
+        <name>ValidationRule</name>
+    </types>
+
+    <types>
+        <members>blng__Invoice__c.Set Statut Facture a Annul&#233;e</members>
+        <members>SBQQ__Quote__c.Update Numero Contrat sur Amendment Quote</members>
+        <members>SBQQ__Quote__c.Update Numero Contrat sur New Quote</members>
+        <members>SBQQ__QuoteLine__c.Remplissage du champs LPCR_NumBonCommande</members>
+        <members>SBQQ__Quote__c.Statut du quote apres Avenant ou Devis</members>
+        <members>blng__Invoice__c.Update Invoice Record type upon invoicing posting</members>
+        <members>Contract.Activer le contrat</members>
+        <name>WorkflowRule</name>
+    </types>
+
+    <types>
+        <members>blng__Invoice__c.LPCR_StatutFactureAnnuleee</members>
+        <members>Contract.LPCR_UpdateContrat</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContratAmendment</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContrat</members>
+        <members>SBQQ__QuoteLine__c.LPCR_RemplissageNumBonCommande</members>
+        <members>blng__Invoice__c.Update_record_type</members>
+        <name>WorkflowFieldUpdate</name>
+    </types>
+
+    <types>
+        <members>CustomLabels</members>
+        <name>CustomLabels</name>
+    </types>
+
+    <types>
+        <members>unfiled$public/LPCR_RapportExportCICCB</members>
+        <name>Report</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContratAmendment</members>
+        <name>WorkflowFieldUpdate</name>
+    </types>
+
+
+    <types>
+        <members>LPCR_SalesforceBillingAdmin</members>
+        <members>LPCR_SalesforceCPQAdmin</members>
+        <members>LPCR_Commercial</members>
+        <members>LPCR_CommercialMICRO</members>
+        <members>LPCR_ADV</members>
+        <members>LPCR_Admin</members>
+        <members>LPCR_Reprise</members>
+        <members>LPCR_ServiceFamille</members>
+
+        <name>PermissionSet</name>
+    </types>
+        <types>
+        <members>Opportunity.NouveauContratReferecement</members>
+        <members>Opportunity.NouveauContratReservation</members>
+        <name>QuickAction</name>
+    </types>
+    <types>
+        <members>SM008_QuoteServices_Test</members>
+        <members>APB009_GenerateLienFamilleFacture_Test</members>
+        <members>APB009_GenerateLienFamilleFacture</members>
+        <members>SM014_OrderServices</members>
+        <members>SM014_OrderServices_Test</members>
+        <members>SM010_ContractServices_Test</members>
+        <members>SM010_ContractServices</members>
+        <name>ApexClass</name>
+    </types>
+
+    <types>
+        <members>LPCR_SalesforceCPQAdmin</members>
+        <members>LPCR_SalesforceCPQUser</members>
+        <members>LPCR_ADV</members>
+        <members>LPCR_Commercial</members>
+        <members>LPCR_SalesforceBillingUser</members>
+
+        <name>PermissionSet</name>
+    </types>
+    -->
+    <!--
+    <types>
+        <members>Contact.LPCR_TypeAllocataire__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeQuote__c</members>
+        <members>Contract.LPCR_BatchCommande__c</members>
+        <members>SBQQ__Quote__c.LPCR_BatchCommande__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContactEnfant__c</members>
+        <members>SBQQ__Quote__c.LPCR_InitAutoAvecDateDebut__c</members>
+        <members>Contract.LPCR_InitAutoAvecDateDebut__c</members>
+        <members>Contract.Status</members>
+        <members>Order.LPCR_InitAutoAvecDateDebut__c</members>
+        <members>SBQQ__SearchFilter__c.SBQQ__FilterSourceField__c</members>
+        <members>SBQQ__PriceAction__c.SBQQ__Field__c</members>
+        <members>SBQQ__Quote__c.EditLinesFieldSetName__c</members>
+
+        <name>CustomField</name>
+    </types>
+
+    <types>
+        <members>SBQQ__QuoteLine__c.SBQQ__LineEditor</members>
+        <members>SBQQ__Quote__c.SBQQ__LineEditor</members>
+        <members>SBQQ__ProductOption__c.SBQQ__OptionConfiguration</members>
+        <members>SBQQ__QuoteLine__c.LPCR_Amendment</members>
+
+        <name>FieldSet</name>
+    </types>
+
+
+    <types>
+        <members>Order.LPCR_BDOM_OrderStartdate__c</members>
+        <members>Order.LPCR_Creche__c</members>
+        <members>Order.LPCR_DateDebut__c</members>
+        <members>Order.LPCR_DateFin__c</members>
+        <members>Order.LPCR_EstMigre__c</members>
+        <members>Order.LPCR_FrequenceFacturation__c</members>
+        <members>Order.LPCR_IdExterne_AccountId__c</members>
+        <members>Order.LPCR_IdExterne__c</members>
+        <members>Order.LPCR_IdExterne_ContractId__c</members>
+        <members>Order.LPCR_IdExterne_MasterDevis__c</members>
+        <members>Order.LPCR_IdExterne_OpportunityId__c</members>
+        <members>Order.LPCR_InitAutoAvecDateDebut__c</members>
+        <members>Order.LPCR_MasterDevis__c</members>
+        <members>Order.LPCR_MoyenPaiement__c</members>
+        <members>Order.LPCR_NouveauPlanFacture__c</members>
+        <members>Order.LPCR_NumeroContrat__c</members>
+        <members>Order.LPCR_RenouvellementPlanFacture__c</members>
+        <members>Order.LPCR_ResponsableADV__c</members>
+        <members>Order.LPCR_TypeAvenant__c</members>
+        <members>Order.LPCR_TypeCompte__c</members>
+        <members>Order.LPCR_TypeCreche__c</members>
+        <members>Order.LPCR_TypeEnregistrement__c</members>
+        <members>Order.LPCR_TypeFacturation__c</members>
+        <members>Order.SBQQ__Contracted__c</members>
+        <members>Order.SBQQ__ContractingMethod__c</members>
+        <members>Order.SBQQ__OrderBookings__c</members>
+        <members>Order.SBQQ__PaymentTerm__c</members>
+        <members>Order.SBQQ__PriceCalcStatus__c</members>
+        <members>Order.SBQQ__PriceCalcStatusMessage__c</members>
+        <members>Order.SBQQ__Quote__c</members>
+        <members>Order.SBQQ__RenewalTerm__c</members>
+        <members>Order.SBQQ__RenewalUpliftRate__c</members>
+        <members>Order.SBQQ__TaxAmount__c</members>
+
+        <members>Account.blng__BillToContact__c</members>
+        <members>Account.blng__CustomerProfileId__c</members>
+        <members>Account.blng__DefaultPaymentType__c</members>
+        <members>Account.Email__c</members>
+        <members>Account.LCPR_CompteAnalytiqueClient__c</members>
+        <members>Account.LCPR_IDCompteCreche__c</members>
+        <members>Account.LPCR_AccueilOccasionel__c</members>
+        <members>Account.LPCR_AccueilRegulier__c</members>
+        <members>Account.LPCR_AccueilUrgence__c</members>
+        <members>Account.LPCR_Activite__c</members>
+        <members>Account.LPCR_AddresseComplementaire__c</members>
+        <members>Account.LPCR_Adherente__c</members>
+        <members>Account.LPCR_AfficherInfosFamillesFacture__c</members>
+        <members>Account.LPCR_AfficherNomsEnfantsFacture__c</members>
+        <members>Account.LPCR_AfficherNomsFamillesFacture__c</members>
+        <members>Account.LPCR_AgrementBebes__c</members>
+        <members>Account.LPCR_AgrementCible__c</members>
+        <members>Account.LPCR_AgrementGrands__c</members>
+        <members>Account.LPCR_AgrementMoyens__c</members>
+        <members>Account.LPCR_AgrementPMI__c</members>
+        <members>Account.LPCR_AgrementTotal__c</members>
+        <members>Account.LPCR_AllocataireCAF__c</members>
+        <members>Account.LPCR_AutrePrestataire__c</members>
+        <members>Account.LPCR_BerceauxCommercialisables__c</members>
+        <members>Account.LPCR_BerceauxDisponibles__c</members>
+        <members>Account.LPCR_BIC__c</members>
+        <members>Account.LPCR_Capital__c</members>
+        <members>Account.LPCR_CessationActivite__c</members>
+        <members>Account.LPCR_Chorus__c</members>
+        <members>Account.LPCR_ClientInternational__c</members>
+        <members>Account.LPCR_CodeAnalytique__c</members>
+        <members>Account.LPCR_CodeAPE__c</members>
+        <members>Account.LPCR_CodeBIC__c</members>
+        <members>Account.LPCR_CodeIBAN__c</members>
+        <members>Account.LPCR_CodePaie__c</members>
+        <members>Account.LPCR_CodePreinscription__c</members>
+        <members>Account.LPCR_CodeServiceChorus__c</members>
+        <members>Account.LPCR_CommentaireIncidentPaiment__c</members>
+        <members>Account.LPCR_CompteAnalytiqueClient__c</members>
+        <members>Account.LPCR_CompteBancaire__c</members>
+        <members>Account.LPCR_Concurrence__c</members>
+        <members>Account.LPCR_CrecheVisite__c</members>
+        <members>Account.LPCR_DateCessationActivite__c</members>
+        <members>Account.LPCR_DateCloture__c</members>
+        <members>Account.LPCR_DateDernierAO__c</members>
+        <members>Account.LPCR_DateOuverture__c</members>
+        <members>Account.LPCR_DateProchainAO__c</members>
+        <members>Account.LPCR_DateSignatureRUM__c</members>
+        <members>Account.LPCR_DateVisiteAgrement__c</members>
+        <members>Account.LPCR_DateVisite__c</members>
+        <members>Account.LPCR_DebutValiditePurchaseOrder__c</members>
+        <members>Account.LPCR_Departement__c</members>
+        <members>Account.LPCR_DepotChorus__c</members>
+        <members>Account.LPCR_DispositifsExistants__c</members>
+        <members>Account.LPCR_EnCoursCreation__c</members>
+        <members>Account.LPCR_Enjeux__c</members>
+        <members>Account.LPCR_Enseigne__c</members>
+        <members>Account.LPCR_EntiteJuridique__c</members>
+        <members>Account.LPCR_EnvoieFactureParent__c</members>
+        <members>Account.LPCR_EstMigre__c</members>
+        <members>Account.LPCR_EtatCaf__c</members>
+        <members>Account.LPCR_FILOUE__c</members>
+        <members>Account.LPCR_FinValiditePurchaseOrder__c</members>
+        <members>Account.LPCR_FormeJuridique__c</members>
+        <members>Account.LPCR_Garde__c</members>
+        <members>Account.LPCR_GroupeEtablissement__c</members>
+        <members>Account.LPCR_Handicap__c</members>
+        <members>Account.LPCR_IBAN__c</members>
+        <members>Account.LPCR_IDCompteCreche__c</members>
+        <members>Account.LPCR_IDCompteEntreprise__c</members>
+        <members>Account.LPCR_IDCompteFamille__c</members>
+        <members>Account.LPCR_IdExterne_Compte__c</members>
+        <members>Account.LPCR_IDExterne_CompteParent__c</members>
+        <members>Account.LPCR_IdExterneProprietaire__c</members>
+        <members>Account.LPCR_IDSage__c</members>
+        <members>Account.LPCR_ImpactTauxEffort__c</members>
+        <members>Account.LPCR_IncidentPaiement__c</members>
+        <members>Account.LPCR_InformationsFacture__c</members>
+        <members>Account.LPCR_InterlocuteurServiceFamille__c</members>
+        <members>Account.LPCR_JoindreEtatCAFFacture__c</members>
+        <members>Account.LPCR_LibelleAPE__c</members>
+        <members>Account.LPCR_LienChorus__c</members>
+        <members>Account.LPCR_LienSitePreinscription__c</members>
+        <members>Account.LPCR_MailLivraisonFacture__c</members>
+        <members>Account.LPCR_ModeFinancement__c</members>
+        <members>Account.LPCR_ModeleSpecifiqueFacture__c</members>
+        <members>Account.LPCR_MoyenDeTransport__c</members>
+        <members>Account.LPCR_MoyenPaiement__c</members>
+        <members>Account.LPCR_NAF__c</members>
+        <members>Account.LPCR_NbreOptions__c</members>
+        <members>Account.LPCR_NombreBerceauxConcurrence__c</members>
+        <members>Account.LPCR_NombreEnfantPrevuJeudi__c</members>
+        <members>Account.LPCR_NombreEnfantPrevuVendredi__c</members>
+        <members>Account.LPCR_NombreEnfantsCharge__c</members>
+        <members>Account.LPCR_NombreEnfantsLundi__c</members>
+        <members>Account.LPCR_NombreEnfantsMardi__c</members>
+        <members>Account.LPCR_NombreEnfantsMercredi__c</members>
+        <members>Account.LPCR_NombreMaximalPlaces__c</members>
+        <members>Account.LPCR_NombreOptions__c</members>
+        <members>Account.LPCR_NombrePlacesAchetees__c</members>
+        <members>Account.LPCR_NombrePlaces__c</members>
+        <members>Account.LPCR_NombrePlacesVendues__c</members>
+        <members>Account.LPCR_NombreSection__c</members>
+        <members>Account.LPCR_NombreStructures__c</members>
+        <members>Account.LPCR_NumeroAllocataire__c</members>
+        <members>Account.LPCR_NumeroFacture__c</members>
+        <members>Account.LPCR_NumeroPurchaseOrder__c</members>
+        <members>Account.LPCR_PasDeSIRET__c</members>
+        <members>Account.LPCR_PlanningTournant__c</members>
+        <members>Account.LPCR_PrefixeNumFacture__c</members>
+        <members>Account.LPCR_PrestataireActuel__c</members>
+        <members>Account.LPCR_PrestataireActuelCreche__c</members>
+        <members>Account.LPCR_PrivePublic__c</members>
+        <members>Account.LPCR_PSU__c</members>
+        <members>Account.LPCR_PurchaseOrder__c</members>
+        <members>Account.LPCR_RaisonSociale__c</members>
+        <members>Account.LPCR_RC__c</members>
+        <members>Account.LPCR_RCS__c</members>
+        <members>Account.LPCR_Region__c</members>
+        <members>Account.LPCR_RegionCommerciale__c</members>
+        <members>Account.LPCR_RegleFonctionnement__c</members>
+        <members>Account.LPCR_RegularisationAuto__c</members>
+        <members>Account.LPCR_RemiseConcurrence__c</members>
+        <members>Account.LPCR_Representant1__c</members>
+        <members>Account.LPCR_Representant2__c</members>
+        <members>Account.LPCR_ResponsableADV__c</members>
+        <members>Account.LPCR_ResponsableServiceFamille__c</members>
+        <members>Account.LPCR_RevenuMensuelFamille__c</members>
+        <members>Account.LPCR_RFA__c</members>
+        <members>Account.LPCR_RIB__c</members>
+        <members>Account.LPCR_RUM__c</members>
+        <members>Account.LPCR_Scoring__c</members>
+        <members>Account.LPCR_Siege__c</members>
+        <members>Account.LPCR_SIREN__c</members>
+        <members>Account.LPCR_SIRET__c</members>
+        <members>Account.LPCR_SIRETChorus__c</members>
+        <members>Account.LPCR_SituationFamiliale__c</members>
+        <members>Account.LPCR_Solde__c</members>
+        <members>Account.LPCR_SousActivite__c</members>
+        <members>Account.LPCR_Statut__c</members>
+        <members>Account.LPCR_StatutCreche__c</members>
+        <members>Account.LPCR_TauxEffort__c</members>
+        <members>Account.LPCR_TelephoneSupplementaire__c</members>
+        <members>Account.LPCR_TermeFacturation__c</members>
+        <members>Account.LPCR_Top100__c</members>
+        <members>Account.LPCR_TravailConcurrence__c</members>
+        <members>Account.LPCR_TypeClient__c</members>
+        <members>Account.LPCR_TypeContratPrincipal__c</members>
+        <members>Account.LPCR_TypeCreche__c</members>
+        <members>Account.LPCR_TypeEntreprise__c</members>
+        <members>Account.LPCR_TypeFacturation__c</members>
+        <members>Account.LPCR_TypeMensualisation__c</members>
+        <members>Account.LPCR_TypeStructure__c</members>
+        <members>Account.SBQQ__AssetQuantitiesCombined__c</members>
+        <members>Account.SBQQ__ContractCoTermination__c</members>
+        <members>Account.SBQQ__CoTermedContractsCombined__c</members>
+        <members>Account.SBQQ__CoTerminationEvent__c</members>
+        <members>Account.SBQQ__DefaultOpportunity__c</members>
+        <members>Account.SBQQ__IgnoreParentContractedPrices__c</members>
+        <members>Account.SBQQ__PreserveBundle__c</members>
+        <members>Account.SBQQ__PriceHoldEnd__c</members>
+        <members>Account.SBQQ__RenewalModel__c</members>
+        <members>Account.SBQQ__RenewalPricingMethod__c</members>
+        <members>Account.SBQQ__TaxExempt__c</members>
+        <members>Account.Sparklane_FR__inactive__c</members>
+        <members>Account.Sparklane_FR__ProfileId__c</members>
+        <members>Account.Sparklane_FR__ProfileName__c</members>
+
+
+        <members>SBQQ__Quote__c.ApprovalStatus__c</members>
+        <members>SBQQ__Quote__c.EditLinesFieldSetName__c</members>
+        <members>SBQQ__Quote__c.LPCR_AccountPurchaseOrder__c</members>
+        <members>SBQQ__Quote__c.LPCR_Added_Product_Using_QCP__c</members>
+        <members>SBQQ__Quote__c.LPCR_AmendmentDateOK__c</members>
+        <members>SBQQ__Quote__c.LPCR_AValider__c</members>
+        <members>SBQQ__Quote__c.LPCR_BatchCommande__c</members>
+        <members>SBQQ__Quote__c.LPCR_BerceauGratuitAmendment__c</members>
+        <members>SBQQ__Quote__c.LPCR_Berceauxgratuitsquote__c</members>
+        <members>SBQQ__Quote__c.LPCR_Bypass__c</members>
+        <members>SBQQ__Quote__c.LPCR_ChequeReservation__c</members>
+        <members>SBQQ__Quote__c.LPCR_ChiffreAffaire__c</members>
+        <members>SBQQ__Quote__c.LPCR_Cloned__c</members>
+        <members>SBQQ__Quote__c.LPCR_CommercialB2B__c</members>
+        <members>SBQQ__Quote__c.LPCR_CompteFacturation__c</members>
+        <members>SBQQ__Quote__c.LPCR_ConditionsParticulieres__c</members>
+        <members>SBQQ__Quote__c.LPCR_CongesJours__c</members>
+        <members>SBQQ__Quote__c.LPCR_CongesSemaine__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContactEnfant__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContactRepresentant1__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContactRepresentant2__c</members>
+        <members>SBQQ__Quote__c.LPCR_Contracted_Checkbox__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContractEntreprise__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContratEntreprise__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContratManuel__c</members>
+        <members>SBQQ__Quote__c.LPCR_Creche__c</members>
+        <members>SBQQ__Quote__c.LPCR_CrecheNonOuverte__c</members>
+        <members>SBQQ__Quote__c.LPCR_DateDebut__c</members>
+        <members>SBQQ__Quote__c.LPCR_DateFin__c</members>
+        <members>SBQQ__Quote__c.LPCR_DateResiliation__c</members>
+        <members>SBQQ__Quote__c.LPCR_DateSignatureContrat__c</members>
+        <members>SBQQ__Quote__c.LPCR_DepotGarantie__c</members>
+        <members>SBQQ__Quote__c.LPCR_DureeContrat__c</members>
+        <members>SBQQ__Quote__c.LPCR_DureeContratJour__c</members>
+        <members>SBQQ__Quote__c.LPCR_DureePreavisMois__c</members>
+        <members>SBQQ__Quote__c.LPCR_EntiteJuridique__c</members>
+        <members>SBQQ__Quote__c.LPCR_EstMigre__c</members>
+        <members>SBQQ__Quote__c.LPCR_FirstOptionEndDate__c</members>
+        <members>SBQQ__Quote__c.LPCR_First_Option_Mac_End_Date__c</members>
+        <members>SBQQ__Quote__c.LPCR_First_Option_Mac_Start_Date__c</members>
+        <members>SBQQ__Quote__c.LPCR_FraisDossier__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_Account__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_ContactEnfant__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_ContactRepresentant1__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_ContactRepresentant2__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_ContratEntreprise__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_Creche__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_EntiteJuridique__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_MasterDevis__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_Opportunite__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_PlanningEnfant__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_ResponsableADV__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_ResponsableServiceFamille__c</members>
+        <members>SBQQ__Quote__c.LPCR_IdExterne_SponsorEntreprise__c</members>
+        <members>SBQQ__Quote__c.LPCR_IndexationConvenue__c</members>
+        <members>SBQQ__Quote__c.LPCR_InitAutoAvecDateDebut__c</members>
+        <members>SBQQ__Quote__c.LPCR_LaunchRecalculation__c</members>
+        <members>SBQQ__Quote__c.LPCR_LigneInferieurePP__c</members>
+        <members>SBQQ__Quote__c.LPCR_LigneSuperieurePP__c</members>
+        <members>SBQQ__Quote__c.LPCR_MasterDevis__c</members>
+        <members>SBQQ__Quote__c.LPCR_MethodeRenouvellement__c</members>
+        <members>SBQQ__Quote__c.LPCR_MontantFraisDossier__c</members>
+        <members>SBQQ__Quote__c.LPCR_MoyenPaiement__c</members>
+        <members>SBQQ__Quote__c.LPCR_Nombreberceauxgratuits__c</members>
+        <members>SBQQ__Quote__c.LPCR_Nombre_de_lignes_sans_PO__c</members>
+        <members>SBQQ__Quote__c.LPCR_NombreFraisDossier__c</members>
+        <members>SBQQ__Quote__c.LPCR_NombreHeuresMois__c</members>
+        <members>SBQQ__Quote__c.LPCR_NombreLignesDevis__c</members>
+        <members>SBQQ__Quote__c.LPCR_NombreMois__c</members>
+        <members>SBQQ__Quote__c.LPCR_NombreSemaineAccueilAn__c</members>
+        <members>SBQQ__Quote__c.LPCR_NouveauPlanFacture__c</members>
+        <members>SBQQ__Quote__c.LPCR_NumeroActeEngagement__c</members>
+        <members>SBQQ__Quote__c.LPCR_NumeroAllocataire__c</members>
+        <members>SBQQ__Quote__c.LPCR_NumeroContrat__c</members>
+        <members>SBQQ__Quote__c.LPCR_NumeroDevis__c</members>
+        <members>SBQQ__Quote__c.LPCR_OwnerManager__c</members>
+        <members>SBQQ__Quote__c.LPCR_PlanningEnfant__c</members>
+        <members>SBQQ__Quote__c.LPCR_RefDevisAccueil__c</members>
+        <members>SBQQ__Quote__c.LPCR_RefDevisReferencement__c</members>
+        <members>SBQQ__Quote__c.LPCR_RefDevisReservataire__c</members>
+        <members>SBQQ__Quote__c.LPCR_Region__c</members>
+        <members>SBQQ__Quote__c.LPCR_RenouvellementConvenu__c</members>
+        <members>SBQQ__Quote__c.LPCR_RenouvellementPlanFacture__c</members>
+        <members>SBQQ__Quote__c.LPCR_ResiliationAnticipe__c</members>
+        <members>SBQQ__Quote__c.LPCR_ResponsableADV__c</members>
+        <members>SBQQ__Quote__c.LPCR_ResponsableServiceFamille__c</members>
+        <members>SBQQ__Quote__c.LPCR_RessourcePlafond__c</members>
+        <members>SBQQ__Quote__c.LPCR_RessourcesMensuelles__c</members>
+        <members>SBQQ__Quote__c.LPCR_RessourcesPrixPlancher__c</members>
+        <members>SBQQ__Quote__c.LPCR_RevenusFamille__c</members>
+        <members>SBQQ__Quote__c.LPCR_RTContratEntreprise__c</members>
+        <members>SBQQ__Quote__c.LPCR_Second_Option_Mac_End_Date__c</members>
+        <members>SBQQ__Quote__c.LPCR_Second_Option_Mac_Start_Date__c</members>
+        <members>SBQQ__Quote__c.LPCR_SecondOptionStartDate__c</members>
+        <members>SBQQ__Quote__c.LPCR_StatutApprobation__c</members>
+        <members>SBQQ__Quote__c.LPCR_SystemeFacturationStandard__c</members>
+        <members>SBQQ__Quote__c.LPCR_TauxEffort__c</members>
+        <members>SBQQ__Quote__c.LPCR_TauxHoraire__c</members>
+        <members>SBQQ__Quote__c.LPCR_TauxMensuel__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeAccueil__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeAvenant__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeCreche__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeDenregistrement__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeEnregistrement__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeEntreprise__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeFacturation__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeMensualisation__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypePlanning__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeQuote__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Account__c</members>
+        <members>SBQQ__Quote__c.SBQQ__AdditionalDiscountAmount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__AverageCustomerDiscount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__AveragePartnerDiscount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__BillingCity__c</members>
+        <members>SBQQ__Quote__c.SBQQ__BillingCountry__c</members>
+        <members>SBQQ__Quote__c.SBQQ__BillingFrequency__c</members>
+        <members>SBQQ__Quote__c.SBQQ__BillingName__c</members>
+        <members>SBQQ__Quote__c.SBQQ__BillingPostalCode__c</members>
+        <members>SBQQ__Quote__c.SBQQ__BillingState__c</members>
+        <members>SBQQ__Quote__c.SBQQ__BillingStreet__c</members>
+        <members>SBQQ__Quote__c.SBQQ__ConsumptionRateOverride__c</members>
+        <members>SBQQ__Quote__c.SBQQ__ContractingMethod__c</members>
+        <members>SBQQ__Quote__c.SBQQ__CustomerAmount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__CustomerDiscount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__DaysQuoteOpen__c</members>
+        <members>SBQQ__Quote__c.SBQQ__DefaultTemplate__c</members>
+        <members>SBQQ__Quote__c.SBQQ__DeliveryMethod__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Distributor__c</members>
+        <members>SBQQ__Quote__c.SBQQ__DistributorDiscount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__DocumentStatus__c</members>
+        <members>SBQQ__Quote__c.SBQQ__EmailTemplateId__c</members>
+        <members>SBQQ__Quote__c.SBQQ__EndDate__c</members>
+        <members>SBQQ__Quote__c.SBQQ__ExpirationDate__c</members>
+        <members>SBQQ__Quote__c.SBQQ__FirstSegmentTermEndDate__c</members>
+        <members>SBQQ__Quote__c.SBQQ__GenerateContractedPrice__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Introduction__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Key__c</members>
+        <members>SBQQ__Quote__c.SBQQ__LastCalculatedOn__c</members>
+        <members>SBQQ__Quote__c.SBQQ__LastSavedOn__c</members>
+        <members>SBQQ__Quote__c.SBQQ__LineItemCount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__LineItemsGrouped__c</members>
+        <members>SBQQ__Quote__c.SBQQ__LineItemsPrinted__c</members>
+        <members>SBQQ__Quote__c.SBQQ__ListAmount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__MarkupRate__c</members>
+        <members>SBQQ__Quote__c.SBQQ__MasterContract__c</members>
+        <members>SBQQ__Quote__c.SBQQ__MasterEvergreenContract__c</members>
+        <members>SBQQ__Quote__c.SBQQ__NetAmount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Notes__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Opportunity2__c</members>
+        <members>SBQQ__Quote__c.SBQQ__OrderBy__c</members>
+        <members>SBQQ__Quote__c.SBQQ__OrderByQuoteLineGroup__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Ordered__c</members>
+        <members>SBQQ__Quote__c.SBQQ__OrderGroupID__c</members>
+        <members>SBQQ__Quote__c.SBQQ__OriginalQuote__c</members>
+        <members>SBQQ__Quote__c.SBQQ__PaperSize__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Partner__c</members>
+        <members>SBQQ__Quote__c.SBQQ__PartnerDiscount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__PaymentTerms__c</members>
+        <members>SBQQ__Quote__c.SBQQ__PriceBook__c</members>
+        <members>SBQQ__Quote__c.SBQQ__PricebookId__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Primary__c</members>
+        <members>SBQQ__Quote__c.SBQQ__PrimaryContact__c</members>
+        <members>SBQQ__Quote__c.SBQQ__QuoteLanguage__c</members>
+        <members>SBQQ__Quote__c.SBQQ__QuoteProcessId__c</members>
+        <members>SBQQ__Quote__c.SBQQ__QuoteTemplateId__c</members>
+        <members>SBQQ__Quote__c.SBQQ__RegularAmount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__RenewalTerm__c</members>
+        <members>SBQQ__Quote__c.SBQQ__RenewalUpliftRate__c</members>
+        <members>SBQQ__Quote__c.SBQQ__SalesRep__c</members>
+        <members>SBQQ__Quote__c.SBQQ__ShippingCity__c</members>
+        <members>SBQQ__Quote__c.SBQQ__ShippingCountry__c</members>
+        <members>SBQQ__Quote__c.SBQQ__ShippingName__c</members>
+        <members>SBQQ__Quote__c.SBQQ__ShippingPostalCode__c</members>
+        <members>SBQQ__Quote__c.SBQQ__ShippingState__c</members>
+        <members>SBQQ__Quote__c.SBQQ__ShippingStreet__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Source__c</members>
+        <members>SBQQ__Quote__c.SBQQ__StartDate__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Status__c</members>
+        <members>SBQQ__Quote__c.SBQQ__SubscriptionTerm__c</members>
+        <members>SBQQ__Quote__c.SBQQ__TargetCustomerAmount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__TotalCustomerDiscountAmount__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Type__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Uncalculated__c</members>
+        <members>SBQQ__Quote__c.SBQQ__Unopened__c</members>
+        <members>SBQQ__Quote__c.SBQQ__WatermarkShown__c</members>
+        <members>SBQQ__Quote__c.SubmittedDate__c</members>
+        <members>SBQQ__Quote__c.SubmittedUser__c</members>
+        <members>SBQQ__Quote__c.TECH_ADVEmail__c</members>
+        <members>SBQQ__Quote__c.TECH_ADVNom__c</members>
+        <members>SBQQ__Quote__c.TECH_ADVTelephone__c</members>
+        <members>SBQQ__Quote__c.TECH_ContactCommercialEmail__c</members>
+        <members>SBQQ__Quote__c.TECH_ContactCommercialNom__c</members>
+        <members>SBQQ__Quote__c.TECH_ContactCommercialTelephone__c</members>
+        <members>SBQQ__Quote__c.TECH_ContactInscriptionsEmail__c</members>
+        <members>SBQQ__Quote__c.TECH_ContactInscriptionsNom__c</members>
+        <members>SBQQ__Quote__c.TECH_ContactInscriptionsTelephone__c</members>
+        <members>SBQQ__Quote__c.TECH_ServiceFamilleEmail__c</members>
+        <members>SBQQ__Quote__c.TECH_ServiceFamilleNom__c</members>
+        <members>SBQQ__Quote__c.TECH_ServiceFamilleTelephone__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Account.Entreprise</members>
+        <members>Order.Accueil</members>
+        <members>Order.Referencement</members>
+        <members>Order.Reservataire</members>
+        <members>SBQQ__Quote__c.Accueil</members>
+        <members>SBQQ__Quote__c.Referencement</members>
+        <members>SBQQ__Quote__c.Reservataire</members>
+        <name>RecordType</name>
+    </types>
+
+
+    <types>
+        <members>SBQQ__Quote__c</members>
+        <members>Order</members>
+        <members>Account</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+    <members>Order.LPCR_PresentationCompactCommande</members>
+    <name>CompactLayout</name>
+</types>
+
+
+    <types>
+        <members>Contact.LPCR_TypeAllocataire__c</members>
+        <members>SBQQ__Quote__c.LPCR_TypeQuote__c</members>
+        <members>Contract.LPCR_BatchCommande__c</members>
+        <members>SBQQ__Quote__c.LPCR_BatchCommande__c</members>
+        <members>SBQQ__Quote__c.LPCR_ContactEnfant__c</members>
+        <members>SBQQ__Quote__c.LPCR_InitAutoAvecDateDebut__c</members>
+        <members>Contract.LPCR_InitAutoAvecDateDebut__c</members>
+        <members>Contract.Status</members>
+        <members>Order.LPCR_InitAutoAvecDateDebut__c</members>
+        <members>SBQQ__SearchFilter__c.SBQQ__FilterSourceField__c</members>
+        <members>SBQQ__PriceAction__c.SBQQ__Field__c</members>
+        <members>SBQQ__Quote__c.EditLinesFieldSetName__c</members>
+
+        <name>CustomField</name>
+    </types>
+
+    <types>
+        <members>SBQQ__QuoteLine__c.SBQQ__LineEditor</members>
+        <members>SBQQ__Quote__c.SBQQ__LineEditor</members>
+        <members>SBQQ__ProductOption__c.SBQQ__OptionConfiguration</members>
+        <members>SBQQ__QuoteLine__c.LPCR_Amendment</members>
+
+        <name>FieldSet</name>
+    </types>
+
+    <types>
+        <members>Opportunity.NouveauContratReferecement</members>
+        <members>Opportunity.NouveauContratReservation</members>
+        <name>QuickAction</name>
+    </types>
+
+    <types>
+        <members>Order-Billing Order Layout</members>
+        <members>SBQQ__QuoteLine__c-Quote Line Layout</members>
+        <members>Contract-R&#233;f&#233;rencement</members>
+        <members>Contract-R&#233;servataire</members>
+        <members>Contract-Accueil</members>
+        <members>Account-Famille</members>
+        <members>SBQQ__Quote__c-Contrat d%27accueil</members>
+        <members>SBQQ__Quote__c-Contrat d%27accueil Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;servataire</members>
+        <members>SBQQ__Quote__c-R&#233;servataire Approuv&#233;</members>
+        <members>OrderItem-Billing Order Product Layout</members>
+        <members>Product2-Billing Product Layout</members>
+        <members>LPCR_RessourceFamille__c-Ressource Famille MAC Layout</members>
+        <members>LPCR_RessourceFamille__c-Ressource Famille Micro Layout</members>
+        <members>blng__Usage__c-Usage Layout</members>
+        <name>Layout</name>
+    </types>
+
+
+    <types>
+        <members>sbaa__Approval__c</members>
+        <members>LPCR_DetailModificationPlanning__c</members>
+        <members>LPCR_Planning__c</members>
+        <members>LPCR_ModificationEntrante__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>SBQQ__QuoteQuickly</members>
+        <name>CustomApplication</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c.PresentationCompacteDevis</members>
+        <name>CompactLayout</name>
+    </types>
+        <types>
+        <members>Contract.LPCRPresentationCompactContrat</members>
+        <name>CompactLayout</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c.LPCR_IndexationConvenueUpliftObligatoire</members>
+        <name>ValidationRule</name>
+    </types>
+
+
+
+    <types>
+
+        <members>SBQQ__Quote__c.Update Numero Contrat sur Amendment Quote</members>
+        <members>blng__Invoice__c.Update Invoice Record type upon invoicing posting</members>
+        <members>SBQQ__Quote__c.Update Numero Contrat sur Renewal Quote</members>
+        <members>SBQQ__Quote__c.Statut du quote apres Avenant ou Devis %28Referencement%29</members>
+        <members>SBQQ__Quote__c.Statut du quote apres Avenant ou Devis %28pas Referencement%29</members>
+        <name>WorkflowRule</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContratAmendment</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContratRenewal</members>
+        <name>WorkflowFieldUpdate</name>
+    </types>
+
+
+
+    <types>
+
+        <members>blng__Invoice__c.Set Statut Facture a Annul&#233;e</members>
+        <members>blng__Invoice__c.Update Invoice Record type upon invoicing posting</members>
+        <members>SBQQ__Quote__c.Alerte contrat termin&#233; %28MAC%29</members>
+        <members>SBQQ__Quote__c.Alerte contrat termin&#233; %28Micro%29</members>
+        <members>SBQQ__Quote__c.Alerte Service Famille</members>
+        <members>SBQQ__Quote__c.Alerte Service Famille %28avenant contrat%29</members>
+        <members>SBQQ__Quote__c.Alerte Service Famille %28 devis annul&#233;%29</members>
+        <members>SBQQ__Quote__c.Indexation Des Prix</members>
+        <members>SBQQ__Quote__c.LPCR_ContratNonSign&#233;</members>
+        <members>SBQQ__Quote__c.MIB B2B - Notifier le service famille</members>
+        <members>SBQQ__Quote__c.Status Devis MIB Changement Region Prix</members>
+        <members>SBQQ__Quote__c.Status Devis Resiliation ou MIB Meme Region Prix</members>
+        <members>SBQQ__Quote__c.Statut du quote apres Avenant MIB ou Resiliation</members>
+        <members>SBQQ__Quote__c.Statut du quote apres Avenant ou Devis %28pas Referencement%29</members>
+        <members>SBQQ__Quote__c.Statut du quote apres Avenant ou Devis %28Referencement%29</members>
+        <members>SBQQ__Quote__c.Update Numero Contrat sur Amendment Quote</members>
+        <members>SBQQ__Quote__c.Update Numero Contrat sur New Quote</members>
+        <members>SBQQ__Quote__c.Update Numero Contrat sur Renewal Quote</members>
+        <members>SBQQ__Quote__c.Update RT Quote</members>
+        <members>SBQQ__Quote__c.WF_Quote_Update RT Contrat d%27accueil approuv&#233;</members>
+        <members>SBQQ__Quote__c.WF_Quote_Update RT Contrat de r&#233;f&#233;rencement approuv&#233;</members>
+        <members>SBQQ__Quote__c.WF_Quote_Update RT Contrat r&#233;servataire approuv&#233;</members>
+
+        <name>WorkflowRule</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c.LPCR_SetStatutPretpourcommande</members>
+        <members>SBQQ__Quote__c.LPCR_StatutApprouve</members>
+        <members>SBQQ__Quote__c.LPCR_StatutAttente</members>
+        <members>SBQQ__Quote__c.LPCR_StatutBrouillon</members>
+        <members>SBQQ__Quote__c.LPCR_StatutEnRevue</members>
+        <members>SBQQ__Quote__c.LPCR_StatutPretAEnvoyer</members>
+        <members>SBQQ__Quote__c.LPCR_StatutPretCommande</members>
+        <members>SBQQ__Quote__c.LPCR_StatutRappel</members>
+        <members>SBQQ__Quote__c.LPCR_StatutRejete</members>
+        <members>SBQQ__Quote__c.LPCR_StatutValide</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContrat</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContratAmendment</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateNumeroContratRenewal</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateRTQuote</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateStatusDevisMIB</members>
+        <members>SBQQ__Quote__c.LPCR_UpdateStatutDevis</members>
+        <members>SBQQ__Quote__c.RT_Contrat_accueil_approuve</members>
+        <members>SBQQ__Quote__c.RT_Contrat_referencement_approuve</members>
+        <members>SBQQ__Quote__c.RT_Contrat_reservataire_approuve</members>
+        <members>SBQQ__Quote__c.Statut_standard_approuv</members>
+        <members>SBQQ__Quote__c.Update_Numero_Contrat</members>
+        <members>blng__Invoice__c.LPCR_StatutFactureAnnuleee</members>
+        <members>blng__Invoice__c.Update_record_type</members>
+        <name>WorkflowFieldUpdate</name>
+    </types>
+      -->
+    <types>
+        <members>Contract.LPCRPresentationCompactContrat</members>
+        <name>CompactLayout</name>
+    </types>
+
+    <version>48.0</version>
+</Package>
