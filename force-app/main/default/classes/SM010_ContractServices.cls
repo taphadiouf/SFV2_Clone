@@ -6,7 +6,7 @@
 */
 public class SM010_ContractServices {
     
-/**
+    /**
 * @Author Ayoub Ouarti
 * @Created 23/03/2020
 * @Description methode setContractFields to set Contract fields from Quote, Order before Insert
@@ -36,37 +36,39 @@ public class SM010_ContractServices {
                 contractRTDevName = quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.DeveloperName;
                 if( contractRTDevName == Label.LPCR_Referencement || contractRTDevName == Label.LPCR_Referencement_Approuve) {
                     if(quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_Referencement) {
-                    if(quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__Type__c != 'Renewal'){
-                        eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).Id;
-                    }else{
-                        eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_MasterDevis__c;
-                    }                   
-                } 
-             }
+                        if(quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__Type__c != 'Renewal'){
+                            eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).Id;
+                        }else{
+                            eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_MasterDevis__c;
+                        }                   
+                    } 
+                }
                 eachContract =setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(eachContract.SBQQ__Quote__c));
-          
-            
-            if(orderMap.containsKey(eachContract.SBQQ__Order__c) && 
-               quoteOrderMap.containsKey(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
-                   if(quoteMap.containsKey(eachContract.SBQQ__Quote__c) && quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement) {
-                        eachContract.LPCR_FraisDossier__c = quoteOrderMap.get(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;                	
+                
+                
+                if(orderMap.containsKey(eachContract.SBQQ__Order__c) && 
+                   quoteOrderMap.containsKey(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
+                       if(quoteMap.containsKey(eachContract.SBQQ__Quote__c) && quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement) {
+                           eachContract.LPCR_FraisDossier__c = quoteOrderMap.get(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;                	
+                       }
+                       eachContract=setContractFieldsFromOrderQuoteMaper(eachContract,quoteOrderMap.get(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
+                   }
+                
+                if(orderMap.containsKey(eachContract.SBQQ__Order__c)){
+                    if(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c != null && orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c != null ){
+                        eachContract.LPCR_BatchCommande__c = orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c;
                     }
-                   eachContract=setContractFieldsFromOrderQuoteMaper(eachContract,quoteOrderMap.get(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
-               }
+                    eachContract.LPCR_NouveauPlanFacture__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_NouveauPlanFacture__c;
+                    eachContract.LPCR_RenouvellementPlanFacture__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_RenouvellementPlanFacture__c;
+                }
+            }
             
             if(orderMap.containsKey(eachContract.SBQQ__Order__c)){
-                if(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c != null && orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c != null ){
-                    eachContract.LPCR_BatchCommande__c = orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c;
-                }
-
-                
                 if(eachContract.RecordTypeId == referencementRecTypeId|| eachContract.RecordTypeId == reservataireRecTypeId || eachContract.RecordTypeId == acceuilRecTypeId){
                     eachContract.LPCR_NumeroContrat__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_NumeroContrat__c;
                 }
-                eachContract.LPCR_NouveauPlanFacture__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_NouveauPlanFacture__c;
-                eachContract.LPCR_RenouvellementPlanFacture__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_RenouvellementPlanFacture__c;
             }
-            }
+            
         }
     }
     
@@ -106,20 +108,20 @@ public class SM010_ContractServices {
         for(Contract eachContract : newContractMap.values()){
             if(mapOrders.containsKey(eachContract.SBQQ__Order__c) && 
                quoteMap.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
-					if(eachContract.SBQQ__Order__c != oldContractMap.get(eachContract.Id).SBQQ__Order__c){
+                 if(eachContract.SBQQ__Order__c != oldContractMap.get(eachContract.Id).SBQQ__Order__c){
                         if(quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement) {
-                    eachContract.LPCR_FraisDossier__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;                	
-                }
-                   eachContract=setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
-                   eachContract=setContractFieldsFromOrderQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
+                           eachContract.LPCR_FraisDossier__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;                	
+                       }
+                       eachContract=setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
+                       eachContract=setContractFieldsFromOrderQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
+                   }
                }
-            }
             if(mapOrders.containsKey(eachContract.SBQQ__Order__c) ){
                 eachContract.LPCR_NouveauPlanFacture__c = mapOrders.get(eachContract.SBQQ__Order__c).LPCR_NouveauPlanFacture__c;
                 eachContract.LPCR_RenouvellementPlanFacture__c = mapOrders.get(eachContract.SBQQ__Order__c).LPCR_RenouvellementPlanFacture__c;
                 eachContract.RecordTypeId = mapContractRT.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).RecordType.DeveloperName)? 
                     mapContractRT.get(mapOrders.get(eachContract.SBQQ__Order__c).RecordType.DeveloperName).getRecordTypeId(): eachContract.RecordTypeId;
-               }
+            }
             
         }
     }
@@ -163,8 +165,8 @@ public class SM010_ContractServices {
         contract.LPCR_ResponsableADV__c = quote.LPCR_ResponsableADV__c;
         
         contract.LPCR_ResponsableServiceFamille__c = quote.LPCR_ResponsableServiceFamille__c;
-         if(Trigger.IsInsert && Trigger.IsBefore){
-           contract.LPCR_BatchCommande__c=quote.LPCR_BatchCommande__c;
+        if(Trigger.IsInsert && Trigger.IsBefore){
+            contract.LPCR_BatchCommande__c=quote.LPCR_BatchCommande__c;
         }
         return contract;
     }
