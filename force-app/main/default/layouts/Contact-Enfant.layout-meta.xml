@@ -6,8 +6,8 @@
     <excludeButtons>ContactHierarchy</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
+    <excludeButtons>RequestUseSfdc</excludeButtons>
     <excludeButtons>StartOutboundConversation</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <excludeButtons>XClean</excludeButtons>
@@ -203,12 +203,6 @@
     </relatedContent>
     <relatedLists>
         <fields>ACCOUNT.NAME</fields>
-        <fields>ACCOUNT.ADDRESS1_CITY</fields>
-        <fields>ACCOUNT.PHONE1</fields>
-        <relatedList>Account.blng__BillToContact__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>ACCOUNT.NAME</fields>
         <fields>ACCOUNT.RECORDTYPE</fields>
         <fields>ACCCONRELATION.ROLES</fields>
         <relatedList>RelatedContactAccountRelationList</relatedList>
@@ -259,7 +253,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3E000001XN0A</masterLabel>
+        <masterLabel>00h3O000000XEq5</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
