@@ -798,12 +798,23 @@
         <members>blng__Invoice__c.Update_record_type</members>
         <name>WorkflowFieldUpdate</name>
     </types>
-      -->
+
     <types>
-        <members>OrderItem-Billing Order Product Layout</members>
-
+        <members>SBQQ__Quote__c-Contrat d%27accueil</members>
+        <members>SBQQ__Quote__c-Contrat d%27accueil Approuv&#233;</members>
+        <members>SBQQ__Quote__c-Quote Layout</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;servataire</members>
+        <members>SBQQ__Quote__c-R&#233;servataire Approuv&#233;</members>
         <name>Layout</name>
+    </types>
+          -->
+    <types>
+        <members>SBQQ__Quote__c.Conga_Composer_Contrat_Reservation</members>
+        <members>SBQQ__Quote__c.Conga_Composer_Contrat_Referencement</members>
 
+        <name>WebLink</name>
     </types>
 
     <version>48.0</version>
