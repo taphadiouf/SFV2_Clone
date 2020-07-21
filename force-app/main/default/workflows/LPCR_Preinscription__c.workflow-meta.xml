@@ -22,4 +22,35 @@
         <senderType>CurrentUser</senderType>
         <template>Service_Famille/Mail_de_relance</template>
     </alerts>
+    <fieldUpdates>
+        <fullName>TECH_NombreDeJour</fullName>
+        <description>Match the formula LPCR_NombreDeJour for FA</description>
+        <field>TECH_NombreDeJour__c</field>
+        <formula>IF(LPCR_NombreJours__c=0,&quot;&quot;,&quot;&quot;)+
+IF(LPCR_NombreJours__c=0.5, &quot;1 jour&quot;,&quot;&quot;)+
+IF(LPCR_NombreJours__c=1, &quot;1 jour&quot;,&quot;&quot;)+
+IF(LPCR_NombreJours__c=1.5, &quot;2 jours&quot;,&quot;&quot;)+
+IF(LPCR_NombreJours__c=2, &quot;2 jours&quot;,&quot;&quot;)+
+IF(LPCR_NombreJours__c=2.5, &quot;3 jours&quot;,&quot;&quot;)+
+IF(LPCR_NombreJours__c=3, &quot;3 jours&quot;,&quot;&quot;)+
+IF(LPCR_NombreJours__c=3.5, &quot;4 jours&quot;,&quot;&quot;)+
+IF(LPCR_NombreJours__c=4, &quot;4 jours&quot;,&quot;&quot;)+
+IF(LPCR_NombreJours__c=4.5, &quot;5 jours&quot;,&quot;&quot;)+
+IF(LPCR_NombreJours__c=5, &quot;5 jours&quot;,&quot;&quot;)</formula>
+        <name>TECH NombreDeJour</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>Préinscription_Nombre De Jours IsChanged or New</fullName>
+        <actions>
+            <name>TECH_NombreDeJour</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>OR(ISNEW(),ISCHANGED(LPCR_NombreJours__c))</description>
+        <formula>OR(ISNEW(),ISCHANGED(LPCR_NombreJours__c))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
 </Workflow>
