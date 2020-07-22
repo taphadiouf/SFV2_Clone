@@ -89,8 +89,30 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                         
                         PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'item (BEFORE): ' + item);
                         PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'invoiceDay: ' + invoiceDay);
+                      //added in the context of bug/IS-1349
+                        Date lastdayofmonth = UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c);
+                        if(item.SBQQ__ChargeType__c == Label.LPCR_OneTime ){
+                            if(orderMap.get(item.OrderId).LPCR_TypeFacturation__c  == Label.LPCR_Advance){
+                                item.blng__OverrideNextBillingDate__c = item.blng__NextChargeDate__c.toStartOfMonth();
+                            }
+                            else if(orderMap.get(item.OrderId).LPCR_TypeFacturation__c  == Label.LPCR_Arrears){
+                                item.blng__OverrideNextBillingDate__c = lastdayofmonth.addDays(1);
+                            }
+                        }
+                        if(item.Quantity > 0){
+                            if(item.SBQQ__TerminatedDate__c == null){
+                            	item.blng__BillThroughDateOverride__c = lastdayofmonth;
+                            }
+                            else if(item.SBQQ__TerminatedDate__c != null ){
+                                 	if(lastdayofmonth < item.SBQQ__TerminatedDate__c){
+                                		item.blng__BillThroughDateOverride__c = lastdayofmonth;
+                            		}
+                            }
+                            
+                        }
                         
-                        if(item.SBQQ__BillingType__c == 'Advance') {
+                       //Commented in the context of IS-1349 
+                       /* if(item.SBQQ__BillingType__c == 'Advance') {
                             if(item.ServiceDate == item.blng__NextChargeDate__c) { 
                                 //update original record to make because of beforeUpdate event
                                 if(orderMap.get(item.OrderId).LPCR_TypeCreche__c == 'MICRO' ) {
@@ -131,7 +153,10 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                 // added code from IS-1074, change blng__NextChargeDate__c by blng__OverrideNextBillingDate__c
                                 item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.blng__OverrideNextBillingDate__c);
                             }
-                        }
+                        }*/
+                        //////////////////
+                        
+                        
                     } else if ((orderMap.get(item.OrderId).blng__BillingAccount__c != null 
                                 && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId)
                                && item.SBQQ__BillingFrequency__c  != 'Invoice Plan' 
