@@ -4,7 +4,19 @@
 * @SOQL Queries about Lead
 * @Last update : 20/02/2020 by Achraf ABOUL
 */
-public with sharing class EM002_LeadEntity extends EM001_AbstractObjectEntity{
+public with sharing class EM002_LeadEntity extends DM000_SObject{
+    
+    @TestVisible
+    protected override String getDataManagerClassName() {
+        return EM002_LeadEntity.class.getName();
+    }
+    
+    
+    @TestVisible
+    protected override String getObjectName() {
+        return Schema.sObjectType.Lead.name;
+    }
+    
     public EM002_LeadEntity(){
         super('Lead');
     }
@@ -19,7 +31,7 @@ public with sharing class EM002_LeadEntity extends EM001_AbstractObjectEntity{
                 WHERE Id In :setLeadIds 
                 AND RecordType.Name= :recordTypeName];
     }
-   
+    
     public static List<Lead> getLeadsBy(set<Id> setLeadIds,String recordTypeName,String status) {
         return [SELECT Id, Status,RecordType.Name ,LPCR_DatePriseEnChargeCommercial__c
                 FROM Lead 
@@ -29,24 +41,24 @@ public with sharing class EM002_LeadEntity extends EM001_AbstractObjectEntity{
     }
     public static Lead getAllLeadfielsById(Id leadId){
         
-            String SobjectApiName = 'Lead';
-            Map<String, Schema.SObjectType> schemaMap = Schema.getGlobalDescribe();
-            Map<String, Schema.SObjectField> fieldMap = schemaMap.get(SobjectApiName).getDescribe().fields.getMap();
-     
-            String commaSepratedFields = '';
-            for(String fieldName : fieldMap.keyset()){
-                if(commaSepratedFields == null || commaSepratedFields == ''){
-                    commaSepratedFields = fieldName;
-                }else{
-                    commaSepratedFields = commaSepratedFields + ', ' + fieldName;
-                }
+        String SobjectApiName = 'Lead';
+        Map<String, Schema.SObjectType> schemaMap = Schema.getGlobalDescribe();
+        Map<String, Schema.SObjectField> fieldMap = schemaMap.get(SobjectApiName).getDescribe().fields.getMap();
+        
+        String commaSepratedFields = '';
+        for(String fieldName : fieldMap.keyset()){
+            if(commaSepratedFields == null || commaSepratedFields == ''){
+                commaSepratedFields = fieldName;
+            }else{
+                commaSepratedFields = commaSepratedFields + ', ' + fieldName;
             }
-     
-            String query = 'select ' + commaSepratedFields + ' from ' + SobjectApiName + ' WHERE Id = :leadId Limit 1';
-     
-            Lead leadLst = Database.query(query);
-         
+        }
+        
+        String query = 'select ' + commaSepratedFields + ' from ' + SobjectApiName + ' WHERE Id = :leadId Limit 1';
+        
+        Lead leadLst = Database.query(query);
+        
         return leadLst;    
     }
-     
+    
 }
