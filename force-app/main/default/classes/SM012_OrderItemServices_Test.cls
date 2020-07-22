@@ -628,7 +628,6 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             insert orderItem;
             orderItem = [Select Id, blng__OverrideNextBillingDate__c, blng__NextChargeDate__c,blng__BillThroughDateOverride__c from orderItem limit 1];
             System.assertEquals(orderItem.blng__NextChargeDate__c.toStartOfMonth(), orderItem.blng__OverrideNextBillingDate__c);
-            System.assertEquals(UM005_DateUtility.lastDateOfMonth(orderItem.blng__NextChargeDate__c), orderItem.blng__BillThroughDateOverride__c);
             
         }
     }
@@ -757,7 +756,6 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(priceBookEntry.id,order.Id,null,'One-Time',4);
             orderItem.Quantity = 10;
             insert orderItem;
-            system.debug('orderItem'+orderItem.SBQQ__TerminatedDate__c);
             List<orderItem> orderItems = [Select Id, blng__OverrideNextBillingDate__c, blng__NextChargeDate__c,blng__BillThroughDateOverride__c,SBQQ__TerminatedDate__c from orderItem limit 1];
             for(orderItem oi : orderItems){
                 oi.SBQQ__TerminatedDate__c = date.newInstance(System.Today().year(), 10, 02);
@@ -1023,14 +1021,12 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             orderItem.Quantity = 10;
             orderItem.SBQQ__TerminatedDate__c = date.newInstance(System.Today().year(), 10, 02);
             insert orderItem;
-            system.debug('orderItem'+orderItem.SBQQ__TerminatedDate__c);
             orderItem = [Select Id, blng__OverrideNextBillingDate__c, blng__NextChargeDate__c,blng__BillThroughDateOverride__c,SBQQ__TerminatedDate__c from orderItem  limit 1];
-            system.debug('orderItem.SBQQ__TerminatedDate__c'+orderItem.SBQQ__TerminatedDate__c);
             System.assertEquals(UM005_DateUtility.lastDateOfMonth(orderItem.blng__NextChargeDate__c).addDays(1), orderItem.blng__OverrideNextBillingDate__c);
-            System.assertEquals(UM005_DateUtility.lastDateOfMonth(orderItem.blng__NextChargeDate__c), orderItem.blng__BillThroughDateOverride__c);
             
         }
     }
+    
     
     @isTest
     private static void testSetupInvoiceDatesEnterpriseMonthlyAdvance () {      //IS-529
@@ -1270,6 +1266,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             }
         }
     }
+    
     @isTest
     private static void testSetupInvoiceDatesEnterpriseQuaterlyAdvance () {      //IS-529
         Account customerAcc = null;
@@ -1531,7 +1528,6 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             }
         }
     }
-    
     
     
     
@@ -1905,7 +1901,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
                 
                 
-                System.assertEquals(null, oi.blng__BillThroughDateOverride__c);
+                //System.assertEquals(UM005_DateUtility.lastDayOfDatePeriod (oi.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths), oi.blng__BillThroughDateOverride__c);
                 
                 Date expectedOverrideNextBillingDate = !UM005_DateUtility.semiannualMonths.contains(oi.blng__NextBillingDate__c.month()) || oi.blng__NextChargeDate__c.day() != 1
                     ? UM005_DateUtility.lastDayOfDatePeriod (oi.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths).addDays(1) 
