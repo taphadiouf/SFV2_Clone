@@ -13,14 +13,14 @@ public with sharing class SM019_DocumentList_Callout {
         Http http = new Http();
         HttpRequest request = new HttpRequest();
         request.setEndpoint('callout:LPCR_API_DocList');
-        request.setMethod('GET');
+        request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json;charset=UTF-8');
         DocumentListStructureWrapper docListStructure = new DocumentListStructureWrapper(ownerid, doc_type);
         request.setBody(JSON.serialize(docListStructure));
         HttpResponse response = http.send(request);
         // Parse the JSON response
         String statusCode = response.getStatusCode()+'';
-       
+        UM001_LogManager.writeLogActivity('Appel Service Externe REF DOC LIST', '', 'Appel Externe', (Id) ownerid, response.getBody(), (statusCode.equals('200') ? 'SUCCESS' : 'ERROR'));
         if (statusCode.equals('200')) {
             documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         } else {
@@ -61,11 +61,11 @@ public with sharing class SM019_DocumentList_Callout {
     }
 
     public class DocumentListStructureWrapper{
-        public String ownerid; // obligatoitre
-        public String doc_type;
-        public DocumentListStructureWrapper(String ownerid, String doc_type){
-            this.ownerid = ownerid;
-            this.doc_type = doc_type;      
+        public String OwnerSfId; // obligatoitre
+        public String DocType;
+        public DocumentListStructureWrapper(String OwnerSfId, String DocType){
+            this.OwnerSfId = OwnerSfId;
+            this.DocType = DocType;      
         }
     }
     public class DocumentListFullResponse {
