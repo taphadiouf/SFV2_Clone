@@ -459,9 +459,11 @@ public class SM008_QuoteServices_Test {
             System.assertEquals(quote4.SBQQ__BillingFrequency__c, opp4.LPCR_BillingFrequency__c, 'Quote LPCR_BillingFrequency__c not equals to oppt LPCR_BillingFrequency__c');
             System.assertEquals(quote4.LPCR_DateDebut__c, con4.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
             System.assertEquals(quote4.LPCR_DateFin__c, con4.LPCR_DateFin__c , 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
-            System.assertEquals(quote4.SBQQ__EndDate__c, date.newInstance(System.Today().year(), 12, 31) , 'Quote SBQQ__EndDate__c not equals to con3 LPCR_DateFin__c');
+
             System.assertEquals(quote4.LPCR_ChiffreAffaire__c, con4.LPCR_ChiffreAffaire__c, 'Quote LPCR_ChiffreAffaire__c not equals to con LPCR_ChiffreAffaire__c');
             System.assertEquals(quote4.LPCR_EntiteJuridique__c, acc3.LPCR_EntiteJuridique__c, 'Quote LPCR_EntiteJuridique__c not equals to acc LPCR_EntiteJuridique__c');
+
+            System.assertEquals(quote4.SBQQ__EndDate__c, date.newInstance(System.Today().year(), 08, 31) , 'Quote SBQQ__EndDate__c not equals to con3 LPCR_DateFin__c');
             System.assertEquals(quote4.SBQQ__RenewalUpliftRate__c, 0, 'Quote SBQQ__RenewalUpliftRate__c not equals to 0');
             Test.stopTest();
         }
