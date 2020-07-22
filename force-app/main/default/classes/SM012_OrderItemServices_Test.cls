@@ -1130,6 +1130,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 order.LPCR_TypeCreche__c = String.isNotBlank(order.LPCR_TypeCreche__c)
                     ? order.LPCR_TypeCreche__c 
                     : 'MICRO';
+                
+                order.LPCR_TypeFacturation__c = 'Advance';
             }
             
             update orders;
@@ -1368,6 +1370,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 order.LPCR_TypeCreche__c = String.isNotBlank(order.LPCR_TypeCreche__c)
                     ? order.LPCR_TypeCreche__c 
                     : 'MICRO';
+                
+                order.LPCR_TypeFacturation__c = 'Advance';
             }
             
             update orders;
@@ -1630,6 +1634,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 order.LPCR_TypeCreche__c = String.isNotBlank(order.LPCR_TypeCreche__c)
                     ? order.LPCR_TypeCreche__c 
                     : 'MICRO';
+                
+                order.LPCR_TypeFacturation__c = 'Advance';
             }
             
             update orders;
