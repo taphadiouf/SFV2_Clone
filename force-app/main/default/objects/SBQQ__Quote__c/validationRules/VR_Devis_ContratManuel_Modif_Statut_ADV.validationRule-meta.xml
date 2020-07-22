@@ -5,6 +5,7 @@
     <description>Dans le cas d&apos;un contrat manuel, l&apos;équipe ADV doit être la seule à pouvoir passer un devis manuellement au statut &quot;SIgné&quot; &quot;Prêt à commander&quot;.</description>
     <errorConditionFormula>AND(
 NOT( $User.LPCR_BypassValidationRules__c ),
+NOT (OR(RecordType.DeveloperName = &apos;Referencement&apos;,RecordType.DeveloperName = &apos;Referencement_Approuve&apos;)),
 LPCR_ContratManuel__c,
 ISCHANGED( SBQQ__Status__c ),
 OR(
@@ -13,7 +14,8 @@ OR(
 					TEXT(SBQQ__Status__c) = &apos;Prêt à envoyer&apos;,
 					TEXT(SBQQ__Status__c) = &apos;Actif&apos;,
 					TEXT(SBQQ__Status__c) = &apos;Annulé&apos;,
-TEXT(SBQQ__Status__c) = &apos;Prêt à commander&apos;),
+       TEXT(SBQQ__Status__c) = &apos;Prêt pour commande&apos;),
+			    TEXT(SBQQ__Status__c) = &apos;Envoyé pour signature&apos;,
 NOT( $Permission.LPCR_ADV)
 )</errorConditionFormula>
     <errorDisplayField>SBQQ__Status__c</errorDisplayField>
