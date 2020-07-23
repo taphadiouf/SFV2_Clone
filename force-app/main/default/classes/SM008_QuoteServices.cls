@@ -393,7 +393,7 @@ public with sharing class SM008_QuoteServices {
                 if(eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == referencementApprRecTypeId || eachQuote.RecordTypeId == reservataireRecTypeId || eachQuote.RecordTypeId == reservataireApprRecTypeId){
                     eachQuote.LPCR_TypeFacturation__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_TypeFacturation__c;
                 }
-                if(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c != null && renewedContract.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c)){
+                if(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c != null && amendedContract.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c)){
                     eachQuote.LPCR_InitAutoAvecDateDebut__c =amendedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_InitAutoAvecDateDebut__c;
                     eachQuote.SBQQ__SalesRep__c = amendedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_Sales_Rep__c;
                     eachQuote.LPCR_ResponsableADV__c = amendedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_ResponsableADV__c;

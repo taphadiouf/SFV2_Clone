@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_TypeCreche3__c</fullName>
+    <fullName>LPCR_TypeQuote__c</fullName>
     <externalId>false</externalId>
-    <formula>&#39;TO DO&#39;</formula>
+    <formula>if( ISPICKVAL(LPCR_TypeCreche__c, &apos;MICRO&apos;),&apos;MICRO&apos;,if(ISPICKVAL(LPCR_TypeCreche__c, &apos;MAC&apos;),&apos;MAC&apos;,&apos;B2B&apos;))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Type de crèche 3</label>
+    <label>Type Quote</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>

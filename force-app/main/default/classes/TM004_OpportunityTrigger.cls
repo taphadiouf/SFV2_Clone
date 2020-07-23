@@ -14,7 +14,7 @@ public class TM004_OpportunityTrigger extends TM000_TriggerHandler{
         this.newOpportunitiesList = (List<Opportunity>) Trigger.new;
     }
     protected override void afterInsert() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM007_LeadServices.opportunitiesIds = new Set<Id>(newOpportunitiesMap.keySet());
             SM004_OpportunityServices.setAccountStatus(newOpportunitiesMap);
         }
