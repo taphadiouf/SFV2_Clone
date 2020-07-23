@@ -26,11 +26,13 @@ public with sharing class SM014_OrderServices {
                
              /*eachOrder.RecordTypeId = mapOrderRT.containsKey(quoteMap.get(eachOrder.SBQQ__Quote__c).RecordType.DeveloperName)? 
                     mapOrderRT.get(quoteMap.get(eachOrder.SBQQ__Quote__c).RecordType.DeveloperName).getRecordTypeId():  eachOrder.RecordTypeId;*/
+            if(quoteMap.get(eachOrder.SBQQ__Quote__c).RecordType.DeveloperName != null){
                 if( mapOrderRT.containsKey(quoteMap.get(eachOrder.SBQQ__Quote__c).RecordType.DeveloperName)){
                     eachOrder.RecordTypeId = mapOrderRT.get(quoteMap.get(eachOrder.SBQQ__Quote__c).RecordType.DeveloperName).getRecordTypeId();
                 }else if(mapOrderRT.containsKey(quoteMap.get(eachOrder.SBQQ__Quote__c).RecordType.DeveloperName.split('_')[0])){
                     eachOrder.RecordTypeId = mapOrderRT.get(quoteMap.get(eachOrder.SBQQ__Quote__c).RecordType.DeveloperName.split('_')[0]).getRecordTypeId();
                 }
+            }
                
             }
           

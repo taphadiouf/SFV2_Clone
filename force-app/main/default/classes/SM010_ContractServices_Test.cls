@@ -97,6 +97,7 @@ public class SM010_ContractServices_Test {
         for(Order order: orders)
         {
             order.status ='Activated';
+            order.LPCR_NumeroContrat__c = '4';
         }
         update orders;
         
@@ -317,5 +318,54 @@ public class SM010_ContractServices_Test {
     }
 
 */
+    
+    @IsTest
+    static void setNumeroContat(){
+       
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract','Accueil');
+            Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract','Referencement');
+        	Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract','Reservataire');
+            List<Order> orderLst = [Select Id,Name, LPCR_NumeroContrat__c From Order Where  LPCR_NumeroContrat__c != Null ];
+            Order order = orderLst.get(0);
+            Account acc = [SELECT Id, name from Account where name ='test' ];
+            Test.startTest();
+             //Acceuil Record Type 
+            List<Contract> acceuilcontracts = UM002_TestDataFactory.createContracts(1,acc.Id,'test',null,null,null,null,null,null,null);
+            for(Contract eachContract : acceuilcontracts ){
+                eachContract.RecordTypeId = acceuilRecTypeId;
+                eachContract.SBQQ__Order__c = order.Id;
+            }
+            insert acceuilcontracts;
+            Contract accContract = [Select Id, LPCR_NumeroContrat__c From Contract ];
+            System.assertEquals(order.LPCR_NumeroContrat__c,accContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
+            
+            
+             //Referencement Record Type 
+            List<Contract> refContracts = UM002_TestDataFactory.createContracts(1,acc.Id,'test',null,null,null,null,null,null,null);
+            for(Contract eachContract : refContracts ){
+                eachContract.RecordTypeId = referencementRecTypeId;
+                eachContract.SBQQ__Order__c = order.Id;
+            }
+            insert refContracts;
+            Contract refContract = [Select Id, LPCR_NumeroContrat__c From Contract where RecordType.DeveloperName = 'Referencement'];
+            System.assertEquals(order.LPCR_NumeroContrat__c,refContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
+            
+            //Reservataire Record Type 
+            List<Contract> resContracts = UM002_TestDataFactory.createContracts(1,acc.Id,'test',null,null,null,null,null,null,null);
+            for(Contract eachContract : resContracts ){
+                eachContract.RecordTypeId = reservataireRecTypeId;
+                eachContract.SBQQ__Order__c = order.Id;
+            }
+            insert resContracts;
+            Contract resContract = [Select Id, LPCR_NumeroContrat__c From Contract where RecordType.DeveloperName = 'Reservataire'];
+            System.assertEquals(order.LPCR_NumeroContrat__c,resContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
+            
+            
+            Test.stopTest();
+            
+            
+        }
+    }
     
 }
