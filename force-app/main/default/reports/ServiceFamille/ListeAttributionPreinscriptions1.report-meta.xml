@@ -62,7 +62,17 @@
     <columns>
         <field>LPCR_Preinscription__c$Name</field>
     </columns>
-    <description>Rapport sur les préinscriptions liées à une entreprise réservataire.</description>
+    <description>NE PAS MODIFIER: Rapport sur les préinscriptions liées à une entreprise réservataire. Utilisé sur le bouton &quot;Exporter liste d&apos;attribution&quot; d&apos;une entreprise</description>
+    <filter>
+        <criteriaItems>
+            <column>LPCR_Preinscription__c$LPCR_CompteEntreprise__c.Id</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value/>
+        </criteriaItems>
+        <language>fr</language>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
@@ -74,7 +84,7 @@
         <field>LPCR_Preinscription__c$LPCR_CompteFamille__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Liste Attribution Préinscriptions</name>
+    <name>Export:Liste Attribution Préinscriptions</name>
     <params>
         <name>co</name>
         <value>1</value>
