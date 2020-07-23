@@ -173,6 +173,7 @@ export default class LWC004_RefDocParam extends LightningElement {
             variant: 'success',
           }),
         );
+        this.dispatchEvent(new CustomEvent("sentdocument"));
         this.handleSkip();
 
         fireEvent(this.pageRef, 'handleCreatedAttachment', result);
