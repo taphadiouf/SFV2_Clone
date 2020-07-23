@@ -2007,7 +2007,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>LPCR_ModificationEntrante__c.LPCR_MotifHeureDeduire__c</field>
+                <field>LPCR_ModificationEntrante__c.LPCR_MotifHeureDeduire__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2157,7 +2157,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>LPCR_Preinscription__c.LPCR_DemandeInscriptionCrecheMunicipal__c</field>
+                <field>LPCR_Preinscription__c.LPCR_DemandeInscriptionCrecheMunicipal__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2241,7 +2241,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+            <editable>true</editable>
         <field>LPCR_Preinscription__c.LPCR_Jumeaux__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2271,7 +2271,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+            <editable>true</editable>
         <field>LPCR_Preinscription__c.LPCR_ModeDAccueilDeLEnfant__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2291,7 +2291,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+               <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_OrdreTri__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3037,6 +3037,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.LPCR_ProfessionCoDemandeur__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Lead.LPCR_ProfilLead__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3131,18 +3136,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.LPCR_TypeCreche1__c</field>
+        <editable>true</editable>
+        <field>Lead.LPCR_TypeCrecheX1__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.LPCR_TypeCreche2__c</field>
+        <editable>true</editable>
+        <field>Lead.LPCR_TypeCrecheX2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.LPCR_TypeCreche3__c</field>
+        <editable>true</editable>
+        <field>Lead.LPCR_TypeCrecheX3__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

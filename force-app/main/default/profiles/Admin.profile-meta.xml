@@ -4253,17 +4253,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.LPCR_TypeCreche1__c</field>
+        <field>Lead.LPCR_TypeCrecheX1__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.LPCR_TypeCreche2__c</field>
+        <field>Lead.LPCR_TypeCrecheX2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.LPCR_TypeCreche3__c</field>
+        <field>Lead.LPCR_TypeCrecheX3__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9373,6 +9373,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>AccountContactRelation-Présentation Relation du contact du compte</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Case-Présentation de la Demande Réseau Grandir</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contact-Collaborateur</layout>
