@@ -78,6 +78,10 @@
                 <field>SubmittedDate__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SBQQ__Ordered__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LPCR_DateSignatureContrat__c</field>
             </layoutItems>
@@ -356,9 +360,6 @@
         </quickActionListItems>
         <quickActionListItems>
             <quickActionName>FeedItem.MobileSmartActions</quickActionName>
-        </quickActionListItems>
-        <quickActionListItems>
-            <quickActionName>FeedItem.RypplePost</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
             <quickActionName>FeedItem.LinkPost</quickActionName>

@@ -14797,17 +14797,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_TypeCreche1__c</field>
+        <field>Lead.LPCR_TypeCrecheX1__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_TypeCreche2__c</field>
+        <field>Lead.LPCR_TypeCrecheX2__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_TypeCreche3__c</field>
+        <field>Lead.LPCR_TypeCrecheX3__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -32522,7 +32522,9 @@
     <layoutAssignments>
         <layout>CampaignMember-Campaign Member Page Layout</layout>
     </layoutAssignments>
-
+    <layoutAssignments>
+        <layout>Case-Présentation de la Demande Réseau Grandir</layout>
+    </layoutAssignments>
     <layoutAssignments>
         <layout>CaseInteraction-Case Feed Layout</layout>
     </layoutAssignments>
@@ -32885,7 +32887,7 @@
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
-        <allowDelete>false</allowDelete>
+        <allowDelete>true</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
@@ -33119,8 +33121,8 @@
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Solution</object>
