@@ -22,7 +22,9 @@ public with sharing class SM019_DocumentList_Callout {
         String statusCode = response.getStatusCode()+'';
         UM001_LogManager.writeLogActivity('Appel Service Externe REF DOC LIST', '', 'Appel Externe', (Id) ownerid, response.getBody(), (statusCode.equals('200') ? 'SUCCESS' : 'ERROR'));
         if (statusCode.equals('200')) {
-            documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
+            System.debug('response.getBody()' + response.getBody());
+            documentListFullResponse.response = (List<DocumentListResponse>) JSON.deserialize(response.getBody(), List<DocumentListResponse>.class);
+            documentListFullResponse.result = '200';
         } else {
             //documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         LPCR_AppelServiceExterne__mdt appelServiceExterne = [SELECT LPCR_CodeRetour__c ,LPCR_MessageRetour__c , LPCR_NomService__c  
@@ -78,15 +80,15 @@ public with sharing class SM019_DocumentList_Callout {
         @AuraEnabled
         public String id {get;set;} 
         @AuraEnabled
-        public String doc_type {get;set;}
+        public String documentType {get;set;}
         @AuraEnabled 
         public DateTime doc_creation_date {get;set;} 
         @AuraEnabled
-        public String doc_status {get;set;} 
+        public String documentStatus {get;set;} 
         @AuraEnabled
-        public String doc_name {get;set;} 
+        public String name {get;set;} 
         @AuraEnabled
-        public String doc_file_type{get;set;} 
+        public String fileType{get;set;} 
     }
 
 

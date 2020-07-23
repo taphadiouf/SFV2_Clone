@@ -15,8 +15,8 @@ import { registerListener, unregisterAllListeners } from "c/pubsub";
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 const columns = [
-    { label: 'Titre', fieldName: 'doc_name' ,sortable: true},
-    { label: 'Type', fieldName: 'doc_file_type',sortable: true},
+    { label: 'Titre', fieldName: 'name' ,sortable: true},
+    { label: 'Type', fieldName: 'documentType',sortable: true},
     { label: 'Date de création', fieldName: 'doc_creation_date', type: 'date' ,sortable: true}
 ];
 
@@ -53,8 +53,11 @@ export default class LWC003_RefDoc extends LightningElement {
         // get All records from DB
        
         getDocumentListCallout(
-          { ownerid: this.recordId,doc_type:"Facture"})
+          { ownerid: this.recordId, doc_type: "Facture"})
           .then(result => { 
+            console.log('hello');
+            console.log("******result : " + result);
+            console.log(result);
             if(result.result && result.result=='200'){
               this.recordsFromWS = result.response;
               this.recordsLength =  this.recordsFromWS.length;
@@ -62,6 +65,7 @@ export default class LWC003_RefDoc extends LightningElement {
             } 
           }).
             catch(error => {
+              console.log("*****Error : " + error);
               this.dispatchEvent(
                 new ShowToastEvent({
                   title: 'Erreur',
@@ -69,6 +73,7 @@ export default class LWC003_RefDoc extends LightningElement {
                   variant: 'error'
                 }),
               );
+              console.log("hello");
             });
 
     

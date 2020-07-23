@@ -5,6 +5,7 @@
 */
 
 public with sharing class SM017_SendDocument_Callout {
+    /*
     @future(callout=true)
 	public static void sendDocumentCallout(String doc_type, String doc_owner_sf_id,String doc_status, String doc_name, String doc_file_type) {
         Http http = new Http();
@@ -23,8 +24,9 @@ public with sharing class SM017_SendDocument_Callout {
             UM001_LogManager.writeLogActivityNow(doc_name, 'Envoie de document', 'Appel Externe', doc_owner_sf_id, '', 'Error');
         }
     }
-
-    public static void sendDocumentCallout(String OwnerSfId, String DocSfID, String Name,  String FileType, String DocumentStatus, String DocumentType, byte[] BinaryDocument){
+    */
+    @future(callout=true)
+    public static void sendDocumentCallout(String OwnerSfId, String DocSfID, String Name, String BinaryDocument){
         
         final String WS_NOM_SERVICE  = 'LPCR_ENVOIE_DOCUMENT';
         Http http = new Http();
@@ -32,8 +34,8 @@ public with sharing class SM017_SendDocument_Callout {
         request.setEndpoint('callout:LPCR_API_SaveDocument');
         request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json;charset=UTF-8');
-        DocumentBodyStructureWrp documentBodyStructure = new DocumentBodyStructureWrp(OwnerSfId,  DocSfID,  Name,   FileType,  DocumentStatus,  DocumentType, BinaryDocument);
-        request.setBody(JSON.serialize(documentBodyStructure));
+        WRP004_APISaveDocument data = new WRP004_APISaveDocument(OwnerSfId, DocSfID, Name, BinaryDocument);
+        request.setBody(JSON.serialize(data));
         HttpResponse response = http.send(request);
         // Parse the JSON response
         String statusCode = response.getStatusCode()+'';
@@ -48,24 +50,4 @@ public with sharing class SM017_SendDocument_Callout {
             throw new AuraHandledException(appelServiceExterne.LPCR_MessageRetour__c);
         }     
     }
-
-    public class DocumentBodyStructureWrp{
-        public String OwnerSfId; //Mandatory
-        public String DocSfID; //Mandatory
-        public String Name;  //Mandatory
-        public String FileType; //Mandatory
-        public String DocumentStatus; //Mandatory
-        public String DocumentType;
-        public byte[] BinaryDocument; //Mandatory
-        public DocumentBodyStructureWrp(String OwnerSfId, String DocSfID, String Name,  String FileType, String DocumentStatus, String DocumentType, byte[] BinaryDocument){
-            this.OwnerSfId = OwnerSfId;
-            this.DocSfID = DocSfID;
-            this.Name = Name;
-            this.FileType = FileType;
-            this.DocumentStatus = DocumentStatus;
-            this.DocumentType = DocumentType;
-            this.BinaryDocument = BinaryDocument;
-        }
-    }
-    
 }
