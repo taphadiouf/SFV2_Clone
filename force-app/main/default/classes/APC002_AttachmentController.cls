@@ -36,6 +36,7 @@ public with sharing class APC002_AttachmentController {
         return att;
     }
     public static void sendDocumentCallout(String OwnerSfId, String DocSfID, String Name,  String FileType, String DocumentStatus, String DocumentType, byte[] BinaryDocument){
+        /*
         final String WS_NOM_SERVICE  = 'LPCR_ENVOIE_DOCUMENT';
         Http http = new Http();
         HttpRequest request = new HttpRequest();
@@ -57,6 +58,7 @@ public with sharing class APC002_AttachmentController {
                                                              WHERE LPCR_CodeRetour__c = :statusCode AND LPCR_NomService__c = :WS_NOM_SERVICE ];
             throw new AuraHandledException(appelServiceExterne.LPCR_MessageRetour__c);
         }
+        */
     }
      @AuraEnabled
     public static List<Attachment>  getAllAttachments() {
