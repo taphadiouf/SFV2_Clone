@@ -5,7 +5,10 @@
 */
 @isTest
 public class SM014_OrderServices_Test {
-    
+   
+    private static final Id QUOTE_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);
+    private static final Id ORDER_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Order, Label.LPCR_ContratA);
+
     @testsetup
     static void setup(){
         Id standardPricebookId = Test.getStandardPricebookId();
@@ -28,7 +31,7 @@ public class SM014_OrderServices_Test {
         Opportunity opp = UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
         insert opp;
         SBQQ__Quote__c quote = UM002_TestDataFactory.createQuote('test',opp.Id, acc.Id, standardPricebookId, 'Quote');
-        
+        quote.RecordTypeId  = QUOTE_CONTRAT_ACCUEIL_RT_ID;
         quote.SBQQ__Primary__c =true;
         insert quote;
                 
@@ -54,7 +57,6 @@ public class SM014_OrderServices_Test {
             Account acc = [SELECT Id from Account WHERE name ='test' LIMIT 1];
             SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_CompteFacturation__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
             Test.startTest();
-
             quote.SBQQ__Ordered__c  = true; 
             quote.LPCR_IndexationConvenue__c='Oui';
             quote.LPCR_TypeFacturation__c='Arrears';
@@ -71,12 +73,13 @@ public class SM014_OrderServices_Test {
             Test.stopTest();
             
 
-            Order order = Database.query('SELECT Id,blng__BillingAccount__c, blng__BillingDayOfMonth__c,EffectiveDate,LPCR_TypeFacturation__c,LPCR_FrequenceFacturation__c , Status ,blng__InvoiceBatch__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
+            Order order = Database.query('SELECT Id,RecordTypeId,blng__BillingAccount__c, blng__BillingDayOfMonth__c,EffectiveDate,LPCR_TypeFacturation__c,LPCR_FrequenceFacturation__c , Status ,blng__InvoiceBatch__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
             System.assertEquals('Batch 2', order.blng__InvoiceBatch__c,'blng__InvoiceBatch__c on the quote is not the same on the order');
 			      System.assertEquals(quote.SBQQ__BillingFrequency__c, order.LPCR_FrequenceFacturation__c,'SBQQ__BillingFrequency__c on the quote is not the same on the order');
 			      System.assertEquals(quote.LPCR_TypeFacturation__c, order.LPCR_TypeFacturation__c,'LPCR_TypeFacturation__c on the quote is not the same on the order');
             System.assertEquals(order.EffectiveDate.day()+'', order.blng__BillingDayOfMonth__c,'blng__BillingDayOfMonth__c on the Order wrong');
             System.assertEquals(quote.LPCR_CompteFacturation__c, order.blng__BillingAccount__c,'blng__BillingAccount__c on the Order is not the same on the Quote LPCR_CompteFacturation__c');
+            System.assertEquals(ORDER_CONTRAT_ACCUEIL_RT_ID, order.RecordTypeId,'RecordTypeId on the Order is wrong');
 
 
         }

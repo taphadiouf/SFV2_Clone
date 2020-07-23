@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Field on the Quote object that should be used in testing this condition.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Field on the Quote object that should be used in testing this condition.</inlineHelpText>
+    <inlineHelpText>Champ de l&apos;objet Devis qui doit être utilisé lors du test de cette condition.</inlineHelpText>
     <label>Tested Field</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
@@ -53,6 +53,16 @@
                 <default>false</default>
                 <label>SBQQ__StartDate__c</label>
             </value>
+            <value>
+                <fullName>LPCR_TypeMensualisation__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeMensualisation__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeCreche__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeCreche__c</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -81,6 +91,14 @@
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
             <valueName>SBQQ__StartDate__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_TypeMensualisation__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_TypeCreche__c</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Product Option</controllingFieldValue>

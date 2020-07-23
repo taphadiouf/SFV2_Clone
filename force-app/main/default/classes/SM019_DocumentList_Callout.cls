@@ -7,6 +7,7 @@ public with sharing class SM019_DocumentList_Callout {
             
     @AuraEnabled
     public static DocumentListFullResponse getDocumentListCallout(String ownerid, String doc_type) {
+        final String WS_NOM_SERVICE  = 'LPCR_RECUPERATION_DOCUMENT';
         DocumentListFullResponse documentListFullResponse = new DocumentListFullResponse();
         
         Http http = new Http();
@@ -18,15 +19,34 @@ public with sharing class SM019_DocumentList_Callout {
         request.setBody(JSON.serialize(docListStructure));
         HttpResponse response = http.send(request);
         // Parse the JSON response
-        if (response.getStatusCode() == 200) {
+        String statusCode = response.getStatusCode()+'';
+       
+        if (statusCode.equals('200')) {
             documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         } else {
-            documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
+            //documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
+        LPCR_AppelServiceExterne__mdt appelServiceExterne = [SELECT LPCR_CodeRetour__c ,LPCR_MessageRetour__c , LPCR_NomService__c  
+                                                             FROM LPCR_AppelServiceExterne__mdt  
+                                                             WHERE LPCR_CodeRetour__c = :statusCode AND LPCR_NomService__c = :WS_NOM_SERVICE ];
+            throw new AuraHandledException(appelServiceExterne.LPCR_MessageRetour__c);
         }
         return documentListFullResponse;
     }
 
     @future(callout=true)
+    public static void getDocumentListFutureCallout(String fromEmail,String toEmail,String subject, String emailBody,String ownerid, String doc_type) {
+        DocumentListFullResponse documentListFullResponse = getDocumentListCallout(ownerid, doc_type);  
+        Set<String> docTmp = new Set<String>();
+        if (documentListFullResponse.result == '200') {
+            System.debug('$$$'+documentListFullResponse.response);
+            for(DocumentListResponse eachDoc : documentListFullResponse.response){
+                docTmp.add(eachDoc.id);
+            }	
+            SM016_SendMail_Callout.sendMailCallout(fromEmail, toEmail, subject, emailBody, docTmp);
+        }
+    }
+    
+     @future(callout=true)
     public static void getDocumentListFutureCallout(String ownerid, String doc_type, String email) {
         DocumentListFullResponse documentListFullResponse = getDocumentListCallout(ownerid, doc_type);  
         Set<String> docTmp = new Set<String>();
@@ -48,13 +68,13 @@ public with sharing class SM019_DocumentList_Callout {
             this.doc_type = doc_type;      
         }
     }
-    public class DocumentListFullResponse{
+    public class DocumentListFullResponse {
         @AuraEnabled
         public String result {get;set;} 
         @AuraEnabled
         public List<DocumentListResponse> response {get;set;} 
     }
-    public class DocumentListResponse{
+    public class DocumentListResponse {
         @AuraEnabled
         public String id {get;set;} 
         @AuraEnabled
