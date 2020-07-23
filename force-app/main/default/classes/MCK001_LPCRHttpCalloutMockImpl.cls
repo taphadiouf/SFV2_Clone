@@ -11,7 +11,7 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
         if(req.getEndpoint().contains('LPCR_API_SaveDocument')){
             System.debug(req.getBody());
             WRP004_APISaveDocument data = (WRP004_APISaveDocument) JSON.deserialize(req.getBody(), WRP004_APISaveDocument.class);
-            if(String.isNotBlank(data.doc_type) && String.isNotBlank(data.doc_owner_sf_id) && String.isNotBlank(data.doc_status) && String.isNotBlank(data.doc_name) && String.isNotBlank(data.doc_file_type)){
+            if(String.isNotBlank(data.DocumentType) && String.isNotBlank(data.OwnerSfId) && String.isNotBlank(data.DocumentStatus) && String.isNotBlank(data.Name) && String.isNotBlank(data.FileType)){
                 res.setBody('{"result":"200"}');
                 res.setStatusCode(200);
             }else{
@@ -33,8 +33,8 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
             System.debug(req.getBody());
             System.debug(req.getEndpoint());
             SM019_DocumentList_Callout.DocumentListStructureWrapper data = (SM019_DocumentList_Callout.DocumentListStructureWrapper) JSON.deserialize(req.getBody(), SM019_DocumentList_Callout.DocumentListStructureWrapper.class);
-            if(String.isNotBlank(data.ownerid)){
-                res.setBody('{"result":"200","response":[{"id":"102120210212021021","doc_type":"Facture"}]}');
+            if(String.isNotBlank(data.OwnerSfId)){
+                res.setBody('{"result":"200","response":[{"id":"102120210212021021","DocumentType":"Facture"}]}');
                 res.setStatusCode(200);
             }else{
                 res.setBody('{"result":"503"}');

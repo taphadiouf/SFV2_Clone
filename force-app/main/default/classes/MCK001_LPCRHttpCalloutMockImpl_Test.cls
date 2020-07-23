@@ -8,7 +8,7 @@ public class MCK001_LPCRHttpCalloutMockImpl_Test {
 	@isTest
     static void SaveDocumentCallout_1_Test(){
         Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-        WRP004_APISaveDocument data = new WRP004_APISaveDocument('Facture','000000000000000000','Validé','Test','PDF');  
+        WRP004_APISaveDocument data = new WRP004_APISaveDocument('000000000000000000','000000000000000000','Facture','Test');  
              
         String body = JSON.serialize(data);
         Http http = new Http();
@@ -24,7 +24,7 @@ public class MCK001_LPCRHttpCalloutMockImpl_Test {
     @isTest
     static void SaveDocumentCallout_2_Test(){
         Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-        WRP004_APISaveDocument data = new WRP004_APISaveDocument('Test','000000000000000000','Validé','Test','PDF');        
+        WRP004_APISaveDocument data = new WRP004_APISaveDocument('000000000000000000','000000000000000000','Test','Test');  
         String body = JSON.serialize(data);
         
         Http http = new Http();
