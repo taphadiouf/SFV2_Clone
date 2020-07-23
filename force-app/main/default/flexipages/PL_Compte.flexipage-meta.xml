@@ -69,6 +69,105 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
+                <name>height</name>
+                <value>300</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>label</name>
+                <value>Information société</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>pageName</name>
+                <value>Sparklane_FR__IFTD_Account_CompanyInfo</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>showLabel</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:visualforcePage</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>height</name>
+                <value>425</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>label</name>
+                <value>Contacts</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>pageName</name>
+                <value>Sparklane_FR__IFTD_Account_Contacts</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>showLabel</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:visualforcePage</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>height</name>
+                <value>450</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>label</name>
+                <value>Signaux</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>pageName</name>
+                <value>Sparklane_FR__IFTD_Account_News</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>showLabel</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:visualforcePage</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>height</name>
+                <value>350</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>label</name>
+                <value>Actionnaires</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>pageName</name>
+                <value>Sparklane_FR__IFTD_Account_CapitalLinks_ASC</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>showLabel</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:visualforcePage</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>height</name>
+                <value>350</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>label</name>
+                <value>Filiales</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>pageName</name>
+                <value>Sparklane_FR__IFTD_Account_CapitalLinks_DSC</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>showLabel</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:visualforcePage</componentName>
+        </componentInstances>
+        <name>Facet-6c8292c6-ef44-4f53-b487-02db05324f86</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
                 <name>active</name>
                 <value>true</value>
             </componentInstanceProperties>
@@ -108,7 +207,110 @@
             </componentInstanceProperties>
             <componentName>flexipage:tab</componentName>
         </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>Facet-6c8292c6-ef44-4f53-b487-02db05324f86</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Sparklane</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
         <name>Facet-a9ed44c9-ec9d-4297-8c90-a80ceeaadd8f</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentName>force:detailPanel</componentName>
+        </componentInstances>
+        <name>Facet-36uydvkv70k</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>displayOption</name>
+                <value>BOTH</value>
+            </componentInstanceProperties>
+            <componentName>runtime_sales_merge:mergeCandidatesPreviewCard</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>hideHeader</name>
+                <value>false</value>
+            </componentInstanceProperties>
+            <componentName>force:relatedListQuickLinksContainer</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>relatedListComponentOverride</name>
+                <value>ADVGRID</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>rowsToDisplay</name>
+                <value>10</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>showActionBar</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentName>force:relatedListContainer</componentName>
+        </componentInstances>
+        <name>Facet-bne64p226kj</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentName>lWC003_RefDoc</componentName>
+        </componentInstances>
+        <name>Facet-ztsg4tqzk3h</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>active</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>Facet-36uydvkv70k</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Standard.Tab.detail</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>active</name>
+                <value>false</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>Facet-bne64p226kj</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Standard.Tab.relatedLists</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>Facet-ztsg4tqzk3h</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Documents</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <name>Facet-sa2e90zohcf</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -259,8 +461,28 @@
             <visibilityRule>
                 <criteria>
                     <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                    <operator>EQUAL</operator>
+                    <rightValue>Entreprise</rightValue>
+                </criteria>
+            </visibilityRule>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>tabs</name>
+                <value>Facet-sa2e90zohcf</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tabset</componentName>
+            <visibilityRule>
+                <booleanFilter>1 AND 2</booleanFilter>
+                <criteria>
+                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
                     <operator>NE</operator>
                     <rightValue>Creche</rightValue>
+                </criteria>
+                <criteria>
+                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                    <operator>NE</operator>
+                    <rightValue>Entreprise</rightValue>
                 </criteria>
             </visibilityRule>
         </componentInstances>

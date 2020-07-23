@@ -4,6 +4,334 @@
         <application>LPCR_Commerce</application>
         <visible>true</visible>
     </applicationVisibilities>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_AutoUpdate_Oauth_Callback_ctrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_BATCH_push_chatter</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_BATCH_push_chatterV2</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_BEAN_PaginatedTable_Data</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_BEAN_References</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_BEAN_model</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_Bean_AdminConfig</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_CPNT_Filter_controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_CPNT_MappingConfig_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_CPNT_PaginatedTable</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_CPNT_PaginatedTable_Cell_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_CPNT_PaginatedTable_controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_CPNT_Predict_Company_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_CPNT_Predict_Controller_TEST</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_CPNT_SelectRecordType</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_CPNT_TableLoader</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_CPNT_select_recordtype_ctrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_CRON_ReloadReferences</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_CRON_push_chatter</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_ComponentControllerBase</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_DTO_CompanyCapitalLinks_Result</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_DTO_CompanyContacts_Result</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_DTO_CompanyNews_Result</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_DTO_MatchCompany</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_DTO_Predict_score</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_DTO_Search_Params</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_DTO_Search_Result</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_DTO_global</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_Exceptions</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_PageControllerBase</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_Preferences_CacheManager</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_SERVICE_Api_Connector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_SERVICE_Import</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_SERVICE_Info_Company</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_SERVICE_Predict</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_SERVICE_Push_News</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_SERVICE_Search_Companies</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_Service_AdminConfig</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_AutoUpdate_Oauth_Callback_ctrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_BATCH_push_chatter</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_BATCH_push_chatterV2</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_BEAN</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_CPNT_Filter_controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_CPNT_MappingConfig_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_CPNT_PaginatedTable</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_CPNT_PaginatedTable_Cell_Ctrlr</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_CPNT_select_recordtype_ctrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_CRON_push_chatter</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_ComponentPage</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_DTO_CompanyCapitalLinks_Result</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_DTO_Search_Params</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_DTO_Search_Result</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_Exceptions</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_MockHttpCallout</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_Preferences_CacheManager</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_SERVICE_Api_Connector</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_SERVICE_Import</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_SERVICE_Info_Company</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_SERVICE_Push_News</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_Service_AdminConfig</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_Service_Predict</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_UI_Account_CapitalLinks_ctrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_UI_Account_CompanyInfo_Ctrlr</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_UI_Account_Contacts_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_UI_Account_FindCompany_Ctrlr</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_UI_Account_MergeData_Ctrlr</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_UI_Account_News_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_UI_Administration_controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_UI_Lead_FindCompany_ctrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_TEST_UI_SearchAccount_controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_UI_Account_CapitalLinks_ASC_ctrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_UI_Account_CapitalLinks_DSC_ctrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_UI_Account_CompanyInfo_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_UI_Account_Contacts_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_UI_Account_FindCompany_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_UI_Account_MergeData_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_UI_Account_News_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_UI_Administration_Controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_UI_Lead_FindCompany_ctrl</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_UI_SearchAccount_controller</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__IFTD_Utils</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Sparklane_FR__ParentTestController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <description>Equipe commerciale LPCR</description>
     <fieldPermissions>
         <editable>true</editable>
@@ -2647,17 +2975,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_TypeCreche1__c</field>
+        <field>Lead.LPCR_TypeCrecheX1__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_TypeCreche2__c</field>
+        <field>Lead.LPCR_TypeCrecheX2__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_TypeCreche3__c</field>
+        <field>Lead.LPCR_TypeCrecheX3__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4391,11 +4719,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__PriceCondition__c.SBQQ__Field__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLineConsumptionRate__c.SBQQ__Description__c</field>
         <readable>true</readable>
@@ -4492,11 +4815,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__QuoteLine__c.LPCR_NumeroBonCommande__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>SBQQ__QuoteLine__c.LPCR_NumeroLigne__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4510,7 +4828,6 @@
         <field>SBQQ__QuoteLine__c.LPCR_NumeroPurchaseOrder__c</field>
         <readable>true</readable>
     </fieldPermissions>
-
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.LPCR_PourcentagePlancherMicro__c</field>
@@ -5308,7 +5625,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_ConditionsParticulieres__c</field>
+        <field>SBQQ__Quote__c.LPCR_Conditionsparticulieres__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5412,6 +5729,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_MoyenPaiement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_NombreFraisDossier__c</field>
         <readable>true</readable>
@@ -5453,11 +5775,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_NumeroDevis__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_OwnerManager__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5480,11 +5797,6 @@
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_Region__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_RenouvellementPlanFacture__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -5931,21 +6243,7 @@
         <field>SBQQ__Quote__c.SBQQ__WatermarkShown__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.TECH_ContactCommercialEmail__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.TECH_ContactCommercialNom__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.TECH_ContactCommercialTelephone__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
+
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Subscription__c.LPCR_Creche__c</field>
@@ -6353,11 +6651,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__SummaryVariable__c.SBQQ__AggregateField__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>blng__Invoice__c.LPCR_CommentaireGlobal__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6369,6 +6662,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_Commentaire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_ConversionLigneNegative__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -6400,16 +6698,6 @@
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_NomCompletRepresentant2__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>blng__Invoice__c.LPCR_NumeroCompteBancaire__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>blng__Invoice__c.LPCR_NumeroFacture__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -6660,11 +6948,6 @@
         <editable>true</editable>
         <field>blng__Invoice__c.blng__UniqueId__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>blng__Usage__c.LPCR_Product__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -7012,6 +7295,62 @@
         <object>sbaa__Approval__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_Account_CapitalLinks_ASC</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_Account_CapitalLinks_DSC</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_Account_CompanyInfo</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_Account_Contacts</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_Account_News</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_Account_Predict_company</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_AutoUpdate_OAuth_Callback</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_UI_ADMIN_AUTOUPDT_WRAPPER</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_UI_Account_FindCompany</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_UI_Account_MergeData</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_UI_Administration</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_UI_Lead_Predict_company</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_UI_Lead_findCompany</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>Sparklane_FR__IFTD_UI_SearchAccount</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
     <recordTypeVisibilities>
         <recordType>Account.Entreprise</recordType>
         <visible>true</visible>
@@ -7098,6 +7437,10 @@
     </tabSettings>
     <tabSettings>
         <tab>SBQQ__Quote__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Sparklane_FR__IFTD_tab_search_companies</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>

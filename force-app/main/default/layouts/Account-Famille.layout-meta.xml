@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>blng__CreditCenter</customButtons>
+    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -31,6 +34,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_Garde__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_Region__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -66,10 +73,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>ShippingAddress</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_Departement__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -124,18 +127,22 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>LPCR_MoyenPaiement__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LPCR_DateSignatureRUM__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_RUM__c</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_RIB__c</field>
             </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_IBAN__c</field>
@@ -406,6 +413,10 @@
         <relatedList>LPCR_Preinscription__c.LPCR_CompteFamille__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>LPCR_RessourceFamille__c.LPCR_CompteFamille__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>OPPORTUNITY.STAGE_NAME</fields>
         <fields>OPPORTUNITY.AMOUNT</fields>
@@ -478,7 +489,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1j000001C03y</masterLabel>
+        <masterLabel>00h3O000000XEq1</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

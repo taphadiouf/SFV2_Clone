@@ -28,6 +28,29 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_BillingFrequency__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice Plan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semiannual</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_DispositifExistant__c</picklist>
         <values>
             <fullName>Accompagnement scolaire</fullName>
@@ -55,6 +78,44 @@
         </values>
         <values>
             <fullName>Plateforme de service à la personne</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_EtapeFamille__c</picklist>
+        <values>
+            <fullName>Négociation%2F Contractualisation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Perdue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Signée</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_FrequenceFacturation__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice Plan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Semiannual</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -154,6 +215,17 @@
         </values>
         <values>
             <fullName>SLEA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_IndexationConvenue__c</picklist>
+        <values>
+            <fullName>Non</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oui</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -265,6 +337,17 @@
         </values>
         <values>
             <fullName>Régie intéréssée</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeFacturation__c</picklist>
+        <values>
+            <fullName>Advance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Arrears</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -387,6 +470,25 @@
         </values>
         <values>
             <fullName>New Business</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>sbaa__ApprovalStatus__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recalled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
             <default>false</default>
         </values>
     </picklistValues>

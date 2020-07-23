@@ -2,7 +2,12 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>VR_Lead_MotifAbandon</fullName>
     <active>true</active>
-    <description>Renseignez un motif de disqualification pour passer le lead au statut abandonné</description>
-    <errorConditionFormula>AND(ISPICKVAL(Status, &quot;Abandonné&quot;),ISBLANK( LPCR_MotifDisqualification__c))</errorConditionFormula>
-    <errorMessage>Renseignez un motif de disqualification pour passer le lead au statut abandonné</errorMessage>
+    <description>Renseignez un motif de disqualification pour passer le lead au statut abandonné (pour les leads Famille, Partenaire, Entreprise)</description>
+    <errorConditionFormula>AND(
+NOT( $User.LPCR_BypassValidationRules__c ),
+OR(RecordType.DeveloperName=&apos;Famille&apos;,RecordType.DeveloperName=&apos;Entreprise&apos;,RecordType.DeveloperName=&apos;Partenaire&apos;),
+ISPICKVAL(Status, &quot;Abandonné&quot;),
+ISBLANK( LPCR_MotifDisqualification__c))</errorConditionFormula>
+    <errorDisplayField>LPCR_MotifDisqualification__c</errorDisplayField>
+    <errorMessage>Veuillez renseigner un motif de disqualification pour passer le lead au statut abandonné.</errorMessage>
 </ValidationRule>
