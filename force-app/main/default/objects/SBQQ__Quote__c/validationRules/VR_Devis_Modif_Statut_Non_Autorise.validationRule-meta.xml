@@ -7,14 +7,16 @@
 NOT( $User.LPCR_BypassValidationRules__c ),
 NOT(CONTAINS($Profile.Name,&apos;Admin&apos;)),
 NOT(LPCR_ContratManuel__c),
-ISCHANGED( SBQQ__Status__c ),
+NOT (OR(RecordType.DeveloperName = &apos;Referencement&apos;,RecordType.DeveloperName = &apos;Referencement_Approuve&apos;)),
+ISCHANGED( SBQQ__Status__c ), 
 OR(
 TEXT(SBQQ__Status__c) = &apos;Terminé&apos;,
+TEXT(SBQQ__Status__c) = &apos;Envoyé pour signature&apos;,
 TEXT(SBQQ__Status__c) = &apos;Signé&apos;,
 TEXT(SBQQ__Status__c) = &apos;Prêt à envoyer&apos;,
 TEXT(SBQQ__Status__c) = &apos;Actif&apos;,
 TEXT(SBQQ__Status__c) = &apos;Annulé&apos;,
-TEXT(SBQQ__Status__c) = &apos;Prêt à commander&apos;)
+TEXT(SBQQ__Status__c) = &apos;Prêt pour commande&apos;)
 				)</errorConditionFormula>
     <errorDisplayField>SBQQ__Status__c</errorDisplayField>
     <errorMessage>Dans le cas de l&apos;utilisation du modèle LPCR,  le passage à cette valeur de statut &quot; est automatique.</errorMessage>

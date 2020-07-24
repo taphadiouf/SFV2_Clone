@@ -56,16 +56,6 @@
         <won>true</won>
     </standardValue>
     <standardValue>
-        <fullName>Perdue</fullName>
-        <default>false</default>
-        <description>L’affaire avec l’entreprise n’est pas possible et n’a pas abouti</description>
-        <label>Perdue</label>
-        <closed>true</closed>
-        <forecastCategory>Omitted</forecastCategory>
-        <probability>0</probability>
-        <won>false</won>
-    </standardValue>
-    <standardValue>
         <fullName>Candidature</fullName>
         <default>false</default>
         <label>Candidature</label>
@@ -127,6 +117,16 @@
         <forecastCategory>Closed</forecastCategory>
         <probability>100</probability>
         <won>true</won>
+    </standardValue>
+    <standardValue>
+        <fullName>Perdue</fullName>
+        <default>false</default>
+        <description>L’affaire avec l’entreprise n’est pas possible et n’a pas abouti</description>
+        <label>Perdue</label>
+        <closed>true</closed>
+        <forecastCategory>Omitted</forecastCategory>
+        <probability>0</probability>
+        <won>false</won>
     </standardValue>
     <standardValue>
         <fullName>Sans suite</fullName>
