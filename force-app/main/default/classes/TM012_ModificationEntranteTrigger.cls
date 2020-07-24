@@ -14,13 +14,13 @@ public class TM012_ModificationEntranteTrigger extends TM000_TriggerHandler{
         this.newModificationsentrantesList = (List<LPCR_ModificationEntrante__c>) Trigger.new;
     }
     protected override void afterInsert() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM013_ModificationEntranteServices.updateQuotesFromModifEntrantes(newModificationsentrantesList);
             SM013_ModificationEntranteServices.createUsageFromModifEntrantes(newModificationsentrantesList);
         }
     }
     protected override void afterUpdate() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM013_ModificationEntranteServices.sendAgreementFromModifEntrantes(newModificationsentrantesList, oldModificationsentrantesMap);
         }
     }

@@ -117,7 +117,9 @@ public class SM007_LeadServices {
                 ));
             }
         }
-        insert liensCrechesLeads;
+        EM018_LienCrecheLead cl = new EM018_LienCrecheLead();
+        String methodName = 'createLiensCrecheLead';
+        cl.dmlExecuteRequest('insert', (List<SObject>) liensCrechesLeads, true, methodName, DM000_SObject.ProcessType.TRIGGER_SRC);
     }
     
     /* 
@@ -189,6 +191,8 @@ update recordsToSync;
         for(LPCR_Structure_AO__c eachStructureAO : aoStructures){
             eachStructureAO.opportunite__c = wantedLeadsMap.get(eachStructureAO.LPCR_Lead__c).convertedOpportunityId;
         }
-        update aoStructures;
+        EM009_StructureAOEntity cl = new EM009_StructureAOEntity();
+        String methodName = 'linkStructureAOsToOpps';
+        cl.dmlExecuteRequest('update', (List<SObject>) aoStructures, true, methodName, DM000_SObject.ProcessType.TRIGGER_SRC);
     }
 }
