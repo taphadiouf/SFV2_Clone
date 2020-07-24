@@ -114,9 +114,9 @@ public with sharing class SM021_ModificationEntranteServices {
             modifEntrantesContactMap.put(contact.Id, contact);
         }
         
-        for(LPCR_RessourceFamille__c eachRessourceFamille : [SELECT Id, Name, RecordTypeId, LPCR_Active__c, LPCR_AnneeRevenu__c, LPCR_BaremeCaf__c, LPCR_Commentaire__c, LPCR_CompteFamille__c,LPCR_CompteFamille__r.Name, LPCR_ContactEnfant__c, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_DureeContratJour__c, LPCR_FinContrat__c, LPCR_IdExterne_BaremeCaf__c, LPCR_IdExterne_CompteFamille__c, LPCR_IdExterne_ContactEnfant__c, LPCR_IdExterne_Creche__c, LPCR_NombreEnfantHandicape__c, LPCR_NombreEnfants__c, LPCR_RessourcePlafond__c, LPCR_RessourcesPrixPlancher__c, LPCR_RevenusFamille__c, LPCR_SourceDonnees__c, LPCR_StatutValidation__c, LPCR_TauxEffort__c, LPCR_TypeCreche__c, LPCR_TypeMensualisation__c, LPCR_TypePlanning__c, LPCR_creche__c FROM LPCR_RessourceFamille__c WHERE LPCR_CompteFamille__c IN : compteIds AND LPCR_Active__c = true AND LPCR_DateDebut__c >=: firstDayOfCurrentMonthDate AND LPCR_DateDebut__c <=: lastDayOfCurrentMonthDate]){
-            if(eachRessourceFamille.LPCR_CompteFamille__c != null){
-                ressourceFamilleMap.put(eachRessourceFamille.LPCR_CompteFamille__c, eachRessourceFamille);
+        for(LPCR_RessourceFamille__c eachRessourceFamille : [SELECT Id, Name, RecordTypeId, LPCR_Active__c, LPCR_AnneeRevenu__c, LPCR_BaremeCaf__c, LPCR_Commentaire__c, LPCR_CompteFamille__c,LPCR_CompteFamille__r.Name, LPCR_ContactEnfant__c, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_DureeContratJour__c, LPCR_FinContrat__c, LPCR_IdExterne_BaremeCaf__c, LPCR_IdExterne_CompteFamille__c, LPCR_IdExterne_ContactEnfant__c, LPCR_IdExterne_Creche__c, LPCR_NombreEnfantHandicape__c, LPCR_NombreEnfants__c, LPCR_RessourcePlafond__c, LPCR_RessourcesPrixPlancher__c, LPCR_RevenusFamille__c, LPCR_SourceDonnees__c, LPCR_StatutValidation__c, LPCR_TauxEffort__c, LPCR_TypeCreche__c, LPCR_TypeMensualisation__c, LPCR_TypePlanning__c, LPCR_creche__c FROM LPCR_RessourceFamille__c WHERE LPCR_CompteFamille__c IN : compteIds AND LPCR_ContactEnfant__c IN : contactIds AND  LPCR_Active__c = true]){
+            if(eachRessourceFamille.LPCR_ContactEnfant__c != null){
+                ressourceFamilleMap.put(eachRessourceFamille.LPCR_ContactEnfant__c, eachRessourceFamille);
             }
         }
         
@@ -176,9 +176,9 @@ public with sharing class SM021_ModificationEntranteServices {
         List<LPCR_Planning__c> allPlanningInsertList = new List<LPCR_Planning__c>();
         Map<String, List<LPCR_PlanningPrevisionnel__c>> allPlanningPrevisionnelInsertMap = new Map<String, List<LPCR_PlanningPrevisionnel__c>>();
 
-        for(LPCR_RessourceFamille__c eachRessourceFamille : [SELECT Id, Name, RecordTypeId, LPCR_Active__c, LPCR_AnneeRevenu__c, LPCR_BaremeCaf__c, LPCR_Commentaire__c, LPCR_CompteFamille__c,LPCR_CompteFamille__r.Name, LPCR_ContactEnfant__c, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_DureeContratJour__c, LPCR_FinContrat__c, LPCR_IdExterne_BaremeCaf__c, LPCR_IdExterne_CompteFamille__c, LPCR_IdExterne_ContactEnfant__c, LPCR_IdExterne_Creche__c, LPCR_NombreEnfantHandicape__c, LPCR_NombreEnfants__c, LPCR_RessourcePlafond__c, LPCR_RessourcesPrixPlancher__c, LPCR_RevenusFamille__c, LPCR_SourceDonnees__c, LPCR_StatutValidation__c, LPCR_TauxEffort__c, LPCR_TypeCreche__c, LPCR_TypeMensualisation__c, LPCR_TypePlanning__c, LPCR_creche__c FROM LPCR_RessourceFamille__c WHERE LPCR_CompteFamille__c IN : compteIds AND LPCR_Active__c = true AND LPCR_DateDebut__c >=: firstDayOfCurrentMonthDate AND LPCR_DateDebut__c <=: lastDayOfCurrentMonthDate]){
-            if(eachRessourceFamille.LPCR_CompteFamille__c != null){
-                ressourceFamilleMap.put(eachRessourceFamille.LPCR_CompteFamille__c, eachRessourceFamille);
+        for(LPCR_RessourceFamille__c eachRessourceFamille : [SELECT Id, Name, RecordTypeId, LPCR_Active__c, LPCR_AnneeRevenu__c, LPCR_BaremeCaf__c, LPCR_Commentaire__c, LPCR_CompteFamille__c,LPCR_CompteFamille__r.Name, LPCR_ContactEnfant__c, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_DureeContratJour__c, LPCR_FinContrat__c, LPCR_IdExterne_BaremeCaf__c, LPCR_IdExterne_CompteFamille__c, LPCR_IdExterne_ContactEnfant__c, LPCR_IdExterne_Creche__c, LPCR_NombreEnfantHandicape__c, LPCR_NombreEnfants__c, LPCR_RessourcePlafond__c, LPCR_RessourcesPrixPlancher__c, LPCR_RevenusFamille__c, LPCR_SourceDonnees__c, LPCR_StatutValidation__c, LPCR_TauxEffort__c, LPCR_TypeCreche__c, LPCR_TypeMensualisation__c, LPCR_TypePlanning__c, LPCR_creche__c FROM LPCR_RessourceFamille__c WHERE LPCR_CompteFamille__c IN : compteIds AND LPCR_Active__c = true AND LPCR_ContactEnfant__c IN : contactIds]){
+            if(eachRessourceFamille.LPCR_Contact__c != null){
+                ressourceFamilleMap.put(eachRessourceFamille.LPCR_Contact__c, eachRessourceFamille);
             }
         }
         for(Contact contact : [SELECT Id,FirstName, LastName,LPCR_NumeroAllocataire__c, LPCR_AutoriteParentale__c, MailingStreet, MailingCity, MailingState, MailingPostalCode, MailingCountry FROM Contact WHERE Id IN: contactIds]){
@@ -193,10 +193,10 @@ public with sharing class SM021_ModificationEntranteServices {
         
         for(LPCR_ModificationEntrante__c eachModifEntrante : ModifEntrantesList){
             if('Modification Situation Handicapé Enfant Fratrie'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
-                if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Compte__c)){
+                if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
                     // 1) Update previous LPCR_FamilyRessource_c with an effective end date (LPCR_DateFin_c) corresponding to last day of current month
                     // 2) Insert a LPCR_FamilyRessource__c record dwith effective start date as 1st of next month
-                    LPCR_RessourceFamille__c oldRessourceFamille = ressourceFamilleMap.get(eachModifEntrante.LPCR_Compte__c);
+                    LPCR_RessourceFamille__c oldRessourceFamille = ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c);
                     LPCR_RessourceFamille__c ressourceFamilleToInsert = createNewRessourceFamille(oldRessourceFamille);
                     ressourceFamilleToInsert.LPCR_NombreEnfantHandicape__c = eachModifEntrante.LPCR_Quantite__c;
                     ressourceFamilleToInsert.LPCR_CompteFamille__c = eachModifEntrante.LPCR_Compte__c;
@@ -208,10 +208,7 @@ public with sharing class SM021_ModificationEntranteServices {
                     
                     SBQQ.TriggerControl.disable();
                     
-                    List<SBQQ__QuoteLine__c> listCloneQuoteLine = cloneAndCancelSubscriptions(quoteModel);
-                    if(listCloneQuoteLine.size() > 0){
-                        allListCloneQuoteLine.addAll(listCloneQuoteLine);
-                    }
+                    cloneAndCancelSubscriptions(quoteModel);
                     
                     SBQQ.TriggerControl.enable();
                     SBQQ__Quote__c quote = quoteModel.record;
@@ -221,8 +218,8 @@ public with sharing class SM021_ModificationEntranteServices {
                 }
             }else if('Modification Nombre Enfant Fratrie'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
                 System.debug('Event = Modification Nombre Enfant Fratrie | '+ eachModifEntrante.Id);
-                if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Compte__c)){
-                    LPCR_RessourceFamille__c oldRessourceFamille = ressourceFamilleMap.get(eachModifEntrante.LPCR_Compte__c);
+                if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
+                    LPCR_RessourceFamille__c oldRessourceFamille = ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c);
                     LPCR_RessourceFamille__c ressourceFamilleToInsert = createNewRessourceFamille(oldRessourceFamille);
                     ressourceFamilleToInsert.LPCR_NombreEnfants__c = eachModifEntrante.LPCR_Quantite__c;
                     ressourceFamilleToInsert.LPCR_CompteFamille__c = eachModifEntrante.LPCR_Compte__c;
@@ -234,10 +231,7 @@ public with sharing class SM021_ModificationEntranteServices {
                     
                     SBQQ.TriggerControl.disable();
                     
-                    List<SBQQ__QuoteLine__c> listCloneQuoteLine = cloneAndCancelSubscriptions(quoteModel);
-                    if(listCloneQuoteLine.size() > 0){
-                        allListCloneQuoteLine.addAll(listCloneQuoteLine);
-                    }
+                    cloneAndCancelSubscriptions(quoteModel);
                     
                     SBQQ.TriggerControl.enable();
                     SBQQ__Quote__c quote = quoteModel.record;
@@ -247,10 +241,10 @@ public with sharing class SM021_ModificationEntranteServices {
                 }
             }else if('Modification Montant Ressource'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
                 System.debug('Event = Modification Montant Ressource | '+ eachModifEntrante.Id);
-                if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Compte__c)){
+                if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
                     // 1) Update previous LPCR_FamilyRessource_c with an effective end date (LPCR_DateFin_c) corresponding to last day of current month
                     // 2) Insert a LPCR_FamilyRessource__c record dwith effective start date as 1st of next month
-                    LPCR_RessourceFamille__c oldRessourceFamille = ressourceFamilleMap.get(eachModifEntrante.LPCR_Compte__c);
+                    LPCR_RessourceFamille__c oldRessourceFamille = ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c);
                     LPCR_RessourceFamille__c ressourceFamilleToInsert = createNewRessourceFamille(oldRessourceFamille);
                     ressourceFamilleToInsert.LPCR_RevenusFamille__c = eachModifEntrante.LPCR_RessourceFamille__c;
                     ressourceFamilleToInsert.LPCR_CompteFamille__c = eachModifEntrante.LPCR_Compte__c;
@@ -262,10 +256,7 @@ public with sharing class SM021_ModificationEntranteServices {
                     
                     SBQQ.TriggerControl.disable();
                     
-                    List<SBQQ__QuoteLine__c> listCloneQuoteLine = cloneAndCancelSubscriptions(quoteModel);
-                    if(listCloneQuoteLine.size() > 0){
-                        allListCloneQuoteLine.addAll(listCloneQuoteLine);
-                    }
+                    cloneAndCancelSubscriptions(quoteModel);
                     
                     SBQQ.TriggerControl.enable();
                     SBQQ__Quote__c quote = quoteModel.record;
@@ -274,7 +265,7 @@ public with sharing class SM021_ModificationEntranteServices {
                     eachModifEntrante.LPCR_EtatTraitement__c = true;    
                 }
             }else if('Modification Type Planning'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_TypePlanning__c != null && eachModifEntrante.LPCR_Compte__c != null){
-                if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Compte__c)){
+                if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
                     
                     WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
                     
@@ -307,10 +298,7 @@ public with sharing class SM021_ModificationEntranteServices {
                     
                     SBQQ.TriggerControl.disable();
                     
-                    List<SBQQ__QuoteLine__c> listCloneQuoteLine = cloneAndCancelSubscriptions(quoteModel);
-                    if(listCloneQuoteLine.size() > 0){
-                        allListCloneQuoteLine.addAll(listCloneQuoteLine);
-                    }
+                    cloneAndCancelSubscriptions(quoteModel);
                     
                     SBQQ.TriggerControl.enable();
                     
@@ -324,10 +312,7 @@ public with sharing class SM021_ModificationEntranteServices {
                 
                 SBQQ.TriggerControl.disable();
                 
-                List<SBQQ__QuoteLine__c> listCloneQuoteLine = cloneAndCancelSubscriptions(quoteModel);
-                if(listCloneQuoteLine.size() > 0){
-                    allListCloneQuoteLine.addAll(listCloneQuoteLine);
-                }
+                cloneAndCancelSubscriptions(quoteModel);
                 
                 SBQQ.TriggerControl.enable();
                 
@@ -337,8 +322,8 @@ public with sharing class SM021_ModificationEntranteServices {
                 listQuoteForUpdate.add(quote);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;                
             }else if('Date Fin Contrat'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
-                if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Compte__c)){
-                    LPCR_RessourceFamille__c oldRessourceFamille = ressourceFamilleMap.get(eachModifEntrante.LPCR_Compte__c);
+                if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
+                    LPCR_RessourceFamille__c oldRessourceFamille = ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c);
                     oldRessourceFamille.LPCR_DateFin__c = lastDayOfCurrentMonthDate; 
                     Date endDate = modifEntrantesContractMap.get(eachModifEntrante.LPCR_Contract__c).EndDate;
                     oldRessourceFamille.LPCR_FinContrat__c = endDate; 
@@ -371,10 +356,7 @@ public with sharing class SM021_ModificationEntranteServices {
                 
                 SBQQ.TriggerControl.disable();
                 
-                List<SBQQ__QuoteLine__c> listCloneQuoteLine = cloneAndCancelSubscriptions(quoteModel);
-                if(listCloneQuoteLine.size() > 0){
-                    allListCloneQuoteLine.addAll(listCloneQuoteLine);
-                }
+                cloneAndCancelSubscriptions(quoteModel);
                 
                 SBQQ.TriggerControl.enable();
                 
@@ -540,25 +522,24 @@ public with sharing class SM021_ModificationEntranteServices {
     }
     
     public static WRP001_QuoteModel executeContractAmenderAPI(Id contractID){
+        Date firstDayOfNextMonthDate = Date.newInstance(Date.today().Year(), Date.today().month()+1 ,1) ;
         UM006_ContractAmender amender = new UM006_ContractAmender();
         WRP001_QuoteModel quote = amender.load(contractID);
         UM007_QuoteReader reader = new UM007_QuoteReader();
-        WRP001_QuoteModel quoteModel = reader.read(quote.record.id); //
+        WRP001_QuoteModel quoteModel = reader.read(quote.record.id);
+        quoteModel.record.SBQQ__StartDate__c = firstDayOfNextMonthDate;
+        quoteModel.record.LPCR_DateDebut__c = firstDayOfNextMonthDate;
+        for(WRP002_QuoteLineModel eachQuoteLine : quoteModel.lineItems){
+            eachQuoteLine.record.LPCR_CloneCancel__c = true;
+        }
         UM008_QuoteCalculator calculator = new UM008_QuoteCalculator();
         calculator.calculate(quoteModel, 'UM009_Callback');
+        
         return quoteModel;
     }
     
-    public static List<SBQQ__QuoteLine__c> cloneAndCancelSubscriptions(WRP001_QuoteModel quoteModel){
-        List<SBQQ__QuoteLine__c> listCloneQuoteLine = new List<SBQQ__QuoteLine__c>();
-        for(WRP002_QuoteLineModel eachQuoteLine : quoteModel.lineItems){
-            SBQQ__QuoteLine__c newQLI = eachQuoteLine.record.clone(false,true,false,false);
-            SBQQ__QuoteLine__c updateQLI = eachQuoteLine.record;
-            updateQLI.SBQQ__Quantity__c = 0;
-            listCloneQuoteLine.add(newQLI);
-            listCloneQuoteLine.add(updateQLI);
-        }
-        return listCloneQuoteLine;
+    public static void cloneAndCancelSubscriptions(WRP001_QuoteModel quoteModel){
+		APC006_CloneQuoteLines.cloneAndResetQL(quoteModel.record.id);	
     }
     public static blng__Usage__c createBlngUsage(String firstName, String lastName, String accountName,LPCR_ModificationEntrante__c modifEntrante, String UnitOfMeasure, String eventType){
         blng__Usage__c newUsage = new blng__Usage__c();
