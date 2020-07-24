@@ -11,6 +11,7 @@ public class SM020_PresinscriptionInvockeService_Test {
         Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
         Id enfantContactRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contact', 'Enfant');
         Account acc = UM002_TestDataFactory.createAccount('test');
+        acc.RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
         insert acc;
         UM002_TestDataFactory.ContactTdf c = new UM002_TestDataFactory.ContactTdf();
         Contact contact= c.create('Test','Test', acc);
