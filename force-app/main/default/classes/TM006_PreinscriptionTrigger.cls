@@ -15,21 +15,21 @@ public class TM006_PreinscriptionTrigger extends TM000_TriggerHandler{
     }
     
     protected override void afterUpdate() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM006_PreinscriptionServices.generateOpptyAndQuote(this.newPreinscriptionsMap,this.oldPreinscriptionsMap);
         }
        
     }
 
     protected override void beforeUpdate() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM009_ParametrageScoreServices.setScoreOnpreinscriptions(newPreinscriptionsList);
             SM006_PreinscriptionServices.setStatusWhenValidateFormulaireIsTrue(this.newPreinscriptionsMap,this.oldPreinscriptionsMap);
         }
     }
 
     protected override void beforeInsert() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM009_ParametrageScoreServices.setScoreOnpreinscriptions(newPreinscriptionsList);
             SM006_PreinscriptionServices.setStatusWhenValidateFormulaireIsTrue(newPreinscriptionsList);
         }

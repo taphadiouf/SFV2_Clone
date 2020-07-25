@@ -45,7 +45,7 @@
         <criteriaItems>
             <field>blng__Invoice__c.LPCR_StatutFacture__c</field>
             <operation>equals</operation>
-            <value>Envoyée</value>
+            <value>A Envoyer</value>
         </criteriaItems>
         <criteriaItems>
             <field>blng__Invoice__c.RecordTypeId</field>
