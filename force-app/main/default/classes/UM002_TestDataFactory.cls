@@ -1304,6 +1304,19 @@ newMe.FederationIdentifier = null;
    
 
 
+    public static List<LPCR_ModificationEntrante__c> createModificationsEntrantes(Integer numRecs, List<SBQQ__Quote__c> quotes,List<Contract> contracts ,String event){
+        List<LPCR_ModificationEntrante__c> ModifEntrantes = new List<LPCR_ModificationEntrante__c>();
+        LPCR_ModificationEntrante__c tempModif;
+        for(Integer i = 0; i<numRecs; i++){
+            tempModif = new LPCR_ModificationEntrante__c(
+                LPCR_Devis__c  = quotes.get(i).Id,
+                LPCR_Contract__c = contracts.get(i).Id,
+                LPCR_Evenement__c  = event
+            );
+            ModifEntrantes.add(tempModif);
+        }
+        return ModifEntrantes;
+    }
 
     
     /*
