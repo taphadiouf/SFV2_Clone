@@ -19,7 +19,7 @@ public with sharing class TM014_InvoiceTrigger extends TM000_TriggerHandler {
         SM015_InvoiceServices.setStatutFacture(newInvoiceList, oldInvoiceMap);
     }
     protected override void afterUpdate() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM015_InvoiceServices.createPaymentAndPaymentAllocation(newInvoiceList, oldInvoiceMap);
         }
     }
