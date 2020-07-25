@@ -464,7 +464,7 @@ public class SM008_QuoteServices_Test {
             System.assertEquals(quote4.LPCR_EntiteJuridique__c, acc3.LPCR_EntiteJuridique__c, 'Quote LPCR_EntiteJuridique__c not equals to acc LPCR_EntiteJuridique__c');
 
             System.assertEquals(quote4.SBQQ__EndDate__c, date.newInstance(System.Today().year(), 12, 31) , 'Quote SBQQ__EndDate__c not equals to con3 LPCR_DateFin__c');
-            System.assertEquals(quote4.SBQQ__RenewalUpliftRate__c, 0, 'Quote SBQQ__RenewalUpliftRate__c not equals to 0');
+            System.assertEquals(quote4.SBQQ__RenewalUpliftRate__c, null, 'Quote SBQQ__RenewalUpliftRate__c not equals to 0');
             Test.stopTest();
         }
     }
