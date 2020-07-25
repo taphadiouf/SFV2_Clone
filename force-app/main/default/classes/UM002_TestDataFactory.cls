@@ -1302,6 +1302,18 @@ newMe.FederationIdentifier = null;
         return con;
     }
    
+    public static List<Contract> createContracts(Integer numRecs,List<Account> accounts, List<SBQQ__Quote__c> quotes){	
+        List<Contract>  contracts = new List<Contract>();
+        Contract temcontract;
+        for(Integer i = 0; i<numRecs; i++){
+            temcontract = new Contract(
+              AccountId  =  accounts.get(i).id,
+              SBQQ__Quote__c = quotes.get(i).id
+            );
+            contracts.add(temcontract);
+        }
+        return contracts;	
+    }
 
 
     public static List<LPCR_ModificationEntrante__c> createModificationsEntrantes(Integer numRecs, List<SBQQ__Quote__c> quotes,List<Contract> contracts ,String event){

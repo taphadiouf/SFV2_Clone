@@ -17,7 +17,8 @@ public class SM013_ModificationEntranteServices_Test {
         insert opps;
         List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(100, accounts, opps);
         insert quotes;
-
+        List<Contract> contracts = UM002_TestDataFactory.createContracts(100,accounts,quotes);
+        insert contracts;
         Id standardPricebookId = Test.getStandardPricebookId();
         UM002_TestDataFactory.insertBillingCustomSettings();
         blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
