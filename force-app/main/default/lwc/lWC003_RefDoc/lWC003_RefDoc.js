@@ -9,6 +9,7 @@
 /* eslint-disable no-alert */
 import { LightningElement, track, api, wire } from 'lwc';
 import getDocumentListCallout from '@salesforce/apex/SM019_DocumentList_Callout.getDocumentListCallout';
+import getDocumentBySFIdCallout from '@salesforce/apex/SM020_GetDocument_Callout.getDocumentBySFIdCallout';
 import { CurrentPageReference } from 'lightning/navigation';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
@@ -17,14 +18,14 @@ import { refreshApex } from '@salesforce/apex';
 const columns = [
   { label: 'Titre', fieldName: 'name', sortable: true },
   { label: 'Type', fieldName: 'documentType', sortable: true },
-  { label: 'Date de création', fieldName: 'doc_creation_date', type: 'date', sortable: true },
+  { label: 'File Type', fieldName: 'fileType', type: 'text', sortable: true },
 ];
 
 export default class LWC003_RefDoc extends LightningElement {
   @api recordId;
   value;
 
-  wiredResults;
+  @track wiredResults = [];
   @track
   title = 'Gestion des documents';
   Lines = 'Lignes';
@@ -45,6 +46,8 @@ export default class LWC003_RefDoc extends LightningElement {
 
   @wire(getDocumentListCallout, { ownerid: '$recordId', doc_type: 'Facture' })
   getDocumentListCalloutF(result) {
+    console.log("called getDocumentListCalloutF");
+    this.wiredResults = [];
     this.wiredResults = result;
     if (result.data) {
       console.log('hello');
@@ -55,8 +58,7 @@ export default class LWC003_RefDoc extends LightningElement {
         this.recordsLength = this.recordsFromWS.length;
         this.dataTreatment(this.recordsFromWS);
       }
-    } 
-    else if (result.error) {
+    } else if (result.error) {
       console.log('*****Error : ' + result.error);
       this.dispatchEvent(
         new ShowToastEvent({
@@ -67,12 +69,12 @@ export default class LWC003_RefDoc extends LightningElement {
       );
       console.log('hello');
     }
-    
   }
   handleSentDocument(event) {
     console.log('hiiii');
     //window.location.reload();
     refreshApex(this.wiredResults);
+    refreshApex(this.recordId);
   }
   disconnectedCallback() {
     // unsubscribe from bearListUpdate event
@@ -84,7 +86,6 @@ export default class LWC003_RefDoc extends LightningElement {
     registerListener('handleCreateddocument', this.handleCreateddocument, this);
   }
 
- 
   //Handle Data from the Search Component
   handleCreateddocument(document) {
     this.records = [document, ...this.records];
@@ -183,5 +184,26 @@ export default class LWC003_RefDoc extends LightningElement {
 
     // set the sorted data to data table data
     this.records = parseData;
+  }
+  handleDownloadDocClicked(event) {
+    let docId = event.target.dataset.documentid;
+    let ownerid = event.target.dataset.ownerid;
+    let name = event.target.dataset.name;
+    let filetype = event.target.dataset.filetype;
+    getDocumentBySFIdCallout({ docId: docId, ownerid: ownerid })
+      .then(result => {
+        console.log('result : ');
+        console.log(result);
+        var a = document.body.appendChild(document.createElement('a'));
+        a.download = name+'.' + filetype.toLowerCase();
+        a.href = 'data:text/plain;base64,' + result;
+        a.innerHTML = 'download';
+        a.click();
+        document.body.removeChild(a);
+      })
+      .catch(error => {
+        console.error('error');
+        console.error(error);
+      });
   }
 }

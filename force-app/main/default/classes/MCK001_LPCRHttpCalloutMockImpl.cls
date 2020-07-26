@@ -21,20 +21,22 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
         }else if(req.getEndpoint().contains('LPCR_API_GetBySfId/')){
             System.debug(req.getBody());
             System.debug(req.getEndpoint());
-            WRP005_APIGetBySfId data = (WRP005_APIGetBySfId) JSON.deserialize(req.getBody(), WRP005_APIGetBySfId.class);
-            if(String.isNotBlank(data.Sfid)){
-                res.setBody('{"result":"200"}');
+            if(req.getEndpoint().split('/').size() > 1){
+                String jsonResponse = '{'+
+                ' \"binaryDocument\":\"Test file content\"' +
+                '}';
+                res.setBody(jsonResponse);
                 res.setStatusCode(200);
             }else{
-                res.setBody('{"result":"503"}');
-                res.setStatusCode(503);
+                res.setBody('');
+                res.setStatusCode(500);
             } 
         }else if(req.getEndpoint().contains('LPCR_API_DocList')){
             System.debug(req.getBody());
             System.debug(req.getEndpoint());
             SM019_DocumentList_Callout.DocumentListStructureWrapper data = (SM019_DocumentList_Callout.DocumentListStructureWrapper) JSON.deserialize(req.getBody(), SM019_DocumentList_Callout.DocumentListStructureWrapper.class);
             if(String.isNotBlank(data.OwnerSfId)){
-                res.setBody('{"result":"200","response":[{"id":"102120210212021021","DocumentType":"Facture"}]}');
+                res.setBody('[{"id":"102120210212021021","DocumentType":"Facture"}]');
                 res.setStatusCode(200);
             }else{
                 res.setBody('{"result":"503"}');

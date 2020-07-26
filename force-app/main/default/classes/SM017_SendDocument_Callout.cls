@@ -39,7 +39,7 @@ public with sharing class SM017_SendDocument_Callout {
         HttpResponse response = http.send(request);
         // Parse the JSON response
         String statusCode = response.getStatusCode()+'';
-        UM001_LogManager.writeLogActivity('Appel Service Externe REF DOC RECUP', '', 'Appel Externe', (Id) OwnerSfId, response.getBody(), (statusCode.equals('200') ? 'SUCCESS' : 'ERROR'));
+        UM001_LogManager.writeLogActivityWithoutFuture('Appel Service Externe REF DOC RECUP', '', 'Appel Externe', '' + OwnerSfId, response.getBody(), (statusCode.equals('200') ? 'SUCCESS' : 'ERROR'));
         if (statusCode.equals('200')) {
             //documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         } else {

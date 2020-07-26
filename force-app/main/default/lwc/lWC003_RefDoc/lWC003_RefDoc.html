@@ -1,38 +1,104 @@
 <template>
-    <div >
-    <lightning-card  title={title}  >
-      
-            <c-l-w-c-004_-ref-doc-param  record-id ={recordId} onsentdocument={handleSentDocument}>
-               
+    <div>
+        <lightning-card title={title}>
+
+            <c-l-w-c-004_-ref-doc-param record-id={recordId} onsentdocument={handleSentDocument}>
+
             </c-l-w-c-004_-ref-doc-param>
-            
-        
-        <div style="min-height: 300px;">
+
+
+            <div style="min-height: 300px;">
                 <template if:true={records}>
-                        <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
-                                <div style="margin-left: 20px;margin-top: 10px;">{Lines} :</div>
-                                <lightning-input type="number" min="1" class="slds-size_1-of-6" style="margin-left: -20px;"
-                                    value={numberOfData} name="numberOfData" onchange={handlNumberOfData}></lightning-input>
-                            </div>
-                <lightning-datatable key-field="Id" data={records} hide-checkbox-column="true" show-row-number-column
-                columns={columns} sorted-by={sortBy} sorted-direction={sortDirection} onsort={handleSortdata}
-                errors={errorMsg}>
-            </lightning-datatable>
-            </template>
-        </div>
-        <template if:true={errorMsg}>
+                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                        <div style="margin-left: 20px;margin-top: 10px;">{Lines} :</div>
+                        <lightning-input type="number" min="1" class="slds-size_1-of-6" style="margin-left: -20px;"
+                            value={numberOfData} name="numberOfData" onchange={handlNumberOfData}></lightning-input>
+                    </div>
+                    <!-- <lightning-datatable key-field="Id" data={records} hide-checkbox-column="true"
+                        show-row-number-column columns={columns} sorted-by={sortBy} sorted-direction={sortDirection}
+                        onsort={handleSortdata} errors={errorMsg}>
+                    </lightning-datatable> -->
+
+                    <!--
+    Start
+-->
+                    <table aria-multiselectable="true"
+                        class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols"
+                        role="grid">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <template for:each={columns} for:item="column">
+                                    <th key={column.fieldname} aria-label={column.label} aria-sort="none"
+                                        class="slds-is-resizable slds-is-sortable" scope="col">
+                                        <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);"
+                                            role="button" tabindex="0">
+                                            <span class="slds-assistive-text">Sort by: </span>
+                                            <div
+                                                class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                <span class="slds-truncate" title={column.label}>{column.label}</span>
+                                                <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                                    <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon "
+                                                        aria-hidden="true">
+                                                        <use
+                                                            xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <div class="slds-resizable">
+                                            <input type="range" aria-label="Account Name column width"
+                                                class="slds-resizable__input slds-assistive-text" max="1000" min="20"
+                                                tabindex="0" />
+                                            <span class="slds-resizable__handle">
+                                                <span class="slds-resizable__divider"></span>
+                                            </span>
+                                        </div>
+                                    </th>
+                                </template>
+                                <th class="" scope="col" style="width:3.25rem">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={records} for:item="record">
+
+                                <tr key={record} aria-selected="false" class="slds-hint-parent">
+                                    <template for:each={columns} for:item="column">
+                                        <td role="gridcell" key={column}>
+                                            <c-l-w-c010_-table-body-cell key={column} fieldname={column.fieldName} record={record}>
+
+                                            </c-l-w-c010_-table-body-cell> 
+                                      </td>
+                                    </template>
+                                    <td role="gridcell">
+                                        <lightning-button-icon icon-name="action:download"  data-name={record.name} data-filetype={record.fileType} data-ownerid={record.ownerSfId} data-documentid={record.docSfID} onclick={handleDownloadDocClicked} alternative-text="Download" title="Download"></lightning-button-icon>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+
+
+                    <!--
+    End
+-->
+                </template>
+            </div>
+            <template if:true={errorMsg}>
                 <!-- handle Apex error -->
                 <span class="slds-align_absolute-center">{errorMsg}</span>
             </template>
 
-            <div class="slds-align_absolute-center" >
-                    <lightning-button icon-name="utility:back" name="previous" onclick={handelPrevious}></lightning-button>
-                    <span class="slds-badge slds-badge_lightest" style="margin-right: 10px;margin-left: 10px;">
-                       {currentPage} {In} {numberOfAllPages}
-                    </span>
-                    <lightning-button icon-name="utility:forward" name="forward" onclick={handelForward}></lightning-button>
-                </div>
+            <div class="slds-align_absolute-center">
+                <lightning-button icon-name="utility:back" name="previous" onclick={handelPrevious}></lightning-button>
+                <span class="slds-badge slds-badge_lightest" style="margin-right: 10px;margin-left: 10px;">
+                    {currentPage} {In} {numberOfAllPages}
+                </span>
+                <lightning-button icon-name="utility:forward" name="forward" onclick={handelForward}></lightning-button>
+            </div>
 
-    </lightning-card>
-</div>
+        </lightning-card>
+    </div>
 </template>

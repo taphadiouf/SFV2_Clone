@@ -20,7 +20,7 @@ public with sharing class SM019_DocumentList_Callout {
         HttpResponse response = http.send(request);
         // Parse the JSON response
         String statusCode = response.getStatusCode()+'';
-        UM001_LogManager.writeLogActivity('Appel Service Externe REF DOC LIST', '', 'Appel Externe', (Id) ownerid, response.getBody(), (statusCode.equals('200') ? 'SUCCESS' : 'ERROR'));
+        UM001_LogManager.writeLogActivity('Appel Service Externe REF DOC LIST', '', 'Appel Externe', ownerid, response.getBody(), (statusCode.equals('200') ? 'SUCCESS' : 'ERROR'));
         if (statusCode.equals('200')) {
             System.debug('response.getBody()' + response.getBody());
             documentListFullResponse.response = (List<DocumentListResponse>) JSON.deserialize(response.getBody(), List<DocumentListResponse>.class);
@@ -82,7 +82,9 @@ public with sharing class SM019_DocumentList_Callout {
         @AuraEnabled
         public String documentType {get;set;}
         @AuraEnabled 
-        public DateTime doc_creation_date {get;set;} 
+        public String ownerSfId {get;set;} 
+        @AuraEnabled 
+        public String docSfID {get;set;} 
         @AuraEnabled
         public String documentStatus {get;set;} 
         @AuraEnabled
