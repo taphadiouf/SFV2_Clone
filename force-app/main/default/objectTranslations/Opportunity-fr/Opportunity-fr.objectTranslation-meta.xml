@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- Deal Desk --></label>
+        <name>sbaa__DealDesk</name>
+    </fieldSets>
+    <layouts>
+        <layout>CPQ Opportunity Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Recalculating --></label>
+            <section>Recalculating</section>
+        </sections>
+        <sections>
+            <label><!-- Salesforce CPQ Information --></label>
+            <section>Salesforce CPQ Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Présentation Opportunité AO public DSP</layout>
+        <sections>
+            <label><!-- Champs --></label>
+            <section>Champs</section>
+        </sections>
+        <sections>
+            <label><!-- Informations supplémentaires --></label>
+            <section>Informations supplémentaires</section>
+        </sections>
+        <sections>
+            <label><!-- Informations système --></label>
+            <section>Informations système</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Présentation Opportunité AO public réservation</layout>
+        <sections>
+            <label><!-- Champs --></label>
+            <section>Champs</section>
+        </sections>
+        <sections>
+            <label><!-- Informations supplémentaires --></label>
+            <section>Informations supplémentaires</section>
+        </sections>
+        <sections>
+            <label><!-- Informations système --></label>
+            <section>Informations système</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Présentation Opportunité Entreprise</layout>
+        <sections>
+            <label><!-- Champs --></label>
+            <section>Champs</section>
+        </sections>
+        <sections>
+            <label><!-- Informations Supplémentaires --></label>
+            <section>Informations Supplémentaires</section>
+        </sections>
+        <sections>
+            <label><!-- Informations système --></label>
+            <section>Informations système</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Présentation Opportunité Famille</layout>
+        <sections>
+            <label><!-- Champs --></label>
+            <section>Champs</section>
+        </sections>
+        <sections>
+            <label><!-- Informations supplémentaires --></label>
+            <section>Informations supplémentaires</section>
+        </sections>
+        <sections>
+            <label><!-- Informations système --></label>
+            <section>Informations système</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Présentation Opportunité Partenaire</layout>
+        <sections>
+            <label><!-- Champs --></label>
+            <section>Champs</section>
+        </sections>
+        <sections>
+            <label><!-- Informations supplémentaires --></label>
+            <section>Informations supplémentaires</section>
+        </sections>
+        <sections>
+            <label><!-- Informations système --></label>
+            <section>Informations système</section>
+        </sections>
+        <sections>
+            <label><!-- Liens Personnalisés --></label>
+            <section>Liens Personnalisés</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Nouveau Contrat Partenaire --></label>
+        <name>NouveauContratPartenaire</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Nouveau contrat de référencement --></label>
+        <name>NouveauContratReferecement</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Nouveau Contrat de Réservation --></label>
+        <name>NouveauContratReservation</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Nouvelle Demande Réseau Grandir --></label>
+        <name>NouvelleDemandeReseauGrandir</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Order --></label>
+        <name>SBQQ__CreateOrderLightning</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Adobe Sign --></label>
+        <name>echosign_dev1__EchoSign_Opportunity_Publisher_Action</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Recall Approvals --></label>
+        <name>sbaa__RecallMobile</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Submit for Approval --></label>
+        <name>sbaa__SubmitMobile</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- AO Public DSP --></label>
+        <name>AOPublicDSP</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- AO Public Réservation --></label>
+        <name>AOPublicReservation</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Entreprise --></label>
+        <name>Entreprise</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Famille --></label>
+        <name>Famille</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Partenaire --></label>
+        <name>Partenaire</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Veuillez  précisez la raison de l&apos;abandon de l&apos;Appel d&apos;Offre --></errorMessage>
+        <name>VR_Opportunity_AbandonLostReason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Veuillez renseigner le concurrent à l&apos;origine de la perte de l&apos;Opportunité --></errorMessage>
+        <name>VR_Opportunity_CompetitorLostReasons</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Veuillez renseigner la raison &quot;Autre&quot; de la perte --></errorMessage>
+        <name>VR_Opportunity_OtherLostReason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Veuillez renseigner une valeur de probabilité égale à 0% --></errorMessage>
+        <name>VR_Opportunity_Probability_00</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Veuillez renseigner une valeur de probabilité comprise entre 1 et 20% --></errorMessage>
+        <name>VR_Opportunity_Probability_00_20</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Veuillez renseigner une valeur de probabilité égale à 100% --></errorMessage>
+        <name>VR_Opportunity_Probability_10</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Veuillez renseigner une valeur de probabilité comprise entre 20 et 50% --></errorMessage>
+        <name>VR_Opportunity_Probability_20_500</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Veuillez renseigner une valeur de probabilité comprise entre 50 et 80% --></errorMessage>
+        <name>VR_Opportunity_Probability_50_800</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Conga_Composer_OAuth --></label>
+        <name>APXTCFQ__Conga_Composer_OAuth</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Conga_Mail_Merge --></label>
+        <name>APXTCFQ__Conga_Mail_Merge</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Amend_Assets --></label>
+        <name>SBQQ__Amend_Assets</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Amend_Contract --></label>
+        <name>SBQQ__Amend_Contract</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateOrder --></label>
+        <name>SBQQ__CreateOrder</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Include_Document --></label>
+        <name>SBQQ__Include_Document</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Conga_Send_to_EchoSign --></label>
+        <name>echosign_dev1__Conga_Send_to_EchoSign</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_to_EchoSign --></label>
+        <name>echosign_dev1__Send_to_EchoSign</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- PreviewApprovals --></label>
+        <name>sbaa__PreviewApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- RecallApprovals --></label>
+        <name>sbaa__RecallApprovals</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- ResendRequestEmail --></label>
+        <name>sbaa__ResendRequestEmail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SubmitForApproval --></label>
+        <name>sbaa__SubmitForApproval</name>
+    </webLinks>
+</CustomObjectTranslation>

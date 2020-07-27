@@ -57,16 +57,20 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
+                <behavior>Required</behavior>
+                <field>AccountId</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_TypeEnregistrement__c</field>
+                <field>RecordTypeId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>OwnerId</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_CandidatureEnvoyee__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>AccountId</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -307,7 +311,7 @@
         <fields>CASES.SUBJECT</fields>
         <fields>CASES.CREATED_DATE</fields>
         <fields>CASES.PRIORITY</fields>
-        <relatedList>Case.Opportunite__c</relatedList>
+        <relatedList>Case.LPCR_Opportunite__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -323,7 +327,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3E000001XN0Z</masterLabel>
+        <masterLabel>00h1X000001G6HM</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

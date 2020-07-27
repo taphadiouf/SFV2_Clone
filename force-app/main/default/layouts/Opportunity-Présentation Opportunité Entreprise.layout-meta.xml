@@ -15,6 +15,10 @@
                 <field>CloseDate</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Type</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_TypeOffre__c</field>
             </layoutItems>
@@ -29,12 +33,16 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_TypeEnregistrement__c</field>
+                <behavior>Required</behavior>
+                <field>AccountId</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>AccountId</field>
+                <field>OwnerId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>RecordTypeId</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -92,10 +100,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LastModifiedById</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>RecordTypeId</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -207,7 +211,7 @@
         <fields>LPCR_Enfant__c</fields>
         <fields>Lead__c</fields>
         <fields>CASES.STATUS</fields>
-        <relatedList>Case.Opportunite__c</relatedList>
+        <relatedList>Case.LPCR_Opportunite__c</relatedList>
         <sortField>CASES.STATUS</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>
@@ -219,6 +223,9 @@
         <fields>SBQQ__Primary__c</fields>
         <relatedList>SBQQ__Quote__c.SBQQ__Opportunity2__c</relatedList>
     </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedOpportunityHistoryList</relatedList>
+    </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
@@ -226,7 +233,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3E000001XN0a</masterLabel>
+        <masterLabel>00h1X000001G6HN</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
