@@ -81,7 +81,8 @@ public class SM021_ModificationEntranteServices_Test {
             List<LPCR_ModificationEntrante__c> modificationsEntrantes = UM002_TestDataFactory.createModificationsEntrantes(100,quotes,contracts,'Validation Contrat Directrice');
             insert modificationsEntrantes;
             List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
-            System.assertEquals(1, quotesValides.size(), 'Error in SM021_ModificationEntranteServices_Test : problem in updating quotesValides');
+            System.assertEquals(100, quotesValides.size(), 'Error in SM021_ModificationEntranteServices_Test : problem in updating quotesValides');
+
             Test.stopTest();
         }
     }

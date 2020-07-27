@@ -6,87 +6,76 @@
 public with sharing class SM009_ParametrageScoreServices {
     
     public static void setScoreOnpreinscriptions(List<LPCR_Preinscription__c> preinscriptions){
+        List<String> lstFields = new List<String>();
         
-        Map<Id,LPCR_ParametrageScore__c> mapParametrageScore = new Map<Id,LPCR_ParametrageScore__c>([SELECT Id,LPCR_ReponseCrecheMunicipale__c,LPCR_Anciennete__c,LPCR_NbJourGarde__c,LPCR_Revenu__c,LPCR_Score__c,LPCR_DateEntree__c FROM LPCR_ParametrageScore__c]);
+        Set<String> accountIds = UM003_TypeManager.getFieldsOfListObjects(preinscriptions,'LPCR_CompteEntreprise__c');
+        Map<id, List<LPCR_ParametrageScore__c>> paramScoreMap = new Map <id, List<LPCR_ParametrageScore__c>>();
         
-        if(mapParametrageScore!=null){
-            for(LPCR_Preinscription__c eachPreinscription : preinscriptions){
-                eachPreinscription.LPCR_Score__c= scoreCalculation(eachPreinscription , mapParametrageScore);
-            } 
+        for(LPCR_ParametrageScore__c paramScore : [SELECT Id, LPCR_ApiFieldName__c, LPCR_Format__c, LPCR_Valeur__c, LPCR_Score__c, LPCR_Account__c FROM LPCR_ParametrageScore__c where LPCR_Account__c in: accountIds]){
+            if(!paramScoreMap.containsKey(paramScore.LPCR_Account__c)){
+                List<LPCR_ParametrageScore__c> paramScoreList = new List<LPCR_ParametrageScore__c>();
+                paramScoreList.add(paramScore);
+                paramScoreMap.put(paramScore.LPCR_Account__c,paramScoreList);
+            }
+            else{
+                List<LPCR_ParametrageScore__c> paramScoreList = paramScoreMap.get(paramScore.LPCR_Account__c);
+                paramScoreList.add(paramScore);
+                paramScoreMap.put(paramScore.LPCR_Account__c,paramScoreList);
+            }
+        }
+        
+        for(LPCR_Preinscription__c eachPreinscription : preinscriptions){
+            if(paramScoreMap.containsKey(eachPreinscription.LPCR_CompteEntreprise__c)){
+                eachPreinscription.LPCR_Score__c= scoreCalculation(eachPreinscription , paramScoreMap.get(eachPreinscription.LPCR_CompteEntreprise__c));
+                
+            }
         }        
     }
     
-    public static Decimal scoreCalculation(LPCR_Preinscription__c preinscription,Map<Id,LPCR_ParametrageScore__c> mapParametrageScore){
+    public static Decimal scoreCalculation(LPCR_Preinscription__c preinscription,List<LPCR_ParametrageScore__c> parametrageScoreList){
         
-        Decimal[] previousTranchTab= new Decimal[]{-1,-1,-1,-1};
-        Date previousDate = null;
-        Decimal[] scoreTab= new Decimal[]{-1,-1,-1,-1,-1};
-        Decimal finalScore =0;
-        for(LPCR_ParametrageScore__c eachParam : mapParametrageScore.values()){
-            
-           //Anciennete
-            if(eachParam.LPCR_Anciennete__c!=null &&
-               preinscription.LPCR_Anciennete__c  >= eachParam.LPCR_Anciennete__c && 
-               (previousTranchTab[0] ==-1 || (previousTranchTab[0] < eachParam.LPCR_Anciennete__c && scoreTab[0]!=-1))){
-                scoreTab[0] = eachParam.LPCR_Score__c;
-                previousTranchTab[0] = eachParam.LPCR_Anciennete__c;
-               continue;
-            }
-            
-            
-            // Nombre de jour de garde par semaine
-            if(eachParam.LPCR_NbJourGarde__c!=null  
-               && preinscription.LPCR_NombreJours__c  >= eachParam.LPCR_NbJourGarde__c 
-               && (previousTranchTab[1]==-1 || (previousTranchTab[1] < eachParam.LPCR_NbJourGarde__c && scoreTab[1]!=-1))){
-                scoreTab[1] = eachParam.LPCR_Score__c;
-                previousTranchTab[1] = eachParam.LPCR_NbJourGarde__c;
-                 continue;
-            }
-            
-            
-            // Revenus
-            if( eachParam.LPCR_Revenu__c !=null  
-               && preinscription.LPCR_Revenu__c  >= eachParam.LPCR_Revenu__c
-               && (previousTranchTab[2]==-1 || (previousTranchTab[2] < eachParam.LPCR_Revenu__c && scoreTab[2]!=-1))){
-                scoreTab[2] = eachParam.LPCR_Score__c;
-                previousTranchTab[2] = eachParam.LPCR_Revenu__c;
-                  continue;
-               
-            }
-            
-         
-            
-            // La date d’entrée 
-            if(eachParam.LPCR_DateEntree__c!=null  
-               && preinscription.LPCR_DateEntreeCreche__c  >= eachParam.LPCR_DateEntree__c 
-               && (previousDate==null || (previousDate < eachParam.LPCR_DateEntree__c && scoreTab[4]!=-1))){
-                scoreTab[4] = eachParam.LPCR_Score__c;
-                previousDate = eachParam.LPCR_DateEntree__c;
-                 continue;
-            }
-            
-           
-               // La demande et/ou réponse de la crèche municipale 
-            if(eachParam.LPCR_Anciennete__c==null && eachParam.LPCR_NbJourGarde__c==null && eachParam.LPCR_Revenu__c ==null && eachParam.LPCR_DateEntree__c==null  
-               && eachParam.LPCR_ReponseCrecheMunicipale__c!=null &&  scoreTab[3]==-1  ){
-                if(preinscription.LPCR_ReponseCrecheMunicipale__c ==  eachParam.LPCR_ReponseCrecheMunicipale__c){
-                    scoreTab[3] = eachParam.LPCR_Score__c;
-                    continue;
+        map<string, Decimal> mapScore = new Map<string,Decimal>();
+        
+        for(LPCR_ParametrageScore__c eachParam : parametrageScoreList){
+            string field = eachParam.LPCR_ApiFieldName__c;
+            if(eachParam.LPCR_Format__c != null && eachParam.LPCR_Valeur__c != null && eachParam.LPCR_ApiFieldName__c != null){
+                if(eachparam.LPCR_Format__c == 'Numéro'){
+                    map<string, Decimal> mapValeur = new Map<string, Decimal>();
+                    Decimal ValeurPres = (Decimal)preinscription.get(field);
+                    Decimal ValeurParam = Decimal.valueOf(eachParam.LPCR_Valeur__c);
+                    if(ValeurPres >= ValeurParam && (!mapValeur.containsKey(field) || mapValeur.get(field) < ValeurParam)){
+                        mapValeur.put(field, ValeurParam);
+                        mapScore.put(field,eachParam.LPCR_Score__c );
+                    }
                 }
-               
                 
+                else if(eachparam.LPCR_Format__c == 'Date'){
+                    map<string, Date> mapValeur = new Map<string, Date>();
+                    Date ValeurPres = (Date)preinscription.get(field);
+                    Date ValeurParam = Date.valueOf(eachParam.LPCR_Valeur__c);
+                    
+                    if(ValeurPres >= ValeurParam && (!mapValeur.containsKey(field) || mapValeur.get(field) < ValeurParam)){
+                        mapValeur.put(field, ValeurParam);
+                        mapScore.put(field,eachParam.LPCR_Score__c );
+                    }
+                }
+                
+                else if(eachparam.LPCR_Format__c == 'Liste'){
+                    String ValeurPres = (String)preinscription.get(field);
+                    String ValeurParam = String.valueOf(eachParam.LPCR_Valeur__c);
+                    
+                    if(ValeurPres == ValeurParam){
+                        mapScore.put(field,eachParam.LPCR_Score__c );
+                    }
+                }
             }
-            
         }
         
-        for(Integer i=0; i<5 ;i++){
-            if(scoreTab[i]!=-1){
-                finalScore+=scoreTab[i];
-            }
+        Decimal totalScore = 0;
+        for(Decimal score: mapScore.values()){
+            totalScore = totalScore + score; 
         }
-        
-        
-        return finalScore;
+        return totalScore;
     }
     
 }
