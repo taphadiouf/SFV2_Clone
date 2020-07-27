@@ -142,7 +142,7 @@ public with sharing class SM013_QuoteLineServices_Test {
         }
         update orders;
 
-        List<Contract> contracts = new List<Contract>();
+        /*List<Contract> contracts = new List<Contract>();
         for (Order order : orders) {
             defaultVal = new Map<String, Object> {
                 'AccountId' => order.AccountId,
@@ -175,7 +175,7 @@ public with sharing class SM013_QuoteLineServices_Test {
         for (Contract c : contracts) {
             c.Status='Activated';
         }
-        update contracts;
+        update contracts;*/
 
         defaultVal = new Map<String, Object> {
             'Name' => 'Asset-MAC',
