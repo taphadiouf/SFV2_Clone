@@ -19,7 +19,8 @@ public class SM021_ModificationEntranteServices_Test {
         insert opps;
         List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(100, accounts, opps);
         insert quotes;
-
+        List<Contract> contracts = UM002_TestDataFactory.createContracts(100,accounts,quotes);
+        insert contracts;
         Id standardPricebookId = Test.getStandardPricebookId();
         UM002_TestDataFactory.insertBillingCustomSettings();
         blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
@@ -75,6 +76,10 @@ public class SM021_ModificationEntranteServices_Test {
             LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;
             Test.startTest();
+            List<SBQQ__Quote__c> quotes = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c];
+            List<Contract> contracts = [SELECT Id, SBQQ__Quote__c FROM Contract];
+            List<LPCR_ModificationEntrante__c> modificationsEntrantes = UM002_TestDataFactory.createModificationsEntrantes(100,quotes,contracts,'Validation Contrat Directrice');
+            insert modificationsEntrantes;
             List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
             System.assertEquals(1, quotesValides.size(), 'Error in SM021_ModificationEntranteServices_Test : problem in updating quotesValides');
             Test.stopTest();
@@ -1527,21 +1532,4 @@ public class SM021_ModificationEntranteServices_Test {
             System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
-    /*@isTest
-    public static void createUsageFromModifEntrantes_Test(){
-        Test.startTest();
-        Account acc = UM002_TestDataFactory.createAccounts(1, 'tAccount').get(0);
-        insert acc;
-        Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
-        insert cont;
-        LPCR_ModificationEntrante__c modifEntrantesValides = new LPCR_ModificationEntrante__c();
-        modifEntrantesValides.LPCR_Contact__c= cont.id;
-        modifEntrantesValides.LPCR_Compte__c = acc.id;
-        modifEntrantesValides.LPCR_Evenement__c= 'Modification Heure Occasionnel MAC';
-        modifEntrantesValides.LPCR_HeureDateDebut__c = System.today();
-        modifEntrantesValides.LPCR_HeureDateFin__c = System.today().addDays(60);
-        modifEntrantesValides.LPCR_Quantite__c = 1;
-        insert modifEntrantesValides;
-        Test.stopTest();
-    }*/
 }
