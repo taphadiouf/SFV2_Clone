@@ -584,9 +584,10 @@ newMe.FederationIdentifier = null;
                                             //LPCR_TauxMensuel__c=price,
                                             Name=name);
     } 
-    public static LPCR_RessourceFamille__c createRessourceFamille(Date debutDate,Id userId,String name){
+    public static LPCR_RessourceFamille__c createRessourceFamille(Date debutDate,Id userId,Id contId,String name){
         return new LPCR_RessourceFamille__c(   LPCR_DateDebut__c = debutDate,
                                             LPCR_CompteFamille__c=userId,
+                                            LPCR_ContactEnfant__c= contId,
                                             Name=name);
     }
     public static List<LPCR_RessourceFamille__c> createRessourceFamille(Integer nbr,Id productId, Id userId,Decimal price,List<Date> listStartDate,List<Decimal> listNbrEnfant,List<Decimal> listNbrEnfantHandicape){
@@ -1167,7 +1168,7 @@ newMe.FederationIdentifier = null;
     
     public static LPCR_ModificationEntrante__c createModificationsEntrante(String event,Id accountId, Id contactId, Id contractId,Decimal revenusFamille){
         LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Evenement__c = event,
-                                                                                     LPCR_Compte__c = accountId,
+                                                                                     LPCR_Compte__c = accountId,LPCR_Statut__c = 'Validée',
                                                                                      LPCR_Quantite__c = 1, LPCR_Contract__c = contractId,
                                                                                      LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = false,
                                                                                      LPCR_RessourceFamille__c = revenusFamille);       
@@ -1176,7 +1177,7 @@ newMe.FederationIdentifier = null;
     
     //added by saurabh
     public static LPCR_ModificationEntrante__c createModificationsEntrante(String event,Id accountId, Id contactId, Id contractId,Date dateEffet,Decimal revenusFamille){
-        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Evenement__c = event,
+        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Evenement__c = event,LPCR_Statut__c = 'Validée',
                                                                                      LPCR_DateEffet__c = dateEffet, LPCR_Compte__c = accountId,
                                                                                      LPCR_Quantite__c = 1, LPCR_Contract__c = contractId,
                                                                                      LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = false,
