@@ -21,7 +21,7 @@ global class APB007_TraitementModificationEntrante implements Database.Batchable
         PAD.log('APB007_TraitementModificationEntrante', 'execute','scope to execute : '+scope );
         
         Set<Id> modificationEntranteIds = UM003_TypeManager.getIdsOfListObjects(scope);
-        SM013_ModificationEntranteServices.updateQuotesFromModifEntrantesBatch(scope);
+        SM021_ModificationEntranteServices.updateQuotesFromModifEntrantesBatch(scope);
          
     }
     
