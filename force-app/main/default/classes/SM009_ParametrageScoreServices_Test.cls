@@ -16,6 +16,12 @@ public class SM009_ParametrageScoreServices_Test {
         Contact contact= c.create('Test','Test', acc);
         contact.RecordTypeId = enfantContactRecordTypeId;
         insert contact;
+        
+        //insert params
+        List<LPCR_ParametrageScore__c> listParams = UM002_TestDataFactory.createParametrageScores (acc.Id);       
+        insert listParams;
+        
+        //insert preinscription
         LPCR_Preinscription__c  preinsciption = UM002_TestDataFactory.createPreinscription('test', 'test',acc.Id,contact.Id );
         preinsciption.LPCR_HeureDebutLundi__c   = DateTime.newInstance(2020, 01, 01, 8, 0, 0).Time();
         preinsciption.LPCR_HeureFinLundi__c    = DateTime.newInstance(2020, 01, 01, 16, 0, 0).Time();
@@ -33,46 +39,29 @@ public class SM009_ParametrageScoreServices_Test {
         preinsciption.LPCR_HeureFinVendredi__c    = DateTime.newInstance(2020, 01, 01, 16, 0, 0).Time();
         
         
-        preinsciption.LPCR_ReponseCrecheMunicipale__c='Refus';
-        preinsciption.LPCR_DateEntreeCreche__c= Date.newInstance(2020, 09, 01);
-        preinsciption.LPCR_DateEntreeEntreprise__c = Date.today().addDays(-3);
-        preinsciption.LPCR_Revenu__c =12000;
-
         
+        preinsciption.LPCR_DateEntreeCreche__c= Date.newInstance(2020, 09, 01);
+        
+        
+        preinsciption.LPCR_CompteEntreprise__c = acc.Id;
         insert preinsciption;
         
         
-        List<LPCR_ParametrageScore__c> listParams = UM002_TestDataFactory.createParametrageScores (acc.Id);       
-        insert listParams;
+        
     }        
     
     //Test the method setPreinscriptionScore_Test from SM009_ParametrageScoreServices
     @isTest
     public static void setPreinscriptionScore_Test(){
-        
-        LPCR_Preinscription__c  preinsciption  = [SELECT LPCR_Score__c, LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'];
-        Decimal score450=450;
-        Decimal score420=420;
       
         System.runAs(UM002_TestDataFactory.createUser()){
-              Test.startTest();
-            preinsciption.LPCR_Statut__c = 'Confirmé';
-            preinsciption.LPCR_ReponseCrecheMunicipale__c='Refus';
-            update preinsciption;
-            preinsciption  = [SELECT LPCR_ReponseCrecheMunicipale__c,LPCR_Score__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'];
-            score450 = preinsciption.LPCR_Score__c;
-            
+            LPCR_Preinscription__c  preinsciption  = [SELECT LPCR_Score__c, LPCR_Statut__c,LPCR_PrenomEnfant__c,NomEnfant__c,LPCR_CompteFamille__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'];
             preinsciption.LPCR_ReponseCrecheMunicipale__c='Autre';
-            update preinsciption; 
-            preinsciption  = [SELECT LPCR_ReponseCrecheMunicipale__c,LPCR_Score__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'];
-          
-            score420 = preinsciption.LPCR_Score__c;
-            Test.stopTest();
-            System.assertEquals(450,score450,'Error in SM009_ParametrageScoreServices_Test.setPreinscriptionScore_Test : LPCR_Preinscription__c.LPCR_Score__c is wrong');
-            
-            System.assertEquals(420,score420,'Error in SM009_ParametrageScoreServices_Test.setPreinscriptionScore_Test : LPCR_Preinscription__c.LPCR_Score__c is wrong');
-          
+            preinsciption.LPCR_DateEntreeEntreprise__c = Date.today().addDays(-3);
+            update preinsciption;
         }
+        
+        System.assertEquals(1475, [SELECT LPCR_Score__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'].LPCR_Score__c);
        
         
     }
