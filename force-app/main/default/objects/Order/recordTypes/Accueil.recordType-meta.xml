@@ -2,6 +2,7 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Accueil</fullName>
     <active>true</active>
+    <compactLayoutAssignment>LPCR_PresentationCompactCommande</compactLayoutAssignment>
     <label>Accueil</label>
     <picklistValues>
         <picklist>LPCR_FrequenceFacturation__c</picklist>

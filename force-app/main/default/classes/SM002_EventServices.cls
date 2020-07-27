@@ -12,9 +12,9 @@ public with sharing class SM002_EventServices {
         for(Event ta:newEventsList){
             setLeadIds.add(ta.WhoId);
         }
-        List<Lead> listLead = EM002_LeadEntity.getLeadsBy(setLeadIds,System.Label.LPCR_Famille,System.Label.LPCR_Nouveau);
+        List<Lead> listLead = EM002_LeadEntity.getLeadsByIdsAndStatus(setLeadIds, System.Label.LPCR_Nouveau);
         for(Lead le: listLead){
-            le.status =Label.LPCR_EnCours;
+            le.status = Label.LPCR_EnCours;
         }
         update listLead;
         return listLead;

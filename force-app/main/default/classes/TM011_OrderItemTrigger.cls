@@ -15,7 +15,7 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     }
 
     protected override void beforeInsert() {
-      if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+      if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
         SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
         SM012_OrderItemServices.setInvoiceGrouping(newOrderItemsList);
         SM012_OrderItemServices.setOrderItemFields(newOrderItemsList);
@@ -24,7 +24,7 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     }
 
     protected override void afterInsert() {
-  if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+  if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
      SM012_OrderItemServices.setInvoiceGroupingOnOrderItem(newOrderItemsMap);
         
         List<OrderItem> orderItemToProcess = new List<OrderItem> ();
@@ -42,7 +42,7 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     }
 
     protected override void beforeUpdate() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){	        
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){	        
             SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
             SM012_OrderItemServices.setOrderItemFieldsFromContract(newOrderItemsList);
             SM012_OrderItemServices.updateHoldBillingFromQuote(newOrderItemsList, oldOrderItemsMap,newOrderItemsMap);
@@ -50,7 +50,7 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     }
     
     protected override void afterUpdate() {
-       if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+       if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
         SM012_OrderItemServices.legalEntityOnOrderItemConSch(newOrderItemsMap);
         SM012_OrderItemServices.updateFiledsOnBillingTransaction(oldOrderItemsMap,newOrderItemsMap);
            

@@ -19,6 +19,10 @@
         <value xsi:type="xsd:string">Avenant</value>
     </values>
     <values>
+        <field>LPCR_ReglementCreche__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
         <field>LPCR_Validation__c</field>
         <value xsi:type="xsd:boolean">true</value>
     </values>
