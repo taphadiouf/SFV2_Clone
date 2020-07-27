@@ -12,7 +12,17 @@ public with sharing class SM019_DocumentList_Callout {
         
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('callout:LPCR_API_DocList');
+        
+        LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
+        if('DEV'.equals(envCS.Nom__c)){
+            request.setEndpoint('callout:DEV_DOCUMENT_LISTE');
+        }
+        else if('UAT'.equals(envCS.Nom__c)){
+            request.setEndpoint('callout:UAT_DOCUMENT_LISTE');
+        }
+        else if('PROD'.equals(envCS.Nom__c)){
+            request.setEndpoint('callout:PROD_DOCUMENT_LISTE');
+        }
         request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json;charset=UTF-8');
         DocumentListStructureWrapper docListStructure = new DocumentListStructureWrapper(ownerid, doc_type);

@@ -31,7 +31,16 @@ public with sharing class SM017_SendDocument_Callout {
         final String WS_NOM_SERVICE  = 'LPCR_ENVOIE_DOCUMENT';
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('callout:LPCR_API_SaveDocument');
+        LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
+        if('DEV'.equals(envCS.Nom__c)){
+            request.setEndpoint('callout:DEV_SEND_DOCUMENT');
+        }
+        else if('UAT'.equals(envCS.Nom__c)){
+            request.setEndpoint('callout:UAT_SEND_DOCUMENT');
+        }
+        else if('PROD'.equals(envCS.Nom__c)){
+            request.setEndpoint('callout:PROD_SEND_DOCUMENT');
+        }
         request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json;charset=UTF-8');
         WRP004_APISaveDocument data = new WRP004_APISaveDocument(OwnerSfId, DocSfID, Name, BinaryDocument);

@@ -10,7 +10,17 @@ public with sharing class SM020_GetDocument_Callout {
         DocumentWrapper docWrp = new DocumentWrapper();
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('callout:LPCR_API_GetBySfId'+ '/' + docId);
+        LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
+        if('DEV'.equals(envCS.Nom__c)){
+            request.setEndpoint('callout:DEV_GET_DOCUMENT'+ '/' + docId);
+        }
+        else if('UAT'.equals(envCS.Nom__c)){
+            request.setEndpoint('callout:UAT_GET_DOCUMENT'+ '/' + docId);
+        }
+        else if('PROD'.equals(envCS.Nom__c)){
+            request.setEndpoint('callout:PROD_GET_DOCUMENT'+ '/' + docId);
+        }
+        
         System.debug('awesome url : ' + request.getEndpoint());
         request.setMethod('GET');
         request.setHeader('Content-Type', 'application/json;charset=UTF-8');
