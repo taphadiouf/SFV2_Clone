@@ -8,10 +8,12 @@
         <members>LPCR_TypeContrat.B2B</members>
         <members>LPCR_TypeContrat.B2C_MAC</members>
         <members>LPCR_TypeContrat.B2C_MICRO</members>
-        <members>LPCR_Type_Evenement_Intranet.Absences</members>
+        <members>LPCR_Type_Evenement_Intranet.Abscence</members>
+        <members>LPCR_Type_Evenement_Intranet.Commentaire_Global_Facture</members>
+        <members>LPCR_Type_Evenement_Intranet.Commentaire_Individuel_Facture</members>
         <members>LPCR_Type_Evenement_Intranet.Date_Fin_Contrat</members>
         <members>LPCR_Type_Evenement_Intranet.Date_Naissance_Enfant</members>
-        <members>LPCR_Type_Evenement_Intranet.Delai_Carence</members>
+        <members>LPCR_Type_Evenement_Intranet.Modification_Delai_Carence</members>
         <members>LPCR_Type_Evenement_Intranet.Modification_Adresse_Contact_Parent</members>
         <members>LPCR_Type_Evenement_Intranet.Modification_Autorite_Parentale</members>
         <members>LPCR_Type_Evenement_Intranet.Modification_Facturation_Adaptation</members>
@@ -30,9 +32,10 @@
         <members>LPCR_Type_Evenement_Intranet.Modification_Situation_Handicape_Enfant</members>
         <members>LPCR_Type_Evenement_Intranet.Modification_Type_Accueil</members>
         <members>LPCR_Type_Evenement_Intranet.Modification_Type_Planning</members>
-        <members>LPCR_Type_Evenement_Intranet.Nombre_Heure_Realisee</members>
-        <members>LPCR_Type_Evenement_Intranet.Nombre_Repas</members>
+        <members>LPCR_Type_Evenement_Intranet.NB_Heures_Realisee</members>
+        <members>LPCR_Type_Evenement_Intranet.Nombre_de_repas</members>
         <members>LPCR_Type_Evenement_Intranet.Regularisation</members>
+        <members>LPCR_Type_Evenement_Intranet.Traitement_Jour_Ferie</members>
         <members>LPCR_Type_Evenement_Intranet.Validation_Contrat_Accueil_Directrice</members>
         <members>LPCR_AdobeAgreementTemplate.CONTRAT_ANNEXE2</members>
         <members>LPCR_AdobeAgreementTemplate.CONTRAT_ANNEXE3</members>
