@@ -2,6 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>AccountId</fullName>
     <inlineHelpText>Nom du sponsor</inlineHelpText>
+    <!--
     <lookupFilter>
         <active>true</active>
         <errorMessage>Veuillez sélectionner un compte entreprise ou un compte partenaire</errorMessage>
@@ -12,6 +13,7 @@
         </filterItems>
         <isOptional>false</isOptional>
     </lookupFilter>
+    -->
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
