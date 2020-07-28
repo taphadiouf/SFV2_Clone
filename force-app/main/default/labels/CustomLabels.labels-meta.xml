@@ -29,6 +29,20 @@
         <value>AccountId</value>
     </labels>
     <labels>
+        <fullName>LPCR_Accueil_Approuve</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Accueil_Approuve</shortDescription>
+        <value>Accueil_Approuve</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Advance</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Advance</shortDescription>
+        <value>Advance</value>
+    </labels>
+    <labels>
         <fullName>LPCR_AmendedContract</fullName>
         <language>fr</language>
         <protected>false</protected>
@@ -43,11 +57,32 @@
         <value>Amendment</value>
     </labels>
     <labels>
+        <fullName>LPCR_Annual</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Annual</shortDescription>
+        <value>Annual</value>
+    </labels>
+    <labels>
         <fullName>LPCR_ApprovalStatusApproved</fullName>
         <language>fr</language>
         <protected>false</protected>
         <shortDescription>LPCR_ApprovalStatusApproved</shortDescription>
         <value>Approved</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Arrears</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Arrears</shortDescription>
+        <value>Arrears</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Client</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Client</shortDescription>
+        <value>Client</value>
     </labels>
     <labels>
         <fullName>LPCR_CompteWA</fullName>
@@ -106,6 +141,13 @@
         <value>Accueil</value>
     </labels>
     <labels>
+        <fullName>LPCR_ContratEnfant</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>LPCR_ContratEnfant</shortDescription>
+        <value>Contrat au bénéfice de l&apos;enfant :</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Contrat_B2B</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -118,13 +160,6 @@
         <protected>false</protected>
         <shortDescription>LPCR_Contrat_B2C</shortDescription>
         <value>Contrat_B2C</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_ContratEnfant</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>LPCR_ContratEnfant</shortDescription>
-        <value>Contrat au bénéfice de l&apos;enfant :</value>
     </labels>
     <labels>
         <fullName>LPCR_ConvertLeadF</fullName>
@@ -267,6 +302,13 @@
         <value>Le montant du forfait mensuel est de :</value>
     </labels>
     <labels>
+        <fullName>LPCR_Monthly</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Monthly</shortDescription>
+        <value>Monthly</value>
+    </labels>
+    <labels>
         <fullName>LPCR_NbrContractuelMois</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -321,6 +363,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_Occasionnel</shortDescription>
         <value>Occasionnel</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_OneTime</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_OneTime</shortDescription>
+        <value>One-Time</value>
     </labels>
     <labels>
         <fullName>LPCR_OppFor</fullName>
@@ -400,6 +449,13 @@
         <value>Prêt à valider</value>
     </labels>
     <labels>
+        <fullName>LPCR_Prospect</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Prospect</shortDescription>
+        <value>Prospect</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Prospecting</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -412,6 +468,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_PublicDSP</shortDescription>
         <value>AOPublicDSP</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Quarterly</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Quarterly</shortDescription>
+        <value>Quarterly</value>
     </labels>
     <labels>
         <fullName>LPCR_Quote</fullName>
@@ -498,18 +561,18 @@
         <value>ReseauLPCR</value>
     </labels>
     <labels>
-        <fullName>LPCR_Reservataire_Approuve</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Reservataire</shortDescription>
-        <value>Reservataire_Approuve</value>
-    </labels>
-    <labels>
         <fullName>LPCR_Reservataire</fullName>
         <language>fr</language>
         <protected>false</protected>
         <shortDescription>LPCR_Reservataire</shortDescription>
         <value>Reservataire</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Reservataire_Approuve</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Reservataire</shortDescription>
+        <value>Reservataire_Approuve</value>
     </labels>
     <labels>
         <fullName>LPCR_RessourcesM</fullName>
@@ -531,6 +594,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_SansRenouvellement</shortDescription>
         <value>Sans renouvellement</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Semiannual</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Semiannual</shortDescription>
+        <value>Semiannual</value>
     </labels>
     <labels>
         <fullName>LPCR_Sent</fullName>

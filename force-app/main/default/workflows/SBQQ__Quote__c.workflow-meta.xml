@@ -12,17 +12,6 @@
         <template>unfiled$public/LPCR_ResiliationContrat</template>
     </alerts>
     <alerts>
-        <fullName>LPCR_AlerteContratToujoursAttenteSignature</fullName>
-        <description>Alerte Contrat Toujours En Attente De Signature</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>ataib@lpcr.fr</recipient>
-            <type>user</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_Contrat_NonSigne</template>
-    </alerts>
-    <alerts>
         <fullName>LPCR_AlerteContratterminmicro</fullName>
         <description>Alerte Contrat terminé (micro)</description>
         <protected>false</protected>
@@ -70,36 +59,6 @@
         <template>unfiled$public/LPCR_DevisRejete</template>
     </alerts>
     <alerts>
-        <fullName>LPCR_Contratvalide</fullName>
-        <description>Contrat validé</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_DevisAccepte</template>
-    </alerts>
-    <alerts>
-        <fullName>LPCR_DevisAccepte</fullName>
-        <description>Devis Accepté</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_DevisAccepte</template>
-    </alerts>
-    <alerts>
-        <fullName>LPCR_DevisRejete</fullName>
-        <description>Devis Rejeté</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_DevisRejete</template>
-    </alerts>
-    <alerts>
         <fullName>LPCR_InformerSFResiliation</fullName>
         <description>Informer le Service Famille de la résiliation</description>
         <protected>false</protected>
@@ -131,16 +90,15 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/LPCR_DevisAccepte</template>
     </alerts>
-    <alerts>
-        <fullName>Signature_Contrat</fullName>
-        <description>Signature Contrat</description>
+    <fieldUpdates>
+        <fullName>LPCR_SetStatutPretpourcommande</fullName>
+        <field>SBQQ__Status__c</field>
+        <literalValue>Prêt pour commande</literalValue>
+        <name>Set statut a pret pour commande</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
         <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_Contrat_NonSigne</template>
-    </alerts>
+    </fieldUpdates>
     <fieldUpdates>
         <fullName>LPCR_StatutApprouve</fullName>
         <field>LPCR_StatutApprobation__c</field>
@@ -228,6 +186,35 @@
         <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>LPCR_UpdateNumeroContrat</fullName>
+        <field>LPCR_NumeroContrat__c</field>
+        <formula>IF(OR(RecordType.DeveloperName = &quot;Reservataire&quot;,RecordType.DeveloperName = &quot;Reservataire_Approuve&quot;), LPCR_RefDevisReservataire__c,IF(OR(RecordType.DeveloperName = &quot;Referencement&quot;,RecordType.DeveloperName = &quot;Referencement_Approuve&quot;), LPCR_RefDevisReferencement__c,IF(OR(RecordType.DeveloperName = &quot;Accueil&quot; ,RecordType.DeveloperName = &quot;Contrat_Accueil_Approuve&quot;), LPCR_RefDevisAccueil__c, NULL)))</formula>
+        <name>Update Numero Contrat</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>LPCR_UpdateNumeroContratAmendment</fullName>
+        <field>LPCR_NumeroContrat__c</field>
+        <formula>SBQQ__MasterContract__r.LPCR_NumeroContrat__c</formula>
+        <name>UpdateNumeroContratAmendment</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>LPCR_UpdateNumeroContratRenewal</fullName>
+        <field>LPCR_NumeroContrat__c</field>
+        <formula>SBQQ__Opportunity2__r.SBQQ__RenewedContract__r.LPCR_NumeroContrat__c</formula>
+        <name>Update Numero Contrat sur renewal</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>LPCR_UpdateRTQuote</fullName>
         <field>RecordTypeId</field>
         <lookupValue>Accueil</lookupValue>
@@ -256,15 +243,6 @@
         <operation>Literal</operation>
         <protected>false</protected>
         <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Statut_standard_approuv</fullName>
-        <field>SBQQ__Status__c</field>
-        <literalValue>Prêt à envoyer</literalValue>
-        <name>Statut standard approuvé</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_accueil_approuve</fullName>
@@ -297,9 +275,18 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
-        <fullName>LPCR_UpdateNumeroContrat</fullName>
+        <fullName>Statut_standard_approuv</fullName>
+        <field>SBQQ__Status__c</field>
+        <literalValue>Prêt à envoyer</literalValue>
+        <name>Statut standard approuvé</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Numero_Contrat</fullName>
         <field>LPCR_NumeroContrat__c</field>
-        <formula>IF(OR(RecordType.DeveloperName = &quot;Reservataire&quot;,RecordType.DeveloperName = &quot;Reservataire_Approuve&quot;), LPCR_RefDevisReservataire__c,IF(OR(RecordType.DeveloperName = &quot;Referencement&quot;,RecordType.DeveloperName = &quot;Referencement_Approuve&quot;), LPCR_RefDevisReferencement__c,IF(OR(RecordType.DeveloperName = &quot;Accueil&quot; ,RecordType.DeveloperName = &quot;Contrat_Accueil_Approuve&quot;), LPCR_RefDevisAccueil__c, NULL)))</formula>
+        <formula>&apos;ab&apos;</formula>
         <name>Update Numero Contrat</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
@@ -546,6 +533,141 @@
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
+        <fullName>Statut du quote apres Avenant ou Devis %28Referencement%29</fullName>
+        <actions>
+            <name>LPCR_StatutPretCommande</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 5) AND( 2 OR 3) AND 4 AND (6 OR 7)</booleanFilter>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Amendment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>notEqual</operation>
+            <value>Résiliation,Mouvement Interne Berceau</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Quote</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Contrat de Référencement</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Référencement Approuvé</value>
+        </criteriaItems>
+        <description>Definition du statut du devis apres validation de l&apos;avenant. Cette update ne comprend pas le MIB et Resiliation.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Statut du quote apres Avenant ou Devis %28pas Referencement%29</fullName>
+        <actions>
+            <name>LPCR_StatutPretAEnvoyer</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>(1 OR 5) AND( 2 OR 3) AND 4 AND (6 AND 7)</booleanFilter>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Amendment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>notEqual</operation>
+            <value>Résiliation,Mouvement Interne Berceau</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Quote</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Contrat de Référencement</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Référencement Approuvé</value>
+        </criteriaItems>
+        <description>Definition du statut du devis apres validation de l&apos;avenant. Cette update ne comprend pas le MIB et Resiliation.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Numero Contrat sur Amendment Quote</fullName>
+        <actions>
+            <name>LPCR_UpdateNumeroContratAmendment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Amendment</value>
+        </criteriaItems>
+        <description>Renseigner le &apos;numero devis&apos; sur une amendment quote (recupérer from contract)</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Numero Contrat sur New Quote</fullName>
+        <actions>
+            <name>LPCR_UpdateNumeroContrat</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Quote</value>
+        </criteriaItems>
+        <description>Renseigner le &apos;numero devis&apos; sur une nouvelle quote</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Update Numero Contrat sur Renewal Quote</fullName>
+        <actions>
+            <name>LPCR_UpdateNumeroContratRenewal</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Renewal</value>
+        </criteriaItems>
+        <description>Renseigner le &apos;numero devis&apos; sur une renewal quote (récupérer from contract)</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
         <fullName>WF_Quote_Update RT Contrat d%27accueil approuvé</fullName>
         <actions>
             <name>RT_Contrat_accueil_approuve</name>
@@ -604,54 +726,5 @@
         </criteriaItems>
         <description>Update RT quand le contrat réservataire est approuvé.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
-    <rules>
-        <fullName>Statut du quote apres Avenant ou Devis</fullName>
-        <actions>
-            <name>LPCR_StatutPretAEnvoyer</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>true</active>
-        <booleanFilter>(1 OR 5) AND( 2 OR 3) AND 4</booleanFilter>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
-            <operation>equals</operation>
-            <value>Amendment</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
-            <operation>notEqual</operation>
-            <value>Résiliation,Mouvement Interne Berceau</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
-            <operation>equals</operation>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
-            <operation>equals</operation>
-            <value>Approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
-            <operation>equals</operation>
-            <value>Quote</value>
-        </criteriaItems>
-        <description>Definition du statut du devis apres validation de l&apos;avenant. Cette update ne comprend pas le MIB et Resiliation.</description>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
-    <rules>
-        <fullName>Update Numero Contrat sur New Quote</fullName>
-        <actions>
-            <name>LPCR_UpdateNumeroContrat</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>true</active>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
-            <operation>equals</operation>
-            <value>Quote</value>
-        </criteriaItems>
-        <triggerType>onCreateOnly</triggerType>
     </rules>
 </Workflow>
