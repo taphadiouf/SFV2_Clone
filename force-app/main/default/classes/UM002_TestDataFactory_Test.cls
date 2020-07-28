@@ -5,7 +5,7 @@
  */
  @isTest
 private class UM002_TestDataFactory_Test {
-
+    private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     @testSetup static void setup() {
         
         // Create Factory
@@ -44,6 +44,7 @@ private class UM002_TestDataFactory_Test {
 
     static testMethod void createsSingleObjectWithSingleRequiredStringField() {
         Account account = (Account)UM002_TestDataFactory.createSObject('Account');
+        account.RecordTypeId = B2C_RT_ID;
         insert account;
         System.assert(account.Id != null);
         System.assert(account.Name != null);
@@ -79,10 +80,12 @@ private class UM002_TestDataFactory_Test {
     */
     
     static testMethod void loadTestWith100PlusAccountNContacts() {
+        test.startTest();
         for (Integer idx = 0; idx <= 101; idx++)
             Account account = (Account)UM002_TestDataFactory.createSObject('Account');
         for (Integer idx = 0; idx <= 101; idx++)
-            Contact cont = (Contact)UM002_TestDataFactory.createSObject('Contact');         
+            Contact cont = (Contact)UM002_TestDataFactory.createSObject('Contact');     
+        test.stopTest();        
     }
 
     static testMethod void creatingRecordsWithSpecificDefaults() {
@@ -107,6 +110,7 @@ private class UM002_TestDataFactory_Test {
 
     static testMethod void creatingRecordsForSpecificParentId() {
         Account account = (Account)UM002_TestDataFactory.createSObject('Account');
+        account.RecordTypeId = B2C_RT_ID;
         insert account;
 
         // create 20 contacts in that account
@@ -123,6 +127,7 @@ private class UM002_TestDataFactory_Test {
 
     static testMethod void creatingRecordsForSpecificParentObject() {
         Account account = (Account)UM002_TestDataFactory.createSObject('Account');
+        account.RecordTypeId = B2C_RT_ID;
         insert account;
 
         // create 20 contacts in that account
@@ -141,7 +146,11 @@ private class UM002_TestDataFactory_Test {
     static testMethod void creatingRecordsWithListOfDefaultParents() {
 
         // create 5 accounts
-        list<Account> accountList = (list<Account>)(UM002_TestDataFactory.createSObjectList('Account', 5));
+        list<Account> accountList = new List<Account>();
+        for(Account acc : (list<Account>)(UM002_TestDataFactory.createSObjectList('Account', 5))){
+            acc.RecordTypeId = B2C_RT_ID;
+            accountList.add(acc);
+        }
         insert accountList;
 
         // each account gets 4 contacts

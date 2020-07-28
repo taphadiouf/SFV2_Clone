@@ -156,7 +156,8 @@ public class SM015_InvoiceServices_Test {
             
         }
     }
-    @isTest
+    //commented in the context IS-1422
+    /*@isTest
     public static void setStatutFacture_Test(){
         
         Test.startTest();
@@ -203,5 +204,5 @@ public class SM015_InvoiceServices_Test {
         System.assertEquals(invoicesLst.size(), newInvoices.size());
         Test.stopTest();
         
-    }    
+    }   */ 
 }
