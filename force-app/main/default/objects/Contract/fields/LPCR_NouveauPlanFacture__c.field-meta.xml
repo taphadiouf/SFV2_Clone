@@ -4,7 +4,7 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Nouveau Plan de Facture</label>
-    <referenceTo>blng__InvoicePlan__c</referenceTo>
+    <referenceTo>blng__InvoiceLine__c</referenceTo>
     <relationshipLabel>Contracts</relationshipLabel>
     <relationshipName>Contracts</relationshipName>
     <required>false</required>
