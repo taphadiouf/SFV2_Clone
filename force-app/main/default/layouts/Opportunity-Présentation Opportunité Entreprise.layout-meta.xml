@@ -207,7 +207,7 @@
         <fields>LPCR_Enfant__c</fields>
         <fields>Lead__c</fields>
         <fields>CASES.STATUS</fields>
-        <relatedList>Case.Opportunite__c</relatedList>
+        <relatedList>Case.LPCR_Opportunite__c</relatedList>
         <sortField>CASES.STATUS</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>

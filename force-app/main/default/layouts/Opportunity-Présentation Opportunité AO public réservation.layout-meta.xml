@@ -307,7 +307,7 @@
         <fields>CASES.SUBJECT</fields>
         <fields>CASES.CREATED_DATE</fields>
         <fields>CASES.PRIORITY</fields>
-        <relatedList>Case.Opportunite__c</relatedList>
+        <relatedList>Case.LPCR_Opportunite__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
