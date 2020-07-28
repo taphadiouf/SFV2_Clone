@@ -125,7 +125,7 @@ public class SM010_ContractServices_Test {
             
             Contract contract =null; 
             try{
-                contract = [SELECT Id,LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c,SBQQ__Order__c, LPCR_Sales_Rep__c ,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c, LPCR_PlanningEnfant__c FROM Contract 
+                contract = [SELECT Id,LPCR_NouveauPlanFacturation__c,LPCR_RenouvellementPlanFacturation__c,SBQQ__Order__c, LPCR_Sales_Rep__c ,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c, LPCR_PlanningEnfant__c FROM Contract 
                             WHERE SBQQ__Order__c =:order.Id ]; 
             }catch(Exception e){
                 PAD.log('SM010_ContractServices_Test','setContractFieldsTest','Error , Contract not get generated');
@@ -143,13 +143,13 @@ public class SM010_ContractServices_Test {
 			contract.SBQQ__Order__c = order.Id;
             update contract;
             Test.stopTest();
-            contract = [SELECT Id,RecordTypeId,LPCR_RenouvellementPlanFacture__c,LPCR_NouveauPlanFacture__c,LPCR_DureeContratJour__c,LPCR_Sales_Rep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, SBQQ__Order__c,LPCR_BatchCommande__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,LPCR_MasterDevis__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_PlanningEnfant__c FROM Contract
+            contract = [SELECT Id,RecordTypeId,LPCR_RenouvellementPlanFacturation__c,LPCR_NouveauPlanFacturation__c,LPCR_DureeContratJour__c,LPCR_Sales_Rep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, SBQQ__Order__c,LPCR_BatchCommande__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,LPCR_MasterDevis__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_PlanningEnfant__c FROM Contract
                         WHERE SBQQ__Order__c =:order.Id ]; 
-             System.assertNotEquals(null, contract.LPCR_RenouvellementPlanFacture__c,'LPCR_RenouvellementPlanFacture__c is null');
-             System.assertNotEquals(null, contract.LPCR_NouveauPlanFacture__c,'LPCR_NouveauPlanFacture__c is null');
+             System.assertNotEquals(null, contract.LPCR_RenouvellementPlanFacturation__c,'LPCR_RenouvellementPlanFacturation__c is null');
+             System.assertNotEquals(null, contract.LPCR_NouveauPlanFacturation__c,'LPCR_NouveauPlanFacturation__c is null');
 			
-             System.assertEquals(order.LPCR_RenouvellementPlanFacture__c, contract.LPCR_RenouvellementPlanFacture__c,'LPCR_RenouvellementPlanFacture__c is wrong');
-             System.assertEquals(order.LPCR_NouveauPlanFacture__c, contract.LPCR_NouveauPlanFacture__c,'LPCR_NouveauPlanFacture__c is wrong');
+             System.assertEquals(order.LPCR_RenouvellementPlanFacture__c, contract.LPCR_RenouvellementPlanFacturation__c,'LPCR_RenouvellementPlanFacture__c is wrong');
+             System.assertEquals(order.LPCR_NouveauPlanFacture__c, contract.LPCR_NouveauPlanFacturation__c,'LPCR_NouveauPlanFacture__c is wrong');
 			
             System.assertNotEquals(null, contract.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
             
