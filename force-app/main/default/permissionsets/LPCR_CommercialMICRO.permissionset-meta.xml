@@ -581,6 +581,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.LPCR_CompteFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.LPCR_ChoixN1__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -686,7 +691,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Case.Opportunite__c</field>
+        <field>Case.LPCR_Opportunite__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
