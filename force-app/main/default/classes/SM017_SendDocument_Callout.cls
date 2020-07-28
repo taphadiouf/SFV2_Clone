@@ -32,14 +32,14 @@ public with sharing class SM017_SendDocument_Callout {
         Http http = new Http();
         HttpRequest request = new HttpRequest();
         LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
-        if('DEV'.equals(envCS.Nom__c)){
-            request.setEndpoint('callout:DEV_SEND_DOCUMENT');
-        }
-        else if('UAT'.equals(envCS.Nom__c)){
+        if('UAT'.equals(envCS.Nom__c)){
             request.setEndpoint('callout:UAT_SEND_DOCUMENT');
         }
         else if('PROD'.equals(envCS.Nom__c)){
             request.setEndpoint('callout:PROD_SEND_DOCUMENT');
+        }
+        else{
+            request.setEndpoint('callout:DEV_SEND_DOCUMENT');
         }
         request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json;charset=UTF-8');
@@ -53,10 +53,15 @@ public with sharing class SM017_SendDocument_Callout {
             //documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         } else {
             //documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
-        LPCR_AppelServiceExterne__mdt appelServiceExterne = [SELECT LPCR_CodeRetour__c ,LPCR_MessageRetour__c , LPCR_NomService__c  
+        List<LPCR_AppelServiceExterne__mdt> appelServiceExterne = [SELECT LPCR_CodeRetour__c ,LPCR_MessageRetour__c , LPCR_NomService__c  
                                                              FROM LPCR_AppelServiceExterne__mdt  
                                                              WHERE LPCR_CodeRetour__c = :statusCode AND LPCR_NomService__c = :WS_NOM_SERVICE ];
-            throw new AuraHandledException(appelServiceExterne.LPCR_MessageRetour__c);
+            if(appelServiceExterne != null && appelServiceExterne.size()>0){
+                throw new AuraHandledException(appelServiceExterne[0].LPCR_MessageRetour__c);
+            }
+            else{
+                throw new AuraHandledException('Response status is not 200');
+            }
         }     
     }
 }

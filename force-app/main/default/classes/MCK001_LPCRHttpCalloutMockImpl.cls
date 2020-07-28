@@ -13,13 +13,7 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
         String getDocumentListEndpoint;
         String sendMailEndpoint;
         LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
-        if('DEV'.equals(envCS.Nom__c)){
-            sendDocumentEndpoint = 'DEV_SEND_DOCUMENT';
-            getDocumentEndpoint = 'DEV_GET_DOCUMENT';
-            getDocumentListEndpoint = 'DEV_DOCUMENT_LISTE';
-            sendMailEndpoint = 'DEV_SEND_MAIL';
-        }
-        else if('UAT'.equals(envCS.Nom__c)){
+        if('UAT'.equals(envCS.Nom__c)){
             sendDocumentEndpoint = 'UAT_SEND_DOCUMENT';
             getDocumentEndpoint = 'UAT_GET_DOCUMENT';
             getDocumentListEndpoint = 'UAT_DOCUMENT_LISTE';
@@ -33,10 +27,16 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
             sendMailEndpoint = 'PROD_SEND_MAIL';
 
         }
+        else{
+            sendDocumentEndpoint = 'DEV_SEND_DOCUMENT';
+            getDocumentEndpoint = 'DEV_GET_DOCUMENT';
+            getDocumentListEndpoint = 'DEV_DOCUMENT_LISTE';
+            sendMailEndpoint = 'DEV_SEND_MAIL';
+        }
         if(req.getEndpoint().contains(sendDocumentEndpoint)){
             System.debug(req.getBody());
             WRP004_APISaveDocument data = (WRP004_APISaveDocument) JSON.deserialize(req.getBody(), WRP004_APISaveDocument.class);
-            if(String.isNotBlank(data.DocumentType) && String.isNotBlank(data.OwnerSfId) && String.isNotBlank(data.DocumentStatus) && String.isNotBlank(data.Name) && String.isNotBlank(data.FileType)){
+            if(String.isNotBlank(data.OwnerSfId)){
                 res.setBody('{"result":"200"}');
                 res.setStatusCode(200);
             }else{

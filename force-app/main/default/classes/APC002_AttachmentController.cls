@@ -4,7 +4,6 @@
 * @Description Queries about Attachment
 */
 public with sharing class APC002_AttachmentController {
-
      @AuraEnabled
     public static Attachment save(Id idParent, String strFileName, String base64Data,String description) {
         // Decoding base64Data
@@ -31,10 +30,5 @@ public with sharing class APC002_AttachmentController {
         att.Description = description;
         insert att;
         return att;
-    }
-     @AuraEnabled
-    public static List<Attachment>  getAllAttachments() {
-       
-        return [SELECT Id,Name,Description ,CreatedDate from Attachment Order By CreatedDate Desc];
     }
 }

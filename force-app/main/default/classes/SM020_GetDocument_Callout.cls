@@ -11,14 +11,14 @@ public with sharing class SM020_GetDocument_Callout {
         Http http = new Http();
         HttpRequest request = new HttpRequest();
         LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
-        if('DEV'.equals(envCS.Nom__c)){
-            request.setEndpoint('callout:DEV_GET_DOCUMENT'+ '/' + docId);
-        }
-        else if('UAT'.equals(envCS.Nom__c)){
+        if('UAT'.equals(envCS.Nom__c)){
             request.setEndpoint('callout:UAT_GET_DOCUMENT'+ '/' + docId);
         }
         else if('PROD'.equals(envCS.Nom__c)){
             request.setEndpoint('callout:PROD_GET_DOCUMENT'+ '/' + docId);
+        }
+        else{
+            request.setEndpoint('callout:DEV_GET_DOCUMENT'+ '/' + docId);
         }
         
         System.debug('awesome url : ' + request.getEndpoint());

@@ -14,14 +14,14 @@ public with sharing class SM019_DocumentList_Callout {
         HttpRequest request = new HttpRequest();
         
         LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
-        if('DEV'.equals(envCS.Nom__c)){
-            request.setEndpoint('callout:DEV_DOCUMENT_LISTE');
-        }
-        else if('UAT'.equals(envCS.Nom__c)){
+        if('UAT'.equals(envCS.Nom__c)){
             request.setEndpoint('callout:UAT_DOCUMENT_LISTE');
         }
         else if('PROD'.equals(envCS.Nom__c)){
             request.setEndpoint('callout:PROD_DOCUMENT_LISTE');
+        }
+        else{
+            request.setEndpoint('callout:DEV_DOCUMENT_LISTE');
         }
         request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json;charset=UTF-8');
@@ -30,7 +30,7 @@ public with sharing class SM019_DocumentList_Callout {
         HttpResponse response = http.send(request);
         // Parse the JSON response
         String statusCode = response.getStatusCode()+'';
-        UM001_LogManager.writeLogActivity('Appel Service Externe REF DOC LIST', '', 'Appel Externe', ownerid, response.getBody(), (statusCode.equals('200') ? 'SUCCESS' : 'ERROR'));
+        UM001_LogManager.writeLogActivityWithoutFuture('Appel Service Externe REF DOC LIST', '', 'Appel Externe', ownerid, response.getBody(), (statusCode.equals('200') ? 'SUCCESS' : 'ERROR'));
         if (statusCode.equals('200')) {
             System.debug('response.getBody()' + response.getBody());
             documentListFullResponse.response = (List<DocumentListResponse>) JSON.deserialize(response.getBody(), List<DocumentListResponse>.class);
