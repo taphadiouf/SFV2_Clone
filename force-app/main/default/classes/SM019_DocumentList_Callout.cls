@@ -5,7 +5,7 @@
 */
 public with sharing class SM019_DocumentList_Callout {
             
-    @AuraEnabled(Cacheable = true)
+    @AuraEnabled
     public static DocumentListFullResponse getDocumentListCallout(String ownerid, String doc_type) {
         final String WS_NOM_SERVICE  = 'LPCR_RECUPERATION_DOCUMENT';
         DocumentListFullResponse documentListFullResponse = new DocumentListFullResponse();

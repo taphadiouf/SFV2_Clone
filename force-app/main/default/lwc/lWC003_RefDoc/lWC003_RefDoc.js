@@ -13,7 +13,6 @@ import getDocumentBySFIdCallout from '@salesforce/apex/SM020_GetDocument_Callout
 import { CurrentPageReference } from 'lightning/navigation';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import { refreshApex } from '@salesforce/apex';
 
 const columns = [
   { label: 'Titre', fieldName: 'name', sortable: true },
@@ -25,7 +24,6 @@ export default class LWC003_RefDoc extends LightningElement {
   @api recordId;
   value;
 
-  @track wiredResults = [];
   @track
   title = 'Gestion des documents';
   Lines = 'Lignes';
@@ -44,48 +42,46 @@ export default class LWC003_RefDoc extends LightningElement {
   @track currentPage = 1;
   @track numberOfAllPages = 1;
 
-  @wire(getDocumentListCallout, { ownerid: '$recordId', doc_type: 'Facture' })
-  getDocumentListCalloutF(result) {
-    console.log("called getDocumentListCalloutF");
-    this.wiredResults = [];
-    this.wiredResults = result;
-    if (result.data) {
-      console.log('hello');
-      console.log('******result : ' + result.data);
-      console.log(result.data);
-      if (result.data.result && result.data.result == '200') {
-        this.recordsFromWS = result.data.response;
-        this.recordsLength = this.recordsFromWS.length;
-        this.dataTreatment(this.recordsFromWS);
-      }
-    } else if (result.error) {
-      console.log('*****Error : ' + result.error);
+  
+  connectedCallback() {
+    // Subscribe to handleOrderListResult event to receive data from The Search Component
+    registerListener('handleCreateddocument', this.handleCreateddocument, this);
+    this.getDocumentListCalloutF(this.recordId);
+  }
+  getDocumentListCalloutF(ownerid){
+    getDocumentListCallout({ ownerid: ownerid, doc_type: 'Facture' })
+    .then(result=>{
+      console.log("called getDocumentListCalloutF");
+      if (result) {
+        console.log('******result : ' + result);
+        console.log(result);
+        if (result.result && result.result == '200') {
+          this.recordsFromWS = result.response;
+          this.recordsLength = this.recordsFromWS.length;
+          this.dataTreatment(this.recordsFromWS);
+        }
+      } 
+    })
+    .catch(error=>{
+      console.log('*****Error : ' + error);
+      console.log(error);
       this.dispatchEvent(
         new ShowToastEvent({
           title: 'Erreur',
-          message: result.error.body.message,
+          message: error.body.message,
           variant: 'error',
         }),
       );
-      console.log('hello');
-    }
+    })
   }
   handleSentDocument(event) {
-    console.log('hiiii');
-    //window.location.reload();
-    refreshApex(this.wiredResults);
-    refreshApex(this.recordId);
+    console.log('*****called handleSentDocument');
+    this.getDocumentListCalloutF(this.recordId);
   }
   disconnectedCallback() {
     // unsubscribe from bearListUpdate event
     unregisterAllListeners(this);
   }
-
-  async connectedCallback() {
-    // Subscribe to handleOrderListResult event to receive data from The Search Component
-    registerListener('handleCreateddocument', this.handleCreateddocument, this);
-  }
-
   //Handle Data from the Search Component
   handleCreateddocument(document) {
     this.records = [document, ...this.records];
@@ -109,7 +105,6 @@ export default class LWC003_RefDoc extends LightningElement {
         this.currentPage = 1;
       }
     }
-
     //get the range  of records from  currentPage , numberOfData
     this.records = records.slice(this.currentPage * this.numberOfData - this.numberOfData, this.currentPage * this.numberOfData);
   }
