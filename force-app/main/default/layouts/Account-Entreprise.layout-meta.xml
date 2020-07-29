@@ -6,9 +6,6 @@
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
     <excludeButtons>PartnerScorecard</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
@@ -511,11 +508,13 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>LPCR_ApiFieldName__c</fields>
+        <fields>LPCR_Format__c</fields>
+        <fields>LPCR_Valeur__c</fields>
         <fields>LPCR_Score__c</fields>
-        <fields>LPCR_Anciennete__c</fields>
-        <fields>LPCR_DateEntree__c</fields>
-        <fields>LPCR_Revenu__c</fields>
         <relatedList>LPCR_ParametrageScore__c.LPCR_Account__c</relatedList>
+        <sortField>LPCR_ApiFieldName__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <customButtons>ExporterListeAttribution</customButtons>
@@ -587,7 +586,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6E000000kntw</masterLabel>
+        <masterLabel>00h6E000000kpTM</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

@@ -4,9 +4,9 @@
     <active>true</active>
     <label>Draft Invoice</label>
     <picklistValues>
-        <picklist>LPCR_MethodesPaiement__c</picklist>
+        <picklist>LPCR_MoyenPaiement__c</picklist>
         <values>
-            <fullName>CB</fullName>
+            <fullName>Carte Bancaire</fullName>
             <default>false</default>
         </values>
         <values>
@@ -14,11 +14,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Espèces</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Prélèvement</fullName>
+            <fullName>Virement</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -41,7 +37,46 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Prêt à valider</fullName>
+            <default>true</default>
+        </values>
+        <values>
             <fullName>Terminée</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeCreche__c</picklist>
+        <values>
+            <fullName>ALSH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halte-Garderie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jardin d%E2%80%99enfants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MICRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RAM</fullName>
             <default>false</default>
         </values>
     </picklistValues>
