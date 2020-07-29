@@ -43,7 +43,6 @@ public class SM010_ContractServices {
                         }
                     }
                 }
-                eachContract =setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(eachContract.SBQQ__Quote__c));
 
 
                 if(orderMap.containsKey(eachContract.SBQQ__Order__c) &&
@@ -53,6 +52,8 @@ public class SM010_ContractServices {
                        }
                        eachContract=setContractFieldsFromOrderQuoteMaper(eachContract,quoteOrderMap.get(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
                    }
+                eachContract =setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(eachContract.SBQQ__Quote__c));
+                
 
                 if(orderMap.containsKey(eachContract.SBQQ__Order__c)){
                     if(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c != null && orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__r.LPCR_BatchCommande__c != null ){
@@ -95,9 +96,9 @@ public class SM010_ContractServices {
                         if(quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement) {
                            eachContract.LPCR_FraisDossier__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;
                        }
-                       eachContract=setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
-                       eachContract=setContractFieldsFromOrderQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
-                   }
+                     eachContract=setContractFieldsFromOrderQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
+                     eachContract=setContractFieldsFromQuoteMaper(eachContract,quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
+                 }
                }
             if(mapOrders.containsKey(eachContract.SBQQ__Order__c) ){
                 eachContract.LPCR_NouveauPlanFacturation__c = mapOrders.get(eachContract.SBQQ__Order__c).LPCR_NouveauPlanFacture__c;
@@ -136,7 +137,14 @@ public class SM010_ContractServices {
             contract.LPCR_MethodeRenouvellement__c = quote.LPCR_MethodeRenouvellement__c;
         }
         
-        contract.LPCR_RenouvellementAutomatique__c = quote.SBQQ__RenewalUpliftRate__c == null ? false : true;
+        if(contract.LPCR_TypeCreche__c == 'MAC' && contract.EndDate != contract.LPCR_DateFin__c){
+            contract.LPCR_RenouvellementAutomatique__c =true;
+        }
+        else if(contract.SBQQ__RenewalUpliftRate__c != null && 
+                (contract.LPCR_MethodeRenouvellement__c == 'Tacite' ||
+                 (contract.LPCR_MethodeRenouvellement__c != 'Tacite' && contract.EndDate != contract.LPCR_DateFin__c))){
+                     contract.LPCR_RenouvellementAutomatique__c =true;
+                 }
         
         contract.LPCR_DureeContratJour__c = quote.LPCR_DureeContratJour__c;
         
@@ -172,6 +180,8 @@ public class SM010_ContractServices {
             contract.LPCR_Region__c  = quote.LPCR_Region__c ;
             
             contract.LPCR_ContactEnfant__c = quote.LPCR_ContactEnfant__c ;
+            
+            System.debug('##!:' + quote.LPCR_TypeCreche__c);
             
             contract.LPCR_TypeCreche__c = quote.LPCR_TypeCreche__c ;
             

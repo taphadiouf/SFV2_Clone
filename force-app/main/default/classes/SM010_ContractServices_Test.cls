@@ -77,6 +77,7 @@ public class SM010_ContractServices_Test {
         quote.LPCR_ResponsableADV__c = UserInfo.getUserId();
         quote.SBQQ__SalesRep__c = UserInfo.getUserId();
         quote.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+        quote.LPCR_TypeCreche__c = 'MAC';
         
         quote2.SBQQ__Ordered__c  = true; 
         quote2.LPCR_IndexationConvenue__c='non';
