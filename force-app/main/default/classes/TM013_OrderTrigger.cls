@@ -10,12 +10,12 @@ public with sharing class TM013_OrderTrigger extends TM000_TriggerHandler {
         this.newOrderList = (List<Order>) Trigger.new;
     }
     protected override void beforeInsert() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM014_OrderServices.setOrderFields(newOrderList);
         }
     }
     protected override void beforeUpdate() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM014_OrderServices.setOrderFields(newOrderList);
         }
     }

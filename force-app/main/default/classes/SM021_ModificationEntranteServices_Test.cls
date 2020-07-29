@@ -4,9 +4,11 @@
 * @description Test class for Service class LPCR_ModificationEntrante__c
 */
 @isTest
-public class SM013_ModificationEntranteServices_Test {
+public class SM021_ModificationEntranteServices_Test {
     private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Famille);
+    private static final Id QUOTE_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);
+    private static final Id ORDER_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Order, Label.LPCR_ContratA);
     private static final Id standardPricebookId = Test.getStandardPricebookId();
 
     @testSetup
@@ -17,7 +19,8 @@ public class SM013_ModificationEntranteServices_Test {
         insert opps;
         List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(100, accounts, opps);
         insert quotes;
-
+        List<Contract> contracts = UM002_TestDataFactory.createContracts(100,accounts,quotes);
+        insert contracts;
         Id standardPricebookId = Test.getStandardPricebookId();
         UM002_TestDataFactory.insertBillingCustomSettings();
         blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
@@ -41,11 +44,48 @@ public class SM013_ModificationEntranteServices_Test {
     @isTest
     public static void updateQuotesFromModifEntrantes_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
+            Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
+			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+            
+            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+            acc.SBQQ__RenewalModel__c = 'Contract Based';
+            acc.RecordTypeId = B2C_RT_ID;
+            acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            update acc;
+            
+           // Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+           // insert cont;
+            
+            Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+            opp.AccountId = acc.id;
+            update opp;
+            
+         /*   SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+            quote.SBQQ__Type__c='Quote';
+            quote.SBQQ__StartDate__c = System.today();
+            quote.SBQQ__SubscriptionTerm__c = 12;
+            update quote;*/
+            
+          /*  List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
+            insert qlines;
+            
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Insert contract;*/
+            
+           /* LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',acc.id,cont.id,contract.id,Date.today(),10);
+            insert modif;*/
             Test.startTest();
+            List<SBQQ__Quote__c> quotes = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c];
+            system.debug('quotes'+quotes.size());
+            List<Contract> contracts = [SELECT Id, SBQQ__Quote__c FROM Contract];
+            system.debug('contracts'+contracts.size());
+            List<LPCR_ModificationEntrante__c> modificationsEntrantes = UM002_TestDataFactory.createModificationsEntrantes(100,quotes,contracts,'Validation Contrat Directrice');
+            insert modificationsEntrantes;
+            system.debug('modificationsEntrantes'+modificationsEntrantes.size());
             List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
-            System.assertEquals(50, quotesValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesValides');
-            List<SBQQ__Quote__c> quotesNonValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c != 'Validé Directrice'];
-            System.assertEquals(50, quotesNonValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesNonValides');
+            System.assertEquals(100, quotesValides.size(), 'Error in SM021_ModificationEntranteServices_Test : problem in updating quotesValides');
+
             Test.stopTest();
         }
     }
@@ -80,7 +120,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
             
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
             
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -93,7 +133,7 @@ public class SM013_ModificationEntranteServices_Test {
             insert modif2;
             Test.startTest();
             List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
-            System.assertEquals(1, quotesValides.size(), 'Error in SM013_ModificationEntranteServices_Test : problem in updating quotesValides');
+            System.assertEquals(1, quotesValides.size(), 'Error in SM021_ModificationEntranteServices_Test : problem in updating quotesValides');
             
             Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
  		    modif.LPCR_EtatTraitement__c = true;
@@ -132,7 +172,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
             
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
             
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -179,7 +219,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
             
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
             
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -194,6 +234,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -227,13 +269,14 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
             LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Type Planning',acc.id,cont.id,contract.id,Date.today(),10);
+			modif.LPCR_TypePlanning__c = 'Planning Classique';
             insert modif;
 
             Time debutTime = Time.newInstance(08, 30, 2, 20);
@@ -248,6 +291,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -281,7 +326,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -296,6 +341,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -329,7 +376,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -344,6 +391,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -377,7 +426,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -393,6 +442,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -426,7 +477,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -446,6 +497,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -479,7 +532,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -496,6 +549,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -529,7 +584,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -546,6 +601,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -579,7 +636,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -596,6 +653,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -629,7 +688,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -646,6 +705,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -679,7 +740,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -697,6 +758,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -729,7 +792,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -746,6 +809,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -779,7 +844,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -797,6 +862,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -830,7 +897,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -848,6 +915,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -881,7 +950,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -899,6 +968,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
    @isTest
@@ -928,13 +999,14 @@ public class SM013_ModificationEntranteServices_Test {
             quote.SBQQ__StartDate__c = System.today();
             quote.SBQQ__SubscriptionTerm__c = 12;
             quote.SBQQ__Primary__c = true;
+            quote.RecordTypeId = QUOTE_CONTRAT_ACCUEIL_RT_ID;
             update quote;
 
             List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -947,6 +1019,7 @@ public class SM013_ModificationEntranteServices_Test {
             Order order = UM002_TestDataFactory.createOrder(acc.Id, contract.id,date.today(),'test','Draft','1');
             order.Pricebook2Id = standardPricebookId;
             order.SBQQ__Quote__c = quote.id;
+            order.RecordTypeId = ORDER_CONTRAT_ACCUEIL_RT_ID;
             insert order;
 
             OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
@@ -981,6 +1054,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -1014,7 +1089,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -1029,6 +1104,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1061,7 +1138,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -1079,6 +1156,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1108,13 +1187,14 @@ public class SM013_ModificationEntranteServices_Test {
             quote.SBQQ__StartDate__c = System.today();
             quote.SBQQ__SubscriptionTerm__c = 12;
             quote.SBQQ__Primary__c = true;
+            quote.RecordTypeId = QUOTE_CONTRAT_ACCUEIL_RT_ID;
             update quote;
 
             List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -1127,6 +1207,7 @@ public class SM013_ModificationEntranteServices_Test {
             Order order = UM002_TestDataFactory.createOrder(acc.Id, contract.id,date.today(),'test','Draft','1');
             order.Pricebook2Id = standardPricebookId;
             order.SBQQ__Quote__c = quote.id;
+            order.RecordTypeId = ORDER_CONTRAT_ACCUEIL_RT_ID;
             insert order;
 
             OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
@@ -1155,12 +1236,15 @@ public class SM013_ModificationEntranteServices_Test {
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
             modif.LPCR_Invoice__c = invoice.id;
+            modif.LPCR_Commentaire__c = 'Test';
             insert modif;           
 
             APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1190,13 +1274,14 @@ public class SM013_ModificationEntranteServices_Test {
             quote.SBQQ__StartDate__c = System.today();
             quote.SBQQ__SubscriptionTerm__c = 12;
             quote.SBQQ__Primary__c = true;
+            quote.RecordTypeId = QUOTE_CONTRAT_ACCUEIL_RT_ID;
             update quote;
 
             List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -1209,6 +1294,7 @@ public class SM013_ModificationEntranteServices_Test {
             Order order = UM002_TestDataFactory.createOrder(acc.Id, contract.id,date.today(),'test','Draft','1');
             order.Pricebook2Id = standardPricebookId;
             order.SBQQ__Quote__c = quote.id;
+            order.RecordTypeId = ORDER_CONTRAT_ACCUEIL_RT_ID;
             insert order;
 
             OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
@@ -1244,6 +1330,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1276,7 +1364,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Test.startTest();
@@ -1294,6 +1382,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1326,7 +1416,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
             
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
             
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -1341,6 +1431,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1373,7 +1465,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
             
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
             
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
@@ -1388,6 +1480,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1420,7 +1514,7 @@ public class SM013_ModificationEntranteServices_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
             insert ressourceFamille;
 
             Test.startTest();
@@ -1438,23 +1532,8 @@ public class SM013_ModificationEntranteServices_Test {
             DataBase.executeBatch(ss);
 
             Test.stopTest();
+            LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
-    }
-    @isTest
-    public static void createUsageFromModifEntrantes_Test(){
-        Test.startTest();
-        Account acc = UM002_TestDataFactory.createAccounts(1, 'tAccount').get(0);
-        insert acc;
-        Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
-        insert cont;
-        LPCR_ModificationEntrante__c modifEntrantesValides = new LPCR_ModificationEntrante__c();
-        modifEntrantesValides.LPCR_Contact__c= cont.id;
-        modifEntrantesValides.LPCR_Compte__c = acc.id;
-        modifEntrantesValides.LPCR_Evenement__c= 'Modification Heure Occasionnel MAC';
-        modifEntrantesValides.LPCR_HeureDateDebut__c = System.today();
-        modifEntrantesValides.LPCR_HeureDateFin__c = System.today().addDays(60);
-        modifEntrantesValides.LPCR_Quantite__c = 1;
-        insert modifEntrantesValides;
-        Test.stopTest();
     }
 }

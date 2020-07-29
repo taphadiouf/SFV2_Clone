@@ -13,7 +13,7 @@ public class TM007_LeadTrigger extends TM000_TriggerHandler{
         this.newLeadsList = (List<Lead>) Trigger.new;
     }
     protected override void beforeUpdate() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             List<Lead> convertedLeadsList = new List<Lead>();
             for(Lead eachLead : newLeadsList){
                 if(eachLead.isConverted){
@@ -28,7 +28,7 @@ public class TM007_LeadTrigger extends TM000_TriggerHandler{
         
     }
     protected  override void afterInsert(){
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM007_LeadServices.createLiensCrecheLead(newLeadsList);
         }
 

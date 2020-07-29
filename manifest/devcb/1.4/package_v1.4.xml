@@ -811,10 +811,50 @@
     </types>
           -->
     <types>
-        <members>SBQQ__Quote__c.Conga_Composer_Contrat_Reservation</members>
-        <members>SBQQ__Quote__c.Conga_Composer_Contrat_Referencement</members>
+        <members>SBQQ__Quote__c.Accueil</members>
+        <members>SBQQ__Quote__c.Accueil_Approuve</members>
+        <members>SBQQ__Quote__c.Referencement</members>
+        <members>SBQQ__Quote__c.Referencement_Approuve</members>
+        <members>SBQQ__Quote__c.Reservataire</members>
+        <members>SBQQ__Quote__c.Reservataire_Approuve</members>
+        <members>Order.Accueil</members>
+        <members>Order.Referencement</members>
+        <members>Order.Reservataire</members>
+        <members>Contract.Accueil</members>
+        <members>Contract.Referencement</members>
+        <members>Contract.Reservataire</members>
+        <members>LPCR_RessourceFamille__c.Mac</members>
+        <members>LPCR_RessourceFamille__c.Micro</members>
+        <members>blng__Invoice__c.LCPR_DraftInvoice</members>
+        <members>blng__Invoice__c.LPCR_PostedInvoice</members>
+        <name>RecordType</name>
+    </types>
 
-        <name>WebLink</name>
+    <types>
+        <members>Admin</members>
+        <members>LPCR_Utilisateur</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>Contract.LPCRPresentationCompactContrat</members>
+        <name>CompactLayout</name>
+    </types>
+
+    <types>
+        <members>SBQQ__Quote__c-Contrat d%27accueil</members>
+        <members>SBQQ__Quote__c-Contrat d%27accueil Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement</members>
+        <members>SBQQ__Quote__c-R&#233;f&#233;rencement Approuv&#233;</members>
+        <members>SBQQ__Quote__c-R&#233;servataire</members>
+        <members>SBQQ__Quote__c-R&#233;servataire Approuv&#233;</members>
+        <members>Order-Accueil</members>
+        <members>Order-R&#233;f&#233;rencement</members>
+        <members>Order-R&#233;servataire</members>
+        <members>LPCR_RessourceFamille__c-Ressource Famille MAC Layout</members>
+        <members>LPCR_RessourceFamille__c-Ressource Famille Micro Layout</members>
+        <members>blng__Invoice__c-LPCR Draft Invoice</members>
+        <members>blng__Invoice__c-LPCR Posted Invoice</members>
+        <name>Layout</name>
     </types>
 
     <version>48.0</version>
