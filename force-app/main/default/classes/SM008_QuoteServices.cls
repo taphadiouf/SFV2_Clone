@@ -190,17 +190,20 @@ public with sharing class SM008_QuoteServices {
                                 } 
                             }
                             else if(Label.LPCR_MICRO.equals(acctMap.get(eachQuote.LPCR_Creche__c).LPCR_TypeCreche__c)){
-                                if(eachQuote.LPCR_DateFin__c < dueDateRenewal){
+                                Date dueDateRenewal2 = date.newInstance(eachQuote.SBQQ__StartDate__c.year(), 08, 31);
+                                Date nextYearDueDateRenewal2 = date.newInstance(eachQuote.SBQQ__StartDate__c.year()+1, 08, 31);
+                                
+                                if(eachQuote.LPCR_DateFin__c < dueDateRenewal2){
                                     eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                                 }
                                 else{
-                                        if(eachQuote.SBQQ__StartDate__c < dueDateRenewal){
-                                            eachQuote.SBQQ__EndDate__c = dueDateRenewal;
+                                        if(eachQuote.SBQQ__StartDate__c < dueDateRenewal2){
+                                            eachQuote.SBQQ__EndDate__c = dueDateRenewal2;
                                         }else{
-                                            if(eachQuote.LPCR_DateFin__c < nextYearDueDateRenewal){
+                                            if(eachQuote.LPCR_DateFin__c < nextYearDueDateRenewal2){
                                                 eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                                             }else{
-                                                eachQuote.SBQQ__EndDate__c = nextYearDueDateRenewal;
+                                                eachQuote.SBQQ__EndDate__c = nextYearDueDateRenewal2;
                                             }
                                         }
                                 }  
