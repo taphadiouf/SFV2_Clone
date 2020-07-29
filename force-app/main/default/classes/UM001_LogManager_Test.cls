@@ -17,7 +17,7 @@ private class UM001_LogManager_Test {
     static testMethod void validatePAD() {
 
         Account tmp = [Select Id, Name from Account where name like 'Account Test'];
-        UM001_LogManager.writeLogActivity('Test Log', 'BR Insert', '', tmp.Id, 'Fake BR Logged', 'Success');
+        UM001_LogManager.writeLogActivity('Test Log', 'BR Insert', '', ''+tmp.Id, 'Fake BR Logged', 'Success');
 
         // Assert cannot be placed as UM001_LogManager.writeLogActivity is a futur method
 
