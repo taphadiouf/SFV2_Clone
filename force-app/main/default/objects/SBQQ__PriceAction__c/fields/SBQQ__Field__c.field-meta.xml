@@ -232,6 +232,11 @@
                 <default>false</default>
                 <label>LPCR_HoldReason__c</label>
             </value>
+            <value>
+                <fullName>EditLinesFieldSetName__c</fullName>
+                <default>false</default>
+                <label>EditLinesFieldSetName__c</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -392,6 +397,10 @@
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
             <valueName>SBQQ__Opportunity2__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>EditLinesFieldSetName__c</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>

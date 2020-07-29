@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_ApiFieldName__c</fullName>
+    <description>De l&apos;objet préinscription</description>
+    <externalId>false</externalId>
+    <label>Nom du champ paramétré</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>LPCR_Anciennete__c</fullName>
+                <default>false</default>
+                <label>Ancienneté (jours)</label>
+            </value>
+            <value>
+                <fullName>LPCR_Commentaire__c</fullName>
+                <default>false</default>
+                <label>Commentaire</label>
+            </value>
+            <value>
+                <fullName>LPCR_CompteEntreprise__c</fullName>
+                <default>false</default>
+                <label>Compte Entreprise</label>
+            </value>
+            <value>
+                <fullName>LPCR_CompteFamille__c</fullName>
+                <default>false</default>
+                <label>Compte Famille</label>
+            </value>
+            <value>
+                <fullName>LPCR_ContactEnfant__c</fullName>
+                <default>false</default>
+                <label>Contact Enfant</label>
+            </value>
+            <value>
+                <fullName>LPCR_ContactParent__c</fullName>
+                <default>false</default>
+                <label>Contact Parent</label>
+            </value>
+            <value>
+                <fullName>LPCR_ContactParent2__c</fullName>
+                <default>false</default>
+                <label>Contact Parent2</label>
+            </value>
+            <value>
+                <fullName>LPCR_Contrat__c</fullName>
+                <default>false</default>
+                <label>Contrat</label>
+            </value>
+            <value>
+                <fullName>LPCR_DateEntreeEntreprise__c</fullName>
+                <default>false</default>
+                <label>Date d&apos;entrée dans l&apos;entreprise</label>
+            </value>
+            <value>
+                <fullName>LPCR_DateEntreeCreche__c</fullName>
+                <default>false</default>
+                <label>Date d&apos;entrée en crèche</label>
+            </value>
+            <value>
+                <fullName>LPCR_DateSortie__c</fullName>
+                <default>false</default>
+                <label>Date de sortie</label>
+            </value>
+            <value>
+                <fullName>LPCR_DemandeInscriptionCrecheMunicipal__c</fullName>
+                <default>false</default>
+                <label>Demande inscription en crèche municipal?</label>
+            </value>
+            <value>
+                <fullName>LPCR_DossierComplet__c</fullName>
+                <default>false</default>
+                <label>Dossier complet</label>
+            </value>
+            <value>
+                <fullName>LPCR_DetailHandicapEnfant__c</fullName>
+                <default>false</default>
+                <label>Détail Handicap Enfant</label>
+            </value>
+            <value>
+                <fullName>LPCR_EnfantDateDeNaissance__c</fullName>
+                <default>false</default>
+                <label>Enfant - Date De Naissance</label>
+            </value>
+            <value>
+                <fullName>LPCR_EnfantNom__c</fullName>
+                <default>false</default>
+                <label>Enfant - Nom</label>
+            </value>
+            <value>
+                <fullName>LPCR_EnfantPrenom__c</fullName>
+                <default>false</default>
+                <label>Enfant - Prénom</label>
+            </value>
+            <value>
+                <fullName>LPCR_ExistenceCrecheMunicipale__c</fullName>
+                <default>false</default>
+                <label>Existence crèche municipale</label>
+            </value>
+            <value>
+                <fullName>LPCR_HandicapEnfantDansLaFraterie__c</fullName>
+                <default>false</default>
+                <label>Handicap enfant dans la fraterie</label>
+            </value>
+            <value>
+                <fullName>LPCR_Jumeaux__c</fullName>
+                <default>false</default>
+                <label>Jumeaux</label>
+            </value>
+            <value>
+                <fullName>LPCR_ModeDAccueilDeLEnfant__c</fullName>
+                <default>false</default>
+                <label>Mode d&apos;accueil de l&apos;enfant</label>
+            </value>
+            <value>
+                <fullName>LPCR_NombreJours__c</fullName>
+                <default>false</default>
+                <label>Nombre de jours (calculé)</label>
+            </value>
+            <value>
+                <fullName>LPCR_PossedeUnModeDAccueilPourLEnfant__c</fullName>
+                <default>false</default>
+                <label>Possède un mode d&apos;accueil pour l&apos;enfant</label>
+            </value>
+            <value>
+                <fullName>LPCR_PrecisionMutation__c</fullName>
+                <default>false</default>
+                <label>Précision mutation</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1AutreSituationPro__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Autre situation pro</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1Civilite__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Civilité</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1CodePostal__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Code Postal</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1DetailHandicap__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Détail Handicap</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1Email__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Email</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1Handicap__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Handicap</label>
+            </value>
+            <value>
+                <fullName>LPCR_MutationRecenteOuProchainement__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Mutation récente ou proch</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1Nom__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Nom</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1Nombreenfantcharge__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Nombre enfant à charge</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1NumroAllocataire__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Numéro Allocataire</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1PosteOccupe__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Poste occupé</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1PrecisionMutation__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Précision mutation</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1Prenom__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Prénom</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1Rue__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Rue</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1SituationPro__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Situation Pro</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1Telportable__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Tel portable</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1TelPro__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Tel Pro</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1TypeAllocataire__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Type Allocataire</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep1Ville__c</fullName>
+                <default>false</default>
+                <label>Rep1 - Ville</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2Civilite__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Civilité</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2CodePostal__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Code Postal</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2DetailHandicap__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Détail Handicap</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2Email__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Email</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2Handicap__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Handicap</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2Nom__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Nom</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2NomEntreprise__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Nom entreprise</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2Prenom__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Prénom</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2Rue__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Rue</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2SituationPro__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Situation Pro</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2TelPortable__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Tel Portable</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2TelPro__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Tel Pro</label>
+            </value>
+            <value>
+                <fullName>LPCR_Rep2Ville__c</fullName>
+                <default>false</default>
+                <label>Rep2 - Ville</label>
+            </value>
+            <value>
+                <fullName>LPCR_ReponseCrecheMunicipale__c</fullName>
+                <default>false</default>
+                <label>Reponse crèche municipale</label>
+            </value>
+            <value>
+                <fullName>LPCR_Revenu__c</fullName>
+                <default>false</default>
+                <label>Revenu</label>
+            </value>
+            <value>
+                <fullName>LPCR_ReponseQuestionSupplemenaire1__c</fullName>
+                <default>false</default>
+                <label>Réponse Question Supplémenaire 1</label>
+            </value>
+            <value>
+                <fullName>LPCR_ReponseQuestionSupplemenaire10__c</fullName>
+                <default>false</default>
+                <label>Réponse Question Supplémenaire 10</label>
+            </value>
+            <value>
+                <fullName>LPCR_ReponseQuestionSupplemenaire2__c</fullName>
+                <default>false</default>
+                <label>Réponse Question Supplémenaire 2</label>
+            </value>
+            <value>
+                <fullName>LPCR_ReponseQuestionSupplemenaire3__c</fullName>
+                <default>false</default>
+                <label>Réponse Question Supplémenaire 3</label>
+            </value>
+            <value>
+                <fullName>LPCR_ReponseQuestionSupplemenaire4__c</fullName>
+                <default>false</default>
+                <label>Réponse Question Supplémenaire 4</label>
+            </value>
+            <value>
+                <fullName>LPCR_ReponseQuestionSupplemenaire5__c</fullName>
+                <default>false</default>
+                <label>Réponse Question Supplémenaire 5</label>
+            </value>
+            <value>
+                <fullName>LPCR_ReponseQuestionSupplemenaire6__c</fullName>
+                <default>false</default>
+                <label>Réponse Question Supplémenaire 6</label>
+            </value>
+            <value>
+                <fullName>LPCR_ReponseQuestionSupplemenaire7__c</fullName>
+                <default>false</default>
+                <label>Réponse Question Supplémenaire 7</label>
+            </value>
+            <value>
+                <fullName>LPCR_ReponseQuestionSupplemenaire8__c</fullName>
+                <default>false</default>
+                <label>Réponse Question Supplémenaire 8</label>
+            </value>
+            <value>
+                <fullName>LPCR_ReponseQuestionSupplemenaire9__c</fullName>
+                <default>false</default>
+                <label>Réponse Question Supplémenaire 9</label>
+            </value>
+            <value>
+                <fullName>LPCR_Section__c</fullName>
+                <default>false</default>
+                <label>Section</label>
+            </value>
+            <value>
+                <fullName>LPCR_SituationFamiliale__c</fullName>
+                <default>false</default>
+                <label>Situation Familiale</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeAccueil__c</fullName>
+                <default>false</default>
+                <label>Type d&apos;accueil</label>
+            </value>
+            <value>
+                <fullName>LPCR_UnDesEnfantDansCrecheDuReseau__c</fullName>
+                <default>false</default>
+                <label>Un des enfants dans crèche du réseau</label>
+            </value>
+            <value>
+                <fullName>LPCR_Undesenfantporteurdehandicap__c</fullName>
+                <default>false</default>
+                <label>Un des enfants porteur de handicap?</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
