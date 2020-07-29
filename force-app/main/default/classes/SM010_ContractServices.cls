@@ -34,7 +34,7 @@ public class SM010_ContractServices {
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){
                 // IS-1115 fixes added by saurabh
                 contractRTDevName = quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.DeveloperName;
-                if( contractRTDevName == Label.LPCR_Referencement || contractRTDevName == Label.LPCR_Referencement_Approuve) {
+                if(contractRTDevName == Label.LPCR_Referencement) {
                     if(quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_Referencement || quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_Referencement_Approuve ) {
                         if(quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__Type__c != 'Renewal'){
                             eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).Id;
@@ -47,8 +47,8 @@ public class SM010_ContractServices {
 
                 if(orderMap.containsKey(eachContract.SBQQ__Order__c) &&
                    quoteOrderMap.containsKey(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
-                       if(quoteMap.containsKey(eachContract.SBQQ__Quote__c) && quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement) {
-                           eachContract.LPCR_FraisDossier__c = quoteOrderMap.get(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;
+                    if(quoteMap.containsKey(eachContract.SBQQ__Quote__c) && (quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement || quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement_Approuve)){
+                        eachContract.LPCR_FraisDossier__c = quoteOrderMap.get(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;                	
                        }
                        eachContract=setContractFieldsFromOrderQuoteMaper(eachContract,quoteOrderMap.get(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c));
                    }
@@ -108,7 +108,8 @@ public class SM010_ContractServices {
             }
             
         }
-    }
+}
+
     /**
 * @Author Ayoub Ouarti
 * @Created 08/06/2020
