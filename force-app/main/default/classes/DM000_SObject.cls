@@ -224,7 +224,7 @@ public abstract class DM000_SObject{
         
         String errorMsg = '';        
         
-        if (pt == ProcessType.TRIGGER_SRC) {
+        if (pt == ProcessType.TRIGGER_SRC && !FeatureManagement.checkPermission('LPCR_ForceDefaultLogMechnism')) {
             errorMsg = dmlExecuteRequestBack( dmlOperation, objList, allOrNoneMode, methodName, pt);   
         }
         else {
