@@ -2,10 +2,20 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_CompteFamille__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>compte famille rattaché à la demande</description>
     <externalId>false</externalId>
     <label>Compte Famille</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Account.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>Famille</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Account</referenceTo>
-    <relationshipLabel>Demandes (Compte Famille)</relationshipLabel>
+    <relationshipLabel>Demandes Réseau Grandir (Compte Famille)</relationshipLabel>
     <relationshipName>Demandes</relationshipName>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
