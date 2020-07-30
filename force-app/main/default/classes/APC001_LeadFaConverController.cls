@@ -81,22 +81,27 @@ public with sharing class APC001_LeadFaConverController{
         //Map : Contact Variable Name => Contact Record
         Map<String, Contact> newContactsMap = new Map<String, Contact>();
         boolean isvalid = true;
-       String errMsg = 'Veuillez saisir les champs manquant : ';
+       String errMsg = 'Veuillez vérifier les champs suivants : ';
+       String contactFirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur;
         if(currentLead.LPCR_CompteSociete__c == Null){
             isvalid = False ;
-            errMsg += 'Compte Société, ';
+            errMsg += 'Compte Société est manquant, ';
             
         }
 
         if(currentLead.LPCR_CompteSocieteCoDemandeur__c == Null){
             isvalid = False ;
-            errMsg += 'Compte Société Co-Demandeur, ';
+            errMsg += 'Compte Société Co-Demandeur est manquant, ';
             
         }
         
         if(currentLead.Address == Null){
             isvalid = False ;
-            errMsg += 'Adresse ';
+            errMsg += 'Adresse est manquant,';
+        }
+        if(contactFirstName.length()>40){
+            isvalid = False ;
+            errMsg += 'Le champ Prénom co-demandeur est trop long';
         }
         if(!isvalid){
             throw new AuraHandledException(errMsg);

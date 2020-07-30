@@ -4389,11 +4389,11 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM013_ModificationEntranteServices</apexClass>
+        <apexClass>SM021_ModificationEntranteServices</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM013_ModificationEntranteServices_Test</apexClass>
+        <apexClass>SM021_ModificationEntranteServices_Test</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -11197,7 +11197,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Case.Opportunite__c</field>
+        <field>Case.LPCR_Opportunite__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14797,17 +14797,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_TypeCreche1__c</field>
+        <field>Lead.LPCR_TypeCrecheX1__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_TypeCreche2__c</field>
+        <field>Lead.LPCR_TypeCrecheX2__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_TypeCreche3__c</field>
+        <field>Lead.LPCR_TypeCrecheX3__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -32522,7 +32522,9 @@
     <layoutAssignments>
         <layout>CampaignMember-Campaign Member Page Layout</layout>
     </layoutAssignments>
-
+    <layoutAssignments>
+        <layout>Case-Présentation de la Demande Réseau Grandir</layout>
+    </layoutAssignments>
     <layoutAssignments>
         <layout>CaseInteraction-Case Feed Layout</layout>
     </layoutAssignments>
@@ -32644,14 +32646,11 @@
         <layout>LPCR_Preinscription__c-Présentation Préinscription</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>LPCR_RessourceFamille__c-Ressource Famille Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>LPCR_RessourceFamille__c-Ressource Famille Layout</layout>
+        <layout>LPCR_RessourceFamille__c-Ressource Famille MAC Layout</layout>
         <recordType>LPCR_RessourceFamille__c.Mac</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>LPCR_RessourceFamille__c-Ressource Famille Layout</layout>
+        <layout>LPCR_RessourceFamille__c-Ressource Famille Micro Layout</layout>
         <recordType>LPCR_RessourceFamille__c.Micro</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -32712,7 +32711,15 @@
         <layout>SBQQ__QuoteLine__c-SBQQ__Quote Line Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>blng__Invoice__c-blng__Invoice Layout</layout>
+        <layout>blng__Invoice__c-LPCR Draft Invoice</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>blng__Invoice__c-LPCR Draft Invoice</layout>
+        <recordType>blng__Invoice__c.LCPR_DraftInvoice</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>blng__Invoice__c-LPCR Posted Invoice</layout>
+        <recordType>blng__Invoice__c.LPCR_PostedInvoice</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>blng__Usage__c-blng__Usage Layout</layout>
@@ -32741,18 +32748,15 @@
         <layout>Opportunity-Présentation de l%27opportunité</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Order-Présentation de commande</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Order-Présentation de commande</layout>
+        <layout>Order-Accueil</layout>
         <recordType>Order.Accueil</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Order-Présentation de commande</layout>
+        <layout>Order-Référencement</layout>
         <recordType>Order.Referencement</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Order-Présentation de commande</layout>
+        <layout>Order-Réservataire</layout>
         <recordType>Order.Reservataire</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -32769,16 +32773,8 @@
         <recordType>SBQQ__Quote__c.Accueil</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SBQQ__Quote__c-Contrat d%27accueil</layout>
-        <recordType>SBQQ__Quote__c.Contrat_Accueil</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>SBQQ__Quote__c-Contrat d%27accueil Approuvé</layout>
         <recordType>SBQQ__Quote__c.Accueil_Approuve</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>SBQQ__Quote__c-Contrat d%27accueil Approuvé</layout>
-        <recordType>SBQQ__Quote__c.Contrat_Accueil_Approuve</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>SBQQ__Quote__c-Référencement</layout>
@@ -32885,7 +32881,7 @@
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
-        <allowDelete>false</allowDelete>
+        <allowDelete>true</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
@@ -33119,8 +33115,8 @@
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Solution</object>
@@ -34708,16 +34704,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>SBQQ__Quote__c.Contrat_Accueil</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>SBQQ__Quote__c.Contrat_Accueil_Approuve</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
         <recordType>SBQQ__Quote__c.Referencement</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
@@ -34737,14 +34723,14 @@
         <visible>false</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
         <recordType>blng__Invoice__c.LCPR_DraftInvoice</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>blng__Invoice__c.LPCR_PostedInvoice</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
         <tab>standard-Account</tab>

@@ -7,6 +7,10 @@
                 <value>false</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
+                <name>enableActionsConfiguration</name>
+                <value>false</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
                 <name>hideChatterActions</name>
                 <value>false</value>
             </componentInstanceProperties>
@@ -15,6 +19,17 @@
                 <value>3</value>
             </componentInstanceProperties>
             <componentName>force:highlightsPanel</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>hideUpdateButton</name>
+                <value>false</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>variant</name>
+                <value>non-linear</value>
+            </componentInstanceProperties>
+            <componentName>runtime_sales_pathassistant:pathAssistant</componentName>
         </componentInstances>
         <name>header</name>
         <type>Region</type>
@@ -29,24 +44,28 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
-                <name>createQuickActionName</name>
-                <value>NewCase</value>
+                <name>relatedListComponentOverride</name>
+                <value>NONE</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>lookupFieldName</name>
-                <value>Id</value>
+                <name>rowsToDisplay</name>
+                <value>10</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>updateQuickActionName</name>
-                <value>Case._LightningUpdateCase</value>
+                <name>showActionBar</name>
+                <value>true</value>
             </componentInstanceProperties>
-            <componentName>console:relatedRecord</componentName>
+            <componentName>force:relatedListContainer</componentName>
         </componentInstances>
         <name>Facet-ad441bd5-0b30-4865-b144-64099f28780e</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
+            <componentInstanceProperties>
+                <name>active</name>
+                <value>true</value>
+            </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>body</name>
                 <value>Facet-94898712-1414-4398-a3c6-bb9b5ea5fc5a</value>
@@ -60,7 +79,7 @@
         <componentInstances>
             <componentInstanceProperties>
                 <name>active</name>
-                <value>true</value>
+                <value>false</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>body</name>
@@ -89,6 +108,54 @@
     <flexiPageRegions>
         <componentInstances>
             <componentName>forceChatter:recordFeedContainer</componentName>
+        </componentInstances>
+        <name>Facet-3fdf4003-88ae-4199-baa3-a0485189e723</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentName>runtime_sales_activities:activityPanel</componentName>
+        </componentInstances>
+        <name>Facet-c2f32e38-07bc-4eb4-b0b0-163d5868b5d7</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>active</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>Facet-3fdf4003-88ae-4199-baa3-a0485189e723</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Standard.Tab.collaborate</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>Facet-c2f32e38-07bc-4eb4-b0b0-163d5868b5d7</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Standard.Tab.activity</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <name>Facet-362053cc-c09c-4ced-b335-4ea2c060baef</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>tabs</name>
+                <value>Facet-362053cc-c09c-4ced-b335-4ea2c060baef</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tabset</componentName>
         </componentInstances>
         <name>sidebar</name>
         <type>Region</type>

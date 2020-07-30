@@ -57,12 +57,20 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_CandidatureEnvoyee__c</field>
+                <behavior>Required</behavior>
+                <field>AccountId</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>AccountId</field>
+                <field>RecordTypeId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>OwnerId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_CandidatureEnvoyee__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -189,11 +197,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Opportunity.NouveauContratReservation</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Opportunity.NouveauContratReferecement</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
@@ -207,6 +210,11 @@
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>3</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Delete</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>4</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>DeepClone</actionName>
@@ -259,9 +267,9 @@
             <sortOrder>14</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Delete</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>4</sortOrder>
+            <actionName>Opportunity.NouveauContratReservation</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedContent>
@@ -303,7 +311,7 @@
         <fields>CASES.SUBJECT</fields>
         <fields>CASES.CREATED_DATE</fields>
         <fields>CASES.PRIORITY</fields>
-        <relatedList>Case.Opportunite__c</relatedList>
+        <relatedList>Case.LPCR_Opportunite__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -312,6 +320,12 @@
         <fields>CREATEDBY_USER</fields>
         <relatedList>SBQQ__WebQuote__c.SBQQ__Opportunity__c</relatedList>
     </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedOpportunityHistoryList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedEntityHistoryList</relatedList>
+    </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
@@ -319,7 +333,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1X000001FXue</masterLabel>
+        <masterLabel>00h1X000001G6HM</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
