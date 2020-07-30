@@ -457,6 +457,8 @@
         <relatedList>Lead.LPCR_CompteSociete__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <customButtons>NouvelleOpportunite</customButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>OPPORTUNITY.STAGE_NAME</fields>
         <fields>OPPORTUNITY.AMOUNT</fields>
