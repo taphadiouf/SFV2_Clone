@@ -12,17 +12,29 @@ public with sharing class SM019_DocumentList_Callout {
         
         Http http = new Http();
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('callout:LPCR_API_DocList');
-        request.setMethod('GET');
+        
+        LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
+        if('UAT'.equals(envCS.Nom__c)){
+            request.setEndpoint('callout:UAT_DOCUMENT_LISTE');
+        }
+        else if('PROD'.equals(envCS.Nom__c)){
+            request.setEndpoint('callout:PROD_DOCUMENT_LISTE');
+        }
+        else{
+            request.setEndpoint('callout:DEV_DOCUMENT_LISTE');
+        }
+        request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json;charset=UTF-8');
         DocumentListStructureWrapper docListStructure = new DocumentListStructureWrapper(ownerid, doc_type);
         request.setBody(JSON.serialize(docListStructure));
         HttpResponse response = http.send(request);
         // Parse the JSON response
         String statusCode = response.getStatusCode()+'';
-       
+        UM001_LogManager.writeLogActivityWithoutFuture('Appel Service Externe REF DOC LIST', '', 'Appel Externe', ownerid, response.getBody(), (statusCode.equals('200') ? 'SUCCESS' : 'ERROR'));
         if (statusCode.equals('200')) {
-            documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
+            System.debug('response.getBody()' + response.getBody());
+            documentListFullResponse.response = (List<DocumentListResponse>) JSON.deserialize(response.getBody(), List<DocumentListResponse>.class);
+            documentListFullResponse.result = '200';
         } else {
             //documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         LPCR_AppelServiceExterne__mdt appelServiceExterne = [SELECT LPCR_CodeRetour__c ,LPCR_MessageRetour__c , LPCR_NomService__c  
@@ -61,11 +73,11 @@ public with sharing class SM019_DocumentList_Callout {
     }
 
     public class DocumentListStructureWrapper{
-        public String ownerid; // obligatoitre
-        public String doc_type;
-        public DocumentListStructureWrapper(String ownerid, String doc_type){
-            this.ownerid = ownerid;
-            this.doc_type = doc_type;      
+        public String OwnerSfId; // obligatoitre
+        public String DocType;
+        public DocumentListStructureWrapper(String OwnerSfId, String DocType){
+            this.OwnerSfId = OwnerSfId;
+            this.DocType = DocType;      
         }
     }
     public class DocumentListFullResponse {
@@ -78,15 +90,17 @@ public with sharing class SM019_DocumentList_Callout {
         @AuraEnabled
         public String id {get;set;} 
         @AuraEnabled
-        public String doc_type {get;set;}
+        public String documentType {get;set;}
         @AuraEnabled 
-        public DateTime doc_creation_date {get;set;} 
+        public String ownerSfId {get;set;} 
+        @AuraEnabled 
+        public String docSfID {get;set;} 
         @AuraEnabled
-        public String doc_status {get;set;} 
+        public String documentStatus {get;set;} 
         @AuraEnabled
-        public String doc_name {get;set;} 
+        public String name {get;set;} 
         @AuraEnabled
-        public String doc_file_type{get;set;} 
+        public String fileType{get;set;} 
     }
 
 

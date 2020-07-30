@@ -11,87 +11,268 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
     }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        return Database.getQueryLocator([SELECT Id, OrderId, TotalPrice, blng__BillableUnitPrice__c, SBQQ__BillingFrequency__c, blng__NextChargeDate__c,SBQQ__Contract__r.LPCR_DateFin__c, Order.LPCR_BDOM_OrderStartdate__c FROM OrderItem WHERE Order.Status = 'Activated' AND  CreatedDate = TODAY]);
+        return Database.getQueryLocator([SELECT Id, OrderId, TotalPrice,SBQQ__DefaultSubscriptionTerm__c,LPCR_Uplift__c,LPCR_ContractStartDate__c,LPCR_ContractEndDate__c, blng__BillableUnitPrice__c, SBQQ__BillingFrequency__c, blng__NextChargeDate__c,SBQQ__Contract__c,SBQQ__Contract__r.LPCR_DateFin__c, Order.LPCR_BDOM_OrderStartdate__c,SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c,Order.LPCR_RenouvellementPlanFacture__c FROM OrderItem WHERE Order.Status = 'Activated' AND CreatedDate = TODAY]);
     }
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
         PAD.log('APB010_ProcessDailyOrderProduct', 'execute', 'scope to execute : '+scope);
         
         Set<Id> orderItemIds = UM003_TypeManager.getIdsOfListObjects(scope);
+        Set<String> contractIds = UM003_TypeManager.getFieldsOfListObjects(scope, 'SBQQ__Contract__c');
         Set<Id> selectedOrderItemId = new Set<Id>();
-        
+        Set<String> orderInvPlanIdsSet = new Set<String>();
         Map<Id, List<blng__BillingTransaction__c>> billingTransactionMap = new Map<Id, List<blng__BillingTransaction__c>>();
-        Map<Id, LPCR_PlanFacturation__c> billingPlanMap = new Map<Id, LPCR_PlanFacturation__c>();
+        Map<Id, List<LPCR_PlanFacturation__c>> billingPlanMap = new Map<Id, List<LPCR_PlanFacturation__c>>();
+        Map<Id, List<blng__InvoicePlanLine__c>> invoicePlanLineMap = new Map<Id, List<blng__InvoicePlanLine__c>>();
         
         List<LPCR_LignePlanFacturation__c> billingPlanLineList = new List<LPCR_LignePlanFacturation__c>();
+        Map<Id,Contract> updateContractmap = new Map<Id,Contract>([SELECT Id, LPCR_TotaleGlobalePlanFacture__c, LPCR_ValeurTotale__c, LPCR_ValeurTotaleAnnee__c FROM Contract WHERE Id =: contractIds]);
         
+        // Create Billing Plan records  
         for(OrderItem eachOrderItem : scope){
-            LPCR_PlanFacturation__c billingPlan = new LPCR_PlanFacturation__c();
-            billingPlan.LPCR_OrderItem__c = eachOrderItem.Id;
-            billingPlan.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
-            billingPlanMap.put(eachOrderItem.Id,billingPlan);
+            //Set Multiplier value
+            Integer multiplier;
+            if(eachOrderItem.SBQQ__DefaultSubscriptionTerm__c == 1){
+                multiplier = 12; // Set Multiplier value to 12 (B2C use case)
+            }else{
+                multiplier = 1; // Set Multiplier value to 1 (B2B use case)
+            }
             
+            Integer diffBetweenMonths = eachOrderItem.LPCR_ContractStartDate__c.monthsBetween(eachOrderItem.LPCR_ContractEndDate__c) + 1;
+            Integer diffBetweenYears =  diffBetweenMonths/12; 
+            Integer reminderMonths = math.mod(diffBetweenMonths,12);
+            Integer intervel = 12;
+            
+            System.debug('**** diffBetweenMonths : '+ diffBetweenMonths);
+            System.debug('**** diffBetweenYears : '+ diffBetweenYears);
+            System.debug('**** reminderMonths : '+ reminderMonths);
+            
+            Decimal totalPrice = eachOrderItem.TotalPrice;
+            Decimal totalFullYearPrice = eachOrderItem.TotalPrice;
+            Decimal finalLastYearPrice = 0;
+            Decimal totaleGlobalePlanFacture = 0;
+            
+            Date tmpDate = eachOrderItem.LPCR_ContractStartDate__c;
+            
+            if(!billingPlanMap.containsKey(eachOrderItem.Id)){
+                billingPlanMap.put(eachOrderItem.Id, new List<LPCR_PlanFacturation__c>());
+            }
+            
+            if(diffBetweenMonths > 0){
+                
+                for(integer year = 12 ; year <= diffBetweenMonths ; year+= intervel){
+                    if(year == intervel){
+                        // First Year price
+                        System.debug('**** totalPrice = '+totalPrice);
+                        System.debug('**** multiplier = '+multiplier);
+                        System.debug('**** ProrateMultiplier = '+eachOrderItem.SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c);
+                        
+                        totalFullYearPrice = (totalPrice * multiplier)/eachOrderItem.SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c;
+                        totaleGlobalePlanFacture += totalFullYearPrice;
+                        LPCR_PlanFacturation__c billingPlan = new LPCR_PlanFacturation__c();
+                        billingPlan.LPCR_OrderItem__c = eachOrderItem.Id;
+                        billingPlan.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
+                        billingPlan.LPCR_TotalContractValue__c = totalFullYearPrice;
+                        billingPlan.LPCR_StartDate__c = tmpDate;
+                        billingPlan.LPCR_EndDate__c = tmpDate.addDays(-1).addMonths(year);
+                        System.debug('**** First Year billing Plan = '+ billingPlan);
+                        billingPlanMap.get(eachOrderItem.Id).add(billingPlan);
+                        
+                    }else{
+                        // Middle Year price
+                        totalFullYearPrice =  totalFullYearPrice + ((totalFullYearPrice * eachOrderItem.LPCR_Uplift__c)/100);
+                        totaleGlobalePlanFacture += totalFullYearPrice;
+                        
+                        LPCR_PlanFacturation__c billingPlan = new LPCR_PlanFacturation__c();
+                        billingPlan.LPCR_OrderItem__c = eachOrderItem.Id;
+                        billingPlan.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
+                        billingPlan.LPCR_TotalContractValue__c = totalFullYearPrice;
+                        billingPlan.LPCR_StartDate__c = tmpDate.addMonths(year-intervel);
+                        billingPlan.LPCR_EndDate__c =   tmpDate.addDays(-1).addMonths(year);
+                        System.debug('**** Middle Year billing Plan = '+ billingPlan);
+                        billingPlanMap.get(eachOrderItem.Id).add(billingPlan);
+                    }
+                    
+                }
+                
+                // last partial year price
+                if(reminderMonths > 0){
+                    decimal monthlyPrice = totalFullYearPrice/12;
+                    Integer remindarDays = 0;
+                                      
+                    LPCR_PlanFacturation__c billingPlan = new LPCR_PlanFacturation__c();
+                    billingPlan.LPCR_OrderItem__c = eachOrderItem.Id;
+                    billingPlan.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
+                    billingPlan.LPCR_TotalContractValue__c = totalFullYearPrice;
+                    if(diffBetweenMonths < 12){
+                        billingPlan.LPCR_StartDate__c = tmpDate;
+                        billingPlan.LPCR_EndDate__c = eachOrderItem.LPCR_ContractEndDate__c;
+                        remindarDays = Math.mod(tmpDate.daysBetween(eachOrderItem.LPCR_ContractEndDate__c),30);
+                        finalLastYearPrice = (reminderMonths * monthlyPrice)+((monthlyPrice/30)*remindarDays);
+                        billingPlan.LPCR_TotalContractValue__c = finalLastYearPrice;
+                        totaleGlobalePlanFacture += finalLastYearPrice;
+                    }else{
+                        billingPlan.LPCR_StartDate__c = tmpDate.addYears(diffBetweenYears);
+                        billingPlan.LPCR_EndDate__c = eachOrderItem.LPCR_ContractEndDate__c;
+                        remindarDays = Math.mod(tmpDate.daysBetween(eachOrderItem.LPCR_ContractEndDate__c),30);
+                        System.debug('**** remindarDays = '+ remindarDays);
+                        finalLastYearPrice = (reminderMonths * monthlyPrice)+((monthlyPrice/30)*remindarDays);
+                        System.debug('**** finalLastYearPrice = '+ finalLastYearPrice);
+                        billingPlan.LPCR_TotalContractValue__c = finalLastYearPrice;
+                        totaleGlobalePlanFacture += finalLastYearPrice;
+                    }
+                    System.debug('**** last partial Year billing Plan = '+ billingPlan);
+                    billingPlanMap.get(eachOrderItem.Id).add(billingPlan);
+                    
+                }
+                
+                // Calculate and store the whole global price
+                if(updateContractMap.containsKey(eachOrderItem.SBQQ__Contract__c)){ 
+                    updateContractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_TotaleGlobalePlanFacture__c = totaleGlobalePlanFacture;
+                    if((updateContractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_ValeurTotale__c == null || updateContractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_ValeurTotale__c == 0) && updateContractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_TotaleGlobalePlanFacture__c != null ){
+                        updateContractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_ValeurTotale__c = totaleGlobalePlanFacture;
+                    }
+                }
+            }
             if(eachOrderItem.SBQQ__BillingFrequency__c == 'Invoice Plan') {
                 selectedOrderItemId.add(eachOrderItem.Id);
+                orderInvPlanIdsSet.add(eachOrderItem.OrderId);
             }
         }
         
         if(billingPlanMap.size() > 0){
             // insert billing plan for order product
-            insert billingPlanMap.values();
+            List<LPCR_PlanFacturation__c> insertBillingPlanList = new List<LPCR_PlanFacturation__c>();
+            for(List<LPCR_PlanFacturation__c> eachList : billingPlanMap.values()){
+                insertBillingPlanList.addAll(eachList);
+            }
+            insert insertBillingPlanList;
         }
         
-        for(blng__BillingTransaction__c eachTransaction : [SELECT Id, Name, blng__BillingSchedule__r.blng__OrderProduct__c, blng__BillingTargetDate__c FROM blng__BillingTransaction__c WHERE blng__BillingSchedule__r.blng__OrderProduct__c IN: selectedOrderItemId ]){
+        if(updateContractMap.size() > 0){
+            update updateContractMap.values();
+        }
+        
+        for(blng__BillingTransaction__c eachTransaction : [SELECT Id, Name,blng__Amount__c, blng__BillingSchedule__r.blng__OrderProduct__c, blng__BillingTargetDate__c,blng__OverrideBillingTargetDate__c FROM blng__BillingTransaction__c WHERE blng__BillingSchedule__r.blng__OrderProduct__c IN: selectedOrderItemId ]){
             if(!billingTransactionMap.containsKey(eachTransaction.blng__BillingSchedule__r.blng__OrderProduct__c)){
                 billingTransactionMap.put(eachTransaction.blng__BillingSchedule__r.blng__OrderProduct__c, new List<blng__BillingTransaction__c>());
             }
             billingTransactionMap.get(eachTransaction.blng__BillingSchedule__r.blng__OrderProduct__c).add(eachTransaction);
         }
         
+        Set<String> invoicePlanIdSet = new Set<String>();
+        for(Order order : [SELECT LPCR_RenouvellementPlanFacture__c FROM Order WHERE id IN: orderInvPlanIdsSet]){
+            if(order.LPCR_RenouvellementPlanFacture__c != null){
+                invoicePlanIdSet.add(order.LPCR_RenouvellementPlanFacture__c);
+            }            
+        }
+        
+        for(blng__InvoicePlanLine__c eachInvoicePlanLine : [SELECT Id, blng__CommencementDateOffset__c,blng__CommencementDateOffsetUnits__c, blng__InvoicePlan__c, blng__Percentage__c FROM blng__InvoicePlanLine__c WHERE blng__InvoicePlan__c IN: invoicePlanIdSet]){
+            if(!invoicePlanLineMap.containsKey(eachInvoicePlanLine.blng__InvoicePlan__c)){
+                invoicePlanLineMap.put(eachInvoicePlanLine.blng__InvoicePlan__c, new List<blng__InvoicePlanLine__c>());
+            }
+            invoicePlanLineMap.get(eachInvoicePlanLine.blng__InvoicePlan__c).add(eachInvoicePlanLine);
+        }
+        
+        // billing plan line for billing plan
         for(OrderItem eachOrderItem : scope) {
             if(eachOrderItem.SBQQ__BillingFrequency__c != 'Invoice Plan') {
-                Date tmpDate = eachOrderItem.blng__NextChargeDate__c;
-                Integer diffBetweenMonths = System.today().monthsBetween(eachOrderItem.SBQQ__Contract__r.LPCR_DateFin__c) + 1;
-                Integer intervel = 1;
-                
-                if('Quarterly'.equals(eachOrderItem.SBQQ__BillingFrequency__c)){
-                    intervel = 3;
-                }else if('Semiannual'.equals(eachOrderItem.SBQQ__BillingFrequency__c)){
-                    intervel = 6; 
-                }
-                
-                for(integer i = 1 ; i <= diffBetweenMonths ; i+=intervel){
-                    LPCR_LignePlanFacturation__c newPlanLine = new LPCR_LignePlanFacturation__c();
-                    newPlanLine.LPCR_OrderItem__c = eachOrderItem.Id;
-                    newPlanLine.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
-                    newPlanLine.LPCR_StartDate__c = tmpDate;
-                    
-                    if(billingPlanMap.containsKey(eachOrderItem.Id)){
-                        newPlanLine.LPCR_PlanFacturation__c = billingPlanMap.get(eachOrderItem.Id).Id; 
+                if(billingPlanMap.containsKey(eachOrderItem.Id)){
+                    Integer itemIndex = 1;
+                    Integer maxItemIndex = billingPlanMap.get(eachOrderItem.Id).size();
+                    for(LPCR_PlanFacturation__c eachPlan : billingPlanMap.get(eachOrderItem.Id)){
+                        Date tmpDate = eachPlan.LPCR_StartDate__c;
+                        Integer diffBetweenMonths = tmpDate.monthsBetween(eachPlan.LPCR_EndDate__c) + 1;
+                        Integer intervel = 1;
+                        Integer billingFrequency = 12;
+                        if('Quarterly'.equals(eachOrderItem.SBQQ__BillingFrequency__c)){
+                            intervel = 3;
+                            billingFrequency = 3;
+                        }else if('Semiannual'.equals(eachOrderItem.SBQQ__BillingFrequency__c)){
+                            intervel = 6; 
+                            billingFrequency = 2;
+                        }else if('Annual'.equals(eachOrderItem.SBQQ__BillingFrequency__c)){
+                            intervel = 12; 
+                            billingFrequency = 1;
+                        }
+                        
+                        for(integer i = intervel ; i <= diffBetweenMonths ; i+=intervel){
+                            LPCR_LignePlanFacturation__c newPlanLine = new LPCR_LignePlanFacturation__c();
+                            newPlanLine.LPCR_OrderItem__c = eachOrderItem.Id;
+                            newPlanLine.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
+                            newPlanLine.LPCR_StartDate__c = tmpDate;
+                            newPlanLine.LPCR_PlanFacturation__c = eachPlan.Id; 
+                            newPlanLine.LPCR_EndDate__c = tmpDate.addDays(-1).addMonths(intervel); 
+                            if(itemIndex == 1){
+                                newPlanLine.LPCR_Amount__c = eachOrderItem.blng__BillableUnitPrice__c;
+                            }else if(itemIndex <= maxItemIndex ){
+                                newPlanLine.LPCR_Amount__c = eachPlan.LPCR_TotalContractValue__c/billingFrequency;
+                            }	
+                            
+                            tmpDate = tmpDate.addMonths(intervel);
+                            billingPlanLineList.add(newPlanLine);
+                        }
+                        itemIndex++;
                     }
-                    if(eachOrderItem.Order.LPCR_BDOM_OrderStartdate__c){
-                        newPlanLine.LPCR_EndDate__c = tmpDate.addMonths(intervel);
-                    }else{
-                        newPlanLine.LPCR_EndDate__c = Date.newInstance(tmpDate.Year(), tmpDate.month() + intervel , Date.daysInMonth(tmpDate.year(), tmpDate.month() + intervel));
-                    } 
-                    billingPlanLineList.add(newPlanLine);
                 }
+                
             }else{
                 // If Billing Frequency is Invoice Plan
-                if(billingTransactionMap.containsKey(eachOrderItem.Id)){
-                    for(blng__BillingTransaction__c eachTransaction : billingTransactionMap.get(eachOrderItem.Id)){
-                        LPCR_LignePlanFacturation__c newPlanLine = new LPCR_LignePlanFacturation__c();
-                        newPlanLine.LPCR_OrderItem__c = eachOrderItem.Id;
-                        newPlanLine.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
-                        newPlanLine.LPCR_StartDate__c = eachTransaction.blng__BillingTargetDate__c;
-                        newPlanLine.LPCR_EndDate__c = eachTransaction.blng__BillingTargetDate__c;
-                        if(billingPlanMap.containsKey(eachOrderItem.Id)){
-                            newPlanLine.LPCR_PlanFacturation__c = billingPlanMap.get(eachOrderItem.Id).Id; 
+                if(billingPlanMap.containsKey(eachOrderItem.Id)){
+                    Integer itemIndex = 1;
+                    Integer maxItemIndex = billingPlanMap.get(eachOrderItem.Id).size();
+                    for(LPCR_PlanFacturation__c eachPlan : billingPlanMap.get(eachOrderItem.Id)){
+                        if(itemIndex == 1){
+                            if(billingTransactionMap.containsKey(eachOrderItem.Id)){
+                                for(blng__BillingTransaction__c eachTransaction : billingTransactionMap.get(eachOrderItem.Id)){
+                                    LPCR_LignePlanFacturation__c newPlanLine = new LPCR_LignePlanFacturation__c();
+                                    newPlanLine.LPCR_OrderItem__c = eachOrderItem.Id;
+                                    newPlanLine.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
+                                    newPlanLine.LPCR_StartDate__c = (eachTransaction.blng__OverrideBillingTargetDate__c != null)?eachTransaction.blng__OverrideBillingTargetDate__c:eachTransaction.blng__BillingTargetDate__c;
+                                    newPlanLine.LPCR_EndDate__c = (eachTransaction.blng__OverrideBillingTargetDate__c != null)?eachTransaction.blng__OverrideBillingTargetDate__c:eachTransaction.blng__BillingTargetDate__c;
+                                    newPlanLine.LPCR_PlanFacturation__c = eachPlan.Id; 
+                                    newPlanLine.LPCR_Amount__c = eachTransaction.blng__Amount__c;
+                                    billingPlanLineList.add(newPlanLine);
+                                }
+                            }
+                        }else{
+                            if(invoicePlanLineMap.containsKey(eachOrderItem.Order.LPCR_RenouvellementPlanFacture__c)){
+                                for(blng__InvoicePlanLine__c eachInvoicePlanLine : invoicePlanLineMap.get(eachOrderItem.Order.LPCR_RenouvellementPlanFacture__c)){
+                                    LPCR_LignePlanFacturation__c newPlanLine = new LPCR_LignePlanFacturation__c();
+                                    newPlanLine.LPCR_OrderItem__c = eachOrderItem.Id;
+                                    newPlanLine.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
+                                    Date tmpDate = eachOrderItem.LPCR_ContractStartDate__c;
+                                    if('Days'.equals(eachInvoicePlanLine.blng__CommencementDateOffsetUnits__c)){
+                                        tmpDate = tmpDate.addDays((Integer)eachInvoicePlanLine.blng__CommencementDateOffset__c);
+                                    }else if('Months'.equals(eachInvoicePlanLine.blng__CommencementDateOffsetUnits__c)){
+                                        tmpDate = tmpDate.addMonths((Integer)eachInvoicePlanLine.blng__CommencementDateOffset__c);
+                                    }else{
+                                        tmpDate = tmpDate.addYears((Integer)eachInvoicePlanLine.blng__CommencementDateOffset__c);
+                                    }
+                                    newPlanLine.LPCR_StartDate__c = tmpDate;
+                                    newPlanLine.LPCR_EndDate__c = tmpDate;
+                                    newPlanLine.LPCR_PlanFacturation__c = eachPlan.Id; 
+                                    newPlanLine.LPCR_Amount__c =  eachPlan.LPCR_TotalContractValue__c ;
+                                    billingPlanLineList.add(newPlanLine);
+                                }
+                            }
                         }
+                        itemIndex++;
                     }
-                }                
+                }
+                
             }
-        }        
+        }  
+        if(billingPlanLineList.size() > 0){
+            System.debug('**** billingPlanLineList size = '+ billingPlanLineList.size());
+            System.debug('**** billingPlanLineList data = '+ billingPlanLineList);
+            try{
+                insert billingPlanLineList;
+            }catch(Exception ex){
+                PAD.log('APB010_ProcessDailyOrderProduct', 'execute', '**** Exception : '+ ex.getMessage());
+            }
+            
+        }
     }
     
     global void finish(Database.BatchableContext BC) {
