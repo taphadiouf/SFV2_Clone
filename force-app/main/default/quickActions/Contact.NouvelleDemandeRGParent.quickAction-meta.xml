@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Création de demande réseau grandir à partir du compte famille</description>
+    <description>Création d&apos;une demande réseau grandir depuis le contact parent</description>
     <fieldOverrides>
-        <field>LPCR_CompteFamille__c</field>
-        <formula>Account.Id</formula>
+        <field>LPCR_RepresentantN1__c</field>
+        <formula>Contact.Id</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>Status</field>
@@ -14,11 +14,6 @@
     <quickActionLayout>
         <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
         <quickActionLayoutColumns>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>LPCR_CompteFamille__c</field>
-                <uiBehavior>Readonly</uiBehavior>
-            </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>LPCR_RepresentantN1__c</field>
@@ -87,10 +82,6 @@
         </quickActionLayoutColumns>
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
-                <emptySpace>true</emptySpace>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
-            <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>LPCR_RepresentantN2__c</field>
                 <uiBehavior>Edit</uiBehavior>
@@ -130,8 +121,7 @@
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>LPCR_DateVisite__c</field>
+                <emptySpace>true</emptySpace>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
@@ -152,6 +142,6 @@
         </quickActionLayoutColumns>
     </quickActionLayout>
     <targetObject>Case</targetObject>
-    <targetParentField>LPCR_CompteFamille__c</targetParentField>
+    <targetParentField>LPCR_RepresentantN1__c</targetParentField>
     <type>Create</type>
 </QuickAction>
