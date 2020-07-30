@@ -555,6 +555,11 @@
         <field>Account.Sparklane_FR__inactive__c</field>
         <readable>true</readable>
     </fieldPermissions>
+     <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.Tech_NbOpportunitesGagnees__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.TickerSymbol</field>
@@ -628,6 +633,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.LPCR_AmplitudeHoraireVendredi__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.LPCR_CompteFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -737,7 +747,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Case.Opportunite__c</field>
+        <field>Case.LPCR_Opportunite__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
