@@ -417,7 +417,7 @@
         <fields>LPCR_Enfant__c</fields>
         <fields>CASES.CREATED_DATE</fields>
         <fields>CASES.STATUS</fields>
-        <relatedList>Case.CompteFamille__c</relatedList>
+        <relatedList>Case.LPCR_CompteFamille__c</relatedList>
         <sortField>CASES.STATUS</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>
