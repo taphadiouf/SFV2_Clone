@@ -53,33 +53,36 @@ public class SM021_ModificationEntranteServices_Test {
             acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             update acc;
             
-            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
-            insert cont;
+           // Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+           // insert cont;
             
             Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
             opp.AccountId = acc.id;
             update opp;
             
-            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+         /*   SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
             quote.SBQQ__Type__c='Quote';
             quote.SBQQ__StartDate__c = System.today();
             quote.SBQQ__SubscriptionTerm__c = 12;
-            update quote;
+            update quote;*/
             
-            List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+          /*  List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
             
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
-            Insert contract;
+            Insert contract;*/
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',acc.id,cont.id,contract.id,Date.today(),10);
-            insert modif;
+           /* LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',acc.id,cont.id,contract.id,Date.today(),10);
+            insert modif;*/
             Test.startTest();
             List<SBQQ__Quote__c> quotes = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c];
+            system.debug('quotes'+quotes.size());
             List<Contract> contracts = [SELECT Id, SBQQ__Quote__c FROM Contract];
+            system.debug('contracts'+contracts.size());
             List<LPCR_ModificationEntrante__c> modificationsEntrantes = UM002_TestDataFactory.createModificationsEntrantes(100,quotes,contracts,'Validation Contrat Directrice');
             insert modificationsEntrantes;
+            system.debug('modificationsEntrantes'+modificationsEntrantes.size());
             List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
             System.assertEquals(100, quotesValides.size(), 'Error in SM021_ModificationEntranteServices_Test : problem in updating quotesValides');
 
