@@ -3,12 +3,17 @@
     <sorted>false</sorted>
     <standardValue>
         <fullName>New Business</fullName>
-        <default>false</default>
+        <default>true</default>
         <label>New Business</label>
     </standardValue>
     <standardValue>
-        <fullName>Existing Business</fullName>
+        <fullName>Upsell</fullName>
         <default>false</default>
-        <label>Existing Business</label>
+        <label>Upsell</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Renouvellement</fullName>
+        <default>false</default>
+        <label>Renouvellement</label>
     </standardValue>
 </StandardValueSet>

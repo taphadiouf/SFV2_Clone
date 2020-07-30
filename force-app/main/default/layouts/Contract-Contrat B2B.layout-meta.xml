@@ -52,6 +52,14 @@
                 <behavior>Edit</behavior>
                 <field>Pricebook2Id</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_NouveauPlanFacturation__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_RenouvellementPlanFacturation__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -147,24 +155,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_Region__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns/>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>false</detailHeading>
-        <editHeading>false</editHeading>
-        <label>New Section</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_NouveauPlanFacture__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_RenouvellementPlanFacture__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>

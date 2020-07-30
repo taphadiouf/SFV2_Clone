@@ -4389,11 +4389,11 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM013_ModificationEntranteServices</apexClass>
+        <apexClass>SM021_ModificationEntranteServices</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM013_ModificationEntranteServices_Test</apexClass>
+        <apexClass>SM021_ModificationEntranteServices_Test</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -11197,7 +11197,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Case.Opportunite__c</field>
+        <field>Case.LPCR_Opportunite__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

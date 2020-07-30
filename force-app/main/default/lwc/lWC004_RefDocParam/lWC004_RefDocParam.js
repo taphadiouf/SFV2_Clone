@@ -173,12 +173,13 @@ export default class LWC004_RefDocParam extends LightningElement {
             variant: 'success',
           }),
         );
+        this.dispatchEvent(new CustomEvent("sentdocument"));
         this.handleSkip();
 
         fireEvent(this.pageRef, 'handleCreatedAttachment', result);
       })
       .catch(err=>{
-        console.error(err);
+            console.log("*****Error : " + err);
             this.dispatchEvent(new ShowToastEvent({
                 title: "Erreur!",
                 message: err.body.message,

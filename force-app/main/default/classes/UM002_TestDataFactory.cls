@@ -559,27 +559,20 @@ newMe.FederationIdentifier = null;
     
     public static List<LPCR_ParametrageScore__c> createParametrageScores(Id accId){
         List<LPCR_ParametrageScore__c> listParams =new List<LPCR_ParametrageScore__c>();
-        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_Anciennete__c =1,LPCR_Score__c=100));
-        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Anciennete__c =5,LPCR_Score__c=300));
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Anciennete__c =10,LPCR_Score__c=500));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_Anciennete__c',LPCR_Format__c='Numéro',LPCR_Valeur__c = '1', LPCR_Score__c = 100));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_Anciennete__c',LPCR_Format__c='Numéro',LPCR_Valeur__c = '2', LPCR_Score__c = 200));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_Anciennete__c',LPCR_Format__c='Numéro',LPCR_Valeur__c = '3', LPCR_Score__c = 300));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_Anciennete__c',LPCR_Format__c='Numéro',LPCR_Valeur__c = '4', LPCR_Score__c = 400));
         
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =1,LPCR_Score__c=20));
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =2,LPCR_Score__c=30));
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =3,LPCR_Score__c=50));
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =4,LPCR_Score__c=60));
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_NbJourGarde__c =5,LPCR_Score__c=100));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_NombreJours__c',LPCR_Format__c='Numéro',LPCR_Valeur__c = '3', LPCR_Score__c = 300));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_NombreJours__c',LPCR_Format__c='Numéro',LPCR_Valeur__c = '4', LPCR_Score__c = 400));
         
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =1000,LPCR_Score__c=10));
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =10000,LPCR_Score__c=100));
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_Revenu__c  =100000,LPCR_Score__c=500));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_DateEntreeCreche__c',LPCR_Format__c='Date',LPCR_Valeur__c = String.valueOf(Date.newInstance(2019,12,31)), LPCR_Score__c = 100));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_DateEntreeCreche__c',LPCR_Format__c='Date',LPCR_Valeur__c = String.valueOf(Date.newInstance(2020,08,01)), LPCR_Score__c = 550));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_DateEntreeCreche__c',LPCR_Format__c='Date',LPCR_Valeur__c = String.valueOf(Date.newInstance(2021,03,04)), LPCR_Score__c = 600));
         
-       listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_ReponseCrecheMunicipale__c='Autre',LPCR_Score__c=20));        
-       listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_ReponseCrecheMunicipale__c='Refus',LPCR_Score__c=50));
-        
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2019,12,31),LPCR_Score__c=100));
-        listParams.add(new LPCR_ParametrageScore__c(LPCR_Account__c  =accId,LPCR_DateEntree__c=Date.newInstance(2020,12,31),LPCR_Score__c=10));
-        
-        
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_ReponseCrecheMunicipale__c',LPCR_Format__c='Liste',LPCR_Valeur__c = 'Autre', LPCR_Score__c = 225));
+
         return listParams;
         
     }
@@ -591,9 +584,10 @@ newMe.FederationIdentifier = null;
                                             //LPCR_TauxMensuel__c=price,
                                             Name=name);
     } 
-    public static LPCR_RessourceFamille__c createRessourceFamille(Date debutDate,Id userId,String name){
+    public static LPCR_RessourceFamille__c createRessourceFamille(Date debutDate,Id userId,Id contId,String name){
         return new LPCR_RessourceFamille__c(   LPCR_DateDebut__c = debutDate,
                                             LPCR_CompteFamille__c=userId,
+                                            LPCR_ContactEnfant__c= contId,
                                             Name=name);
     }
     public static List<LPCR_RessourceFamille__c> createRessourceFamille(Integer nbr,Id productId, Id userId,Decimal price,List<Date> listStartDate,List<Decimal> listNbrEnfant,List<Decimal> listNbrEnfantHandicape){
@@ -1174,7 +1168,7 @@ newMe.FederationIdentifier = null;
     
     public static LPCR_ModificationEntrante__c createModificationsEntrante(String event,Id accountId, Id contactId, Id contractId,Decimal revenusFamille){
         LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Evenement__c = event,
-                                                                                     LPCR_Compte__c = accountId,
+                                                                                     LPCR_Compte__c = accountId,LPCR_Statut__c = 'Validée',
                                                                                      LPCR_Quantite__c = 1, LPCR_Contract__c = contractId,
                                                                                      LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = false,
                                                                                      LPCR_RessourceFamille__c = revenusFamille);       
@@ -1183,7 +1177,7 @@ newMe.FederationIdentifier = null;
     
     //added by saurabh
     public static LPCR_ModificationEntrante__c createModificationsEntrante(String event,Id accountId, Id contactId, Id contractId,Date dateEffet,Decimal revenusFamille){
-        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Evenement__c = event,
+        LPCR_ModificationEntrante__c modifEntrante = new LPCR_ModificationEntrante__c(LPCR_Evenement__c = event,LPCR_Statut__c = 'Validée',
                                                                                      LPCR_DateEffet__c = dateEffet, LPCR_Compte__c = accountId,
                                                                                      LPCR_Quantite__c = 1, LPCR_Contract__c = contractId,
                                                                                      LPCR_Contact__c = contactId, LPCR_EtatTraitement__c = false,
