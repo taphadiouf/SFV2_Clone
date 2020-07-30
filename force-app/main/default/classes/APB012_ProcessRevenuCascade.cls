@@ -1,0 +1,261 @@
+/**
+* @author Saurabh
+* @date 21/07/2020
+* @Description Batch for ProcessRevenuCascade
+*/
+global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,Schedulable{
+    global APB012_ProcessRevenuCascade(){
+        
+    }
+    
+    global Database.QueryLocator start(Database.BatchableContext BC) {
+        return Database.getQueryLocator([select id,LPCR_ProcessRevenuCascade__c from account where LPCR_ProcessRevenuCascade__c = true]);
+    }
+    
+    global void execute(Database.BatchableContext BC, List<Account> scope) {
+        PAD.log('APB012_ProcessRevenuCascade', 'execute', 'scope to execute : '+scope);
+        
+        Set<Id> accountsIdSet = UM003_TypeManager.getIdsOfListObjects(scope);
+        Set<String> orderItemGroupingSet = new Set<String>();
+        
+        List<blng__RevenueTransaction__c> revenueTransList = [SELECT Id, Name, blng__Account__c, blng__RevenueFinancePeriod__c, blng__OrderProduct__c,blng__InvoiceLine__r.blng__Invoice__c,blng__InvoiceLine__r.blng__Invoice__r.blng__InvoiceStatus__c FROM blng__RevenueTransaction__c WHERE blng__OrderProduct__c != null AND blng__Account__c IN : accountsIdSet ];
+        Set<String> orderProductIds = UM003_TypeManager.getFieldsOfListObjects(revenueTransList,'blng__OrderProduct__c');
+        Set<Id> orderLineIds = new Set<Id>();
+        
+        Map<String, Map<String,LPCR_RevenueCascade__c>> revenueCascadeMap = new Map<String, Map<String,LPCR_RevenueCascade__c>>();
+        
+        for(OrderItem eachOrderItem : [SELECT Id,blng__BillingAccount__c,SBQQ__Contract__c,LPCR_Creche__c,OrderId, Order.Status, SBQQ__ChargeType__c,blng__GroupId__c FROM OrderItem WHERE Id IN: orderProductIds AND SBQQ__Contract__c != null AND Order.Status = 'Activated' AND SBQQ__ChargeType__c != 'One-Time']){
+            orderLineIds.add(eachOrderItem.Id);
+            orderItemGroupingSet.add(eachOrderItem.blng__BillingAccount__c+''+eachOrderItem.SBQQ__Contract__c+''+eachOrderItem.LPCR_Creche__c);
+        }
+        System.debug('*** orderLineIds size : '+ orderLineIds.size());
+        System.debug(orderLineIds);
+        
+        for(LPCR_RevenueCascade__c eachRevCascade : [SELECT Id, Name, LPCR_Compte__c, LPCR_CreditNoteLineAggregation__c, LPCR_CreditNoteRevenue__c, LPCR_DateDebut__c, LPCR_MontantFacture__c, LPCR_OrderInvoiceRevenue__c, LPCR_OrderLineAggregation__c, LPCR_OrderLineGroup__c, LPCR_PCA__c FROM LPCR_RevenueCascade__c WHERE LPCR_OrderLineGroup__c IN : orderItemGroupingSet order by LPCR_DateDebut__c]){
+            if(!revenueCascadeMap.containsKey(eachRevCascade.LPCR_OrderLineGroup__c)){
+                revenueCascadeMap.put(eachRevCascade.LPCR_OrderLineGroup__c,new Map<String,LPCR_RevenueCascade__c>());
+            }
+            revenueCascadeMap.get(eachRevCascade.LPCR_OrderLineGroup__c).put(String.valueOf(eachRevCascade.LPCR_DateDebut__c),eachRevCascade);
+        }
+        System.debug('*** revenueCascadeMap size : '+ revenueCascadeMap.size());
+        System.debug(revenueCascadeMap.keySet());
+        
+        // Step 1
+        list<AggregateResult> groupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount,blng__Account__c,blng__OrderProduct__r.blng__GroupId__c groupId FROM blng__RevenueTransaction__c WHERE blng__OrderProduct__c != null AND blng__OrderProduct__c In :orderLineIds AND blng__OrderProduct__r.SBQQ__ChargeType__c != 'One-Time' GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__OrderProduct__r.blng__GroupId__c Order By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__OrderProduct__r.blng__GroupId__c];        
+        system.debug('**** Step 1 groupedResults size : '+ groupedResults.size());
+        
+        Double aggregateAmount = 0;
+        List<LPCR_RevenueCascade__c> upsertRevenueCascadeList = new List<LPCR_RevenueCascade__c>();
+        
+        for(AggregateResult ar : groupedResults){
+            System.debug('blng__RevenueFinancePeriod__c Date : ' + ar.get('rvp'));
+            System.debug('Sum amount : ' + ar.get('amount'));
+            Double amount = Double.valueOf(ar.get('amount'));
+            aggregateAmount += amount;
+            String groupId = String.valueOf(ar.get('groupId'));
+            // Create the Revenue Waterfall records or update the existing ones
+            if(revenueCascadeMap.containsKey(groupId) && revenueCascadeMap.get(groupId).containsKey(String.valueOf(ar.get('rvp')))){
+                LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(groupId).get(String.valueOf(ar.get('rvp')));
+                updateRevCascade.LPCR_OrderLineAggregation__c = amount;
+                updateRevCascade.LPCR_OrderInvoiceRevenue__c = aggregateAmount;
+                upsertRevenueCascadeList.add(updateRevCascade);
+            }else{
+                LPCR_RevenueCascade__c newRevCascade = new LPCR_RevenueCascade__c();
+                newRevCascade.LPCR_DateDebut__c = Date.valueOf(ar.get('rvp'));
+                newRevCascade.LPCR_OrderLineAggregation__c = amount;
+                newRevCascade.LPCR_OrderInvoiceRevenue__c = aggregateAmount;
+                newRevCascade.LPCR_Compte__c = String.valueOf(ar.get('blng__Account__c'));
+                newRevCascade.LPCR_OrderLineGroup__c = groupId;
+                if(!revenueCascadeMap.containsKey(groupId)){
+                    revenueCascadeMap.put(groupId, new Map<String,LPCR_RevenueCascade__c>());
+                }
+                revenueCascadeMap.get(groupId).put(String.valueOf(ar.get('rvp')),newRevCascade);
+                
+                
+                upsertRevenueCascadeList.add(newRevCascade);
+            }           
+        }
+        
+        
+        
+        // Step 2 populate the Theoretical Credit Note Amount field
+        List<blng__CreditNoteLine__c> creditNoteLineList = [SELECT Id,blng__CreditNote__c, blng__CreditNote__r.blng__Status__c, blng__InvoiceLine__r.blng__OrderProduct__c FROM blng__CreditNoteLine__c WHERE /*blng__CreditNote__r.blng__Status__c = 'Posted' AND*/ blng__InvoiceLine__r.blng__OrderProduct__c IN: orderLineIds];
+        System.debug('*** creditNoteLineList size : '+ creditNoteLineList.size());
+        System.debug(creditNoteLineList);
+        
+        if(creditNoteLineList.size() > 0){
+            Set<Id> creditNoteLineIdSet = UM003_TypeManager.getIdsOfListObjects(creditNoteLineList);
+            list<AggregateResult> step2GroupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount,blng__OrderProduct__r.blng__GroupId__c groupId FROM blng__RevenueTransaction__c WHERE blng__CreditNoteLine__c != null AND blng__CreditNoteLine__c In :creditNoteLineIdSet AND blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__OrderProduct__r.blng__GroupId__c Order By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__OrderProduct__r.blng__GroupId__c];
+            
+            system.debug('step2GroupedResults.size()==== ' + step2GroupedResults.size());
+            aggregateAmount = 0;
+            for (AggregateResult ar : step2GroupedResults){
+                System.debug('blng__RevenueFinancePeriod__c Date : ' + ar.get('rvp'));
+                System.debug('Sum amount : ' + ar.get('amount'));
+                
+                // Create the Revenue Waterfall records or update the existing ones
+                Double amount = Double.valueOf(ar.get('amount'));
+                aggregateAmount += amount;
+                String groupId = String.valueOf(ar.get('groupId'));
+                // Create the Revenue Waterfall records or update the existing ones
+                if(revenueCascadeMap.containsKey(groupId) && revenueCascadeMap.get(groupId).containsKey(String.valueOf(ar.get('rvp')))){
+                    LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(groupId).get(String.valueOf(ar.get('rvp')));
+                    updateRevCascade.LPCR_CreditNoteLineAggregation__c = amount;
+                    updateRevCascade.LPCR_CreditNoteRevenue__c = aggregateAmount;
+                    upsertRevenueCascadeList.add(updateRevCascade);
+                }
+            }
+        }
+        
+        // step 3
+        Set<Id> invoiceIdsSet = new Set<Id>();
+        Map<String,Double> invoicedAmountMap = new Map<String,Double>();
+        
+        for(blng__RevenueTransaction__c eachRevTrans : revenueTransList){
+            if('Posted'.equals(eachRevTrans.blng__InvoiceLine__r.blng__Invoice__r.blng__InvoiceStatus__c)){
+                invoiceIdsSet.add(eachRevTrans.blng__InvoiceLine__r.blng__Invoice__c);
+            }
+        }
+        
+        if(invoiceIdsSet.size() > 0){
+            // this will give the Aggregated sum, group by field present on the order product
+            list<AggregateResult> amountGroupedResults = [SELECT blng__OrderProduct__r.blng__InvoiceGroupId__c rvp, SUM(blng__Subtotal__c) amount 
+                                                          FROM blng__InvoiceLine__c 
+                                                          WHERE 
+                                                          blng__Invoice__c IN: invoiceIdsSet
+                                                          AND 
+                                                          blng__ChargeType__c != 'One-Time' 
+                                                          GROUP BY blng__OrderProduct__r.blng__InvoiceGroupId__c 
+                                                          Order By blng__OrderProduct__r.blng__InvoiceGroupId__c];
+            
+            
+            system.debug('amountGroupedResults.size()==== ' + amountGroupedResults.size());
+            
+            for (AggregateResult ar : amountGroupedResults){
+                System.debug('blng__InvoiceGroupId__c id is : ' + ar.get('rvp'));
+                System.debug('Sum amount : ' + ar.get('amount'));
+                invoicedAmountMap.put(String.valueOf(ar.get('rvp')), Double.valueOf(ar.get('amount')));
+            }
+            
+            // this will give the Aggregated Min and Max Date, group by field present on the order product
+            list<AggregateResult> groupedResults2 = [SELECT blng__OrderProduct__r.blng__InvoiceGroupId__c rvp, Min(blng__StartDate__c) minStartDate, Max(blng__EndDate__c) maxEndDate 
+                                                     FROM blng__InvoiceLine__c 
+                                                     WHERE 
+                                                     blng__Invoice__c IN: invoiceIdsSet
+                                                     AND 
+                                                     blng__ChargeType__c != 'One-Time' 
+                                                     AND
+                                                     blng__Subtotal__c >= 0
+                                                     GROUP BY blng__OrderProduct__r.blng__InvoiceGroupId__c 
+                                                     Order By blng__OrderProduct__r.blng__InvoiceGroupId__c];
+            
+            
+            system.debug('groupedResults2.size()==== ' + groupedResults2.size());
+            
+            for (AggregateResult ar : groupedResults2)  {
+                System.debug('blng__InvoiceGroupId__c id is : ' + ar.get('rvp'));
+                System.debug('minStartDate : ' + ar.get('minStartDate'));
+                System.debug('maxEndDate : ' + ar.get('maxEndDate'));
+                if(revenueCascadeMap.containsKey(String.valueOf(ar.get('rvp'))) && revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).containsKey(String.valueOf(ar.get('minStartDate')))){
+                    LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).get(String.valueOf(ar.get('minStartDate')));
+                    if(invoicedAmountMap.containsKey(String.valueOf(ar.get('rvp')))){
+                        updateRevCascade.LPCR_MontantFacture__c = invoicedAmountMap.get(String.valueOf(ar.get('rvp')));
+                    }
+                    upsertRevenueCascadeList.add(updateRevCascade);
+                }
+            }
+            
+            Map<String,Double> creditNoteInvoicedAmountMap = new Map<String,Double>();
+            Set<String> creditNoteIdsSet = UM003_TypeManager.getFieldsOfListObjects(creditNoteLineList,'blng__CreditNote__c');
+            
+            if(creditNoteIdsSet.size() > 0){
+                // this will give the Aggregated sum, group by field present on the order product
+                list<AggregateResult> creditNoteLineGroupedResults = [SELECT blng__InvoiceLine__r.blng__OrderProduct__r.blng__InvoiceGroupId__c rvp, SUM(blng__Subtotal__c) amount 
+                                                        FROM blng__CreditNoteLine__c 
+                                                        WHERE 
+                                                        blng__CreditNote__c IN: creditNoteIdsSet
+                                                        AND 
+                                                        blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' 
+                                                        GROUP BY blng__InvoiceLine__r.blng__OrderProduct__r.blng__InvoiceGroupId__c 
+                                                        Order By blng__InvoiceLine__r.blng__OrderProduct__r.blng__InvoiceGroupId__c];
+                
+                
+                system.debug('creditNoteLineGroupedResults.size()==== ' + creditNoteLineGroupedResults.size());
+                
+                for (AggregateResult ar : creditNoteLineGroupedResults)  {
+                    System.debug('blng__InvoiceGroupId__c id is : ' + ar.get('rvp'));
+                    System.debug('Sum amount : ' + ar.get('amount'));
+                    creditNoteInvoicedAmountMap.put(String.valueOf(ar.get('rvp')), Double.valueOf(ar.get('amount')));
+                }
+                
+                // this will give the Aggregated Min and Max Date, group by field present on the order product
+                list<AggregateResult> creditNoteLineGroupedResults2 = [SELECT blng__InvoiceLine__r.blng__OrderProduct__r.blng__InvoiceGroupId__c rvp, Min(blng__StartDate__c) minStartDate, Max(blng__EndDate__c) maxEndDate 
+                                                         FROM blng__CreditNoteLine__c 
+                                                         WHERE 
+                                                         blng__CreditNote__c IN: creditNoteIdsSet
+                                                         AND 
+                                                         blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' 
+                                                         AND
+                                                         blng__Subtotal__c >= 0
+                                                         GROUP BY blng__InvoiceLine__r.blng__OrderProduct__r.blng__InvoiceGroupId__c 
+                                                         Order By blng__InvoiceLine__r.blng__OrderProduct__r.blng__InvoiceGroupId__c];
+                
+                
+                system.debug('creditNoteLineGroupedResults2.size()==== ' + creditNoteLineGroupedResults2.size());
+                
+                for (AggregateResult ar : creditNoteLineGroupedResults2)  {
+                    System.debug('blng__InvoiceGroupId__c id is : ' + ar.get('rvp'));
+                    System.debug('minStartDate : ' + ar.get('minStartDate'));
+                    System.debug('maxEndDate : ' + ar.get('maxEndDate'));
+                    if(revenueCascadeMap.containsKey(String.valueOf(ar.get('rvp'))) && revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).containsKey(String.valueOf(ar.get('minStartDate')))){
+                        LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).get(String.valueOf(ar.get('minStartDate')));
+                        if(creditNoteInvoicedAmountMap.containsKey(String.valueOf(ar.get('rvp')))){
+                            updateRevCascade.LPCR_MontantFacture__c = creditNoteInvoicedAmountMap.get(String.valueOf(ar.get('rvp')));
+                        }
+                        upsertRevenueCascadeList.add(updateRevCascade);
+                    }
+                }
+            }
+            
+            
+            
+        }
+        // insert or update Revenue Cascade
+        if(upsertRevenueCascadeList.size() > 0){
+            try{
+                upsert upsertRevenueCascadeList;
+            }catch(Exception ex){
+                System.debug('Exception: APB012_ProcessRevenuCascade | '+ ex.getMessage());
+            }            
+        }
+        
+    }
+    
+    global void finish(Database.BatchableContext BC) {
+    }
+    
+    global void execute(SchedulableContext sc) {
+        
+        APB012_ProcessRevenuCascade sc1 = new APB012_ProcessRevenuCascade();
+        
+        // schedule the apex class only if their is not existing job running
+        boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB012_ProcessRevenuCascade');
+        
+        // check if there is any open place to schedule the class
+        boolean isJobQueueFull = UM004_BatchUtility.isBatchJobQueueFull();
+        
+        if(isBatchJobRunning == UM004_BatchUtility.BOOLEAN_FALSE){
+            if (isJobQueueFull == UM004_BatchUtility.BOOLEAN_FALSE) {
+                sc1 = new APB012_ProcessRevenuCascade();
+                Database.executeBatch(this, 1);
+            } else {
+                //schedule this same schedulable class again in 30 mins
+                sc1 = new APB012_ProcessRevenuCascade();
+                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
+                Id schedId = System.Schedule('APB012_ProcessRevenuCascade'+timeForScheduler,timeForScheduler,sc1);
+            }
+        }  
+        
+    }
+}
