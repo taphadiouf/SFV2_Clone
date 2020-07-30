@@ -5,10 +5,11 @@
     <externalId>false</externalId>
     <label>Compte Famille</label>
     <referenceTo>Account</referenceTo>
-    <relationshipLabel>Préinscriptions (Compte Famille)</relationshipLabel>
-    <relationshipName>PreinscriptionsFamille</relationshipName>
+    <relationshipLabel>Demandes (Compte Famille)</relationshipLabel>
+    <relationshipName>Demandes</relationshipName>
     <required>false</required>
-    <trackHistory>true</trackHistory>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
 </CustomField>

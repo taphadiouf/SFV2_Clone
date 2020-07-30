@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Création d&apos;une demande réseau grandir depuis le contact enfant</description>
-    <fieldOverrides>
-        <field>LPCR_CompteFamille__c</field>
-        <formula>Contact.AccountId</formula>
-    </fieldOverrides>
+    <description>Création d&apos;une demande réseau grandir depuis le contact parent</description>
     <fieldOverrides>
         <field>LPCR_RepresentantN1__c</field>
-        <formula>Contact.LPCR_Representant1__c</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>LPCR_RepresentantN2__c</field>
-        <formula>Contact.LPCR_Representant2__c</formula>
+        <formula>Contact.Id</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>Status</field>
@@ -150,6 +142,6 @@
         </quickActionLayoutColumns>
     </quickActionLayout>
     <targetObject>Case</targetObject>
-    <targetParentField>LPCR_Enfant__c</targetParentField>
+    <targetParentField>LPCR_RepresentantN1__c</targetParentField>
     <type>Create</type>
 </QuickAction>
