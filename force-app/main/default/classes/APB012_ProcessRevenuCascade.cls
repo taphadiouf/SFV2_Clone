@@ -102,7 +102,6 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                     LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(groupId).get(String.valueOf(ar.get('rvp')));
                     updateRevCascade.LPCR_CreditNoteLineAggregation__c = amount;
                     updateRevCascade.LPCR_CreditNoteRevenue__c = aggregateAmount;
-                    upsertRevenueCascadeList.add(updateRevCascade);
                 }
             }
         }
@@ -161,7 +160,6 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                     if(invoicedAmountMap.containsKey(String.valueOf(ar.get('rvp')))){
                         updateRevCascade.LPCR_MontantFacture__c = invoicedAmountMap.get(String.valueOf(ar.get('rvp')));
                     }
-                    upsertRevenueCascadeList.add(updateRevCascade);
                 }
             }
             
@@ -212,7 +210,6 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                         if(creditNoteInvoicedAmountMap.containsKey(String.valueOf(ar.get('rvp')))){
                             updateRevCascade.LPCR_MontantFacture__c = creditNoteInvoicedAmountMap.get(String.valueOf(ar.get('rvp')));
                         }
-                        upsertRevenueCascadeList.add(updateRevCascade);
                     }
                 }
             }

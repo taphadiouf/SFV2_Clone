@@ -14,8 +14,8 @@ public class SM010_ContractServices {
 */
     public static void setContractFields(List<Contract> contracts){
         Pad.log('SM010_ContractServices','setContractFields(List<Contract> contracts)','contracts size '+contracts.size());
-        List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement),
-        EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)};
+        List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement)/*,
+        EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)*/};
             
             
             Set<String> quoteIds = UM003_TypeManager.getFieldsOfListObjects(contracts,'SBQQ__Quote__c');
@@ -107,8 +107,8 @@ public class SM010_ContractServices {
     public static void setContractFields(Map<Id, Contract> oldContractMap,Map<Id, Contract> newContractMap){
         Pad.log('SM010_ContractServices','setContractFields(Map<Id, Contract> oldContractMap,Map<Id, Contract> newContractMap)','oldContractMap size '+oldContractMap.size(),'oldContractMap size '+newContractMap.size());
         
-        List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement),
-         EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)};
+        List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement)/*,
+        EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)*/};
         List<String> accountIds = new List<String>();
                Set<String> orderIds = UM003_TypeManager.getFieldsOfListObjects(newContractMap.values(),'SBQQ__Order__c');
         Map<Id,Order> mapOrders = new Map<Id,Order>([SELECT Id,RecordType.DeveloperName,LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c,SBQQ__Quote__c from Order WHERE Id in :orderIds ]);

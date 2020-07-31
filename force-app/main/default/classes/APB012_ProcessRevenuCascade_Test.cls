@@ -255,6 +255,9 @@ public class APB012_ProcessRevenuCascade_Test {
             String chron = '0 0 23 * * ?';        
             system.schedule('Test Sched', chron, ss);
             Test.stopTest();
+
+            List<LPCR_RevenueCascade__c> revCascadeList = [SELECT Id, Name, LPCR_Compte__c, LPCR_CreditNoteLineAggregation__c, LPCR_CreditNoteRevenue__c, LPCR_DateDebut__c, LPCR_MontantFacture__c, LPCR_OrderInvoiceRevenue__c, LPCR_OrderLineAggregation__c, LPCR_OrderLineGroup__c, LPCR_PCA__c FROM LPCR_RevenueCascade__c];
+            System.assertEquals(1, revCascadeList.size(),'APB012_ProcessRevenuCascade_Test : RevenueTransaction upsert fail');
             
         }
     }

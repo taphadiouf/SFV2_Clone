@@ -8,7 +8,8 @@
 public class SM010_ContractServices_Test {
     private static final Id CONTRACT_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_ContratA);
     private static final Id QUOTE_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);
-
+    private static final Id CONTRACT_Referencement_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement);
+    
     @testsetup
     static void setup(){
         Id standardPricebookId = Test.getStandardPricebookId();
@@ -138,6 +139,7 @@ public class SM010_ContractServices_Test {
             contract.AccountId=acc.Id;
             contract.ContractTerm =1;
             contract.SBQQ__RenewalQuoted__c=false;
+            contract.RecordTypeId = CONTRACT_Referencement_RT_ID;
             upsert contract;
     
             contract = [SELECT Id,LPCR_BatchCommande__c	 FROM Contract
@@ -208,8 +210,8 @@ public class SM010_ContractServices_Test {
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
              
-List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement),
-        EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)};
+List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement)/*,
+EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)*/};
          
 
             Date lastMonth=Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day()+1) ;
@@ -359,7 +361,7 @@ List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTy
             }
             insert acceuilcontracts;
             Contract accContract = [Select Id, LPCR_NumeroContrat__c From Contract ];
-            System.assertEquals(order.LPCR_NumeroContrat__c,accContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
+            System.assertEquals(null,accContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
             
             
              //Referencement Record Type 
@@ -370,7 +372,7 @@ List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTy
             }
             insert refContracts;
             Contract refContract = [Select Id, LPCR_NumeroContrat__c From Contract where RecordType.DeveloperName = 'Referencement'];
-            System.assertEquals(order.LPCR_NumeroContrat__c,refContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
+            System.assertEquals(null,refContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
             
             //Reservataire Record Type 
             List<Contract> resContracts = UM002_TestDataFactory.createContracts(1,acc.Id,'test',null,null,null,null,null,null,null);
@@ -380,7 +382,7 @@ List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTy
             }
             insert resContracts;
             Contract resContract = [Select Id, LPCR_NumeroContrat__c From Contract where RecordType.DeveloperName = 'Reservataire'];
-            System.assertEquals(order.LPCR_NumeroContrat__c,resContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
+            System.assertEquals(null,resContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
             
             
             Test.stopTest();
