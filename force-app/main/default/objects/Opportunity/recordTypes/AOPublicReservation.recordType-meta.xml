@@ -3,6 +3,7 @@
     <fullName>AOPublicReservation</fullName>
     <active>true</active>
     <businessProcess>Opportunité AO Public</businessProcess>
+    <compactLayoutAssignment>PresentationCompacteOpportunite</compactLayoutAssignment>
     <label>AO Public Réservation</label>
     <picklistValues>
         <picklist>ForecastCategoryName</picklist>
@@ -465,11 +466,15 @@
     <picklistValues>
         <picklist>Type</picklist>
         <values>
-            <fullName>Existing Business</fullName>
+            <fullName>New Business</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>New Business</fullName>
+            <fullName>Renouvellement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Upsell</fullName>
             <default>false</default>
         </values>
     </picklistValues>

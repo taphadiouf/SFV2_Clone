@@ -22,7 +22,7 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>AccountId</field>
             </layoutItems>
             <layoutItems>
@@ -146,9 +146,9 @@
     </relatedLists>
     <relatedLists>
         <fields>ACCOUNT.NAME</fields>
-        <fields>ACCOUNT.ADDRESS1_CITY</fields>
-        <fields>ACCOUNT.PHONE1</fields>
-        <relatedList>Account.blng__BillToContact__c</relatedList>
+        <fields>ACCCONRELATION.IS_DIRECT</fields>
+        <fields>ACCCONRELATION.ROLES</fields>
+        <relatedList>RelatedContactAccountRelationList</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>CASES.CASE_NUMBER</fields>

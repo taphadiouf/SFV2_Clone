@@ -13,6 +13,10 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Required</behavior>
+                <field>LPCR_Statut__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_Representant1__c</field>
             </layoutItems>
@@ -31,10 +35,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_Region__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_MoyenPaiement__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -70,6 +70,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>ShippingAddress</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_Departement__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -124,18 +128,22 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>LPCR_MoyenPaiement__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LPCR_DateSignatureRUM__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_RUM__c</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_RIB__c</field>
             </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_IBAN__c</field>
@@ -406,10 +414,21 @@
         <relatedList>LPCR_Preinscription__c.LPCR_CompteFamille__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>CASES.CASE_NUMBER</fields>
+        <fields>LPCR_Enfant__c</fields>
+        <fields>CASES.CREATED_DATE</fields>
+        <fields>CASES.STATUS</fields>
+        <relatedList>Case.LPCR_CompteFamille__c</relatedList>
+        <sortField>CASES.STATUS</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
         <fields>NAME</fields>
         <relatedList>LPCR_RessourceFamille__c.LPCR_CompteFamille__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <customButtons>NouvelleOpportunite</customButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>OPPORTUNITY.STAGE_NAME</fields>
         <fields>OPPORTUNITY.AMOUNT</fields>
@@ -482,7 +501,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6E000000kntx</masterLabel>
+        <masterLabel>00h1x000000sBC5</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
