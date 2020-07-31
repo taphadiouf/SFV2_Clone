@@ -29,7 +29,11 @@
                 <field>ParentId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
+                <field>OwnerId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LPCR_Statut__c</field>
             </layoutItems>
             <layoutItems>
@@ -271,8 +275,10 @@
         <fields>CONTACT.ACCOUNT_NAME</fields>
         <fields>CONTACT.TITLE</fields>
         <fields>CONTACT.EMAIL</fields>
+        <fields>CONTACT.PHONE3</fields>
         <fields>CONTACT.PHONE1</fields>
         <fields>ACCCONRELATION.ROLES</fields>
+        <fields>ACCCONRELATION.IS_DIRECT</fields>
         <relatedList>RelatedAccountContactRelationList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -284,11 +290,29 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>LPCR_TypeContrat__c</fields>
+        <fields>LPCR_Statut__c</fields>
+        <fields>LPCR_CDDCDI__c</fields>
+        <fields>LPCR_TypeReconduction__c</fields>
+        <fields>LPCR_DateDebut__c</fields>
+        <fields>LPCR_DateFin__c</fields>
+        <fields>LPCR_Opportunite__c</fields>
         <relatedList>LPCR_ContratPartenaire__c.LPCR_Compte__c</relatedList>
+        <sortField>LPCR_Statut__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>LPCR_Statut__c</fields>
+        <fields>LPCR_Creche__c</fields>
+        <fields>LPCR_ContactEnfant__c</fields>
+        <fields>LPCR_Client__c</fields>
+        <fields>LPCR_DateDebutPrestation__c</fields>
+        <fields>LPCR_DateFinPrestation__c</fields>
+        <fields>LPCR_PrixAchat__c</fields>
         <relatedList>LPCR_BonAchatPartenaire__c.LPCR_ComptePartenaire__c</relatedList>
+        <sortField>LPCR_Statut__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>TASK.SUBJECT</fields>
@@ -322,7 +346,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6E000000knty</masterLabel>
+        <masterLabel>00h6E0000014Fyy</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
