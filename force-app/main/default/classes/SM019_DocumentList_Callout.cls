@@ -25,7 +25,10 @@ public with sharing class SM019_DocumentList_Callout {
         }
         request.setMethod('POST');
         request.setHeader('Content-Type', 'application/json;charset=UTF-8');
-        DocumentListStructureWrapper docListStructure = new DocumentListStructureWrapper(ownerid, doc_type);
+        DocumentListStructureWrapper docListStructure = new DocumentListStructureWrapper(ownerid);
+        if(!String.isBlank(doc_type)){
+            docListStructure.DocType = doc_type;
+        }
         request.setBody(JSON.serialize(docListStructure));
         HttpResponse response = http.send(request);
         // Parse the JSON response
@@ -75,9 +78,8 @@ public with sharing class SM019_DocumentList_Callout {
     public class DocumentListStructureWrapper{
         public String OwnerSfId; // obligatoitre
         public String DocType;
-        public DocumentListStructureWrapper(String OwnerSfId, String DocType){
-            this.OwnerSfId = OwnerSfId;
-            this.DocType = DocType;      
+        public DocumentListStructureWrapper(String OwnerSfId){
+            this.OwnerSfId = OwnerSfId;   
         }
     }
     public class DocumentListFullResponse {
