@@ -15,7 +15,7 @@ public with sharing class SM018_AttachmentService {
         for(Attachment eachAttachment : newAttachmentList){
             if(eachAttachment.name.contains('Facture Famille') && invoiceAccountMap.containsKey(eachAttachment.ParentId)){
                 SM019_DocumentList_Callout.getDocumentListFutureCallout(eachAttachment.ParentId, 'Facture',invoiceAccountMap.get(eachAttachment.ParentId));                 
-           }
+            }
             
            SM017_SendDocument_Callout.sendDocumentCallout(eachAttachment.ParentId, eachAttachment.Id, eachAttachment.Description, EncodingUtil.base64Encode(eachAttachment.Body));
 

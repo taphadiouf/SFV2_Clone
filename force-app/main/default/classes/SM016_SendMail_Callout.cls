@@ -22,8 +22,11 @@ public with sharing class SM016_SendMail_Callout {
         req.setHeader('Content-Type', 'application/json; utf-8');
         
         Set<Integer> docsIdSet = new Set<Integer>();
-        for(String DocId: docsId){
-            docsIdSet.add(Integer.valueOf(DocId));
+        System.debug('##D: '+ docsId );
+        if(docsId != null){
+            for(String DocId: docsId){
+                docsIdSet.add(Integer.valueOf(DocId));
+            }
         }
         
         EmailStructureWrapper emailStructure = new EmailStructureWrapper(from1, to, subject, body, docsIdSet);

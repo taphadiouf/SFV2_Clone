@@ -68,7 +68,6 @@ public with sharing class SM019_DocumentList_Callout {
             for(DocumentListResponse eachDoc : documentListFullResponse.response){
                 docTmp.add(eachDoc.id);
             }	
-            System.debug('##');
             SM016_SendMail_Callout.sendMailCallout('e.yhuellou-ext@lpcr.fr', email, 'Facture Client', 'Bonjour, Merci de trouver votre facture ci-joint. Cordialement', docTmp);
         }
     }
