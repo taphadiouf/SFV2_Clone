@@ -2,8 +2,32 @@
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Création de demande réseau grandir à partir du compte famille</description>
     <fieldOverrides>
+        <field>LPCR_CodePostalDomicile__c</field>
+        <formula>Account.ShippingPostalCode</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>LPCR_CompteFamille__c</field>
         <formula>Account.Id</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_MoyenTransport__c</field>
+        <formula>TEXT(Account.LPCR_MoyenDeTransport__c)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_RepresentantN1__c</field>
+        <formula>Account.LPCR_Representant1__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_RepresentantN2__c</field>
+        <formula>Account.LPCR_Representant2__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_RueDomicile__c</field>
+        <formula>Account.ShippingStreet</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_VilleDomicile__c</field>
+        <formula>Account.ShippingCity</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>Status</field>
