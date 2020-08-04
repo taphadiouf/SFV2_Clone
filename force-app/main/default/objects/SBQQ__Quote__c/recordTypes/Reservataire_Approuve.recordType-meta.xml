@@ -3,8 +3,8 @@
     <fullName>Reservataire_Approuve</fullName>
     <active>true</active>
     <compactLayoutAssignment>PresentationCompacteDevis</compactLayoutAssignment>
-    <description>Type d&apos;enregistrement pour les contrats de réservation approuvés</description>
-    <label>Réservation Approuvée</label>
+    <description>Type d&apos;enregistrement pour les contrats réservataires approuvés.</description>
+    <label>Réservataire Approuvé</label>
     <picklistValues>
         <picklist>ApprovalStatus__c</picklist>
         <values>
