@@ -3599,6 +3599,7 @@
         <members>Account.Sparklane_FR__inactive__c</members>
         <members>Account.Sparklane_FR__ProfileId__c</members>
         <members>Account.Sparklane_FR__ProfileName__c</members>
+        <members>Account.LPCR_ProcessRevenuCascade__c</members>
         <members>Activity.LPCR_Abouti__c</members>
         <members>Activity.LPCR_EstMigre__c</members>
         <members>Activity.LPCR_IdExterne_Activite__c</members>
@@ -8798,6 +8799,7 @@
         <members>User.SBQQ__ProductSortPreference__c</members>
         <members>User.SBQQ__ResetProductLookup__c</members>
         <members>User.SBQQ__Theme__c</members>
+        
         <name>CustomField</name>
     </types>
     <types>
@@ -13519,6 +13521,7 @@
         <members>LPCR_LignePlanFacturation__c</members>
         <members>LPCR_Log__c</members>
         <members>LPCR_ModificationEntrante__c</members>
+        <members>LPCR_RevenueCascade__c</members>
         <members>LPCR_ParametrageScore__c</members>
         <members>LPCR_ParametrePreinscription__c</members>
         <members>LPCR_PlanFacturation__c</members>
@@ -16501,6 +16504,7 @@
         <members>WorkBadgeDefinition-Badge Definition Layout</members>
         <members>WorkBadgeDefinition-Badge Layout 192</members>
         <members>WorkThanks-Thanks Layout</members>
+        <members>LPCR_RevenueCascade__c-Revenue Cascade Layout.layout-meta.xml</members>
         <name>Layout</name>
     </types>
     <types>

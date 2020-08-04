@@ -33,7 +33,7 @@ public with sharing class SM019_DocumentList_Callout {
         HttpResponse response = http.send(request);
         // Parse the JSON response
         String statusCode = response.getStatusCode()+'';
-        UM001_LogManager.writeLogActivityWithoutFuture('Appel Service Externe REF DOC LIST', '', 'Appel Externe', ownerid, response.getBody(), (statusCode.equals('200') ? 'SUCCESS' : 'ERROR'));
+        //UM001_LogManager.writeLogActivity('Appel Service Externe REF DOC LIST', '', 'Appel Externe', ownerid, response.getBody(), (statusCode.equals('200') ? 'SUCCESS' : 'ERROR'));
         if (statusCode.equals('200')) {
             System.debug('response.getBody()' + response.getBody());
             documentListFullResponse.response = (List<DocumentListResponse>) JSON.deserialize(response.getBody(), List<DocumentListResponse>.class);
@@ -71,7 +71,7 @@ public with sharing class SM019_DocumentList_Callout {
             for(DocumentListResponse eachDoc : documentListFullResponse.response){
                 docTmp.add(eachDoc.id);
             }	
-            SM016_SendMail_Callout.sendMailCallout('lpcr@lpcr.fr', email, 'LPCR : Facture', 'Bonjour, Voici votre facture ci-joint. Cordialement, LPCR', docTmp);
+            SM016_SendMail_Callout.sendMailCallout('e.yhuellou-ext@lpcr.fr', email, 'Facture Client', 'Bonjour, Merci de trouver votre facture ci-joint. Cordialement', docTmp);
         }
     }
 
