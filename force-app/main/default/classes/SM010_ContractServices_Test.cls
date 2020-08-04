@@ -8,7 +8,8 @@
 public class SM010_ContractServices_Test {
     private static final Id CONTRACT_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_ContratA);
     private static final Id QUOTE_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);
-
+    private static final Id CONTRACT_Referencement_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement);
+    
     @testsetup
     static void setup(){
         Id standardPricebookId = Test.getStandardPricebookId();
@@ -110,8 +111,7 @@ public class SM010_ContractServices_Test {
     private static void setContractFieldsTest(){        
         System.runAs(UM002_TestDataFactory.createUser()){
             Date lastMonth=Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day()+1) ;
-            
-            Test.startTest();
+                       Test.startTest();
             
             Account acc = [SELECT Id, name from Account where name ='test' ];
              blng__InvoicePlan__c invoicePlan =   new blng__InvoicePlan__c(blng__BillingScheduleCreation__c='Manual',blng__Active__c =true);
@@ -126,7 +126,8 @@ public class SM010_ContractServices_Test {
 
              Contract contract =null; 
             try{
-                contract = [SELECT Id,LPCR_NouveauPlanFacturation__c,LPCR_RenouvellementPlanFacturation__c,SBQQ__Order__c, LPCR_Sales_Rep__c ,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c, LPCR_PlanningEnfant__c FROM Contract 
+                contract = [SELECT Id,RecordTypeId,LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c,SBQQ__Order__c, LPCR_Sales_Rep__c ,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c, LPCR_PlanningEnfant__c FROM Contract 
+
                             WHERE SBQQ__Order__c =:order.Id ]; 
             }catch(Exception e){
                 PAD.log('SM010_ContractServices_Test','setContractFieldsTest','Error , Contract not get generated');
@@ -135,14 +136,21 @@ public class SM010_ContractServices_Test {
             
             //contract.LPCR_RenouvellementAutomatique__c=true;
             contract.StartDate=lastMonth;
+            contract.AccountId=acc.Id;
             contract.ContractTerm =1;
             contract.SBQQ__RenewalQuoted__c=false;
+            contract.RecordTypeId = CONTRACT_Referencement_RT_ID;
             upsert contract;
+    
             contract = [SELECT Id,LPCR_BatchCommande__c	 FROM Contract
                         WHERE SBQQ__Quote__c =:quote.Id ]; 
             System.assertEquals('Batch 2', contract.LPCR_BatchCommande__c,'LPCR_BatchCommande__c on the quote is not the same on the Contract');
 			contract.SBQQ__Order__c = order.Id;
             update contract;
+             acc = [SELECT Id,LPCR_ProcessRevenuCascade__c from Account where name ='test' ];
+            
+            System.assertEquals(true, acc.LPCR_ProcessRevenuCascade__c ,'Account.LPCR_ProcessRevenuCascade__c is false');
+           
             Test.stopTest();
             contract = [SELECT Id,RecordTypeId,LPCR_RenouvellementPlanFacturation__c,LPCR_NouveauPlanFacturation__c,LPCR_DureeContratJour__c,LPCR_Sales_Rep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, SBQQ__Order__c,LPCR_BatchCommande__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,LPCR_MasterDevis__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_PlanningEnfant__c FROM Contract
                         WHERE SBQQ__Order__c =:order.Id ]; 
@@ -201,6 +209,11 @@ public class SM010_ContractServices_Test {
     private static void setContractFieldsTest2(){        
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+             
+List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement)/*,
+EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)*/};
+         
+
             Date lastMonth=Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day()+1) ;
             Account acc = [SELECT Id, name from Account where name ='test' ];
             
@@ -209,9 +222,6 @@ public class SM010_ContractServices_Test {
             
             SBQQ__Quote__c quote2 = Database.query('SELECT Id,LPCR_DureeContratJour__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test2\'');
             Order order2 = Database.query('SELECT Id , Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \''+quote2.Id+'\'');
-            
-            
-            
             
             order.SBQQ__Contracted__c=true; 
             update order;
@@ -229,10 +239,22 @@ public class SM010_ContractServices_Test {
             contract.StartDate=lastMonth;
             contract.ContractTerm =1;
             contract.SBQQ__RenewalQuoted__c=false;
+             contract.RecordTypeId=B2BContractRecordTypeIds.get(0);
             upsert contract;
+                
+            acc = [SELECT Id,LPCR_ProcessRevenuCascade__c from Account where name ='test' ];
             
+            System.assertEquals(true, acc.LPCR_ProcessRevenuCascade__c ,'Account.LPCR_ProcessRevenuCascade__c is false');
+            acc.LPCR_ProcessRevenuCascade__c = false;
+            update acc;
+            
+
             contract.SBQQ__Order__c=order2.Id;
             update contract;
+             acc = [SELECT Id,LPCR_ProcessRevenuCascade__c from Account where name ='test' ];
+            
+            System.assertEquals(true, acc.LPCR_ProcessRevenuCascade__c ,'Account.LPCR_ProcessRevenuCascade__c is false');
+
             Test.stopTest();
             contract = [SELECT Id,SBQQ__Order__c,LPCR_BatchCommande__c,LPCR_IndexationConvenue__c,LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,LPCR_MasterDevis__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_PlanningEnfant__c FROM Contract 
                         WHERE SBQQ__Order__c =:order2.Id ]; 
@@ -339,7 +361,7 @@ public class SM010_ContractServices_Test {
             }
             insert acceuilcontracts;
             Contract accContract = [Select Id, LPCR_NumeroContrat__c From Contract ];
-            System.assertEquals(order.LPCR_NumeroContrat__c,accContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
+            System.assertEquals(null,accContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
             
             
              //Referencement Record Type 
@@ -350,7 +372,7 @@ public class SM010_ContractServices_Test {
             }
             insert refContracts;
             Contract refContract = [Select Id, LPCR_NumeroContrat__c From Contract where RecordType.DeveloperName = 'Referencement'];
-            System.assertEquals(order.LPCR_NumeroContrat__c,refContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
+            System.assertEquals(null,refContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
             
             //Reservataire Record Type 
             List<Contract> resContracts = UM002_TestDataFactory.createContracts(1,acc.Id,'test',null,null,null,null,null,null,null);
@@ -360,7 +382,7 @@ public class SM010_ContractServices_Test {
             }
             insert resContracts;
             Contract resContract = [Select Id, LPCR_NumeroContrat__c From Contract where RecordType.DeveloperName = 'Reservataire'];
-            System.assertEquals(order.LPCR_NumeroContrat__c,resContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
+            System.assertEquals(null,resContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
             
             
             Test.stopTest();
