@@ -10,6 +10,7 @@
 /* eslint-disable no-alert */
 import { LightningElement, api, track,wire } from "lwc";
 import save from '@salesforce/apex/APC002_AttachmentController.save';
+import sendDocument from '@salesforce/apex/APC002_AttachmentController.sendDocument';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import { CurrentPageReference } from "lightning/navigation";
 import { fireEvent } from 'c/pubsub';
@@ -45,14 +46,10 @@ export default class LWC004_RefDocParam extends LightningElement {
 
   @wire(CurrentPageReference) pageRef;
 
-
-
   disconnectedCallback() {
     // unsubscribe from bearListUpdate event
     unregisterAllListeners(this);
   }
-
-
 
   constructor() {
     super();
@@ -78,11 +75,6 @@ export default class LWC004_RefDocParam extends LightningElement {
        { label: 'Autres', value: 'Autres' }];
     }
   }
-
-
-
-
-
   handlePopup() {
     this.template.querySelector("section").classList.remove("slds-hide");
     this.template
@@ -108,7 +100,6 @@ export default class LWC004_RefDocParam extends LightningElement {
 
   }
 
-
   // getting file 
   handleFilesChange(event) {
     if (event.target.files.length > 0) {
@@ -118,7 +109,6 @@ export default class LWC004_RefDocParam extends LightningElement {
   }
 
   handleSave() {
-
 
     if (this.filesUploaded.length > 0) {
       this.uploadHelper();
@@ -156,27 +146,35 @@ export default class LWC004_RefDocParam extends LightningElement {
   saveToFile() {
 
     save({ idParent: this.recordId, strFileName: this.file.name, base64Data: encodeURIComponent(this.fileContents), description: this.data.type })
-      .then(result => {
-        window.console.log('result ====> ' + result);
-        // refreshing the datatable
-
-        this.fileName = this.fileName + ' - Uploaded Successfully';
-        this.UploadFile = 'File Uploaded Successfully';
-        this.isTrue = true;
-        this.showLoadingSpinner = false;
-
-        // Showing Success message after file insert
-        this.dispatchEvent(
-          new ShowToastEvent({
-            title: 'Succès !',
-            message: this.file.name + ' - chargé avec succès !',
-            variant: 'success',
-          }),
-        );
-        this.dispatchEvent(new CustomEvent("sentdocument"));
-        this.handleSkip();
-
-        fireEvent(this.pageRef, 'handleCreatedAttachment', result);
+      .then(attachment=>{
+        let attId = attachment.Id;
+        sendDocument({ attachmentId: attId})
+        .then(result=>{
+          // refreshing the datatable
+          this.fileName = this.fileName + ' - Uploaded Successfully';
+          this.UploadFile = 'File Uploaded Successfully';
+          this.isTrue = true;
+          this.showLoadingSpinner = false;
+          // Showing Success message after file insert
+          this.dispatchEvent(
+            new ShowToastEvent({
+              title: 'Succès !',
+              message: this.file.name + ' - chargé avec succès !',
+              variant: 'success',
+            }),
+          );
+          this.dispatchEvent(new CustomEvent("sentdocument"));
+          this.handleSkip();
+        })
+        .catch(err=>{
+          console.log("*****Error : " + err);
+          this.dispatchEvent(new ShowToastEvent({
+              title: "Erreur!",
+              message: err.body.message,
+              variant: "error"
+          
+          }));
+        });
       })
       .catch(err=>{
             console.log("*****Error : " + err);
@@ -186,7 +184,6 @@ export default class LWC004_RefDocParam extends LightningElement {
                 variant: "error"
             
             }));
-     
     });
   }
 
