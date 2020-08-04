@@ -3,7 +3,7 @@
 * @date 15/05/2020
 * @description Service class for LPCR_ModificationEntrante__c
 */
-public with sharing class SM021_ModificationEntranteServices {
+public with sharing class SM022_ModificationEntranteServices {
     public static List<SBQQ__Quote__c> updateQuotesFromModifEntrantes(List<LPCR_ModificationEntrante__c> ModifEntrantesList){
         List<LPCR_ModificationEntrante__c> evtModifEntrantesList = EM016_ModificationEntranteEntity.getModifEntranteById(ModifEntrantesList); 
         Map<Id,LPCR_ModificationEntrante__c> mapDevisModifictionEntrante = new Map<Id,LPCR_ModificationEntrante__c>();
@@ -95,7 +95,7 @@ public with sharing class SM021_ModificationEntranteServices {
             }
             
         } catch (Exception E) { 
-            PAD.log('SM021_ModificationEntranteServices', 'sendAgreement', 'Exception: ' + e.getStackTraceString());
+            PAD.log('SM022_ModificationEntranteServices', 'sendAgreement', 'Exception: ' + e.getStackTraceString());
         }       
     }   
     
@@ -123,17 +123,15 @@ public with sharing class SM021_ModificationEntranteServices {
         List<blng__Usage__c> lstBillingUsage = new List<blng__Usage__c>();
         for(LPCR_ModificationEntrante__c eachModification : ModifEntrantesList){
             String evtName = '';
-            if('Modification Heure Supplémentaire MAC'.equals(eachModification.LPCR_Evenement__c) ||
-               'Modification Heure Occasionnel MAC'.equals(eachModification.LPCR_Evenement__c) ||
-               'Modification Heure Déduite MAC'.equals(eachModification.LPCR_Evenement__c) ||
-               'Modification Facturation Adaptation'.equals(eachModification.LPCR_Evenement__c) ||
-               'Nombre de repas'.equals(eachModification.LPCR_Evenement__c) ||
+            if('Modification_Heure_Supplementaire_MAC'.equals(eachModification.LPCR_Evenement__c) ||
+               'Modification_Heure_Occasionnel_MAC'.equals(eachModification.LPCR_Evenement__c) ||
+               'Modification_Heure_Deduite_MAC'.equals(eachModification.LPCR_Evenement__c) ||
+               'Modification_Facturation_Adaptation'.equals(eachModification.LPCR_Evenement__c) ||
+               'Nombre_de_repas'.equals(eachModification.LPCR_Evenement__c) ||
                'Abscence'.equals(eachModification.LPCR_Evenement__c)
               ){
-                  if('Modification Facturation Adaptation'.equals(eachModification.LPCR_Evenement__c)){
+                  if('Modification_Facturation_Adaptation'.equals(eachModification.LPCR_Evenement__c)){
                       evtName = 'Modification Période d\'Adaptation';
-                  }else if('Abscence'.equals(eachModification.LPCR_Evenement__c)){
-                      evtName = 'Modification Absence';
                   }else{
                      evtName =  eachModification.LPCR_Evenement__c;
                   }
@@ -172,6 +170,7 @@ public with sharing class SM021_ModificationEntranteServices {
         List<LPCR_RessourceFamille__c> listRessourceFamilleToInsert = new List<LPCR_RessourceFamille__c> ();
         List<SBQQ__QuoteLine__c> allListCloneQuoteLine = new List<SBQQ__QuoteLine__c>();
         List<SBQQ__Quote__c> listQuoteForUpdate = new List<SBQQ__Quote__c>();
+        Map<String,SBQQ__Quote__c> mapOfQuoteForUpdate = new Map<String,SBQQ__Quote__c>();
         Map<String,List<LPCR_DetailModificationPlanning__c>> detailModifPlanningMap = new Map<String,List<LPCR_DetailModificationPlanning__c>>();
         List<LPCR_Planning__c> allPlanningInsertList = new List<LPCR_Planning__c>();
         Map<String, List<LPCR_PlanningPrevisionnel__c>> allPlanningPrevisionnelInsertMap = new Map<String, List<LPCR_PlanningPrevisionnel__c>>();
@@ -189,10 +188,10 @@ public with sharing class SM021_ModificationEntranteServices {
         }
         System.debug('size of modifEntrantesContractMap : '+ modifEntrantesContractMap.size());
         
-        detailModifPlanningMap = SM021_ModificationEntranteServices.getDetailModificationPlanningList(modifEntrantesIds,'Modification Type Planning');
+        detailModifPlanningMap = SM022_ModificationEntranteServices.getDetailModificationPlanningList(modifEntrantesIds,'Modification_Type_Planning');
         
         for(LPCR_ModificationEntrante__c eachModifEntrante : ModifEntrantesList){
-            if('Modification Situation Handicapé Enfant Fratrie'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
+            if('Modification_Situation_Handicape_Enfant'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
                 if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
                     // 1) Update previous LPCR_FamilyRessource_c with an effective end date (LPCR_DateFin_c) corresponding to last day of current month
                     // 2) Insert a LPCR_FamilyRessource__c record dwith effective start date as 1st of next month
@@ -213,11 +212,12 @@ public with sharing class SM021_ModificationEntranteServices {
                     SBQQ.TriggerControl.enable();
                     SBQQ__Quote__c quote = quoteModel.record;
                     quote.LPCR_LaunchRecalculation__c = true;
-                    listQuoteForUpdate.add(quote);
+                    //listQuoteForUpdate.add(quote);
+                    mapOfQuoteForUpdate.put(quote.id,quote);
                     eachModifEntrante.LPCR_EtatTraitement__c = true;    
                 }
-            }else if('Modification Nombre Enfant Fratrie'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
-                System.debug('Event = Modification Nombre Enfant Fratrie | '+ eachModifEntrante.Id);
+            }else if('Modification_Nombre_Enfant_Fratrie'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
+                System.debug('Event = Modification_Nombre_Enfant_Fratrie | '+ eachModifEntrante.Id);
                 if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
                     LPCR_RessourceFamille__c oldRessourceFamille = ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c);
                     LPCR_RessourceFamille__c ressourceFamilleToInsert = createNewRessourceFamille(oldRessourceFamille);
@@ -236,11 +236,12 @@ public with sharing class SM021_ModificationEntranteServices {
                     SBQQ.TriggerControl.enable();
                     SBQQ__Quote__c quote = quoteModel.record;
                     quote.LPCR_LaunchRecalculation__c = true;
-                    listQuoteForUpdate.add(quote);
+                    //listQuoteForUpdate.add(quote);
+                    mapOfQuoteForUpdate.put(quote.id,quote);
                     eachModifEntrante.LPCR_EtatTraitement__c = true;    
                 }
-            }else if('Modification Montant Ressource'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
-                System.debug('Event = Modification Montant Ressource | '+ eachModifEntrante.Id);
+            }else if('Modification_Montant_Ressource'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_RessourceFamille__c != null && eachModifEntrante.LPCR_Compte__c != null ){
+                System.debug('Event = Modification_Montant_Ressource | '+ eachModifEntrante.Id);
                 if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
                     // 1) Update previous LPCR_FamilyRessource_c with an effective end date (LPCR_DateFin_c) corresponding to last day of current month
                     // 2) Insert a LPCR_FamilyRessource__c record dwith effective start date as 1st of next month
@@ -261,10 +262,11 @@ public with sharing class SM021_ModificationEntranteServices {
                     SBQQ.TriggerControl.enable();
                     SBQQ__Quote__c quote = quoteModel.record;
                     quote.LPCR_LaunchRecalculation__c = true;
-                    listQuoteForUpdate.add(quote);
+                    //listQuoteForUpdate.add(quote);
+                    mapOfQuoteForUpdate.put(quote.id,quote);
                     eachModifEntrante.LPCR_EtatTraitement__c = true;    
                 }
-            }else if('Modification Type Planning'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_TypePlanning__c != null && eachModifEntrante.LPCR_Compte__c != null){
+            }else if('Modification_Type_Planning'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_TypePlanning__c != null && eachModifEntrante.LPCR_Compte__c != null){
                 if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
                     
                     WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
@@ -304,10 +306,11 @@ public with sharing class SM021_ModificationEntranteServices {
                     
                     SBQQ__Quote__c quote = quoteModel.record;
                     quote.SBQQ__Status__c = 'Brouillon';
-                    listQuoteForUpdate.add(quote);
+                    //listQuoteForUpdate.add(quote);
+                    mapOfQuoteForUpdate.put(quote.id,quote);
                     eachModifEntrante.LPCR_EtatTraitement__c = true;
                 }
-            }else if('Modification Nombre Jour Congé'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Contract__c != null ){
+            }else if('Modification_Nombre_Jour_Conge'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Contract__c != null ){
                 WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
                 
                 SBQQ.TriggerControl.disable();
@@ -319,9 +322,10 @@ public with sharing class SM021_ModificationEntranteServices {
                 SBQQ__Quote__c quote = quoteModel.record;
                 quote.LPCR_CongesJours__c = eachModifEntrante.LPCR_Quantite__c;
                 quote.LPCR_LaunchRecalculation__c = true;
-                listQuoteForUpdate.add(quote);
+                //listQuoteForUpdate.add(quote);
+                mapOfQuoteForUpdate.put(quote.id,quote);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;                
-            }else if('Date Fin Contrat'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
+            }else if('Date_Fin_Contrat'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
                 if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
                     LPCR_RessourceFamille__c oldRessourceFamille = ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c);
                     oldRessourceFamille.LPCR_DateFin__c = lastDayOfCurrentMonthDate; 
@@ -348,10 +352,11 @@ public with sharing class SM021_ModificationEntranteServices {
                     SBQQ__Quote__c quote = quoteModel.record;
                     quote.SBQQ__StartDate__c = endDate ;
                     quote.SBQQ__Status__c = 'Brouillon';
-                    listQuoteForUpdate.add(quote);
+                    //listQuoteForUpdate.add(quote);
+                    mapOfQuoteForUpdate.put(quote.id,quote);
                     eachModifEntrante.LPCR_EtatTraitement__c = true;
                 }
-            }else if('Modification Type Accueil'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_TypeAccueil__c != null){
+            }else if('Modification_Type_Accueil'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_TypeAccueil__c != null){
                 WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
                 
                 SBQQ.TriggerControl.disable();
@@ -363,10 +368,11 @@ public with sharing class SM021_ModificationEntranteServices {
                 SBQQ__Quote__c quote = quoteModel.record;
                 quote.LPCR_LaunchRecalculation__c = true;
                 quote.SBQQ__Status__c = 'Brouillon';
-                listQuoteForUpdate.add(quote);
+                //listQuoteForUpdate.add(quote);
+                mapOfQuoteForUpdate.put(quote.id,quote);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
                 
-            }else if('Modification Adresse Contact Parent'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contact__c != null ){
+            }else if('Modification_Adresse_Contact_Parent'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contact__c != null ){
                 if(modifEntrantesContactMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
                     Contact updateContact = modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c);
                     updateContact.MailingStreet = eachModifEntrante.LPCR_Rue__c;
@@ -376,81 +382,82 @@ public with sharing class SM021_ModificationEntranteServices {
                     allContactUpdateList.add(updateContact);
                     eachModifEntrante.LPCR_EtatTraitement__c = true;
                 }
-            }else if('Modification Autorité Parentale'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contact__c != null && eachModifEntrante.LPCR_OuiNon__c != null ){
+            }else if('Modification_Autorite_Parentale'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contact__c != null && eachModifEntrante.LPCR_OuiNon__c != null ){
                 Contact updateContact = new Contact(Id = eachModifEntrante.LPCR_Contact__c);
                 updateContact.LPCR_AutoriteParentale__c = eachModifEntrante.LPCR_OuiNon__c;
                 allContactUpdateList.add(updateContact);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Modification Numéro Allocataire'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contact__c != null && eachModifEntrante.LPCR_IDUnique__c != null ){
+            }else if('Modification_Numero_Allocataire'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contact__c != null && eachModifEntrante.LPCR_IDUnique__c != null ){
                 Contact updateContact = new Contact(Id = eachModifEntrante.LPCR_Contact__c);
                 updateContact.LPCR_NumeroAllocataire__c = eachModifEntrante.LPCR_IDUnique__c;
                 allContactUpdateList.add(updateContact);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Date Naissance Enfant'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contact__c != null && eachModifEntrante.LPCR_Date__c != null ){
+            }else if('Date_Naissance_Enfant'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contact__c != null && eachModifEntrante.LPCR_Date__c != null ){
                 Contact updateContact = new Contact(Id = eachModifEntrante.LPCR_Contact__c);
                 updateContact.Birthdate = eachModifEntrante.LPCR_Date__c;
                 allContactUpdateList.add(updateContact);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Modification Section'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Section__c != null ){
+            }else if('Modification_Section'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Section__c != null ){
                 Contract updateContract = new Contract(Id = eachModifEntrante.LPCR_Contract__c);
                 updateContract.LPCR_Section__c = eachModifEntrante.LPCR_Section__c;
                 allContractUpdateList.add(updateContract);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Modification Mode Garde'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_Garde__c != null ){
+            }else if('Modification_Mode_Garde'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_Garde__c != null ){
                 Account updateAccount = new Account(Id = eachModifEntrante.LPCR_Compte__c);
                 updateAccount.LPCR_SituationFamiliale__c = eachModifEntrante.LPCR_SituationFamiliale__c;
                 updateAccount.LPCR_Garde__c = eachModifEntrante.LPCR_Garde__c;
                 allAccountUpdateList.add(updateAccount);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Modification Situation Familiale'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_SituationFamiliale__c != null ){
+            }else if('Modification_Situation_Familiale'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_SituationFamiliale__c != null ){
                 Account updateAccount = new Account(Id = eachModifEntrante.LPCR_Compte__c);
                 updateAccount.LPCR_SituationFamiliale__c = eachModifEntrante.LPCR_SituationFamiliale__c;
                 updateAccount.LPCR_Garde__c = eachModifEntrante.LPCR_Garde__c;
                 allAccountUpdateList.add(updateAccount);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Modification Facturation Adaptation'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
+            }else if('Modification_Facturation_Adaptation'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
                 blng__Usage__c newUsage = createBlngUsage(modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).FirstName,modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).LastName,ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c).LPCR_CompteFamille__r.Name,eachModifEntrante,'Heures','Modification Période d\'Adaptation');
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Modification Heure Supplémentaire MAC'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
-                blng__Usage__c newUsage = createBlngUsage(modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).FirstName,modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).LastName,ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c).LPCR_CompteFamille__r.Name,eachModifEntrante,'Heures','Modification Heure Supplémentaire MAC');
+            }else if('Modification_Heure_Supplementaire_MAC'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
+                blng__Usage__c newUsage = createBlngUsage(modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).FirstName,modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).LastName,ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c).LPCR_CompteFamille__r.Name,eachModifEntrante,'Heures','Modification_Heure_Supplementaire_MAC');
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Modification Heure Occasionnel MAC'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
-                blng__Usage__c newUsage = createBlngUsage(modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).FirstName,modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).LastName,ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c).LPCR_CompteFamille__r.Name,eachModifEntrante,'Heures','Modification Heure Occasionnel MAC');
+            }else if('Modification_Heure_Occasionnel_MAC'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
+                blng__Usage__c newUsage = createBlngUsage(modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).FirstName,modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).LastName,ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c).LPCR_CompteFamille__r.Name,eachModifEntrante,'Heures','Modification_Heure_Occasionnel_MAC');
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Modification Heure Déduite MAC'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
-                blng__Usage__c newUsage = createBlngUsage(modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).FirstName,modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).LastName,ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c).LPCR_CompteFamille__r.Name,eachModifEntrante,'Heures','Modification Heure Déduite MAC');
+            }else if('Modification_Heure_Deduite_MAC'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
+                blng__Usage__c newUsage = createBlngUsage(modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).FirstName,modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).LastName,ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c).LPCR_CompteFamille__r.Name,eachModifEntrante,'Heures','Modification_Heure_Deduite_MAC');
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Nombre de repas'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
-                blng__Usage__c newUsage = createBlngUsage(modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).FirstName,modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).LastName,ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c).LPCR_CompteFamille__r.Name,eachModifEntrante,'Heures','Nombre de repas');
+            }else if('Nombre_de_repas'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
+                blng__Usage__c newUsage = createBlngUsage(modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).FirstName,modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).LastName,ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c).LPCR_CompteFamille__r.Name,eachModifEntrante,'Heures','Nombre_de_repas');
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('NB Heures réalisées'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Invoice__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
+            }else if('NB_Heures_Realisee'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Invoice__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
                 blng__Invoice__c updateInvoice = new blng__Invoice__c(Id = eachModifEntrante.LPCR_Invoice__c);
                 updateInvoice.LPCR_NbHeuresRealise__c = eachModifEntrante.LPCR_Quantite__c;
                 allInvoiceList.add(updateInvoice);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Commentaire individuel facture'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Invoice__c != null && eachModifEntrante.LPCR_Commentaire__c != null ){
+            }else if('Commentaire_Individuel_Facture'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Invoice__c != null && eachModifEntrante.LPCR_Commentaire__c != null ){
                 blng__Invoice__c updateInvoice = new blng__Invoice__c(Id = eachModifEntrante.LPCR_Invoice__c);
                 updateInvoice.LPCR_CommentaireIndividuel__c = eachModifEntrante.LPCR_Commentaire__c;
                 allInvoiceList.add(updateInvoice);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Commentaire global facture'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_Commentaire__c != null ){
+            }else if('Commentaire_Global_Facture'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_Commentaire__c != null ){
                 Account updateAccount = new Account(Id = eachModifEntrante.LPCR_Compte__c);
                 updateAccount.LPCR_Commentaire__c = eachModifEntrante.LPCR_Commentaire__c;
                 allAccountUpdateList.add(updateAccount);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }else if('Abscence'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
-                blng__Usage__c newUsage = createBlngUsage(modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).FirstName,modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).LastName,ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c).LPCR_CompteFamille__r.Name,eachModifEntrante,'Heures','Modification Absence');
+                blng__Usage__c newUsage = createBlngUsage(modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).FirstName,modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).LastName,ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c).LPCR_CompteFamille__r.Name,eachModifEntrante,'Heures','Abscence');
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }else if('Validation Contrat Directrice'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null ){
                 SBQQ__Quote__c updateQuote = new SBQQ__Quote__c(Id = modifEntrantesContractMap.get(eachModifEntrante.LPCR_Contract__c).SBQQ__Quote__c);
                 updateQuote.SBQQ__Status__c = 'Validé directrice';
-                listQuoteForUpdate.add(updateQuote);
+                //listQuoteForUpdate.add(quote);
+                mapOfQuoteForUpdate.put(updateQuote.id,updateQuote);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }else if('Regularisation'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
                 blng__Usage__c newUsage = createBlngUsage(modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).FirstName,modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c).LastName,ressourceFamilleMap.get(eachModifEntrante.LPCR_Contact__c).LPCR_CompteFamille__r.Name,eachModifEntrante,'Heures','Regularisation');
@@ -470,6 +477,9 @@ public with sharing class SM021_ModificationEntranteServices {
                 for(LPCR_PlanningPrevisionnel__c eachPlanPre : allPlanningPrevisionnelInsertMap.get(eachPlan.LPCR_Devis__c)){
                     eachPlanPre.LPCR_Planning__c = eachPlan.Id;
                     insertPlanningPrevisionnelList.add(eachPlanPre);
+                    if(mapOfQuoteForUpdate.containsKey(eachPlan.LPCR_Devis__c)){
+                        mapOfQuoteForUpdate.get(eachPlan.LPCR_Devis__c).LPCR_PlanningEnfant__c = eachPlan.Id;
+                    }
                 }
             }
             
@@ -482,9 +492,9 @@ public with sharing class SM021_ModificationEntranteServices {
             UPSERT allListCloneQuoteLine;
             SBQQ.TriggerControl.enable();
         }
-        if(listQuoteForUpdate.size() > 0){
+        if(mapOfQuoteForUpdate.size() > 0){
             SBQQ.TriggerControl.disable();
-            UPDATE listQuoteForUpdate;
+            UPDATE mapOfQuoteForUpdate.values();
             SBQQ.TriggerControl.enable();
         }
         if(allAccountUpdateList.size() > 0){
