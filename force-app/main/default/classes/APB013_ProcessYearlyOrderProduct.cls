@@ -3,10 +3,10 @@
 * @date 19/06/2020
 * @Description IS-981 Batch for Set Fields on Order Product and Delete the Billing Plan + Billing Plan Line records associated to the Order Product
 */
-global class APB009_ProcessYearlyOrderProduct implements Database.Batchable<sObject>,Schedulable {
+global class APB013_ProcessYearlyOrderProduct implements Database.Batchable<sObject>,Schedulable {
     String query;
     
-    global APB009_ProcessYearlyOrderProduct() {
+    global APB013_ProcessYearlyOrderProduct() {
         
     }
     
@@ -18,7 +18,7 @@ global class APB009_ProcessYearlyOrderProduct implements Database.Batchable<sObj
     }
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
-        PAD.log('APB009_ProcessYearlyOrderProduct', 'execute', 'scope to execute : '+scope);
+        PAD.log('APB013_ProcessYearlyOrderProduct', 'execute', 'scope to execute : '+scope);
         Set<Id> orderItemIds = UM003_TypeManager.getIdsOfListObjects(scope);
         
         for (OrderItem eachOrderItem : scope) {
@@ -39,24 +39,24 @@ global class APB009_ProcessYearlyOrderProduct implements Database.Batchable<sObj
     
     global void execute(SchedulableContext sc) {
         
-        APB009_ProcessYearlyOrderProduct sc1 = new APB009_ProcessYearlyOrderProduct();
+        APB013_ProcessYearlyOrderProduct sc1 = new APB013_ProcessYearlyOrderProduct();
         
         // schedule the apex class only if their is not existing job running
-        boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB009_ProcessYearlyOrderProduct');
+        boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB013_ProcessYearlyOrderProduct');
         
         // check if there is any open place to schedule the class
         boolean isJobQueueFull = UM004_BatchUtility.isBatchJobQueueFull();
         
         if(isBatchJobRunning == UM004_BatchUtility.BOOLEAN_FALSE){
             if (isJobQueueFull == UM004_BatchUtility.BOOLEAN_FALSE) {
-                sc1 = new APB009_ProcessYearlyOrderProduct();
+                sc1 = new APB013_ProcessYearlyOrderProduct();
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB009_ProcessYearlyOrderProduct();
+                sc1 = new APB013_ProcessYearlyOrderProduct();
                 Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
                 String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB009_ProcessYearlyOrderProduct'+timeForScheduler,timeForScheduler,sc1);
+                Id schedId = System.Schedule('APB013_ProcessYearlyOrderProduct'+timeForScheduler,timeForScheduler,sc1);
             }
         }  
         
