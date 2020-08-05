@@ -37,10 +37,6 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_MoyenPaiement__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_StatutFacture__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -98,6 +94,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>blng__InvoiceStatus__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_StatutFacture__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -428,7 +428,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6E0000014FzZ</masterLabel>
+        <masterLabel>00h3N000001SCrG</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Field searched by this filter.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Spécifiez le champ à rechercher.</inlineHelpText>
+    <inlineHelpText>Specify the field to search.</inlineHelpText>
     <label>Target Field</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
@@ -48,6 +48,11 @@
                 <default>false</default>
                 <label>LPCR_FamilyProduct__c</label>
             </value>
+            <value>
+                <fullName>LPCR_Typemensualisation__c</fullName>
+                <default>false</default>
+                <label>LPCR_Typemensualisation__c</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Product</controllingFieldValue>
@@ -73,6 +78,10 @@
         <valueSettings>
             <controllingFieldValue>Product</controllingFieldValue>
             <valueName>LPCR_FamilyProduct__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product</controllingFieldValue>
+            <valueName>LPCR_Typemensualisation__c</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Asset</controllingFieldValue>

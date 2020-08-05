@@ -4,10 +4,10 @@
 * @Description Batch for Traitement Modification Entrante
 */
 
-global class APB007_TraitementModificationEntrante implements Database.Batchable<sObject>,Schedulable,Database.AllowsCallouts{
+global class APB014_TraitementModificationEntrante implements Database.Batchable<sObject>,Schedulable,Database.AllowsCallouts{
     String query;
 
-    global APB007_TraitementModificationEntrante() {
+    global APB014_TraitementModificationEntrante() {
 
     }
     global Database.QueryLocator start(Database.BatchableContext BC) {
@@ -18,10 +18,10 @@ global class APB007_TraitementModificationEntrante implements Database.Batchable
     }
     
     global void execute(Database.BatchableContext BC, List<LPCR_ModificationEntrante__c> scope) {
-        PAD.log('APB007_TraitementModificationEntrante', 'execute','scope to execute : '+scope );
+        PAD.log('APB014_TraitementModificationEntrante', 'execute','scope to execute : '+scope );
         
         Set<Id> modificationEntranteIds = UM003_TypeManager.getIdsOfListObjects(scope);
-        SM021_ModificationEntranteServices.updateQuotesFromModifEntrantesBatch(scope);
+        SM022_ModificationEntranteServices.updateQuotesFromModifEntrantesBatch(scope);
          
     }
     
@@ -30,24 +30,24 @@ global class APB007_TraitementModificationEntrante implements Database.Batchable
     
     global void execute(SchedulableContext sc) {
         
-        APB007_TraitementModificationEntrante sc1 = new APB007_TraitementModificationEntrante();
+        APB014_TraitementModificationEntrante sc1 = new APB014_TraitementModificationEntrante();
         
         // schedule the apex class only if their is not existing job running
-        boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB007_TraitementModificationEntrante');
+        boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB014_TraitementModificationEntrante');
         
         // check if there is any open place to schedule the class
         boolean isJobQueueFull = UM004_BatchUtility.isBatchJobQueueFull();
         
         if(isBatchJobRunning == UM004_BatchUtility.BOOLEAN_FALSE){
             if (isJobQueueFull == UM004_BatchUtility.BOOLEAN_FALSE) {
-                sc1 = new APB007_TraitementModificationEntrante();
+                sc1 = new APB014_TraitementModificationEntrante();
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB007_TraitementModificationEntrante();
+                sc1 = new APB014_TraitementModificationEntrante();
                 Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
                 String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB007_TraitementModificationEntrante'+timeForScheduler,timeForScheduler,sc1);
+                Id schedId = System.Schedule('APB014_TraitementModificationEntrante'+timeForScheduler,timeForScheduler,sc1);
             }
         }  
         

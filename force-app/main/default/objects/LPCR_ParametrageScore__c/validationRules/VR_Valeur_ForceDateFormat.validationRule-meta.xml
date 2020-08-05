@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Valeur_ForceDateFormat</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    NOT($Permission.LPCR_ByPass_VR),
+    text(LPCR_Format__c)=&quot;date&quot;,
+    NOT(REGEX(LPCR_Valeur__c,&quot;^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$&quot;))
+    )</errorConditionFormula>
+    <errorDisplayField>LPCR_Valeur__c</errorDisplayField>
+    <errorMessage>Merci d&apos;insérer une date au format JJ/MM/AAAA</errorMessage>
+</ValidationRule>

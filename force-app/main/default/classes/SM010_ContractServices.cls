@@ -89,9 +89,7 @@ public class SM010_ContractServices {
          Set<String> orderIds = UM003_TypeManager.getFieldsOfListObjects(contracts,'SBQQ__Order__c');
 
             if(orderMap.containsKey(eachContract.SBQQ__Order__c)){
-                if(eachContract.RecordTypeId == referencementRecTypeId|| eachContract.RecordTypeId == reservataireRecTypeId || eachContract.RecordTypeId == acceuilRecTypeId){
                     eachContract.LPCR_NumeroContrat__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_NumeroContrat__c;
-                }
             }
 
         }

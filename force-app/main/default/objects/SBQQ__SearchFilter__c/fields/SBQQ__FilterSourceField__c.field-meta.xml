@@ -28,6 +28,11 @@
                 <default>false</default>
                 <label>LPCR_TypeQuote__c</label>
             </value>
+            <value>
+                <fullName>LPCR_TypeMensualisationT__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeMensualisationT__c</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -40,6 +45,10 @@
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
             <valueName>LPCR_TypeQuote__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_TypeMensualisationT__c</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>
