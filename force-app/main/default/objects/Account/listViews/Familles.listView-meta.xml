@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ComptesFamilles</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>LPCR_Representant1__c</columns>
+    <columns>LPCR_Representant2__c</columns>
+    <columns>LPCR_Statut__c</columns>
+    <columns>ACCOUNT.ADDRESS2_CITY</columns>
+    <columns>ACCOUNT.ADDRESS2_ZIP</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <columns>CORE.USERS.LAST_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Account.Famille</value>
+    </filters>
+    <label>Comptes Familles</label>
+</ListView>
