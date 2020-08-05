@@ -26,8 +26,10 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
             }
         }
         update lstOfInvoices;
-        
-        
+        for(blng__InvoiceRun__c eachInvoiceRun : scope){
+            eachInvoiceRun.LPCR_EnvoyerFaitPar__c = eachInvoiceRun.OwnerId;
+        }
+        update scope;
     }
     global void finish(Database.BatchableContext BC) {
     }
