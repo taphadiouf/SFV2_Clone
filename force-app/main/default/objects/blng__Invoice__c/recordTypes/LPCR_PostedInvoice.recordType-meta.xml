@@ -23,6 +23,21 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_MoyenPaiement__c</picklist>
+        <values>
+            <fullName>Carte Bancaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chèque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virement</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_StatutFacture__c</picklist>
         <values>
             <fullName>A Envoyer</fullName>
@@ -42,6 +57,41 @@
         </values>
         <values>
             <fullName>Terminée</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeCreche__c</picklist>
+        <values>
+            <fullName>ALSH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halte-Garderie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jardin d%E2%80%99enfants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MICRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RAM</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -82,7 +132,7 @@
         </values>
         <values>
             <fullName>Draft</fullName>
-            <default>true</default>
+            <default>false</default>
         </values>
         <values>
             <fullName>Error</fullName>
