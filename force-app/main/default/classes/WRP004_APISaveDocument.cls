@@ -17,7 +17,7 @@ public class WRP004_APISaveDocument {
             this.FileType = 'PDF';
             this.DocumentStatus = 'Validé';
             this.DocumentType = 'Facture';
-        }else if(Name.contains('Pièce Justificative')){
+        }else if(Name.contains('Pièce justificative')){
             this.FileType = 'PDF';
             this.DocumentStatus = 'None';
             this.DocumentType = 'PJ';

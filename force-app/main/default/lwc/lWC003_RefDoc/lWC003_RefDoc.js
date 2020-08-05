@@ -31,7 +31,7 @@ export default class LWC003_RefDoc extends LightningElement {
   @track data = [];
   @track columns = columns;
 
-  recordsFromWS = [];
+  @track recordsFromWS = [];
   @track records = [];
 
   @track errorMsg;
@@ -49,7 +49,7 @@ export default class LWC003_RefDoc extends LightningElement {
     this.getDocumentListCalloutF(this.recordId);
   }
   getDocumentListCalloutF(ownerid){
-    getDocumentListCallout({ ownerid: ownerid, doc_type: 'Facture' })
+    getDocumentListCallout({ ownerid: ownerid, doc_type: '' })
     .then(result=>{
       console.log("called getDocumentListCalloutF");
       if (result) {
@@ -106,7 +106,10 @@ export default class LWC003_RefDoc extends LightningElement {
       }
     }
     //get the range  of records from  currentPage , numberOfData
+    this.records = [];
     this.records = records.slice(this.currentPage * this.numberOfData - this.numberOfData, this.currentPage * this.numberOfData);
+    console.log("***********this.records!");
+    console.log(this.records);
   }
   handlNumberOfData(event) {
     this.numberOfData = event.detail.value;
