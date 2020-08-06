@@ -4,7 +4,7 @@
 * @description Test class for Service class LPCR_ModificationEntrante__c
 */
 @isTest
-public class SM021_ModificationEntranteServices_Test {
+public class SM022_ModificationEntranteServices_Test {
     private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Famille);
     private static final Id QUOTE_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);
@@ -84,7 +84,7 @@ public class SM021_ModificationEntranteServices_Test {
             insert modificationsEntrantes;
             system.debug('modificationsEntrantes'+modificationsEntrantes.size());
             List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
-            System.assertEquals(100, quotesValides.size(), 'Error in SM021_ModificationEntranteServices_Test : problem in updating quotesValides');
+            System.assertEquals(100, quotesValides.size(), 'Error in SM022_ModificationEntranteServices_Test : problem in updating quotesValides');
 
             Test.stopTest();
         }
@@ -126,14 +126,14 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Traitement jour férié',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Traitement_Jour_Ferie',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;           
             
             LPCR_ModificationEntrante__c modif2 = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif2;
             Test.startTest();
             List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
-            System.assertEquals(1, quotesValides.size(), 'Error in SM021_ModificationEntranteServices_Test : problem in updating quotesValides');
+            System.assertEquals(1, quotesValides.size(), 'Error in SM022_ModificationEntranteServices_Test : problem in updating quotesValides');
             
             Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
  		    modif.LPCR_EtatTraitement__c = true;
@@ -178,7 +178,7 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Fin Contrat',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date_Fin_Contrat',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;           
             
             Test.startTest();
@@ -225,17 +225,17 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Situation Handicapé Enfant Fratrie',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Situation_Handicape_Enfant',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;
             
             Test.startTest();
             
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -275,7 +275,7 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Type Planning',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Type_Planning',acc.id,cont.id,contract.id,Date.today(),10);
 			modif.LPCR_TypePlanning__c = 'Planning Classique';
             insert modif;
 
@@ -287,12 +287,12 @@ public class SM021_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -332,17 +332,17 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Nombre Jour Congé',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Nombre_Jour_Conge',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;
 
             Test.startTest();
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -382,17 +382,17 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Fin Contrat',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date_Fin_Contrat',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;
 
             Test.startTest();
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -432,18 +432,18 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Type Accueil',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Type_Accueil',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_TypeAccueil__c = 'Normal';
             insert modif;
 
             Test.startTest();
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -483,7 +483,7 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Adresse Contact Parent',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Adresse_Contact_Parent',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_Rue__c = 'test';
             modif.LPCR_Ville__c = 'test';
             modif.LPCR_Pays__c = 'test';
@@ -493,12 +493,12 @@ public class SM021_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -538,19 +538,19 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Autorité Parentale',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Autorite_Parentale',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_OuiNon__c = true;
 
             insert modif;
 
             Test.startTest();
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -590,19 +590,19 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Numéro Allocataire',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Numero_Allocataire',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_IDUnique__c = 'test';
 
             insert modif;
 
             Test.startTest();
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -642,19 +642,19 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date Naissance Enfant',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Date_Naissance_Enfant',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_Date__c = Date.newInstance(1992, 01, 01);
 
             insert modif;
 
             Test.startTest();
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -696,17 +696,17 @@ public class SM021_ModificationEntranteServices_Test {
 
             Test.startTest();
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Section',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Section',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_Section__c = 'Grands';
 
             insert modif;           
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -748,18 +748,18 @@ public class SM021_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Mode Garde',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Mode_Garde',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_SituationFamiliale__c = 'Divorcé';
             modif.LPCR_Garde__c = 'Autorité parentale conjointe';
 
             insert modif;           
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -800,17 +800,17 @@ public class SM021_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Situation Familiale',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Situation_Familiale',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_SituationFamiliale__c = 'En couple';
 
             insert modif;            
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -852,18 +852,18 @@ public class SM021_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Heure Supplémentaire MAC',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Heure_Supplementaire_MAC',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
 
             insert modif;           
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -905,18 +905,18 @@ public class SM021_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Heure Occasionnel MAC',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Heure_Occasionnel_MAC',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
 
             insert modif;            
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -958,18 +958,18 @@ public class SM021_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Heure Déduite MAC',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Heure_Deduite_MAC',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
 
             insert modif;           
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
    @isTest
@@ -1044,18 +1044,18 @@ public class SM021_ModificationEntranteServices_Test {
             invoice.blng__PaymentBatch__c = 'Batch 1';
             insert invoice;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('NB Heures réalisées',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('NB_Heures_Realisee',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
             modif.LPCR_Invoice__c = invoice.id;
             insert modif;            
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 
@@ -1100,12 +1100,12 @@ public class SM021_ModificationEntranteServices_Test {
             LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;            
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1152,12 +1152,12 @@ public class SM021_ModificationEntranteServices_Test {
 
             insert modif;            
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1232,19 +1232,19 @@ public class SM021_ModificationEntranteServices_Test {
             invoice.blng__PaymentBatch__c = 'Batch 1';
             insert invoice;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Commentaire individuel facture',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Commentaire_Individuel_Facture',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
             modif.LPCR_Invoice__c = invoice.id;
             modif.LPCR_Commentaire__c = 'Test';
             insert modif;           
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1319,19 +1319,19 @@ public class SM021_ModificationEntranteServices_Test {
             invoice.blng__PaymentBatch__c = 'Batch 1';
             insert invoice;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Commentaire global facture',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Commentaire_Global_Facture',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
             modif.LPCR_Invoice__c = invoice.id;
             modif.LPCR_Commentaire__c = 'Test';
             insert modif;           
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1372,18 +1372,18 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Nombre de repas',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Nombre_de_repas',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
 
             insert modif;            
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1422,17 +1422,17 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Nombre Enfant Fratrie',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Nombre_Enfant_Fratrie',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;
             
             Test.startTest();
             
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1471,17 +1471,17 @@ public class SM021_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification Montant Ressource',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Montant_Ressource',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;
             
             Test.startTest();
             
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
     @isTest
@@ -1528,12 +1528,12 @@ public class SM021_ModificationEntranteServices_Test {
 
             insert modif;            
 
-            APB007_TraitementModificationEntrante ss = new APB007_TraitementModificationEntrante();
+            APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
             DataBase.executeBatch(ss);
 
             Test.stopTest();
             LPCR_ModificationEntrante__c modifChk = [select id,LPCR_EtatTraitement__c from LPCR_ModificationEntrante__c where id =: modif.id];
-            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM021_ModificationEntranteServices_Test : ModificationEntrante not updated');
+            System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
 }
