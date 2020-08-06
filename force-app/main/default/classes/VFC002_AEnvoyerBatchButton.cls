@@ -18,7 +18,7 @@ public class VFC002_AEnvoyerBatchButton {
     public PageReference runBatch() {
         //run your batch here with set of ids you have
         blng__InvoiceRun__c currentinvoiceRun = [Select Id, Name From blng__InvoiceRun__c Where Id =:invoiceRunId limit 1 ];
-        Database.executeBatch(new APB011_SetInvoiceCommentaire('SELECT Id, Name FROM blng__InvoiceRun__c  WHERE Id =\'' + invoiceRunId + '\''), 20);
+        Database.executeBatch(new APB011_SetInvoiceCommentaire('SELECT Id, Name, OwnerId, LPCR_EnvoyerFaitPar__c FROM blng__InvoiceRun__c  WHERE Id =\'' + invoiceRunId + '\''), 20);
         return new ApexPages.StandardController(currentinvoiceRun).view();
 
     } 
