@@ -559,19 +559,22 @@ newMe.FederationIdentifier = null;
     
     public static List<LPCR_ParametrageScore__c> createParametrageScores(Id accId){
         List<LPCR_ParametrageScore__c> listParams =new List<LPCR_ParametrageScore__c>();
-        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_Anciennete__c',LPCR_Format__c='Numéro',LPCR_Valeur__c = '1', LPCR_Score__c = 100));
-        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_Anciennete__c',LPCR_Format__c='Numéro',LPCR_Valeur__c = '2', LPCR_Score__c = 200));
-        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_Anciennete__c',LPCR_Format__c='Numéro',LPCR_Valeur__c = '3', LPCR_Score__c = 300));
-        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_Anciennete__c',LPCR_Format__c='Numéro',LPCR_Valeur__c = '4', LPCR_Score__c = 400));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_Anciennete__c',LPCR_Format__c='Nombre',LPCR_Valeur__c = '1', LPCR_Score__c = 100));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_Anciennete__c',LPCR_Format__c='Nombre',LPCR_Valeur__c = '2', LPCR_Score__c = 200));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_Anciennete__c',LPCR_Format__c='Nombre',LPCR_Valeur__c = '3', LPCR_Score__c = 300));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_Anciennete__c',LPCR_Format__c='Nombre',LPCR_Valeur__c = '4', LPCR_Score__c = 400));
         
-        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_NombreJours__c',LPCR_Format__c='Numéro',LPCR_Valeur__c = '3', LPCR_Score__c = 300));
-        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_NombreJours__c',LPCR_Format__c='Numéro',LPCR_Valeur__c = '4', LPCR_Score__c = 400));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_NombreJours__c',LPCR_Format__c='Nombre',LPCR_Valeur__c = '3', LPCR_Score__c = 300));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_NombreJours__c',LPCR_Format__c='Nombre',LPCR_Valeur__c = '4', LPCR_Score__c = 400));
         
-        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_DateEntreeCreche__c',LPCR_Format__c='Date',LPCR_Valeur__c = String.valueOf(Date.newInstance(2019,12,31)), LPCR_Score__c = 100));
-        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_DateEntreeCreche__c',LPCR_Format__c='Date',LPCR_Valeur__c = String.valueOf(Date.newInstance(2020,08,01)), LPCR_Score__c = 550));
-        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_DateEntreeCreche__c',LPCR_Format__c='Date',LPCR_Valeur__c = String.valueOf(Date.newInstance(2021,03,04)), LPCR_Score__c = 600));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_DateEntreeCreche__c',LPCR_Format__c='Date',LPCR_Valeur__c = '31/12/2019', LPCR_Score__c = 100));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_DateEntreeCreche__c',LPCR_Format__c='Date',LPCR_Valeur__c = '01/08/2020', LPCR_Score__c = 550));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_DateEntreeCreche__c',LPCR_Format__c='Date',LPCR_Valeur__c = '04/03/2021', LPCR_Score__c = 600));
         
-        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_ReponseCrecheMunicipale__c',LPCR_Format__c='Liste',LPCR_Valeur__c = 'Autre', LPCR_Score__c = 225));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_ReponseCrecheMunicipale__c',LPCR_Format__c='Texte',LPCR_Valeur__c = 'Autre', LPCR_Score__c = 225));
+        listParams.add( new LPCR_ParametrageScore__c(LPCR_Account__c  =accId, LPCR_ApiFieldName__c ='LPCR_InteretConfirme__c',LPCR_Format__c='Texte',LPCR_Valeur__c = 'True', LPCR_Score__c = 1000));
+
+        
 
         return listParams;
         
