@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_Region__c</fullName>
+    <fullName>LPCR_DateFacturation__c</fullName>
     <externalId>false</externalId>
-    <formula>TEXT(LPCR_Creche__r.LPCR_Region__c)</formula>
+    <formula>LPCR_Facture__r.blng__InvoiceDate__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Région</label>
+    <label>Date de Facturation</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>Text</type>
-    <unique>false</unique>
+    <type>Date</type>
 </CustomField>

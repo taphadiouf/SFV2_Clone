@@ -90,7 +90,7 @@ public class APB012_ProcessRevenuCascade_Test {
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
             insert qlines;
 
-            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id,'Test');
+            LPCR_RessourceFamille__c ressourceFamille = UM002_TestDataFactory.createRessourceFamille(firstDayOfCurrentMonthDate,acc.id,cont.id);
             insert ressourceFamille;
 
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));

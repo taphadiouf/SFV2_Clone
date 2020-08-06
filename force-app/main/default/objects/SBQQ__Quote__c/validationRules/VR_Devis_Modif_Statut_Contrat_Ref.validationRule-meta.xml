@@ -4,8 +4,8 @@
     <active>true</active>
     <description>Dans le cas d&apos;un contrat de référencement, le changement manuel à ce statut n&apos;est pas possible.</description>
     <errorConditionFormula>AND(
-NOT( $User.LPCR_BypassValidationRules__c ),
- OR(RecordType.DeveloperName = &apos;Referencement&apos;,RecordType.DeveloperName = &apos;Referencement_Approuve&apos;),
+NOT( $User.LPCR_BypassValidationRules__c ),NOT(CONTAINS($Profile.Name,&apos;Admin&apos;)),
+OR(RecordType.DeveloperName = &apos;Referencement&apos;,RecordType.DeveloperName = &apos;Referencement_Approuve&apos;),
 ISCHANGED( SBQQ__Status__c ),
 OR(
 TEXT(SBQQ__Status__c) = &apos;Envoyé pour signature&apos;,
@@ -14,6 +14,6 @@ TEXT(SBQQ__Status__c) = &apos;Signé&apos;,
 TEXT(SBQQ__Status__c) = &apos;Actif&apos;,
 TEXT(SBQQ__Status__c) = &apos;Annulé&apos;,
 TEXT(SBQQ__Status__c) = &apos;Prêt pour commande&apos;)
-				)</errorConditionFormula>
+)</errorConditionFormula>
     <errorMessage>Dans le cas d&apos;un contrat de référencement, le changement manuel à ce statut n&apos;est pas possible.</errorMessage>
 </ValidationRule>
