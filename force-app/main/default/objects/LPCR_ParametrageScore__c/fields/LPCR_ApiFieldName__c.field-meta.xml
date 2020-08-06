@@ -376,6 +376,11 @@
                 <default>false</default>
                 <label>Un des enfants porteur de handicap?</label>
             </value>
+            <value>
+                <fullName>LPCR_InteretConfirme__c</fullName>
+                <default>false</default>
+                <label>LPCR_InteretConfirme__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

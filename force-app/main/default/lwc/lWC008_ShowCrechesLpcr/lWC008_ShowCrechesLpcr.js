@@ -2,8 +2,14 @@ import { LightningElement, api, track } from 'lwc';
 import leaflet from '@salesforce/resourceUrl/Leaflet';
 import redmarker from '@salesforce/resourceUrl/redmarker';
 import getLocations from '@salesforce/apex/APC007_ShowCrechesLpcrController.getLocations';
+import tmpLabel from '@salesforce/label/c.LPCR_CrecheAProximite';
 
 export default class LWC008_ShowCrechesLpcr extends LightningElement {
+
+    label = {
+        tmpLabel 
+    };
+
     @api recordId;
     @api modeAffich;
     showMap = false;
@@ -16,6 +22,7 @@ export default class LWC008_ShowCrechesLpcr extends LightningElement {
         this.icon = redmarker;
     }
     connectedCallback() {
+        
         getLocations({ currentId: this.recordId, modeAffich: this.modeAffich })
             .then(result => {
                 console.log(result);

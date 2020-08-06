@@ -25,6 +25,16 @@
                 <default>false</default>
                 <label>Date</label>
             </value>
+            <value>
+                <fullName>Nombre</fullName>
+                <default>false</default>
+                <label>Nombre</label>
+            </value>
+            <value>
+                <fullName>Texte</fullName>
+                <default>false</default>
+                <label>Texte</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

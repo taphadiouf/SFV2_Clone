@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Field on Quote Line or Product Option object that is evaluated by this condition.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Sélectionnez le champ qui doit contenir la valeur que vous saisissez dans le champ Valeur.</inlineHelpText>
+    <inlineHelpText>Choisissez un champ dans l&#39;objet cible.</inlineHelpText>
     <label>Field</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
@@ -126,6 +126,11 @@
                 <fullName>SBQQ__EndDate__c</fullName>
                 <default>false</default>
                 <label>SBQQ__EndDate__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_EstMigre__c</fullName>
+                <default>false</default>
+                <label>LPCR_EstMigre__c</label>
             </value>
         </valueSetDefinition>
     </valueSet>

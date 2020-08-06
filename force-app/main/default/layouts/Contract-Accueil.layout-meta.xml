@@ -29,10 +29,6 @@
                 <field>OwnerId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>ContractNumber</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Required</behavior>
                 <field>AccountId</field>
             </layoutItems>
@@ -141,7 +137,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_Enfant__c</field>
+                <field>LPCR_ContactEnfant__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
