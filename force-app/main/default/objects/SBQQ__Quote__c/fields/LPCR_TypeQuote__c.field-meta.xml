@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_TypeQuote__c</fullName>
     <externalId>false</externalId>
-    <formula>if( ISPICKVAL(LPCR_TypeCreche__c, &apos;MICRO&apos;),&apos;MICRO&apos;,if(ISPICKVAL(LPCR_TypeCreche__c, &apos;MAC&apos;),&apos;MAC&apos;,&apos;B2B&apos;))</formula>
+    <formula>if( ISPICKVAL(LPCR_TypeCreche__c, &apos;MICRO&apos;),&apos;MICRO&apos;,if(ISPICKVAL(LPCR_TypeCreche__c, &apos;MAC&apos;),&apos;MAC&apos;,if ( OR (RecordType.DeveloperName = &apos;Reservataire&apos;, RecordType.DeveloperName = &apos;Reservataire_Approuve&apos;) , &apos;RES&apos;, if ( or(RecordType.DeveloperName = &apos;Referencement&apos;, RecordType.DeveloperName = &apos;Referencement_Approuve&apos;), &apos;REF&apos;, NULL ) )))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Type Quote</label>
     <required>false</required>
