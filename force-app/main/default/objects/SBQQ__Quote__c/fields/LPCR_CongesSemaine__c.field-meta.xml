@@ -3,12 +3,12 @@
     <fullName>LPCR_CongesSemaine__c</fullName>
     <externalId>false</externalId>
     <formula>IF(
- OR( ISPICKVAL( SBQQ__Status__c , &apos;Quote&apos;) ,ISPICKVAL(SBQQ__Status__c, &apos;Renewal&apos;)),
+OR( ISPICKVAL( SBQQ__Type__c , &apos;Quote&apos;) ,ISPICKVAL(SBQQ__Type__c, &apos;Renewal&apos;)),
 CASE( LPCR_PlanningEnfant__r.LPCR_TypePlanning__c,
 &quot;Planning Classique&quot;, (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_NombreJoursAccueil__c ) * (365/ (SBQQ__EndDate__c - SBQQ__StartDate__c) ),
 &quot;Multi-Planning&quot;, (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_MoyenneJoursSemaine__c ) * (365/ (SBQQ__EndDate__c - SBQQ__StartDate__c) ),
 NULL)
- , CASE( LPCR_PlanningEnfant__r.LPCR_TypePlanning__c,
+, CASE( LPCR_PlanningEnfant__r.LPCR_TypePlanning__c,
 &quot;Planning Classique&quot;, (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_NombreJoursAccueil__c ) * (365/ (SBQQ__EndDate__c - SBQQ__MasterContract__r.StartDate ) ),
 &quot;Multi-Planning&quot;, (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_MoyenneJoursSemaine__c ) * (365/ (SBQQ__EndDate__c - SBQQ__MasterContract__r.StartDate) ),
 NULL) )</formula>
