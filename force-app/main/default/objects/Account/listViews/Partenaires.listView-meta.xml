@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>ComptesPartenaires</fullName>
+    <fullName>Partenaires</fullName>
     <columns>ACCOUNT.NAME</columns>
     <columns>LPCR_TypeStructure__c</columns>
     <columns>LPCR_Statut__c</columns>
