@@ -5,27 +5,26 @@
 * @Updated by: Achraf ABOUL(Salesforce) 08/04/2020
 */
 public with sharing class APC001_LeadFaConverController{
+
     @AuraEnabled(cacheable = true)
     public static List<Account> getRelatedCreches(Id leadId){
-        Set<String> leadFields = new set<String>();
-        leadFields.add('LPCR_CodeCreche1__c');
-        leadFields.add('LPCR_CodeCreche2__c');
-        leadFields.add('LPCR_CodeCreche3__c');
-        
-        Lead currentLead = (Lead) new EM002_LeadEntity().getById(leadId, leadFields);
-        
+
+        List<LPCR_LienCrecheLead__c> tmpLienCrecheLead = [SELECT Id, LPCR_Creche__c from LPCR_LienCrecheLead__c where LPCR_Lead__c = :leadId];
         Set<Id> accIdsSet = new Set<Id>();
-        accIdsSet.add((Id) currentLead.get('LPCR_CodeCreche1__c'));
-        accIdsSet.add((Id) currentLead.get('LPCR_CodeCreche2__c'));
-        accIdsSet.add((Id) currentLead.get('LPCR_CodeCreche3__c'));
-        
         Set<String> accFieldsSet = new Set<String>();
+
         accFieldsSet.add('Name');
-        
+
+        for (LPCR_LienCrecheLead__c elem : tmpLienCrecheLead) {
+            accIdsSet.add(elem.LPCR_Creche__c);
+        }
+
         return new EM005_AccountEntity().getByIds(accIdsSet, accFieldsSet);
     }
+
     @AuraEnabled(cacheable=true)
     public static String getEnfants(Id leadId){
+
         List<WRP002_EnfantWrapper> enfants = new List<WRP002_EnfantWrapper>();
         Set<String> fields = new Set<String>();
         for(Integer i = 1; i < 4; i++){
@@ -44,7 +43,9 @@ public with sharing class APC001_LeadFaConverController{
         }
         return JSON.serialize(enfants);
     }
+
     public class WRP002_EnfantWrapper{
+
         Integer num;
         String nom;
         String  prenom;
@@ -56,8 +57,10 @@ public with sharing class APC001_LeadFaConverController{
             this.label = label;
         }
     } 
+
     @AuraEnabled(cacheable=true)
     public static List<Account> getAccountsByRecordtypeName(String recordTypeName) {
+
         List<Account> accounts = new List<Account>();
         Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,recordTypeName);
         if(UM003_TypeManager.idNotNull(recordtypeId)){
@@ -65,8 +68,10 @@ public with sharing class APC001_LeadFaConverController{
         }
         return accounts;
     }
+
     @AuraEnabled()
     public static void convertLeadCtrl(Id leadId, List<Integer> enfantsIndexes, Id chosenCrecheId, Id chosenCompteId){
+
         Lead currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
         String prenomCoDemandeur = currentLead.LPCR_PrenomCoDemandeur__c;                                         
         String nomCoDemandeur = currentLead.LPCR_NomCoDemandeur__c;                                         
@@ -216,7 +221,4 @@ public with sharing class APC001_LeadFaConverController{
             update quotesList;
         }
     }
-    
-    
-    
 }

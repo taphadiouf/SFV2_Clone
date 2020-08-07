@@ -249,16 +249,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Account.NouveauContactEnfant</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Account.LPCR_NouveauContratAccueil</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Account.NouvelleDemandeReseauGrandir</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>2</sortOrder>
@@ -353,6 +343,16 @@
             <actionType>ProductivityAction</actionType>
             <sortOrder>20</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.NouveauContactEnfant</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.LPCR_NouveauContratAccueil</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <quickActionList>
         <quickActionListItems>
@@ -431,7 +431,6 @@
         <relatedList>LPCR_RessourceFamille__c.LPCR_CompteFamille__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <customButtons>NouvelleOpportunite</customButtons>
         <excludeButtons>New</excludeButtons>
         <fields>OPPORTUNITY.NAME</fields>
         <fields>OPPORTUNITY.STAGE_NAME</fields>
@@ -440,6 +439,7 @@
         <relatedList>RelatedOpportunityList</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>SBQQ__NetAmount__c</fields>
         <fields>SBQQ__Status__c</fields>
@@ -448,6 +448,7 @@
         <relatedList>SBQQ__Quote__c.SBQQ__Account__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
         <fields>CONTRACT.CONTRACT_NUMBER</fields>
         <fields>CONTRACT.NAME</fields>
         <fields>LPCR_Enfant__c</fields>
@@ -460,14 +461,15 @@
         <relatedList>RelatedContractList</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
         <fields>ORDERS.ORDER_NUMBER</fields>
         <fields>ORDERS.STATUS</fields>
         <fields>ORDERS.EFFECTIVE_DATE</fields>
-        <fields>CONTRACT.CONTRACT_NUMBER</fields>
         <fields>ORDERS.TOTAL_AMOUNT</fields>
         <relatedList>RelatedOrderList</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>blng__InvoiceDate__c</fields>
         <fields>blng__TotalAmount__c</fields>
@@ -475,6 +477,10 @@
         <fields>blng__ARStatus__c</fields>
         <fields>blng__StatusFlag__c</fields>
         <relatedList>blng__Invoice__c.blng__Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>blng__Usage__c.blng__Account__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -488,15 +494,12 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>blng__Usage__c.blng__Account__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>SBQQ__NetAmount__c</fields>
-        <fields>SBQQ__Status__c</fields>
-        <fields>CREATEDBY_USER</fields>
-        <fields>SBQQ__Primary__c</fields>
-        <relatedList>SBQQ__Quote__c.LPCR_CompteFacturation__c</relatedList>
+        <fields>blng__DebitNoteDate__c</fields>
+        <fields>blng__TotalAmount__c</fields>
+        <fields>blng__Allocations__c</fields>
+        <fields>blng__Unallocations__c</fields>
+        <fields>blng__Status__c</fields>
+        <relatedList>blng__DebitNote__c.blng__Account__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -509,7 +512,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000000sBC5</masterLabel>
+        <masterLabel>00h3E000001XwGE</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

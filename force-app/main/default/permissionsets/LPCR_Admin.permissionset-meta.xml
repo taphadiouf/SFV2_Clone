@@ -1786,6 +1786,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_BonAchatPartenaire__c.Tech_URLRetourAdobeSign__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_ContratPartenaire__c.LPCR_CDDCDI__c</field>
         <readable>true</readable>
@@ -1853,6 +1858,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_ContratPartenaire__c.LPCR_Visite__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_ContratPartenaire__c.Tech_URLRetourAdobeSign__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -6548,6 +6558,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.SBQQ__WatermarkShown__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.Tech_URLRetourAdobeSign__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

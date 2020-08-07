@@ -1,11 +1,11 @@
 /**
 * @author Saurabh
 * @date 19/06/2020
-* @Description Test class for APB009_ProcessYearlyOrderProduct 
+* @Description Test class for APB013_ProcessYearlyOrderProduct 
 */
 
 @isTest
-public class APB009_ProcessYearlyOrderProduct_Test {
+public class APB013_ProcessYearlyOrderProduct_Test {
 	private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
     private static final Id standardPricebookId = Test.getStandardPricebookId();
@@ -41,7 +41,7 @@ public class APB009_ProcessYearlyOrderProduct_Test {
     }
     
     @isTest
-    public static void APB009_ProcessYearlyOrderProduct_Test(){
+    public static void APB013_ProcessYearlyOrderProduct_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             
             Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
@@ -99,14 +99,14 @@ public class APB009_ProcessYearlyOrderProduct_Test {
             
             Test.startTest();
 
-            APB009_ProcessYearlyOrderProduct ss = new APB009_ProcessYearlyOrderProduct();
+            APB013_ProcessYearlyOrderProduct ss = new APB013_ProcessYearlyOrderProduct();
             DataBase.executeBatch(ss);
 			ss.execute(null);
             
             Test.stopTest();
             List<LPCR_PlanFacturation__c> billingPlanCheck = new List<LPCR_PlanFacturation__c>();
             billingPlanCheck = [select id,LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c =: orderItem.id];
-            System.assertEquals(0, billingPlanCheck.size(), 'Error in APB009_ProcessYearlyOrderProduct_Test : problem in deleting Billing Plan');
+            System.assertEquals(0, billingPlanCheck.size(), 'Error in APB013_ProcessYearlyOrderProduct_Test : problem in deleting Billing Plan');
         }
     }
 
