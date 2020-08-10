@@ -1323,6 +1323,18 @@ newMe.FederationIdentifier = null;
     }
 
     
+
+
+    public static blng__InvoiceLine__c createInvoiceLine(id invoiceId, id orderItemId){
+
+        blng__InvoiceLine__c tempInvoiceLine = new blng__InvoiceLine__c(
+                blng__Invoice__c = invoiceId,
+            	blng__OrderProduct__c = orderItemId
+            );
+        return tempInvoiceLine;
+
+        }
+
     /*
 public class AccountContactRelationTdf {
 

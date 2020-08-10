@@ -62,4 +62,29 @@ public class SM015_InvoiceServices {
                }
         }
     }
+
+
+    public static void setCongePrisPeriode(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> newInvoiceMap){
+
+        if(SM015_InvoiceServices_Test.skipTrigger == false){
+
+            Id familleRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
+
+            List<blng__Invoice__c> invoiceList = [Select Id, LPCR_StatutFacture__c  , LPCR_CongesPrisPeriode__c, blng__Account__c,blng__Account__r.recordTypeId FROM blng__Invoice__c WHERE Id IN: newInvoiceList AND blng__Account__r.recordTypeId =: familleRecTypeId AND LPCR_StatutFacture__c = 'A Envoyer'];
+            system.debug('invoiceList'+invoiceList);
+            blng__InvoiceLine__c invoiceLine = [Select Id, blng__OrderProduct__r.OrderId, blng__Invoice__c  From blng__InvoiceLine__c WHERE blng__Invoice__c  IN:invoiceList Limit 1];
+            system.debug('invoiceLine'+invoiceLine);
+            List<Contract> contractList =[select Id,SBQQ__Order__c from Contract where SBQQ__Order__c = :invoiceLine.blng__OrderProduct__r.OrderId];
+
+            LPCR_ModificationEntrante__c modificationEntrante = [SELECT Id, LPCR_Quantite__c, LPCR_Evenement__c,LPCR_Contract__c  From LPCR_ModificationEntrante__c Where LPCR_Evenement__c='Conges_Pris_Periode' AND LPCR_Contract__c IN:contractList  order by createdDate DESC limit 1];
+
+            Decimal modificationQuantity = modificationEntrante.LPCR_Quantite__c;
+
+            for(blng__Invoice__c eachNewInvoice : invoiceList){
+
+                newInvoiceMap.get(eachNewInvoice.Id).LPCR_CongesPrisPeriode__c = modificationQuantity;
+
+            }
+        }
+    }
 }

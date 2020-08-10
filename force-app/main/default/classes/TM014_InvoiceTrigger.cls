@@ -17,6 +17,7 @@ public with sharing class TM014_InvoiceTrigger extends TM000_TriggerHandler {
     protected override void beforeUpdate() {
         if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
         //SM015_InvoiceServices.setStatutFacture(newInvoiceList, oldInvoiceMap);   commented in the context of IS-1422
+        SM015_InvoiceServices.setCongePrisPeriode(newInvoiceList,newInvoiceMap);
     }
     protected override void afterUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
