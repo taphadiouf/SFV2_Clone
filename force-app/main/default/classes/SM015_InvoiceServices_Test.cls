@@ -12,11 +12,9 @@ public class SM015_InvoiceServices_Test {
     private static final Id standardPricebookId = Test.getStandardPricebookId();
     private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Famille);
     private static final Id COMPTE_Famille = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
-    public static boolean skipTrigger = false;
     
     @testSetup
     static void testSetup(){
-        skipTrigger = true;
         UM002_TestDataFactory.insertBillingCustomSettings();
         blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
         blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
@@ -154,6 +152,7 @@ public class SM015_InvoiceServices_Test {
         
         
                 List<blng__Invoice__c> invoicesList = UM002_TestDataFactory.createInvoices(1,accountFamille.id,invoiceRun.id,'Posted','A Envoyer' );
+        system.debug('invoicesListaaaa'+invoicesList);
                 insert invoicesList;
         
                 blng__Invoice__c invoice = invoicesList.get(0);
@@ -260,7 +259,6 @@ public class SM015_InvoiceServices_Test {
     public static void setCongePrisPeriode_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            skipTrigger = false;
             LPCR_ModificationEntrante__c modificationEntrante = [Select Id, LPCR_Quantite__c, LPCR_Contract__c From LPCR_ModificationEntrante__c].get(0);
             blng__Invoice__c invoiceList = [Select Id,LPCR_CongesPrisPeriode__c from blng__Invoice__c];
                 invoiceList.LPCR_Commentaire__c   ='test' ;            
