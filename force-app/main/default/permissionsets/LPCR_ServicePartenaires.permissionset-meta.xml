@@ -1146,17 +1146,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_Anciennete__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>LPCR_ParametrageScore__c.LPCR_ApiFieldName__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_DateEntree__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1164,22 +1154,6 @@
         <field>LPCR_ParametrageScore__c.LPCR_Format__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_NbJourGarde__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_ReponseCrecheMunicipale__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_Revenu__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_ParametrageScore__c.LPCR_Score__c</field>
         <readable>true</readable>
