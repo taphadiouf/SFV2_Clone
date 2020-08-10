@@ -35,6 +35,36 @@
         </connector>
     </assignments>
     <dynamicChoiceSets>
+        <name>Choix_Contact_Enfant</name>
+        <dataType>String</dataType>
+        <displayField>Name</displayField>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NomCompte.recordId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>EnfantRT</elementReference>
+            </value>
+        </filters>
+        <limit>10</limit>
+        <object>Contact</object>
+        <outputAssignments>
+            <assignToReference>ContactEnfant</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>NameContactEnfant</assignToReference>
+            <field>Name</field>
+        </outputAssignments>
+        <valueField>Name</valueField>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
         <name>StageFamille</name>
         <dataType>Picklist</dataType>
         <displayField xsi:nil="true"/>
@@ -53,10 +83,10 @@
     <formulas>
         <name>NomOppty</name>
         <dataType>String</dataType>
-        <expression>{!NomCompte.recordName} &amp; &quot;- &quot; &amp;  {!Enfant.recordName}</expression>
+        <expression>{!NomCompte.recordName} &amp; &quot;-&quot; &amp; {!NameContactEnfant}</expression>
     </formulas>
-    <interviewLabel>Nouveau Contrat D&apos;accueil {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Nouveau Contrat D&apos;accueil</label>
+    <interviewLabel>Nouveau Contrat D&#39;accueil {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Nouveau Contrat D&#39;accueil</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -88,13 +118,13 @@
         <inputAssignments>
             <field>LPCR_CongesJours__c</field>
             <value>
-                <elementReference>CongesJours</elementReference>
+                <elementReference>Conges_en_Jours</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>LPCR_ContactEnfant__c</field>
             <value>
-                <elementReference>Enfant.recordId</elementReference>
+                <elementReference>ContactEnfant</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -167,7 +197,7 @@
     </recordCreates>
     <recordCreates>
         <name>Creer_Opportunite</name>
-        <label>Créer l&apos;opportunité</label>
+        <label>Créer l&#39;opportunité</label>
         <locationX>851</locationX>
         <locationY>62</locationY>
         <assignRecordIdToReference>OpportunityID</assignRecordIdToReference>
@@ -209,8 +239,8 @@
     <recordLookups>
         <name>Get_Account</name>
         <label>Get Account</label>
-        <locationX>348</locationX>
-        <locationY>299</locationY>
+        <locationX>127</locationX>
+        <locationY>470</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_ID_Record_Type_Famille_Oppty</targetReference>
@@ -239,11 +269,11 @@
     <recordLookups>
         <name>Get_ID_Record_Type_Famille_Oppty</name>
         <label>Get ID Record Type Famille Oppty</label>
-        <locationX>496</locationX>
-        <locationY>296</locationY>
+        <locationX>298</locationX>
+        <locationY>470</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_ID_Record_Type_Quote_Famille</targetReference>
+            <targetReference>Get_Record_Type_Enfant</targetReference>
         </connector>
         <filters>
             <field>DeveloperName</field>
@@ -268,8 +298,8 @@
     <recordLookups>
         <name>Get_ID_Record_Type_Quote_Famille</name>
         <label>Get ID Record Type Quote Famille</label>
-        <locationX>676</locationX>
-        <locationY>296</locationY>
+        <locationX>603</locationX>
+        <locationY>470</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Informations_Opportunite_Devis</targetReference>
@@ -294,16 +324,67 @@
             <field>Id</field>
         </outputAssignments>
     </recordLookups>
+    <recordLookups>
+        <name>Get_Record_Type_Enfant</name>
+        <label>Get Record Type Enfant</label>
+        <locationX>448</locationX>
+        <locationY>470</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_ID_Record_Type_Quote_Famille</targetReference>
+        </connector>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Enfant</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Contact</stringValue>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <outputAssignments>
+            <assignToReference>EnfantRT</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Type_Creche</name>
+        <label>Get Type Crèche</label>
+        <locationX>745</locationX>
+        <locationY>293</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Suite</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Creche.recordId</elementReference>
+            </value>
+        </filters>
+        <object>Account</object>
+        <outputAssignments>
+            <assignToReference>TypeCreche</assignToReference>
+            <field>LPCR_TypeCreche__c</field>
+        </outputAssignments>
+    </recordLookups>
     <screens>
         <name>Informations_Opportunite_Devis</name>
         <label>Informations Opportunité et Devis</label>
-        <locationX>676</locationX>
-        <locationY>66</locationY>
+        <locationX>603</locationX>
+        <locationY>290</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Creer_Opportunite</targetReference>
+            <targetReference>Get_Type_Creche</targetReference>
         </connector>
         <fields>
             <name>Details_Opportunite</name>
@@ -425,6 +506,12 @@
                     <stringValue>SBQQ__Quote__c</stringValue>
                 </value>
             </inputParameters>
+            <inputParameters>
+                <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
@@ -490,38 +577,45 @@
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Suite</name>
+        <label>Suite</label>
+        <locationX>898</locationX>
+        <locationY>291</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Creer_Opportunite</targetReference>
+        </connector>
         <fields>
-            <name>Enfant</name>
-            <extensionName>flowruntime:lookup</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>fieldApiName</name>
-                <value>
-                    <stringValue>LPCR_ContactEnfant__c</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>objectApiName</name>
-                <value>
-                    <stringValue>SBQQ__Quote__c</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>label</name>
-                <value>
-                    <stringValue>Enfant</stringValue>
-                </value>
-            </inputParameters>
+            <name>Contact_Enfant</name>
+            <choiceReferences>Choix_Contact_Enfant</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Enfant</fieldText>
+            <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
         <fields>
-            <name>CongesJours</name>
+            <name>Conges_en_Jours</name>
             <dataType>Number</dataType>
-            <fieldText>Congés en jours</fieldText>
+            <fieldText>Congés en Jours</fieldText>
             <fieldType>InputField</fieldType>
-            <isRequired>false</isRequired>
+            <isRequired>true</isRequired>
             <scale>0</scale>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>TypeCreche</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>MAC</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -533,7 +627,7 @@
             <targetReference>Assign_ID</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>Account_Record</name>
         <dataType>SObject</dataType>
@@ -571,7 +665,21 @@
         <isOutput>true</isOutput>
     </variables>
     <variables>
+        <name>EnfantRT</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
         <name>MoyenPaiement</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>NameContactEnfant</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
@@ -663,5 +771,12 @@
         <isInput>true</isInput>
         <isOutput>true</isOutput>
         <objectType>Contract</objectType>
+    </variables>
+    <variables>
+        <name>TypeCreche</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
     </variables>
 </Flow>

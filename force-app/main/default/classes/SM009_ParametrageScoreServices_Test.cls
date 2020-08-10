@@ -40,8 +40,8 @@ public class SM009_ParametrageScoreServices_Test {
         
         
         
-        preinsciption.LPCR_DateEntreeCreche__c= Date.newInstance(2020, 09, 01);
-        
+        preinsciption.LPCR_DateEntreeCreche__c = Date.newInstance(2020, 09, 01);
+        preinsciption.LPCR_InteretConfirme__c = true;
         
         preinsciption.LPCR_CompteEntreprise__c = acc.Id;
         insert preinsciption;
@@ -61,8 +61,7 @@ public class SM009_ParametrageScoreServices_Test {
             update preinsciption;
         }
         
-        System.assertEquals(1475, [SELECT LPCR_Score__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'].LPCR_Score__c);
-       
+        System.assertEquals(2475, [SELECT LPCR_Score__c FROM LPCR_Preinscription__c WHERE LPCR_PrenomEnfant__c = 'test'].LPCR_Score__c);
         
     }
 }

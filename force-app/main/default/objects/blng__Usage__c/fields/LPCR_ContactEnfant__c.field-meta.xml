@@ -3,7 +3,21 @@
     <fullName>LPCR_ContactEnfant__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Contact</label>
+    <label>Contact enfant</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>$Source.blng__Account__c</field>
+            <operation>equals</operation>
+            <valueField>Contact.AccountId</valueField>
+        </filterItems>
+        <filterItems>
+            <field>Contact.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>Enfant</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Usages</relationshipLabel>
     <relationshipName>Usages</relationshipName>

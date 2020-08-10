@@ -44,6 +44,11 @@
                 <label>Status</label>
             </value>
             <value>
+                <fullName>LPCR_FamilyProduct__c</fullName>
+                <default>false</default>
+                <label>LPCR_FamilyProduct__c</label>
+            </value>
+            <value>
                 <fullName>LPCR_Typemensualisation__c</fullName>
                 <default>false</default>
                 <label>LPCR_Typemensualisation__c</label>
@@ -69,6 +74,10 @@
             <controllingFieldValue>Product</controllingFieldValue>
             <controllingFieldValue>Asset</controllingFieldValue>
             <valueName>Product Description</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Product</controllingFieldValue>
+            <valueName>LPCR_FamilyProduct__c</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Product</controllingFieldValue>

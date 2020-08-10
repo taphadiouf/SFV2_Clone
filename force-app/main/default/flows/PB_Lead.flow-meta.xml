@@ -52,7 +52,7 @@
                 <leftValueReference>myVariable_current.OwnerId</leftValueReference>
                 <operator>StartsWith</operator>
                 <rightValue>
-                    <elementReference>formula_2_myRule_1_1715307907</elementReference>
+                    <elementReference>formula_2_myRule_1_0022572917</elementReference>
                 </rightValue>
             </conditions>
             <conditions>
@@ -443,7 +443,7 @@
                 <leftValueReference>myVariable_old.OwnerId</leftValueReference>
                 <operator>StartsWith</operator>
                 <rightValue>
-                    <elementReference>formula_3_myRule_1_pmetrule_3246846074</elementReference>
+                    <elementReference>formula_3_myRule_1_pmetrule_5056439393</elementReference>
                 </rightValue>
             </conditions>
             <conditions>
@@ -552,7 +552,7 @@
                 <stringValue>TODAY() </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_11_myRule_10_A1_6920581907</name>
+        <name>formula_11_myRule_10_A1_5903287127</name>
         <dataType>Date</dataType>
         <expression>TODAY()</expression>
     </formulas>
@@ -563,7 +563,7 @@
                 <stringValue>[Lead].LPCR_MotifDisqualification__c +&quot;3&quot;</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_12_myRule_10_A1_1935834739</name>
+        <name>formula_12_myRule_10_A1_6230840716</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.LPCR_MotifDisqualification__c} +&quot;3&quot;</expression>
     </formulas>
@@ -574,7 +574,7 @@
                 <stringValue>&quot;00G&quot;</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_1715307907</name>
+        <name>formula_2_myRule_1_0022572917</name>
         <dataType>String</dataType>
         <expression>&quot;00G&quot;</expression>
     </formulas>
@@ -585,7 +585,7 @@
                 <stringValue>&quot;00G&quot;</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_pmetrule_3246846074</name>
+        <name>formula_3_myRule_1_pmetrule_5056439393</name>
         <dataType>String</dataType>
         <expression>&quot;00G&quot;</expression>
     </formulas>
@@ -596,7 +596,7 @@
                 <stringValue>NOW() </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_1_A1_8713385202</name>
+        <name>formula_4_myRule_1_A1_8552190622</name>
         <dataType>DateTime</dataType>
         <expression>NOW()</expression>
     </formulas>
@@ -607,7 +607,7 @@
                 <stringValue>TODAY() </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_7_myRule_6_A1_7325743377</name>
+        <name>formula_7_myRule_6_A1_2520086617</name>
         <dataType>Date</dataType>
         <expression>TODAY()</expression>
     </formulas>
@@ -618,7 +618,7 @@
                 <stringValue>[Lead].LPCR_MotifDisqualification__c +&quot;2&quot;</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_8_myRule_6_A1_2681094585</name>
+        <name>formula_8_myRule_6_A1_2421647438</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.LPCR_MotifDisqualification__c} +&quot;2&quot;</expression>
     </formulas>
@@ -629,9 +629,7 @@
                 <stringValue>AND(
      ISBLANK([Lead].LPCR_DatePriseEnChargeCommercial__c ),
      OR(
-          AND(
                LEFT([Lead].OwnerId, 3)=&quot;005&quot;,
-               [Lead].Owner:User.UserRole.DeveloperName &lt;&gt; &quot;Service_Famille&quot;),
           AND(
                LEFT([Lead].OwnerId, 3)=&quot;00G&quot;,
                [Lead].Owner:Queue.DeveloperName &lt;&gt;&quot;LPCR_ServiceFamille&quot;)), 
@@ -646,9 +644,7 @@
         <expression>AND(
      ISBLANK({!myVariable_current.LPCR_DatePriseEnChargeCommercial__c} ),
      OR(
-          AND(
                LEFT({!myVariable_current.OwnerId}, 3)=&quot;005&quot;,
-               {!myVariable_current.Owner:User.UserRole.DeveloperName} &lt;&gt; &quot;Service_Famille&quot;),
           AND(
                LEFT({!myVariable_current.OwnerId}, 3)=&quot;00G&quot;,
                {!myVariable_current.Owner:Queue.DeveloperName} &lt;&gt;&quot;LPCR_ServiceFamille&quot;)), 
@@ -664,9 +660,7 @@
                 <stringValue>AND(
      ISBLANK([Lead].LPCR_DatePriseEnChargeCommercial__c ),
      OR(
-          AND(
                LEFT([Lead].OwnerId, 3)=&quot;005&quot;,
-               [Lead].Owner:User.UserRole.DeveloperName &lt;&gt; &quot;Service_Famille&quot;),
           AND(
                LEFT([Lead].OwnerId, 3)=&quot;00G&quot;,
                [Lead].Owner:Queue.DeveloperName &lt;&gt;&quot;LPCR_ServiceFamille&quot;)), 
@@ -681,9 +675,7 @@
         <expression>AND(
      ISBLANK({!myVariable_old.LPCR_DatePriseEnChargeCommercial__c} ),
      OR(
-          AND(
                LEFT({!myVariable_old.OwnerId}, 3)=&quot;005&quot;,
-               {!myVariable_old.Owner:User.UserRole.DeveloperName} &lt;&gt; &quot;Service_Famille&quot;),
           AND(
                LEFT({!myVariable_old.OwnerId}, 3)=&quot;00G&quot;,
                {!myVariable_old.Owner:Queue.DeveloperName} &lt;&gt;&quot;LPCR_ServiceFamille&quot;)), 
@@ -692,7 +684,7 @@
           text({!myVariable_old.Status})=&quot;Abandonné&quot;)
 )</expression>
     </formulas>
-    <interviewLabel>PB_Lead-5_InterviewLabel</interviewLabel>
+    <interviewLabel>PB_Lead-2_InterviewLabel</interviewLabel>
     <label>PB_Lead</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -794,7 +786,7 @@
             </processMetadataValues>
             <field>LPCR_DatePriseEnChargeServiceFamille__c</field>
             <value>
-                <elementReference>formula_11_myRule_10_A1_6920581907</elementReference>
+                <elementReference>formula_11_myRule_10_A1_5903287127</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -830,7 +822,7 @@
             </processMetadataValues>
             <field>LPCR_MotifDisqualification__c</field>
             <value>
-                <elementReference>formula_12_myRule_10_A1_1935834739</elementReference>
+                <elementReference>formula_12_myRule_10_A1_6230840716</elementReference>
             </value>
         </inputAssignments>
         <object>Lead</object>
@@ -910,7 +902,7 @@
             </processMetadataValues>
             <field>LPCR_DateTransfertServiceFamille__c</field>
             <value>
-                <elementReference>formula_4_myRule_1_A1_8713385202</elementReference>
+                <elementReference>formula_4_myRule_1_A1_8552190622</elementReference>
             </value>
         </inputAssignments>
         <object>Lead</object>
@@ -990,7 +982,7 @@
             </processMetadataValues>
             <field>LPCR_DatePriseEnChargeCommercial__c</field>
             <value>
-                <elementReference>formula_7_myRule_6_A1_7325743377</elementReference>
+                <elementReference>formula_7_myRule_6_A1_2520086617</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1026,7 +1018,7 @@
             </processMetadataValues>
             <field>LPCR_MotifDisqualification__c</field>
             <value>
-                <elementReference>formula_8_myRule_6_A1_2681094585</elementReference>
+                <elementReference>formula_8_myRule_6_A1_2421647438</elementReference>
             </value>
         </inputAssignments>
         <object>Lead</object>
