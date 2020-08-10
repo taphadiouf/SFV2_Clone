@@ -1154,6 +1154,7 @@
         <field>LPCR_ParametrageScore__c.LPCR_Format__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_ParametrageScore__c.LPCR_Score__c</field>
         <readable>true</readable>
