@@ -42,9 +42,10 @@ public with sharing class SM009_ParametrageScoreServices {
             string field = eachParam.LPCR_ApiFieldName__c;
             System.debug('##Score:' + eachParam);
 
-            if(eachParam.LPCR_Format__c != null && eachParam.LPCR_Valeur__c != null && eachParam.LPCR_ApiFieldName__c != null){
+            if(eachParam.LPCR_Format__c != null && eachParam.LPCR_Valeur__c != null && eachParam.LPCR_ApiFieldName__c != null && preinscription.get(field) != null){
                 if(eachparam.LPCR_Format__c == 'Nombre'){
-                    Decimal ValeurPres = (Decimal)preinscription.get(field);
+                    String n = String.valueOf(preinscription.get(field));
+                    Decimal ValeurPres = Decimal.valueOf(n);
                     Decimal ValeurParam = Decimal.valueOf(eachParam.LPCR_Valeur__c);
 
                     if(ValeurPres >= ValeurParam && (!mapValeurNum.containsKey(field) || mapValeurNum.get(field) < ValeurParam)){
@@ -54,11 +55,19 @@ public with sharing class SM009_ParametrageScoreServices {
                 }
                 
                 else if(eachparam.LPCR_Format__c == 'Date'){
-                    Date ValeurPres = (Date)preinscription.get(field);
-                    String ExtractedDate = eachParam.LPCR_Valeur__c;
-                    list<String> lstSplitDate = ExtractedDate.split('/');
-                    Date ValeurParam = date.newinstance(Integer.valueOf(lstSplitDate[2]), Integer.valueOf(lstSplitDate[1]), Integer.valueOf(lstSplitDate[0]));
+                    Date ValeurPres = null;
+                    if(preinscription.get(field) instanceof Date) {
+                        ValeurPres = Date.valueOf(preinscription.get(field));
+                    }
+                    else if(preinscription.get(field) instanceof String){
+                        string ExtractedPresDate = String.valueof(preinscription.get(field));
+                        list<String> lstSplitPresDate = ExtractedPresDate.split('/');
+                        ValeurPres = date.newinstance(Integer.valueOf(lstSplitPresDate[2]), Integer.valueOf(lstSplitPresDate[1]), Integer.valueOf(lstSplitPresDate[0]));
+                    }
                     
+                    String ExtractedParamDate = eachParam.LPCR_Valeur__c;
+                    list<String> lstSplitParamDate = ExtractedParamDate.split('/');
+                    Date ValeurParam = date.newinstance(Integer.valueOf(lstSplitParamDate[2]), Integer.valueOf(lstSplitParamDate[1]), Integer.valueOf(lstSplitParamDate[0]));
          
                     if(ValeurPres >= ValeurParam && (!mapValeurDate.containsKey(field) || mapValeurDate.get(field) < ValeurParam)){
                         mapValeurDate.put(field, ValeurParam);
@@ -66,7 +75,7 @@ public with sharing class SM009_ParametrageScoreServices {
                     }
                 }
                 
-                else if(eachparam.LPCR_Format__c == 'Texte'){
+                else if(eachparam.LPCR_Format__c == 'Texte' || eachparam.LPCR_Format__c == 'Case à cocher'){
                     String ValeurPres = String.valueOf(preinscription.get(field));
                     String ValeurParam = String.valueOf(eachParam.LPCR_Valeur__c);
                     

@@ -2733,31 +2733,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_Anciennete__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_DateEntree__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_NbJourGarde__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_ReponseCrecheMunicipale__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_Revenu__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>LPCR_ParametrageScore__c.LPCR_Score__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -9034,6 +9009,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__Invoice__c.Tech_FormuleCongaBatch__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_CongesPrisPeriode__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

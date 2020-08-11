@@ -4,8 +4,8 @@
 * @description Service class for Invoice Object
 */
 public class SM015_InvoiceServices {
-
-/*
+    
+    /*
 * 	@Author : Ayoub Ouarti
 * 	@Created 10/07/2020
 *	@Description : this method create Payment And Payment Allocation for Invoice with changed LPCR_StatutPaiement__c 
@@ -31,7 +31,7 @@ public class SM015_InvoiceServices {
                                                  :eachInvoiceLine.blng__Balance__c+mapInvoiceSumBalanceInvoicelines.get(eachInvoiceLine.blng__Invoice__c));
         }
         for(blng__Invoice__c eachInvoice : mapInvocieLineStatutPaiement.values()){
-          if(mapInvoiceSumBalanceInvoicelines.containsKey(eachInvoice.Id))  paymentByInvoiceMap.put(eachInvoice.Id, new blng__Payment__c(blng__Account__c = eachInvoice.blng__Account__c, blng__Amount__c = mapInvoiceSumBalanceInvoicelines.get(eachInvoice.Id), blng__Status__c = 'Posted' ));
+            if(mapInvoiceSumBalanceInvoicelines.containsKey(eachInvoice.Id))  paymentByInvoiceMap.put(eachInvoice.Id, new blng__Payment__c(blng__Account__c = eachInvoice.blng__Account__c, blng__Amount__c = mapInvoiceSumBalanceInvoicelines.get(eachInvoice.Id), blng__Status__c = 'Posted' ));
         }
         if(paymentByInvoiceMap.size() > 0){
             //Create a blng__Payment__c record
@@ -61,5 +61,30 @@ public class SM015_InvoiceServices {
                    eachNewInvoice.LPCR_StatutFacture__c = 'Prêt à valider';
                }
         }
+    }
+    
+    
+    public static void setCongePrisPeriode(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> newInvoiceMap){
+        
+        
+        Id familleRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
+        
+        List<blng__Invoice__c> invoiceList = [Select Id, LPCR_StatutFacture__c  , LPCR_CongesPrisPeriode__c, blng__Account__c,blng__Account__r.recordTypeId FROM blng__Invoice__c WHERE Id IN: newInvoiceList AND blng__Account__r.recordTypeId =: familleRecTypeId AND LPCR_StatutFacture__c = 'A Envoyer'];
+        List<blng__InvoiceLine__c> invoiceLines = [Select Id, blng__OrderProduct__r.OrderId, blng__Invoice__c  From blng__InvoiceLine__c WHERE blng__Invoice__c  IN:invoiceList Limit 1];
+        if(invoiceLines.size()>0){
+            blng__InvoiceLine__c invoiceLine = invoiceLines.get(0);
+            List<Contract> contractList =[select Id,SBQQ__Order__c from Contract where SBQQ__Order__c = :invoiceLine.blng__OrderProduct__r.OrderId];
+            
+            LPCR_ModificationEntrante__c modificationEntrante = [SELECT Id, LPCR_Quantite__c, LPCR_Evenement__c,LPCR_Contract__c  From LPCR_ModificationEntrante__c Where LPCR_Evenement__c='Conges_Pris_Periode' AND LPCR_Contract__c IN:contractList  order by createdDate DESC limit 1];
+            
+            Decimal modificationQuantity = modificationEntrante.LPCR_Quantite__c;
+            
+            for(blng__Invoice__c eachNewInvoice : invoiceList){
+                
+                newInvoiceMap.get(eachNewInvoice.Id).LPCR_CongesPrisPeriode__c = modificationQuantity;
+                
+            }
+        }
+        
     }
 }

@@ -12,6 +12,9 @@
     <columns>
         <field>LPCR_LienFamilleFacture__c.LPCR_TotalFacture__c</field>
     </columns>
+    <columns>
+        <field>LPCR_LienFamilleFacture__c.LPCR_EnvoyerFaitPar__c</field>
+    </columns>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

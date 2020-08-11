@@ -28,7 +28,7 @@ export default class LWC004_RefDocParam extends LightningElement {
   @track picklistTypeValue = [{ label: 'Contrat Accueil', value: 'Contrat Accueil' }, 
   { label: 'Contrat Réservataire', value: 'Contrat Réservataire' },
   { label: 'Facture Famille', value: 'Facture Famille' }, 
-  { label: 'Facture Entreprise', value: 'CFacture Entreprise' },
+  { label: 'Facture Entreprise', value: 'Facture Entreprise' },
    { label: 'Pièce justificative', value: 'Pièce justificative' },
    { label: 'Autres', value: 'Autres' }];
   @track data = { type: '', file: File };
@@ -58,7 +58,7 @@ export default class LWC004_RefDocParam extends LightningElement {
         { label: 'Contrat Accueil', value: 'Contrat Accueil' }, 
       { label: 'Contrat Réservataire', value: 'Contrat Réservataire' },
       { label: 'Facture Famille', value: 'Facture Famille' }, 
-      { label: 'Facture Entreprise', value: 'CFacture Entreprise' },
+      { label: 'Facture Entreprise', value: 'Facture Entreprise' },
        { label: 'Pièce justificative', value: 'Pièce justificative' },
        { label: 'Autres', value: 'Autres' }];
     }
@@ -70,7 +70,7 @@ export default class LWC004_RefDocParam extends LightningElement {
       this.picklistTypeValue = [{ label: 'Contrat Accueil', value: 'Contrat Accueil' }, 
       { label: 'Contrat Réservataire', value: 'Contrat Réservataire' },
       { label: 'Facture Famille', value: 'Facture Famille' }, 
-      { label: 'Facture Entreprise', value: 'CFacture Entreprise' },
+      { label: 'Facture Entreprise', value: 'Facture Entreprise' },
        { label: 'Pièce justificative', value: 'Pièce justificative' },
        { label: 'Autres', value: 'Autres' }];
     }
