@@ -9,6 +9,7 @@
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
+        <controllingField>Status</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
@@ -28,5 +29,17 @@
                 <label>Retour LPCR</label>
             </value>
         </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Sans suite</controllingFieldValue>
+            <valueName>Annulation famille</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sans suite</controllingFieldValue>
+            <valueName>Pas de solution réseau</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sans suite</controllingFieldValue>
+            <valueName>Retour LPCR</valueName>
+        </valueSettings>
     </valueSet>
 </CustomField>

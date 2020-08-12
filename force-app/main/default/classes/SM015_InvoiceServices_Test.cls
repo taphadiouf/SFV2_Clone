@@ -11,6 +11,7 @@ public class SM015_InvoiceServices_Test {
     private static final Id QUOTE_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);
     private static final Id standardPricebookId = Test.getStandardPricebookId();
     private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Famille);
+    private static final Id COMPTE_Famille = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     
     @testSetup
     static void testSetup(){
@@ -110,7 +111,55 @@ public class SM015_InvoiceServices_Test {
                 };
                     
                     SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        		insert quoteLine;
+                insert quoteLine;
+                
+                Map<String, Object> defaultVals = new Map<String, Object> {
+                    'RecordTypeId' => COMPTE_Famille,
+                        'Name' => 'Test-B2C',
+                        'SBQQ__RenewalModel__c' => 'Contract Based'
+                        };
+                            Account accountFamille =(Account) UM002_TestDataFactory.createSObject('Account', defaultVals);
+                insert accountFamille;
+        
+        
+        
+                Id standardPricebookId = Test.getStandardPricebookId();
+        
+                Order order = UM002_TestDataFactory.createOrder(accountFamille.id,null,date.today(),'test','Draft','1');
+                order.Pricebook2Id = standardPricebookId;
+                insert order;
+        
+                OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(priceBookEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
+                insert orderItem;
+        
+                Contract contract = UM002_TestDataFactory.createContract(accountFamille.Id,order.Id);
+                insert contract;
+        
+        
+        
+                List<blng__InvoiceRun__c> invoiceRunsList = UM002_TestDataFactory.createInvoiceRuns(1,'Execution de Facture',date.newInstance(System.Today().year(), 10, 02));
+                insert invoiceRunsList;
+        
+                blng__InvoiceRun__c invoiceRun = invoiceRunsList.get(0);
+        
+        
+        
+        
+                 LPCR_ModificationEntrante__c modificationEntrante = UM002_TestDataFactory.createModificationsEntrante('Conges_Pris_Periode',accountFamille.Id,null,contract.id,null);
+                modificationEntrante.LPCR_Quantite__c = 10;
+                insert modificationEntrante;
+        
+        
+        
+                List<blng__Invoice__c> invoicesList = UM002_TestDataFactory.createInvoices(1,accountFamille.id,invoiceRun.id,'Posted','A Envoyer' );
+        system.debug('invoicesListaaaa'+invoicesList);
+                insert invoicesList;
+        
+                blng__Invoice__c invoice = invoicesList.get(0);
+        
+        
+                blng__InvoiceLine__c invoiceLineList = UM002_TestDataFactory.createInvoiceLine(invoice.id,orderItem.Id);
+                insert invoiceLineList;
         
     }
     
@@ -205,4 +254,21 @@ public class SM015_InvoiceServices_Test {
         Test.stopTest();
         
     }   */ 
+
+    @isTest
+    public static void setCongePrisPeriode_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
+            LPCR_ModificationEntrante__c modificationEntrante = [Select Id, LPCR_Quantite__c, LPCR_Contract__c From LPCR_ModificationEntrante__c].get(0);
+            blng__Invoice__c invoiceList = [Select Id,LPCR_CongesPrisPeriode__c from blng__Invoice__c];
+                invoiceList.LPCR_Commentaire__c   ='test' ;            
+            update invoiceList;
+            blng__Invoice__c updatedInvoiceList = [Select Id,LPCR_CongesPrisPeriode__c from blng__Invoice__c];
+            Decimal updatedInvoice = updatedInvoiceList.LPCR_CongesPrisPeriode__c;
+            system.assertEquals(modificationEntrante.LPCR_Quantite__c, updatedInvoice,'Error');
+            Test.stopTest();
+
+        }
+    }
+
 }
