@@ -13,7 +13,19 @@ public with sharing class SM003_TaskServices {
         for(Task eachTask:newTasksList){
             setLeadIds.add(eachTask.WhoId);
         }
-        List<Lead> listLead = EM002_LeadEntity.getLeadsBy(setLeadIds,System.Label.LPCR_Famille);
+        
+        List<Lead> listLeadNouveau = EM002_LeadEntity.getLeadsByIdsAndStatus(setLeadIds, System.Label.LPCR_Nouveau);
+        if(UM003_TypeManager.isNotNullAndNotEmpty(listLeadNouveau)){
+        	for(Lead le: listLeadNouveau){
+            	le.status = Label.LPCR_EnCours;
+                if(Label.LPCR_Famille.equals(le.RecordType.DeveloperName)){
+                    le.LPCR_DatePriseEnChargeCommercial__c=Date.today();
+                }
+            }
+            update listLeadNouveau;
+        }
+        
+        /*List<Lead> listLead = EM002_LeadEntity.getLeadsBy(setLeadIds,System.Label.LPCR_Famille); commented in the context of bug/IS-1294
         if(UM003_TypeManager.isNotNullAndNotEmpty(listLead)){
             for(Lead eachLead: listLead){
                 if(Label.LPCR_Nouveau.equals(eachLead.status)){
@@ -23,8 +35,8 @@ public with sharing class SM003_TaskServices {
             }
             update listLead;
         }
-        
-        return listLead;
+        */
+        return listLeadNouveau;
     }
     
 }
