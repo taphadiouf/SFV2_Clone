@@ -68,7 +68,6 @@ public class SM020_PresinscriptionInvockeService {
             body = body.replace('{!LPCR_Preinscription__c.LPCR_DateEntreeCreche__c}', '');
             
             callout(UserInfo.getUserEmail(), preinscription.LPCR_ContactParent__r.email, body, template.subject, docTmp);
-            
         }
         
     }
