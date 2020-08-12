@@ -9,7 +9,7 @@ public with sharing class SM003_TaskServices_TEST {
     static void testSetup(){
         RecordType rc = [SELECT Id, DeveloperName FROM RecordType WHERE DeveloperName='Famille' AND SobjectType='Lead' limit 1];
             List<Lead> leads = UM002_TestDataFactory.createLeads(100,rc.Id,'test','test','Nouveau','test@test.com');
-            List<Lead> leads2 = UM002_TestDataFactory.createLeads(100,rc.Id,'test1','test1','Entreprise','test1@test.com');
+            List<Lead> leads2 = UM002_TestDataFactory.createLeads(100,rc.Id,'test1','test1','Nouveau','test1@test.com');
         
             insert leads;
             insert leads2;
@@ -27,6 +27,7 @@ public with sharing class SM003_TaskServices_TEST {
             Lead myLead1 = [Select Status ,LPCR_DatePriseEnChargeCommercial__c FROM Lead WHERE LastName='test' limit 1];
             Lead myLead2 = [Select Status ,LPCR_DatePriseEnChargeCommercial__c FROM Lead WHERE LastName='test1' limit 1];
             system.assertEquals('En cours', myLead1.status);
+            system.assertEquals('En cours', myLead2.status);
             system.assertEquals(Date.today(), myLead1.LPCR_DatePriseEnChargeCommercial__c);
             system.assertEquals(Date.today(), myLead2.LPCR_DatePriseEnChargeCommercial__c);
             Test.stopTest();

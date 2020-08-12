@@ -84,17 +84,17 @@ public with sharing class APC006_CloneQuoteLines {
         }
 
         // get consumption schedule
-        List<SBQQ__QuoteLineConsumptionSchedule__c> clonedQLConsumptionScheduleList = new List<SBQQ__QuoteLineConsumptionSchedule__c>();
+        Map<String,SBQQ__QuoteLineConsumptionSchedule__c> clonedQLConsumptionScheduleMap = new Map<String,SBQQ__QuoteLineConsumptionSchedule__c>();
         for(SBQQ__QuoteLineConsumptionSchedule__c qlCS : [SELECT Id, Name, SBQQ__QuoteLine__c, SBQQ__BillingTermUnit__c, SBQQ__BillingTerm__c, SBQQ__Category__c, SBQQ__ConsumptionSchedule__c, SBQQ__Description__c, SBQQ__MatchingAttribute__c, SBQQ__RatingMethod__c, SBQQ__Type__c, SBQQ__UnitOfMeasure__c FROM SBQQ__QuoteLineConsumptionSchedule__c WHERE SBQQ__QuoteLine__c IN: originIdsToclonedQLMap.keySet()]){
             if(originIdsToclonedQLMap.containsKey(qlCS.SBQQ__QuoteLine__c)){
                 SBQQ__QuoteLineConsumptionSchedule__c newQLCS = qlCS.clone(false, true, false, false);
                 newQLCS.SBQQ__QuoteLine__c = originIdsToclonedQLMap.get(qlCS.SBQQ__QuoteLine__c).Id;
-                clonedQLConsumptionScheduleList.add(newQLCS);
+                clonedQLConsumptionScheduleMap.put(qlCS.id,newQLCS);
             }            
         }
         
         try {
-            insert clonedQLConsumptionScheduleList;
+            insert clonedQLConsumptionScheduleMap.values();
         } catch (Exception ex) {
             ApexPages.addMessage(new ApexPages.Message(
                 ApexPages.Severity.ERROR,
@@ -103,6 +103,26 @@ public with sharing class APC006_CloneQuoteLines {
             return false;
         }
         
+        List<SBQQ__QuoteLineConsumptionRate__c> clonedQLConsumptionRateList = new List<SBQQ__QuoteLineConsumptionRate__c>();
+        for(SBQQ__QuoteLineConsumptionRate__c eachQLCRate : [SELECT Id, Name, SBQQ__QuoteLineConsumptionSchedule__c, SBQQ__Description__c, SBQQ__LowerBound__c, SBQQ__OriginalPrice__c, SBQQ__Price__c, SBQQ__PricingMethod__c, SBQQ__ProcessingOrder__c, SBQQ__UpperBound__c FROM SBQQ__QuoteLineConsumptionRate__c WHERE SBQQ__QuoteLineConsumptionSchedule__c IN: clonedQLConsumptionScheduleMap.keySet()]){
+            if(clonedQLConsumptionScheduleMap.containsKey(eachQLCRate.SBQQ__QuoteLineConsumptionSchedule__c)){
+                SBQQ__QuoteLineConsumptionRate__c newQLCRate = eachQLCRate.clone(false, true, false, false);
+                newQLCRate.SBQQ__QuoteLineConsumptionSchedule__c = clonedQLConsumptionScheduleMap.get(eachQLCRate.SBQQ__QuoteLineConsumptionSchedule__c).id;
+                clonedQLConsumptionRateList.add(newQLCRate);
+            }
+        }      
+        
+        try {
+            insert clonedQLConsumptionRateList;
+        } catch (Exception ex) {
+            System.debug('**** clonedQLConsumptionRateList Exception : '+ ex.getMessage());
+            ApexPages.addMessage(new ApexPages.Message(
+                ApexPages.Severity.ERROR,
+                'DML operation has failed. More info: ' + ex.getMessage() + '\nStack Trace:' + ex.getStackTraceString()));
+            Database.rollback(sp);
+            return false;
+        }
+            
         //The current Cloned Quote line in the next loop
         SBQQ__QuoteLine__c currentClonedQL;
         //The current Original Quote line in the next loop

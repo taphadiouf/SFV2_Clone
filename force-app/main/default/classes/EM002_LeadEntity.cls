@@ -40,7 +40,7 @@ public with sharing class EM002_LeadEntity extends DM000_SObject{
                 AND Status = :status];
     }
     public static List<Lead> getLeadsByIdsAndStatus(set<Id> setLeadIds, String status) {
-        return [SELECT Id, Status,RecordType.Name ,LPCR_DatePriseEnChargeCommercial__c
+        return [SELECT Id, Status,RecordType.Name , LPCR_DatePriseEnChargeCommercial__c,RecordType.DeveloperName
                 FROM Lead 
                 WHERE Id In :setLeadIds 
                 AND Status = :status];

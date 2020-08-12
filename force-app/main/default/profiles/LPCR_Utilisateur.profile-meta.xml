@@ -57,6 +57,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>APB015_ProcessBillingPlanLines</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>APB015_ProcessBillingPlanLines_Test</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>APB008_ResetStartEndDatesOnContract</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -15684,6 +15692,16 @@
         <editable>false</editable>
         <field>OrderItem.LPCR_BillingPlanProcessment__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_TraitementLigneFacturationAvenant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_ExclureDuPlanFacturation__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
