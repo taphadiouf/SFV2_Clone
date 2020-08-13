@@ -75,7 +75,61 @@ public with sharing class APC001_LeadFaConverController{
         Lead currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
         String prenomCoDemandeur = currentLead.LPCR_PrenomCoDemandeur__c;                                         
         String nomCoDemandeur = currentLead.LPCR_NomCoDemandeur__c;                                         
-        String civiliteCoDemandeur = currentLead.LPCR_CiviliteCoDemandeur__c; 
+        String civiliteCoDemandeur = currentLead.LPCR_CiviliteCoDemandeur__c;
+        String accountName = Label.LPCR_Famille + ' ' + currentLead.LastName;
+        system.debug('accountName'+accountName);
+        
+        
+        List<Account> accountList = [Select Id, Name From Account];
+        List<String> nameList = new List<String>();
+        for(Account eachName : accountList){
+            nameList.add(eachName.Name);
+        }
+        boolean isvalid = true;
+       	String errMsg = 'Veuillez vérifier le suivant : ';
+       	String contactFirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur;
+        Integer count = 0;
+        
+        for(String eachName : nameList){
+            if(accountName.equals(eachName)){
+                isvalid = False ;
+                count += 1;
+            }
+        }
+        if(count != 0){
+            errMsg += 'Ce compte existe déjà dans Salesforce';
+        }
+        
+        if(currentLead.LPCR_CompteSociete__c == Null){
+            isvalid = False ;
+            errMsg += 'le champ Compte Société est manquant, ';
+            
+        }
+
+        if(currentLead.LPCR_CompteSocieteCoDemandeur__c == Null){
+            isvalid = False ;
+            errMsg += 'le champ Compte Société Co-Demandeur est manquant, ';
+            
+        }
+        
+        if(currentLead.Address == Null){
+            isvalid = False ;
+            errMsg += 'le champ Adresse est manquant';
+        }
+        if(contactFirstName.length()>40){
+            isvalid = False ;
+            errMsg += 'le champ Prénom co-demandeur est trop long';
+        }
+        if(!isvalid){
+            throw new AuraHandledException(errMsg);
+        }
+        
+        
+        
+        
+        
+        
+        
         //Create Account (Famille)
         Account newFamilleAccount = new Account(
             Name = Label.LPCR_Famille + ' ' + currentLead.LastName + (nomCoDemandeur != null ? (' ' +nomCoDemandeur) : ''), 
@@ -84,33 +138,9 @@ public with sharing class APC001_LeadFaConverController{
         insert newFamilleAccount;  
         ///Create contacts (Enfants and Representants(Parent RT) )
         //Map : Contact Variable Name => Contact Record
-        Map<String, Contact> newContactsMap = new Map<String, Contact>();
-        boolean isvalid = true;
-       String errMsg = 'Veuillez vérifier les champs suivants : ';
-       String contactFirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur;
-        if(currentLead.LPCR_CompteSociete__c == Null){
-            isvalid = False ;
-            errMsg += 'Compte Société est manquant, ';
-            
-        }
 
-        if(currentLead.LPCR_CompteSocieteCoDemandeur__c == Null){
-            isvalid = False ;
-            errMsg += 'Compte Société Co-Demandeur est manquant, ';
-            
-        }
-        
-        if(currentLead.Address == Null){
-            isvalid = False ;
-            errMsg += 'Adresse est manquant,';
-        }
-        if(contactFirstName.length()>40){
-            isvalid = False ;
-            errMsg += 'Le champ Prénom co-demandeur est trop long';
-        }
-        if(!isvalid){
-            throw new AuraHandledException(errMsg);
-        }
+        Map<String, Contact> newContactsMap = new Map<String, Contact>();
+       
         //Representants part (Parent)
         Id familleContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Parent);
             newContactsMap.put('contactRep1', new Contact(
