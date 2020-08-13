@@ -42,8 +42,13 @@ public with sharing class SM016_SendMail_Callout {
         HttpResponse res = h.send(req);
         String result = res.getBody();
         
-        System.Debug('>> - LOG - res:' + res);
-        System.Debug('>> - LOG - res.getBody():' + res.getBody());
+        // Parse the JSON response
+        if (res.getStatusCode() == 200) {
+            System.debug('The status code returned was not expected: ' +
+                         res.getStatusCode() + ' ' + res.getStatus());
+        } else {
+            System.debug(res.getBody());
+        }
         
         return res;
         
