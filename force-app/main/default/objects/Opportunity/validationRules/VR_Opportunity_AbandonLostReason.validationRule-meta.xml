@@ -3,7 +3,7 @@
     <fullName>VR_Opportunity_AbandonLostReason</fullName>
     <active>true</active>
     <errorConditionFormula>AND (
-     NOT($User.LPCR_BypassValidationRules__c ),
+     NOT($Permission.LPCR_ByPass_VR ),
      AND(
          ISPICKVAL( StageName,&quot;Abandon&quot;),
          ISNULL( LPCR_MotifAbandon__c )
