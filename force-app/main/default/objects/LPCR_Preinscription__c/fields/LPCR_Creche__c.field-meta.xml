@@ -4,11 +4,21 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Crèche</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Merci de sélectionner un compte avec un record type de &quot;Crèche&quot;</errorMessage>
+        <filterItems>
+            <field>Account.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Crèche, Crèche Externe</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Préinscriptions (Crèche)</relationshipLabel>
     <relationshipName>PreinscriptionsCreche</relationshipName>
     <required>false</required>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
 </CustomField>

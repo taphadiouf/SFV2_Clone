@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_InvoiceModifStatutNonAutorise</fullName>
+    <active>true</active>
+    <description>Le passage au statut &apos;Annulée&apos;, &apos;Terminée&apos; et &apos;Envoyée&apos;  ne peut pas être fait à la main par un utilisateur.</description>
+    <errorConditionFormula>AND(
+NOT( $User.LPCR_BypassValidationRules__c ),
+NOT(CONTAINS($Profile.Name,&apos;Admin&apos;)),
+NOT( $Permission.LPCR_ADV),
+ISCHANGED( LPCR_StatutFacture__c  ),
+OR(
+TEXT(LPCR_StatutFacture__c) = &apos;Envoyée&apos;,
+TEXT(LPCR_StatutFacture__c) = &apos;Annulée&apos;,
+TEXT(LPCR_StatutFacture__c) = &apos;Terminée&apos;)
+)</errorConditionFormula>
+    <errorMessage>Vous n&apos;êtes pas autorisé à choisir ce statut de facture.</errorMessage>
+</ValidationRule>

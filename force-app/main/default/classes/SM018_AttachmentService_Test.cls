@@ -17,6 +17,7 @@ public class SM018_AttachmentService_Test {
         insert accounts;
         insert opps;
         List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(1, accounts, opps);
+        quotes.get(0).SBQQ__StartDate__c = date.today();
         insert quotes;
         
         Id standardPricebookId = Test.getStandardPricebookId();
@@ -61,8 +62,8 @@ public class SM018_AttachmentService_Test {
         List<LPCR_Log__c> successLogList = [SELECT Id, Name, LPCR_TargetObject__c, LPCR_Result__c FROM LPCR_Log__c WHERE LPCR_Result__c = 'Success'];
         List<LPCR_Log__c> errorLogList = [SELECT Id, Name, LPCR_TargetObject__c, LPCR_Result__c FROM LPCR_Log__c WHERE LPCR_Result__c = 'Error'];
         
-        System.assertEquals(2, successLogList.size(), 'sendLPCRDocumentByCallout_Test success log failed');
-        System.assertEquals(1, errorLogList.size(), 'sendLPCRDocumentByCallout_Test error log failed');
+        System.assertEquals(3, successLogList.size(), 'sendLPCRDocumentByCallout_Test success log failed');
+        System.assertEquals(0, errorLogList.size(), 'sendLPCRDocumentByCallout_Test error log failed');
     }
     @isTest
     static void sendLPCRDocumentByCallout1_Test(){

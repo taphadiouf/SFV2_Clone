@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldOverrides>
+        <field>LPCR_AmplitudeHoraireJeudi__c</field>
+        <formula>TEXT(Lead.LPCR_AmplitudeHoraireJeudi1__c)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_AmplitudeHoraireLundi__c</field>
+        <formula>TEXT(Lead.LPCR_AmplitudeHoraireLundi1__c)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_AmplitudeHoraireMardi__c</field>
+        <formula>TEXT(Lead.LPCR_AmplitudeHoraireMardi1__c)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_AmplitudeHoraireMercredi__c</field>
+        <formula>TEXT(Lead.LPCR_AmplitudeHoraireMercredi1__c)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_AmplitudeHoraireVendredi__c</field>
+        <formula>TEXT(Lead.LPCR_AmplitudeHoraireVendredi1__c)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>LPCR_CodePostalDomicile__c</field>
         <formula>Lead.PostalCode</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_CodePostalTravail__c</field>
+        <formula>Lead.LPCR_CodePostalSociete__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_DateEntreeSouhaitee__c</field>
+        <formula>Lead.LPCR_DateEntreeCreche1__c</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>LPCR_RueDomicile__c</field>
@@ -11,6 +39,10 @@
     <fieldOverrides>
         <field>LPCR_VilleDomicile__c</field>
         <formula>Lead.City</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_VilleTravail__c</field>
+        <formula>Lead.LPCR_VilleSociete__c</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>Origin</field>
@@ -27,8 +59,8 @@
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>AccountId</field>
-                <uiBehavior>Edit</uiBehavior>
+                <field>Lead__c</field>
+                <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
@@ -52,6 +84,21 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
+                <field>LPCR_AmplitudeHoraireLundi__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_AmplitudeHoraireMercredi__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_AmplitudeHoraireVendredi__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
                 <field>LPCR_ChoixN1__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
@@ -60,11 +107,20 @@
                 <field>LPCR_ChoixN3__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>AccountId</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_Opportunite__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
         </quickActionLayoutColumns>
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>LPCR_ContratEntreprise__c</field>
+                <emptySpace>true</emptySpace>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
@@ -83,6 +139,21 @@
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_DateEntreeSouhaitee__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_AmplitudeHoraireMardi__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_AmplitudeHoraireJeudi__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
                 <emptySpace>true</emptySpace>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
@@ -94,6 +165,16 @@
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>Description</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_ContratEntreprise__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_PrixVente__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>

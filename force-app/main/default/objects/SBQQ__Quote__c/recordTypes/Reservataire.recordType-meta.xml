@@ -30,7 +30,7 @@
     <picklistValues>
         <picklist>EditLinesFieldSetName__c</picklist>
         <values>
-            <fullName>Amendment_FieldSet_test_only</fullName>
+            <fullName>LPCR_Amendment</fullName>
             <default>false</default>
         </values>
         <values>
@@ -134,6 +134,21 @@
         </values>
         <values>
             <fullName>Tacite</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_MoyenPaiement__c</picklist>
+        <values>
+            <fullName>Carte Bancaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chèque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virement</fullName>
             <default>false</default>
         </values>
     </picklistValues>

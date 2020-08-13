@@ -5,27 +5,26 @@
 * @Updated by: Achraf ABOUL(Salesforce) 08/04/2020
 */
 public with sharing class APC001_LeadFaConverController{
+
     @AuraEnabled(cacheable = true)
     public static List<Account> getRelatedCreches(Id leadId){
-        Set<String> leadFields = new set<String>();
-        leadFields.add('LPCR_CodeCreche1__c');
-        leadFields.add('LPCR_CodeCreche2__c');
-        leadFields.add('LPCR_CodeCreche3__c');
-        
-        Lead currentLead = (Lead) new EM002_LeadEntity().getById(leadId, leadFields);
-        
+
+        List<LPCR_LienCrecheLead__c> tmpLienCrecheLead = [SELECT Id, LPCR_Creche__c from LPCR_LienCrecheLead__c where LPCR_Lead__c = :leadId];
         Set<Id> accIdsSet = new Set<Id>();
-        accIdsSet.add((Id) currentLead.get('LPCR_CodeCreche1__c'));
-        accIdsSet.add((Id) currentLead.get('LPCR_CodeCreche2__c'));
-        accIdsSet.add((Id) currentLead.get('LPCR_CodeCreche3__c'));
-        
         Set<String> accFieldsSet = new Set<String>();
+
         accFieldsSet.add('Name');
-        
+
+        for (LPCR_LienCrecheLead__c elem : tmpLienCrecheLead) {
+            accIdsSet.add(elem.LPCR_Creche__c);
+        }
+
         return new EM005_AccountEntity().getByIds(accIdsSet, accFieldsSet);
     }
+
     @AuraEnabled(cacheable=true)
     public static String getEnfants(Id leadId){
+
         List<WRP002_EnfantWrapper> enfants = new List<WRP002_EnfantWrapper>();
         Set<String> fields = new Set<String>();
         for(Integer i = 1; i < 4; i++){
@@ -44,7 +43,9 @@ public with sharing class APC001_LeadFaConverController{
         }
         return JSON.serialize(enfants);
     }
+
     public class WRP002_EnfantWrapper{
+
         Integer num;
         String nom;
         String  prenom;
@@ -56,8 +57,10 @@ public with sharing class APC001_LeadFaConverController{
             this.label = label;
         }
     } 
+
     @AuraEnabled(cacheable=true)
     public static List<Account> getAccountsByRecordtypeName(String recordTypeName) {
+
         List<Account> accounts = new List<Account>();
         Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,recordTypeName);
         if(UM003_TypeManager.idNotNull(recordtypeId)){
@@ -65,12 +68,68 @@ public with sharing class APC001_LeadFaConverController{
         }
         return accounts;
     }
+
     @AuraEnabled()
     public static void convertLeadCtrl(Id leadId, List<Integer> enfantsIndexes, Id chosenCrecheId, Id chosenCompteId){
+
         Lead currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
         String prenomCoDemandeur = currentLead.LPCR_PrenomCoDemandeur__c;                                         
         String nomCoDemandeur = currentLead.LPCR_NomCoDemandeur__c;                                         
-        String civiliteCoDemandeur = currentLead.LPCR_CiviliteCoDemandeur__c; 
+        String civiliteCoDemandeur = currentLead.LPCR_CiviliteCoDemandeur__c;
+        String accountName = Label.LPCR_Famille + ' ' + currentLead.LastName;
+        system.debug('accountName'+accountName);
+        
+        
+        List<Account> accountList = [Select Id, Name From Account];
+        List<String> nameList = new List<String>();
+        for(Account eachName : accountList){
+            nameList.add(eachName.Name);
+        }
+        boolean isvalid = true;
+       	String errMsg = 'Veuillez vérifier le suivant : ';
+       	String contactFirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur;
+        Integer count = 0;
+        
+        for(String eachName : nameList){
+            if(accountName.equals(eachName)){
+                isvalid = False ;
+                count += 1;
+            }
+        }
+        if(count != 0){
+            errMsg += 'Ce compte existe déjà dans Salesforce';
+        }
+        
+        if(currentLead.LPCR_CompteSociete__c == Null){
+            isvalid = False ;
+            errMsg += 'le champ Compte Société est manquant, ';
+            
+        }
+
+        if(currentLead.LPCR_CompteSocieteCoDemandeur__c == Null){
+            isvalid = False ;
+            errMsg += 'le champ Compte Société Co-Demandeur est manquant, ';
+            
+        }
+        
+        if(currentLead.Address == Null){
+            isvalid = False ;
+            errMsg += 'le champ Adresse est manquant';
+        }
+        if(contactFirstName.length()>40){
+            isvalid = False ;
+            errMsg += 'le champ Prénom co-demandeur est trop long';
+        }
+        if(!isvalid){
+            throw new AuraHandledException(errMsg);
+        }
+        
+        
+        
+        
+        
+        
+        
         //Create Account (Famille)
         Account newFamilleAccount = new Account(
             Name = Label.LPCR_Famille + ' ' + currentLead.LastName + (nomCoDemandeur != null ? (' ' +nomCoDemandeur) : ''), 
@@ -79,30 +138,11 @@ public with sharing class APC001_LeadFaConverController{
         insert newFamilleAccount;  
         ///Create contacts (Enfants and Representants(Parent RT) )
         //Map : Contact Variable Name => Contact Record
-        Map<String, Contact> newContactsMap = new Map<String, Contact>();
-        boolean isvalid = true;
-       String errMsg = 'Veuillez saisir les champs manquant : ';
-        if(currentLead.LPCR_CompteSociete__c == Null){
-            isvalid = False ;
-            errMsg += 'Compte Société, ';
-            
-        }
 
-        if(currentLead.LPCR_CompteSocieteCoDemandeur__c == Null){
-            isvalid = False ;
-            errMsg += 'Compte Société Co-Demandeur, ';
-            
-        }
-        
-        if(currentLead.Address == Null){
-            isvalid = False ;
-            errMsg += 'Adresse ';
-        }
-        if(!isvalid){
-            throw new AuraHandledException(errMsg);
-        }
+        Map<String, Contact> newContactsMap = new Map<String, Contact>();
+       
         //Representants part (Parent)
-        Id familleContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Famille);
+        Id familleContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Parent);
             newContactsMap.put('contactRep1', new Contact(
             LastName =currentLead.LastName, 
             FirstName = currentLead.FirstName, 
@@ -211,7 +251,4 @@ public with sharing class APC001_LeadFaConverController{
             update quotesList;
         }
     }
-    
-    
-    
 }

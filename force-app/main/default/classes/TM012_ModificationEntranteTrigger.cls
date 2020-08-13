@@ -15,13 +15,13 @@ public class TM012_ModificationEntranteTrigger extends TM000_TriggerHandler{
     }
     protected override void afterInsert() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass')){
-            SM013_ModificationEntranteServices.updateQuotesFromModifEntrantes(newModificationsentrantesList);
-            SM013_ModificationEntranteServices.createUsageFromModifEntrantes(newModificationsentrantesList);
+            SM022_ModificationEntranteServices.updateQuotesFromModifEntrantes(newModificationsentrantesList);
+            SM022_ModificationEntranteServices.createUsageFromModifEntrantes(newModificationsentrantesList);
         }
     }
     protected override void afterUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass')){
-            SM013_ModificationEntranteServices.sendAgreementFromModifEntrantes(newModificationsentrantesList, oldModificationsentrantesMap);
+            SM022_ModificationEntranteServices.sendAgreementFromModifEntrantes(newModificationsentrantesList, oldModificationsentrantesMap);
         }
     }
 }

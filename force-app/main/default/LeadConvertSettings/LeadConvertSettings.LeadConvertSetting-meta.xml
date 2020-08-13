@@ -20,10 +20,6 @@
             <outputField>LPCR_Enjeux__c</outputField>
         </mappingFields>
         <mappingFields>
-            <inputField>LPCR_BerceauxConcurrence__c</inputField>
-            <outputField>LPCR_NombreBerceauxConcurrence__c</outputField>
-        </mappingFields>
-        <mappingFields>
             <inputField>LPCR_SIRET__c</inputField>
             <outputField>LPCR_SIRET__c</outputField>
         </mappingFields>
@@ -34,6 +30,10 @@
         <mappingFields>
             <inputField>LPCR_Concurrence__c</inputField>
             <outputField>LPCR_TravailConcurrence__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>LPCR_BerceauxConcurrence__c</inputField>
+            <outputField>LPCR_NombreBerceauxConcurrence__c</outputField>
         </mappingFields>
         <outputObject>Account</outputObject>
     </objectMapping>

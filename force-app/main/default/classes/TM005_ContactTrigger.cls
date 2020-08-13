@@ -16,7 +16,7 @@ public with sharing class TM005_ContactTrigger extends TM000_TriggerHandler{
         this.newContactsList = (List<Contact>) Trigger.new;
     }
     protected override void afterInsert() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM007_LeadServices.contactsIds = new Set<Id>(newContactsMap.keySet());
         }
     }

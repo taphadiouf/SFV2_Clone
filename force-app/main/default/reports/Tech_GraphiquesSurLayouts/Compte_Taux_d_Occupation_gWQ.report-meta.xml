@@ -34,10 +34,12 @@
     <filter>
         <criteriaItems>
             <column>Contract.LPCR_ContratActif__c</column>
+            <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
+        <language>fr</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
@@ -45,7 +47,7 @@
         <field>Contract.LPCR_AvecSponsor__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Compte_Taux d&#39; Occupation</name>
+    <name>Compte_Taux d&apos; Occupation</name>
     <params>
         <name>co</name>
         <value>1</value>

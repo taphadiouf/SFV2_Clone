@@ -18,7 +18,7 @@ public with sharing class TM002_EventTrigger extends TM000_TriggerHandler{
 
     protected override void afterInsert() {
 
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM002_EventServices.updateLeadsWithNewEvents(newEventsList);
         }
     }

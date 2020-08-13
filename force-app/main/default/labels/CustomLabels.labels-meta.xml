@@ -29,6 +29,20 @@
         <value>AccountId</value>
     </labels>
     <labels>
+        <fullName>LPCR_Accueil_Approuve</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Accueil_Approuve</shortDescription>
+        <value>Accueil_Approuve</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Advance</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Advance</shortDescription>
+        <value>Advance</value>
+    </labels>
+    <labels>
         <fullName>LPCR_AmendedContract</fullName>
         <language>fr</language>
         <protected>false</protected>
@@ -43,11 +57,32 @@
         <value>Amendment</value>
     </labels>
     <labels>
+        <fullName>LPCR_Annual</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Annual</shortDescription>
+        <value>Annual</value>
+    </labels>
+    <labels>
         <fullName>LPCR_ApprovalStatusApproved</fullName>
         <language>fr</language>
         <protected>false</protected>
         <shortDescription>LPCR_ApprovalStatusApproved</shortDescription>
         <value>Approved</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Arrears</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Arrears</shortDescription>
+        <value>Arrears</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Client</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Client</shortDescription>
+        <value>Client</value>
     </labels>
     <labels>
         <fullName>LPCR_CompteWA</fullName>
@@ -103,7 +138,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LPCR_ContratA</shortDescription>
-        <value>Contrat_Accueil</value>
+        <value>Accueil</value>
     </labels>
     <labels>
         <fullName>LPCR_ContratEnfant</fullName>
@@ -139,6 +174,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_Creche</shortDescription>
         <value>Creche</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_CrecheAProximite</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_CrecheAProximite</shortDescription>
+        <value>Crèches LPCR à proximité </value>
     </labels>
     <labels>
         <fullName>LPCR_CrecheF</fullName>
@@ -267,6 +309,13 @@
         <value>Le montant du forfait mensuel est de :</value>
     </labels>
     <labels>
+        <fullName>LPCR_Monthly</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Monthly</shortDescription>
+        <value>Monthly</value>
+    </labels>
+    <labels>
         <fullName>LPCR_NbrContractuelMois</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -323,6 +372,13 @@
         <value>Occasionnel</value>
     </labels>
     <labels>
+        <fullName>LPCR_OneTime</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_OneTime</shortDescription>
+        <value>One-Time</value>
+    </labels>
+    <labels>
         <fullName>LPCR_OppFor</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -342,6 +398,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_Opportunity2</shortDescription>
         <value>SBQQ__Opportunity2__c</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Order</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Order</shortDescription>
+        <value>Order</value>
     </labels>
     <labels>
         <fullName>LPCR_Parent</fullName>
@@ -393,6 +456,13 @@
         <value>Prêt à valider</value>
     </labels>
     <labels>
+        <fullName>LPCR_Prospect</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Prospect</shortDescription>
+        <value>Prospect</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Prospecting</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -405,6 +475,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_PublicDSP</shortDescription>
         <value>AOPublicDSP</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Quarterly</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Quarterly</shortDescription>
+        <value>Quarterly</value>
     </labels>
     <labels>
         <fullName>LPCR_Quote</fullName>
@@ -449,6 +526,13 @@
         <value>Referencement</value>
     </labels>
     <labels>
+        <fullName>LPCR_Referencement_Approuve</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Referencement</shortDescription>
+        <value>Referencement_Approuve</value>
+    </labels>
+    <labels>
         <fullName>LPCR_RegistrationFeeErrorMessage</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -491,6 +575,13 @@
         <value>Reservataire</value>
     </labels>
     <labels>
+        <fullName>LPCR_Reservataire_Approuve</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Reservataire</shortDescription>
+        <value>Reservataire_Approuve</value>
+    </labels>
+    <labels>
         <fullName>LPCR_RessourcesM</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -510,6 +601,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_SansRenouvellement</shortDescription>
         <value>Sans renouvellement</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Semiannual</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Semiannual</shortDescription>
+        <value>Semiannual</value>
     </labels>
     <labels>
         <fullName>LPCR_Sent</fullName>

@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Field tested when evaluating the Condition</description>
     <externalId>false</externalId>
-    <inlineHelpText>Field tested when evaluating the Condition</inlineHelpText>
+    <inlineHelpText>Champ testé lors de l&apos;évaluation de la condition</inlineHelpText>
     <label>Tested Field</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
@@ -61,6 +61,11 @@
                 <fullName>LPCR_RTContratEntreprise__c</fullName>
                 <default>false</default>
                 <label>LPCR_RTContratEntreprise__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeDenregistrement__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeDenregistrement__c</label>
             </value>
         </valueSetDefinition>
     </valueSet>

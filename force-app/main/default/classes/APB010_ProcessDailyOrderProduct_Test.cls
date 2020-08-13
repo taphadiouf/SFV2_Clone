@@ -12,11 +12,11 @@ public class APB010_ProcessDailyOrderProduct_Test {
     
     @testSetup
     static void testSetup(){
-        List<Account> accounts = UM002_TestDataFactory.createAccounts(100, 'testAccount');
-        List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(100, 'testOpp', 'Prospecting');
+        List<Account> accounts = UM002_TestDataFactory.createAccounts(3, 'testAccount');
+        List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(3, 'testOpp', 'Prospecting');
         insert accounts;
         insert opps;
-        List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(100, accounts, opps);
+        List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(3, accounts, opps);
         insert quotes;
         
         Id standardPricebookId = Test.getStandardPricebookId();
@@ -31,7 +31,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
         prod.SBQQ__BillingFrequency__c = 'Monthly';
         prod.SBQQ__BillingType__c = 'Advance';
         prod.SBQQ__ChargeType__c = 'Recurring';
-        prod.SBQQ__SubscriptionTerm__c = 12;
+        prod.SBQQ__SubscriptionTerm__c = 1;
         prod.SBQQ__SubscriptionType__c = 'Renewable';
         insert prod;
         
@@ -64,6 +64,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
             acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            acc.SBQQ__RenewalPricingMethod__c = 'Uplift';
             update acc;
             
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
@@ -76,23 +77,27 @@ public class APB010_ProcessDailyOrderProduct_Test {
             SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
             quote.SBQQ__Type__c='Quote';
             quote.SBQQ__StartDate__c = System.today();
-            quote.SBQQ__SubscriptionTerm__c = 12;
+            quote.SBQQ__SubscriptionTerm__c = 36;
             quote.SBQQ__Primary__c = true;
+            quote.SBQQ__RenewalUpliftRate__c = 2;
             update quote;
             
             List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
-            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 200, 1));
-            qlines.add(UM002_TestDataFactory.createQuoteLine(prod1.Id, quote.Id, pbEntry1.Id, 200, 1));
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, pbEntry.Id, 100, 1));
+            qlines.add(UM002_TestDataFactory.createQuoteLine(prod1.Id, quote.Id, pbEntry1.Id, 100, 1));
             insert qlines;
             
-            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
+            Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(36));
             contract.Status = 'Draft';
-            contract.LPCR_DateFin__c = Date.Today().addmonths(12);
+            contract.SBQQ__RenewalUpliftRate__c = 2;
+            contract.LPCR_DateFin__c = Date.Today().addmonths(36);
             Insert contract;
             
             contract.Status = 'Activated';
             update contract;
             
+            Test.startTest();
+
             Order order = UM002_TestDataFactory.createOrder(acc.Id, contract.id,date.today(),'test','Draft','1');
             order.Pricebook2Id = standardPricebookId;
             order.SBQQ__Quote__c = quote.id;
@@ -101,8 +106,8 @@ public class APB010_ProcessDailyOrderProduct_Test {
             OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
             orderItem.SBQQ__QuoteLine__c = qlines.get(0).id;
             orderItem.SBQQ__Activated__c = false;
-            orderItem.EndDate = System.today().addMonths(10);
-            orderItem.blng__NextChargeDate__c = System.today().addMonths(1);
+            orderItem.EndDate = System.today().addMonths(36);
+            orderItem.blng__NextChargeDate__c = System.today();
             orderItem.SBQQ__Contract__c = contract.id;
             insert orderItem;
             
@@ -112,8 +117,8 @@ public class APB010_ProcessDailyOrderProduct_Test {
             OrderItem orderItem1 = UM002_TestDataFactory.createOrderProduct(pbEntry1.id, order.Id, prod1.id, 'Recurring','Invoice Plan', 100);
             orderItem1.SBQQ__QuoteLine__c = qlines.get(1).id;
             orderItem1.SBQQ__Activated__c = false;
-            orderItem1.EndDate = System.today().addMonths(10);
-            orderItem1.blng__NextChargeDate__c = System.today().addMonths(1);
+            orderItem1.EndDate = System.today().addMonths(36);
+            orderItem1.blng__NextChargeDate__c = System.today();
             orderItem1.SBQQ__Contract__c = contract.id;
             insert orderItem1;
             
@@ -122,7 +127,26 @@ public class APB010_ProcessDailyOrderProduct_Test {
             
             order.status ='Activated';
             update order;
-            Test.startTest();
+
+            blng__InvoicePlan__c invoicePlan = new blng__InvoicePlan__c();
+            invoicePlan.blng__BillingScheduleCreation__c = 'Manual';
+            invoicePlan.Name = 'Test Invoice Plan';
+            invoicePlan.blng__Active__c = true;
+            insert invoicePlan;
+            
+            blng__InvoicePlanLine__c invPlanLine1 = new blng__InvoicePlanLine__c();
+            invPlanLine1.blng__InvoicePlan__c = invoicePlan.id;
+            invPlanLine1.blng__CommencementDateOffsetUnits__c = 'Months';
+            invPlanLine1.blng__CommencementDateOffset__c = 1;
+            invPlanLine1.blng__Percentage__c = 2;
+            invPlanLine1.name = 'Test Invoice Plan Line';
+            invPlanLine1.blng__ProcessingOrder__c = 1;
+            invPlanLine1.blng__Type__c = 'Percent';
+            insert invPlanLine1;
+            
+            order.LPCR_RenouvellementPlanFacture__c = invoicePlan.id;
+            update order;
+
             blng__BillingSchedule__c billingSchedule = new blng__BillingSchedule__c();
             billingSchedule.blng__OrderProduct__c = orderItem1.id;
             billingSchedule.name = 'Test';
@@ -151,8 +175,11 @@ public class APB010_ProcessDailyOrderProduct_Test {
             
             Test.stopTest();
             List<LPCR_PlanFacturation__c> billingPlanCheck = new List<LPCR_PlanFacturation__c>();
+            List<LPCR_LignePlanFacturation__c> billingPlanLineCheck = new List<LPCR_LignePlanFacturation__c>();
             billingPlanCheck = [select id,LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c =: orderItem.id];
-            System.assertEquals(1, billingPlanCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan');
+            billingPlanLineCheck = [select Id, Name, LPCR_StartDate__c, LPCR_EndDate__c, LPCR_Amount__c, LPCR_PlanFacturation__c from LPCR_LignePlanFacturation__c where LPCR_PlanFacturation__c IN: billingPlanCheck];
+            System.assertEquals(4, billingPlanCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan');
+            System.assertEquals(40, billingPlanLineCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan Line');
         }
     }
     

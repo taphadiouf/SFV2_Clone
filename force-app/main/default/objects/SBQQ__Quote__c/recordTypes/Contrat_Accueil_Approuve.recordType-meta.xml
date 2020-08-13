@@ -2,8 +2,9 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Contrat_Accueil_Approuve</fullName>
     <active>true</active>
+    <compactLayoutAssignment>PresentationCompacteDevis</compactLayoutAssignment>
     <description>Type d&apos;enregistrement pour les contrats d&apos;accueil approuvés.</description>
-    <label>Contrat D&apos;accueil Approuvé</label>
+    <label>Contrat D&apos;accueil Approuvé old</label>
     <picklistValues>
         <picklist>ApprovalStatus__c</picklist>
         <values>
@@ -30,7 +31,7 @@
     <picklistValues>
         <picklist>EditLinesFieldSetName__c</picklist>
         <values>
-            <fullName>Amendment_FieldSet_test_only</fullName>
+            <fullName>LPCR_Amendment</fullName>
             <default>false</default>
         </values>
         <values>
@@ -134,6 +135,21 @@
         </values>
         <values>
             <fullName>Tacite</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_MoyenPaiement__c</picklist>
+        <values>
+            <fullName>Carte Bancaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chèque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virement</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -379,7 +395,7 @@
         <picklist>SBQQ__PaymentTerms__c</picklist>
         <values>
             <fullName>Due on receipt</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Net 15</fullName>
@@ -387,7 +403,7 @@
         </values>
         <values>
             <fullName>Net 30</fullName>
-            <default>true</default>
+            <default>false</default>
         </values>
         <values>
             <fullName>Net 45</fullName>
@@ -493,6 +509,10 @@
         </values>
         <values>
             <fullName>Envoi directrice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prêt pour commande</fullName>
             <default>false</default>
         </values>
         <values>

@@ -142,7 +142,7 @@ public with sharing class SM013_QuoteLineServices_Test {
         }
         update orders;
 
-        List<Contract> contracts = new List<Contract>();
+        /*List<Contract> contracts = new List<Contract>();
         for (Order order : orders) {
             defaultVal = new Map<String, Object> {
                 'AccountId' => order.AccountId,
@@ -175,7 +175,7 @@ public with sharing class SM013_QuoteLineServices_Test {
         for (Contract c : contracts) {
             c.Status='Activated';
         }
-        update contracts;
+        update contracts;*/
 
         defaultVal = new Map<String, Object> {
             'Name' => 'Asset-MAC',
@@ -267,10 +267,19 @@ public with sharing class SM013_QuoteLineServices_Test {
                 excepMessage = e.getMessage();
             }
             Test.stopTest();
-
+			/* Comment this Code commited In 
+			 * 28461176b768c7b283abaade1e6a479c2daa279f
+			 * 8b47cdfc4d90437377e331f189a4f042bd3fa371 
+			 * 43d522a33ece43a0ff883ebea0764bbab7b7bb45 
+			 * And restore the original code by Dario
+			 * c20b8170d55624a4b58153bf132d3e529a25192d 
             System.assertEquals(false, excepThrowed);
             System.assert(String.isBlank(excepMessage));
-            System.assert(!excepMessage.contains(Label.LPCR_RegistrationFeeErrorMessage));
+            System.assert(!excepMessage.contains(Label.LPCR_RegistrationFeeErrorMessage));*/
+            
+            System.assert( excepThrowed);
+            System.assert(String.isNotBlank(excepMessage));
+            System.assert(excepMessage.contains(Label.LPCR_RegistrationFeeErrorMessage));
         }
     }
 }
