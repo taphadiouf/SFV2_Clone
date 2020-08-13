@@ -4,7 +4,7 @@
     <active>true</active>
     <description>Dans le cas d&apos;un contrat manuel, l&apos;équipe ADV doit être la seule à pouvoir passer un devis manuellement au statut &quot;SIgné&quot; &quot;Prêt à commander&quot;.</description>
     <errorConditionFormula>AND(
-NOT( $User.LPCR_BypassValidationRules__c ),
+NOT( $Permission.LPCR_ByPass_VR ),
 NOT (OR(RecordType.DeveloperName = &apos;Referencement&apos;,RecordType.DeveloperName = &apos;Referencement_Approuve&apos;)),
 LPCR_ContratManuel__c,
 ISCHANGED( SBQQ__Status__c ),

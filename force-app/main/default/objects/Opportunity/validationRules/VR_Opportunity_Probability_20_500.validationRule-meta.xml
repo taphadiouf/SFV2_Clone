@@ -3,7 +3,7 @@
     <fullName>VR_Opportunity_Probability_20_500</fullName>
     <active>true</active>
     <errorConditionFormula>AND (
-     NOT ( $User.LPCR_BypassValidationRules__c ),
+     NOT ( $Permission.LPCR_ByPass_VR ),
      OR  ( RecordType.DeveloperName = &#39;Entreprise&#39;,
            RecordType.DeveloperName = &#39;Famille&#39; )
      ,

@@ -3,7 +3,7 @@
     <fullName>VR_LienCrecheOpportunite_NbPlaceSiOption</fullName>
     <active>true</active>
     <errorConditionFormula>AND(
-    !( $User.LPCR_BypassValidationRules__c ),
+    !( $Permission.LPCR_ByPass_VR ),
     ISNULL(LPCR_Nombredeplaces__c),
     LPCR_DemandeOption__c
 )</errorConditionFormula>

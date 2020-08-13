@@ -3,7 +3,7 @@
     <fullName>VR_Opportunity_CompetitorLostReasons</fullName>
     <active>true</active>
     <errorConditionFormula>AND ( 
-      NOT($User.LPCR_BypassValidationRules__c ),
+      NOT($Permission.LPCR_ByPass_VR ),
       ISPICKVAL(LPCR_RaisonPerteOpportunite__c,&quot;Concurrence&quot;),
       ISBLANK(Concurrent__c)
          
