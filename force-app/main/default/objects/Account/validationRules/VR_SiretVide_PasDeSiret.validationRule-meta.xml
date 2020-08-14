@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_SiretVide_PasDeSiret</fullName>
+    <active>true</active>
+    <description>Siret et pas de siret -&gt; impossible</description>
+    <errorConditionFormula>AND(
+NOT($Permission.LPCR_ByPass_VR),
+!ISBLANK(LPCR_SIRET__c),
+LPCR_PasDeSIRET__c
+)</errorConditionFormula>
+    <errorDisplayField>LPCR_PasDeSIRET__c</errorDisplayField>
+    <errorMessage>Merci de décocher si un SIRET est renseigné.</errorMessage>
+</ValidationRule>
