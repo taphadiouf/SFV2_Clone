@@ -25,7 +25,10 @@ public class SM004_OpportunityServices {
                     else  accountListNew.add(new Account(id=opp.AccountId, lpcr_statut__c = Label.LPCR_Prospect));                    
                 }}
         }
-        update accountListNew;
+        EM004_OpportunityEntity cl = new EM004_OpportunityEntity();
+        String methodName = 'setAccountStatus';
+        cl.dmlExecuteRequest('update',  accountListNew, true, methodName, DM000_SObject.ProcessType.TRIGGER_SRC);
+               
     }
     public static void setAccountStatus(Map<Id, Opportunity> newOpportunitiesMap)
     {
@@ -48,6 +51,9 @@ public class SM004_OpportunityServices {
                 else  accountListNew.add(new Account(id=opp.AccountId, lpcr_statut__c = Label.LPCR_Prospect));                    
             }
         }
-        update accountListNew;
+        EM004_OpportunityEntity cl = new EM004_OpportunityEntity();
+        String methodName = 'setAccountStatus';
+        cl.dmlExecuteRequest('update',  accountListNew, true, methodName, DM000_SObject.ProcessType.TRIGGER_SRC);
+               
     }
 }
