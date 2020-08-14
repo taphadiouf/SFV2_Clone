@@ -103,11 +103,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_EntiteJuridique__c</field>
-            <table>LPCR_RevenueCascade__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_Societe__c</field>
             <table>LPCR_RevenueCascade__c</table>
         </columns>
@@ -148,6 +143,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CompteCreche__c</field>
+            <table>LPCR_RevenueCascade__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_DateFin__c</field>
             <table>LPCR_RevenueCascade__c</table>
         </columns>
@@ -159,6 +159,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_PrixAnnuel__c</field>
+            <table>LPCR_RevenueCascade__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_EntiteJuridique__c</field>
             <table>LPCR_RevenueCascade__c</table>
         </columns>
         <columns>

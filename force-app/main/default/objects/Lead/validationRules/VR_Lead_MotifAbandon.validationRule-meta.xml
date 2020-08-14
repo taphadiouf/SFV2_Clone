@@ -4,7 +4,7 @@
     <active>true</active>
     <description>Renseignez un motif de disqualification pour passer le lead au statut abandonné (pour les leads Famille, Partenaire, Entreprise)</description>
     <errorConditionFormula>AND(
-NOT( $User.LPCR_BypassValidationRules__c ),
+NOT( $Permission.LPCR_ByPass_VR ),
 OR(RecordType.DeveloperName=&apos;Famille&apos;,RecordType.DeveloperName=&apos;Entreprise&apos;,RecordType.DeveloperName=&apos;Partenaire&apos;),
 ISPICKVAL(Status, &quot;Abandonné&quot;),
 ISBLANK( LPCR_MotifDisqualification__c))</errorConditionFormula>

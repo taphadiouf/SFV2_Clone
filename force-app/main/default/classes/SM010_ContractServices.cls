@@ -69,6 +69,9 @@ public class SM010_ContractServices {
                     eachContract.LPCR_RenouvellementPlanFacturation__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_RenouvellementPlanFacture__c;
                 }
             }
+            if(orderMap.containsKey(eachContract.SBQQ__Order__c)){
+                    eachContract.LPCR_NumeroContrat__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_NumeroContrat__c;
+            }
         }
         
         if(accountIds.size()>0){  
