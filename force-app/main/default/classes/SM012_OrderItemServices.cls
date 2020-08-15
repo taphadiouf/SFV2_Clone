@@ -243,6 +243,10 @@ item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.
                                                      }
                                                  }
                                    }
+                                
+                               }
+                               if(item.blng__BillThroughDateOverride__c != null && item.blng__OverrideNextBillingDate__c != null && item.blng__BillThroughDateOverride__c < item.blng__OverrideNextBillingDate__c){
+                                item.blng__OverrideNextBillingDate__c = item.blng__BillThroughDateOverride__c;
                                }
                 }
                 PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'item (AFTER): ' + item);

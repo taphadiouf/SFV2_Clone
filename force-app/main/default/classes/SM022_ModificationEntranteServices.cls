@@ -350,7 +350,9 @@ public with sharing class SM022_ModificationEntranteServices {
                     SBQQ.TriggerControl.enable();
                     
                     SBQQ__Quote__c quote = quoteModel.record;
-                    quote.SBQQ__StartDate__c = endDate ;
+                    quote.SBQQ__StartDate__c = eachModifEntrante.LPCR_DateEffet__c; //endDate ;
+                    quote.LPCR_DateResiliation__c = eachModifEntrante.LPCR_DateEffet__c;
+                    quote.LPCR_TypeAvenant__c = 'Résiliation';
                     quote.SBQQ__Status__c = 'Brouillon';
                     //listQuoteForUpdate.add(quote);
                     mapOfQuoteForUpdate.put(quote.id,quote);

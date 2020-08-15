@@ -3,7 +3,18 @@
 * @date 25/02/2020
 * @description SOQL Queries about Opportunity
 */
-public with sharing class EM004_OpportunityEntity extends EM001_AbstractObjectEntity{
+public with sharing class EM004_OpportunityEntity extends DM000_SObject{
+    
+    @TestVisible
+    protected override String getDataManagerClassName() {
+        return EM004_OpportunityEntity.class.getName();
+    }
+    
+    
+    @TestVisible
+    protected override String getObjectName() {
+        return Schema.sObjectType.Opportunity.name;
+    }
     public EM004_OpportunityEntity(){
         super('Opportunity');
     }
