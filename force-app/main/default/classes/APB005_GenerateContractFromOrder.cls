@@ -21,13 +21,30 @@ global class APB005_GenerateContractFromOrder  implements Database.Batchable<sOb
         PAD.log('APB005_GenerateContractFromOrder', 'execute', 'scope to execute : '+scope);
         
         Set<Id> orderIds = UM003_TypeManager.getIdsOfListObjects(scope);
-        List<Order> listOforder = [SELECT Id,Status,SBQQ__Contracted__c FROM Order WHERE Id in :orderIds ];   
+        //commented in IS-1455
+       /* List<Order> listOforder = [SELECT Id,Status,SBQQ__Contracted__c FROM Order WHERE Id in :orderIds ];
         for (Order eachOrder : listOforder) {
             eachOrder.SBQQ__Contracted__c =true;
+            
             PAD.log('APB005_GenerateContractFromOrder', 'execute', 'Updating order '+eachOrder.SBQQ__Contracted__c);
+        }*/
+
+        List<OrderItem> orderItemList = [Select Id, orderId, blng__BillThroughDateOverride__c  from OrderItem where orderId in:orderIds];
+        
+        Map<id,Order> OrderOrderItemMap = new Map<id,Order> ([select id,Status,SBQQ__Contracted__c,SBQQ__Quote__r.LPCR_RepriseDateProchaineFacturation__c ,(Select Id, orderId, blng__BillThroughDateOverride__c  from OrderItems) from order where id in: orderIds]);
+        
+        for ( OrderItem eachOrderItem :orderItemList)
+        {
+            order eachOrder = OrderOrderItemMap.get(eachOrderItem.orderId);
+            eachOrder.SBQQ__Contracted__c = true;
+            if(eachOrder.SBQQ__Quote__r.LPCR_RepriseDateProchaineFacturation__c != null){
+            	eachOrderItem.blng__BillThroughDateOverride__c =  eachOrder.SBQQ__Quote__r.LPCR_RepriseDateProchaineFacturation__c;
+            }
         }
         
-        update listOforder;        
+        
+        
+        update OrderOrderItemMap.values();        
     }
     
     global void finish(Database.BatchableContext BC) {
