@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <aggregates>
-        <calculatedFormula>ORDER_TOTAL_AMOUNT:SUM / ORDER_ITEM_QUANTITY:SUM</calculatedFormula>
+        <calculatedFormula>ORDER_ITEM_TOTALPRICE:SUM / ORDER_ITEM_QUANTITY:SUM</calculatedFormula>
         <datatype>number</datatype>
         <developerName>FORMULA1</developerName>
         <isActive>true</isActive>
@@ -10,7 +10,7 @@
         <scale>2</scale>
     </aggregates>
     <aggregates>
-        <calculatedFormula>(ORDER_TOTAL_AMOUNT:SUM / ORDER_ITEM_QUANTITY:SUM)*OrderItem.LPCR_JoursSemaineFormule__c:SUM/5</calculatedFormula>
+        <calculatedFormula>(ORDER_ITEM_TOTALPRICE:SUM / ORDER_ITEM_QUANTITY:SUM)*OrderItem.LPCR_JoursSemaineFormule__c:SUM/5</calculatedFormula>
         <datatype>number</datatype>
         <developerName>FORMULA2</developerName>
         <isActive>true</isActive>
@@ -19,7 +19,14 @@
         <scale>2</scale>
     </aggregates>
     <columns>
-        <field>ORDER_NUMBER</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>ORDER_ITEM_TOTALPRICE</field>
+    </columns>
+    <columns>
+        <field>Order.LPCR_NumeroContrat__c</field>
+    </columns>
+    <columns>
+        <field>OrderItem.LPCR_NumBonCommande__c</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
@@ -31,21 +38,14 @@
         <field>OrderItem.LPCR_TypeCreche__c</field>
     </columns>
     <columns>
-        <field>ORDER_ITEM_TOTALPRICE</field>
-    </columns>
-    <columns>
         <field>Account.LPCR_TypeClient__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>ORDER_TOTAL_AMOUNT</field>
+        <field>Order.LPCR_TypeOpportunite__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>ORDER_ITEM_QUANTITY</field>
-    </columns>
-    <columns>
-        <field>ORDER_TYPE</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -54,6 +54,20 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Activated</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Order.LPCR_TypeOpportunite__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New Business,Upsell</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ORDER_ITEM_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Berceau</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -79,11 +93,11 @@
         <value>1</value>
     </params>
     <reportType>OrderItemList</reportType>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>ORDER_EFFECTIVE_DATE</dateColumn>
+        <dateColumn>ORDER_CREATED_DATE</dateColumn>
         <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>
