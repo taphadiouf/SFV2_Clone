@@ -5,10 +5,6 @@
 */
 @isTest
 public class SM019_DocumentList_Callout_Test {
-    
-   
-    
-    
     @isTest
     static void getDocumentListCallout_1_Test(){
 		Test.startTest();

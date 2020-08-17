@@ -2,6 +2,10 @@
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Création d&apos;une demande réseau grandir depuis le contact enfant</description>
     <fieldOverrides>
+        <field>LPCR_CompteFamille__c</field>
+        <formula>Contact.AccountId</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>LPCR_RepresentantN1__c</field>
         <formula>Contact.LPCR_Representant1__c</formula>
     </fieldOverrides>

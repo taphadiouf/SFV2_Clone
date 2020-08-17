@@ -35,33 +35,48 @@ public with sharing class SM009_ParametrageScoreServices {
     public static Decimal scoreCalculation(LPCR_Preinscription__c preinscription,List<LPCR_ParametrageScore__c> parametrageScoreList){
         
         map<string, Decimal> mapScore = new Map<string,Decimal>();
-        
+        map<string, Decimal> mapValeurNum = new Map<string, Decimal>();
+        map<string, Date> mapValeurDate = new Map<string, Date>();
+
         for(LPCR_ParametrageScore__c eachParam : parametrageScoreList){
             string field = eachParam.LPCR_ApiFieldName__c;
-            if(eachParam.LPCR_Format__c != null && eachParam.LPCR_Valeur__c != null && eachParam.LPCR_ApiFieldName__c != null){
-                if(eachparam.LPCR_Format__c == 'Numéro'){
-                    map<string, Decimal> mapValeur = new Map<string, Decimal>();
-                    Decimal ValeurPres = (Decimal)preinscription.get(field);
+            System.debug('##Score:' + eachParam);
+
+            if(eachParam.LPCR_Format__c != null && eachParam.LPCR_Valeur__c != null && eachParam.LPCR_ApiFieldName__c != null && preinscription.get(field) != null){
+                if(eachparam.LPCR_Format__c == 'Nombre'){
+                    String n = String.valueOf(preinscription.get(field));
+                    Decimal ValeurPres = Decimal.valueOf(n);
                     Decimal ValeurParam = Decimal.valueOf(eachParam.LPCR_Valeur__c);
-                    if(ValeurPres >= ValeurParam && (!mapValeur.containsKey(field) || mapValeur.get(field) < ValeurParam)){
-                        mapValeur.put(field, ValeurParam);
+
+                    if(ValeurPres >= ValeurParam && (!mapValeurNum.containsKey(field) || mapValeurNum.get(field) < ValeurParam)){
+                        mapValeurNum.put(field, ValeurParam);
                         mapScore.put(field,eachParam.LPCR_Score__c );
                     }
                 }
                 
                 else if(eachparam.LPCR_Format__c == 'Date'){
-                    map<string, Date> mapValeur = new Map<string, Date>();
-                    Date ValeurPres = (Date)preinscription.get(field);
-                    Date ValeurParam = Date.valueOf(eachParam.LPCR_Valeur__c);
+                    Date ValeurPres = null;
+                    if(preinscription.get(field) instanceof Date) {
+                        ValeurPres = Date.valueOf(preinscription.get(field));
+                    }
+                    else if(preinscription.get(field) instanceof String){
+                        string ExtractedPresDate = String.valueof(preinscription.get(field));
+                        list<String> lstSplitPresDate = ExtractedPresDate.split('/');
+                        ValeurPres = date.newinstance(Integer.valueOf(lstSplitPresDate[2]), Integer.valueOf(lstSplitPresDate[1]), Integer.valueOf(lstSplitPresDate[0]));
+                    }
                     
-                    if(ValeurPres >= ValeurParam && (!mapValeur.containsKey(field) || mapValeur.get(field) < ValeurParam)){
-                        mapValeur.put(field, ValeurParam);
+                    String ExtractedParamDate = eachParam.LPCR_Valeur__c;
+                    list<String> lstSplitParamDate = ExtractedParamDate.split('/');
+                    Date ValeurParam = date.newinstance(Integer.valueOf(lstSplitParamDate[2]), Integer.valueOf(lstSplitParamDate[1]), Integer.valueOf(lstSplitParamDate[0]));
+         
+                    if(ValeurPres >= ValeurParam && (!mapValeurDate.containsKey(field) || mapValeurDate.get(field) < ValeurParam)){
+                        mapValeurDate.put(field, ValeurParam);
                         mapScore.put(field,eachParam.LPCR_Score__c );
                     }
                 }
                 
-                else if(eachparam.LPCR_Format__c == 'Liste'){
-                    String ValeurPres = (String)preinscription.get(field);
+                else if(eachparam.LPCR_Format__c == 'Texte' || eachparam.LPCR_Format__c == 'Case à cocher'){
+                    String ValeurPres = String.valueOf(preinscription.get(field));
                     String ValeurParam = String.valueOf(eachParam.LPCR_Valeur__c);
                     
                     if(ValeurPres == ValeurParam){

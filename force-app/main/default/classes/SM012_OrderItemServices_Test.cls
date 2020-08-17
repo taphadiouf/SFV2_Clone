@@ -181,109 +181,9 @@ public with sharing class SM012_OrderItemServices_Test {
                                                                        UM005_DateUtility.lastDayOfDatePeriod (Date.newInstance(2020,x,10), UM005_DateUtility.semiannualMonths).addDays(1));
                     }
     }
+   
+
          
-    @isTest
-    private static void updateHoldBillingFromQuote_Test () { 
-        Account customerAcc = null;
-        OrderItem ordItem;
-        List<Account> creches = new List<Account> ();
-        System.runAs(UM002_TestDataFactory.createUser()){
-            Test.startTest();
-            // Load Contract Type Conf
-            Map<String, LPCR_TypeContrat__mdt> mapTypeContractConf = new Map<String, LPCR_TypeContrat__mdt> ();
-            for (LPCR_TypeContrat__mdt typeContractConf : [SELECT Id, DeveloperName, LPCR_JourFacturation__c FROM LPCR_TypeContrat__mdt]) {
-                mapTypeContractConf.put(typeContractConf.DeveloperName, typeContractConf);
-            }
-            Integer invoicingDay = Integer.valueOf(mapTypeContractConf.get('B2C_MAC').LPCR_JourFacturation__c);
-            
-            //setup data for this particular test
-            List<Account> accounts = [SELECT Id, RecordTypeId FROM Account];
-            for (Account a : accounts) {
-                if (a.RecordTypeId == B2C_RT_ID) {
-                    customerAcc = a;
-                } else if (a.RecordTypeId == CRECHE_RT_ID) {
-                    creches.add (a);
-                }
-            }
-            Product2 prod = [SELECT Id FROM Product2].get(0);
-            PricebookEntry priceBookEntry = [SELECT Id FROM PricebookEntry].get(0);
-            
-            Map<String, Object> defaultVal = new Map<String, Object> {
-                'RecordTypeId' => OPPT_FAMILE_RT_ID,
-                    'AccountId' => customerAcc.Id,
-                    'Name' => 'test-oppt',
-                    'StageName' => 'Signée',
-                    'CloseDate' => System.today(),
-                    'Pricebook2Id' => standardPricebookId,
-                    'Type' => 'New Business'
-                    };
-                        
-            Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-            insert opp;
-            
-            defaultVal = new Map<String, Object> {
-                'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
-                    'SBQQ__Account__c' => customerAcc.Id,
-                    'SBQQ__SubscriptionTerm__c' => 12,
-                    'SBQQ__BillingFrequency__c' => 'Monthly',
-                    'LPCR_TypeFacturation__c' => 'Advance',
-                    'LPCR_IndexationConvenue__c' => 'Oui',
-                    'SBQQ__StartDate__c' => System.today(),
-                    'SBQQ__PricebookId__c' => standardPricebookId,
-                    'SBQQ__PriceBook__c' => standardPricebookId,
-                    'SBQQ__Type__c' => 'Quote',
-                    'SBQQ__QuoteLanguage__c' => 'English',
-                    'SBQQ__BillingCity__c' => 'Paris',
-                    'SBQQ__Primary__c' => true,
-                    'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
-                    };
-                        
-            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-            insert quote;
-            
-            Integer price = 200;
-            defaultVal = new Map<String, Object> {
-                'Name' => 'prod-test',
-                    'SBQQ__StartDate__c' => System.Today(),
-                    'SBQQ__Product__c' => prod.Id,
-                    'SBQQ__Quantity__c' => 1,
-                    'SBQQ__ListPrice__c' => price,
-                    'SBQQ__CustomerPrice__c' => price,
-                    'SBQQ__NetPrice__c' => price,
-                    'SBQQ__SpecialPrice__c' => price,
-                    'SBQQ__Quote__c' => quote.Id,
-                    'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
-                    'SBQQ__PricingMethod__c' => 'List',
-                    'SBQQ__ChargeType__c' => 'Recurring',
-                    'SBQQ__BillingType__c' => 'Advance',
-                    'LPCR_Region__c' => 'Paris',
-                    'LPCR_HoldBilling__c' => 'Yes',
-                    'SBQQ__BillingFrequency__c' => 'Monthly'
-                    };
-                        
-            SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-            quoteLine.LPCR_HoldBilling__c = 'yes';
-            insert quoteLine;
-            
-            opp.SBQQ__PrimaryQuote__c = quote.Id;
-            update opp;
-            
-            //Order the quote to create Order / OrderItems
-            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-            
-            ordItem = [SELECT Id,blng__HoldBilling__c,SBQQ__Status__c,SBQQ__QuoteLine__c, SBQQ__QuoteLine__r.LPCR_HoldBilling__c FROM OrderItem where SBQQ__Status__c = 'Draft' limit 1];
-            ordItem.SBQQ__Status__c = 'Activated';
-            update ordItem;
-            Test.stopTest();
-          
-            
-       
-        }
-        
-        System.assertEquals('Yes', [SELECT blng__HoldBilling__c FROM OrderItem where id=:ordItem.Id].blng__HoldBilling__c);       
-        
-    }
     
     @isTest
     private static void setOrderItemFields_Test () {     
@@ -406,7 +306,6 @@ public with sharing class SM012_OrderItemServices_Test {
             insert listBillingSchedule;
             
             
-
             order = [SELECT Id ,LPCR_NouveauPlanFacture__c, blng__BillingAccount__c,SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c FROM Order WHERE SBQQ__Quote__c =:quoteRenewal.Id];
             order.blng__BillingAccount__c = billingAccount.Id;
             update order;
@@ -1518,7 +1417,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             for (OrderItem oi : mapOrderItem.values()) {
                 System.assertEquals(System.today(), oi.ServiceDate);
                 System.assertEquals(System.today(), oi.blng__NextChargeDate__c);
-                System.assertEquals(UM005_DateUtility.lastDayOfDatePeriod (System.today(), UM005_DateUtility.quarterlyMonths).addDays(1), oi.blng__OverrideNextBillingDate__c);
+                System.assertEquals(UM005_DateUtility.lastDayOfDatePeriod (System.today(), UM005_DateUtility.quarterlyMonths)/*.addDays(1)*/, oi.blng__OverrideNextBillingDate__c);
                 Date expectedBillThrought = ((UM005_DateUtility.semiannualMonths.contains(oi.blng__NextChargeDate__c.month()) 
                                                                          && oi.blng__NextChargeDate__c.day() != 1) 
                                                                         || !UM005_DateUtility.semiannualMonths.contains(oi.blng__NextChargeDate__c.month()))
@@ -1779,7 +1678,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 System.assertEquals(expectedBillThrought, oi.blng__BillThroughDateOverride__c);
                 
                 Date expectedOverrideNextBillingDate = !UM005_DateUtility.semiannualMonths.contains(oi.blng__NextBillingDate__c.month()) || oi.blng__NextChargeDate__c.day() != 1
-                    ? UM005_DateUtility.lastDayOfDatePeriod (oi.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths).addDays(1) 
+                    ? UM005_DateUtility.lastDayOfDatePeriod (oi.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths)/*.addDays(1)*/
                     : null;
                 System.assertEquals(expectedOverrideNextBillingDate, oi.blng__OverrideNextBillingDate__c);
             }

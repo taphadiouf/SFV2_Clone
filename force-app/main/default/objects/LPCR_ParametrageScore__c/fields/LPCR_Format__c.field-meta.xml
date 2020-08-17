@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_Format__c</fullName>
     <externalId>false</externalId>
-    <label>LPCR_Format</label>
+    <label>Format</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
@@ -11,19 +11,24 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Liste</fullName>
-                <default>false</default>
-                <label>Liste</label>
-            </value>
-            <value>
-                <fullName>Numéro</fullName>
-                <default>false</default>
-                <label>Numéro</label>
-            </value>
-            <value>
                 <fullName>Date</fullName>
                 <default>false</default>
                 <label>Date</label>
+            </value>
+            <value>
+                <fullName>Nombre</fullName>
+                <default>false</default>
+                <label>Nombre</label>
+            </value>
+            <value>
+                <fullName>Texte</fullName>
+                <default>false</default>
+                <label>Texte</label>
+            </value>
+            <value>
+                <fullName>Case à cocher</fullName>
+                <default>false</default>
+                <label>Case à cocher</label>
             </value>
         </valueSetDefinition>
     </valueSet>

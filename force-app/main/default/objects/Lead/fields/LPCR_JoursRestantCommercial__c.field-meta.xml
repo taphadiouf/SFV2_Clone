@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_JoursRestantCommercial__c</fullName>
     <externalId>false</externalId>
-    <formula>IF(ISBLANK(LPCR_DatePriseEnChargeCommercial__c),5 - (TODAY()-DATEVALUE(CreatedDate)) ,NULL)</formula>
+    <formula>IF(OR(!ISBLANK(LPCR_JoursRestantServiceFamille__c),!ISBLANK(LPCR_DelaiPriseChargeServiceFamille__c)),NULL,IF(ISBLANK(LPCR_DatePriseEnChargeCommercial__c),5 - (TODAY()-DATEVALUE(CreatedDate)) ,NULL))</formula>
     <label>Jours restant commercial</label>
     <precision>18</precision>
     <required>false</required>

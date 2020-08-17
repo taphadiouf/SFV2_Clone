@@ -36,6 +36,25 @@
             <value>Public</value>
         </criteriaItems>
     </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CompteFamilleServiceFamille</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>le service famille peut modifier tous les comptes Famille</description>
+        <label>CompteFamilleServiceFamille</label>
+        <sharedTo>
+            <role>Service_Famille</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Famille</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
     <sharingOwnerRules>
         <fullName>Commercial_Grand_Compte</fullName>
         <accessLevel>Edit</accessLevel>

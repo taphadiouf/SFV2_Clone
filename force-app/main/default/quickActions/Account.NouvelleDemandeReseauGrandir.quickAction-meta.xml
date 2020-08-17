@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Création de demande réseau grandir à partir du compte entreprise</description>
+    <description>Création de demande réseau grandir à partir du compte famille</description>
     <fieldOverrides>
-        <field>AccountId</field>
+        <field>LPCR_CodePostalDomicile__c</field>
+        <formula>Account.ShippingPostalCode</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_CompteFamille__c</field>
         <formula>Account.Id</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_MoyenTransport__c</field>
+        <formula>TEXT(Account.LPCR_MoyenDeTransport__c)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_RepresentantN1__c</field>
+        <formula>Account.LPCR_Representant1__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_RepresentantN2__c</field>
+        <formula>Account.LPCR_Representant2__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_RueDomicile__c</field>
+        <formula>Account.ShippingStreet</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_VilleDomicile__c</field>
+        <formula>Account.ShippingCity</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Status</field>
+        <literalValue>New</literalValue>
     </fieldOverrides>
     <label>Nouvelle Demande Réseau Grandir</label>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
@@ -12,17 +40,127 @@
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>ContactId</field>
+                <field>LPCR_CompteFamille__c</field>
+                <uiBehavior>Readonly</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_RepresentantN1__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Status</field>
-                <uiBehavior>Required</uiBehavior>
+                <field>LPCR_RueDomicile__c</field>
+                <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>Subject</field>
+                <field>LPCR_CodePostalDomicile__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_VilleDomicile__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_MoyenTransport__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_Enfant__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_AmplitudeHoraireLundi__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_AmplitudeHoraireMercredi__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_AmplitudeHoraireVendredi__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_ChoixN1__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_ChoixN3__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>AccountId</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_PrixVente__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>true</emptySpace>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_RepresentantN2__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_RueTravail__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_CodePostalTravail__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_VilleTravail__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>true</emptySpace>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_DateEntreeSouhaitee__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_AmplitudeHoraireMardi__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_AmplitudeHoraireJeudi__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_DateVisite__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_ChoixN2__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
@@ -30,10 +168,14 @@
                 <field>Description</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_ContratEntreprise__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
         </quickActionLayoutColumns>
-        <quickActionLayoutColumns/>
     </quickActionLayout>
     <targetObject>Case</targetObject>
-    <targetParentField>Account</targetParentField>
+    <targetParentField>LPCR_CompteFamille__c</targetParentField>
     <type>Create</type>
 </QuickAction>
