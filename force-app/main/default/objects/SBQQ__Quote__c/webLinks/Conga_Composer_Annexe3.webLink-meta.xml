@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conga_Composer_Annexe3</fullName>
+    <availability>online</availability>
+    <description>envoi de l&apos;annexe 3 au contrat d&apos;accueil</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>true</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>600</height>
+    <isResizable>true</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>Envoi Annexe 3</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>/apex/APXTCFQ__Conga_Composer?SolMgr=1
+&amp;serverUrl={!API.Partner_Server_URL_370}
+&amp;Id={!SBQQ__Quote__c.Id}
+
+&amp;QueryId=[InfosContratAccueil]a443O00000057bW
+
+&amp;TemplateId=a4C3O0000004j0h
+&amp;DefaultPDF=1
+&amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;), 0,1)}
+&amp;ESVisible=1
+&amp;ESAgreementTemplateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateAnnexe3__c}
+&amp;ESCustomField=LPCR_Devis__c
+&amp;ESCustomFieldValue={!SBQQ__Quote__c.Id}</url>
+</WebLink>
