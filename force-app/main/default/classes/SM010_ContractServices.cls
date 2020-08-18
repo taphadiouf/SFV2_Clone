@@ -139,6 +139,16 @@ public class SM010_ContractServices {
         for(Contract eachContract : newContractMap.values()){
             if(mapOrders.containsKey(eachContract.SBQQ__Order__c) && 
                quoteMap.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
+                 //added by saurabh IS-1490
+                if(eachContract.LPCR_TypeCreche__c == 'MAC' && eachContract.EndDate != eachContract.LPCR_DateFin__c){
+                    eachContract.LPCR_RenouvellementAutomatique__c =true;
+                }
+                else if(eachContract.SBQQ__RenewalUpliftRate__c != null && 
+                        (eachContract.LPCR_MethodeRenouvellement__c == 'Tacite' ||
+                         (eachContract.LPCR_MethodeRenouvellement__c != 'Tacite' && eachContract.EndDate != eachContract.LPCR_DateFin__c))){
+                             eachContract.LPCR_RenouvellementAutomatique__c =true;
+                         } 
+                          
                  if(eachContract.SBQQ__Order__c != oldContractMap.get(eachContract.Id).SBQQ__Order__c){
                     if(quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement || quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement_Approuve) {
                         eachContract.LPCR_FraisDossier__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;

@@ -197,7 +197,7 @@ item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.
                                                    || !UM005_DateUtility.quarterlyMonths.contains(item.blng__NextChargeDate__c.month()) ) )
                                              || (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Quarterly) )
                                           ) {
-                                              item.blng__OverrideNextBillingDate__c = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths).addDays(1);
+                                              item.blng__OverrideNextBillingDate__c = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths); // Workaround: Override Next Billing Date = Bill Through Date Override because of Billing package validation error
                                               // lastDayOfQuarterPeriod return the last date of the given quarter (1,4,7,10)
                                               if(item.SBQQ__ChargeType__c !=Label.LPCR_OneTime){
                                                   if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayofQuarter < item.SBQQ__TerminatedDate__c))){
@@ -224,7 +224,7 @@ item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.
                                                  (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime
                                                   && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Semiannual) ) 
                                        { 
-                                           item.blng__OverrideNextBillingDate__c =UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths).addDays(1); 
+                                           item.blng__OverrideNextBillingDate__c =UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths); // Workaround: Override Next Billing Date = Bill Through Date Override because of Billing package validation error
                                            // lastDayOfHalfYearPeriod return the last date of the given Half Year period (1,7) 
                                            
                                            if(item.SBQQ__ChargeType__c !=Label.LPCR_OneTime){
@@ -235,7 +235,7 @@ item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.
                                        }
                                        else  if ((item.SBQQ__BillingFrequency__c == Label.LPCR_Annual && item.blng__NextChargeDate__c.day() != 1) 
                                                  || (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime  && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Annual)){
-                                                     item.blng__OverrideNextBillingDate__c = UM005_DateUtility.lastDayOfYear(item.blng__NextChargeDate__c).addDays(1);
+                                                     item.blng__OverrideNextBillingDate__c = UM005_DateUtility.lastDayOfYear(item.blng__NextChargeDate__c); // Workaround: Override Next Billing Date = Bill Through Date Override because of Billing package validation error
                                                      if(item.SBQQ__ChargeType__c !=Label.LPCR_OneTime){
                                                          if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && annualLastDay < item.SBQQ__TerminatedDate__c))){
                                                              item.blng__BillThroughDateOverride__c = annualLastDay;
@@ -243,6 +243,7 @@ item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.
                                                      }
                                                  }
                                    }
+                                
                                }
                 }
                 PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'item (AFTER): ' + item);

@@ -15,7 +15,7 @@ public with sharing class TM015_AttachmentTrigger extends TM000_TriggerHandler{
     }
     
     protected override void afterInsert() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
+        if (!FeatureManagement.checkPermission('LPCR_Reprise')){
             SM018_AttachmentService.sendLPCRDocumentByCallout(newAttachmentList);
         }
     }
