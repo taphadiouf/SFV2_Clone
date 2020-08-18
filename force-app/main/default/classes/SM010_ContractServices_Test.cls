@@ -61,8 +61,8 @@ public class SM010_ContractServices_Test {
         
         
         update new List<Opportunity>{opp,opp2};
-            
-            LPCR_Planning__c planningEnfant = new LPCR_Planning__c();
+        Test.startTest();    
+        LPCR_Planning__c planningEnfant = new LPCR_Planning__c();
         insert planningEnfant;
         quote.RecordTypeId=QUOTE_CONTRAT_ACCUEIL_RT_ID;
         quote.SBQQ__Ordered__c  = true; 
@@ -93,7 +93,7 @@ public class SM010_ContractServices_Test {
         
         
         update new List<SBQQ__Quote__c>{quote,quote2};
-            
+        Test.stopTest();    
             Set<Id> quotesIds = new Set<Id>{quote2.Id,quote.Id};
                 List<Order> orders = Database.query('SELECT Id ,SBQQ__Contracted__c , Status ,OpportunityId,EffectiveDate FROM Order WHERE SBQQ__Quote__c  in :quotesIds');
         for(Order order: orders)
@@ -361,7 +361,7 @@ EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LP
             }
             insert acceuilcontracts;
             Contract accContract = [Select Id, LPCR_NumeroContrat__c From Contract ];
-            System.assertEquals(null,accContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
+            System.assertEquals(order.LPCR_NumeroContrat__c,accContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
             
             
              //Referencement Record Type 
@@ -372,7 +372,7 @@ EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LP
             }
             insert refContracts;
             Contract refContract = [Select Id, LPCR_NumeroContrat__c From Contract where RecordType.DeveloperName = 'Referencement'];
-            System.assertEquals(null,refContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
+            System.assertEquals(order.LPCR_NumeroContrat__c,refContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
             
             //Reservataire Record Type 
             List<Contract> resContracts = UM002_TestDataFactory.createContracts(1,acc.Id,'test',null,null,null,null,null,null,null);
@@ -382,7 +382,7 @@ EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LP
             }
             insert resContracts;
             Contract resContract = [Select Id, LPCR_NumeroContrat__c From Contract where RecordType.DeveloperName = 'Reservataire'];
-            System.assertEquals(null,resContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
+            System.assertEquals(order.LPCR_NumeroContrat__c,resContract.LPCR_NumeroContrat__c,'LPCR_NumeroContrat__c not correct');
             
             
             Test.stopTest();

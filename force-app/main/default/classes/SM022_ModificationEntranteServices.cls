@@ -99,57 +99,6 @@ public with sharing class SM022_ModificationEntranteServices {
         }       
     }   
     
-    //added by saurabh
-    public static void createUsageFromModifEntrantes(List<LPCR_ModificationEntrante__c> ModifEntrantesList){
-        Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
-        Date lastDayOfCurrentMonthDate=Date.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month())) ;
-        
-        Set<String> contactIds = UM003_TypeManager.getFieldsOfListObjects(ModifEntrantesList, 'LPCR_Contact__c');
-        Map<Id,Contact> modifEntrantesContactMap = new Map<Id,Contact>();
-        
-        Set<String> compteIds = UM003_TypeManager.getFieldsOfListObjects(ModifEntrantesList, 'LPCR_Compte__c');
-        Map<Id,LPCR_RessourceFamille__c> ressourceFamilleMap = new Map<Id,LPCR_RessourceFamille__c>();
-        
-        Map<String, String> evenementMap =  getPicklistLabelByAPI();
-
-        for(Contact contact : [SELECT Id,FirstName, LastName,LPCR_NumeroAllocataire__c, LPCR_AutoriteParentale__c, MailingStreet, MailingCity, MailingState, MailingPostalCode, MailingCountry FROM Contact WHERE Id IN: contactIds]){
-            modifEntrantesContactMap.put(contact.Id, contact);
-        }
-        
-        for(LPCR_RessourceFamille__c eachRessourceFamille : [SELECT Id, Name, RecordTypeId, LPCR_Active__c, LPCR_AnneeRevenu__c, LPCR_BaremeCaf__c, LPCR_Commentaire__c, LPCR_CompteFamille__c,LPCR_CompteFamille__r.Name, LPCR_ContactEnfant__c, LPCR_DateDebut__c, LPCR_DateFin__c, LPCR_DureeContratJour__c, LPCR_FinContrat__c, LPCR_IdExterne_BaremeCaf__c, LPCR_IdExterne_CompteFamille__c, LPCR_IdExterne_ContactEnfant__c, LPCR_IdExterne_Creche__c, LPCR_NombreEnfantHandicape__c, LPCR_NombreEnfants__c, LPCR_RessourcePlafond__c, LPCR_RessourcesPrixPlancher__c, LPCR_RevenusFamille__c, LPCR_SourceDonnees__c, LPCR_StatutValidation__c, LPCR_TauxEffort__c, LPCR_TypeCreche__c, LPCR_TypeMensualisation__c, LPCR_TypePlanning__c, LPCR_creche__c FROM LPCR_RessourceFamille__c WHERE LPCR_CompteFamille__c IN : compteIds AND LPCR_ContactEnfant__c IN : contactIds AND  LPCR_Active__c = true]){
-            if(eachRessourceFamille.LPCR_ContactEnfant__c != null){
-                ressourceFamilleMap.put(eachRessourceFamille.LPCR_ContactEnfant__c, eachRessourceFamille);
-            }
-        }
-        
-        List<blng__Usage__c> lstBillingUsage = new List<blng__Usage__c>();
-        for(LPCR_ModificationEntrante__c eachModification : ModifEntrantesList){
-            String evtName = '';
-            String evtLabelName = '';
-            if('Modification_Heure_Supplementaire_MAC'.equals(eachModification.LPCR_Evenement__c) ||
-               'Modification_Heure_Occasionnel_MAC'.equals(eachModification.LPCR_Evenement__c) ||
-               'Modification_Heure_Deduite_MAC'.equals(eachModification.LPCR_Evenement__c) ||
-               'Modification_Facturation_Adaptation'.equals(eachModification.LPCR_Evenement__c) ||
-               'Nombre_de_repas'.equals(eachModification.LPCR_Evenement__c) ||
-               'Abscence'.equals(eachModification.LPCR_Evenement__c)
-              ){
-                  if('Modification_Facturation_Adaptation'.equals(eachModification.LPCR_Evenement__c)){
-                      evtName = 'Modification Période d\'Adaptation';
-                      evtLabelName = 'Modification Période d\'Adaptation';
-                  }else{
-                     evtName =  eachModification.LPCR_Evenement__c;
-                     evtLabelName = evenementMap.get(eachModification.LPCR_Evenement__c);
-                  }
-                  blng__Usage__c newUsage = createBlngUsage(eachModification,'Heures',evtName,evtLabelName);
-                  if(newUsage != null){
-                      lstBillingUsage.add(newUsage);
-                  }
-              }
-        }
-        if(lstBillingUsage.size() > 0){
-            insert lstBillingUsage;
-        }
-    }
     
     // added by saurabh
     public static void updateQuotesFromModifEntrantesBatch(List<LPCR_ModificationEntrante__c> ModifEntrantesList){
