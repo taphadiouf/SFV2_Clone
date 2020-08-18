@@ -20,7 +20,7 @@ public with sharing class APC002_AttachmentController_Test {
          Account acc = [SELECT name From Account WHERE Name = 'test'];
         //Id idParent, String strFileName, String base64Data,String description
         Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-        APC002_AttachmentController.save(acc.Id,'Test','TEST','Test');
+        APC002_AttachmentController.save(acc.Id,'Test','TEST','Test','PDF');
     }
    
 

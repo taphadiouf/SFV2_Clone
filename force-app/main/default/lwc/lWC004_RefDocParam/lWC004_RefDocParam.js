@@ -43,6 +43,7 @@ export default class LWC004_RefDocParam extends LightningElement {
   fileReader;
   content;
   MAX_FILE_SIZE = 1500000;
+  fileType;
 
   @wire(CurrentPageReference) pageRef;
 
@@ -105,6 +106,7 @@ export default class LWC004_RefDocParam extends LightningElement {
     if (event.target.files.length > 0) {
       this.filesUploaded = event.target.files;
       this.fileName = event.target.files[0].name;
+      this.filetype = event.target.files[0].filetype
     }
   }
 
@@ -133,6 +135,7 @@ export default class LWC004_RefDocParam extends LightningElement {
       let base64 = 'base64,';
       this.content = this.fileContents.indexOf(base64) + base64.length;
       this.fileContents = this.fileContents.substring(this.content);
+      this.filetype = ['.pdf', '.png','.jpg','.jpeg'];
       // call the uploadProcess method 
       this.saveToFile();
     });
@@ -145,7 +148,7 @@ export default class LWC004_RefDocParam extends LightningElement {
   // Calling apex class to insert the file
   saveToFile() {
 
-    save({ idParent: this.recordId, strFileName: this.file.name, base64Data: encodeURIComponent(this.fileContents), description: this.data.type })
+    save({ idParent: this.recordId, strFileName: this.file.name, base64Data: encodeURIComponent(this.fileContents), description: this.data.type, contentType: this.file.type })
       .then(attachment=>{
         let attId = attachment.Id;
         sendDocument({ attachmentId: attId})
