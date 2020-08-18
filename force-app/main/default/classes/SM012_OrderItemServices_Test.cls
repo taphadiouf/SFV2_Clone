@@ -1805,7 +1805,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 Date expectedOverrideNextBillingDate = !UM005_DateUtility.semiannualMonths.contains(oi.blng__NextBillingDate__c.month()) || oi.blng__NextChargeDate__c.day() != 1
                     ? UM005_DateUtility.lastDayOfDatePeriod (oi.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths).addDays(1) 
                     : null;
-                System.assertEquals(expectedOverrideNextBillingDate, oi.blng__OverrideNextBillingDate__c);
+                System.assertEquals(expectedOverrideNextBillingDate.addDays(-1), oi.blng__OverrideNextBillingDate__c);
             }
         }
     }
@@ -1930,7 +1930,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 Date expectedOverrideNextBillingDate = !UM005_DateUtility.quarterlyMonths.contains(oi.blng__NextBillingDate__c.month()) || oi.blng__NextChargeDate__c.day() != 1
                     ? UM005_DateUtility.lastDayOfDatePeriod (oi.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths).addDays(1) 
                     : null;
-                System.assertEquals(expectedOverrideNextBillingDate, oi.blng__OverrideNextBillingDate__c);
+                System.assertEquals(expectedOverrideNextBillingDate.addDays(-1), oi.blng__OverrideNextBillingDate__c);
             }
         }
     }
