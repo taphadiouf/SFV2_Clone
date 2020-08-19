@@ -3,7 +3,7 @@
     <fullName>SBQQ__Field__c</fullName>
     <deprecated>false</deprecated>
     <externalId>false</externalId>
-    <inlineHelpText>Select the field you want updated when the conditions are met.</inlineHelpText>
+    <inlineHelpText>Sélectionnez le champ que vous souhaitez mettre à jour lorsque les conditions sont remplies.</inlineHelpText>
     <label>Target Field</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
@@ -237,6 +237,16 @@
                 <default>false</default>
                 <label>EditLinesFieldSetName__c</label>
             </value>
+            <value>
+                <fullName>SubmittedDate__c</fullName>
+                <default>false</default>
+                <label>SubmittedDate__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_DateSignatureContrat__c</fullName>
+                <default>false</default>
+                <label>LPCR_DateSignatureContrat__c</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -401,6 +411,14 @@
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
             <valueName>EditLinesFieldSetName__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>SubmittedDate__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_DateSignatureContrat__c</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
