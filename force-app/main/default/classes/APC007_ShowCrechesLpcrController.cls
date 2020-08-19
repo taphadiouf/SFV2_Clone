@@ -50,7 +50,7 @@ public with sharing class APC007_ShowCrechesLpcrController {
             System.debug(eachAcc);
             currentLocation = new Location();
             currentLocation.locationId = eachAcc.Id;
-            currentLocation.name = eachAcc.name;
+            currentLocation.name = UM010_Constant.CRECHE_LPCR + eachAcc.name;
             currentLocation.latitude =  eachAcc.ShippingLatitude;
             currentLocation.longitude =  eachAcc.ShippingLongitude;
             locations.add(currentLocation);
