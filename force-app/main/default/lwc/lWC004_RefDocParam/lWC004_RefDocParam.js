@@ -18,7 +18,7 @@ export default class LWC004_RefDocParam extends LightningElement {
 
   @api recordId;
   @track skip = "Annuler";
-  @track submit = "Envoyerrrr";
+  @track submit = "Envoyer";
   @track uploadFile = 'Charger un nouveau fichier';
   @track type = 'Type';
   @track attachment = 'Fichier';
@@ -123,14 +123,15 @@ export default class LWC004_RefDocParam extends LightningElement {
   uploadHelper() {
     this.file = this.filesUploaded[0];
     if (this.file.size > this.MAX_FILE_SIZE) {
-      this.dispatchEvent(
-        console.log("aaaaaaa"),
-        new ShowToastEvent({
-          title: 'Succès !',
-          message: 'Le fichier est trop long',
-          variant: 'fail',
-        }),
-      );
+      console.log('aaaaa');
+      
+        const evt = new ShowToastEvent({
+            title: 'Erreur',
+            message: 'Le fichier est trop long',
+            variant: 'error',
+            mode: 'dismissable'
+        });
+        this.dispatchEvent(evt);
     }
     this.showLoadingSpinner = true;
     // create a FileReader object 
