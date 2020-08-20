@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- CPQ_Lookup --></label>
+        <name>CPQ_Lookup</name>
+    </fieldSets>
+    <layouts>
+        <layout>Account Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Billing Account Layout</layout>
+        <sections>
+            <label>Informations supplémentaires</label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Informations sur les renouvellements/durées identiques</label>
+            <section>Renewal/Co-Term Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CPQ Account Layout</layout>
+        <sections>
+            <label>Informations supplémentaires</label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Informations sur les renouvellements/durées identiques</label>
+            <section>Renewal/Co-Term Information</section>
+        </sections>
+    </layouts>
     <layouts>
         <layout>Crèche</layout>
         <sections>
@@ -17,6 +58,10 @@
     </layouts>
     <layouts>
         <layout>Entreprise</layout>
+        <sections>
+            <label><!-- Equipe de compte --></label>
+            <section>Equipe de compte</section>
+        </sections>
         <sections>
             <label><!-- Facturation --></label>
             <section>Facturation</section>
@@ -36,6 +81,18 @@
     </layouts>
     <layouts>
         <layout>Famille</layout>
+        <sections>
+            <label><!-- Commentaires --></label>
+            <section>Commentaires</section>
+        </sections>
+        <sections>
+            <label><!-- Coordonnées --></label>
+            <section>Coordonnées</section>
+        </sections>
+        <sections>
+            <label><!-- Facturation --></label>
+            <section>Facturation</section>
+        </sections>
         <sections>
             <label><!-- Informations CAF --></label>
             <section>Informations CAF</section>
@@ -60,8 +117,16 @@
             <section>Champs</section>
         </sections>
         <sections>
+            <label><!-- Coordonnées --></label>
+            <section>Coordonnées</section>
+        </sections>
+        <sections>
             <label><!-- Informations Crèche --></label>
             <section>Informations Crèche</section>
+        </sections>
+        <sections>
+            <label><!-- Informations Système --></label>
+            <section>Informations Système</section>
         </sections>
         <sections>
             <label><!-- Liens Personnalisés --></label>
@@ -69,12 +134,24 @@
         </sections>
     </layouts>
     <quickActions>
+        <label><!-- Nouveau Contrat D&apos;accueil --></label>
+        <name>LPCR_NouveauContratAccueil</name>
+    </quickActions>
+    <quickActions>
         <label><!-- Mettre à jour le compte --></label>
         <name>ModifierComptePartenaire</name>
     </quickActions>
     <quickActions>
+        <label><!-- Nouveau Contact Enfant --></label>
+        <name>NouveauContactEnfant</name>
+    </quickActions>
+    <quickActions>
         <label><!-- Nouvelle Demande Réseau Grandir --></label>
         <name>NouvelleDemandeReseauGrandir</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Nouvelle Opportunité Entreprise --></label>
+        <name>NouvelleOpportuniteEntreprise</name>
     </quickActions>
     <quickActions>
         <label><!-- Adobe Sign --></label>
@@ -85,8 +162,16 @@
         <name>Creche</name>
     </recordTypes>
     <recordTypes>
+        <label><!-- Crèche Externe --></label>
+        <name>Creche_Externe</name>
+    </recordTypes>
+    <recordTypes>
         <label><!-- Entreprise --></label>
         <name>Entreprise</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Etablissement LPCR --></label>
+        <name>Etablissement_LPCR</name>
     </recordTypes>
     <recordTypes>
         <label><!-- Famille --></label>
@@ -96,10 +181,42 @@
         <label><!-- Partenaire --></label>
         <name>Partenaire</name>
     </recordTypes>
+    <recordTypes>
+        <label><!-- Réseau LPCR --></label>
+        <name>ReseauLPCR</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Le type de mensualisation ne peut être que égal à 11 ou 12. --></errorMessage>
+        <name>LPCR_TypeMensualisationCreche</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- L&apos;adresse de facturation est obligatoire pour le représentant 1. --></errorMessage>
+        <name>VR_Compte_Adresse_Representant1_Requise</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Veuillez renseigner le prestataire actuel --></errorMessage>
         <name>VR_Compte_AutrePrestataire</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Pour les entreprises publiques, les champs SIRET Chorus et Code Service Chorus sont obligatoires. --></errorMessage>
+        <name>VR_Compte_Champs_Chorus</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Merci de décocher si un SIRET est renseigné. --></errorMessage>
+        <name>VR_SiretVide_PasDeSiret</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Conga_Composer_OAuth --></label>
+        <name>APXTCFQ__Conga_Composer_OAuth</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Conga_Mail_Merge --></label>
+        <name>APXTCFQ__Conga_Mail_Merge</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Activer_D_sactiver_Commandes --></label>
+        <name>Activer_D_sactiver_Commandes</name>
+    </webLinks>
     <webLinks>
         <label><!-- MAJ_Preinscriptions --></label>
         <name>MAJ_Preinscriptions</name>
