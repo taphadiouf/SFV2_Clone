@@ -5,7 +5,7 @@
 */
 public with sharing class APC002_AttachmentController {
      @AuraEnabled
-    public static Attachment save(Id idParent, String strFileName, String base64Data,String description) {
+    public static Attachment save(Id idParent, String strFileName, String base64Data,String description, String contentType) {
         // Decoding base64Data
         base64Data = EncodingUtil.urlDecode(base64Data, 'UTF-8');
         boolean isvalid = true;
@@ -28,6 +28,7 @@ public with sharing class APC002_AttachmentController {
         att.ParentId = idParent;
         att.body = EncodingUtil.base64Decode(base64Data);
         att.Description = description;
+        att.ContentType = contentType;
         insert att;
         return att;
     }
