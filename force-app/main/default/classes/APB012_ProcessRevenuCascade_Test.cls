@@ -6,7 +6,8 @@
 
 @isTest
 public class APB012_ProcessRevenuCascade_Test {
- private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
+ 	private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
+    private static final Id ACCOUNT_CRECHE_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
     private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
     private static final Id QUOTE_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);
     private static final Id ORDER_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Order, Label.LPCR_ContratA);
@@ -70,7 +71,12 @@ public class APB012_ProcessRevenuCascade_Test {
             acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
             acc.LPCR_ProcessRevenuCascade__c = true;
             update acc;
-
+			
+            Account accCreche = UM002_TestDataFactory.createAccounts(1, 'testAccount1').get(0);
+            accCreche.RecordTypeId = ACCOUNT_CRECHE_ID;
+            accCreche.SBQQ__RenewalModel__c = 'Contract Based';
+            insert accCreche;
+            
             Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
             insert cont;
 
@@ -105,13 +111,14 @@ public class APB012_ProcessRevenuCascade_Test {
             order.SBQQ__Quote__c = quote.id;
             order.RecordTypeId = ORDER_CONTRAT_ACCUEIL_RT_ID;
             insert order;
-
+			Test.startTest();
             OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
             orderItem.SBQQ__QuoteLine__c = qlines.get(0).id;
             orderItem.SBQQ__Contract__c = contract.id;
             orderItem.LPCR_Creche__c = acc.Id; 
             orderItem.SBQQ__Activated__c = false;
-            orderItem.blng__GroupId__c = order.id+''+contract.id+''+acc.Id;
+            orderItem.blng__GroupId__c = acc.id+''+contract.id+''+accCreche.Id;
+            orderItem.blng__InvoiceGroupId__c = acc.id+''+contract.id+''+accCreche.Id;
             insert orderItem;
             orderItem.SBQQ__Activated__c = true;
             update orderItem;
@@ -227,7 +234,7 @@ public class APB012_ProcessRevenuCascade_Test {
             financePeriod.blng__PeriodEndDate__c = lastDayOfCurrentMonthDate;
             financePeriod.blng__FinanceBook__c = financeBook.id;
             financePeriod.blng__PeriodStatus__c = 'Open';
-            financePeriod.Name = 'Test Finance Period';
+            financePeriod.Name = '08';
             
             insert financePeriod;
             
@@ -253,13 +260,13 @@ public class APB012_ProcessRevenuCascade_Test {
             revTransCreditNote.blng__RevenueSchedule__c =  revSchedule.id;
             insert revTransCreditNote;
             
-            Test.startTest();
+           
             APB012_ProcessRevenuCascade ss = new APB012_ProcessRevenuCascade();
             DataBase.executeBatch(ss);
-            String chron = '0 0 23 * * ?';        
-            system.schedule('Test Sched', chron, ss);
+            //String chron = '0 0 23 * * ?';        
+            //system.schedule('Test Sched', chron, ss);
             Test.stopTest();
-
+			ss.execute(null);
             List<LPCR_RevenueCascade__c> revCascadeList = [SELECT Id, Name, LPCR_Compte__c, LPCR_CreditNoteLineAggregation__c, LPCR_CreditNoteRevenue__c, LPCR_DateDebut__c, LPCR_MontantFacture__c, LPCR_OrderInvoiceRevenue__c, LPCR_OrderLineAggregation__c, LPCR_OrderLineGroup__c, LPCR_PCA__c FROM LPCR_RevenueCascade__c];
             System.assertEquals(1, revCascadeList.size(),'APB012_ProcessRevenuCascade_Test : RevenueTransaction upsert fail');
             

@@ -189,12 +189,16 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
-   <actionOverrides>
+    <actionOverrides>
         <actionName>View</actionName>
         <content>PL_Compte</content>
         <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>ViewCustomerPortalUser</actionName>

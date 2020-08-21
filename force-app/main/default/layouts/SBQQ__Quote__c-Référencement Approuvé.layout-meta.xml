@@ -166,10 +166,6 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_AccountPurchaseOrder__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_Nombre_de_lignes_sans_PO__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
@@ -435,7 +431,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000001SCrC</masterLabel>
+        <masterLabel>00h3N000001QmAZ</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

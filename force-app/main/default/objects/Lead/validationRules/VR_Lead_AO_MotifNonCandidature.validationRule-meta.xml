@@ -4,7 +4,7 @@
     <active>true</active>
     <description>Renseignez un motif de non candidature pour passer le lead AO public réservation ou AO public DSP au statut Abandonné</description>
     <errorConditionFormula>AND(
-NOT( $User.LPCR_BypassValidationRules__c ),
+NOT( $Permission.LPCR_ByPass_VR ),
 OR(RecordType.DeveloperName=&apos;AO_PublicDSP&apos;,RecordType.DeveloperName=&apos;AO_PublicReservation&apos;),
 ISPICKVAL(Status, &quot;Abandonné&quot;),
 ISBLANK(  LPCR_MotifNoncandidature__c ))</errorConditionFormula>

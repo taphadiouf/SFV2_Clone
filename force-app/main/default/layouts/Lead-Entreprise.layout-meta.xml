@@ -230,6 +230,16 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>Lead.NouvelleDemandeReseauGrandir</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Sparklane_FR__IFTD_UI_Lead_findCompany_button</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Convert</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>2</sortOrder>
@@ -344,16 +354,6 @@
             <actionType>ProductivityAction</actionType>
             <sortOrder>24</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Lead.NouvelleDemandeReseauGrandir</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Sparklane_FR__IFTD_UI_Lead_findCompany_button</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
     </platformActionList>
     <quickActionList>
         <quickActionListItems>
@@ -401,6 +401,14 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
+        <fields>CASES.CASE_NUMBER</fields>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>CASES.SUBJECT</fields>
+        <fields>CASES.STATUS</fields>
+        <fields>CASES.CREATED_DATE</fields>
+        <relatedList>Case.Lead__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>TASK.SUBJECT</fields>
         <fields>ACTIVITY.TASK</fields>
         <fields>TASK.DUE_DATE</fields>
@@ -444,7 +452,7 @@
     <showRunAssignmentRulesCheckbox>true</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6E0000015KF3</masterLabel>
+        <masterLabel>00h1j000001Q4Oq</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

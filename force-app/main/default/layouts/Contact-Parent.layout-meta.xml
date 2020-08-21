@@ -6,7 +6,7 @@
     <excludeButtons>ContactHierarchy</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
-    <excludeButtons>RequestUseSfdc</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>Share</excludeButtons>
     <excludeButtons>StartOutboundConversation</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
@@ -311,6 +311,14 @@
         <relatedList>SBQQ__Quote__c.LPCR_ContactRepresentant2__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>LPCR_Preinscription__c.LPCR_ContactParent__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>LPCR_Preinscription__c.LPCR_ContactParent2__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>TASK.SUBJECT</fields>
         <fields>TASK.WHAT_NAME</fields>
         <fields>ACTIVITY.TASK</fields>
@@ -343,7 +351,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6E0000014Fz5</masterLabel>
+        <masterLabel>00h1j000001KABl</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

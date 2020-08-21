@@ -87,4 +87,43 @@ public class SM015_InvoiceServices {
         }
         
     }
+
+    // added by saurabh IS-1529
+    public static void afterUpdateCreateCreditNoteAllocation(List<blng__Invoice__c> newInvoiceList){
+        Pad.log('SM015_InvoiceServices','afterUpdateCreateCreditNoteAllocation(List<blng__Invoice__c> newInvoiceList)','newInvoiceList size '+newInvoiceList.size());
+        
+        Set<Id> invoiceIdsSet = UM003_TypeManager.getIdsOfListObjects(newInvoiceList);
+        Set<Id> creditNoteIdsSet = new Set<Id>();
+        List<blng__CreditNoteAllocation__c> insertCreditNoteAllocationList = new List<blng__CreditNoteAllocation__c>();
+        
+        for(blng__CreditNote__c creditNote : [select id from blng__CreditNote__c where blng__RelatedInvoice__c in: invoiceIdsSet and blng__Status__c = 'Posted' and blng__CreditNoteSourceAction__c = 'Manual' ]){
+            creditNoteIdsSet.add(creditNote.id);
+        }
+        
+        if(creditNoteIdsSet.size() > 0){
+            for(blng__CreditNoteLine__c eachCNLine : [select id, blng__Balance__c, blng__InvoiceLine__c, blng__InvoiceLine__r.blng__Balance__c from blng__CreditNoteLine__c where blng__Status__c = 'Posted' and blng__Balance__c > 0 Order By CreatedDate]){
+                blng__CreditNoteAllocation__c newCreditNoteAllocation = new blng__CreditNoteAllocation__c();
+                newCreditNoteAllocation.blng__Amount__c = eachCNLine.blng__InvoiceLine__r.blng__Balance__c;
+                newCreditNoteAllocation.blng__InvoiceLine__c = eachCNLine.blng__InvoiceLine__c;
+                newCreditNoteAllocation.blng__Notes__c = 'Automatic Credit Note Allocation';
+                newCreditNoteAllocation.blng__Type__c = 'Allocation';
+                newCreditNoteAllocation.blng__CreditNoteLine__c = eachCNLine.id;
+                
+                if(eachCNLine.blng__InvoiceLine__r.blng__Balance__c >= eachCNLine.blng__Balance__c){
+                    newCreditNoteAllocation.blng__Amount__c = eachCNLine.blng__Balance__c;
+                }else{
+                    newCreditNoteAllocation.blng__Amount__c = eachCNLine.blng__InvoiceLine__r.blng__Balance__c;
+                }
+                insertCreditNoteAllocationList.add(newCreditNoteAllocation);
+            }
+        }
+        
+        if(insertCreditNoteAllocationList.size() > 0){
+            try{
+				insert insertCreditNoteAllocationList;                
+            }catch(Exception ex){
+                PAD.log('SM015_InvoiceServices', 'afterUpdateCreateCreditNoteAllocation', 'Exception: ' + ex.getMessage());
+            }
+        }
+    }
 }

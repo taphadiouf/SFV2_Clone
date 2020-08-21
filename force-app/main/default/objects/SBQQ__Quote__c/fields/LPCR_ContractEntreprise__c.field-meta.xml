@@ -4,6 +4,21 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Contrat Entreprise</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <filterItems>
+            <field>Contract.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Réservataire</value>
+        </filterItems>
+        <filterItems>
+            <field>Contract.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Référencement</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Contract</referenceTo>
     <relationshipLabel>Quotes (Contrat Entreprise)</relationshipLabel>
     <relationshipName>Quotes</relationshipName>

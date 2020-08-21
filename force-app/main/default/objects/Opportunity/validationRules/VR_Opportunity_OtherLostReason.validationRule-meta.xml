@@ -3,7 +3,7 @@
     <fullName>VR_Opportunity_OtherLostReason</fullName>
     <active>true</active>
     <errorConditionFormula>AND ( 
-      NOT($User.LPCR_BypassValidationRules__c ),
+      NOT($Permission.LPCR_ByPass_VR ),
       AND(ISPICKVAL(LPCR_RaisonPerteOpportunite__c,&quot;Autre&quot;),
          ISBLANK( LPCR_AutreRaisonPerte__c )
          )

@@ -4,7 +4,7 @@
     <active>true</active>
     <description>Le passage au statut &apos;Annulée&apos;, &apos;Terminée&apos; et &apos;Envoyée&apos;  ne peut pas être fait à la main par un utilisateur.</description>
     <errorConditionFormula>AND(
-NOT( $User.LPCR_BypassValidationRules__c ),
+NOT( $Permission.LPCR_ByPass_VR ),
 NOT(CONTAINS($Profile.Name,&apos;Admin&apos;)),
 NOT( $Permission.LPCR_ADV),
 ISCHANGED( LPCR_StatutFacture__c  ),
