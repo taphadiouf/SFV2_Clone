@@ -4,7 +4,7 @@
     <active>true</active>
     <description>Si le modèle de devis LPCR est utilisé (contrat manuel = false), alors le passage au statut &quot;SIgné&quot; ou &quot;Prêt à commander&quot; est automatique et ne peut pas être fait à la main par un utilisateur.</description>
     <errorConditionFormula>AND(
-NOT( $User.LPCR_BypassValidationRules__c ),
+NOT( $Permission.LPCR_ByPass_VR ),
 NOT(CONTAINS($Profile.Name,&apos;Admin&apos;)),
 NOT(LPCR_ContratManuel__c),
 NOT (OR(RecordType.DeveloperName = &apos;Referencement&apos;,RecordType.DeveloperName = &apos;Referencement_Approuve&apos;)),

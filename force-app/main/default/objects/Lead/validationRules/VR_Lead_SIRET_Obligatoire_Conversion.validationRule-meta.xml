@@ -4,7 +4,7 @@
     <active>true</active>
     <description>Lors de la conversion d&#39;un lead en ( compte/ contact / opportunité ), je dois obligatoirement renseigner le numéro SIRET  de l&#39;entreprise. Le cas  non échéant un message d&#39;erreur s&#39;affiche avec l&#39;obligation de cocher la case « Pas de numéro de SIRET ».</description>
     <errorConditionFormula>AND(
-NOT($User.LPCR_BypassValidationRules__c),
+NOT($Permission.LPCR_ByPass_VR),
 ISCHANGED(IsConverted),
 IsConverted,
 RecordType.DeveloperName = &#39;Entreprise&#39;,

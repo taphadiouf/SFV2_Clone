@@ -5,7 +5,7 @@
 */
 public with sharing class APC002_AttachmentController {
      @AuraEnabled
-    public static Attachment save(Id idParent, String strFileName, String base64Data,String description) {
+    public static Attachment save(Id idParent, String strFileName, String base64Data,String description, String contentType) {
         // Decoding base64Data
         base64Data = EncodingUtil.urlDecode(base64Data, 'UTF-8');
         boolean isvalid = true;
@@ -24,11 +24,17 @@ public with sharing class APC002_AttachmentController {
 
         // inserting file
         Attachment att = new Attachment();
-        att.Name = strFileName;
+        att.Name = strFileName + '_SYNC';
         att.ParentId = idParent;
         att.body = EncodingUtil.base64Decode(base64Data);
         att.Description = description;
+        att.ContentType = contentType;
         insert att;
         return att;
+    }
+    @AuraEnabled
+    public static void sendDocument(Id attachmentId) {
+        Attachment att = [SELECT ParentId, Description, Body FROM Attachment WHERE Id = :attachmentId];
+        SM017_SendDocument_Callout.sendDocumentCallout_SYNC(att.ParentId, att.Id, att.Description, EncodingUtil.base64Encode(att.Body));
     }
 }

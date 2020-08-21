@@ -22,7 +22,7 @@ public class APB011_SetInvoiceCommentaire_Test {
     private static void testAPB011_SetInvoiceCommentaire(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            APB011_SetInvoiceCommentaire InvoiceRunBatch = new APB011_SetInvoiceCommentaire('SELECT Id, Name FROM blng__InvoiceRun__c');
+            APB011_SetInvoiceCommentaire InvoiceRunBatch = new APB011_SetInvoiceCommentaire('SELECT Id, Name, OwnerId, LPCR_EnvoyerFaitPar__c FROM blng__InvoiceRun__c');
             InvoiceRunBatch.execute(null);
             Test.stopTest();
             List<blng__Invoice__c> invoices = [SELECT Id, blng__InvoiceStatus__c,LPCR_Commentaire__c ,blng__InvoiceRunCreatedBy__c , Name , LPCR_StatutFacture__c FROM blng__Invoice__c 

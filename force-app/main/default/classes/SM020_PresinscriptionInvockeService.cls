@@ -22,12 +22,12 @@ public class SM020_PresinscriptionInvockeService {
         docTmp = null;
         
         PresinscriptionParameter param = presinscriptionParameters.get(0);
-        LPCR_Preinscription__c preinscription = [SELECT Id, Name, LPCR_Creche__c, LPCR_ContactParent__c, LPCR_ContactParent__r.email FROM LPCR_Preinscription__c WHERE Id =: param.presinscriptionId];
+        LPCR_Preinscription__c preinscription = [SELECT Id, Name, LPCR_Creche__r.Name,LPCR_CompteEntreprise__r.Name, LPCR_Creche__c,LPCR_CompteEntreprise__c,LPCR_DateEntreeCreche__c, LPCR_ContactParent__c, LPCR_ContactParent__r.email FROM LPCR_Preinscription__c WHERE Id =: param.presinscriptionId];
         EmailTemplate template = [select id, name, body, subject from EmailTemplate where developername = : param.emailTemplate];
         
         //send email using template
         if(template.id != null && preinscription.LPCR_ContactParent__c != null){
-           
+            
             
             //set documents as attachments
             if(param.flagDocuments == true){
@@ -46,14 +46,38 @@ public class SM020_PresinscriptionInvockeService {
                 }
             }
             
-            HttpResponse response = SM016_SendMail_Callout.sendMailCallout(UserInfo.getUserEmail(), preinscription.LPCR_ContactParent__r.email, template.body, template.subject, docTmp);
-            if(response.getStatusCode() == 200){
-                PAD.log('SM020_PresinscriptionInvocableService', 'presinscriptionSendEmail', 'SM016_SendMail_Callout');
-            }
+            User conUser = [select id,FirstName, LastName, Title, CompanyName, city, country, Address, PostalCode     from user where id =: UserInfo.getUserId() limit 1] ;    
             
+            string body = template.body;
+            if(preinscription.LPCR_Creche__c != null) body = body.replace('{!LPCR_Preinscription__c.LPCR_Creche__c}', preinscription.LPCR_Creche__r.Name);
+            if(preinscription.LPCR_CompteEntreprise__c  != null ) body = body.replace('{!LPCR_Preinscription__c.LPCR_CompteEntreprise__c}', preinscription.LPCR_CompteEntreprise__r.Name);
+            if(preinscription.LPCR_DateEntreeCreche__c  != null) body = body.replace('{!LPCR_Preinscription__c.LPCR_DateEntreeCreche__c}', string.valueOf(preinscription.LPCR_DateEntreeCreche__c));
+            if(conUser.FirstName != null) body = body.replace('{!User.FirstName}', conUser.FirstName);
+            body = body.replace('{!User.LastName}', conUser.LastName);
+            if(conUser.Title != null)  body = body.replace('{!User.Title}', conUser.Title);
+            if(conUser.CompanyName != null) body = body.replace('{!User.CompanyName}', conUser.CompanyName);
+            if(conUser.city != null && conUser.Country != null) body = body.replace('{!User.Address}', conUser.city + ' ' + conUser.Country);
+            if(conUser.PostalCode != null) body = body.replace('{!User.PostalCode}', conUser.PostalCode);
+            body = body.replace('{!User.FirstName}', '');
+            body = body.replace('{!User.Title}', '');
+            body = body.replace('{!User.CompanyName}', '');
+            body = body.replace('{!User.Address}', '');
+            body = body.replace('{!User.PostalCode}', '');
+            body = body.replace('{!LPCR_Preinscription__c.LPCR_Creche__c}', '');
+            body = body.replace('{!LPCR_Preinscription__c.LPCR_CompteEntreprise__c}', '');
+            body = body.replace('{!LPCR_Preinscription__c.LPCR_DateEntreeCreche__c}', '');
+            
+            callout(UserInfo.getUserEmail(), preinscription.LPCR_ContactParent__r.email, body, template.subject, docTmp);
         }
         
     }
     
+    @future(callout = true)
+    public static void callout(string fromemail, string to, string body, string template, Set<String> docTmp){
+        HttpResponse response = SM016_SendMail_Callout.sendMailCallout(fromemail, to, body, template, docTmp);
+        if(response.getStatusCode() == 200){
+            PAD.log('SM020_PresinscriptionInvocableService', 'presinscriptionSendEmail', 'SM016_SendMail_Callout');
+        }
+    }
     
 }

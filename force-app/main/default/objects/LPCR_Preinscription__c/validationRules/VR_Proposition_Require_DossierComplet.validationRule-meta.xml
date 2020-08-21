@@ -4,7 +4,7 @@
     <active>true</active>
     <description>On ne doit pas pouvoir passer une préinscription au statut P sans que la checkbox &quot;Dossier complet&quot; soit cochée et que la crèche ait été renseignée</description>
     <errorConditionFormula>AND(
-    NOT($User.LPCR_BypassValidationRules__c),
+    NOT($Permission.LPCR_ByPass_VR),
     TEXT(LPCR_Statut__c)=&quot;Proposition&quot;,
     !LPCR_DossierComplet__c
     )</errorConditionFormula>

@@ -53,7 +53,15 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>APB007_TraitementModificationEntrante</apexClass>
+        <apexClass>APB014_TraitementModificationEntrante</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>APB015_ProcessBillingPlanLines</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>APB015_ProcessBillingPlanLines_Test</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -73,11 +81,11 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>APB009_ProcessYearlyOrderProduct</apexClass>
+        <apexClass>APB013_ProcessYearlyOrderProduct</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>APB009_ProcessYearlyOrderProduct_Test</apexClass>
+        <apexClass>APB013_ProcessYearlyOrderProduct_Test</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -4389,11 +4397,11 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM021_ModificationEntranteServices</apexClass>
+        <apexClass>SM022_ModificationEntranteServices</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SM021_ModificationEntranteServices_Test</apexClass>
+        <apexClass>SM022_ModificationEntranteServices_Test</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -13232,31 +13240,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_Anciennete__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_DateEntree__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_NbJourGarde__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_ReponseCrecheMunicipale__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_ParametrageScore__c.LPCR_Revenu__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>LPCR_ParametrageScore__c.LPCR_Score__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -15709,6 +15692,16 @@
         <editable>false</editable>
         <field>OrderItem.LPCR_BillingPlanProcessment__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_TraitementLigneFacturationAvenant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_ExclureDuPlanFacturation__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>

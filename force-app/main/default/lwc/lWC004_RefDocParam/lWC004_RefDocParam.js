@@ -10,6 +10,7 @@
 /* eslint-disable no-alert */
 import { LightningElement, api, track,wire } from "lwc";
 import save from '@salesforce/apex/APC002_AttachmentController.save';
+import sendDocument from '@salesforce/apex/APC002_AttachmentController.sendDocument';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import { CurrentPageReference } from "lightning/navigation";
 import { fireEvent } from 'c/pubsub';
@@ -27,7 +28,7 @@ export default class LWC004_RefDocParam extends LightningElement {
   @track picklistTypeValue = [{ label: 'Contrat Accueil', value: 'Contrat Accueil' }, 
   { label: 'Contrat Réservataire', value: 'Contrat Réservataire' },
   { label: 'Facture Famille', value: 'Facture Famille' }, 
-  { label: 'Facture Entreprise', value: 'CFacture Entreprise' },
+  { label: 'Facture Entreprise', value: 'Facture Entreprise' },
    { label: 'Pièce justificative', value: 'Pièce justificative' },
    { label: 'Autres', value: 'Autres' }];
   @track data = { type: '', file: File };
@@ -42,17 +43,14 @@ export default class LWC004_RefDocParam extends LightningElement {
   fileReader;
   content;
   MAX_FILE_SIZE = 1500000;
+  fileType;
 
   @wire(CurrentPageReference) pageRef;
-
-
 
   disconnectedCallback() {
     // unsubscribe from bearListUpdate event
     unregisterAllListeners(this);
   }
-
-
 
   constructor() {
     super();
@@ -61,7 +59,7 @@ export default class LWC004_RefDocParam extends LightningElement {
         { label: 'Contrat Accueil', value: 'Contrat Accueil' }, 
       { label: 'Contrat Réservataire', value: 'Contrat Réservataire' },
       { label: 'Facture Famille', value: 'Facture Famille' }, 
-      { label: 'Facture Entreprise', value: 'CFacture Entreprise' },
+      { label: 'Facture Entreprise', value: 'Facture Entreprise' },
        { label: 'Pièce justificative', value: 'Pièce justificative' },
        { label: 'Autres', value: 'Autres' }];
     }
@@ -73,16 +71,11 @@ export default class LWC004_RefDocParam extends LightningElement {
       this.picklistTypeValue = [{ label: 'Contrat Accueil', value: 'Contrat Accueil' }, 
       { label: 'Contrat Réservataire', value: 'Contrat Réservataire' },
       { label: 'Facture Famille', value: 'Facture Famille' }, 
-      { label: 'Facture Entreprise', value: 'CFacture Entreprise' },
+      { label: 'Facture Entreprise', value: 'Facture Entreprise' },
        { label: 'Pièce justificative', value: 'Pièce justificative' },
        { label: 'Autres', value: 'Autres' }];
     }
   }
-
-
-
-
-
   handlePopup() {
     this.template.querySelector("section").classList.remove("slds-hide");
     this.template
@@ -108,17 +101,16 @@ export default class LWC004_RefDocParam extends LightningElement {
 
   }
 
-
   // getting file 
   handleFilesChange(event) {
     if (event.target.files.length > 0) {
       this.filesUploaded = event.target.files;
       this.fileName = event.target.files[0].name;
+      this.filetype = event.target.files[0].filetype
     }
   }
 
   handleSave() {
-
 
     if (this.filesUploaded.length > 0) {
       this.uploadHelper();
@@ -131,8 +123,15 @@ export default class LWC004_RefDocParam extends LightningElement {
   uploadHelper() {
     this.file = this.filesUploaded[0];
     if (this.file.size > this.MAX_FILE_SIZE) {
-      window.console.log('File Size is to long');
-      return;
+      console.log('aaaaa');
+      
+        const evt = new ShowToastEvent({
+            title: 'Erreur',
+            message: 'Le fichier est trop long',
+            variant: 'error',
+            mode: 'dismissable'
+        });
+        this.dispatchEvent(evt);
     }
     this.showLoadingSpinner = true;
     // create a FileReader object 
@@ -143,6 +142,7 @@ export default class LWC004_RefDocParam extends LightningElement {
       let base64 = 'base64,';
       this.content = this.fileContents.indexOf(base64) + base64.length;
       this.fileContents = this.fileContents.substring(this.content);
+      this.filetype = ['.pdf', '.png','.jpg','.jpeg'];
       // call the uploadProcess method 
       this.saveToFile();
     });
@@ -155,28 +155,36 @@ export default class LWC004_RefDocParam extends LightningElement {
   // Calling apex class to insert the file
   saveToFile() {
 
-    save({ idParent: this.recordId, strFileName: this.file.name, base64Data: encodeURIComponent(this.fileContents), description: this.data.type })
-      .then(result => {
-        window.console.log('result ====> ' + result);
-        // refreshing the datatable
-
-        this.fileName = this.fileName + ' - Uploaded Successfully';
-        this.UploadFile = 'File Uploaded Successfully';
-        this.isTrue = true;
-        this.showLoadingSpinner = false;
-
-        // Showing Success message after file insert
-        this.dispatchEvent(
-          new ShowToastEvent({
-            title: 'Succès !',
-            message: this.file.name + ' - chargé avec succès !',
-            variant: 'success',
-          }),
-        );
-        this.dispatchEvent(new CustomEvent("sentdocument"));
-        this.handleSkip();
-
-        fireEvent(this.pageRef, 'handleCreatedAttachment', result);
+    save({ idParent: this.recordId, strFileName: this.file.name, base64Data: encodeURIComponent(this.fileContents), description: this.data.type, contentType: this.file.type })
+      .then(attachment=>{
+        let attId = attachment.Id;
+        sendDocument({ attachmentId: attId})
+        .then(result=>{
+          // refreshing the datatable
+          this.fileName = this.fileName + ' - Uploaded Successfully';
+          this.UploadFile = 'File Uploaded Successfully';
+          this.isTrue = true;
+          this.showLoadingSpinner = false;
+          // Showing Success message after file insert
+          this.dispatchEvent(
+            new ShowToastEvent({
+              title: 'Succès !',
+              message: this.file.name + ' - chargé avec succès !',
+              variant: 'success',
+            }),
+          );
+          this.dispatchEvent(new CustomEvent("sentdocument"));
+          this.handleSkip();
+        })
+        .catch(err=>{
+          console.log("*****Error : " + err);
+          this.dispatchEvent(new ShowToastEvent({
+              title: "Erreur!",
+              message: err.body.message,
+              variant: "error"
+          
+          }));
+        });
       })
       .catch(err=>{
             console.log("*****Error : " + err);
@@ -186,7 +194,6 @@ export default class LWC004_RefDocParam extends LightningElement {
                 variant: "error"
             
             }));
-     
     });
   }
 

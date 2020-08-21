@@ -4,10 +4,17 @@
 -->
 <template>
     <template if:true={showMap}>
-        <c-leaflet-map markers={locations} center={center} zoom="16" icon={icon}>
-        </c-leaflet-map>
+        <div class="slds-card">
+
+            <div class="slds-card__body slds-card__body_inner">
+                <b>{label.tmpLabel} :</b>
+                <br><br>
+                <c-leaflet-map markers={locations} center={center} zoom="13" icon={icon}>
+                </c-leaflet-map>
+            </div>
+        </div>
     </template>
-    
+
     <!-- <lightning-map map-markers={accounts} zoom-level={zoomLevel} show-footer={showFooter} list-view={listView}
         markers-title={accounts} center={center}>
     </lightning-map> -->

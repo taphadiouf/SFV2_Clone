@@ -3,6 +3,11 @@
     <fullName>SBQQ__CalculatingFields</fullName>
     <description>Quote fields that trigger recalculation of quote lines.</description>
     <displayedFields>
+        <field>LPCR_TypeFacturation__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
         <field>SBQQ__Primary__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
@@ -19,6 +24,11 @@
     </displayedFields>
     <displayedFields>
         <field>SBQQ__DistributorDiscount__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>LPCR_FormuleFrequence__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
@@ -56,6 +66,11 @@
         <field>SBQQ__Type__c</field>
         <isFieldManaged>true</isFieldManaged>
         <isRequired>true</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>LPCR_ARecalculer__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
     </displayedFields>
     <label>Calculating Fields</label>
 </FieldSet>

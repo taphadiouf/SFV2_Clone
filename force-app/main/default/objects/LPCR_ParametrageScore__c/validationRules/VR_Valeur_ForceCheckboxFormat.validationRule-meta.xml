@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Valeur_ForceCheckboxFormat</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    NOT($Permission.LPCR_ByPass_VR),
+    text(LPCR_Format__c)=&quot;Case à cocher&quot;,
+    LOWER(LPCR_Valeur__c)&lt;&gt;&quot;true&quot;,
+    LOWER(LPCR_Valeur__c)&lt;&gt;&quot;false&quot;
+    )</errorConditionFormula>
+    <errorDisplayField>LPCR_Valeur__c</errorDisplayField>
+    <errorMessage>La valeur doit être &quot;True&quot; ou &quot;False&quot; pour un format &quot;case à cocher&quot;</errorMessage>
+</ValidationRule>

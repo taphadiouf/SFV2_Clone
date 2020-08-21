@@ -4,7 +4,7 @@
     <active>true</active>
     <description>Si un contact est renseigné en tant que représentant 1 dans un compte famille alors il doit obligatoirement avoir une adresse pour la facturation</description>
     <errorConditionFormula>AND(
-NOT( $User.LPCR_BypassValidationRules__c ),
+NOT( $Permission.LPCR_ByPass_VR ),
 RecordType.DeveloperName = &#39;Famille&#39;,
 NOT(ISBLANK( LPCR_Representant1__c )),
 ISBLANK(LPCR_Representant1__r.MailingAddress) )</errorConditionFormula>
