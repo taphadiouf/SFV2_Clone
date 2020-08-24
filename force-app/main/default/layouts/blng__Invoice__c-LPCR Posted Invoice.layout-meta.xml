@@ -25,16 +25,8 @@
                 <field>blng__Account__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>blng__PaymentBatch__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>blng__BillToContact__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>blng__PaymentProcessStatus__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -92,7 +84,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Invoice Status Information</label>
+        <label>Statut de la facture</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -127,7 +119,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Balance Information</label>
+        <label>Balance</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -158,42 +150,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Payment Run Information</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>blng__DeclinedPaymentRunCount__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>blng__PaymentRunId__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>blng__PaymentRunProcessingMessage__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>blng__CorrectiveAction__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>blng__LastPaymentRunId__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>blng__LastPaymentRunProcessingMessage__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Invoice Date Information</label>
+        <label>Date de facturation</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -211,7 +168,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Price Information</label>
+        <label>Montant de la facture</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -233,7 +190,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Tax Information</label>
+        <label>Taxe</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -394,7 +351,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000001SCrH</masterLabel>
+        <masterLabel>00h1x000000sWMO</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

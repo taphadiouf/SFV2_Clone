@@ -5,26 +5,26 @@
 * @Updated by: Achraf ABOUL(Salesforce) 08/04/2020
 */
 public with sharing class APC001_LeadFaConverController{
-
+    
     @AuraEnabled(cacheable = true)
     public static List<Account> getRelatedCreches(Id leadId){
-
+        
         List<LPCR_LienCrecheLead__c> tmpLienCrecheLead = [SELECT Id, LPCR_Creche__c from LPCR_LienCrecheLead__c where LPCR_Lead__c = :leadId];
         Set<Id> accIdsSet = new Set<Id>();
         Set<String> accFieldsSet = new Set<String>();
-
+        
         accFieldsSet.add('Name');
-
+        
         for (LPCR_LienCrecheLead__c elem : tmpLienCrecheLead) {
             accIdsSet.add(elem.LPCR_Creche__c);
         }
-
+        
         return new EM005_AccountEntity().getByIds(accIdsSet, accFieldsSet);
     }
-
+    
     @AuraEnabled(cacheable=true)
     public static String getEnfants(Id leadId){
-
+        
         List<WRP002_EnfantWrapper> enfants = new List<WRP002_EnfantWrapper>();
         Set<String> fields = new Set<String>();
         for(Integer i = 1; i < 4; i++){
@@ -43,9 +43,9 @@ public with sharing class APC001_LeadFaConverController{
         }
         return JSON.serialize(enfants);
     }
-
+    
     public class WRP002_EnfantWrapper{
-
+        
         Integer num;
         String nom;
         String  prenom;
@@ -57,10 +57,10 @@ public with sharing class APC001_LeadFaConverController{
             this.label = label;
         }
     } 
-
+    
     @AuraEnabled(cacheable=true)
     public static List<Account> getAccountsByRecordtypeName(String recordTypeName) {
-
+        
         List<Account> accounts = new List<Account>();
         Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,recordTypeName);
         if(UM003_TypeManager.idNotNull(recordtypeId)){
@@ -68,10 +68,10 @@ public with sharing class APC001_LeadFaConverController{
         }
         return accounts;
     }
-
+    
     @AuraEnabled()
     public static void convertLeadCtrl(Id leadId, List<Integer> enfantsIndexes, Id chosenCrecheId, Id chosenCompteId){
-
+        
         Lead currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
         String prenomCoDemandeur = currentLead.LPCR_PrenomCoDemandeur__c;                                         
         String nomCoDemandeur = currentLead.LPCR_NomCoDemandeur__c;                                         
@@ -86,8 +86,9 @@ public with sharing class APC001_LeadFaConverController{
             nameList.add(eachName.Name);
         }
         boolean isvalid = true;
-       	String errMsg = 'Veuillez vérifier le suivant : ';
-       	String contactFirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur;
+        String errMsg = 'Veuillez vérifier le suivant : ';
+        String saveResultMsg = '';
+        String contactFirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur;
         Integer count = 0;
         
         for(String eachName : nameList){
@@ -105,7 +106,7 @@ public with sharing class APC001_LeadFaConverController{
             errMsg += 'le champ Compte Société est manquant, ';
             
         }
-
+        
         if(currentLead.LPCR_CompteSocieteCoDemandeur__c == Null){
             isvalid = False ;
             errMsg += 'le champ Compte Société Co-Demandeur est manquant, ';
@@ -124,26 +125,34 @@ public with sharing class APC001_LeadFaConverController{
             throw new AuraHandledException(errMsg);
         }
         
-        
-        
-        
-        
-        
-        
+ 
         //Create Account (Famille)
         Account newFamilleAccount = new Account(
             Name = Label.LPCR_Famille + ' ' + currentLead.LastName + (nomCoDemandeur != null ? (' ' +nomCoDemandeur) : ''), 
             RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Famille)
         );
         insert newFamilleAccount;  
+       
+        List<Database.SaveResult> accountSaveResultList = new List<Database.SaveResult>();
+        Database.SaveResult saveResult = Database.insert(newFamilleAccount, false);
+        accountSaveResultList.add(saveResult);
+        errMsg = '';
+        
+        saveResultMsg = validateSaveResult(accountSaveResultList);
+        if(String.isNotBlank(saveResultMsg)){
+            errMsg = 'Un doublon a été détécté sur le '+ saveResultMsg;
+            isvalid = False ;
+            throw new AuraHandledException(errMsg);
+        }
+        
         ///Create contacts (Enfants and Representants(Parent RT) )
         //Map : Contact Variable Name => Contact Record
-
+        
         Map<String, Contact> newContactsMap = new Map<String, Contact>();
-       
+        
         //Representants part (Parent)
         Id familleContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Parent);
-            newContactsMap.put('contactRep1', new Contact(
+        newContactsMap.put('contactRep1', new Contact(
             LastName =currentLead.LastName, 
             FirstName = currentLead.FirstName, 
             OwnerId = currentLead.OwnerId, 
@@ -187,7 +196,15 @@ public with sharing class APC001_LeadFaConverController{
                     RecordTypeId = enfantContactRT
                 ));
         }
-        insert newContactsMap.values();
+        List<Database.SaveResult> saveResultList = Database.insert(newContactsMap.values(), false);
+        errMsg = '';
+        saveResultMsg = '';
+        saveResultMsg = validateSaveResult(saveResultList);
+        if(String.isNotBlank(saveResultMsg)){
+            errMsg = 'Un doublon a été détécté sur le '+ saveResultMsg;
+            isvalid = False ;
+            throw new AuraHandledException(errMsg);
+        }
         
         //Set Reprsentants1 and Reprsentants2 fields for newFamilleAccount  
         newFamilleAccount.LPCR_Representant1__c = newContactsMap.get('contactRep1').Id;
@@ -226,7 +243,7 @@ public with sharing class APC001_LeadFaConverController{
         Contact tmpContactRep1;
         Contact tmpContactRep2;
         currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
-            for(Integer eachIndex : enfantsIndexes){
+        for(Integer eachIndex : enfantsIndexes){
             tmpContactEnfant = newContactsMap.get('contactEnfant' + eachIndex);
             tmpContactRep1 = newContactsMap.get('contactRep1');
             tmpContactRep2 = newContactsMap.get('contactRep2');   
@@ -250,5 +267,49 @@ public with sharing class APC001_LeadFaConverController{
             }
             update quotesList;
         }
+    }
+    
+    public static string validateSaveResult(List<Database.SaveResult> saveResultList) {
+        System.debug('**** validateSaveResult : size : '+ saveResultList.size());
+        
+        Database.SaveResult saveResult = saveResultList.get(0);
+        String errmsg = '';
+        
+        if (!saveResult.isSuccess()) {
+            for (Database.Error error : saveResult.getErrors()) {
+                // If there are duplicates, an error occurs
+                // Process only duplicates and not other errors 
+                //   (e.g., validation errors)
+                if (error instanceof Database.DuplicateError) {
+                    Database.DuplicateError duplicateError = (Database.DuplicateError)error;
+                    Datacloud.DuplicateResult duplicateResult = duplicateError.getDuplicateResult();
+                    
+                    // Return only match results of matching rules that 
+                    //  find duplicate records
+                    Datacloud.MatchResult[] matchResults = duplicateResult.getMatchResults();
+                    
+                    // Just grab first match result (which contains the 
+                    //   duplicate record found and other match info)
+                    Datacloud.MatchResult matchResult = matchResults[0];
+                    
+                    Datacloud.MatchRecord[] matchRecords = matchResult.getMatchRecords();
+                    
+                    // Add matched record to the duplicate records variable
+                    for (Datacloud.MatchRecord matchRecord : matchRecords) {
+                        System.debug('MatchRecord: ' + matchRecord.getRecord());
+                        String matchingId = matchRecord.getRecord().Id;
+                        if( matchingId.startsWith('001')){
+                            Account acc = (Account) matchRecord.getRecord();
+                            errmsg = ' compte : '+ acc.Name;
+                        }else if(matchingId.startsWith('003')){
+                            Contact cont = (Contact) matchRecord.getRecord();
+                            errmsg = ' contact : '+ cont.Name;
+                        }
+                    }
+                }
+            }
+            
+        }
+        return errmsg;
     }
 }

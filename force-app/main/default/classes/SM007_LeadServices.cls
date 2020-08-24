@@ -89,7 +89,13 @@ public class SM007_LeadServices {
             recordsToUpdate.addAll(targetRecordsMap.get(eachObjectName));
         }
         PAD.log('SM007_LeadServices','syncRecordTypesWithLeads','recordsToUpdate list size'+recordsToUpdate.size());
-        update recordsToUpdate;
+        try{
+            update recordsToUpdate;
+        }catch(Exception ex){
+            System.debug('*** Exception : '+ ex.getMessage());
+            throw new AuraHandledException(ex.getMessage());
+        }
+        
         
     }
     public static void  createLiensCrecheLead(List<Lead> leadsList){
