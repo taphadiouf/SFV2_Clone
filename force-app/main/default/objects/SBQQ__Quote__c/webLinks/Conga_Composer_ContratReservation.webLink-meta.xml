@@ -22,14 +22,14 @@
 &amp;Id={!SBQQ__Quote__c.Id}
 &amp;ContactId={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}
 
-&amp;QueryId=[ListPriceParis]a463O0000004Ee5,
-[ListPriceIDFGV]a463O0000004EeA,
-[ListPriceProv]a463O0000004EeF
+&amp;QueryId=[ListPriceParis]a443O00000057OT,
+[ListPriceIDFGV]a443O00000057OW,
+[ListPriceProv]a443O00000057OV
 
-&amp;TemplateId=a4E3O0000000EHA
+&amp;TemplateId=a4C3O0000004hIH
 
 &amp;DefaultPDF=1
-&amp;FP0=1
+&amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;),0,1)}
 &amp;ESVisible=1
 &amp;ESAgreementTemplateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratReservation__c}
 &amp;ESCustomField=LPCR_Devis__c
