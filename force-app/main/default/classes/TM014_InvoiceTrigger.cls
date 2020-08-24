@@ -22,6 +22,7 @@ public with sharing class TM014_InvoiceTrigger extends TM000_TriggerHandler {
     protected override void afterUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM015_InvoiceServices.createPaymentAndPaymentAllocation(newInvoiceList, oldInvoiceMap);
+            SM015_InvoiceServices.afterUpdateCreateCreditNoteAllocation(newInvoiceList);
         }
     }
 }

@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Field on Quote Line or Product Option object that is evaluated by this condition.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Choose the field that should contain the value you enter in the Value field.</inlineHelpText>
+    <inlineHelpText>Choisissez un champ dans l&apos;objet cible.</inlineHelpText>
     <label>Field</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
@@ -21,6 +21,11 @@
                 <fullName>SBQQ__Type__c</fullName>
                 <default>false</default>
                 <label>SBQQ__Type__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeCreche__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeCreche__c</label>
             </value>
         </valueSetDefinition>
     </valueSet>

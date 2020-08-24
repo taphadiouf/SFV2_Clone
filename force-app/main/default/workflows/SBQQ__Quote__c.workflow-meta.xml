@@ -275,11 +275,32 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>RT_Contrat_referencement</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Referencement</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>RT Contrat de référencement</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>RT_Contrat_referencement_approuve</fullName>
         <field>RecordTypeId</field>
         <lookupValue>Referencement_Approuve</lookupValue>
         <lookupValueType>RecordType</lookupValueType>
         <name>RT Contrat de référencement approuvé</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RT_Contrat_reservataire</fullName>
+        <description>Assigner un type d&apos;enregistrement Réservataire pour un Contrat Réservataire cloné.</description>
+        <field>RecordTypeId</field>
+        <lookupValue>Reservataire</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>RT Contrat réservataire</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
@@ -578,7 +599,7 @@
             <name>LPCR_StatutPretCommande</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <booleanFilter>1 AND 3 AND 4 AND (2 OR 5)</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
@@ -780,6 +801,11 @@
             <operation>equals</operation>
             <value>Contrat de Référencement</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Primary__c</field>
+            <operation>equals</operation>
+            <value>Vrai</value>
+        </criteriaItems>
         <description>Update RT quand le contrat de référencement est approuvé.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
@@ -790,17 +816,30 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
-            <operation>equals</operation>
-            <value>Approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Contrat Réservataire</value>
-        </criteriaItems>
         <description>Update RT quand le contrat réservataire est approuvé.</description>
+        <formula>AND(TEXT( ApprovalStatus__c ) = &apos;Approved&apos;,  RecordType.DeveloperName = &apos;Reservataire&apos;,  SBQQ__Primary__c = TRUE )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WF_Quote_UpdateRTRéférencementCloné</fullName>
+        <actions>
+            <name>RT_Contrat_referencement</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update RT sur un devis de référencement cloné.</description>
+        <formula>AND (NOT ( ISNULL( SBQQ__Source__c ) ), RecordType.DeveloperName = &apos;Referencement_Approuve&apos; )</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>WF_Quote_UpdateRTRéservataireCloné</fullName>
+        <actions>
+            <name>RT_Contrat_reservataire</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update RT sur un devis réservataire cloné.</description>
+        <formula>AND (NOT ( ISNULL( SBQQ__Source__c ) ), RecordType.DeveloperName = &apos;Reservataire_Approuve&apos; )</formula>
+        <triggerType>onCreateOnly</triggerType>
     </rules>
 </Workflow>

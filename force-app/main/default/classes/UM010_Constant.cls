@@ -30,5 +30,6 @@ public class UM010_Constant {
     public static final String NB_HEURES_REALISEE = 'NB_Heures_Realisee';
     public static final String TRAITEMENT_JOUR_FERIE = 'Traitement_Jour_Ferie';
     public static final String REGULARISATION = 'Regularisation';
+    public static final String CRECHE_LPCR = 'Crèche LPCR : ';
 
 }

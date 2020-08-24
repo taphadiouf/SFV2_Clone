@@ -19,4 +19,10 @@ public with sharing class TM016_CreditNoteTrigger extends TM000_TriggerHandler{
             SM021_CreditNoteServices.updateReleatedObjectsFields(newCreditNoteList);
         }
     }
+
+    protected override void afterUpdate() {
+        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+            SM021_CreditNoteServices.afterUpdateCreateCreditNoteAllocation(newCreditNoteList, oldCreditNoteMap);
+        }
+    }
 }

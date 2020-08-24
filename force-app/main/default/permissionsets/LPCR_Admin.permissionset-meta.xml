@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
+        <application>LPCR_ADV</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
         <application>LPCR_Commerce</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
+        <application>Service_Famille</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
+        <application>Service_Partenaires</application>
         <visible>true</visible>
     </applicationVisibilities>
     <description>A donner à tous les admins</description>
@@ -18,11 +30,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.AnnualRevenue</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Account.LPCR_ProcessRevenuCascade__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -53,6 +60,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.Jigsaw</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LCPR_CompteAnalytiqueClient__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LCPR_IDCompteCreche__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -122,6 +139,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_AgrementPMI__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_AgrementTotal__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -148,6 +170,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_BerceauxDisponibles__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_BudgetAnnuel__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -182,6 +209,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_CodeBIC__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CodeIBAN__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_CodePaie__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -203,6 +240,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_Commentaire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CompteAnalytiqueClient__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CompteBancaire__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -231,6 +278,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LPCR_DateDernierAppelOffre__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_DateOuverture__c</field>
         <readable>true</readable>
@@ -238,6 +290,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_DateProchainAO__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_DateProchainAppelOffre__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -342,12 +399,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_IDCompteCreche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_IDCompteEntreprise__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_IDCompteFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_IDExterne_CompteParent__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -417,7 +484,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_ModeleSpecifiqueFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_MoyenDeTransport__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_MoyenPaiement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_NAF__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -497,6 +579,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_NumeroFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_NumeroPurchaseOrder__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -517,6 +604,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_PrefixeNumFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_PrestataireActuelCreche__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -528,6 +620,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_PrivePublic__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_ProcessRevenuCascade__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -602,6 +699,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_ResponsableADV__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_ResponsableServiceFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_RevenuMensuelFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -637,6 +744,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_Solde__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_SousActivite__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -653,6 +765,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_TauxEffort__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_TelephoneSupplementaire__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -693,6 +810,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_TypeFacturation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_TypeMensualisation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1107,12 +1229,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contact.LPCR_AQuitteEntreprise__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Contact.LPCR_Actif__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.LPCR_AddresseComplementaire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.LPCR_AffichageFacture__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1172,6 +1304,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contact.LPCR_DesisncriptionNewsletter__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.LPCR_DetailHandicap__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.LPCR_EmailVerifie__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Contact.LPCR_EstMigre__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1212,7 +1359,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contact.LPCR_NomEntreprise__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Contact.LPCR_NumeroAllocataire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.LPCR_OffresPartFamillePetiteEnfance__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.LPCR_PrecisionAutreSituationPro__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1243,6 +1405,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.LPCR_Signataire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.LPCR_SituationProfessionnelle__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2777,6 +2944,61 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_RevenueCascade__c.LPCR_Compte__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_RevenueCascade__c.LPCR_CreditNoteLineAggregation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_RevenueCascade__c.LPCR_CreditNoteRevenue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_RevenueCascade__c.LPCR_DateDebut__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_RevenueCascade__c.LPCR_FAE__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_RevenueCascade__c.LPCR_MontantFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_RevenueCascade__c.LPCR_OrderInvoiceRevenue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_RevenueCascade__c.LPCR_OrderLineAggregation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_RevenueCascade__c.LPCR_OrderLineGroup__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_RevenueCascade__c.LPCR_PCA__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_RevenueCascade__c.LPCR_RevenueTheorique__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_Structure_AO__c.LPCR_Creation__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4247,22 +4469,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>OrderItem.LPCR_TraitementLigneFacturationAvenant__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>OrderItem.LPCR_ExclureDuPlanFacturation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>OrderItem.LPCR_ContractEndDate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>OrderItem.LPCR_ContractStartDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_ExclureDuPlanFacturation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4278,6 +4495,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>OrderItem.LPCR_TotalContractValue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_TraitementLigneFacturationAvenant__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -6725,61 +6947,6 @@
         <field>echosign_dev1__SIGN_Agreement__c.LPCR_Devis__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_RevenueCascade__c.LPCR_CreditNoteLineAggregation__c</field>
-        <readable>true</readable>
-</fieldPermissions>
-<fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_RevenueCascade__c.LPCR_CreditNoteRevenue__c</field>
-        <readable>true</readable>
-</fieldPermissions>
-<fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_RevenueCascade__c.LPCR_FAE__c</field>
-        <readable>true</readable>
-</fieldPermissions>
-<fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_RevenueCascade__c.LPCR_MontantFacture__c</field>
-        <readable>true</readable>
-</fieldPermissions>
-<fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_RevenueCascade__c.LPCR_OrderLineAggregation__c</field>
-        <readable>true</readable>
-</fieldPermissions>
-<fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_RevenueCascade__c.LPCR_OrderLineGroup__c</field>
-        <readable>true</readable>
-</fieldPermissions>
-<fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_RevenueCascade__c.LPCR_PCA__c</field>
-        <readable>true</readable>
-</fieldPermissions>
-<fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_RevenueCascade__c.LPCR_Compte__c</field>
-        <readable>true</readable>
-</fieldPermissions>
-<fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_RevenueCascade__c.LPCR_DateDebut__c</field>
-        <readable>true</readable>
-</fieldPermissions>
-<fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_RevenueCascade__c.LPCR_OrderInvoiceRevenue__c</field>
-        <readable>true</readable>
-</fieldPermissions>
-<fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_RevenueCascade__c.LPCR_RevenueTheorique__c</field>
-        <readable>true</readable>
-</fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>LPCR_Admin</label>
     <objectPermissions>
@@ -6927,15 +7094,6 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
-        <object>LPCR_RevenueCascade__c</object>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
         <allowEdit>false</allowEdit>
@@ -6951,6 +7109,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>LPCR_Preinscription__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>LPCR_RevenueCascade__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -7048,7 +7215,15 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
+        <recordType>Account.Creche_Externe</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
         <recordType>Account.Entreprise</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Account.Etablissement_LPCR</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
@@ -7076,7 +7251,15 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
+        <recordType>Contact.Famille</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
         <recordType>Contact.Parent</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Contact.Partenaire</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
