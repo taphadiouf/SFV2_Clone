@@ -24,7 +24,7 @@
 
 &amp;TemplateId=a4C3O0000004hII
 &amp;DefaultPDF=1
-&amp;FP0=1
+&amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;),0,1)}
 &amp;ESVisible=1
 &amp;ESAgreementTemplateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratAccueilMAC__c}
 &amp;ESCustomField=LPCR_Devis__c

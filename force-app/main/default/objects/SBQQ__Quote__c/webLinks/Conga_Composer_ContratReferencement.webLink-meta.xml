@@ -22,12 +22,12 @@
 &amp;serverUrl={!API.Partner_Server_URL_370}
 &amp;Id={!SBQQ__Quote__c.Id}
 &amp;ContactId={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}
-&amp;QueryId=[ListTablePrix]a463O0000004Ejz
+&amp;QueryId=[ListTablePrix]a443O00000057OU
 
-&amp;TemplateId=a4E3O0000000EH5
+&amp;TemplateId=a4C3O0000004hIJ
 
 &amp;DefaultPDF=1
-&amp;FP0=1
+&amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;), 0,1)}
 &amp;ESVisible=1
 &amp;ESAgreementTemplateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratReferencement__c}
 &amp;ESCustomField=LPCR_Devis__c
