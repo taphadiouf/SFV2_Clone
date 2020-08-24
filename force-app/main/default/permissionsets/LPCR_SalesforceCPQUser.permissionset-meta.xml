@@ -3343,13 +3343,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contract.LPCR_CompteFacturation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Contract.LPCR_CongesJours__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_ContactEnfant__c</field>
+<<<<<<< HEAD
+        <readable>true</readable>
+=======
         <readable>false</readable>
+>>>>>>> 041f3442fdfd4208566dedca9b9f08bb1a0c6b53
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -3524,17 +3533,29 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_NouveauPlanFacturation__c</field>
+<<<<<<< HEAD
+        <readable>true</readable>
+=======
         <readable>false</readable>
+>>>>>>> 041f3442fdfd4208566dedca9b9f08bb1a0c6b53
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_NouveauPlanFacture__c</field>
+<<<<<<< HEAD
+        <readable>true</readable>
+=======
         <readable>false</readable>
+>>>>>>> 041f3442fdfd4208566dedca9b9f08bb1a0c6b53
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_NumeroContrat__c</field>
+<<<<<<< HEAD
+        <readable>true</readable>
+=======
         <readable>false</readable>
+>>>>>>> 041f3442fdfd4208566dedca9b9f08bb1a0c6b53
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -3544,7 +3565,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_Region__c</field>
+<<<<<<< HEAD
+        <readable>true</readable>
+=======
         <readable>false</readable>
+>>>>>>> 041f3442fdfd4208566dedca9b9f08bb1a0c6b53
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -3554,12 +3579,20 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_RenouvellementPlanFacturation__c</field>
+<<<<<<< HEAD
+        <readable>true</readable>
+=======
         <readable>false</readable>
+>>>>>>> 041f3442fdfd4208566dedca9b9f08bb1a0c6b53
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_RenouvellementPlanFacture__c</field>
+<<<<<<< HEAD
+        <readable>true</readable>
+=======
         <readable>false</readable>
+>>>>>>> 041f3442fdfd4208566dedca9b9f08bb1a0c6b53
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -3594,7 +3627,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_TotaleGlobalePlanFacture__c</field>
+<<<<<<< HEAD
+        <readable>true</readable>
+=======
         <readable>false</readable>
+>>>>>>> 041f3442fdfd4208566dedca9b9f08bb1a0c6b53
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -3619,12 +3656,20 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_ValeurTotaleAnnee__c</field>
+<<<<<<< HEAD
+        <readable>true</readable>
+=======
         <readable>false</readable>
+>>>>>>> 041f3442fdfd4208566dedca9b9f08bb1a0c6b53
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_ValeurTotale__c</field>
+<<<<<<< HEAD
+        <readable>true</readable>
+=======
         <readable>false</readable>
+>>>>>>> 041f3442fdfd4208566dedca9b9f08bb1a0c6b53
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
