@@ -16,7 +16,17 @@
                 <label>Carte Bancaire</label>
             </value>
             <value>
+                <fullName>CESU</fullName>
+                <default>false</default>
+                <label>Carte Bancaire</label>
+            </value>
+            <value>
                 <fullName>Chèque</fullName>
+                <default>false</default>
+                <label>Chèque</label>
+            </value>
+            <value>
+                <fullName>Espèce</fullName>
                 <default>false</default>
                 <label>Chèque</label>
             </value>
