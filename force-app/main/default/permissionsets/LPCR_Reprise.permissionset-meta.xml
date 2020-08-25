@@ -2936,6 +2936,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_RessourceFamille__c.LPCR_IdExterne__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_RessourceFamille__c.LPCR_IdExterne_BaremeCaf__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4262,6 +4267,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.sbaa__SubmittedUser__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Product2.LPCR_RefCodeProduit__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
