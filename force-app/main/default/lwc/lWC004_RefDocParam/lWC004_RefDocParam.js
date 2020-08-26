@@ -92,6 +92,9 @@ export default class LWC004_RefDocParam extends LightningElement {
     this.template
       .querySelector("div.modalBackdrops")
       .classList.add("slds-hide");
+      this.template.querySelectorAll('lightning-combobox').forEach(each => {
+        each.value = undefined;
+    });
   }
 
 
