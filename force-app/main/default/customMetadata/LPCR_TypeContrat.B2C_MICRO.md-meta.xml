@@ -3,7 +3,11 @@
     <label>B2C MICRO</label>
     <protected>false</protected>
     <values>
+        <field>LPCR_JourAvanceRenouvellement__c</field>
+        <value xsi:type="xsd:double">6.0</value>
+    </values>
+    <values>
         <field>LPCR_JourFacturation__c</field>
         <value xsi:type="xsd:double">27.0</value>
-    </values>
+    </values>    
 </CustomMetadata>
