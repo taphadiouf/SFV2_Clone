@@ -4,7 +4,7 @@
     <encodingKey>ISO-8859-1</encodingKey>
     <name>Contrat Non Signé</name>
     <style>none</style>
-    <subject>Le Contrat {!SBQQ__Quote__c.Name} n&#39;est pas signé</subject>
+    <subject>Le Contrat {!SBQQ__Quote__c.LPCR_NumeroContrat__c} n&apos;est pas signé</subject>
     <type>text</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>
