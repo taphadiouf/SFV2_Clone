@@ -156,6 +156,7 @@ public with sharing class APC006_CloneQuoteLines {
             Database.rollback(sp);
             return false;
         }
+        SBQQ.TriggerControl.Enable();
         return true;
     }
     public class CustomException extends Exception {

@@ -68,7 +68,8 @@ public class SM006_PreinscriptionServices {
         
     }
     
-    public static void setStatusWhenValidateFormulaireIsTrue(Map<Id,LPCR_Preinscription__c> mapNewPreinscription,Map<Id,LPCR_Preinscription__c> mapOldPreinscription){
+    //commented in the context of bug/IS-1356
+   /* public static void setStatusWhenValidateFormulaireIsTrue(Map<Id,LPCR_Preinscription__c> mapNewPreinscription,Map<Id,LPCR_Preinscription__c> mapOldPreinscription){
         for(LPCR_Preinscription__c eachPreinscription : mapNewPreinscription.values()){
             if(eachPreinscription.LPCR_ValidationFormulaire__c && mapOldPreinscription.get(eachPreinscription.Id).LPCR_ValidationFormulaire__c != eachPreinscription.LPCR_ValidationFormulaire__c ){
                 eachPreinscription.LPCR_Statut__c=Label.LPCR_ListeAtt;               
@@ -81,7 +82,7 @@ public class SM006_PreinscriptionServices {
             if(eachPreinscription.LPCR_ValidationFormulaire__c ){eachPreinscription.LPCR_Statut__c=Label.LPCR_ListeAtt;               
                                                                 }
         }
-    }
+    }*/
     
     
 }

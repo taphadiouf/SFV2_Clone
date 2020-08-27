@@ -14049,6 +14049,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_TypeContrat__mdt.LPCR_JourAvanceRenouvellement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Type_Evenement_Intranet__mdt.LPCR_Annexe2__c</field>
         <readable>false</readable>

@@ -4,8 +4,9 @@
 * @Description Batch for Traitement Modification Entrante
 */
 
-global class APB014_TraitementModificationEntrante implements Database.Batchable<sObject>,Schedulable,Database.AllowsCallouts{
+global class APB014_TraitementModificationEntrante implements Database.Batchable<sObject>,Schedulable,Database.Stateful,Database.AllowsCallouts{
     String query;
+    global set<id> allSuccessId=new set<id>();
 
     global APB014_TraitementModificationEntrante() {
 
@@ -21,11 +22,27 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
         PAD.log('APB014_TraitementModificationEntrante', 'execute','scope to execute : '+scope );
         
         Set<Id> modificationEntranteIds = UM003_TypeManager.getIdsOfListObjects(scope);
-        SM022_ModificationEntranteServices.updateQuotesFromModifEntrantesBatch(scope);
+        Set<Id> newQuoteIds = new Set<Id>();
+        
+        newQuoteIds = SM022_ModificationEntranteServices.updateQuotesFromModifEntrantesBatch(scope);
+        PAD.log('APB014_TraitementModificationEntrante', 'execute','quote ids '+newQuoteIds );
+        
+        if(newQuoteIds != null && newQuoteIds.size() > 0){
+            allSuccessId.addAll(newQuoteIds);
+        }
          
     }
     
     global void finish(Database.BatchableContext BC) {
+        PAD.log('APB014_TraitementModificationEntrante', 'finish','quote ids '+allSuccessId );   
+        if(allSuccessId != null && allSuccessId.size() > 0){
+            APB016_QuoteReCalculateProcess sc = new APB016_QuoteReCalculateProcess();
+            sc.quoteIds = allSuccessId;
+            
+            Datetime dt = Datetime.now().addMinutes(2);  // i.e. 2 mins
+            String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
+            Id schedId = System.Schedule('APB016_QuoteReCalculateProcess'+timeForScheduler,timeForScheduler,sc);
+        }    
     }
     
     global void execute(SchedulableContext sc) {
