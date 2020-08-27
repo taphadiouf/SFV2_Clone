@@ -373,6 +373,26 @@
         <fields>OPPORTUNITY.CLOSE_DATE</fields>
         <relatedList>Opportunity.SBQQ__RenewedContract__c</relatedList>
     </relatedLists>
+     <relatedLists>
+        <fields>NAME</fields>
+        <fields>LPCR_ComptePartenaire__c</fields>
+        <fields>LPCR_ContactEnfant__c</fields>
+        <fields>LPCR_ContactPartenaire__c</fields>
+        <fields>LPCR_ContratPartenaire__c</fields>
+        <fields>LPCR_Creche__c</fields>
+        <fields>LPCR_Statut__c</fields>
+        <relatedList>LPCR_BonAchatPartenaire__c.LPCR_ContratReservataire__c</relatedList>
+        <sortField>LPCR_Statut__c</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>CASES.CASE_NUMBER</fields>
+        <fields>CASES.STATUS</fields>
+        <fields>CASES.CREATED_DATE</fields>
+        <relatedList>Case.LPCR_ContratEntreprise__c</relatedList>
+        <sortField>CASES.STATUS</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
     </relatedLists>
