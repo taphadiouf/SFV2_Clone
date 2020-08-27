@@ -77,9 +77,10 @@ public class SM006_PreinscriptionServices_Test {
         }
     }
     
+    //commented in the context of bug/IS-1356
     //Test the method setStatusWhenValidateFormulaireIsTrue_Test from SM006_PreinscriptionServices class indirectly
-    @isTest
-    public static void setStatusWhenValidateFormulaireIsTrue_Test(){
+    //@isTest
+   /* public static void setStatusWhenValidateFormulaireIsTrue_Test(){
         
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
@@ -94,5 +95,5 @@ public class SM006_PreinscriptionServices_Test {
             System.assertEquals(allPreInscrList.size(), listAttPreinscList.size(),'Error in SM006_PreinscriptionServices_Test.setStatusWhenValidateFormulaireIsTrue_Test : LPCR_Preinscription__c.LPCR_Statut__c not equals Liste d’attente ');            
                
         }
-    }
+    }*/
 }

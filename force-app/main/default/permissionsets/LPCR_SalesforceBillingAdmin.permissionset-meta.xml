@@ -2838,11 +2838,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>LPCR_PlanFacturation__c.LPCR_Compte__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_PlanFacturation__c.LPCR_OrderItem__c</field>
         <readable>true</readable>
@@ -5919,6 +5914,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_Commentaire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_CongesPrisPeriode__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_ConversionLigneNegative__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>blng__Invoice__c.LPCR_EstMigre__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5963,7 +5973,17 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_NomCompletRepresentant1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_NomCompletRepresentant2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>blng__Invoice__c.LPCR_NumeroCompteBancaire__c</field>
         <readable>true</readable>
     </fieldPermissions>

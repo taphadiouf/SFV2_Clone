@@ -14049,6 +14049,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_TypeContrat__mdt.LPCR_JourAvanceRenouvellement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Type_Evenement_Intranet__mdt.LPCR_Annexe2__c</field>
         <readable>false</readable>
@@ -32558,15 +32563,15 @@
         <layout>Contract-Présentation du contrat</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contract-Présentation du contrat</layout>
+        <layout>Contract-Accueil</layout>
         <recordType>Contract.Accueil</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contract-Présentation du contrat</layout>
+        <layout>Contract-Référencement</layout>
         <recordType>Contract.Referencement</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contract-Présentation du contrat</layout>
+        <layout>Contract-Réservataire</layout>
         <recordType>Contract.Reservataire</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -34573,12 +34578,12 @@
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Contract.Referencement</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
         <recordType>Contract.Reservataire</recordType>
-        <visible>false</visible>
+        <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>

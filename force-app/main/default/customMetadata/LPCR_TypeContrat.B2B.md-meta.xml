@@ -3,6 +3,10 @@
     <label>B2B</label>
     <protected>false</protected>
     <values>
+        <field>LPCR_JourAvanceRenouvellement__c</field>
+        <value xsi:type="xsd:double">35.0</value>
+    </values>
+    <values>
         <field>LPCR_JourFacturation__c</field>
         <value xsi:type="xsd:double">35.0</value>
     </values>

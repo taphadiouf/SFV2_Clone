@@ -2936,6 +2936,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_RessourceFamille__c.LPCR_IdExterne__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_RessourceFamille__c.LPCR_IdExterne_BaremeCaf__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4266,6 +4271,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Product2.LPCR_RefCodeProduit__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__QuoteLine__c.Custom_Quantity__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5572,6 +5582,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_SecondOptionStartDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_Section__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
