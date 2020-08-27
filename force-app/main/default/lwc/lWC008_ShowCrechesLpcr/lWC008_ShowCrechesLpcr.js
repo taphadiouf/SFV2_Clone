@@ -22,7 +22,7 @@ export default class LWC008_ShowCrechesLpcr extends LightningElement {
         this.icon = redmarker;
     }
     connectedCallback() {
-        
+        console.log('aaaaa');
         getLocations({ currentId: this.recordId, modeAffich: this.modeAffich })
             .then(result => {
                 console.log(result);
@@ -38,6 +38,7 @@ export default class LWC008_ShowCrechesLpcr extends LightningElement {
                 this.showMap = true;
             })
             .catch(error => {
+                console.log('Error');
                 this.error = error;
             });
     }
