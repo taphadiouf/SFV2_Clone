@@ -101,7 +101,7 @@ public with sharing class SM022_ModificationEntranteServices {
     
     
     // added by saurabh
-    public static void updateQuotesFromModifEntrantesBatch(List<LPCR_ModificationEntrante__c> ModifEntrantesList){
+    public static Set<Id> updateQuotesFromModifEntrantesBatch(List<LPCR_ModificationEntrante__c> ModifEntrantesList){
         
         Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
         Date firstDayOfNextMonthDate = Date.newInstance(Date.today().Year(), Date.today().month()+1 ,1) ;
@@ -111,7 +111,8 @@ public with sharing class SM022_ModificationEntranteServices {
         Set<String> contactIds = UM003_TypeManager.getFieldsOfListObjects(ModifEntrantesList, 'LPCR_Contact__c');
         Set<String> modifEntrantesIds = UM003_TypeManager.getFieldsOfListObjects(ModifEntrantesList, 'Id');
         Set<String> contractIds = UM003_TypeManager.getFieldsOfListObjects(ModifEntrantesList, 'LPCR_Contract__c');
-        
+        Set<Id> newQuoteIds = new Set<Id>();
+
         Map<Id,LPCR_RessourceFamille__c> ressourceFamilleMap = new Map<Id,LPCR_RessourceFamille__c>();
         Map<Id,Contact> modifEntrantesContactMap = new Map<Id,Contact>();
         Map<Id,Contract> modifEntrantesContractMap = new Map<Id,Contract>();
@@ -160,15 +161,10 @@ public with sharing class SM022_ModificationEntranteServices {
                     listRessourceFamilleToInsert.add(ressourceFamilleToInsert);
                     
                     WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
-                    
-                    SBQQ.TriggerControl.disable();
-                    
                     cloneAndCancelSubscriptions(quoteModel);
                     
-                    SBQQ.TriggerControl.enable();
                     SBQQ__Quote__c quote = quoteModel.record;
                     quote.LPCR_LaunchRecalculation__c = true;
-                    //listQuoteForUpdate.add(quote);
                     mapOfQuoteForUpdate.put(quote.id,quote);
                     eachModifEntrante.LPCR_EtatTraitement__c = true;    
                 }
@@ -184,15 +180,10 @@ public with sharing class SM022_ModificationEntranteServices {
                     listRessourceFamilleToInsert.add(ressourceFamilleToInsert);
                     
                     WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
-                    
-                    SBQQ.TriggerControl.disable();
-                    
                     cloneAndCancelSubscriptions(quoteModel);
                     
-                    SBQQ.TriggerControl.enable();
                     SBQQ__Quote__c quote = quoteModel.record;
                     quote.LPCR_LaunchRecalculation__c = true;
-                    //listQuoteForUpdate.add(quote);
                     mapOfQuoteForUpdate.put(quote.id,quote);
                     eachModifEntrante.LPCR_EtatTraitement__c = true;    
                 }
@@ -210,15 +201,10 @@ public with sharing class SM022_ModificationEntranteServices {
                     listRessourceFamilleToInsert.add(ressourceFamilleToInsert);
                     
                     WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
-                    
-                    SBQQ.TriggerControl.disable();
-                    
                     cloneAndCancelSubscriptions(quoteModel);
                     
-                    SBQQ.TriggerControl.enable();
                     SBQQ__Quote__c quote = quoteModel.record;
                     quote.LPCR_LaunchRecalculation__c = true;
-                    //listQuoteForUpdate.add(quote);
                     mapOfQuoteForUpdate.put(quote.id,quote);
                     eachModifEntrante.LPCR_EtatTraitement__c = true;    
                 }
@@ -237,7 +223,6 @@ public with sharing class SM022_ModificationEntranteServices {
                         
                         for(LPCR_DetailModificationPlanning__c eachDetailModifPlan : detailModifPlanningMap.get(eachModifEntrante.Id)){
                             LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(
-                                //LPCR_Planning__c = tmpPlanning.Id,
                                 LPCR_Contrat__c  =quoteModel.record.Id,
                                 LPCR_HeureDebutLundi__c = eachDetailModifPlan.LPCR_HeureDebutLundi__c,
                                 LPCR_HeureFinLundi__c   = eachDetailModifPlan.LPCR_HeureFinLundi__c,
@@ -252,33 +237,20 @@ public with sharing class SM022_ModificationEntranteServices {
                             allPlanningPrevisionnelInsertMap.get(quoteModel.record.Id).add(pl);
                         }
                     }
-                    
-                    
-                    SBQQ.TriggerControl.disable();
-                    
                     cloneAndCancelSubscriptions(quoteModel);
-                    
-                    SBQQ.TriggerControl.enable();
                     
                     SBQQ__Quote__c quote = quoteModel.record;
                     quote.SBQQ__Status__c = 'Brouillon';
-                    //listQuoteForUpdate.add(quote);
                     mapOfQuoteForUpdate.put(quote.id,quote);
                     eachModifEntrante.LPCR_EtatTraitement__c = true;
                 }
             }else if('Modification_Nombre_Jour_Conge'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Contract__c != null ){
                 WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
-                
-                SBQQ.TriggerControl.disable();
-                
                 cloneAndCancelSubscriptions(quoteModel);
-                
-                SBQQ.TriggerControl.enable();
                 
                 SBQQ__Quote__c quote = quoteModel.record;
                 quote.LPCR_CongesJours__c = eachModifEntrante.LPCR_Quantite__c;
                 quote.LPCR_LaunchRecalculation__c = true;
-                //listQuoteForUpdate.add(quote);
                 mapOfQuoteForUpdate.put(quote.id,quote);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;                
             }else if('Date_Fin_Contrat'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Compte__c != null && eachModifEntrante.LPCR_DateEffet__c != null){
@@ -291,8 +263,6 @@ public with sharing class SM022_ModificationEntranteServices {
                     
                     WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
                     
-                    SBQQ.TriggerControl.disable();
-                    
                     List<SBQQ__QuoteLine__c> listCloneQuoteLine = new List<SBQQ__QuoteLine__c>();
                     for(WRP002_QuoteLineModel eachQuoteLine : quoteModel.lineItems){
                         SBQQ__QuoteLine__c updateQLI = eachQuoteLine.record;
@@ -301,32 +271,23 @@ public with sharing class SM022_ModificationEntranteServices {
                     }
                     if(listCloneQuoteLine.size() > 0){
                         allListCloneQuoteLine.addAll(listCloneQuoteLine);
-                    }
-                    
-                    SBQQ.TriggerControl.enable();
+                    }                    
                     
                     SBQQ__Quote__c quote = quoteModel.record;
                     quote.SBQQ__StartDate__c = eachModifEntrante.LPCR_DateEffet__c; //endDate ;
                     quote.LPCR_DateResiliation__c = eachModifEntrante.LPCR_DateEffet__c;
                     quote.LPCR_TypeAvenant__c = 'Résiliation';
                     quote.SBQQ__Status__c = 'Brouillon';
-                    //listQuoteForUpdate.add(quote);
                     mapOfQuoteForUpdate.put(quote.id,quote);
                     eachModifEntrante.LPCR_EtatTraitement__c = true;
                 }
             }else if('Modification_Type_Accueil'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_TypeAccueil__c != null){
                 WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
-                
-                SBQQ.TriggerControl.disable();
-                
                 cloneAndCancelSubscriptions(quoteModel);
-                
-                SBQQ.TriggerControl.enable();
                 
                 SBQQ__Quote__c quote = quoteModel.record;
                 quote.LPCR_LaunchRecalculation__c = true;
                 quote.SBQQ__Status__c = 'Brouillon';
-                //listQuoteForUpdate.add(quote);
                 mapOfQuoteForUpdate.put(quote.id,quote);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
                 
@@ -414,7 +375,6 @@ public with sharing class SM022_ModificationEntranteServices {
             }else if('Validation Contrat Directrice'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null ){
                 SBQQ__Quote__c updateQuote = new SBQQ__Quote__c(Id = modifEntrantesContractMap.get(eachModifEntrante.LPCR_Contract__c).SBQQ__Quote__c);
                 updateQuote.SBQQ__Status__c = 'Validé directrice';
-                //listQuoteForUpdate.add(quote);
                 mapOfQuoteForUpdate.put(updateQuote.id,updateQuote);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }else if('Regularisation'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
@@ -446,14 +406,14 @@ public with sharing class SM022_ModificationEntranteServices {
             }
         }
         if(allListCloneQuoteLine.size() > 0){
-            SBQQ.TriggerControl.disable();
             UPSERT allListCloneQuoteLine;
-            SBQQ.TriggerControl.enable();
         }
         if(mapOfQuoteForUpdate.size() > 0){
-            SBQQ.TriggerControl.disable();
             UPDATE mapOfQuoteForUpdate.values();
-            SBQQ.TriggerControl.enable();
+            // populate newQuoteIds from new quote ids
+            for(String key : mapOfQuoteForUpdate.keySet()){
+                newQuoteIds.add((Id) key);
+            }
         }
         if(allAccountUpdateList.size() > 0){
             UPDATE allAccountUpdateList;
@@ -473,7 +433,7 @@ public with sharing class SM022_ModificationEntranteServices {
         if(ModifEntrantesList.size() > 0){
             UPDATE ModifEntrantesList;
         }
-        
+        return newQuoteIds;
     }
     
     public static LPCR_RessourceFamille__c createNewRessourceFamille(LPCR_RessourceFamille__c oldRessourceFamille){
