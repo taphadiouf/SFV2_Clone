@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_DateConfirmationInteret__c</fullName>
+    <description>date à laquelle les parents confirment leur intérêt pour une inscription en crèche</description>
+    <externalId>false</externalId>
+    <label>Date de confirmation de l&apos;intérêt</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>
