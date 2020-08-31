@@ -11642,6 +11642,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_TauxTVA__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>blng__Invoice__c.Tech_FormuleCongaBatch__c</field>
         <readable>true</readable>
     </fieldPermissions>
