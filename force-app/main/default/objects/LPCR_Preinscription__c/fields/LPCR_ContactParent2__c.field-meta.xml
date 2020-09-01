@@ -3,10 +3,10 @@
     <fullName>LPCR_ContactParent2__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Contact Parent2</label>
+    <label>Contact Parent 2</label>
     <referenceTo>Contact</referenceTo>
-    <relationshipLabel>Préinscriptions (Contact Parent2)</relationshipLabel>
-    <relationshipName>Pr_inscriptions</relationshipName>
+    <relationshipLabel>Préinscriptions (Contact Parent 2)</relationshipLabel>
+    <relationshipName>PreinscriptionsParent2</relationshipName>
     <required>false</required>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>

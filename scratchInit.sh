@@ -8,7 +8,7 @@ YourAlias=$1
 
 echo "Script Version 1.2 : Creating New Scratch Org..."
 
-sfdx force:org:create --setdefaultusername -f config/project-scratch-def.json --setalias $YourAlias -d 30
+sfdx force:org:create --setdefaultusername -f config/project-scratch-def.json --setalias $YourAlias -d 10
 
 echo "------> Starting managed package installation..."
 

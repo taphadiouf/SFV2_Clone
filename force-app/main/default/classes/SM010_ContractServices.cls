@@ -210,7 +210,7 @@ public class SM010_ContractServices {
     public static Contract setContractFieldsFromQuoteMaper(Contract contract,SBQQ__Quote__c quote){
         
         Pad.log('SM010_ContractServices','setContractFieldsFromQuoteMaper(SBQQ__Quote__c quote)','quote : '+quote);
-        
+                
         contract.LPCR_IndexationConvenue__c = quote.LPCR_IndexationConvenue__c;
         
         contract.LPCR_TypeFacturation__c = quote.LPCR_TypeFacturation__c;
@@ -247,7 +247,14 @@ public class SM010_ContractServices {
         contract.LPCR_ResponsableServiceFamille__c = quote.LPCR_ResponsableServiceFamille__c;
         if(Trigger.IsInsert && Trigger.IsBefore){
             contract.LPCR_BatchCommande__c=quote.LPCR_BatchCommande__c;
+            
+            
+            if(contract.recordtype.DeveloperName == 'Accueil'){
+                contract.LPCR_Section__c  = quote.LPCR_Section__c  ;
+            }
         }
+        
+        
         return contract;
     }
     
