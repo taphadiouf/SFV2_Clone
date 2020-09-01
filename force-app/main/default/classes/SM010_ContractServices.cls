@@ -82,6 +82,38 @@ public class SM010_ContractServices {
             update accounts;
         }
     }
+    // added by saurabh IS-1449
+    public static void afterInsertUpdateContractFields(List<Contract> contracts){
+        Pad.log('SM010_ContractServices','afterInsertUpdateContractFields(List<Contract> contracts)','contracts size  '+ contracts.size());
+        Set<Id> contractIds = UM003_TypeManager.getIdsOfListObjects(contracts);
+        // call future method for populate LPCR_NumeroContrat__c field value on contract from order
+        updateContractNumeroContrat(contractIds);
+    }
+    
+    // added by saurabh IS-1449
+    @future(Callout=true)
+    public static void updateContractNumeroContrat(Set<Id> contractIds){
+        Pad.log('SM010_ContractServices','updateContractNumeroContrat(Set<Id> contractIds)','contractIds  '+ contractIds);
+        Set<Id> orderIds = new Set<Id>();
+        for(Contract eachContract : [select Id, SBQQ__Order__c from Contract where Id in : contractIds]){
+            if(eachContract.SBQQ__Order__c != null){
+                orderIds.add(eachContract.SBQQ__Order__c);
+            }            
+        }  
+        Pad.log('SM010_ContractServices','updateContractNumeroContrat(Set<Id> contractIds)','orderIds  '+ orderIds);
+        
+        Map<Id,Order> orderMap = new  Map<Id,Order>([SELECT id, LPCR_NumeroContrat__c from Order WHERE Id in: orderIds]);	
+        List<Contract> updateContractList = new List<Contract>();
+        for (Contract eachContract : [select Id, SBQQ__Order__c,LPCR_NumeroContrat__c from Contract where Id in : contractIds]){
+            if(orderMap.containsKey(eachContract.SBQQ__Order__c)){
+                eachContract.LPCR_NumeroContrat__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_NumeroContrat__c;
+            	updateContractList.add(eachContract);
+            }
+        }
+        if(updateContractList.size() > 0){
+            update updateContractList; 
+        }       
+    }
     
     /* deleted in IS-1165
     public static void setTypeEnregistrement(List<Contract> contracts){
