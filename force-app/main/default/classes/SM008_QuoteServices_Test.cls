@@ -241,7 +241,7 @@ public class SM008_QuoteServices_Test {
             Contract con = new Contract(AccountID = accs.get(0).id,SBQQ__Opportunity__c = oppties.get(0).id,
                                         LPCR_Sales_Rep__c = UserInfo.getUserId(), LPCR_ResponsableADV__c = UserInfo.getUserId(), LPCR_ResponsableServiceFamille__c = UserInfo.getUserId(),
                                         StartDate =System.today(),ContractTerm = 12,LPCR_DateDebut__c =Date.newInstance(2020, 05, 01),
-                                        LPCR_DateFin__c = Date.newInstance(2020, 05, 30),LPCR_MethodeRenouvellement__c = 'Express' );
+                                        LPCR_DateFin__c = Date.newInstance(2020, 05, 30),LPCR_MethodeRenouvellement__c = 'Express', RecordTypeId = CONTRACT_REFERENCEMENT_RT_ID );
             Insert con;
             
             quote.LPCR_ContractEntreprise__c  = con.Id;
