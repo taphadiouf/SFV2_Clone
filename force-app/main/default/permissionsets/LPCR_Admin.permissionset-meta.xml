@@ -6953,6 +6953,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_TauxTVA__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>blng__Usage__c.LPCR_ContactEnfant__c</field>
         <readable>true</readable>
@@ -7339,6 +7344,14 @@
         <recordType>SBQQ__Quote__c.Reservataire</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>blng__Invoice__c.LCPR_DraftInvoice</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>blng__Invoice__c.LPCR_PostedInvoice</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <tabSettings>
         <tab>LPCR_PlanningPrevisionnel__c</tab>
         <visibility>Visible</visibility>
@@ -7349,6 +7362,10 @@
     </tabSettings>
     <tabSettings>
         <tab>SBQQ__Quote__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>blng__Invoice__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
