@@ -107,7 +107,7 @@ public with sharing class APC001_LeadFaConverController{
             
         }
         
-        if(nomCoDemandeur != Null && prenomCoDemandeur != Null  && currentLead.LPCR_CompteSocieteCoDemandeur__c == Null){
+        if((nomCoDemandeur != Null || prenomCoDemandeur != Null ) && currentLead.LPCR_CompteSocieteCoDemandeur__c == Null){
             isvalid = False ;
             errMsg += 'le champ Compte Société Co-Demandeur est manquant, ';
             
