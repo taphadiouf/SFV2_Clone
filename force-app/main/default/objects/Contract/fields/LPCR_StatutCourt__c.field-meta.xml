@@ -4,7 +4,7 @@
     <externalId>false</externalId>
     <formula>IF(TEXT(LPCR_StatutInscription__c)=&quot;Recommandation validée&quot;,&quot;RV&quot;,LEFT(TEXT(LPCR_StatutInscription__c),1))</formula>
     <inlineHelpText>Statut de l&apos;inscription d&apos;un enfant</inlineHelpText>
-    <label>Statut court</label>
+    <label>Etat</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <type>Text</type>
