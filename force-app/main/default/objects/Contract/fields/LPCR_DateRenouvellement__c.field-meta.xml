@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_DateRenouvellement__c</fullName>
     <externalId>false</externalId>
-    <formula>EndDate -  LPCR_JoursAvance__c</formula>
+    <formula>IF( AND( OR(RecordType.DeveloperName = &apos;Reservataire&apos;,RecordType.DeveloperName = &apos;Referencement&apos;), ISPICKVAL( LPCR_TypeFacturation__c, &apos;Advance&apos; )), EndDate -  $CustomMetadata.LPCR_TypeContrat__mdt.B2B.LPCR_JourAvanceRenouvellement__c , IF(AND(RecordType.DeveloperName = &apos;Accueil&apos;, ISPICKVAL( LPCR_TypeFacturation__c, &apos;Advance&apos; ), ISPICKVAL( LPCR_TypeCreche__c , &apos;MICRO&apos;)), EndDate - $CustomMetadata.LPCR_TypeContrat__mdt.B2C_MICRO.LPCR_JourAvanceRenouvellement__c ,  IF(AND(RecordType.DeveloperName = &apos;Accueil&apos;, ISPICKVAL( LPCR_TypeFacturation__c, &apos;Advance&apos; ), ISPICKVAL( LPCR_TypeCreche__c , &apos;MAC&apos;)), EndDate -  $CustomMetadata.LPCR_TypeContrat__mdt.B2C_MAC.LPCR_JourAvanceRenouvellement__c ,  EndDate )  ) )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Date de Renouvellement</label>
     <required>false</required>

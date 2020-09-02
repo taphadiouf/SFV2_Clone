@@ -1,3 +1,7 @@
 .maproot{
     height: 100px;
 }
+
+.fixmap{
+    position: sticky !important;
+}
