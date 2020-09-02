@@ -177,6 +177,13 @@ public with sharing class SM008_QuoteServices {
             
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c) || Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c)){
                 if(eachQuote.SBQQ__StartDate__c != null){
+                    // added by saurabh IS-1577   Get default uplift rate from custom metadata
+                    Map<String, LPCR_Default_Uplift_Rate__mdt> defaultUpliftRateMap = new Map<String, LPCR_Default_Uplift_Rate__mdt>();
+
+                    for(LPCR_Default_Uplift_Rate__mdt eachDefaultUpliftRate : [SELECT Id ,MasterLabel,LPCR_RenewalUpliftRate__c FROM LPCR_Default_Uplift_Rate__mdt]){
+                        defaultUpliftRateMap.put(eachDefaultUpliftRate.MasterLabel, eachDefaultUpliftRate);
+                    }
+
                     Date dueStartDateQuote = date.newInstance(eachQuote.SBQQ__StartDate__c.year(), 12, 31);                               
                     Date endDate = eachQuote.LPCR_DateFin__c;
 
@@ -193,6 +200,13 @@ public with sharing class SM008_QuoteServices {
                                 Date dueDateRenewal2 = date.newInstance(eachQuote.SBQQ__StartDate__c.year(), 08, 31);
                                 Date nextYearDueDateRenewal2 = date.newInstance(eachQuote.SBQQ__StartDate__c.year()+1, 08, 31);
                                 
+                                // added by saurabh IS-1577 set default uplift rate
+                                if(Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c) && eachQuote.SBQQ__StartDate__c.month() != 7 && eachQuote.SBQQ__StartDate__c.month() != 8 && defaultUpliftRateMap.containsKey(Label.LPCR_MICRO) && eachQuote.SBQQ__RenewalUpliftRate__c != defaultUpliftRateMap.get(Label.LPCR_MICRO).LPCR_RenewalUpliftRate__c ){
+                                    eachQuote.SBQQ__RenewalUpliftRate__c = defaultUpliftRateMap.get(Label.LPCR_MICRO).LPCR_RenewalUpliftRate__c;
+                                }else if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c) && eachQuote.SBQQ__RenewalUpliftRate__c == null && defaultUpliftRateMap.containsKey(Label.LPCR_MICRO)){
+                                    eachQuote.SBQQ__RenewalUpliftRate__c = defaultUpliftRateMap.get(Label.LPCR_MICRO).LPCR_RenewalUpliftRate__c;
+                                }
+
                                 if(eachQuote.LPCR_DateFin__c < dueDateRenewal2){
                                     eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                                 }
