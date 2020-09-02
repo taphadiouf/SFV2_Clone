@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_TotalQuantityFormule__c</fullName>
     <externalId>false</externalId>
-    <formula>IF( OR(SBQQ__ProductCode__c == &apos;BerceauContratCadre&apos;,SBQQ__ProductCode__c == &apos;BerceauReservataire&apos;),
+    <formula>IF( OR(SBQQ__ProductCode__c == &apos;BerceauContratCadre&apos;,SBQQ__ProductCode__c == &apos;BerceauReservataire&apos;,SBQQ__ProductCode__c == &apos;BerceauGratuit&apos;),
         IF (ISBLANK(LPCR_TotalBerceauGratuitRegion__c),SBQQ__Quantity__c,SBQQ__Quantity__c +
         LPCR_TotalBerceauGratuitRegion__c),
         null)</formula>
