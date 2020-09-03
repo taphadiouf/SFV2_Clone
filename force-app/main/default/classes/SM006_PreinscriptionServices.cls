@@ -22,12 +22,12 @@ public class SM006_PreinscriptionServices {
         Id familleOpportunityRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Opportunity,System.Label.LPCR_Famille);
         for(LPCR_Preinscription__c eachNewPreinscri : newPreinscrisMap.values()){
             //Add a new opportunity to the oppts map
-            if((eachNewPreinscri.LPCR_Statut__c != oldPreinscrisMap.get(eachNewPreinscri.Id).LPCR_Statut__c 
+            if(eachNewPreinscri.LPCR_Statut__c != oldPreinscrisMap.get(eachNewPreinscri.Id).LPCR_Statut__c 
                 && Label.LPCR_Confirme.equals(eachNewPreinscri.LPCR_Statut__c))
-               && (
+               /*&& (
                     Label.LPCR_Entreprise.equals(eachNewPreinscri.LPCR_TypePreinscription__c) 
                    ||  Label.LPCR_DSP.equals(eachNewPreinscri.LPCR_TypePreinscription__c) 
-               )){
+               )*/{
                    preiscIDToOpportunityMap.put(eachNewPreinscri.Id, new Opportunity( 
                        RecordTypeId = familleOpportunityRT,
                        AccountId = eachNewPreinscri.LPCR_CompteFamille__c, 
