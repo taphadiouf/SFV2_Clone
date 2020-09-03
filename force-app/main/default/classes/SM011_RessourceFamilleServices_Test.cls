@@ -18,10 +18,6 @@ public with sharing class SM011_RessourceFamilleServices_Test {
         insert prod;
         List<Date> listStartDates = new List<Date>();
         
-        
-        LPCR_RessourceFamille__c resFamille = UM002_TestDataFactory.createRessourceFamille(prod.Id,acc.Id,1500);
-        insert resFamille;
-        
         List<Decimal> listTauxEffortParEnfant = new List<Decimal>();
         for(Integer i=1;i<=3;i++){
             listTauxEffortParEnfant.add(1);
