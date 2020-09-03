@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_Statut__c</fullName>
-    <description>Statut de la demande d&apos;inscription</description>
+    <fullName>LPCR_StatutInscription__c</fullName>
+    <description>statut de l&apos;inscription de l&apos;enfant</description>
     <externalId>false</externalId>
-    <label>Statut</label>
+    <label>Statut de l&apos;inscription</label>
     <required>false</required>
-    <trackHistory>true</trackHistory>
-    <trackTrending>false</trackTrending>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
