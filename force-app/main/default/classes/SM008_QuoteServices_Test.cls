@@ -57,7 +57,6 @@ public class SM008_QuoteServices_Test {
             eachContract.LPCR_CongesJours__c = 33;
             eachContract.LPCR_DureePreavisMois__c = '3';
             eachContract.LPCR_TypeAccueil__c = 'Occasionnel';
-            //eachContract.EndDate = date.newInstance(System.Today().year(), 12, 31)
             
         }       
          insert Renewalcontract;
@@ -331,7 +330,6 @@ public class SM008_QuoteServices_Test {
             SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties,'Renewal', acceuilRecTypeId, acc.Id).get(0);
             quote.RecordTypeId = acceuilRecTypeId;
             quote.SBQQ__StartDate__c = System.Today();
-            system.debug('quote'+quote);
             insert quote;
            
             quote = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, SBQQ__RenewalUpliftRate__c, LPCR_EntiteJuridique__c, LPCR_BatchCommande__c ,LPCR_PlanningEnfant__c,LPCR_ContactEnfant__c,LPCR_Creche__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c,LPCR_DureePreavisMois__c,LPCR_CongesJours__c,LPCR_TypeAccueil__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
