@@ -46,7 +46,7 @@ public class SM008_QuoteServices_Test {
          Contract mainCon = UM002_TestDataFactory.createContract(accc.Id);
 
 
-         List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,accc.Id,'0001',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 08, 31),123, 'Sans renouvellement', 'Non', Null, 'MAC' );
+         List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,accc.Id,'0001',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 12, 31),123, 'Sans renouvellement', 'Non', Null, 'MAC' );
         for(Contract eachContract : Renewalcontract){
             eachContract.LPCR_EntiteJuridique__c = entiteJuridique.Id;
             eachContract.LPCR_ContactEnfant__c = contact.Id;
