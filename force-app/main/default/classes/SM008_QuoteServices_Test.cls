@@ -46,7 +46,7 @@ public class SM008_QuoteServices_Test {
          Contract mainCon = UM002_TestDataFactory.createContract(accc.Id);
 
 
-         List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,accc.Id,'0001',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 08, 31),123, 'Sans renouvellement', 'Non', Null, 'MAC' );
+         List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,accc.Id,'0001',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 12, 31),123, 'Sans renouvellement', 'Non', Null, 'MAC' );
         for(Contract eachContract : Renewalcontract){
             eachContract.LPCR_EntiteJuridique__c = entiteJuridique.Id;
             eachContract.LPCR_ContactEnfant__c = contact.Id;
@@ -241,7 +241,8 @@ public class SM008_QuoteServices_Test {
             Contract con = new Contract(AccountID = accs.get(0).id,SBQQ__Opportunity__c = oppties.get(0).id,
                                         LPCR_Sales_Rep__c = UserInfo.getUserId(), LPCR_ResponsableADV__c = UserInfo.getUserId(), LPCR_ResponsableServiceFamille__c = UserInfo.getUserId(),
                                         StartDate =System.today(),ContractTerm = 12,LPCR_DateDebut__c =Date.newInstance(2020, 05, 01),
-                                        LPCR_DateFin__c = Date.newInstance(2020, 05, 30),LPCR_MethodeRenouvellement__c = 'Express', RecordTypeId = CONTRACT_REFERENCEMENT_RT_ID );
+                                        LPCR_DateFin__c = Date.newInstance(2020, 05, 30),LPCR_MethodeRenouvellement__c = 'Express' );
+            con.RecordTypeId = CONTRACT_RESERVATRICE_RT_ID;
             Insert con;
             
             quote.LPCR_ContractEntreprise__c  = con.Id;
@@ -536,11 +537,13 @@ public class SM008_QuoteServices_Test {
 
             insert quoteQ2;
             quoteQ2 = [SELECT Id ,LPCR_TypeCreche__c , SBQQ__StartDate__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_EntiteJuridique__c,LPCR_IndexationConvenue__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Quote' AND  Id = :quoteQ2.Id];
+            Double upliftRate = [SELECT Id ,MasterLabel,LPCR_RenewalUpliftRate__c FROM LPCR_Default_Uplift_Rate__mdt WHERE MasterLabel = 'MICRO' LIMIT 1].LPCR_RenewalUpliftRate__c;
             System.assertEquals(quoteQ2.LPCR_TypeCreche__c, acc3.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
             System.assertEquals(quoteQ2.SBQQ__StartDate__c, quoteQ2.LPCR_DateDebut__c, 'Quote SBQQ__StartDate__c not equals to quoteQ LPCR_DateDebut__c');
             System.assertEquals(quoteQ2.SBQQ__EndDate__c, quoteQ2.LPCR_DateFin__c, 'Quote SBQQ__EndDate__c not equals to quoteQ LPCR_DateFin__c');
             System.assertEquals(quoteQ2.LPCR_EntiteJuridique__c, acc3.LPCR_EntiteJuridique__c, 'Quote LPCR_EntiteJuridique__c not equals to acc LPCR_EntiteJuridique__c');
             System.assertEquals('Oui',quoteQ2.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to non');
+            System.assertEquals(upliftRate,quoteQ2.SBQQ__RenewalUpliftRate__c, 'Quote SBQQ__RenewalUpliftRate__c not equals to default uplift rate');
             Test.stopTest();
         }
     }

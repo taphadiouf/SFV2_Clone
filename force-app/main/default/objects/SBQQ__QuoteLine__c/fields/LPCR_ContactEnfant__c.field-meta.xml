@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_Enfant__c</fullName>
+    <fullName>LPCR_ContactEnfant__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Enfant couvert par le contrat</description>
     <externalId>false</externalId>
-    <label>Enfant</label>
+    <label>Contact Enfant</label>
     <lookupFilter>
         <active>true</active>
-        <errorMessage>Doit être un contact avec type d&#39;enregistrement = enfant</errorMessage>
         <filterItems>
-            <field>Contact.RecordTypeId</field>
+            <field>Contact.RecordType.DeveloperName</field>
             <operation>equals</operation>
             <value>Enfant</value>
         </filterItems>
-        <infoMessage>type d&#39;enregistrement = enfant</infoMessage>
         <isOptional>false</isOptional>
     </lookupFilter>
     <referenceTo>Contact</referenceTo>
-    <relationshipLabel>Contrats</relationshipLabel>
-    <relationshipName>Contrats</relationshipName>
+    <relationshipLabel>Lignes de devis</relationshipLabel>
+    <relationshipName>Lignes_de_devis</relationshipName>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Lookup</type>
 </CustomField>
