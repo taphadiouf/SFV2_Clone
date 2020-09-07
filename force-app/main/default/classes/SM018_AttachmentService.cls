@@ -17,7 +17,7 @@ public with sharing class SM018_AttachmentService {
             if(invoiceCreatedByMap.containsKey(eachAttachment.ParentId)){
                 blng__Invoice__c invoice = invoiceCreatedByMap.get(eachAttachment.ParentId);
                 if(!invoice.CreatedBy.Name.contains('Migration')){
-                    if(invoice == null){
+                    if(invoice == null || invoice != null){
                         if(eachAttachment.name.contains('Facture Famille') && invoiceAccountMap.containsKey(eachAttachment.ParentId)){
                             SM019_DocumentList_Callout.getDocumentListFutureCallout(eachAttachment.ParentId, 'Facture',invoiceAccountMap.get(eachAttachment.ParentId));                 
                         }
