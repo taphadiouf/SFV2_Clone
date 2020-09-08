@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Actif__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Un compte entreprise qui ne contient pas de contrat en cours est dit inactif</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Un compte entreprise qui ne contient pas de contrat en cours est dit inactif</inlineHelpText>
+    <label>Actif</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>
