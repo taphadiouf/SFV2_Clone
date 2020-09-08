@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Nouveau</fullName>
+        <default>true</default>
+        <label>Nouveau</label>
+    </customValue>
+    <customValue>
+        <fullName>Liste d’attente</fullName>
+        <default>false</default>
+        <label>Liste d’attente</label>
+    </customValue>
+    <customValue>
+        <fullName>Option</fullName>
+        <default>false</default>
+        <label>Option</label>
+    </customValue>
+    <customValue>
+        <fullName>Recommandation</fullName>
+        <default>false</default>
+        <label>Recommandation</label>
+    </customValue>
+    <customValue>
+        <fullName>Recommandation validée</fullName>
+        <default>false</default>
+        <label>Recommandation validée</label>
+    </customValue>
+    <customValue>
+        <fullName>Proposition</fullName>
+        <default>false</default>
+        <label>Proposition</label>
+    </customValue>
+    <customValue>
+        <fullName>Confirmé</fullName>
+        <default>false</default>
+        <label>Confirmé</label>
+    </customValue>
+    <customValue>
+        <fullName>Inscrit</fullName>
+        <default>false</default>
+        <label>Inscrit</label>
+    </customValue>
+    <customValue>
+        <fullName>Annulé</fullName>
+        <default>false</default>
+        <label>Annulé</label>
+    </customValue>
+    <masterLabel>Statut Inscription</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

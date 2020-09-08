@@ -335,7 +335,7 @@ public with sharing class SM008_QuoteServices {
     public static void updateOppsFromQuotes(List<SBQQ__Quote__c> quotesList){
         Set<Id> oppsIds = new Set<Id>();
         for(SBQQ__Quote__c eachQuote : quotesList){
-            if(eachQuote.SBQQ__Status__c.equals('Accepted')){
+            if(eachQuote.SBQQ__Status__c.equals('Signé')){
                 oppsIds.add(eachQuote.SBQQ__Opportunity2__c);
             }
         }
@@ -349,7 +349,7 @@ public with sharing class SM008_QuoteServices {
     public static void updateAccountsFromQuotes(List<SBQQ__Quote__c> quotesList){
         Set<Id> accountsIds = new Set<Id>();
         for(SBQQ__Quote__c eachQuote : quotesList){
-            if(eachQuote.SBQQ__Status__c.equals('Accepted')){
+            if(eachQuote.SBQQ__Status__c.equals('Signé')){
                 accountsIds.add(eachQuote.SBQQ__Account__c);
             }
         }
