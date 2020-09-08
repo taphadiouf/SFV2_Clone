@@ -1713,11 +1713,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contract.LPCR_Enfant__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Contract.LPCR_EntiteJuridique__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3549,6 +3544,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_TypeContrat__mdt.LPCR_JourAvanceRenouvellement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Default_Uplift_Rate__mdt.LPCR_RenewalUpliftRate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9494,6 +9494,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>LPCR_TypeContrat__mdt-Présentation LPCR_TypeContrat</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>LPCR_Default_Uplift_Rate__mdt-LPCR_Default_Uplift_Rate Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>LPCR_Type_Evenement_Intranet__mdt-Présentation LPCR Type Evènement Intranet</layout>

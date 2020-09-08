@@ -17,11 +17,16 @@ public with sharing class SM018_AttachmentService {
             if(invoiceCreatedByMap.containsKey(eachAttachment.ParentId)){
                 blng__Invoice__c invoice = invoiceCreatedByMap.get(eachAttachment.ParentId);
                 if(!invoice.CreatedBy.Name.contains('Migration')){
-                    if(eachAttachment.name.contains('Facture Famille') && invoiceAccountMap.containsKey(eachAttachment.ParentId)){
-                        SM019_DocumentList_Callout.getDocumentListFutureCallout(eachAttachment.ParentId, 'Facture',invoiceAccountMap.get(eachAttachment.ParentId));                 
-                    }
-                    if(!eachAttachment.Name.contains('SYNC')){
-                        SM017_SendDocument_Callout.sendDocumentCallout(eachAttachment.ParentId, eachAttachment.Id, eachAttachment.Description, EncodingUtil.base64Encode(eachAttachment.Body));
+                    if(invoice == null || invoice != null){
+                        if(eachAttachment.name.contains('Facture Famille') && invoiceAccountMap.containsKey(eachAttachment.ParentId)){
+                            SM019_DocumentList_Callout.getDocumentListFutureCallout(eachAttachment.ParentId, 'Facture',invoiceAccountMap.get(eachAttachment.ParentId));                 
+                        }
+                        if(!eachAttachment.Name.contains('SYNC')){
+                            SM017_SendDocument_Callout.sendDocumentCallout(eachAttachment.ParentId, eachAttachment.Id, eachAttachment.Description, EncodingUtil.base64Encode(eachAttachment.Body));
+                            if(invoice != null){
+                                invoice.LPCR_StatutFacture__c = 'Envoyée';
+                            }
+                        }
                     }
                 }
             }

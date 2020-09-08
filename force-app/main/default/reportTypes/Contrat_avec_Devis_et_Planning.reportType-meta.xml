@@ -283,11 +283,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_Enfant__c</field>
-            <table>Contract</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_EntiteJuridique__c</field>
             <table>Contract</table>
         </columns>
@@ -569,6 +564,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_Section__c</field>
+            <table>Contract</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_StatutInscription__c</field>
+            <table>Contract</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_StatutCourt__c</field>
             <table>Contract</table>
         </columns>
         <columns>

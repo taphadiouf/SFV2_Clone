@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
+        <application>LPCR_ADV</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
         <application>SBQQ__QuoteQuickly</application>
         <visible>true</visible>
     </applicationVisibilities>
@@ -93,6 +97,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_AccueilUrgence__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_Actif__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1586,11 +1595,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Contract.LPCR_Enfant__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_EntiteJuridique__c</field>
         <readable>true</readable>
@@ -2723,6 +2727,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_Creche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Preinscription__c.LPCR_DateConfirmationInteret__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -11638,6 +11647,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_StatutPaiement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_TauxTVA__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
