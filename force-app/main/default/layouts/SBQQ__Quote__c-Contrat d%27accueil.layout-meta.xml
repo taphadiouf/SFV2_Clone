@@ -240,6 +240,10 @@
                 <field>LPCR_ContractEntreprise__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeAccueil__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>SBQQ__MasterContract__c</field>
             </layoutItems>
@@ -462,7 +466,11 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
+<<<<<<< HEAD
+        <masterLabel>00h1j000001Damm</masterLabel>
+=======
         <masterLabel>00h3N000000Q2vO</masterLabel>
+>>>>>>> 95f5811f3a3243aa85b9cd08976977b25f800afb
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
