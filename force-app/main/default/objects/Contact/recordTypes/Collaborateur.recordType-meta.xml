@@ -473,6 +473,10 @@
             <fullName>Trésorier</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_Role__c</picklist>
@@ -606,6 +610,10 @@
         </values>
         <values>
             <fullName>Pôle commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autre</fullName>
             <default>false</default>
         </values>
     </picklistValues>
