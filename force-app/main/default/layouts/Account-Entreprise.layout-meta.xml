@@ -30,6 +30,10 @@
                 <field>LPCR_Statut__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_Actif__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>ShippingAddress</field>
             </layoutItems>
@@ -333,7 +337,7 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <platformActionList>
+     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
             <actionName>NewEvent</actionName>
@@ -375,7 +379,7 @@
             <actionType>ProductivityAction</actionType>
             <sortOrder>18</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
+        <platformActionListItems>            
             <actionName>FeedItem.ContentPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>7</sortOrder>
@@ -410,7 +414,7 @@
             <actionType>CustomButton</actionType>
             <sortOrder>2</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
+                <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>3</sortOrder>
@@ -647,7 +651,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6E000000vuoz</masterLabel>
+        <masterLabel>00h1x000000lUiA</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

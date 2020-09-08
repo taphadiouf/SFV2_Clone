@@ -87,6 +87,11 @@
         <field>Account.LPCR_AccueilUrgence__c</field>
         <readable>true</readable>
     </fieldPermissions>
+        <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_Actif__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_Activite__c</field>
@@ -3167,7 +3172,7 @@
         <field>LPCR_Preinscription__c.Tech_LienFormulaire__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
+        <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_RessourceFamille__c.LPCR_IdExterne__c</field>
         <readable>true</readable>
@@ -3190,6 +3195,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_RessourceFamille__c.LPCR_IdExterne_Creche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_RessourceFamille__c.LPCR_IdExterne__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7604,6 +7614,10 @@
         <recordType>blng__Invoice__c.LPCR_PostedInvoice</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
+    <tabSettings>
+        <tab>LPCR_BonAchatPartenaire__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
     <tabSettings>
         <tab>LPCR_PlanningPrevisionnel__c</tab>
         <visibility>Visible</visibility>
