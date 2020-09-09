@@ -9519,6 +9519,29 @@
         <layout>blng__Usage__c-blng__Usage Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité AO public DSP</layout>
+        <recordType>Opportunity.AOPublicDSP</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité AO public réservation</layout>
+        <recordType>Opportunity.AOPublicReservation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité Entreprise</layout>
+        <recordType>Opportunity.Entreprise</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité Famille</layout>
+        <recordType>Opportunity.Famille</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité Partenaire</layout>
+        <recordType>Opportunity.Partenaire</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité Entreprise</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Order-Accueil</layout>
         <recordType>Order.Accueil</recordType>
     </layoutAssignments>
