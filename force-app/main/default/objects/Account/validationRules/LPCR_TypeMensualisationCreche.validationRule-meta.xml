@@ -3,6 +3,6 @@
     <fullName>LPCR_TypeMensualisationCreche</fullName>
     <active>true</active>
     <description>Cette VR empêche le user de saisir un LPCR_TypeMensualisation__c different de 11 ou 12 ( for creche RT)</description>
-    <errorConditionFormula>AND( RecordType.DeveloperName = &apos;Creche&apos; ,  LPCR_TypeMensualisation__c &lt;&gt; 11 , LPCR_TypeMensualisation__c &lt;&gt; 12 )</errorConditionFormula>
-    <errorMessage>Le type de mensualisation ne peut être que égal à 11 ou 12.</errorMessage>
+    <errorConditionFormula>AND( RecordType.DeveloperName = &apos;Creche&apos; , ISPICKVAL(LPCR_TypeCreche__c, &apos;MAC&apos;), OR( ISBLANK(LPCR_TypeMensualisation__c) ,AND(LPCR_TypeMensualisation__c &lt;&gt; 11 , LPCR_TypeMensualisation__c &lt;&gt; 12)) )</errorConditionFormula>
+    <errorMessage>Pour une crèche MAC, le type de mensualisation doit impérativement être égal à 11 ou 12</errorMessage>
 </ValidationRule>

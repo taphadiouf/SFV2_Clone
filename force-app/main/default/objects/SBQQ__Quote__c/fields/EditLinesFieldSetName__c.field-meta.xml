@@ -22,6 +22,26 @@
                 <default>false</default>
                 <label>LPCR_Amendment</label>
             </value>
+            <value>
+                <fullName>B2C</fullName>
+                <default>false</default>
+                <label>B2C</label>
+            </value>
+            <value>
+                <fullName>B2C_Amendment</fullName>
+                <default>false</default>
+                <label>B2C_Amendment</label>
+            </value>
+            <value>
+                <fullName>Referencement</fullName>
+                <default>false</default>
+                <label>Referencement</label>
+            </value>
+            <value>
+                <fullName>Referencement_amendment</fullName>
+                <default>false</default>
+                <label>Referencement_amendment</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
