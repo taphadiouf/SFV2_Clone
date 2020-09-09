@@ -2,7 +2,26 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LCPR_DraftInvoice</fullName>
     <active>true</active>
-    <label>Draft Invoice</label>
+    <label>Facture Brouillon</label>
+    <picklistValues>
+        <picklist>LPCR_MethodesPaiement__c</picklist>
+        <values>
+            <fullName>CB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chèque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Espèces</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prélèvement</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
     <picklistValues>
         <picklist>LPCR_MoyenPaiement__c</picklist>
         <values>
