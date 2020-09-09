@@ -24,10 +24,7 @@ public class SM006_PreinscriptionServices {
             //Add a new opportunity to the oppts map
             if(eachNewPreinscri.LPCR_Statut__c != oldPreinscrisMap.get(eachNewPreinscri.Id).LPCR_Statut__c 
                 && Label.LPCR_Confirme.equals(eachNewPreinscri.LPCR_Statut__c))
-               /*&& (
-                    Label.LPCR_Entreprise.equals(eachNewPreinscri.LPCR_TypePreinscription__c) 
-                   ||  Label.LPCR_DSP.equals(eachNewPreinscri.LPCR_TypePreinscription__c) 
-               )*/{
+               {
                    preiscIDToOpportunityMap.put(eachNewPreinscri.Id, new Opportunity( 
                        RecordTypeId = familleOpportunityRT,
                        AccountId = eachNewPreinscri.LPCR_CompteFamille__c, 
