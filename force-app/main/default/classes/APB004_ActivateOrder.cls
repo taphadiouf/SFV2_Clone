@@ -18,16 +18,21 @@ global class APB004_ActivateOrder  implements Database.Batchable<sObject>,Schedu
     }
     
     global void execute(Database.BatchableContext BC, List<Order> scope) {
-        PAD.log('APB004_ActivateOrder', 'execute','scope to execute : '+scope );
+        
+        PAD.log('APB004_ActivateOrder', 'execute','scope to execute : ' + scope );
         
         Set<Id> orderIds = UM003_TypeManager.getIdsOfListObjects(scope);
         List<Order> listOforder = [SELECT Id,Status FROM Order WHERE Id in :orderIds ];   
+		List<LPCR_Log__c> listOfLog = new List<LPCR_Log__c>();
+        
         for (Order eachOrder : listOforder) {
+            
             eachOrder.status ='Activated';
-            PAD.log('APB004_ActivateOrder', 'execute', 'Updating order '+eachOrder.status );
+			listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Activating Order', 'APB004_ActivateOrder', 'Batch', String.valueOf(eachOrder.Id), '', 'SUCCESS'));            
         }
         
-        update listOforder;        
+        update listOforder;  
+        insert listOfLog;
     }
     
     global void finish(Database.BatchableContext BC) {

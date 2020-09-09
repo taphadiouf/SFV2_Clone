@@ -5,7 +5,7 @@
 * @Updated By Achraf ABOUL(aaboul@salesforce.com) 08/05/2020
 */
 public class SM010_ContractServices {
-    
+    public static Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract',Label.LPCR_Referencement);
     /**
 * @Author Ayoub Ouarti
 * @Created 23/03/2020
@@ -40,14 +40,14 @@ public class SM010_ContractServices {
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){
                 // IS-1115 fixes added by saurabh
                 contractRTDevName = quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.DeveloperName;
-                if(contractRTDevName == Label.LPCR_Referencement) {
-                    if(quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_Referencement || quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_Referencement_Approuve ) {
+                if(eachContract.RecordTypeId == referencementRecTypeId) {
+                   // if(quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_Referencement || quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_Referencement_Approuve ) {
                         if(quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__Type__c != 'Renewal'){
                             eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).Id;
                         }else{
                             eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_MasterDevis__c;
                         }
-                    }
+                   // }
                 }
 
 

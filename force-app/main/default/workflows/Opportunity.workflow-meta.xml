@@ -10,18 +10,4 @@
         <operation>LookupValue</operation>
         <protected>false</protected>
     </fieldUpdates>
-    <rules>
-        <fullName>Update RT Oppty</fullName>
-        <actions>
-            <name>LPCR_UpdateRTOppty</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>true</active>
-        <criteriaItems>
-            <field>Account.RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Famille</value>
-        </criteriaItems>
-        <triggerType>onCreateOnly</triggerType>
-    </rules>
 </Workflow>
