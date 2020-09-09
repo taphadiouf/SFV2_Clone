@@ -2,7 +2,7 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_PostedInvoice</fullName>
     <active>true</active>
-    <label>Posted Invoice</label>
+    <label>Facture Validée</label>
     <picklistValues>
         <picklist>LPCR_MethodesPaiement__c</picklist>
         <values>

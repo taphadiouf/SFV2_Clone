@@ -11,8 +11,8 @@ public with sharing class SM018_AttachmentService {
         Map<String, String> invoiceAccountMap = new Map<String, String>();
          
         Map<Id, blng__Invoice__c> invoiceCreatedByMap = new Map<Id, blng__Invoice__c>();
-        
-        for(blng__Invoice__c invoice : [select id, blng__Account__r.Email__c, CreatedBy.Name  from blng__Invoice__c where id in: parentIds]){
+        Map<Id,blng__Invoice__c> invoiceToUpdate = new Map<Id,blng__Invoice__c>();
+        for(blng__Invoice__c invoice : [select id, blng__Account__r.Email__c, CreatedBy.Name, LPCR_StatutFacture__c  from blng__Invoice__c where id in: parentIds]){
             invoiceAccountMap.put(invoice.id, invoice.blng__Account__r.Email__c);
             invoiceCreatedByMap.put(invoice.id, invoice);
         }
@@ -43,10 +43,14 @@ public with sharing class SM018_AttachmentService {
                     SM017_SendDocument_Callout.sendDocumentCallout(eachAttachment.ParentId, eachAttachment.Id, eachAttachment.Name, EncodingUtil.base64Encode(eachAttachment.Body));
                     if(invoice != null){
                         invoice.LPCR_StatutFacture__c = 'Envoyée';
+                        invoiceToUpdate.put(invoice.id,invoice);
                     }
                 }
             }
             
+        }
+        if(invoiceToUpdate.size() !=0 ){
+            update invoiceToUpdate.values();
         }
     }
 }

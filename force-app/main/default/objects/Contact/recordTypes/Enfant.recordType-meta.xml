@@ -102,6 +102,10 @@
     <picklistValues>
         <picklist>LPCR_Fonction__c</picklist>
         <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Assistant achats</fullName>
             <default>false</default>
         </values>
@@ -606,6 +610,10 @@
         </values>
         <values>
             <fullName>Pôle commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autre</fullName>
             <default>false</default>
         </values>
     </picklistValues>
