@@ -102,6 +102,10 @@
     <picklistValues>
         <picklist>LPCR_Fonction__c</picklist>
         <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Assistant achats</fullName>
             <default>false</default>
         </values>
@@ -564,6 +568,10 @@
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_TypeFonction__c</picklist>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>CE</fullName>
             <default>false</default>
