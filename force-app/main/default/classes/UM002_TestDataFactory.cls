@@ -1216,9 +1216,8 @@ newMe.FederationIdentifier = null;
         Id crecheRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account', 'Creche' );
         for(Integer i = 0; i<numAccs; i++){
             tempAcc = new Account(Name = name, RecordTypeId  = recTypeId, LPCR_TypeCreche__c = type);
-            if(recTypeId == crecheRecTypeId){
-                tempAcc.LPCR_TypeMensualisation__c = 12;
-            }
+            tempAcc.LPCR_TypeMensualisation__c = 11;
+
             accounts.add(tempAcc);
         }
         return accounts;

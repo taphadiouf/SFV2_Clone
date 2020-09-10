@@ -33,7 +33,7 @@ public with sharing class SM013_QuoteLineServices_Test {
             'Name' => 'Creche',
             'LPCR_TypeCreche__c' => 'MAC',
             'LPCR_Region__c' => 'Paris',
-            'LPCR_TypeMensualisation__c' => 12 
+            'LPCR_TypeMensualisation__c' => 11 
         };
         Account creche = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
         accounts.add (creche);
