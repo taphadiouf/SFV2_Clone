@@ -122,7 +122,7 @@ public with sharing class APB007_AllPriceBookClasses_Tests {
             tmpAccount.LPCR_TypeCreche__c = Math.mod(i, 2) == 0
                 ? 'MAC'
                 : 'MICRO';
-            
+                tmpAccount.LPCR_TypeMensualisation__c = 12;
             accountsCreche.add(tmpAccount);
         }
         //accounts.addAll(accountsCreche);

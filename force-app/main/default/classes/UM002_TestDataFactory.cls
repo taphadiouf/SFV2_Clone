@@ -1213,8 +1213,12 @@ newMe.FederationIdentifier = null;
     public static List<Account> createAccountWithRecType(Integer numAccs, String name, Id recTypeId, String type){
         List<Account> accounts = new List<Account>();
         Account tempAcc;
+        Id crecheRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account', 'Creche' );
         for(Integer i = 0; i<numAccs; i++){
             tempAcc = new Account(Name = name, RecordTypeId  = recTypeId, LPCR_TypeCreche__c = type);
+            if(recTypeId == crecheRecTypeId){
+                tempAcc.LPCR_TypeMensualisation__c = 12;
+            }
             accounts.add(tempAcc);
         }
         return accounts;
