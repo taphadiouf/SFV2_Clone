@@ -60,6 +60,9 @@ public with sharing class APC006_CloneQuoteLines {
         for (SBQQ__QuoteLine__c ql: idToQuoteLineMap.values()) {
                 currentQL = ql.clone(false, true, false, false);
                 currentQL.SBQQ__PriorQuantity__c = null;
+                currentQL.SBQQ__UpgradedSubscription__c = null;
+                currentQL.SBQQ__UpgradedAsset__c = null;
+                currentQL.SBQQ__UpgradedQuantity__c = null;
                 //To insure the order
                 if(currentQL.SBQQ__Number__c != null){
                     currentQL.SBQQ__Number__c = ql.SBQQ__Number__c + 1000;
