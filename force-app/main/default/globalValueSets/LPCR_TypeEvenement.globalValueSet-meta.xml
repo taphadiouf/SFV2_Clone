@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Abscence</fullName>
+        <fullName>Absence</fullName>
         <default>false</default>
-        <label>Abscence</label>
+        <label>Absence</label>
     </customValue>
     <customValue>
         <fullName>Modification_Heure_Supplementaire_MAC</fullName>
@@ -68,7 +68,7 @@
     <customValue>
         <fullName>Regularisation</fullName>
         <default>false</default>
-        <label>Regularisation</label>
+        <label>Régularisation</label>
     </customValue>
     <masterLabel>Type d&apos;événement</masterLabel>
     <sorted>false</sorted>
