@@ -21,4 +21,474 @@
         <default>false</default>
         <label>Dirigeant</label>
     </standardValue>
+    <standardValue>
+        <fullName>Président</fullName>
+        <default>false</default>
+        <label>Président</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur général</fullName>
+        <default>false</default>
+        <label>Directeur général</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur général adjoint</fullName>
+        <default>false</default>
+        <label>Directeur général adjoint</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur des opérations</fullName>
+        <default>false</default>
+        <label>Directeur des opérations</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Secrétaire général</fullName>
+        <default>false</default>
+        <label>Secrétaire général</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Gérant</fullName>
+        <default>false</default>
+        <label>Gérant</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Associé</fullName>
+        <default>false</default>
+        <label>Associé</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur de division, business unit ou filiale</fullName>
+        <default>false</default>
+        <label>Directeur de division, business unit ou filiale</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur régional</fullName>
+        <default>false</default>
+        <label>Directeur régional</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur international</fullName>
+        <default>false</default>
+        <label>Directeur international</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Assistante de Direction</fullName>
+        <default>false</default>
+        <label>Assistante de Direction</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur achats</fullName>
+        <default>false</default>
+        <label>Directeur achats</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable achats</fullName>
+        <default>false</default>
+        <label>Responsable achats</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Assistant achats</fullName>
+        <default>false</default>
+        <label>Assistant achats</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur des services généraux</fullName>
+        <default>false</default>
+        <label>Directeur des services généraux</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable des services généraux</fullName>
+        <default>false</default>
+        <label>Responsable des services généraux</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur des ressources humaines</fullName>
+        <default>false</default>
+        <label>Directeur des ressources humaines</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur développement RH</fullName>
+        <default>false</default>
+        <label>Directeur développement RH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur recrutement</fullName>
+        <default>false</default>
+        <label>Directeur recrutement</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur relations sociales</fullName>
+        <default>false</default>
+        <label>Directeur relations sociales</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur de l&apos;actions sociale</fullName>
+        <default>false</default>
+        <label>Directeur de l&apos;actions sociale</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur formation</fullName>
+        <default>false</default>
+        <label>Directeur formation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur Gestion des carrières</fullName>
+        <default>false</default>
+        <label>Directeur Gestion des carrières</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable ressources humaines</fullName>
+        <default>false</default>
+        <label>Responsable ressources humaines</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable développement RH</fullName>
+        <default>false</default>
+        <label>Responsable développement RH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable recrutement</fullName>
+        <default>false</default>
+        <label>Responsable recrutement</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable rémunération</fullName>
+        <default>false</default>
+        <label>Responsable rémunération</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable relations sociales</fullName>
+        <default>false</default>
+        <label>Responsable relations sociales</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable de l&apos;actions sociale</fullName>
+        <default>false</default>
+        <label>Responsable de l&apos;actions sociale</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable formation</fullName>
+        <default>false</default>
+        <label>Responsable formation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable Qualité de Vie au Travail</fullName>
+        <default>false</default>
+        <label>Responsable Qualité de Vie au Travail</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Assistante Ressources Humaines</fullName>
+        <default>false</default>
+        <label>Assistante Ressources Humaines</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable Communication RH</fullName>
+        <default>false</default>
+        <label>Responsable Communication RH</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable Marque Employeur</fullName>
+        <default>false</default>
+        <label>Responsable Marque Employeur</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Chief Happiness Officer</fullName>
+        <default>false</default>
+        <label>Chief Happiness Officer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur du développement durable/RSE</fullName>
+        <default>false</default>
+        <label>Directeur du développement durable/RSE</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable RSE</fullName>
+        <default>false</default>
+        <label>Responsable RSE</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur administratif, financier</fullName>
+        <default>false</default>
+        <label>Directeur administratif, financier</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur contrôle de gestion</fullName>
+        <default>false</default>
+        <label>Directeur contrôle de gestion</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur audit</fullName>
+        <default>false</default>
+        <label>Directeur audit</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur comptable, trésorerie</fullName>
+        <default>false</default>
+        <label>Directeur comptable, trésorerie</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur immobilier, urbanisme, habitat</fullName>
+        <default>false</default>
+        <label>Directeur immobilier, urbanisme, habitat</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur juridique</fullName>
+        <default>false</default>
+        <label>Directeur juridique</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable administratif, financier</fullName>
+        <default>false</default>
+        <label>Responsable administratif, financier</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable contrôle de gestion</fullName>
+        <default>false</default>
+        <label>Responsable contrôle de gestion</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable audit</fullName>
+        <default>false</default>
+        <label>Responsable audit</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable comptable, trésorerie</fullName>
+        <default>false</default>
+        <label>Responsable comptable, trésorerie</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable immobilier, urbanisme, habitat</fullName>
+        <default>false</default>
+        <label>Responsable immobilier, urbanisme, habitat</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable juridique</fullName>
+        <default>false</default>
+        <label>Responsable juridique</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur des systèmes d&apos;information</fullName>
+        <default>false</default>
+        <label>Directeur des systèmes d&apos;information</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur sécurité informatique</fullName>
+        <default>false</default>
+        <label>Directeur sécurité informatique</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur télécommunications</fullName>
+        <default>false</default>
+        <label>Directeur télécommunications</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur R&amp;D, innovation</fullName>
+        <default>false</default>
+        <label>Directeur R&amp;D, innovation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur industriel</fullName>
+        <default>false</default>
+        <label>Directeur industriel</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur usine</fullName>
+        <default>false</default>
+        <label>Directeur usine</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur production</fullName>
+        <default>false</default>
+        <label>Directeur production</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur technique</fullName>
+        <default>false</default>
+        <label>Directeur technique</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur ingénierie</fullName>
+        <default>false</default>
+        <label>Directeur ingénierie</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur qualité</fullName>
+        <default>false</default>
+        <label>Directeur qualité</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur hygiène, sécurité, environnement</fullName>
+        <default>false</default>
+        <label>Directeur hygiène, sécurité, environnement</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur commercial</fullName>
+        <default>false</default>
+        <label>Directeur commercial</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur grands comptes</fullName>
+        <default>false</default>
+        <label>Directeur grands comptes</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur surfaces commerciales (magasin, hypermarché)</fullName>
+        <default>false</default>
+        <label>Directeur surfaces commerciales (magasin, hypermarché)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur d&apos;hôtel ou palace</fullName>
+        <default>false</default>
+        <label>Directeur d&apos;hôtel ou palace</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable commercial</fullName>
+        <default>false</default>
+        <label>Responsable commercial</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable grands comptes</fullName>
+        <default>false</default>
+        <label>Responsable grands comptes</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable surfaces commerciales (magasin, hypermarché)</fullName>
+        <default>false</default>
+        <label>Responsable surfaces commerciales (magasin, hypermarché)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable d&apos;hôtel ou palace</fullName>
+        <default>false</default>
+        <label>Responsable d&apos;hôtel ou palace</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur marketing</fullName>
+        <default>false</default>
+        <label>Directeur marketing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur produit, marque</fullName>
+        <default>false</default>
+        <label>Directeur produit, marque</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur service client</fullName>
+        <default>false</default>
+        <label>Directeur service client</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur partenariats, licensing</fullName>
+        <default>false</default>
+        <label>Directeur partenariats, licensing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur Internet, digital, webmarketing</fullName>
+        <default>false</default>
+        <label>Directeur Internet, digital, webmarketing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur communication</fullName>
+        <default>false</default>
+        <label>Directeur communication</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable marketing</fullName>
+        <default>false</default>
+        <label>Responsable marketing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable produit, marque</fullName>
+        <default>false</default>
+        <label>Responsable produit, marque</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable service client</fullName>
+        <default>false</default>
+        <label>Responsable service client</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable partenariats, licensing</fullName>
+        <default>false</default>
+        <label>Responsable partenariats, licensing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable Internet, digital, webmarketing</fullName>
+        <default>false</default>
+        <label>Responsable Internet, digital, webmarketing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable communication</fullName>
+        <default>false</default>
+        <label>Responsable communication</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable/Coordinatrice petite enfance</fullName>
+        <default>false</default>
+        <label>Responsable/Coordinatrice petite enfance</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur/trice Petite Enfance</fullName>
+        <default>false</default>
+        <label>Directeur/trice Petite Enfance</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Elu petite enfance</fullName>
+        <default>false</default>
+        <label>Elu petite enfance</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Elu - Autre</fullName>
+        <default>false</default>
+        <label>Elu - Autre</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur de cabinet</fullName>
+        <default>false</default>
+        <label>Directeur de cabinet</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Maire</fullName>
+        <default>false</default>
+        <label>Maire</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Haut fonctionnaire</fullName>
+        <default>false</default>
+        <label>Haut fonctionnaire</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Directeur Général des Services</fullName>
+        <default>false</default>
+        <label>Directeur Général des Services</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable commande publique</fullName>
+        <default>false</default>
+        <label>Responsable commande publique</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responsable Financier</fullName>
+        <default>false</default>
+        <label>Responsable Financier</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Avocat, profession libérale</fullName>
+        <default>false</default>
+        <label>Avocat, profession libérale</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Secrétaire</fullName>
+        <default>false</default>
+        <label>Secrétaire</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Trésorier</fullName>
+        <default>false</default>
+        <label>Trésorier</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Autre</fullName>
+        <default>false</default>
+        <label>Autre</label>
+    </standardValue>
 </StandardValueSet>
