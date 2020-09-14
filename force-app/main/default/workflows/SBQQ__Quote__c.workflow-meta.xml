@@ -538,6 +538,56 @@
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
+        <fullName>Renewal quote status</fullName>
+        <actions>
+            <name>LPCR_StatutPretCommande</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeCreche__c</field>
+            <operation>notEqual</operation>
+            <value>MAC</value>
+        </criteriaItems>
+        <description>Ce WF met le status du renewal quote à &apos;prêt pour commande&apos;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Renewal quote status %28MAC%29</fullName>
+        <actions>
+            <name>LPCR_StatutPretAEnvoyer</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeCreche__c</field>
+            <operation>equals</operation>
+            <value>MAC</value>
+        </criteriaItems>
+        <description>Ce WF met le status du renewal quote à &apos;prêt à envoyer&apos; pr MAC</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
         <fullName>Set Quote Status Actif</fullName>
         <actions>
             <name>LPCR_StatusActif</name>
@@ -843,4 +893,3 @@
         <triggerType>onCreateOnly</triggerType>
     </rules>
 </Workflow>
- 
