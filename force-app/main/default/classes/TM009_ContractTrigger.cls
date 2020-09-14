@@ -17,13 +17,11 @@ public class TM009_ContractTrigger extends TM000_TriggerHandler{
     protected override void beforeInsert() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM010_ContractServices.setContractFields(newContractList);
-           // deleted in IS-1165 SM010_ContractServices.setTypeEnregistrement(newContractList);
         }
     }
     
     protected override void afterInsert() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
-           Pad.log('TM009_ContractTrigger','afterInsert','FeatureManagement.checkPermission()' ); 
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){ 
            SM010_ContractServices.afterInsertUpdateContractFields(newContractList);
         }
     }
@@ -33,11 +31,10 @@ public class TM009_ContractTrigger extends TM000_TriggerHandler{
             SM010_ContractServices.setContractFields(oldContractMap,newContractMap);
         }
     }
-    //added by Akshaye
+
     protected override void afterUpdate(){
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM010_ContractServices.setOrderFields(this.newContractMap,this.oldContractMap);
-            // added by saurabh
             SM010_ContractServices.setOrderItemFields(this.newContractMap,this.oldContractMap);
         }
     }

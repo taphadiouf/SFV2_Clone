@@ -21,20 +21,4 @@ public without sharing class TM001_AccountTriggerHandler extends TM000_TriggerHa
             SM007_LeadServices.accountsIds = new Set<Id>(newAccountsMap.keySet());
         }
     }
-
-    protected override void afterUpdate() {
-
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-    }
-
-    protected override void beforeInsert() {
-
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-    }
-
-    protected override void beforeUpdate() {
-
-        if (PAD.canTrigger('SM001_TestIfByPassed')) SM001_TestIfByPassed.executeMethod();
-    }
-
 }
