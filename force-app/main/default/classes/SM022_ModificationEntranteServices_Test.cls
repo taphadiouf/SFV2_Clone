@@ -1146,7 +1146,7 @@ public class SM022_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Abscence',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Absence',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
 
