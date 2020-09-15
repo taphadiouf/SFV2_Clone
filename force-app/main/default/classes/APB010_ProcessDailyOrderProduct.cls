@@ -28,8 +28,8 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
         List<LPCR_LignePlanFacturation__c> billingPlanLineList = new List<LPCR_LignePlanFacturation__c>();
         Map<Id,Contract> updateContractmap = new Map<Id,Contract>([SELECT Id, LPCR_TotaleGlobalePlanFacture__c, LPCR_ValeurTotale__c, LPCR_ValeurTotaleAnnee__c FROM Contract WHERE Id =: contractIds]);
         
-        // Create Billing Plan records  
-        for(OrderItem eachOrderItem : scope){
+        // Create  Billing Plan records  
+        for(OrderItem eachOrderItem : scope){ 
             //Set Multiplier value
             Integer multiplier;
             if(eachOrderItem.SBQQ__DefaultSubscriptionTerm__c == 1){
