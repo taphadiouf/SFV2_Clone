@@ -172,7 +172,7 @@ public class SM010_ContractServices {
             if(mapOrders.containsKey(eachContract.SBQQ__Order__c) && 
                quoteMap.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
                  //added by saurabh IS-1490
-                if(eachContract.LPCR_TypeCreche__c == 'MAC' && eachContract.EndDate != eachContract.LPCR_DateFin__c){
+                if(contract.recordtype.DeveloperName == 'Accueil' && eachContract.EndDate != eachContract.LPCR_DateFin__c){
                     eachContract.LPCR_RenouvellementAutomatique__c =true;
                 }
                 else if(eachContract.SBQQ__RenewalUpliftRate__c != null && 
@@ -227,7 +227,7 @@ public class SM010_ContractServices {
             contract.LPCR_MethodeRenouvellement__c = quote.LPCR_MethodeRenouvellement__c;
         }
         
-        if(contract.LPCR_TypeCreche__c == 'MAC' && contract.EndDate != contract.LPCR_DateFin__c){
+        if(contract.recordtype.DeveloperName == 'Accueil' && contract.EndDate != contract.LPCR_DateFin__c){
             contract.LPCR_RenouvellementAutomatique__c =true;
         }
         else if(contract.SBQQ__RenewalUpliftRate__c != null && 
