@@ -7,6 +7,8 @@
 public class SM010_ContractServices {
     public static Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract',Label.LPCR_Referencement);
     public static Id accueilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract',Label.LPCR_ContratA);
+    public static Id entrepiseRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account','Entreprise');
+
     /**
 * @Author Ayoub Ouarti
 * @Created 23/03/2020
@@ -34,6 +36,7 @@ public class SM010_ContractServices {
         Map<Id,SBQQ__Quote__c> quoteOrderMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c, recordtype.DeveloperName, LPCR_PlanningEnfant__c, LPCR_EntiteJuridique__c , recordtype.name, LPCR_ContractEntreprise__c, LPCR_Creche__c, LPCR_TypeCreche__c, LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Region__c, LPCR_CompteFacturation__c, LPCR_ContactEnfant__c, SBQQ__Type__c,LPCR_FraisDossier__c   from SBQQ__Quote__c WHERE Id in :quoteOrderIds]);
         String contractRTDevName;
         List<String> accountIds = new List<String>();
+        List<String> accountEntrpriseIds = new List<String>();
         for (Contract eachContract : contracts){
             if(B2BContractRecordTypeIds.contains(eachContract.RecordTypeId)){
                 accountIds.add( eachContract.AccountId );
@@ -63,6 +66,10 @@ public class SM010_ContractServices {
             if(orderMap.containsKey(eachContract.SBQQ__Order__c)){
                     eachContract.LPCR_NumeroContrat__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_NumeroContrat__c;
             }
+            
+            if(eachContract.StartDate <= system.today() && eachContract.EndDate >= system.today()){
+                accountEntrpriseIds.add(eachContract.AccountId);
+            }
         }
         
         if(accountIds.size()>0){  
@@ -71,6 +78,14 @@ public class SM010_ContractServices {
                 eachAcc.LPCR_ProcessRevenuCascade__c = true;
             }
             update accounts;
+        }
+        
+        if(accountEntrpriseIds.size()>0){
+            List<Account> entrepriseAccounts = [SELECT Id,LPCR_Actif__c, RecordTypeId FROM Account WHERE Id IN :accountEntrpriseIds And RecordTypeId =: entrepiseRecTypeId ];
+            for(Account eachAcc : entrepriseAccounts){
+                eachAcc.LPCR_Actif__c = true;
+            }
+            update entrepriseAccounts;
         }
     }
     // added by saurabh IS-1449
@@ -134,6 +149,7 @@ public class SM010_ContractServices {
         List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement)/*,
         EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)*/};
         List<String> accountIds = new List<String>();
+        List<String> accountEntrpriseIds = new List<String>();
                Set<String> orderIds = UM003_TypeManager.getFieldsOfListObjects(newContractMap.values(),'SBQQ__Order__c');
         Map<Id,Order> mapOrders = new Map<Id,Order>([SELECT Id,RecordType.DeveloperName,LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c,SBQQ__Quote__c from Order WHERE Id in :orderIds ]);
 
@@ -144,6 +160,10 @@ public class SM010_ContractServices {
                     accountIds.add( eachContract.AccountId );
                 }
             }
+            
+            if(eachContract.StartDate <= system.today() && eachContract.EndDate >= system.today()){
+                accountEntrpriseIds.add(eachContract.AccountId);
+            }
         }
         if(accountIds.size()>0){  
             List<Account> accounts = [SELECT Id,LPCR_ProcessRevenuCascade__c FROM Account WHERE Id IN :accountIds];
@@ -151,6 +171,14 @@ public class SM010_ContractServices {
                 eachAcc.LPCR_ProcessRevenuCascade__c = true;
             }
             update accounts;
+        }
+        
+        if(accountEntrpriseIds.size()>0){
+            List<Account> entrepriseAccounts = [SELECT Id,LPCR_Actif__c, RecordTypeId FROM Account WHERE Id IN :accountEntrpriseIds And RecordTypeId =: entrepiseRecTypeId ];
+            for(Account eachAcc : entrepriseAccounts){
+                eachAcc.LPCR_Actif__c = true;
+            }
+            update entrepriseAccounts;
         }
      
       
