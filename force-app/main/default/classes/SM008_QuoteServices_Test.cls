@@ -106,6 +106,8 @@ public class SM008_QuoteServices_Test {
             eachContract.LPCR_CongesJours__c = 33;
             eachContract.LPCR_DureePreavisMois__c = '3';
             eachContract.LPCR_TypeAccueil__c = 'Occasionnel';
+            eachContract.LPCR_MethodeRenouvellement__c = 'Tacite';
+            eachContract.LPCR_IndexationConvenue__c = 'Non';
             
         }
         insert Renewalcontract6;
@@ -748,20 +750,25 @@ public class SM008_QuoteServices_Test {
     public static void updateQuotesB2BAmend_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Referencement');
-            Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Reservataire');       
+            Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement);
+            Id referencementContractReTID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract','Reservataire');       
             //B2B Amendment
             List<Account> accs = [SELECT Id, name   from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
             Account acc = accs.get(0);
             List<Opportunity> oppties4 = [SELECT Id  from Opportunity WHERE name ='opp NON' LIMIT 1 ];
             Opportunity opp4 = oppties4.get(0);
-            List<Contract> contract4 = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c   From Contract WHERE Name = '0006' Limit 1];
+            List<Contract> contract4 = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c,LPCR_IndexationConvenue__c  From Contract WHERE Name = '0006' Limit 1];
             Contract con4 = contract4.get(0);
+            con4.RecordTypeId = referencementContractReTID;
+            update con4;
             SBQQ__Quote__c quote12 = UM002_TestDataFactory.createQuotes(1, accs, oppties4,'Amendment', referencementRecTypeId, acc.Id).get(0);
+            quote12.RecordTypeId = referencementRecTypeId;
             insert quote12;
-            quote12 = [SELECT Id, LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Amendment' AND  Id = :quote12.Id];
+            quote12 = [SELECT Id, LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c, LPCR_IndexationConvenue__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Amendment' AND  Id = :quote12.Id ];
             System.assertEquals(quote12.LPCR_DateDebut__c, con4.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
             System.assertEquals(quote12.LPCR_DateFin__c, con4.LPCR_DateFin__c , 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
+            System.assertEquals(con4.LPCR_MethodeRenouvellement__c, quote12.LPCR_MethodeRenouvellement__c, 'Quote LPCR_MethodeRenouvellement__c not equals to con LPCR_MethodeRenouvellement__c');
+            System.assertEquals(con4.LPCR_IndexationConvenue__c, quote12.LPCR_IndexationConvenue__c, 'Quote LPCR_MethodeRenouvellement__c not equals to con LPCR_MethodeRenouvellement__c');
             Test.stopTest();
             
             
