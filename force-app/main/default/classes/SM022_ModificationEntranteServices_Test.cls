@@ -433,7 +433,7 @@ public class SM022_ModificationEntranteServices_Test {
             Insert contract;
 
             LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Type_Accueil',acc.id,cont.id,contract.id,Date.today(),10);
-            modif.LPCR_TypeAccueil__c = 'Normal';
+            modif.LPCR_TypeAccueil__c = 'Régulier';
             insert modif;
 
             Test.startTest();
