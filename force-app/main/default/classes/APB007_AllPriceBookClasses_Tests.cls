@@ -99,6 +99,7 @@ public with sharing class APB007_AllPriceBookClasses_Tests {
     //This test is from the APB006 Test Class
     @isTest
     private static void testAPB006PrepaRenewalContract(){
+
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
         //Data setup from The APB006 Test Class
@@ -200,10 +201,10 @@ public with sharing class APB007_AllPriceBookClasses_Tests {
         // adjust contract LPCR_JoursAvance__c
         contracts = [SELECT Id, LPCR_JoursAvance__c, EndDate FROM Contract];
         for (Contract c : contracts) {
-            Integer diffEndDate = c.EndDate.daysBetween(System.today());
-            c.LPCR_JoursAvance__c = c.EndDate < System.today()
-                ? diffEndDate
-                : -1 * diffEndDate;
+            if (c != null && c.EndDate != null) {
+                Integer diffEndDate = c.EndDate.daysBetween(System.today());
+                c.LPCR_JoursAvance__c = (c.EndDate < System.today()) ? diffEndDate : -1 * diffEndDate;
+            }
         }
 
         update contracts;

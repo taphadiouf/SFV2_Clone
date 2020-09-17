@@ -15,13 +15,13 @@ public with sharing class TM016_CreditNoteTrigger extends TM000_TriggerHandler{
     }
     
     protected override void afterInsert() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM021_CreditNoteServices.updateReleatedObjectsFields(newCreditNoteList);
         }
     }
 
     protected override void afterUpdate() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass')){
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM021_CreditNoteServices.afterUpdateCreateCreditNoteAllocation(newCreditNoteList, oldCreditNoteMap);
         }
     }
