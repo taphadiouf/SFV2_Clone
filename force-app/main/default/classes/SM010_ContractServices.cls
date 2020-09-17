@@ -42,16 +42,6 @@ public class SM010_ContractServices {
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){
                 // IS-1115 fixes added by saurabh
                 contractRTDevName = quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.DeveloperName;
-                if(eachContract.RecordTypeId == referencementRecTypeId) {
-                   // if(quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_Referencement || quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_Referencement_Approuve ) {
-                        if(quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__Type__c != 'Renewal'){
-                            eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).Id;
-                        }else{
-                            eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_MasterDevis__c;
-                        }
-                   // }
-                }
-
 
                 if(orderMap.containsKey(eachContract.SBQQ__Order__c) &&
                    quoteOrderMap.containsKey(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
@@ -221,6 +211,15 @@ public class SM010_ContractServices {
                 eachContract.LPCR_RenouvellementPlanFacturation__c = mapOrders.get(eachContract.SBQQ__Order__c).LPCR_RenouvellementPlanFacture__c;
                 eachContract.RecordTypeId = mapContractRT.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).RecordType.DeveloperName)? 
                     mapContractRT.get(mapOrders.get(eachContract.SBQQ__Order__c).RecordType.DeveloperName).getRecordTypeId(): eachContract.RecordTypeId;
+            }
+            if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){
+                if(eachContract.RecordTypeId == referencementRecTypeId) {
+                        if(quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__Type__c != 'Renewal'){
+                            eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).Id;
+                        }else{
+                            eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_MasterDevis__c;
+                        }
+                }       
             }
             
         }
