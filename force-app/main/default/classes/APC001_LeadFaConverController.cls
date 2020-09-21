@@ -6,7 +6,7 @@
 */
 public with sharing class APC001_LeadFaConverController{
     
-    @AuraEnabled(cacheable = true)
+    @AuraEnabled(cacheable = false)
     public static List<Account> getRelatedCreches(Id leadId){
         
         List<LPCR_LienCrecheLead__c> tmpLienCrecheLead = [SELECT Id, LPCR_Creche__c from LPCR_LienCrecheLead__c where LPCR_Lead__c = :leadId];
