@@ -158,14 +158,14 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ReadWrite</externalSharingModel>
     <gender>Masculine</gender>
-    <label>Contrat partenaire</label>
+    <label>Contrat Partenaire</label>
     <nameField>
         <displayFormat>{YYYY}.{000}</displayFormat>
         <label>Numéro</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Contrats partenaires</pluralLabel>
+    <pluralLabel>Contrats Partenaires</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

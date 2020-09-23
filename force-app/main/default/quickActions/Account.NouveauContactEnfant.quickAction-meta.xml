@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fieldOverrides>
-        <field>LPCR_Representant1__c</field>
-        <formula>Account.LPCR_Representant1__c</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>LPCR_Representant2__c</field>
-        <formula>Account.LPCR_Representant2__c</formula>
-    </fieldOverrides>
     <label>Nouveau Contact Enfant</label>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
     <quickActionLayout>
@@ -29,10 +21,6 @@
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
-                <emptySpace>true</emptySpace>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
-            <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>Description</field>
                 <uiBehavior>Edit</uiBehavior>
@@ -47,16 +35,6 @@
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>LPCR_Handicape__c</field>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>LPCR_DetailHandicap__c</field>
-                <uiBehavior>Edit</uiBehavior>
-            </quickActionLayoutItems>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>LPCR_ProtocoleMedical__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
