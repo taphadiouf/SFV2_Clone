@@ -7863,22 +7863,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SBQQ__ProductOption__c.LPCR_Tranche__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__ProductOption__c.LPCR_TypeAccueil__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>SBQQ__ProductOption__c.LPCR_OptionNumber__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__ProductOption__c.LPCR_Region__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__ProductOption__c.LPCR_Tranche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__ProductOption__c.LPCR_TypeAccueil__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -10137,7 +10137,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_Section__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -13566,8 +13566,6 @@
         <field>blng__InvoiceRun__c.LPCR_EnvoyerFaitPar__c</field>
         <readable>false</readable>
     </fieldPermissions>
-<<<<<<< HEAD
-=======
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__InvoiceRun__c.blng__ApexJobId__c</field>
@@ -14098,7 +14096,6 @@
         <field>sbaa__Approval__c.Quote__c</field>
         <readable>true</readable>
     </fieldPermissions>
->>>>>>> 4d85153cd15a2a2b62eec02b47599954b3453ced
     <hasActivationRequired>false</hasActivationRequired>
     <label>LPCR - Salesforce CPQ User</label>
     <objectPermissions>
