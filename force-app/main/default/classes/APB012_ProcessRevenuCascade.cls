@@ -21,27 +21,30 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
         List<blng__RevenueTransaction__c> revenueTransList = [SELECT Id, Name, blng__Account__c, blng__RevenueFinancePeriod__c, blng__OrderProduct__c,blng__InvoiceLine__r.blng__Invoice__c,blng__InvoiceLine__r.blng__Invoice__r.blng__InvoiceStatus__c FROM blng__RevenueTransaction__c WHERE blng__OrderProduct__c != null AND blng__Account__c IN : accountsIdSet ];
         Set<String> orderProductIds = UM003_TypeManager.getFieldsOfListObjects(revenueTransList,'blng__OrderProduct__c');
         Set<Id> orderLineIds = new Set<Id>();
+        System.debug('*** revenueTransList size : '+ revenueTransList.size());
         
         Map<String, Map<String,LPCR_RevenueCascade__c>> revenueCascadeMap = new Map<String, Map<String,LPCR_RevenueCascade__c>>();
         
-        for(OrderItem eachOrderItem : [SELECT Id,blng__BillingAccount__c,SBQQ__Contract__c,LPCR_Creche__c,OrderId, Order.Status, SBQQ__ChargeType__c,blng__GroupId__c FROM OrderItem WHERE Id IN: orderProductIds AND SBQQ__Contract__c != null AND Order.Status = 'Activated' AND SBQQ__ChargeType__c != 'One-Time']){
+        for(OrderItem eachOrderItem : [SELECT Id,blng__BillingAccount__c,SBQQ__Contract__c,LPCR_Creche__c,OrderId,Order.AccountId, Order.Status, SBQQ__ChargeType__c,blng__GroupId__c FROM OrderItem WHERE Id IN: orderProductIds AND SBQQ__Contract__c != null AND Order.Status = 'Activated' AND SBQQ__ChargeType__c != 'One-Time']){
             orderLineIds.add(eachOrderItem.Id);
-            orderItemGroupingSet.add(eachOrderItem.blng__BillingAccount__c+''+eachOrderItem.SBQQ__Contract__c+''+eachOrderItem.LPCR_Creche__c);
+            orderItemGroupingSet.add(eachOrderItem.Order.AccountId+''+eachOrderItem.SBQQ__Contract__c+''+eachOrderItem.LPCR_Creche__c);
         }
-        System.debug('*** orderLineIds size : '+ orderLineIds.size());
-        System.debug(orderLineIds);
+        
+        
         System.debug(orderItemGroupingSet);
+        
         for(LPCR_RevenueCascade__c eachRevCascade : [SELECT Id, Name, LPCR_Compte__c, LPCR_CreditNoteLineAggregation__c, LPCR_CreditNoteRevenue__c, LPCR_DateDebut__c, LPCR_MontantFacture__c, LPCR_OrderInvoiceRevenue__c, LPCR_OrderLineAggregation__c, LPCR_OrderLineGroup__c, LPCR_PCA__c FROM LPCR_RevenueCascade__c WHERE LPCR_OrderLineGroup__c IN : orderItemGroupingSet order by LPCR_DateDebut__c]){
             if(!revenueCascadeMap.containsKey(eachRevCascade.LPCR_OrderLineGroup__c)){
                 revenueCascadeMap.put(eachRevCascade.LPCR_OrderLineGroup__c,new Map<String,LPCR_RevenueCascade__c>());
             }
+            System.debug('#################333 '+eachRevCascade.LPCR_DateDebut__c);
             revenueCascadeMap.get(eachRevCascade.LPCR_OrderLineGroup__c).put(String.valueOf(eachRevCascade.LPCR_DateDebut__c),eachRevCascade);
         }
         System.debug('*** revenueCascadeMap size : '+ revenueCascadeMap.size());
         System.debug(revenueCascadeMap.keySet());
         
         // Step 1
-        list<AggregateResult> groupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount, SUM(blng__OrderProduct__r.Quantity) nbPlace, SUM(LPCR_PrixAnnuel__c) totalPrixAnnuel,MAX(LPCR_NombreMois__c) nombreMois, blng__Account__c,blng__Contract__c,blng__OrderProduct__r.blng__GroupId__c groupId,blng__OrderProduct__r.Blng__LegalEntity__c legalEntity,blng__OrderProduct__r.LPCR_Creche__c creche FROM blng__RevenueTransaction__c WHERE blng__OrderProduct__c != null AND blng__OrderProduct__c In :orderLineIds AND blng__OrderProduct__r.SBQQ__ChargeType__c != 'One-Time' GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__Contract__c,blng__OrderProduct__r.blng__GroupId__c,blng__OrderProduct__r.Blng__LegalEntity__c,blng__OrderProduct__r.LPCR_Creche__c Order By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__Contract__c,blng__OrderProduct__r.blng__GroupId__c,blng__OrderProduct__r.Blng__LegalEntity__c,blng__OrderProduct__r.LPCR_Creche__c];        
+        list<AggregateResult> groupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount, SUM(blng__OrderProduct__r.Quantity) nbPlace, SUM(LPCR_PrixAnnuel__c) totalPrixAnnuel,MAX(LPCR_NombreMois__c) nombreMois, blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c contract,blng__OrderProduct__r.blng__GroupId__c groupId,blng__OrderProduct__r.Blng__LegalEntity__c legalEntity,blng__OrderProduct__r.LPCR_Creche__c creche FROM blng__RevenueTransaction__c WHERE blng__OrderProduct__c != null AND blng__OrderProduct__c In :orderLineIds AND blng__OrderProduct__r.SBQQ__ChargeType__c != 'One-Time' GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c ,blng__OrderProduct__r.blng__GroupId__c,blng__OrderProduct__r.Blng__LegalEntity__c,blng__OrderProduct__r.LPCR_Creche__c Order By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c ,blng__OrderProduct__r.blng__GroupId__c,blng__OrderProduct__r.Blng__LegalEntity__c,blng__OrderProduct__r.LPCR_Creche__c];        
         system.debug('**** Step 1 groupedResults size : '+ groupedResults.size());
         
         Double aggregateAmount = 0;
@@ -53,15 +56,23 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
             Double amount = Double.valueOf(ar.get('amount'));
             aggregateAmount += amount;
             String groupId = String.valueOf(ar.get('groupId'));
-            // Create the Revenue Waterfall records or update the existing ones
-            if(revenueCascadeMap.containsKey(groupId) && revenueCascadeMap.get(groupId).containsKey(String.valueOf(ar.get('rvp')))){
-                LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(groupId).get(String.valueOf(ar.get('rvp')));
+            String queryRvpResult = String.valueOf(ar.get('rvp'));
+            String stDate = '';
+            if(String.isNotBlank(queryRvpResult)){
+                stDate = queryRvpResult.split(' ')[0];
+            }
+            System.debug('>> APB012_ProcessRevenuCascade , execute(), step1 groupId :: '+ groupId);
+            
+          // Create the Revenue Waterfall records or update the existing ones
+            if(revenueCascadeMap.keySet().Contains(groupId) && revenueCascadeMap.get(groupId).keySet().Contains(stDate)){
+                System.debug('@@@@@@@@@@@@@@@@ '+groupId);
+                LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(groupId).get(stDate);
                 updateRevCascade.LPCR_OrderLineAggregation__c = amount;
                 updateRevCascade.LPCR_OrderInvoiceRevenue__c = aggregateAmount;
-                updateRevCascade.LPCR_Contrat__c = String.valueOf(ar.get('blng__Contract__c'));
+                updateRevCascade.LPCR_Contrat__c = String.valueOf(ar.get('contract'));
                 updateRevCascade.LPCR_NombrePlace__c = Integer.valueOf(ar.get('nbPlace'));
                 updateRevCascade.LPCR_PrixAnnuel__c = Double.valueOf(ar.get('totalPrixAnnuel'));
-                updateRevCascade.LPCR_NombreMois__c = Integer.valueOf(ar.get('nombreMois'));
+                updateRevCascade.LPCR_NombreMois__c = UM005_DateUtility.getMonthNumberByString(String.valueOf(ar.get('nombreMois')));
                 updateRevCascade.LPCR_EntiteJuridique__c = String.valueOf(ar.get('legalEntity'));
                 updateRevCascade.LPCR_CompteCreche__c = String.valueOf(ar.get('creche'));
                 upsertRevenueCascadeList.add(updateRevCascade);
@@ -73,35 +84,40 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                 newRevCascade.LPCR_OrderInvoiceRevenue__c = aggregateAmount;
                 newRevCascade.LPCR_Compte__c = String.valueOf(ar.get('blng__Account__c'));
                 newRevCascade.LPCR_OrderLineGroup__c = groupId;
-                newRevCascade.LPCR_Contrat__c = String.valueOf(ar.get('blng__Contract__c'));
+                newRevCascade.LPCR_Contrat__c = String.valueOf(ar.get('contract'));
                 newRevCascade.LPCR_NombrePlace__c = Integer.valueOf(ar.get('nbPlace'));
                 newRevCascade.LPCR_PrixAnnuel__c = Double.valueOf(ar.get('totalPrixAnnuel'));
-                newRevCascade.LPCR_NombreMois__c = Integer.valueOf(ar.get('nombreMois'));
+                newRevCascade.LPCR_NombreMois__c = UM005_DateUtility.getMonthNumberByString(String.valueOf(ar.get('nombreMois')));
                 newRevCascade.LPCR_EntiteJuridique__c = String.valueOf(ar.get('legalEntity'));
                 newRevCascade.LPCR_CompteCreche__c = String.valueOf(ar.get('creche'));
                 
-                if(!revenueCascadeMap.containsKey(groupId)){
-                    revenueCascadeMap.put(groupId, new Map<String,LPCR_RevenueCascade__c>());
+                if(groupId != null){
+                    if(!revenueCascadeMap.keySet().Contains(groupId)){
+                        revenueCascadeMap.put(groupId, new Map<String,LPCR_RevenueCascade__c>());
+                    }
+                    revenueCascadeMap.get(groupId).put(String.valueOf(ar.get('rvp')),newRevCascade);
                 }
-                revenueCascadeMap.get(groupId).put(String.valueOf(ar.get('rvp')),newRevCascade);
-                
                 
                 upsertRevenueCascadeList.add(newRevCascade);
             }           
         }
-        
-        
+        upsert upsertRevenueCascadeList;
+        upsertRevenueCascadeList = new List<LPCR_RevenueCascade__c>();
+        System.debug('***revenueCascadeMap : '+ revenueCascadeMap);
+        System.debug('*** orderLineIds size : '+ orderLineIds.size());
+        System.debug('>> APB012_ProcessRevenuCascade , execute(), orderLineIds '+orderLineIds);
         
         // Step 2 populate the Theoretical Credit Note Amount field
         List<blng__CreditNoteLine__c> creditNoteLineList = [SELECT Id,blng__CreditNote__c, blng__CreditNote__r.blng__Status__c, blng__InvoiceLine__r.blng__OrderProduct__c FROM blng__CreditNoteLine__c WHERE /*blng__CreditNote__r.blng__Status__c = 'Posted' AND*/ blng__InvoiceLine__r.blng__OrderProduct__c IN: orderLineIds];
-        System.debug('*** creditNoteLineList size : '+ creditNoteLineList.size());
+        System.debug('>> APB012_ProcessRevenuCascade , execute(), creditNoteLineList size : '+ creditNoteLineList.size());
         System.debug(creditNoteLineList);
         
         if(creditNoteLineList.size() > 0){
             Set<Id> creditNoteLineIdSet = UM003_TypeManager.getIdsOfListObjects(creditNoteLineList);
+            System.debug('>> APB012_ProcessRevenuCascade , execute(),creditNoteLineIdSet '+creditNoteLineIdSet);
             list<AggregateResult> step2GroupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount,blng__OrderProduct__r.blng__GroupId__c groupId FROM blng__RevenueTransaction__c WHERE blng__CreditNoteLine__c != null AND blng__CreditNoteLine__c In :creditNoteLineIdSet AND blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__OrderProduct__r.blng__GroupId__c Order By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__OrderProduct__r.blng__GroupId__c];
             
-            system.debug('step2GroupedResults.size()==== ' + step2GroupedResults.size());
+            system.debug('>> APB012_ProcessRevenuCascade , execute(),step2GroupedResults.size()==== ' + step2GroupedResults.size());
             aggregateAmount = 0;
             for (AggregateResult ar : step2GroupedResults){
                 System.debug('blng__RevenueFinancePeriod__c Date : ' + ar.get('rvp'));
@@ -111,15 +127,18 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                 Double amount = Double.valueOf(ar.get('amount'));
                 aggregateAmount += amount;
                 String groupId = String.valueOf(ar.get('groupId'));
+                System.debug('#####STEP 2####### '+groupId);
                 // Create the Revenue Waterfall records or update the existing ones
-                if(revenueCascadeMap.containsKey(groupId) && revenueCascadeMap.get(groupId).containsKey(String.valueOf(ar.get('rvp')))){
+                if(revenueCascadeMap.keySet().Contains(groupId) && revenueCascadeMap.get(groupId).keySet().Contains(String.valueOf(ar.get('rvp')))){
                     LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(groupId).get(String.valueOf(ar.get('rvp')));
                     updateRevCascade.LPCR_CreditNoteLineAggregation__c = amount;
                     updateRevCascade.LPCR_CreditNoteRevenue__c = aggregateAmount;
+                    upsertRevenueCascadeList.add(updateRevCascade);
                 }
             }
         }
-        
+        upsert upsertRevenueCascadeList;
+        upsertRevenueCascadeList = new List<LPCR_RevenueCascade__c>();
         // step 3
         Set<Id> invoiceIdsSet = new Set<Id>();
         Map<String,Double> invoicedAmountMap = new Map<String,Double>();
@@ -129,7 +148,7 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                 invoiceIdsSet.add(eachRevTrans.blng__InvoiceLine__r.blng__Invoice__c);
             }
         }
-        
+        System.debug('>> APB012_ProcessRevenuCascade , execute(), invoiceIdsSetinvoiceIdsSet '+invoiceIdsSet);
         if(invoiceIdsSet.size() > 0){
             // this will give the Aggregated sum, group by field present on the order product
             list<AggregateResult> amountGroupedResults = [SELECT blng__OrderProduct__r.blng__InvoiceGroupId__c rvp, SUM(blng__Subtotal__c) amount 
@@ -142,7 +161,7 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                                                           Order By blng__OrderProduct__r.blng__InvoiceGroupId__c];
             
             
-            system.debug('amountGroupedResults.size()==== ' + amountGroupedResults.size());
+            system.debug('>> APB012_ProcessRevenuCascade , execute(), amountGroupedResults.size()==== ' + amountGroupedResults.size());
             
             for (AggregateResult ar : amountGroupedResults){
                 System.debug('blng__InvoiceGroupId__c id is : ' + ar.get('rvp'));
@@ -163,7 +182,7 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                                                      Order By blng__OrderProduct__r.blng__InvoiceGroupId__c];
             
             
-            system.debug('groupedResults2.size()==== ' + groupedResults2.size());
+            system.debug('>> APB012_ProcessRevenuCascade , execute(), groupedResults2.size()==== ' + groupedResults2.size());
             
             for (AggregateResult ar : groupedResults2)  {
                 System.debug('blng__InvoiceGroupId__c id is : ' + ar.get('rvp'));
@@ -173,9 +192,14 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                     LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).get(String.valueOf(ar.get('minStartDate')));
                     if(invoicedAmountMap.containsKey(String.valueOf(ar.get('rvp')))){
                         updateRevCascade.LPCR_MontantFacture__c = invoicedAmountMap.get(String.valueOf(ar.get('rvp')));
+                    	upsertRevenueCascadeList.add(updateRevCascade);
                     }
                 }
             }
+            upsert upsertRevenueCascadeList;
+            System.debug('>> APB012_ProcessRevenuCascade , execute(),upsertRevenueCascadeListAMOUNT '+upsertRevenueCascadeList);
+            upsertRevenueCascadeList = new List<LPCR_RevenueCascade__c>();
+            
             
             Map<String,Double> creditNoteInvoicedAmountMap = new Map<String,Double>();
             Set<String> creditNoteIdsSet = UM003_TypeManager.getFieldsOfListObjects(creditNoteLineList,'blng__CreditNote__c');
@@ -192,7 +216,7 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                                                         Order By blng__InvoiceLine__r.blng__OrderProduct__r.blng__InvoiceGroupId__c];
                 
                 
-                system.debug('creditNoteLineGroupedResults.size()==== ' + creditNoteLineGroupedResults.size());
+                system.debug('>> APB012_ProcessRevenuCascade , execute(),creditNoteLineGroupedResults.size()==== ' + creditNoteLineGroupedResults.size());
                 
                 for (AggregateResult ar : creditNoteLineGroupedResults)  {
                     System.debug('blng__InvoiceGroupId__c id is : ' + ar.get('rvp'));
@@ -213,7 +237,7 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                                                          Order By blng__InvoiceLine__r.blng__OrderProduct__r.blng__InvoiceGroupId__c];
                 
                 
-                system.debug('creditNoteLineGroupedResults2.size()==== ' + creditNoteLineGroupedResults2.size());
+                system.debug('>> APB012_ProcessRevenuCascade , execute(),creditNoteLineGroupedResults2.size()==== ' + creditNoteLineGroupedResults2.size());
                 
                 for (AggregateResult ar : creditNoteLineGroupedResults2)  {
                     System.debug('blng__InvoiceGroupId__c id is : ' + ar.get('rvp'));
@@ -223,18 +247,31 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                         LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).get(String.valueOf(ar.get('minStartDate')));
                         if(creditNoteInvoicedAmountMap.containsKey(String.valueOf(ar.get('rvp')))){
                             updateRevCascade.LPCR_MontantFacture__c = creditNoteInvoicedAmountMap.get(String.valueOf(ar.get('rvp')));
+                        	upsertRevenueCascadeList.add(updateRevCascade);
                         }
                     }
                 }
             }            
         }
+        
+        System.debug('>> APB012_ProcessRevenuCascade , execute(), upsertRevenueCascadeList size : '+ upsertRevenueCascadeList.size());
+        
         // insert or update Revenue Cascade
         if(upsertRevenueCascadeList.size() > 0){
             try{
+                System.debug('>> APB012_ProcessRevenuCascade , execute(), upsertRevenueCascadeList.size = '+ upsertRevenueCascadeList.size());
                 upsert upsertRevenueCascadeList;
             }catch(Exception ex){
                 System.debug('Exception: APB012_ProcessRevenuCascade | '+ ex.getMessage());
             }            
+        }
+        for(Account eachAcc : scope){
+            eachAcc.LPCR_ProcessRevenuCascade__c = false;
+        }
+        try{
+            upsert scope;
+        }catch(Exception ex){
+            System.debug('Exception: APB012_ProcessRevenuCascade | '+ ex.getMessage());
         }
         
     }
