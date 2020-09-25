@@ -200,6 +200,8 @@
             
                 oppB2B.SBQQ__PrimaryQuote__c = quoteB2B.Id;
             update oppB2B;
+            
+            test.startTest();
                 //Order the quote to create Order / OrderItems
                 update new SBQQ__Quote__c (Id = quoteB2B.Id, SBQQ__Ordered__c = true);    
             
@@ -208,7 +210,8 @@
             for(OrderItem eachOrderItem : orderItems){
                 eachOrderItem.SBQQ__DefaultSubscriptionTerm__c=1;
             }
-            update orderItems;      
+            update orderItems; 
+            test.stopTest();     
         }
         
         @isTest

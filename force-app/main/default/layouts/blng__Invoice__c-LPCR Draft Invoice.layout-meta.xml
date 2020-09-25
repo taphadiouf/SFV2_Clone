@@ -39,10 +39,6 @@
                 <behavior>Edit</behavior>
                 <field>blng__InvoicePostedDate__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>RecordTypeId</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -95,7 +91,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>blng__PaymentStatus__c</field>
+                <field>LPCR_StatutPaiement__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -371,7 +367,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000000sWMN</masterLabel>
+        <masterLabel>00h1x000000t1mU</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

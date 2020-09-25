@@ -14,7 +14,7 @@ public class APB011_SetInvoiceCommentaire_Test {
         blng__InvoiceRun__c invoiceRun = invoiceRunsList.get(0);
         List<blng__Invoice__c> invoicesList = UM002_TestDataFactory.createInvoices(10,acc.id,invoiceRun.id,'Posted','Brouillon' );
         insert invoicesList;
-        List<blng__Invoice__c> pretInvoicesList = UM002_TestDataFactory.createInvoices(10,acc.id,invoiceRun.id,'Posted','Prêt à valider' );
+        List<blng__Invoice__c> pretInvoicesList = UM002_TestDataFactory.createInvoices(10,acc.id,invoiceRun.id,'Posted','A Envoyer' );
         insert pretInvoicesList;
     }
     

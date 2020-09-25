@@ -344,7 +344,7 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <platformActionList>
+     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
             <actionName>Account.NouvelleOpportuniteEntreprise</actionName>
@@ -381,7 +381,7 @@
             <actionType>QuickAction</actionType>
             <sortOrder>6</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
+        <platformActionListItems>            
             <actionName>FeedItem.ContentPost</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>7</sortOrder>
@@ -658,7 +658,11 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
+<<<<<<< HEAD
         <masterLabel>00h1X000001HrE9</masterLabel>
+=======
+        <masterLabel>00h1x000000lUiA</masterLabel>
+>>>>>>> 4d85153cd15a2a2b62eec02b47599954b3453ced
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

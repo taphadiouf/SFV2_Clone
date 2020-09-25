@@ -32,7 +32,8 @@ public with sharing class SM013_QuoteLineServices_Test {
             'RecordTypeId' => CRECHE_RT_ID,
             'Name' => 'Creche',
             'LPCR_TypeCreche__c' => 'MAC',
-            'LPCR_Region__c' => 'Paris'
+            'LPCR_Region__c' => 'Paris',
+            'LPCR_TypeMensualisation__c' => 11 
         };
         Account creche = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
         accounts.add (creche);

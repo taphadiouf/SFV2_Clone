@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <aggregates>
-        <calculatedFormula>Contract.ContractNumber:UNIQUE/Account.LPCR_AgrementTotal__c:AVG</calculatedFormula>
+        <calculatedFormula>IF(Account.LPCR_AgrementTotal__c:AVG=0,0,Contract.ContractNumber:UNIQUE/Account.LPCR_AgrementTotal__c:AVG)</calculatedFormula>
         <datatype>percent</datatype>
         <developerName>FORMULA1</developerName>
         <downGroupingContext>Account$Name</downGroupingContext>
@@ -11,7 +11,7 @@
         <scale>0</scale>
     </aggregates>
     <aggregates>
-        <calculatedFormula>RowCount/Contract.LPCR_NombreAgrmentCrcheSurSection__c:AVG</calculatedFormula>
+        <calculatedFormula>IF(Contract.LPCR_NombreAgrmentCrcheSurSection__c:AVG=0,0,RowCount/Contract.LPCR_NombreAgrmentCrcheSurSection__c:AVG)</calculatedFormula>
         <datatype>percent</datatype>
         <developerName>FORMULA2</developerName>
         <downGroupingContext>Account.Contrats__r$LPCR_Section__c</downGroupingContext>
@@ -63,16 +63,19 @@
     <filter>
         <criteriaItems>
             <column>Account$RecordType</column>
+            <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Account.Creche</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Contrats__r$LPCR_ContratActif__c</column>
+            <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
+        <language>fr</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>

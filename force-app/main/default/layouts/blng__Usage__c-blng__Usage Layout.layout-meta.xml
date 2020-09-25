@@ -98,16 +98,16 @@
         <label>Pricing Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>blng__Quantity__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>blng__Subtotal__c</field>
+                <field>blng__UnitPrice__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>blng__UnitPrice__c</field>
+                <behavior>Readonly</behavior>
+                <field>LPCR_SousTotal__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -180,7 +180,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h4E000000sejj</masterLabel>
+        <masterLabel>00h3E000001Z6NP</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

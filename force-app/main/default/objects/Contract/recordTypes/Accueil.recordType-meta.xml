@@ -196,6 +196,45 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_StatutInscription__c</picklist>
+        <values>
+            <fullName>Annulé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Confirmé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inscrit</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Liste d%E2%80%99attente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nouveau</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Option</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proposition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recommandation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recommandation validée</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_TypeAccueil__c</picklist>
         <values>
             <fullName>Occasionnel</fullName>

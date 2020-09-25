@@ -18,10 +18,6 @@
             <fullName>Matin</fullName>
             <default>false</default>
         </values>
-        <values>
-            <fullName>Non</fullName>
-            <default>false</default>
-        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_AmplitudeHoraireLundi__c</picklist>
@@ -35,10 +31,6 @@
         </values>
         <values>
             <fullName>Matin</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Non</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -56,10 +48,6 @@
             <fullName>Matin</fullName>
             <default>false</default>
         </values>
-        <values>
-            <fullName>Non</fullName>
-            <default>false</default>
-        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_AmplitudeHoraireMercredi__c</picklist>
@@ -73,10 +61,6 @@
         </values>
         <values>
             <fullName>Matin</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Non</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -94,13 +78,13 @@
             <fullName>Matin</fullName>
             <default>false</default>
         </values>
-        <values>
-            <fullName>Non</fullName>
-            <default>false</default>
-        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_Fonction__c</picklist>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>Assistant achats</fullName>
             <default>false</default>
@@ -564,6 +548,10 @@
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_TypeFonction__c</picklist>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
         <values>
             <fullName>CE</fullName>
             <default>false</default>

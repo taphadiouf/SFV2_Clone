@@ -15,6 +15,8 @@ public class SM006_PreinscriptionServices {
         
         //Map: (Preinscription Id => Opportunity)
         Map<Id, Opportunity> preiscIDToOpportunityMap = new Map<Id, Opportunity>();
+        Set<String> contactIds = UM003_TypeManager.getFieldsOfListObjects(newPreinscrisMap.values(),'LPCR_ContactEnfant__c');
+        Map<Id, Contact> preiscIDToContactMap = new Map<Id, Contact>([SELECT Id, Name FROM Contact WHERE Id in: contactIds]);
         List<SBQQ__Quote__c> listQuotes = new List<SBQQ__Quote__c>();
         //Map (Preinscription Id => Account Id (Compte famille))
         Map<Id, Id> preinscIDToAccountIdMap = new Map<Id, Id>();
@@ -22,16 +24,13 @@ public class SM006_PreinscriptionServices {
         Id familleOpportunityRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Opportunity,System.Label.LPCR_Famille);
         for(LPCR_Preinscription__c eachNewPreinscri : newPreinscrisMap.values()){
             //Add a new opportunity to the oppts map
-            if((eachNewPreinscri.LPCR_Statut__c != oldPreinscrisMap.get(eachNewPreinscri.Id).LPCR_Statut__c 
+            if(eachNewPreinscri.LPCR_Statut__c != oldPreinscrisMap.get(eachNewPreinscri.Id).LPCR_Statut__c 
                 && Label.LPCR_Confirme.equals(eachNewPreinscri.LPCR_Statut__c))
-               && (
-                    Label.LPCR_Entreprise.equals(eachNewPreinscri.LPCR_TypePreinscription__c) 
-                   ||  Label.LPCR_DSP.equals(eachNewPreinscri.LPCR_TypePreinscription__c) 
-               )){
+               {
                    preiscIDToOpportunityMap.put(eachNewPreinscri.Id, new Opportunity( 
                        RecordTypeId = familleOpportunityRT,
                        AccountId = eachNewPreinscri.LPCR_CompteFamille__c, 
-                       Name = Label.LPCR_OppFor+eachNewPreinscri.LPCR_PrenomEnfant__c + ' ' + eachNewPreinscri.NomEnfant__c,
+                       Name = Label.LPCR_OppFor+preiscIDToContactMap.get(eachNewPreinscri.LPCR_ContactEnfant__c).Name,
                        StageName = Label.LPCR_Prospecting,
                        CloseDate = Date.today()));
                }

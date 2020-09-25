@@ -50,9 +50,9 @@
         <criteriaItems>
             <field>blng__Invoice__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Draft Invoice</value>
+            <value>Facture Brouillon</value>
         </criteriaItems>
-        <description>Update Invoice Record type upon invoicing posting</description>
-        <triggerType>onAllChanges</triggerType>
+        <description>Mettre à jour le type d&apos;enregistrement à la validation de la facture.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>

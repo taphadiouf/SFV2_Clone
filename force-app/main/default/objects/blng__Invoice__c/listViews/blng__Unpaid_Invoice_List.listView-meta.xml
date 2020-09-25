@@ -4,13 +4,12 @@
     <columns>NAME</columns>
     <columns>blng__Account__c</columns>
     <columns>blng__DueDate__c</columns>
-    <columns>blng__PaymentStatus__c</columns>
+    <columns>LPCR_StatutPaiement__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
-        <field>blng__PaymentStatus__c</field>
+        <field>LPCR_StatutPaiement__c</field>
         <operation>equals</operation>
-        <value>Unpaid</value>
+        <value>0</value>
     </filters>
     <label>Unpaid Invoices</label>
-    <language>en_US</language>
 </ListView>

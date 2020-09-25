@@ -5,21 +5,6 @@
 */
 @isTest
 public class MCK001_LPCRHttpCalloutMockImpl_Test {
-	@isTest
-    static void SaveDocumentCallout_1_Test(){
-        Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-        WRP004_APISaveDocument data = new WRP004_APISaveDocument('000000000000000000','000000000000000000','Facture','Test');  
-             
-        String body = JSON.serialize(data);
-        Http http = new Http();
-        HttpRequest req = new HttpRequest();
-        req.setEndpoint('callout:DEV_SEND_DOCUMENT');
-        req.setMethod('POST');
-        req.setBody(body);
-        req.setTimeout(30000);
-        HttpResponse res = http.send(req);
-        System.assertEquals(200, res.getStatusCode(), 'SaveDocumentCallout_1_Test callout status code not correct');
-    }
     @isTest
     static void GetBySfId_1_Test(){
         Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());

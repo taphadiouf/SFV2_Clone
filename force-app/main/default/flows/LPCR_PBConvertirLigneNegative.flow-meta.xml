@@ -167,13 +167,44 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.LPCR_NombreLigneNegative__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>Statut = Postes et Statut de la facture = Pret a envoyer</label>
+            <label>Statut = Posted et Statut de la facture = Pret a envoyer</label>
         </rules>
     </decisions>
-    <interviewLabel>LPCR_PBConvertirLigneNegative-1_InterviewLabel</interviewLabel>
+    <interviewLabel>LPCR_PBConvertirLigneNegative-2_InterviewLabel</interviewLabel>
     <label>Convertir les lignes negative</label>
     <processMetadataValues>
         <name>ObjectType</name>

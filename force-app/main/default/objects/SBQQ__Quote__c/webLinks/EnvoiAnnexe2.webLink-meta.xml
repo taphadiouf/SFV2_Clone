@@ -20,13 +20,15 @@
     <url>/apex/APXTCFQ__Conga_Composer?SolMgr=1
 &amp;serverUrl={!API.Partner_Server_URL_370}
 &amp;Id={!SBQQ__Quote__c.Id}
-&amp;TemplateId={!IF(TEXT(SBQQ__Quote__c.LPCR_TypeCreche__c)=&apos;MAC&apos;, $Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateCongaAnnexe2MAC__c ,$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateCongaAnnexe2MICRO__c)}
+&amp;TemplateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateCongaAnnexe2MAC__c}
+&amp;QueryId=[Annexe2]a443O000000588l,[Planning]a443O0000005895?pv0={!SBQQ__Quote__c.LPCR_PlanningEnfantId__c}
 &amp;DefaultPDF=1
 &amp;SC0=1
 &amp;SC1=SalesforceFile
-&amp;OFN=Quote - {!Today}
+&amp;OFN= Annexe 2 - Accueil {!SBQQ__Quote__c.LPCR_ContactEnfant__c}
+&amp;ESVisible=1
 &amp;ESAgreementName= Contrat Accueil {!SBQQ__Quote__c.LPCR_ContactEnfant__c}
-&amp;ESAgreementTemplateId={!IF(TEXT(SBQQ__Quote__c.LPCR_TypeCreche__c)=&apos;MAC&apos;, $Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateAnnexe2MAC__c ,$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateAnnexe2MICRO__c)}
+&amp;ESAgreementTemplateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateAnnexe2MAC__c}
 &amp;ESCustomField=LPCR_Devis__c
 &amp;ESCustomFieldValue={!SBQQ__Quote__c.Id}</url>
 </WebLink>

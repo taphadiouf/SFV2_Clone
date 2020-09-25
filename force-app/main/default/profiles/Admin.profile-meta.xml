@@ -1713,11 +1713,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contract.LPCR_Enfant__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Contract.LPCR_EntiteJuridique__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3549,6 +3544,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_TypeContrat__mdt.LPCR_JourAvanceRenouvellement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Default_Uplift_Rate__mdt.LPCR_RenewalUpliftRate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9496,6 +9496,9 @@
         <layout>LPCR_TypeContrat__mdt-Présentation LPCR_TypeContrat</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>LPCR_Default_Uplift_Rate__mdt-LPCR_Default_Uplift_Rate Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>LPCR_Type_Evenement_Intranet__mdt-Présentation LPCR Type Evènement Intranet</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -9514,6 +9517,29 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>blng__Usage__c-blng__Usage Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité AO public DSP</layout>
+        <recordType>Opportunity.AOPublicDSP</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité AO public réservation</layout>
+        <recordType>Opportunity.AOPublicReservation</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité Entreprise</layout>
+        <recordType>Opportunity.Entreprise</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité Famille</layout>
+        <recordType>Opportunity.Famille</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité Partenaire</layout>
+        <recordType>Opportunity.Partenaire</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Présentation Opportunité Entreprise</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Order-Accueil</layout>

@@ -405,6 +405,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_Actif__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_Activite__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1900,11 +1905,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Contract.LPCR_Enfant__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Contract.LPCR_EntiteJuridique__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2521,6 +2521,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_Creche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Preinscription__c.LPCR_DateConfirmationInteret__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

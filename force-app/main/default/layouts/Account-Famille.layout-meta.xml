@@ -32,14 +32,6 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_Garde__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_Region__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_ProcessRevenuCascade__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -451,7 +443,7 @@
         <excludeButtons>New</excludeButtons>
         <fields>CONTRACT.CONTRACT_NUMBER</fields>
         <fields>CONTRACT.NAME</fields>
-        <fields>LPCR_Enfant__c</fields>
+        <fields>LPCR_ContactEnfant__c</fields>
         <fields>LPCR_Creche__c</fields>
         <fields>SBQQ__ActiveContract__c</fields>
         <fields>LPCR_SponsorEntreprise__c</fields>

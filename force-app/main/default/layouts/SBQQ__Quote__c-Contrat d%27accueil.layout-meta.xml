@@ -48,7 +48,7 @@
                 <field>SBQQ__Account__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>LPCR_CompteFacturation__c</field>
             </layoutItems>
         </layoutColumns>
@@ -119,7 +119,7 @@
         <label>Contacts</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>LPCR_ContactEnfant__c</field>
             </layoutItems>
             <layoutItems>
@@ -201,7 +201,7 @@
         <label>Information Crèche</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>LPCR_Creche__c</field>
             </layoutItems>
             <layoutItems>
@@ -238,6 +238,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_ContractEntreprise__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeAccueil__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -462,7 +466,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3E000001Pjno</masterLabel>
+        <masterLabel>00h3N000000Q2vO</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

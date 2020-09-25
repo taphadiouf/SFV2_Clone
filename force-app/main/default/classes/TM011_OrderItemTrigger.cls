@@ -24,25 +24,27 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     }
 
     protected override void afterInsert() {
-  if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
-     SM012_OrderItemServices.setInvoiceGroupingOnOrderItem(newOrderItemsMap);
-        
-        List<OrderItem> orderItemToProcess = new List<OrderItem> ();
-        for(OrderItem oi : newOrderItemsList){
-            if(oi.blng__LegalEntity__c == null){
-                orderItemToProcess.add(oi);
-            }
-        }
 
-        if (orderItemToProcess.size() > 0) {
-            SM012_OrderItemServices job = new SM012_OrderItemServices(newOrderItemsList);
-            ID jobID = System.enqueueJob(job);
-        }
-    }    
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')) {
+
+            SM012_OrderItemServices.setInvoiceGroupingOnOrderItem(newOrderItemsMap);
+                
+            List<OrderItem> orderItemToProcess = new List<OrderItem> ();
+            for(OrderItem oi : newOrderItemsList){
+                if(oi.blng__LegalEntity__c == null){
+                    orderItemToProcess.add(oi);
+                }
+            }
+
+            if (orderItemToProcess.size() > 0) {
+                SM012_OrderItemServices job = new SM012_OrderItemServices(newOrderItemsList);
+                ID jobID = System.enqueueJob(job);
+            }
+        }    
     }
 
     protected override void beforeUpdate() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){	        
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){            
             SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
             SM012_OrderItemServices.setOrderItemFieldsFromContract(newOrderItemsList);
             SM012_OrderItemServices.updateHoldBillingFromQuote(newOrderItemsList, oldOrderItemsMap,newOrderItemsMap);
@@ -51,9 +53,18 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     
     protected override void afterUpdate() {
        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
-        SM012_OrderItemServices.legalEntityOnOrderItemConSch(newOrderItemsMap);
-        SM012_OrderItemServices.updateFiledsOnBillingTransaction(oldOrderItemsMap,newOrderItemsMap);
-           
-    } 
+            SM012_OrderItemServices.legalEntityOnOrderItemConSch(newOrderItemsMap);
+            SM012_OrderItemServices.updateFiledsOnBillingTransaction(oldOrderItemsMap,newOrderItemsMap);
+            Set<Id> objOrderItemIds = new Set<Id>();
+            for(OrderItem orderItem : newOrderItemsList){
+                if(orderItem.LPCR_Creche__c != null && orderItem.LPCR_Creche__c != oldOrderItemsMap.get(orderItem.Id).LPCR_Creche__c
+                    || orderItem.SBQQ__Contract__c != null && orderItem.SBQQ__Contract__c != oldOrderItemsMap.get(orderItem.Id).SBQQ__Contract__c){
+                        objOrderItemIds.add(orderItem.Id);
+                }
+            }
+            if(objOrderItemIds.size() > 0){
+                SM012_OrderItemServices.updateGroupId(objOrderItemIds);
+            }
+       } 
     }
 }

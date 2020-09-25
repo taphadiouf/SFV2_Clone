@@ -12005,11 +12005,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Contract.LPCR_Enfant__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Contract.LPCR_EntiteJuridique__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -14051,6 +14046,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_TypeContrat__mdt.LPCR_JourAvanceRenouvellement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Default_Uplift_Rate__mdt.LPCR_RenewalUpliftRate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -32677,6 +32677,9 @@
         <layout>LPCR_TypeContrat__mdt-Présentation LPCR_TypeContrat</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>LPCR_Default_Uplift_Rate__mdt-LPCR_Default_Uplift_Rate Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>LPCR_Type_Evenement_Intranet__mdt-Présentation LPCR Type Evènement Intranet</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -32743,7 +32746,7 @@
         <recordType>Opportunity.Partenaire</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Opportunity-Présentation de l%27opportunité</layout>
+        <layout>Opportunity-Présentation Opportunité Entreprise</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Order-Accueil</layout>
@@ -34078,10 +34081,6 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>echosign_dev1__AboutEchoSign</apexPage>
-        <enabled>true</enabled>
-    </pageAccesses>
-    <pageAccesses>
         <apexPage>echosign_dev1__AccountAgreementAction</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -34319,10 +34318,6 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>echosign_dev1__MergeMappingObjectSelector</apexPage>
-        <enabled>true</enabled>
-    </pageAccesses>
-    <pageAccesses>
-        <apexPage>echosign_dev1__MyEchoSign</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>

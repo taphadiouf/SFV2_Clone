@@ -48,7 +48,8 @@ public with sharing class SM012_OrderItemServices_Test {
             'RecordTypeId' => CRECHE_RT_ID,
                 'Name' => 'Creche',
                 'LPCR_TypeCreche__c' => 'MAC',
-                'LPCR_Region__c' => 'Paris'
+                'LPCR_Region__c' => 'Paris',
+                'LPCR_TypeMensualisation__c' => 11 
                 };
                     List<Account> creches = UM002_TestDataFactory.createSObjectList('Account', 2, defaultVal);
         creches.get(1).LPCR_TypeCreche__c = 'MICRO';

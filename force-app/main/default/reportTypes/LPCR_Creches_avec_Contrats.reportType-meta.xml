@@ -855,12 +855,32 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContactEnfant__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContactRepresentant1__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContactRepresentant2__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__ActiveContract__c</field>
             <table>Account.Contrats__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_ContratActif__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContractEntreprise__c</field>
             <table>Account.Contrats__r</table>
         </columns>
         <columns>
@@ -996,11 +1016,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__RenewalTerm__c</field>
-            <table>Account.Contrats__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_Enfant__c</field>
             <table>Account.Contrats__r</table>
         </columns>
         <columns>
@@ -1210,6 +1225,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_StatutInscription__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_StatutCourt__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_StatutContrat__c</field>
             <table>Account.Contrats__r</table>
         </columns>
@@ -1239,5 +1264,43 @@
             <table>Account.Contrats__r</table>
         </columns>
         <masterLabel>Contrats de la crèche</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_PlanningEnfant__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_PlanningEnfant__c.LPCR_TypePlanning__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_PlanningEnfant__c.LPCR_Lundi__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_PlanningEnfant__c.LPCR_Mardi__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_PlanningEnfant__c.LPCR_Mercredi__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_PlanningEnfant__c.LPCR_Jeudi__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_PlanningEnfant__c.LPCR_Vendredi__c</field>
+            <table>Account.Contrats__r</table>
+        </columns>
+        <masterLabel>Planning</masterLabel>
     </sections>
 </ReportType>
