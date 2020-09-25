@@ -194,6 +194,25 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
+        <label>Contacts</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ContactInscriptions__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>blng__BillToContact__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
         <label>Purchase Order</label>
         <layoutColumns>
             <layoutItems>
@@ -337,7 +356,7 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-     <platformActionList>
+    <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
             <actionName>NewEvent</actionName>
@@ -593,8 +612,19 @@
         <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <relatedList>LPCR_BonAchatPartenaire__c.LPCR_ComptePartenaire__c</relatedList>
+        <fields>LPCR_ComptePartenaire__c</fields>
+        <fields>LPCR_ContactEnfant__c</fields>
+        <fields>LPCR_Creche__c</fields>
+        <fields>LPCR_Statut__c</fields>
+        <fields>LPCR_NombreJoursSemaine__c</fields>
+        <fields>LPCR_PrixAchat__c</fields>
+        <fields>LPCR_PrixVente__c</fields>
+        <relatedList>LPCR_BonAchatPartenaire__c.LPCR_Client__c</relatedList>
+        <sortField>LPCR_Statut__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>CASES.CASE_NUMBER</fields>
@@ -651,7 +681,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000000lUiA</masterLabel>
+        <masterLabel>00h1X000001HgxN</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
