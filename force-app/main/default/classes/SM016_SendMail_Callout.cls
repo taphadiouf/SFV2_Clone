@@ -22,18 +22,19 @@ public with sharing class SM016_SendMail_Callout {
         req.setHeader('Content-Type', 'application/json; utf-8');
         
         Set<Integer> docsIdSet = new Set<Integer>();
-        System.debug('##D: '+ docsId );
+        PAD.log('SM016_SendMail_Callout', 'sendMailCallout', 'docsId:' + docsId);
         if(docsId != null){
             for(String DocId: docsId){
                 docsIdSet.add(Integer.valueOf(DocId));
             }
         }
         
+        PAD.log('SM016_SendMail_Callout', 'sendMailCallout', 'before body:' + body);
         EmailStructureWrapper emailStructure = new EmailStructureWrapper(from1, to, subject, body, docsIdSet);
+
         String bodyJSON = JSON.serialize(emailStructure);
         bodyJSON = bodyJson.replace('from1', 'From');
-
-        System.debug(bodyJSON);
+        PAD.log('SM016_SendMail_Callout', 'sendMailCallout', 'bodyJSON:' + bodyJSON);
         req.setBody(bodyJSON);
         
         System.Debug('>> - LOG - req:' + req);
@@ -53,7 +54,7 @@ public with sharing class SM016_SendMail_Callout {
         return res;
         
     }
-    
+     
     public class EmailStructureWrapper{
         private String from1;
         private String To;
