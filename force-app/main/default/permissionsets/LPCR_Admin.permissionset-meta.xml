@@ -87,7 +87,7 @@
         <field>Account.LPCR_AccueilUrgence__c</field>
         <readable>true</readable>
     </fieldPermissions>
-        <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_Actif__c</field>
         <readable>true</readable>
@@ -3180,11 +3180,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_Preinscription__c.Tech_LienFormulaire__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-        <fieldPermissions>
-        <editable>true</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_IdExterne__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7207,6 +7202,16 @@
         <field>blng__BillingTreatment__c.blng__Notes__c</field>
         <readable>true</readable>
     </fieldPermissions>
+        <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__InvoiceLine__c.LPCR_CompteFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__InvoiceLine__c.LPCR_ContactEnfant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__Invoice__c.LPCR_CommentaireGlobal__c</field>
@@ -7215,11 +7220,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__Invoice__c.LPCR_CommentaireIndividuel__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>blng__Invoice__c.LPCR_TauxTVA__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7238,13 +7238,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__InvoiceLine__c.LPCR_CompteFamille__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__InvoiceLine__c.LPCR_ContactEnfant__c</field>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_TauxTVA__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7656,6 +7651,10 @@
     </recordTypeVisibilities>
     <tabSettings>
         <tab>LPCR_BonAchatPartenaire__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>LPCR_ContratPartenaire__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>

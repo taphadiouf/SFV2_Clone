@@ -6,7 +6,7 @@
 */
 public with sharing class APC001_LeadFaConverController{
     
-    @AuraEnabled(cacheable = true)
+    @AuraEnabled(cacheable = false)
     public static List<Account> getRelatedCreches(Id leadId){
         
         List<LPCR_LienCrecheLead__c> tmpLienCrecheLead = [SELECT Id, LPCR_Creche__c from LPCR_LienCrecheLead__c where LPCR_Lead__c = :leadId];
@@ -80,26 +80,12 @@ public with sharing class APC001_LeadFaConverController{
         system.debug('accountName'+accountName);
         
         
-        List<Account> accountList = [Select Id, Name From Account];
-        List<String> nameList = new List<String>();
-        for(Account eachName : accountList){
-            nameList.add(eachName.Name);
-        }
+        
         boolean isvalid = true;
         String errMsg = 'Veuillez vérifier le suivant : ';
         String saveResultMsg = '';
         String contactFirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur;
         Integer count = 0;
-        
-        for(String eachName : nameList){
-            if(accountName.equals(eachName)){
-                isvalid = False ;
-                count += 1;
-            }
-        }
-        if(count != 0){
-            errMsg += 'Ce compte existe déjà dans Salesforce';
-        }
         
         if(currentLead.LPCR_CompteSociete__c == Null){
             isvalid = False ;
@@ -129,9 +115,9 @@ public with sharing class APC001_LeadFaConverController{
         //Create Account (Famille)
         Account newFamilleAccount = new Account(
             Name = Label.LPCR_Famille + ' ' + currentLead.LastName + (nomCoDemandeur != null ? (' ' +nomCoDemandeur) : ''), 
-            RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Famille)
+            RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Famille),
+            Phone = currentLead.Phone
         );
-        insert newFamilleAccount;  
        
         List<Database.SaveResult> accountSaveResultList = new List<Database.SaveResult>();
         Database.SaveResult saveResult = Database.insert(newFamilleAccount, false);
@@ -157,6 +143,7 @@ public with sharing class APC001_LeadFaConverController{
             FirstName = currentLead.FirstName, 
             OwnerId = currentLead.OwnerId, 
             Phone = currentLead.Phone,
+            MobilePhone = currentLead.MobilePhone, 
             Email = currentLead.Email,
             MailingStreet = currentLead.Address.getStreet(),
             MailingCity = currentLead.Address.getCity(),
@@ -196,6 +183,7 @@ public with sharing class APC001_LeadFaConverController{
                     RecordTypeId = enfantContactRT
                 ));
         }
+
         List<Database.SaveResult> saveResultList = Database.insert(newContactsMap.values(), false);
         errMsg = '';
         saveResultMsg = '';
@@ -205,7 +193,7 @@ public with sharing class APC001_LeadFaConverController{
             isvalid = False ;
             throw new AuraHandledException(errMsg);
         }
-        
+
         //Set Reprsentants1 and Reprsentants2 fields for newFamilleAccount  
         newFamilleAccount.LPCR_Representant1__c = newContactsMap.get('contactRep1').Id;
         if(newContactsMap.get('contactRep2') != null) newFamilleAccount.LPCR_Representant2__c = newContactsMap.get('contactRep2').Id;
@@ -226,7 +214,12 @@ public with sharing class APC001_LeadFaConverController{
                 )
             );
         }
-        insert accountContactRelations;
+        try{
+            insert accountContactRelations;
+        }
+        catch(DmlException e) {
+            System.debug('The following exception has occurred: ' + e.getMessage());
+        }
         //Convert the lead
         LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
         Database.LeadConvert lc = new Database.LeadConvert();
@@ -259,56 +252,66 @@ public with sharing class APC001_LeadFaConverController{
                 )
             );
         }
-        insert quotesList;
+        try{
+            insert quotesList;
+        }
+        catch(DmlException e) {
+            System.debug('The following exception has occurred while inserting quote: ' + e.getMessage());
+        }
         
         if(currentLead.LPCR_TypePrestation__c == Label.LPCR_Occasionnel){
             for(SBQQ__Quote__c eachQuote : quotesList){
                 eachQuote.LPCR_TypeAccueil__c = Label.LPCR_Occasionnel;
             }
-            update quotesList;
+            try{
+                update quotesList;
+            }
+            catch(DmlException e) {
+                System.debug('The following exception has occurred while updating quote: ' + e.getMessage());
+            }
         }
     }
     
     public static string validateSaveResult(List<Database.SaveResult> saveResultList) {
         System.debug('**** validateSaveResult : size : '+ saveResultList.size());
-        
-        Database.SaveResult saveResult = saveResultList.get(0);
         String errmsg = '';
-        
-        if (!saveResult.isSuccess()) {
-            for (Database.Error error : saveResult.getErrors()) {
-                // If there are duplicates, an error occurs
-                // Process only duplicates and not other errors 
-                //   (e.g., validation errors)
-                if (error instanceof Database.DuplicateError) {
-                    Database.DuplicateError duplicateError = (Database.DuplicateError)error;
-                    Datacloud.DuplicateResult duplicateResult = duplicateError.getDuplicateResult();
-                    
-                    // Return only match results of matching rules that 
-                    //  find duplicate records
-                    Datacloud.MatchResult[] matchResults = duplicateResult.getMatchResults();
-                    
-                    // Just grab first match result (which contains the 
-                    //   duplicate record found and other match info)
-                    Datacloud.MatchResult matchResult = matchResults[0];
-                    
-                    Datacloud.MatchRecord[] matchRecords = matchResult.getMatchRecords();
-                    
-                    // Add matched record to the duplicate records variable
-                    for (Datacloud.MatchRecord matchRecord : matchRecords) {
-                        System.debug('MatchRecord: ' + matchRecord.getRecord());
-                        String matchingId = matchRecord.getRecord().Id;
-                        if( matchingId.startsWith('001')){
-                            Account acc = (Account) matchRecord.getRecord();
-                            errmsg = ' compte : '+ acc.Name;
-                        }else if(matchingId.startsWith('003')){
-                            Contact cont = (Contact) matchRecord.getRecord();
-                            errmsg = ' contact : '+ cont.Name;
+        for(Integer i=0;i<saveResultList.size();i++){
+            Database.SaveResult saveResult = saveResultList.get(i);
+            if (!saveResult.isSuccess()) {
+                for (Database.Error error : saveResult.getErrors()) {
+                    // If there are duplicates, an error occurs
+                    // Process only duplicates and not other errors 
+                    //   (e.g., validation errors)
+                    if (error instanceof Database.DuplicateError) {
+                        Database.DuplicateError duplicateError = (Database.DuplicateError)error;
+                        Datacloud.DuplicateResult duplicateResult = duplicateError.getDuplicateResult();
+                        
+                        // Return only match results of matching rules that 
+                        //  find duplicate records
+                        Datacloud.MatchResult[] matchResults = duplicateResult.getMatchResults();
+                        
+                        // Just grab first match result (which contains the 
+                        //   duplicate record found and other match info)
+                        Datacloud.MatchResult matchResult = matchResults[0];
+                        
+                        Datacloud.MatchRecord[] matchRecords = matchResult.getMatchRecords();
+                        
+                        // Add matched record to the duplicate records variable
+                        for (Datacloud.MatchRecord matchRecord : matchRecords) {
+                            System.debug('MatchRecord: ' + matchRecord.getRecord());
+                            String matchingId = matchRecord.getRecord().Id;
+                            if( matchingId.startsWith('001')){
+                                Account acc = (Account) matchRecord.getRecord();
+                                errmsg = ' compte : '+ acc.Name;
+                            }else if(matchingId.startsWith('003')){
+                                Contact cont = (Contact) matchRecord.getRecord();
+                                errmsg = ' contact : '+ cont.Name;
+                            }
                         }
                     }
                 }
+                
             }
-            
         }
         return errmsg;
     }

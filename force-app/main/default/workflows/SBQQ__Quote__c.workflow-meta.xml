@@ -341,7 +341,7 @@
             <type>Alert</type>
         </actions>
         <active>true</active>
-        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5)</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5 OR 6 OR 7)</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
             <operation>equals</operation>
@@ -353,9 +353,9 @@
             <value>Résiliation</value>
         </criteriaItems>
         <criteriaItems>
-            <field>SBQQ__Quote__c.LPCR_StatutApprobation__c</field>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
             <operation>equals</operation>
-            <value>Approuvé</value>
+            <value>Approved</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
@@ -366,6 +366,16 @@
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
             <value>Contrat de Référencement</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Référencement Approuvé</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Réservataire Approuvé</value>
         </criteriaItems>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
@@ -376,7 +386,7 @@
             <type>Alert</type>
         </actions>
         <active>true</active>
-        <booleanFilter>1 AND 2 AND  (3 or  4 )</booleanFilter>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
             <operation>equals</operation>
@@ -386,16 +396,6 @@
             <field>SBQQ__Quote__c.SBQQ__Status__c</field>
             <operation>equals</operation>
             <value>Annulé</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Contrat Réservataire</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Contrat de Référencement</value>
         </criteriaItems>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>

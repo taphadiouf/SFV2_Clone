@@ -12,7 +12,6 @@ TEXT(SBQQ__Status__c) = &apos;Envoyé pour signature&apos;,
 TEXT(SBQQ__Status__c) = &apos;Terminé&apos;,
 TEXT(SBQQ__Status__c) = &apos;Signé&apos;,
 TEXT(SBQQ__Status__c) = &apos;Actif&apos;,
-TEXT(SBQQ__Status__c) = &apos;Annulé&apos;,
 TEXT(SBQQ__Status__c) = &apos;Prêt pour commande&apos;)
 )</errorConditionFormula>
     <errorMessage>Dans le cas d&apos;un contrat de référencement, le changement manuel à ce statut n&apos;est pas possible.</errorMessage>
