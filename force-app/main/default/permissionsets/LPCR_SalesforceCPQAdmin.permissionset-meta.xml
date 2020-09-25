@@ -7873,16 +7873,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SBQQ__ProductOption__c.LPCR_Tranche__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__ProductOption__c.LPCR_TypeAccueil__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>SBQQ__ProductOption__c.SBQQ__AppliedImmediatelyContext__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -10134,11 +10124,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_Second_Option_Mac_Start_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_Section__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
