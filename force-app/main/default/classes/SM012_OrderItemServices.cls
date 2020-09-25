@@ -15,7 +15,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
     // DCO Is there any specific reasons to run this aynch on AfterUpdate?
     public static void setLegalEntityOnOrderItem(List<OrderItem> newOrderItem){
         Set<Id> orderItemId = UM003_TypeManager.getIdsOfListObjects(newOrderItem);
-        List<OrderItem> listOrderItem = [SELECT Id,blng__LegalEntity__c, SBQQ__QuoteLine__r.LPCR_EntiteJuridique__c	 FROM OrderItem WHERE ID in :orderItemId];
+        List<OrderItem> listOrderItem = [SELECT Id,blng__LegalEntity__c, SBQQ__QuoteLine__r.LPCR_EntiteJuridique__c  FROM OrderItem WHERE ID in :orderItemId];
         //Boolean updateOrderItem = false;
         for(OrderItem eachOrderItem : listOrderItem){
             if(eachOrderItem.blng__LegalEntity__c ==null){
@@ -29,6 +29,17 @@ public with sharing class SM012_OrderItemServices implements Queueable{
         //}
     }
     
+    public static void updateGroupId( Set<Id> objOrderItemIds){
+        List<OrderItem> objOrderItemList = [Select Id,Order.AccountId,SBQQ__Contract__c,LPCR_Creche__c,blng__GroupId__c,
+                                             blng__InvoiceGroupId__c from OrderItem where Id IN : objOrderItemIds];
+        for(OrderItem objOrderItem : objOrderItemList){
+            objOrderItem.blng__GroupId__c = objOrderItem.Order.AccountId+''+objOrderItem.SBQQ__Contract__c+''+objOrderItem.LPCR_Creche__c;
+            objOrderItem.blng__InvoiceGroupId__c = objOrderItem.Order.AccountId+''+objOrderItem.SBQQ__Contract__c+''+objOrderItem.LPCR_Creche__c;
+        }
+        if(objOrderItemList.size() > 0){
+            update objOrderItemList;
+        }
+    }
     public static void legalEntityOnOrderItemConSch( Map<Id,OrderItem> mapOrderItem){
         List<SBQQ__OrderItemConsumptionSchedule__c> listOrderItemConSch = [SELECT SBQQ__OrderItem__c,SBQQ__OrderItem__r.blng__LegalEntity__c,blng__LegalEntity__c  FROM SBQQ__OrderItemConsumptionSchedule__c WHERE SBQQ__OrderItem__c in :mapOrderItem.keySet() ];
         List<SBQQ__OrderItemConsumptionSchedule__c> listOrderItemConSchtoSave = new List<SBQQ__OrderItemConsumptionSchedule__c>();
@@ -43,13 +54,12 @@ public with sharing class SM012_OrderItemServices implements Queueable{
         if(listOrderItemConSchtoSave.size()>0){
             update listOrderItemConSchtoSave;
         }
-        
     }
     
     /*
-*	@description : this method set the right invoces dates on orde items.
-*	@param List<OrderItem> newOrderItems to process
-*	@returns void
+*   @description : this method set the right invoces dates on orde items.
+*   @param List<OrderItem> newOrderItems to process
+*   @returns void
 */
     public static void setupInvoiceDates(List<OrderItem> newOrderItems) {
         PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'newOrderItems: ' + newOrderItems.size());
@@ -155,9 +165,9 @@ item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.
                                //  && !orderMap.get(item.OrderId).LPCR_InitAutoAvecDateDebut__c  
                                && item.blng__NextChargeDate__c != null) {
                                 Date lastDayofQuarter = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths);
-                				Date lastDayOfMonth = UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c);
-                				Date semiannualLastDay = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths);
-                				Date annualLastDay = UM005_DateUtility.lastDayOfYear(item.blng__NextChargeDate__c);
+                                Date lastDayOfMonth = UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c);
+                                Date semiannualLastDay = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths);
+                                Date annualLastDay = UM005_DateUtility.lastDayOfYear(item.blng__NextChargeDate__c);
                                    //Advance
                                    if( orderMap.get(item.OrderId).LPCR_TypeFacturation__c == Label.LPCR_Advance){
                                     Date nextBillingDate = item.blng__NextChargeDate__c.addDays(invoiceDelta);
@@ -289,9 +299,9 @@ item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.
     
     /*
 * @author : Ayoub Ouarti
-*	@description : this method set orderItem's blng__BillingRule__c 
-*	@param List<OrderItem> newOrderItemsList
-*	@returns void
+*   @description : this method set orderItem's blng__BillingRule__c 
+*   @param List<OrderItem> newOrderItemsList
+*   @returns void
 */
     public static void setOrderItemFields(List<OrderItem> newOrderItemsList){
         Set<String> orderIds = UM003_TypeManager.getFieldsOfListObjects(newOrderItemsList,'OrderId');
@@ -350,9 +360,9 @@ item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.
     
     /*
 * @author : Ayoub Ouarti
-*	@description : this method update Billing transaction for RevisedOrderProduct on orderItem
-*	@param List<OrderItem> newOrderItemsList
-*	@returns void
+*   @description : this method update Billing transaction for RevisedOrderProduct on orderItem
+*   @param List<OrderItem> newOrderItemsList
+*   @returns void
 */
     public static void updateFiledsOnBillingTransaction(Map<Id,OrderItem> oldMapOrderItem,Map<Id,OrderItem> newMapOrderItem){
         Set<Id> orderItemIds=new Set<Id>();

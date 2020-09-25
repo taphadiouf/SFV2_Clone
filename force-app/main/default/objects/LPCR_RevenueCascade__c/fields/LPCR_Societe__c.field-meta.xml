@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_Societe__c</fullName>
     <externalId>false</externalId>
-    <formula>LPCR_Contrat__r.LPCR_Creche__r.Parent.Name</formula>
+    <formula>LPCR_CompteCreche__r.Parent.Name</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Soc</label>
     <required>false</required>

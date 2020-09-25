@@ -5,8 +5,21 @@
 */
 public with sharing class UM005_DateUtility {
     public static final List<Integer> quarterlyMonths = new List<Integer> {1, 4, 7, 10};
-    public static final List<Integer> semiannualMonths = new List<Integer> {1, 7};
-
+        public static final List<Integer> semiannualMonths = new List<Integer> {1, 7};
+            public static final Map<String, Integer> monthsMap = new Map<String, Integer>{
+                'Jan'  => 1,
+                    'Feb' => 2,
+                    'Mar' => 3,
+                    'Apr'  => 4,
+                    'May' => 5,
+                    'Jun' => 6,
+                    'Jul' => 7,
+                    'Aug' => 8,
+                    'Sep' => 9,
+                    'Oct' => 10,
+                    'Nov' => 11,   
+                    'Dec' => 12    
+                    };
 
     public static Date setDayOnDate (Integer day, Date theDate) {
         Date newDate = null;
@@ -65,6 +78,11 @@ public with sharing class UM005_DateUtility {
       return Date.newinstance(theDate.Year(),12,31);
     }
     
-
+    public static Integer getMonthNumberByString(String month){
+        if(String.isNotBlank(month) && month.length() > 2 && monthsMap.containsKey(month.substring(0, 3))){
+            return monthsMap.get(month.substring(0, 3));
+        }
+        return null;
+    }
 
 }
