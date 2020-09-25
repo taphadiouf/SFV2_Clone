@@ -105,7 +105,7 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         });
     }
     get showEnfants(){
-        return (this.enfants.length > 1);
+        return (this.enfants.length > 0);
     }
     get getEnfantsOptions(){
         let enfantsOptions = [];
