@@ -14899,10 +14899,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-<<<<<<< HEAD
-        <editable>true</editable>
-        <field>blng__PaymentMethod__c.blng__BankName__c</field>
-=======
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_ContactEnfant__c</field>
         <readable>true</readable>
@@ -14910,7 +14906,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_ConversionLigneNegative__c</field>
->>>>>>> 4d85153cd15a2a2b62eec02b47599954b3453ced
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14974,10 +14969,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-<<<<<<< HEAD
-        <editable>true</editable>
-        <field>blng__PaymentMethod__c.blng__BillingStreet__c</field>
-=======
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_NombreLigneNegative__c</field>
         <readable>true</readable>
@@ -14985,7 +14976,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_NumeroCompteBancaire__c</field>
->>>>>>> 4d85153cd15a2a2b62eec02b47599954b3453ced
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -15004,10 +14994,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-<<<<<<< HEAD
-        <editable>true</editable>
-        <field>blng__PaymentMethod__c.blng__CardExpirationMonth__c</field>
-=======
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_TauxTVA__c</field>
         <readable>true</readable>
@@ -15015,7 +15001,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_TypeCreche__c</field>
->>>>>>> 4d85153cd15a2a2b62eec02b47599954b3453ced
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -17510,10 +17495,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-<<<<<<< HEAD
-        <field>sbaa__Approval__c.Quote__c</field>
-        <readable>false</readable>
-=======
         <field>blng__Usage__c.LPCR_SousTotal__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -17521,7 +17502,6 @@
         <editable>true</editable>
         <field>blng__Usage__c.blng__Account__c</field>
         <readable>true</readable>
->>>>>>> 4d85153cd15a2a2b62eec02b47599954b3453ced
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
