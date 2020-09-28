@@ -43,6 +43,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>LPCR_TypePreinscription__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>LPCR_ValidationFormulaire__c</field>
             </layoutItems>
             <layoutItems>
@@ -60,7 +64,7 @@
         <customLabel>true</customLabel>
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
-        <label>Nouvelle section</label>
+        <label>Commentaire</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
