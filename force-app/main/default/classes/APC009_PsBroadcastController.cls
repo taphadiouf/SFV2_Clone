@@ -174,7 +174,7 @@ public with sharing class APC009_PsBroadcastController {
             }
             catch (Exception e) {
                 String tmp = e.getMessage() + ' - Line number:' + e.getLineNumber();
-                UM001_LogManager.writeLogActivityNow('APC009_PsBroadcastController', 'setRightAccessToObject', 'DML', TmpPs.Id, tmp, 'Error');
+                UM001_LogManager.writeLogActivityWithoutFuture('APC009_PsBroadcastController', 'setRightAccessToObject', 'DML', String.valueOf(TmpPs.Id), tmp, 'Error');
             }
         
         
@@ -237,7 +237,7 @@ public with sharing class APC009_PsBroadcastController {
         }
         catch (Exception e) {
             String tmp = e.getMessage() + ' - Line number:' + e.getLineNumber();
-            UM001_LogManager.writeLogActivityNow('APC009_PsBroadcastController', 'setRightAccessToObject', 'DML', TmpPs.Id, tmp, 'Error');
+            UM001_LogManager.writeLogActivityWithoutFuture('APC009_PsBroadcastController', 'setRightAccessToObject', 'DML', String.valueOf(TmpPs.Id), tmp, 'Error');
         }
 
         

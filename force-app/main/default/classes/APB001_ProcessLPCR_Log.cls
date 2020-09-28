@@ -7,7 +7,9 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject> {
     
     
     global Database.QueryLocator  start(Database.BatchableContext bc) {
-        return Database.getQueryLocator([SELECT Id, LPCR_TargetObject__c FROM LPCR_Log__c WHERE LPCR_Result__c = 'Sent' AND LPCR_Type__c='Document LPCR']);
+        String tmpLabel = UM010_Constant.LOG_SEND_DOC_TO_GED;
+        return Database.getQueryLocator([SELECT Id, LPCR_TargetObject__c FROM LPCR_Log__c WHERE Name = :tmpLabel AND LPCR_Result__c = 'Success']);
+        
     }
     global void execute(Database.BatchableContext bc, List<LPCR_Log__c> logs){
         set<String> docIds = new set<String> ();
@@ -24,7 +26,7 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject> {
         lstAtta = [SELECT Id FROM Attachment WHERE Id IN: docIds ];
         if(lstAtta.isEmpty() ){
             for(LPCR_Log__c eachLog : lstPurgedDoc){
-                eachLog.LPCR_Result__c = 'Purgé ';
+                eachLog.LPCR_Result__c = 'Purged';
             }
             update lstPurgedDoc;
         }else{
