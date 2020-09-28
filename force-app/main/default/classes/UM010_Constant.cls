@@ -31,5 +31,6 @@ public class UM010_Constant {
     public static final String TRAITEMENT_JOUR_FERIE = 'Traitement_Jour_Ferie';
     public static final String REGULARISATION = 'Regularisation';
     public static final String CRECHE_LPCR = 'Crèche LPCR : ';
+    public static final String LOG_SEND_DOC_TO_GED = 'Appel Externe ENVOIE DOCUMENT GED LPCR';
 
 }
