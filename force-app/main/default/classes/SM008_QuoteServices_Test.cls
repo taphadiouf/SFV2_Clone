@@ -99,7 +99,7 @@ public class SM008_QuoteServices_Test {
         for(Contract eachContract : Renewalcontract6){
             eachContract.LPCR_EntiteJuridique__c = entiteJuridique.Id;
             eachContract.LPCR_ContactEnfant__c = contact.Id;
-            eachContract.LPCR_Creche__c = acCreche.Id;
+           // eachContract.LPCR_Creche__c = acCreche.Id;
             eachContract.LPCR_ContractEntreprise__c = mainCon.Id;
             eachContract.LPCR_ContactRepresentant1__c = conErpresentant1.Id;
             eachContract.LPCR_ContactRepresentant2__c = conErpresentant2.Id;
@@ -430,8 +430,7 @@ public class SM008_QuoteServices_Test {
             System.assertEquals(quote3.SBQQ__EndDate__c, con3.LPCR_DateFin__c , 'Quote SBQQ__EndDate__c not equals to con3 LPCR_DateFin__c');
             System.assertEquals(quote3.LPCR_ChiffreAffaire__c, con3.LPCR_ChiffreAffaire__c, 'Quote LPCR_ChiffreAffaire__c not equals to con LPCR_ChiffreAffaire__c');
             System.assertEquals(quote3.LPCR_EntiteJuridique__c, acc3.LPCR_EntiteJuridique__c, 'Quote LPCR_EntiteJuridique__c not equals to acc LPCR_EntiteJuridique__c');
-            System.assertEquals(quote3.SBQQ__RenewalUpliftRate__c, null, 'Quote SBQQ__RenewalUpliftRate__c not equals to 0');
-            System.assertEquals(quote3.LPCR_BatchCommande__c, 'MICRO', 'Quote LPCR_TypeCreche__c not equals to MICRO');
+            System.assertEquals(null, quote3.SBQQ__RenewalUpliftRate__c, 'Quote SBQQ__RenewalUpliftRate__c not equals to 0');
             Test.stopTest();
         }
     }
@@ -585,13 +584,14 @@ public class SM008_QuoteServices_Test {
             List<Contract> contract6 = [Select Id,RecordTypeId, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c  , SBQQ__RenewalUpliftRate__c, LPCR_TypeCreche__c,LPCR_EntiteJuridique__c,LPCR_ContactEnfant__c,LPCR_Creche__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c,LPCR_DureePreavisMois__c,LPCR_CongesJours__c,LPCR_TypeAccueil__c  From Contract WHERE Name = '0006' Limit 1];
             Contract con6 = contract6.get(0);
             con6.RecordTypeId =CONTRACT_CONTRAT_ACCUEIL_RT_ID;
+            con6.LPCR_Creche__c = acc3.Id;
             update con6;
             List<Opportunity> oppties6 = [SELECT Id , Name, LPCR_TypeFacturation__c ,LPCR_PlanningEnfant__c from Opportunity WHERE name ='opp NON' LIMIT 1 ];
             Opportunity opp6 = oppties6.get(0);
             SBQQ__Quote__c quote6 = UM002_TestDataFactory.createQuotes(1, accs3, oppties6,'Amendment', acceuilRecTypeId, acc3.Id).get(0);
             quote6.RecordTypeId = acceuilRecTypeId;
             insert quote6;
-            quote6 = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c, SBQQ__RenewalUpliftRate__c,LPCR_EntiteJuridique__c,LPCR_ContactEnfant__c,LPCR_Creche__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c,LPCR_DureePreavisMois__c,LPCR_CongesJours__c,LPCR_TypeAccueil__c,LPCR_PlanningEnfant__c   from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Amendment' AND  Id = :quote6.Id];
+            quote6 = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c, SBQQ__RenewalUpliftRate__c,LPCR_EntiteJuridique__c,LPCR_ContactEnfant__c,LPCR_Creche__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c,LPCR_DureePreavisMois__c,LPCR_CongesJours__c,LPCR_TypeAccueil__c,LPCR_PlanningEnfant__c,LPCR_BatchCommande__c   from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Amendment' AND  Id = :quote6.Id];
             System.assertEquals(quote6.LPCR_DateDebut__c, con6.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
             System.assertEquals(quote6.LPCR_DateFin__c, con6.LPCR_DateFin__c , 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
             //System.assertEquals(quote6.LPCR_ChiffreAffaire__c, con6.LPCR_ChiffreAffaire__c, 'Quote LPCR_ChiffreAffaire__c not equals to con LPCR_ChiffreAffaire__c');
@@ -609,6 +609,7 @@ public class SM008_QuoteServices_Test {
             System.assertEquals(quote6.LPCR_CongesJours__c, con6.LPCR_CongesJours__c, 'Quote LPCR_CongesJours__c not equals to con LPCR_CongesJours__c');
             System.assertEquals(quote6.LPCR_DureePreavisMois__c, con6.LPCR_DureePreavisMois__c, 'Quote LPCR_DureePreavisMois__c not equals to con LPCR_DureePreavisMois__c');
             System.assertEquals(quote6.LPCR_TypeAccueil__c, con6.LPCR_TypeAccueil__c, 'Quote LPCR_TypeAccueil__c not equals to con LPCR_TypeAccueil__c');
+            System.assertEquals('MICRO', quote6.LPCR_BatchCommande__c, 'Quote LPCR_BatchCommande__c not equals to MICRO');
             Test.stopTest();
         }
         
