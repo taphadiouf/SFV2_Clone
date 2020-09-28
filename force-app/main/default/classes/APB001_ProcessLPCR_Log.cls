@@ -3,7 +3,7 @@
 * @date 26/02/2020
 * @Description Batch to delete documents of LPCR_Log__c
 */
-global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject> {
+global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject>, Schedulable {
     
     
     global Database.QueryLocator  start(Database.BatchableContext bc) {
@@ -36,4 +36,30 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject> {
     global void finish(Database.BatchableContext bc){
         
     }
+
+     
+    global void execute(SchedulableContext sc) {
+        
+        APB001_ProcessLPCR_Log sc1 = new APB001_ProcessLPCR_Log();
+       
+        // schedule the apex class only if their is not existing job running
+        boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB001_ProcessLPCR_Log');
+        
+        // check if there is any open place to schedule the class
+        boolean isJobQueueFull = UM004_BatchUtility.isBatchJobQueueFull();
+        
+        if(isBatchJobRunning == UM004_BatchUtility.BOOLEAN_FALSE){
+            if (isJobQueueFull == UM004_BatchUtility.BOOLEAN_FALSE) {
+                sc1 = new APB001_ProcessLPCR_Log();
+                Database.executeBatch(this, 200);
+            } else {
+                //schedule this same schedulable class again in 30 mins
+                sc1 = new APB001_ProcessLPCR_Log();
+                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
+                Id schedId = System.Schedule('APB001_ProcessLPCR_Log' + timeForScheduler, timeForScheduler, sc1);
+            }
+        }  
+        
+    } 
 }
