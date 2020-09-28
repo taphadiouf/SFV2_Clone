@@ -39,6 +39,7 @@ public with sharing class SM017_SendDocument_Callout {
             
             if (String.valueOf(response.getStatusCode()).equals('200')) {
                 
+                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - OwnerSfId:' + OwnerSfId, 'Success');  
             } else {
                 
                 List<LPCR_AppelServiceExterne__mdt> appelServiceExterne = [SELECT LPCR_CodeRetour__c ,LPCR_MessageRetour__c , LPCR_NomService__c  
@@ -57,10 +58,10 @@ public with sharing class SM017_SendDocument_Callout {
         else {
             
             if (String.valueOf(response.getStatusCode()).equals('200')) {
-                UM001_LogManager.writeLogActivityWithoutFuture('Appel Externe ENVOIE DOCUMENT GED LPCR', 'SM017_SendDocument_Callout', 'Callout', null, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - OwnerSfId:' + OwnerSfId, 'SUCCESS');  
+                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - OwnerSfId:' + OwnerSfId, 'Success');  
                 
             } else {
-                UM001_LogManager.writeLogActivityWithoutFuture('Appel Externe ENVOIE DOCUMENT GED LPCR', 'SM017_SendDocument_Callout', 'Callout', null,  'Exception:' + String.valueOf(response.getStatusCode()) + ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - Attachment.Id:' + DocSfID + ' - OwnerSfId:' + OwnerSfId, 'ERROR');  
+                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID,  'Exception:' + String.valueOf(response.getStatusCode()) + ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - Attachment.Id:' + DocSfID + ' - OwnerSfId:' + OwnerSfId, 'Error');  
             }
             
         } 
