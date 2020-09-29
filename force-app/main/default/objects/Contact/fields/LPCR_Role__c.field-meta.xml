@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Role__c</fullName>
+    <externalId>false</externalId>
+    <label>Rôle</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Contact PM</fullName>
+                <default>false</default>
+                <label>Contact PM</label>
+            </value>
+            <value>
+                <fullName>Contact Inscription</fullName>
+                <default>false</default>
+                <label>Contact Inscription</label>
+            </value>
+            <value>
+                <fullName>Représentant</fullName>
+                <default>false</default>
+                <label>Représentant</label>
+            </value>
+            <value>
+                <fullName>Comptabilité</fullName>
+                <default>false</default>
+                <label>Comptabilité</label>
+            </value>
+            <value>
+                <fullName>Contact Achat PO</fullName>
+                <default>false</default>
+                <label>Contact Achat PO</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

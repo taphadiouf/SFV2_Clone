@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_ContactFacturation__c</fullName>
+    <fullName>LPCR_ContactInscriptions__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Contact du client pour les inscriptions. Utilisé comme champ de fusion dans les contrats</description>
     <externalId>false</externalId>
-    <label>Contact Facturation</label>
+    <label>Contact Inscriptions</label>
     <referenceTo>Contact</referenceTo>
-    <relationshipLabel>Devis (Contact Facturation)</relationshipLabel>
-    <relationshipName>DevisContactFacturation</relationshipName>
+    <relationshipLabel>Contact Inscription sur Opportunités</relationshipLabel>
+    <relationshipName>Opportunit_s1</relationshipName>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>

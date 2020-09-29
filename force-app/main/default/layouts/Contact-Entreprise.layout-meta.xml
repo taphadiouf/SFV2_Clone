@@ -65,6 +65,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>LPCR_Role__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LPCR_AQuitteEntreprise__c</field>
             </layoutItems>
             <layoutItems>
@@ -138,6 +142,9 @@
         </quickActionListItems>
         <quickActionListItems>
             <quickActionName>LogACall</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>NewCase</quickActionName>
         </quickActionListItems>
         <quickActionListItems>
             <quickActionName>NewEvent</quickActionName>
@@ -225,7 +232,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1X000001HgxU</masterLabel>
+        <masterLabel>00h6E000000vup6</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

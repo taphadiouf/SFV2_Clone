@@ -11585,6 +11585,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contact.LPCR_Role__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contact.LPCR_Signataire__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -14951,6 +14956,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.LPCR_Collectivite__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.LPCR_ContactCommercial__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.LPCR_ContactInscriptions__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>

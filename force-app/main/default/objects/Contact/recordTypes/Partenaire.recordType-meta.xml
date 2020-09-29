@@ -458,6 +458,29 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_Role__c</picklist>
+        <values>
+            <fullName>Comptabilité</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contact Achat PO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contact Inscription</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contact PM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Représentant</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_SituationProfessionnelle__c</picklist>
         <values>
             <fullName>Autre</fullName>
