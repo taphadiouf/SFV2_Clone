@@ -99,7 +99,6 @@ public class SM008_QuoteServices_Test {
         for(Contract eachContract : Renewalcontract6){
             eachContract.LPCR_EntiteJuridique__c = entiteJuridique.Id;
             eachContract.LPCR_ContactEnfant__c = contact.Id;
-           // eachContract.LPCR_Creche__c = acCreche.Id;
             eachContract.LPCR_ContractEntreprise__c = mainCon.Id;
             eachContract.LPCR_ContactRepresentant1__c = conErpresentant1.Id;
             eachContract.LPCR_ContactRepresentant2__c = conErpresentant2.Id;
