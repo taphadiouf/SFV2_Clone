@@ -5,10 +5,6 @@
         <formula>Opportunity.AccountId</formula>
     </fieldOverrides>
     <fieldOverrides>
-        <field>LPCR_ContactFacturation__c</field>
-        <formula>Opportunity.Account.blng__BillToContact__c</formula>
-    </fieldOverrides>
-    <fieldOverrides>
         <field>LPCR_ContactInscriptions__c</field>
         <formula>Opportunity.Account.LPCR_ContactInscriptions__c</formula>
     </fieldOverrides>
