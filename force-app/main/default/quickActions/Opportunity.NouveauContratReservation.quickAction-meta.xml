@@ -9,14 +9,6 @@
         <literalValue>1 an ferme</literalValue>
     </fieldOverrides>
     <fieldOverrides>
-        <field>LPCR_ResponsableADV__c</field>
-        <formula>Opportunity.Account.LPCR_ResponsableADV__c</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>LPCR_ResponsableServiceFamille__c</field>
-        <formula>Opportunity.Account.LPCR_ResponsableServiceFamille__c</formula>
-    </fieldOverrides>
-    <fieldOverrides>
         <field>SBQQ__Account__c</field>
         <formula>Opportunity.AccountId</formula>
     </fieldOverrides>
