@@ -10,7 +10,7 @@
     </fieldOverrides>
     <fieldOverrides>
         <field>SBQQ__Account__c</field>
-        <formula>Opportunity.Account.Id</formula>
+        <formula>Opportunity.AccountId</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>SBQQ__Opportunity2__c</field>
