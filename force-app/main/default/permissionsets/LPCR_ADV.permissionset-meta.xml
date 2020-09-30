@@ -11645,6 +11645,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_SoldeHorsTaxe__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>blng__Invoice__c.LPCR_StatutFacture__c</field>
         <readable>true</readable>
