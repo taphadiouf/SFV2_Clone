@@ -42,24 +42,13 @@ public class WRP004_APISaveDocument {
     }
 
     public string getFileType(string attName){
-        if(attName.contains('.docx_SYNC')){
-            return 'docx';
+        String fileType = '';
+        if(String.isNotBlank(attName)){
+            Integer lastIndexOfPoint = attName.lastIndexOf('.');
+            Integer lastIndexOfUnderscore = attName.lastIndexOf('_');
+            fileType = (lastIndexOfPoint < lastIndexOfUnderscore && lastIndexOfPoint > 0 && lastIndexOfUnderscore > 2 ) ? 
+                        attName.substring(lastIndexOfPoint + 1, lastIndexOfUnderscore) : '';
         }
-        else if(attName.contains('.doc_SYNC')){
-            return 'doc';
-        }
-        else if(attName.contains('.xls_SYNC')){
-            return 'xls';
-        }
-        else if(attName.contains('.xlsx_SYNC')){
-            return 'xlsx';
-        }
-        else if(attName.contains('.txt_SYNC')){
-            return 'txt';
-        }
-
-        else{
-            return 'PDF';
-        }
+        return fileType;
     }
 }
