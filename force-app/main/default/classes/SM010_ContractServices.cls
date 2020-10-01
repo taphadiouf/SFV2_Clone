@@ -188,17 +188,7 @@ public class SM010_ContractServices {
         //  Check if the Order is getting changed, If so , updating the fields 
         for(Contract eachContract : newContractMap.values()){
             if(mapOrders.containsKey(eachContract.SBQQ__Order__c) && 
-               quoteMap.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
-                 //added by saurabh IS-1490
-                if(eachContract.recordtypeId == accueilRecTypeId && eachContract.EndDate != eachContract.LPCR_DateFin__c){
-                    eachContract.LPCR_RenouvellementAutomatique__c =true;
-                }
-                else if(eachContract.SBQQ__RenewalUpliftRate__c != null && 
-                        (eachContract.LPCR_MethodeRenouvellement__c == 'Tacite' ||
-                         (eachContract.LPCR_MethodeRenouvellement__c != 'Tacite' && eachContract.EndDate != eachContract.LPCR_DateFin__c))){
-                             eachContract.LPCR_RenouvellementAutomatique__c =true;
-                         } 
-                          
+               quoteMap.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){        
                  if(eachContract.SBQQ__Order__c != oldContractMap.get(eachContract.Id).SBQQ__Order__c){
                     if(quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement || quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement_Approuve) {
                         eachContract.LPCR_FraisDossier__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;
@@ -212,6 +202,14 @@ public class SM010_ContractServices {
                 eachContract.LPCR_RenouvellementPlanFacturation__c = mapOrders.get(eachContract.SBQQ__Order__c).LPCR_RenouvellementPlanFacture__c;
                 eachContract.RecordTypeId = mapContractRT.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).RecordType.DeveloperName)? 
                     mapContractRT.get(mapOrders.get(eachContract.SBQQ__Order__c).RecordType.DeveloperName).getRecordTypeId(): eachContract.RecordTypeId;
+                    if(eachContract.recordtypeId == accueilRecTypeId && eachContract.EndDate != eachContract.LPCR_DateFin__c){
+                        eachContract.LPCR_RenouvellementAutomatique__c =true;
+                    }
+                    else if(eachContract.SBQQ__RenewalUpliftRate__c != null && 
+                            (eachContract.LPCR_MethodeRenouvellement__c == 'Tacite' ||
+                             (eachContract.LPCR_MethodeRenouvellement__c != 'Tacite' && eachContract.EndDate != eachContract.LPCR_DateFin__c))){
+                                 eachContract.LPCR_RenouvellementAutomatique__c =true;
+                             }
             }
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){
                 if(eachContract.RecordTypeId == referencementRecTypeId) {
@@ -253,15 +251,6 @@ public class SM010_ContractServices {
         if(quote.recordtype.DeveloperName == Label.LPCR_Referencement || quote.recordtype.DeveloperName == Label.LPCR_Referencement_Approuve || quote.recordtype.DeveloperName == Label.LPCR_Reservataire || quote.recordtype.DeveloperName == Label.LPCR_Reservataire_Approuve ) {
             contract.LPCR_MethodeRenouvellement__c = quote.LPCR_MethodeRenouvellement__c;
         }
-        
-        if(contract.recordtypeId == accueilRecTypeId && contract.EndDate != contract.LPCR_DateFin__c){
-            contract.LPCR_RenouvellementAutomatique__c =true;
-        }
-        else if(contract.SBQQ__RenewalUpliftRate__c != null && 
-                (contract.LPCR_MethodeRenouvellement__c == 'Tacite' ||
-                 (contract.LPCR_MethodeRenouvellement__c != 'Tacite' && contract.EndDate != contract.LPCR_DateFin__c))){
-                     contract.LPCR_RenouvellementAutomatique__c =true;
-                 }
         
         contract.LPCR_DureeContratJour__c = quote.LPCR_DureeContratJour__c;
         
