@@ -76,16 +76,21 @@ public class SM015_InvoiceServices {
         if(invoiceLines.size()>0){
             blng__InvoiceLine__c invoiceLine = invoiceLines.get(0);
             List<Contract> contractList =[select Id,SBQQ__Order__c from Contract where SBQQ__Order__c = :invoiceLine.blng__OrderProduct__r.OrderId];
-            
+            try{
             LPCR_ModificationEntrante__c modificationEntrante = [SELECT Id, LPCR_Quantite__c, LPCR_Evenement__c,LPCR_Contract__c  From LPCR_ModificationEntrante__c Where LPCR_Evenement__c='Conges_Pris_Periode' AND LPCR_Contract__c IN:contractList  order by createdDate DESC limit 1];
+
+                Decimal modificationQuantity = modificationEntrante.LPCR_Quantite__c;
             
-            Decimal modificationQuantity = modificationEntrante.LPCR_Quantite__c;
-            
-            for(blng__Invoice__c eachNewInvoice : invoiceList){
+                for(blng__Invoice__c eachNewInvoice : invoiceList){
                 
-                newInvoiceMap.get(eachNewInvoice.Id).LPCR_CongesPrisPeriode__c = modificationQuantity;
+                    newInvoiceMap.get(eachNewInvoice.Id).LPCR_CongesPrisPeriode__c = modificationQuantity;
                 
+                }
             }
+            catch(Exception e) {
+    			System.debug('An exception occurred: ' + e.getMessage());
+            }
+            
         }
         
     }
