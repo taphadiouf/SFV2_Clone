@@ -9,7 +9,7 @@
 /* eslint-disable no-alert */
 import { LightningElement, track, api, wire } from 'lwc';
 import getDocumentListCallout from '@salesforce/apex/SM019_DocumentList_Callout.getDocumentListCallout';
-import getDocumentBySFIdCallout from '@salesforce/apex/SM020_GetDocument_Callout.getDocumentBySFIdCallout';
+import getDocumentBySFIdCallout from '@salesforce/apex/SM002_GetDocument_Callout.getDocumentBySFIdCallout';
 import { CurrentPageReference } from 'lightning/navigation';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';

@@ -32,13 +32,15 @@ public with sharing class SM019_DocumentList_Callout {
         request.setBody(JSON.serialize(docListStructure));
         HttpResponse response = http.send(request);
         // Parse the JSON response
-        String statusCode = response.getStatusCode()+'';
+        String statusCode = String.valueOf(response.getStatusCode());
         //UM001_LogManager.writeLogActivity('Appel Service Externe REF DOC LIST', '', 'Appel Externe', ownerid, response.getBody(), (statusCode.equals('200') ? 'SUCCESS' : 'ERROR'));
         if (statusCode.equals('200')) {
             System.debug('response.getBody()' + response.getBody());
             documentListFullResponse.response = (List<DocumentListResponse>) JSON.deserialize(response.getBody(), List<DocumentListResponse>.class);
             documentListFullResponse.result = '200';
+            UM001_LogManager.writeLogActivity(UM010_Constant.LOG_LIST_DOC, 'SM019_DocumentList_Callout', 'Callout', ownerid, 'statusCode:' + statusCode + ' - OwnerId:' + ownerid, 'Success');  
         } else {
+            UM001_LogManager.writeLogActivity(UM010_Constant.LOG_LIST_DOC, 'SM019_DocumentList_Callout', 'Callout', ownerid,  'Exception:' + statusCode + ' - statusCode:' + statusCode + ' - OwnerId:' + ownerid + ' - OwnerSfId:' + ownerid, 'Error');  
             //documentListFullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
         LPCR_AppelServiceExterne__mdt appelServiceExterne = [SELECT LPCR_CodeRetour__c ,LPCR_MessageRetour__c , LPCR_NomService__c  
                                                              FROM LPCR_AppelServiceExterne__mdt  

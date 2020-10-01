@@ -1,18 +1,18 @@
 /**
 * @author Achraf ABOUL(aaboul@salesforce.com)
 * @date 30/06/2020
-* @description Test class for SM020_GetDocument_Callout
+* @description Test class for SM002_GetDocument_Callout
 */
 @isTest
-public with sharing class SM020_GetDocument_Callout_Test {
-    public SM020_GetDocument_Callout_Test() {
+public with sharing class SM002_GetDocument_Callout_Test {
+    public SM002_GetDocument_Callout_Test() {
 
     }
     @isTest
     static void getDocumentBySFIdCallout1_Test(){
 		Test.startTest();
         Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-      	String documentString = SM020_GetDocument_Callout.getDocumentBySFIdCallout('000000000000000', '000000000000000');
+      	String documentString = SM002_GetDocument_Callout.getDocumentBySFIdCallout('000000000000000', '000000000000000');
         // Verify mock response is not null
         System.assertNotEquals(null, documentString, 'The callout result returned is null.');
         System.assertNotEquals('',documentString, 'The callout result returned is empty.'); 
@@ -24,7 +24,7 @@ public with sharing class SM020_GetDocument_Callout_Test {
 		Test.startTest();
         Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
         try{
-          String documentString = SM020_GetDocument_Callout.getDocumentBySFIdCallout('', '000000000000000');
+          String documentString = SM002_GetDocument_Callout.getDocumentBySFIdCallout('', '000000000000000');
         }
         catch(Exception e){
           // Verify mock response is not null
