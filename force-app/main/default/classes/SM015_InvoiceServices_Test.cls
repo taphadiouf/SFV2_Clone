@@ -140,6 +140,18 @@ public class SM015_InvoiceServices_Test {
                     Account accountFamille =(Account) UM002_TestDataFactory.createSObject('Account', defaultVals);
         insert accountFamille;               
         
+        defaultVal = new Map<String, Object> {
+            'RecordTypeId' => CRECHE_RT_ID,
+                'Name' => 'Creche',
+                'LPCR_TypeCreche__c' => 'MAC',
+                'LPCR_Region__c' => 'Paris',
+                'LPCR_TypeMensualisation__c' => 11 
+                };
+                    
+        Account crecheAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
+        crecheAccount.LPCR_TypeCreche__c = 'MICRO';
+        insert crecheAccount;
+        
         Id standardPricebookId = Test.getStandardPricebookId();
         
         Order order = UM002_TestDataFactory.createOrder(accountFamille.id,null,date.today(),'test','Draft','1');
@@ -286,6 +298,32 @@ Test.stopTest();
             system.assertEquals(modificationEntrante.LPCR_Quantite__c, updatedInvoice,'Error');
             Test.stopTest();
             
+        }
+    }
+    
+    @isTest
+    public static void setFieldsOnInvoicee_Test(){
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();
+            Account creche = [Select Id from Account Where recordTypeId =: CRECHE_RT_ID Limit 1];
+            
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+            
+            Order order = [Select Id,LPCR_ContactEnfant__c,LPCR_Creche__c From Order Limit 1];
+            order.LPCR_ContactEnfant__c = cont.Id;
+            order.LPCR_Creche__c = creche.id;
+            Update Order;
+            
+            blng__Invoice__c invoice = [Select Id,LPCR_Commentaire__c from blng__Invoice__c Limit 1];
+
+            invoice.LPCR_Commentaire__c   ='test' ;            
+            update invoice;
+           
+            blng__Invoice__c updatedInvoiceList = [Select Id,LPCR_ContactEnfant__c,LPCR_Creche__c from blng__Invoice__c Limit 1];
+            system.assertEquals(cont.id, updatedInvoiceList.LPCR_ContactEnfant__c,'Error');
+            system.assertEquals(creche.id, updatedInvoiceList.LPCR_Creche__c,'Error');
+            Test.stopTest();           
         }
     }
     
