@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_Result__c</fullName>
+    <fullName>LPCR_Tranche__c</fullName>
     <externalId>false</externalId>
-    <label>Result</label>
+    <label>Tranche ALSH</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
@@ -11,29 +11,19 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Success</fullName>
+                <fullName>A</fullName>
                 <default>false</default>
-                <label>Success</label>
+                <label>A</label>
             </value>
             <value>
-                <fullName>Warning</fullName>
+                <fullName>B</fullName>
                 <default>false</default>
-                <label>Warning</label>
+                <label>B</label>
             </value>
             <value>
-                <fullName>Error</fullName>
+                <fullName>C</fullName>
                 <default>false</default>
-                <label>Error</label>
-            </value>
-            <value>
-                <fullName>Sent</fullName>
-                <default>false</default>
-                <label>Sent</label>
-            </value>
-            <value>
-                <fullName>Purged</fullName>
-                <default>false</default>
-                <label>Purged</label>
+                <label>C</label>
             </value>
         </valueSetDefinition>
     </valueSet>

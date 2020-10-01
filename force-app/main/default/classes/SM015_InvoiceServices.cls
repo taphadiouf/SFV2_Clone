@@ -11,7 +11,6 @@ public class SM015_InvoiceServices {
     *	@Description : this method create Payment And Payment Allocation for Invoice with changed LPCR_StatutPaiement__c 
     * 	@Inputs	List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> oldInvoiceMap
     */
-    //public static Boolean isFirstTime = true;
     
     public static void createPaymentAndPaymentAllocation(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> oldInvoiceMap){
         Map<Id, blng__Payment__c> paymentByInvoiceMap = new Map<Id, blng__Payment__c>();
@@ -65,7 +64,7 @@ public class SM015_InvoiceServices {
         }
     }
     
-    
+	    
     public static void setCongePrisPeriode(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> newInvoiceMap){
         
         
@@ -76,18 +75,60 @@ public class SM015_InvoiceServices {
         if(invoiceLines.size()>0){
             blng__InvoiceLine__c invoiceLine = invoiceLines.get(0);
             List<Contract> contractList =[select Id,SBQQ__Order__c from Contract where SBQQ__Order__c = :invoiceLine.blng__OrderProduct__r.OrderId];
-            
+            try{
             LPCR_ModificationEntrante__c modificationEntrante = [SELECT Id, LPCR_Quantite__c, LPCR_Evenement__c,LPCR_Contract__c  From LPCR_ModificationEntrante__c Where LPCR_Evenement__c='Conges_Pris_Periode' AND LPCR_Contract__c IN:contractList  order by createdDate DESC limit 1];
+
+                Decimal modificationQuantity = modificationEntrante.LPCR_Quantite__c;
             
-            Decimal modificationQuantity = modificationEntrante.LPCR_Quantite__c;
+                for(blng__Invoice__c eachNewInvoice : invoiceList){
+                
+                    newInvoiceMap.get(eachNewInvoice.Id).LPCR_CongesPrisPeriode__c = modificationQuantity;
+                
+                }
+            }
+            catch(Exception e) {
+    			System.debug('An exception occurred: ' + e.getMessage());
+            }
             
-            for(blng__Invoice__c eachNewInvoice : invoiceList){
-                
-                newInvoiceMap.get(eachNewInvoice.Id).LPCR_CongesPrisPeriode__c = modificationQuantity;
-                
+        }
+        
+    }
+    
+    // added by saurabh singh IS-1651
+    public static void setFieldsOnInvoice(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> newInvoiceMap, Boolean isInsert){
+        Pad.log('SM015_InvoiceServices','setFieldsOnInvoice(List<blng__Invoice__c> newInvoiceList)','newInvoiceList size '+newInvoiceList.size());
+    	
+        Id familleRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
+        
+        List<blng__Invoice__c> invoiceList = [Select Id, blng__Account__c,blng__Account__r.recordTypeId FROM blng__Invoice__c WHERE Id IN: newInvoiceList AND blng__Account__r.recordTypeId =: familleRecTypeId];
+        List<blng__InvoiceLine__c> invoiceLines = [Select Id, blng__OrderProduct__r.OrderId, blng__Invoice__c  From blng__InvoiceLine__c WHERE blng__Invoice__c  IN:invoiceList Limit 1];
+        
+        Map<String,blng__Invoice__c> updateInvoiceMap = new Map<String,blng__Invoice__c>();
+        
+        Set<String> orderIds = new Set<String>(); 
+        for(blng__InvoiceLine__c eachInvoiceLine : invoiceLines){
+            if(eachInvoiceLine.blng__OrderProduct__c != null){
+                orderIds.add(eachInvoiceLine.blng__OrderProduct__r.OrderId);	
             }
         }
         
+        Map<ID, Order> invoiceOrderMap = new Map<ID, Order>([Select Id,LPCR_ContactEnfant__c,LPCR_Creche__c From Order Where Id in: orderIds ]);
+        
+        if(invoiceLines.size()>0){
+            for(blng__InvoiceLine__c eachNewInvoiceLine : invoiceLines){
+                newInvoiceMap.get(eachNewInvoiceLine.blng__Invoice__c).LPCR_Creche__c = invoiceOrderMap.get(eachNewInvoiceLine.blng__OrderProduct__r.OrderId).LPCR_Creche__c;
+                newInvoiceMap.get(eachNewInvoiceLine.blng__Invoice__c).LPCR_ContactEnfant__c = invoiceOrderMap.get(eachNewInvoiceLine.blng__OrderProduct__r.OrderId).LPCR_ContactEnfant__c;            	
+                if(!updateInvoiceMap.containsKey(eachNewInvoiceLine.blng__Invoice__c)){
+                    updateInvoiceMap.put(eachNewInvoiceLine.blng__Invoice__c,newInvoiceMap.get(eachNewInvoiceLine.blng__Invoice__c));
+                }
+            }
+        }
+        
+        if(isInsert){
+            if(updateInvoiceMap.size() > 0){
+                update updateInvoiceMap.values();
+            }            
+        }
     }
     
     // added by saurabh IS-1529

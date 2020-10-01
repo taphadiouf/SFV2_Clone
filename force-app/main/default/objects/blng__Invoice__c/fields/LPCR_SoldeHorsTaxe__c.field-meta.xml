@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_SoldeHorsTaxe__c</fullName>
+    <description>Sous total hors taxe affiché sur le document de facture</description>
+    <externalId>false</externalId>
+    <formula>blng__Subtotal__c - blng__Credits__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Sous total hors taxe affiché sur le document de facture</inlineHelpText>
+    <label>Solde hors taxe</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>
