@@ -4,7 +4,7 @@
     <encodingKey>ISO-8859-1</encodingKey>
     <name>Fin Contrat Dans 90 Jours</name>
     <style>none</style>
-    <subject>Le Contrat {!Contract.Id} arrive à échéance dans 90 jours</subject>
+    <subject>Le Contrat {!Contract.LPCR_NumeroContrat__c} arrive à échéance dans 90 jours</subject>
     <type>text</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

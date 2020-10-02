@@ -78,6 +78,28 @@
         </sharedFrom>
     </sharingOwnerRules>
     <sharingOwnerRules>
+        <fullName>FIleAttenteServiceFamille</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>File d&apos;attente Service Famille</label>
+        <sharedTo>
+            <role>Service_Famille</role>
+        </sharedTo>
+        <sharedFrom>
+            <queue>LPCR_ServiceFamille</queue>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>ServiceFamille</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Service Famille</label>
+        <sharedTo>
+            <role>Service_Famille</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Service_Famille</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
         <fullName>Service_partenaires</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Service partenaires</label>

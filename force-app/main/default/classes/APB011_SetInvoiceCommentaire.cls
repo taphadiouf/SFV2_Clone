@@ -6,6 +6,10 @@
 global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>,Schedulable {
     String query;
     
+    global APB011_SetInvoiceCommentaire() {
+        
+    }
+
     global APB011_SetInvoiceCommentaire(String query) {
         this.query = query;
     }

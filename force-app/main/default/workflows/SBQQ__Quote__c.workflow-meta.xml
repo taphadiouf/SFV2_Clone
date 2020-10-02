@@ -316,6 +316,15 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Recalculer</fullName>
+        <field>LPCR_ARecalculer__c</field>
+        <literalValue>1</literalValue>
+        <name>Recalculer</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Statut_standard_approuv</fullName>
         <field>SBQQ__Status__c</field>
         <literalValue>Prêt à envoyer</literalValue>
@@ -813,6 +822,40 @@
         </criteriaItems>
         <description>Renseigner le &apos;numero devis&apos; sur une renewal quote (récupérer from contract)</description>
         <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>WF_Quote_LancerRecalcul</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__LastCalculatedOn__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_RecalculationMACDone__c</field>
+            <operation>equals</operation>
+            <value>Faux</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeCreche__c</field>
+            <operation>equals</operation>
+            <value>MAC</value>
+        </criteriaItems>
+        <description>For MAC renewals, Quote needs to be recalculated twice as one of the price rules is using formula fields and the formula was not calculated at the right time. This worfklow will perform second recalculation</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Recalculer</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>SBQQ__Quote__c.SBQQ__LastCalculatedOn__c</offsetFromField>
+            <timeLength>-1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
     </rules>
     <rules>
         <fullName>WF_Quote_Update RT Contrat d%27accueil approuvé</fullName>
