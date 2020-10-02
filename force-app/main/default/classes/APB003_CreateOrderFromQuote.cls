@@ -16,7 +16,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
     */
     global Database.QueryLocator start(Database.BatchableContext BC) {
         PAD.log('APB003_CreateOrderFromQuote', 'start','Database.BatchableContext BC');        
-        query = 'SELECT Id,SBQQ__Status__c ,SBQQ__Ordered__c  FROM SBQQ__Quote__c WHERE SBQQ__Status__c =\'Prêt pour commande\' AND SBQQ__Ordered__c  = false';
+        query = 'SELECT Id,SBQQ__Status__c ,SBQQ__Ordered__c, LPCR_TypeCreche__c, SBQQ__Type__c, LPCR_RecalculationMACDone__c   FROM SBQQ__Quote__c WHERE SBQQ__Status__c =\'Prêt pour commande\' AND SBQQ__Ordered__c  = false';
         
         return Database.getQueryLocator(query);
     }
@@ -30,12 +30,13 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
         PAD.log('APB003_CreateOrderFromQuote', 'execute','scope :'+ scope.size()+'');        
         
         Set<Id> quoteIds = UM003_TypeManager.getIdsOfListObjects(scope);
-        List<SBQQ__Quote__c> listOfquote = [SELECT Id,SBQQ__Status__c ,SBQQ__Ordered__c  FROM SBQQ__Quote__c WHERE Id in :quoteIds ];   
+        List<SBQQ__Quote__c> listOfquote = [SELECT Id,SBQQ__Status__c ,SBQQ__Ordered__c, LPCR_TypeCreche__c, SBQQ__Type__c, LPCR_RecalculationMACDone__c     FROM SBQQ__Quote__c WHERE Id in :quoteIds];   
         List<LPCR_Log__c> listOfLog = new List<LPCR_Log__c>();
         
         for (SBQQ__Quote__c eachquote : listOfquote) {
-           
-            eachquote.SBQQ__Ordered__c = true;
+            if(!Label.LPCR_MAC.equals(eachquote.LPCR_TypeCreche__c) || !Label.LPCR_Renewal.equals(eachquote.SBQQ__Type__c) || eachquote.LPCR_RecalculationMACDone__c == true){
+                eachquote.SBQQ__Ordered__c = true;
+            }
             listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Creating Order From Quote', 'APB003_CreateOrderFromQuote', 'Batch', String.valueOf(eachquote.Id), '', 'SUCCESS'));
         }
         update listOfquote; 
