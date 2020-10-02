@@ -825,10 +825,6 @@
     </rules>
     <rules>
         <fullName>WF_Quote_LancerRecalcul</fullName>
-        <actions>
-            <name>Recalculer</name>
-            <type>FieldUpdate</type>
-        </actions>
         <active>true</active>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
@@ -851,6 +847,15 @@
         </criteriaItems>
         <description>For MAC renewals, Quote needs to be recalculated twice as one of the price rules is using formula fields and the formula was not calculated at the right time. This worfklow will perform second recalculation</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Recalculer</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>SBQQ__Quote__c.SBQQ__LastCalculatedOn__c</offsetFromField>
+            <timeLength>-1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
     </rules>
     <rules>
         <fullName>WF_Quote_Update RT Contrat d%27accueil approuvé</fullName>
