@@ -159,9 +159,9 @@ item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.
                         //////////////////
                         
                         
-                    } else if ((orderMap.get(item.OrderId).blng__BillingAccount__c != null 
+                    } else if ((orderMap.get(item.OrderId).blng__BillingAccount__c != null
                                 && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId)
-                               && item.SBQQ__BillingFrequency__c  != 'Invoice Plan' 
+                                && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c!= Label.LPCR_InvoicePlan
                                //  && !orderMap.get(item.OrderId).LPCR_InitAutoAvecDateDebut__c  
                                && item.blng__NextChargeDate__c != null) {
                                 Date lastDayofQuarter = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths);
@@ -200,6 +200,7 @@ item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.
                                        ) {
                                            item.blng__OverrideNextBillingDate__c = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths); // Workaround: Override Next Billing Date = Bill Through Date Override because of Billing package validation error
                                            // lastDayOfQuarterPeriod return the last date of the given quarter (1,4,7,10)
+                                                
                                            if(item.SBQQ__ChargeType__c !=Label.LPCR_OneTime){
                                                if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayofQuarter < item.SBQQ__TerminatedDate__c))){
                                                    item.blng__BillThroughDateOverride__c = lastDayofQuarter;
@@ -242,6 +243,12 @@ item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.
                                 }
                              
                             }
+                }
+                if(  orderMap.get(item.OrderId).blng__BillingAccount__c != null
+                                                && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId
+                                                && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_InvoicePlan && item.SBQQ__ChargeType__c == Label.LPCR_OneTime 
+                                                && item.SBQQ__RequiredBy__c != null){
+                    item.blng__OverrideNextBillingDate__c = item.SBQQ__RequiredBy__r.blng__NextBillingDate__c; 
                 }
                 PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'item (AFTER): ' + item);
             }
