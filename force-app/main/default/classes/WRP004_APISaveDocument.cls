@@ -42,13 +42,15 @@ public class WRP004_APISaveDocument {
     }
 
     public string getFileType(string attName){
+        
         String fileType = '';
+        
         if(String.isNotBlank(attName)){
+        
             Integer lastIndexOfPoint = attName.lastIndexOf('.');
-            Integer lastIndexOfUnderscore = attName.lastIndexOf('_');
-            fileType = (lastIndexOfPoint < lastIndexOfUnderscore && lastIndexOfPoint > 0 && lastIndexOfUnderscore > 2 ) ? 
-                        attName.substring(lastIndexOfPoint + 1, lastIndexOfUnderscore) : '';
+            fileType = attName.substring(lastIndexOfPoint + 1);
         }
+        
         return fileType;
     }
 }

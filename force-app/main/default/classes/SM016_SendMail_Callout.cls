@@ -6,9 +6,11 @@
 public with sharing class SM016_SendMail_Callout {
     
     public static HttpResponse sendMailCallout(String from1, String to, String subject, String body, Set<String> docsId) {
+
         Http h = new Http();
         HttpRequest req = new HttpRequest();
         LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
+
         if('UAT'.equals(envCS.Nom__c)){
             req.setEndpoint('callout:UAT_SEND_MAIL');
         }
@@ -22,33 +24,27 @@ public with sharing class SM016_SendMail_Callout {
         req.setHeader('Content-Type', 'application/json; utf-8');
         
         Set<Integer> docsIdSet = new Set<Integer>();
-        PAD.log('SM016_SendMail_Callout', 'sendMailCallout', 'docsId:' + docsId);
+
         if(docsId != null){
             for(String DocId: docsId){
                 docsIdSet.add(Integer.valueOf(DocId));
             }
         }
         
-        PAD.log('SM016_SendMail_Callout', 'sendMailCallout', 'before body:' + body);
         EmailStructureWrapper emailStructure = new EmailStructureWrapper(from1, to, subject, body, docsIdSet);
 
         String bodyJSON = JSON.serialize(emailStructure);
         bodyJSON = bodyJson.replace('from1', 'From');
-        PAD.log('SM016_SendMail_Callout', 'sendMailCallout', 'bodyJSON:' + bodyJSON);
         req.setBody(bodyJSON);
-        
-        System.Debug('>> - LOG - req:' + req);
-        System.Debug('>> - LOG - h:' + h);
         
         HttpResponse res = h.send(req);
         String result = res.getBody();
         
-        // Parse the JSON response
         if (res.getStatusCode() == 200) {
-            System.debug('The status code returned was not expected: ' +
-                         res.getStatusCode() + ' ' + res.getStatus());
+
+                        
         } else {
-            System.debug(res.getBody());
+            
         }
         
         return res;

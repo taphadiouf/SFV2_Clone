@@ -6,10 +6,10 @@
 public with sharing class SM018_AttachmentService {
     
     public static void sendLPCRDocumentByCallout(List<Attachment> newAttachmentList){
-                
+        
         Set<String> parentIds = UM003_TypeManager.getFieldsOfListObjects(newAttachmentList, 'ParentId');
         Map<String, String> invoiceAccountMap = new Map<String, String>();
-         
+        
         Map<Id, blng__Invoice__c> invoiceCreatedByMap = new Map<Id, blng__Invoice__c>();
         Map<Id,blng__Invoice__c> invoiceToUpdate = new Map<Id,blng__Invoice__c>();
         for(blng__Invoice__c invoice : [select id, blng__Account__r.Email__c, CreatedBy.Name, LPCR_StatutFacture__c  from blng__Invoice__c where id in: parentIds]){
@@ -24,7 +24,7 @@ public with sharing class SM018_AttachmentService {
             
             PAD.log('SM018_AttachmentService', 'sendLPCRDocumentByCallout', 'eachAttachment:' + eachAttachment);   
             
-            if ((eachAttachment.Name.contains('Contrat') || eachAttachment.Name.startsWith('Template')) && Description == null) {
+            if (!objectTypeAuthorizedToBeSentToLPCR(eachAttachment.ParentId)) {
                 PAD.log('SM018_AttachmentService', 'sendLPCRDocumentByCallout', 'Adobe temporary attachment not to be sent to LPCR GED');   
                 continue;
             }
@@ -34,17 +34,24 @@ public with sharing class SM018_AttachmentService {
             }
             
             if(!(invoice != null && invoice.CreatedBy.Name.contains('Migration'))){
-
-                if(eachAttachment.name.contains('Facture Famille') && invoiceAccountMap.containsKey(eachAttachment.ParentId)){
-                    SM019_DocumentList_Callout.getDocumentListFutureCallout(eachAttachment.ParentId, 'Facture',invoiceAccountMap.get(eachAttachment.ParentId));                 
-                }
-                if(!eachAttachment.Name.contains('SYNC')){
-
+                
+                // In Sync mode (attachment inserted from LWC) do nothing
+                // In Async mode (insertion called from Conga or Adobe)
+                // Send Doc to LPCR GED
+                // If Document is related to an invoice, send it to customer
+                
+                if(!eachAttachment.Name.contains('_SYNC')){
+                    
                     SM017_SendDocument_Callout.sendDocumentCallout(eachAttachment.ParentId, eachAttachment.Id, eachAttachment.Name, EncodingUtil.base64Encode(eachAttachment.Body));
+                    
                     if(invoice != null){
+                        
                         invoice.LPCR_StatutFacture__c = 'Envoyée';
                         invoiceToUpdate.put(invoice.id,invoice);
-                    }
+                        
+                        // Retrieve Again list and Send an Email to Customer :
+                        SM019_DocumentList_Callout.getDocumentListFutureCallout(eachAttachment.ParentId, 'Facture',invoiceAccountMap.get(eachAttachment.ParentId));                 
+                    }   
                 }
             }
             
@@ -53,4 +60,21 @@ public with sharing class SM018_AttachmentService {
             update invoiceToUpdate.values();
         }
     }
+    
+    static private Boolean objectTypeAuthorizedToBeSentToLPCR(Id tmpId) {
+        
+        if ((String.valueOf(tmpId.getsobjecttype()) == 'SBQQ__Quote__c') || 
+            (String.valueOf(tmpId.getsobjecttype()) == 'blng__Invoice__c') || 
+            (String.valueOf(tmpId.getsobjecttype()) == 'Account') || 
+            (String.valueOf(tmpId.getsobjecttype()) == 'Lead') || 
+            (String.valueOf(tmpId.getsobjecttype()) == 'Opportunity') || 
+            (String.valueOf(tmpId.getsobjecttype()) == 'LPCR_Preinscription__c') || 
+            (String.valueOf(tmpId.getsobjecttype()) == 'Contract') || 
+            (String.valueOf(tmpId.getsobjecttype()) == 'Contact')
+           ) {
+               return true;
+           }
+        return false;
+    } 
+    
 }
