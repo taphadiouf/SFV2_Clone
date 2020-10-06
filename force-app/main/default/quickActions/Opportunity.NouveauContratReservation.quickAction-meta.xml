@@ -36,6 +36,10 @@
         <field>SBQQ__Primary__c</field>
         <formula>true</formula>
     </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_Creation_conforme__c</field>
+        <formula>True</formula>
+    </fieldOverrides>
     <label>Nouveau Contrat de Réservation</label>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
     <quickActionLayout>
