@@ -24,7 +24,7 @@ public with sharing class APC002_AttachmentController {
 
         // inserting file
         Attachment att = new Attachment();
-        att.Name = strFileName + '_SYNC';
+        att.Name = strFileName;// + '_SYNC';
         att.ParentId = idParent;
         att.body = EncodingUtil.base64Decode(base64Data);
         att.Description = description;
