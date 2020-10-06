@@ -7293,21 +7293,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleEmail__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleNom__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleTelephone__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>SBQQ__Subscription__c.LPCR_Creche__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -9326,8 +9311,19 @@
         <recordType>Account.Creche</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Account-Crèche Externe</layout>
+        <recordType>Account.Creche_Externe</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-Entreprise</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Account-Entreprise</layout>
         <recordType>Account.Entreprise</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-Entreprise</layout>
+        <recordType>Account.Etablissement_LPCR</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-Entreprise</layout>
