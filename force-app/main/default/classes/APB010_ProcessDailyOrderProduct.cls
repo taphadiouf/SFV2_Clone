@@ -11,7 +11,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
     }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        return Database.getQueryLocator([SELECT Id, OrderId, TotalPrice,SBQQ__DefaultSubscriptionTerm__c,LPCR_Uplift__c,LPCR_ContractStartDate__c,LPCR_ContractEndDate__c, blng__BillableUnitPrice__c, SBQQ__BillingFrequency__c, blng__NextChargeDate__c,SBQQ__Contract__c,SBQQ__Contract__r.LPCR_DateFin__c, Order.LPCR_BDOM_OrderStartdate__c,SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c,Order.LPCR_RenouvellementPlanFacture__c FROM OrderItem WHERE Order.Status = 'Activated' AND CreatedDate = TODAY]);
+        return Database.getQueryLocator([SELECT Id, OrderId, TotalPrice,SBQQ__DefaultSubscriptionTerm__c,LPCR_Uplift__c,LPCR_ContractStartDate__c,LPCR_ContractEndDate__c, blng__BillableUnitPrice__c, SBQQ__BillingFrequency__c, blng__NextChargeDate__c,SBQQ__Contract__c,SBQQ__Contract__r.LPCR_DateFin__c, Order.LPCR_BDOM_OrderStartdate__c,SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c,Order.LPCR_RenouvellementPlanFacture__c FROM OrderItem WHERE Order.Status = 'Activated' AND CreatedDate = TODAY ]);
     }
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
@@ -59,9 +59,14 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
             }
             
             if(diffBetweenMonths > 0){
-                
-                for(integer year = 12 ; year <= diffBetweenMonths ; year+= intervel){
-                    if(year == intervel){
+                Date lastDayOfCurrentMonthDateSetEndDate = null;
+
+                Date tmpDateDate = eachOrderItem.LPCR_ContractStartDate__c;
+                Date endDate = eachOrderItem.LPCR_ContractEndDate__c;
+            
+                Integer totalNoOfYears = (endDate.year() - tmpDateDate.year()) + 1; 
+                for(integer year = 1 ; year <= totalNoOfYears ; year++){
+                    if(year == 1){
                         // First Year price
                         System.debug('**** totalPrice = '+totalPrice);
                         System.debug('**** multiplier = '+multiplier);
@@ -74,7 +79,13 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                         billingPlan.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
                         billingPlan.LPCR_TotalContractValue__c = totalFullYearPrice;
                         billingPlan.LPCR_StartDate__c = tmpDate;
-                        billingPlan.LPCR_EndDate__c = tmpDate.addDays(-1).addMonths(year);
+                        Date lastDayOfCurrentMonthDate=Date.newInstance(tmpDate.year(), 12 , 31) ;
+                        lastDayOfCurrentMonthDateSetEndDate = lastDayOfCurrentMonthDate;
+                        if(eachOrderItem.LPCR_ContractEndDate__c > lastDayOfCurrentMonthDateSetEndDate)
+                            billingPlan.LPCR_EndDate__c = lastDayOfCurrentMonthDate;
+                        else
+                            billingPlan.LPCR_EndDate__c =  eachOrderItem.LPCR_ContractEndDate__c;   
+                        lastDayOfCurrentMonthDateSetEndDate = billingPlan.LPCR_EndDate__c;
                         System.debug('**** First Year billing Plan = '+ billingPlan);
                         billingPlanMap.get(eachOrderItem.Id).add(billingPlan);
                         
@@ -87,44 +98,19 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                         billingPlan.LPCR_OrderItem__c = eachOrderItem.Id;
                         billingPlan.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
                         billingPlan.LPCR_TotalContractValue__c = totalFullYearPrice;
-                        billingPlan.LPCR_StartDate__c = tmpDate.addMonths(year-intervel);
-                        billingPlan.LPCR_EndDate__c =   tmpDate.addDays(-1).addMonths(year);
+                        billingPlan.LPCR_StartDate__c = lastDayOfCurrentMonthDateSetEndDate.addDays(1);
+                        Date stDate = billingPlan.LPCR_StartDate__c;
+                        Date lastDayOfCurrentMonthDate=Date.newInstance(stDate.year(), 12 , 31);
+                        if(eachOrderItem.LPCR_ContractEndDate__c > lastDayOfCurrentMonthDate)
+                            billingPlan.LPCR_EndDate__c =   lastDayOfCurrentMonthDate;
+                        else
+                            billingPlan.LPCR_EndDate__c =   eachOrderItem.LPCR_ContractEndDate__c;    
+                        lastDayOfCurrentMonthDateSetEndDate = billingPlan.LPCR_EndDate__c;
                         System.debug('**** Middle Year billing Plan = '+ billingPlan);
                         billingPlanMap.get(eachOrderItem.Id).add(billingPlan);
                     }
                     
-                }
-                
-                // last partial year price
-                if(reminderMonths > 0){
-                    decimal monthlyPrice = totalFullYearPrice/12;
-                    Integer remindarDays = 0;
-                                      
-                    LPCR_PlanFacturation__c billingPlan = new LPCR_PlanFacturation__c();
-                    billingPlan.LPCR_OrderItem__c = eachOrderItem.Id;
-                    billingPlan.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
-                    billingPlan.LPCR_TotalContractValue__c = totalFullYearPrice;
-                    if(diffBetweenMonths < 12){
-                        billingPlan.LPCR_StartDate__c = tmpDate;
-                        billingPlan.LPCR_EndDate__c = eachOrderItem.LPCR_ContractEndDate__c;
-                        remindarDays = Math.mod(tmpDate.daysBetween(eachOrderItem.LPCR_ContractEndDate__c),30);
-                        finalLastYearPrice = (reminderMonths * monthlyPrice)+((monthlyPrice/30)*remindarDays);
-                        billingPlan.LPCR_TotalContractValue__c = finalLastYearPrice;
-                        totaleGlobalePlanFacture += finalLastYearPrice;
-                    }else{
-                        billingPlan.LPCR_StartDate__c = tmpDate.addYears(diffBetweenYears);
-                        billingPlan.LPCR_EndDate__c = eachOrderItem.LPCR_ContractEndDate__c;
-                        remindarDays = Math.mod(tmpDate.daysBetween(eachOrderItem.LPCR_ContractEndDate__c),30);
-                        System.debug('**** remindarDays = '+ remindarDays);
-                        finalLastYearPrice = (reminderMonths * monthlyPrice)+((monthlyPrice/30)*remindarDays);
-                        System.debug('**** finalLastYearPrice = '+ finalLastYearPrice);
-                        billingPlan.LPCR_TotalContractValue__c = finalLastYearPrice;
-                        totaleGlobalePlanFacture += finalLastYearPrice;
-                    }
-                    System.debug('**** last partial Year billing Plan = '+ billingPlan);
-                    billingPlanMap.get(eachOrderItem.Id).add(billingPlan);
-                    
-                }
+                }           
                 
                 // Calculate and store the whole global price
                 if(updateContractMap.containsKey(eachOrderItem.SBQQ__Contract__c)){ 
@@ -185,9 +171,10 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                         Integer diffBetweenMonths = tmpDate.monthsBetween(eachPlan.LPCR_EndDate__c) + 1;
                         Integer intervel = 1;
                         Integer billingFrequency = 12;
+                        System.debug('*** diffBetweenMonths = '+ diffBetweenMonths);
                         if('Quarterly'.equals(eachOrderItem.SBQQ__BillingFrequency__c)){
                             intervel = 3;
-                            billingFrequency = 3;
+                            billingFrequency = 4;
                         }else if('Semiannual'.equals(eachOrderItem.SBQQ__BillingFrequency__c)){
                             intervel = 6; 
                             billingFrequency = 2;
@@ -195,21 +182,67 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             intervel = 12; 
                             billingFrequency = 1;
                         }
+                       if(diffBetweenMonths < intervel){
+                            diffBetweenMonths = intervel;
+                       }
+                        System.debug('*** diffBetweenMonths new = '+ diffBetweenMonths);
+                        System.debug('*** intervel = '+ intervel);
                         
-                        for(integer i = intervel ; i <= diffBetweenMonths ; i+=intervel){
+                        for(integer i = intervel-1; i <= diffBetweenMonths ; i+=intervel){
                             LPCR_LignePlanFacturation__c newPlanLine = new LPCR_LignePlanFacturation__c();
                             newPlanLine.LPCR_OrderItem__c = eachOrderItem.Id;
                             newPlanLine.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
                             newPlanLine.LPCR_StartDate__c = tmpDate;
-                            newPlanLine.LPCR_PlanFacturation__c = eachPlan.Id; 
-                            newPlanLine.LPCR_EndDate__c = tmpDate.addDays(-1).addMonths(intervel); 
+                            newPlanLine.LPCR_PlanFacturation__c = eachPlan.Id;
+                            Integer IntervalByMonth = 0;
+                            if(intervel == 3){
+                                Integer months = tmpDate.month();
+                                if(months == 1 || months == 4 || months == 7 || months == 10)
+                                    IntervalByMonth = 3;
+                                else if(months == 2 || months == 5 || months == 8 || months == 11)
+                                    IntervalByMonth = 2;
+                                else if(months == 3 || months == 6 || months == 9 || months == 12)
+                                    IntervalByMonth = 1;
+                            }
+                            if(intervel == 6){
+                                Integer months = tmpDate.month();
+                                if(months == 1 || months == 7){
+                                    IntervalByMonth = 6;
+                                }
+                                if(months == 2 || months == 8){
+                                    IntervalByMonth = 5;
+                                }
+                                if(months == 3 || months == 9){
+                                    IntervalByMonth = 4;
+                                }
+                                if(months == 4 || months == 10){
+                                    IntervalByMonth = 3;
+                                }
+                                if(months == 5 || months == 11){
+                                    IntervalByMonth = 2;
+                                }
+                                if(months == 6 || months == 12){
+                                    IntervalByMonth = 1;
+                                }
+                            }
+                            if(intervel == 12){
+                                IntervalByMonth = 1;
+                            }
+                            
+                            Date lastDayOfCurrentMonthDate=tmpDate.addMonths(IntervalByMonth-1); 
+                            Integer numberOfDays = Date.daysInMonth(lastDayOfCurrentMonthDate.year(), lastDayOfCurrentMonthDate.month());
+                            Date lastDayOfMonth = Date.newInstance(lastDayOfCurrentMonthDate.year(), lastDayOfCurrentMonthDate.month(), numberOfDays);
+                            if(eachPlan.LPCR_EndDate__c > lastDayOfMonth) 
+                                newPlanLine.LPCR_EndDate__c = lastDayOfMonth; 
+                            else
+                                newPlanLine.LPCR_EndDate__c = eachPlan.LPCR_EndDate__c; 
                             if(itemIndex == 1){
                                 newPlanLine.LPCR_Amount__c = eachOrderItem.blng__BillableUnitPrice__c;
                             }else if(itemIndex <= maxItemIndex ){
                                 newPlanLine.LPCR_Amount__c = eachPlan.LPCR_TotalContractValue__c/billingFrequency;
-                            }	
+                            }   
                             
-                            tmpDate = tmpDate.addMonths(intervel);
+                            tmpDate = lastDayOfMonth.addDays(1);
                             billingPlanLineList.add(newPlanLine);
                         }
                         itemIndex++;
@@ -291,7 +324,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
         if(isBatchJobRunning == UM004_BatchUtility.BOOLEAN_FALSE){
             if (isJobQueueFull == UM004_BatchUtility.BOOLEAN_FALSE) {
                 sc1 = new APB010_ProcessDailyOrderProduct();
-                Database.executeBatch(this, 1);
+                Database.executeBatch(this, 1);	
             } else {
                 //schedule this same schedulable class again in 30 mins
                 sc1 = new APB010_ProcessDailyOrderProduct();
