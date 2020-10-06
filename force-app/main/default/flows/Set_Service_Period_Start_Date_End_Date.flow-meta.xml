@@ -1,119 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <assignments>
-        <description>Assign Service Period Start and End date</description>
-        <name>Assign_Service_Period_Start_and_End_date</name>
-        <label>Assign Service Period Start and End date</label>
-        <locationX>955</locationX>
-        <locationY>89</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.blng__ServicePeriodStart__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.blng__BillingTargetDate__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.blng__ServicePeriodEnd__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.blng__BillingTargetDate__c</elementReference>
-            </value>
-        </assignmentItems>
-    </assignments>
-    <assignments>
-        <name>Populate_Start_End_From_Override_Billing_Date</name>
-        <label>Populate Start &amp; End From Override Billing Date</label>
-        <locationX>479</locationX>
-        <locationY>365</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.blng__ServicePeriodStart__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.blng__OverrideBillingTargetDate__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.blng__ServicePeriodEnd__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.blng__OverrideBillingTargetDate__c</elementReference>
-            </value>
-        </assignmentItems>
-    </assignments>
-    <decisions>
-        <name>Billing_Target_Start_date_is_not_Blank</name>
-        <label>Billing Target Start date is not Blank</label>
-        <locationX>697</locationX>
-        <locationY>91</locationY>
-        <defaultConnectorLabel>Résultat par défaut</defaultConnectorLabel>
-        <rules>
-            <name>Billing_Target_date_is_not_Blank2</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.blng__BillingTargetDate__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Service_Period_Start_and_End_date</targetReference>
-            </connector>
-            <label>Billing Target date is not Blank</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <description>If Overide Start date is not Blank</description>
-        <name>If_Override_Start_date_is_not_Blank</name>
-        <label>If Override Start date is not Blank</label>
-        <locationX>458</locationX>
-        <locationY>80</locationY>
-        <defaultConnector>
-            <targetReference>Billing_Target_Start_date_is_not_Blank</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Résultat par défaut</defaultConnectorLabel>
-        <rules>
-            <name>If_Overide_Start_date_is_not_Blank</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.blng__OverrideBillingTargetDate__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Populate_Start_End_From_Override_Billing_Date</targetReference>
-            </connector>
-            <label>If Overide Start date is not Blank</label>
-        </rules>
-    </decisions>
-    <description>Set Service Period Start Date &amp; End Date</description>
-    <interviewLabel>Set Service Period Start Date &amp; End Date {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Set Service Period Start Date &amp; End Date</label>
-    <processMetadataValues>
-        <name>BuilderType</name>
-        <value>
-            <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
-    <processMetadataValues>
-        <name>OriginBuilderType</name>
-        <value>
-            <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
-    <processType>AutoLaunchedFlow</processType>
-    <start>
-        <locationX>50</locationX>
-        <locationY>50</locationY>
-        <connector>
-            <targetReference>If_Override_Start_date_is_not_Blank</targetReference>
-        </connector>
-        <object>blng__BillingTransaction__c</object>
-        <recordTriggerType>CreateAndUpdate</recordTriggerType>
-        <triggerType>RecordBeforeSave</triggerType>
-    </start>
-    <status>Active</status>
+   <assignments>
+       <description>Assign Service Period Start and End date</description>
+       <name>Assign_Service_Period_Start_and_End_date</name>
+       <label>Assign Service Period Start and End date</label>
+       <locationX>955</locationX>
+       <locationY>89</locationY>
+       <assignmentItems>
+           <assignToReference>$Record.blng__ServicePeriodStart__c</assignToReference>
+           <operator>Assign</operator>
+           <value>
+               <elementReference>$Record.blng__BillingTargetDate__c</elementReference>
+           </value>
+       </assignmentItems>
+       <assignmentItems>
+           <assignToReference>$Record.blng__ServicePeriodEnd__c</assignToReference>
+           <operator>Assign</operator>
+           <value>
+               <elementReference>$Record.blng__BillingTargetDate__c</elementReference>
+           </value>
+       </assignmentItems>
+   </assignments>
+   <assignments>
+       <name>Populate_Start_End_From_Override_Billing_Date</name>
+       <label>Populate Start &amp; End From Override Billing Date</label>
+       <locationX>479</locationX>
+       <locationY>365</locationY>
+       <assignmentItems>
+           <assignToReference>$Record.blng__ServicePeriodStart__c</assignToReference>
+           <operator>Assign</operator>
+           <value>
+               <elementReference>$Record.blng__OverrideBillingTargetDate__c</elementReference>
+           </value>
+       </assignmentItems>
+       <assignmentItems>
+           <assignToReference>$Record.blng__ServicePeriodEnd__c</assignToReference>
+           <operator>Assign</operator>
+           <value>
+               <elementReference>$Record.blng__OverrideBillingTargetDate__c</elementReference>
+           </value>
+       </assignmentItems>
+   </assignments>
+   <decisions>
+       <name>Billing_Target_Start_date_is_not_Blank</name>
+       <label>Billing Target Start date is not Blank</label>
+       <locationX>697</locationX>
+       <locationY>91</locationY>
+       <defaultConnectorLabel>Résultat par défaut</defaultConnectorLabel>
+       <rules>
+           <name>Billing_Target_date_is_not_Blank2</name>
+           <conditionLogic>and</conditionLogic>
+           <conditions>
+               <leftValueReference>$Record.blng__BillingTargetDate__c</leftValueReference>
+               <operator>IsNull</operator>
+               <rightValue>
+                   <booleanValue>false</booleanValue>
+               </rightValue>
+           </conditions>
+           <connector>
+               <targetReference>Assign_Service_Period_Start_and_End_date</targetReference>
+           </connector>
+           <label>Billing Target date is not Blank</label>
+       </rules>
+   </decisions>
+   <decisions>
+       <description>If Overide Start date is not Blank</description>
+       <name>If_Override_Start_date_is_not_Blank</name>
+       <label>If Override Start date is not Blank</label>
+       <locationX>458</locationX>
+       <locationY>80</locationY>
+       <defaultConnector>
+           <targetReference>Billing_Target_Start_date_is_not_Blank</targetReference>
+       </defaultConnector>
+       <defaultConnectorLabel>Résultat par défaut</defaultConnectorLabel>
+       <rules>
+           <name>If_Overide_Start_date_is_not_Blank</name>
+           <conditionLogic>and</conditionLogic>
+           <conditions>
+               <leftValueReference>$Record.blng__OverrideBillingTargetDate__c</leftValueReference>
+               <operator>IsNull</operator>
+               <rightValue>
+                   <booleanValue>false</booleanValue>
+               </rightValue>
+           </conditions>
+           <connector>
+               <targetReference>Populate_Start_End_From_Override_Billing_Date</targetReference>
+           </connector>
+           <label>If Overide Start date is not Blank</label>
+       </rules>
+   </decisions>
+   <description>Set Service Period Start Date &amp; End Date</description>
+   <interviewLabel>Set Service Period Start Date &amp; End Date {!$Flow.CurrentDateTime}</interviewLabel>
+   <label>Set Service Period Start Date &amp; End Date</label>
+   <processMetadataValues>
+       <name>BuilderType</name>
+       <value>
+           <stringValue>LightningFlowBuilder</stringValue>
+       </value>
+   </processMetadataValues>
+   <processMetadataValues>
+       <name>OriginBuilderType</name>
+       <value>
+           <stringValue>LightningFlowBuilder</stringValue>
+       </value>
+   </processMetadataValues>
+   <processType>AutoLaunchedFlow</processType>
+   <start>
+       <locationX>50</locationX>
+       <locationY>50</locationY>
+       <connector>
+           <targetReference>If_Override_Start_date_is_not_Blank</targetReference>
+       </connector>
+       <object>blng__BillingTransaction__c</object>
+       <recordTriggerType>CreateAndUpdate</recordTriggerType>
+       <triggerType>RecordBeforeSave</triggerType>
+   </start>
+   <status>Draft</status>
 </Flow>
