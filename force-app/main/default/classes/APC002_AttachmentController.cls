@@ -36,5 +36,14 @@ public with sharing class APC002_AttachmentController {
     public static void sendDocument(Id attachmentId) {
         Attachment att = [SELECT ParentId, Description, Body FROM Attachment WHERE Id = :attachmentId];
         SM017_SendDocument_Callout.sendDocumentCallout_SYNC(att.ParentId, att.Id, att.Description, EncodingUtil.base64Encode(att.Body));
+        removeNameSuffix(attachmentId);
+    }
+    public static void removeNameSuffix(Id attachmentId){
+        string suffix = '_SYNC';
+        Attachment att = [SELECT name from Attachment where id=:attachmentId];
+        if(att.name.endsWithIgnoreCase(suffix)){
+            att.name  = att.name.removeEnd(suffix);
+            update att;
+        }
     }
 }

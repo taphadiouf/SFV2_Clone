@@ -9326,8 +9326,19 @@
         <recordType>Account.Creche</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Account-Crèche Externe</layout>
+        <recordType>Account.Creche_Externe</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-Entreprise</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Account-Entreprise</layout>
         <recordType>Account.Entreprise</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-Entreprise</layout>
+        <recordType>Account.Etablissement_LPCR</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-Entreprise</layout>

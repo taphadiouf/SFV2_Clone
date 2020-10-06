@@ -28,7 +28,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
         
         Product2 prod = UM002_TestDataFactory.createFixedPriceProduct('test', billingRule.Id, revRecRule.Id,taxRule.Id );
         prod.SBQQ__SubscriptionPricing__c ='Fixed Price';
-        prod.SBQQ__BillingFrequency__c = 'Monthly';
+        prod.SBQQ__BillingFrequency__c = 'Quarterly';
         prod.SBQQ__BillingType__c = 'Advance';
         prod.SBQQ__ChargeType__c = 'Recurring';
         prod.SBQQ__SubscriptionTerm__c = 1;
@@ -103,7 +103,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
             order.SBQQ__Quote__c = quote.id;
             insert order;
             
-            OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
+            OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Quarterly', 100);
             orderItem.SBQQ__QuoteLine__c = qlines.get(0).id;
             orderItem.SBQQ__Activated__c = false;
             orderItem.EndDate = System.today().addMonths(36);
@@ -179,7 +179,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
             billingPlanCheck = [select id,LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c =: orderItem.id];
             billingPlanLineCheck = [select Id, Name, LPCR_StartDate__c, LPCR_EndDate__c, LPCR_Amount__c, LPCR_PlanFacturation__c from LPCR_LignePlanFacturation__c where LPCR_PlanFacturation__c IN: billingPlanCheck];
             System.assertEquals(4, billingPlanCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan');
-            System.assertEquals(40, billingPlanLineCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan Line');
+            System.assertEquals(12, billingPlanLineCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan Line');
         }
     }
     
