@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
-        <fullName>Alerte_fin_de_contrat_fin_de_la_dur_e_totale_du_contrat</fullName>
-        <description>Alerte fin de contrat (fin de la durée totale du contrat)</description>
-        <protected>false</protected>
-        <recipients>
-            <field>LPCR_ResponsableServiceFamille__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/Fin_Contrat_Dans_90_Jours_Sans_Ren_gociation</template>
-    </alerts>
-    <alerts>
         <fullName>LPCR_AlerteFinDeContratDans5jours</fullName>
         <description>Alerte Fin De Contrat Dans 5 jours</description>
         <protected>false</protected>
@@ -26,12 +15,7 @@
         <description>Alerte Fin De Contrat Dans 90 jours</description>
         <protected>false</protected>
         <recipients>
-            <field>LPCR_ResponsableADV__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <recipients>
-            <field>LPCR_Sales_Rep__c</field>
-            <type>userLookup</type>
+            <type>owner</type>
         </recipients>
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/LPCR_FinContratDans90Jours</template>
@@ -62,8 +46,15 @@
     <rules>
         <fullName>WR_NotificationRenegociationPrix</fullName>
         <active>true</active>
-        <description>Ce WF informe ADV et sales rep de la fin de l&apos;année d&apos;un contrat B2B pr renégo ( si uplift n&apos;est pas encore renseigné sur le contrat)</description>
-        <formula>If ( AND ( OR(RecordType.DeveloperName = &apos;Referencement&apos;, RecordType.DeveloperName = &apos;Reservataire&apos;), Ispickval (LPCR_IndexationConvenue__c,&apos;Non&apos;), Ispickval (Status,&apos;Activated&apos;), LPCR_DateFin__c &lt;&gt; EndDate, LPCR_RenouvellementAutomatique__c = False ), True, false)</formula>
+        <formula>If (
+AND (
+OR(RecordType.DeveloperName = &apos;Referencement&apos;, RecordType.DeveloperName = &apos;Reservataire&apos;),
+Ispickval (LPCR_IndexationConvenue__c,&apos;Non&apos;),
+Ispickval (Status,&apos;Activated&apos;),
+LPCR_DateFin__c &lt;&gt; EndDate,
+LPCR_RenouvellementAutomatique__c = False
+),
+True, false)</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
             <actions>
@@ -80,22 +71,6 @@
                 <type>Alert</type>
             </actions>
             <offsetFromField>Contract.EndDate</offsetFromField>
-            <timeLength>-90</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-    </rules>
-    <rules>
-        <fullName>WR_Notification_ServiceFamille_FinContratProche</fullName>
-        <active>true</active>
-        <description>Ce WF informe le service famille de la fin d&apos;un contrat B2B</description>
-        <formula>If ( AND ( OR(RecordType.DeveloperName = &apos;Referencement&apos;, RecordType.DeveloperName = &apos;Reservataire&apos;),  Ispickval (Status,&apos;Activated&apos;), LPCR_DateFin__c = EndDate ), True, false)</formula>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Alerte_fin_de_contrat_fin_de_la_dur_e_totale_du_contrat</name>
-                <type>Alert</type>
-            </actions>
-            <offsetFromField>Contract.LPCR_DateFin__c</offsetFromField>
             <timeLength>-90</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
         </workflowTimeTriggers>

@@ -85,8 +85,8 @@
         <dataType>String</dataType>
         <expression>{!NomCompte.recordName} &amp; &quot;-&quot; &amp; {!NameContactEnfant}</expression>
     </formulas>
-    <interviewLabel>Nouveau Contrat D&apos;accueil {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Nouveau Contrat D&apos;accueil</label>
+    <interviewLabel>Nouveau Contrat D&#39;accueil {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Nouveau Contrat D&#39;accueil</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -146,12 +146,6 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>LPCR_Creation_conforme__c</field>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>LPCR_Creche__c</field>
             <value>
                 <elementReference>Creche.recordId</elementReference>
@@ -203,7 +197,7 @@
     </recordCreates>
     <recordCreates>
         <name>Creer_Opportunite</name>
-        <label>Créer l&apos;opportunité</label>
+        <label>Créer l&#39;opportunité</label>
         <locationX>851</locationX>
         <locationY>62</locationY>
         <assignRecordIdToReference>OpportunityID</assignRecordIdToReference>
@@ -633,7 +627,7 @@
             <targetReference>Assign_ID</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>Account_Record</name>
         <dataType>SObject</dataType>
