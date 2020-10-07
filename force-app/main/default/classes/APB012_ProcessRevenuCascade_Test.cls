@@ -7,19 +7,24 @@
 @isTest
 public class APB012_ProcessRevenuCascade_Test {
  	private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
+    private static final Id OPP_ENTREPRISE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Opportunity, Label.LPCR_Entreprise);
     private static final Id ACCOUNT_CRECHE_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
     private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
     private static final Id QUOTE_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);
     private static final Id ORDER_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Order, Label.LPCR_ContratA);
     private static final Id standardPricebookId = Test.getStandardPricebookId();
     
+        
     @testSetup
     static void testSetup(){
-        List<Account> accounts = UM002_TestDataFactory.createAccounts(5, 'testAccount');
-        List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(5, 'testOpp', 'Prospecting');
+        List<Account> accounts = UM002_TestDataFactory.createAccounts(1, 'testAccount');
+        accounts.get(0).RecordTypeId = B2C_RT_ID;
+        
+        List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(1, 'testOpp', 'Prospecting');
+        opps.get(0).recordTypeId = OPP_ENTREPRISE_RT_ID;
         insert accounts;
         insert opps;
-        List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(5, accounts, opps);
+        List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(1, accounts, opps);
         insert quotes;
         
         Id standardPricebookId = Test.getStandardPricebookId();
@@ -263,8 +268,8 @@ public class APB012_ProcessRevenuCascade_Test {
            
             APB012_ProcessRevenuCascade ss = new APB012_ProcessRevenuCascade();
             DataBase.executeBatch(ss);
-            //String chron = '0 0 23 * * ?';        
-            //system.schedule('Test Sched', chron, ss);
+            APB012_ProcessRevenuCascade ss1 = new APB012_ProcessRevenuCascade();
+            
             Test.stopTest();
 			ss.execute(null);
             List<LPCR_RevenueCascade__c> revCascadeList = [SELECT Id, Name, LPCR_Compte__c, LPCR_CreditNoteLineAggregation__c, LPCR_CreditNoteRevenue__c, LPCR_DateDebut__c, LPCR_MontantFacture__c, LPCR_OrderInvoiceRevenue__c, LPCR_OrderLineAggregation__c, LPCR_OrderLineGroup__c, LPCR_PCA__c FROM LPCR_RevenueCascade__c];
