@@ -502,7 +502,8 @@ newMe.FederationIdentifier = null;
                 SBQQ__Opportunity2__c = opps.get(i).Id,
                 SBQQ__Account__c = accs.get(i).Id,
                 SBQQ__PriceBook__c = Test.getStandardPricebookId(),
-                SBQQ__StartDate__c = date.today()
+                SBQQ__StartDate__c = date.today(),
+		LPCR_Creation_conforme__c = true
             );
             quotes.add(tempQuote);
         }
@@ -1248,6 +1249,7 @@ newMe.FederationIdentifier = null;
                 SBQQ__Opportunity2__c = opps.get(i).Id,
                 SBQQ__Account__c = accs.get(i).Id,
                 SBQQ__Type__c = type,
+		LPCR_Creation_conforme__c = true,    
                 RecordTypeId = recTypeId,
                 LPCR_Creche__c = crecheId,
                 SBQQ__StartDate__c = date.today(),
