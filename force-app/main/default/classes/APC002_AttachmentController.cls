@@ -34,16 +34,20 @@ public with sharing class APC002_AttachmentController {
     }
     @AuraEnabled
     public static void sendDocument(Id attachmentId) {
-        Attachment att = [SELECT ParentId, Description, Body FROM Attachment WHERE Id = :attachmentId];
-        SM017_SendDocument_Callout.sendDocumentCallout_SYNC(att.ParentId, att.Id, att.Description, EncodingUtil.base64Encode(att.Body));
-        removeNameSuffix(attachmentId);
-    }
-    public static void removeNameSuffix(Id attachmentId){
         string suffix = '_SYNC';
-        Attachment att = [SELECT name from Attachment where id=:attachmentId];
+        Attachment att = [SELECT name FROM Attachment WHERE id=:attachmentId];
         if(att.name.endsWithIgnoreCase(suffix)){
             att.name  = att.name.removeEnd(suffix);
             update att;
         }
+        // Using a future method to avoid performing a DML and callout in the same transaction
+        executeSendDocument(attachmentId);
+    }
+
+    @future ( callout = true )
+    public static void executeSendDocument(Id attachmentId){
+        Attachment att = [SELECT ParentId, Description, Body FROM Attachment WHERE Id = :attachmentId];
+        SM017_SendDocument_Callout.sendDocumentCallout_SYNC(att.ParentId, att.Id, att.Description, EncodingUtil.base64Encode(att.Body));
+
     }
 }
