@@ -1206,7 +1206,7 @@ newMe.FederationIdentifier = null;
                 SBQQ__Status__c = status,
                 SBQQ__StartDate__c = date.today(),
                 SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31),
-                LPCR_Creation_conforme__c = true;
+                LPCR_Creation_conforme__c = true
             );
             quotes.add(tempQuote);
         }
