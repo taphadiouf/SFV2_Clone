@@ -4,7 +4,7 @@
     <encodingKey>ISO-8859-1</encodingKey>
     <name>Devis Annulé</name>
     <style>none</style>
-    <subject>Devis {!SBQQ__Quote__c.Name} est annulé.</subject>
+    <subject>Le devis {!SBQQ__Quote__c.LPCR_NumeroContrat__c} est annulé.</subject>
     <type>text</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

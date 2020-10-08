@@ -3,6 +3,6 @@
     <fullName>VR_CreationConformeProcess</fullName>
     <active>true</active>
     <description>Cette règle de validation se déclenche si le user créé un devis autrement que via les boutons &apos;nouveau contrat reservataire&apos; ou &apos;nouveau contrat réferencement&apos; ou &apos;nouveau contrat d&apos;accueiil&apos;</description>
-    <errorConditionFormula>AND( ISNEW() , LPCR_Creation_conforme__c = False)</errorConditionFormula>
-    <errorMessage>Ce bouton &quot;Nouveau devis&quot; est désactivé : La création d&apos;un devis doit ce faire à partir d&apos;une opportunité entreprise en ou un compte famille comme l&apos;indique le processus LPCR.</errorMessage>
+    <errorConditionFormula>AND( ISNEW() , LPCR_Creation_conforme__c = False,  ISPICKVAL( SBQQ__Type__c ,&apos;Quote&apos;) )</errorConditionFormula>
+    <errorMessage>Ce bouton &quot;Nouveau devis&quot; est désactivé : La création d&apos;un devis doit se faire à partir d&apos;une opportunité entreprise ou d&apos;un compte famille comme l&apos;indique le processus LPCR.</errorMessage>
 </ValidationRule>
