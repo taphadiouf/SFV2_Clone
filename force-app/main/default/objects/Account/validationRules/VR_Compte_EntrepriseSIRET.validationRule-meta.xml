@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Compte_EntrepriseSIRET</fullName>
+    <active>true</active>
+    <description>il faut soit renseigner un numéro de siret soit cocher la case pas de siret</description>
+    <errorConditionFormula>AND(
+NOT($Permission.LPCR_ByPass_VR),
+RecordType.DeveloperName = &apos;Entreprise&apos;,
+ISBLANK(LPCR_SIRET__c),
+NOT(LPCR_PasDeSIRET__c)
+)</errorConditionFormula>
+    <errorMessage>Pour les comptes Entreprise, le champ SIRET doit être rempli ou la case &quot;Pas de numéro de SIRET&quot; cochée.</errorMessage>
+</ValidationRule>
