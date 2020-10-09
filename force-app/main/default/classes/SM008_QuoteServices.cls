@@ -149,7 +149,6 @@ public with sharing class SM008_QuoteServices {
                         eachQuote.LPCR_ContractEntreprise__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_ContractEntreprise__c ;
                         eachQuote.LPCR_ContactRepresentant1__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_ContactRepresentant1__c ;
                         eachQuote.LPCR_ContactRepresentant2__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_ContactRepresentant2__c ;
-                        //eachQuote.LPCR_CongesJours__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_CongesJours__c ;
                         eachQuote.LPCR_DureePreavisMois__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DureePreavisMois__c ;
                         eachQuote.LPCR_TypeAccueil__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_TypeAccueil__c ;
                         if(acctMap.containsKey(eachQuote.LPCR_Creche__c)){
@@ -247,7 +246,6 @@ public with sharing class SM008_QuoteServices {
                         eachQuote.LPCR_ContractEntreprise__c  = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_ContractEntreprise__c ;
                         eachQuote.LPCR_ContactRepresentant1__c  = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_ContactRepresentant1__c ;
                         eachQuote.LPCR_ContactRepresentant2__c  = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_ContactRepresentant2__c ;
-                        //eachQuote.LPCR_CongesJours__c  = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_CongesJours__c ;
                         eachQuote.LPCR_DureePreavisMois__c  = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_DureePreavisMois__c ;
                         eachQuote.LPCR_TypeAccueil__c  = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_TypeAccueil__c ;
                         if(acctMap.containsKey(eachQuote.LPCR_Creche__c)){
