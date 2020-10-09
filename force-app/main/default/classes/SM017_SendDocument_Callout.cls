@@ -17,9 +17,13 @@ public with sharing class SM017_SendDocument_Callout {
     }
     
     public static void executeSendDocumentCallout(String OwnerSfId, String DocSfID, String Name, String BinaryDocument, Boolean syncMode){
-        String errorMsg;
+        
+        String errorMsg = '';
         HttpResponse response;
         final String WS_NOM_SERVICE  = 'LPCR_ENVOIE_DOCUMENT';
+        
+        PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'LPCR_ENVOIE_DOCUMENT');
+        
         try {
             Http http = new Http();
             HttpRequest request = new HttpRequest();
@@ -37,13 +41,16 @@ public with sharing class SM017_SendDocument_Callout {
             
             response = http.send(request);
         
+            PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'Doc Sent by Callout...');
             
         }catch(System.CalloutException e){ 
+            PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'In catch');
             errorMsg = String.valueOf(e);
         }
         finally {
+            PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'errorMsg:' + errorMsg);
             if (errorMsg != '') {
-                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_SEND_DOC_TO_GED,'SM017_SendDocument_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED,'SM017_SendDocument_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
             }
             if (syncMode == true) {
                 
@@ -66,7 +73,8 @@ public with sharing class SM017_SendDocument_Callout {
             
             }
             else {
-            
+            	PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'response:' + response);
+                PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'response.getStatusCode()):' + response.getStatusCode());
                 if (String.valueOf(response.getStatusCode()).equals('200')) {
                     UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.SUCCESS);  
                 
