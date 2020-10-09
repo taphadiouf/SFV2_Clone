@@ -21,19 +21,17 @@
 &amp;serverUrl={!API.Partner_Server_URL_370}
 &amp;Id={!SBQQ__Quote__c.Id}
 &amp;ContactId={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}
-
 &amp;QueryId=[ListPriceParis]a443O00000057OT,
 [ListPriceIDFGV]a443O00000057OW,
-[ListPriceProv]a443O00000057OV
-
+[ListPriceProv]a443O00000057OV,
+[ContactInfo]a443O00000059LA
 &amp;TemplateId=a4C3O0000004hIH
-
 &amp;DefaultPDF=1
 &amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;),0,1)}
 &amp;ESVisible=1
 &amp;ESAgreementTemplateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratReservation__c}
 &amp;ESCustomField=LPCR_Devis__c
-ESCustomFieldValue={!SBQQ__Quote__c.Id}
+&amp;ESCustomFieldValue={!SBQQ__Quote__c.Id}
 &amp;ESContactId1={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}
 &amp;ESContactId2=0033O00000JszFnQAJ</url>
     <width>900</width>

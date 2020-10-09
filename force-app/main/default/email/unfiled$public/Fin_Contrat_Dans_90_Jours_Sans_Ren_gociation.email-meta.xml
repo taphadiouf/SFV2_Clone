@@ -2,9 +2,9 @@
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <available>true</available>
     <encodingKey>ISO-8859-1</encodingKey>
-    <name>Devis Annulé</name>
+    <name>Fin Contrat Dans 90 Jours (Sans Renégociation)</name>
     <style>none</style>
-    <subject>Le devis {!SBQQ__Quote__c.LPCR_NumeroContrat__c} est annulé.</subject>
+    <subject>Le Contrat {!Contract.LPCR_NumeroContrat__c} arrive à échéance dans 90 jours</subject>
     <type>text</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -21342,21 +21342,11 @@
         <editable>false</editable>
         <field>SBQQ__Quote__c.SubmittedUser__c</field>
         <readable>false</readable>
-    </fieldPermissions>
+    </fieldPermissions>  
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleEmail__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleNom__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleTelephone__c</field>
-        <readable>false</readable>
+        <field>SBQQ__Quote__c.Tech_AutoriteParentale__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -32458,11 +32448,11 @@
         <recordType>Account.Creche</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Account-Entreprise</layout>
+        <layout>Account-Crèche Externe</layout>
+        <recordType>Account.Creche_Externe</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-Entreprise</layout>
-        <recordType>Account.Creche_Externe</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-Entreprise</layout>

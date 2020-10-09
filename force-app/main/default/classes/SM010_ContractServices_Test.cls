@@ -141,6 +141,7 @@ public class SM010_ContractServices_Test {
             
             //contract.LPCR_RenouvellementAutomatique__c=true;
             contract.StartDate=lastMonth;
+            contract.EndDate=Date.newInstance(System.today().Year()+1, System.today().month() , System.today().day()) ;
             contract.AccountId=acc.Id;
             contract.ContractTerm =3;
             contract.SBQQ__RenewalQuoted__c=false;

@@ -6,51 +6,59 @@
 public with sharing class SM016_SendMail_Callout {
     
     public static HttpResponse sendMailCallout(String from1, String to, String subject, String body, Set<String> docsId) {
-        Http h = new Http();
-        HttpRequest req = new HttpRequest();
-        LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
-        if('UAT'.equals(envCS.Nom__c)){
-            req.setEndpoint('callout:UAT_SEND_MAIL');
-        }
-        else if('PROD'.equals(envCS.Nom__c)){
-            req.setEndpoint('callout:PROD_SEND_MAIL');
-        }
-        else{
-            req.setEndpoint('callout:DEV_SEND_MAIL');
-        }
-        req.setMethod('POST');
-        req.setHeader('Content-Type', 'application/json; utf-8');
-        
-        Set<Integer> docsIdSet = new Set<Integer>();
-        PAD.log('SM016_SendMail_Callout', 'sendMailCallout', 'docsId:' + docsId);
-        if(docsId != null){
-            for(String DocId: docsId){
-                docsIdSet.add(Integer.valueOf(DocId));
+        String errorMsg;
+        HttpResponse res;
+        try {
+            Http h = new Http();
+            HttpRequest req = new HttpRequest();
+            LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
+    
+            if('UAT'.equals(envCS.Nom__c)){
+                req.setEndpoint('callout:UAT_SEND_MAIL');
             }
-        }
+            else if('PROD'.equals(envCS.Nom__c)){
+                req.setEndpoint('callout:PROD_SEND_MAIL');
+            }
+            else{
+                req.setEndpoint('callout:DEV_SEND_MAIL');
+            }
+            req.setMethod('POST');
+            req.setHeader('Content-Type', 'application/json; utf-8');
         
-        PAD.log('SM016_SendMail_Callout', 'sendMailCallout', 'before body:' + body);
-        EmailStructureWrapper emailStructure = new EmailStructureWrapper(from1, to, subject, body, docsIdSet);
+            Set<Integer> docsIdSet = new Set<Integer>();
 
-        String bodyJSON = JSON.serialize(emailStructure);
-        bodyJSON = bodyJson.replace('from1', 'From');
-        PAD.log('SM016_SendMail_Callout', 'sendMailCallout', 'bodyJSON:' + bodyJSON);
-        req.setBody(bodyJSON);
+            if(docsId != null){
+                for(String DocId: docsId){
+                    docsIdSet.add(Integer.valueOf(DocId));
+                }
+            }
         
-        System.Debug('>> - LOG - req:' + req);
-        System.Debug('>> - LOG - h:' + h);
+            EmailStructureWrapper emailStructure = new EmailStructureWrapper(from1, to, subject, body, docsIdSet);
+
+            String bodyJSON = JSON.serialize(emailStructure);
+            bodyJSON = bodyJson.replace('from1', 'From');
+            req.setBody(bodyJSON);
         
-        HttpResponse res = h.send(req);
-        String result = res.getBody();
-        
-        // Parse the JSON response
-        if (res.getStatusCode() == 200) {
-            System.debug('The status code returned was not expected: ' +
-                         res.getStatusCode() + ' ' + res.getStatus());
-        } else {
-            System.debug(res.getBody());
+            res = h.send(req);
+            String result = res.getBody();
+            
+
+                        
+        }catch (System.CalloutException e){ 
+    		errorMsg = String.valueOf(e);
         }
-        
+        finally {
+            if (errorMsg != '') {
+                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_REF_SENDMAIL,'SM016_SendMail_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+            }
+            if (res.getStatusCode() == 200) {
+                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_REF_SENDMAIL, 'SM016_SendMail_Callout', 'Callout', from1, 'statusCode:' + res.getStatusCode() + ' - From:' + from1 + ' - To:' + to + ' - Subject:' + subject , UM010_Constant.SUCCESS);           
+            } else {
+                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_REF_SENDMAIL, 'SM016_SendMail_Callout', 'Callout', from1,  'Exception:' + res.getStatusCode() + ' - statusCode:' + res.getStatusCode() + ' - From:' + from1 + ' - To:' + to + ' - Subject:' + subject, UM010_Constant.ERROR);
+            }
+            
+        }
+
         return res;
         
     }

@@ -3,7 +3,7 @@
     <fullName>LPCR_SoldeHorsTaxe__c</fullName>
     <description>Sous total hors taxe affiché sur le document de facture</description>
     <externalId>false</externalId>
-    <formula>blng__Subtotal__c - blng__Credits__c</formula>
+    <formula>blng__Subtotal__c - blng__Credits__c +  blng__Debits__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <inlineHelpText>Sous total hors taxe affiché sur le document de facture</inlineHelpText>
     <label>Solde hors taxe</label>

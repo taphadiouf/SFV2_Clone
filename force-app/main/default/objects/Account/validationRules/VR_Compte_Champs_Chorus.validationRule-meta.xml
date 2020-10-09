@@ -5,7 +5,8 @@
     <description>Lorsqu’un compte Entreprise est marqué comme Public dans le champ “Public / Privé”, alors les champs SIRET Chorus et Code service Chorus sont obligatoires</description>
     <errorConditionFormula>AND(
 NOT( $Permission.LPCR_ByPass_VR ),
-ISPICKVAL( LPCR_PrivePublic__c ,&quot;Public&quot;),
+RecordType.DeveloperName = &apos;Entreprise&apos;,
+ISPICKVAL( LPCR_PrivePublic__c ,&apos;Public&apos;),
 OR(
 ISBLANK( LPCR_SIRETChorus__c ),
 ISBLANK( LPCR_CodeServiceChorus__c )))</errorConditionFormula>
