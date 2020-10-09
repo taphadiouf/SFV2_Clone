@@ -6,47 +6,59 @@
 public with sharing class SM016_SendMail_Callout {
     
     public static HttpResponse sendMailCallout(String from1, String to, String subject, String body, Set<String> docsId) {
-
-        Http h = new Http();
-        HttpRequest req = new HttpRequest();
-        LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
-
-        if('UAT'.equals(envCS.Nom__c)){
-            req.setEndpoint('callout:UAT_SEND_MAIL');
-        }
-        else if('PROD'.equals(envCS.Nom__c)){
-            req.setEndpoint('callout:PROD_SEND_MAIL');
-        }
-        else{
-            req.setEndpoint('callout:DEV_SEND_MAIL');
-        }
-        req.setMethod('POST');
-        req.setHeader('Content-Type', 'application/json; utf-8');
-        
-        Set<Integer> docsIdSet = new Set<Integer>();
-
-        if(docsId != null){
-            for(String DocId: docsId){
-                docsIdSet.add(Integer.valueOf(DocId));
+        String errorMsg;
+        HttpResponse res;
+        try {
+            Http h = new Http();
+            HttpRequest req = new HttpRequest();
+            LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
+    
+            if('UAT'.equals(envCS.Nom__c)){
+                req.setEndpoint('callout:UAT_SEND_MAIL');
             }
-        }
+            else if('PROD'.equals(envCS.Nom__c)){
+                req.setEndpoint('callout:PROD_SEND_MAIL');
+            }
+            else{
+                req.setEndpoint('callout:DEV_SEND_MAIL');
+            }
+            req.setMethod('POST');
+            req.setHeader('Content-Type', 'application/json; utf-8');
         
-        EmailStructureWrapper emailStructure = new EmailStructureWrapper(from1, to, subject, body, docsIdSet);
+            Set<Integer> docsIdSet = new Set<Integer>();
 
-        String bodyJSON = JSON.serialize(emailStructure);
-        bodyJSON = bodyJson.replace('from1', 'From');
-        req.setBody(bodyJSON);
+            if(docsId != null){
+                for(String DocId: docsId){
+                    docsIdSet.add(Integer.valueOf(DocId));
+                }
+            }
         
-        HttpResponse res = h.send(req);
-        String result = res.getBody();
+            EmailStructureWrapper emailStructure = new EmailStructureWrapper(from1, to, subject, body, docsIdSet);
+
+            String bodyJSON = JSON.serialize(emailStructure);
+            bodyJSON = bodyJson.replace('from1', 'From');
+            req.setBody(bodyJSON);
         
-        if (res.getStatusCode() == 200) {
+            res = h.send(req);
+            String result = res.getBody();
+            
 
                         
-        } else {
+        }catch (System.CalloutException e){ 
+    		errorMsg = String.valueOf(e);
+        }
+        finally {
+            if (errorMsg != '') {
+                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_REF_SENDMAIL,'SM016_SendMail_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+            }
+            if (res.getStatusCode() == 200) {
+                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_REF_SENDMAIL, 'SM016_SendMail_Callout', 'Callout', from1, 'statusCode:' + res.getStatusCode() + ' - From:' + from1 + ' - To:' + to + ' - Subject:' + subject , UM010_Constant.SUCCESS);           
+            } else {
+                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_REF_SENDMAIL, 'SM016_SendMail_Callout', 'Callout', from1,  'Exception:' + res.getStatusCode() + ' - statusCode:' + res.getStatusCode() + ' - From:' + from1 + ' - To:' + to + ' - Subject:' + subject, UM010_Constant.ERROR);
+            }
             
         }
-        
+
         return res;
         
     }
