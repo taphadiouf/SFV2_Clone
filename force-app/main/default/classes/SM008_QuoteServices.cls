@@ -315,7 +315,7 @@ public with sharing class SM008_QuoteServices {
         }
     }
     
-    public static void setB2CbeforInsertBQuotes(List<SBQQ__Quote__c> quotesList,  Map<ID,Account> acctMap, Map<Id,Opportunity> opptyMap,  Map<Id,Contract> amendedContractMap,Map<Id,Contract> contractMap){
+    public static void setB2CbeforInsertBQuotes(List<SBQQ__Quote__c> quotesList,  Map<ID,Account> acctMap, Map<Id,Opportunity> opptyMap,  Map<Id,Contract> amendedContractMap,Map<Id,Contract> renewedcontractMap){
         Set<String> contractIds = UM003_TypeManager.getFieldsOfListObjects(quotesList,'LPCR_ContractEntreprise__c');
         Map<Id,Contract> contractMap = new  Map<Id,Contract>([SELECT Id, LPCR_Sales_Rep__c,LPCR_ResponsableADV__c,LPCR_ResponsableServiceFamille__c   from Contract WHERE Id in :contractIds]);
         
@@ -338,8 +338,8 @@ public with sharing class SM008_QuoteServices {
 
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
-                    if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
-                        eachQuote.LPCR_CongesJours__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_CongesJours__c ;
+                    if(renewedcontractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
+                        eachQuote.LPCR_CongesJours__c = renewedcontractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_CongesJours__c ;
                     }
                 }
             }
