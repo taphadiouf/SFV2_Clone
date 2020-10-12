@@ -22,8 +22,8 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
     }
     
     protected override void beforeInsert() {
-        SM008_QuoteServices.setQuotesConformes(newQuotesList);
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
+            SM008_QuoteServices.setQuotesConformes(newQuotesList);
             SM008_QuoteServices.updateQuotes(newQuotesList);
         }
     }
