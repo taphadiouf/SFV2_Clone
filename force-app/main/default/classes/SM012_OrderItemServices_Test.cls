@@ -114,14 +114,16 @@ public with sharing class SM012_OrderItemServices_Test {
                      'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quoteForAccueil = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        
+        SBQQ__Quote__c quoteForAccueil = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+        quoteForAccueil.LPCR_Creation_conforme__c = true;
+
         defaultVal.put('RecordTypeId', QUOTE_CONTRAT_REF_RT_ID);
         defaultVal.put('SBQQ__Opportunity2__c', oppForRef.Id);
         defaultVal.put('SBQQ__Account__c', b2bAccount.Id);
         
         SBQQ__Quote__c quoteForRef = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-        
+        quoteForRef.LPCR_Creation_conforme__c = true;
+
         insert new List<SBQQ__Quote__c> {quoteForAccueil, quoteForRef};
             
             Integer price = 200;
@@ -234,11 +236,15 @@ public with sharing class SM012_OrderItemServices_Test {
                 'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
+
             defaultVal.put('SBQQ__Type__c','Renewal');
             defaultVal.put('SBQQ__Opportunity2__c',oppRenewal.Id);
+
             SBQQ__Quote__c quoteRenewal = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-            
+            quoteRenewal.LPCR_Creation_conforme__c = true;
+
             insert new List<SBQQ__Quote__c>{quote,quoteRenewal};
                 
                 Integer price = 200;
@@ -453,7 +459,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             
             Integer price = 200;
@@ -591,7 +598,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
 
                     };
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             
             Integer price = 200;
@@ -850,7 +858,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             
             Integer price = 200;
@@ -986,7 +995,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             
             Integer price = 200;
@@ -1105,7 +1115,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             
             Integer price = 200;
@@ -1224,7 +1235,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             
             
@@ -1358,7 +1370,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     };
                         
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             quote = [SELECT SBQQ__BillingFrequency__c,LPCR_TypeFacturation__c FROM SBQQ__Quote__c where Id = :quote.Id ];
             system.debug('quote : SBQQ__BillingType__c ===== '+quote.SBQQ__BillingFrequency__c);
@@ -1488,7 +1501,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             
             Integer price = 200;
@@ -1616,7 +1630,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             
             Integer price = 200;
@@ -1744,7 +1759,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             
             Integer price = 200;
@@ -1869,7 +1885,8 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                 'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             
             Integer price = 200;
@@ -2050,7 +2067,8 @@ System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.bln
                 'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             
             Integer price = 200;

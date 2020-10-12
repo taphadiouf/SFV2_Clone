@@ -542,4 +542,14 @@ public with sharing class SM008_QuoteServices {
       
     }*/
     
+    //Added by Houssam
+    public static void setQuotesConformes(List<SBQQ__Quote__c> quotes){
+        for (SBQQ__Quote__c q : quotes){
+            q.LPCR_Creation_conforme__c = true;
+        }
+    }
+
+
+
+
 }

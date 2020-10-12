@@ -89,7 +89,8 @@ public class SM015_InvoiceServices_Test {
                 'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+        quote.LPCR_Creation_conforme__c = true;
         insert quote;
         
         Integer price = 200;
