@@ -125,7 +125,7 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         fireEvent(this.pageRef, "changedEnfants", this.enfantsIndexes);
     }
     handleCrecheChosen(event){
-        this.chosenCrecheId = event.target.value.Id;
+        this.chosenCrecheId = event.target.value;
         fireEvent(this.pageRef, "chosenCrecheChanged", this.chosenCrecheId);
     }
     handleSponsCheckbox(event) {

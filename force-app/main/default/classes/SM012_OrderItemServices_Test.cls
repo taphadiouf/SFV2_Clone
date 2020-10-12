@@ -38,7 +38,8 @@ public with sharing class SM012_OrderItemServices_Test {
         defaultVal = new Map<String, Object> {
             'RecordTypeId' => B2B_RT_ID,
                 'Name' => 'Test-B2B',
-                'SBQQ__RenewalModel__c' => 'Contract Based'
+                'SBQQ__RenewalModel__c' => 'Contract Based',
+                'LPCR_PasDeSIRET__c' => true
                 };
                     
                     Account b2bAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
