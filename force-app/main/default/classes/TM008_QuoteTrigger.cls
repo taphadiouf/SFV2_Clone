@@ -22,6 +22,11 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
     }
     
     protected override void beforeInsert() {
+        if(UM006_ContractAmender.allowInsert == true ){
+            for (SBQQ__Quote__c q : newQuotesList){
+                q.LPCR_Creation_conforme__c = true;
+            }
+        }
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM008_QuoteServices.updateQuotes(newQuotesList);
         }
