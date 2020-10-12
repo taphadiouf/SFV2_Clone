@@ -8,9 +8,6 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
     private Map<Id, SBQQ__Quote__c> oldQuotesMap;
     private List<SBQQ__Quote__c> newQuotesList;
     
-    
-    public static Boolean runUpdateOnce = true; 
-
     public TM008_QuoteTrigger() {
         this.newQuotesMap = (Map<Id, SBQQ__Quote__c>) Trigger.newMap;
         this.oldQuotesMap = (Map<Id, SBQQ__Quote__c>) Trigger.oldMap;
