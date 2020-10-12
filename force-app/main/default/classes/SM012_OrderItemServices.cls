@@ -89,6 +89,12 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             Map<Id, Order> orderMap = new Map<Id, Order> ([SELECT Id,LPCR_TypeFacturation__c ,LPCR_FrequenceFacturation__c ,LPCR_InitAutoAvecDateDebut__c , LPCR_TypeCreche__c, blng__BillingAccount__c, blng__BillingAccount__r.RecordTypeId 
                                                            FROM Order WHERE Id IN :orderIds]);
             
+            Set<Id> orderItemIds = new Set<Id>();
+            for (OrderItem item : newOrderItems) {
+                orderItemIds.add(item.SBQQ__RequiredBy__c);
+            }
+            Map<Id, OrderItem> orderItemMap = new Map<Id, OrderItem> ([SELECT Id,SBQQ__RequiredBy__c,blng__NextBillingDate__c From OrderItem WHERE Id IN :orderItemIds ]);
+
             for (OrderItem item : newOrderItems) {
                 
                 if (item.blng__NextChargeDate__c != null) {
@@ -248,7 +254,7 @@ item.blng__BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth (item.
                                                 && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId
                                                 && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_InvoicePlan && item.SBQQ__ChargeType__c == Label.LPCR_OneTime 
                                                 && item.SBQQ__RequiredBy__c != null){
-                    item.blng__OverrideNextBillingDate__c = item.SBQQ__RequiredBy__r.blng__NextBillingDate__c; 
+                    item.blng__OverrideNextBillingDate__c = orderItemMap.get(item.SBQQ__RequiredBy__c).blng__NextBillingDate__c; 
                 }
                 PAD.log('SM012_OrderItemServices', 'setupInvoiceDates', 'item (AFTER): ' + item);
             }
