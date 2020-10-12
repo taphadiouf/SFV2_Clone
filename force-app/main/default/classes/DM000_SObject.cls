@@ -44,6 +44,9 @@ public abstract class DM000_SObject{
     /* Each DM must implement this method by providing the object Name to manipulate */
     protected Abstract String getObjectName();
     
+    /* In order to prevent recursive update calls */
+    public static Boolean runUpdateOnce = true; 
+
     /* Description of Objects and fields */
     private static Map<String, Schema.SObjectType> schemaMap;
     private static Map<String, Map <String, Schema.SObjectField>> fieldsMaps;
