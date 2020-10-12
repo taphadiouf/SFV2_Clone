@@ -70,7 +70,7 @@ public with sharing class APC001_LeadFaConverController{
     }
     
     @AuraEnabled()
-    public static void convertLeadCtrl(Id leadId, List<Integer> enfantsIndexes, Id chosenCrecheId, Id chosenCompteId){
+    public static void convertLeadCtrl(Id leadId, List<Integer> enfantsIndexes, String chosenCrecheId, Id chosenCompteId){
         
         Lead currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
         String prenomCoDemandeur = currentLead.LPCR_PrenomCoDemandeur__c;                                         
@@ -231,6 +231,9 @@ public with sharing class APC001_LeadFaConverController{
         Database.LeadConvertResult lcr = Database.convertLead(lc); 
         
         //Create a quote for each child (enfant)
+        List<LPCR_LienCrecheLead__c> lienCrecheLeadList = [select Id, LPCR_creche__c From LPCR_LienCrecheLead__c where LPCR_Creche__r.Name = :chosenCrecheId And LPCR_Lead__c =:leadId];
+        Set<String> crecheIds = UM003_TypeManager.getFieldsOfListObjects(lienCrecheLeadList,'LPCR_creche__c');
+        Id crecheId = [SELECT Id, Name FROM Account where id in :crecheIds Limit 1].Id;
         List<SBQQ__Quote__c> quotesList = new List<SBQQ__Quote__c>();
         Contact tmpContactEnfant;
         Contact tmpContactRep1;
@@ -243,7 +246,7 @@ public with sharing class APC001_LeadFaConverController{
             quotesList.add(
                 new SBQQ__Quote__c(
                     LPCR_DateDebut__c = (Date) currentLead.get('LPCR_DateEntreeCreche' + eachIndex + '__c'),
-                    LPCR_Creche__c = chosenCrecheId,
+                    LPCR_Creche__c = crecheId,
                     SBQQ__Account__c = chosenCompteId,
                     LPCR_ContactEnfant__c = (tmpContactEnfant != null ? tmpContactEnfant.Id : null),
                     LPCR_ContactRepresentant1__c = (tmpContactRep1 != null ? tmpContactRep1.Id : null),
