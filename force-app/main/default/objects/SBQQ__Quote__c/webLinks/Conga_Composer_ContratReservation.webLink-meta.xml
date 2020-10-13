@@ -2,7 +2,6 @@
 <WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Conga_Composer_ContratReservation</fullName>
     <availability>online</availability>
-    <description>Created by Conga Solution Manager. Record link: https://nlpcr--devcb--apxtcfq.visualforce.com/a4C3O00000006QdUAI.</description>
     <displayType>button</displayType>
     <encodingKey>UTF-8</encodingKey>
     <hasMenubar>false</hasMenubar>
@@ -24,7 +23,8 @@
 &amp;QueryId=[ListPriceParis]a443O00000057OT,
 [ListPriceIDFGV]a443O00000057OW,
 [ListPriceProv]a443O00000057OV,
-[ContactInfo]a443O00000059LA
+[ContactInfo]a443O00000059LA,
+[ServicesAnnexes]a443O00000059Pl
 &amp;TemplateId=a4C3O0000004hIH
 &amp;DefaultPDF=1
 &amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;),0,1)}
