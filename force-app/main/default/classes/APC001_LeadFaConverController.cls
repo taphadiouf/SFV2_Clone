@@ -228,6 +228,9 @@ public with sharing class APC001_LeadFaConverController{
         lc.setConvertedStatus(convertStatus.MasterLabel);
         lc.setAccountId(newFamilleAccount.Id);
         lc.setContactId(newContactsMap.get('contactRep1').Id);
+        if(chosenCompteId == null){
+            lc.setOpportunityName(newFamilleAccount.name);
+        }
         Database.LeadConvertResult lcr = Database.convertLead(lc); 
         
         //Create a quote for each child (enfant)
