@@ -228,7 +228,11 @@ public with sharing class APC001_LeadFaConverController{
         lc.setConvertedStatus(convertStatus.MasterLabel);
         lc.setAccountId(newFamilleAccount.Id);
         lc.setContactId(newContactsMap.get('contactRep1').Id);
-        Database.LeadConvertResult lcr = Database.convertLead(lc); 
+        try {
+            Database.LeadConvertResult lcr = Database.convertLead(lc); 
+        } catch (DmlException e ) {
+            throw new AuraHandledException(e.getMessage());
+        }
         
         //Create a quote for each child (enfant)
         List<LPCR_LienCrecheLead__c> lienCrecheLeadList = [select Id, LPCR_creche__c From LPCR_LienCrecheLead__c where LPCR_Creche__r.Name = :chosenCrecheId And LPCR_Lead__c =:leadId];
