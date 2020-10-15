@@ -55,15 +55,11 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     }
     @wire(CurrentPageReference)
     pageRef;
+   
     
-    
-    getAccountsByRecordtypeNameF() {
-        getAccountsByRecordtypeName({
-            recordTypeName: this.accEntrepriseRT,
-            leadId : this.recordId
-        })
-        
-        .then((data)=>{
+    @wire(getAccountsByRecordtypeName, {recordTypeName : "$accEntrepriseRT"})
+    getAccountsByRecordtypeNameF({error, data}){
+        if(data){
             this.comptes = [];
             for(let i=0; i< data.length; i++){
                 this.comptes.push({
@@ -71,10 +67,10 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
                     value: data[i].Name
                 });
             }
-        })
-        .catch(err=>{
-            console.error(err);
-        });
+        }
+        else if(error){
+            console.error(error);
+        }
     }
     @wire(getEnfants, {leadId : "$recordId"})
     getEnfantsF({error, data}){
@@ -87,7 +83,6 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     }
     async connectedCallback(){
         console.log("ConnectedCallback8");
-        this.getAccountsByRecordtypeNameF();
         await this.getRelatedCrechesF();
     }
 
