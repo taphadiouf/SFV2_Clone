@@ -397,4 +397,34 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             }   
         }
     }
+    /*
+    *   @author : Achraf ABOUL
+    *   @description : this method updates blng__OverrideNextBillingDate__c of children orderitems
+    *   @param List<OrderItem> newOrderItemsList
+    *   @returns void
+    */
+    public static void updateRelatedOrderItems(Map<Id,OrderItem> oldMapOrderItem,Map<Id,OrderItem> newMapOrderItem){
+        Set<Id> orderItemsIds = new Set<Id>();
+        Id accountEntrepriseRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
+
+        OrderItem currentOldOrderItem;
+        for(OrderItem eachNewOrderItem : newMapOrderItem.values()){
+            currentOldOrderItem = oldMapOrderItem.get(eachNewOrderItem.Id);
+            if( eachNewOrderItem.blng__NextBillingDate__c != currentOldOrderItem.blng__NextBillingDate__c
+                && eachNewOrderItem.Order.blng__BillingAccount__c != null
+                && eachNewOrderItem.Order.blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId
+                && eachNewOrderItem.Order.LPCR_FrequenceFacturation__c == Label.LPCR_InvoicePlan){
+                    orderItemsIds.add(eachNewOrderItem.Id);
+                }
+        }
+
+        List<OrderItem> relatedOrderItems = [ SELECT Id, blng__OverrideNextBillingDate__c, SBQQ__RequiredBy__r.blng__NextBillingDate__c FROM OrderItem WHERE Id IN :orderItemsIds ];
+        for(Orderitem eachOrderItem : relatedOrderItems){
+            eachOrderItem.blng__OverrideNextBillingDate__c = eachOrderItem.SBQQ__RequiredBy__r.blng__NextBillingDate__c;
+        }
+        if(relatedOrderItems.size() > 0){
+            update relatedOrderItems;
+        }
+       
+    }
 }
