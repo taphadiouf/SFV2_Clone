@@ -58,13 +58,19 @@ public with sharing class APC001_LeadFaConverController{
         }
     } 
     
-    @AuraEnabled(cacheable=true)
-    public static List<Account> getAccountsByRecordtypeName(String recordTypeName) {
+    @AuraEnabled(cacheable=false)
+    public static List<Account> getAccountsByRecordtypeName(String recordTypeName, String leadId) {
         
         List<Account> accounts = new List<Account>();
         Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,recordTypeName);
         if(UM003_TypeManager.idNotNull(recordtypeId)){
-            accounts = [SELECT Name FROM Account WHERE RecordTypeId = :recordtypeId];
+            //Filter compte société picklist on acctouns of parent1 and parent2
+            List<Id> ComptesSocieteParentsIds = new List<Id>();
+            for(Lead l : [Select id,LPCR_CompteSociete__c,LPCR_CompteSocieteCoDemandeur__c from lead where id=:leadId]){
+                ComptesSocieteParentsIds.add(l.LPCR_CompteSociete__c);
+                ComptesSocieteParentsIds.add(l.LPCR_CompteSocieteCoDemandeur__c);
+            }
+            accounts = [SELECT Name FROM Account WHERE (RecordTypeId = :recordtypeId) AND (id IN :ComptesSocieteParentsIds)];
         }
         return accounts;
     }
