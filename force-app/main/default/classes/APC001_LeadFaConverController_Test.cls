@@ -69,9 +69,10 @@ public with sharing class APC001_LeadFaConverController_Test {
     
     @isTest
     public static void getAccountsByRecordtypeName_Test(){
+        Id leadId = [SELECT Id from Lead limit 1].Id;
         Test.startTest();
-        List<Account> crecheAccountsList = APC001_LeadFaConverController.getAccountsByRecordtypeName(Label.LPCR_Creche);
-        System.assertEquals(3, crecheAccountsList.size());
+        List<Account> crecheAccountsList = APC001_LeadFaConverController.getAccountsByRecordtypeName(Label.LPCR_Entreprise,leadId);
+        System.assertEquals(1, crecheAccountsList.size());
         Test.stopTest();
     }
     
