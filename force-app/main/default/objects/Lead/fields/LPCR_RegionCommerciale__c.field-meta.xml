@@ -10,16 +10,11 @@
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
-                <fullName>IDF</fullName>
+                <fullName>Grand Nord</fullName>
                 <default>false</default>
-                <label>IDF</label>
-            </value>
-            <value>
-                <fullName>Nord Est</fullName>
-                <default>false</default>
-                <label>Nord Est</label>
+                <label>Grand Nord</label>
             </value>
             <value>
                 <fullName>Grand Ouest</fullName>
@@ -27,19 +22,29 @@
                 <label>Grand Ouest</label>
             </value>
             <value>
+                <fullName>Grand Sud</fullName>
+                <default>false</default>
+                <label>Grand Sud</label>
+            </value>
+            <value>
+                <fullName>IDF Nord</fullName>
+                <default>false</default>
+                <label>IDF Nord</label>
+            </value>
+            <value>
+                <fullName>IDF Sédentaires</fullName>
+                <default>false</default>
+                <label>IDF Sédentaires</label>
+            </value>
+            <value>
+                <fullName>IDF Sud</fullName>
+                <default>false</default>
+                <label>IDF Sud</label>
+            </value>
+            <value>
                 <fullName>Rhone Alpes</fullName>
                 <default>false</default>
                 <label>Rhone Alpes</label>
-            </value>
-            <value>
-                <fullName>PACA</fullName>
-                <default>false</default>
-                <label>PACA</label>
-            </value>
-            <value>
-                <fullName>LR</fullName>
-                <default>false</default>
-                <label>LR</label>
             </value>
         </valueSetDefinition>
     </valueSet>
