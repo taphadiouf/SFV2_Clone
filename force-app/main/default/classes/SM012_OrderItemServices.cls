@@ -404,22 +404,36 @@ public with sharing class SM012_OrderItemServices implements Queueable{
     *   @returns void
     */
     public static void updateRelatedOrderItems(Map<Id,OrderItem> oldMapOrderItem,Map<Id,OrderItem> newMapOrderItem){
+        //Ids of order which repect the later conditions
         Set<Id> orderItemsIds = new Set<Id>();
+        //Parnet orders Ids set
+        Set<String> orderIds = UM003_TypeManager.getFieldsOfListObjects(newMapOrderItem.values(),'OrderId');
+
+        //Entreprise account record type
         Id accountEntrepriseRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
+        //Map containing parent orders: (Order Id => Order)
+        Map<Id, Order> ordersMap = new Map<Id, Order>([SELECT Id, blng__BillingAccount__c,blng__BillingAccount__r.RecordTypeId, LPCR_FrequenceFacturation__c
+                                                        FROM Order 
+                                                        WHERE Id IN :orderIds]);
 
         OrderItem currentOldOrderItem;
+        Order currentOrder;
+        //For every new order item check for conditions
         for(OrderItem eachNewOrderItem : newMapOrderItem.values()){
             currentOldOrderItem = oldMapOrderItem.get(eachNewOrderItem.Id);
+            currentOrder = ordersMap.get(currentOldOrderItem.OrderId);
             if( eachNewOrderItem.blng__NextBillingDate__c != currentOldOrderItem.blng__NextBillingDate__c
-                && eachNewOrderItem.Order.blng__BillingAccount__c != null
-                && eachNewOrderItem.Order.blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId
-                && eachNewOrderItem.Order.LPCR_FrequenceFacturation__c == Label.LPCR_InvoicePlan){
+                && currentOrder.blng__BillingAccount__c != null
+                && currentOrder.blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId
+                && currentOrder.LPCR_FrequenceFacturation__c == Label.LPCR_InvoicePlan){
+                    //Add OrderItems ids respecting conditions
                     orderItemsIds.add(eachNewOrderItem.Id);
                 }
         }
-
+        //Query for the children related Order Items
         List<OrderItem> relatedOrderItems = [ SELECT Id, blng__OverrideNextBillingDate__c, SBQQ__RequiredBy__r.blng__NextBillingDate__c FROM OrderItem WHERE Id IN :orderItemsIds ];
         for(Orderitem eachOrderItem : relatedOrderItems){
+            //For every related order item : Update its next billing date
             eachOrderItem.blng__OverrideNextBillingDate__c = eachOrderItem.SBQQ__RequiredBy__r.blng__NextBillingDate__c;
         }
         if(relatedOrderItems.size() > 0){
