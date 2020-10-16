@@ -179,7 +179,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
             billingPlanCheck = [select id,LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c =: orderItem.id];
             billingPlanLineCheck = [select Id, Name, LPCR_StartDate__c, LPCR_EndDate__c, LPCR_Amount__c, LPCR_PlanFacturation__c from LPCR_LignePlanFacturation__c where LPCR_PlanFacturation__c IN: billingPlanCheck];
             System.assertEquals(4, billingPlanCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan');
-            System.assertEquals(12, billingPlanLineCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan Line');
+            System.assertEquals(13, billingPlanLineCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan Line');
         }
     }
     
