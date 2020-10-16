@@ -206,15 +206,18 @@ public class SM015_InvoiceServices {
                             
                             // Create Credit Note Allocation 
                             blng__CreditNoteAllocation__c newCreditNoteAllocation = new blng__CreditNoteAllocation__c();
-                            
+                            Double balCNL = mapOfAppliedCNLBal.get(eachInvLine.blng__Invoice__r.blng__Account__c+'-'+currentCNLIndex);
                             // if credit note line balance is grather then equal to invoice line balance then
-                            if(eachCNLine.blng__Balance__c >= balance){
+                            if(balCNL >= balance){
                                 newCreditNoteAllocation.blng__Amount__c = balance;
+                                
+                                Pad.log('SM015_InvoiceServices','futureUpdateCreateCreditNoteAllocation()','B mapOfAppliedCNLBal '+currentCNLIndex,String.valueOf(balCNL));
+                                mapOfAppliedCNLBal.put(eachInvLine.blng__Invoice__r.blng__Account__c+'-'+currentCNLIndex, balCNL - balance);
+                            	Pad.log('SM015_InvoiceServices','futureUpdateCreateCreditNoteAllocation()','A mapOfAppliedCNLBal '+currentCNLIndex,String.valueOf(balCNL));
                                 balance = 0;
-                                mapOfAppliedCNLBal.put(eachInvLine.blng__Invoice__r.blng__Account__c+'-'+currentCNLIndex, mapOfAppliedCNLBal.get(eachInvLine.blng__Invoice__r.blng__Account__c+'-'+currentCNLIndex) - balance);
-                            }else if(eachCNLine.blng__Balance__c > 0 && eachCNLine.blng__Balance__c < balance ){
-                                newCreditNoteAllocation.blng__Amount__c = eachCNLine.blng__Balance__c;
-                                balance = balance - eachCNLine.blng__Balance__c;
+                            }else if(balCNL > 0 && balCNL < balance ){
+                                newCreditNoteAllocation.blng__Amount__c = balCNL;
+                                balance = balance - balCNL;
                                 mapOfAppliedCNLBal.put(eachInvLine.blng__Invoice__r.blng__Account__c+'-'+currentCNLIndex, 0);
                                 currentCNLIndex++;
                             }else{
