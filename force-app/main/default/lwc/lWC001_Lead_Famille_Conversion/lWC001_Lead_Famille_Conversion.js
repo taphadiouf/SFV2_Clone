@@ -55,11 +55,15 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     }
     @wire(CurrentPageReference)
     pageRef;
-   
     
-    @wire(getAccountsByRecordtypeName, {recordTypeName : "$accEntrepriseRT"})
-    getAccountsByRecordtypeNameF({error, data}){
-        if(data){
+    
+    getAccountsByRecordtypeNameF() {
+        getAccountsByRecordtypeName({
+            recordTypeName: this.accEntrepriseRT,
+            leadId : this.recordId
+        })
+        
+        .then((data)=>{
             this.comptes = [];
             for(let i=0; i< data.length; i++){
                 this.comptes.push({
@@ -67,10 +71,10 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
                     value: data[i].Name
                 });
             }
-        }
-        else if(error){
-            console.error(error);
-        }
+        })
+        .catch(err=>{
+            console.error(err);
+        });
     }
     @wire(getEnfants, {leadId : "$recordId"})
     getEnfantsF({error, data}){
@@ -83,6 +87,7 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     }
     async connectedCallback(){
         console.log("ConnectedCallback8");
+        this.getAccountsByRecordtypeNameF();
         await this.getRelatedCrechesF();
     }
 
@@ -125,7 +130,7 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         fireEvent(this.pageRef, "changedEnfants", this.enfantsIndexes);
     }
     handleCrecheChosen(event){
-        this.chosenCrecheId = event.target.value.Id;
+        this.chosenCrecheId = event.target.value;
         fireEvent(this.pageRef, "chosenCrecheChanged", this.chosenCrecheId);
     }
     handleSponsCheckbox(event) {

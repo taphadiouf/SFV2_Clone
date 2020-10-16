@@ -58,19 +58,25 @@ public with sharing class APC001_LeadFaConverController{
         }
     } 
     
-    @AuraEnabled(cacheable=true)
-    public static List<Account> getAccountsByRecordtypeName(String recordTypeName) {
+    @AuraEnabled(cacheable=false)
+    public static List<Account> getAccountsByRecordtypeName(String recordTypeName, String leadId) {
         
         List<Account> accounts = new List<Account>();
         Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,recordTypeName);
         if(UM003_TypeManager.idNotNull(recordtypeId)){
-            accounts = [SELECT Name FROM Account WHERE RecordTypeId = :recordtypeId];
+            //Filter compte société picklist on acctouns of parent1 and parent2
+            List<Id> ComptesSocieteParentsIds = new List<Id>();
+            for(Lead l : [Select id,LPCR_CompteSociete__c,LPCR_CompteSocieteCoDemandeur__c from lead where id=:leadId]){
+                ComptesSocieteParentsIds.add(l.LPCR_CompteSociete__c);
+                ComptesSocieteParentsIds.add(l.LPCR_CompteSocieteCoDemandeur__c);
+            }
+            accounts = [SELECT Name FROM Account WHERE (RecordTypeId = :recordtypeId) AND (id IN :ComptesSocieteParentsIds)];
         }
         return accounts;
     }
     
     @AuraEnabled()
-    public static void convertLeadCtrl(Id leadId, List<Integer> enfantsIndexes, Id chosenCrecheId, Id chosenCompteId){
+    public static void convertLeadCtrl(Id leadId, List<Integer> enfantsIndexes, String chosenCrecheId, Id chosenCompteId){
         
         Lead currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
         String prenomCoDemandeur = currentLead.LPCR_PrenomCoDemandeur__c;                                         
@@ -228,9 +234,18 @@ public with sharing class APC001_LeadFaConverController{
         lc.setConvertedStatus(convertStatus.MasterLabel);
         lc.setAccountId(newFamilleAccount.Id);
         lc.setContactId(newContactsMap.get('contactRep1').Id);
-        Database.LeadConvertResult lcr = Database.convertLead(lc); 
-        
+        if(chosenCompteId == null){
+            lc.setOpportunityName(newFamilleAccount.name);
+        }
+        try {
+            Database.LeadConvertResult lcr = Database.convertLead(lc); 
+        } catch (DmlException e ) {
+            throw new AuraHandledException(e.getMessage());
+        }        
         //Create a quote for each child (enfant)
+        List<LPCR_LienCrecheLead__c> lienCrecheLeadList = [select Id, LPCR_creche__c From LPCR_LienCrecheLead__c where LPCR_Creche__r.Name = :chosenCrecheId And LPCR_Lead__c =:leadId];
+        Set<String> crecheIds = UM003_TypeManager.getFieldsOfListObjects(lienCrecheLeadList,'LPCR_creche__c');
+        Id crecheId = [SELECT Id, Name FROM Account where id in :crecheIds Limit 1].Id;
         List<SBQQ__Quote__c> quotesList = new List<SBQQ__Quote__c>();
         Contact tmpContactEnfant;
         Contact tmpContactRep1;
@@ -243,7 +258,7 @@ public with sharing class APC001_LeadFaConverController{
             quotesList.add(
                 new SBQQ__Quote__c(
                     LPCR_DateDebut__c = (Date) currentLead.get('LPCR_DateEntreeCreche' + eachIndex + '__c'),
-                    LPCR_Creche__c = chosenCrecheId,
+                    LPCR_Creche__c = crecheId,
                     SBQQ__Account__c = chosenCompteId,
                     LPCR_ContactEnfant__c = (tmpContactEnfant != null ? tmpContactEnfant.Id : null),
                     LPCR_ContactRepresentant1__c = (tmpContactRep1 != null ? tmpContactRep1.Id : null),

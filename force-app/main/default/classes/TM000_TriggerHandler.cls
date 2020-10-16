@@ -15,6 +15,9 @@ public without sharing virtual class TM000_TriggerHandler {
 	@TestVisible
 	private Boolean isTriggerExecuting;
 
+	/* In order to prevent recursive update calls */
+    public static Boolean runUpdateOnce = true; 
+
 	static {
         loopCountMap = new Map<String, LoopCount>();
         //bypassedHandlers = new Set<String>();

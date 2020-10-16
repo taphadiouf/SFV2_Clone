@@ -30,6 +30,7 @@ public class SM010_ContractServices_Test {
         Id familleAccountRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
         Account acc = UM002_TestDataFactory.createAccounts(1,familleAccountRT,'test').get(0);
         acc.SBQQ__RenewalModel__c ='Contract Based';
+        acc.LPCR_PasDeSIRET__c = true;
         insert acc;
         
         Opportunity opp = UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
