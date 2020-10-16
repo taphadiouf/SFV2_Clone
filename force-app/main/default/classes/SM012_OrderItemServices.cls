@@ -431,7 +431,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                 }
         }
         //Query for the children related Order Items
-        List<OrderItem> relatedOrderItems = [ SELECT Id, blng__OverrideNextBillingDate__c, SBQQ__RequiredBy__r.blng__NextBillingDate__c FROM OrderItem WHERE Id IN :orderItemsIds ];
+        List<OrderItem> relatedOrderItems = [ SELECT Id, blng__OverrideNextBillingDate__c, SBQQ__RequiredBy__r.blng__NextBillingDate__c FROM OrderItem WHERE SBQQ__RequiredBy__c IN :orderItemsIds ];
         for(Orderitem eachOrderItem : relatedOrderItems){
             //For every related order item : Update its next billing date
             eachOrderItem.blng__OverrideNextBillingDate__c = eachOrderItem.SBQQ__RequiredBy__r.blng__NextBillingDate__c;
