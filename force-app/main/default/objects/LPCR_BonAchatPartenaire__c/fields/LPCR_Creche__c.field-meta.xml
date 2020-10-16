@@ -6,15 +6,16 @@
     <label>Crèche</label>
     <lookupFilter>
         <active>true</active>
+        <errorMessage>Le compte sélectionné n&apos;est pas un compte crèche.</errorMessage>
         <filterItems>
             <field>Account.RecordType.DeveloperName</field>
             <operation>equals</operation>
-            <value>Creche</value>
+            <value>Creche,Creche_Externe</value>
         </filterItems>
         <isOptional>false</isOptional>
     </lookupFilter>
     <referenceTo>Account</referenceTo>
-    <relationshipLabel>Bons d&#39;achat (Crèche)</relationshipLabel>
+    <relationshipLabel>Bons d&apos;achat (Crèche)</relationshipLabel>
     <relationshipName>BonsAchatCreche</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>
