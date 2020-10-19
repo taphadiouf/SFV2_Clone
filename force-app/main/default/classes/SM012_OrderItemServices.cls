@@ -284,8 +284,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
 */
     public static void setOrderItemFields(List<OrderItem> newOrderItemsList){
 
-        Set<String> orderIds = UM003_TypeManager.getFieldsOfListObjects(newOrderItemsList,'OrderId');
-        Map<Id, Order> ordersMap = new Map<Id, Order>([SELECT Id, LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c,  SBQQ__Quote__r.SBQQ__Type__c FROM Order WHERE Id IN :orderIds]);
+        Set<String> orderIds = UM003_TypeManager.getFieldsOfListObjects(newOrderItemsList,'OrderId');        
+        Map<Id, Order> ordersMap = new Map<Id, Order>([SELECT Id, LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c,  SBQQ__Quote__r.SBQQ__Type__c, accountId FROM Order WHERE Id IN :orderIds]);
         Map<String,SObject> mapSobject = null;
         Set<String> nouveauPlanFactureIds = UM003_TypeManager.getFieldsOfListObjects(ordersMap.values(),'LPCR_NouveauPlanFacture__c');
         Set<String> renouvellementPlanFactureIds = UM003_TypeManager.getFieldsOfListObjects(ordersMap.values(),'LPCR_RenouvellementPlanFacture__c');
@@ -305,7 +305,30 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             mapBillingTreatmentWithInvoicePlanRenewal.put(eachkey,(blng__BillingTreatment__c)mapSobject.get(eachkey));
         }
         
+
+        //Lets jump from a map of (orderId,AccID) to a map of (orderId,AccountObj). This is in order to limit the queries into the database into just one
+            //STEP 1 : MAP ( Order ID , AccID )
+        Map<Id,Id> orderIdAccountId= new Map<Id, Id>();
+        for(Order o : ordersMap.values()){
+            orderIdAccountId.put(o.Id,o.accountId);
+        }
+            //STEP 2 : MAP (AccID , Account )
+        Map<Id, Account> IdAccounts = new Map<Id, Account>([SELECT Id, LPCR_PurchaseOrder__c from account where id in :orderIdAccountId.values()]);
+            //STEP 3 : Map of ( orderID , Account)
+        Map<Id,Account> orderIdAccounts= new Map<Id, Account>();
+        for(Id OrderId : orderIdAccountId.keyset()){
+            orderIdAccounts.put(OrderId,     IdAccounts.get(OrderId)       );
+        }
+        //
+
         for(OrderItem eachOrderItem : newOrderItemsList){
+            //Let's use my last map to give an itemOrderId and return me my LPCR_PurchaseOrder__c on the account :
+            if(orderIdAccountId.get(eachOrderItem.OrderId) != null){// check ID account exist for this product's order
+                if(IdAccounts.get(orderIdAccountId.get(eachOrderItem.OrderId)) != null){// check account is not null
+                    eachOrderItem.LPCR_CompteAvecPO__c = IdAccounts.get(orderIdAccountId.get(eachOrderItem.OrderId)).LPCR_PurchaseOrder__c;
+                }
+            }
+            //
             if('Quote'.equals(ordersMap.get(eachOrderItem.OrderId).SBQQ__Quote__r.SBQQ__Type__c )){
                 if(mapBillingTreatmentWithInvoicePlanQuote.containsKey(ordersMap.get(eachOrderItem.OrderId).LPCR_NouveauPlanFacture__c)){
                     eachOrderItem.blng__BillingRule__c  = mapBillingTreatmentWithInvoicePlanQuote.get(ordersMap.get(eachOrderItem.OrderId).LPCR_NouveauPlanFacture__c).blng__BillingRule__c;
