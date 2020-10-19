@@ -5,15 +5,46 @@
     <label>Région commerciale</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
-            <sorted>false</sorted>
+            <sorted>true</sorted>
             <value>
-                <fullName>TBD</fullName>
+                <fullName>Grand Nord</fullName>
                 <default>false</default>
-                <label>TBD</label>
+                <label>Grand Nord</label>
+            </value>
+            <value>
+                <fullName>Grand Ouest</fullName>
+                <default>false</default>
+                <label>Grand Ouest</label>
+            </value>
+            <value>
+                <fullName>Grand Sud</fullName>
+                <default>false</default>
+                <label>Grand Sud</label>
+            </value>
+            <value>
+                <fullName>IDF Nord</fullName>
+                <default>false</default>
+                <label>IDF Nord</label>
+            </value>
+            <value>
+                <fullName>IDF Sédentaires</fullName>
+                <default>false</default>
+                <label>IDF Sédentaires</label>
+            </value>
+            <value>
+                <fullName>IDF Sud</fullName>
+                <default>false</default>
+                <label>IDF Sud</label>
+            </value>
+            <value>
+                <fullName>Rhone Alpes</fullName>
+                <default>false</default>
+                <label>Rhone Alpes</label>
             </value>
         </valueSetDefinition>
     </valueSet>

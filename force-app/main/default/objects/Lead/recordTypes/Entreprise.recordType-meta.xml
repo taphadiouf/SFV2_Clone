@@ -1320,17 +1320,34 @@
             <default>false</default>
         </values>
     </picklistValues>
-    <picklistValues>
+     <picklistValues>
         <picklist>LPCR_RegionCommerciale__c</picklist>
         <values>
-            <fullName>TBD</fullName>
+            <fullName>Grand Nord</fullName>
             <default>false</default>
         </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_Region__c</picklist>
         <values>
-            <fullName>PACA</fullName>
+            <fullName>Grand Ouest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grand Sud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDF Nord</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDF Sédentaires</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDF Sud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rhone Alpes</fullName>
             <default>false</default>
         </values>
     </picklistValues>

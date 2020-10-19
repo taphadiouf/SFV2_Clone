@@ -233,11 +233,11 @@
         <label>Enfant 1</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>LPCR_NomEnfant1__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>LPCR_DateNaissance1__c</field>
             </layoutItems>
             <layoutItems>
@@ -263,7 +263,7 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>LPCR_PrenomEnfant1__c</field>
             </layoutItems>
             <layoutItems>
