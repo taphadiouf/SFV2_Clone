@@ -170,4 +170,57 @@ public class SM007_LeadServices_Test {
         System.assertEquals(30, structuresWithOpp.size());
         Test.stopTest();
     }
+
+
+
+    @isTest 
+    public static void mapFieldsFromLeadToOpp_Test(){
+        List<Lead> leadsPublicToConvert = [SELECT Id,RecordTypeId FROM Lead WHERE Name IN ('aoPublicReservLeads','aoPublicDSPLeads')];
+
+         Test.startTest();
+        LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
+        List<Database.LeadConvert> leadsToConvert = new List<Database.LeadConvert>();
+        Database.LeadConvert tempLc;
+        for(Lead eachLead : leadsPublicToConvert){
+            tempLc = new Database.LeadConvert();
+            tempLc.setLeadId(eachLead.id);
+            tempLc.setDoNotCreateOpportunity(false);
+            tempLc.setConvertedStatus(convertStatus.MasterLabel);
+            leadsToConvert.add(tempLc);
+        }
+       
+        List<Database.LeadConvertResult> lcr = Database.convertLead(leadsToConvert);
+        for(Database.LeadConvertResult eachResult : lcr){
+            System.assert(eachResult.isSuccess());
+        }
+
+        //Test Mappings after conversion:
+        List<Lead> leadsPublicToConvertCheckMap = [SELECT Id,ConvertedOpportunityId,RecordTypeId,LPCR_ObjetAO__c,LPCR_DebutContrat__c,LPCR_DureeContrat__c,LPCR_FinContrat__c FROM Lead WHERE Name IN ('aoPublicReservLeads','aoPublicDSPLeads')];
+
+        Id aoPublicReservationRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'AO_PublicReservation');
+        Id aoPublicDSPRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'AO_PublicDSP');
+        // MAP(lead, idopp)
+        Map<Lead, Id> filtredLeadsMap = new Map<Lead, Id>();
+        for(Lead eachLead : leadsPublicToConvertCheckMap){
+            if(!String.isEmpty(eachLead.recordTypeId) && (eachLead.recordTypeId.equals(aoPublicReservationRT) || eachLead.recordTypeId.equals(aoPublicDSPRT))){
+                filtredLeadsMap.put(eachLead, eachLead.convertedOpportunityId);
+            }
+        }
+        // MAP(idopp, Opp)
+        Map<Id,Opportunity> idsOpps = new Map<Id,Opportunity>([SELECT Id,LPCR_ObjetAO__c,LPCR_DebutContrat__c,LPCR_DureeContrat__c,LPCR_FinContrat__c 
+                                                                FROM Opportunity
+                                                                WHERE id in :filtredLeadsMap.values()]);
+        // MAP(lead, opp)
+        Map<Lead, Opportunity> LeadOpps = new Map<Lead, Opportunity>();
+        for(Lead eachLead : filtredLeadsMap.keyset()){
+            LeadOpps.put( eachLead , idsOpps.get(filtredLeadsMap.get(eachLead)) );
+        }
+
+        for(Lead eachLead : filtredLeadsMap.keyset()){
+            system.assertEquals(eachLead.LPCR_ObjetAO__c, LeadOpps.get(eachLead).LPCR_ObjetAO__c , 'field LPCR_ObjetAO__c not mapped correctly');
+            system.assertEquals(eachLead.LPCR_DebutContrat__c, LeadOpps.get(eachLead).LPCR_DebutContrat__c , 'field LPCR_ObjetAO__c not mapped correctly');
+            system.assertEquals(eachLead.LPCR_FinContrat__c, LeadOpps.get(eachLead).LPCR_FinContrat__c , 'field LPCR_FinContrat__c not mapped correctly');
+        }
+        Test.stopTest();
+    }
 }
