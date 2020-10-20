@@ -4,6 +4,18 @@
     <objectMapping>
         <inputObject>Lead</inputObject>
         <mappingFields>
+            <inputField>LPCR_AutrePrestataire__c</inputField>
+            <outputField>LPCR_AutrePrestataire__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>LPCR_Capital__c</inputField>
+            <outputField>LPCR_Capital__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>LPCR_DateRemiseConcurrence__c</inputField>
+            <outputField>LPCR_RemiseConcurrence__c</outputField>
+        </mappingFields>
+        <mappingFields>
             <inputField>LPCR_DispositifsExistants__c</inputField>
             <outputField>LPCR_DispositifsExistants__c</outputField>
         </mappingFields>
@@ -26,6 +38,10 @@
         <mappingFields>
             <inputField>LPCR_PasDeSIRET__c</inputField>
             <outputField>LPCR_PasDeSIRET__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>LPCR_PrestataireActuel__c</inputField>
+            <outputField>LPCR_PrestataireActuel__c</outputField>
         </mappingFields>
         <mappingFields>
             <inputField>LPCR_PrivePublic__c</inputField>
@@ -70,18 +86,6 @@
         <mappingFields>
             <inputField>LPCR_TypeStructure__c</inputField>
             <outputField>LPCR_TypeStructure__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>LPCR_AutrePrestataire__c</inputField>
-            <outputField>LPCR_AutrePrestataire__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>LPCR_Capital__c</inputField>
-            <outputField>LPCR_Capital__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>LPCR_DateRemiseConcurrence__c</inputField>
-            <outputField>LPCR_RemiseConcurrence__c</outputField>
         </mappingFields>
         <outputObject>Account</outputObject>
     </objectMapping>
