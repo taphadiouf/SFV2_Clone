@@ -321,7 +321,7 @@ public class SM010_ContractServices {
         Set<Id> orderIds = new Set<Id>();
         List<Order> orderList = new List<Order>();
         for(Contract eachNewContract : newContractMap.values()){ //get all contracts where LPCR_batchCommande is changed
-            if(eachNewContract.LPCR_BatchCommande__c != null && (eachNewContract.LPCR_BatchCommande__c != oldContractMap.get(eachNewContract.Id).LPCR_BatchCommande__c || eachNewContract.SBQQ__Order__c != oldContractMap.get(eachNewContract.Id).SBQQ__Order__c)) {
+            if(eachNewContract.LPCR_BatchCommande__c != oldContractMap.get(eachNewContract.Id).LPCR_BatchCommande__c) {
                 contractMap.put(eachNewContract.Id, eachNewContract);
             }
         }

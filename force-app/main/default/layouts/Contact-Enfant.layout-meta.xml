@@ -319,6 +319,22 @@
         <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>LPCR_ComptePartenaire__c</fields>
+        <fields>LPCR_ContratPartenaire__c</fields>
+        <fields>LPCR_Client__c</fields>
+        <fields>LPCR_ContratReservataire__c</fields>
+        <fields>LPCR_Creche__c</fields>
+        <fields>LPCR_DateDebutPrestation__c</fields>
+        <fields>LPCR_DateFinPrestation__c</fields>
+        <fields>LPCR_Statut__c</fields>
+        <relatedList>LPCR_BonAchatPartenaire__c.LPCR_ContactEnfant__c</relatedList>
+        <sortField>LPCR_Statut__c</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
         <fields>TASK.SUBJECT</fields>
         <fields>TASK.WHAT_NAME</fields>
         <fields>ACTIVITY.TASK</fields>
@@ -344,7 +360,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1j000001C043</masterLabel>
+        <masterLabel>00h3E000001e0lP</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
