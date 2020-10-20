@@ -93,16 +93,6 @@ public with sharing class APC001_LeadFaConverController{
         String contactFirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur;
         Integer count = 0;
         
-        /* The conversion of the lead should not be blocked if there is no LPCR_CompteSociete__c/LPCR_CompteSocieteCoDemandeur__c (bug/IS-1875)
-        if(currentLead.LPCR_CompteSociete__c == Null){
-            isvalid = False ;
-            errMsg += 'le champ Compte Société est manquant, ';
-        }
-        if((nomCoDemandeur != Null || prenomCoDemandeur != Null ) && currentLead.LPCR_CompteSocieteCoDemandeur__c == Null){
-            isvalid = False ;
-            errMsg += 'le champ Compte Société Co-Demandeur est manquant, ';
-        }*/
-        
         if(currentLead.Address == Null){
             isvalid = False ;
             errMsg += 'le champ Adresse est manquant';
