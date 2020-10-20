@@ -89,7 +89,7 @@
         <valueField>Id</valueField>
     </dynamicChoiceSets>
     <dynamicChoiceSets>
-        <name>Creche1</name>
+        <name>ChoixCreche</name>
         <dataType>String</dataType>
         <displayField>Name</displayField>
         <filters>
@@ -97,6 +97,20 @@
             <operator>EqualTo</operator>
             <value>
                 <elementReference>RecuperationDemande.LPCR_ChoixN1__r.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>RecuperationDemande.LPCR_ChoixN2__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>RecuperationDemande.LPCR_ChoixN3__c</elementReference>
             </value>
         </filters>
         <object>Account</object>
@@ -118,6 +132,12 @@
         <name>BuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -186,7 +206,7 @@
         <inputAssignments>
             <field>LPCR_Creche__c</field>
             <value>
-                <elementReference>Creche1</elementReference>
+                <elementReference>ChoixCreche</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -291,6 +311,18 @@
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Case</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>LPCR_ChoixN1__c</queriedFields>
+        <queriedFields>LPCR_ChoixN2__c</queriedFields>
+        <queriedFields>LPCR_ChoixN3__c</queriedFields>
+        <queriedFields>LPCR_DateNaissance__c</queriedFields>
+        <queriedFields>AccountId</queriedFields>
+        <queriedFields>Description</queriedFields>
+        <queriedFields>LPCR_PrixAchat__c</queriedFields>
+        <queriedFields>LPCR_PrixVente__c</queriedFields>
+        <queriedFields>LPCR_Enfant__c</queriedFields>
+        <queriedFields>LPCR_DateEntreeSouhaitee__c</queriedFields>
+        <queriedFields>LPCR_NombreJoursSemaine__c</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -398,7 +430,7 @@
         </connector>
         <fields>
             <name>NomCreche</name>
-            <choiceReferences>Creche1</choiceReferences>
+            <choiceReferences>ChoixCreche</choiceReferences>
             <dataType>String</dataType>
             <fieldText>Nom de la crèche</fieldText>
             <fieldType>DropdownBox</fieldType>

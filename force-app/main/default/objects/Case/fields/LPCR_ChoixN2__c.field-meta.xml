@@ -4,6 +4,16 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Choix de crèche N°2</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Veuillez sélectionner un compte crèche ou crèche externe.</errorMessage>
+        <filterItems>
+            <field>Account.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>Creche,Creche_Externe</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Demandes Réseau Grandir</relationshipLabel>
     <relationshipName>Demandes_Reseau_Grandir2</relationshipName>
