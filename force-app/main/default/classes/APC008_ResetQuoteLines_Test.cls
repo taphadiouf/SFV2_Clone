@@ -47,4 +47,13 @@ public class APC008_ResetQuoteLines_Test {
         APC008_ResetQuoteLines.resetQuantity(quoteId);
         Test.stopTest();
     }
+    
+    @isTest 
+    static void testEmptyId(){
+        Test.startTest(); 
+        boolean result = APC008_ResetQuoteLines.resetQuantity(null);
+        Test.stopTest();
+        System.assertEquals(result,false);
+    }
+    
 }
