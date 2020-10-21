@@ -28,6 +28,7 @@ private class SM001_TestIfByPassed_Test {
         List<Account> tmpList = [Select Id, Name from Account where name like 'Modified'];
         System.AssertEquals(tmpList.size(), 0, 'Account should be deleted');
         
+        SM001_TestIfByPassed.executeMethod();
     }
 
 }
