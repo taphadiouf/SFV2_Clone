@@ -9711,6 +9711,16 @@
         <field>SBQQ__Quote__c.EditLinesFieldSetName__c</field>
         <readable>true</readable>
     </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_DateFinMaxQuoteLine__c </field>
+        <readable>true</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract.LPCR_DateFinMaxQuoteLine__c </field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_AccountPurchaseOrder__c</field>
@@ -9719,6 +9729,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>OrderItem.LPCR_DebutValiditePO__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_CompteAvecPO__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
