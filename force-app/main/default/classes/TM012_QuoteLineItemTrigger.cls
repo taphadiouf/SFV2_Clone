@@ -16,8 +16,11 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
     protected override void beforeInsert() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM013_QuoteLineServices.checkExistingRegistrationFee(newQuoteLineList);
+        }
+    }
+    protected override void afterInsert() {
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM013_QuoteLineServices.setStartAndEndDates(newQuoteLineMap);
-            
         }
     }
     protected override void beforeUpdate() {
