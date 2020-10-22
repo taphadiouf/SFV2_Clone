@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_RemiseConcurrence__c</fullName>
+    <fullName>LPCR_DateFinMaxQuoteLine__c</fullName>
     <externalId>false</externalId>
-    <label>Date prévue de remise en concurrence</label>
+    <label>Date de fin maximale QL</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <type>Date</type>
 </CustomField>

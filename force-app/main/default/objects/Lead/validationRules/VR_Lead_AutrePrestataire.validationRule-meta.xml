@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>VR_Compte_AutrePrestataire</fullName>
+    <fullName>VR_Lead_AutrePrestataire</fullName>
     <active>true</active>
-    <description>Renseigner le prestataire</description>
     <errorConditionFormula>AND(
 NOT( $Permission.LPCR_ByPass_VR ),
 INCLUDES(LPCR_PrestataireActuel__c ,&quot;Autre&quot;),
 ISBLANK( LPCR_AutrePrestataire__c )
 )</errorConditionFormula>
     <errorDisplayField>LPCR_AutrePrestataire__c</errorDisplayField>
-    <errorMessage>Veuillez renseigner le prestataire actuel</errorMessage>
+    <errorMessage>Veuillez renseigner le prestataire</errorMessage>
 </ValidationRule>

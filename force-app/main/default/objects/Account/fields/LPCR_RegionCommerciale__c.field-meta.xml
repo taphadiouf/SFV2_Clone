@@ -8,38 +8,6 @@
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
-        <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>IDF</fullName>
-                <default>false</default>
-                <label>IDF</label>
-            </value>
-            <value>
-                <fullName>Nord Est</fullName>
-                <default>false</default>
-                <label>Nord Est</label>
-            </value>
-            <value>
-                <fullName>Grand Ouest</fullName>
-                <default>false</default>
-                <label>Grand Ouest</label>
-            </value>
-            <value>
-                <fullName>Rhone Alpes</fullName>
-                <default>false</default>
-                <label>Rhone Alpes</label>
-            </value>
-            <value>
-                <fullName>PACA</fullName>
-                <default>false</default>
-                <label>PACA</label>
-            </value>
-            <value>
-                <fullName>LR</fullName>
-                <default>false</default>
-                <label>LR</label>
-            </value>
-        </valueSetDefinition>
+        <valueSetName>LPCR_RegionCommerciale</valueSetName>
     </valueSet>
 </CustomField>

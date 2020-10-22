@@ -10,15 +10,23 @@ public with sharing class SM014_OrderServices {
 *	@param List<Order> order to process
 *	@returns void
 */
-    public static void setOrderFields (List<order> orderList) {
+    public static void setOrderFields (List<order> orderList, Map<Id, Order> oldOrdersMap) {
         Map<String,Schema.RecordTypeInfo> mapOrderRT = Schema.getGlobalDescribe().get('Order').getDescribe().getRecordTypeInfosByDeveloperName();
         Set<String> quoteIds = UM003_TypeManager.getFieldsOfListObjects(orderList,'SBQQ__Quote__c');
         
-        Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_TypeEnregistrement__c,RecordType.DeveloperName,LPCR_CompteFacturation__c,SBQQ__BillingFrequency__c  ,LPCR_BatchCommande__c from SBQQ__Quote__c WHERE Id in :quoteIds]);
+        Map<Id,SBQQ__Quote__c> quoteMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_TypeEnregistrement__c,RecordType.DeveloperName,LPCR_CompteFacturation__c,SBQQ__BillingFrequency__c  ,LPCR_BatchCommande__c, SBQQ__MasterContract__r.LPCR_BatchCommande__c from SBQQ__Quote__c WHERE Id in :quoteIds]);
   
         for (Order eachOrder : orderList){
            eachOrder.blng__BillingDayOfMonth__c  =  eachOrder.LPCR_InitAutoAvecDateDebut__c ?  eachOrder.EffectiveDate.day()+'' : eachOrder.blng__BillingDayOfMonth__c;
-
+            
+           if(
+               Trigger.isUpdate  
+                && Label.LPCR_Amendment.equals(eachOrder.Type)  
+                && eachOrder.SBQQ__Contracted__c == true 
+                && oldOrdersMap.get(eachOrder.Id).SBQQ__Contracted__c == false
+                ){
+                eachOrder.blng__InvoiceBatch__c = quoteMap.get(eachOrder.SBQQ__Quote__c).SBQQ__MasterContract__r.LPCR_BatchCommande__c;
+            }
             if(Trigger.isInsert && quoteMap.containsKey(eachOrder.SBQQ__Quote__c)){
                 eachOrder.blng__InvoiceBatch__c = quoteMap.get(eachOrder.SBQQ__Quote__c).LPCR_BatchCommande__c;
                 eachOrder.LPCR_FrequenceFacturation__c  = quoteMap.get(eachOrder.SBQQ__Quote__c).SBQQ__BillingFrequency__c;
