@@ -262,6 +262,11 @@
                 <default>false</default>
                 <label>SBQQ__AdditionalDiscountAmount__c</label>
             </value>
+            <value>
+                <fullName>LPCR_DateFinMaxQuoteLine__c</fullName>
+                <default>false</default>
+                <label>LPCR_DateFinMaxQuoteLine__c</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -434,6 +439,10 @@
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
             <valueName>LPCR_DateSignatureContrat__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_DateFinMaxQuoteLine__c</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
