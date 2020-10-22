@@ -66,47 +66,4 @@ public with sharing class SM013_QuoteLineServices {
             }
         }
     }
-    /*
-	*	@description : 
-	*	@param List<SBQQ__QuoteLine__c> quoteLineList to process
-    *	@returns void
-    */
-    public static void setStartAndEndDates(Map<Id, SBQQ__QuoteLine__c> newQuoteLineMap){
-        //Used to get data about quotes related to quote lines
-        List<SBQQ__QuoteLine__c> quoteLinesList = [SELECT Id, SBQQ__Quote__r.SBQQ__Type__c, SBQQ__Quote__r.RecordTypeId, SBQQ__Quote__r.SBQQ__StartDate__c FROM  SBQQ__QuoteLine__c WHERE Id IN :newQuoteLineMap.keySet()];
-        Id quoteReferencementRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_Referencement);
-        //Used inside the for loop, contains the quote line from trigger context
-        SBQQ__QuoteLine__c currentQuoteLine;
-        //Loop on records from database, and update records from trigger context
-        for(SBQQ__QuoteLine__c eachQuoteLine : quoteLinesList){
-            currentQuoteLine = newQuoteLineMap.get(eachQuoteLine.Id);
-            if(eachQuoteLine.SBQQ__Quote__r.RecordTypeId == quoteReferencementRT && eachQuoteLine.SBQQ__Quote__r.SBQQ__Type__c != Label.LPCR_Amendment){
-                //Is the QL supposed to start this year? already started?
-                if(eachQuoteLine.LPCR_DateDebut__c != null && (eachQuoteLine.LPCR_DateDebut__c.year() <= eachQuoteLine.SBQQ__Quote__r.SBQQ__StartDate__c.year())){
-                    //Is the QL still alive this year?
-                    if(eachQuoteLine.LPCR_DateFin__c != null && (eachQuoteLine.LPCR_DateFin__c.year() >= eachQuoteLine.SBQQ__Quote__r.SBQQ__StartDate__c.year())){
-                        //SBQQEndDate logic
-                        if(eachQuoteLine.LPCR_DateFin__c.year() == eachQuoteLine.SBQQ__Quote__r.SBQQ__StartDate__c.year()){
-                            currentQuoteLine.SBQQ__EndDate__c = eachQuoteLine.LPCR_DateFin__c;
-                        }
-                        else{
-                            currentQuoteLine.SBQQ__EndDate__c = Date.valueOf(''+ eachQuoteLine.SBQQ__Quote__r.SBQQ__StartDate__c.year() + '-12-31');
-                        }
-                        //SBQQStartDate logic
-                        if(eachQuoteLine.LPCR_DateDebut__c.year() == eachQuoteLine.SBQQ__Quote__r.SBQQ__StartDate__c.year()){
-                            currentQuoteLine.SBQQ__StartDate__c = eachQuoteLine.LPCR_DateDebut__c;
-                        }
-                    }               
-                    else{
-                        //If the QL won't still alive this year set quantity to 0
-                        currentQuoteLine.SBQQ__Quantity__c = 0;
-                    }
-                }       
-                else{
-                    //If the QL won't start this year or it is not already started, set HoldBilling to true
-                    currentQuoteLine.LPCR_HoldBilling__c = 'true'; //Picklist value
-                }
-            }
-        }
-    }
 }
