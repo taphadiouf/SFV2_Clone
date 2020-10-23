@@ -53,6 +53,7 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     
     protected override void afterUpdate() {
        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
+            SM012_OrderItemServices.updateRelatedOrderItems(oldOrderItemsMap,newOrderItemsMap);
             SM012_OrderItemServices.legalEntityOnOrderItemConSch(newOrderItemsMap);
             SM012_OrderItemServices.updateFiledsOnBillingTransaction(oldOrderItemsMap,newOrderItemsMap);
             Set<Id> objOrderItemIds = new Set<Id>();
