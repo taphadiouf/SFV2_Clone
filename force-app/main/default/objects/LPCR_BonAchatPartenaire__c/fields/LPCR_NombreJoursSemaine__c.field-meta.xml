@@ -3,9 +3,9 @@
     <fullName>LPCR_NombreJoursSemaine__c</fullName>
     <externalId>false</externalId>
     <label>Nombre de jours par semaine</label>
-    <precision>1</precision>
+    <precision>2</precision>
     <required>false</required>
-    <scale>0</scale>
+    <scale>1</scale>
     <trackTrending>false</trackTrending>
     <type>Number</type>
     <unique>false</unique>

@@ -55,6 +55,25 @@
             <value>Famille</value>
         </criteriaItems>
     </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CrecheServiceFamille</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Donner accès lecture aux comptes type Crèche aux utilisateurs service famille</description>
+        <label>CrecheServiceFamille</label>
+        <sharedTo>
+            <role>Service_Famille</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Crèche</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
     <sharingOwnerRules>
         <fullName>Commercial_Grand_Compte</fullName>
         <accessLevel>Edit</accessLevel>

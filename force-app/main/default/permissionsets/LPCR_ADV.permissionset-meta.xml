@@ -1080,6 +1080,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.LPCR_DateNaissance__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Case.LPCR_DateVisite__c</field>
         <readable>true</readable>
@@ -1102,6 +1107,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.LPCR_MoyenTransport__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.LPCR_NombreJoursSemaine__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1367,11 +1377,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.LPCR_Representant2__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contact.LPCR_Role__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1697,6 +1702,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_TypeCreche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.LPCR_TypeDePlanning__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4161,11 +4171,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.LPCR_Region__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Lead.LPCR_ReseauLPCR__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4332,6 +4337,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.Sparklane_FR__inactive__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.Tech_ProprietaireServiceFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8126,6 +8136,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_ContactFacturation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_ContactInscriptions__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_ContactRepresentant1__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8422,6 +8442,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_TypeCreche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_TypeDePlanning__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8822,21 +8847,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.SBQQ__WatermarkShown__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleEmail__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleNom__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleTelephone__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -11637,6 +11647,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_NumeroFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_SoldeHorsTaxe__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

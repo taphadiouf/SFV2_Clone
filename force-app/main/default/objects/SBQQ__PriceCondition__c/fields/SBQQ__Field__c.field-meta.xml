@@ -142,6 +142,36 @@
                 <default>false</default>
                 <label>LPCR_ContactEnfant__c</label>
             </value>
+            <value>
+                <fullName>SBQQ__Discount__c</fullName>
+                <default>false</default>
+                <label>SBQQ__Discount__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__AdditionalDiscountAmount__c</fullName>
+                <default>false</default>
+                <label>SBQQ__AdditionalDiscountAmount__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__LastCalculatedOn__c</fullName>
+                <default>false</default>
+                <label>SBQQ__LastCalculatedOn__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_RecalculationMACDone__c</fullName>
+                <default>false</default>
+                <label>LPCR_RecalculationMACDone__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__RequiredBy__c</fullName>
+                <default>false</default>
+                <label>SBQQ__RequiredBy__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeDenregistrement__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeDenregistrement__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

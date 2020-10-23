@@ -19,10 +19,6 @@
             <field>LPCR_ResponsableADV__c</field>
             <type>userLookup</type>
         </recipients>
-        <recipients>
-            <field>SBQQ__SalesRep__c</field>
-            <type>userLookup</type>
-        </recipients>
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/LPCR_ResiliationContrat</template>
     </alerts>
@@ -89,6 +85,39 @@
         </recipients>
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/LPCR_DevisAccepte</template>
+    </alerts>
+    <alerts>
+        <fullName>MIB</fullName>
+        <description>MIB</description>
+        <protected>false</protected>
+        <recipients>
+            <field>LPCR_ResponsableADV__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_MIBB2B</template>
+    </alerts>
+    <alerts>
+        <fullName>R_siliation_contrat_d_accueil</fullName>
+        <description>Résiliation contrat d&apos;accueil</description>
+        <protected>false</protected>
+        <recipients>
+            <field>SBQQ__SalesRep__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_ResiliationContrat</template>
+    </alerts>
+    <alerts>
+        <fullName>alerte_mIB</fullName>
+        <description>alerte mIB</description>
+        <protected>false</protected>
+        <recipients>
+            <field>SBQQ__SalesRep__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_MIBB2B</template>
     </alerts>
     <fieldUpdates>
         <fullName>LPCR_SetStatutPretpourcommande</fullName>
@@ -316,6 +345,15 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Recalculer</fullName>
+        <field>LPCR_ARecalculer__c</field>
+        <literalValue>1</literalValue>
+        <name>Recalculer</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>Statut_standard_approuv</fullName>
         <field>SBQQ__Status__c</field>
         <literalValue>Prêt à envoyer</literalValue>
@@ -335,13 +373,48 @@
         <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <rules>
+        <fullName>Alerte Contrat terminé %28micro%29</fullName>
+        <actions>
+            <name>LPCR_AlerteContratterminmicro</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Amendment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Terminé</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeCreche__c</field>
+            <operation>equals</operation>
+            <value>MICRO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Ordered__c</field>
+            <operation>equals</operation>
+            <value>Vrai</value>
+        </criteriaItems>
+        <description>Ce WF notifie l&apos;ADV lorsque le contrat Micro est résilié</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
         <fullName>Alerte Service Famille</fullName>
         <actions>
             <name>LPCR_InformerSFResiliation</name>
             <type>Alert</type>
         </actions>
         <active>true</active>
-        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5)</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5 OR 6 OR 7) AND 8</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
             <operation>equals</operation>
@@ -353,9 +426,9 @@
             <value>Résiliation</value>
         </criteriaItems>
         <criteriaItems>
-            <field>SBQQ__Quote__c.LPCR_StatutApprobation__c</field>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
             <operation>equals</operation>
-            <value>Approuvé</value>
+            <value>Approved</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
@@ -367,6 +440,22 @@
             <operation>equals</operation>
             <value>Contrat de Référencement</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Référencement Approuvé</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Réservataire Approuvé</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Ordered__c</field>
+            <operation>equals</operation>
+            <value>Vrai</value>
+        </criteriaItems>
+        <description>Ce WF informe le service famille quand le contrat est résilié</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -376,7 +465,7 @@
             <type>Alert</type>
         </actions>
         <active>true</active>
-        <booleanFilter>1 AND 2 AND  (3 or  4 )</booleanFilter>
+        <booleanFilter>1 AND 2 AND ( 3 OR 4 OR 5 OR 6)</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
             <operation>equals</operation>
@@ -390,13 +479,24 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Contrat Réservataire</value>
+            <value>Contrat de Référencement</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Contrat de Référencement</value>
+            <value>Référencement Approuvé</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Réservataire Approuvé</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Contrat Réservataire</value>
+        </criteriaItems>
+        <description>Ce WF notifie le service famille lors de l&apos;annulation d&apos;un contrat B2B</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -406,7 +506,7 @@
             <type>Alert</type>
         </actions>
         <active>true</active>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND ( 5 OR 6 )</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND ( 5 OR 6 OR 7 OR 8 )</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
             <operation>equals</operation>
@@ -436,6 +536,17 @@
             <operation>equals</operation>
             <value>Contrat de Référencement</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Référencement Approuvé</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Réservataire Approuvé</value>
+        </criteriaItems>
+        <description>Ce WF notifie le service famille lors d&apos;un avenant sur un contrat B2B</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -444,7 +555,7 @@
             <name>AlerteContratterminMAC</name>
             <type>Alert</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
             <operation>equals</operation>
@@ -468,41 +579,12 @@
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
-        <fullName>Alerte contrat terminé %28Micro%29</fullName>
-        <actions>
-            <name>LPCR_AlerteContratterminmicro</name>
-            <type>Alert</type>
-        </actions>
-        <active>true</active>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
-            <operation>equals</operation>
-            <value>Amendment</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
-            <operation>equals</operation>
-            <value>Terminé</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
-            <operation>equals</operation>
-            <value>Approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.LPCR_TypeCreche__c</field>
-            <operation>equals</operation>
-            <value>MICRO</value>
-        </criteriaItems>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
-    <rules>
         <fullName>MIB B2B - Notifier le service famille</fullName>
         <actions>
             <name>LPCR_MIBB2B</name>
             <type>Alert</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <booleanFilter>1 AND 4 AND 5 AND 6 AND (2 OR 3)</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
@@ -535,6 +617,56 @@
             <value>Amendment</value>
         </criteriaItems>
         <description>Notifier le user famille lorsque le processus d&apos;avenant pour un MIB B2B est terminé.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Renewal quote status</fullName>
+        <actions>
+            <name>LPCR_StatutPretCommande</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeCreche__c</field>
+            <operation>notEqual</operation>
+            <value>MAC</value>
+        </criteriaItems>
+        <description>Ce WF met le status du renewal quote à &apos;prêt pour commande&apos;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Renewal quote status %28MAC%29</fullName>
+        <actions>
+            <name>LPCR_StatutPretAEnvoyer</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeCreche__c</field>
+            <operation>equals</operation>
+            <value>MAC</value>
+        </criteriaItems>
+        <description>Ce WF met le status du renewal quote à &apos;prêt à envoyer&apos; pr MAC</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -765,6 +897,40 @@
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
+        <fullName>WF_Quote_LancerRecalcul</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__LastCalculatedOn__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_RecalculationMACDone__c</field>
+            <operation>equals</operation>
+            <value>Faux</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeCreche__c</field>
+            <operation>equals</operation>
+            <value>MAC</value>
+        </criteriaItems>
+        <description>For MAC renewals, Quote needs to be recalculated twice as one of the price rules is using formula fields and the formula was not calculated at the right time. This worfklow will perform second recalculation</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Recalculer</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>SBQQ__Quote__c.SBQQ__LastCalculatedOn__c</offsetFromField>
+            <timeLength>-1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
         <fullName>WF_Quote_Update RT Contrat d%27accueil approuvé</fullName>
         <actions>
             <name>RT_Contrat_accueil_approuve</name>
@@ -842,5 +1008,37 @@
         <formula>AND (NOT ( ISNULL( SBQQ__Source__c ) ), RecordType.DeveloperName = &apos;Reservataire_Approuve&apos; )</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
+    <rules>
+        <fullName>WR_Notification_ADV_MIBaccueil</fullName>
+        <actions>
+            <name>MIB</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Ce WF notifie lADV lorsqu&apos;il y a un MIB et que le contrat entreprise est referencement</description>
+        <formula>IF (AND(ISPICKVAL(SBQQ__Type__c ,&apos;Amendment&apos;),ISPICKVAL( LPCR_TypeAvenant__c , &apos;Mouvement Interne Berceau&apos;),NOT(ISBLANK( LPCR_ContractEntreprise__c )), OR(LPCR_ContractEntreprise__r.RecordType.DeveloperName = &apos;Referencement&apos;, LPCR_ContractEntreprise__r.RecordType.DeveloperName = &apos;Referencement_Approuve&apos;),SBQQ__Ordered__c = True, OR(RecordType.DeveloperName = &apos;Accueil&apos;,RecordType.DeveloperName = &apos;Accueil_Approuve&apos;)),True,False)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WR_Notification_SalesRepEntreprise_MIBaccueil</fullName>
+        <actions>
+            <name>alerte_mIB</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Ce WF notifie le sales rep du contrat entreprise  lorsqu&apos;il y a un MIB et que le contrat entreprise est reservataire</description>
+        <formula>IF (AND(ISPICKVAL(SBQQ__Type__c ,&apos;Amendment&apos;),ISPICKVAL( LPCR_TypeAvenant__c , &apos;Mouvement Interne Berceau&apos;),NOT(ISBLANK( LPCR_ContractEntreprise__c )), OR(LPCR_ContractEntreprise__r.RecordType.DeveloperName = &apos;Reservataire&apos;, LPCR_ContractEntreprise__r.RecordType.DeveloperName = &apos;Reservataire_Approuve&apos;),SBQQ__Ordered__c = True, OR(RecordType.DeveloperName = &apos;Accueil&apos;,RecordType.DeveloperName = &apos;Accueil_Approuve&apos;)),True,False)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WR_Notification_SalesRepEntreprise_ResiliationContratAccueil</fullName>
+        <actions>
+            <name>R_siliation_contrat_d_accueil</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Ce WF notifie le sales rep du contrat entreprise lorsque le contrat accueil ( sponsorisé) est résilié</description>
+        <formula>IF (AND(ISPICKVAL(SBQQ__Type__c ,&apos;Amendment&apos;),ISPICKVAL( LPCR_TypeAvenant__c , &apos;Résiliation&apos;),NOT(ISBLANK( LPCR_ContractEntreprise__c )),SBQQ__Ordered__c = True, OR(RecordType.DeveloperName = &apos;Accueil&apos;,RecordType.DeveloperName = &apos;Accueil_Approuve&apos;)),True,False)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
 </Workflow>
- 

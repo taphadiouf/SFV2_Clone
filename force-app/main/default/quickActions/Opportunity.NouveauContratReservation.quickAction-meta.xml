@@ -5,6 +5,14 @@
         <formula>Opportunity.AccountId</formula>
     </fieldOverrides>
     <fieldOverrides>
+        <field>LPCR_ContactFacturation__c</field>
+        <formula>Opportunity.Account.blng__BillToContact__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_ContactInscriptions__c</field>
+        <formula>Opportunity.Account.LPCR_ContactInscriptions__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>LPCR_ResiliationAnticipe__c</field>
         <literalValue>1 an ferme</literalValue>
     </fieldOverrides>
@@ -27,6 +35,10 @@
     <fieldOverrides>
         <field>SBQQ__Primary__c</field>
         <formula>true</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_Creation_conforme__c</field>
+        <formula>True</formula>
     </fieldOverrides>
     <label>Nouveau Contrat de Réservation</label>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>

@@ -1,12 +1,12 @@
 Bonjour,
 
-Le Contrat {!Contract.Id}, arrive à échéance le {!Contract.LPCR_DateFin__c}
+Nous sommes à 5 jours de la fin de l'année et la valeur d'indexation est à revoir sur le contrat {!Contract.LPCR_NumeroContrat__c} pour le client {!Contract.Account}.
 
-Merci de faire le nécessaire afin d'anticiper les événements de fin de contrat.
+Veuillez faire le nécessaire pour anticiper les événements liés à ce contrat.
 
 Lien vers le Contrat :
 {!Contract.Link}
 
 Bien cordialement,
 
-Admin LPCR
+Admin LPCR.

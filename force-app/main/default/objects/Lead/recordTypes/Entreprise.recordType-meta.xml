@@ -1320,17 +1320,34 @@
             <default>false</default>
         </values>
     </picklistValues>
-    <picklistValues>
+     <picklistValues>
         <picklist>LPCR_RegionCommerciale__c</picklist>
         <values>
-            <fullName>TBD</fullName>
+            <fullName>Grand Nord</fullName>
             <default>false</default>
         </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_Region__c</picklist>
         <values>
-            <fullName>PACA</fullName>
+            <fullName>Grand Ouest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grand Sud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDF Nord</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDF Sédentaires</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDF Sud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rhone Alpes</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1433,23 +1450,23 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole Finance administratif%2C juridique</fullName>
+            <fullName>Pôle Finance administratif%2C juridique</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole Ressources humaines</fullName>
+            <fullName>Pôle Ressources humaines</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole direction générale</fullName>
+            <fullName>Pôle direction générale</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole développement durable%2C environnement%2C RSE</fullName>
+            <fullName>Pôle développement durable%2C environnement%2C RSE</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole informatique %26 Technique</fullName>
+            <fullName>Pôle informatique %26 Technique</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1480,23 +1497,23 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole Finance administratif%2C juridique</fullName>
+            <fullName>Pôle Finance administratif%2C juridique</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole Ressources humaines</fullName>
+            <fullName>Pôle Ressources humaines</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole direction générale</fullName>
+            <fullName>Pôle direction générale</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole développement durable%2C environnement%2C RSE</fullName>
+            <fullName>Pôle développement durable%2C environnement%2C RSE</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole informatique %26 Technique</fullName>
+            <fullName>Pôle informatique %26 Technique</fullName>
             <default>false</default>
         </values>
         <values>

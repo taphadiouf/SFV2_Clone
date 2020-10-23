@@ -1171,11 +1171,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contact.LPCR_Role__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Contact.LPCR_Signataire__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1562,6 +1557,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contract.LPCR_TypeCreche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.LPCR_TypeDePlanning__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2946,11 +2946,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>LPCR_RessourceFamille__c.LPCR_IdExterne__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>LPCR_RessourceFamille__c.LPCR_IdExterne_BaremeCaf__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2967,6 +2962,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_RessourceFamille__c.LPCR_IdExterne_Creche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_RessourceFamille__c.LPCR_IdExterne__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3666,11 +3666,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.LPCR_Region__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Lead.LPCR_ReseauLPCR__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3922,16 +3917,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.LPCR_Collectivite__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Opportunity.LPCR_ContactCommercial__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Opportunity.LPCR_ContactInscriptions__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5281,6 +5266,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_ContactFacturation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_ContactInscriptions__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_ContactRepresentant1__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5647,6 +5642,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_TypeCreche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_TypeDePlanning__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -6057,21 +6057,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.SubmittedUser__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleEmail__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleNom__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleTelephone__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

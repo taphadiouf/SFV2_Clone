@@ -13,7 +13,7 @@ OR(
 					TEXT(SBQQ__Status__c) = &apos;Signé&apos;,
 					TEXT(SBQQ__Status__c) = &apos;Prêt à envoyer&apos;,
 					TEXT(SBQQ__Status__c) = &apos;Actif&apos;,
-					TEXT(SBQQ__Status__c) = &apos;Annulé&apos;,
+					
        TEXT(SBQQ__Status__c) = &apos;Prêt pour commande&apos;),
 			    TEXT(SBQQ__Status__c) = &apos;Envoyé pour signature&apos;,
 NOT( $Permission.LPCR_ADV)

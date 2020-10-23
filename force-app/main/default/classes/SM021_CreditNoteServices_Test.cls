@@ -89,7 +89,9 @@ public class SM021_CreditNoteServices_Test {
                 'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+        // Forced to update to bypass validation rule. This didn't work in the method above
+        quote.LPCR_Creation_conforme__c = true;
         insert quote;
         
         Integer price = 200;
@@ -177,6 +179,7 @@ public class SM021_CreditNoteServices_Test {
             Map<String, Object> defaultVal = new Map<String, Object> {
                 'RecordTypeId' => B2B_RT_ID,
                     'Name' => 'Test-B2B',
+                    'LPCR_PasDeSIRET__c' => true,
                     'SBQQ__RenewalModel__c' => 'Contract Based'
                     };
                         Account b2bAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
@@ -200,6 +203,10 @@ public class SM021_CreditNoteServices_Test {
     public static void afterUpdateCreateCreditNoteAllocation_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+            blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+            blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+            blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
             
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account   LIMIT 1];
             
@@ -227,9 +234,17 @@ public class SM021_CreditNoteServices_Test {
             update order;
             
             blng__Invoice__c invoice = [SELECT Id, blng__order__c FROM blng__Invoice__c WHERE blng__order__c = :order.Id LIMIT 1];
-            invoice.LPCR_StatutPaiement__c = true;
+            //invoice.LPCR_StatutPaiement__c = true;
             invoice.blng__InvoiceStatus__c = 'Posted';
             update invoice;
+            
+             // create Finance Book
+            blng__FinanceBook__c financeBook = new blng__FinanceBook__c();
+            financeBook.Name = 'Test Book';
+            financeBook.blng__Active__c = true;
+            financeBook.blng__FinancePeriodDuration__c = 'Monthly';
+            financeBook.blng__PeriodType__c = 'Revenue';            
+            insert financeBook;
             
             List<blng__InvoiceLine__c> listInvoiceLine = [SELECT Id,blng__Balance__c from blng__InvoiceLine__c];
             
@@ -245,9 +260,14 @@ public class SM021_CreditNoteServices_Test {
             blng__CreditNoteLine__c cnLine = new blng__CreditNoteLine__c();
             cnLine.blng__CreditNote__c = creditNote.id;
             cnLine.blng__Status__c = 'Draft';
-            cnLine.blng__InvoiceLine__c = listInvoiceLine.get(0).Id;
+            //cnLine.blng__InvoiceLine__c = listInvoiceLine.get(0).Id;
             cnLine.blng__Product__c = prod.Id;
             cnLine.blng__Subtotal__c = 100;
+            cnLine.blng__TotalAmount__c = 100;
+            cnLine.blng__BillingFinanceBook__c = financeBook.id;
+            cnLine.blng__LegalEntity__c = billingLegalEntity.id;
+            cnLine.blng__BillingRule__c = billingRule.id;
+            cnLine.blng__TaxRule__c = taxRule.id;
             
             insert cnLine;
             
@@ -256,11 +276,12 @@ public class SM021_CreditNoteServices_Test {
                         
             creditNote.blng__Status__c = 'Posted';
             update creditNote;
-                                    
+            
+            
             Test.stopTest();
             
             List<blng__CreditNoteAllocation__c> cnAllocationList = [select id from blng__CreditNoteAllocation__c];
-            System.assertEquals(0, cnAllocationList.size(),'SM021_CreditNoteServices_Test : CreditNoteAllocation record not created. ');
+            System.assertEquals(1, cnAllocationList.size(),'SM021_CreditNoteServices_Test : CreditNoteAllocation record not created. ');
         }
     }
     

@@ -17,6 +17,9 @@ public with sharing class APC001_LeadFaConverController_Test {
         accountsMap.put('Creche2', UM002_TestDataFactory.createAccByRT('Creche2', accountCrecheRTId));
         accountsMap.put('Creche3', UM002_TestDataFactory.createAccByRT('Creche3', accountCrecheRTId));
         accountsMap.put('Entreprise1', UM002_TestDataFactory.createAccByRT('Entreprise1', accountEntrepriseRTId));
+        for(Account eachAccount : accountsMap.values()){
+            eachAccount.LPCR_PasDeSIRET__c  = true;
+        }
         insert accountsMap.values();
         
         Id leadFamilleRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Lead, Label.LPCR_Famille); 
@@ -66,9 +69,10 @@ public with sharing class APC001_LeadFaConverController_Test {
     
     @isTest
     public static void getAccountsByRecordtypeName_Test(){
+        Id leadId = [SELECT Id from Lead limit 1].Id;
         Test.startTest();
-        List<Account> crecheAccountsList = APC001_LeadFaConverController.getAccountsByRecordtypeName(Label.LPCR_Creche);
-        System.assertEquals(3, crecheAccountsList.size());
+        List<Account> crecheAccountsList = APC001_LeadFaConverController.getAccountsByRecordtypeName(Label.LPCR_Entreprise,leadId);
+        System.assertEquals(1, crecheAccountsList.size());
         Test.stopTest();
     }
     
@@ -83,6 +87,7 @@ public with sharing class APC001_LeadFaConverController_Test {
             leadFields.add('LPCR_CompteSociete__c');
             leadFields.add('LPCR_CompteSocieteCoDemandeur__c');
             leadFields.add('LPCR_TypePrestation__c');
+            leadFields.add('LPCR_CodeCreche1__r.Name');
             Lead currentLead = (Lead) new EM002_LeadEntity().getAll(leadFields).get(0);
             
             //Initialize the enfantsIndexes
@@ -98,7 +103,7 @@ public with sharing class APC001_LeadFaConverController_Test {
             Account entrepriseAccount = (Account) new EM005_AccountEntity().getBy(Label.LPCR_RecordTypeId, accountFilterSet, null).get(0);
             
             Test.startTest();
-            APC001_LeadFaConverController.convertLeadCtrl(currentLead.Id, enfantsIndexes, currentLead.LPCR_CodeCreche1__c, entrepriseAccount.Id);
+            APC001_LeadFaConverController.convertLeadCtrl(currentLead.Id, enfantsIndexes, currentLead.LPCR_CodeCreche1__r.Name, entrepriseAccount.Id);
             
             //Assert the creation of account Famille + The fields LPCR_Representant1__c and LPCR_Representant2__c are well filled
             Id accountFamilleRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);

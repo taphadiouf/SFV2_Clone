@@ -1563,11 +1563,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contact.LPCR_Role__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Contact.LPCR_Signataire__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4153,11 +4148,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.LPCR_Region__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Lead.LPCR_ReseauLPCR__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4314,16 +4304,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.LPCR_Collectivite__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Opportunity.LPCR_ContactCommercial__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Opportunity.LPCR_ContactInscriptions__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7307,18 +7287,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleEmail__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleNom__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.TECH_ServiceFamilleTelephone__c</field>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.Tech_AutoriteParentale__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9341,8 +9311,19 @@
         <recordType>Account.Creche</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Account-Crèche Externe</layout>
+        <recordType>Account.Creche_Externe</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-Entreprise</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Account-Entreprise</layout>
         <recordType>Account.Entreprise</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-Entreprise</layout>
+        <recordType>Account.Etablissement_LPCR</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-Entreprise</layout>

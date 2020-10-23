@@ -23,7 +23,9 @@
 &amp;Id={!blng__Invoice__c.Id}
 &amp;QueryId=[LineItems]a4J3O0000008RXg,
 [CompanyDets]a4J3O0000008RXi,
-[LigneBerceau]a4J3O0000008RXf
+[LigneBerceau]a4J3O0000008RXf,
+[CreditNotes]a4J3O0000008V1T,
+[DebitNotes]a4J3O0000008VX5
 &amp;TemplateId={!IF(Account.RecordTypeId=&apos;0123O000000QCGG&apos;,
 IF(AND(TEXT(Account.LPCR_MoyenPaiement__c)=&apos;Virement&apos;,NOT(ISBLANK(Account.LPCR_RIB__c))),&apos;a4R3O0000008T1F&apos;,&apos;a4R3O0000008T1H&apos;)&amp;&apos;, a4R3O0000008T4P&apos;,&apos;a4R3O0000008SwF&apos;)}
 &amp;MFTS0=LPCR_StatutFacture__c

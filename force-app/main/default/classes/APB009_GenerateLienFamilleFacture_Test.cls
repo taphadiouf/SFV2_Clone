@@ -115,7 +115,8 @@
                     'SBQQ__RenewalUpliftRate__c' => 10
                     };
                         
-                        SBQQ__Quote__c quoteB2C = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quoteB2C = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quoteB2C.LPCR_Creation_conforme__c = true;
             insert quoteB2C;
             
             Integer price = 200;
@@ -167,7 +168,8 @@
                     
                     };
                         
-                        SBQQ__Quote__c quoteB2B = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            SBQQ__Quote__c quoteB2B = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quoteB2B.LPCR_Creation_conforme__c = true;
             insert quoteB2B;
             
             price = 200;

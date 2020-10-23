@@ -1060,6 +1060,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.LPCR_DateNaissance__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Case.LPCR_DateVisite__c</field>
         <readable>true</readable>
@@ -1082,6 +1087,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.LPCR_MoyenTransport__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.LPCR_NombreJoursSemaine__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1311,11 +1321,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contact.LPCR_Role__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Contact.LPCR_TypeAllocataire__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1487,6 +1492,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contract.LPCR_StatutContrat__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.LPCR_TypeDePlanning__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3261,11 +3271,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.LPCR_Region__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Lead.LPCR_ReseauLPCR__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3432,6 +3437,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.Sparklane_FR__inactive__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.Tech_ProprietaireServiceFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5721,6 +5731,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_ContactFacturation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_ContactInscriptions__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_ContactRepresentant1__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5882,6 +5902,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_TypeDePlanning__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

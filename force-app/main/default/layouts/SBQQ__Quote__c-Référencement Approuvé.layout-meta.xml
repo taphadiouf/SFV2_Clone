@@ -66,7 +66,7 @@
                 <field>SBQQ__Type__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>SBQQ__Status__c</field>
             </layoutItems>
             <layoutItems>
@@ -152,6 +152,14 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>SBQQ__PrimaryContact__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_ContactInscriptions__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_ContactFacturation__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -320,10 +328,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>SBQQ__BillingState__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>SBQQ__BillingCountry__c</field>
             </layoutItems>
         </layoutColumns>
@@ -431,7 +435,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000001QmAZ</masterLabel>
+        <masterLabel>00h1X000001Hgxw</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
