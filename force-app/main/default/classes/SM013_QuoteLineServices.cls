@@ -72,7 +72,6 @@ public with sharing class SM013_QuoteLineServices {
     *	@returns void
     */
     public static void setStartAndEndDates(Map<Id, SBQQ__QuoteLine__c> newQuoteLineMap){
-        try{
             //Used to get data about quotes related to quote lines
             List<SBQQ__QuoteLine__c> quoteLinesList = [SELECT Id, LPCR_DateDebut__c, LPCR_DateFin__c, SBQQ__Quote__r.SBQQ__Type__c, SBQQ__Quote__r.RecordTypeId, SBQQ__Quote__r.SBQQ__StartDate__c, SBQQ__UpgradedSubscription__r.SBQQ__EndDate__c FROM SBQQ__QuoteLine__c WHERE Id IN :newQuoteLineMap.keySet()];
             Id quoteReferencementRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_Referencement);
@@ -134,10 +133,5 @@ public with sharing class SM013_QuoteLineServices {
                     }
                 }
             }
-        }
-        catch(Exception e){
-            String msg = e.getMessage() + ' - Line number:' + e.getLineNumber() + ' ' + e.getStackTraceString();
-            UM001_LogManager.writeLogActivity('Error when calling SM013_QuoteLineServices.setStartAndEndDates', 'SM013_QuoteLineServices', e.getTypeName(), '', msg, 'Error');  
-        }
     }
 }
