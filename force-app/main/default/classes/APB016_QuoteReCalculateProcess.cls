@@ -26,9 +26,9 @@ global class APB016_QuoteReCalculateProcess implements Database.Batchable<sObjec
         }
         try{
             // update QLI for autometiclly perform re-calculation
+            PAD.log('APB016_QuoteReCalculateProcess', 'execute','updateQLIList : '+updateQLIList );
             update updateQLIList;
-        }catch(Exception ex){
-            PAD.log('APB016_QuoteReCalculateProcess', 'execute','Exception : '+ex.getMessage() );
+        }catch(Exception ex){ PAD.log('APB016_QuoteReCalculateProcess', 'execute','Exception : '+ex.getMessage() );
         }        
                 
     }
@@ -38,12 +38,15 @@ global class APB016_QuoteReCalculateProcess implements Database.Batchable<sObjec
     
     global void execute(SchedulableContext sc) {
         
+        Datetime dtime = Datetime.now().addMinutes(2);
+        String format = 's m H d M \'?\' yyyy';
+        String timeForScheduler = dtime.format(format);
+
         APB016_QuoteReCalculateProcess sc1 = new APB016_QuoteReCalculateProcess();
         
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB016_QuoteReCalculateProcess');
-        
-        // check if there is any open place to schedule the class
+                // check if there is any open place to schedule the class
         boolean isJobQueueFull = UM004_BatchUtility.isBatchJobQueueFull();
         
         if(isBatchJobRunning == UM004_BatchUtility.BOOLEAN_FALSE){
@@ -52,10 +55,7 @@ global class APB016_QuoteReCalculateProcess implements Database.Batchable<sObjec
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 2 mins
-                sc1 = new APB016_QuoteReCalculateProcess();
-                Datetime dt = Datetime.now().addMinutes(2);  // i.e. 2 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB016_QuoteReCalculateProcess'+timeForScheduler,timeForScheduler,sc1);
+                Id schedId = System.Schedule('APB016_QuoteReCalculateProcess'+timeForScheduler,timeForScheduler,new APB016_QuoteReCalculateProcess());
             }
         }  
         
