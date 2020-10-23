@@ -46,7 +46,9 @@ global class APB005_GenerateContractFromOrder  implements Database.Batchable<sOb
     }
     
     global void execute(SchedulableContext sc) {
-        
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
+
         APB005_GenerateContractFromOrder sc1 = new APB005_GenerateContractFromOrder();
         
         // schedule the apex class only if their is not existing job running
@@ -61,10 +63,7 @@ global class APB005_GenerateContractFromOrder  implements Database.Batchable<sOb
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB005_GenerateContractFromOrder();
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB005_GenerateContractFromOrder'+timeForScheduler,timeForScheduler,sc1);
+                Id schedId = System.Schedule('APB005_GenerateContractFromOrder'+timeForScheduler,timeForScheduler,new APB005_GenerateContractFromOrder());
             }
         }  
         
