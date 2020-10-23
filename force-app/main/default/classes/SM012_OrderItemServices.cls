@@ -35,7 +35,6 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                             blng__InvoiceGroupId__c from OrderItem where Id IN : objOrderItemIds];
         for(OrderItem objOrderItem : objOrderItemList){
             objOrderItem.blng__GroupId__c = objOrderItem.Order.AccountId+''+objOrderItem.SBQQ__Contract__c+''+objOrderItem.LPCR_Creche__c;
-            objOrderItem.blng__InvoiceGroupId__c = objOrderItem.Order.AccountId+''+objOrderItem.SBQQ__Contract__c+''+objOrderItem.LPCR_Creche__c;
         }
         if(objOrderItemList.size() > 0){
             update objOrderItemList;
