@@ -361,13 +361,20 @@
         <sortField>NAME</sortField>
         <sortOrder>Desc</sortOrder>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>LPCR_ContratEntreprise__c</fields>
+        <fields>LPCR_ContratFamille__c</fields>
+        <fields>LPCR_TotalFacture__c</fields>
+        <relatedList>LPCR_LienFamilleFacture__c.LPCR_Facture__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000000t1mU</masterLabel>
+        <masterLabel>00h3N000001TseN</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
