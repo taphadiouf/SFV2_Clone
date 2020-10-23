@@ -18,7 +18,7 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
         Set<Id> accountsIdSet = UM003_TypeManager.getIdsOfListObjects(scope);
         Set<String> orderItemGroupingSet = new Set<String>();
         
-        List<blng__RevenueTransaction__c> revenueTransList = [SELECT Id, Name, blng__Account__c, blng__RevenueFinancePeriod__c, blng__OrderProduct__c,blng__InvoiceLine__r.blng__Invoice__c,blng__InvoiceLine__r.blng__Invoice__r.blng__InvoiceStatus__c FROM blng__RevenueTransaction__c WHERE blng__OrderProduct__c != null AND blng__Account__c IN : accountsIdSet ];
+        List<blng__RevenueTransaction__c> revenueTransList = [SELECT Id, Name, blng__Account__c, blng__RevenueFinancePeriod__c, blng__OrderProduct__c,blng__InvoiceLine__r.blng__Invoice__c,blng__InvoiceLine__r.blng__Invoice__r.blng__InvoiceStatus__c FROM blng__RevenueTransaction__c WHERE blng__Account__c IN : accountsIdSet AND (blng__OrderProduct__c != null OR blng__InvoiceLine__c != null) ];
         Set<String> orderProductIds = UM003_TypeManager.getFieldsOfListObjects(revenueTransList,'blng__OrderProduct__c');
         Set<Id> orderLineIds = new Set<Id>();
         
@@ -162,8 +162,10 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                 }
             }
         }
-
-        upsert upsertRevenueCascadeList;
+        if(upsertRevenueCascadeList.size() > 0){
+            upsert upsertRevenueCascadeList;
+        }	
+        
         upsertRevenueCascadeList = new List<LPCR_RevenueCascade__c>();
         
         // step 3
@@ -171,7 +173,8 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
         Map<String,Double> invoicedAmountMap = new Map<String,Double>();
         
         for(blng__RevenueTransaction__c eachRevTrans : revenueTransList){
-            if('Posted'.equals(eachRevTrans.blng__InvoiceLine__r.blng__Invoice__r.blng__InvoiceStatus__c)){
+            if(eachRevTrans.blng__InvoiceLine__c != null && 'Posted'.equals(eachRevTrans.blng__InvoiceLine__r.blng__Invoice__r.blng__InvoiceStatus__c)){
+                System.debug('>> APB012_ProcessRevenuCascade , execute(), Step 3 invoiceId = '+eachRevTrans.blng__InvoiceLine__r.blng__Invoice__c);
                 invoiceIdsSet.add(eachRevTrans.blng__InvoiceLine__r.blng__Invoice__c);
             }
         }
@@ -223,17 +226,21 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                 if(String.isNotBlank(minDate)){
                     minDateKey = minDate.split(' ')[0];	
                 }
-                if(revenueCascadeMap.keyset().contains(String.valueOf(ar.get('rvp'))) && revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).keyset().contains(minDateKey)){
+                if(revenueCascadeMap.keyset().contains(String.valueOf(ar.get('rvp')))){
                     System.debug('>> APB012_ProcessRevenuCascade , execute(),step 3 revenueCascadeMap.get().keyset() : ' + revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).keyset());
-                    LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).get(minDateKey);
-                    if(invoicedAmountMap.keyset().contains(String.valueOf(ar.get('rvp')))){
-                        updateRevCascade.LPCR_MontantFacture__c = invoicedAmountMap.get(String.valueOf(ar.get('rvp')));
-                    	upsertRevenueCascadeList.add(updateRevCascade);
-                    }
+                    for(LPCR_RevenueCascade__c updateRevCascade : revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).values()){
+                        if(invoicedAmountMap.keyset().contains(String.valueOf(ar.get('rvp')))){
+                            updateRevCascade.LPCR_MontantFacture__c = invoicedAmountMap.get(String.valueOf(ar.get('rvp')));
+                            upsertRevenueCascadeList.add(updateRevCascade);
+                        } 
+                    }                    
                 }
             }
-            upsert upsertRevenueCascadeList;
-            System.debug('>> APB012_ProcessRevenuCascade , execute(),upsertRevenueCascadeListAMOUNT '+upsertRevenueCascadeList);
+            if(upsertRevenueCascadeList.size() > 0){
+                upsert upsertRevenueCascadeList;
+                System.debug('>> APB012_ProcessRevenuCascade , execute(),upsertRevenueCascadeListAMOUNT '+upsertRevenueCascadeList);
+            }
+            
             upsertRevenueCascadeList = new List<LPCR_RevenueCascade__c>();
             
             
