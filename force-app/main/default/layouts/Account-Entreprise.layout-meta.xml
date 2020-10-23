@@ -714,6 +714,11 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>LPCR_Client__c</fields>
+        <fields>LPCR_NombreMois__c</fields>
+        <fields>LPCR_Contrat__c</fields>
+        <fields>LPCR_CompteCreche__c</fields>
+        <fields>LPCR_NombrePlace__c</fields>
         <relatedList>LPCR_RevenueCascade__c.LPCR_Compte__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
