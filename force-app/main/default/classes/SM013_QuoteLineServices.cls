@@ -104,7 +104,7 @@ public with sharing class SM013_QuoteLineServices {
                     }       
                     else{
                         //If the QL won't start this year or it is not already started, set HoldBilling to true
-                        currentQuoteLine.LPCR_HoldBilling__c = 'true'; //Picklist value
+                        currentQuoteLine.LPCR_HoldBilling__c = 'Yes'; //Picklist value
                     }
                 }
                 //We add this check to not override dates for the cloned line from ‘clone/cancel’ 
@@ -128,7 +128,7 @@ public with sharing class SM013_QuoteLineServices {
                             }
                         }	
                         else{ 
-                            currentQuoteLine.LPCR_HoldBilling__c = 'true'; //Picklist value
+                            currentQuoteLine.LPCR_HoldBilling__c = 'Yes'; //Picklist value
                         }
                     }
                 }
