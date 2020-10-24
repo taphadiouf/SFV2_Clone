@@ -39,11 +39,20 @@ public class SM021_CreditNoteServices {
         Pad.log('SM021_CreditNoteServices','afterUpdateCreateCreditNoteAllocation(List<blng__CreditNote__c> newCreditNoteList)','newCreditNoteList size '+newCreditNoteList.size());
         Set<String> relatedInvoiceSet = new Set<String>();
         Set<String> creditNoteIdSet = new Set<String>();
+        Set<String> updateAccountSet = new Set<String>();
+        
         List<blng__CreditNoteAllocation__c> insertCreditNoteAllocationList = new List<blng__CreditNoteAllocation__c>();
         Map<String,Map<String,blng__CreditNoteLine__c>> mapOfInvoiceCreditNoteLine = new Map<String,Map<String,blng__CreditNoteLine__c>>();
         Map<String,Double> mapOfAppliedCNLBal= new Map<String,Double>();
         Integer currentCNLIndex = 1;
         String currentProcessingInvoice = '';
+        
+        // If credit note is posted then set related Account.LPCR_ProcessRevenuCascade__c to true
+        for(blng__CreditNote__c eachCreditNote : newCreditNoteList){
+            if('Posted'.equals(eachCreditNote.blng__Status__c) && eachCreditNote.blng__Status__c != oldCreditNoteMap.get(eachCreditNote.id).blng__Status__c){
+				updateAccountSet.add(eachCreditNote.blng__Account__c);
+            }
+        }
         
         // Get blng__RelatedInvoice__c from blng__CreditNote__c
         for(blng__CreditNote__c eachCreditNote : newCreditNoteList){
@@ -143,6 +152,15 @@ public class SM021_CreditNoteServices {
             }catch(Exception ex){
                 PAD.log('SM021_CreditNoteServices', 'afterUpdateCreateCreditNoteAllocation', 'Exception: ' + ex.getMessage());
             }
+        }
+        
+        // Upon B2B Posting of Credit Notes (status = posted)
+        if(updateAccountSet.size()>0){  
+            List<Account> accounts = [SELECT Id,LPCR_ProcessRevenuCascade__c FROM Account WHERE Id IN :updateAccountSet];
+            for(Account eachAcc : accounts){
+                eachAcc.LPCR_ProcessRevenuCascade__c = true;
+            }	
+            update accounts;
         }
     }
     
