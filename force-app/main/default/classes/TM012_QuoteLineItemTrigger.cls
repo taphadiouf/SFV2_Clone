@@ -6,26 +6,20 @@
 public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandler {
     
     private List<SBQQ__QuoteLine__c> newQuoteLineList;
-    private Map<Id, SBQQ__QuoteLine__c> newQuoteLineMap;
     
     public TM012_QuoteLineItemTrigger() {
         
         this.newQuoteLineList = (List<SBQQ__QuoteLine__c>) Trigger.new;
-        this.newQuoteLineMap = (Map<Id, SBQQ__QuoteLine__c>) Trigger.newMap;
     }
     protected override void beforeInsert() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM013_QuoteLineServices.checkExistingRegistrationFee(newQuoteLineList);
-        }
-    }
-    protected override void afterInsert() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
-            SM013_QuoteLineServices.setStartAndEndDates(newQuoteLineMap);
+            SM013_QuoteLineServices.setStartAndEndDates(newQuoteLineList);
         }
     }
     protected override void beforeUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
-            SM013_QuoteLineServices.setStartAndEndDates(newQuoteLineMap);
+            SM013_QuoteLineServices.setStartAndEndDates(newQuoteLineList);
         }
     }
 }
