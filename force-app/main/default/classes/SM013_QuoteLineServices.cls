@@ -115,7 +115,7 @@ public with sharing class SM013_QuoteLineServices {
                 }
                 //We add this check to not override dates for the cloned line from ‘clone/cancel’ 
                 //It will have the exact dates as the original QL
-                if(parentQuote.RecordTypeId == quoteReferencementRT && parentQuote.SBQQ__Type__c  == Label.LPCR_Amendment
+                if(parentQuote != null && parentQuote.RecordTypeId == quoteReferencementRT && parentQuote.SBQQ__Type__c  == Label.LPCR_Amendment
                     && eachQuoteLine.SBQQ__StartDate__c == null){
                     //Not a Newly added QL in the amendment
                     if(eachQuoteLine.SBQQ__PriorQuantity__c != 0){
