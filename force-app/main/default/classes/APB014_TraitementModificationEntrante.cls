@@ -48,7 +48,8 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
     global void execute(SchedulableContext sc) {
         
         APB014_TraitementModificationEntrante sc1 = new APB014_TraitementModificationEntrante();
-        
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB014_TraitementModificationEntrante');
         
@@ -61,10 +62,7 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB014_TraitementModificationEntrante();
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB014_TraitementModificationEntrante'+timeForScheduler,timeForScheduler,sc1);
+                Id schedId = System.Schedule('APB014_TraitementModificationEntrante'+timeForScheduler,timeForScheduler,new APB014_TraitementModificationEntrante());
             }
         }  
         
