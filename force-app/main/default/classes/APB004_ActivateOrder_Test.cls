@@ -9,8 +9,12 @@ public class APB004_ActivateOrder_Test {
     static void setup() {
         //This setup is in the APB007_AllPriceBookClasses_Tests class 
 
-   
-        Id standardPricebookId = Test.getStandardPricebookId();
+        Id standardPricebookId;
+        if([SELECT Id FROM Pricebook2 WHERE IsStandard=true].size() > 0){
+           standardPricebookId = [SELECT Id FROM Pricebook2 WHERE IsStandard=true].Id;
+       }else{
+           standardPricebookId = Test.getStandardPricebookId();
+       }
 
          UM002_TestDataFactory.insertBillingCustomSettings();
         

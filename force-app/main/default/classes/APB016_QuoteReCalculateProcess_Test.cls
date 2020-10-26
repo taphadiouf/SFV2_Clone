@@ -21,7 +21,13 @@ public with sharing class APB016_QuoteReCalculateProcess_Test {
         blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
         blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
         blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
-        Id standardPricebookId = Test.getStandardPricebookId();
+        
+        Id standardPricebookId;
+        if([SELECT Id FROM Pricebook2 WHERE IsStandard=true].size() > 0){
+            standardPricebookId = [SELECT Id FROM Pricebook2 WHERE IsStandard=true].Id;
+        }else{
+            standardPricebookId = Test.getStandardPricebookId();
+        }
 
         Map<String, Object> defaultVal; 
 
