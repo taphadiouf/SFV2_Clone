@@ -26,8 +26,11 @@ public class APB002_RenewalContract_Test {
          }else{
              contract.ContractTerm =1;
          }
-       
+        Id ReservataireRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract,Label.LPCR_Reservataire);
+        contract.recordTypeId = ReservataireRT;
         contract.SBQQ__RenewalQuoted__c=false;
+        contract.LPCR_TypeFacturation__c = 'Advance';
+        contract.EndDate = System.today().addDays(-1);
         insert contract;
        
     }
@@ -38,18 +41,23 @@ public class APB002_RenewalContract_Test {
             Account acc = [SELECT Id, name from Account where name ='test' ];
            
            
-            Contract contract = [SELECT Id,Status,AccountId,EndDate,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract
+            Contract contract = [SELECT Id,LPCR_TypeFacturation__c,Status,AccountId,EndDate,LPCR_DateRenouvellement__c,
+                                        LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c,
+                                        recordtypeid 
+                                        FROM Contract
                                  WHERE AccountId =:acc.Id ];
+            System.debug('before contract:' + contract);
             contract.Status='Activated';
             update contract;
+            System.debug('after contract:' + contract);
+            
             Test.startTest();
             APB002_RenewalContract renewalContractBatch = new APB002_RenewalContract();
             renewalContractBatch.execute(null);
-           
             Test.stopTest();
             contract = [SELECT Id,AccountId,Name,Status,StartDate,EndDate,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract
                         WHERE AccountId =:acc.Id ];
-            //System.assertEquals(true, contract.SBQQ__RenewalQuoted__c,'RenewalQuoted is false');
+            System.assertEquals(true, contract.SBQQ__RenewalQuoted__c,'RenewalQuoted is false');
            
         }
     }
