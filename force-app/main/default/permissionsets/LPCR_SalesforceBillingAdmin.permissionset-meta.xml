@@ -3042,6 +3042,11 @@
         <field>blng__InvoiceLine__c.LPCR_DebutValiditePO__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_TypeDenregistrementText__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
      <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Subscription__c.LPCR_HoldBilling__c</field>

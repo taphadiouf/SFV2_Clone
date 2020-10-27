@@ -9736,6 +9736,11 @@
         <field>SBQQ__Quote__c.EditLinesFieldSetName__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_TypeDenregistrementText__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
      <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_DateFinMaxQuoteLine__c </field>
