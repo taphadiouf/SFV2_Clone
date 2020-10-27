@@ -317,7 +317,7 @@
         <fields>blng__TotalAmount__c</fields>
         <fields>blng__Balance__c</fields>
         <fields>blng__Credits__c</fields>
-        <fields>blng__Debits__c</fields>
+        <fields>LPCR_POInvalide__c</fields>
         <relatedList>blng__InvoiceLine__c.blng__Invoice__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -374,7 +374,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000001TseN</masterLabel>
+        <masterLabel>00h1j000001ai8y</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
