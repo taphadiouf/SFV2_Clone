@@ -76,6 +76,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_Actif__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_Activite__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -132,6 +137,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_AgrementTotal__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LPCR_Agrment120__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -227,6 +237,21 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_Concurrence__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_ContactCommercial__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_ContactDirectrice__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_ContactInscriptions__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
