@@ -175,7 +175,6 @@ public class SM015_InvoiceServices_Test {
         insert modificationEntrante;
         
         List<blng__Invoice__c> invoicesList = UM002_TestDataFactory.createInvoices(1,accountFamille.id,invoiceRun.id,'Draft','A Envoyer' );
-        system.debug('invoicesListaaaa'+invoicesList);
         insert invoicesList;
         
         blng__Invoice__c invoice = invoicesList.get(0);
@@ -202,11 +201,11 @@ public class SM015_InvoiceServices_Test {
             
             SBQQ__Quote__c  quote = [SELECT Id,SBQQ__Ordered__c From SBQQ__Quote__c LIMIT 1];
             SBQQ__QuoteLine__c quoteLine = [SELECT Id From SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = :quote.Id];
-            
+            Test.startTest();
             quote.SBQQ__Ordered__c  = true;     
             update quote; 
             
-            Test.startTest();
+            
             
             Order order = Database.query('SELECT Id , Status FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');            
             List<OrderItem> orderItems = [SELECT Id,SBQQ__DefaultSubscriptionTerm__c  FROM OrderItem WHERE OrderID = :order.Id];
@@ -346,11 +345,11 @@ Test.stopTest();
             
             SBQQ__Quote__c  quote = [SELECT Id,SBQQ__Ordered__c,SBQQ__Account__c,SBQQ__Opportunity2__c From SBQQ__Quote__c LIMIT 1];
             SBQQ__QuoteLine__c quoteLine = [SELECT Id From SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = :quote.Id];
-            
+            Test.startTest();
             quote.SBQQ__Ordered__c  = true;     
             update quote; 
             
-            Test.startTest();
+           
             
             Order order = [SELECT Id , Status FROM Order WHERE SBQQ__Quote__c  =: quote.Id LIMIT 1];            
             List<OrderItem> orderItems = [SELECT Id,SBQQ__DefaultSubscriptionTerm__c  FROM OrderItem WHERE OrderID = :order.Id];
