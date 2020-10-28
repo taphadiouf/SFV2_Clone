@@ -1,45 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fieldOverrides>
-        <field>LPCR_CompteFacturation__c</field>
-        <formula>Opportunity.AccountId</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>LPCR_ContactFacturation__c</field>
-        <formula>Opportunity.Account.blng__BillToContact__c</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>LPCR_ContactInscriptions__c</field>
-        <formula>Opportunity.Account.LPCR_ContactInscriptions__c</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>LPCR_ResiliationAnticipe__c</field>
-        <literalValue>1 an ferme</literalValue>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>LPCR_ResponsableADV__c</field>
-        <formula>Opportunity.Account.LPCR_ResponsableADV__c</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>LPCR_ResponsableServiceFamille__c</field>
-        <formula>Opportunity.Account.LPCR_ResponsableServiceFamille__c</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>SBQQ__Account__c</field>
-        <formula>Opportunity.Account.Id</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>SBQQ__Opportunity2__c</field>
-        <formula>Opportunity.Id</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>SBQQ__Primary__c</field>
-        <formula>True</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>LPCR_Creation_conforme__c</field>
-        <formula>True</formula>
-    </fieldOverrides>
     <label>Nouveau contrat de référencement</label>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
     <quickActionLayout>
