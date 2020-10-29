@@ -272,11 +272,6 @@
                 <default>false</default>
                 <label>SBQQ__NetPrice__c</label>
             </value>
-            <value>
-                <fullName>LPCR_LigneBonCommandeEnvoye</fullName>
-                <default>false</default>
-                <label>LPCR_LigneBonCommandeEnvoye</label>
-            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -494,10 +489,6 @@
         <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>LPCR_HoldReason__c</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Quote Line</controllingFieldValue>
-            <valueName>LPCR_LigneBonCommandeEnvoye</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>
