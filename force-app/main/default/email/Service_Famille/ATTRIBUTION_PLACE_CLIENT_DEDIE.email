@@ -1,19 +1,18 @@
-Bonjour Madame, Monsieur, 
+Bonjour Madame, Monsieur,
 
 Pour faire suite à notre échange de ce jour, je vous confirme l’obtention d’une place pour votre enfant au sein de notre crèche de {!LPCR_Preinscription__c.LPCR_Creche__c}.
 
-Vous trouverez en pièces jointes de ce mail le courrier de confirmation de place, accompagné du calendrier prévisionnel des congés et du règlement de fonctionnement de la crèche. 
+Vous trouverez en pièces jointes de ce mail le calendrier prévisionnel des congés et le règlement de fonctionnement de la crèche. Vous disposez d’un délai de 10 jours pour confirmer votre place. Pour cela, il vous suffit de revenir sur notre site internet dans l’espace parent www.grandir.com
 
-Afin de confirmer votre place, vous disposez d’un délai de 10 jours pour me retourner par mail le formulaire d’attribution de place signé. 
+En parallèle, vous devez également :
 
-En parallèle, vous devez également prendre contact avec [le directeur/la directrice] de la crèche afin de convenir avec elle d’un rendez-vous pour mettre en place la semaine d’adaptation de votre enfant, et procéder à la signature de votre contrat. 
+prendre contact avec [le directeur/la directrice] de la crèche afin de convenir avec elle d’un rendez-vous pour mettre en place la semaine d’adaptation de votre enfant,
+télécharger dans votre espace parent les documents nécessaires à l’accueil de votre enfant.
 
-Voici les coordonnées de la directrice, [Madame/Monsieur] [Prenom NOM de la directrice], [Numéro de téléphone de la directrice]. 
+Voici les coordonnées de la structure, {!LPCR_Preinscription__c.LPCR_ContactDirectriceCreche__c}, {!LPCR_Preinscription__c.LPCR_TelephoneDirectrice__c}.
 
-Je reste à votre disposition pour tous renseignements complémentaires. 
+Je reste à votre disposition pour tous renseignements complémentaires.
 
-Cordialement, 
-
-{!User.FirstName}{!User.LastName}
-{!User.Title}{!User.CompanyName}
-{!User.Address}{!User.PostalCode}
+Cordialement,
+{!LPCR_Preinscription__c.LPCR_ContactInscriptionsCreche__c}
+{!LPCR_Preinscription__c.LPCR_AdresseCreche__c}
