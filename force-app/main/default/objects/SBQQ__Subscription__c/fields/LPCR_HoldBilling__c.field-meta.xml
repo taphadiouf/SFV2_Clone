@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_Region__c</fullName>
+    <fullName>LPCR_HoldBilling__c</fullName>
     <externalId>false</externalId>
-    <label>Région</label>
+    <label>Hold billing</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>PACA</fullName>
+                <fullName>Yes</fullName>
                 <default>false</default>
-                <label>PACA</label>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>No</fullName>
+                <default>false</default>
+                <label>No</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -294,6 +294,15 @@
         <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>LPCR_Update_TypeDenregistremen</fullName>
+        <field>LPCR_TypeDenregistrementText__c</field>
+        <formula>RecordType.DeveloperName</formula>
+        <name>Update le champs LPCR_TypeDenregistremen</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>RT_Contrat_accueil_approuve</fullName>
         <field>RecordTypeId</field>
         <lookupValue>Accueil_Approuve</lookupValue>
@@ -668,6 +677,20 @@
         </criteriaItems>
         <description>Ce WF met le status du renewal quote à &apos;prêt à envoyer&apos; pr MAC</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Renseigner le champ LPCR_TypeDenregistrementText</fullName>
+        <actions>
+            <name>LPCR_Update_TypeDenregistremen</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeDenregistrementText__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <description>Ce WF permet de renseigner le champ LPCR_TypeDenregistrementText qui est utilisé dans les price rule ce champs correspond au RT.devname</description>
+        <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
         <fullName>Set Quote Status Actif</fullName>

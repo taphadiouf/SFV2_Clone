@@ -202,7 +202,7 @@ public class SM021_CreditNoteServices_Test {
     @isTest
     public static void afterUpdateCreateCreditNoteAllocation_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
-            Test.startTest();
+            
             blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
             blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
             blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
@@ -218,7 +218,7 @@ public class SM021_CreditNoteServices_Test {
             
             quote.SBQQ__Ordered__c  = true;     
             update quote; 
-            
+            Test.startTest();
             Order order = Database.query('SELECT Id , Status FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');            
             List<OrderItem> orderItems = [SELECT Id,SBQQ__DefaultSubscriptionTerm__c  FROM OrderItem WHERE OrderID = :order.Id];
             for(OrderItem eachOrderItem : orderItems){
@@ -232,6 +232,7 @@ public class SM021_CreditNoteServices_Test {
             update order;
             order.blng__BillNow__c=true;
             update order;
+            
             
             blng__Invoice__c invoice = [SELECT Id, blng__order__c FROM blng__Invoice__c WHERE blng__order__c = :order.Id LIMIT 1];
             //invoice.LPCR_StatutPaiement__c = true;

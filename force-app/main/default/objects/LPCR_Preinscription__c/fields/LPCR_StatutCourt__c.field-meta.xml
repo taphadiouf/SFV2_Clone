@@ -3,7 +3,15 @@
     <fullName>LPCR_StatutCourt__c</fullName>
     <description>statut court pour affichage dans les rapports</description>
     <externalId>false</externalId>
-    <formula>IF(TEXT(LPCR_Statut__c)=&quot;Recommandation validée&quot;,&quot;RV&quot;,LEFT(TEXT(LPCR_Statut__c),1))</formula>
+    <formula>IF(
+  TEXT(LPCR_Statut__c) = &quot;Recommandation validée&quot;,
+  &quot;RV&quot;,
+  IF(
+    TEXT(LPCR_Statut__c) = &quot;Attribuée&quot;,
+    &quot;P&quot;,
+    LEFT(TEXT(LPCR_Statut__c), 1)
+  )
+)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Statut Court</label>
     <required>false</required>
