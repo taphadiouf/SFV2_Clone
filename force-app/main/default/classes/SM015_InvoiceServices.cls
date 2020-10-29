@@ -21,7 +21,7 @@ public class SM015_InvoiceServices {
         
         for(blng__Invoice__c eachInvoice : newInvoiceList){
             // If invoice is Posted and LPCR_StatutFacture__c = 'Envoyée'
-            if('Posted'.equals(eachInvoice.blng__InvoiceStatus__c) && eachInvoice.blng__InvoiceStatus__c != oldInvoiceMap.get(eachInvoice.id).blng__InvoiceStatus__c && 'Envoyée'.equals(eachInvoice.LPCR_StatutPaiement__c)){
+            if('Posted'.equals(eachInvoice.blng__InvoiceStatus__c) && eachInvoice.blng__InvoiceStatus__c != oldInvoiceMap.get(eachInvoice.id).blng__InvoiceStatus__c && 'Envoyée'.equals(eachInvoice.LPCR_StatutFacture__c)){
                 accountIds.add(eachInvoice.blng__Account__c);
             }
             // If a status of payment has been received

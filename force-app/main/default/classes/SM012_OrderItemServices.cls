@@ -28,16 +28,29 @@ public with sharing class SM012_OrderItemServices implements Queueable{
 
         update listOrderItem;
     }
-    
-    public static void updateGroupId( Set<Id> objOrderItemIds){
 
-        List<OrderItem> objOrderItemList = [Select Id,Order.AccountId,SBQQ__Contract__c,LPCR_Creche__c,blng__GroupId__c,
-                                            blng__InvoiceGroupId__c from OrderItem where Id IN : objOrderItemIds];
-        for(OrderItem objOrderItem : objOrderItemList){
-            objOrderItem.blng__GroupId__c = objOrderItem.Order.AccountId+''+objOrderItem.SBQQ__Contract__c+''+objOrderItem.LPCR_Creche__c;
+    public static void updateGroupId(Map<Id, OrderItem> oldOrderItemsMap, List<OrderItem> newOrderItemsList){
+
+        Set<Id> objOrderItemIds = new Set<Id>();
+
+        for(OrderItem orderItem : newOrderItemsList){
+            if((orderItem.LPCR_Creche__c != null && orderItem.LPCR_Creche__c != oldOrderItemsMap.get(orderItem.Id).LPCR_Creche__c)
+                && (orderItem.SBQQ__Contract__c != null && orderItem.SBQQ__Contract__c != oldOrderItemsMap.get(orderItem.Id).SBQQ__Contract__c)){
+                    objOrderItemIds.add(orderItem.Id);
+            }
         }
-        if(objOrderItemList.size() > 0){
-            update objOrderItemList;
+
+        if(objOrderItemIds.size() > 0){
+              
+            List<OrderItem> objOrderItemList = [Select Id,Order.AccountId,SBQQ__Contract__c,LPCR_Creche__c,blng__GroupId__c,
+                                                blng__InvoiceGroupId__c from OrderItem where Id IN : objOrderItemIds];
+            for(OrderItem objOrderItem : objOrderItemList){
+                objOrderItem.blng__GroupId__c = objOrderItem.Order.AccountId+''+objOrderItem.SBQQ__Contract__c+''+objOrderItem.LPCR_Creche__c;
+            }
+            if(objOrderItemList.size() > 0){
+                update objOrderItemList;
+            }
+
         }
     }
     public static void legalEntityOnOrderItemConSch( Map<Id,OrderItem> mapOrderItem){
