@@ -4,17 +4,20 @@
 * @description Trigger actions on OrderItem Object
 */
 public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
+
     private Map<Id, OrderItem> newOrderItemsMap;
     private Map<Id, OrderItem> oldOrderItemsMap;
     private List<OrderItem> newOrderItemsList;
     
     public TM011_OrderItemTrigger() {
+
         this.newOrderItemsMap = (Map<Id, OrderItem>) Trigger.newMap;
         this.oldOrderItemsMap = (Map<Id, OrderItem>) Trigger.oldMap;
         this.newOrderItemsList = (List<OrderItem>) Trigger.new;
     }
 
     protected override void beforeInsert() {
+
       if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
         SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
         SM012_OrderItemServices.setInvoiceGrouping(newOrderItemsList);
@@ -44,7 +47,9 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     }
 
     protected override void beforeUpdate() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){            
+
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){  
+
             SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
             SM012_OrderItemServices.setOrderItemFieldsFromContract(newOrderItemsList);
             SM012_OrderItemServices.updateHoldBillingFromQuote(newOrderItemsList, oldOrderItemsMap,newOrderItemsMap);
@@ -52,20 +57,13 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
     }
     
     protected override void afterUpdate() {
+
        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
+
             SM012_OrderItemServices.updateRelatedOrderItems(oldOrderItemsMap,newOrderItemsMap);
             SM012_OrderItemServices.legalEntityOnOrderItemConSch(newOrderItemsMap);
             SM012_OrderItemServices.updateFiledsOnBillingTransaction(oldOrderItemsMap,newOrderItemsMap);
-            Set<Id> objOrderItemIds = new Set<Id>();
-            for(OrderItem orderItem : newOrderItemsList){
-                if(orderItem.LPCR_Creche__c != null && orderItem.LPCR_Creche__c != oldOrderItemsMap.get(orderItem.Id).LPCR_Creche__c
-                    || orderItem.SBQQ__Contract__c != null && orderItem.SBQQ__Contract__c != oldOrderItemsMap.get(orderItem.Id).SBQQ__Contract__c){
-                        objOrderItemIds.add(orderItem.Id);
-                }
-            }
-            if(objOrderItemIds.size() > 0){
-                SM012_OrderItemServices.updateGroupId(objOrderItemIds);
-            }
+            SM012_OrderItemServices.updateGroupId(oldOrderItemsMap, newOrderItemsList);
        } 
     }
 }
