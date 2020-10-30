@@ -164,7 +164,10 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
         // (Also adjust the values corresponding to the credit notes updates)
         // ------------------------------------------------------------------------------------------------
 
-        List<blng__CreditNoteLine__c> creditNoteLineList = [SELECT Id,blng__CreditNote__c, blng__CreditNote__r.blng__Status__c, blng__InvoiceLine__r.blng__OrderProduct__c FROM blng__CreditNoteLine__c WHERE /*blng__CreditNote__r.blng__Status__c = 'Posted' AND*/ blng__InvoiceLine__r.blng__OrderProduct__c IN: orderLineIds];
+        List<blng__CreditNoteLine__c> creditNoteLineList = [SELECT Id,blng__CreditNote__c, blng__CreditNote__r.blng__Status__c, blng__InvoiceLine__r.blng__OrderProduct__c 
+                                                            FROM blng__CreditNoteLine__c 
+                                                            WHERE /*blng__CreditNote__r.blng__Status__c = 'Posted' AND*/ blng__InvoiceLine__r.blng__OrderProduct__c IN: orderLineIds];
+
         System.debug('>> APB012_ProcessRevenuCascade , execute(), creditNoteLineList size : '+ creditNoteLineList.size());
         System.debug(creditNoteLineList);
         
@@ -172,7 +175,14 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
 
             Set<Id> creditNoteLineIdSet = UM003_TypeManager.getIdsOfListObjects(creditNoteLineList);
             System.debug('>> APB012_ProcessRevenuCascade , execute(),creditNoteLineIdSet '+creditNoteLineIdSet);
-            list<AggregateResult> step2GroupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount,blng__OrderProduct__r.blng__GroupId__c groupId FROM blng__RevenueTransaction__c WHERE blng__CreditNoteLine__c != null AND blng__CreditNoteLine__c In :creditNoteLineIdSet AND blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__OrderProduct__r.blng__GroupId__c Order By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__OrderProduct__r.blng__GroupId__c];
+
+            list<AggregateResult> step2GroupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount,blng__OrderProduct__r.blng__GroupId__c groupId 
+                                                            FROM blng__RevenueTransaction__c 
+                                                            WHERE blng__CreditNoteLine__c != null AND blng__CreditNoteLine__c In :creditNoteLineIdSet AND blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' 
+                                                            GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__OrderProduct__r.blng__GroupId__c 
+                                                            ORDER By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__OrderProduct__r.blng__GroupId__c
+                                                        ];
+            
             Map<String, double> step2AggregateAmountMap = new Map<String, double>();
             system.debug('>> APB012_ProcessRevenuCascade , execute(),step2GroupedResults.size()==== ' + step2GroupedResults.size());
             
@@ -332,17 +342,17 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                 }
                 
                 // this will give the Aggregated Min and Max Date, group by field present on the order product
-                list<AggregateResult> creditNoteLineGroupedResults2 = [SELECT blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c rvp, Min(blng__StartDate__c) minStartDate, Max(blng__EndDate__c) maxEndDate 
-                                                         FROM blng__CreditNoteLine__c 
-                                                         WHERE 
-                                                         blng__CreditNote__c IN: creditNoteIdsSet
-                                                         AND 
-                                                         blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' 
-                                                         AND
-                                                         blng__Subtotal__c >= 0
-                                                         GROUP BY blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c 
-                                                         Order By blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c];
-                
+                list<AggregateResult> creditNoteLineGroupedResults2 = [SELECT blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c rvp, 
+                                                                            Min(blng__StartDate__c) minStartDate, Max(blng__EndDate__c) maxEndDate 
+                                                                        FROM blng__CreditNoteLine__c 
+                                                                        WHERE 
+                                                                        blng__CreditNote__c IN: creditNoteIdsSet
+                                                                        AND 
+                                                                        blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' 
+                                                                        AND
+                                                                        blng__Subtotal__c >= 0
+                                                                        GROUP BY blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c 
+                                                                        Order By blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c];
                 
                 system.debug('>> APB012_ProcessRevenuCascade , execute(),creditNoteLineGroupedResults2.size()==== ' + creditNoteLineGroupedResults2.size());
                 

@@ -23,7 +23,10 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
                         SBQQ__BillingFrequency__c != null AND 
                         SBQQ__RevisedOrderProduct__c != null AND 
                         LPCR_BillingPlanProcessment__c = false AND 
-                        ((SBQQ__BillingFrequency__c != 'Invoice Plan' AND SBQQ__TerminatedDate__c != null AND blng__PendingBillings__c < 0) OR (SBQQ__TerminatedDate__c != null AND SBQQ__BillingFrequency__c = 'Invoice Plan' AND Quantity < 0) )
+                        (
+                            (SBQQ__BillingFrequency__c != 'Invoice Plan' AND SBQQ__TerminatedDate__c != null AND blng__PendingBillings__c < 0) OR 
+                            (SBQQ__TerminatedDate__c != null AND SBQQ__BillingFrequency__c = 'Invoice Plan' AND Quantity < 0)
+                        )
             ]);
     }
     
