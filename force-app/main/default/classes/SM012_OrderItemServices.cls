@@ -34,8 +34,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
         Set<Id> objOrderItemIds = new Set<Id>();
 
         for(OrderItem orderItem : newOrderItemsList){
-            if((orderItem.LPCR_Creche__c != null && orderItem.LPCR_Creche__c != oldOrderItemsMap.get(orderItem.Id).LPCR_Creche__c)
-                && (orderItem.SBQQ__Contract__c != null && orderItem.SBQQ__Contract__c != oldOrderItemsMap.get(orderItem.Id).SBQQ__Contract__c)){
+            if((orderItem.LPCR_Creche__c != null) && (orderItem.SBQQ__Contract__c != null && (orderItem.SBQQ__Contract__c != oldOrderItemsMap.get(orderItem.Id).SBQQ__Contract__c))){
                     objOrderItemIds.add(orderItem.Id);
             }
         }
