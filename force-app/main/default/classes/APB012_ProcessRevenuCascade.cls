@@ -22,18 +22,30 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
         
         Set<Id> accountsIdSet = UM003_TypeManager.getIdsOfListObjects(scope);
         Set<String> orderItemGroupingSet = new Set<String>();
-        List<blng__RevenueTransaction__c> revenueTransList = [SELECT Id, Name, blng__Account__c, blng__RevenueFinancePeriod__c, blng__OrderProduct__c,blng__InvoiceLine__r.blng__Invoice__c,blng__InvoiceLine__r.blng__Invoice__r.blng__InvoiceStatus__c FROM blng__RevenueTransaction__c WHERE blng__Account__c IN : accountsIdSet AND (blng__OrderProduct__c != null OR blng__InvoiceLine__c != null) ];
+        List<blng__RevenueTransaction__c> revenueTransList = [SELECT Id, Name, blng__Account__c, blng__RevenueFinancePeriod__c, blng__OrderProduct__c,
+                                                                blng__InvoiceLine__r.blng__Invoice__c,blng__InvoiceLine__r.blng__Invoice__r.blng__InvoiceStatus__c 
+                                                                FROM blng__RevenueTransaction__c 
+                                                                WHERE blng__Account__c IN : accountsIdSet AND (blng__OrderProduct__c != null OR blng__InvoiceLine__c != null) 
+                                                            ];
         Set<String> orderProductIds = UM003_TypeManager.getFieldsOfListObjects(revenueTransList,'blng__OrderProduct__c');
         Set<Id> orderLineIds = new Set<Id>();
         Map<String, Map<String,LPCR_RevenueCascade__c>> revenueCascadeMap = new Map<String, Map<String,LPCR_RevenueCascade__c>>();
         
-        for (OrderItem eachOrderItem : [SELECT Id,blng__BillingAccount__c,SBQQ__Contract__c,LPCR_Creche__c,OrderId,Order.AccountId, Order.Status, SBQQ__ChargeType__c,blng__GroupId__c FROM OrderItem WHERE Id IN: orderProductIds AND SBQQ__Contract__c != null AND Order.Status = 'Activated' AND SBQQ__ChargeType__c != 'One-Time']){
+        for (OrderItem eachOrderItem : [SELECT Id,blng__BillingAccount__c,SBQQ__Contract__c,LPCR_Creche__c,OrderId,Order.AccountId, Order.Status, 
+                                            SBQQ__ChargeType__c,blng__GroupId__c 
+                                            FROM OrderItem 
+                                            WHERE Id IN: orderProductIds AND SBQQ__Contract__c != null AND Order.Status = 'Activated' AND SBQQ__ChargeType__c != 'One-Time'
+                                        ]) {
             
             orderLineIds.add(eachOrderItem.Id);
             orderItemGroupingSet.add(eachOrderItem.Order.AccountId+''+eachOrderItem.SBQQ__Contract__c+''+eachOrderItem.LPCR_Creche__c);
         }
         
-        for (LPCR_RevenueCascade__c eachRevCascade : [SELECT Id, Name, LPCR_Compte__c, LPCR_CreditNoteLineAggregation__c, LPCR_CreditNoteRevenue__c, LPCR_DateDebut__c, LPCR_MontantFacture__c, LPCR_OrderInvoiceRevenue__c, LPCR_OrderLineAggregation__c, LPCR_OrderLineGroup__c, LPCR_PCA__c FROM LPCR_RevenueCascade__c WHERE LPCR_OrderLineGroup__c IN : orderItemGroupingSet order by LPCR_DateDebut__c]){
+        for (LPCR_RevenueCascade__c eachRevCascade : [SELECT Id, Name, LPCR_Compte__c, LPCR_CreditNoteLineAggregation__c, LPCR_CreditNoteRevenue__c, LPCR_DateDebut__c, 
+                                                        LPCR_MontantFacture__c, LPCR_OrderInvoiceRevenue__c, LPCR_OrderLineAggregation__c, LPCR_OrderLineGroup__c, LPCR_PCA__c 
+                                                        FROM LPCR_RevenueCascade__c 
+                                                        WHERE LPCR_OrderLineGroup__c IN : orderItemGroupingSet order by LPCR_DateDebut__c
+                                                     ]) {
             
             if (!revenueCascadeMap.containsKey(eachRevCascade.LPCR_OrderLineGroup__c)) {
 
@@ -50,7 +62,20 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
         // (Also adjust the values corresponding to the revenue transactions updates) 
         // ------------------------------------------------------------------------------------------------
 
-        list<AggregateResult> groupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount, SUM(blng__OrderProduct__r.Quantity) nbPlace, SUM(LPCR_PrixAnnuel__c) totalPrixAnnuel,MAX(LPCR_NombreMois__c) nombreMois, blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c contract,blng__OrderProduct__r.blng__GroupId__c groupId,blng__OrderProduct__r.Blng__LegalEntity__c legalEntity,blng__OrderProduct__r.LPCR_Creche__c creche FROM blng__RevenueTransaction__c WHERE blng__OrderProduct__c != null AND blng__OrderProduct__c In :orderLineIds AND blng__OrderProduct__r.SBQQ__ChargeType__c != 'One-Time' GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c ,blng__OrderProduct__r.blng__GroupId__c,blng__OrderProduct__r.Blng__LegalEntity__c,blng__OrderProduct__r.LPCR_Creche__c Order By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c ,blng__OrderProduct__r.blng__GroupId__c,blng__OrderProduct__r.Blng__LegalEntity__c,blng__OrderProduct__r.LPCR_Creche__c];        
+        list<AggregateResult> groupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount, 
+                                                        SUM(blng__OrderProduct__r.Quantity) nbPlace, SUM(LPCR_PrixAnnuel__c) totalPrixAnnuel,
+                                                        MAX(LPCR_NombreMois__c) nombreMois, blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c contract,
+                                                        blng__OrderProduct__r.blng__GroupId__c groupId,blng__OrderProduct__r.Blng__LegalEntity__c legalEntity,
+                                                        blng__OrderProduct__r.LPCR_Creche__c creche 
+                                                    FROM blng__RevenueTransaction__c 
+                                                    WHERE blng__OrderProduct__c != null AND blng__OrderProduct__c In :orderLineIds AND 
+                                                    blng__OrderProduct__r.SBQQ__ChargeType__c != 'One-Time' 
+                                                    GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c ,
+                                                    blng__OrderProduct__r.blng__GroupId__c,blng__OrderProduct__r.Blng__LegalEntity__c,blng__OrderProduct__r.LPCR_Creche__c 
+                                                    Order By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c ,
+                                                    blng__OrderProduct__r.blng__GroupId__c,blng__OrderProduct__r.Blng__LegalEntity__c,blng__OrderProduct__r.LPCR_Creche__c
+                                                ];        
+
         PAD.log('APB012_ProcessRevenuCascade', 'execute', 'groupedResults step1 size : ' + groupedResults.size());
         List<LPCR_RevenueCascade__c> upsertRevenueCascadeList = new List<LPCR_RevenueCascade__c>();
         Map<String, double> step1AggregateAmountMap = new Map<String, double>();
@@ -63,12 +88,12 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
             String groupId = String.valueOf(ar.get('groupId'));
             Double amount = Double.valueOf(ar.get('amount'));
 
-            if(String.isNotBlank(groupId)){
+            if(String.isNotBlank(groupId)) {
                 
-                if(!step1AggregateAmountMap.containsKey(groupId)){
-                    step1AggregateAmountMap.put(groupId,amount);
+                if(!step1AggregateAmountMap.containsKey(groupId)) {
+                    step1AggregateAmountMap.put(groupId, amount);
                 }else {
-                    step1AggregateAmountMap.put(groupId,step1AggregateAmountMap.get(groupId)+amount);
+                    step1AggregateAmountMap.put(groupId, step1AggregateAmountMap.get(groupId) + amount);
                 }
             }
             
@@ -340,23 +365,26 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
             }            
         }
         
+        List<LPCR_Log__c> listOfLog = new List<LPCR_Log__c>();
         System.debug('>> APB012_ProcessRevenuCascade , execute(), upsertRevenueCascadeList size : '+ upsertRevenueCascadeList.size());
         
         // insert or update Revenue Cascade
         if(upsertRevenueCascadeList.size() > 0) {
-            try{
+            try {
                 System.debug('>> APB012_ProcessRevenuCascade , execute(), upsertRevenueCascadeList.size = '+ upsertRevenueCascadeList.size());
                 upsert upsertRevenueCascadeList;
-            }catch(Exception ex){
+            } catch(Exception ex) {
                 System.debug('Exception: APB012_ProcessRevenuCascade | '+ ex.getMessage());
             }            
         }
-        for(Account eachAcc : scope){
+        for (Account eachAcc : scope) {
             eachAcc.LPCR_ProcessRevenuCascade__c = false;
+            listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Processing of Revenue Cascade', 'APB012_ProcessRevenuCascade', 'Batch', String.valueOf(eachAcc.Id), '', 'SUCCESS'));      
         }
-        try{
+        try {
             upsert scope;
-        }catch(Exception ex){
+            insert listOfLog;
+        } catch(Exception ex) {
             System.debug('Exception: APB012_ProcessRevenuCascade | '+ ex.getMessage());
         }
         
