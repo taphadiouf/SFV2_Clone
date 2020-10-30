@@ -377,7 +377,7 @@
         <fields>OPPORTUNITY.CLOSE_DATE</fields>
         <relatedList>Opportunity.SBQQ__RenewedContract__c</relatedList>
     </relatedLists>
-     <relatedLists>
+    <relatedLists>
         <fields>NAME</fields>
         <fields>LPCR_ComptePartenaire__c</fields>
         <fields>LPCR_ContactEnfant__c</fields>
@@ -398,6 +398,48 @@
         <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>SBQQ__Account__c</fields>
+        <fields>LPCR_ContactEnfant__c</fields>
+        <fields>SBQQ__NetAmount__c</fields>
+        <fields>SBQQ__Status__c</fields>
+        <fields>SBQQ__Primary__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>SBQQ__Quote__c.LPCR_ContractEntreprise__c</relatedList>
+        <sortField>CREATED_DATE</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>New</excludeButtons>
+        <fields>CONTRACT.CONTRACT_NUMBER</fields>
+        <fields>CONTRACT.NAME</fields>
+        <fields>SALES.ACCOUNT.NAME</fields>
+        <fields>LPCR_ContactEnfant__c</fields>
+        <fields>LPCR_Creche__c</fields>
+        <fields>CONTRACT.STATUS</fields>
+        <fields>CONTRACT.CREATED_DATE</fields>
+        <relatedList>Contract.LPCR_ContractEntreprise__c</relatedList>
+        <sortField>CONTRACT.CREATED_DATE</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>LPCR_ContratFamille__c</fields>
+        <fields>LPCR_Compte__c</fields>
+        <fields>LPCR_Facture__c</fields>
+        <fields>LPCR_LigneFacture__c</fields>
+        <fields>LPCR_TotalFacture__c</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>LPCR_LienFamilleFacture__c.LPCR_ContratEntreprise__c</relatedList>
+        <sortField>CREATED_DATE</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -411,7 +453,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6E000000vupE</masterLabel>
+        <masterLabel>00h3E000001rFrQ</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
