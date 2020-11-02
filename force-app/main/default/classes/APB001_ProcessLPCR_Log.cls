@@ -41,7 +41,8 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject>, Sche
     global void execute(SchedulableContext sc) {
         
         APB001_ProcessLPCR_Log sc1 = new APB001_ProcessLPCR_Log();
-       
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB001_ProcessLPCR_Log');
         
@@ -54,10 +55,8 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject>, Sche
                 Database.executeBatch(this, 200);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB001_ProcessLPCR_Log();
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB001_ProcessLPCR_Log' + timeForScheduler, timeForScheduler, sc1);
+
+                Id schedId = System.Schedule('APB001_ProcessLPCR_Log' + timeForScheduler, timeForScheduler, new APB001_ProcessLPCR_Log());
             }
         }  
         

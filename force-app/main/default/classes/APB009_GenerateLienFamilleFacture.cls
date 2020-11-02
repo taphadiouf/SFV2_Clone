@@ -123,7 +123,8 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
     global void execute(SchedulableContext sc) {
         PAD.log('APB009_GenerateLienFamilleFacture','execute','sc');
         APB009_GenerateLienFamilleFacture sc1 = new APB009_GenerateLienFamilleFacture();
-        
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB009_GenerateLienFamilleFacture');
         
@@ -136,10 +137,8 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB009_GenerateLienFamilleFacture();
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB009_GenerateLienFamilleFacture'+timeForScheduler,timeForScheduler,sc1);
+
+                Id schedId = System.Schedule('APB009_GenerateLienFamilleFacture'+timeForScheduler,timeForScheduler,new APB009_GenerateLienFamilleFacture());
             }
         }  
         
