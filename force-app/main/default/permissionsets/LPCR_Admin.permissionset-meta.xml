@@ -2608,8 +2608,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>LPCR_Planning__c.LPCR_Devis__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Planning__c.LPCR_EstMigre__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Planning__c.LPCR_IdExterneDevis__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2618,18 +2628,108 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Planning__c.LPCR_IdExterne__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Planning__c.LPCR_Jeudi__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Planning__c.LPCR_Lundi__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Planning__c.LPCR_Mardi__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Planning__c.LPCR_Mercredi__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Planning__c.LPCR_MoyenneHeuresSemaine__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_AdresseCreche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+      <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_Anciennete__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Planning__c.LPCR_MoyenneJoursSemaine__c</field>
-        <readable>false</readable>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Planning__c.LPCR_NombreHeuresMois__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>LPCR_Preinscription__c.LPCR_Anciennete__c</field>
+        <field>LPCR_Planning__c.LPCR_NombreHeuresSemaine__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Planning__c.LPCR_NombreJoursAccueil__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Planning__c.LPCR_NombrePlanning__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Planning__c.LPCR_TypePlanning__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Planning__c.LPCR_Vendredi__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Planning__c.TECH_SommeJeudi__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Planning__c.TECH_SommeLundi__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Planning__c.TECH_SommeMardi__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Planning__c.TECH_SommeMercredi__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Planning__c.TECH_SommeVendredi__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Preinscription__c.LPCR_AvecSponsor__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2645,6 +2745,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_Preinscription__c.LPCR_CompteFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Preinscription__c.LPCR_ContactDirectriceCreche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Preinscription__c.LPCR_ContactInscriptionsCreche__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2780,6 +2890,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_Preinscription__c.LPCR_HeureFinVendredi__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Preinscription__c.LPCR_HeuresParSemaine__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3163,8 +3278,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Preinscription__c.LPCR_StatutReporting__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_Preinscription__c.LPCR_Statut__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Preinscription__c.LPCR_TelephoneDirectrice__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7984,13 +8109,13 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
+        <modifyAllRecords>true</modifyAllRecords>
         <object>LPCR_Planning__c</object>
-        <viewAllRecords>false</viewAllRecords>
+        <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
@@ -8256,4 +8381,8 @@
         <tab>standard-Case</tab>
         <visibility>Visible</visibility>
     </tabSettings>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>AllowViewEditConvertedLeads</name>
+    </userPermissions>
 </PermissionSet>
