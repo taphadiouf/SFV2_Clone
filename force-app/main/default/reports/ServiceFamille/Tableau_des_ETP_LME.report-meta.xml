@@ -134,6 +134,11 @@
     </formattingRules>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
+        <field>SBQQ__Quote__c$LPCR_Creche__c.LPCR_RegionCommerciale__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
         <field>SBQQ__Quote__c$LPCR_Creche__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
