@@ -21,7 +21,6 @@ public with sharing class TM014_InvoiceTrigger extends TM000_TriggerHandler {
     }
     protected override void beforeUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
-            //SM015_InvoiceServices.setStatutFacture(newInvoiceList, oldInvoiceMap);   commented in the context of IS-1422
             SM015_InvoiceServices.setCongePrisPeriode(newInvoiceList,newInvoiceMap);
             SM015_InvoiceServices.setFieldsOnInvoice(newInvoiceList,newInvoiceMap,false);
         }
@@ -35,7 +34,6 @@ public with sharing class TM014_InvoiceTrigger extends TM000_TriggerHandler {
                     SM015_InvoiceServices.afterUpdateCreateCreditNoteAllocation(newInvoiceList, oldInvoiceMap);
                 }
             }
-            
         }
     }
 }
