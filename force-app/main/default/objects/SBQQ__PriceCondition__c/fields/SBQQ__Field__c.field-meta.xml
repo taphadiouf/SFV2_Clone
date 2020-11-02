@@ -172,6 +172,11 @@
                 <default>false</default>
                 <label>LPCR_TypeDenregistrement__c</label>
             </value>
+            <value>
+                <fullName>LPCR_BonCommandeEnvoye__c</fullName>
+                <default>false</default>
+                <label>LPCR_BonCommandeEnvoye__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
