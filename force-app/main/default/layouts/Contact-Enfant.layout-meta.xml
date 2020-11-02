@@ -6,8 +6,8 @@
     <excludeButtons>ContactHierarchy</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
-    <excludeButtons>RequestUseSfdc</excludeButtons>
     <excludeButtons>StartOutboundConversation</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <excludeButtons>XClean</excludeButtons>
@@ -296,19 +296,19 @@
         <relatedList>RelatedContactAccountRelationList</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>SBQQ__NetAmount__c</fields>
-        <fields>SBQQ__Status__c</fields>
-        <fields>CREATEDBY_USER</fields>
-        <fields>SBQQ__Primary__c</fields>
-        <relatedList>SBQQ__Quote__c.LPCR_ContactEnfant__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
+        <fields>LPCR_DateEntreeCreche__c</fields>
+        <fields>LPCR_NombreJours__c</fields>
+        <fields>LPCR_DossierComplet__c</fields>
         <fields>LPCR_Statut__c</fields>
         <relatedList>LPCR_Preinscription__c.LPCR_ContactEnfant__c</relatedList>
+        <sortField>LPCR_Statut__c</sortField>
+        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>NewCase</excludeButtons>
         <fields>CASES.CASE_NUMBER</fields>
         <fields>ACCOUNT.NAME</fields>
         <fields>LPCR_ContratEntreprise__c</fields>
@@ -317,6 +317,36 @@
         <relatedList>Case.LPCR_Enfant__c</relatedList>
         <sortField>CASES.STATUS</sortField>
         <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>SBQQ__NetAmount__c</fields>
+        <fields>SBQQ__Status__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>SBQQ__Primary__c</fields>
+        <relatedList>SBQQ__Quote__c.LPCR_ContactEnfant__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>New</excludeButtons>
+        <fields>CONTRACT.CONTRACT_NUMBER</fields>
+        <fields>CONTRACT.NAME</fields>
+        <fields>SALES.ACCOUNT.NAME</fields>
+        <fields>CONTRACT.STATUS</fields>
+        <relatedList>Contract.LPCR_ContactEnfant__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>blng__Account__c</fields>
+        <fields>blng__InvoiceDate__c</fields>
+        <fields>blng__TotalAmount__c</fields>
+        <fields>blng__Balance__c</fields>
+        <fields>blng__ARStatus__c</fields>
+        <fields>blng__StatusFlag__c</fields>
+        <relatedList>blng__Invoice__c.LPCR_ContactEnfant__c</relatedList>
     </relatedLists>
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
@@ -360,7 +390,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3E000001e0lP</masterLabel>
+        <masterLabel>00h3E000001rFrK</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
