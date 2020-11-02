@@ -4,7 +4,6 @@
         <calculatedFormula>IF(SBQQ__Quote__c.LPCR_Creche__c.LPCR_AgrementTotal__c:AVG=0,0,SBQQ__Quote__c.Id:UNIQUE/SBQQ__Quote__c.LPCR_Creche__c.LPCR_AgrementTotal__c:AVG)</calculatedFormula>
         <datatype>percent</datatype>
         <developerName>FORMULA1</developerName>
-        <downGroupingContext>SBQQ__Quote__c$LPCR_Creche__c</downGroupingContext>
         <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
         <masterLabel>Taux Occupation</masterLabel>
@@ -14,7 +13,6 @@
         <calculatedFormula>IF(SBQQ__Quote__c.LPCR_NombreAgrmentCrcheSurSection__c:AVG=0,0,RowCount/SBQQ__Quote__c.LPCR_NombreAgrmentCrcheSurSection__c:AVG)</calculatedFormula>
         <datatype>percent</datatype>
         <developerName>FORMULA2</developerName>
-        <downGroupingContext>SBQQ__Quote__c$LPCR_Section__c</downGroupingContext>
         <isActive>true</isActive>
         <isCrossBlock>false</isCrossBlock>
         <masterLabel>Taux Occupation Section</masterLabel>
@@ -28,15 +26,17 @@
             <axisBinding>y</axisBinding>
             <column>FORMULA1</column>
         </chartSummaries>
-        <chartType>HorizontalBar</chartType>
+        <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>SBQQ__Quote__c$LPCR_Creche__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>SBQQ__Quote__c$LPCR_StatutInscription__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>true</showValues>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -45,7 +45,7 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>SBQQ__Quote__c$LPCR_StatutInscription__c</field>
+        <field>SBQQ__Quote__c$LPCR_Section__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c$SBQQ__Status__c</field>
@@ -103,7 +103,7 @@
         <scale>2</scale>
     </customDetailFormulas>
     <filter>
-        <booleanFilter>1 OR (2 AND 3)</booleanFilter>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <column>SBQQ__Quote__c$RecordType</column>
             <columnToColumn>false</columnToColumn>
@@ -112,18 +112,11 @@
             <value>SBQQ__Quote__c.Accueil,SBQQ__Quote__c.Accueil_Approuve</value>
         </criteriaItems>
         <criteriaItems>
-            <column>SBQQ__Quote__c$LPCR_Option__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>SBQQ__Quote__c$SBQQ__Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Brouillon,Draft,Envoi directrice,Validé directrice,Prêt à envoyer,Envoyé pour signature,Signé,Prêt pour commande,Actif,In Review,Approved</value>
+            <operator>notEqual</operator>
+            <value>,Brouillon,Draft,Annulé,Terminé</value>
         </criteriaItems>
         <language>fr</language>
     </filter>
@@ -135,7 +128,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>SBQQ__Quote__c$LPCR_Section__c</field>
+        <field>SBQQ__Quote__c$LPCR_StatutInscription__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -143,7 +136,7 @@
         <field>SBQQ__Quote__c$LPCR_TypeBerceau__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Analyse remplissage crèche Total</name>
+    <name>Analyse Inscription Total par crèche</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -153,6 +146,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>CDF1</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
