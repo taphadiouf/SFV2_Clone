@@ -3,8 +3,8 @@
     <decisions>
         <name>ContratsPartenairesNonVides</name>
         <label>Contrats Partenaires non vides</label>
-        <locationX>902</locationX>
-        <locationY>310</locationY>
+        <locationX>892</locationX>
+        <locationY>243</locationY>
         <defaultConnector>
             <targetReference>PasContratPartenaireActif</targetReference>
         </defaultConnector>
@@ -28,26 +28,40 @@
     <decisions>
         <name>CrecheNonVide</name>
         <label>CrecheNonVide</label>
-        <locationX>508</locationX>
-        <locationY>111</locationY>
+        <locationX>507</locationX>
+        <locationY>62</locationY>
         <defaultConnector>
             <targetReference>CrecheVide</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Résultat par défaut</defaultConnectorLabel>
         <rules>
             <name>Creche_1_non_vide</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>RecuperationDemande.LPCR_ChoixN1__c</leftValueReference>
-                <operator>NotEqualTo</operator>
+                <operator>IsNull</operator>
                 <rightValue>
-                    <stringValue/>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>RecuperationDemande.LPCR_ChoixN2__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>RecuperationDemande.LPCR_ChoixN3__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>SelectionCreche</targetReference>
             </connector>
-            <label>Crèche 1 non vide</label>
+            <label>Crèche non vide</label>
         </rules>
     </decisions>
     <description>création d&apos;un bon d&apos;achat partenaire à partir d&apos;une demande réseau grandir</description>
@@ -150,8 +164,11 @@
     <recordCreates>
         <name>CreationBonAchat</name>
         <label>Création bon d&apos;achat</label>
-        <locationX>1197</locationX>
-        <locationY>309</locationY>
+        <locationX>1219</locationX>
+        <locationY>241</locationY>
+        <connector>
+            <targetReference>Succes</targetReference>
+        </connector>
         <faultConnector>
             <targetReference>ErreurCreationBonAchat</targetReference>
         </faultConnector>
@@ -200,7 +217,7 @@
         <inputAssignments>
             <field>LPCR_ContratReservataire__c</field>
             <value>
-                <elementReference>RecuperationDemande.LPCR_ContratEntreprise__r.Id</elementReference>
+                <elementReference>RecuperationDemande.LPCR_ContratEntreprise__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -269,8 +286,8 @@
     <recordLookups>
         <name>RecuperationContratsPartenaires</name>
         <label>Récupération Contrats Partenaires</label>
-        <locationX>773</locationX>
-        <locationY>308</locationY>
+        <locationX>774</locationX>
+        <locationY>241</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>ContratsPartenairesNonVides</targetReference>
@@ -296,8 +313,8 @@
     <recordLookups>
         <name>RecuperationDemande</name>
         <label>Récupération Demande</label>
-        <locationX>396</locationX>
-        <locationY>109</locationY>
+        <locationX>404</locationX>
+        <locationY>60</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>CrecheNonVide</targetReference>
@@ -323,13 +340,14 @@
         <queriedFields>LPCR_Enfant__c</queriedFields>
         <queriedFields>LPCR_DateEntreeSouhaitee__c</queriedFields>
         <queriedFields>LPCR_NombreJoursSemaine__c</queriedFields>
+        <queriedFields>LPCR_ContratEntreprise__c</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
         <name>RecuperationIdComptePartenaire</name>
         <label>Récupération Id Compte Partenaire</label>
-        <locationX>633</locationX>
-        <locationY>308</locationY>
+        <locationX>640</locationX>
+        <locationY>241</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>RecuperationContratsPartenaires</targetReference>
@@ -350,14 +368,14 @@
     <screens>
         <name>CrecheVide</name>
         <label>Crèche vide</label>
-        <locationX>782</locationX>
-        <locationY>104</locationY>
+        <locationX>729</locationX>
+        <locationY>55</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <fields>
             <name>CrecheVideTexte</name>
-            <fieldText>&lt;p&gt;Veuillez sélectionner une crèche dans le champ Choix de Crèche 1&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Veuillez sélectionner au moins un choix de crèche.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -366,8 +384,8 @@
     <screens>
         <name>ErreurCreationBonAchat</name>
         <label>Erreur lors de la création du bon d&apos;achat</label>
-        <locationX>1207</locationX>
-        <locationY>532</locationY>
+        <locationX>1218</locationX>
+        <locationY>431</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -382,8 +400,8 @@
     <screens>
         <name>PasContratPartenaireActif</name>
         <label>Pas de contrat partenaire actif</label>
-        <locationX>912</locationX>
-        <locationY>527</locationY>
+        <locationX>898</locationX>
+        <locationY>462</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -398,8 +416,8 @@
     <screens>
         <name>SelectionContratPartenaire</name>
         <label>Sélection du contrat partenaire</label>
-        <locationX>1083</locationX>
-        <locationY>309</locationY>
+        <locationX>1066</locationX>
+        <locationY>241</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -420,8 +438,8 @@
     <screens>
         <name>SelectionCreche</name>
         <label>Sélection de la crèche</label>
-        <locationX>516</locationX>
-        <locationY>308</locationY>
+        <locationX>517</locationX>
+        <locationY>241</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -439,9 +457,25 @@
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
+    <screens>
+        <name>Succes</name>
+        <label>Succès</label>
+        <locationX>1364</locationX>
+        <locationY>242</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>CreationTerminer</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;/span&gt;Le bon d&apos;achat &lt;a href=&quot;/{!CreationBonAchat}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(0, 109, 204); background-color: rgb(255, 255, 255);&quot;&gt;&lt;u&gt;{!NumeroBonAchat}&lt;/u&gt;&lt;/a&gt;&lt;span style=&quot;color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt; &lt;/span&gt;a été créé avec succès.&lt;/p&gt;&lt;p&gt;Cliquer sur Terminer pour terminer le processus.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
     <start>
         <locationX>50</locationX>
-        <locationY>90</locationY>
+        <locationY>41</locationY>
         <connector>
             <targetReference>RecuperationDemande</targetReference>
         </connector>
