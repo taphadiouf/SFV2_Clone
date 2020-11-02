@@ -5,26 +5,27 @@
     <externalId>false</externalId>
     <formula>IF(
   OR(
-    RecordType.DeveloperName = &quot;Accueil_Approuve&quot;,
+    RecordType.DeveloperName = &quot;Accueil&quot;,
     RecordType.DeveloperName = &quot;Accueil_Approuve&quot;
   ),
   CASE(
     text(SBQQ__Status__c),
+    &quot;Envoi directrice&quot;,
+    &quot;Inscription en cours&quot;,
+    &quot;Validé directrice&quot;,
+    &quot;Inscription en cours&quot;,
+    &quot;Prêt à envoyer&quot;,
+    &quot;Inscription en cours&quot;,
     &quot;Envoyé pour signature&quot;,
-    &quot;Proposé&quot;,
+    &quot;Inscription en cours&quot;,
     &quot;Signé&quot;,
-    &quot;Confirmé&quot;,
+    &quot;Inscrit&quot;,
     &quot;Prêt pour commande&quot;,
-    &quot;Confirmé&quot;,
+    &quot;Inscrit&quot;,
     &quot;Actif&quot;,
     &quot;Inscrit&quot;,
     text(SBQQ__Status__c)
-  ),
-  IF(
-    LPCR_Option__c,
-    &quot;Option&quot;,
-    text(SBQQ__Status__c)
-  )
+  ),null
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Statut inscription</label>
