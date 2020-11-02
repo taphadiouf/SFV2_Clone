@@ -646,6 +646,11 @@
             <field>LPCR_VersionDuFormulaire__c</field>
             <table>LPCR_Preinscription__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Creche__c.Id</field>
+            <table>LPCR_Preinscription__c</table>
+        </columns>
         <masterLabel>Préinscriptions</masterLabel>
     </sections>
     <sections>
