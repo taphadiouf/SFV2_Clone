@@ -105,14 +105,14 @@ public with sharing class APC001_LeadFaConverController{
             throw new AuraHandledException(errMsg);
         }
         
- 
+        
         //Create Account (Famille)
         Account newFamilleAccount = new Account(
             Name = Label.LPCR_Famille + ' ' + currentLead.LastName + (nomCoDemandeur != null ? (' ' +nomCoDemandeur) : ''), 
             RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Famille),
             Phone = currentLead.Phone
         );
-       
+        
         List<Database.SaveResult> accountSaveResultList = new List<Database.SaveResult>();
         Database.SaveResult saveResult = Database.insert(newFamilleAccount, false);
         accountSaveResultList.add(saveResult);
@@ -177,7 +177,7 @@ public with sharing class APC001_LeadFaConverController{
                     RecordTypeId = enfantContactRT
                 ));
         }
-
+        
         List<Database.SaveResult> saveResultList = Database.insert(newContactsMap.values(), false);
         errMsg = '';
         saveResultMsg = '';
@@ -187,7 +187,7 @@ public with sharing class APC001_LeadFaConverController{
             isvalid = False ;
             throw new AuraHandledException(errMsg);
         }
-
+        
         //Set Reprsentants1 and Reprsentants2 fields for newFamilleAccount  
         newFamilleAccount.LPCR_Representant1__c = newContactsMap.get('contactRep1').Id;
         if(newContactsMap.get('contactRep2') != null) newFamilleAccount.LPCR_Representant2__c = newContactsMap.get('contactRep2').Id;
@@ -232,45 +232,47 @@ public with sharing class APC001_LeadFaConverController{
         }        
         //Create a quote for each child (enfant)
         List<LPCR_LienCrecheLead__c> lienCrecheLeadList = [select Id, LPCR_creche__c From LPCR_LienCrecheLead__c where LPCR_Creche__r.Name = :chosenCrecheId And LPCR_Lead__c =:leadId];
-        Set<String> crecheIds = UM003_TypeManager.getFieldsOfListObjects(lienCrecheLeadList,'LPCR_creche__c');
-        Id crecheId = [SELECT Id, Name FROM Account where id in :crecheIds Limit 1].Id;
-        List<SBQQ__Quote__c> quotesList = new List<SBQQ__Quote__c>();
-        Contact tmpContactEnfant;
-        Contact tmpContactRep1;
-        Contact tmpContactRep2;
-        currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
-        for(Integer eachIndex : enfantsIndexes){
-            tmpContactEnfant = newContactsMap.get('contactEnfant' + eachIndex);
-            tmpContactRep1 = newContactsMap.get('contactRep1');
-            tmpContactRep2 = newContactsMap.get('contactRep2');   
-            quotesList.add(
-                new SBQQ__Quote__c(
-                    LPCR_DateDebut__c = (Date) currentLead.get('LPCR_DateEntreeCreche' + eachIndex + '__c'),
-                    LPCR_Creche__c = crecheId,
-                    SBQQ__Account__c = chosenCompteId,
-                    LPCR_ContactEnfant__c = (tmpContactEnfant != null ? tmpContactEnfant.Id : null),
-                    LPCR_ContactRepresentant1__c = (tmpContactRep1 != null ? tmpContactRep1.Id : null),
-                    LPCR_ContactRepresentant2__c = (tmpContactRep2 != null ? tmpContactRep2.Id : null),
-                    SBQQ__Opportunity2__c = currentLead.convertedOpportunityId
-                )
-            );
-        }
-        try{
-            insert quotesList;
-        }
-        catch(DmlException e) {
-            System.debug('The following exception has occurred while inserting quote: ' + e.getMessage());
-        }
-        
-        if(currentLead.LPCR_TypePrestation__c == Label.LPCR_Occasionnel){
-            for(SBQQ__Quote__c eachQuote : quotesList){
-                eachQuote.LPCR_TypeAccueil__c = Label.LPCR_Occasionnel;
+        if(lienCrecheLeadList.size()!= 0){
+            Set<String> crecheIds = UM003_TypeManager.getFieldsOfListObjects(lienCrecheLeadList,'LPCR_creche__c');
+            Id crecheId = [SELECT Id, Name FROM Account where id in :crecheIds Limit 1].Id;
+            List<SBQQ__Quote__c> quotesList = new List<SBQQ__Quote__c>();
+            Contact tmpContactEnfant;
+            Contact tmpContactRep1;
+            Contact tmpContactRep2;
+            currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
+            for(Integer eachIndex : enfantsIndexes){
+                tmpContactEnfant = newContactsMap.get('contactEnfant' + eachIndex);
+                tmpContactRep1 = newContactsMap.get('contactRep1');
+                tmpContactRep2 = newContactsMap.get('contactRep2');   
+                quotesList.add(
+                    new SBQQ__Quote__c(
+                        LPCR_DateDebut__c = (Date) currentLead.get('LPCR_DateEntreeCreche' + eachIndex + '__c'),
+                        LPCR_Creche__c = crecheId,
+                        SBQQ__Account__c = chosenCompteId,
+                        LPCR_ContactEnfant__c = (tmpContactEnfant != null ? tmpContactEnfant.Id : null),
+                        LPCR_ContactRepresentant1__c = (tmpContactRep1 != null ? tmpContactRep1.Id : null),
+                        LPCR_ContactRepresentant2__c = (tmpContactRep2 != null ? tmpContactRep2.Id : null),
+                        SBQQ__Opportunity2__c = currentLead.convertedOpportunityId
+                    )
+                );
             }
             try{
-                update quotesList;
+                insert quotesList;
             }
             catch(DmlException e) {
-                System.debug('The following exception has occurred while updating quote: ' + e.getMessage());
+                System.debug('The following exception has occurred while inserting quote: ' + e.getMessage());
+            }
+            
+            if(currentLead.LPCR_TypePrestation__c == Label.LPCR_Occasionnel){
+                for(SBQQ__Quote__c eachQuote : quotesList){
+                    eachQuote.LPCR_TypeAccueil__c = Label.LPCR_Occasionnel;
+                }
+                try{
+                    update quotesList;
+                }
+                catch(DmlException e) {
+                    System.debug('The following exception has occurred while updating quote: ' + e.getMessage());
+                }
             }
         }
     }
