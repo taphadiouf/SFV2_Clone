@@ -403,7 +403,8 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
     global void execute(SchedulableContext sc) {
         
         APB010_ProcessDailyOrderProduct sc1 = new APB010_ProcessDailyOrderProduct();
-        
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB010_ProcessDailyOrderProduct');
         
@@ -416,10 +417,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                 Database.executeBatch(this, 1);	
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB010_ProcessDailyOrderProduct();
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB010_ProcessDailyOrderProduct'+timeForScheduler,timeForScheduler,sc1);
+                Id schedId = System.Schedule('APB010_ProcessDailyOrderProduct'+timeForScheduler,timeForScheduler,new APB010_ProcessDailyOrderProduct());
             }
         }  
         

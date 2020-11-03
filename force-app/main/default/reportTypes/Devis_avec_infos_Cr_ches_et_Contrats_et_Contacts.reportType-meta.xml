@@ -253,6 +253,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_BonCommandeEnvoye__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_DateFinMaxQuoteLine__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -1051,11 +1056,6 @@
             <field>SBQQ__ShippingCity__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_Creche__c.Id</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
         <masterLabel>Devis</masterLabel>
     </sections>
     <sections>
@@ -1315,12 +1315,22 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Creche__c.LPCR_CodeAnalytique__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_Creche__c.LPCR_NombreEnfantsLundi__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_Creche__c.LPCR_AccueilRegulier__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Creche__c.Id</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <masterLabel>Crèche</masterLabel>

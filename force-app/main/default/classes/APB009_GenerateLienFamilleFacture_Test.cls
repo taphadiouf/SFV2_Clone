@@ -12,7 +12,7 @@
         private static final Id CONTRACT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_ContratA);
         private static final Id OPPT_FAMILE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Opportunity, Label.LPCR_Famille);
         private static final Id OPPT_ENTERPRISE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Opportunity, Label.LPCR_Entreprise);
-        private static final Id STANDARD_PRICEBOOK_ID = Test.getStandardPricebookId();
+        private static Id STANDARD_PRICEBOOK_ID;
         private static final Id QUOTE_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);
         private static final Id QUOTE_CONTRAT_REF_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_Referencement);
         
@@ -21,7 +21,12 @@
         @testsetup
         static void setup() {
             UM002_TestDataFactory.insertBillingCustomSettings();
-            
+
+            if([SELECT Id FROM Pricebook2 WHERE IsStandard=true].size() > 0){
+                STANDARD_PRICEBOOK_ID = [SELECT Id FROM Pricebook2 WHERE IsStandard=true].Id;
+            }else{
+                STANDARD_PRICEBOOK_ID = Test.getStandardPricebookId();
+            }
             blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
             blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
             blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);

@@ -127,8 +127,11 @@ public with sharing class SM013_QuoteLineServices_Test {
         update opp;
 
         //Order the quote to create Order / OrderItems
-        update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
-
+        try {
+            update new SBQQ__Quote__c (Id = quote.Id, SBQQ__Ordered__c = true);
+        } catch (Exception e ) {
+            system.debug('*** SM013_QuoteLineServices_Test setup method exception :' + e.getMessage());
+        }
         List<Order> orders = [SELECT Id , SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c, blng__BillingAccount__c, LPCR_TypeCreche__c FROM Order];
         for (Order order : orders) {
             order.blng__BillingAccount__c = order.blng__BillingAccount__c == null && order.AccountId != null 
