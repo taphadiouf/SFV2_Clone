@@ -91,15 +91,6 @@
         <template>unfiled$public/LPCR_DevisAccepte</template>
     </alerts>
     <fieldUpdates>
-        <fullName>LPCR_SetStatutPretpourcommande</fullName>
-        <field>SBQQ__Status__c</field>
-        <literalValue>Prêt pour commande</literalValue>
-        <name>Set statut a pret pour commande</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
         <fullName>LPCR_StatusActif</fullName>
         <description>Cette action met le statut du devis à actif</description>
         <field>SBQQ__Status__c</field>
@@ -115,24 +106,6 @@
         <field>SBQQ__Status__c</field>
         <literalValue>Terminé</literalValue>
         <name>Status Terminé</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutApprouve</fullName>
-        <field>LPCR_StatutApprobation__c</field>
-        <literalValue>Approuvé</literalValue>
-        <name>Statut Approuvé</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutAttente</fullName>
-        <field>LPCR_StatutApprobation__c</field>
-        <literalValue>En Attente</literalValue>
-        <name>Statut En Attente</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
@@ -176,24 +149,6 @@
         <operation>Literal</operation>
         <protected>false</protected>
         <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutRappel</fullName>
-        <field>LPCR_StatutApprobation__c</field>
-        <literalValue>Brouillon</literalValue>
-        <name>Statut Brouillon</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutRejete</fullName>
-        <field>LPCR_StatutApprobation__c</field>
-        <literalValue>Brouillon</literalValue>
-        <name>Statut Rejeté</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>LPCR_StatutValide</fullName>
@@ -313,15 +268,6 @@
         <name>RT Contrat réservataire approuvé</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Statut_standard_approuv</fullName>
-        <field>SBQQ__Status__c</field>
-        <literalValue>Prêt à envoyer</literalValue>
-        <name>Statut standard approuvé</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
@@ -574,7 +520,7 @@
             <name>LPCR_StatusTermine</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Ordered__c</field>
             <operation>equals</operation>
@@ -635,7 +581,7 @@
             <name>LPCR_StatutPretCommande</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <booleanFilter>(1 OR 5) AND( 2 OR 3) AND 4 AND (6 OR 7)</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
@@ -791,6 +737,7 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND (((NOT 5) AND 4) OR (5 AND 4 AND (6 OR 8)) OR (5 AND 7 AND (NOT 6) AND (NOT 8)))</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.ApprovalStatus__c</field>
             <operation>equals</operation>
@@ -805,6 +752,31 @@
             <field>SBQQ__Quote__c.SBQQ__Primary__c</field>
             <operation>equals</operation>
             <value>Vrai</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Prêt pour commande</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Amendment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>equals</operation>
+            <value>Résiliation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Prêt à envoyer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>equals</operation>
+            <value>Mouvement Interne Berceau</value>
         </criteriaItems>
         <description>Update RT quand le contrat de référencement est approuvé.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -843,4 +815,3 @@
         <triggerType>onCreateOnly</triggerType>
     </rules>
 </Workflow>
- 

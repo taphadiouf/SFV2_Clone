@@ -247,6 +247,16 @@
                 <default>false</default>
                 <label>LPCR_DateSignatureContrat__c</label>
             </value>
+            <value>
+                <fullName>LPCR_CheckboxTechnique__c</fullName>
+                <default>false</default>
+                <label>LPCR_CheckboxTechnique__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_LigneBonCommandeEnvoye__c</fullName>
+                <default>false</default>
+                <label>LPCR_LigneBonCommandeEnvoye__c</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -421,6 +431,10 @@
             <valueName>LPCR_DateSignatureContrat__c</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_CheckboxTechnique__c</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>SBQQ__Quantity__c</valueName>
         </valueSettings>
@@ -455,6 +469,10 @@
         <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>LPCR_HoldReason__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_LigneBonCommandeEnvoye__c</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

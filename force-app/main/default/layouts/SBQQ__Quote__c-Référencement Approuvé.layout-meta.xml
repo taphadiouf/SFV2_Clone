@@ -382,6 +382,8 @@
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>LPCR_Produit__c</fields>
         <fields>LPCR_Region__c</fields>
         <fields>LPCR_BorneInf__c</fields>
@@ -431,7 +433,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000001QmAZ</masterLabel>
+        <masterLabel>00h1x000000TptI</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

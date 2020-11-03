@@ -72,6 +72,16 @@
                 <default>false</default>
                 <label>LPCR_ligneBerceauPlanFacturation__c</label>
             </value>
+            <value>
+                <fullName>LPCR_CheckboxTechnique__c</fullName>
+                <default>false</default>
+                <label>LPCR_CheckboxTechnique__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__LineItemCount__c</fullName>
+                <default>false</default>
+                <label>SBQQ__LineItemCount__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
