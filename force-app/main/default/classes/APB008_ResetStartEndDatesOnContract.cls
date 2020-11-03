@@ -51,10 +51,8 @@ global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<s
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB008_ResetStartEndDatesOnContract();
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB008_ResetStartEndDatesOnContract'+timeForScheduler,timeForScheduler,sc1);
+                String timeForScheduler = Datetime.now().addMinutes(30).format('s m H d M \'?\' yyyy');// i.e. 30 mins
+                Id schedId = System.Schedule('APB008_ResetStartEndDatesOnContract'+timeForScheduler,timeForScheduler,new APB008_ResetStartEndDatesOnContract());
             }
         }  
         

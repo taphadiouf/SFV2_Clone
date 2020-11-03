@@ -9186,6 +9186,11 @@
         <field>SBQQ__QuoteLine__c.SBQQ__SubscriptionScope__c</field>
         <readable>true</readable>
     </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_HoldBilling__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.SBQQ__SubscriptionTargetPrice__c</field>
@@ -9729,6 +9734,26 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.EditLinesFieldSetName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_TypeDenregistrementText__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+      <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_BonCommandeEnvoye__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_LigneBonCommandeEnvoye__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_LigneBonCommandeEnvoye__c</field>
         <readable>true</readable>
     </fieldPermissions>
      <fieldPermissions>

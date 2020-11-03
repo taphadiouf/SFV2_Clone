@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_HeuresParSemaine__c</fullName>
+    <externalId>false</externalId>
+    <formula>((Hour(LPCR_HeureFinLundi__c) - Hour(LPCR_HeureDebutLundi__c)) + ((Minute(LPCR_HeureFinLundi__c) - Minute(LPCR_HeureDebutLundi__c))/60))+
+((Hour(LPCR_HeureFinMardi__c) - Hour(LPCR_HeureDebutMardi__c)) + ((Minute(LPCR_HeureFinMardi__c) - Minute(LPCR_HeureDebutMardi__c))/60))+
+((Hour(LPCR_HeureFinMercredi__c) - Hour(LPCR_HeureDebutMercredi__c)) + ((Minute(LPCR_HeureFinMercredi__c) - Minute(LPCR_HeureDebutMercredi__c))/60))+
+((Hour(LPCR_HeureFinJeudi__c) - Hour(LPCR_HeureDebutJeudi__c)) + ((Minute(LPCR_HeureFinJeudi__c) - Minute(LPCR_HeureDebutJeudi__c))/60))+
+((Hour(LPCR_HeureFinVendredi__c) - Hour(LPCR_HeureDebutVendredi__c)) + ((Minute(LPCR_HeureFinVendredi__c) - Minute(LPCR_HeureDebutVendredi__c))/60))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Heures par semaine</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

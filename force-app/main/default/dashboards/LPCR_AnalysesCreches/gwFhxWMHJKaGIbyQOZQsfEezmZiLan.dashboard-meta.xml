@@ -15,22 +15,22 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartSummary>
                     <axisBinding>y</axisBinding>
-                    <column>FORMULA3</column>
+                    <column>FORMULA1</column>
                 </chartSummary>
                 <componentType>Gauge</componentType>
                 <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <gaugeMax>100.0</gaugeMax>
+                <displayUnits>Integer</displayUnits>
+                <gaugeMax>120.0</gaugeMax>
                 <gaugeMin>0.0</gaugeMin>
                 <groupingSortProperties/>
-                <header>Taux occupation global</header>
-                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <header>Taux occupation total</header>
+                <indicatorBreakpoint1>70.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>90.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
-                <report>Tech_GraphiquesSurLayouts/Copie_de_Taux_occupation_total_cbn</report>
-                <showPercentage>false</showPercentage>
+                <report>Tech_GraphiquesSurLayouts/DashboardTauxoccupationdescrches/Analyse_Inscription_Total_par_crche_nZs</report>
+                <showPercentage>true</showPercentage>
                 <showRange>false</showRange>
                 <showTotal>true</showTotal>
                 <showValues>false</showValues>
@@ -48,26 +48,29 @@
                     <axisBinding>y</axisBinding>
                     <column>FORMULA1</column>
                 </chartSummary>
-                <componentType>Bar</componentType>
+                <componentType>BarGrouped</componentType>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>Account$Name</groupingColumn>
+                <groupingColumn>SBQQ__Quote__c$LPCR_Creche__c</groupingColumn>
+                <groupingColumn>SBQQ__Quote__c$LPCR_StatutInscription__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortColumn>FORMULA1</sortColumn>
-                        <sortOrder>d</sortOrder>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
                 <header>Taux occupation par crèche</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>Tech_GraphiquesSurLayouts/Copie_de_Taux_occupation_total_cbn</report>
+                <legendPosition>Right</legendPosition>
+                <report>Tech_GraphiquesSurLayouts/DashboardTauxoccupationdescrches/Analyse_Inscription_Total_par_crche_nZs</report>
                 <showPercentage>false</showPercentage>
-                <showPicturesOnCharts>false</showPicturesOnCharts>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <useReportChart>false</useReportChart>
@@ -92,8 +95,8 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>Account$Name</groupingColumn>
-                <groupingColumn>Account.Contrats__r$LPCR_Section__c</groupingColumn>
+                <groupingColumn>SBQQ__Quote__c$LPCR_Creche__c</groupingColumn>
+                <groupingColumn>SBQQ__Quote__c$LPCR_Section__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -104,9 +107,9 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Taux occupation par crèche et section</header>
+                <header>Taux occupation par crèche et par section</header>
                 <legendPosition>Right</legendPosition>
-                <report>Tech_GraphiquesSurLayouts/Nouveau_rapport_Crches_avec_Contrats_rhc</report>
+                <report>Tech_GraphiquesSurLayouts/DashboardTauxoccupationdescrches/Analyse_Inscription_Section_et_crche_tHq</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>

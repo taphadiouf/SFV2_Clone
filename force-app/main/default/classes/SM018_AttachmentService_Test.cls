@@ -47,6 +47,7 @@ public class SM018_AttachmentService_Test {
             Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
             
             Account acc = UM002_TestDataFactory.createAccounts(1, 'testAccount').get(0);
+            acc.Email__c = 'test@test.com';
             insert acc;
             
             
@@ -78,13 +79,14 @@ public class SM018_AttachmentService_Test {
             List<LPCR_Log__c> errorLogList = [SELECT Id, Name, LPCR_TargetObject__c, LPCR_Result__c FROM LPCR_Log__c WHERE LPCR_Result__c = 'Error'];
             List<blng__Invoice__c> invoiceList = [select id, blng__Account__r.Email__c, CreatedBy.Name, LPCR_StatutFacture__c  from blng__Invoice__c where id in: parentIds];
             blng__Invoice__c invoice1 = invoiceList.get(0);
-            System.assertEquals(3, successLogList.size(), 'sendLPCRDocumentByCallout_Test success log failed');
+            System.assertEquals(9, successLogList.size(), 'sendLPCRDocumentByCallout_Test success log failed');
             System.assertEquals(0, errorLogList.size(), 'sendLPCRDocumentByCallout_Test error log failed');
             System.assertEquals('Envoyée', invoice1.LPCR_StatutFacture__c, 'update failed');
         }
     }
     @isTest
     static void sendLPCRDocumentByCallout1_Test(){
+        Test.startTest();
         Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
         
         Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
@@ -147,7 +149,7 @@ public class SM018_AttachmentService_Test {
         invoice.blng__PaymentBatch__c = 'Batch 1';
         insert invoice;
         
-        Test.startTest();
+        
         List<Attachment> attachmentList = new List<Attachment>();
         Attachment attach1 = UM002_TestDataFactory.createAttachement('Facture Famille', 'Testing Body', invoice.Id, 'Facture');
         attachmentList.add(attach1);

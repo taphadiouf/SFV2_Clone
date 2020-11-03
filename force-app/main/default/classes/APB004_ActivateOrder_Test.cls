@@ -9,8 +9,12 @@ public class APB004_ActivateOrder_Test {
     static void setup() {
         //This setup is in the APB007_AllPriceBookClasses_Tests class 
 
-        /*
-        Id standardPricebookId = Test.getStandardPricebookId();
+        Id standardPricebookId;
+        if([SELECT Id FROM Pricebook2 WHERE IsStandard=true].size() > 0){
+           standardPricebookId = [SELECT Id FROM Pricebook2 WHERE IsStandard=true].Id;
+       }else{
+           standardPricebookId = Test.getStandardPricebookId();
+       }
 
          UM002_TestDataFactory.insertBillingCustomSettings();
         
@@ -47,18 +51,15 @@ public class APB004_ActivateOrder_Test {
        
         quote.SBQQ__Ordered__c  = true;     
         update quote;
-        */
-        
     }
     @isTest
     private static void activateOrderBatch_Test(){
         //This method is called in APB007_AllPriceBookClasses_Tests class with the same name
-        /*
+        
         System.runAs(UM002_TestDataFactory.createUser()){            
             Test.startTest();            
-            SBQQ__Quote__c quote = Database.query('SELECT Id FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
-        	Order order = Database.query('SELECT Id , Status ,OpportunityId,EffectiveDate FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
-      
+            SBQQ__Quote__c quote = [SELECT Id FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c=:'test'];
+            Order order = [SELECT Id , Status ,OpportunityId,EffectiveDate FROM Order WHERE SBQQ__Quote__c=:quote.id];
             APB004_ActivateOrder activateOrderBatch = new APB004_ActivateOrder();
             activateOrderBatch.execute(null);
             Test.stopTest();
@@ -67,6 +68,6 @@ public class APB004_ActivateOrder_Test {
             System.assertEquals('Activated', order.Status,'status is not get activated');
             
         }
-    */
+    
     }
 }

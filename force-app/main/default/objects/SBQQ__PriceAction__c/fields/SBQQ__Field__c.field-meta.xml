@@ -267,6 +267,16 @@
                 <default>false</default>
                 <label>LPCR_DateFinMaxQuoteLine__c</label>
             </value>
+            <value>
+                <fullName>SBQQ__NetPrice__c</fullName>
+                <default>false</default>
+                <label>SBQQ__NetPrice__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_LigneBonCommandeEnvoye</fullName>
+                <default>false</default>
+                <label>LPCR_LigneBonCommandeEnvoye</label>
+            </value>
         </valueSetDefinition>
         <valueSettings>
             <controllingFieldValue>Quote</controllingFieldValue>
@@ -445,6 +455,11 @@
             <valueName>LPCR_DateFinMaxQuoteLine__c</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__NetPrice__c</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>SBQQ__Quantity__c</valueName>
         </valueSettings>
@@ -479,6 +494,10 @@
         <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>LPCR_HoldReason__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_LigneBonCommandeEnvoye</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>

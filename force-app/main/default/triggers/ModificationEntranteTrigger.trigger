@@ -4,5 +4,5 @@
 * @description Trigger action handler on LPCR_ModificationEntrante__c Object
 */
 trigger ModificationEntranteTrigger on LPCR_ModificationEntrante__c (after insert, after update) {
-	new TM012_ModificationEntranteTrigger().run();
+	new TM022_ModificationEntranteTrigger().run();
 }

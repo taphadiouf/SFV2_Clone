@@ -7,8 +7,12 @@
 public class APC008_ResetQuoteLines_Test {
     @TestSetup
     static void setup(){
-        Id standardPricebookId = Test.getStandardPricebookId();
-
+        Id standardPricebookId;
+        if([SELECT Id FROM Pricebook2 WHERE IsStandard=true].size() > 0){
+            standardPricebookId = [SELECT Id FROM Pricebook2 WHERE IsStandard=true].Id;
+        }else{
+            standardPricebookId = Test.getStandardPricebookId();
+        }
         SBQQ__Quote__c quote = UM002_TestDataFactory.createQuote(standardPricebookId, 'Quote');
         quote.SBQQ__Primary__c =true;
         insert quote;
@@ -47,4 +51,13 @@ public class APC008_ResetQuoteLines_Test {
         APC008_ResetQuoteLines.resetQuantity(quoteId);
         Test.stopTest();
     }
+    
+    @isTest 
+    static void testEmptyId(){
+        Test.startTest(); 
+        boolean result = APC008_ResetQuoteLines.resetQuantity(null);
+        Test.stopTest();
+        System.assertEquals(result,false);
+    }
+    
 }

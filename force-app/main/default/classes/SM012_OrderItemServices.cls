@@ -8,6 +8,20 @@ public with sharing class SM012_OrderItemServices implements Queueable{
     public SM012_OrderItemServices(List<OrderItem> listOrderItem) {
         this.listOrderItem = listOrderItem;
     }
+
+    public static void enqueueJob(List<OrderItem> newOrderItemsList){
+        List<OrderItem> orderItemToProcess = new List<OrderItem> ();
+        for(OrderItem oi : newOrderItemsList){
+            if(oi.blng__LegalEntity__c == null){
+                orderItemToProcess.add(oi);
+            }
+        }
+        if (orderItemToProcess.size() > 0) {
+            SM012_OrderItemServices job = new SM012_OrderItemServices(newOrderItemsList);
+            ID jobID = System.enqueueJob(job);
+        }
+    }
+
     public void execute(QueueableContext context) {
         SM012_OrderItemServices.setLegalEntityOnOrderItem(this.listOrderItem);
     }
@@ -28,16 +42,28 @@ public with sharing class SM012_OrderItemServices implements Queueable{
 
         update listOrderItem;
     }
-    
-    public static void updateGroupId( Set<Id> objOrderItemIds){
 
-        List<OrderItem> objOrderItemList = [Select Id,Order.AccountId,SBQQ__Contract__c,LPCR_Creche__c,blng__GroupId__c,
-                                            blng__InvoiceGroupId__c from OrderItem where Id IN : objOrderItemIds];
-        for(OrderItem objOrderItem : objOrderItemList){
-            objOrderItem.blng__GroupId__c = objOrderItem.Order.AccountId+''+objOrderItem.SBQQ__Contract__c+''+objOrderItem.LPCR_Creche__c;
+    public static void updateGroupId(Map<Id, OrderItem> oldOrderItemsMap, List<OrderItem> newOrderItemsList){
+
+        Set<Id> objOrderItemIds = new Set<Id>();
+
+        for(OrderItem orderItem : newOrderItemsList){
+            if((orderItem.LPCR_Creche__c != null) && (orderItem.SBQQ__Contract__c != null && (orderItem.SBQQ__Contract__c != oldOrderItemsMap.get(orderItem.Id).SBQQ__Contract__c))){
+                    objOrderItemIds.add(orderItem.Id);
+            }
         }
-        if(objOrderItemList.size() > 0){
-            update objOrderItemList;
+
+        if(objOrderItemIds.size() > 0){
+              
+            List<OrderItem> objOrderItemList = [Select Id,Order.AccountId,SBQQ__Contract__c,LPCR_Creche__c,blng__GroupId__c,
+                                                blng__InvoiceGroupId__c from OrderItem where Id IN : objOrderItemIds];
+            for(OrderItem objOrderItem : objOrderItemList){
+                objOrderItem.blng__GroupId__c = objOrderItem.Order.AccountId+''+objOrderItem.SBQQ__Contract__c+''+objOrderItem.LPCR_Creche__c;
+            }
+            if(objOrderItemList.size() > 0){
+                update objOrderItemList;
+            }
+
         }
     }
     public static void legalEntityOnOrderItemConSch( Map<Id,OrderItem> mapOrderItem){

@@ -8,9 +8,12 @@ public class APB005_GenerateContractFromOrder_Test {
     @testsetup
     static void setup() {
          //This setup is in the APB007_AllPriceBookClasses_Tests class 
-        /*
-        Id standardPricebookId = Test.getStandardPricebookId();
-
+         Id standardPricebookId;
+         if([SELECT Id FROM Pricebook2 WHERE IsStandard=true].size() > 0){
+            standardPricebookId = [SELECT Id FROM Pricebook2 WHERE IsStandard=true].Id;
+        }else{
+            standardPricebookId = Test.getStandardPricebookId();
+        }
         UM002_TestDataFactory.insertBillingCustomSettings();
         
         blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
@@ -44,18 +47,18 @@ public class APB005_GenerateContractFromOrder_Test {
         opp.SBQQ__PrimaryQuote__c =quote.Id;
         update opp;
        
-        quote.SBQQ__Ordered__c  = true;     
+        quote.SBQQ__Ordered__c  = true;  
+        quote.LPCR_RepriseDateProchaineFacturation__c = Date.today().addDays(2);
         update quote;
         
         Order order = Database.query('SELECT Id , Status ,OpportunityId,EffectiveDate FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
-      	order.status ='Activated';
+          order.status ='Activated';
         update order;
-        */
+        
     }
     @isTest
     private static void genContFromOrderBatch_Test(){
-        //This method is called in APB007_AllPriceBookClasses_Tests class with the same name
-        /*
+
         System.runAs(UM002_TestDataFactory.createUser()){            
             Test.startTest();            
             SBQQ__Quote__c quote = Database.query('SELECT Id FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
@@ -70,6 +73,6 @@ public class APB005_GenerateContractFromOrder_Test {
             System.assertEquals(true, order.SBQQ__Contracted__c,'SBQQ__Contracted__c is false');
       
         }
-        */
+        
     }
 }

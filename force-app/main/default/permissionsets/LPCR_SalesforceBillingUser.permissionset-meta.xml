@@ -1365,10 +1365,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>blng__PricebookEntryDAO</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>blng__PricingModel</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -8250,6 +8246,31 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__TaxIntegration__c.blng__Default__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_TypeDenregistrementText__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_HoldBilling__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+      <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_BonCommandeEnvoye__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_LigneBonCommandeEnvoye__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_LigneBonCommandeEnvoye__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

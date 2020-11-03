@@ -38,7 +38,9 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
     global void execute(SchedulableContext sc) {
         
         APB002_RenewalContract sc1 = new APB002_RenewalContract();
-       
+
+        Datetime dt = Datetime.now().addMinutes(30);
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB002_RenewalContract');
         
@@ -51,10 +53,8 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB002_RenewalContract();
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB002_RenewalContract'+timeForScheduler,timeForScheduler,sc1);
+
+                Id schedId = System.Schedule('APB002_RenewalContract'+timeForScheduler,timeForScheduler,new APB002_RenewalContract());
             }
         }  
         

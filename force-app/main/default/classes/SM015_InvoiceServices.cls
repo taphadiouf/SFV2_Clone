@@ -17,8 +17,13 @@ public class SM015_InvoiceServices {
         Map<Id,blng__Invoice__c> mapInvocieLineStatutPaiement = new Map<Id,blng__Invoice__c>();
         List<blng__PaymentAllocationInvoiceLine__c> listPaymentAlloInvoiceLine = new  List<blng__PaymentAllocationInvoiceLine__c>();
         Map<String,Decimal> mapInvoiceSumBalanceInvoicelines = new Map<String,Decimal>();
+        Set<String> accountIds = new Set<String>();
         
         for(blng__Invoice__c eachInvoice : newInvoiceList){
+            // If invoice is Posted and LPCR_StatutFacture__c = 'Envoyée'
+            if('Posted'.equals(eachInvoice.blng__InvoiceStatus__c) && eachInvoice.blng__InvoiceStatus__c != oldInvoiceMap.get(eachInvoice.id).blng__InvoiceStatus__c && 'Envoyée'.equals(eachInvoice.LPCR_StatutFacture__c)){
+                accountIds.add(eachInvoice.blng__Account__c);
+            }
             // If a status of payment has been received
             if(eachInvoice.LPCR_StatutPaiement__c && eachInvoice.LPCR_StatutPaiement__c != oldInvoiceMap.get(eachInvoice.id).LPCR_StatutPaiement__c){
                 mapInvocieLineStatutPaiement.put(eachInvoice.Id,eachInvoice);
@@ -50,6 +55,15 @@ public class SM015_InvoiceServices {
         if(listPaymentAlloInvoiceLine.size() > 0){
             //Create a Payment Allocation record blng__PaymentAllocationInvoice__c
             insert listPaymentAlloInvoiceLine;
+        }
+        
+        // On modification of B2B invoices where Status = 'Posted' and LPCR_StatutFacture__c = 'Envoyée'
+        if(accountIds.size()>0){  
+            List<Account> accounts = [SELECT Id,LPCR_ProcessRevenuCascade__c FROM Account WHERE Id IN :accountIds];
+            for(Account eachAcc : accounts){
+                eachAcc.LPCR_ProcessRevenuCascade__c = true;
+            }	
+            update accounts;
         }
     }
     
@@ -133,21 +147,25 @@ public class SM015_InvoiceServices {
     
     // added by saurabh IS-1529
     public static void afterUpdateCreateCreditNoteAllocation(List<blng__Invoice__c> newInvoiceList,Map<Id, blng__Invoice__c> oldInvoiceMap){
-        Pad.log('SM015_InvoiceServices','afterUpdateCreateCreditNoteAllocation(List<blng__Invoice__c> newInvoiceList)','newInvoiceList size '+newInvoiceList.size());
-        
-        Set<String> invoiceAccountIdsSet = new Set<String>(); 
-        Set<String> invoiceIdsSet = new Set<String>(); 
-        
-        // Get only posted invoice account ids and invoice ids into set
-        for(blng__Invoice__c eachInvoice : newInvoiceList){
-            if('Posted'.equals(eachInvoice.blng__InvoiceStatus__c) && eachInvoice.blng__InvoiceStatus__c != oldInvoiceMap.get(eachInvoice.id).blng__InvoiceStatus__c && eachInvoice.blng__Account__c != null ){
-                invoiceAccountIdsSet.add(eachInvoice.blng__Account__c);
-                invoiceIdsSet.add(eachInvoice.id);
+        if(!System.isFuture() &&  !System.isBatch()){
+            if(Limits.getFutureCalls() < Limits.getLimitFutureCalls()){
+                Pad.log('SM015_InvoiceServices','afterUpdateCreateCreditNoteAllocation(List<blng__Invoice__c> newInvoiceList)','newInvoiceList size '+newInvoiceList.size());
+                
+                Set<String> invoiceAccountIdsSet = new Set<String>(); 
+                Set<String> invoiceIdsSet = new Set<String>(); 
+                
+                // Get only posted invoice account ids and invoice ids into set
+                for(blng__Invoice__c eachInvoice : newInvoiceList){
+                    if('Posted'.equals(eachInvoice.blng__InvoiceStatus__c) && eachInvoice.blng__InvoiceStatus__c != oldInvoiceMap.get(eachInvoice.id).blng__InvoiceStatus__c && eachInvoice.blng__Account__c != null ){
+                        invoiceAccountIdsSet.add(eachInvoice.blng__Account__c);
+                        invoiceIdsSet.add(eachInvoice.id);
+                    }
+                }
+                System.debug('SM015_InvoiceServices : afterUpdateCreateCreditNoteAllocation() - invoiceAccountIdsSet'+ invoiceAccountIdsSet );
+                System.debug('SM015_InvoiceServices : afterUpdateCreateCreditNoteAllocation() - invoiceIdsSet'+ invoiceIdsSet);
+                futureUpdateCreateCreditNoteAllocation(invoiceAccountIdsSet,invoiceIdsSet);
             }
         }
-        System.debug('SM015_InvoiceServices : afterUpdateCreateCreditNoteAllocation() - invoiceAccountIdsSet'+ invoiceAccountIdsSet );
-        System.debug('SM015_InvoiceServices : afterUpdateCreateCreditNoteAllocation() - invoiceIdsSet'+ invoiceIdsSet);
-        futureUpdateCreateCreditNoteAllocation(invoiceAccountIdsSet,invoiceIdsSet);
     }
     
     @future(callout=true)
