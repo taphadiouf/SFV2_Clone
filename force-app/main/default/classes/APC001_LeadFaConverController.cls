@@ -215,6 +215,7 @@ public with sharing class APC001_LeadFaConverController{
             System.debug('The following exception has occurred: ' + e.getMessage());
         }
         //Convert the lead
+        update new Lead(id=leadId,LPCR_Tech_BloqueConversion__c=false);
         LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
         Database.LeadConvert lc = new Database.LeadConvert();
         lc.setLeadId(leadId);
@@ -228,6 +229,7 @@ public with sharing class APC001_LeadFaConverController{
         try {
             Database.LeadConvertResult lcr = Database.convertLead(lc); 
         } catch (DmlException e ) {
+            update new Lead(id=leadId,LPCR_Tech_BloqueConversion__c=true);
             throw new AuraHandledException(e.getMessage());
         }        
         //Create a quote for each child (enfant)
