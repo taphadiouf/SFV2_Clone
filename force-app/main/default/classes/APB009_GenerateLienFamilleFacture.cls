@@ -10,8 +10,7 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
     }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        
-        
+
         String query = 'SELECT Id, blng__Account__c ,blng__Account__r.RecordTypeId,LPCR_LiaisonFamilleFacture__c FROM blng__Invoice__c WHERE LPCR_LiaisonFamilleFacture__c=false AND blng__Account__r.RecordTypeId = :accountEntrepriseRTId';
         
         return Database.getQueryLocator(query);
