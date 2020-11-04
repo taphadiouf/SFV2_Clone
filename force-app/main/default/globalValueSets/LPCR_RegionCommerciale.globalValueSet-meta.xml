@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>IDF</fullName>
+        <fullName>Grand Est</fullName>
         <default>false</default>
-        <label>IDF</label>
-    </customValue>
-    <customValue>
-        <fullName>Nord Est</fullName>
-        <default>false</default>
-        <label>Nord Est</label>
+        <label>Grand Est</label>
     </customValue>
     <customValue>
         <fullName>Grand Ouest</fullName>
@@ -16,20 +11,30 @@
         <label>Grand Ouest</label>
     </customValue>
     <customValue>
+        <fullName>Grand Sud</fullName>
+        <default>false</default>
+        <label>Grand Sud</label>
+    </customValue>
+    <customValue>
+        <fullName>IDF Nord</fullName>
+        <default>false</default>
+        <label>IDF Nord</label>
+    </customValue>
+    <customValue>
+        <fullName>IDF Sédentaires</fullName>
+        <default>false</default>
+        <label>IDF Sédentaires</label>
+    </customValue>
+    <customValue>
+        <fullName>IDF Sud</fullName>
+        <default>false</default>
+        <label>IDF Sud</label>
+    </customValue>
+    <customValue>
         <fullName>Rhone Alpes</fullName>
         <default>false</default>
         <label>Rhone Alpes</label>
     </customValue>
-    <customValue>
-        <fullName>PACA</fullName>
-        <default>false</default>
-        <label>PACA</label>
-    </customValue>
-    <customValue>
-        <fullName>LR</fullName>
-        <default>false</default>
-        <label>LR</label>
-    </customValue>
     <masterLabel>Région commerciale</masterLabel>
-    <sorted>false</sorted>
+    <sorted>true</sorted>
 </GlobalValueSet>
