@@ -88,7 +88,12 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
         }
         
         if(billingPlanMap.size() > 0){
-            insert billingPlanMap.values();
+            try {
+                insert billingPlanMap.values();
+                PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert success of Billing Plan lines : ' + billingPlanMap.values());
+            } catch (Exception e) {
+                PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert Error of Billing Plan lines : ' + e.getMessage()+ '|Line :' + e.getLineNumber());
+            }
         }
         
         // construct a map of Billing Transaction
@@ -173,7 +178,7 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
         if (rpBillingPlanMap.size() > 0) {
             try {
                 insert rpBillingPlanMap.values();
-                
+                PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert success of Billing Plan lines : ' + rpBillingPlanMap.values());
                 for (LPCR_LignePlanFacturation__c eachBPLine : tmpBillingPlanLineList){
 
                     if (rpBillingPlanMap.containsKey(eachBPLine.LPCR_OrderItem__c)){
@@ -184,6 +189,7 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
                 }
             }catch(Exception ex){
                 System.debug('*** Exception : '+ ex.getMessage());
+                PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert Error of Billing Plan lines : ' + ex.getMessage()+ '|Line :' + ex.getLineNumber());
             }
         }
         
@@ -191,8 +197,9 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
         if(billingPlanLineList.size() > 0){
             try{
                 insert billingPlanLineList;
+                PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert success of Billing Plan lines : ' + billingPlanLineList);
             }catch(Exception ex){
-                System.debug('*** Exception : '+ ex.getMessage());
+                PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert Error of Billing Plan lines : ' + ex.getMessage() + '|Line :' + ex.getLineNumber());
             }
         }
         
@@ -200,8 +207,9 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
         if(scope.size() > 0){
             try{
                 update scope;
+                PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Update Success of Order items : ' + scope);
             }catch(Exception ex){
-                System.debug('*** Exception : '+ ex.getMessage());
+                PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Update Error of Order items : ' + ex.getMessage() + '|Line :' + ex.getLineNumber());
             }
         }
         
