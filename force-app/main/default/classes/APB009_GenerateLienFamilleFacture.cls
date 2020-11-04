@@ -43,9 +43,8 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                                                         }    
                                                         mapOfInvoiceLine.get(eachInvoiceLine.blng__OrderProduct__r.SBQQ__Contract__c).add(eachInvoiceLine);
                                                     }
-        System.debug('>> APB009_GenerateLienFamilleFacture, execute : mapOfInvoiceLine size '+ mapOfInvoiceLine.size());
-        System.debug('>> APB009_GenerateLienFamilleFacture, execute : mapOfInvoiceLine '+ mapOfInvoiceLine);
-            
+        PAD.log('APB009_GenerateLienFamilleFacture','execute','mapOfInvoiceLine size '+ mapOfInvoiceLine.size());
+        PAD.log('APB009_GenerateLienFamilleFacture','execute','mapOfInvoiceLine '+ mapOfInvoiceLine);
         Map<Id,Integer> mapNumberProdForInvoice = new Map<Id,Integer>();
         
         
@@ -53,8 +52,8 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
         Date minStartDates = UM003_TypeManager.getMinMaxOfListObjectsDate(listOfInvoiceLine,'blng__StartDate__c')[0];
         Date maxEndDates = UM003_TypeManager.getMinMaxOfListObjectsDate(listOfInvoiceLine,'blng__EndDate__c')[1];
         
-        System.debug('>> APB009_GenerateLienFamilleFacture, execute : minStartDates '+ minStartDates);
-        System.debug('>> APB009_GenerateLienFamilleFacture, execute : maxEndDates '+ maxEndDates);   
+        PAD.log('APB009_GenerateLienFamilleFacture','execute' , 'minStartDates '+ minStartDates);
+        PAD.log('APB009_GenerateLienFamilleFacture','execute', 'maxEndDates '+ maxEndDates);   
         
         List<Contract> listOfContractB2C = [SELECT Id,LPCR_Creche__c,LPCR_DateFin__c,LPCR_DateDebut__c,AccountId,LPCR_ContractEntreprise__c,LPCR_ContractEntreprise__r.AccountId
                                             FROM Contract 
@@ -64,7 +63,7 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                                             RecordTypeId = :contratB2CRTId AND
                                             LPCR_ContractEntreprise__r.AccountId IN :invoiceAccountIds ];
         
-        System.debug('>> APB009_GenerateLienFamilleFacture, execute : listOfContractB2C'+ listOfContractB2C);
+        PAD.log(' APB009_GenerateLienFamilleFacture','execute','listOfContractB2C'+ listOfContractB2C);
         
         List<LPCR_LienFamilleFacture__c> listOfLienFamilleFactureFromBD = [SELECT Id,LPCR_Facture__c,LPCR_LigneFacture__c,LPCR_ContratFamille__c,LPCR_ContratEntreprise__c
                                                                            FROM LPCR_LienFamilleFacture__c 
@@ -76,9 +75,9 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
         LPCR_LienFamilleFacture__c lienFamilleFacture = new LPCR_LienFamilleFacture__c();
         
         for(Contract eachContract : listOfContractB2C){
-            System.debug('>> APB009_GenerateLienFamilleFacture, execute : eachContract'+ eachContract);
+            PAD.log('APB009_GenerateLienFamilleFacture','execute','eachContract'+ eachContract);
             for(blng__InvoiceLine__c eachInvoiceLine : mapOfInvoiceLine.get(eachContract.LPCR_ContractEntreprise__c)){
-                System.debug('>> APB009_GenerateLienFamilleFacture, execute : eachInvoiceLine'+ eachInvoiceLine);
+                PAD.log('APB009_GenerateLienFamilleFacture','execute','eachInvoiceLine'+ eachInvoiceLine);
                 
                 if(  eachContract.LPCR_ContractEntreprise__r.AccountId != null && eachInvoiceLine.blng__Invoice__r.blng__Account__c== eachContract.LPCR_ContractEntreprise__r.AccountId 
                    && eachInvoiceLine.LPCR_Creche__c == eachContract.LPCR_Creche__c && eachContract.LPCR_Creche__c!=null){
@@ -105,8 +104,8 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                    }
             }
         }
-        System.debug('>> APB009_GenerateLienFamilleFacture, execute : listOfLienFamilleFacture size '+ listOfLienFamilleFacture.size());
-        System.debug('>> APB009_GenerateLienFamilleFacture, execute : listOfLienFamilleFacture '+ listOfLienFamilleFacture);
+        PAD.log('APB009_GenerateLienFamilleFacture','execute ','listOfLienFamilleFacture size '+ listOfLienFamilleFacture.size());
+        PAD.log('APB009_GenerateLienFamilleFacture','execute ','listOfLienFamilleFacture '+ listOfLienFamilleFacture);
         
         Map<Id,Integer> mapNumberLienFamilleFactureForInvoice = new Map<Id,Integer>();
         for(LPCR_LienFamilleFacture__c eachLienFamFac : listOfLienFamilleFacture){
@@ -159,6 +158,7 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                 //schedule this same schedulable class again in 30 mins
 
                 Id schedId = System.Schedule('APB009_GenerateLienFamilleFacture'+timeForScheduler,timeForScheduler,new APB009_GenerateLienFamilleFacture());
+                PAD.log('APB009_GenerateLienFamilleFacture','execute','Batch scheduled in 30 minutes : '+timeForScheduler);
             }
         }  
         
