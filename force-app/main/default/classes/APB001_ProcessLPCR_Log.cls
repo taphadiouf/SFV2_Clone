@@ -29,6 +29,7 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject>, Sche
                 eachLog.LPCR_Result__c = 'Purged';
             }
             update lstPurgedDoc;
+            PAD.log('APB001_ProcessLPCR_Log', 'execute', 'The documents are deleted successfully');
         }else{
             PAD.log('APB001_ProcessLPCR_Log', 'execute', 'The documents are not deleted');
         }
