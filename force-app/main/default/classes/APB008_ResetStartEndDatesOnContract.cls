@@ -27,6 +27,8 @@ global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<s
         for (Contract eachContract : listOfContract) {
             eachContract.LPCR_DateDebut__c =eachContract.LPCR_DateFin__c.addDays(1);
             eachContract.LPCR_DateFin__c=eachContract.LPCR_DateDebut__c.addDays(Integer.valueOf(eachContract.LPCR_DureeContratJour__c)); 
+            PAD.log('APB008_ResetStartEndDatesOnContract','execute','set LPCR_DateDebut__c value to ' + eachContract.LPCR_DateDebut__c + ' for contract ' + eachContract);
+            PAD.log('APB008_ResetStartEndDatesOnContract','execute','set LPCR_DateFin__c value to ' + eachContract.LPCR_DateFin__c + ' for contract ' + eachContract);
         }
         
         update listOfContract;        
@@ -53,6 +55,7 @@ global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<s
                 //schedule this same schedulable class again in 30 mins
                 String timeForScheduler = Datetime.now().addMinutes(30).format('s m H d M \'?\' yyyy');// i.e. 30 mins
                 Id schedId = System.Schedule('APB008_ResetStartEndDatesOnContract'+timeForScheduler,timeForScheduler,new APB008_ResetStartEndDatesOnContract());
+                PAD.log('APB008_ResetStartEndDatesOnContract','execute','Scheduling the batch in 30 minutes : ' + timeForScheduler);
             }
         }  
         
