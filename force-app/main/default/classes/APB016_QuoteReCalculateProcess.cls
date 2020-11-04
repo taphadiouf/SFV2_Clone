@@ -26,9 +26,9 @@ global class APB016_QuoteReCalculateProcess implements Database.Batchable<sObjec
         }
         try{
             // update QLI for autometiclly perform re-calculation
-            PAD.log('APB016_QuoteReCalculateProcess', 'execute','updateQLIList : '+updateQLIList );
             update updateQLIList;
-        }catch(Exception ex){ PAD.log('APB016_QuoteReCalculateProcess', 'execute','Exception : '+ex.getMessage() );
+            PAD.log('APB016_QuoteReCalculateProcess', 'execute','Update success of Quote lines list : ' + updateQLIList );
+        }catch(Exception ex){ PAD.log('APB016_QuoteReCalculateProcess', 'execute','Update error of Quote lines. Err Msg :' + ex.getMessage() );
         }        
                 
     }
@@ -56,6 +56,7 @@ global class APB016_QuoteReCalculateProcess implements Database.Batchable<sObjec
             } else {
                 //schedule this same schedulable class again in 2 mins
                 Id schedId = System.Schedule('APB016_QuoteReCalculateProcess'+timeForScheduler,timeForScheduler,new APB016_QuoteReCalculateProcess());
+                PAD.log('APB016_QuoteReCalculateProcess', 'execute','Scheduling the batch in 30 minutes : ' + dtime );  
             }
         }  
         
