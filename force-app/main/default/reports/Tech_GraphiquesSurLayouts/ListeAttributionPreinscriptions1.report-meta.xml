@@ -20,7 +20,7 @@
     <columns>
         <field>LPCR_Preinscription__c$LPCR_Creche__c</field>
     </columns>
-     <columns>
+    <columns>
         <field>LPCR_Preinscription__c$LPCR_Jumeaux__c</field>
     </columns>
     <columns>
@@ -69,10 +69,12 @@
     <filter>
         <criteriaItems>
             <column>LPCR_Preinscription__c$LPCR_CompteEntreprise__c.Id</column>
+            <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value></value>
+            <value/>
         </criteriaItems>
+        <language>fr</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
