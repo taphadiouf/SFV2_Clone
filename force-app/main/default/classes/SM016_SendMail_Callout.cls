@@ -7,7 +7,7 @@ public with sharing class SM016_SendMail_Callout {
     
     public static HttpResponse sendMailCallout(String from1, String to, String subject, String body, Set<String> docsId) {
         String errorMsg;
-        HttpResponse res;
+        HttpResponse res = new HttpResponse();
         try {
             Http h = new Http();
             HttpRequest req = new HttpRequest();
@@ -48,14 +48,14 @@ public with sharing class SM016_SendMail_Callout {
     		errorMsg = String.valueOf(e);
         }
         finally {
-            if (errorMsg != '') {
-                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_REF_SENDMAIL,'SM016_SendMail_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+            if (String.isNotBlank(errorMsg)) {
+                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_REF_SENDMAIL,'SM016_SendMail_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
             }
-            if (res.getStatusCode() == 200) {
-                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_REF_SENDMAIL, 'SM016_SendMail_Callout', 'Callout', from1, 'statusCode:' + res.getStatusCode() + ' - From:' + from1 + ' - To:' + to + ' - Subject:' + subject , UM010_Constant.SUCCESS);           
-            } else {
-                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_REF_SENDMAIL, 'SM016_SendMail_Callout', 'Callout', from1,  'Exception:' + res.getStatusCode() + ' - statusCode:' + res.getStatusCode() + ' - From:' + from1 + ' - To:' + to + ' - Subject:' + subject, UM010_Constant.ERROR);
-            }
+                if (res.getStatusCode() == 200) {
+                	UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_REF_SENDMAIL, 'SM016_SendMail_Callout', 'Callout', from1, 'statusCode:' + res.getStatusCode() + ' - From:' + from1 + ' - To:' + to + ' - Subject:' + subject , UM010_Constant.SUCCESS);           
+            	} else {
+                	UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_REF_SENDMAIL, 'SM016_SendMail_Callout', 'Callout', from1,  'Exception:' + res.getStatusCode() + ' - statusCode:' + res.getStatusCode() + ' - From:' + from1 + ' - To:' + to + ' - Subject:' + subject, UM010_Constant.ERROR);
+            	}
             
         }
 

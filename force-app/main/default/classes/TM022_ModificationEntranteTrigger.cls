@@ -3,12 +3,12 @@
 * @created 15/05/2020
 * @description Trigger action handler on LPCR_ModificationEntrante__c Object
 */
-public class TM012_ModificationEntranteTrigger extends TM000_TriggerHandler{
+public class TM022_ModificationEntranteTrigger extends TM000_TriggerHandler{
 	private Map<Id, LPCR_ModificationEntrante__c> newModificationsentrantesMap;
     private Map<Id, LPCR_ModificationEntrante__c> oldModificationsentrantesMap;
     private List<LPCR_ModificationEntrante__c> newModificationsentrantesList;
     
-    public TM012_ModificationEntranteTrigger() {
+    public TM022_ModificationEntranteTrigger() {
         this.newModificationsentrantesMap = (Map<Id, LPCR_ModificationEntrante__c>) Trigger.newMap;
         this.oldModificationsentrantesMap = (Map<Id, LPCR_ModificationEntrante__c>) Trigger.oldMap;
         this.newModificationsentrantesList = (List<LPCR_ModificationEntrante__c>) Trigger.new;

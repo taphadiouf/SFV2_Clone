@@ -4,8 +4,7 @@
         <calculatedFormula>IF(SBQQ__Quote__c.LPCR_Creche__c.LPCR_AgrementTotal__c:AVG=0,0,SBQQ__Quote__c.Id:UNIQUE/SBQQ__Quote__c.LPCR_Creche__c.LPCR_AgrementTotal__c:AVG)</calculatedFormula>
         <datatype>percent</datatype>
         <developerName>FORMULA1</developerName>
-        <downGroupingContext>SBQQ__Quote__c$LPCR_Creche__c</downGroupingContext>
-        <isActive>true</isActive>
+        <isActive>false</isActive>
         <isCrossBlock>false</isCrossBlock>
         <masterLabel>Taux Occupation</masterLabel>
         <scale>2</scale>
@@ -14,10 +13,18 @@
         <calculatedFormula>IF(SBQQ__Quote__c.LPCR_NombreAgrmentCrcheSurSection__c:AVG=0,0,RowCount/SBQQ__Quote__c.LPCR_NombreAgrmentCrcheSurSection__c:AVG)</calculatedFormula>
         <datatype>percent</datatype>
         <developerName>FORMULA2</developerName>
-        <downGroupingContext>SBQQ__Quote__c$LPCR_Section__c</downGroupingContext>
-        <isActive>true</isActive>
+        <isActive>false</isActive>
         <isCrossBlock>false</isCrossBlock>
         <masterLabel>Taux Occupation Section</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>SBQQ__Quote__c.LPCR_Creche__c.LPCR_AgrementTotal__c:SUM-CDF1:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA3</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Agrément - ETP</masterLabel>
         <scale>2</scale>
     </aggregates>
     <chart>
@@ -25,18 +32,21 @@
         <backgroundColor2>#FFFFFF</backgroundColor2>
         <backgroundFadeDir>Diagonal</backgroundFadeDir>
         <chartSummaries>
+            <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>FORMULA1</column>
+            <column>CDF1</column>
         </chartSummaries>
-        <chartType>HorizontalBar</chartType>
+        <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>SBQQ__Quote__c$LPCR_Creche__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>SBQQ__Quote__c$LPCR_StatutInscription__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>true</showValues>
+        <showValues>false</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -44,26 +54,18 @@
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
-    <columns>
-        <field>SBQQ__Quote__c$LPCR_StatutInscription__c</field>
-    </columns>
+    <colorRanges>
+        <columnName>FORMULA3</columnName>
+        <highColor>#FFFFFF</highColor>
+        <lowBreakpoint>0.0</lowBreakpoint>
+        <lowColor>#E74340</lowColor>
+        <midColor>#3AE867</midColor>
+    </colorRanges>
     <columns>
         <field>SBQQ__Quote__c$SBQQ__Status__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c$Name</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$SBQQ__Account__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$LPCR_ContractEntreprise__c.Account</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$LPCR_ContactRepresentant1__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$LPCR_ContactEnfant__c</field>
     </columns>
     <columns>
         <field>SBQQ__Quote__c$LPCR_ContactEnfant__c.Birthdate</field>
@@ -81,14 +83,13 @@
         <field>SBQQ__Quote__c$LPCR_PlanningEnfant__c.LPCR_MoyenneHeuresSemaine__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c$LPCR_PlanningEnfant__c.LPCR_MoyenneJoursSemaine__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c$LPCR_Creche__c.LPCR_AgrementTotal__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c$LPCR_Creche__c.LPCR_Agrment120__c</field>
     </columns>
     <columns>
@@ -103,7 +104,7 @@
         <scale>2</scale>
     </customDetailFormulas>
     <filter>
-        <booleanFilter>1 OR (2 AND 3)</booleanFilter>
+        <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <column>SBQQ__Quote__c$RecordType</column>
             <columnToColumn>false</columnToColumn>
@@ -112,22 +113,30 @@
             <value>SBQQ__Quote__c.Accueil,SBQQ__Quote__c.Accueil_Approuve</value>
         </criteriaItems>
         <criteriaItems>
-            <column>SBQQ__Quote__c$LPCR_Option__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>SBQQ__Quote__c$SBQQ__Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Brouillon,Draft,Envoi directrice,Validé directrice,Prêt à envoyer,Envoyé pour signature,Signé,Prêt pour commande,Actif,In Review,Approved</value>
+            <operator>notEqual</operator>
+            <value>,Brouillon,Draft,Annulé,Terminé</value>
         </criteriaItems>
         <language>fr</language>
     </filter>
     <format>Summary</format>
+    <formattingRules>
+        <columnName>FORMULA3</columnName>
+        <values>
+            <backgroundColor>#E74340</backgroundColor>
+            <rangeUpperBound>0.0</rangeUpperBound>
+        </values>
+        <values>
+            <backgroundColor>#3AE867</backgroundColor>
+        </values>
+    </formattingRules>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>SBQQ__Quote__c$LPCR_Creche__c.LPCR_RegionCommerciale__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>SBQQ__Quote__c$LPCR_Creche__c</field>
@@ -135,15 +144,10 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>SBQQ__Quote__c$LPCR_Section__c</field>
+        <field>SBQQ__Quote__c$LPCR_StatutInscription__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>SBQQ__Quote__c$LPCR_TypeBerceau__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>Analyse remplissage crèche Total</name>
+    <name>Tableau des ETP</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -153,6 +157,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>CDF1</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

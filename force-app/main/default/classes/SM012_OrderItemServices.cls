@@ -8,6 +8,20 @@ public with sharing class SM012_OrderItemServices implements Queueable{
     public SM012_OrderItemServices(List<OrderItem> listOrderItem) {
         this.listOrderItem = listOrderItem;
     }
+
+    public static void enqueueJob(List<OrderItem> newOrderItemsList){
+        List<OrderItem> orderItemToProcess = new List<OrderItem> ();
+        for(OrderItem oi : newOrderItemsList){
+            if(oi.blng__LegalEntity__c == null){
+                orderItemToProcess.add(oi);
+            }
+        }
+        if (orderItemToProcess.size() > 0) {
+            SM012_OrderItemServices job = new SM012_OrderItemServices(newOrderItemsList);
+            ID jobID = System.enqueueJob(job);
+        }
+    }
+
     public void execute(QueueableContext context) {
         SM012_OrderItemServices.setLegalEntityOnOrderItem(this.listOrderItem);
     }

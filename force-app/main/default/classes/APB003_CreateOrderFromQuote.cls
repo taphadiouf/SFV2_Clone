@@ -53,7 +53,8 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
     global void execute(SchedulableContext sc) {
         PAD.log('APB003_CreateOrderFromQuote', 'execute','sc ');     
         APB003_CreateOrderFromQuote sc1 = new APB003_CreateOrderFromQuote();
-        
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB003_CreateOrderFromQuote');
         
@@ -66,10 +67,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB003_CreateOrderFromQuote();
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB003_CreateOrderFromQuote'+timeForScheduler,timeForScheduler,sc1);
+                Id schedId = System.Schedule('APB003_CreateOrderFromQuote'+timeForScheduler,timeForScheduler,new APB003_CreateOrderFromQuote());
             }
         }  
         

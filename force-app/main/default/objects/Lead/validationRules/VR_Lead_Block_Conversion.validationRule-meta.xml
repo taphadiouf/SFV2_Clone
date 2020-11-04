@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Lead_Block_Conversion</fullName>
+    <active>true</active>
+    <description>For lead famille, block the conversion if not initialized from the quick action &apos;Convertir&apos;</description>
+    <errorConditionFormula>AND(  ISPICKVAL(Status, &quot;Converti&quot;)
+     ,
+       LPCR_Tech_BloqueConversion__c = true
+     ,
+       RecordType.DeveloperName = &apos;Famille&apos;
+)</errorConditionFormula>
+    <errorMessage>Merci d&apos;utiliser le bouton &apos;Convertir&apos; pour passer à l&apos;étape suivante</errorMessage>
+</ValidationRule>

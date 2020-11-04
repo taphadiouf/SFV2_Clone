@@ -38,7 +38,8 @@ global class APB013_ProcessYearlyOrderProduct implements Database.Batchable<sObj
     }
     
     global void execute(SchedulableContext sc) {
-        
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         APB013_ProcessYearlyOrderProduct sc1 = new APB013_ProcessYearlyOrderProduct();
         
         // schedule the apex class only if their is not existing job running
@@ -53,10 +54,8 @@ global class APB013_ProcessYearlyOrderProduct implements Database.Batchable<sObj
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB013_ProcessYearlyOrderProduct();
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB013_ProcessYearlyOrderProduct'+timeForScheduler,timeForScheduler,sc1);
+
+                Id schedId = System.Schedule('APB013_ProcessYearlyOrderProduct'+timeForScheduler,timeForScheduler,new APB013_ProcessYearlyOrderProduct());
             }
         }  
         
