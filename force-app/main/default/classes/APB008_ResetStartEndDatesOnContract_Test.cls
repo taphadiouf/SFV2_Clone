@@ -18,6 +18,7 @@ public class APB008_ResetStartEndDatesOnContract_Test {
             'SBQQ__RenewalModel__c' => 'Contract Based'
         };
         Account b2bAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
+        b2bAccount.LPCR_PasDeSIRET__c = true;
         insert b2bAccount;
 
         Contract contract = UM002_TestDataFactory.createContract(b2bAccount.Id);
