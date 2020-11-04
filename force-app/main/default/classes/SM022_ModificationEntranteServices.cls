@@ -368,8 +368,8 @@ public with sharing class SM022_ModificationEntranteServices {
                 updateAccount.LPCR_Commentaire__c = eachModifEntrante.LPCR_Commentaire__c;
                 allAccountUpdateList.add(updateAccount);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('Abscence'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
-                blng__Usage__c newUsage = createBlngUsage(eachModifEntrante,'Heures','Abscence',evenementMap.get(eachModifEntrante.LPCR_Evenement__c));
+            }else if('Absence'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
+                blng__Usage__c newUsage = createBlngUsage(eachModifEntrante,'Heures','Absence',evenementMap.get(eachModifEntrante.LPCR_Evenement__c));
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }else if('Validation Contrat Directrice'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null ){

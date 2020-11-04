@@ -29,6 +29,7 @@ public class TM009_ContractTrigger extends TM000_TriggerHandler{
     protected override void beforeUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM010_ContractServices.setContractFields(oldContractMap,newContractMap);
+            SM010_ContractServices.setRenewalContractFields(this.newContractMap,this.oldContractMap);
         }
     }
 

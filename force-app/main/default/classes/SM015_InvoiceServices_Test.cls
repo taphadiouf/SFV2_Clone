@@ -36,6 +36,8 @@ public class SM015_InvoiceServices_Test {
                 'blng__RevenueRecognitionRule__c' => revRecRule.Id,
                 'blng__TaxRule__c' => taxRule.Id,
                 'SBQQ__SubscriptionPricing__c' => 'Fixed Price',
+                'SBQQ__ChargeType__c' => 'One-Time',
+                'SBQQ__SubscriptionType__c' => 'Renewable',
                 'SBQQ__SubscriptionTerm__c' => 12,
                 'ProductCode' => Label.LPCR_RegistrationFeeMac
                 };
@@ -87,7 +89,8 @@ public class SM015_InvoiceServices_Test {
                 'SBQQ__RenewalUpliftRate__c' => 10
                 };
                     
-                    SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+        SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+        quote.LPCR_Creation_conforme__c = true;
         insert quote;
         
         Integer price = 200;
@@ -113,15 +116,42 @@ public class SM015_InvoiceServices_Test {
                     SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
         insert quoteLine;
         
+        blng__CreditNote__c creditNote = new blng__CreditNote__c();
+        creditNote.blng__Account__c = account.Id;
+        creditNote.blng__Status__c = 'Draft';
+        creditNote.blng__CreditNoteSourceAction__c = 'Manual';
+        creditNote.blng__EffectiveTaxDate__c = date.today();
+        creditNote.blng__CreditNoteDate__c = date.today();
+        insert creditNote;
+        
+        blng__CreditNoteLine__c cnLine = new blng__CreditNoteLine__c();
+        cnLine.blng__CreditNote__c = creditNote.id;
+        cnLine.blng__CreditNoteLineDate__c = date.today();
+        cnLine.blng__Status__c = 'Draft';
+        cnLine.blng__Product__c = prod.Id;
+        cnLine.blng__Subtotal__c = 200;
+        
+        insert cnLine;
+                
         Map<String, Object> defaultVals = new Map<String, Object> {
             'RecordTypeId' => COMPTE_Famille,
                 'Name' => 'Test-B2C',
                 'SBQQ__RenewalModel__c' => 'Contract Based'
                 };
                     Account accountFamille =(Account) UM002_TestDataFactory.createSObject('Account', defaultVals);
-        insert accountFamille;
+        insert accountFamille;               
         
-        
+        defaultVal = new Map<String, Object> {
+            'RecordTypeId' => CRECHE_RT_ID,
+                'Name' => 'Creche',
+                'LPCR_TypeCreche__c' => 'MAC',
+                'LPCR_Region__c' => 'Paris',
+                'LPCR_TypeMensualisation__c' => 11 
+                };
+                    
+        Account crecheAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
+        crecheAccount.LPCR_TypeCreche__c = 'MICRO';
+        insert crecheAccount;
         
         Id standardPricebookId = Test.getStandardPricebookId();
         
@@ -129,59 +159,53 @@ public class SM015_InvoiceServices_Test {
         order.Pricebook2Id = standardPricebookId;
         insert order;
         
-        OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(priceBookEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
+        OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(priceBookEntry.id, order.Id, prod.id, 'Recurring','Monthly', 300);
         insert orderItem;
         
         Contract contract = UM002_TestDataFactory.createContract(accountFamille.Id,order.Id);
-        insert contract;
-        
-        
+        insert contract;        
         
         List<blng__InvoiceRun__c> invoiceRunsList = UM002_TestDataFactory.createInvoiceRuns(1,'Execution de Facture',date.newInstance(System.Today().year(), 10, 02));
         insert invoiceRunsList;
         
         blng__InvoiceRun__c invoiceRun = invoiceRunsList.get(0);
         
-        
-        
-        
         LPCR_ModificationEntrante__c modificationEntrante = UM002_TestDataFactory.createModificationsEntrante('Conges_Pris_Periode',accountFamille.Id,null,contract.id,null);
         modificationEntrante.LPCR_Quantite__c = 10;
         insert modificationEntrante;
         
-        
-        
-        List<blng__Invoice__c> invoicesList = UM002_TestDataFactory.createInvoices(1,accountFamille.id,invoiceRun.id,'Posted','A Envoyer' );
-        system.debug('invoicesListaaaa'+invoicesList);
+        List<blng__Invoice__c> invoicesList = UM002_TestDataFactory.createInvoices(1,accountFamille.id,invoiceRun.id,'Draft','A Envoyer' );
         insert invoicesList;
         
         blng__Invoice__c invoice = invoicesList.get(0);
-        
-        
+               
         blng__InvoiceLine__c invoiceLineList = UM002_TestDataFactory.createInvoiceLine(invoice.id,orderItem.Id);
-        invoiceLineList.blng__InvoiceLineStatus__c = 'Posted';
+        invoiceLineList.blng__InvoiceLineStatus__c = 'Draft';
         invoiceLineList.blng__UnitPrice__c = 150;
         invoiceLineList.blng__Quantity__c =3;
         invoiceLineList.blng__Product__c = prod.id;
         invoiceLineList.blng__StartDate__c = System.today();
         invoiceLineList.blng__ChargeType__c = 'Recurring';
         invoiceLineList.blng__BillingFrequency__c = 'Annual';
+        invoiceLineList.blng__Subtotal__c = 200;
         insert invoiceLineList;
-        
+    
     }
     
     @isTest
     public static void createPaymentAndPaymentAllocation_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
-            Test.startTest();
+            
             Product2 prod = [SELECT Id FROM Product2 LIMIT 1];
             PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
             
             SBQQ__Quote__c  quote = [SELECT Id,SBQQ__Ordered__c From SBQQ__Quote__c LIMIT 1];
             SBQQ__QuoteLine__c quoteLine = [SELECT Id From SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = :quote.Id];
-            
+            Test.startTest();
             quote.SBQQ__Ordered__c  = true;     
             update quote; 
+            
+            
             
             Order order = Database.query('SELECT Id , Status FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');            
             List<OrderItem> orderItems = [SELECT Id,SBQQ__DefaultSubscriptionTerm__c  FROM OrderItem WHERE OrderID = :order.Id];
@@ -192,6 +216,7 @@ public class SM015_InvoiceServices_Test {
             update orderItems;
             order.Status='Activated';
             update order;
+            
             order.SBQQ__Contracted__c =true;
             update order;
             order.blng__BillNow__c=true;
@@ -201,14 +226,15 @@ public class SM015_InvoiceServices_Test {
             invoice.LPCR_StatutPaiement__c = true;
             update invoice;
             List<blng__InvoiceLine__c> listInvoiceLine = [SELECT Id,blng__Balance__c from blng__InvoiceLine__c];
-            
+ 
+            Test.stopTest();
+
             List<blng__Payment__c> listPayment = [SELECT Id, blng__Invoice__c FROM blng__Payment__c ];
             System.assertNotEquals(0,listPayment.size(), 'Error in SM015_InvoiceServices_Test : blng__Payment__c not created');
             
             List<blng__PaymentAllocationInvoiceLine__c> listAllocationInvoiceLine = [SELECT Id, blng__InvoiceLine__c FROM blng__PaymentAllocationInvoiceLine__c ];
             System.assertNotEquals(0,listAllocationInvoiceLine.size(), 'Error in SM015_InvoiceServices_Test : blng__PaymentAllocationInvoiceLine__c not created');
             
-            Test.stopTest();
             
         }
     }
@@ -279,68 +305,103 @@ Test.stopTest();
     }
     
     @isTest
-    public static void afterUpdateCreateCreditNoteAllocation_Test(){
+    public static void setFieldsOnInvoicee_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            Account creche = [Select Id from Account Where recordTypeId =: CRECHE_RT_ID Limit 1];
+            
+            Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+            insert cont;
+            
+            Order order = [Select Id,LPCR_ContactEnfant__c,LPCR_Creche__c From Order Limit 1];
+            order.LPCR_ContactEnfant__c = cont.Id;
+            order.LPCR_Creche__c = creche.id;
+            Update Order;
+            
+            blng__Invoice__c invoice = [Select Id,LPCR_Commentaire__c from blng__Invoice__c Limit 1];
+
+            invoice.LPCR_Commentaire__c   ='test' ;            
+            update invoice;
+           
+            blng__Invoice__c updatedInvoiceList = [Select Id,LPCR_ContactEnfant__c,LPCR_Creche__c from blng__Invoice__c Limit 1];
+            system.assertEquals(cont.id, updatedInvoiceList.LPCR_ContactEnfant__c,'Error');
+            system.assertEquals(creche.id, updatedInvoiceList.LPCR_Creche__c,'Error');
+            Test.stopTest();           
+        }
+    }
+    
+    @isTest
+    public static void afterUpdateCreateCreditNoteAllocation_Test(){
+        User user = UM002_TestDataFactory.createUser();
+        PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'LPCR_Admin'];
+        insert new PermissionSetAssignment(AssigneeId = user.id, PermissionSetId = ps.Id);
+        System.runAs(user){
+            
             
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account   LIMIT 1];
             
             Product2 prod = [SELECT Id FROM Product2 LIMIT 1];
             PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
             
-            SBQQ__Quote__c  quote = [SELECT Id,SBQQ__Ordered__c From SBQQ__Quote__c LIMIT 1];
+            SBQQ__Quote__c  quote = [SELECT Id,SBQQ__Ordered__c,SBQQ__Account__c,SBQQ__Opportunity2__c From SBQQ__Quote__c LIMIT 1];
             SBQQ__QuoteLine__c quoteLine = [SELECT Id From SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = :quote.Id];
-            
+            Test.startTest();
             quote.SBQQ__Ordered__c  = true;     
             update quote; 
             
-            Order order = Database.query('SELECT Id , Status FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');            
+           
+            
+            Order order = [SELECT Id , Status FROM Order WHERE SBQQ__Quote__c  =: quote.Id LIMIT 1];            
             List<OrderItem> orderItems = [SELECT Id,SBQQ__DefaultSubscriptionTerm__c  FROM OrderItem WHERE OrderID = :order.Id];
+            
             for(OrderItem eachOrderItem : orderItems){
                 eachOrderItem.SBQQ__DefaultSubscriptionTerm__c=1;
                 eachOrderItem.blng__LegalEntity__c=UM002_TestDataFactory.setupLegalEntity().Id;
             }
+            
             update orderItems;
             order.Status='Activated';
-            update order;
-            order.SBQQ__Contracted__c =true;
-            update order;
-            order.blng__BillNow__c=true;
-            update order;
+            update order;           
             
-            blng__Invoice__c invoice = [SELECT Id, blng__order__c FROM blng__Invoice__c WHERE blng__order__c = :order.Id LIMIT 1];
-            invoice.LPCR_StatutPaiement__c = true;
+            Contract contract = UM002_TestDataFactory.createContract(quote.SBQQ__Account__c,order.Id);
+            insert contract;
+            
+            LPCR_ModificationEntrante__c modificationEntrante = UM002_TestDataFactory.createModificationsEntrante('Conges_Pris_Periode',quote.SBQQ__Account__c,null,contract.id,null);
+            modificationEntrante.LPCR_Quantite__c = 10;
+            insert modificationEntrante;
+            
+            List<blng__InvoiceRun__c> invoiceRunsList = UM002_TestDataFactory.createInvoiceRuns(1,'Execution de Facture',date.newInstance(System.Today().year(), 10, 02));
+            insert invoiceRunsList;
+            
+            blng__InvoiceRun__c invoiceRun = invoiceRunsList.get(0);
+            
+            List<blng__Invoice__c> invoicesList = UM002_TestDataFactory.createInvoices(1,quote.SBQQ__Account__c,invoiceRun.id,'Draft','A Envoyer' );
+            insert invoicesList;
+            
+            blng__Invoice__c invoice = invoicesList.get(0);           
+            
+            blng__InvoiceLine__c invoiceLineList = UM002_TestDataFactory.createInvoiceLine(invoice.id,orderItems.get(0).Id);
+            invoiceLineList.blng__InvoiceLineStatus__c = 'Draft';
+            invoiceLineList.blng__UnitPrice__c = 150;
+            invoiceLineList.blng__Quantity__c =3;
+            invoiceLineList.blng__Product__c = prod.id;
+            invoiceLineList.blng__StartDate__c = System.today();
+            invoiceLineList.blng__ChargeType__c = 'Recurring';
+            invoiceLineList.blng__BillingFrequency__c = 'Annual';
+            invoiceLineList.blng__Subtotal__c = 200;
+            insert invoiceLineList;  
+            
             invoice.blng__InvoiceStatus__c = 'Posted';
             update invoice;
-            
-            List<blng__InvoiceLine__c> listInvoiceLine = [SELECT Id,blng__Balance__c from blng__InvoiceLine__c];
-            
-            blng__CreditNote__c creditNote = new blng__CreditNote__c();
-            creditNote.blng__Account__c = acc.id;
-            creditNote.blng__Status__c = 'Draft';
-            creditNote.blng__CreditNoteSourceAction__c = 'Manual';
-            creditNote.blng__EffectiveTaxDate__c = System.today();
-            creditNote.blng__CreditNoteDate__c = date.today();
-            creditNote.blng__RelatedInvoice__c = invoice.id;       
-            insert creditNote;
-            
-            blng__CreditNoteLine__c cnLine = new blng__CreditNoteLine__c();
-            cnLine.blng__CreditNote__c = creditNote.id;
-            cnLine.blng__Status__c = 'Draft';
-            cnLine.blng__InvoiceLine__c = listInvoiceLine.get(0).Id;
-            cnLine.blng__Product__c = prod.Id;
-            cnLine.blng__TotalAmount__c = 100;
-            
-            insert cnLine;
-            cnLine.blng__Status__c = 'Posted';
-            update cnLine;
-            
-            creditNote.blng__Status__c = 'Posted';
-            update creditNote;
+            blng__CreditNote__c cn = [select id,blng__Account__c,blng__Status__c,blng__TaxErrorMessage__c from blng__CreditNote__c limit 1];
+            cn.blng__Status__c = 'Posted';
+            Update cn;
             
             Test.stopTest();
-            List<blng__CreditNoteAllocation__c> cnAllocationList = [select id from blng__CreditNoteAllocation__c];
-            System.assertEquals(2, cnAllocationList.size(),'SM015_InvoiceServices_Test : CreditNoteAllocation record not created. ');
+            blng__CreditNote__c postedCN = [select id,blng__Account__c,blng__Status__c,blng__TaxErrorMessage__c from blng__CreditNote__c limit 1];
+            blng__Invoice__c postedInvoice = [select id,blng__InvoiceStatus__c from blng__Invoice__c where id =: invoice.id limit 1];
+            System.assertEquals('Posted', postedCN.blng__Status__c,'SM015_InvoiceServices_Test : Credit Note not posted.');
+            System.assertEquals('Posted', postedInvoice.blng__InvoiceStatus__c,'SM015_InvoiceServices_Test : Invoice not posted.');
         }
     }
     

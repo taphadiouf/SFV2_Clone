@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_StatutInscription__c</fullName>
+    <description>Utilisé dans pour rapport analyse de remplissage crèche</description>
+    <externalId>false</externalId>
+    <formula>IF(
+  OR(
+    RecordType.DeveloperName = &quot;Accueil&quot;,
+    RecordType.DeveloperName = &quot;Accueil_Approuve&quot;
+  ),
+  CASE(
+    text(SBQQ__Status__c),
+    &quot;Envoi directrice&quot;,
+    &quot;Inscription en cours&quot;,
+    &quot;Validé directrice&quot;,
+    &quot;Inscription en cours&quot;,
+    &quot;Prêt à envoyer&quot;,
+    &quot;Inscription en cours&quot;,
+    &quot;Envoyé pour signature&quot;,
+    &quot;Inscription en cours&quot;,
+    &quot;Signé&quot;,
+    &quot;Inscrit&quot;,
+    &quot;Prêt pour commande&quot;,
+    &quot;Inscrit&quot;,
+    &quot;Actif&quot;,
+    &quot;Inscrit&quot;,
+    text(SBQQ__Status__c)
+  ),null
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Statut inscription</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

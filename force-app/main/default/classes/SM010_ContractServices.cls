@@ -6,6 +6,9 @@
 */
 public class SM010_ContractServices {
     public static Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract',Label.LPCR_Referencement);
+    public static Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract', Label.LPCR_Reservataire);
+    public static Id accueilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract',Label.LPCR_ContratA);
+    public static Id entrepiseRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account','Entreprise');
     /**
 * @Author Ayoub Ouarti
 * @Created 23/03/2020
@@ -14,8 +17,8 @@ public class SM010_ContractServices {
 */
     public static void setContractFields(List<Contract> contracts){
         Pad.log('SM010_ContractServices','setContractFields(List<Contract> contracts)','contracts size '+contracts.size());
-        List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement)/*,
-        EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)*/};
+        List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement),
+        EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Reservataire)};
             
             
             Set<String> quoteIds = UM003_TypeManager.getFieldsOfListObjects(contracts,'SBQQ__Quote__c');
@@ -33,6 +36,7 @@ public class SM010_ContractServices {
         Map<Id,SBQQ__Quote__c> quoteOrderMap = new  Map<Id,SBQQ__Quote__c>([SELECT Id,LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c, recordtype.DeveloperName, LPCR_PlanningEnfant__c, LPCR_EntiteJuridique__c , recordtype.name, LPCR_ContractEntreprise__c, LPCR_Creche__c, LPCR_TypeCreche__c, LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Region__c, LPCR_CompteFacturation__c, LPCR_ContactEnfant__c, SBQQ__Type__c,LPCR_FraisDossier__c   from SBQQ__Quote__c WHERE Id in :quoteOrderIds]);
         String contractRTDevName;
         List<String> accountIds = new List<String>();
+        List<String> accountEntrpriseIds = new List<String>();
         for (Contract eachContract : contracts){
             if(B2BContractRecordTypeIds.contains(eachContract.RecordTypeId)){
                 accountIds.add( eachContract.AccountId );
@@ -40,16 +44,6 @@ public class SM010_ContractServices {
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){
                 // IS-1115 fixes added by saurabh
                 contractRTDevName = quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.DeveloperName;
-                if(eachContract.RecordTypeId == referencementRecTypeId) {
-                   // if(quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_Referencement || quoteMap.get(eachContract.SBQQ__Quote__c).recordtype.name == Label.LPCR_Referencement_Approuve ) {
-                        if(quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__Type__c != 'Renewal'){
-                            eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).Id;
-                        }else{
-                            eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_MasterDevis__c;
-                        }
-                   // }
-                }
-
 
                 if(orderMap.containsKey(eachContract.SBQQ__Order__c) &&
                    quoteOrderMap.containsKey(orderMap.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
@@ -72,6 +66,10 @@ public class SM010_ContractServices {
             if(orderMap.containsKey(eachContract.SBQQ__Order__c)){
                     eachContract.LPCR_NumeroContrat__c = orderMap.get(eachContract.SBQQ__Order__c).LPCR_NumeroContrat__c;
             }
+            
+            if(eachContract.StartDate <= system.today() && eachContract.EndDate >= system.today()){
+                accountEntrpriseIds.add(eachContract.AccountId);
+            }
         }
         
         if(accountIds.size()>0){  
@@ -80,6 +78,14 @@ public class SM010_ContractServices {
                 eachAcc.LPCR_ProcessRevenuCascade__c = true;
             }
             update accounts;
+        }
+        
+        if(accountEntrpriseIds.size()>0){
+            List<Account> entrepriseAccounts = [SELECT Id,LPCR_Actif__c, RecordTypeId FROM Account WHERE Id IN :accountEntrpriseIds And RecordTypeId =: entrepiseRecTypeId ];
+            for(Account eachAcc : entrepriseAccounts){
+                eachAcc.LPCR_Actif__c = true;
+            }
+            update entrepriseAccounts;
         }
     }
     // added by saurabh IS-1449
@@ -140,18 +146,23 @@ public class SM010_ContractServices {
     public static void setContractFields(Map<Id, Contract> oldContractMap,Map<Id, Contract> newContractMap){
         Pad.log('SM010_ContractServices','setContractFields(Map<Id, Contract> oldContractMap,Map<Id, Contract> newContractMap)','oldContractMap size '+oldContractMap.size(),'oldContractMap size '+newContractMap.size());
         
-        List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement)/*,
-        EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement_Approuve)*/};
+        List<Id> B2BContractRecordTypeIds = new List<Id>{EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement),
+        EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Reservataire)};
         List<String> accountIds = new List<String>();
+        List<String> accountEntrpriseIds = new List<String>();
                Set<String> orderIds = UM003_TypeManager.getFieldsOfListObjects(newContractMap.values(),'SBQQ__Order__c');
-        Map<Id,Order> mapOrders = new Map<Id,Order>([SELECT Id,RecordType.DeveloperName,LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c,SBQQ__Quote__c from Order WHERE Id in :orderIds ]);
+        Map<Id,Order> mapOrders = new Map<Id,Order>([SELECT Id,Type,RecordType.DeveloperName,LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c,SBQQ__Quote__c from Order WHERE Id in :orderIds ]);
 
         for(Contract eachContract : newContractMap.values()){
-            if(eachContract.SBQQ__Order__c != oldContractMap.get(eachContract.Id).SBQQ__Order__c){
+            if(eachContract.SBQQ__Order__c != oldContractMap.get(eachContract.Id).SBQQ__Order__c || eachContract.CreatedDate > System.now().addMinutes(-1) ){
                 
                 if(B2BContractRecordTypeIds.contains(eachContract.RecordTypeId)){
                     accountIds.add( eachContract.AccountId );
                 }
+            }
+            
+            if(eachContract.StartDate <= system.today() && eachContract.EndDate >= system.today()){
+                accountEntrpriseIds.add(eachContract.AccountId);
             }
         }
         if(accountIds.size()>0){  
@@ -160,6 +171,14 @@ public class SM010_ContractServices {
                 eachAcc.LPCR_ProcessRevenuCascade__c = true;
             }
             update accounts;
+        }
+        
+        if(accountEntrpriseIds.size()>0){
+            List<Account> entrepriseAccounts = [SELECT Id,LPCR_Actif__c, RecordTypeId FROM Account WHERE Id IN :accountEntrpriseIds And RecordTypeId =: entrepiseRecTypeId ];
+            for(Account eachAcc : entrepriseAccounts){
+                eachAcc.LPCR_Actif__c = true;
+            }
+            update entrepriseAccounts;
         }
      
       
@@ -170,17 +189,7 @@ public class SM010_ContractServices {
         //  Check if the Order is getting changed, If so , updating the fields 
         for(Contract eachContract : newContractMap.values()){
             if(mapOrders.containsKey(eachContract.SBQQ__Order__c) && 
-               quoteMap.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){
-                 //added by saurabh IS-1490
-                if(eachContract.LPCR_TypeCreche__c == 'MAC' && eachContract.EndDate != eachContract.LPCR_DateFin__c){
-                    eachContract.LPCR_RenouvellementAutomatique__c =true;
-                }
-                else if(eachContract.SBQQ__RenewalUpliftRate__c != null && 
-                        (eachContract.LPCR_MethodeRenouvellement__c == 'Tacite' ||
-                         (eachContract.LPCR_MethodeRenouvellement__c != 'Tacite' && eachContract.EndDate != eachContract.LPCR_DateFin__c))){
-                             eachContract.LPCR_RenouvellementAutomatique__c =true;
-                         } 
-                          
+               quoteMap.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c)){        
                  if(eachContract.SBQQ__Order__c != oldContractMap.get(eachContract.Id).SBQQ__Order__c){
                     if(quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement || quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement_Approuve) {
                         eachContract.LPCR_FraisDossier__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;
@@ -192,8 +201,27 @@ public class SM010_ContractServices {
             if(mapOrders.containsKey(eachContract.SBQQ__Order__c) ){
                 eachContract.LPCR_NouveauPlanFacturation__c = mapOrders.get(eachContract.SBQQ__Order__c).LPCR_NouveauPlanFacture__c;
                 eachContract.LPCR_RenouvellementPlanFacturation__c = mapOrders.get(eachContract.SBQQ__Order__c).LPCR_RenouvellementPlanFacture__c;
+                
                 eachContract.RecordTypeId = mapContractRT.containsKey(mapOrders.get(eachContract.SBQQ__Order__c).RecordType.DeveloperName)? 
                     mapContractRT.get(mapOrders.get(eachContract.SBQQ__Order__c).RecordType.DeveloperName).getRecordTypeId(): eachContract.RecordTypeId;
+                
+                	if(eachContract.recordtypeId == accueilRecTypeId && eachContract.EndDate != eachContract.LPCR_DateFin__c){
+                        eachContract.LPCR_RenouvellementAutomatique__c =true;
+                    }
+                    else if(eachContract.SBQQ__RenewalUpliftRate__c != null && 
+                            (eachContract.LPCR_MethodeRenouvellement__c == 'Tacite' ||
+                             (eachContract.LPCR_MethodeRenouvellement__c != 'Tacite' && eachContract.EndDate != eachContract.LPCR_DateFin__c))){
+                                 eachContract.LPCR_RenouvellementAutomatique__c =true;
+                             }
+            }
+            if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){
+                if(eachContract.RecordTypeId == referencementRecTypeId) {
+                        if(quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__Type__c != 'Renewal'){
+                            eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).Id;
+                        }else{
+                            eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_MasterDevis__c;
+                        }
+                }       
             }
             
         }
@@ -226,15 +254,6 @@ public class SM010_ContractServices {
         if(quote.recordtype.DeveloperName == Label.LPCR_Referencement || quote.recordtype.DeveloperName == Label.LPCR_Referencement_Approuve || quote.recordtype.DeveloperName == Label.LPCR_Reservataire || quote.recordtype.DeveloperName == Label.LPCR_Reservataire_Approuve ) {
             contract.LPCR_MethodeRenouvellement__c = quote.LPCR_MethodeRenouvellement__c;
         }
-        
-        if(contract.LPCR_TypeCreche__c == 'MAC' && contract.EndDate != contract.LPCR_DateFin__c){
-            contract.LPCR_RenouvellementAutomatique__c =true;
-        }
-        else if(contract.SBQQ__RenewalUpliftRate__c != null && 
-                (contract.LPCR_MethodeRenouvellement__c == 'Tacite' ||
-                 (contract.LPCR_MethodeRenouvellement__c != 'Tacite' && contract.EndDate != contract.LPCR_DateFin__c))){
-                     contract.LPCR_RenouvellementAutomatique__c =true;
-                 }
         
         contract.LPCR_DureeContratJour__c = quote.LPCR_DureeContratJour__c;
         
@@ -299,7 +318,26 @@ public class SM010_ContractServices {
         
         return contract;
     }
-
+    
+    //added by saurabh IS-1848
+    public static void setRenewalContractFields(Map<Id, Contract> newContractMap, Map<Id, Contract> oldContractMap){
+        PAD.log('SM010_ContractServices','setRenewalContractFields(Map<Id, Contract> newContractMap, Map<Id, Contract> oldContractMap)','newContractMap size '+ newContractMap.size());
+        Map<Id,Contract> contractOrderMap = new Map<Id,Contract>();
+        
+        for(Contract eachNewContract : newContractMap.values()){ 
+            System.debug('>> SM010_ContractServices , setRenewalContractFields : eachNewContract : '+ eachNewContract.id);
+            if(eachNewContract.SBQQ__Order__c != null && (eachNewContract.RecordTypeId == reservataireRecTypeId || eachNewContract.recordtypeId == referencementRecTypeId) && eachNewContract.Status == 'Activated' && eachNewContract.LPCR_ProcessIdRenouvellementContrat__c == false && eachNewContract.LPCR_ProcessIdRenouvellementContrat__c == oldContractMap.get(eachNewContract.id).LPCR_ProcessIdRenouvellementContrat__c){
+                contractOrderMap.put(eachNewContract.SBQQ__Order__c, eachNewContract);
+            }
+        }
+        System.debug('>> SM010_ContractServices , setRenewalContractFields : contractOrderMap :'+ contractOrderMap);
+        //get order items and create a list of orders to be updated
+        for(Order eachOrder:[SELECT Id, Type,recordtype.DeveloperName FROM Order where Id in:contractOrderMap.keyset()]){
+            if(eachOrder.Type == 'Renewal' && (eachOrder.recordtype.DeveloperName == Label.LPCR_Reservataire ||eachOrder.recordtype.DeveloperName == Label.LPCR_Reservataire )){
+                contractOrderMap.get(eachOrder.id).LPCR_ProcessIdRenouvellementContrat__c = true;
+            }
+        }
+    }
     public static void setOrderFields(Map<Id, Contract> newContractMap, Map<Id, Contract> oldContractMap){
         Map<Id,Contract> contractMap = new Map<Id,Contract>();
         Set<Id> orderIds = new Set<Id>();

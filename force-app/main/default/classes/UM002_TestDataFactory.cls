@@ -502,7 +502,8 @@ newMe.FederationIdentifier = null;
                 SBQQ__Opportunity2__c = opps.get(i).Id,
                 SBQQ__Account__c = accs.get(i).Id,
                 SBQQ__PriceBook__c = Test.getStandardPricebookId(),
-                SBQQ__StartDate__c = date.today()
+                SBQQ__StartDate__c = date.today(),
+		        LPCR_Creation_conforme__c = true
             );
             quotes.add(tempQuote);
         }
@@ -907,6 +908,7 @@ newMe.FederationIdentifier = null;
         cpqQuote.SBQQ__PricebookId__c = priceBookId;
         cpqQuote.SBQQ__QuoteLanguage__c = 'English';
         cpqQuote.SBQQ__BillingCity__c = city;
+        cpqQuote.LPCR_Creation_conforme__c = true;
         return cpqQuote;
     }
 
@@ -921,6 +923,7 @@ newMe.FederationIdentifier = null;
         cpqQuote.SBQQ__PriceBook__c = priceBookId;
         cpqQuote.SBQQ__PricebookId__c = priceBookId;
         cpqQuote.SBQQ__QuoteLanguage__c = 'English';
+        cpqQuote.LPCR_Creation_conforme__c = true;
         return cpqQuote;
     }
     public static SBQQ__QuoteLine__c createQuoteLine(String productId, String quoteId, String pricebookEntryId, Decimal price,Integer qte) 
@@ -1202,7 +1205,8 @@ newMe.FederationIdentifier = null;
                 LPCR_Creche__c = accs.get(i).Id,
                 SBQQ__Status__c = status,
                 SBQQ__StartDate__c = date.today(),
-                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31)
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31),
+                LPCR_Creation_conforme__c = true
             );
             quotes.add(tempQuote);
         }
@@ -1248,6 +1252,7 @@ newMe.FederationIdentifier = null;
                 SBQQ__Opportunity2__c = opps.get(i).Id,
                 SBQQ__Account__c = accs.get(i).Id,
                 SBQQ__Type__c = type,
+		        LPCR_Creation_conforme__c = true,    
                 RecordTypeId = recTypeId,
                 LPCR_Creche__c = crecheId,
                 SBQQ__StartDate__c = date.today(),

@@ -15,6 +15,8 @@ public class SM006_PreinscriptionServices {
         
         //Map: (Preinscription Id => Opportunity)
         Map<Id, Opportunity> preiscIDToOpportunityMap = new Map<Id, Opportunity>();
+        Set<String> contactIds = UM003_TypeManager.getFieldsOfListObjects(newPreinscrisMap.values(),'LPCR_ContactEnfant__c');
+        Map<Id, Contact> preiscIDToContactMap = new Map<Id, Contact>([SELECT Id, Name FROM Contact WHERE Id in: contactIds]);
         List<SBQQ__Quote__c> listQuotes = new List<SBQQ__Quote__c>();
         //Map (Preinscription Id => Account Id (Compte famille))
         Map<Id, Id> preinscIDToAccountIdMap = new Map<Id, Id>();
@@ -28,7 +30,7 @@ public class SM006_PreinscriptionServices {
                    preiscIDToOpportunityMap.put(eachNewPreinscri.Id, new Opportunity( 
                        RecordTypeId = familleOpportunityRT,
                        AccountId = eachNewPreinscri.LPCR_CompteFamille__c, 
-                       Name = Label.LPCR_OppFor+eachNewPreinscri.LPCR_PrenomEnfant__c + ' ' + eachNewPreinscri.NomEnfant__c,
+                       Name = Label.LPCR_OppFor+preiscIDToContactMap.get(eachNewPreinscri.LPCR_ContactEnfant__c).Name,
                        StageName = Label.LPCR_Prospecting,
                        CloseDate = Date.today()));
                }
@@ -55,7 +57,8 @@ public class SM006_PreinscriptionServices {
                 LPCR_ContactEnfant__c = currentPreInscr.LPCR_ContactEnfant__c,
                 LPCR_Creche__c = currentPreInscr.LPCR_Creche__c,
                 LPCR_ContactRepresentant1__c = currentPreInscr.LPCR_ContactParent__c,
-                SBQQ__Opportunity2__c = currentOpportunity.Id));
+                SBQQ__Opportunity2__c = currentOpportunity.Id,
+                LPCR_Creation_conforme__c = true ));
             //Update of the related "Famille" account
             if(preinscIDToAccountIdMap.get(eachPreinscId) != null && accountsMap.get(preinscIDToAccountIdMap.get(eachPreinscId)) != null)
             accountsMap.get(preinscIDToAccountIdMap.get(eachPreinscId)).put('LPCR_Representant1__c', currentPreInscr.LPCR_ContactParent__c);

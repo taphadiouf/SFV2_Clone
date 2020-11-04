@@ -13,24 +13,16 @@ public with sharing class TM010_RessourceFamilleTrigger extends TM000_TriggerHan
         this.oldRessourceFamillesMap = (Map<Id, LPCR_RessourceFamille__c>) Trigger.oldMap;
         this.newRessourceFamillesList = (List<LPCR_RessourceFamille__c>) Trigger.new;
     }
-    protected override void beforeUpdate() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
-            //SM011_RessourceFamilleServices.createNewRessourceFamilleRecord(newRessourceFamillesMap,oldRessourceFamillesMap);
-        }
-    }
 
     protected override void afterUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
-            SM011_RessourceFamilleServices job = new SM011_RessourceFamilleServices(oldRessourceFamillesMap,newRessourceFamillesMap);
-            List<AsyncApexJob> asyncJobs =  [SELECT Id, JobType, ApexClassId, Status, MethodName, ParentJobId FROM AsyncApexJob WHERE ApexClass.Name =:'APB014_TraitementModificationEntrante'];
-            if(asyncJobs == null)
-            ID jobID = System.enqueueJob(job);
+            SM011_RessourceFamilleServices.updateTheBaremeCaf(null,oldRessourceFamillesMap,newRessourceFamillesMap);
         }
     }
-     protected override void afterInsert() {
+
+    protected override void afterInsert() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
-            SM011_RessourceFamilleServices job = new SM011_RessourceFamilleServices(newRessourceFamillesList);
-            ID jobID = System.enqueueJob(job); 
+            SM011_RessourceFamilleServices.updateTheBaremeCaf(newRessourceFamillesList,null,null);
         }
     }
 }

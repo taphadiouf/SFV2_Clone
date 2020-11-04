@@ -10,8 +10,7 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
     }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        
-        
+
         String query = 'SELECT Id, blng__Account__c ,blng__Account__r.RecordTypeId,LPCR_LiaisonFamilleFacture__c FROM blng__Invoice__c WHERE LPCR_LiaisonFamilleFacture__c=false AND blng__Account__r.RecordTypeId = :accountEntrepriseRTId';
         
         return Database.getQueryLocator(query);
@@ -29,18 +28,33 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
         
         Set<String> invoiceAccountIds = UM003_TypeManager.getFieldsOfListObjects(mapOfInvoice.values(),'blng__Account__c');
         String prodCode = '%Berceau%';
-        List<blng__InvoiceLine__c> listOfInvoiceLine = [SELECT Id,LPCR_Creche__c,blng__StartDate__c,blng__EndDate__c ,blng__Invoice__c,blng__Invoice__r.blng__Account__c,blng__OrderProduct__r.Product2Id
+        List<blng__InvoiceLine__c> listOfInvoiceLine = [SELECT Id,LPCR_Creche__c,blng__StartDate__c,blng__EndDate__c ,blng__Invoice__c,blng__Invoice__r.blng__Account__c,blng__OrderProduct__r.Product2Id,blng__OrderProduct__r.SBQQ__Contract__c
                                                         FROM blng__InvoiceLine__c
                                                         WHERE blng__Invoice__c IN :invoiceIds
                                                         AND blng__OrderProduct__r.Product2.ProductCode like :prodCode];
         
-        
+        Map<String, List<blng__InvoiceLine__c>> mapOfInvoiceLine = new Map<String, List<blng__InvoiceLine__c>>();
+        for(blng__InvoiceLine__c eachInvoiceLine : [SELECT Id,LPCR_Creche__c,blng__StartDate__c,blng__EndDate__c ,blng__Invoice__c,blng__Invoice__r.blng__Account__c,blng__OrderProduct__r.Product2Id,blng__OrderProduct__r.SBQQ__Contract__c
+                                                    FROM blng__InvoiceLine__c
+                                                    WHERE blng__Invoice__c IN :invoiceIds
+                                                    AND blng__OrderProduct__r.Product2.ProductCode like :prodCode]){
+                                                        if(!mapOfInvoiceLine.keyset().contains(eachInvoiceLine.blng__OrderProduct__r.SBQQ__Contract__c)){
+                                                            mapOfInvoiceLine.put(eachInvoiceLine.blng__OrderProduct__r.SBQQ__Contract__c, new List<blng__InvoiceLine__c>());
+                                                        }    
+                                                        mapOfInvoiceLine.get(eachInvoiceLine.blng__OrderProduct__r.SBQQ__Contract__c).add(eachInvoiceLine);
+                                                    }
+        System.debug('>> APB009_GenerateLienFamilleFacture, execute : mapOfInvoiceLine size '+ mapOfInvoiceLine.size());
+        System.debug('>> APB009_GenerateLienFamilleFacture, execute : mapOfInvoiceLine '+ mapOfInvoiceLine);
+            
         Map<Id,Integer> mapNumberProdForInvoice = new Map<Id,Integer>();
         
         
         
         Date minStartDates = UM003_TypeManager.getMinMaxOfListObjectsDate(listOfInvoiceLine,'blng__StartDate__c')[0];
         Date maxEndDates = UM003_TypeManager.getMinMaxOfListObjectsDate(listOfInvoiceLine,'blng__EndDate__c')[1];
+        
+        System.debug('>> APB009_GenerateLienFamilleFacture, execute : minStartDates '+ minStartDates);
+        System.debug('>> APB009_GenerateLienFamilleFacture, execute : maxEndDates '+ maxEndDates);   
         
         List<Contract> listOfContractB2C = [SELECT Id,LPCR_Creche__c,LPCR_DateFin__c,LPCR_DateDebut__c,AccountId,LPCR_ContractEntreprise__c,LPCR_ContractEntreprise__r.AccountId
                                             FROM Contract 
@@ -50,6 +64,7 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                                             RecordTypeId = :contratB2CRTId AND
                                             LPCR_ContractEntreprise__r.AccountId IN :invoiceAccountIds ];
         
+        System.debug('>> APB009_GenerateLienFamilleFacture, execute : listOfContractB2C'+ listOfContractB2C);
         
         List<LPCR_LienFamilleFacture__c> listOfLienFamilleFactureFromBD = [SELECT Id,LPCR_Facture__c,LPCR_LigneFacture__c,LPCR_ContratFamille__c,LPCR_ContratEntreprise__c
                                                                            FROM LPCR_LienFamilleFacture__c 
@@ -61,7 +76,9 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
         LPCR_LienFamilleFacture__c lienFamilleFacture = new LPCR_LienFamilleFacture__c();
         
         for(Contract eachContract : listOfContractB2C){
-            for(blng__InvoiceLine__c eachInvoiceLine : listOfInvoiceLine){
+            System.debug('>> APB009_GenerateLienFamilleFacture, execute : eachContract'+ eachContract);
+            for(blng__InvoiceLine__c eachInvoiceLine : mapOfInvoiceLine.get(eachContract.LPCR_ContractEntreprise__c)){
+                System.debug('>> APB009_GenerateLienFamilleFacture, execute : eachInvoiceLine'+ eachInvoiceLine);
                 
                 if(  eachContract.LPCR_ContractEntreprise__r.AccountId != null && eachInvoiceLine.blng__Invoice__r.blng__Account__c== eachContract.LPCR_ContractEntreprise__r.AccountId 
                    && eachInvoiceLine.LPCR_Creche__c == eachContract.LPCR_Creche__c && eachContract.LPCR_Creche__c!=null){
@@ -88,6 +105,9 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                    }
             }
         }
+        System.debug('>> APB009_GenerateLienFamilleFacture, execute : listOfLienFamilleFacture size '+ listOfLienFamilleFacture.size());
+        System.debug('>> APB009_GenerateLienFamilleFacture, execute : listOfLienFamilleFacture '+ listOfLienFamilleFacture);
+        
         Map<Id,Integer> mapNumberLienFamilleFactureForInvoice = new Map<Id,Integer>();
         for(LPCR_LienFamilleFacture__c eachLienFamFac : listOfLienFamilleFacture){
             if(mapNumberLienFamilleFactureForInvoice.containsKey(eachLienFamFac.LPCR_Facture__c)){
@@ -123,7 +143,8 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
     global void execute(SchedulableContext sc) {
         PAD.log('APB009_GenerateLienFamilleFacture','execute','sc');
         APB009_GenerateLienFamilleFacture sc1 = new APB009_GenerateLienFamilleFacture();
-        
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB009_GenerateLienFamilleFacture');
         
@@ -136,10 +157,8 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB009_GenerateLienFamilleFacture();
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB009_GenerateLienFamilleFacture'+timeForScheduler,timeForScheduler,sc1);
+
+                Id schedId = System.Schedule('APB009_GenerateLienFamilleFacture'+timeForScheduler,timeForScheduler,new APB009_GenerateLienFamilleFacture());
             }
         }  
         

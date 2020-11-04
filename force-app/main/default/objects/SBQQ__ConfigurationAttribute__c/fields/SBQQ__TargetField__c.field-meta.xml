@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Field on the Product Option that sources remaining metadata and holds the value.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specify field on Product Option that will hold this attribute&#39;s value.</inlineHelpText>
+    <inlineHelpText>Spécifiez le champ de l&apos;Option produit qui doit contenir la valeur de cet attribut.</inlineHelpText>
     <label>Target Field</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
@@ -36,6 +36,16 @@
                 <fullName>LPCR_JoursSemaine__c</fullName>
                 <default>false</default>
                 <label>LPCR_JoursSemaine__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeAccueil__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeAccueil__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_Tranche__c</fullName>
+                <default>false</default>
+                <label>LPCR_Tranche__c</label>
             </value>
         </valueSetDefinition>
     </valueSet>

@@ -1,17 +1,18 @@
-Bonjour Madame, Monsieur, 
+Bonjour Madame, Monsieur,
 
-À la suite de la commission, je vous confirme que vous avez obtenu une place pour votre enfant sur la structure {!LPCR_Preinscription__c.LPCR_Creche__c}, via votre entreprise {!LPCR_Preinscription__c.LPCR_CompteEntreprise__c}, à partir du {!LPCR_Preinscription__c.LPCR_DateEntreeCreche__c}. 
+Pour faire suite à notre échange de ce jour, je vous confirme l’obtention d’une place pour votre enfant au sein de notre crèche de {!LPCR_Preinscription__c.LPCR_Creche__c}.
 
-Comme indiqué par téléphone, nous réserverons définitivement votre place en crèche et la direction de la structure vous contactera prochainement pour vous informer des dernières modalités d’accueil. 
+Vous trouverez en pièces jointes de ce mail le calendrier prévisionnel des congés et le règlement de fonctionnement de la crèche. Vous disposez d’un délai de 10 jours pour confirmer votre place. Pour cela, il vous suffit de revenir sur notre site internet dans l’espace parent www.grandir.com
 
-Nous restons à votre disposition pour tous renseignements complémentaires. 
+En parallèle, vous devez également :
 
-Bonne journée à vous. 
+prendre contact avec [le directeur/la directrice] de la crèche afin de convenir avec elle d’un rendez-vous pour mettre en place la semaine d’adaptation de votre enfant,
+télécharger dans votre espace parent les documents nécessaires à l’accueil de votre enfant.
 
+Voici les coordonnées de la structure, {!LPCR_Preinscription__c.LPCR_ContactDirectriceCreche__c}, {!LPCR_Preinscription__c.LPCR_TelephoneDirectrice__c}.
 
-Cordialement, 
+Je reste à votre disposition pour tous renseignements complémentaires.
 
-
-{!User.FirstName}{!User.LastName}
-{!User.Title}{!User.CompanyName}
-{!User.Address}{!User.PostalCode}
+Cordialement,
+{!LPCR_Preinscription__c.LPCR_ContactInscriptionsCreche__c}
+{!LPCR_Preinscription__c.LPCR_AdresseCreche__c}

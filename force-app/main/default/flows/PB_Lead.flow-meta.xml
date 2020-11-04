@@ -12,7 +12,7 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision5</targetReference>
+            <targetReference>myDecision3</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -22,68 +22,31 @@
                 <processMetadataValues>
                     <name>inputDataType</name>
                     <value>
-                        <stringValue>ID</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideReferenceTo</name>
-                    <value>
-                        <stringValue>Group;User</stringValue>
+                        <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>leftHandSideType</name>
                     <value>
-                        <stringValue>ID</stringValue>
+                        <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>operatorDataType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>rightHandSideType</name>
                     <value>
-                        <stringValue>Formula</stringValue>
+                        <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.OwnerId</leftValueReference>
-                <operator>StartsWith</operator>
-                <rightValue>
-                    <elementReference>formula_2_myRule_1_1010463819</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.Owner:Queue.DeveloperName</leftValueReference>
+                <leftValueReference>myVariable_current.Tech_ProprietaireServiceFamille__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>LPCR_ServiceFamille</stringValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -127,26 +90,26 @@
                 <numberValue>1.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision5</name>
-        <label>myDecision5</label>
+        <name>myDecision3</name>
+        <label>myDecision3</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>myDecision9</targetReference>
+            <targetReference>myDecision6</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_6</name>
+            <name>myRule_4</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_6</leftValueReference>
+                <leftValueReference>formula_myRule_4</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_6_pmetdec</targetReference>
+                <targetReference>myRule_4_pmetdec</targetReference>
             </connector>
             <label>Statut en cours ou abandonné commerce</label>
         </rules>
@@ -158,13 +121,13 @@
                 <numberValue>2.0</numberValue>
             </value>
         </processMetadataValues>
-        <name>myDecision9</name>
-        <label>myDecision9</label>
+        <name>myDecision6</name>
+        <label>myDecision6</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>myRule_10</name>
+            <name>myRule_7</name>
             <conditionLogic>1 AND (2 OR 3)</conditionLogic>
             <conditions>
                 <processMetadataValues>
@@ -257,22 +220,22 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_10_pmetdec</targetReference>
+                <targetReference>myRule_7_pmetdec</targetReference>
             </connector>
             <label>Statut en cours ou abonné service famille</label>
         </rules>
     </decisions>
     <decisions>
-        <name>myRule_10_pmetdec</name>
+        <name>myRule_1_pmetdec</name>
         <label>Previously Met Decision</label>
-        <locationX>1000</locationX>
+        <locationX>100</locationX>
         <locationY>100</locationY>
         <defaultConnector>
-            <targetReference>myRule_10_A1</targetReference>
+            <targetReference>myRule_1_A1</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
         <rules>
-            <name>myRule_10_pmetnullrule</name>
+            <name>myRule_1_pmetnullrule</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>myVariable_old</leftValueReference>
@@ -282,12 +245,138 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_10_A1</targetReference>
+                <targetReference>myRule_1_A1</targetReference>
             </connector>
             <label>Previously Met - Null</label>
         </rules>
         <rules>
-            <name>myRule_10_pmetrule</name>
+            <name>myRule_1_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_old.Tech_ProprietaireServiceFamille__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>DateTime</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>DateTime</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>DateTime</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>GlobalConstant</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_old.LPCR_DateTransfertServiceFamille__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_4_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>400</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_4_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_4_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_4_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_4_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_4_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_7_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>700</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_7_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_7_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_7_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_7_pmetrule</name>
             <conditionLogic>1 AND (2 OR 3)</conditionLogic>
             <conditions>
                 <processMetadataValues>
@@ -382,213 +471,6 @@
             <label>Previously Met - Prev</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>myRule_1_pmetdec</name>
-        <label>Previously Met Decision</label>
-        <locationX>100</locationX>
-        <locationY>100</locationY>
-        <defaultConnector>
-            <targetReference>myRule_1_A1</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
-        <rules>
-            <name>myRule_1_pmetnullrule</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myRule_1_A1</targetReference>
-            </connector>
-            <label>Previously Met - Null</label>
-        </rules>
-        <rules>
-            <name>myRule_1_pmetrule</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>ID</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideReferenceTo</name>
-                    <value>
-                        <stringValue>Group;User</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>ID</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Formula</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_old.OwnerId</leftValueReference>
-                <operator>StartsWith</operator>
-                <rightValue>
-                    <elementReference>formula_3_myRule_1_pmetrule_8266904922</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_old.Owner:Queue.DeveloperName</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>LPCR_ServiceFamille</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>DateTime</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>DateTime</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>DateTime</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>GlobalConstant</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_old.LPCR_DateTransfertServiceFamille__c</leftValueReference>
-                <operator>EqualTo</operator>
-            </conditions>
-            <label>Previously Met - Prev</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>myRule_6_pmetdec</name>
-        <label>Previously Met Decision</label>
-        <locationX>600</locationX>
-        <locationY>100</locationY>
-        <defaultConnector>
-            <targetReference>myRule_6_A1</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
-        <rules>
-            <name>myRule_6_pmetnullrule</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myRule_6_A1</targetReference>
-            </connector>
-            <label>Previously Met - Null</label>
-        </rules>
-        <rules>
-            <name>myRule_6_pmetrule</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>formula_myRule_6_pmetrule</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <label>Previously Met - Prev</label>
-        </rules>
-    </decisions>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>TODAY() </stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_11_myRule_10_A1_3205506191</name>
-        <dataType>Date</dataType>
-        <expression>TODAY()</expression>
-    </formulas>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>[Lead].LPCR_MotifDisqualification__c +&quot;3&quot;</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_12_myRule_10_A1_7593230457</name>
-        <dataType>String</dataType>
-        <expression>{!myVariable_current.LPCR_MotifDisqualification__c} +&quot;3&quot;</expression>
-    </formulas>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>&quot;00G&quot;</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_2_myRule_1_1010463819</name>
-        <dataType>String</dataType>
-        <expression>&quot;00G&quot;</expression>
-    </formulas>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>&quot;00G&quot;</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_3_myRule_1_pmetrule_8266904922</name>
-        <dataType>String</dataType>
-        <expression>&quot;00G&quot;</expression>
-    </formulas>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
@@ -596,7 +478,7 @@
                 <stringValue>NOW() </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_1_A1_8241237796</name>
+        <name>formula_2_myRule_1_A1_3749709862</name>
         <dataType>DateTime</dataType>
         <expression>NOW()</expression>
     </formulas>
@@ -607,7 +489,7 @@
                 <stringValue>TODAY() </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_7_myRule_6_A1_5354515326</name>
+        <name>formula_5_myRule_4_A1_7915516371</name>
         <dataType>Date</dataType>
         <expression>TODAY()</expression>
     </formulas>
@@ -615,12 +497,12 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>[Lead].LPCR_MotifDisqualification__c +&quot;2&quot;</stringValue>
+                <stringValue>TODAY() </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_8_myRule_6_A1_1771469956</name>
-        <dataType>String</dataType>
-        <expression>{!myVariable_current.LPCR_MotifDisqualification__c} +&quot;2&quot;</expression>
+        <name>formula_8_myRule_7_A1_4049041919</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
@@ -628,38 +510,18 @@
             <value>
                 <stringValue>AND(
      ISBLANK([Lead].LPCR_DatePriseEnChargeCommercial__c ),
-     OR(
-          AND(
-               OR(
-                    AND(
-                         NOT(ISBLANK([Lead].Owner:User.UserRoleId )),
-                         LEFT([Lead].OwnerId, 3)=&quot;005&quot;,
-                         [Lead].Owner:User.UserRole.DeveloperName &lt;&gt; &quot;Service_Famille&quot;),
-                     ISBLANK([Lead].Owner:User.UserRoleId ))),
-          AND(
-               LEFT([Lead].OwnerId, 3)=&quot;00G&quot;,
-               [Lead].Owner:Queue.DeveloperName &lt;&gt;&quot;LPCR_ServiceFamille&quot;)), 
+     NOT([Lead].Tech_ProprietaireServiceFamille__c), 
      OR(
           text([Lead].Status)=&quot;En cours&quot;,
           text([Lead].Status)=&quot;Abandonné&quot;)
 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_6</name>
+        <name>formula_myRule_4</name>
         <dataType>Boolean</dataType>
         <expression>AND(
      ISBLANK({!myVariable_current.LPCR_DatePriseEnChargeCommercial__c} ),
-     OR(
-          AND(
-               OR(
-                    AND(
-                         NOT(ISBLANK({!myVariable_current.Owner:User.UserRoleId} )),
-                         LEFT({!myVariable_current.OwnerId}, 3)=&quot;005&quot;,
-                         {!myVariable_current.Owner:User.UserRole.DeveloperName} &lt;&gt; &quot;Service_Famille&quot;),
-                     ISBLANK({!myVariable_current.Owner:User.UserRoleId} ))),
-          AND(
-               LEFT({!myVariable_current.OwnerId}, 3)=&quot;00G&quot;,
-               {!myVariable_current.Owner:Queue.DeveloperName} &lt;&gt;&quot;LPCR_ServiceFamille&quot;)), 
+     NOT({!myVariable_current.Tech_ProprietaireServiceFamille__c}), 
      OR(
           text({!myVariable_current.Status})=&quot;En cours&quot;,
           text({!myVariable_current.Status})=&quot;Abandonné&quot;)
@@ -671,44 +533,24 @@
             <value>
                 <stringValue>AND(
      ISBLANK([Lead].LPCR_DatePriseEnChargeCommercial__c ),
-     OR(
-          AND(
-               OR(
-                    AND(
-                         NOT(ISBLANK([Lead].Owner:User.UserRoleId )),
-                         LEFT([Lead].OwnerId, 3)=&quot;005&quot;,
-                         [Lead].Owner:User.UserRole.DeveloperName &lt;&gt; &quot;Service_Famille&quot;),
-                     ISBLANK([Lead].Owner:User.UserRoleId ))),
-          AND(
-               LEFT([Lead].OwnerId, 3)=&quot;00G&quot;,
-               [Lead].Owner:Queue.DeveloperName &lt;&gt;&quot;LPCR_ServiceFamille&quot;)), 
+     NOT([Lead].Tech_ProprietaireServiceFamille__c), 
      OR(
           text([Lead].Status)=&quot;En cours&quot;,
           text([Lead].Status)=&quot;Abandonné&quot;)
 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_myRule_6_pmetrule</name>
+        <name>formula_myRule_4_pmetrule</name>
         <dataType>Boolean</dataType>
         <expression>AND(
      ISBLANK({!myVariable_old.LPCR_DatePriseEnChargeCommercial__c} ),
-     OR(
-          AND(
-               OR(
-                    AND(
-                         NOT(ISBLANK({!myVariable_old.Owner:User.UserRoleId} )),
-                         LEFT({!myVariable_old.OwnerId}, 3)=&quot;005&quot;,
-                         {!myVariable_old.Owner:User.UserRole.DeveloperName} &lt;&gt; &quot;Service_Famille&quot;),
-                     ISBLANK({!myVariable_old.Owner:User.UserRoleId} ))),
-          AND(
-               LEFT({!myVariable_old.OwnerId}, 3)=&quot;00G&quot;,
-               {!myVariable_old.Owner:Queue.DeveloperName} &lt;&gt;&quot;LPCR_ServiceFamille&quot;)), 
+     NOT({!myVariable_old.Tech_ProprietaireServiceFamille__c}), 
      OR(
           text({!myVariable_old.Status})=&quot;En cours&quot;,
           text({!myVariable_old.Status})=&quot;Abandonné&quot;)
 )</expression>
     </formulas>
-    <interviewLabel>PB_Lead-3_InterviewLabel</interviewLabel>
+    <interviewLabel>PB_Lead-2_InterviewLabel</interviewLabel>
     <label>PB_Lead</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -735,122 +577,6 @@
         </value>
     </processMetadataValues>
     <processType>Workflow</processType>
-    <recordUpdates>
-        <processMetadataValues>
-            <name>evaluationType</name>
-            <value>
-                <stringValue>always</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>extraTypeInfo</name>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>isChildRelationship</name>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>reference</name>
-            <value>
-                <stringValue>[Lead]</stringValue>
-            </value>
-        </processMetadataValues>
-        <processMetadataValues>
-            <name>referenceTargetField</name>
-        </processMetadataValues>
-        <name>myRule_10_A1</name>
-        <label>MAJ date prise en charge service Famille</label>
-        <locationX>1000</locationX>
-        <locationY>200</locationY>
-        <filters>
-            <processMetadataValues>
-                <name>implicit</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </processMetadataValues>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>myVariable_current.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>Date</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Date prise en charge service famille</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Formula</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>LPCR_DatePriseEnChargeServiceFamille__c</field>
-            <value>
-                <elementReference>formula_11_myRule_10_A1_3205506191</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <processMetadataValues>
-                <name>dataType</name>
-                <value>
-                    <stringValue>String</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>isRequired</name>
-                <value>
-                    <booleanValue>false</booleanValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideLabel</name>
-                <value>
-                    <stringValue>Motif de disqualification du lead</stringValue>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>leftHandSideReferenceTo</name>
-                <value>
-                    <stringValue/>
-                </value>
-            </processMetadataValues>
-            <processMetadataValues>
-                <name>rightHandSideType</name>
-                <value>
-                    <stringValue>Formula</stringValue>
-                </value>
-            </processMetadataValues>
-            <field>LPCR_MotifDisqualification__c</field>
-            <value>
-                <elementReference>formula_12_myRule_10_A1_7593230457</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Lead</object>
-    </recordUpdates>
     <recordUpdates>
         <processMetadataValues>
             <name>evaluationType</name>
@@ -926,7 +652,7 @@
             </processMetadataValues>
             <field>LPCR_DateTransfertServiceFamille__c</field>
             <value>
-                <elementReference>formula_4_myRule_1_A1_8241237796</elementReference>
+                <elementReference>formula_2_myRule_1_A1_3749709862</elementReference>
             </value>
         </inputAssignments>
         <object>Lead</object>
@@ -956,9 +682,9 @@
         <processMetadataValues>
             <name>referenceTargetField</name>
         </processMetadataValues>
-        <name>myRule_6_A1</name>
+        <name>myRule_4_A1</name>
         <label>MAJ Date prise en charge commercial</label>
-        <locationX>600</locationX>
+        <locationX>400</locationX>
         <locationY>200</locationY>
         <filters>
             <processMetadataValues>
@@ -1006,14 +732,58 @@
             </processMetadataValues>
             <field>LPCR_DatePriseEnChargeCommercial__c</field>
             <value>
-                <elementReference>formula_7_myRule_6_A1_5354515326</elementReference>
+                <elementReference>formula_5_myRule_4_A1_7915516371</elementReference>
             </value>
         </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Lead]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_7_A1</name>
+        <label>MAJ date prise en charge service Famille</label>
+        <locationX>700</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
         <inputAssignments>
             <processMetadataValues>
                 <name>dataType</name>
                 <value>
-                    <stringValue>String</stringValue>
+                    <stringValue>Date</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -1025,7 +795,7 @@
             <processMetadataValues>
                 <name>leftHandSideLabel</name>
                 <value>
-                    <stringValue>Motif de disqualification du lead</stringValue>
+                    <stringValue>Date prise en charge service famille</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -1040,9 +810,9 @@
                     <stringValue>Formula</stringValue>
                 </value>
             </processMetadataValues>
-            <field>LPCR_MotifDisqualification__c</field>
+            <field>LPCR_DatePriseEnChargeServiceFamille__c</field>
             <value>
-                <elementReference>formula_8_myRule_6_A1_1771469956</elementReference>
+                <elementReference>formula_8_myRule_7_A1_4049041919</elementReference>
             </value>
         </inputAssignments>
         <object>Lead</object>

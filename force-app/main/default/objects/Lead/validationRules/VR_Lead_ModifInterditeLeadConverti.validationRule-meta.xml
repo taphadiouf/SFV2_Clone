@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Lead_ModifInterditeLeadConverti</fullName>
+    <active>true</active>
+    <description>L&apos;utilisateur peut visualiser mais ne peut pas modifier les leads convertis</description>
+    <errorConditionFormula>AND(
+NOT( $Permission.LPCR_ByPass_VR ),
+NOT( CONTAINS($Profile.Name,&apos;Admin&apos;)),
+IsConverted,
+NOT(ISCHANGED(IsConverted)))</errorConditionFormula>
+    <errorMessage>Vous ne pouvez pas modifier un lead déjà converti.</errorMessage>
+</ValidationRule>

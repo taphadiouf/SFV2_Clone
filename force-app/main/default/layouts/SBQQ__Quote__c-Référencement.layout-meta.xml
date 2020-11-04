@@ -149,6 +149,14 @@
                 <behavior>Edit</behavior>
                 <field>SBQQ__PrimaryContact__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ContactInscriptions__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ContactFacturation__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -363,6 +371,11 @@
         </platformActionListItems>
         <platformActionListItems>
             <actionName>SBQQ__EditLines</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Conga_Composer_ContratReferencement</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>1</sortOrder>
         </platformActionListItems>

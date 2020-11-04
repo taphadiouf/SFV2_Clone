@@ -100,7 +100,6 @@ public class APB013_ProcessYearlyOrderProduct_Test {
             Test.startTest();
 
             APB013_ProcessYearlyOrderProduct ss = new APB013_ProcessYearlyOrderProduct();
-            DataBase.executeBatch(ss);
 			ss.execute(null);
             
             Test.stopTest();

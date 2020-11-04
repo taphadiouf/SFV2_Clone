@@ -18,10 +18,6 @@
             <fullName>Matin</fullName>
             <default>false</default>
         </values>
-        <values>
-            <fullName>Non</fullName>
-            <default>false</default>
-        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_AmplitudeHoraireLundi__c</picklist>
@@ -35,10 +31,6 @@
         </values>
         <values>
             <fullName>Matin</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Non</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -56,10 +48,6 @@
             <fullName>Matin</fullName>
             <default>false</default>
         </values>
-        <values>
-            <fullName>Non</fullName>
-            <default>false</default>
-        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_AmplitudeHoraireMercredi__c</picklist>
@@ -75,10 +63,6 @@
             <fullName>Matin</fullName>
             <default>false</default>
         </values>
-        <values>
-            <fullName>Non</fullName>
-            <default>false</default>
-        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_AmplitudeHoraireVendredi__c</picklist>
@@ -92,10 +76,6 @@
         </values>
         <values>
             <fullName>Matin</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Non</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -479,29 +459,6 @@
         </values>
     </picklistValues>
     <picklistValues>
-        <picklist>LPCR_Role__c</picklist>
-        <values>
-            <fullName>Comptabilité</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Contact Achat PO</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Contact Inscription</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Contact PM</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Représentant</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
         <picklist>LPCR_SituationProfessionnelle__c</picklist>
         <values>
             <fullName>Autre</fullName>
@@ -577,23 +534,23 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole Finance administratif%2C juridique</fullName>
+            <fullName>Pôle Finance administratif%2C juridique</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole Ressources humaines</fullName>
+            <fullName>Pôle Ressources humaines</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole direction générale</fullName>
+            <fullName>Pôle direction générale</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole développement durable%2C environnement%2C RSE</fullName>
+            <fullName>Pôle développement durable%2C environnement%2C RSE</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Pole informatique %26 Technique</fullName>
+            <fullName>Pôle informatique %26 Technique</fullName>
             <default>false</default>
         </values>
         <values>

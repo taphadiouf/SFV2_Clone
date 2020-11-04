@@ -174,7 +174,7 @@ public with sharing class APC009_PsBroadcastController {
             }
             catch (Exception e) {
                 String tmp = e.getMessage() + ' - Line number:' + e.getLineNumber();
-                UM001_LogManager.writeLogActivityNow('APC009_PsBroadcastController', 'setRightAccessToObject', 'DML', TmpPs.Id, tmp, 'Error');
+                UM001_LogManager.writeLogActivityWithoutFuture('APC009_PsBroadcastController', 'setRightAccessToObject', 'DML', String.valueOf(TmpPs.Id), tmp, 'Error');
             }
         
         
@@ -210,20 +210,14 @@ public with sharing class APC009_PsBroadcastController {
                     if (fieldDesc.isAccessible() && fieldDesc.isUpdateable()) {
                         tmpFp.PermissionsEdit   = tmpEdit;
                     }
-                    
                     if (fieldPermissionAlreadyExists(fieldAPIName, tmpFpListRes, mfields, obj)) {
                         
                         tmpFp.Id = getFieldPermissionByFieldNameAndPermissionSet(fieldAPIName, TmpPs.Id, tmpFpListRes, mfields, obj);
                         PAD.log('APC009_PsBroadcastController', 'execAsync', 'Field setted by upd :', obj + '.' + fieldAPIName) ;
                         tmpFpListToUpdate.add(tmpFp);
                     }
-                    else {
-                        
-                            tmpFp.ParentId = TmpPs.Id;
-                            tmpFp.SobjectType = obj;
-                            tmpFp.Field = obj + '.' + fieldAPIName;
-                            PAD.log('APC009_PsBroadcastController', 'execAsync', 'Field setted by ins :', obj + '.' + fieldAPIName) ;
-                            tmpFpListToInsert.add(tmpFp);
+                    else {tmpFp.ParentId = TmpPs.Id;tmpFp.SobjectType = obj;tmpFp.Field = obj + '.' + fieldAPIName;tmpFpListToInsert.add(tmpFp);
+                            PAD.log('APC009_PsBroadcastController', 'execAsync', 'Field setted by ins :', obj + '.' + fieldAPIName);
                     }
                 }  
             }
@@ -237,31 +231,24 @@ public with sharing class APC009_PsBroadcastController {
         }
         catch (Exception e) {
             String tmp = e.getMessage() + ' - Line number:' + e.getLineNumber();
-            UM001_LogManager.writeLogActivityNow('APC009_PsBroadcastController', 'setRightAccessToObject', 'DML', TmpPs.Id, tmp, 'Error');
+            UM001_LogManager.writeLogActivityWithoutFuture('APC009_PsBroadcastController', 'setRightAccessToObject', 'DML', String.valueOf(TmpPs.Id), tmp, 'Error');
         }
 
         
     }
     
-     
+     /* Method not being used.
     public static void execAsync(Boolean tmpCreate, Boolean tmpDelete, Boolean tmpRead, Boolean tmpEdit, String PsName) {
-        
-        
         PermissionSet TmpPs = [select id, Name FROM PermissionSet where name = :PsName];
-        
         Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
         Set<String> OBKeys = gd.keySet();
         Set<String> tmpObjSet = new Set<String>();
-        
         for(String OBKey: OBKeys) {
-            
             Schema.SobjectType sobjecttype = gd.get(OBKey);
             Schema.DescribeSObjectResult r = sobjecttype.getDescribe();   
-
             if (!r.isCreateable()) {
                 continue;
             }
-            
             if ((r.getName().contains('LPCR_') || 
                     r.getName() == 'Account' ||
                     r.getName() == 'Contact' || 
@@ -271,22 +258,18 @@ public with sharing class APC009_PsBroadcastController {
                     //r.getName() == 'OrderItem' ||
                     //r.getName() == 'Contract'
             )
-                
                 && !r.getName().endsWith('Event') && !r.getName().endsWith('History') && !r.getName().endsWith('Share')) {
-                    
                     //Don't take controlled by parent object
                     if (
                         r.getName() != 'LPCR_ParametrePreinscription__c' && 
                         r.getName() != 'LPCR_TemplateSignatureElectronique__c' 
                         )
-                        
                         tmpObjSet.add(r.getName()); 
                 	}
         }
 
         for (String obj : tmpObjSet) {
-
             setRightAccessToObject(tmpCreate, tmpDelete, tmpRead, tmpEdit, PsName, obj);
         }
-    }  
+    }*/
 }

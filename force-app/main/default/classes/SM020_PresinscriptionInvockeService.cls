@@ -22,10 +22,13 @@ public class SM020_PresinscriptionInvockeService {
         docTmp = null;
         
         PresinscriptionParameter param = presinscriptionParameters.get(0);
-        LPCR_Preinscription__c preinscription = [SELECT Id, Name, LPCR_Creche__r.Name,LPCR_CompteEntreprise__r.Name, LPCR_Creche__c,LPCR_CompteEntreprise__c,LPCR_DateEntreeCreche__c, LPCR_ContactParent__c, LPCR_ContactParent__r.email FROM LPCR_Preinscription__c WHERE Id =: param.presinscriptionId];
+        LPCR_Preinscription__c preinscription = [SELECT Id, Name, LPCR_Rep1Email__c, LPCR_Creche__r.Name,LPCR_CompteEntreprise__r.Name, LPCR_Creche__c,LPCR_CompteEntreprise__c,LPCR_DateEntreeCreche__c, LPCR_ContactParent__c, LPCR_ContactParent__r.email FROM LPCR_Preinscription__c WHERE Id =: param.presinscriptionId];
         EmailTemplate template = [select id, name, body, subject from EmailTemplate where developername = : param.emailTemplate];
         
         //send email using template
+        PAD.log('SM020_PresinscriptionInvocableService', 'presinscriptionSendEmail', 'template.id:' + template.id);
+        PAD.log('SM020_PresinscriptionInvocableService', 'presinscriptionSendEmail', 'preinscription.LPCR_ContactParent__c:' + preinscription.LPCR_ContactParent__c);
+        
         if(template.id != null && preinscription.LPCR_ContactParent__c != null){
             
             
@@ -67,16 +70,35 @@ public class SM020_PresinscriptionInvockeService {
             body = body.replace('{!LPCR_Preinscription__c.LPCR_CompteEntreprise__c}', '');
             body = body.replace('{!LPCR_Preinscription__c.LPCR_DateEntreeCreche__c}', '');
             
-            callout(UserInfo.getUserEmail(), preinscription.LPCR_ContactParent__r.email, body, template.subject, docTmp);
+            callout(UserInfo.getUserEmail(), preinscription.LPCR_Rep1Email__c, body, template.subject, docTmp);
         }
         
     }
     
     @future(callout = true)
     public static void callout(string fromemail, string to, string body, string template, Set<String> docTmp){
-        HttpResponse response = SM016_SendMail_Callout.sendMailCallout(fromemail, to, body, template, docTmp);
+
+        //fromemail = 'e.yhuellou-ext@lpcr.fr';
+        HttpResponse response = SM016_SendMail_Callout.sendMailCallout(fromemail, to, template, body, docTmp);
+        String toLog;
+
+        toLog = 'fromemail: ' + fromemail;
+        toLog += ' - ';
+        toLog += 'to: ' + to;
+        toLog += ' - ';
+        toLog += 'body: ' + body;
+        toLog += ' - ';
+        toLog += 'template: ' + template;
+        toLog += ' - ';
+        toLog += 'docTmp: ' + docTmp;
+
         if(response.getStatusCode() == 200){
             PAD.log('SM020_PresinscriptionInvocableService', 'presinscriptionSendEmail', 'SM016_SendMail_Callout');
+
+            UM001_LogManager.writeLogActivityWithoutFuture('Appel Externe ENVOIE MAIL', 'SM020_PresinscriptionInvocableService', 'Callout', null, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - ' + toLog, 'SUCCESS');  
+        }
+        else {
+            UM001_LogManager.writeLogActivityWithoutFuture('Appel Externe ENVOIE MAIL', 'SM020_PresinscriptionInvocableService', 'Callout', null, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - ' + String.valueOf(response) + ' - ' + toLog, 'ERROR');     
         }
     }
     

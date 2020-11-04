@@ -4,9 +4,6 @@
         <field>Contract$LPCR_StatutCourt__c</field>
     </columns>
     <columns>
-        <field>Contract$ContractNumber</field>
-    </columns>
-    <columns>
         <field>Contract$LPCR_SponsorEntreprise__c</field>
     </columns>
     <columns>
@@ -20,12 +17,6 @@
     </columns>
     <columns>
         <field>Contract$LPCR_DateDebut__c</field>
-    </columns>
-    <columns>
-        <field>Contract$LPCR_PlanningEnfant__c</field>
-    </columns>
-    <columns>
-        <field>Contract$LPCR_PlanningEnfant__c.LPCR_TypePlanning__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -68,10 +59,6 @@
     </columns>
     <columns>
         <field>Contract$LPCR_Section__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Contract$LPCR_NombreAgrmentCrcheSurSection__c</field>
     </columns>
     <customDetailFormulas>
         <calculatedFormula>((52-(Contract.SBQQ__Quote__c.LPCR_CongesSemaine__c/5))*Contract.LPCR_PlanningEnfant__c.LPCR_NombreHeuresSemaine__c)/2070</calculatedFormula>

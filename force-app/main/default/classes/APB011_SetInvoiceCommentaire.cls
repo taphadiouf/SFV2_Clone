@@ -6,6 +6,10 @@
 global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>,Schedulable {
     String query;
     
+    global APB011_SetInvoiceCommentaire() {
+        
+    }
+
     global APB011_SetInvoiceCommentaire(String query) {
         this.query = query;
     }
@@ -36,7 +40,8 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
     global void execute(SchedulableContext sc) {
         
         APB011_SetInvoiceCommentaire sc1 = new APB011_SetInvoiceCommentaire(query);
-       
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB011_SetInvoiceCommentaire');
         
@@ -49,10 +54,7 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB011_SetInvoiceCommentaire(query);
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB011_SetInvoiceCommentaire'+timeForScheduler,timeForScheduler,sc1);
+                Id schedId = System.Schedule('APB011_SetInvoiceCommentaire'+timeForScheduler,timeForScheduler,new APB011_SetInvoiceCommentaire(query));
             }
         }  
         

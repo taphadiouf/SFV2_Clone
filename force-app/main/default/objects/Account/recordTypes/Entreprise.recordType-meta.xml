@@ -306,7 +306,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>À pied</fullName>
+            <fullName>A pied</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -465,23 +465,27 @@
     <picklistValues>
         <picklist>LPCR_RegionCommerciale__c</picklist>
         <values>
+            <fullName>Grand Nord</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Grand Ouest</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>IDF</fullName>
+            <fullName>Grand Sud</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>LR</fullName>
+            <fullName>IDF Nord</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Nord Est</fullName>
+            <fullName>IDF Sédentaires</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>PACA</fullName>
+            <fullName>IDF Sud</fullName>
             <default>false</default>
         </values>
         <values>

@@ -4,7 +4,7 @@
     <encodingKey>ISO-8859-1</encodingKey>
     <name>Amendment Contract</name>
     <style>none</style>
-    <subject>Le Contrat {!SBQQ__Quote__c.Name} a subit des modifications</subject>
+    <subject>Le Contrat {!SBQQ__Quote__c.LPCR_NumeroContrat__c} a subi des modifications</subject>
     <type>text</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -3,6 +3,7 @@ private class QuoteExtControllerTests {
     
     testMethod static void testSubmit() {
         SBQQ__Quote__c quote = new SBQQ__Quote__c();
+        quote.LPCR_Creation_conforme__c = true;
         insert quote;
         
         Test.startTest();
@@ -16,6 +17,7 @@ private class QuoteExtControllerTests {
     
    testMethod static void testRecall() {
         SBQQ__Quote__c quote = new SBQQ__Quote__c();
+        quote.LPCR_Creation_conforme__c = true;
         insert quote;
      
         

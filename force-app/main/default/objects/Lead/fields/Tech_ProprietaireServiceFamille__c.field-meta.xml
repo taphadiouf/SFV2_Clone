@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tech_ProprietaireServiceFamille__c</fullName>
+    <description>vrai si le propriétaire appartient au service famille. utilisé dans le process builder PB_Lead</description>
+    <externalId>false</externalId>
+    <formula>IF(
+BEGINS(OwnerId,&apos;00G&apos;),  
+Owner:Queue.DeveloperName =&apos;LPCR_ServiceFamille&apos;,
+IF(NOT(ISBLANK(Owner:User.UserRoleId)),Owner:User.UserRole.DeveloperName =&apos;Service_Famille&apos;,false))</formula>
+    <inlineHelpText>Vrai si le propriétaire appartient au service famille</inlineHelpText>
+    <label>Tech_Propriétaire Service Famille</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

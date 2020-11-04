@@ -26,10 +26,16 @@ public class UM010_Constant {
     public static final String MODIFICATION_FACTURATION_ADAPTATION = 'Modification_Facturation_Adaptation';
     public static final String COMMENTAIRE_INDIVIDUEL_FACTURE = 'Commentaire_Individuel_Facture';
     public static final String COMMENTAIRE_GLOBAL_FACTURE = 'Commentaire_Global_Facture';
-    public static final String ABSCENCE = 'Abscence';
+    public static final String ABSENCE = 'Absence';
     public static final String NB_HEURES_REALISEE = 'NB_Heures_Realisee';
     public static final String TRAITEMENT_JOUR_FERIE = 'Traitement_Jour_Ferie';
     public static final String REGULARISATION = 'Regularisation';
     public static final String CRECHE_LPCR = 'Crèche LPCR : ';
+    public static final String LOG_SEND_DOC_TO_GED = 'Appel Externe ENVOIE DOCUMENT GED LPCR';
+    public static final String LOG_LIST_DOC = 'Appel Service Externe REF DOC LIST';
+    public static final String LOG_REF_DOC_REC = 'Appel Service Externe REF DOC RECUP';
+    public static final String LOG_REF_SENDMAIL = 'Appel Service Externe REF SENDMAIL';
+    public static final String ERROR = 'Error';
+    public static final String SUCCESS = 'Success';
 
 }

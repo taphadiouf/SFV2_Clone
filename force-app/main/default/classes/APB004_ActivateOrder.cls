@@ -40,6 +40,9 @@ global class APB004_ActivateOrder  implements Database.Batchable<sObject>,Schedu
     
     global void execute(SchedulableContext sc) {
         
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
+        
         APB004_ActivateOrder sc1 = new APB004_ActivateOrder();
         
         // schedule the apex class only if their is not existing job running
@@ -54,10 +57,7 @@ global class APB004_ActivateOrder  implements Database.Batchable<sObject>,Schedu
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB004_ActivateOrder();
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB004_ActivateOrder'+timeForScheduler,timeForScheduler,sc1);
+                Id schedId = System.Schedule('APB004_ActivateOrder'+timeForScheduler,timeForScheduler,new APB004_ActivateOrder());
             }
         }  
         

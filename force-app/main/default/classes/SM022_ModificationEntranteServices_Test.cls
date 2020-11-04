@@ -433,7 +433,7 @@ public class SM022_ModificationEntranteServices_Test {
             Insert contract;
 
             LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Modification_Type_Accueil',acc.id,cont.id,contract.id,Date.today(),10);
-            modif.LPCR_TypeAccueil__c = 'Normal';
+            modif.LPCR_TypeAccueil__c = 'Régulier';
             insert modif;
 
             Test.startTest();
@@ -1021,7 +1021,7 @@ public class SM022_ModificationEntranteServices_Test {
             order.SBQQ__Quote__c = quote.id;
             order.RecordTypeId = ORDER_CONTRAT_ACCUEIL_RT_ID;
             insert order;
-
+			Test.startTest();
             OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
             orderItem.SBQQ__QuoteLine__c = qlines.get(0).id;
             orderItem.SBQQ__Activated__c = false;
@@ -1033,7 +1033,7 @@ public class SM022_ModificationEntranteServices_Test {
             order.blng__BillNow__c = true;
             update order;
 
-            Test.startTest();
+            
 
             blng__Invoice__c invoice = new blng__Invoice__c();
             invoice.blng__Account__c = acc.Id;
@@ -1146,7 +1146,7 @@ public class SM022_ModificationEntranteServices_Test {
 
             Test.startTest();
 
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Abscence',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Absence',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
 
@@ -1209,7 +1209,7 @@ public class SM022_ModificationEntranteServices_Test {
             order.SBQQ__Quote__c = quote.id;
             order.RecordTypeId = ORDER_CONTRAT_ACCUEIL_RT_ID;
             insert order;
-
+			Test.startTest();
             OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
             orderItem.SBQQ__QuoteLine__c = qlines.get(0).id;
             orderItem.SBQQ__Activated__c = false;
@@ -1220,9 +1220,7 @@ public class SM022_ModificationEntranteServices_Test {
             update order;
             order.blng__BillNow__c = true;
             update order;
-
-            Test.startTest();
-
+            
             blng__Invoice__c invoice = new blng__Invoice__c();
             invoice.blng__Account__c = acc.Id;
             invoice.blng__BillToContact__c = cont.id;
@@ -1290,13 +1288,13 @@ public class SM022_ModificationEntranteServices_Test {
 
             contract.Status = 'Activated';
             update contract;
-
+			Test.startTest();
             Order order = UM002_TestDataFactory.createOrder(acc.Id, contract.id,date.today(),'test','Draft','1');
             order.Pricebook2Id = standardPricebookId;
             order.SBQQ__Quote__c = quote.id;
             order.RecordTypeId = ORDER_CONTRAT_ACCUEIL_RT_ID;
             insert order;
-
+			
             OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Monthly', 100);
             orderItem.SBQQ__QuoteLine__c = qlines.get(0).id;
             orderItem.SBQQ__Activated__c = false;
@@ -1307,8 +1305,6 @@ public class SM022_ModificationEntranteServices_Test {
             update order;
             order.blng__BillNow__c = true;
             update order;
-
-            Test.startTest();
 
             blng__Invoice__c invoice = new blng__Invoice__c();
             invoice.blng__Account__c = acc.Id;

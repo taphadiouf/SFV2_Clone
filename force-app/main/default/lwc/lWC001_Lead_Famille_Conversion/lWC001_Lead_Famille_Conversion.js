@@ -55,24 +55,15 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
     }
     @wire(CurrentPageReference)
     pageRef;
-    @wire(getRelatedCreches, {leadId : "$recordId"})
-    getRelatedCrechesF({error, data}){
-        if(data){
-            this.creches = [];
-            for(let i = 0; i < data.length ; i++){
-                this.creches.push({
-                    label : data[i].Id,
-                    value : data[i].Name
-                });
-            }
-        }
-        if(error){
-            console.error(error);
-        }
-    }
-    @wire(getAccountsByRecordtypeName, {recordTypeName : "$accEntrepriseRT"})
-    getAccountsByRecordtypeNameF({error, data}){
-        if(data){
+    
+    
+    getAccountsByRecordtypeNameF() {
+        getAccountsByRecordtypeName({
+            recordTypeName: this.accEntrepriseRT,
+            leadId : this.recordId
+        })
+        
+        .then((data)=>{
             this.comptes = [];
             for(let i=0; i< data.length; i++){
                 this.comptes.push({
@@ -80,10 +71,10 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
                     value: data[i].Name
                 });
             }
-        }
-        else if(error){
-            console.error(error);
-        }
+        })
+        .catch(err=>{
+            console.error(err);
+        });
     }
     @wire(getEnfants, {leadId : "$recordId"})
     getEnfantsF({error, data}){
@@ -94,11 +85,32 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
             console.error(error);
         }
     }
-    connectedCallback(){
+    async connectedCallback(){
         console.log("ConnectedCallback8");
+        this.getAccountsByRecordtypeNameF();
+        await this.getRelatedCrechesF();
+    }
+
+    getRelatedCrechesF() {
+        getRelatedCreches({
+            leadId : this.recordId,
+        })
+        
+        .then((data)=>{
+            this.creches = [];
+            for(let i = 0; i < data.length ; i++){
+                this.creches.push({
+                    label : data[i].Id,
+                    value : data[i].Name
+                });
+            }
+        })
+        .catch(err=>{
+            console.error(err);
+        });
     }
     get showEnfants(){
-        return (this.enfants.length > 1);
+        return (this.enfants.length > 0);
     }
     get getEnfantsOptions(){
         let enfantsOptions = [];
@@ -118,7 +130,7 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         fireEvent(this.pageRef, "changedEnfants", this.enfantsIndexes);
     }
     handleCrecheChosen(event){
-        this.chosenCrecheId = event.target.value.Id;
+        this.chosenCrecheId = event.target.value;
         fireEvent(this.pageRef, "chosenCrecheChanged", this.chosenCrecheId);
     }
     handleSponsCheckbox(event) {
