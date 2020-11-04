@@ -29,11 +29,21 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
                 eachInvoice.LPCR_StatutFacture__c = Label.LPCR_AEnvoyer;
             }
         }
-        update lstOfInvoices;
+        try {
+            update lstOfInvoices;
+            PAD.log('APB011_SetInvoiceCommentaire','execute','Invoices Update success. list : ' + lstOfInvoices);
+        } catch (Exception e ) {
+            PAD.log('APB011_SetInvoiceCommentaire','execute','Invoices Update Error. list : ' + lstOfInvoices + '| Error Message : ' + e.getMessage());
+        }
         for(blng__InvoiceRun__c eachInvoiceRun : scope){
             eachInvoiceRun.LPCR_EnvoyerFaitPar__c = eachInvoiceRun.OwnerId;
         }
-        update scope;
+        try {
+            update scope;
+            PAD.log('APB011_SetInvoiceCommentaire','execute','Invoice Runs Update success. list : ' + scope);
+        } catch (Exception e ) {
+            PAD.log('APB011_SetInvoiceCommentaire','execute','Invoice Runs Update Error. list : ' + scope + '| Error Message : ' + e.getMessage());
+        }
     }
     global void finish(Database.BatchableContext BC) {
     }
@@ -55,6 +65,7 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
             } else {
                 //schedule this same schedulable class again in 30 mins
                 Id schedId = System.Schedule('APB011_SetInvoiceCommentaire'+timeForScheduler,timeForScheduler,new APB011_SetInvoiceCommentaire(query));
+                PAD.log('APB011_SetInvoiceCommentaire','execute','Scheduling the Batch in 30 Minutes : '+dt);
             }
         }  
         
