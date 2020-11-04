@@ -247,17 +247,9 @@
                 <default>false</default>
                 <label>LPCR_DateSignatureContrat__c</label>
             </value>
+            <value><fullName>LPCR_CheckboxTechnique__c</fullName><default>false</default><label>LPCR_CheckboxTechnique__c</label></value>
+            <value><fullName>LPCR_LigneBonCommandeEnvoye__c</fullName><default>false</default><label>LPCR_LigneBonCommandeEnvoye__c</label></value>
             <value>
-                <fullName>LPCR_CheckboxTechnique__c</fullName>
-                <default>false</default>
-                <label>LPCR_CheckboxTechnique__c</label>
-            </value>
-            <value>
-                <fullName>LPCR_LigneBonCommandeEnvoye__c</fullName>
-                <default>false</default>
-                <label>LPCR_LigneBonCommandeEnvoye__c</label>
-            </value>
-            </value>
                 <fullName>LPCR_RecalculationMACDone__c</fullName>
                 <default>false</default>
                 <label>LPCR_RecalculationMACDone__c</label>
