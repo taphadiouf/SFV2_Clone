@@ -24,13 +24,19 @@ global class APB013_ProcessYearlyOrderProduct implements Database.Batchable<sObj
         for (OrderItem eachOrderItem : scope) {
             eachOrderItem.LPCR_BillingPlanProcessment__c = false;
         }       
-        
-        update scope;     
+        try {
+            update scope;
+            PAD.log('APB013_ProcessYearlyOrderProduct', 'execute', 'OrderItems Update Success. List : ' + scope);
+        } catch (Exception e) {
+            PAD.log('APB013_ProcessYearlyOrderProduct', 'execute', 'OrderItems Update Error. ErrMsg : ' + e.getMessage());
+        }
+         
         
         List<LPCR_PlanFacturation__c> delBillingPlanList = [select id, LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c IN: orderItemIds ];
 
         if(delBillingPlanList.size() > 0){
             delete delBillingPlanList;
+            PAD.log('APB013_ProcessYearlyOrderProduct', 'execute', 'Deleted Billing plan list : ' + delBillingPlanList);
         }   
     }
     
@@ -56,6 +62,7 @@ global class APB013_ProcessYearlyOrderProduct implements Database.Batchable<sObj
                 //schedule this same schedulable class again in 30 mins
 
                 Id schedId = System.Schedule('APB013_ProcessYearlyOrderProduct'+timeForScheduler,timeForScheduler,new APB013_ProcessYearlyOrderProduct());
+                PAD.log('APB013_ProcessYearlyOrderProduct', 'execute', 'Scheduling the batch in 30 minutes :' + dt);
             }
         }  
         
