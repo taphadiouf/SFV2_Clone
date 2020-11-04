@@ -289,11 +289,11 @@
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_reservataire</fullName>
-        <description>Assigner un type d&apos;enregistrement Réservataire pour un Contrat Réservataire cloné.</description>
+        <description>Assigner un type d&apos;enregistrement Réservataire pour un Contrat de Réservation cloné.</description>
         <field>RecordTypeId</field>
         <lookupValue>Reservataire</lookupValue>
         <lookupValueType>RecordType</lookupValueType>
-        <name>RT Contrat réservataire</name>
+        <name>RT Contrat de Réservation</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
@@ -303,7 +303,7 @@
         <field>RecordTypeId</field>
         <lookupValue>Reservataire_Approuve</lookupValue>
         <lookupValueType>RecordType</lookupValueType>
-        <name>RT Contrat réservataire approuvé</name>
+        <name>RT Contrat de Réservation approuvé</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
@@ -980,13 +980,13 @@
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
-        <fullName>WF_Quote_Update RT Contrat réservataire approuvé</fullName>
+        <fullName>WF_Quote_Update RT Contrat de Réservation approuvé</fullName>
         <actions>
             <name>RT_Contrat_reservataire_approuve</name>
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
-        <description>Update RT quand le contrat réservataire est approuvé.</description>
+        <description>Update RT quand le Contrat de Réservation est approuvé.</description>
         <formula>AND(TEXT( ApprovalStatus__c ) = &apos;Approved&apos;,  RecordType.DeveloperName = &apos;Reservataire&apos;,  SBQQ__Primary__c = TRUE )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
