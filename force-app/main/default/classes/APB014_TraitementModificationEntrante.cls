@@ -42,6 +42,7 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
             Datetime dt = Datetime.now().addMinutes(2);  // i.e. 2 mins
             String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
             Id schedId = System.Schedule('APB016_QuoteReCalculateProcess'+timeForScheduler,timeForScheduler,sc);
+            PAD.log('APB014_TraitementModificationEntrante','finish','Scheduling in 2 minutes from now : ' + dt );
         }    
     }
     
@@ -63,6 +64,7 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
             } else {
                 //schedule this same schedulable class again in 30 mins
                 Id schedId = System.Schedule('APB014_TraitementModificationEntrante'+timeForScheduler,timeForScheduler,new APB014_TraitementModificationEntrante());
+                PAD.log('APB014_TraitementModificationEntrante','execute','Scheduling in 30 minutes from now : ' + dt );
             }
         }  
         
