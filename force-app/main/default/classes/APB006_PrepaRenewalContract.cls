@@ -76,7 +76,7 @@ global class APB006_PrepaRenewalContract implements Database.Batchable<sObject>,
         
         if(!isBatchJobRunning) {
             if (!isJobQueueFull) {Database.executeBatch(sc1, 2000);}
-            else { Id schedId = System.Schedule('APB006_PrepaRenewalContract' + timeForScheduler, timeForScheduler, sc1);}
+            else { Id schedId = System.Schedule('APB006_PrepaRenewalContract' + timeForScheduler, timeForScheduler, sc1);PAD.log('APB006_PrepaRenewalContract', 'execute', 'scheduling in 30minutes : ' + timeForScheduler);}
         }  
     }
 } 
