@@ -246,7 +246,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                                     IntervalByMonth = 3;
                                     if(newPlanLine.LPCR_StartDate__c.day() == 1){
                                         isFullDate = true;
-                                        System.debug('@@@ Is Full date'+ newPlanLine.LPCR_StartDate__c);
+                                        PAD.log('APB010_ProcessDailyOrderProduct', 'execute','Is Full date'+ newPlanLine.LPCR_StartDate__c + '|LPCR_LignePlanFacturation__c:' + newPlanLine);
                                     }                                    
                                 }else if(months == 2 || months == 5 || months == 8 || months == 11){
                                     IntervalByMonth = 2;
@@ -319,10 +319,10 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             }else{
                                 if(isFullDate){
                                     newPlanLine.LPCR_Amount__c = billableUnitPrice;
-                                	System.debug('@@@ Partial Year Full Amount '+newPlanLine.LPCR_Amount__c);
+                                	PAD.log('APB010_ProcessDailyOrderProduct', 'execute','Partial Year Full Amount '+newPlanLine.LPCR_Amount__c + '|LPCR_LignePlanFacturation__c:' + newPlanLine);
                                 }else{
                                     newPlanLine.LPCR_Amount__c = noOfDaysInBPL *  oneDayPriceBP;
-                                    System.debug('@@@ Partial Year reminder Amount '+newPlanLine.LPCR_Amount__c);
+                                    PAD.log('APB010_ProcessDailyOrderProduct', 'execute','Partial Year reminder Amount '+newPlanLine.LPCR_Amount__c + '|LPCR_LignePlanFacturation__c:' + newPlanLine);
                                 }
                             }   
                             
@@ -385,10 +385,11 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
             
         }  
         if(billingPlanLineList.size() > 0){
-            System.debug('**** billingPlanLineList size = '+ billingPlanLineList.size());
-            System.debug('**** billingPlanLineList data = '+ billingPlanLineList);
+            PAD.log('APB010_ProcessDailyOrderProduct', 'execute','billingPlanLineList size = '+ billingPlanLineList.size());
+            PAD.log('APB010_ProcessDailyOrderProduct', 'execute','billingPlanLineList data = '+ billingPlanLineList);
             try{
                 insert billingPlanLineList;
+                PAD.log('APB010_ProcessDailyOrderProduct', 'execute','Insert success of :'+ billingPlanLineList);
             }catch(Exception ex){
                 PAD.log('APB010_ProcessDailyOrderProduct', 'execute', '**** Exception : '+ ex.getMessage());
             }
@@ -418,6 +419,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
             } else {
                 //schedule this same schedulable class again in 30 mins
                 Id schedId = System.Schedule('APB010_ProcessDailyOrderProduct'+timeForScheduler,timeForScheduler,new APB010_ProcessDailyOrderProduct());
+                PAD.log('APB010_ProcessDailyOrderProduct', 'execute', 'Scheduling the batch in 30 Minutes : '+ dt);
             }
         }  
         
