@@ -8,6 +8,9 @@ public with sharing class APC006_CloneQuoteLines {
  //The purpose of this is to elevate the test class code coverage.
  public static Boolean testRunningFlag1 = false;
  public static Boolean testRunningFlag2 = false;
+ public static Boolean testRunningFlag3 = false;
+ public static Boolean testRunningFlag4 = false;
+
  @AuraEnabled
     public static Boolean cloneAndResetQL(Id quoteId){
         //Map (existing quote line id => Quote line record)
@@ -88,8 +91,11 @@ public with sharing class APC006_CloneQuoteLines {
 
         // get consumption schedule
         Map<String,SBQQ__QuoteLineConsumptionSchedule__c> clonedQLConsumptionScheduleMap = new Map<String,SBQQ__QuoteLineConsumptionSchedule__c>();
-        for(SBQQ__QuoteLineConsumptionSchedule__c qlCS : [SELECT Id, Name, SBQQ__QuoteLine__c, SBQQ__BillingTermUnit__c, SBQQ__BillingTerm__c, SBQQ__Category__c, SBQQ__ConsumptionSchedule__c, SBQQ__Description__c, SBQQ__MatchingAttribute__c, SBQQ__RatingMethod__c, SBQQ__Type__c, SBQQ__UnitOfMeasure__c FROM SBQQ__QuoteLineConsumptionSchedule__c WHERE SBQQ__QuoteLine__c IN: originIdsToclonedQLMap.keySet()]){
+        for(SBQQ__QuoteLineConsumptionSchedule__c qlCS : [SELECT Id, Name, SBQQ__QuoteLine__c, SBQQ__BillingTermUnit__c, SBQQ__BillingTerm__c, SBQQ__Category__c, SBQQ__ConsumptionSchedule__c, SBQQ__Description__c, SBQQ__MatchingAttribute__c, SBQQ__RatingMethod__c, SBQQ__Type__c, SBQQ__UnitOfMeasure__c  
+                                                        FROM SBQQ__QuoteLineConsumptionSchedule__c 
+                                                        WHERE SBQQ__QuoteLine__c IN: originIdsToclonedQLMap.keySet()]){
             if(originIdsToclonedQLMap.containsKey(qlCS.SBQQ__QuoteLine__c)){
+                //ENTER HERE
                 SBQQ__QuoteLineConsumptionSchedule__c newQLCS = qlCS.clone(false, true, false, false);
                 newQLCS.SBQQ__QuoteLine__c = originIdsToclonedQLMap.get(qlCS.SBQQ__QuoteLine__c).Id;
                 clonedQLConsumptionScheduleMap.put(qlCS.id,newQLCS);
@@ -98,7 +104,11 @@ public with sharing class APC006_CloneQuoteLines {
         
         try {
             insert clonedQLConsumptionScheduleMap.values();
+            if (Test.isRunningTest() && testRunningFlag4) {
+                throw new CustomException('Error message in Test Class.');
+            }
         } catch (Exception ex) {
+            //ENTER HERE
             ApexPages.addMessage(new ApexPages.Message(
                 ApexPages.Severity.ERROR,
                 'DML operation has failed. More info: ' + ex.getMessage() + '\nStack Trace:' + ex.getStackTraceString()));
@@ -107,8 +117,11 @@ public with sharing class APC006_CloneQuoteLines {
         }
         
         List<SBQQ__QuoteLineConsumptionRate__c> clonedQLConsumptionRateList = new List<SBQQ__QuoteLineConsumptionRate__c>();
-        for(SBQQ__QuoteLineConsumptionRate__c eachQLCRate : [SELECT Id, Name, SBQQ__QuoteLineConsumptionSchedule__c, SBQQ__Description__c, SBQQ__LowerBound__c, SBQQ__OriginalPrice__c, SBQQ__Price__c, SBQQ__PricingMethod__c, SBQQ__ProcessingOrder__c, SBQQ__UpperBound__c FROM SBQQ__QuoteLineConsumptionRate__c WHERE SBQQ__QuoteLineConsumptionSchedule__c IN: clonedQLConsumptionScheduleMap.keySet()]){
+        for(SBQQ__QuoteLineConsumptionRate__c eachQLCRate : [SELECT Id, Name, SBQQ__QuoteLineConsumptionSchedule__c, SBQQ__Description__c, SBQQ__LowerBound__c, SBQQ__OriginalPrice__c, SBQQ__Price__c, SBQQ__PricingMethod__c, SBQQ__ProcessingOrder__c, SBQQ__UpperBound__c 
+                                                            FROM SBQQ__QuoteLineConsumptionRate__c 
+                                                            WHERE SBQQ__QuoteLineConsumptionSchedule__c IN: clonedQLConsumptionScheduleMap.keySet()]){
             if(clonedQLConsumptionScheduleMap.containsKey(eachQLCRate.SBQQ__QuoteLineConsumptionSchedule__c)){
+                //ENTER HERE
                 SBQQ__QuoteLineConsumptionRate__c newQLCRate = eachQLCRate.clone(false, true, false, false);
                 newQLCRate.SBQQ__QuoteLineConsumptionSchedule__c = clonedQLConsumptionScheduleMap.get(eachQLCRate.SBQQ__QuoteLineConsumptionSchedule__c).id;
                 clonedQLConsumptionRateList.add(newQLCRate);
@@ -117,7 +130,11 @@ public with sharing class APC006_CloneQuoteLines {
         
         try {
             insert clonedQLConsumptionRateList;
+            if (Test.isRunningTest() && testRunningFlag3) {
+                throw new CustomException('Error message in Test Class.');
+            }
         } catch (Exception ex) {
+            //ENTER HERE
             System.debug('**** clonedQLConsumptionRateList Exception : '+ ex.getMessage());
             ApexPages.addMessage(new ApexPages.Message(
                 ApexPages.Severity.ERROR,

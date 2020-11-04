@@ -109,10 +109,20 @@ public class APB010_ProcessDailyOrderProduct_Test {
             orderItem.EndDate = System.today().addMonths(36);
             orderItem.blng__NextChargeDate__c = System.today();
             orderItem.SBQQ__Contract__c = contract.id;
-            insert orderItem;
             
-            orderItem.SBQQ__Activated__c = true;
-            update orderItem;
+            OrderItem orderItem2 = UM002_TestDataFactory.createOrderProduct(pbEntry1.id, order.Id, prod1.id, 'Recurring','Semiannual', 100);
+            orderItem2.SBQQ__QuoteLine__c = qlines.get(1).id;
+            orderItem2.SBQQ__Activated__c = false;
+            orderItem2.EndDate = System.today().addMonths(36);
+            orderItem2.blng__NextChargeDate__c = System.today();
+            orderItem2.SBQQ__Contract__c = contract.id;
+            
+            OrderItem orderItem3 = UM002_TestDataFactory.createOrderProduct(pbEntry1.id, order.Id, prod1.id, 'Recurring','Annual', 100);
+            orderItem3.SBQQ__QuoteLine__c = qlines.get(1).id;
+            orderItem3.SBQQ__Activated__c = false;
+            orderItem3.EndDate = System.today().addMonths(36);
+            orderItem3.blng__NextChargeDate__c = System.today();
+            orderItem3.SBQQ__Contract__c = contract.id;
             
             OrderItem orderItem1 = UM002_TestDataFactory.createOrderProduct(pbEntry1.id, order.Id, prod1.id, 'Recurring','Invoice Plan', 100);
             orderItem1.SBQQ__QuoteLine__c = qlines.get(1).id;
@@ -120,11 +130,16 @@ public class APB010_ProcessDailyOrderProduct_Test {
             orderItem1.EndDate = System.today().addMonths(36);
             orderItem1.blng__NextChargeDate__c = System.today();
             orderItem1.SBQQ__Contract__c = contract.id;
-            insert orderItem1;
             
+            insert new List<OrderItem>{orderItem,orderItem1,orderItem2,orderItem3};
+
+            orderItem.SBQQ__Activated__c = true;
             orderItem1.SBQQ__Activated__c = true;
-            update orderItem1;
+            orderItem2.SBQQ__Activated__c = true;
+            orderItem3.SBQQ__Activated__c = true;
             
+            update new List<OrderItem>{orderItem,orderItem1,orderItem2,orderItem3};
+
             order.status ='Activated';
             update order;
 
@@ -174,12 +189,20 @@ public class APB010_ProcessDailyOrderProduct_Test {
             ss.execute(null);
             
             Test.stopTest();
+
+
             List<LPCR_PlanFacturation__c> billingPlanCheck = new List<LPCR_PlanFacturation__c>();
+            List<LPCR_PlanFacturation__c> billingPlanCheck2 = new List<LPCR_PlanFacturation__c>();
+            List<LPCR_PlanFacturation__c> billingPlanCheck3 = new List<LPCR_PlanFacturation__c>();
             List<LPCR_LignePlanFacturation__c> billingPlanLineCheck = new List<LPCR_LignePlanFacturation__c>();
             billingPlanCheck = [select id,LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c =: orderItem.id];
+            billingPlanCheck2 = [select id,LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c =: orderItem2.id];
+            billingPlanCheck3 = [select id,LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c =: orderItem3.id];
             billingPlanLineCheck = [select Id, Name, LPCR_StartDate__c, LPCR_EndDate__c, LPCR_Amount__c, LPCR_PlanFacturation__c from LPCR_LignePlanFacturation__c where LPCR_PlanFacturation__c IN: billingPlanCheck];
             System.assertEquals(4, billingPlanCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan');
             System.assertEquals(13, billingPlanLineCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan Line');
+            System.assertNotEquals(0, billingPlanCheck2.size());
+            System.assertNotEquals(0, billingPlanCheck3.size());
         }
     }
     

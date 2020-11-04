@@ -7,8 +7,12 @@
 public with sharing class APC006_CloneQuoteLines_Test {
     @TestSetup
     static void setup(){
-        Id standardPricebookId = Test.getStandardPricebookId();
-
+        Id standardPricebookId;
+        if([SELECT Id FROM Pricebook2 WHERE IsStandard=true].size() > 0){
+            standardPricebookId = [SELECT Id FROM Pricebook2 WHERE IsStandard=true].Id;
+        }else{
+            standardPricebookId = Test.getStandardPricebookId();
+        }
         SBQQ__Quote__c quote = UM002_TestDataFactory.createQuote(standardPricebookId, 'Quote');
         quote.SBQQ__Primary__c =true;
         insert quote;
@@ -44,6 +48,9 @@ public with sharing class APC006_CloneQuoteLines_Test {
         Id quoteId = [SELECT Id from SBQQ__Quote__c limit 1].get(0).Id;
         Test.startTest(); 
         APC006_CloneQuoteLines.testRunningFlag1 = true;
+		APC006_CloneQuoteLines.testRunningFlag2 = false;
+		APC006_CloneQuoteLines.testRunningFlag3 = false;
+		APC006_CloneQuoteLines.testRunningFlag4 = false;
         APC006_CloneQuoteLines.cloneAndResetQL(quoteId);
         Test.stopTest();
     }
@@ -51,8 +58,58 @@ public with sharing class APC006_CloneQuoteLines_Test {
     static void cloneAndResetQL_Exception2_Test(){
         Id quoteId = [SELECT Id from SBQQ__Quote__c limit 1].get(0).Id;
         Test.startTest(); 
-        APC006_CloneQuoteLines.testRunningFlag2 = true;
+        APC006_CloneQuoteLines.testRunningFlag1 = false;
+		APC006_CloneQuoteLines.testRunningFlag2 = true;
+		APC006_CloneQuoteLines.testRunningFlag3 = false;
+		APC006_CloneQuoteLines.testRunningFlag4 = false;
         APC006_CloneQuoteLines.cloneAndResetQL(quoteId);
         Test.stopTest();
     }
+
+    @IsTest
+    static void cloneAndResetQL_Exception3_Test(){
+        Id quoteId = [SELECT Id from SBQQ__Quote__c limit 1].get(0).Id;
+        Test.startTest(); 
+        APC006_CloneQuoteLines.testRunningFlag1 = false;
+		APC006_CloneQuoteLines.testRunningFlag2 = false;
+		APC006_CloneQuoteLines.testRunningFlag3 = true;
+		APC006_CloneQuoteLines.testRunningFlag4 = false;
+        try {
+            APC006_CloneQuoteLines.cloneAndResetQL(quoteId);
+        } catch (Exception e ) {
+            System.assertNotEquals(null, e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    @IsTest
+    static void cloneAndResetQL_Exception4_Test(){
+        Id quoteId = [SELECT Id from SBQQ__Quote__c limit 1].get(0).Id;
+        Test.startTest(); 
+        APC006_CloneQuoteLines.testRunningFlag1 = false;
+		APC006_CloneQuoteLines.testRunningFlag2 = false;
+		APC006_CloneQuoteLines.testRunningFlag3 = false;
+		APC006_CloneQuoteLines.testRunningFlag4 = true;
+        try {
+            APC006_CloneQuoteLines.cloneAndResetQL(quoteId);
+        } catch (Exception e ) {
+            System.assertNotEquals(null, e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+
+
+    @IsTest
+    static void cloneAndResetQL_ExceptionParamNull_Test(){
+        Id quoteId = [SELECT Id from SBQQ__Quote__c limit 1].get(0).Id;
+        Test.startTest(); 
+        try {
+            APC006_CloneQuoteLines.cloneAndResetQL(null);
+        } catch (Exception e ) {
+            System.assertNotEquals(null, e.getMessage());
+        }
+        Test.stopTest();
+    }
+    
 }
