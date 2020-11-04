@@ -58,6 +58,7 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject>, Sche
                 //schedule this same schedulable class again in 30 mins
 
                 Id schedId = System.Schedule('APB001_ProcessLPCR_Log' + timeForScheduler, timeForScheduler, new APB001_ProcessLPCR_Log());
+                PAd.log('APB002_RenewalContract', 'execute', 'scheduling batch in ' + dt);
             }
         }  
         

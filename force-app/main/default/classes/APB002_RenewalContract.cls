@@ -55,6 +55,7 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
                 //schedule this same schedulable class again in 30 mins
 
                 Id schedId = System.Schedule('APB002_RenewalContract'+timeForScheduler,timeForScheduler,new APB002_RenewalContract());
+                PAd.log('APB002_RenewalContract', 'execute', 'scheduling batch in ' + dt);
             }
         }  
         
