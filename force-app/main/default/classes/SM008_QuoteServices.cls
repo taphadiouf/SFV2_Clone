@@ -281,12 +281,22 @@ public with sharing class SM008_QuoteServices {
                             eachQuote.LPCR_MethodeRenouvellement__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_MethodeRenouvellement__c;
                             //Date endDate = eachQuote.LPCR_DateFin__c;
                             if(Label.LPCR_Express.equals(eachQuote.LPCR_MethodeRenouvellement__c) ||Label.LPCR_SansRenouvellement.equals(eachQuote.LPCR_MethodeRenouvellement__c) ){
-                                if(eachQuote.LPCR_DateFin__c < dueStartDateQuote){
-                                    eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                                if (eachQuote.RecordTypeId == reservataireRecTypeId) {//eachQuote.RecordTypeId = <RESERVATAIRE>
+                                    if(eachQuote.LPCR_DateFin__c < dueStartDateQuote){
+                                        eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
+                                    }
+                                    else{
+                                        eachQuote.SBQQ__EndDate__c = dueStartDateQuote;
+                                    }
                                 }
-                                else{
-                                    eachQuote.SBQQ__EndDate__c = dueStartDateQuote;
-                                } 
+                                else { //eachContract.RecordTypeId = <REFERENEMENT>
+                                    if(eachQuote.LPCR_DateFinMaxQuoteLine__c < dueStartDateQuote){
+                                        eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFinMaxQuoteLine__c;
+                                    }
+                                    else{
+                                        eachQuote.SBQQ__EndDate__c = dueStartDateQuote;
+                                    }
+                                }
                             }
                             else if(Label.LPCR_Tacite.equals(eachQuote.LPCR_MethodeRenouvellement__c)){
                                 eachQuote.SBQQ__EndDate__c = dueStartDateQuote;

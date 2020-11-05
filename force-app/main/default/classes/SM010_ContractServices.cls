@@ -208,9 +208,15 @@ public class SM010_ContractServices {
                 	if(eachContract.recordtypeId == accueilRecTypeId && eachContract.EndDate != eachContract.LPCR_DateFin__c){
                         eachContract.LPCR_RenouvellementAutomatique__c =true;
                     }
-                    else if(eachContract.SBQQ__RenewalUpliftRate__c != null && 
-                            (eachContract.LPCR_MethodeRenouvellement__c == 'Tacite' ||
-                             (eachContract.LPCR_MethodeRenouvellement__c != 'Tacite' && eachContract.EndDate != eachContract.LPCR_DateFin__c))){
+                    else if(    eachContract.SBQQ__RenewalUpliftRate__c != null 
+                                && 
+                                (   eachContract.LPCR_MethodeRenouvellement__c == 'Tacite' 
+                                    ||
+                                    (eachContract.RecordTypeId == reservataireRecTypeId && eachContract.LPCR_MethodeRenouvellement__c != 'Tacite' && eachContract.EndDate != eachContract.LPCR_DateFin__c)
+                                    ||
+                                    (eachContract.RecordTypeId == reservataireRecTypeId && eachContract.LPCR_MethodeRenouvellement__c != 'Tacite' && eachContract.EndDate != eachContract.LPCR_DateFinMaxQuoteLine__c)
+                                )
+                            ){
                                  eachContract.LPCR_RenouvellementAutomatique__c =true;
                              }
             }
