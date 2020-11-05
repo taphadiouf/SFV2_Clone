@@ -195,7 +195,7 @@ public class SM007_LeadServices_Test {
         }
 
         //Test Mappings after conversion:
-        List<Lead> leadsPublicToConvertCheckMap = [SELECT Id,ConvertedOpportunityId,RecordTypeId,LPCR_ObjetAO__c,LPCR_DebutContrat__c,LPCR_DureeContrat__c,LPCR_FinContrat__c FROM Lead WHERE Name IN ('aoPublicReservLeads','aoPublicDSPLeads')];
+        List<Lead> leadsPublicToConvertCheckMap = [SELECT Id,ConvertedOpportunityId,RecordTypeId,LPCR_IDAO__c,LPCR_ObjetAO__c,LPCR_DebutContrat__c,LPCR_DureeContrat__c,LPCR_FinContrat__c FROM Lead WHERE Name IN ('aoPublicReservLeads','aoPublicDSPLeads')];
 
         Id aoPublicReservationRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'AO_PublicReservation');
         Id aoPublicDSPRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'AO_PublicDSP');
@@ -207,7 +207,7 @@ public class SM007_LeadServices_Test {
             }
         }
         // MAP(idopp, Opp)
-        Map<Id,Opportunity> idsOpps = new Map<Id,Opportunity>([SELECT Id,LPCR_ObjetAO__c,LPCR_DebutContrat__c,LPCR_DureeContrat__c,LPCR_FinContrat__c 
+        Map<Id,Opportunity> idsOpps = new Map<Id,Opportunity>([SELECT Id,LPCR_IDAO__c,LPCR_ObjetAO__c,LPCR_DebutContrat__c,LPCR_DureeContrat__c,LPCR_FinContrat__c 
                                                                 FROM Opportunity
                                                                 WHERE id in :filtredLeadsMap.values()]);
         // MAP(lead, opp)
@@ -217,8 +217,9 @@ public class SM007_LeadServices_Test {
         }
 
         for(Lead eachLead : filtredLeadsMap.keyset()){
+            system.assertEquals(eachLead.LPCR_IDAO__c, LeadOpps.get(eachLead).LPCR_IDAO__c , 'field LPCR_IDAO__c not mapped correctly');
             system.assertEquals(eachLead.LPCR_ObjetAO__c, LeadOpps.get(eachLead).LPCR_ObjetAO__c , 'field LPCR_ObjetAO__c not mapped correctly');
-            system.assertEquals(eachLead.LPCR_DebutContrat__c, LeadOpps.get(eachLead).LPCR_DebutContrat__c , 'field LPCR_ObjetAO__c not mapped correctly');
+            system.assertEquals(eachLead.LPCR_DebutContrat__c, LeadOpps.get(eachLead).LPCR_DebutContrat__c , 'field LPCR_DebutContrat__c not mapped correctly');
             system.assertEquals(eachLead.LPCR_FinContrat__c, LeadOpps.get(eachLead).LPCR_FinContrat__c , 'field LPCR_FinContrat__c not mapped correctly');
         }
         Test.stopTest();
