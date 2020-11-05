@@ -3,7 +3,7 @@
 * @date 06/08/2020
 * @Description Batch for Process Amended Billing Plan Lines
 */
-
+ 
 global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObject>,Schedulable{
     String query;
     

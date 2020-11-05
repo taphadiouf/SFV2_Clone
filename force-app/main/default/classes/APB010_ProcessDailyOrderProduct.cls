@@ -2,7 +2,7 @@
 * @author Saurabh
 * @date 19/06/2020
 * @Description IS-981 Batch for Order Product
-*/
+*/ 
 global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObject>,Schedulable  {
     String query;
     
@@ -142,7 +142,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                         billingPlan.LPCR_StartDate__c = lastDayOfCurrentMonthDateSetEndDate.addDays(1);
                         Date stDate = billingPlan.LPCR_StartDate__c;
                         Date lastDayOfCurrentMonthDate=Date.newInstance(stDate.year(), 12 , 31);
-                        
+
                         if(eachOrderItem.LPCR_ContractEndDate__c > lastDayOfCurrentMonthDate)
                             billingPlan.LPCR_EndDate__c =   lastDayOfCurrentMonthDate;
                         else
