@@ -21,9 +21,13 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
     }
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
-
+        String ErrMsg;
         PAD.log('APB010_ProcessDailyOrderProduct', 'execute', 'scope to execute : '+scope);
         
+        UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Order Product',
+                                                        'APB010_ProcessDailyOrderProduct', 'Batch' , null,
+                                                        'Execute method started with scope : ' + String.valueOf(scope), 
+                                                        UM010_Constant.SUCCESS);
         Set<Id> orderItemIds = UM003_TypeManager.getIdsOfListObjects(scope);
         Set<String> contractIds = UM003_TypeManager.getFieldsOfListObjects(scope, 'SBQQ__Contract__c');
         Set<Id> selectedOrderItemId = new Set<Id>();
@@ -186,11 +190,36 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
             for(List<LPCR_PlanFacturation__c> eachList : billingPlanMap.values()){
                 insertBillingPlanList.addAll(eachList);
             }
-            insert insertBillingPlanList;
+            try {
+                insert insertBillingPlanList;
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Order Product',
+                                                                'APB010_ProcessDailyOrderProduct', 'Batch' , null,
+                                                                'Successfully insert Billing Plan List : ' + String.valueOf(insertBillingPlanList), 
+                                                                UM010_Constant.SUCCESS);     
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Order Product','APB010_ProcessDailyOrderProduct', 'Batch' , null,'Error while inserting Billing Plan List. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            }
         }
         
         if (updateContractMap.size() > 0){
-            update updateContractMap.values();
+            ErrMsg = null;
+            try {
+                update updateContractMap.values();
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Order Product',
+                                                                'APB010_ProcessDailyOrderProduct', 'Batch' , null,
+                                                                'Successfully updated Contract records : ' + String.valueOf(updateContractMap.values()), 
+                                                                UM010_Constant.SUCCESS);     
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Order Product','APB010_ProcessDailyOrderProduct', 'Batch' , null,'Error while updating the Contracts. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            }
         }
         
         for (blng__BillingTransaction__c eachTransaction : [SELECT Id, Name,blng__Amount__c, blng__BillingSchedule__r.blng__OrderProduct__c, blng__BillingTargetDate__c,blng__OverrideBillingTargetDate__c 
@@ -446,19 +475,44 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
             }
             
         }  
-
+        ErrMsg = null;
         if (billingPlanLineList.size() > 0) {
             System.debug('**** billingPlanLineList size = '+ billingPlanLineList.size());
             System.debug('**** billingPlanLineList data = '+ billingPlanLineList);
             try {
                 insert billingPlanLineList;
                 PAD.log('APB010_ProcessDailyOrderProduct', 'execute','Insert success of :'+ billingPlanLineList);
-            }catch(Exception ex){
-                PAD.log('APB010_ProcessDailyOrderProduct', 'execute', '**** Exception : '+ ex.getMessage());
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Order Product',
+                                                                'APB010_ProcessDailyOrderProduct', 'Batch' , null,
+                                                                'Successfully inserted billingPlan Lines List : ' + String.valueOf(billingPlanLineList), 
+                                                                UM010_Constant.SUCCESS);     
+            } catch (Exception e) {
+                PAD.log('APB010_ProcessDailyOrderProduct', 'execute', '**** Exception : '+ e.getMessage());
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Order Product','APB010_ProcessDailyOrderProduct', 'Batch' , null,'Error while updating billingPlan Lines List. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
             }
-            
+
         }
-        update scope;
+        ErrMsg = null;
+        try {
+            update scope;
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Order Product',
+                                                            'APB010_ProcessDailyOrderProduct', 'Batch' , null,
+                                                            'Successfully updated order Items : ' + String.valueOf(scope), 
+                                                            UM010_Constant.SUCCESS);     
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Order Product','APB010_ProcessDailyOrderProduct', 'Batch' , null,'Error while updating the order items. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
+        }
+
+
+
     }
     
     global void finish(Database.BatchableContext BC) {
@@ -482,7 +536,6 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
             } else {
                 //schedule this same schedulable class again in 30 mins
                 Id schedId = System.Schedule('APB010_ProcessDailyOrderProduct'+timeForScheduler,timeForScheduler,new APB010_ProcessDailyOrderProduct());
-                PAD.log('APB010_ProcessDailyOrderProduct', 'execute', 'Scheduling the batch in 30 Minutes : '+ dt);
             }
         }  
         
