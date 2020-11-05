@@ -38,7 +38,10 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                                                                     FROM Contract 
                                                                     WHERE Id =: contractIds]);
         
-        // Create  Billing Plan records  
+        // ------------------------------------------------------------------------------------------------------------
+        // Create PlanFacturation records for each year of the order item with proper values
+        // ------------------------------------------------------------------------------------------------------------
+
         for(OrderItem eachOrderItem : scope){ 
             //Set Multiplier value
             Integer multiplier;
@@ -224,6 +227,9 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
 
             eachOrderItem.LPCR_BillingPlanProcessment__c = true;
             
+            // ------------------------------------------------------------------------------------------------------------
+            // Manage != Invoice Plan LPCR_LignePlanFacturation__c
+            // ------------------------------------------------------------------------------------------------------------
             if(eachOrderItem.SBQQ__BillingFrequency__c != 'Invoice Plan') {
 
                 if(billingPlanMap.containsKey(eachOrderItem.Id)) {
@@ -232,7 +238,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                     Integer maxItemIndex = billingPlanMap.get(eachOrderItem.Id).size();
                     Double billableUnitPrice = 0;
                     
-                    for(LPCR_PlanFacturation__c eachPlan : billingPlanMap.get(eachOrderItem.Id)) {
+                    for(LPCR_PlanFacturation__c eachPlan : billingPlanMap.get(eachOrderItem.Id)) { // Looping through each LPCR_PlanFacturation__c of the OrderItem
 
                         Date tmpDate = eachPlan.LPCR_StartDate__c;
                         Integer totalDaysInBP = tmpDate.daysBetween(eachPlan.LPCR_EndDate__c)+1;
@@ -240,7 +246,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                         Integer intervel = 1;
                         Integer billingFrequency = 12;
                         
-                        if(itemIndex == 1) {
+                        if (itemIndex == 1) { 
                             billableUnitPrice =  eachOrderItem.blng__BillableUnitPrice__c;
                         } 
                         else {
@@ -249,27 +255,31 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             }
                         }
                         
-                        if('Quarterly'.equals(eachOrderItem.SBQQ__BillingFrequency__c)) {
+                        if ('Quarterly'.equals(eachOrderItem.SBQQ__BillingFrequency__c)) {
                             intervel = 3;
                             billingFrequency = 4;
-                        }else if('Semiannual'.equals(eachOrderItem.SBQQ__BillingFrequency__c)) {
+                        }
+                        else if ('Semiannual'.equals(eachOrderItem.SBQQ__BillingFrequency__c)) {
                             intervel = 6; 
                             billingFrequency = 2;
-                        }else if('Annual'.equals(eachOrderItem.SBQQ__BillingFrequency__c)) {
+                        }
+                        else if ('Annual'.equals(eachOrderItem.SBQQ__BillingFrequency__c)) {
                             intervel = 12; 
                             billingFrequency = 1;
                         }
                         
-                        for(integer i = 1; i <= billingFrequency ; i++) {
+                        for (integer i = 1; i <= billingFrequency ; i++) { // Looping through each frequency iteration  
 
                             boolean isBreak = false;
                             boolean isFullDate = false;
+
                             LPCR_LignePlanFacturation__c newPlanLine = new LPCR_LignePlanFacturation__c();
                             newPlanLine.LPCR_OrderItem__c = eachOrderItem.Id;
                             newPlanLine.LPCR_BillingFrequency__c = eachOrderItem.SBQQ__BillingFrequency__c;
                             newPlanLine.LPCR_StartDate__c = tmpDate;
                             newPlanLine.LPCR_Quantity__c = eachOrderItem.Quantity;
                             newPlanLine.LPCR_PlanFacturation__c = eachPlan.Id;
+
                             Integer IntervalByMonth = 1;
 
                             if(intervel == 3){
@@ -342,17 +352,22 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                                 isBreak = true;
                             }
                             
-                            Integer noOfDaysInBPL = newPlanLine.LPCR_StartDate__c.daysBetween(newPlanLine.LPCR_EndDate__c)+1;
-                            if(itemIndex == 1){       
-                                if(isFullDate){
+                            Integer noOfDaysInBPL = newPlanLine.LPCR_StartDate__c.daysBetween(newPlanLine.LPCR_EndDate__c) + 1;
+
+                            if (itemIndex == 1) {
+
+                                if (isFullDate) {
                                     newPlanLine.LPCR_Amount__c = eachOrderItem.blng__BillableUnitPrice__c;
-                                }else{
+                                }
+                                else {
                                     newPlanLine.LPCR_Amount__c = noOfDaysInBPL *  oneDayPriceBP;
                                 }
-                            }else if(itemIndex < maxItemIndex ){
+                            }
+                            else if (itemIndex < maxItemIndex ) {
                                 newPlanLine.LPCR_Amount__c = eachPlan.LPCR_TotalContractValue__c/billingFrequency;
-                            }else{
-                                if(isFullDate){
+                            }
+                            else {
+                                if (isFullDate) {
                                     newPlanLine.LPCR_Amount__c = billableUnitPrice;
                                 	PAD.log('APB010_ProcessDailyOrderProduct', 'execute','Partial Year Full Amount '+newPlanLine.LPCR_Amount__c + '|LPCR_LignePlanFacturation__c:' + newPlanLine);
                                 }else{
@@ -363,6 +378,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             
                             tmpDate = lastDayOfMonth.addDays(1);
                             billingPlanLineList.add(newPlanLine);
+
                             if(isBreak){
                                 break;
                             }
@@ -372,7 +388,9 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                 }
                 
             } else {
-                // If Billing Frequency is Invoice Plan
+                // ------------------------------------------------------------------------------------------------------------
+            // Manage Invoice Plan LPCR_LignePlanFacturation__c
+            // ------------------------------------------------------------------------------------------------------------
                 if(billingPlanMap.containsKey(eachOrderItem.Id)) {
 
                     Integer itemIndex = 1;
