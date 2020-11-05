@@ -92,7 +92,9 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
         }
         
         // construct a map of Billing Transaction
-        for(blng__BillingTransaction__c eachTransaction : [SELECT Id, Name,blng__Amount__c, blng__BillingSchedule__r.blng__OrderProduct__c, blng__BillingTargetDate__c,blng__OverrideBillingTargetDate__c FROM blng__BillingTransaction__c WHERE blng__BillingSchedule__r.blng__OrderProduct__c IN: selectedOrderItemId ]){
+        for(blng__BillingTransaction__c eachTransaction : [SELECT Id, Name,blng__Amount__c, blng__BillingSchedule__r.blng__OrderProduct__c, blng__BillingTargetDate__c,blng__OverrideBillingTargetDate__c 
+                                                                FROM blng__BillingTransaction__c 
+                                                                WHERE blng__BillingSchedule__r.blng__OrderProduct__c IN: selectedOrderItemId ]){
             
             if(!billingTransactionMap.containsKey(eachTransaction.blng__BillingSchedule__r.blng__OrderProduct__c)){
                 billingTransactionMap.put(eachTransaction.blng__BillingSchedule__r.blng__OrderProduct__c, new List<blng__BillingTransaction__c>());
@@ -100,7 +102,9 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
             billingTransactionMap.get(eachTransaction.blng__BillingSchedule__r.blng__OrderProduct__c).add(eachTransaction);
         }
         
-        for(blng__BillingTransaction__c eachTransaction : [SELECT Id, Name,blng__Amount__c, blng__BillingSchedule__r.blng__OrderProduct__c, blng__BillingTargetDate__c,blng__OverrideBillingTargetDate__c FROM blng__BillingTransaction__c WHERE blng__BillingSchedule__r.blng__OrderProduct__c IN: revisedOrderProductId AND blng__Status__c = 'Pending' ]){
+        for(blng__BillingTransaction__c eachTransaction : [SELECT Id, Name,blng__Amount__c, blng__BillingSchedule__r.blng__OrderProduct__c, blng__BillingTargetDate__c,blng__OverrideBillingTargetDate__c 
+                                                                FROM blng__BillingTransaction__c 
+                                                                WHERE blng__BillingSchedule__r.blng__OrderProduct__c IN: revisedOrderProductId AND blng__Status__c = 'Pending' ]){
             
             if(!rpBillingTransactionMap.containsKey(eachTransaction.blng__BillingSchedule__r.blng__OrderProduct__c)){
                 rpBillingTransactionMap.put(eachTransaction.blng__BillingSchedule__r.blng__OrderProduct__c, new List<blng__BillingTransaction__c>());

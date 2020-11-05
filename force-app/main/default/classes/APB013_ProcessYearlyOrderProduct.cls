@@ -11,13 +11,14 @@ global class APB013_ProcessYearlyOrderProduct implements Database.Batchable<sObj
     }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        Date today = date.today();
-        query = 'SELECT Id, OrderId, EndDate, SBQQ__Activated__c, LPCR_BillingPlanProcessment__c FROM OrderItem WHERE SBQQ__Activated__c = true AND EndDate >: today';
-        
-        return Database.getQueryLocator(query);
+
+        return Database.getQueryLocator([SELECT Id, OrderId, EndDate, SBQQ__Activated__c, LPCR_BillingPlanProcessment__c 
+                                            FROM OrderItem 
+                                            WHERE SBQQ__Activated__c = true AND EndDate > TODAY]);
     }
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
+
         PAD.log('APB013_ProcessYearlyOrderProduct', 'execute', 'scope to execute : '+scope);
         Set<Id> orderItemIds = UM003_TypeManager.getIdsOfListObjects(scope);
         
@@ -27,7 +28,7 @@ global class APB013_ProcessYearlyOrderProduct implements Database.Batchable<sObj
         
         update scope;     
         
-        List<LPCR_PlanFacturation__c> delBillingPlanList = [select id, LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c IN: orderItemIds ];
+        List<LPCR_PlanFacturation__c> delBillingPlanList = [SELECT id, LPCR_OrderItem__c FROM LPCR_PlanFacturation__c WHERE LPCR_OrderItem__c IN: orderItemIds ];
 
         if(delBillingPlanList.size() > 0){
             delete delBillingPlanList;
