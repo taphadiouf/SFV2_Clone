@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Items that are filtered for inclusion in this summary variable.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Select the field to use when filtering items for inclusion in this summary variable.</inlineHelpText>
+    <inlineHelpText>Sélectionnez le champ à utiliser lors du filtrage des éléments à inclure dans cette variable de synthèse.</inlineHelpText>
     <label>Filter Field</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
@@ -33,14 +33,14 @@
                 <label>LPCR_CodeProduit__c</label>
             </value>
             <value>
-                <fullName>test_concat__c</fullName>
-                <default>false</default>
-                <label>test_concat__c</label>
-            </value>
-            <value>
                 <fullName>LPCR_NumeroPurchaseOrder__c</fullName>
                 <default>false</default>
                 <label>LPCR_NumeroPurchaseOrder__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_DateDebutNonConforme__c</fullName>
+                <default>false</default>
+                <label>LPCR_DateDebutNonConforme__c</label>
             </value>
         </valueSetDefinition>
     </valueSet>
