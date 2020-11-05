@@ -21,6 +21,10 @@ global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<s
     global void execute(Database.BatchableContext BC, List<Contract> scope) {
         PAD.log('APB008_ResetStartEndDatesOnContract','execute','scope to execute : '+scope);
         
+        UM001_LogManager.writeLogActivityWithoutFuture( 'Reset the custom start and end date on the contract',
+                                                        'APB008_ResetStartEndDatesOnContract', 'Batch' , null,
+                                                        'Execute method started with scope : ' + String.valueOf(scope), 
+                                                        UM010_Constant.SUCCESS);
         Set<Id> contractIds = UM003_TypeManager.getIdsOfListObjects(scope);
         List<Contract> listOfContract = [SELECT Id, LPCR_DureeContratJour__c ,LPCR_DateFin__c ,LPCR_DateDebut__c ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId FROM Contract 
                                          WHERE Id in :contractIds ];   
@@ -31,7 +35,20 @@ global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<s
             PAD.log('APB008_ResetStartEndDatesOnContract','execute','set LPCR_DateFin__c value to ' + eachContract.LPCR_DateFin__c + ' for contract ' + eachContract);
         }
         
-        update listOfContract;        
+        String ErrMsg;
+        try {
+            update listOfContract;  
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Reset the custom start and end date on the contract',
+                                                            'APB008_ResetStartEndDatesOnContract', 'Batch' , null,
+                                                            'Successfully updated list of contracts : ' + String.valueOf(listOfContract), 
+                                                            UM010_Constant.SUCCESS);          
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Reset the custom start and end date on the contract','APB008_ResetStartEndDatesOnContract', 'Batch' , null,'Error while updating the contracts. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
+        }
     }
     
     global void finish(Database.BatchableContext BC) {
@@ -40,7 +57,7 @@ global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<s
     global void execute(SchedulableContext sc) {
         PAD.log('APB008_ResetStartEndDatesOnContract','execute','sc');
         APB008_ResetStartEndDatesOnContract sc1 = new APB008_ResetStartEndDatesOnContract();
-        
+        String timeForScheduler = Datetime.now().addMinutes(30).format('s m H d M \'?\' yyyy');// i.e. 30 mins
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB008_ResetStartEndDatesOnContract');
         
@@ -53,9 +70,8 @@ global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<s
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                String timeForScheduler = Datetime.now().addMinutes(30).format('s m H d M \'?\' yyyy');// i.e. 30 mins
+                
                 Id schedId = System.Schedule('APB008_ResetStartEndDatesOnContract'+timeForScheduler,timeForScheduler,new APB008_ResetStartEndDatesOnContract());
-                PAD.log('APB008_ResetStartEndDatesOnContract','execute','Scheduling the batch in 30 minutes : ' + timeForScheduler);
             }
         }  
         
