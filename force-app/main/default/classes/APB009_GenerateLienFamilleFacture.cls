@@ -18,6 +18,16 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
     
     global void execute(Database.BatchableContext BC, List<blng__Invoice__c> scope) {
         PAD.log('APB009_GenerateLienFamilleFacture','execute','scope to execute : '+scope);
+
+
+        UM001_LogManager.writeLogActivityWithoutFuture( 'identify the invoices associated with an active B2B contract',
+                                                        'APB009_GenerateLienFamilleFacture', 'Batch' , null,
+                                                        'Execute method started with scope : ' + String.valueOf(scope), 
+                                                        UM010_Constant.SUCCESS);
+
+
+
+
         Id contratB2CRTId  = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_ContratA);
         
         Set<Id> invoiceIds = UM003_TypeManager.getIdsOfListObjects(scope);
@@ -128,11 +138,35 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                 listOfLienFamilleFactureToStore.add(eachLienFamFac);
             }
         }
-        
-        
-        insert listOfLienFamilleFacture;
-        
-        update listOfInvoiceToUpdate;
+        String ErrMsg;
+        try {
+            insert listOfLienFamilleFacture; 
+            UM001_LogManager.writeLogActivityWithoutFuture( 'identify the invoices associated with an active B2B contract',
+                                                            'APB009_GenerateLienFamilleFacture', 'Batch' , null,
+                                                            'Successfully insert list of \'Lien Famille et Facture\' : ' + String.valueOf(listOfLienFamilleFacture), 
+                                                            UM010_Constant.SUCCESS);          
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'identify the invoices associated with an active B2B contract','APB009_GenerateLienFamilleFacture', 'Batch' , null,'Error while inserting the \'Lien Famille et Facture\' records : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
+        }
+        ErrMsg = null;
+        try {
+            update listOfInvoiceToUpdate;
+            UM001_LogManager.writeLogActivityWithoutFuture( 'identify the invoices associated with an active B2B contract',
+                                                            'APB009_GenerateLienFamilleFacture', 'Batch' , null,
+                                                            'Successfully updated list of invoices : ' + String.valueOf(listOfInvoiceToUpdate), 
+                                                            UM010_Constant.SUCCESS);          
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'identify the invoices associated with an active B2B contract', 'APB009_GenerateLienFamilleFacture', 'Batch' , null,'Error while updating the invoices : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
+        }
+
         
     }
     
