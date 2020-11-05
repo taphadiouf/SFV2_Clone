@@ -214,7 +214,7 @@ update recordsToSync;
             }
         }
         // MAP(idopp, Opp)
-        Map<Id,Opportunity> idsOpps = new Map<Id,Opportunity>([SELECT Id,LPCR_ObjetAO__c,LPCR_DebutContrat__c,LPCR_DureeContrat__c,LPCR_FinContrat__c 
+        Map<Id,Opportunity> idsOpps = new Map<Id,Opportunity>([SELECT Id,LPCR_IDAO__c,LPCR_ObjetAO__c,LPCR_DebutContrat__c,LPCR_DureeContrat__c,LPCR_FinContrat__c 
                                                                 FROM Opportunity
                                                                 WHERE id in :filtredLeadsMap.values()]);
         // MAP(lead, opp)
@@ -225,6 +225,7 @@ update recordsToSync;
         //Process
         for(Lead eachLead : LeadOpps.keyset()){
             //map fields from lead to opportunity
+            LeadOpps.get(eachLead).LPCR_IDAO__c = eachLead.LPCR_IDAO__c ;
             LeadOpps.get(eachLead).LPCR_ObjetAO__c = eachLead.LPCR_ObjetAO__c ;
             LeadOpps.get(eachLead).LPCR_DebutContrat__c = eachLead.LPCR_DebutContrat__c ;
             LeadOpps.get(eachLead).LPCR_FinContrat__c = eachLead.LPCR_FinContrat__c ;
