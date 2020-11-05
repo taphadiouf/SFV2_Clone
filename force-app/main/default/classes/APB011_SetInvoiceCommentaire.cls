@@ -18,6 +18,12 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
         return Database.getQueryLocator(query);
     }
     global void execute(Database.BatchableContext BC, List<blng__InvoiceRun__c> scope) {
+
+        UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field',
+                                                        'APB011_SetInvoiceCommentaire', 'Batch' , null,
+                                                        'Execute method started with scope : ' + String.valueOf(scope), 
+                                                        UM010_Constant.SUCCESS); 
+
        	PAD.log('APB011_SetInvoiceCommentaire','execute','scope to execute : '+scope);
         Set<Id> invoiceRunIds = UM003_TypeManager.getIdsOfListObjects(scope);
         List<blng__Invoice__c> lstOfInvoices = EM017_FactureEntity.lstPostedInvoices(invoiceRunIds);
@@ -29,20 +35,38 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
                 eachInvoice.LPCR_StatutFacture__c = Label.LPCR_AEnvoyer;
             }
         }
+        String ErrMsg;
         try {
             update lstOfInvoices;
             PAD.log('APB011_SetInvoiceCommentaire','execute','Invoices Update success. list : ' + lstOfInvoices);
-        } catch (Exception e ) {
-            PAD.log('APB011_SetInvoiceCommentaire','execute','Invoices Update Error. list : ' + lstOfInvoices + '| Error Message : ' + e.getMessage());
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field',
+                                                            'APB011_SetInvoiceCommentaire', 'Batch' , null,
+                                                            'Successfully updated invoices list : ' + String.valueOf(lstOfInvoices), 
+                                                            UM010_Constant.SUCCESS);     
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field','APB011_SetInvoiceCommentaire', 'Batch' , null,'Error while updating invoices list. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
         }
         for(blng__InvoiceRun__c eachInvoiceRun : scope){
             eachInvoiceRun.LPCR_EnvoyerFaitPar__c = eachInvoiceRun.OwnerId;
         }
+        ErrMsg = null;
         try {
             update scope;
             PAD.log('APB011_SetInvoiceCommentaire','execute','Invoice Runs Update success. list : ' + scope);
-        } catch (Exception e ) {
-            PAD.log('APB011_SetInvoiceCommentaire','execute','Invoice Runs Update Error. list : ' + scope + '| Error Message : ' + e.getMessage());
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field',
+                                                            'APB011_SetInvoiceCommentaire', 'Batch' , null,
+                                                            'Successfully updated invoices run list : ' + String.valueOf(scope), 
+                                                            UM010_Constant.SUCCESS);     
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field','APB011_SetInvoiceCommentaire', 'Batch' , null,'Error while updating invoices run list. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
         }
     }
     global void finish(Database.BatchableContext BC) {
@@ -65,7 +89,6 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
             } else {
                 //schedule this same schedulable class again in 30 mins
                 Id schedId = System.Schedule('APB011_SetInvoiceCommentaire'+timeForScheduler,timeForScheduler,new APB011_SetInvoiceCommentaire(query));
-                PAD.log('APB011_SetInvoiceCommentaire','execute','Scheduling the Batch in 30 Minutes : '+dt);
             }
         }  
         
