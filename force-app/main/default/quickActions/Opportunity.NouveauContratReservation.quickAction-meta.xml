@@ -16,18 +16,6 @@
         <field>LPCR_ResiliationAnticipe__c</field>
         <literalValue>1 an ferme</literalValue>
     </fieldOverrides>
-     <fieldOverrides>
-        <field>LPCR_IndexationConvenue__c</field>
-        <literalValue>Oui</literalValue>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>LPCR_MethodeRenouvellement__c</field>
-        <literalValue>Tacite</literalValue>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>SBQQ__RenewalUpliftRate__c</field>
-        <literalValue>3</literalValue>
-    </fieldOverrides>
     <fieldOverrides>
         <field>LPCR_ResponsableADV__c</field>
         <formula>Opportunity.Account.LPCR_ResponsableADV__c</formula>
