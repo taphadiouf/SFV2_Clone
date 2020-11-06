@@ -1,13 +1,11 @@
 /**
- * @author Ayoub Ouarti
- * updated by
 * @author Saurabh Singh
 * @date 18/03/2020
 * @Description Testt class for PB002_RenewalContract
 */
 
 @isTest
-public class APB002_RenewalContract_Test {
+public class APB018_ProcessRenewalContract_Test {
     private static final Id ACC_B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
     private static final Id ACC_B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     private static final Id ACC_CRECHE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
@@ -36,7 +34,8 @@ public class APB002_RenewalContract_Test {
                 'SBQQ__RenewalModel__c' => 'Contract Based',
                 'LPCR_PasDeSIRET__c' => true
                 };
-                    List<Account> accounts = new List<Account>();
+                    
+        List<Account> accounts = new List<Account>();
         Account B2BAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
         accounts.add(B2BAccount);
         defaultVal.put('RecordTypeId',ACC_B2C_RT_ID);
@@ -221,59 +220,40 @@ public class APB002_RenewalContract_Test {
                 'LPCR_NumeroPurchaseOrder__c' => '12345678',
                 'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
                 };
-        
-        test.startTest();         
+                    test.startTest();         
         SBQQ__QuoteLine__c quoteLineB2B= (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
         defaultVal.put('Name','quoteLine-B2B-2');
         
         SBQQ__QuoteLine__c quoteLineB2B2= (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
         insert new List<SBQQ__QuoteLine__c>{quoteLineB2B,quoteLineB2B2};
             
-        oppB2B.SBQQ__PrimaryQuote__c = quoteB2B.Id;
+            oppB2B.SBQQ__PrimaryQuote__c = quoteB2B.Id;
         update oppB2B;
         
-        Date lastMonth=null;
-        if(Date.today().addMonths(-1).Month()==2){
-            lastMonth= System.today().addDays(-59) ;
-        }else{
-            lastMonth= System.today().addDays(-30) ;
-        }
-        
-        Contract contractB2B = UM002_TestDataFactory.createContract(B2BAccount.Id);
-       
-        contractB2B.LPCR_RenouvellementAutomatique__c=true;
-        contractB2B.StartDate=lastMonth;
-         if(Date.today().addMonths(-1).Month()==2){
-             contractB2B.ContractTerm =2;
-         }else{
-             contractB2B.ContractTerm =1;
-         }
-        
-        Id ReservataireRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract,Label.LPCR_Reservataire);
-        contractB2B.recordTypeId = ReservataireRT;
-        contractB2B.SBQQ__RenewalQuoted__c=false;
-        contractB2B.LPCR_TypeFacturation__c = 'Advance';
-        contractB2B.EndDate = System.today().addDays(-1);
-        contractB2B.SBQQ__Quote__c = quoteB2B.Id;
-        contractB2B.LPCR_DureeContratJour__c = 100;
-        contractB2B.LPCR_Creche__c = crecheAccount.Id;
+        // Create B2B Contract
+        defaultVal = new Map<String, Object> {
+            'RecordTypeId'=>CONTRACT_B2B_RT_ID,
+                'AccountId' => B2BAccount.Id,
+                'LPCR_DureeContratJour__c'=>100,
+                'SBQQ__Quote__c'=>quoteB2B.Id,
+                'Status'=>'Draft',
+                'LPCR_Creche__c'=>crecheAccount.Id
+                };
+                    Contract contractB2B = (Contract) UM002_TestDataFactory.createSObject('Contract', defaultVal);
         insert contractB2B;
-
-        test.stopTest();
+       test.stopTest();
     }
     
     @isTest
-    private static void APB002_RenewalContract_Test(){
+    private static void APB018_ProcessRenewalContract_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
-            test.startTest();
-            
             Account B2BAccount = new Account(); 
             Account B2CAccount = new Account(); 
             Account CrecheAccount = new Account(); 
             
             for(Account acc : [SELECT Id, name from Account]){
                 if(acc.Name == 'Test-B2B')
-                	B2BAccount = acc;
+                    B2BAccount = acc;
                 else if(acc.Name == 'Test-B2C')
                     B2CAccount = acc;
                 else if(acc.Name == 'Test-Creche')
@@ -281,15 +261,101 @@ public class APB002_RenewalContract_Test {
             }
             
             Contract contractB2B = [SELECT Id FROM Contract Order By CreatedDate desc LIMIT 1];
-			
-            APB002_RenewalContract batch = new APB002_RenewalContract();
+            Product2 prod = [SELECT Id FROM Product2 LIMIT 1];
+            PricebookEntry priceBookEntry1 = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
+            
+            test.startTest();
+                       
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => OPPT_ENTERPRISE_RT_ID,
+                    'AccountId' => B2BAccount.Id,
+                    'Name' => 'test-oppt-accuel',
+                    'StageName' => 'Signée',
+                    'CloseDate' => System.today(),
+                    'Pricebook2Id' => STANDARD_PRICEBOOK_ID,
+                    'Type' => 'New Business',
+                    'SBQQ__AmendedContract__c' => contractB2B.id
+                    };
+                        
+                        Opportunity oppB2BRenv = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+            insert oppB2BRenv;
+            
+            Integer price = 200;
+            
+            defaultVal = new Map<String, Object> {
+                'RecordTypeId' => QUOTE_CONTRAT_REF_RT_ID,
+                    'SBQQ__Account__c' => B2BAccount.Id,
+                    'SBQQ__SubscriptionTerm__c' => 12,
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_TypeFacturation__c' => 'Advance',
+                    'LPCR_IndexationConvenue__c' => 'Oui',
+                    'SBQQ__StartDate__c' => System.today(),
+                    'SBQQ__PricebookId__c' => STANDARD_PRICEBOOK_ID,
+                    'SBQQ__PriceBook__c' => STANDARD_PRICEBOOK_ID,
+                    'SBQQ__QuoteLanguage__c' => 'English',
+                    'SBQQ__BillingCity__c' => 'Paris',
+                    'SBQQ__Primary__c' => true,
+                    'SBQQ__Opportunity2__c' => oppB2BRenv.Id,
+                    'LPCR_DateDebut__c'=>todayDate,
+                    'LPCR_DateFin__c'=>todayDate.addDays(60),
+                    'SBQQ__RenewalUpliftRate__c' => 10,
+                    'SBQQ__Type__c' => 'Amendment',
+                    'SBQQ__MasterContract__c' => contractB2B.id,
+                    'LPCR_TypeAvenant__c' => 'Résiliation'
+                    
+                    };
+                        
+                        SBQQ__Quote__c quoteB2BRenv = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            insert quoteB2BRenv;
+            price = 200;
+            defaultVal = new Map<String, Object> {
+                'Name' => 'quoteLine-B2B',
+                    'LPCR_Creche__c '=>crecheAccount.Id,
+                    'SBQQ__StartDate__c' => System.Today(),
+                    'SBQQ__Product__c' => prod.Id,
+                    'SBQQ__Quantity__c' => 1,
+                    'SBQQ__ListPrice__c' => price,
+                    'SBQQ__CustomerPrice__c' => price,
+                    'SBQQ__NetPrice__c' => price,
+                    'SBQQ__SpecialPrice__c' => price,
+                    'SBQQ__Quote__c' => quoteB2BRenv.Id,
+                    'SBQQ__PricebookEntryId__c' => priceBookEntry1.Id,
+                    'SBQQ__PricingMethod__c' => 'List',
+                    'SBQQ__ChargeType__c' => 'Recurring',
+                    'SBQQ__BillingType__c' => 'Advance',
+                    'SBQQ__BillingFrequency__c' => 'Monthly',
+                    'LPCR_Region__c' => 'Paris',
+                    'LPCR_NumeroPurchaseOrder__c' => '12345678',
+                    'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                    };
+                        
+                        SBQQ__QuoteLine__c quoteLineB2BRenv= (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            defaultVal.put('Name','quoteLine-B2B-2');
+            
+            SBQQ__QuoteLine__c quoteLineB2BRenv2= (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+            insert new List<SBQQ__QuoteLine__c>{quoteLineB2BRenv,quoteLineB2BRenv2};
+                
+                oppB2BRenv.SBQQ__PrimaryQuote__c = quoteB2BRenv.Id;
+            update oppB2BRenv;
+                       
+            //Order the quote to create Order / OrderItems
+            update new SBQQ__Quote__c (Id = quoteB2BRenv.Id, SBQQ__Ordered__c = true);    
+            
+            Order orderB2B= [SELECT ID, blng__BillNow__c ,Status FROM Order WHERE SBQQ__Quote__c = :quoteB2BRenv.Id];  
+            List<OrderItem> orderItems = [SELECT Id,SBQQ__DefaultSubscriptionTerm__c  FROM OrderItem WHERE OrderID = :orderB2B.Id];
+            for(OrderItem eachOrderItem : orderItems){
+                eachOrderItem.SBQQ__DefaultSubscriptionTerm__c=1;
+            }
+            update orderItems;
+            
+            APB018_ProcessRenewalContract batch = new APB018_ProcessRenewalContract();
             batch.execute(null);            
             Test.stopTest();  
             
             Contract checkContractB2B = [SELECT Id,Status FROM Contract WHERE Id =: contractB2B.id LIMIT 1];
-            System.assertEquals('Terminé',checkContractB2B.Status, 'APB002_RenewalContract_Test B2B Contract Status not updated');
-            
-        }       
+            System.assertEquals('Terminé',checkContractB2B.Status, 'APB018_ProcessRenewalContract B2B Contract Status not updated');
+        }
+        
     }
     
 }
