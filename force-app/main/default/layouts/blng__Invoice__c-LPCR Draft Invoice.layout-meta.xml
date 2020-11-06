@@ -309,15 +309,15 @@
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>blng__ChargeType__c</fields>
-        <fields>blng__Quantity__c</fields>
+        <fields>LPCR_POInvalide__c</fields>
         <fields>blng__StartDate__c</fields>
         <fields>blng__EndDate__c</fields>
+        <fields>blng__Quantity__c</fields>
         <fields>blng__Subtotal__c</fields>
         <fields>blng__TotalAmount__c</fields>
+        <fields>blng__ChargeType__c</fields>
         <fields>blng__Balance__c</fields>
         <fields>blng__Credits__c</fields>
-        <fields>LPCR_POInvalide__c</fields>
         <relatedList>blng__InvoiceLine__c.blng__Invoice__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -374,7 +374,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1j000001ai8y</masterLabel>
+        <masterLabel>00h1X000001XqUv</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

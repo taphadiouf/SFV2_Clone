@@ -32616,11 +32616,11 @@
         <layout>LPCR_TablePrix__c-Référencement</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>LPCR_TablePrix__c-Référencement</layout>
+        <layout>LPCR_TablePrix__c-ALSH</layout>
         <recordType>LPCR_TablePrix__c.ALSH</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>LPCR_TablePrix__c-Référencement</layout>
+        <layout>LPCR_TablePrix__c-MICRO</layout>
         <recordType>LPCR_TablePrix__c.Micro</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -32628,8 +32628,12 @@
         <recordType>LPCR_TablePrix__c.Referencement</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>LPCR_TablePrix__c-Référencement</layout>
+        <layout>LPCR_TablePrix__c-Réservataire</layout>
         <recordType>LPCR_TablePrix__c.Reservataire</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>LPCR_TablePrix__c-Référencement Approuvé</layout>
+        <recordType>LPCR_TablePrix__c.LPCR_ReferencementApprouve</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>LPCR_TypeContrat__mdt-Présentation LPCR_TypeContrat</layout>
