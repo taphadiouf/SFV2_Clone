@@ -21,6 +21,14 @@
         <literalValue>Oui</literalValue>
     </fieldOverrides>
     <fieldOverrides>
+        <field>LPCR_MethodeRenouvellement__c</field>
+        <literalValue>Tacite</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>SBQQ__RenewalUpliftRate__c</field>
+        <formula>3</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>LPCR_ResponsableADV__c</field>
         <formula>Opportunity.Account.LPCR_ResponsableADV__c</formula>
     </fieldOverrides>
