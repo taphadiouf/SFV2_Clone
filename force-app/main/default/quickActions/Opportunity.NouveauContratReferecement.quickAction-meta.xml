@@ -25,10 +25,6 @@
         <literalValue>Tacite</literalValue>
     </fieldOverrides>
     <fieldOverrides>
-        <field>SBQQ__RenewalUpliftRate__c</field>
-        <literalValue>3</literalValue>
-    </fieldOverrides>
-    <fieldOverrides>
         <field>LPCR_ResponsableADV__c</field>
         <formula>Opportunity.Account.LPCR_ResponsableADV__c</formula>
     </fieldOverrides>
