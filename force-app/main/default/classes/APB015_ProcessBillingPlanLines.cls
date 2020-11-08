@@ -31,7 +31,11 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
     }
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
-
+        String ErrMsg;
+        UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Process Amended Billing Plan Lines',
+                                                        'APB015_ProcessBillingPlanLines', 'Batch' , null,
+                                                        'Execute method started with scope : ' + String.valueOf(scope), 
+                                                        UM010_Constant.SUCCESS); 
         PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'scope to execute : ' + scope);
         // Managing proration in case of amendment (Monthly / Quarterly / Semi Annual)
         Map<Id, LPCR_PlanFacturation__c> billingPlanMap = new Map<Id, LPCR_PlanFacturation__c>();
@@ -90,10 +94,19 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
         if(billingPlanMap.size() > 0){
             try {
                 insert billingPlanMap.values();
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Process Amended Billing Plan Lines',
+                                                        'APB015_ProcessBillingPlanLines', 'Batch' , null,
+                                                        'Successfully inserted list of billing plan list : ' + String.valueOf(billingPlanMap.values()), 
+                                                        UM010_Constant.SUCCESS); 
                 PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert success of Billing Plan lines : ' + billingPlanMap.values());
             } catch (Exception e) {
+                ErrMsg = e.getMessage();
                 PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert Error of Billing Plan lines : ' + e.getMessage()+ '|Line :' + e.getLineNumber());
-            }
+            }finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Process Amended Billing Plan Lines','APB015_ProcessBillingPlanLines', 'Batch' , null,'Error while inserting billing plan list. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            } 
         }
         
         // construct a map of Billing Transaction
@@ -179,10 +192,16 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
         }
         
         // insert new billing plan record
+        ErrMsg = null;
         if (rpBillingPlanMap.size() > 0) {
             try {
                 insert rpBillingPlanMap.values();
                 PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert success of Billing Plan lines : ' + rpBillingPlanMap.values());
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Process Amended Billing Plan Lines',
+                                                                'APB015_ProcessBillingPlanLines', 'Batch' , null,
+                                                                'Successfully inserted list of billing plan list : ' + String.valueOf(rpBillingPlanMap.values()), 
+                                                                UM010_Constant.SUCCESS); 
+                                                                
                 for (LPCR_LignePlanFacturation__c eachBPLine : tmpBillingPlanLineList){
 
                     if (rpBillingPlanMap.containsKey(eachBPLine.LPCR_OrderItem__c)){
@@ -192,31 +211,52 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
                     }
                 }
             }catch(Exception ex){
-                System.debug('*** Exception : '+ ex.getMessage());
+                ErrMsg = ex.getMessage();
                 PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert Error of Billing Plan lines : ' + ex.getMessage()+ '|Line :' + ex.getLineNumber());
-            }
+            }finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Process Amended Billing Plan Lines','APB015_ProcessBillingPlanLines', 'Batch' , null,'Error while inserting billing plan list. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            } 
         }
-        
+
+        ErrMsg = null;
         // insert billing plan line list
-        if(billingPlanLineList.size() > 0){
-            try{
-                insert billingPlanLineList;
-                PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert success of Billing Plan lines : ' + billingPlanLineList);
-            }catch(Exception ex){
-                PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert Error of Billing Plan lines : ' + ex.getMessage() + '|Line :' + ex.getLineNumber());
+        try {
+            insert billingPlanLineList;
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Process Amended Billing Plan Lines',
+                                                            'APB015_ProcessBillingPlanLines', 'Batch' , null,
+                                                            'Successfully inserted list of billing plan lines : ' + String.valueOf(billingPlanLineList), 
+                                                            UM010_Constant.SUCCESS); 
+            PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Insert success of Billing Plan lines : ' + billingPlanLineList);
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Process Amended Billing Plan Lines','APB015_ProcessBillingPlanLines', 'Batch' , null,'Error while updating billing plan lines. Error : ' + ErrMsg, UM010_Constant.ERROR);              
             }
-        }
+        }  
         
         // update order item
+        ErrMsg = null;
         if(scope.size() > 0){
             try{
                 update scope;
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Process Amended Billing Plan Lines',
+                                                                'APB015_ProcessBillingPlanLines', 'Batch' , null,
+                                                                'Successfully updated list of order items : ' + String.valueOf(scope), 
+                                                                UM010_Constant.SUCCESS); 
                 PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Update Success of Order items : ' + scope);
             }catch(Exception ex){
+                ErrMsg = ex.getMessage();
                 PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'Update Error of Order items : ' + ex.getMessage() + '|Line :' + ex.getLineNumber());
-            }
+            }finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Process Amended Billing Plan Lines','APB015_ProcessBillingPlanLines', 'Batch' , null,'Error while updating order items. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            }  
         }
-        
+   
     }
     
     global void finish(Database.BatchableContext BC) {
@@ -225,7 +265,8 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
     global void execute(SchedulableContext sc) {
         
         APB015_ProcessBillingPlanLines sc1 = new APB015_ProcessBillingPlanLines();
-        
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB015_ProcessBillingPlanLines');
         
@@ -238,10 +279,7 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB015_ProcessBillingPlanLines();
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB015_ProcessBillingPlanLines'+timeForScheduler,timeForScheduler,sc1);
+                Id schedId = System.Schedule('APB015_ProcessBillingPlanLines'+timeForScheduler,timeForScheduler,new APB015_ProcessBillingPlanLines());
             }
         }  
         
