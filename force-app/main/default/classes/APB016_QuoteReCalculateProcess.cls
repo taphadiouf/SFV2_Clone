@@ -18,11 +18,6 @@ global class APB016_QuoteReCalculateProcess implements Database.Batchable<sObjec
     
     global void execute(Database.BatchableContext BC, List<SBQQ__QuoteLine__c > scope) {
 
-        UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for QuoteReCalculateProcess call from APB014',
-                                                        'APB016_QuoteReCalculateProcess', 'Batch' , null,
-                                                        'Execute method started with scope : ' + String.valueOf(scope), 
-                                                        UM010_Constant.SUCCESS); 
-
         PAD.log('APB016_QuoteReCalculateProcess', 'execute','scope to execute : '+scope );
         
         List<SBQQ__QuoteLine__c> updateQLIList = new List<SBQQ__QuoteLine__c>();

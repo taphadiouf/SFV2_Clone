@@ -18,10 +18,6 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
     
     global void execute(Database.BatchableContext BC, List<Contract> scope) {
         PAd.log('APB002_RenewalContract', 'execute', 'scope to execute : '+scope);
-        UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box renewal quoted on the contract which will create the renewal opp and quote',
-                                                        'APB002_RenewalContract', 'Batch' , null,
-                                                        'Execute method started with scope : ' + String.valueOf(scope), 
-                                                        UM010_Constant.SUCCESS);  
            
         Set<Id> contractIds = UM003_TypeManager.getIdsOfListObjects(scope);
         List<Contract> listOfContract = [SELECT Id,Name,EndDate,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 

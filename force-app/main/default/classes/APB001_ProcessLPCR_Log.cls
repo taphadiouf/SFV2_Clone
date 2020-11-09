@@ -12,8 +12,7 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject>, Sche
         
     }
     global void execute(Database.BatchableContext bc, List<LPCR_Log__c> logs){
-        UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null,
-                                                         'Execute method started with scope : ' + String.valueOf(logs), UM010_Constant.SUCCESS);  
+
         String ErrMsg;
         set<String> docIds = new set<String> ();
         set<String> delIds = new set<String> ();

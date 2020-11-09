@@ -20,11 +20,6 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
     
     global void execute(Database.BatchableContext BC, List<LPCR_ModificationEntrante__c> scope) {
 
-        UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Traitement Modification Entrante',
-                                                        'APB014_TraitementModificationEntrante', 'Batch' , null,
-                                                        'Execute method started with scope : ' + String.valueOf(scope), 
-                                                        UM010_Constant.SUCCESS); 
-
         PAD.log('APB014_TraitementModificationEntrante', 'execute','scope to execute : '+scope );
         
         Set<Id> modificationEntranteIds = UM003_TypeManager.getIdsOfListObjects(scope);

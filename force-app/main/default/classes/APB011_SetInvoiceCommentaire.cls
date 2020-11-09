@@ -19,11 +19,6 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
     }
     global void execute(Database.BatchableContext BC, List<blng__InvoiceRun__c> scope) {
 
-        UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field',
-                                                        'APB011_SetInvoiceCommentaire', 'Batch' , null,
-                                                        'Execute method started with scope : ' + String.valueOf(scope), 
-                                                        UM010_Constant.SUCCESS); 
-
        	PAD.log('APB011_SetInvoiceCommentaire','execute','scope to execute : '+scope);
         Set<Id> invoiceRunIds = UM003_TypeManager.getIdsOfListObjects(scope);
         List<blng__Invoice__c> lstOfInvoices = EM017_FactureEntity.lstPostedInvoices(invoiceRunIds);

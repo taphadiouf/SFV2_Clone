@@ -20,11 +20,7 @@ global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<s
     
     global void execute(Database.BatchableContext BC, List<Contract> scope) {
         PAD.log('APB008_ResetStartEndDatesOnContract','execute','scope to execute : '+scope);
-        
-        UM001_LogManager.writeLogActivityWithoutFuture( 'Reset the custom start and end date on the contract',
-                                                        'APB008_ResetStartEndDatesOnContract', 'Batch' , null,
-                                                        'Execute method started with scope : ' + String.valueOf(scope), 
-                                                        UM010_Constant.SUCCESS);
+
         Set<Id> contractIds = UM003_TypeManager.getIdsOfListObjects(scope);
         List<Contract> listOfContract = [SELECT Id, LPCR_DureeContratJour__c ,LPCR_DateFin__c ,LPCR_DateDebut__c ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId FROM Contract 
                                          WHERE Id in :contractIds ];   

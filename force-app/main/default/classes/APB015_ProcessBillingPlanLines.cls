@@ -32,10 +32,6 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
         String ErrMsg;
-        UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Process Amended Billing Plan Lines',
-                                                        'APB015_ProcessBillingPlanLines', 'Batch' , null,
-                                                        'Execute method started with scope : ' + String.valueOf(scope), 
-                                                        UM010_Constant.SUCCESS); 
         PAD.log('APB015_ProcessBillingPlanLines', 'execute', 'scope to execute : ' + scope);
         // Managing proration in case of amendment (Monthly / Quarterly / Semi Annual)
         Map<Id, LPCR_PlanFacturation__c> billingPlanMap = new Map<Id, LPCR_PlanFacturation__c>();

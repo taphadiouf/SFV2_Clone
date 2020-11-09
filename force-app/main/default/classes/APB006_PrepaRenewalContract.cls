@@ -34,11 +34,6 @@ global class APB006_PrepaRenewalContract implements Database.Batchable<sObject>,
         PAD.log('APB006_PrepaRenewalContract', 'execute', 'scope size: ' + scope.size());
         PAD.log('APB006_PrepaRenewalContract', 'execute', 'setContractKeyAccountAndNursery size: ' + setContractKeyAccountAndNursery.size());
 
-        UM001_LogManager.writeLogActivityWithoutFuture( 'Batch to bulk process Order and prepare them for execution of APB002_RenewalContract',
-                                                        'APB006_PrepaRenewalContract', 'Batch' , null,
-                                                        'Execute method started with scope : ' + String.valueOf(scope), 
-                                                        UM010_Constant.SUCCESS);  
-
         Id accountEntrepriseRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
         Id accountFamilleRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
         List<Contract> listContractToUpdate = new List<Contract>();

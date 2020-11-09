@@ -19,12 +19,6 @@ global class APB013_ProcessYearlyOrderProduct implements Database.Batchable<sObj
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
 
-
-        UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Set Fields on Order Product and Delete the Billing Plan',
-                                                        'APB013_ProcessYearlyOrderProduct', 'Batch' , null,
-                                                        'Execute method started with scope : ' + String.valueOf(scope), 
-                                                        UM010_Constant.SUCCESS); 
-
         PAD.log('APB013_ProcessYearlyOrderProduct', 'execute', 'scope to execute : '+scope);
         Set<Id> orderItemIds = UM003_TypeManager.getIdsOfListObjects(scope);
         

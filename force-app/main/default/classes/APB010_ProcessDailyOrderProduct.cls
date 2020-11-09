@@ -24,10 +24,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
         String ErrMsg;
         PAD.log('APB010_ProcessDailyOrderProduct', 'execute', 'scope to execute : '+scope);
         
-        UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Order Product',
-                                                        'APB010_ProcessDailyOrderProduct', 'Batch' , null,
-                                                        'Execute method started with scope : ' + String.valueOf(scope), 
-                                                        UM010_Constant.SUCCESS);
+
         Set<Id> orderItemIds = UM003_TypeManager.getIdsOfListObjects(scope);
         Set<String> contractIds = UM003_TypeManager.getFieldsOfListObjects(scope, 'SBQQ__Contract__c');
         Set<Id> selectedOrderItemId = new Set<Id>();
