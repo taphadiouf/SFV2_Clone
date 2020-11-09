@@ -29,7 +29,7 @@ public with sharing class SM008_QuoteServices {
         Set<String> renewedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_RenewedContract);
         Set<String> amendedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_AmendedContract);
         
-        Map<Id,Contract> contractMap = new Map<Id,Contract>([SELECT Id, RecordType.DeveloperName,LPCR_RenouvellementPlanFacturation__c,LPCR_NouveauPlanFacturation__c,LPCR_InitAutoAvecDateDebut__c,LPCR_DateDebut__c, LPCR_DateFin__c ,LPCR_MethodeRenouvellement__c,LPCR_MasterDevis__c, LPCR_Sales_Rep__c,LPCR_ResponsableADV__c,LPCR_ResponsableServiceFamille__c,LPCR_EntiteJuridique__c,LPCR_TypeCreche__c, LPCR_PlanningEnfant__c,LPCR_ContactEnfant__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c,LPCR_CongesJours__c,LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Creche__c, LPCR_ChiffreAffaire__c, LPCR_FraisDossier__c, LPCR_Section__c, LPCR_CompteFacturation__c  From Contract Where Id =: renewedContractIds]);
+        Map<Id,Contract> contractMap = new Map<Id,Contract>([SELECT Id, RecordType.DeveloperName,LPCR_DateFinMaxQuoteLine__c,LPCR_RenouvellementPlanFacturation__c,LPCR_NouveauPlanFacturation__c,LPCR_InitAutoAvecDateDebut__c,LPCR_DateDebut__c, LPCR_DateFin__c ,LPCR_MethodeRenouvellement__c,LPCR_MasterDevis__c, LPCR_Sales_Rep__c,LPCR_ResponsableADV__c,LPCR_ResponsableServiceFamille__c,LPCR_EntiteJuridique__c,LPCR_TypeCreche__c, LPCR_PlanningEnfant__c,LPCR_ContactEnfant__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c,LPCR_CongesJours__c,LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_Creche__c, LPCR_ChiffreAffaire__c, LPCR_FraisDossier__c, LPCR_Section__c, LPCR_CompteFacturation__c  From Contract Where Id =: renewedContractIds]);
         Map<Id,Contract> amendedContractMap = new Map<Id,Contract>([SELECT Id,RecordType.DeveloperName,LPCR_RenouvellementPlanFacturation__c,LPCR_NouveauPlanFacturation__c,LPCR_InitAutoAvecDateDebut__c, LPCR_DateDebut__c, LPCR_DateFin__c ,LPCR_MethodeRenouvellement__c ,SBQQ__RenewalUpliftRate__c,LPCR_MasterDevis__c, LPCR_Sales_Rep__c,LPCR_ResponsableADV__c,LPCR_ResponsableServiceFamille__c,LPCR_EntiteJuridique__c, LPCR_TypeCreche__c, LPCR_Creche__c, LPCR_ContactEnfant__c,LPCR_ContractEntreprise__c,LPCR_ContactRepresentant1__c,LPCR_ContactRepresentant2__c, LPCR_CongesJours__c, LPCR_DureePreavisMois__c, LPCR_TypeAccueil__c, LPCR_ChiffreAffaire__c,LPCR_FraisDossier__c,LPCR_Section__c,LPCR_CompteFacturation__c,LPCR_IndexationConvenue__c  From Contract Where Id =: amendedContractIds]);
         
         if (Trigger.isBefore) {
@@ -431,10 +431,14 @@ public with sharing class SM008_QuoteServices {
                 }
                 //
                 if(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c != null && renewedContract.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
-                     eachQuote.RecordTypeId = mapQuoteRT.containsKey(renewedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).RecordType.DeveloperName)? 
-                   mapQuoteRT.get(renewedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).RecordType.DeveloperName).getRecordTypeId()
-                    : eachQuote.RecordTypeId;
+                     
+                    eachQuote.RecordTypeId = mapQuoteRT.containsKey(renewedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).RecordType.DeveloperName)
+                    ? 
+                        mapQuoteRT.get(renewedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).RecordType.DeveloperName).getRecordTypeId()
+                    : 
+                        eachQuote.RecordTypeId;
 
+                    eachQuote.LPCR_DateFinMaxQuoteLine__c =renewedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DateFinMaxQuoteLine__c;
                     eachQuote.LPCR_InitAutoAvecDateDebut__c =renewedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_InitAutoAvecDateDebut__c;
                     eachQuote.SBQQ__SalesRep__c = renewedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_Sales_Rep__c;
                     eachQuote.LPCR_ResponsableADV__c = renewedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_ResponsableADV__c;
