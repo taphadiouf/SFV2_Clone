@@ -152,99 +152,105 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                             item.blng__BillThroughDateOverride__c = lastdayofmonth;
                         }
                         
-                    } else if ((orderMap.get(item.OrderId).blng__BillingAccount__c != null
+                    } 
+                    // All Frequency but Invoice Plan
+                    else if ((orderMap.get(item.OrderId).blng__BillingAccount__c != null
                                 && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId)
                                && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c!= Label.LPCR_InvoicePlan 
                                && item.blng__NextChargeDate__c != null) {
 
-                                   Date lastDayofQuarter = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths);
-                                   Date lastDayOfMonth = UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c);
-                                   Date semiannualLastDay = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths);
-                                   Date annualLastDay = UM005_DateUtility.lastDayOfYear(item.blng__NextChargeDate__c);
-                                   
-                                   //Advance
-                                   if( orderMap.get(item.OrderId).LPCR_TypeFacturation__c == Label.LPCR_Advance){
-                                       
-                                       Date nextBillingDate = item.blng__NextChargeDate__c.addDays(invoiceDelta);
-                                       item.blng__OverrideNextBillingDate__c = nextBillingDate;
-                                       
-                                       if (item.SBQQ__BillingFrequency__c == Label.LPCR_Quarterly ){
-                                           // lastDayOfQuarterPeriod return the last date of the given quarter (1,4,7,10)
-                                           if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayofQuarter < item.SBQQ__TerminatedDate__c))){
-                                               item.blng__BillThroughDateOverride__c = lastDayofQuarter;
-                                           }
-                                       }else if (item.SBQQ__BillingFrequency__c == Label.LPCR_Monthly){
-                                           // lastDateOfMonth
-                                           if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayOfMonth < item.SBQQ__TerminatedDate__c))){
-                                               item.blng__BillThroughDateOverride__c = lastDayOfMonth;
-                                           }
-                                       }else if (item.SBQQ__BillingFrequency__c == Label.LPCR_Semiannual ) {
-                                           // lastDayOfHalfYearPeriod return the last date of the given Half Year period (1,7)
-                                           if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && semiannualLastDay < item.SBQQ__TerminatedDate__c))){
-                                               item.blng__BillThroughDateOverride__c = semiannualLastDay;
-                                           }
-                                       }else if(item.SBQQ__BillingFrequency__c == Label.LPCR_Annual  ) {
-                                           if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && annualLastDay < item.SBQQ__TerminatedDate__c))){
-                                               item.blng__BillThroughDateOverride__c = annualLastDay;
-                                           } 
-                                       }
-                                   }
-                                   //Arrears
-                                   else if( orderMap.get(item.OrderId).LPCR_TypeFacturation__c == Label.LPCR_Arrears && !orderMap.get(item.OrderId).LPCR_InitAutoAvecDateDebut__c){
-                                       if ( ( ( item.SBQQ__BillingFrequency__c == Label.LPCR_Quarterly)
-                                             || (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Quarterly) )
-                                          ) {
-                                              item.blng__OverrideNextBillingDate__c = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths); // Workaround: Override Next Billing Date = Bill Through Date Override because of Billing package validation error
-                                              // lastDayOfQuarterPeriod return the last date of the given quarter (1,4,7,10)
-                                              
-                                              if(item.SBQQ__ChargeType__c !=Label.LPCR_OneTime){
-                                                  if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayofQuarter < item.SBQQ__TerminatedDate__c))){
-                                                      item.blng__BillThroughDateOverride__c = lastDayofQuarter;
-                                                  }
-                                              }
-                                          }
-                                       else if ( (item.SBQQ__BillingFrequency__c == Label.LPCR_Monthly )
-                                                || (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Monthly)){
-                                                    // lastDateOfMonth
-                                                    if(item.SBQQ__ChargeType__c !=Label.LPCR_OneTime){
-                                                        if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayOfMonth < item.SBQQ__TerminatedDate__c))){
-                                                            item.blng__BillThroughDateOverride__c = lastDayOfMonth;
-                                                        }
-                                                    }
-                                                    item.blng__OverrideNextBillingDate__c = item.SBQQ__ChargeType__c ==Label.LPCR_OneTime ? UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c).addDays(1):null;
-                                                }
-                                       
-                                       else if ((item.SBQQ__BillingFrequency__c == Label.LPCR_Semiannual)||
-                                                (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime
-                                                 && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Semiannual) )
-                                       {
-                                           item.blng__OverrideNextBillingDate__c =UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths); // Workaround: Override Next Billing Date = Bill Through Date Override because of Billing package validation error
-                                           // lastDayOfHalfYearPeriod return the last date of the given Half Year period (1,7)
-                                           
-                                           if(item.SBQQ__ChargeType__c !=Label.LPCR_OneTime){
-                                               if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && semiannualLastDay < item.SBQQ__TerminatedDate__c))){
-                                                   item.blng__BillThroughDateOverride__c = semiannualLastDay;
-                                               }
-                                           }
-                                       }
-                                       else if ((item.SBQQ__BillingFrequency__c == Label.LPCR_Annual )
-                                                || (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Annual)){
-                                                    item.blng__OverrideNextBillingDate__c = UM005_DateUtility.lastDayOfYear(item.blng__NextChargeDate__c); // Workaround: Override Next Billing Date = Bill Through Date Override because of Billing package validation error
-                                                    if(item.SBQQ__ChargeType__c !=Label.LPCR_OneTime){
-                                                        if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && annualLastDay < item.SBQQ__TerminatedDate__c))){
-                                                            item.blng__BillThroughDateOverride__c = annualLastDay;
-                                                        }
-                                                    }
-                                                }
-                                   }
-                               }
+                        Date lastDayofQuarter = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths);
+                        Date lastDayOfMonth = UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c);
+                        Date semiannualLastDay = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths);
+                        Date annualLastDay = UM005_DateUtility.lastDayOfYear(item.blng__NextChargeDate__c);
+                        
+                        //Advance
+                        if( orderMap.get(item.OrderId).LPCR_TypeFacturation__c == Label.LPCR_Advance){
+                            
+                            Date nextBillingDate = item.blng__NextChargeDate__c.addDays(invoiceDelta);
+                            item.blng__OverrideNextBillingDate__c = nextBillingDate;
+                            
+                            if (item.SBQQ__BillingFrequency__c == Label.LPCR_Quarterly ){
+                                // lastDayOfQuarterPeriod return the last date of the given quarter (1,4,7,10)
+                                if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayofQuarter < item.SBQQ__TerminatedDate__c))){
+                                    item.blng__BillThroughDateOverride__c = lastDayofQuarter;
+                                }
+                            }else if (item.SBQQ__BillingFrequency__c == Label.LPCR_Monthly){
+                                // lastDateOfMonth
+                                if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayOfMonth < item.SBQQ__TerminatedDate__c))){
+                                    item.blng__BillThroughDateOverride__c = lastDayOfMonth;
+                                }
+                            }else if (item.SBQQ__BillingFrequency__c == Label.LPCR_Semiannual ) {
+                                // lastDayOfHalfYearPeriod return the last date of the given Half Year period (1,7)
+                                if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && semiannualLastDay < item.SBQQ__TerminatedDate__c))){
+                                    item.blng__BillThroughDateOverride__c = semiannualLastDay;
+                                }
+                            }else if(item.SBQQ__BillingFrequency__c == Label.LPCR_Annual  ) {
+                                if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && annualLastDay < item.SBQQ__TerminatedDate__c))){
+                                    item.blng__BillThroughDateOverride__c = annualLastDay;
+                                } 
+                            }
+                        }
+                        //Arrears
+                        else if( orderMap.get(item.OrderId).LPCR_TypeFacturation__c == Label.LPCR_Arrears && !orderMap.get(item.OrderId).LPCR_InitAutoAvecDateDebut__c) {
+
+                            if ((( item.SBQQ__BillingFrequency__c == Label.LPCR_Quarterly)
+                                    || (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Quarterly))) {
+
+                                item.blng__OverrideNextBillingDate__c = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths); // Workaround: Override Next Billing Date = Bill Through Date Override because of Billing package validation error
+                                // lastDayOfQuarterPeriod return the last date of the given quarter (1,4,7,10)
+                                
+                                if(item.SBQQ__ChargeType__c !=Label.LPCR_OneTime){
+                                    if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayofQuarter < item.SBQQ__TerminatedDate__c))){
+                                        item.blng__BillThroughDateOverride__c = lastDayofQuarter;
+                                    }
+                                }
+                            }
+                            else if ( (item.SBQQ__BillingFrequency__c == Label.LPCR_Monthly )
+                                    || (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Monthly)) {
+
+                                // lastDateOfMonth
+                                if(item.SBQQ__ChargeType__c !=Label.LPCR_OneTime){
+                                    if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayOfMonth < item.SBQQ__TerminatedDate__c))){
+                                        item.blng__BillThroughDateOverride__c = lastDayOfMonth;
+                                    }
+                                }
+
+                                item.blng__OverrideNextBillingDate__c = item.SBQQ__ChargeType__c ==Label.LPCR_OneTime ? UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c).addDays(1):null;
+                            }
+                            else if ((item.SBQQ__BillingFrequency__c == Label.LPCR_Semiannual)||
+                                    (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime
+                                        && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Semiannual) ) {
+
+                                item.blng__OverrideNextBillingDate__c =UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths); // Workaround: Override Next Billing Date = Bill Through Date Override because of Billing package validation error
+                                // lastDayOfHalfYearPeriod return the last date of the given Half Year period (1,7)
+                                
+                                if(item.SBQQ__ChargeType__c !=Label.LPCR_OneTime){
+                                    if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && semiannualLastDay < item.SBQQ__TerminatedDate__c))){
+                                        item.blng__BillThroughDateOverride__c = semiannualLastDay;
+                                    }
+                                }
+                            }
+                            else if ((item.SBQQ__BillingFrequency__c == Label.LPCR_Annual )
+                                    || (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Annual)) {
+
+                                item.blng__OverrideNextBillingDate__c = UM005_DateUtility.lastDayOfYear(item.blng__NextChargeDate__c); // Workaround: Override Next Billing Date = Bill Through Date Override because of Billing package validation error
+                                if(item.SBQQ__ChargeType__c !=Label.LPCR_OneTime){
+                                    if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && annualLastDay < item.SBQQ__TerminatedDate__c))){
+                                        item.blng__BillThroughDateOverride__c = annualLastDay;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    // Frequency Invoice Plan
                     if(  orderMap.get(item.OrderId).blng__BillingAccount__c != null
                        && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId
                        && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_InvoicePlan && item.SBQQ__ChargeType__c == Label.LPCR_OneTime 
                        && item.SBQQ__RequiredBy__c != null){
                            
-                           item.blng__OverrideNextBillingDate__c = orderItemMap.get(item.SBQQ__RequiredBy__c).blng__NextBillingDate__c; 
-                       }
+                        item.blng__OverrideNextBillingDate__c = orderItemMap.get(item.SBQQ__RequiredBy__c).blng__NextBillingDate__c; 
+                    }
                        
                     if((item.blng__BillThroughDateOverride__c != null) && item.EndDate < item.blng__BillThroughDateOverride__c){
                         item.blng__BillThroughDateOverride__c = item.EndDate;
