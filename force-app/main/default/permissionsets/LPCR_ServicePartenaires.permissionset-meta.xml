@@ -1476,6 +1476,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_BonAchatPartenaire__c.LPCR_Signe__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_BonAchatPartenaire__c.LPCR_Statut__c</field>
         <readable>true</readable>
     </fieldPermissions>
