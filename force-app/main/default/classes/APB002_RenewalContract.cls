@@ -12,15 +12,13 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
         Date today = date.today();
-        
         query = 'SELECT Id FROM Contract WHERE Status =\'Activated\' AND LPCR_RenouvellementAutomatique__c = true AND  LPCR_DateRenouvellement__c <= :today AND LPCR_DateRenouvellement__c != null AND (SBQQ__RenewalQuoted__c = false OR SBQQ__RenewalForecast__c = false) ';//AND Termination_Date__c = null' ;
-        
         return Database.getQueryLocator(query);
     }
     
     global void execute(Database.BatchableContext BC, List<Contract> scope) {
-           PAd.log('APB002_RenewalContract', 'execute', 'scope to execute : '+scope);
-
+        PAd.log('APB002_RenewalContract', 'execute', 'scope to execute : '+scope);
+           
         Set<Id> contractIds = UM003_TypeManager.getIdsOfListObjects(scope);
         List<Contract> listOfContract = [SELECT Id,Name,EndDate,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
                                          WHERE Id in :contractIds ];   
@@ -28,8 +26,21 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
             eachContract.SBQQ__RenewalQuoted__c=true;
             PAd.log('APB002_RenewalContract', 'execute', 'Updating contract '+eachContract);
         }
-        
-        update listOfContract;        
+        String ErrMsg;
+        try {
+            update listOfContract;
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box renewal quoted on the contract which will create the renewal opp and quote',
+                                                            'APB002_RenewalContract', 'Batch' , null,
+                                                            'Successfully updated list of contracts : ' + String.valueOf(listOfContract), 
+                                                            UM010_Constant.SUCCESS);          
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box renewal quoted on the contract which will create the renewal opp and quote','APB002_RenewalContract', 'Batch' , null,'Error while updating the contracts : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
+        }
+                
     }
     
     global void finish(Database.BatchableContext BC) {
@@ -55,6 +66,7 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
                 //schedule this same schedulable class again in 30 mins
 
                 Id schedId = System.Schedule('APB002_RenewalContract'+timeForScheduler,timeForScheduler,new APB002_RenewalContract());
+                PAd.log('APB002_RenewalContract', 'execute', 'scheduling batch in ' + dt);
             }
         }  
         
