@@ -61,8 +61,6 @@ public class APB012_ProcessRevenuCascade_Test {
     @isTest
     public static void APB012_ProcessRevenuCascade_Test(){
         User testUser = UM002_TestDataFactory.createUser();
-        PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'LPCR_Admin' limit 1];
-        insert new PermissionSetAssignment(AssigneeId = testUser.id, PermissionSetId = ps.Id);
         System.runAs(testUser){
             Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
             Date lastDayOfCurrentMonthDate=Date.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month())) ;

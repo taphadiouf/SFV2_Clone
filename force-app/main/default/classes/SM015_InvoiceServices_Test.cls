@@ -332,11 +332,10 @@ Test.stopTest();
     
     @isTest
     public static void afterUpdateCreateCreditNoteAllocation_Test(){
+
         User user = UM002_TestDataFactory.createUser();
-        PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'LPCR_Admin'];
-        insert new PermissionSetAssignment(AssigneeId = user.id, PermissionSetId = ps.Id);
+
         System.runAs(user){
-            
             
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account   LIMIT 1];
             
