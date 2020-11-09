@@ -5,7 +5,7 @@
 */
 
 @isTest
-public class APB018_AutomateRessourceFamille_Test {
+public class APB019_AutomateRessourceFamille_Test {
 	
     private static final Id ACC_B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     private static final Id CONTACT_ENFANT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Enfant);
@@ -62,7 +62,7 @@ public class APB018_AutomateRessourceFamille_Test {
     
     
     @isTest
-    private static void testAPB018_AutomateRessourceFamille(){
+    private static void testAPB019_AutomateRessourceFamille(){
         
         System.runAs(UM002_TestDataFactory.createUser()){
             
@@ -84,7 +84,7 @@ public class APB018_AutomateRessourceFamille_Test {
             
             Test.startTest();
             
-            APB018_AutomateRessourceFamille resFammileAutomationBatch = new APB018_AutomateRessourceFamille();
+            APB019_AutomateRessourceFamille resFammileAutomationBatch = new APB019_AutomateRessourceFamille();
             resFammileAutomationBatch.execute(null);
             
             Test.stopTest();

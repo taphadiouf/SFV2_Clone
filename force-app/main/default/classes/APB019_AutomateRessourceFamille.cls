@@ -3,10 +3,10 @@
 * @date 04/10/2020
 * @Description Batch for Automation of "ressource famille" before B2C MAC renewals
 */
-global class APB018_AutomateRessourceFamille implements Database.Batchable<sObject>,Schedulable {
+global class APB019_AutomateRessourceFamille implements Database.Batchable<sObject>,Schedulable {
     String query;
     public static Id accueilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract',Label.LPCR_ContratA);
-    global APB018_AutomateRessourceFamille() {
+    global APB019_AutomateRessourceFamille() {
         
     }
     
@@ -21,7 +21,7 @@ global class APB018_AutomateRessourceFamille implements Database.Batchable<sObje
     
     global void execute(Database.BatchableContext BC, List<Contract> scope) {
         
-        PAd.log('APB018_AutomateRessourceFamille', 'execute', 'scope to execute : '+scope);
+        PAd.log('APB019_AutomateRessourceFamille', 'execute', 'scope to execute : '+scope);
         
         string errorMsg;
         
@@ -59,7 +59,7 @@ global class APB018_AutomateRessourceFamille implements Database.Batchable<sObje
             
             newactiveList.add(tempRessFamille);
             
-            listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Automating Ressource Famille', 'APB018_AutomateRessourceFamille', 'Batch', String.valueOf(eachResFamille.Id), '', 'SUCCESS'));  
+            listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Automating Ressource Famille', 'APB019_AutomateRessourceFamille', 'Batch', String.valueOf(eachResFamille.Id), '', 'SUCCESS'));  
             
         }
         
@@ -70,13 +70,13 @@ global class APB018_AutomateRessourceFamille implements Database.Batchable<sObje
             
         }catch(Exception ex){
             
-            PAD.log('APB018_AutomateRessourceFamille','execute','Exception : '+ex.getMessage());
+            PAD.log('APB019_AutomateRessourceFamille','execute','Exception : '+ex.getMessage());
             errorMsg = String.valueOf(ex);
         }
         finally {
             
             if (String.isNotBlank(errorMsg)) {
-                UM001_LogManager.writeLogActivityWithoutFuture('Automating Ressource Famille', 'APB018_AutomateRessourceFamille', 'Batch', '',  'Error:' + errorMsg, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture('Automating Ressource Famille', 'APB019_AutomateRessourceFamille', 'Batch', '',  'Error:' + errorMsg, UM010_Constant.ERROR);  
             }
             else {
                 insert listOfLog;
@@ -92,21 +92,21 @@ global class APB018_AutomateRessourceFamille implements Database.Batchable<sObje
         Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
         String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         
-        APB018_AutomateRessourceFamille sc1 = new APB018_AutomateRessourceFamille();
+        APB019_AutomateRessourceFamille sc1 = new APB019_AutomateRessourceFamille();
         
         // schedule the apex class only if their is not existing job running
-        boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB018_AutomateRessourceFamille');
+        boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB019_AutomateRessourceFamille');
         
         // check if there is any open place to schedule the class
         boolean isJobQueueFull = UM004_BatchUtility.isBatchJobQueueFull();
         
         if(isBatchJobRunning == UM004_BatchUtility.BOOLEAN_FALSE){
             if (isJobQueueFull == UM004_BatchUtility.BOOLEAN_FALSE) {
-                sc1 = new APB018_AutomateRessourceFamille();
+                sc1 = new APB019_AutomateRessourceFamille();
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                Id schedId = System.Schedule('APB018_AutomateRessourceFamille'+timeForScheduler,timeForScheduler,new APB018_AutomateRessourceFamille());
+                Id schedId = System.Schedule('APB019_AutomateRessourceFamille'+timeForScheduler,timeForScheduler,new APB019_AutomateRessourceFamille());
             }
         }  
         
