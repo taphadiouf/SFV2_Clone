@@ -243,14 +243,6 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                             }
                         }
                     }
-                    // Frequency Invoice Plan
-                    if(  orderMap.get(item.OrderId).blng__BillingAccount__c != null
-                       && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId
-                       && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_InvoicePlan && item.SBQQ__ChargeType__c == Label.LPCR_OneTime 
-                       && item.SBQQ__RequiredBy__c != null){
-                           
-                        item.blng__OverrideNextBillingDate__c = orderItemMap.get(item.SBQQ__RequiredBy__c).blng__NextBillingDate__c; 
-                    }
                        
                     if((item.blng__BillThroughDateOverride__c != null) && item.EndDate < item.blng__BillThroughDateOverride__c){
                         item.blng__BillThroughDateOverride__c = item.EndDate;
