@@ -78,10 +78,36 @@ public class SM015_InvoiceServices {
                &&  'Posted'.equals(eachNewInvoice.blng__InvoiceStatus__c)) {
 
                 eachNewInvoice.LPCR_StatutFacture__c = 'Prêt à valider';
-                eachNewInvoice.blng__Account__r.LPCR_ProcessRevenuCascade__c = true;
             }
         }
     }
+
+    public static void resetAccountProcessRevenuCascade(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> oldInvoiceMap) {
+
+        Set<Id> setAccount = new Set<Id>();
+
+        for(blng__Invoice__c eachNewInvoice : newInvoiceList){
+
+            if(String.isNotBlank(eachNewInvoice.blng__InvoiceStatus__c) 
+               && !eachNewInvoice.blng__InvoiceStatus__c.equals(oldInvoiceMap.get(eachNewInvoice.Id).blng__InvoiceStatus__c)
+               &&  'Posted'.equals(eachNewInvoice.blng__InvoiceStatus__c)) {
+
+                setAccount.add(eachNewInvoice.blng__Account__c);
+            }
+        }
+
+        List<Account> listAcc = [Select Id, LPCR_ProcessRevenuCascade__c From Account WHERE Id  IN:setAccount];
+
+        if(listAcc.size() > 0) {
+
+            for(Account acc : listAcc){
+                acc.LPCR_ProcessRevenuCascade__c = true;
+            }
+        }
+
+        update listAcc;
+    }
+
     
 	    
     public static void setCongePrisPeriode(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> newInvoiceMap){
