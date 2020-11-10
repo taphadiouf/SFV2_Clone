@@ -17,6 +17,7 @@ global class APB016_QuoteReCalculateProcess implements Database.Batchable<sObjec
     }
     
     global void execute(Database.BatchableContext BC, List<SBQQ__QuoteLine__c > scope) {
+
         PAD.log('APB016_QuoteReCalculateProcess', 'execute','scope to execute : '+scope );
         
         List<SBQQ__QuoteLine__c> updateQLIList = new List<SBQQ__QuoteLine__c>();
@@ -24,13 +25,22 @@ global class APB016_QuoteReCalculateProcess implements Database.Batchable<sObjec
             eachQLI.LPCR_Quote_Recalculated__c = true;   
             updateQLIList.add(eachQLI);
         }
-        try{
+        String ErrMsg;
+        try {
             // update QLI for autometiclly perform re-calculation
-            PAD.log('APB016_QuoteReCalculateProcess', 'execute','updateQLIList : '+updateQLIList );
             update updateQLIList;
-        }catch(Exception ex){ PAD.log('APB016_QuoteReCalculateProcess', 'execute','Exception : '+ex.getMessage() );
-        }        
-                
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for QuoteReCalculateProcess call from APB014',
+                                                            'APB016_QuoteReCalculateProcess', 'Batch' , null,
+                                                            'Successfully updated list of quotes liens : ' + String.valueOf(updateQLIList), 
+                                                            UM010_Constant.SUCCESS); 
+            PAD.log('APB016_QuoteReCalculateProcess', 'execute','Update success of Quote lines list : ' + updateQLIList );
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for QuoteReCalculateProcess call from APB014','APB013_ProcessYearlyOrderProduct', 'Batch' , null,'Error while updating the quote lines. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
+        }     
     }
     
     global void finish(Database.BatchableContext BC) {

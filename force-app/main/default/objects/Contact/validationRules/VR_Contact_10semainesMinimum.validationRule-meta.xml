@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Contact_10semainesMinimum</fullName>
+    <active>true</active>
+    <description>Je ne peux pas renseigner une date d&apos;entrée en crèche inférieure à 10 semaines après la naissance de l&apos;enfant.</description>
+    <errorConditionFormula>AND(
+  ! $Permission.LPCR_ByPass_VR,
+  RecordType.DeveloperName = &apos;Enfant&apos;,
+  (LPCR_DateEntreeCrecheSouhaitee__c - Birthdate) / 7 &lt; 10
+)</errorConditionFormula>
+    <errorDisplayField>LPCR_DateEntreeCrecheSouhaitee__c</errorDisplayField>
+    <errorMessage>La date d&apos;entrée en crèche doit être au moins 10 semaines après la naissance</errorMessage>
+</ValidationRule>

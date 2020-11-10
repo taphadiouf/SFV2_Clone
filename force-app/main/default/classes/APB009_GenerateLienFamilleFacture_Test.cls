@@ -49,6 +49,9 @@
             defaultVal.put('Name','Test-Creche');
             Account crecheAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
             accounts.add(crecheAccount);
+            for(Account a : accounts){
+                a.LPCR_PasDeSIRET__c = true;
+            }
             insert accounts;
             
             
