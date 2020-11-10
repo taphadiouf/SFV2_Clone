@@ -42,7 +42,32 @@ export default class LWC003_RefDoc extends LightningElement {
   @track currentPage = 1;
   @track numberOfAllPages = 1;
 
-  
+  // Filter values with checkboxes only in Account Object
+  value1 = this.options1.map( v => v.value);
+  value2 = this.options2.map( v => v.value);
+  get options1() {
+      return [{ label: 'Contrat Accueil',         value: 'Contrat Accueil' }, 
+              { label: 'Contrat de Réservation',  value: 'Contrat Réservataire' },
+              { label: 'Facture Famille',         value: 'Facture Famille' }];
+  }
+  get options2() {
+      return [{ label: 'Facture Entreprise',      value: 'Facture Entreprise' },
+              { label: 'Pièce justificative',     value: 'Pièce justificative' },
+              { label: 'Autres',                  value: 'Autres' }];
+  }
+  handleChangeFilter(e) {
+      if(e.target.name == 'Group1'){
+        this.value1 = e.detail.value
+      }else if(e.target.name == 'Group2'){
+        this.value2 = e.detail.value
+      }
+      this.dataTreatment(this.recordsFromWS.filter( rec => { return ((this.value1.indexOf(rec.name) > -1) || (this.value2.indexOf(rec.name) > -1)) }));
+  }
+  get inAccountObject () {
+    return (this.pageRef.attributes.objectApiName == 'Account');
+  }
+  // 
+
   connectedCallback() {
     // Subscribe to handleOrderListResult event to receive data from The Search Component
     registerListener('handleCreateddocument', this.handleCreateddocument, this);
@@ -53,8 +78,6 @@ export default class LWC003_RefDoc extends LightningElement {
     .then(result=>{
       console.log("called getDocumentListCalloutF");
       if (result) {
-        console.log('******result : ' + result);
-        console.log(result);
         if (result.result && result.result == '200') {
           this.recordsFromWS = result.response;
           this.recordsLength = this.recordsFromWS.length;
@@ -108,8 +131,6 @@ export default class LWC003_RefDoc extends LightningElement {
     //get the range  of records from  currentPage , numberOfData
     this.records = [];
     this.records = records.slice(this.currentPage * this.numberOfData - this.numberOfData, this.currentPage * this.numberOfData);
-    console.log("***********this.records!");
-    console.log(this.records);
   }
   handlNumberOfData(event) {
     this.numberOfData = event.detail.value;
