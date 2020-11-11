@@ -232,4 +232,56 @@ update recordsToSync;
         }        
         update LeadOpps.values();
     }
+    
+    
+    public static void blockConversionwithWrongRecType(List<Lead> leadsList){
+                
+        Set<Id> leadsListIds = UM003_TypeManager.getIdsOfListObjects(leadsList);        
+        Map<Id,Lead> mapLead = new Map<Id,Lead>([Select Id, Name, RecordType.DeveloperName,ConvertedAccountId, ConvertedOpportunityId, ConvertedContactId From Lead Where Id In: leadsListIds ]);
+        
+        Set<String> leadsAccIds = UM003_TypeManager.getFieldsOfListObjects(leadsList,'ConvertedAccountId');
+        Map<Id,Account> mapAccount = new Map<Id,Account>([Select Id, Name,RecordTypeId ,RecordType.DeveloperName From Account Where Id In: leadsAccIds]);
+        
+        Set<String> leadsOppIds = UM003_TypeManager.getFieldsOfListObjects(leadsList,'ConvertedOpportunityId');
+        Map<Id,Opportunity> mapOpportunity = new Map<Id,Opportunity>([Select Id, Name,RecordTypeId ,RecordType.DeveloperName From Opportunity Where Id In: leadsOppIds]);
+        
+        Set<String> leadsConIds = UM003_TypeManager.getFieldsOfListObjects(leadsList,'ConvertedContactId');
+        Map<Id,Contact> mapContact = new Map<Id,Contact>([Select Id, Name,RecordTypeId ,RecordType.DeveloperName From Contact Where Id In: leadsConIds]);
+        
+        
+        for(Lead eachLead : leadsList){
+            
+            if(eachLead.ConvertedAccountId != null) {
+                
+                if(mapLead.get(eachLead.Id).RecordType.DeveloperName != 'AO_PublicReservation' && mapLead.get(eachLead.Id).RecordType.DeveloperName != 'AO_PublicDSP' ){
+                    
+                    if(mapLead.get(eachLead.Id).RecordType.DeveloperName != mapAccount.get(eachLead.ConvertedAccountId).RecordType.DeveloperName){
+                		eachLead.addError('Le Compte choisi doit être du même type que le Lead');
+                	}
+                    if(mapLead.get(eachLead.Id).RecordType.DeveloperName != mapContact.get(eachLead.ConvertedContactId).RecordType.DeveloperName){
+                		eachLead.addError('Le Contact choisi doit être du même type que le Lead');
+                	}
+                    if(mapLead.get(eachLead.Id).RecordType.DeveloperName != mapOpportunity.get(eachLead.ConvertedOpportunityId).RecordType.DeveloperName){
+                		eachLead.addError('Opportunité choisi doit être du même type que le Lead');
+                	}
+                }
+                else{
+                    
+                    if(mapAccount.get(eachLead.ConvertedAccountId).RecordType.DeveloperName != 'Entreprise'){
+                		eachLead.addError('Le Compte choisi doit être du type entreprise');
+                	}
+                    if(mapContact.get(eachLead.ConvertedContactId).RecordType.DeveloperName != 'Entreprise'){
+                		eachLead.addError('Le Contact choisi doit être du type entreprise');
+                	}
+                    if(mapLead.get(eachLead.Id).RecordType.DeveloperName == 'AO_PublicReservation' && mapOpportunity.get(eachLead.ConvertedOpportunityId).RecordType.DeveloperName != 'AOPublicReservation'){
+                		eachLead.addError('Opportunité choisi doit être du type AO Public Reservation');
+                	}
+                    if(mapLead.get(eachLead.Id).RecordType.DeveloperName == 'AO_PublicDSP' && mapOpportunity.get(eachLead.ConvertedOpportunityId).RecordType.DeveloperName != 'AOPublicDSP'){
+                		eachLead.addError('Opportunité choisi doit être du type AO Public DSP');
+                	}
+                }
+            }
+        }
+       
+    }
 }
