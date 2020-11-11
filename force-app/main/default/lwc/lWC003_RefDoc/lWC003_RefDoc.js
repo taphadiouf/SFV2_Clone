@@ -14,6 +14,18 @@ import { CurrentPageReference } from 'lightning/navigation';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
+
+//Import Custom Labels
+import ContratAccueil from '@salesforce/label/c.LPCR_ContratAccueil';
+import ContratReservataire from '@salesforce/label/c.LPCR_ContratReservataire';
+import FactureFamille from '@salesforce/label/c.LPCR_FactureFamille';
+import FactureEntreprise from '@salesforce/label/c.LPCR_FactureEntreprise';
+import PieceJustificative from '@salesforce/label/c.LPCR_PieceJustificative';
+import Autres from '@salesforce/label/c.LPCR_Autres';
+
+
+
+
 const columns = [
   { label: 'Titre', fieldName: 'name', sortable: true },
   { label: 'Type', fieldName: 'documentType', sortable: true },
@@ -43,17 +55,17 @@ export default class LWC003_RefDoc extends LightningElement {
   @track numberOfAllPages = 1;
 
   // Filter values with checkboxes only in Account Object
-  value1 = this.options1.map( v => v.value);
-  value2 = this.options2.map( v => v.value);
+  value1 = this.options1.map( v => v.value );
+  value2 = this.options2.map( v => v.value );
   get options1() {
-      return [{ label: 'Contrat Accueil',         value: 'Contrat Accueil' }, 
-              { label: 'Contrat de Réservation',  value: 'Contrat Réservataire' },
-              { label: 'Facture Famille',         value: 'Facture Famille' }];
+      return [{ label: ContratAccueil,          value: ContratAccueil }, 
+              { label: ContratReservataire,     value: ContratReservataire },
+              { label: FactureFamille,          value: FactureFamille }];
   }
   get options2() {
-      return [{ label: 'Facture Entreprise',      value: 'Facture Entreprise' },
-              { label: 'Pièce justificative',     value: 'Pièce justificative' },
-              { label: 'Autres',                  value: 'Autres' }];
+      return [{ label: FactureEntreprise,       value: FactureEntreprise },
+              { label: PieceJustificative,      value: PieceJustificative },
+              { label: Autres,                  value: Autres }];
   }
   handleChangeFilter(e) {
       if(e.target.name == 'Group1'){
@@ -81,7 +93,7 @@ export default class LWC003_RefDoc extends LightningElement {
         if (result.result && result.result == '200') {
           this.recordsFromWS = result.response;
           this.recordsLength = this.recordsFromWS.length;
-          this.dataTreatment(this.recordsFromWS);
+          this.dataTreatment(this.recordsFromWS.filter( rec => { return ((this.value1.indexOf(rec.name) > -1) || (this.value2.indexOf(rec.name) > -1)) }));
         }
       } 
     })
