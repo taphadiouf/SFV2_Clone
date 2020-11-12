@@ -31,7 +31,23 @@
     <picklistValues>
         <picklist>EditLinesFieldSetName__c</picklist>
         <values>
+            <fullName>B2C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B2C_Amendment</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>LPCR_Amendment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referencement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referencement_amendment</fullName>
             <default>false</default>
         </values>
         <values>
