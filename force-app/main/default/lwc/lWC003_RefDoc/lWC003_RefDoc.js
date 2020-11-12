@@ -14,6 +14,18 @@ import { CurrentPageReference } from 'lightning/navigation';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
+
+//Import Custom Labels
+import ContratAccueil from '@salesforce/label/c.LPCR_ContratAccueil';
+import ContratReservataire from '@salesforce/label/c.LPCR_ContratReservataire';
+import FactureFamille from '@salesforce/label/c.LPCR_FactureFamille';
+import FactureEntreprise from '@salesforce/label/c.LPCR_FactureEntreprise';
+import PieceJustificative from '@salesforce/label/c.LPCR_PieceJustificative';
+import Autres from '@salesforce/label/c.LPCR_Autres';
+
+
+
+
 const columns = [
   { label: 'Titre', fieldName: 'name', sortable: true },
   { label: 'Type', fieldName: 'documentType', sortable: true },
@@ -42,7 +54,32 @@ export default class LWC003_RefDoc extends LightningElement {
   @track currentPage = 1;
   @track numberOfAllPages = 1;
 
-  
+  // Filter values with checkboxes only in Account Object
+  value1 = this.options1.map( v => v.value );
+  value2 = this.options2.map( v => v.value );
+  get options1() {
+      return [{ label: ContratAccueil,          value: ContratAccueil }, 
+              { label: ContratReservataire,     value: ContratReservataire },
+              { label: FactureFamille,          value: FactureFamille }];
+  }
+  get options2() {
+      return [{ label: FactureEntreprise,       value: FactureEntreprise },
+              { label: PieceJustificative,      value: PieceJustificative },
+              { label: Autres,                  value: Autres }];
+  }
+  handleChangeFilter(e) {
+      if(e.target.name == 'Group1'){
+        this.value1 = e.detail.value
+      }else if(e.target.name == 'Group2'){
+        this.value2 = e.detail.value
+      }
+      this.dataTreatment(this.recordsFromWS.filter( rec => { return ((this.value1.indexOf(rec.name) > -1) || (this.value2.indexOf(rec.name) > -1)) }));
+  }
+  get inAccountObject () {
+    return (this.pageRef.attributes.objectApiName == 'Account');
+  }
+  // 
+
   connectedCallback() {
     // Subscribe to handleOrderListResult event to receive data from The Search Component
     registerListener('handleCreateddocument', this.handleCreateddocument, this);
@@ -53,12 +90,10 @@ export default class LWC003_RefDoc extends LightningElement {
     .then(result=>{
       console.log("called getDocumentListCalloutF");
       if (result) {
-        console.log('******result : ' + result);
-        console.log(result);
         if (result.result && result.result == '200') {
           this.recordsFromWS = result.response;
           this.recordsLength = this.recordsFromWS.length;
-          this.dataTreatment(this.recordsFromWS);
+          this.dataTreatment(this.recordsFromWS.filter( rec => { return ((this.value1.indexOf(rec.name) > -1) || (this.value2.indexOf(rec.name) > -1)) }));
         }
       } 
     })
@@ -108,8 +143,6 @@ export default class LWC003_RefDoc extends LightningElement {
     //get the range  of records from  currentPage , numberOfData
     this.records = [];
     this.records = records.slice(this.currentPage * this.numberOfData - this.numberOfData, this.currentPage * this.numberOfData);
-    console.log("***********this.records!");
-    console.log(this.records);
   }
   handlNumberOfData(event) {
     this.numberOfData = event.detail.value;
