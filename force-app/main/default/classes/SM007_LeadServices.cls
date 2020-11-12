@@ -251,7 +251,7 @@ update recordsToSync;
         
         for(Lead eachLead : leadsList){
             
-            if(eachLead.ConvertedAccountId != null) {
+            if(eachLead.ConvertedAccountId != null && mapLead.get(eachLead.Id).RecordType.DeveloperName != Label.LPCR_Famille) {
                 
                 if(mapLead.get(eachLead.Id).RecordType.DeveloperName != Label.LPCR_AO_PublicReservation && mapLead.get(eachLead.Id).RecordType.DeveloperName != Label.LPCR_AO_PublicDSP ){
                     
