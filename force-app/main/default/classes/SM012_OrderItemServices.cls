@@ -481,14 +481,25 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                 }
         }
         //Query for the children related Order Items
-        List<OrderItem> relatedOrderItems = [ SELECT Id, blng__OverrideNextBillingDate__c, SBQQ__RequiredBy__r.blng__NextBillingDate__c FROM OrderItem WHERE SBQQ__RequiredBy__c IN :orderItemsIds ];
+        List<OrderItem> relatedOrderItems = [ SELECT Id, blng__OverrideNextBillingDate__c, SBQQ__RequiredBy__r.blng__NextBillingDate__c,
+                                                        SBQQ__ChargeType__c, blng__NextChargeDate__c   
+                                                FROM OrderItem WHERE SBQQ__RequiredBy__c IN :orderItemsIds ];
+
+        List<OrderItem> relatedOneTimeOrderItems = new List<OrderItem>();   
+
         for(Orderitem eachOrderItem : relatedOrderItems){
-            //For every related order item : Update its next billing date
-            eachOrderItem.blng__OverrideNextBillingDate__c = eachOrderItem.SBQQ__RequiredBy__r.blng__NextBillingDate__c;
+
+            // populate only for one time products where blng_NextChargeDate_c not blank
+            if(eachOrderItem.SBQQ_ChargeType__c == Label.LPCR_OneTime && eachOrderItem.blng__NextChargeDate_c != null) {           
+
+                //For every related order item : Update its next billing date                 
+                eachOrderItem.blng__OverrideNextBillingDate__c = eachOrderItem.SBQQ__RequiredBy__r.blng__NextBillingDate__c;                 
+                relatedOneTimeOrderItems.add(eachOrderItem);             
+            }
         }
-        if(relatedOrderItems.size() > 0){
-            update relatedOrderItems;
+
+        if(relatedOneTimeOrderItems.size() > 0){
+            update relatedOneTimeOrderItems;
         }
-       
     }
 }
