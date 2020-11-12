@@ -6,7 +6,7 @@
         <description>Donner accès lecture et écriture aux lead famille pour les utilisateurs Commerciaux</description>
         <label>FamilleServiceCommercial</label>
         <sharedTo>
-            <roleAndSubordinatesInternal>Service_Commerciale</roleAndSubordinatesInternal>
+            <role>Service_Commerciale</role>
         </sharedTo>
         <criteriaItems>
             <field>RecordTypeId</field>
