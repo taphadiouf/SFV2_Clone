@@ -239,13 +239,13 @@ update recordsToSync;
         Set<Id> leadsListIds = UM003_TypeManager.getIdsOfListObjects(leadsList);        
         Map<Id,Lead> mapLead = new Map<Id,Lead>([Select Id, Name, RecordType.DeveloperName,ConvertedAccountId, ConvertedOpportunityId, ConvertedContactId From Lead Where Id In: leadsListIds ]);
         
-        Set<String> leadsAccIds = UM003_TypeManager.getFieldsOfListObjects(leadsList,'ConvertedAccountId');
+        Set<String> leadsAccIds = UM003_TypeManager.getFieldsOfListObjects(leadsList,Label.LPCR_ConvertedAccountId);
         Map<Id,Account> mapAccount = new Map<Id,Account>([Select Id, Name,RecordTypeId ,RecordType.DeveloperName From Account Where Id In: leadsAccIds]);
         
-        Set<String> leadsOppIds = UM003_TypeManager.getFieldsOfListObjects(leadsList,'ConvertedOpportunityId');
+        Set<String> leadsOppIds = UM003_TypeManager.getFieldsOfListObjects(leadsList,Label.LPCR_ConvertedOpportunityId);
         Map<Id,Opportunity> mapOpportunity = new Map<Id,Opportunity>([Select Id, Name,RecordTypeId ,RecordType.DeveloperName From Opportunity Where Id In: leadsOppIds]);
         
-        Set<String> leadsConIds = UM003_TypeManager.getFieldsOfListObjects(leadsList,'ConvertedContactId');
+        Set<String> leadsConIds = UM003_TypeManager.getFieldsOfListObjects(leadsList,Label.LPCR_ConvertedContactId);
         Map<Id,Contact> mapContact = new Map<Id,Contact>([Select Id, Name,RecordTypeId ,RecordType.DeveloperName From Contact Where Id In: leadsConIds]);
         
         
@@ -253,31 +253,31 @@ update recordsToSync;
             
             if(eachLead.ConvertedAccountId != null) {
                 
-                if(mapLead.get(eachLead.Id).RecordType.DeveloperName != 'AO_PublicReservation' && mapLead.get(eachLead.Id).RecordType.DeveloperName != 'AO_PublicDSP' ){
+                if(mapLead.get(eachLead.Id).RecordType.DeveloperName != Label.LPCR_AO_PublicReservation && mapLead.get(eachLead.Id).RecordType.DeveloperName != Label.LPCR_AO_PublicDSP ){
                     
                     if(mapLead.get(eachLead.Id).RecordType.DeveloperName != mapAccount.get(eachLead.ConvertedAccountId).RecordType.DeveloperName){
-                		eachLead.addError('Le Compte choisi doit être du même type que le Lead');
+                		eachLead.addError(Label.LPCR_RTAccountErrMsg);
                 	}
                     if(mapLead.get(eachLead.Id).RecordType.DeveloperName != mapContact.get(eachLead.ConvertedContactId).RecordType.DeveloperName){
-                		eachLead.addError('Le Contact choisi doit être du même type que le Lead');
+                		eachLead.addError(Label.LPCR_RTContactErrMsg);
                 	}
                     if(mapLead.get(eachLead.Id).RecordType.DeveloperName != mapOpportunity.get(eachLead.ConvertedOpportunityId).RecordType.DeveloperName){
-                		eachLead.addError('Opportunité choisi doit être du même type que le Lead');
+                		eachLead.addError(Label.LPCR_RTOpportunityErrMsg);
                 	}
                 }
                 else{
                     
-                    if(mapAccount.get(eachLead.ConvertedAccountId).RecordType.DeveloperName != 'Entreprise'){
-                		eachLead.addError('Le Compte choisi doit être du type entreprise');
+                    if(mapAccount.get(eachLead.ConvertedAccountId).RecordType.DeveloperName != Label.LPCR_Entreprise){
+                		eachLead.addError(Label.LPCR_AORTAccountErrMsg);
                 	}
-                    if(mapContact.get(eachLead.ConvertedContactId).RecordType.DeveloperName != 'Entreprise'){
-                		eachLead.addError('Le Contact choisi doit être du type entreprise');
+                    if(mapContact.get(eachLead.ConvertedContactId).RecordType.DeveloperName != Label.LPCR_Entreprise){
+                		eachLead.addError(Label.LPCR_AORTContactErrMsg);
                 	}
-                    if(mapLead.get(eachLead.Id).RecordType.DeveloperName == 'AO_PublicReservation' && mapOpportunity.get(eachLead.ConvertedOpportunityId).RecordType.DeveloperName != 'AOPublicReservation'){
-                		eachLead.addError('Opportunité choisi doit être du type AO Public Reservation');
+                    if(mapLead.get(eachLead.Id).RecordType.DeveloperName == Label.LPCR_AO_PublicReservation && mapOpportunity.get(eachLead.ConvertedOpportunityId).RecordType.DeveloperName != Label.LPCR_AOPublicReservation){
+                		eachLead.addError(Label.LPCR_AoRESOpportunityRTErrMsg);
                 	}
-                    if(mapLead.get(eachLead.Id).RecordType.DeveloperName == 'AO_PublicDSP' && mapOpportunity.get(eachLead.ConvertedOpportunityId).RecordType.DeveloperName != 'AOPublicDSP'){
-                		eachLead.addError('Opportunité choisi doit être du type AO Public DSP');
+                    if(mapLead.get(eachLead.Id).RecordType.DeveloperName == Label.LPCR_AO_PublicDSP && mapOpportunity.get(eachLead.ConvertedOpportunityId).RecordType.DeveloperName != Label.LPCR_AOPublicDSP){
+                		eachLead.addError(Label.LPCR_AoDSPOpportunityRTErrMsg);
                 	}
                 }
             }
