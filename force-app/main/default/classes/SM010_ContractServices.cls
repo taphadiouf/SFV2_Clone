@@ -218,7 +218,7 @@ public class SM010_ContractServices {
                                     ||
                                     (eachContract.RecordTypeId == reservataireRecTypeId && eachContract.LPCR_MethodeRenouvellement__c != 'Tacite' && eachContract.EndDate != eachContract.LPCR_DateFin__c)
                                     ||
-                                    (eachContract.RecordTypeId == reservataireRecTypeId && eachContract.LPCR_MethodeRenouvellement__c != 'Tacite' && eachContract.EndDate != eachContract.LPCR_DateFinMaxQuoteLine__c)
+                                    (eachContract.RecordTypeId == referencementRecTypeId && eachContract.LPCR_MethodeRenouvellement__c != 'Tacite' && eachContract.EndDate != eachContract.LPCR_DateFinMaxQuoteLine__c)
                                 )
                             ){
                                  eachContract.LPCR_RenouvellementAutomatique__c =true;
