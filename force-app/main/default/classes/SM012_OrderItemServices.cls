@@ -490,7 +490,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
         for(Orderitem eachOrderItem : relatedOrderItems){
 
             // populate only for one time products where blng_NextChargeDate_c not blank
-            if(eachOrderItem.SBQQ_ChargeType__c == Label.LPCR_OneTime && eachOrderItem.blng__NextChargeDate_c != null) {           
+            if(eachOrderItem.SBQQ__ChargeType__c == Label.LPCR_OneTime && eachOrderItem.blng__NextChargeDate__c != null) {           
 
                 //For every related order item : Update its next billing date                 
                 eachOrderItem.blng__OverrideNextBillingDate__c = eachOrderItem.SBQQ__RequiredBy__r.blng__NextBillingDate__c;                 
