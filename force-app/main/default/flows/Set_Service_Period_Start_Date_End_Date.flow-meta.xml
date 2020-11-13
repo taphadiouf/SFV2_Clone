@@ -21,26 +21,6 @@
             </value>
         </assignmentItems>
     </assignments>
-    <assignments>
-        <name>Populate_Start_End_From_Override_Billing_Date</name>
-        <label>Populate Start &amp; End From Override Billing Date</label>
-        <locationX>479</locationX>
-        <locationY>365</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.blng__ServicePeriodStart__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.blng__OverrideBillingTargetDate__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.blng__ServicePeriodEnd__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.blng__OverrideBillingTargetDate__c</elementReference>
-            </value>
-        </assignmentItems>
-    </assignments>
     <decisions>
         <name>Billing_Target_Start_date_is_not_Blank</name>
         <label>Billing Target Start date is not Blank</label>
@@ -55,6 +35,20 @@
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.blng__ServicePeriodStart__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.blng__ServicePeriodEnd__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -83,9 +77,6 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
-            <connector>
-                <targetReference>Populate_Start_End_From_Override_Billing_Date</targetReference>
-            </connector>
             <label>If Overide Start date is not Blank</label>
         </rules>
     </decisions>
@@ -96,6 +87,12 @@
         <name>BuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
