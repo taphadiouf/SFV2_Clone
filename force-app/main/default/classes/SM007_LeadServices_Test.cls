@@ -105,9 +105,6 @@ public class SM007_LeadServices_Test {
         Test.startTest();
         
         User testUser = UM002_TestDataFactory.createUser();
-        PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'LPCR_Admin' limit 1];
-        insert new PermissionSetAssignment(AssigneeId = testUser.id, PermissionSetId = ps.Id);
-        //System.runAs(UM002_TestDataFactory.createUser()){
         System.runAs(testUser){
             
             List<Database.LeadConvertResult> lcr = Database.convertLead(leadsToConvert);
