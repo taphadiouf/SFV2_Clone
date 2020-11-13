@@ -247,6 +247,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContactEnfant__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_MoyenPaiement__c</field>
             <table>Order</table>
         </columns>
@@ -484,12 +489,6 @@
             <checkedByDefault>true</checkedByDefault>
             <displayNameOverride>Région  commerciale</displayNameOverride>
             <field>Account.LPCR_RegionCommerciale__c</field>
-            <table>Order</table>
-        </columns>
-        <columns>
-            <checkedByDefault>true</checkedByDefault>
-            <displayNameOverride>Type de client</displayNameOverride>
-            <field>Account.LPCR_TypeClient__c</field>
             <table>Order</table>
         </columns>
         <masterLabel>Orders</masterLabel>
@@ -1193,5 +1192,13 @@
             <table>Order.OrderItems</table>
         </columns>
         <masterLabel>Order Products</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.LPCR_TypeEntreprise__c</field>
+            <table>Order</table>
+        </columns>
+        <masterLabel>Commandes</masterLabel>
     </sections>
 </ReportType>

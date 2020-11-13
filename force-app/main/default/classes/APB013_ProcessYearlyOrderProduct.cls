@@ -25,13 +25,41 @@ global class APB013_ProcessYearlyOrderProduct implements Database.Batchable<sObj
         for (OrderItem eachOrderItem : scope) {
             eachOrderItem.LPCR_BillingPlanProcessment__c = false;
         }       
-        
-        update scope;     
+        String ErrMsg;
+        try {
+            update scope;
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Set Fields on Order Product and Delete the Billing Plan',
+                                                            'APB013_ProcessYearlyOrderProduct', 'Batch' , null,
+                                                            'Successfully updated list of Order items : ' + String.valueOf(scope), 
+                                                            UM010_Constant.SUCCESS);  
+            PAD.log('APB013_ProcessYearlyOrderProduct', 'execute', 'OrderItems Update Success. List : ' + scope);
+
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Set Fields on Order Product and Delete the Billing Plan','APB013_ProcessYearlyOrderProduct', 'Batch' , null,'Error while updating the order items. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
+        }
         
         List<LPCR_PlanFacturation__c> delBillingPlanList = [SELECT id, LPCR_OrderItem__c FROM LPCR_PlanFacturation__c WHERE LPCR_OrderItem__c IN: orderItemIds ];
 
         if(delBillingPlanList.size() > 0){
-            delete delBillingPlanList;
+            ErrMsg = null;
+            try {
+                delete delBillingPlanList;
+                PAD.log('APB013_ProcessYearlyOrderProduct', 'execute', 'Deleted Billing plan list : ' + delBillingPlanList);
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Set Fields on Order Product and Delete the Billing Plan',
+                                                                'APB013_ProcessYearlyOrderProduct', 'Batch' , null,
+                                                                'Successfully deleted billing plan list : ' + String.valueOf(delBillingPlanList), 
+                                                                UM010_Constant.SUCCESS);  
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Set Fields on Order Product and Delete the Billing Plan','APB013_ProcessYearlyOrderProduct', 'Batch' , null,'Error while deleting billing plan list. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            }
         }   
     }
     
@@ -55,7 +83,6 @@ global class APB013_ProcessYearlyOrderProduct implements Database.Batchable<sObj
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-
                 Id schedId = System.Schedule('APB013_ProcessYearlyOrderProduct'+timeForScheduler,timeForScheduler,new APB013_ProcessYearlyOrderProduct());
             }
         }  

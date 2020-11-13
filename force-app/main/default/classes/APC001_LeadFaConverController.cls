@@ -191,31 +191,47 @@ public with sharing class APC001_LeadFaConverController{
         //Set Reprsentants1 and Reprsentants2 fields for newFamilleAccount  
         newFamilleAccount.LPCR_Representant1__c = newContactsMap.get('contactRep1').Id;
         if(newContactsMap.get('contactRep2') != null) newFamilleAccount.LPCR_Representant2__c = newContactsMap.get('contactRep2').Id;
-        update newFamilleAccount;
+        
+        try {
+            update newFamilleAccount;
+        } catch (Exception e ) {
+            throw new AuraHandledException(e.getMessage() + '|Line :' + e.getLineNumber());
+        }
+        
         //Create AccountContactRelation for Reprsentants1 and Reprsentants2 contacts
         List<AccountContactRelation> accountContactRelations = new List<AccountContactRelation>();
-        accountContactRelations.add(
-            new AccountContactRelation(
-                ContactId = newContactsMap.get('contactRep1').Id,
-                AccountId = currentLead.LPCR_CompteSociete__c
-            )
-        );
-        if(newContactsMap.get('contactRep2') != null){
-            accountContactRelations.add(    
+        if(currentLead.LPCR_CompteSociete__c != null){
+            accountContactRelations.add(
                 new AccountContactRelation(
-                    ContactId = newContactsMap.get('contactRep2').Id,
-                    AccountId = currentLead.LPCR_CompteSocieteCoDemandeur__c
+                    ContactId = newContactsMap.get('contactRep1').Id,
+                    AccountId = currentLead.LPCR_CompteSociete__c
                 )
             );
+        }
+        if(newContactsMap.get('contactRep2') != null){
+            if(currentLead.LPCR_CompteSocieteCoDemandeur__c != null){
+                accountContactRelations.add(    
+                    new AccountContactRelation(
+                        ContactId = newContactsMap.get('contactRep2').Id,
+                        AccountId = currentLead.LPCR_CompteSocieteCoDemandeur__c
+                    )
+                );
+            }
         }
         try{
             insert accountContactRelations;
         }
         catch(DmlException e) {
             System.debug('The following exception has occurred: ' + e.getMessage());
+            throw new AuraHandledException(e.getMessage() + '|Line :' + e.getLineNumber());
+        }
+        //Authorize Convertion
+        try {
+            update new Lead(id=leadId,LPCR_Tech_BloqueConversion__c=false);
+        } catch (Exception e ) {
+            throw new AuraHandledException(e.getMessage() + '|Line :' + e.getLineNumber());
         }
         //Convert the lead
-        update new Lead(id=leadId,LPCR_Tech_BloqueConversion__c=false);
         LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
         Database.LeadConvert lc = new Database.LeadConvert();
         lc.setLeadId(leadId);
@@ -254,7 +270,8 @@ public with sharing class APC001_LeadFaConverController{
                         LPCR_ContactEnfant__c = (tmpContactEnfant != null ? tmpContactEnfant.Id : null),
                         LPCR_ContactRepresentant1__c = (tmpContactRep1 != null ? tmpContactRep1.Id : null),
                         LPCR_ContactRepresentant2__c = (tmpContactRep2 != null ? tmpContactRep2.Id : null),
-                        SBQQ__Opportunity2__c = currentLead.convertedOpportunityId
+                        SBQQ__Opportunity2__c = currentLead.convertedOpportunityId,
+                        LPCR_Creation_conforme__c = true
                     )
                 );
             }
@@ -263,6 +280,7 @@ public with sharing class APC001_LeadFaConverController{
             }
             catch(DmlException e) {
                 System.debug('The following exception has occurred while inserting quote: ' + e.getMessage());
+                throw new AuraHandledException(e.getMessage() + '|Line :' + e.getLineNumber());
             }
             
             if(currentLead.LPCR_TypePrestation__c == Label.LPCR_Occasionnel){
@@ -274,6 +292,7 @@ public with sharing class APC001_LeadFaConverController{
                 }
                 catch(DmlException e) {
                     System.debug('The following exception has occurred while updating quote: ' + e.getMessage());
+                    throw new AuraHandledException(e.getMessage() + '|Line :' + e.getLineNumber());
                 }
             }
         }
@@ -315,6 +334,8 @@ public with sharing class APC001_LeadFaConverController{
                                 errmsg = ' contact : '+ cont.Name;
                             }
                         }
+                    }else{
+                        errmsg += '|validateResult Error : ' + error.getMessage();
                     }
                 }
                 

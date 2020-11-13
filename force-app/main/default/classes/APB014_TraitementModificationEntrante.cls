@@ -19,6 +19,7 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
     }
     
     global void execute(Database.BatchableContext BC, List<LPCR_ModificationEntrante__c> scope) {
+
         PAD.log('APB014_TraitementModificationEntrante', 'execute','scope to execute : '+scope );
         
         Set<Id> modificationEntranteIds = UM003_TypeManager.getIdsOfListObjects(scope);
@@ -37,11 +38,16 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
         PAD.log('APB014_TraitementModificationEntrante', 'finish','quote ids '+allSuccessId );   
         if(allSuccessId != null && allSuccessId.size() > 0){
             APB016_QuoteReCalculateProcess sc = new APB016_QuoteReCalculateProcess();
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Traitement Modification Entrante',
+                                                            'APB014_TraitementModificationEntrante', 'Batch' , null,
+                                                            'Scheduling APB0016 to run in 2 minutes with quote lines scope :' + String.valueOf(allSuccessId), 
+                                                            UM010_Constant.SUCCESS); 
             sc.quoteIds = allSuccessId;
             
             Datetime dt = Datetime.now().addMinutes(2);  // i.e. 2 mins
             String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
             Id schedId = System.Schedule('APB016_QuoteReCalculateProcess'+timeForScheduler,timeForScheduler,sc);
+            PAD.log('APB014_TraitementModificationEntrante','finish','Scheduling APB016 in 2 minutes from now : ' + dt );
         }    
     }
     

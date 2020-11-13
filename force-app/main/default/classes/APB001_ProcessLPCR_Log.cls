@@ -12,6 +12,8 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject>, Sche
         
     }
     global void execute(Database.BatchableContext bc, List<LPCR_Log__c> logs){
+
+        String ErrMsg;
         set<String> docIds = new set<String> ();
         set<String> delIds = new set<String> ();
         for(LPCR_Log__c eachLog : logs){
@@ -21,14 +23,39 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject>, Sche
         for(Attachment eachatt : lstAtta){
             delIds.add('' +eachatt.Id);
         }
-        List<LPCR_Log__c> lstPurgedDoc =[Select Id, LPCR_TargetObject__c From LPCR_Log__c Where LPCR_TargetObject__c IN : delIds];
-        delete lstAtta;
+        List<LPCR_Log__c> lstPurgedDoc =[SELECT Id, LPCR_TargetObject__c FROM LPCR_Log__c WHERE LPCR_TargetObject__c IN : delIds];
+        try {
+            delete lstAtta;
+            PAD.log('APB001_ProcessLPCR_Log', 'execute', 'The documents are deleted successfully');
+            UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null, lstAtta.size() + ' Logs deleted', UM010_Constant.SUCCESS);  
+        } catch (Exception e) {
+            ErrMsg = String.valueOf(e.getMessage());
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null, 'Error while deleting the documents' + ErrMsg, UM010_Constant.ERROR);  
+            }
+        }
+
+
+
+        ErrMsg = null;
+        // check if all delete success..
         lstAtta = [SELECT Id FROM Attachment WHERE Id IN: docIds ];
         if(lstAtta.isEmpty() ){
             for(LPCR_Log__c eachLog : lstPurgedDoc){
                 eachLog.LPCR_Result__c = 'Purged';
             }
-            update lstPurgedDoc;
+            try {
+                update lstPurgedDoc;
+                PAD.log('APB001_ProcessLPCR_Log', 'execute', 'The documents are deleted successfully');
+                UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null, 'Set Logs LPCR_Result__c to Purged', UM010_Constant.SUCCESS);  
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null, 'Error while setting Logs LPCR_Result__c to Purged. Exception : ' + ErrMsg, UM010_Constant.ERROR);  
+                }
+            }
         }else{
             PAD.log('APB001_ProcessLPCR_Log', 'execute', 'The documents are not deleted');
         }
@@ -55,7 +82,6 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject>, Sche
                 Database.executeBatch(this, 200);
             } else {
                 //schedule this same schedulable class again in 30 mins
-
                 Id schedId = System.Schedule('APB001_ProcessLPCR_Log' + timeForScheduler, timeForScheduler, new APB001_ProcessLPCR_Log());
             }
         }  

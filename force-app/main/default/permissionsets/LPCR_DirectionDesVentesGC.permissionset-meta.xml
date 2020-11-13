@@ -783,11 +783,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Account.LPCR_TypeClient__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Account.LPCR_TypeContratPrincipal__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3333,6 +3328,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.LPCR_SourceMigration__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Lead.LPCR_SousActivite__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3353,6 +3353,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.LPCR_Tech_BloqueConversion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Lead.LPCR_TelephoneCoDemandeur__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3368,11 +3373,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.LPCR_TypeClient__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Lead.LPCR_TypeCrecheX1__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3384,6 +3384,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_TypeCrecheX3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_TypeDeClient__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3464,6 +3469,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.Sparklane_FR__inactive__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.Tech_ProprietaireServiceFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
