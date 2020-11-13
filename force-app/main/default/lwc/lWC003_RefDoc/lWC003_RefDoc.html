@@ -6,7 +6,22 @@
 
             </c-l-w-c-004_-ref-doc-param>
 
-
+            <template if:true={inAccountObject}>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <lightning-checkbox-group name="Group1"
+                        options={options1}
+                        value={value1}
+                        onchange={handleChangeFilter}></lightning-checkbox-group>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-checkbox-group name="Group2"
+                        options={options2}
+                        value={value2}
+                        onchange={handleChangeFilter}></lightning-checkbox-group>
+                    </div>
+                </div>
+            </template>
             <div style="min-height: 300px;">
                 <template if:true={records}>
                     <div class="slds-form_horizontal slds-form slds-grid slds-wrap">

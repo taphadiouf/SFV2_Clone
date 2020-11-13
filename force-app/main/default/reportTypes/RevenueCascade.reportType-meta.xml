@@ -171,6 +171,11 @@
             <field>LPCR_NombreMois__c</field>
             <table>LPCR_RevenueCascade__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_FrequenceFacturation__c</field>
+            <table>LPCR_RevenueCascade__c</table>
+        </columns>
         <masterLabel>Revenues Cascade</masterLabel>
     </sections>
 </ReportType>

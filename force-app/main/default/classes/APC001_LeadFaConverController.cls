@@ -270,7 +270,8 @@ public with sharing class APC001_LeadFaConverController{
                         LPCR_ContactEnfant__c = (tmpContactEnfant != null ? tmpContactEnfant.Id : null),
                         LPCR_ContactRepresentant1__c = (tmpContactRep1 != null ? tmpContactRep1.Id : null),
                         LPCR_ContactRepresentant2__c = (tmpContactRep2 != null ? tmpContactRep2.Id : null),
-                        SBQQ__Opportunity2__c = currentLead.convertedOpportunityId
+                        SBQQ__Opportunity2__c = currentLead.convertedOpportunityId,
+                        LPCR_Creation_conforme__c = true
                     )
                 );
             }
