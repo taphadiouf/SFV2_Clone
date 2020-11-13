@@ -7,3 +7,4 @@
 ISPICKVAL(blng__InvoiceLine__r.blng__Invoice__r.LPCR_StatutFacture__c, &apos;Annulée&apos; ),ISPICKVAL(blng__InvoiceLine__r.blng__Invoice__r.LPCR_StatutFacture__c, &apos;Terminée&apos; ))</errorConditionFormula>
     <errorMessage>Il n&apos;est pas possible d&apos;allouer une note de crédit à une facture au statut &apos;Envoyée&apos; ou &apos;A envoyer&apos;</errorMessage>
 </ValidationRule>
+
