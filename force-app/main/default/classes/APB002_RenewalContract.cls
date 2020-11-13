@@ -19,17 +19,64 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
     }
     
     global void execute(Database.BatchableContext BC, List<Contract> scope) {
-           PAd.log('APB002_RenewalContract', 'execute', 'scope to execute : '+scope);
-
+        PAD.log('APB002_RenewalContract', 'execute', 'scope to execute : '+scope);
+        
         Set<Id> contractIds = UM003_TypeManager.getIdsOfListObjects(scope);
-        List<Contract> listOfContract = [SELECT Id,Name,EndDate,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
+        Set<String> masterContractQuoteIds = new Set<String>();        
+        Set<String> masterQuoteContractIds = new Set<String>();
+        List<LPCR_Log__c> listOfLog = new List<LPCR_Log__c>();
+        List<SBQQ__Quote__c> updateQuoteList = new List<SBQQ__Quote__c>();
+        
+        List<Contract> listOfContract = [SELECT Id,Name,Status,SBQQ__Quote__c,SBQQ__Quote__r.SBQQ__MasterContract__c,EndDate,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
                                          WHERE Id in :contractIds ];   
-        for (Contract eachContract : listOfContract) {
-            eachContract.SBQQ__RenewalQuoted__c=true;
-            PAd.log('APB002_RenewalContract', 'execute', 'Updating contract '+eachContract);
+        
+        for(Contract eachContract : listOfContract) {
+            if(eachContract.SBQQ__Quote__c != null){
+                masterContractQuoteIds.add(eachContract.SBQQ__Quote__c);
+                if(eachContract.SBQQ__Quote__r.SBQQ__MasterContract__c != null){
+                    masterQuoteContractIds.add(eachContract.SBQQ__Quote__r.SBQQ__MasterContract__c);
+                }
+            } 
+            eachContract.Status = 'Terminé';
+            listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('', 'APB002_RenewalContract', 'Batch', String.valueOf(eachContract.Id), '', 'SUCCESS'));             
         }
         
-        update listOfContract;        
+        if(masterQuoteContractIds.size() > 0){
+            for(Contract eachContract : [SELECT Id,Status,SBQQ__Quote__c FROM Contract WHERE Id in :masterQuoteContractIds ]){
+                if(eachContract.SBQQ__Quote__c != null){
+                    masterContractQuoteIds.add(eachContract.SBQQ__Quote__c);
+                }
+            }  
+        }   
+        
+        for(SBQQ__Quote__c eachQuote : [SELECT Id,SBQQ__Status__c FROM SBQQ__Quote__c WHERE Id IN: masterContractQuoteIds]){
+            eachQuote.SBQQ__Status__c = 'Terminé';
+            updateQuoteList.add(eachQuote);
+        }
+        
+        for (Contract eachContract : listOfContract) {
+            eachContract.SBQQ__RenewalQuoted__c=true;
+            PAD.log('APB002_RenewalContract', 'execute', 'Updating contract '+eachContract);
+        } 
+        
+        String errorMsg='';
+        if(updateQuoteList.size() > 0){
+            try{
+                update updateQuoteList;
+                update listOfContract;
+            }catch(Exception ex){
+                PAD.log('APB002_RenewalContract','execute','Exception : '+ex.getMessage());
+                errorMsg = String.valueOf(ex.getMessage());
+            }
+            finally {
+                if (String.isNotBlank(errorMsg)) {
+                    UM001_LogManager.writeLogActivityWithoutFuture('Update Contract Status','APB002_RenewalContract', 'Batch', '',  'Error:' + errorMsg, UM010_Constant.ERROR);  
+                } else {
+                    insert listOfLog;
+                }               
+            }
+        }
+        
     }
     
     global void finish(Database.BatchableContext BC) {
@@ -38,7 +85,7 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
     global void execute(SchedulableContext sc) {
         
         APB002_RenewalContract sc1 = new APB002_RenewalContract();
-
+        
         Datetime dt = Datetime.now().addMinutes(30);
         String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
@@ -53,7 +100,7 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-
+                
                 Id schedId = System.Schedule('APB002_RenewalContract'+timeForScheduler,timeForScheduler,new APB002_RenewalContract());
             }
         }  

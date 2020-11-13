@@ -45,6 +45,51 @@
         <default>false</default>
         <label>CE</label>
     </customValue>
-    <masterLabel>Type d&apos;entreprise</masterLabel>
+    <customValue>
+        <fullName>Entreprise</fullName>
+        <default>false</default>
+        <label>Entreprise</label>
+    </customValue>
+    <customValue>
+        <fullName>Ville</fullName>
+        <default>false</default>
+        <label>Ville</label>
+    </customValue>
+    <customValue>
+        <fullName>Administration</fullName>
+        <default>false</default>
+        <label>Administration</label>
+    </customValue>
+    <customValue>
+        <fullName>Hopital/Clinique</fullName>
+        <default>false</default>
+        <label>Hopital/Clinique</label>
+    </customValue>
+    <customValue>
+        <fullName>CAF</fullName>
+        <default>false</default>
+        <label>CAF</label>
+    </customValue>
+    <customValue>
+        <fullName>Extérieur/LPCR</fullName>
+        <default>false</default>
+        <label>Extérieur/LPCR</label>
+    </customValue>
+    <customValue>
+        <fullName>Distributeur (partenaire)</fullName>
+        <default>false</default>
+        <label>Distributeur (partenaire)</label>
+    </customValue>
+    <customValue>
+        <fullName>PAJE parents solo (libéral)</fullName>
+        <default>false</default>
+        <label>PAJE parents solo (libéral)</label>
+    </customValue>
+    <customValue>
+        <fullName>Autre</fullName>
+        <default>false</default>
+        <label>Autre</label>
+    </customValue>
+    <masterLabel>Type de client</masterLabel>
     <sorted>false</sorted>
 </GlobalValueSet>

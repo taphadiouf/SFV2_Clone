@@ -24,6 +24,7 @@ public class TM007_LeadTrigger extends TM000_TriggerHandler{
             }
             if(!convertedLeadsList.isEmpty()){
                 SM007_LeadServices.syncRecordTypesWithLeads(convertedLeadsList);
+                SM007_LeadServices.blockConversionwithWrongRecType(convertedLeadsList);
                 SM007_LeadServices.linkStructureAOsToOpps(convertedLeadsList);
                 SM007_LeadServices.mapFieldsFromLeadToOpp(convertedLeadsList);
             }

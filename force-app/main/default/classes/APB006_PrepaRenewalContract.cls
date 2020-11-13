@@ -48,8 +48,20 @@ global class APB006_PrepaRenewalContract implements Database.Batchable<sObject>,
             }
         }
         PAD.log('APB006_PrepaRenewalContract', 'execute', 'updating listContractToUpdate recods: ' + listContractToUpdate.size());
-        
-        update listContractToUpdate;        
+        String ErrMsg;
+        try {
+            update listContractToUpdate; 
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch to bulk process Order and prepare them for execution of APB002_RenewalContract',
+                                                            'APB006_PrepaRenewalContract', 'Batch' , null,
+                                                            'Successfully updated list of contracts : ' + String.valueOf(listContractToUpdate), 
+                                                            UM010_Constant.SUCCESS);          
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch to bulk process Order and prepare them for execution of APB002_RenewalContract','APB006_PrepaRenewalContract', 'Batch' , null,'Error while updating the contracts : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
+        }
     }
     
     global void finish (Database.BatchableContext BC) {
