@@ -16,7 +16,7 @@
         <field>LPCR_ResiliationAnticipe__c</field>
         <literalValue>1 an ferme</literalValue>
     </fieldOverrides>
-     <fieldOverrides>
+    <fieldOverrides>
         <field>LPCR_IndexationConvenue__c</field>
         <literalValue>Oui</literalValue>
     </fieldOverrides>
@@ -26,7 +26,7 @@
     </fieldOverrides>
     <fieldOverrides>
         <field>SBQQ__RenewalUpliftRate__c</field>
-        <literalValue>3</literalValue>
+        <formula>3</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>LPCR_ResponsableADV__c</field>
