@@ -116,7 +116,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                 orderIds.add(item.OrderId);
             }
             
-            Map<Id, Order> orderMap = new Map<Id, Order> ([SELECT Id,RecordTypeId,LPCR_TypeFacturation__c ,LPCR_FrequenceFacturation__c ,LPCR_InitAutoAvecDateDebut__c , 
+            Map<Id, Order> orderMap = new Map<Id, Order> ([SELECT Id,name,RecordTypeId,LPCR_TypeFacturation__c ,LPCR_FrequenceFacturation__c ,LPCR_InitAutoAvecDateDebut__c , 
                                                             LPCR_TypeCreche__c, blng__BillingAccount__c, blng__BillingAccount__r.RecordTypeId 
                                                            FROM Order WHERE Id IN :orderIds]);
             
@@ -130,7 +130,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             Id rtReferencementId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Order, Label.LPCR_Referencement);
             Integer currentYr;
             for (OrderItem item : newOrderItems) {
-                
+
                 if (item.blng__NextChargeDate__c != null) {
                     
                     if(orderMap.get(item.OrderId).blng__BillingAccount__c != null && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountFamilleRTId && item.ServiceDate != null) {
@@ -245,6 +245,24 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                     }
                                 }
                             }
+                            
+                            //Populate item.blng__OverrideNextBillingDate__c
+                            if(item.SBQQ__ChargeType__c == Label.LPCR_Recurring) {
+
+                                if(item.blng__BilledAmountwithouttax__c == 0 || item.blng__BilledAmountwithouttax__c == null){
+                                    if(item.LPCR_DateArrondie__c != null){
+                                        item.blng__OverrideNextBillingDate__c = (item.LPCR_DateArrondie__c).AddDays(-35);
+                                    }
+                                }
+                                else{
+                                    if(item.blng__NextChargeDate__c != null){
+                                        item.blng__OverrideNextBillingDate__c = (item.blng__NextChargeDate__c).AddDays(-35);
+                                    }
+                                }
+                            }
+                            else if(item.SBQQ__ChargeType__c == Label.LPCR_OneTime ){
+                                item.blng__OverrideNextBillingDate__c = orderMap.get(item.OrderId).LPCR_MinDateOverrideNextBilling__c;
+                            }                            
                         }
                         //Arrears
                         else if( orderMap.get(item.OrderId).LPCR_TypeFacturation__c == Label.LPCR_Arrears && !orderMap.get(item.OrderId).LPCR_InitAutoAvecDateDebut__c) {
