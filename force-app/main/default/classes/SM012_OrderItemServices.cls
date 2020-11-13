@@ -111,11 +111,13 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             
             Set<Id> orderIds = new Set<Id>();
 
+            //Load their orders
             for (OrderItem item : newOrderItems) {
                 orderIds.add(item.OrderId);
             }
             
-            Map<Id, Order> orderMap = new Map<Id, Order> ([SELECT Id,LPCR_TypeFacturation__c ,LPCR_FrequenceFacturation__c ,LPCR_InitAutoAvecDateDebut__c , LPCR_TypeCreche__c, blng__BillingAccount__c, blng__BillingAccount__r.RecordTypeId 
+            Map<Id, Order> orderMap = new Map<Id, Order> ([SELECT Id,RecordTypeId,LPCR_TypeFacturation__c ,LPCR_FrequenceFacturation__c ,LPCR_InitAutoAvecDateDebut__c , 
+                                                            LPCR_TypeCreche__c, blng__BillingAccount__c, blng__BillingAccount__r.RecordTypeId 
                                                            FROM Order WHERE Id IN :orderIds]);
             
             Set<Id> orderItemIds = new Set<Id>();
@@ -124,8 +126,9 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                 orderItemIds.add(item.SBQQ__RequiredBy__c);
             }
 
-            Map<Id, OrderItem> orderItemMap = new Map<Id, OrderItem> ([SELECT Id,SBQQ__RequiredBy__c,blng__NextBillingDate__c From OrderItem WHERE Id IN :orderItemIds ]);
-            
+            Map<Id, OrderItem> orderItemMap = new Map<Id, OrderItem> ([SELECT Id,SBQQ__RequiredBy__c,blng__NextBillingDate__c FROM OrderItem WHERE Id IN :orderItemIds ]);
+            Id rtReferencementId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Order, Label.LPCR_Referencement);
+            Integer currentYr;
             for (OrderItem item : newOrderItems) {
                 
                 if (item.blng__NextChargeDate__c != null) {
@@ -154,19 +157,23 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                         
                     } 
                     // All Frequency but Invoice Plan
-                    else if ((orderMap.get(item.OrderId).blng__BillingAccount__c != null
-                                && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId)
-                               && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c!= Label.LPCR_InvoicePlan 
-                               && item.blng__NextChargeDate__c != null) {
+                    else if(   (
+                                    orderMap.get(item.OrderId).blng__BillingAccount__c              != null
+                                    && 
+                                    orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId
+                                )
+                                && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c  != Label.LPCR_InvoicePlan 
+                                && item.blng__NextChargeDate__c != null
+                            ){
 
-                        Date lastDayofQuarter = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths);
-                        Date lastDayOfMonth = UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c);
-                        Date semiannualLastDay = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths);
-                        Date annualLastDay = UM005_DateUtility.lastDayOfYear(item.blng__NextChargeDate__c);
-                        
+                            Date lastDayofQuarter = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.quarterlyMonths);
+                            Date lastDayOfMonth = UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c);
+                            Date semiannualLastDay = UM005_DateUtility.lastDayOfDatePeriod (item.blng__NextChargeDate__c, UM005_DateUtility.semiannualMonths);
+                            Date annualLastDay = UM005_DateUtility.lastDayOfYear(item.blng__NextChargeDate__c);
+                            
                         //Advance
                         if( orderMap.get(item.OrderId).LPCR_TypeFacturation__c == Label.LPCR_Advance){
-                            
+                            currentYr = item.ServiceDate.year();
                             Date nextBillingDate = item.blng__NextChargeDate__c.addDays(invoiceDelta);
                             item.blng__OverrideNextBillingDate__c = nextBillingDate;
                             
@@ -175,20 +182,68 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                 if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayofQuarter < item.SBQQ__TerminatedDate__c))){
                                     item.blng__BillThroughDateOverride__c = lastDayofQuarter;
                                 }
+                            
+                                //Populate Order Item > LPCR_DateArrondie__c
+                                if(orderMap.get(item.OrderId).RecordTypeId == rtReferencementId){// only for orders rt=referencement
+
+                                    if(item.ServiceDate >= Date.newInstance(currentYr, 01, 01) && item.ServiceDate <= Date.newInstance(currentYr, 03, 31)){         // (01/01 to 31/03)
+                                        item.LPCR_DateArrondie__c = Date.newInstance(currentYr, 01, 01); //Give the 1st day of this period
+                                    }
+                                    else if(item.ServiceDate >= Date.newInstance(currentYr, 04, 01) && item.ServiceDate <= Date.newInstance(currentYr, 06, 30)){   // (01/04 to 30/06)
+                                        item.LPCR_DateArrondie__c = Date.newInstance(currentYr, 04, 01); //Give the 1st day of this period
+                                    }
+                                    else if(item.ServiceDate >= Date.newInstance(currentYr, 07, 01) && item.ServiceDate <= Date.newInstance(currentYr, 09, 30)){   // (01/07 to 30/09)
+                                        item.LPCR_DateArrondie__c = Date.newInstance(currentYr, 07, 01); //Give the 1st day of this period
+                                    }
+                                    else if(item.ServiceDate >= Date.newInstance(currentYr, 10, 01) && item.ServiceDate <= Date.newInstance(currentYr, 12, 31)){   // (01/10 to 31/12)
+                                        item.LPCR_DateArrondie__c = Date.newInstance(currentYr, 10, 01); //Give the 1st day of this period
+                                    }
+                                }
                             }else if (item.SBQQ__BillingFrequency__c == Label.LPCR_Monthly){
+                                
                                 // lastDateOfMonth
                                 if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayOfMonth < item.SBQQ__TerminatedDate__c))){
                                     item.blng__BillThroughDateOverride__c = lastDayOfMonth;
                                 }
+                                //Populate Order Item > LPCR_DateArrondie__c
+                                if(orderMap.get(item.OrderId).RecordTypeId == rtReferencementId){// only for orders rt=referencement
+                                    item.LPCR_DateArrondie__c = item.blng__NextBillingDate__c;
+                                }
+
                             }else if (item.SBQQ__BillingFrequency__c == Label.LPCR_Semiannual ) {
                                 // lastDayOfHalfYearPeriod return the last date of the given Half Year period (1,7)
                                 if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && semiannualLastDay < item.SBQQ__TerminatedDate__c))){
                                     item.blng__BillThroughDateOverride__c = semiannualLastDay;
                                 }
+                                //Populate Order Item > LPCR_DateArrondie__c
+                                if(orderMap.get(item.OrderId).RecordTypeId == rtReferencementId){// only for orders rt=referencement
+
+                                    if(item.ServiceDate >= Date.newInstance(currentYr, 01, 01) && item.ServiceDate <= Date.newInstance(currentYr, 06, 30)){         // (01/01 to 31/03)
+                                        item.LPCR_DateArrondie__c = Date.newInstance(currentYr, 01, 01); //Give the 1st day of this period
+                                    }else if(item.ServiceDate >= Date.newInstance(currentYr, 07, 01) && item.ServiceDate <= Date.newInstance(currentYr, 12, 31)){   // (01/04 to 30/06)
+                                        item.LPCR_DateArrondie__c = Date.newInstance(currentYr, 07, 01); //Give the 1st day of this period
+                                    }
+                                }
+
                             }else if(item.SBQQ__BillingFrequency__c == Label.LPCR_Annual  ) {
-                                if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && annualLastDay < item.SBQQ__TerminatedDate__c))){
-                                    item.blng__BillThroughDateOverride__c = annualLastDay;
-                                } 
+                                
+                                if( item.Quantity > 0 
+                                    && 
+                                    (
+                                        item.SBQQ__TerminatedDate__c == null 
+                                        || 
+                                        (item.SBQQ__TerminatedDate__c != null   &&      annualLastDay < item.SBQQ__TerminatedDate__c)
+                                    ))
+                                    {
+                                        item.blng__BillThroughDateOverride__c = annualLastDay;
+                                    }
+                                 
+                                //Populate Order Item > LPCR_DateArrondie__c
+                                if(orderMap.get(item.OrderId).RecordTypeId == rtReferencementId){// only for orders rt=referencement
+                                    if(item.ServiceDate >= Date.newInstance(currentYr, 01, 01) && item.ServiceDate <= Date.newInstance(currentYr, 12, 31)){// (01/Jan to 31/Dec)
+                                        item.LPCR_DateArrondie__c = Date.newInstance(currentYr, 01, 01); //Give the 1st day of this period
+                                    }
+                                }
                             }
                         }
                         //Arrears
