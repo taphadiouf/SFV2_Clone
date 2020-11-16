@@ -15,8 +15,37 @@ public class SM021_CreditNoteServices_Test {
     private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Famille);
     private static final Id COMPTE_Famille = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     
-    @testSetup
-    static void testSetup(){
+    
+    @isTest
+    private static void setContractFieldsTest(){        
+        System.runAs(UM002_TestDataFactory.createUser()){
+            Test.startTest();  
+            Map<String, Object> defaultVal = new Map<String, Object> {
+                'RecordTypeId' => B2B_RT_ID,
+                    'Name' => 'Test-B2B',
+                    'LPCR_PasDeSIRET__c' => true,
+                    'SBQQ__RenewalModel__c' => 'Contract Based'
+                    };
+                        Account b2bAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
+            insert b2bAccount;
+            
+            defaultVal = new Map<String, Object> {
+                'blng__Account__c' => b2bAccount.Id};
+                    blng__CreditNote__c b2bCreditNote = (blng__CreditNote__c) UM002_TestDataFactory.createSObject('blng__CreditNote__c', defaultVal);
+            insert b2bCreditNote;
+            
+            Test.stopTest();
+            b2bAccount = [SELECT Id,LPCR_ProcessRevenuCascade__c from Account where name ='Test-B2B' ];
+            
+            System.assertEquals(true, b2bAccount.LPCR_ProcessRevenuCascade__c ,'Account.LPCR_ProcessRevenuCascade__c is false');
+            
+            
+        }
+    }
+    
+    @isTest
+    public static void afterUpdateCreateCreditNoteAllocation_Test(){
+        
         UM002_TestDataFactory.insertBillingCustomSettings();
         blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
         blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
@@ -169,58 +198,22 @@ public class SM021_CreditNoteServices_Test {
         invoiceLineList.blng__BillingFrequency__c = 'Monthly';
         invoiceLineList.blng__NegativeLineConversion__c = 10;
         insert invoiceLineList;
-               
-    }
-    
-    @isTest
-    private static void setContractFieldsTest(){        
-        System.runAs(UM002_TestDataFactory.createUser()){
-            Test.startTest();  
-            Map<String, Object> defaultVal = new Map<String, Object> {
-                'RecordTypeId' => B2B_RT_ID,
-                    'Name' => 'Test-B2B',
-                    'LPCR_PasDeSIRET__c' => true,
-                    'SBQQ__RenewalModel__c' => 'Contract Based'
-                    };
-                        Account b2bAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
-            insert b2bAccount;
-            
-            defaultVal = new Map<String, Object> {
-                'blng__Account__c' => b2bAccount.Id};
-                    blng__CreditNote__c b2bCreditNote = (blng__CreditNote__c) UM002_TestDataFactory.createSObject('blng__CreditNote__c', defaultVal);
-            insert b2bCreditNote;
-            
-            Test.stopTest();
-            b2bAccount = [SELECT Id,LPCR_ProcessRevenuCascade__c from Account where name ='Test-B2B' ];
-            
-            System.assertEquals(true, b2bAccount.LPCR_ProcessRevenuCascade__c ,'Account.LPCR_ProcessRevenuCascade__c is false');
-            
-            
-        }
-    }
-    
-    @isTest
-    public static void afterUpdateCreateCreditNoteAllocation_Test(){
-        System.runAs(UM002_TestDataFactory.createUser()){
-            
-            blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
-            blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
-            blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
-            blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
-            
-            Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account   LIMIT 1];
-            
-            Product2 prod = [SELECT Id FROM Product2 LIMIT 1];
-            PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
-            
-            SBQQ__Quote__c  quote = [SELECT Id,SBQQ__Ordered__c From SBQQ__Quote__c LIMIT 1];
-            SBQQ__QuoteLine__c quoteLine = [SELECT Id From SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = :quote.Id];
-            
+        
+        //Had to avoid testSetup + Querying again the variables because of the SOQL limits
+        //________________________________________________________________________________________________________________________________________________________________________________
+        
+            //SOQL
+            //Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account   LIMIT 1];
+            //Product2 prod = [SELECT Id FROM Product2 LIMIT 1];
+            //SBQQ__Quote__c  quote = [SELECT Id,SBQQ__Ordered__c From SBQQ__Quote__c LIMIT 1];
+
             quote.SBQQ__Ordered__c  = true;     
             update quote; 
-            Test.startTest();
-            Order order = Database.query('SELECT Id , Status FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');            
+            //SOQL
+            //Order order = Database.query('SELECT Id , Status FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');            
             List<OrderItem> orderItems = [SELECT Id,SBQQ__DefaultSubscriptionTerm__c  FROM OrderItem WHERE OrderID = :order.Id];
+            
+            Test.startTest();
             for(OrderItem eachOrderItem : orderItems){
                 eachOrderItem.SBQQ__DefaultSubscriptionTerm__c=1;
                 eachOrderItem.blng__LegalEntity__c=UM002_TestDataFactory.setupLegalEntity().Id;
@@ -233,8 +226,8 @@ public class SM021_CreditNoteServices_Test {
             order.blng__BillNow__c=true;
             update order;
             
-            
-            blng__Invoice__c invoice = [SELECT Id, blng__order__c FROM blng__Invoice__c WHERE blng__order__c = :order.Id LIMIT 1];
+            //SOQL
+            //blng__Invoice__c invoice = [SELECT Id, blng__order__c FROM blng__Invoice__c WHERE blng__order__c = :order.Id LIMIT 1];
             //invoice.LPCR_StatutPaiement__c = true;
             invoice.blng__InvoiceStatus__c = 'Posted';
             update invoice;
@@ -250,7 +243,7 @@ public class SM021_CreditNoteServices_Test {
             List<blng__InvoiceLine__c> listInvoiceLine = [SELECT Id,blng__Balance__c from blng__InvoiceLine__c];
             
             blng__CreditNote__c creditNote = new blng__CreditNote__c();
-            creditNote.blng__Account__c = acc.id;
+            creditNote.blng__Account__c = account.id;
             creditNote.blng__Status__c = 'Draft';
             creditNote.blng__CreditNoteSourceAction__c = 'Negative Lines Conversion';
             creditNote.blng__EffectiveTaxDate__c = System.today();
@@ -272,18 +265,20 @@ public class SM021_CreditNoteServices_Test {
             
             insert cnLine;
             
-            cnLine.blng__Status__c = 'Posted';
-            update cnLine;
-                        
             creditNote.blng__Status__c = 'Posted';
             update creditNote;
-            
-            
+
+            cnLine.blng__Status__c = 'Posted';
+            update cnLine;
+                   
             Test.stopTest();
+
+            
+            
             
             List<blng__CreditNoteAllocation__c> cnAllocationList = [select id from blng__CreditNoteAllocation__c];
             System.assertEquals(1, cnAllocationList.size(),'SM021_CreditNoteServices_Test : CreditNoteAllocation record not created. ');
-        }
+        
     }
     
     
