@@ -32,6 +32,6 @@
             <operation>equals</operation>
             <value>Negative Lines Conversion</value>
         </criteriaItems>
-        <triggerType>onCreateOnly</triggerType>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>
