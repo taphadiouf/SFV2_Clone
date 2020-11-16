@@ -18,6 +18,8 @@ public with sharing class APB006_PrepaRenewalContract_Test {
 
          UM002_TestDataFactory.insertBillingCustomSettings();
         
+            
+
         blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
         blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
         blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
@@ -25,7 +27,7 @@ public with sharing class APB006_PrepaRenewalContract_Test {
         
         Account acc = UM002_TestDataFactory.createAccounts(1,'test').get(0);
         insert acc;
-        
+
         Opportunity opp = UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
         insert opp;
         SBQQ__Quote__c quote = UM002_TestDataFactory.createQuote('test',opp.Id, acc.Id, standardPricebookId, 'Quote');
@@ -34,7 +36,7 @@ public with sharing class APB006_PrepaRenewalContract_Test {
         insert quote;
       
       
-        
+
         Product2 prod = UM002_TestDataFactory.createProduct('test', billingRule.Id, revRecRule.Id,taxRule.Id );
         //This line is for the APB006 test
         prod.SBQQ__SubscriptionPricing__c ='Fixed Price';
@@ -42,12 +44,12 @@ public with sharing class APB006_PrepaRenewalContract_Test {
 
         PricebookEntry priceBookEntry1 = UM002_TestDataFactory.createPricebookEntry(standardPricebookId,prod.Id);
 		insert priceBookEntry1;
-        
+
         SBQQ__QuoteLine__c quoteLine = UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, priceBookEntry1.Id, 200,1);
         insert quoteLine;
         opp.SBQQ__PrimaryQuote__c =quote.Id;
         update opp;
-       
+
         quote.SBQQ__Ordered__c  = true;     
         update quote;
 
@@ -57,6 +59,7 @@ public with sharing class APB006_PrepaRenewalContract_Test {
         //The purpose of this line is to differ between the order created in this setup and the orders created in the testAPB006PrepaRenewalContract method
         order.Name ='from_setup';
         update order;
+
         
     }
 
@@ -73,7 +76,7 @@ public with sharing class APB006_PrepaRenewalContract_Test {
     private static void testAPB006PrepaRenewalContract(){
 
         System.runAs(UM002_TestDataFactory.createUser()){
-            Test.startTest();
+            
         //Data setup from The APB006 Test Class
 
         List<Account> accountsCreche = new List<Account>();
@@ -98,16 +101,17 @@ public with sharing class APB006_PrepaRenewalContract_Test {
                 tmpAccount.LPCR_TypeMensualisation__c = 11;
             accountsCreche.add(tmpAccount);
         }
+
         //accounts.addAll(accountsCreche);
         insert accounts;
         insert accountsCreche;
-        System.debug('accountsCreche:' + accountsCreche);
+
         Id standardPricebookId = Test.getStandardPricebookId();
 
         Product2 prod = [SELECT Id from Product2 WHERE Name = 'test' limit 1];
-        
+
         PricebookEntry priceBookEntry1 = [SELECT Id FROM PricebookEntry limit 1];
-        
+
         //create 2 oppty for each customer
         List<Opportunity> opps = UM002_TestDataFactory.createOpportunities((NUMBER_OF_B2C + NUMBER_OF_B2B) * 2, 'test', 'Prospecting');
         insert opps;
@@ -125,8 +129,9 @@ public with sharing class APB006_PrepaRenewalContract_Test {
                 quotes.add(tmpPrimaryQuote2);
             }
         }
+
+        Test.startTest();
         insert quotes;
-        
         List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
         List<Opportunity> opptToUpdate = new List<Opportunity> ();
         for (SBQQ__Quote__c q : quotes) {
@@ -139,9 +144,12 @@ public with sharing class APB006_PrepaRenewalContract_Test {
             q.SBQQ__BillingFrequency__c = 'Invoice Plan';
             q.SBQQ__RenewalUpliftRate__c = 2;
         }
+
         insert qlines;
-        update opptToUpdate;
-        update quotes;
+        List<SObject> toUpdate = new list<SObject>();
+        toUpdate.addAll(opptToUpdate);
+        toUpdate.addAll(quotes);
+        update toUpdate;
         //The ' WHERE Name != 'from_setup' statement is to get just the orders created in this method and not the ones created in setup method
         List<Order> orders = [SELECT Id, Name, SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c FROM Order WHERE Name != 'from_setup'];
         for (Order order : orders) {
@@ -169,7 +177,8 @@ public with sharing class APB006_PrepaRenewalContract_Test {
 
             contracts.add(tmpContract);
         }
-        System.debug('Contracts before insert : '+ contracts);
+
+
         insert contracts; 
 
         // adjust contract LPCR_JoursAvance__c
@@ -190,19 +199,19 @@ public with sharing class APB006_PrepaRenewalContract_Test {
         update contracts;
 
 
-        System.debug('query contracts : ' + [SELECT id,recordTypeId,LPCR_TypeFacturation__c,EndDate,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c,
-        StartDate,SBQQ__RenewalQuoted__c,AccountId,LPCR_Creche__c,ContractTerm,Status,LPCR_JoursAvance__c FROM contract]);
 
         //End Of Data setup from The APB006 Test Class
 
         
-       
+
             APB006_PrepaRenewalContract btch = new APB006_PrepaRenewalContract();
             Database.executeBatch(btch, 2000);
             btch.execute(null);
             List<Contract> listAllContracts = [SELECT Id, SBQQ__Order__c, TECH_AjoutFraisGestion__c, LPCR_TypeFacturation__c, Status, StartDate, ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c, LPCR_JoursAvance__c, SBQQ__RenewalForecast__c, EndDate FROM Contract];
-            List<Contract> listContractsWithFees = [SELECT Id, SBQQ__Order__c, TECH_AjoutFraisGestion__c, LPCR_TypeFacturation__c, Status, StartDate, ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c, LPCR_JoursAvance__c, SBQQ__RenewalForecast__c, EndDate FROM Contract WHERE TECH_AjoutFraisGestion__c = true];
+
+            //List<Contract> listContractsWithFees = [SELECT Id, SBQQ__Order__c, TECH_AjoutFraisGestion__c, LPCR_TypeFacturation__c, Status, StartDate, ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c, LPCR_JoursAvance__c, SBQQ__RenewalForecast__c, EndDate FROM Contract WHERE TECH_AjoutFraisGestion__c = true];
             // Assert to verify that just a subset of contract (50% - 1 for each pair customer / creche) have been updated by the batch 
+
             System.assertEquals((NUMBER_OF_B2C + NUMBER_OF_B2B) * 2, listAllContracts.size());
             //System.assertEquals(NUMBER_OF_B2C + NUMBER_OF_B2B, listContractsWithFees.size());
             Test.stopTest();
