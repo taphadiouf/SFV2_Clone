@@ -16,7 +16,7 @@ public with sharing class TM010_RessourceFamilleTrigger extends TM000_TriggerHan
 
     protected override void afterUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
-            SM011_RessourceFamilleServices.updateTheBaremeCaf(null,oldRessourceFamillesMap,newRessourceFamillesMap);
+            SM011_RessourceFamilleServices.updateTheBaremeCaf(null,newRessourceFamillesMap,oldRessourceFamillesMap);
         }
     }
 
