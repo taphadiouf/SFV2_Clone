@@ -175,7 +175,6 @@ public class SM015_InvoiceServices_Test {
         insert modificationEntrante;
         
         List<blng__Invoice__c> invoicesList = UM002_TestDataFactory.createInvoices(1,accountFamille.id,invoiceRun.id,'Draft','A Envoyer' );
-        system.debug('invoicesListaaaa'+invoicesList);
         insert invoicesList;
         
         blng__Invoice__c invoice = invoicesList.get(0);
@@ -196,15 +195,17 @@ public class SM015_InvoiceServices_Test {
     @isTest
     public static void createPaymentAndPaymentAllocation_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
-            Test.startTest();
+            
             Product2 prod = [SELECT Id FROM Product2 LIMIT 1];
             PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
             
             SBQQ__Quote__c  quote = [SELECT Id,SBQQ__Ordered__c From SBQQ__Quote__c LIMIT 1];
             SBQQ__QuoteLine__c quoteLine = [SELECT Id From SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = :quote.Id];
-            
+            Test.startTest();
             quote.SBQQ__Ordered__c  = true;     
             update quote; 
+            
+            
             
             Order order = Database.query('SELECT Id , Status FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');            
             List<OrderItem> orderItems = [SELECT Id,SBQQ__DefaultSubscriptionTerm__c  FROM OrderItem WHERE OrderID = :order.Id];
@@ -215,6 +216,7 @@ public class SM015_InvoiceServices_Test {
             update orderItems;
             order.Status='Activated';
             update order;
+            
             order.SBQQ__Contracted__c =true;
             update order;
             order.blng__BillNow__c=true;
@@ -224,15 +226,15 @@ public class SM015_InvoiceServices_Test {
             invoice.LPCR_StatutPaiement__c = true;
             update invoice;
             List<blng__InvoiceLine__c> listInvoiceLine = [SELECT Id,blng__Balance__c from blng__InvoiceLine__c];
-            
+ 
+            Test.stopTest();
+
             List<blng__Payment__c> listPayment = [SELECT Id, blng__Invoice__c FROM blng__Payment__c ];
             System.assertNotEquals(0,listPayment.size(), 'Error in SM015_InvoiceServices_Test : blng__Payment__c not created');
             
             List<blng__PaymentAllocationInvoiceLine__c> listAllocationInvoiceLine = [SELECT Id, blng__InvoiceLine__c FROM blng__PaymentAllocationInvoiceLine__c ];
             System.assertNotEquals(0,listAllocationInvoiceLine.size(), 'Error in SM015_InvoiceServices_Test : blng__PaymentAllocationInvoiceLine__c not created');
             
-            
-            Test.stopTest();
             
         }
     }
@@ -330,11 +332,10 @@ Test.stopTest();
     
     @isTest
     public static void afterUpdateCreateCreditNoteAllocation_Test(){
+
         User user = UM002_TestDataFactory.createUser();
-        PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'LPCR_Admin'];
-        insert new PermissionSetAssignment(AssigneeId = user.id, PermissionSetId = ps.Id);
+
         System.runAs(user){
-            
             
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account   LIMIT 1];
             
@@ -343,11 +344,11 @@ Test.stopTest();
             
             SBQQ__Quote__c  quote = [SELECT Id,SBQQ__Ordered__c,SBQQ__Account__c,SBQQ__Opportunity2__c From SBQQ__Quote__c LIMIT 1];
             SBQQ__QuoteLine__c quoteLine = [SELECT Id From SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = :quote.Id];
-            
+            Test.startTest();
             quote.SBQQ__Ordered__c  = true;     
             update quote; 
             
-            Test.startTest();
+           
             
             Order order = [SELECT Id , Status FROM Order WHERE SBQQ__Quote__c  =: quote.Id LIMIT 1];            
             List<OrderItem> orderItems = [SELECT Id,SBQQ__DefaultSubscriptionTerm__c  FROM OrderItem WHERE OrderID = :order.Id];

@@ -4,8 +4,9 @@
     <active>true</active>
     <description>Renseigner le prestataire</description>
     <errorConditionFormula>AND(
-ISPICKVAL(LPCR_PrestataireActuel__c ,&quot;Autre&quot;),
- ISBLANK( LPCR_AutrePrestataire__c )
+NOT( $Permission.LPCR_ByPass_VR ),
+INCLUDES(LPCR_PrestataireActuel__c ,&quot;Autre&quot;),
+ISBLANK( LPCR_AutrePrestataire__c )
 )</errorConditionFormula>
     <errorDisplayField>LPCR_AutrePrestataire__c</errorDisplayField>
     <errorMessage>Veuillez renseigner le prestataire actuel</errorMessage>

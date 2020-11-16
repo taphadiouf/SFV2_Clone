@@ -18,6 +18,7 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
         return Database.getQueryLocator(query);
     }
     global void execute(Database.BatchableContext BC, List<blng__InvoiceRun__c> scope) {
+
        	PAD.log('APB011_SetInvoiceCommentaire','execute','scope to execute : '+scope);
         Set<Id> invoiceRunIds = UM003_TypeManager.getIdsOfListObjects(scope);
         List<blng__Invoice__c> lstOfInvoices = EM017_FactureEntity.lstPostedInvoices(invoiceRunIds);
@@ -29,18 +30,47 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
                 eachInvoice.LPCR_StatutFacture__c = Label.LPCR_AEnvoyer;
             }
         }
-        update lstOfInvoices;
+        String ErrMsg;
+        try {
+            update lstOfInvoices;
+            PAD.log('APB011_SetInvoiceCommentaire','execute','Invoices Update success. list : ' + lstOfInvoices);
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field',
+                                                            'APB011_SetInvoiceCommentaire', 'Batch' , null,
+                                                            'Successfully updated invoices list : ' + String.valueOf(lstOfInvoices), 
+                                                            UM010_Constant.SUCCESS);     
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field','APB011_SetInvoiceCommentaire', 'Batch' , null,'Error while updating invoices list. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
+        }
         for(blng__InvoiceRun__c eachInvoiceRun : scope){
             eachInvoiceRun.LPCR_EnvoyerFaitPar__c = eachInvoiceRun.OwnerId;
         }
-        update scope;
+        ErrMsg = null;
+        try {
+            update scope;
+            PAD.log('APB011_SetInvoiceCommentaire','execute','Invoice Runs Update success. list : ' + scope);
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field',
+                                                            'APB011_SetInvoiceCommentaire', 'Batch' , null,
+                                                            'Successfully updated invoices run list : ' + String.valueOf(scope), 
+                                                            UM010_Constant.SUCCESS);     
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field','APB011_SetInvoiceCommentaire', 'Batch' , null,'Error while updating invoices run list. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
+        }
     }
     global void finish(Database.BatchableContext BC) {
     }
     global void execute(SchedulableContext sc) {
         
         APB011_SetInvoiceCommentaire sc1 = new APB011_SetInvoiceCommentaire(query);
-       
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB011_SetInvoiceCommentaire');
         
@@ -53,10 +83,7 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                sc1 = new APB011_SetInvoiceCommentaire(query);
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB011_SetInvoiceCommentaire'+timeForScheduler,timeForScheduler,sc1);
+                Id schedId = System.Schedule('APB011_SetInvoiceCommentaire'+timeForScheduler,timeForScheduler,new APB011_SetInvoiceCommentaire(query));
             }
         }  
         

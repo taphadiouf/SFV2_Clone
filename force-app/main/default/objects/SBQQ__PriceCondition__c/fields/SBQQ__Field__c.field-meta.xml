@@ -162,6 +162,21 @@
                 <default>false</default>
                 <label>LPCR_RecalculationMACDone__c</label>
             </value>
+            <value>
+                <fullName>SBQQ__RequiredBy__c</fullName>
+                <default>false</default>
+                <label>SBQQ__RequiredBy__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_TypeDenregistrement__c</fullName>
+                <default>false</default>
+                <label>LPCR_TypeDenregistrement__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_BonCommandeEnvoye__c</fullName>
+                <default>false</default>
+                <label>LPCR_BonCommandeEnvoye__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

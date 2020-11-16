@@ -120,15 +120,6 @@
         <template>unfiled$public/LPCR_MIBB2B</template>
     </alerts>
     <fieldUpdates>
-        <fullName>LPCR_SetStatutPretpourcommande</fullName>
-        <field>SBQQ__Status__c</field>
-        <literalValue>Prêt pour commande</literalValue>
-        <name>Set statut a pret pour commande</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
         <fullName>LPCR_StatusActif</fullName>
         <description>Cette action met le statut du devis à actif</description>
         <field>SBQQ__Status__c</field>
@@ -144,24 +135,6 @@
         <field>SBQQ__Status__c</field>
         <literalValue>Terminé</literalValue>
         <name>Status Terminé</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutApprouve</fullName>
-        <field>LPCR_StatutApprobation__c</field>
-        <literalValue>Approuvé</literalValue>
-        <name>Statut Approuvé</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutAttente</fullName>
-        <field>LPCR_StatutApprobation__c</field>
-        <literalValue>En Attente</literalValue>
-        <name>Statut En Attente</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
@@ -205,24 +178,6 @@
         <operation>Literal</operation>
         <protected>false</protected>
         <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutRappel</fullName>
-        <field>LPCR_StatutApprobation__c</field>
-        <literalValue>Brouillon</literalValue>
-        <name>Statut Brouillon</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>LPCR_StatutRejete</fullName>
-        <field>LPCR_StatutApprobation__c</field>
-        <literalValue>Brouillon</literalValue>
-        <name>Statut Rejeté</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>LPCR_StatutValide</fullName>
@@ -294,6 +249,15 @@
         <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>LPCR_Update_TypeDenregistremen</fullName>
+        <field>LPCR_TypeDenregistrementText__c</field>
+        <formula>RecordType.DeveloperName</formula>
+        <name>Update le champs LPCR_TypeDenregistremen</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>RT_Contrat_accueil_approuve</fullName>
         <field>RecordTypeId</field>
         <lookupValue>Accueil_Approuve</lookupValue>
@@ -325,11 +289,11 @@
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_reservataire</fullName>
-        <description>Assigner un type d&apos;enregistrement Réservataire pour un Contrat Réservataire cloné.</description>
+        <description>Assigner un type d&apos;enregistrement Réservataire pour un Contrat de Réservation cloné.</description>
         <field>RecordTypeId</field>
         <lookupValue>Reservataire</lookupValue>
         <lookupValueType>RecordType</lookupValueType>
-        <name>RT Contrat réservataire</name>
+        <name>RT Contrat de Réservation</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
@@ -339,7 +303,7 @@
         <field>RecordTypeId</field>
         <lookupValue>Reservataire_Approuve</lookupValue>
         <lookupValueType>RecordType</lookupValueType>
-        <name>RT Contrat réservataire approuvé</name>
+        <name>RT Contrat de Réservation approuvé</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
@@ -625,7 +589,7 @@
             <name>LPCR_StatutPretCommande</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>SBQQ__Quote__c.ApprovalStatus__c</field>
             <operation>equals</operation>
@@ -650,7 +614,7 @@
             <name>LPCR_StatutPretAEnvoyer</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>SBQQ__Quote__c.ApprovalStatus__c</field>
             <operation>equals</operation>
@@ -668,6 +632,20 @@
         </criteriaItems>
         <description>Ce WF met le status du renewal quote à &apos;prêt à envoyer&apos; pr MAC</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Renseigner le champ LPCR_TypeDenregistrementText</fullName>
+        <actions>
+            <name>LPCR_Update_TypeDenregistremen</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeDenregistrementText__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <description>Ce WF permet de renseigner le champ LPCR_TypeDenregistrementText qui est utilisé dans les price rule ce champs correspond au RT.devname</description>
+        <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
         <fullName>Set Quote Status Actif</fullName>
@@ -706,7 +684,7 @@
             <name>LPCR_StatusTermine</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Ordered__c</field>
             <operation>equals</operation>
@@ -767,7 +745,7 @@
             <name>LPCR_StatutPretCommande</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <booleanFilter>(1 OR 5) AND( 2 OR 3) AND 4 AND (6 OR 7)</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
@@ -812,7 +790,7 @@
             <name>LPCR_StatutPretAEnvoyer</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <booleanFilter>(1 OR 5) AND( 2 OR 3) AND 4 AND (6 AND 7)</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
@@ -947,7 +925,23 @@
             <operation>equals</operation>
             <value>Contrat D’accueil</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Prêt à envoyer,Prêt pour commande</value>
+        </criteriaItems>
         <description>Update RT quand le contrat d&apos;accueil est approuvé.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WF_Quote_Update RT Contrat de Réservation approuvé</fullName>
+        <actions>
+            <name>RT_Contrat_reservataire_approuve</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update RT quand le Contrat de Réservation est approuvé.</description>
+        <formula>AND(TEXT( ApprovalStatus__c ) = &apos;Approved&apos;, RecordType.DeveloperName = &apos;Reservataire&apos;, SBQQ__Primary__c = TRUE, OR( ISPICKVAL(SBQQ__Status__c, &apos;Prêt à envoyer&apos;),ISPICKVAL(SBQQ__Status__c,&apos;Prêt pour commande&apos;) ) )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -957,6 +951,7 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND (((NOT 5) AND 4) OR (5 AND 4 AND (6 OR 8)) OR (5 AND 7 AND (NOT 6) AND (NOT 8)))</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.ApprovalStatus__c</field>
             <operation>equals</operation>
@@ -972,18 +967,32 @@
             <operation>equals</operation>
             <value>Vrai</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Prêt pour commande</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Amendment</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>equals</operation>
+            <value>Résiliation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Prêt à envoyer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>equals</operation>
+            <value>Mouvement Interne Berceau</value>
+        </criteriaItems>
         <description>Update RT quand le contrat de référencement est approuvé.</description>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
-    <rules>
-        <fullName>WF_Quote_Update RT Contrat réservataire approuvé</fullName>
-        <actions>
-            <name>RT_Contrat_reservataire_approuve</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>true</active>
-        <description>Update RT quand le contrat réservataire est approuvé.</description>
-        <formula>AND(TEXT( ApprovalStatus__c ) = &apos;Approved&apos;,  RecordType.DeveloperName = &apos;Reservataire&apos;,  SBQQ__Primary__c = TRUE )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

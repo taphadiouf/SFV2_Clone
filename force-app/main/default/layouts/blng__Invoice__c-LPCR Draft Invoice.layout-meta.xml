@@ -309,15 +309,15 @@
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>blng__ChargeType__c</fields>
-        <fields>blng__Quantity__c</fields>
+        <fields>LPCR_POInvalide__c</fields>
         <fields>blng__StartDate__c</fields>
         <fields>blng__EndDate__c</fields>
+        <fields>blng__Quantity__c</fields>
         <fields>blng__Subtotal__c</fields>
         <fields>blng__TotalAmount__c</fields>
+        <fields>blng__ChargeType__c</fields>
         <fields>blng__Balance__c</fields>
         <fields>blng__Credits__c</fields>
-        <fields>blng__Debits__c</fields>
         <relatedList>blng__InvoiceLine__c.blng__Invoice__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -361,13 +361,20 @@
         <sortField>NAME</sortField>
         <sortOrder>Desc</sortOrder>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>LPCR_ContratEntreprise__c</fields>
+        <fields>LPCR_ContratFamille__c</fields>
+        <fields>LPCR_TotalFacture__c</fields>
+        <relatedList>LPCR_LienFamilleFacture__c.LPCR_Facture__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000000t1mU</masterLabel>
+        <masterLabel>00h1X000001XqUv</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

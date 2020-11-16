@@ -48,8 +48,20 @@ global class APB006_PrepaRenewalContract implements Database.Batchable<sObject>,
             }
         }
         PAD.log('APB006_PrepaRenewalContract', 'execute', 'updating listContractToUpdate recods: ' + listContractToUpdate.size());
-        
-        update listContractToUpdate;        
+        String ErrMsg;
+        try {
+            update listContractToUpdate; 
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch to bulk process Order and prepare them for execution of APB002_RenewalContract',
+                                                            'APB006_PrepaRenewalContract', 'Batch' , null,
+                                                            'Successfully updated list of contracts : ' + String.valueOf(listContractToUpdate), 
+                                                            UM010_Constant.SUCCESS);          
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch to bulk process Order and prepare them for execution of APB002_RenewalContract','APB006_PrepaRenewalContract', 'Batch' , null,'Error while updating the contracts : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
+        }
     }
     
     global void finish (Database.BatchableContext BC) {
@@ -58,32 +70,25 @@ global class APB006_PrepaRenewalContract implements Database.Batchable<sObject>,
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB002_RenewalContract');
         // check if there is any open place to schedule the class
         boolean isJobQueueFull = UM004_BatchUtility.isBatchJobQueueFull();
-        
         if(!isBatchJobRunning && !isJobQueueFull && !Test.isRunningTest()) {
             PAD.log('APB006_PrepaRenewalContract', 'finish', 'launching APB002_RenewalContract');
-            APB002_RenewalContract sc1 = new APB002_RenewalContract();
-            Database.executeBatch(sc1, 1);
+            Database.executeBatch(new APB002_RenewalContract(), 1);
         }
     }
     
     global void execute(SchedulableContext sc) {
         // schedule the apex class only if their is not existing job running
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB006_PrepaRenewalContract');
-        
+        APB006_PrepaRenewalContract sc1 = new APB006_PrepaRenewalContract();
+        Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
+        String formatString = 's m H d M \'?\' yyyy';
+        String timeForScheduler = dt.format(formatString);
         // check if there is any open place to schedule the class
         boolean isJobQueueFull = UM004_BatchUtility.isBatchJobQueueFull();
         
         if(!isBatchJobRunning) {
-            APB006_PrepaRenewalContract sc1 = new APB006_PrepaRenewalContract();
-            if (!isJobQueueFull) {
-                Database.executeBatch(sc1, 2000);
-            } else {
-                //schedule this same schedulable class again in 30 mins
-                Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
-                String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
-                Id schedId = System.Schedule('APB006_PrepaRenewalContract' + timeForScheduler, timeForScheduler, sc1);
-            }
+            if (!isJobQueueFull) {Database.executeBatch(sc1, 2000);}
+            else { Id schedId = System.Schedule('APB006_PrepaRenewalContract' + timeForScheduler, timeForScheduler, sc1);}
         }  
-        
-    } 
-}
+    }
+} 

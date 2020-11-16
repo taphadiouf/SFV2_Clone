@@ -4,7 +4,7 @@
     <externalId>false</externalId>
     <formula>IF( LPCR_MontantFacture__c &lt; LPCR_RevenueTheorique__c, (LPCR_RevenueTheorique__c - LPCR_MontantFacture__c), 0)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>FAE as formula field</label>
+    <label>FAE</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>

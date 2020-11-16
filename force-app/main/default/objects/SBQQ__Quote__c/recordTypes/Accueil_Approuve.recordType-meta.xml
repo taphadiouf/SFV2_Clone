@@ -31,7 +31,23 @@
     <picklistValues>
         <picklist>EditLinesFieldSetName__c</picklist>
         <values>
+            <fullName>B2C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B2C_Amendment</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>LPCR_Amendment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referencement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referencement_amendment</fullName>
             <default>false</default>
         </values>
         <values>
@@ -410,7 +426,7 @@
         <picklist>SBQQ__PaymentTerms__c</picklist>
         <values>
             <fullName>Due on receipt</fullName>
-            <default>true</default>
+            <default>false</default>
         </values>
         <values>
             <fullName>Net 15</fullName>
@@ -418,7 +434,7 @@
         </values>
         <values>
             <fullName>Net 30</fullName>
-            <default>false</default>
+            <default>true</default>
         </values>
         <values>
             <fullName>Net 45</fullName>
@@ -430,6 +446,133 @@
         </values>
         <values>
             <fullName>Net 90</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__ProrationDayOfMonth__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>13</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>14</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>16</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>17</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>18</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>19</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>20</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>21</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>22</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>23</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>24</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>26</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>27</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>28</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>30</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>31</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
             <default>false</default>
         </values>
     </picklistValues>

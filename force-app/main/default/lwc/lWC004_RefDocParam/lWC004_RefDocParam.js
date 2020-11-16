@@ -10,6 +10,7 @@
 /* eslint-disable no-alert */
 import { LightningElement, api, track,wire } from "lwc";
 import save from '@salesforce/apex/APC002_AttachmentController.save';
+import removeSuffixBeforeSend from '@salesforce/apex/APC002_AttachmentController.removeSuffixBeforeSend';
 import sendDocument from '@salesforce/apex/APC002_AttachmentController.sendDocument';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import { CurrentPageReference } from "lightning/navigation";
@@ -26,7 +27,7 @@ export default class LWC004_RefDocParam extends LightningElement {
   @track orDropFiles = 'Ou gliser ';
   @track uploadFileHeader = 'Charger un fichier';
   @track picklistTypeValue = [{ label: 'Contrat Accueil', value: 'Contrat Accueil' }, 
-  { label: 'Contrat Réservataire', value: 'Contrat Réservataire' },
+  { label: 'Contrat de Réservation', value: 'Contrat Réservataire' },
   { label: 'Facture Famille', value: 'Facture Famille' }, 
   { label: 'Facture Entreprise', value: 'Facture Entreprise' },
    { label: 'Pièce justificative', value: 'Pièce justificative' },
@@ -57,7 +58,7 @@ export default class LWC004_RefDocParam extends LightningElement {
     if (this.picklistTypeValue === undefined || this.picklistTypeValue == null) {
       this.picklistTypeValue = [
         { label: 'Contrat Accueil', value: 'Contrat Accueil' }, 
-      { label: 'Contrat Réservataire', value: 'Contrat Réservataire' },
+      { label: 'Contrat de Réservation', value: 'Contrat Réservataire' },
       { label: 'Facture Famille', value: 'Facture Famille' }, 
       { label: 'Facture Entreprise', value: 'Facture Entreprise' },
        { label: 'Pièce justificative', value: 'Pièce justificative' },
@@ -69,7 +70,7 @@ export default class LWC004_RefDocParam extends LightningElement {
 
     if (this.picklistTypeValue === undefined || this.picklistTypeValue == null) {
       this.picklistTypeValue = [{ label: 'Contrat Accueil', value: 'Contrat Accueil' }, 
-      { label: 'Contrat Réservataire', value: 'Contrat Réservataire' },
+      { label: 'Contrat de Réservation', value: 'Contrat Réservataire' },
       { label: 'Facture Famille', value: 'Facture Famille' }, 
       { label: 'Facture Entreprise', value: 'Facture Entreprise' },
        { label: 'Pièce justificative', value: 'Pièce justificative' },
@@ -161,31 +162,43 @@ export default class LWC004_RefDocParam extends LightningElement {
     save({ idParent: this.recordId, strFileName: this.file.name, base64Data: encodeURIComponent(this.fileContents), description: this.data.type, contentType: this.file.type })
       .then(attachment=>{
         let attId = attachment.Id;
-        sendDocument({ attachmentId: attId})
-        .then(result=>{
-          // refreshing the datatable
-          this.fileName = this.fileName + ' - Uploaded Successfully';
-          this.UploadFile = 'File Uploaded Successfully';
-          this.isTrue = true;
-          this.showLoadingSpinner = false;
-          // Showing Success message after file insert
-          this.dispatchEvent(
-            new ShowToastEvent({
-              title: 'Succès !',
-              message: this.file.name + ' - chargé avec succès !',
-              variant: 'success',
-            }),
-          );
-          this.dispatchEvent(new CustomEvent("sentdocument"));
-          this.handleSkip();
-        })
-        .catch(err=>{
-          console.log("*****Error : " + err);
-          this.dispatchEvent(new ShowToastEvent({
-              title: "Erreur!",
-              message: err.body.message,
-              variant: "error"
-          
+
+        removeSuffixBeforeSend({attachmentId: attId})
+          .then(  res => {
+            sendDocument({ attachmentId: attId})
+              .then(result=>{
+                // refreshing the datatable
+                this.fileName = this.fileName + ' - Uploaded Successfully';
+                this.UploadFile = 'File Uploaded Successfully';
+                this.isTrue = true;
+                this.showLoadingSpinner = false;
+                // Showing Success message after file insert
+                this.dispatchEvent(
+                  new ShowToastEvent({
+                    title: 'Succès !',
+                    message: this.file.name + ' - chargé avec succès !',
+                    variant: 'success',
+                  }),
+                );
+                this.dispatchEvent(new CustomEvent("sentdocument"));
+                this.handleSkip();
+              })
+              .catch(err=>{
+                console.log("*****Error : " + err);
+                this.dispatchEvent(new ShowToastEvent({
+                    title: "Erreur!",
+                    message: err.body.message,
+                    variant: "error"
+                
+                }));
+              })
+          })
+          .catch(err=>{
+            console.log("*****Error : " + err);
+            this.dispatchEvent(new ShowToastEvent({
+                title: "Erreur!",
+                message: err.body.message,
+                variant: "error"
           }));
         });
       })

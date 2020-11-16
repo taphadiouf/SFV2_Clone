@@ -985,10 +985,6 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>EM010_PlanningPrEntity</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>EM011_ContactEntity</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -2410,10 +2406,6 @@
     </classAccesses>
     <classAccesses>
         <apexClass>SBQQ__MockFieldSetService</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>SBQQ__MockQueryer</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -4837,7 +4829,7 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>TM012_ModificationEntranteTrigger</apexClass>
+        <apexClass>TM022_ModificationEntranteTrigger</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -6638,10 +6630,6 @@
     </classAccesses>
     <classAccesses>
         <apexClass>blng__PriceScheduleDAO</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>blng__PricebookEntryDAO</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -10196,11 +10184,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.LPCR_TravailConcurrence__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Account.LPCR_TypeClient__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14700,11 +14683,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_Region__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Lead.LPCR_ReseauLPCR__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -14771,11 +14749,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Lead.LPCR_TypeAttribution__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.LPCR_TypeClient__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -32633,11 +32606,11 @@
         <layout>LPCR_TablePrix__c-Référencement</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>LPCR_TablePrix__c-Référencement</layout>
+        <layout>LPCR_TablePrix__c-ALSH</layout>
         <recordType>LPCR_TablePrix__c.ALSH</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>LPCR_TablePrix__c-Référencement</layout>
+        <layout>LPCR_TablePrix__c-MICRO</layout>
         <recordType>LPCR_TablePrix__c.Micro</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -32645,8 +32618,12 @@
         <recordType>LPCR_TablePrix__c.Referencement</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>LPCR_TablePrix__c-Référencement</layout>
+        <layout>LPCR_TablePrix__c-Réservataire</layout>
         <recordType>LPCR_TablePrix__c.Reservataire</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>LPCR_TablePrix__c-Référencement Approuvé</layout>
+        <recordType>LPCR_TablePrix__c.LPCR_ReferencementApprouve</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>LPCR_TypeContrat__mdt-Présentation LPCR_TypeContrat</layout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_CreditnoteAllocation</fullName>
+    <active>true</active>
+    <description>Cette VR empêche d&apos;allouer une CN à une facture au statut &apos;Envoyée&apos; ou &apos;A envoyer&apos;</description>
+    <errorConditionFormula>OR( ISPICKVAL(blng__InvoiceLine__r.blng__Invoice__r.LPCR_StatutFacture__c, &apos;A Envoyer&apos; ),ISPICKVAL(blng__InvoiceLine__r.blng__Invoice__r.LPCR_StatutFacture__c, &apos;Envoyée&apos; ),
+ISPICKVAL(blng__InvoiceLine__r.blng__Invoice__r.LPCR_StatutFacture__c, &apos;Annulée&apos; ),ISPICKVAL(blng__InvoiceLine__r.blng__Invoice__r.LPCR_StatutFacture__c, &apos;Terminée&apos; ))</errorConditionFormula>
+    <errorMessage>Il n&apos;est pas possible d&apos;allouer une note de crédit à une facture au statut &apos;Envoyée&apos; ou &apos;A envoyer&apos;</errorMessage>
+</ValidationRule>

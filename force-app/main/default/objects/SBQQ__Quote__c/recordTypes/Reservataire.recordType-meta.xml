@@ -3,7 +3,7 @@
     <fullName>Reservataire</fullName>
     <active>true</active>
     <compactLayoutAssignment>PresentationCompacteDevis</compactLayoutAssignment>
-    <label>Contrat Réservataire</label>
+    <label>Contrat de Réservation</label>
     <picklistValues>
         <picklist>ApprovalStatus__c</picklist>
         <values>
@@ -30,7 +30,23 @@
     <picklistValues>
         <picklist>EditLinesFieldSetName__c</picklist>
         <values>
+            <fullName>B2C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B2C_Amendment</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>LPCR_Amendment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referencement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referencement_amendment</fullName>
             <default>false</default>
         </values>
         <values>
@@ -168,6 +184,21 @@
         </values>
         <values>
             <fullName>Immédiate</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Section__c</picklist>
+        <values>
+            <fullName>Bébés</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grands</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Moyens</fullName>
             <default>false</default>
         </values>
     </picklistValues>

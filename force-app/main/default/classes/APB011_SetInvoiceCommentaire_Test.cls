@@ -22,6 +22,7 @@ public class APB011_SetInvoiceCommentaire_Test {
     private static void testAPB011_SetInvoiceCommentaire(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
+            APB011_SetInvoiceCommentaire InvoiceRunBatch0 = new APB011_SetInvoiceCommentaire();
             APB011_SetInvoiceCommentaire InvoiceRunBatch = new APB011_SetInvoiceCommentaire('SELECT Id, Name, OwnerId, LPCR_EnvoyerFaitPar__c FROM blng__InvoiceRun__c');
             InvoiceRunBatch.execute(null);
             Test.stopTest();

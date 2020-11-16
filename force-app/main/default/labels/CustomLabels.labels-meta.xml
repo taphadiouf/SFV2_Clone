@@ -379,6 +379,13 @@
         <value>One-Time</value>
     </labels>
     <labels>
+        <fullName>LPCR_Recurring</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Recurring</shortDescription>
+        <value>Recurring</value>
+    </labels>
+    <labels>
         <fullName>LPCR_OppFor</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -694,10 +701,150 @@
         <value>Le statut des factures devrait être Prêt à valider pour pouvoir les envoyer</value>
     </labels>
     <labels>
+        <fullName>LPCR_ConvertedAccountId</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ConvertedAccountId</shortDescription>
+        <value>ConvertedAccountId</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ConvertedContactId</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ConvertedContactId</shortDescription>
+        <value>ConvertedContactId</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ConvertedOpportunityId</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ConvertedOpportunityId</shortDescription>
+        <value>ConvertedOpportunityId</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AO_PublicReservation</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AO_PublicReservation</shortDescription>
+        <value>AO_PublicReservation</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AO_PublicDSP</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AO_PublicDSP</shortDescription>
+        <value>AO_PublicDSP</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AOPublicReservation</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AOPublicReservation</shortDescription>
+        <value>AOPublicReservation</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AOPublicDSP</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AOPublicDSP</shortDescription>
+        <value>AOPublicDSP</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RTAccountErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RTAccountErrMsg</shortDescription>
+        <value>Le Compte choisi doit être du même type que le Lead</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RTContactErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RTContactErrMsg</shortDescription>
+        <value>Le Contact choisi doit être du même type que le Lead</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RTOpportunityErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RTOpportunityErrMsg</shortDescription>
+        <value>Opportunité choisi doit être du même type que le Lead</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AORTAccountErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AORTAccountErrMsg</shortDescription>
+        <value>Le Compte choisi doit être du type entreprise</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AORTContactErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AORTContactErrMsg</shortDescription>
+        <value>Le Contact choisi doit être du type entreprise</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AoRESOpportunityRTErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AoRESOpportunityRTErrMsg</shortDescription>
+        <value>Opportunité choisi doit être du type AO Public Reservation</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AoDSPOpportunityRTErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AoDSPOpportunityRTErrMsg</shortDescription>
+        <value>Opportunité choisi doit être du type AO Public DSP</value>
+    </labels>
+    <labels>
         <fullName>Product_Code_Depot_Garantie</fullName>
         <language>fr</language>
         <protected>false</protected>
         <shortDescription>Product Code Depot Garantie</shortDescription>
         <value>DepotDeGarantie</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ContratAccueil</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContratAccueil</shortDescription>
+        <value>Contrat Accueil</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ContratReservataire</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContratReservataire</shortDescription>
+        <value>Contrat Réservataire</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_FactureFamille</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_FactureFamille</shortDescription>
+        <value>Facture Famille</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_FactureEntreprise</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_FactureEntreprise</shortDescription>
+        <value>Facture Entreprise</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_PieceJustificative</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_PieceJustificative</shortDescription>
+        <value>Pièce justificative</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Autres</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Autres</shortDescription>
+        <value>Autres</value>
     </labels>
 </CustomLabels>

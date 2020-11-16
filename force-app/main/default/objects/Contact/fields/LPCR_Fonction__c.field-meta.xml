@@ -8,6 +8,7 @@
     <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>
+        <controllingField>LPCR_TypeFonction__c</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
@@ -482,5 +483,381 @@
                 <label>Autre</label>
             </value>
         </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>CE</controllingFieldValue>
+            <valueName>Secrétaire</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CE</controllingFieldValue>
+            <valueName>Trésorier</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle direction générale</controllingFieldValue>
+            <valueName>Président</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle direction générale</controllingFieldValue>
+            <valueName>Directeur général</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle direction générale</controllingFieldValue>
+            <valueName>Directeur général adjoint</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle direction générale</controllingFieldValue>
+            <valueName>Directeur des opérations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle direction générale</controllingFieldValue>
+            <valueName>Secrétaire général</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle direction générale</controllingFieldValue>
+            <valueName>Gérant</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle direction générale</controllingFieldValue>
+            <valueName>Associé</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle direction générale</controllingFieldValue>
+            <valueName>Directeur de division, business unit ou filiale</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle direction générale</controllingFieldValue>
+            <valueName>Directeur régional</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle direction générale</controllingFieldValue>
+            <valueName>Directeur international</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle direction générale</controllingFieldValue>
+            <valueName>Assistante de Direction</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Autre</controllingFieldValue>
+            <valueName>Autre</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
+            <valueName>Directeur achats</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
+            <valueName>Responsable achats</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
+            <valueName>Assistant achats</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
+            <valueName>Directeur des services généraux</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
+            <valueName>Responsable des services généraux</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Directeur des ressources humaines</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Directeur développement RH</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Directeur recrutement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Directeur relations sociales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Directeur de l&apos;actions sociale</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Directeur formation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Directeur Gestion des carrières</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Responsable ressources humaines</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Responsable développement RH</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Responsable recrutement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Responsable rémunération</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Responsable relations sociales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Responsable de l&apos;actions sociale</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Responsable formation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Responsable Qualité de Vie au Travail</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Assistante Ressources Humaines</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Responsable Communication RH</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Responsable Marque Employeur</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <valueName>Chief Happiness Officer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle développement durable, environnement, RSE</controllingFieldValue>
+            <valueName>Directeur du développement durable/RSE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle développement durable, environnement, RSE</controllingFieldValue>
+            <valueName>Responsable RSE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <valueName>Directeur administratif, financier</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <valueName>Directeur contrôle de gestion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <valueName>Directeur audit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <valueName>Directeur comptable, trésorerie</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <valueName>Directeur immobilier, urbanisme, habitat</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <valueName>Directeur juridique</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <valueName>Responsable administratif, financier</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <valueName>Responsable contrôle de gestion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <valueName>Responsable audit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <valueName>Responsable comptable, trésorerie</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <valueName>Responsable immobilier, urbanisme, habitat</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <valueName>Responsable juridique</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <valueName>Directeur des systèmes d&apos;information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <valueName>Directeur sécurité informatique</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <valueName>Directeur télécommunications</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <valueName>Directeur R&amp;D, innovation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <valueName>Directeur industriel</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <valueName>Directeur usine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <valueName>Directeur production</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <valueName>Directeur technique</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <valueName>Directeur ingénierie</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <valueName>Directeur qualité</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <valueName>Directeur hygiène, sécurité, environnement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle commercial</controllingFieldValue>
+            <valueName>Directeur commercial</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle commercial</controllingFieldValue>
+            <valueName>Directeur grands comptes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle commercial</controllingFieldValue>
+            <valueName>Directeur surfaces commerciales (magasin, hypermarché)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle commercial</controllingFieldValue>
+            <valueName>Directeur d&apos;hôtel ou palace</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle commercial</controllingFieldValue>
+            <valueName>Responsable commercial</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle commercial</controllingFieldValue>
+            <valueName>Responsable grands comptes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle commercial</controllingFieldValue>
+            <valueName>Responsable surfaces commerciales (magasin, hypermarché)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle commercial</controllingFieldValue>
+            <valueName>Responsable d&apos;hôtel ou palace</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Directeur marketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Directeur produit, marque</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Directeur service client</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Directeur partenariats, licensing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Directeur Internet, digital, webmarketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Directeur communication</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Responsable marketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Responsable produit, marque</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Responsable service client</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Responsable partenariats, licensing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Responsable Internet, digital, webmarketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Responsable communication</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Public</controllingFieldValue>
+            <valueName>Responsable/Coordinatrice petite enfance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Public</controllingFieldValue>
+            <valueName>Directeur/trice Petite Enfance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Public</controllingFieldValue>
+            <valueName>Elu petite enfance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Public</controllingFieldValue>
+            <valueName>Elu - Autre</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Public</controllingFieldValue>
+            <valueName>Directeur de cabinet</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Public</controllingFieldValue>
+            <valueName>Maire</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Public</controllingFieldValue>
+            <valueName>Haut fonctionnaire</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Public</controllingFieldValue>
+            <valueName>Directeur Général des Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Public</controllingFieldValue>
+            <valueName>Responsable commande publique</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Public</controllingFieldValue>
+            <valueName>Responsable Financier</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>PLAC</controllingFieldValue>
+            <valueName>Avocat, profession libérale</valueName>
+        </valueSettings>
     </valueSet>
 </CustomField>

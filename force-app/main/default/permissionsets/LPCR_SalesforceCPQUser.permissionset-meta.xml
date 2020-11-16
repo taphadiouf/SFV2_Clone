@@ -2543,11 +2543,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Account.LPCR_TypeClient__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Account.LPCR_TypeContratPrincipal__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3254,6 +3249,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.ActivatedById</field>
+        <readable>true</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract.LPCR_DateFinMaxQuoteLine__c </field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4949,6 +4949,21 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>OrderItem.Description</field>
+        <readable>true</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_CompteAvecPO__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_DebutValiditePO__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_FinValiditePO__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9166,6 +9181,11 @@
         <field>SBQQ__QuoteLine__c.SBQQ__SubscriptionScope__c</field>
         <readable>true</readable>
     </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_HoldBilling__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.SBQQ__SubscriptionTargetPrice__c</field>
@@ -9709,6 +9729,41 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.EditLinesFieldSetName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_CheckboxTechnique__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_DateDebutNonConforme__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_TypeDenregistrementText__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+      <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_BonCommandeEnvoye__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_LigneBonCommandeEnvoye__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_LigneBonCommandeEnvoye__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_DateFinMaxQuoteLine__c </field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -15789,6 +15844,10 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>LPCR_TablePrix__c.Referencement</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>LPCR_TablePrix__c.LPCR_ReferencementApprouve</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

@@ -12,7 +12,7 @@
         private static final Id CONTRACT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_ContratA);
         private static final Id OPPT_FAMILE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Opportunity, Label.LPCR_Famille);
         private static final Id OPPT_ENTERPRISE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Opportunity, Label.LPCR_Entreprise);
-        private static final Id STANDARD_PRICEBOOK_ID = Test.getStandardPricebookId();
+        private static Id STANDARD_PRICEBOOK_ID;
         private static final Id QUOTE_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);
         private static final Id QUOTE_CONTRAT_REF_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_Referencement);
         
@@ -21,7 +21,12 @@
         @testsetup
         static void setup() {
             UM002_TestDataFactory.insertBillingCustomSettings();
-            
+
+            if([SELECT Id FROM Pricebook2 WHERE IsStandard=true].size() > 0){
+                STANDARD_PRICEBOOK_ID = [SELECT Id FROM Pricebook2 WHERE IsStandard=true].Id;
+            }else{
+                STANDARD_PRICEBOOK_ID = Test.getStandardPricebookId();
+            }
             blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
             blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
             blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
@@ -30,7 +35,8 @@
             Map<String, Object> defaultVal = new Map<String, Object> {
                 'RecordTypeId' => ACC_B2B_RT_ID,
                     'Name' => 'Test-B2B',
-                    'SBQQ__RenewalModel__c' => 'Contract Based'
+                    'SBQQ__RenewalModel__c' => 'Contract Based',
+                    'LPCR_PasDeSIRET__c' => true
                     };
                         List<Account> accounts = new List<Account>();
             Account B2BAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
@@ -43,6 +49,9 @@
             defaultVal.put('Name','Test-Creche');
             Account crecheAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
             accounts.add(crecheAccount);
+            for(Account a : accounts){
+                a.LPCR_PasDeSIRET__c = true;
+            }
             insert accounts;
             
             
@@ -225,11 +234,15 @@
                 Account accCreche = [SELECT Id, name from Account where name ='Test-Creche' LIMIT 1];
                 SBQQ__Quote__c quoteB2C = [SELECT Id,SBQQ__Account__c FROM SBQQ__Quote__c WHERE SBQQ__Account__c=:accB2C.Id];
                 SBQQ__Quote__c quoteB2B = [SELECT Id,SBQQ__Account__c FROM SBQQ__Quote__c WHERE SBQQ__Account__c=:accB2B.Id];
-              
-                 
+                
+                Product2 prod = [SELECT Id FROM Product2 LIMIT 1];
+                
                 Order  orderB2B = [SELECT Id, blng__BillNow__c ,Status,SBQQ__Quote__c FROM Order WHERE SBQQ__Quote__c = :quoteB2B.Id];  
                 orderB2B.status='Activated';
                 update orderB2B;
+                
+                List<OrderItem> orderItems = [SELECT Id,SBQQ__DefaultSubscriptionTerm__c  FROM OrderItem WHERE OrderID = :orderB2B.Id];
+                
                 
                 Map<String, Object>     defaultVal = new Map<String, Object> {
                     'RecordTypeId'=>CONTRACT_B2B_RT_ID,
@@ -243,30 +256,61 @@
                             Contract contractB2B = (Contract) UM002_TestDataFactory.createSObject('Contract', defaultVal);
                 insert contractB2B;
                 
+                for(OrderItem eachOrderItem : orderItems){
+                    eachOrderItem.SBQQ__Contract__c=contractB2B.id;
+                }
+                update orderItems;
                 
                 defaultVal = new Map<String, Object> {
                     'RecordTypeId'=>CONTRACT_ACCUEIL_RT_ID,
                         'AccountId' => accB2C.Id,
-                        
                         'LPCR_DureeContratJour__c'=>100,
                         'SBQQ__Quote__c'=>quoteB2C.Id,
                         'LPCR_ContractEntreprise__c'=>contractB2B.Id,
                         'Status'=>'Draft',
-                        'LPCR_Creche__c'=>accCreche.Id
+                        'LPCR_Creche__c'=>accCreche.Id,
+                        'LPCR_DateDebut__c'=>todayDate,
+                		'LPCR_DateFin__c'=>todayDate.addDays(60)
                         };
                             Contract contractB2C = (Contract) UM002_TestDataFactory.createSObject('Contract', defaultVal);
                 insert contractB2C;
                 
-                orderB2B.blng__BillNow__c=true;
-                update orderB2B;
-               
+                //orderB2B.blng__BillNow__c=true;
+                //update orderB2B;
+                
+                List<blng__InvoiceRun__c> invoiceRunsList = UM002_TestDataFactory.createInvoiceRuns(1,'Execution de Facture',date.newInstance(System.Today().year(), 10, 02));
+                insert invoiceRunsList;
+                
+                blng__InvoiceRun__c invoiceRun = invoiceRunsList.get(0);
+                
+                List<blng__Invoice__c> invoicesList = UM002_TestDataFactory.createInvoices(1,accB2B.id,invoiceRun.id,'Draft','A Envoyer' );
+                insert invoicesList;
+                
+                blng__Invoice__c orderInvoice = invoicesList.get(0);           
+                orderInvoice.blng__Order__c = orderB2B.Id;
+                update orderInvoice;
+                blng__InvoiceLine__c invoiceLineList = UM002_TestDataFactory.createInvoiceLine(orderInvoice.id,orderItems.get(0).Id);
+                invoiceLineList.blng__InvoiceLineStatus__c = 'Draft';
+                invoiceLineList.blng__UnitPrice__c = 150;
+                invoiceLineList.blng__Quantity__c =3;
+                invoiceLineList.blng__Product__c = prod.id;
+                invoiceLineList.blng__StartDate__c = System.today();
+                invoiceLineList.blng__EndDate__c = System.today().addDays(60);
+                invoiceLineList.blng__ChargeType__c = 'Recurring';
+                invoiceLineList.blng__BillingFrequency__c = 'Annual';
+                invoiceLineList.blng__Subtotal__c = 200;
+                insert invoiceLineList;  
+                
+                orderInvoice.blng__InvoiceStatus__c = 'Posted';
+                update orderInvoice;
+                
                 Map<Id,blng__Invoice__c> mapOfInvoice = new Map<Id,blng__Invoice__c>([SELECT Id, blng__Account__c,blng__Account__r.Name ,LPCR_LiaisonFamilleFacture__c
                                                                                       FROM blng__Invoice__c
                                                                                       WHERE  blng__Order__c  = :orderB2B.Id ]);   
                 List<blng__InvoiceLine__c> listOfInvoiceLine = [SELECT Id,LPCR_Creche__c,blng__StartDate__c,blng__EndDate__c ,blng__Invoice__c,blng__Invoice__r.blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c
                                                                 FROM blng__InvoiceLine__c
                                                                 WHERE blng__Invoice__c =:mapOfInvoice.values().get(0).Id ];
-                update new List<blng__InvoiceLine__c>{new blng__InvoiceLine__c(Id = listOfInvoiceLine.get(0).Id ,LPCR_Creche__c= accCreche.Id),new blng__InvoiceLine__c(Id = listOfInvoiceLine.get(1).Id ,LPCR_Creche__c= accCreche.Id)};
+                update new List<blng__InvoiceLine__c>{new blng__InvoiceLine__c(Id = listOfInvoiceLine.get(0).Id ,LPCR_Creche__c= accCreche.Id)};
                 
                 
                 APB009_GenerateLienFamilleFacture generateLienFamilleFacture = new APB009_GenerateLienFamilleFacture();
@@ -282,7 +326,7 @@
                                             FROM blng__Invoice__c
                                             WHERE  Id  = :mapOfInvoice.values().get(0).Id ];   
                
-                System.assertEquals(2,listOfLienFamilleFactureFromBD.size());
+                System.assertEquals(1,listOfLienFamilleFactureFromBD.size());
                 System.assertEquals(true,invoice.LPCR_LiaisonFamilleFacture__c);
                   
                 

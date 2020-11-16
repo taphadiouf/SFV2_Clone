@@ -1323,14 +1323,31 @@
     <picklistValues>
         <picklist>LPCR_RegionCommerciale__c</picklist>
         <values>
-            <fullName>TBD</fullName>
+            <fullName>Grand Nord</fullName>
             <default>false</default>
         </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_Region__c</picklist>
         <values>
-            <fullName>PACA</fullName>
+            <fullName>Grand Ouest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grand Sud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDF Nord</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDF Sédentaires</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDF Sud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rhone Alpes</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1377,37 +1394,6 @@
         <picklist>LPCR_TypeAttribution__c</picklist>
         <values>
             <fullName>TBD</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_TypeClient__c</picklist>
-        <values>
-            <fullName>CE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Collectivité</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Grand Compte</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>PLAC</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>PME-ETI</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Partenaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>TPE</fullName>
             <default>false</default>
         </values>
     </picklistValues>

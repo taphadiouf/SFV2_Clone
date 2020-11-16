@@ -6,26 +6,49 @@
 */
 @isTest
 public class SM008_QuoteServices_Test {
-    private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
-    private static final Id ContratA_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c', Label.LPCR_ContratA);
-        private static final Id CONTRACT_CONTRAT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_ContratA);
-            private static final Id CONTRACT_RESERVATRICE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Reservataire);
-                private static final Id CONTRACT_REFERENCEMENT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement);
+    private static final Id B2C_RT_ID =                 EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
+    private static final Id ContratA_RT_ID =            EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c', Label.LPCR_ContratA);
+
+    private static final Id CONTRACT_CONTRAT_ACCUEIL_RT_ID =        EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_ContratA);
+    private static final Id CONTRACT_RESERVATRICE_RT_ID =           EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Reservataire);
+    private static final Id CONTRACT_REFERENCEMENT_RT_ID =          EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement);
 
 @testSetup 
     static void testSetup(){
-        
-        /////////////*****************/////////////
-        
-        Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);//EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
-        Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Referencement');
-        Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Reservataire');
-        Id recTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account', 'Creche' );
-        Id recTypeFamilleId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Account', 'Famille' );
-         Id recTypeEnfantId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contact', 'Enfant' );
-        Id recTypecontactFamilleId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contact', 'Famille' );
+        List<sObject> bulkify = new List<sObject>();
 
-        
+        //bulkify the retrieving of record types ids from all object in one query
+        List<RecordType> AllRts = [SELECT sobjecttype,developername,id FROM recordtype];
+        Map<String,Id> RTNameIdAccount = new Map<String,Id>();
+        Map<String,Id> RTNameIdContact = new Map<String,Id>();
+        Map<String,Id> RTNameIdQuote = new Map<String,Id>();
+        Map<String,Id> RTNameIdContract = new Map<String,Id>();
+        for(RecordType rt : AllRts){
+            switch on rt.sobjecttype {
+                when 'Account' {		
+                    RTNameIdAccount.put(rt.developername,rt.id);
+                }	
+                when 'Contact' {		
+                    RTNameIdContact.put(rt.developername,rt.id);
+                }
+                when 'SBQQ__Quote__c' {		
+                    RTNameIdQuote.put(rt.developername,rt.id);
+                }
+                when 'Contract' {		
+                    RTNameIdContract.put(rt.developername,rt.id);
+                }
+            }
+        }
+        id recTypeId =          RTNameIdAccount.get('Creche');
+        id recTypeFamilleId =   RTNameIdAccount.get('Famille');
+        id recTypeEnfantId =            RTNameIdContact.get('Enfant');
+        id recTypecontactFamilleId =    RTNameIdContact.get('Famille');
+        id acceuilRecTypeId =       RTNameIdQuote.get(Label.LPCR_ContratA);
+        id referencementRecTypeId = RTNameIdQuote.get('Referencement');
+        id reservataireRecTypeId =  RTNameIdQuote.get('Reservataire');
+        /////////////*****************/////////////
+
+
         blng__LegalEntity__c entiteJuridique = UM002_TestDataFactory.setupLegalEntity();
         LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
         insert planningEnfant;
@@ -33,20 +56,29 @@ public class SM008_QuoteServices_Test {
         Contact conErpresentant1 = UM002_TestDataFactory.createContact('contact Rep1',recTypecontactFamilleId);
         Contact conErpresentant2 = UM002_TestDataFactory.createContact('contact Rep2',recTypecontactFamilleId);
         
-        
-        
-        
         List<Account> accCreche = UM002_TestDataFactory.createAccountWithRecType(1, 'Compte Crèche MAC1', recTypeId, 'MAC');
-        insert accCreche;
-        Account acCreche = accCreche.get(0);
         List<Account> accFamille = UM002_TestDataFactory.createAccountWithRecType(1, 'Compte Famille MAC1', recTypeFamilleId, '');
-        insert accFamille;
+        
+        bulkify = new List<sObject>();
+        bulkify.addAll(accCreche);
+        bulkify.addAll(accFamille);
+        insert bulkify;
+        Account acCreche = accCreche.get(0);
         Account accc = accFamille.get(0);
 
-         Contract mainCon = UM002_TestDataFactory.createContract(accc.Id);
+        Contract mainCon = UM002_TestDataFactory.createContract(accc.Id);
+         
+        /////////////*****************/////////////
+        
 
 
-         List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,accc.Id,'0001',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 12, 31),123, 'Sans renouvellement', 'Non', Null, 'MAC' );
+        //  CONTRACTs SECTION
+        List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,accc.Id,'0001',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 12, 31),123, 'Sans renouvellement', 'Non', Null, 'MAC' );
+        List<Contract> Renewalcontract2 = UM002_TestDataFactory.createContracts(1,accc.Id,'0002',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year()+1, 05, 25),123, 'Express', 'Non', Null, 'MAC' );
+        List<Account> accCreche3 = UM002_TestDataFactory.createAccountWithRecType(1, 'Compte Crèche MICRO', recTypeId, 'MICRO');
+        List<Contract> Renewalcontract3 = UM002_TestDataFactory.createContracts(1,accc.Id,'0003',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 12, 31),123, 'Tacite', 'Non', Null,'MICRO' );
+        List<Contract> Renewalcontract4 = UM002_TestDataFactory.createContracts(1,accc.Id,'0004',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year()+1, 09, 15),123, 'Express', 'Non', Null, 'MICRO' );
+        List<Contract> Renewalcontract6 = UM002_TestDataFactory.createContracts(1,accc.Id,'0006',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 08, 31),123, 'Express', 'Non', Null, 'MICRO' );
         for(Contract eachContract : Renewalcontract){
             eachContract.LPCR_EntiteJuridique__c = entiteJuridique.Id;
             eachContract.LPCR_ContactEnfant__c = contact.Id;
@@ -57,105 +89,77 @@ public class SM008_QuoteServices_Test {
             eachContract.LPCR_CongesJours__c = 33;
             eachContract.LPCR_DureePreavisMois__c = '3';
             eachContract.LPCR_TypeAccueil__c = 'Occasionnel';
-            
         }       
-         insert Renewalcontract;
-        Contract con = Renewalcontract.get(0);
-        List<Opportunity> renwalOpps = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MAC1', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con.Id, Null );
-         for(Opportunity eachOppty : renwalOpps){
-            eachOppty.LPCR_PlanningEnfant__c = planningEnfant.ID;
-        }
-        insert renwalOpps;
-        
-        //////////
-        List<Contract> Renewalcontract2 = UM002_TestDataFactory.createContracts(1,accc.Id,'0002',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year()+1, 05, 25),123, 'Express', 'Non', Null, 'MAC' );
-        insert Renewalcontract2;
-        Contract con2 = Renewalcontract2.get(0);
-        List<Opportunity> renwalOpps2 = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MAC2', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con2.Id, Null );
-        insert renwalOpps2;
-        
-        
-        //////////
-        List<Account> accCreche3 = UM002_TestDataFactory.createAccountWithRecType(1, 'Compte Crèche MICRO', recTypeId, 'MICRO');
-        insert accCreche3;
-        List<Contract> Renewalcontract3 = UM002_TestDataFactory.createContracts(1,accc.Id,'0003',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 12, 31),123, 'Tacite', 'Non', Null,'MICRO' );
-        insert Renewalcontract3;
-        Contract con3 = Renewalcontract3.get(0);
-        List<Opportunity> renwalOpps3 = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MICRO', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con3.Id,Null );
-        insert renwalOpps3;
-        
-        
-        ////////
-        List<Contract> Renewalcontract4 = UM002_TestDataFactory.createContracts(1,accc.Id,'0004',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year()+1, 09, 15),123, 'Express', 'Non', Null, 'MICRO' );
-        insert Renewalcontract4;
-        Contract con4 = Renewalcontract4.get(0);
-        List<Opportunity> renwalOpps4 = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MICRO2', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con4.Id,Null );
-        insert renwalOpps4;
-        
-        
-        
-        //////
-        List<Contract> Renewalcontract6 = UM002_TestDataFactory.createContracts(1,accc.Id,'0006',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 08, 31),123, 'Express', 'Non', Null, 'MICRO' );
         for(Contract eachContract : Renewalcontract6){
-            eachContract.LPCR_EntiteJuridique__c = entiteJuridique.Id;
-            eachContract.LPCR_ContactEnfant__c = contact.Id;
-            eachContract.LPCR_ContractEntreprise__c = mainCon.Id;
-            eachContract.LPCR_ContactRepresentant1__c = conErpresentant1.Id;
-            eachContract.LPCR_ContactRepresentant2__c = conErpresentant2.Id;
-            eachContract.LPCR_CongesJours__c = 33;
-            eachContract.LPCR_DureePreavisMois__c = '3';
-            eachContract.LPCR_TypeAccueil__c = 'Occasionnel';
-            eachContract.LPCR_MethodeRenouvellement__c = 'Tacite';
-            eachContract.LPCR_IndexationConvenue__c = 'Non';
-            
+             eachContract.LPCR_EntiteJuridique__c = entiteJuridique.Id;
+             eachContract.LPCR_ContactEnfant__c = contact.Id;
+             eachContract.LPCR_ContractEntreprise__c = mainCon.Id;
+             eachContract.LPCR_ContactRepresentant1__c = conErpresentant1.Id;
+             eachContract.LPCR_ContactRepresentant2__c = conErpresentant2.Id;
+             eachContract.LPCR_CongesJours__c = 33;
+             eachContract.LPCR_DureePreavisMois__c = '3';
+             eachContract.LPCR_TypeAccueil__c = 'Occasionnel';
+             eachContract.LPCR_MethodeRenouvellement__c = 'Tacite';
+             eachContract.LPCR_IndexationConvenue__c = 'Non';
         }
-        insert Renewalcontract6;
+        bulkify = new List<sObject>();
+        bulkify.addAll(Renewalcontract);
+        bulkify.addAll(Renewalcontract2);
+        bulkify.addAll(accCreche3);
+        bulkify.addAll(Renewalcontract3);
+        bulkify.addAll(Renewalcontract4);
+        bulkify.addAll(Renewalcontract6);
+        insert bulkify;
+        Contract con = Renewalcontract.get(0);
+        Contract con2 = Renewalcontract2.get(0);
+        Contract con3 = Renewalcontract3.get(0);
+        Contract con4 = Renewalcontract4.get(0);
         Contract con6 = Renewalcontract6.get(0);
-        List<Opportunity> renwalOpps6 = UM002_TestDataFactory.createOpportunities(1, 'opp NON', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan', Null ,con6.Id );
-         for(Opportunity eachOppty : renwalOpps6){
-            eachOppty.LPCR_PlanningEnfant__c = planningEnfant.ID;
-        }
-        insert renwalOpps6;
+
+
         /////////////*****************/////////////
-        
-        
-        
-        
-        
+
+        // OPPS SECTION
+        List<Opportunity> renwalOpps = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MAC1', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con.Id, Null );
+        List<Opportunity> renwalOpps2 = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MAC2', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con2.Id, Null );
+        List<Opportunity> renwalOpps3 = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MICRO', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con3.Id,Null );
+        List<Opportunity> renwalOpps4 = UM002_TestDataFactory.createOpportunities(1, 'opp Famille MICRO2', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan',con4.Id,Null );
+        List<Opportunity> renwalOpps6 = UM002_TestDataFactory.createOpportunities(1, 'opp NON', 'Prospecting', 'Oui', 'Advance', 'Invoice Plan', Null ,con6.Id );
+        for(Opportunity eachOppty : renwalOpps){eachOppty.LPCR_PlanningEnfant__c = planningEnfant.ID;}
+        for(Opportunity eachOppty : renwalOpps6){eachOppty.LPCR_PlanningEnfant__c = planningEnfant.ID;}
+        bulkify = new List<sObject>();
+        bulkify.addAll(renwalOpps);
+        bulkify.addAll(renwalOpps2);
+        bulkify.addAll(renwalOpps3);
+        bulkify.addAll(renwalOpps4);
+        bulkify.addAll(renwalOpps6);
+        insert bulkify;
+
+        //////
         List<Account> accounts = UM002_TestDataFactory.createAccounts(100, 'testAccount');
-        
         List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(100, 'testOpp', 'Prospecting');
-        
-        insert accounts;
-        insert opps;
+        bulkify = new List<sObject>();
+        bulkify.addAll(accounts);
+        bulkify.addAll(opps);
+        insert bulkify;
+
+        //////
         List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(100, accounts, opps);
-        insert quotes;
-        Account acc = UM002_TestDataFactory.createAccounts(1, 'test').get(0);
-        acc.RecordTypeId = B2C_RT_ID;
-        insert acc;
-        insert UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
-        
-        
-        
-        //added by Hanae
+        Account acc = UM002_TestDataFactory.createAccounts(1, 'test').get(0);acc.RecordTypeId = B2C_RT_ID;
         List<Account> accountsMac = UM002_TestDataFactory.createAccountWithRecType(10, 'Accounts',recTypeId, 'MAC');
-        insert accountsMac;
         List<Account> accountsMicro = UM002_TestDataFactory.createAccountWithRecType(10, 'Accounts', recTypeId, 'MICRO');
-        insert accountsMicro;
-       /*List<SBQQ__Quote__c> quotesMac = UM002_TestDataFactory.createQuotes(10, accountsMac, opps);
-        for(SBQQ__Quote__c eachContract : quotesMac){
-            eachContract.SBQQ__Status__c = 'Draft';
-        }
-        insert quotesMac;
-        List<SBQQ__Quote__c> quotesMicro = UM002_TestDataFactory.createQuotes(10, accountsMicro, opps);
-        for(SBQQ__Quote__c eachContract : quotesMicro){
-            eachContract.SBQQ__Type__c = 'Renewal';
-            eachContract.SBQQ__Status__c = 'Draft';
-        }
-        insert quotesMicro; */        
+        bulkify = new List<sObject>();
+        bulkify.addAll(quotes);
+        bulkify.add(acc);
+        bulkify.add(UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0));
+        bulkify.addAll(accountsMac);
+        bulkify.addAll(accountsMicro);
+        insert bulkify;
+
+    }
 
 
-    } 
+    
     @isTest
     public static void updateOppsFromQuotes_Test(){
         Test.startTest();
@@ -171,11 +175,7 @@ public class SM008_QuoteServices_Test {
         Test.stopTest();
         
     }
-    @isTest
-    public static void updateAccountsFromQuotes_Test(){
-    }
-    
-    
+
     @isTest //added by Ayoub
     public static void setQuoteFields_Test(){    
         
@@ -279,46 +279,12 @@ public class SM008_QuoteServices_Test {
             Test.stopTest();
         }
     }
-    /*
-     *deleted in IS-1165
-@IsTest
-    static void setTypeEnregistrement_Test(){
-        
-        Test.startTest();
-        
-        Opportunity currentOpportunity = [SELECT Id, LPCR_TypeEnregistrement__c FROM Opportunity limit 1];
-        currentOpportunity.LPCR_TypeEnregistrement__c = 'TestTypeEnregistrement';
-        update currentOpportunity;
-        List<Opportunity> opps = new List<Opportunity>();
-        opps.add(currentOpportunity);
-        Id accountCrecheRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
-        Account currentAccount = [SELECT Id FROM Account WHERE RecordTypeId= :accountCrecheRTId limit 1];
-        List<Account> accs = new List<Account>();
-        accs.add(currentAccount);
 
-        SBQQ__Quote__c newQuote = UM002_TestDataFactory.createQuoteswithStatus(1, accs, opps, 'Draft').get(0);
-        newQuote.SBQQ__Type__c = 'Renewal';
-        insert newQuote;
-        
-        newQuote = [SELECT Id,LPCR_TypeEnregistrement__c FROM SBQQ__Quote__c WHERE Id = :newQuote.Id limit 1];
-      
-        System.assertEquals('TestTypeEnregistrement', newQuote.LPCR_TypeEnregistrement__c);
-        Test.stopTest();
-       
-        
-    }
-    
-    */
-    
-    
-    
-    
-    ////////////*******************///////////////////
     @isTest()
     public static void updateQuotesB2CRenMacLCY_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            Id acceuilRecTypeId =EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);// EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
+            Id acceuilRecTypeId =ContratA_RT_ID;// EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
             
             //B2C Renewal Mac less than Current Year
             List<Account> accs = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c, LPCR_TypeFacturation__c from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
@@ -358,15 +324,13 @@ public class SM008_QuoteServices_Test {
             System.assertEquals(quote.LPCR_BatchCommande__c, 'MAC', 'Quote LPCR_TypeCreche__c not equals to MAC');
             Test.stopTest();
         }
-    }
-            
-            
+    }     
             
     @isTest()        
     public static void updateQuotesB2CRenMacMCY_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            Id acceuilRecTypeId =EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);// EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
+            Id acceuilRecTypeId =ContratA_RT_ID;// EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
             
             //B2C Renwal Mac more than Current Year 
             List<Account> accs = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c, LPCR_TypeFacturation__c from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
@@ -397,14 +361,12 @@ public class SM008_QuoteServices_Test {
             Test.stopTest();
         }
     }
-            
-            
-            
+                 
     @isTest()        
     public static void updateQuotesB2CRenMicroLSep_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);//EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
+            Id acceuilRecTypeId = ContratA_RT_ID;//EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
             //B2C Renwal Micro less than Sep
             List<Account> accs3 = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c from Account WHERE name ='Compte Crèche MICRO' LIMIT 1];
             Account acc3 = accs3.get(0);
@@ -438,7 +400,7 @@ public class SM008_QuoteServices_Test {
     public static void updateQuotesB2CRenMicroMSep_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            Id acceuilRecTypeId =EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);// EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
+            Id acceuilRecTypeId =ContratA_RT_ID;// EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
             //B2C Renwal Micro More than Sep
             List<Account> accs3 = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c from Account WHERE name ='Compte Crèche MICRO' LIMIT 1];
             Account acc3 = accs3.get(0);
@@ -475,7 +437,7 @@ public class SM008_QuoteServices_Test {
     public static void updateQuotesB2CQuoMacLCY_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);//EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
+            Id acceuilRecTypeId = ContratA_RT_ID;//EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
             //B2C Quote Mac less than Current Year
             List<Account> accs = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c, LPCR_TypeFacturation__c from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
             Account acc = accs.get(0);
@@ -495,12 +457,11 @@ public class SM008_QuoteServices_Test {
         }
     }
 
-
     @isTest()        
     public static void updateQuotesB2CQuoMacMCYBU_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);//EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
+            Id acceuilRecTypeId = ContratA_RT_ID;//EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
             //B2C Quote MAC more than Current Year before update
             List<Account> accs = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c, LPCR_TypeFacturation__c from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
             Account acc = accs.get(0);
@@ -525,7 +486,7 @@ public class SM008_QuoteServices_Test {
     public static void updateQuotesB2CQuoMicroLCY_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);//EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
+            Id acceuilRecTypeId = ContratA_RT_ID;//EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
             List<Account> accs3 = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c from Account WHERE name ='Compte Crèche MICRO' LIMIT 1];
             Account acc3 = accs3.get(0);
             List<Opportunity> oppties = [SELECT Id , Name , LPCR_IndexationConvenue__c , LPCR_TypeFacturation__c , LPCR_BillingFrequency__c from Opportunity WHERE name ='opp Famille MAC1' LIMIT 1 ];
@@ -554,7 +515,7 @@ public class SM008_QuoteServices_Test {
     public static void updateQuotesB2CQuoMicroMCY_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            Id acceuilRecTypeId =EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);// EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
+            Id acceuilRecTypeId =ContratA_RT_ID;// EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
             //B2C Quote Micro more than Current Year
             List<Account> accs3 = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c from Account WHERE name ='Compte Crèche MICRO' LIMIT 1];
             Account acc3 = accs3.get(0);
@@ -576,7 +537,7 @@ public class SM008_QuoteServices_Test {
     public static void updateQuotesB2CAmend_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);//EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
+            Id acceuilRecTypeId = ContratA_RT_ID;//EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
             //B2C Amendment Non
             List<Account> accs3 = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c from Account WHERE name ='Compte Crèche MICRO' LIMIT 1];
             Account acc3 = accs3.get(0);
@@ -614,10 +575,6 @@ public class SM008_QuoteServices_Test {
         
         
     }
-    
-    
-    
-    
     
     ////////////////////////////////////////
     
@@ -723,9 +680,6 @@ public class SM008_QuoteServices_Test {
             Test.stopTest();            
         } 
     }
-
-
-
     @isTest()
     public static void updateQuotesB2BQuoMCY_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
@@ -746,8 +700,6 @@ public class SM008_QuoteServices_Test {
             Test.stopTest();            
         } 
     }
-
-
     @isTest()
     public static void updateQuotesB2BAmend_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){

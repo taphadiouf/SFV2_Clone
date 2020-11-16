@@ -14,6 +14,8 @@ public with sharing class APC007_ShowCrechesLpcrController_Test {
         familleAccount.ShippingLatitude = 38.8951;
         familleAccount.ShippingLongitude = -77.0364;
         List<Account> reseauAccounts= UM002_TestDataFactory.createAccounts(50, reseauCrecheAccountRTId, 'reseauAccount');
+        reseauAccounts.get(0).ShippingLatitude = -77.0364;
+        reseauAccounts.get(0).ShippingLongitude = 77.0364;
         insert familleAccount;
         insert reseauAccounts;
 

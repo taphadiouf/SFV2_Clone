@@ -58,13 +58,19 @@ public with sharing class APC001_LeadFaConverController{
         }
     } 
     
-    @AuraEnabled(cacheable=true)
-    public static List<Account> getAccountsByRecordtypeName(String recordTypeName) {
+    @AuraEnabled(cacheable=false)
+    public static List<Account> getAccountsByRecordtypeName(String recordTypeName, String leadId) {
         
         List<Account> accounts = new List<Account>();
         Id recordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,recordTypeName);
         if(UM003_TypeManager.idNotNull(recordtypeId)){
-            accounts = [SELECT Name FROM Account WHERE RecordTypeId = :recordtypeId];
+            //Filter compte société picklist on acctouns of parent1 and parent2
+            List<Id> ComptesSocieteParentsIds = new List<Id>();
+            for(Lead l : [Select id,LPCR_CompteSociete__c,LPCR_CompteSocieteCoDemandeur__c from lead where id=:leadId]){
+                ComptesSocieteParentsIds.add(l.LPCR_CompteSociete__c);
+                ComptesSocieteParentsIds.add(l.LPCR_CompteSocieteCoDemandeur__c);
+            }
+            accounts = [SELECT Name FROM Account WHERE (RecordTypeId = :recordtypeId) AND (id IN :ComptesSocieteParentsIds)];
         }
         return accounts;
     }
@@ -87,18 +93,6 @@ public with sharing class APC001_LeadFaConverController{
         String contactFirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur;
         Integer count = 0;
         
-        if(currentLead.LPCR_CompteSociete__c == Null){
-            isvalid = False ;
-            errMsg += 'le champ Compte Société est manquant, ';
-            
-        }
-        
-        if((nomCoDemandeur != Null || prenomCoDemandeur != Null ) && currentLead.LPCR_CompteSocieteCoDemandeur__c == Null){
-            isvalid = False ;
-            errMsg += 'le champ Compte Société Co-Demandeur est manquant, ';
-            
-        }
-        
         if(currentLead.Address == Null){
             isvalid = False ;
             errMsg += 'le champ Adresse est manquant';
@@ -111,14 +105,14 @@ public with sharing class APC001_LeadFaConverController{
             throw new AuraHandledException(errMsg);
         }
         
- 
+        
         //Create Account (Famille)
         Account newFamilleAccount = new Account(
             Name = Label.LPCR_Famille + ' ' + currentLead.LastName + (nomCoDemandeur != null ? (' ' +nomCoDemandeur) : ''), 
             RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Famille),
             Phone = currentLead.Phone
         );
-       
+        
         List<Database.SaveResult> accountSaveResultList = new List<Database.SaveResult>();
         Database.SaveResult saveResult = Database.insert(newFamilleAccount, false);
         accountSaveResultList.add(saveResult);
@@ -183,7 +177,7 @@ public with sharing class APC001_LeadFaConverController{
                     RecordTypeId = enfantContactRT
                 ));
         }
-
+        
         List<Database.SaveResult> saveResultList = Database.insert(newContactsMap.values(), false);
         errMsg = '';
         saveResultMsg = '';
@@ -193,32 +187,49 @@ public with sharing class APC001_LeadFaConverController{
             isvalid = False ;
             throw new AuraHandledException(errMsg);
         }
-
+        
         //Set Reprsentants1 and Reprsentants2 fields for newFamilleAccount  
         newFamilleAccount.LPCR_Representant1__c = newContactsMap.get('contactRep1').Id;
         if(newContactsMap.get('contactRep2') != null) newFamilleAccount.LPCR_Representant2__c = newContactsMap.get('contactRep2').Id;
-        update newFamilleAccount;
+        
+        try {
+            update newFamilleAccount;
+        } catch (Exception e ) {
+            throw new AuraHandledException(e.getMessage() + '|Line :' + e.getLineNumber());
+        }
+        
         //Create AccountContactRelation for Reprsentants1 and Reprsentants2 contacts
         List<AccountContactRelation> accountContactRelations = new List<AccountContactRelation>();
-        accountContactRelations.add(
-            new AccountContactRelation(
-                ContactId = newContactsMap.get('contactRep1').Id,
-                AccountId = currentLead.LPCR_CompteSociete__c
-            )
-        );
-        if(newContactsMap.get('contactRep2') != null){
-            accountContactRelations.add(    
+        if(currentLead.LPCR_CompteSociete__c != null){
+            accountContactRelations.add(
                 new AccountContactRelation(
-                    ContactId = newContactsMap.get('contactRep2').Id,
-                    AccountId = currentLead.LPCR_CompteSocieteCoDemandeur__c
+                    ContactId = newContactsMap.get('contactRep1').Id,
+                    AccountId = currentLead.LPCR_CompteSociete__c
                 )
             );
+        }
+        if(newContactsMap.get('contactRep2') != null){
+            if(currentLead.LPCR_CompteSocieteCoDemandeur__c != null){
+                accountContactRelations.add(    
+                    new AccountContactRelation(
+                        ContactId = newContactsMap.get('contactRep2').Id,
+                        AccountId = currentLead.LPCR_CompteSocieteCoDemandeur__c
+                    )
+                );
+            }
         }
         try{
             insert accountContactRelations;
         }
         catch(DmlException e) {
             System.debug('The following exception has occurred: ' + e.getMessage());
+            throw new AuraHandledException(e.getMessage() + '|Line :' + e.getLineNumber());
+        }
+        //Authorize Convertion
+        try {
+            update new Lead(id=leadId,LPCR_Tech_BloqueConversion__c=false);
+        } catch (Exception e ) {
+            throw new AuraHandledException(e.getMessage() + '|Line :' + e.getLineNumber());
         }
         //Convert the lead
         LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
@@ -228,49 +239,61 @@ public with sharing class APC001_LeadFaConverController{
         lc.setConvertedStatus(convertStatus.MasterLabel);
         lc.setAccountId(newFamilleAccount.Id);
         lc.setContactId(newContactsMap.get('contactRep1').Id);
-        Database.LeadConvertResult lcr = Database.convertLead(lc); 
-        
+        if(chosenCompteId == null){
+            lc.setOpportunityName(newFamilleAccount.name);
+        }
+        try {
+            Database.LeadConvertResult lcr = Database.convertLead(lc); 
+        } catch (DmlException e ) {
+            update new Lead(id=leadId,LPCR_Tech_BloqueConversion__c=true);
+            throw new AuraHandledException(e.getMessage());
+        }        
         //Create a quote for each child (enfant)
         List<LPCR_LienCrecheLead__c> lienCrecheLeadList = [select Id, LPCR_creche__c From LPCR_LienCrecheLead__c where LPCR_Creche__r.Name = :chosenCrecheId And LPCR_Lead__c =:leadId];
-        Set<String> crecheIds = UM003_TypeManager.getFieldsOfListObjects(lienCrecheLeadList,'LPCR_creche__c');
-        Id crecheId = [SELECT Id, Name FROM Account where id in :crecheIds Limit 1].Id;
-        List<SBQQ__Quote__c> quotesList = new List<SBQQ__Quote__c>();
-        Contact tmpContactEnfant;
-        Contact tmpContactRep1;
-        Contact tmpContactRep2;
-        currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
-        for(Integer eachIndex : enfantsIndexes){
-            tmpContactEnfant = newContactsMap.get('contactEnfant' + eachIndex);
-            tmpContactRep1 = newContactsMap.get('contactRep1');
-            tmpContactRep2 = newContactsMap.get('contactRep2');   
-            quotesList.add(
-                new SBQQ__Quote__c(
-                    LPCR_DateDebut__c = (Date) currentLead.get('LPCR_DateEntreeCreche' + eachIndex + '__c'),
-                    LPCR_Creche__c = crecheId,
-                    SBQQ__Account__c = chosenCompteId,
-                    LPCR_ContactEnfant__c = (tmpContactEnfant != null ? tmpContactEnfant.Id : null),
-                    LPCR_ContactRepresentant1__c = (tmpContactRep1 != null ? tmpContactRep1.Id : null),
-                    LPCR_ContactRepresentant2__c = (tmpContactRep2 != null ? tmpContactRep2.Id : null),
-                    SBQQ__Opportunity2__c = currentLead.convertedOpportunityId
-                )
-            );
-        }
-        try{
-            insert quotesList;
-        }
-        catch(DmlException e) {
-            System.debug('The following exception has occurred while inserting quote: ' + e.getMessage());
-        }
-        
-        if(currentLead.LPCR_TypePrestation__c == Label.LPCR_Occasionnel){
-            for(SBQQ__Quote__c eachQuote : quotesList){
-                eachQuote.LPCR_TypeAccueil__c = Label.LPCR_Occasionnel;
+        if(lienCrecheLeadList.size()!= 0){
+            Set<String> crecheIds = UM003_TypeManager.getFieldsOfListObjects(lienCrecheLeadList,'LPCR_creche__c');
+            Id crecheId = [SELECT Id, Name FROM Account where id in :crecheIds Limit 1].Id;
+            List<SBQQ__Quote__c> quotesList = new List<SBQQ__Quote__c>();
+            Contact tmpContactEnfant;
+            Contact tmpContactRep1;
+            Contact tmpContactRep2;
+            currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
+            for(Integer eachIndex : enfantsIndexes){
+                tmpContactEnfant = newContactsMap.get('contactEnfant' + eachIndex);
+                tmpContactRep1 = newContactsMap.get('contactRep1');
+                tmpContactRep2 = newContactsMap.get('contactRep2');   
+                quotesList.add(
+                    new SBQQ__Quote__c(
+                        LPCR_DateDebut__c = (Date) currentLead.get('LPCR_DateEntreeCreche' + eachIndex + '__c'),
+                        LPCR_Creche__c = crecheId,
+                        SBQQ__Account__c = chosenCompteId,
+                        LPCR_ContactEnfant__c = (tmpContactEnfant != null ? tmpContactEnfant.Id : null),
+                        LPCR_ContactRepresentant1__c = (tmpContactRep1 != null ? tmpContactRep1.Id : null),
+                        LPCR_ContactRepresentant2__c = (tmpContactRep2 != null ? tmpContactRep2.Id : null),
+                        SBQQ__Opportunity2__c = currentLead.convertedOpportunityId,
+                        LPCR_Creation_conforme__c = true
+                    )
+                );
             }
             try{
-                update quotesList;
+                insert quotesList;
             }
             catch(DmlException e) {
-                System.debug('The following exception has occurred while updating quote: ' + e.getMessage());
+                System.debug('The following exception has occurred while inserting quote: ' + e.getMessage());
+                throw new AuraHandledException(e.getMessage() + '|Line :' + e.getLineNumber());
+            }
+            
+            if(currentLead.LPCR_TypePrestation__c == Label.LPCR_Occasionnel){
+                for(SBQQ__Quote__c eachQuote : quotesList){
+                    eachQuote.LPCR_TypeAccueil__c = Label.LPCR_Occasionnel;
+                }
+                try{
+                    update quotesList;
+                }
+                catch(DmlException e) {
+                    System.debug('The following exception has occurred while updating quote: ' + e.getMessage());
+                    throw new AuraHandledException(e.getMessage() + '|Line :' + e.getLineNumber());
+                }
             }
         }
     }
@@ -311,6 +334,8 @@ public with sharing class APC001_LeadFaConverController{
                                 errmsg = ' contact : '+ cont.Name;
                             }
                         }
+                    }else{
+                        errmsg += '|validateResult Error : ' + error.getMessage();
                     }
                 }
                 

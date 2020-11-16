@@ -1369,10 +1369,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>blng__PricebookEntryDAO</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>blng__PricingModel</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -2383,7 +2379,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Account.LPCR_NumeroPurchaseOrder__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2535,11 +2531,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.LPCR_TravailConcurrence__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Account.LPCR_TypeClient__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2739,6 +2730,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contract.LPCR_DateDebut__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.LPCR_DateFin__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>LPCR_LienFamilleFacture__c.LPCR_Compte__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2914,6 +2915,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>LPCR_RevenueCascade__c.LPCR_FrequenceFacturation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>LPCR_RevenueCascade__c.LPCR_IdConvention__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2978,6 +2984,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_DateDebut__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_DateFin__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Order.blng__BillNow__c</field>
         <readable>true</readable>
@@ -3020,6 +3036,26 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Order.blng__TotalBilling__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_CompteAvecPO__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_DebutValiditePO__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_FinValiditePO__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_NumeroPurchaseOrder__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3408,8 +3444,43 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_LigneBonCommandeEnvoye__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__QuoteLine__c.blng__BillableUnitPrice__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_BonCommandeEnvoye__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_DateDebut__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_DateFin__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_TypeDenregistrementText__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_HoldBilling__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_LigneBonCommandeEnvoye__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5329,6 +5400,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>blng__InvoiceLine__c.LPCR_CompteAvecPO__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>blng__InvoiceLine__c.LPCR_CompteFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5344,7 +5420,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>blng__InvoiceLine__c.LPCR_DebutValiditePO__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>blng__InvoiceLine__c.LPCR_EstMigre__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__InvoiceLine__c.LPCR_FinValiditePO__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5375,6 +5461,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__InvoiceLine__c.LPCR_NumeroPurchaseOrder__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__InvoiceLine__c.LPCR_POInvalide__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -6010,6 +6101,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_NombreLigneNegative__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_NombrePOinvalides__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8418,13 +8514,13 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__Usage__c.LPCR_TypeEvenement__c</field>
+        <editable>false</editable>
+        <field>blng__Usage__c.LPCR_SousTotal__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>blng__Usage__c.LPCR_SousTotal__c</field>
+        <editable>true</editable>
+        <field>blng__Usage__c.LPCR_TypeEvenement__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_BlocageNewPrixRef</fullName>
+    <active>true</active>
+    <description>Règle de validation afin d&apos;empêcher un utilisateur de créer de nouveaux prix de référencement après l&apos;approbation du contrat de référencement.</description>
+    <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Referencement&apos;, OR(TEXT(LPCR_MasterDevis__r.SBQQ__Status__c) &lt;&gt; &apos;Draft&apos;, TEXT(LPCR_MasterDevis__r.SBQQ__Type__c) = &apos;Amendment&apos; ))</errorConditionFormula>
+    <errorMessage>Vous ne pouvez plus créer de nouveaux prix de référencement pour ce contrat.</errorMessage>
+</ValidationRule>

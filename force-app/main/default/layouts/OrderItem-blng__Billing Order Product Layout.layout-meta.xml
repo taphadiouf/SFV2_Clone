@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <excludeButtons>PrepareForBilling</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
@@ -91,10 +92,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LPCR_TotalBerceauGratuitRegion__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_NumeroPurchaseOrder__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -194,6 +191,33 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>blng__BilledTax__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>PO Informations</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_NumeroPurchaseOrder__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_DebutValiditePO__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_CompteAvecPO__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_FinValiditePO__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -465,11 +489,27 @@
         <sortField>NAME</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>LPCR_StartDate__c</fields>
+        <fields>LPCR_EndDate__c</fields>
+        <fields>LPCR_TotalContractValue__c</fields>
+        <fields>LPCR_BillingFrequency__c</fields>
+        <relatedList>LPCR_PlanFacturation__c.LPCR_OrderItem__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>LPCR_StartDate__c</fields>
+        <fields>LPCR_EndDate__c</fields>
+        <fields>LPCR_Amount__c</fields>
+        <fields>LPCR_BillingFrequency__c</fields>
+        <relatedList>LPCR_LignePlanFacturation__c.LPCR_OrderItem__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h5J000000r9W2</masterLabel>
+        <masterLabel>00h3N000001eejx</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

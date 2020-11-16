@@ -57,7 +57,8 @@ public class SM006_PreinscriptionServices {
                 LPCR_ContactEnfant__c = currentPreInscr.LPCR_ContactEnfant__c,
                 LPCR_Creche__c = currentPreInscr.LPCR_Creche__c,
                 LPCR_ContactRepresentant1__c = currentPreInscr.LPCR_ContactParent__c,
-                SBQQ__Opportunity2__c = currentOpportunity.Id));
+                SBQQ__Opportunity2__c = currentOpportunity.Id,
+                LPCR_Creation_conforme__c = true ));
             //Update of the related "Famille" account
             if(preinscIDToAccountIdMap.get(eachPreinscId) != null && accountsMap.get(preinscIDToAccountIdMap.get(eachPreinscId)) != null)
             accountsMap.get(preinscIDToAccountIdMap.get(eachPreinscId)).put('LPCR_Representant1__c', currentPreInscr.LPCR_ContactParent__c);

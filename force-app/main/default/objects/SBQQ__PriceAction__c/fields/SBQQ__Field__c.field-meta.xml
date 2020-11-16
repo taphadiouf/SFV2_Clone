@@ -247,6 +247,8 @@
                 <default>false</default>
                 <label>LPCR_DateSignatureContrat__c</label>
             </value>
+            <value><fullName>LPCR_CheckboxTechnique__c</fullName><default>false</default><label>LPCR_CheckboxTechnique__c</label></value>
+            <value><fullName>LPCR_LigneBonCommandeEnvoye__c</fullName><default>false</default><label>LPCR_LigneBonCommandeEnvoye__c</label></value>
             <value>
                 <fullName>LPCR_RecalculationMACDone__c</fullName>
                 <default>false</default>
@@ -261,6 +263,16 @@
                 <fullName>SBQQ__AdditionalDiscountAmount__c</fullName>
                 <default>false</default>
                 <label>SBQQ__AdditionalDiscountAmount__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_DateFinMaxQuoteLine__c</fullName>
+                <default>false</default>
+                <label>LPCR_DateFinMaxQuoteLine__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__NetPrice__c</fullName>
+                <default>false</default>
+                <label>SBQQ__NetPrice__c</label>
             </value>
         </valueSetDefinition>
         <valueSettings>
@@ -436,6 +448,18 @@
             <valueName>LPCR_DateSignatureContrat__c</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_CheckboxTechnique__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote</controllingFieldValue>
+            <valueName>LPCR_DateFinMaxQuoteLine__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>SBQQ__NetPrice__c</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>SBQQ__Quantity__c</valueName>
         </valueSettings>
@@ -470,6 +494,10 @@
         <valueSettings>
             <controllingFieldValue>Quote Line</controllingFieldValue>
             <valueName>LPCR_HoldReason__c</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Quote Line</controllingFieldValue>
+            <valueName>LPCR_LigneBonCommandeEnvoye__c</valueName>
         </valueSettings>
     </valueSet>
 </CustomField>
