@@ -34,16 +34,20 @@ public with sharing class APC009_PsBroadcastController_Test {
 
     @isTest
     static void testExecuteAsyncPsUpdateNegative() {
-        Test.startTest();
-        APC009_PsBroadcastController.executeAsyncPsUpdate('false','false','true','false','LPCR_ADV','WorkOrder');
-        Test.stopTest();
+        User usr = [Select id from User where Id = :UserInfo.getUserId()];
+        System.RunAs(usr){
+            Test.startTest();
+            APC009_PsBroadcastController.executeAsyncPsUpdate('false','false','true','false','LPCR_ADV','Account');
+            Test.stopTest();
+        }
         PermissionSet TmpPs = [select id, Name FROM PermissionSet where name = :'LPCR_ADV'];
         ObjectPermissions tmpOpList = [Select Id, parent.Name, parentId, SobjectType, 
                                             PermissionsCreate, 
                                             PermissionsRead, 
                                             PermissionsEdit 
                                             from ObjectPermissions 
-                                            where Parent.Id = :TmpPs.Id  and SobjectType = :'WorkOrder' ];
+                                            where Parent.Id = :TmpPs.Id  and SobjectType = :'Account' ];
         system.assertEquals(true,tmpOpList.PermissionsRead);
     }
+
 }
