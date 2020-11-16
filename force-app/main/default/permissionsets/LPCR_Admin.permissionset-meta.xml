@@ -16,6 +16,10 @@
         <application>Service_Partenaires</application>
         <visible>true</visible>
     </applicationVisibilities>
+    <classAccesses>
+        <apexClass>APC001_LeadFaConverController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <description>A donner à tous les admins</description>
     <fieldPermissions>
         <editable>true</editable>
