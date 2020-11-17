@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tech_MaxDateLigneBerceauFamille__c</fullName>
+    <description>Max end date sur les lignes de facture dont le nom contient ‘Accueil’ ou &apos;Berceau&apos;. Utilisé pour la génération de la facture famille B2C.</description>
+    <externalId>false</externalId>
+    <label>Tech_MaxDateLigneBerceauFamille</label>
+    <summarizedField>blng__InvoiceLine__c.blng__EndDate__c</summarizedField>
+    <summaryFilterItems>
+        <field>blng__InvoiceLine__c.Name</field>
+        <operation>contains</operation>
+        <value>Accueil,Berceau</value>
+    </summaryFilterItems>
+    <summaryForeignKey>blng__InvoiceLine__c.blng__Invoice__c</summaryForeignKey>
+    <summaryOperation>max</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>
