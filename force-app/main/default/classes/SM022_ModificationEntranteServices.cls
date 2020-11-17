@@ -290,7 +290,6 @@ public with sharing class SM022_ModificationEntranteServices {
                 quote.SBQQ__Status__c = 'Brouillon';
                 mapOfQuoteForUpdate.put(quote.id,quote);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-                
             }else if('Modification_Adresse_Contact_Parent'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contact__c != null ){
                 if(modifEntrantesContactMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
                     Contact updateContact = modifEntrantesContactMap.get(eachModifEntrante.LPCR_Contact__c);
@@ -334,7 +333,7 @@ public with sharing class SM022_ModificationEntranteServices {
                 allAccountUpdateList.add(updateAccount);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }else if('Modification_Facturation_Adaptation'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
-                blng__Usage__c newUsage = createBlngUsage(eachModifEntrante,'Heures','Modification Période d\'Adaptation','Modification Période d\'Adaptation');
+                blng__Usage__c newUsage = createBlngUsage(eachModifEntrante,'Heures','Modification_Facturation_Adaptation','Modification Période d\'Adaptation');
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }else if('Modification_Heure_Supplementaire_MAC'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
