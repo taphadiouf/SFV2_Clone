@@ -55,9 +55,21 @@ public class APB015_ProcessBillingPlanLines_Test {
     @isTest
     public static void APB015_ProcessBillingPlanLines_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
-            Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
-            PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
-            
+            blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+            blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+            blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+            blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
+            Product2 prod = UM002_TestDataFactory.createFixedPriceProduct('test', billingRule.Id, revRecRule.Id,taxRule.Id );
+            prod.SBQQ__SubscriptionPricing__c ='Fixed Price';
+            prod.SBQQ__BillingFrequency__c = 'Monthly';
+            prod.SBQQ__BillingType__c = 'Advance';
+            prod.SBQQ__ChargeType__c = 'Recurring';
+            prod.SBQQ__SubscriptionTerm__c = 1;
+            prod.SBQQ__SubscriptionType__c = 'Renewable';
+            insert prod;
+            PricebookEntry pbEntry = UM002_TestDataFactory.createPricebookEntry(standardPricebookId,prod.Id);
+            pbEntry.UnitPrice = 0;
+            insert pbEntry;
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;
@@ -180,9 +192,8 @@ public class APB015_ProcessBillingPlanLines_Test {
             
 			// call batch class            
             APB015_ProcessBillingPlanLines ss = new APB015_ProcessBillingPlanLines();
-            DataBase.executeBatch(ss);
-            Test.stopTest();
             ss.execute(null);
+            Test.stopTest();
                         
             OrderItem checkOrderItem = [SELECT Id, LPCR_ExclureDuPlanFacturation__c,LPCR_TraitementLigneFacturationAvenant__c FROM OrderItem WHERE id =: orderItem2.id LIMIT 1 ];
             System.assertEquals(true, checkOrderItem.LPCR_ExclureDuPlanFacturation__c,'APB015_ProcessBillingPlanLines_Test LPCR_ExclureDuPlanFacturation__c value incorrect');
