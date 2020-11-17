@@ -1,0 +1,8 @@
+<aura:component controller="APC010_AmendLexContractController"
+                implements="lightning:isUrlAddressable,flexipage:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId,force:appHostable" >
+	
+    <aura:attribute name="errorMessage" type="String" default="" />
+    <aura:handler name="init" value="{!this}" action="{!c.goToAmendPage}"/>	
+    
+    {!v.errorMessage}
+</aura:component>
