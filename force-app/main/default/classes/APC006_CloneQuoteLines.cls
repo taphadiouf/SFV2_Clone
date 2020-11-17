@@ -66,6 +66,7 @@ public with sharing class APC006_CloneQuoteLines {
                 currentQL.SBQQ__UpgradedSubscription__c = null;
                 currentQL.SBQQ__UpgradedAsset__c = null;
                 currentQL.SBQQ__UpgradedQuantity__c = null;
+                currentQL.SBQQ__Existing__c = false;
                 //To insure the order
                 if(currentQL.SBQQ__Number__c != null){
                     currentQL.SBQQ__Number__c = ql.SBQQ__Number__c + 1000;
