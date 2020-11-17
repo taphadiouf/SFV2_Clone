@@ -51,7 +51,7 @@ global class APB006_PrepaRenewalContract implements Database.Batchable<sObject>,
         String ErrMsg;
         try {
             update listContractToUpdate; 
-            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch to bulk process Order and prepare them for execution of APB002_RenewalContract',
+            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch to bulk process Order and prepare them for exec of APB002',
                                                             'APB006_PrepaRenewalContract', 'Batch' , null,
                                                             'Successfully updated list of contracts : ' + String.valueOf(listContractToUpdate), 
                                                             UM010_Constant.SUCCESS);          
@@ -59,7 +59,7 @@ global class APB006_PrepaRenewalContract implements Database.Batchable<sObject>,
             ErrMsg = e.getMessage();
         } finally {
             if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch to bulk process Order and prepare them for execution of APB002_RenewalContract','APB006_PrepaRenewalContract', 'Batch' , null,'Error while updating the contracts : ' + ErrMsg, UM010_Constant.ERROR);              
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch to bulk process Order and prepare them for exec of APB002','APB006_PrepaRenewalContract', 'Batch' , null,'Error while updating the contracts : ' + ErrMsg, UM010_Constant.ERROR);              
             }
         }
     }
