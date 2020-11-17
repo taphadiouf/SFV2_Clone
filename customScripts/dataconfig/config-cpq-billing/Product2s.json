@@ -1,0 +1,3092 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref1"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PZt9UAG"
+                },
+                "Id": "a1R3O000000PZt9UAG"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "REFRES",
+            "LPCR_RefCodeProduit__c": "BerceauPlanFacturation",
+            "Name": "Berceau - Plan de Facturation",
+            "ProductCode": "BerceauPlanFacturation",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Invoice Plan",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref2"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MAC",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "OptionBerceauMac",
+            "LPCR_Typemensualisation__c": "1112",
+            "Name": "Option Berceau Mac",
+            "ProductCode": "OptionBerceauMac",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref3"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "REFRES",
+            "LPCR_RefCodeProduit__c": "PlateformePersonnalisee",
+            "Name": "Plateforme personnalisée",
+            "ProductCode": "PlateformePersonnalisee",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "One-Time",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionType__c": "One-time",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref4"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "REFRES",
+            "LPCR_RefCodeProduit__c": "ConferenceParentalite",
+            "Name": "Conférence parentalité",
+            "ProductCode": "ConferenceParentalite",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "One-Time",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionType__c": "One-time",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref5"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "REFRES",
+            "LPCR_RefCodeProduit__c": "AccueilOccasionnelUrgence",
+            "Name": "Accueil occasionnel et d’urgence",
+            "ProductCode": "AccueilOccasionnelUrgence",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref6"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "REF",
+            "LPCR_PrixPlancherParisIDF__c": 12000,
+            "LPCR_PrixPlancherProvince__c": 10000,
+            "LPCR_RefCodeProduit__c": "BerceauContratCadre",
+            "Name": "Berceau Contrat Cadre",
+            "ProductCode": "BerceauContratCadre",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Quarterly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": true,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref7"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MAC",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-11-03T09:32:02.000+0000",
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "AccueilOccasionnelMac",
+            "LPCR_TypeEvenement__c": "Modification_Heure_Occasionnel_MAC",
+            "LPCR_Typemensualisation__c": "1112",
+            "Name": "Accueil occasionnel Mac",
+            "ProductCode": "AccueilOccasionnelMac",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-11-03T09:32:02.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref8"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "ALSH",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-28T13:57:04.000+0000",
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "ALSH",
+            "LPCR_TypeEvenement__c": "ALSH",
+            "LPCR_Typemensualisation__c": "1112",
+            "Name": "Accueil Loisirs sans Hébergement",
+            "ProductCode": "ALSH",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": true,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-28T13:57:04.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref9"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "ALSH",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MACMICRO",
+            "LPCR_RefCodeProduit__c": "Repas",
+            "LPCR_TypeEvenement__c": "Nombre_de_repas",
+            "Name": "Repas",
+            "ProductCode": "Repas",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-09T14:38:09.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref10"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MAC",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "AccueilUrgence",
+            "LPCR_TypeEvenement__c": "Modification Accueil d'Urgence",
+            "LPCR_Typemensualisation__c": "1112",
+            "Name": "Accueil d'urgence",
+            "ProductCode": "AccueilUrgence",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref11"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MAC",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "BerceauMac11Mois",
+            "LPCR_Typemensualisation__c": "11",
+            "Name": "Accueil MAC \"forfait 11 mois\"",
+            "ProductCode": "BerceauMac11Mois",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref12"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastReferencedDate": "2020-10-09T16:21:36.000+0000",
+            "LastViewedDate": "2020-10-09T16:21:36.000+0000",
+            "LPCR_FamilyProduct__c": "RES",
+            "LPCR_PrixPlancherParisIDF__c": 12000,
+            "LPCR_PrixPlancherProvince__c": 10000,
+            "LPCR_RefCodeProduit__c": "BerceauReservataire",
+            "Name": "Berceau Réservataire",
+            "ProductCode": "BerceauReservataire",
+            "SBQQ__BillingFrequency__c": "Quarterly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": true,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref13"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MICRO",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastReferencedDate": "2020-08-25T10:35:11.000+0000",
+            "LastViewedDate": "2020-08-25T10:35:11.000+0000",
+            "LPCR_FamilyProduct__c": "MICRO",
+            "LPCR_PourcentagePlancherMicro__c": 15,
+            "LPCR_RefCodeProduit__c": "BerceauMicro",
+            "Name": "Accueil MICRO \" Parent SOLO\"",
+            "ProductCode": "BerceauMicro",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": true,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref14"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_RefCodeProduit__c": "BerceauMairieAIXENPROVENCE",
+            "Name": "Berceau Mairie d'Aix en Provence",
+            "ProductCode": "BerceauMairieAIXENPROVENCE",
+            "SBQQ__BillingFrequency__c": "Invoice Plan",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref15"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpDUAW"
+                },
+                "Id": "a1R3O000000PKpDUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_RefCodeProduit__c": "BerceauVilleBoulogneBillancourt",
+            "Name": "Berceau - Ville de Boulogne Billancourt",
+            "ProductCode": "BerceauVilleBoulogneBillancourt",
+            "SBQQ__BillingFrequency__c": "Invoice Plan",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref16"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpEUAW"
+                },
+                "Id": "a1R3O000000PKpEUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_RefCodeProduit__c": "BerceauMairieMantesLaJolie",
+            "Name": "Berceau - Mairie de Mantes La Jolie",
+            "ProductCode": "BerceauMairieMantesLaJolie",
+            "SBQQ__BillingFrequency__c": "Invoice Plan",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref17"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpBUAW"
+                },
+                "Id": "a1R3O000000PKpBUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_RefCodeProduit__c": "BerceauMairieYerres",
+            "Name": "Berceau - Mairie De Yerres",
+            "ProductCode": "BerceauMairieYerres",
+            "SBQQ__BillingFrequency__c": "Invoice Plan",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref18"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpCUAW"
+                },
+                "Id": "a1R3O000000PKpCUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_RefCodeProduit__c": "BerceauVilleSaintVictoret",
+            "Name": "Berceau - Ville De Saint Victoret",
+            "ProductCode": "BerceauVilleSaintVictoret",
+            "SBQQ__BillingFrequency__c": "Invoice Plan",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref19"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MAC",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastReferencedDate": "2020-11-16T17:02:46.000+0000",
+            "LastViewedDate": "2020-11-16T17:02:46.000+0000",
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "FraisInscriptionMac",
+            "LPCR_Typemensualisation__c": "1112",
+            "Name": "Frais d'inscription MAC",
+            "ProductCode": "FraisInscriptionMac",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "One-Time",
+            "SBQQ__Component__c": false,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": false,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref20"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "REFRES",
+            "LPCR_RefCodeProduit__c": "BerceauMairieCourbevoie",
+            "Name": "Berceau - Mairie De Courbevoie",
+            "ProductCode": "BerceauMairieCourbevoie",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": false,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref21"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MAC",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastReferencedDate": "2020-11-16T16:55:22.000+0000",
+            "LastViewedDate": "2020-11-16T16:55:22.000+0000",
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "BerceauMac",
+            "LPCR_Typemensualisation__c": "12",
+            "Name": "Accueil MAC \"classique\"",
+            "ProductCode": "BerceauMac",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref22"
+            },
+            "Family": "B2B",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_RefCodeProduit__c": "BerceauVilleSaintPriest",
+            "Name": "Berceau - Ville De Saint Priest",
+            "ProductCode": "BerceauVilleSaintPriest",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": false,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref23"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_PrixPlancherParisIDF__c": 12000,
+            "LPCR_PrixPlancherProvince__c": 10000,
+            "LPCR_RefCodeProduit__c": "BerceauContratCadreDel",
+            "Name": "Berceau Contrat Cadre to delete",
+            "ProductCode": "BerceauContratCadreDel",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Quarterly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": true,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref24"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_RefCodeProduit__c": "BerceauContratCadreProvince",
+            "Name": "Berceau Contrat Cadre Province",
+            "ProductCode": "BerceauContratCadreProvince",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Quarterly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref25"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-10-27T12:57:59.000+0000",
+            "LPCR_FamilyProduct__c": "REFRES",
+            "LPCR_RefCodeProduit__c": "BerceauGratuit",
+            "Name": "Berceau Gratuit",
+            "ProductCode": "BerceauGratuit",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Quarterly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-10-27T12:57:59.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref26"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MICRO",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MICRO",
+            "LPCR_RefCodeProduit__c": "BerceauMicroSpecifique",
+            "Name": "Accueil MICRO \"Psu Like\"",
+            "ProductCode": "BerceauMicroSpecifique",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref27"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MICRO",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MICRO",
+            "LPCR_RefCodeProduit__c": "BerceauMicroSponsorise",
+            "Name": "Accueil MICRO \"Sponsorisé\"",
+            "ProductCode": "BerceauMicroSponsorise",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": true,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref28"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpGUAW"
+                },
+                "Id": "a1R3O000000PKpGUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MAC",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-11-17T13:41:07.000+0000",
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "PeriodeAdaptation",
+            "LPCR_TypeEvenement__c": "Absence",
+            "LPCR_Typemensualisation__c": "1112",
+            "Name": "Période d’adaptation",
+            "ProductCode": "PeriodeAdaptation",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-11-17T13:41:08.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref29"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "REFRES",
+            "LPCR_RefCodeProduit__c": "RFA",
+            "Name": "Remise de fin d’année",
+            "ProductCode": "RFA",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "One-Time",
+            "SBQQ__Component__c": false,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref30"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpGUAW"
+                },
+                "Id": "a1R3O000000PKpGUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MICRO",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MICRO",
+            "LPCR_RefCodeProduit__c": "HeuresDeduitesMicro",
+            "LPCR_TypeEvenement__c": "Modification Heures Déduites Micro",
+            "Name": "Heures Déduites Micro",
+            "ProductCode": "HeuresDeduitesMicro",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref31"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpGUAW"
+                },
+                "Id": "a1R3O000000PKpGUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MAC",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastReferencedDate": "2020-10-02T10:13:47.000+0000",
+            "LastViewedDate": "2020-10-02T10:13:47.000+0000",
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "HeuresDeduitesMac",
+            "LPCR_TypeEvenement__c": "Modification_Heure_Deduite_MAC",
+            "LPCR_Typemensualisation__c": "1112",
+            "Name": "Heures déduites MAC",
+            "ProductCode": "HeuresDeduitesMac",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref32"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MICRO",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MICRO",
+            "LPCR_RefCodeProduit__c": "FraisInscriptionMicro",
+            "Name": "Frais d’inscription Micro",
+            "ProductCode": "FraisInscriptionMicro",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "One-Time",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": false,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionType__c": "One-time",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref33"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "REFRES",
+            "LPCR_RefCodeProduit__c": "Fraisdedossier",
+            "Name": "Frais de dossier",
+            "ProductCode": "Fraisdedossier",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "One-Time",
+            "SBQQ__Component__c": false,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref34"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpGUAW"
+                },
+                "Id": "a1R3O000000PKpGUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MAC",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-25T12:34:22.000+0000",
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "AbsenceMAC",
+            "LPCR_TypeEvenement__c": "Absence",
+            "LPCR_Typemensualisation__c": "1112",
+            "Name": "Absence",
+            "ProductCode": "AbsenceMAC",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-25T12:34:22.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref35"
+            },
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T20:47:04.000+0000",
+            "Name": "Test Tax",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "One-Time",
+            "SBQQ__Component__c": false,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": false,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SBQQ__TaxCode__c": "ACAD01",
+            "SystemModstamp": "2020-07-21T20:47:04.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref36"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_RefCodeProduit__c": "ProductA20",
+            "Name": "Product A Tax 20",
+            "ProductCode": "ProductA20",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Quarterly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SBQQ__TaxCode__c": "TVA20",
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref37"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_RefCodeProduit__c": "ProductA10",
+            "Name": "Product A Tax 10",
+            "ProductCode": "ProductA10",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Quarterly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SBQQ__TaxCode__c": "TVA10",
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref38"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_RefCodeProduit__c": "ProductA210",
+            "Name": "Product A Tax 1.10",
+            "ProductCode": "ProductA210",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Quarterly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref39"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MICRO",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MICRO",
+            "LPCR_RefCodeProduit__c": "AccueilOccasionnelMicro",
+            "LPCR_TypeEvenement__c": "Modification Accueil Occasionnel Micro",
+            "Name": "Accueil OCC MICRO journalier",
+            "ProductCode": "AccueilOccasionnelMicro",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref40"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MICRO",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MICRO",
+            "LPCR_RefCodeProduit__c": "DepotDeGarantie",
+            "Name": "Dépôt de Garantie",
+            "ProductCode": "DepotDeGarantie",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "One-Time",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionType__c": "One-time",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref41"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpGUAW"
+                },
+                "Id": "a1R3O000000PKpGUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MAC",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "AccueilHeuresSuppMac",
+            "LPCR_TypeEvenement__c": "Modification_Heure_Supplementaire_MAC",
+            "LPCR_Typemensualisation__c": "1112",
+            "Name": "Accueil Heures Supplémentaires Mac",
+            "ProductCode": "AccueilHeuresSuppMac",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref42"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpGUAW"
+                },
+                "Id": "a1R3O000000PKpGUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MAC",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "CongesNonPrisMac",
+            "LPCR_TypeEvenement__c": "Modification Congés non pris MAC",
+            "LPCR_Typemensualisation__c": "1112",
+            "Name": "Congés non pris MAC",
+            "ProductCode": "CongesNonPrisMac",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref43"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpGUAW"
+                },
+                "Id": "a1R3O000000PKpGUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MICRO",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_FamilyProduct__c": "MICRO",
+            "LPCR_RefCodeProduit__c": "AccueilJourSuppMicro",
+            "LPCR_TypeEvenement__c": "Modification Accueil Jour Supplémentaire Micro",
+            "Name": "Accueil Jour Supplémentaire Micro",
+            "ProductCode": "AccueilJourSuppMicro",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref44"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__BillingRule__c/a1R3O000000PKpGUAW"
+                },
+                "Id": "a1R3O000000PKpGUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v50.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MICRO",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-25T12:33:42.000+0000",
+            "LPCR_FamilyProduct__c": "MICRO",
+            "LPCR_RefCodeProduit__c": "AbsenceMicro",
+            "LPCR_TypeEvenement__c": "Absence",
+            "Name": "Absence",
+            "ProductCode": "AbsenceMicro",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Arrears",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": true,
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": true,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-25T12:33:42.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref45"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LPCR_PrixPlancherParisIDF__c": 7500,
+            "LPCR_PrixPlancherProvince__c": 6000,
+            "LPCR_RefCodeProduit__c": "BerceauReservataireTEST",
+            "Name": "To be deleted Berceau Réservataire Rev rec",
+            "ProductCode": "BerceauReservataireTEST",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+        }
+    ]
+}
