@@ -151,19 +151,9 @@
                 <label>NB Heures réalisées</label>
             </value>
             <value>
-                <fullName>EVT_TRAITEMENT_JOUR_FERIE</fullName>
-                <default>false</default>
-                <label>Traitement jour férié</label>
-            </value>
-            <value>
                 <fullName>EVT_REGULARISATION</fullName>
                 <default>false</default>
                 <label>Regularisation</label>
-            </value>
-            <value>
-                <fullName>Conges_Pris_Periode</fullName>
-                <default>false</default>
-                <label>Congés Pris Période</label>
             </value>
         </valueSetDefinition>
     </valueSet>
