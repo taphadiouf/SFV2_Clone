@@ -8,7 +8,6 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
     
     global set<id> allSuccessId = new set<id>();
     final String ClassName = APB014_TraitementModificationEntrante.class.getName();
-    Exception[] errors = new Exception[0];
 
     global APB014_TraitementModificationEntrante() {
 
@@ -27,6 +26,7 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
     
     global void execute(Database.BatchableContext BC, List<LPCR_ModificationEntrante__c> scope) {
 
+        Exception[] errors = new Exception[0];
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
 
         Set<Id> modificationEntranteIds = UM003_TypeManager.getIdsOfListObjects(scope);
