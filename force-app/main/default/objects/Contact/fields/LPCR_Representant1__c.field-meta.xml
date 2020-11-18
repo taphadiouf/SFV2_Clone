@@ -4,15 +4,6 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Représentant 1</label>
-    <lookupFilter>
-        <active>true</active>
-        <filterItems>
-            <field>Contact.RecordType.Name</field>
-            <operation>equals</operation>
-            <value>Parent</value>
-        </filterItems>
-        <isOptional>false</isOptional>
-    </lookupFilter>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Enfant</relationshipLabel>
     <relationshipName>LPCR_Representant1</relationshipName>
