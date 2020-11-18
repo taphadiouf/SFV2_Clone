@@ -5,7 +5,7 @@
 #                   * We removed user reference because it is not relevant information
 #                   * Prefer using and storing in git data exported from same sandbox (integration for example)
 #
-# Sample usage ./exportCPQBillingDataConfig.sh <username or alias> <outputdir>
+# Sample usage go into customScripts/ folder and execute ./exportCPQBillingDataConfig.sh <username or alias> <outputdir>
 # example : ./exportCPQBillingDataConfig.sh eyhuellou@lpcr.fr.int config-cpq-billing
 
 TARGET_ENV=$1
@@ -63,6 +63,12 @@ sfdx force:data:tree:export -q "select Id, IsDeleted, LastModifiedDate, LastRefe
 
 echo ">> Processing sbaa__TrackedField__c..."
 sfdx force:data:tree:export -q "select Id, IsDeleted, LastModifiedDate, Name, sbaa__ApprovalRule__r.Id, sbaa__RecordField__c, sbaa__TrackedField__c, sbaa__TrackedObject__c, sbaa__TrackingType__c, SystemModstamp from sbaa__TrackedField__c" -d $OUTPUT_DIR -p -u $TARGET_ENV
+
+echo ">> Processing SBQQ__CustomScript__c..."
+sfdx force:data:tree:export -q "select Id, IsDeleted, LastModifiedDate, LastReferencedDate, LastViewedDate, Name, SBQQ__Code__c, SBQQ__ConsumptionRateFields__c, SBQQ__ConsumptionScheduleFields__c, SBQQ__GroupFields__c, SBQQ__QuoteFields__c, SBQQ__QuoteLineFields__c, SBQQ__TranspiledCode__c from SBQQ__CustomScript__c" -d $OUTPUT_DIR -p -u $TARGET_ENV
+
+
+
 
 echo "Export Finished !"
 
