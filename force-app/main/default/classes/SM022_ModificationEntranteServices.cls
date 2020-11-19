@@ -480,7 +480,7 @@ public with sharing class SM022_ModificationEntranteServices {
         newUsage.blng__StartDateTime__c = modifEntrante.LPCR_HeureDateDebut__c;
         newUsage.blng__EndDateTime__c = modifEntrante.LPCR_HeureDateFin__c;
         newUsage.blng__Quantity__c = modifEntrante.LPCR_Quantite__c;
-        newUsage.blng__MatchingId__c = modifEntrante.LPCR_Contact__c+''+eventLabelName+''+modifEntrante.LPCR_Compte__c;
+        newUsage.blng__MatchingId__c = modifEntrante.LPCR_Contact__c+''+eventType+''+modifEntrante.LPCR_Compte__c;
         newUsage.blng__UnitOfMeasure__c = UnitOfMeasure;
         return newUsage;
     }
