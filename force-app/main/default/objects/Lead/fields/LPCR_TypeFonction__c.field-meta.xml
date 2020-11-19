@@ -8,63 +8,7 @@
     <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>
-        <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Pôle direction générale</fullName>
-                <default>false</default>
-                <label>Pôle direction générale</label>
-            </value>
-            <value>
-                <fullName>Pôle achat, services</fullName>
-                <default>false</default>
-                <label>Pôle achat, services</label>
-            </value>
-            <value>
-                <fullName>Pôle Ressources humaines</fullName>
-                <default>false</default>
-                <label>Pôle Ressources humaines</label>
-            </value>
-            <value>
-                <fullName>Pôle développement durable, environnement, RSE</fullName>
-                <default>false</default>
-                <label>Pôle développement durable, environnement, RSE</label>
-            </value>
-            <value>
-                <fullName>Pôle Finance administratif, juridique</fullName>
-                <default>false</default>
-                <label>Pôle Finance administratif, juridique</label>
-            </value>
-            <value>
-                <fullName>Pôle informatique &amp; Technique</fullName>
-                <default>false</default>
-                <label>Pôle informatique &amp; Technique</label>
-            </value>
-            <value>
-                <fullName>Pôle commercial</fullName>
-                <default>false</default>
-                <label>Pôle commercial</label>
-            </value>
-            <value>
-                <fullName>Pôle Marketing &amp; Communication</fullName>
-                <default>false</default>
-                <label>Pôle Marketing &amp; Communication</label>
-            </value>
-            <value>
-                <fullName>Public</fullName>
-                <default>false</default>
-                <label>Public</label>
-            </value>
-            <value>
-                <fullName>PLAC</fullName>
-                <default>false</default>
-                <label>PLAC</label>
-            </value>
-            <value>
-                <fullName>CE</fullName>
-                <default>false</default>
-                <label>CE</label>
-            </value>
-        </valueSetDefinition>
+        <restricted>true</restricted>
+        <valueSetName>LPCR_Type_de_fonction</valueSetName>
     </valueSet>
 </CustomField>
