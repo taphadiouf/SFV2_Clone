@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Absence</fullName>
+        <fullName>EVT_ABSCENCE</fullName>
         <default>false</default>
         <label>Absence</label>
     </customValue>
     <customValue>
-        <fullName>Modification_Heure_Supplementaire_MAC</fullName>
+        <fullName>EVT_HEURE_SUPPLEMENTAIRE</fullName>
         <default>false</default>
         <label>Modification Heure Supplémentaire MAC</label>
     </customValue>
     <customValue>
-        <fullName>Modification_Heure_Occasionnel_MAC</fullName>
+        <fullName>EVT_HEURE_OCCASIONNEL</fullName>
         <default>false</default>
         <label>Modification Heure Occasionnel MAC</label>
     </customValue>
     <customValue>
-        <fullName>Modification_Heure_Deduite_MAC</fullName>
+        <fullName>EVT_HEURE_DEDUITE</fullName>
         <default>false</default>
         <label>Modification Heure Déduite MAC</label>
     </customValue>
     <customValue>
-        <fullName>Nombre_de_repas</fullName>
+        <fullName>EVT_NOMBRE_DE_REPAS</fullName>
         <default>false</default>
         <label>Nombre de repas</label>
     </customValue>
     <customValue>
-        <fullName>Modification Facturation Adaptation</fullName>
+        <fullName>EVT_FACTURATION_ADAPTATION</fullName>
         <default>false</default>
         <label>Modification Facturation Adaptation</label>
     </customValue>
     <customValue>
-        <fullName>Modification Accueil Jour Supplémentaire Micro</fullName>
+        <fullName>EVT_ACCUEIL_JOUR_SUPPLEMENTAIRE_MICRO</fullName>
         <default>false</default>
         <label>Modification Accueil Jour Supplémentaire Micro</label>
     </customValue>
     <customValue>
-        <fullName>Modification Accueil Occasionnel Micro</fullName>
+        <fullName>EVT_ACCUEIL_OCCASIONNEL_MICRO</fullName>
         <default>false</default>
         <label>Modification Accueil Occasionnel Micro</label>
     </customValue>
     <customValue>
-        <fullName>Modification Heures Déduites Micro</fullName>
+        <fullName>EVT_HEURES_DEDUITE_MICRO</fullName>
         <default>false</default>
         <label>Modification Heures Déduites Micro</label>
     </customValue>
     <customValue>
-        <fullName>Modification Accueil d&apos;Urgence</fullName>
+        <fullName>EVT_ACCUEIL_URGENCE</fullName>
         <default>false</default>
         <label>Modification Accueil d&apos;Urgence</label>
     </customValue>
     <customValue>
-        <fullName>Modification Congés non pris MAC</fullName>
+        <fullName>EVT_NOMBRE_CONGES_NON_PRIS</fullName>
         <default>false</default>
         <label>Modification Congés non pris MAC</label>
     </customValue>
     <customValue>
-        <fullName>Mouvement Interne de Berceau</fullName>
+        <fullName>EVT_MOUVEMENT_INTERNE_BERCEAU</fullName>
         <default>false</default>
         <label>Mouvement Interne de Berceau</label>
     </customValue>
@@ -66,7 +66,7 @@
         <label>ALSH</label>
     </customValue>
     <customValue>
-        <fullName>Regularisation</fullName>
+        <fullName>EVT_REGULARISATION</fullName>
         <default>false</default>
         <label>Régularisation</label>
     </customValue>

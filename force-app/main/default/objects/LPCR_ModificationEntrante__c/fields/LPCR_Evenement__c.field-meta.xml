@@ -11,117 +11,112 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Modification_Adresse_Contact_Parent</fullName>
+                <fullName>EVT_ADRESSE_CONTACT_PARENT</fullName>
                 <default>false</default>
                 <label>Modification Adresse Contact Parent</label>
             </value>
             <value>
-                <fullName>Modification_Autorite_Parentale</fullName>
+                <fullName>EVT_AUTORITE_PARENTALE</fullName>
                 <default>false</default>
                 <label>Modification Autorité Parentale</label>
             </value>
             <value>
-                <fullName>Modification_Numero_Allocataire</fullName>
+                <fullName>EVT_NUMERO_ALLOCATAIRE</fullName>
                 <default>false</default>
                 <label>Modification Numéro Allocataire</label>
             </value>
             <value>
-                <fullName>Modification_Situation_Handicape_Enfant</fullName>
+                <fullName>EVT_SITUATION_HANDICAPE_ENFANT</fullName>
                 <default>false</default>
                 <label>Modification Situation Handicapé Enfant</label>
             </value>
             <value>
-                <fullName>Modification_Type_Accueil</fullName>
+                <fullName>EVT_TYPE_ACCUEIL</fullName>
                 <default>false</default>
                 <label>Modification Type Accueil</label>
             </value>
             <value>
-                <fullName>Modification_Type_Planning</fullName>
+                <fullName>EVT_TYPE_PLANNING</fullName>
                 <default>false</default>
                 <label>Modification Type Planning</label>
             </value>
             <value>
-                <fullName>Modification_Nombre_Enfant_Fratrie</fullName>
+                <fullName>EVT_NOMBRE_ENFANT_FRATRIE</fullName>
                 <default>false</default>
                 <label>Modification Nombre Enfant Fratrie</label>
             </value>
             <value>
-                <fullName>Modification_Montant_Ressource</fullName>
+                <fullName>EVT_MONTANT_RESSOURCE</fullName>
                 <default>false</default>
                 <label>Modification Montant Ressource</label>
             </value>
             <value>
-                <fullName>Modification_Nombre_Jour_Conge</fullName>
+                <fullName>EVT_NOMBRE_JOUR_CONGE</fullName>
                 <default>false</default>
                 <label>Modification Nombre Jour Congé</label>
             </value>
             <value>
-                <fullName>Date_Fin_Contrat</fullName>
+                <fullName>EVT_DATE_FIN_CONTRAT</fullName>
                 <default>false</default>
                 <label>Date Fin Contrat</label>
             </value>
             <value>
-                <fullName>Modification_Section</fullName>
+                <fullName>EVT_SECTION</fullName>
                 <default>false</default>
                 <label>Modification Section</label>
             </value>
             <value>
-                <fullName>Date_Naissance_Enfant</fullName>
+                <fullName>EVT_DATE_NAISSANCE_ENFANT</fullName>
                 <default>false</default>
                 <label>Date Naissance Enfant</label>
             </value>
             <value>
-                <fullName>Modification_Mode_Garde</fullName>
+                <fullName>EVT_MODE_GARDE</fullName>
                 <default>false</default>
                 <label>Modification Mode Garde</label>
             </value>
             <value>
-                <fullName>Modification_Situation_Familiale</fullName>
+                <fullName>EVT_SITUATION_FAMILIALE</fullName>
                 <default>false</default>
                 <label>Modification Situation Familiale</label>
             </value>
             <value>
-                <fullName>Modification_Nombre_Mois_Mensualise</fullName>
+                <fullName>EVT_NOMBRE_MOIS_MENSUALISE</fullName>
                 <default>false</default>
                 <label>Modification Nombre Mois Mensualisé</label>
             </value>
             <value>
-                <fullName>Modification Traitement Jour férié</fullName>
+                <fullName>EVT_TRAITEMENT_JOUR_FERIE</fullName>
                 <default>false</default>
                 <label>Modification Traitement Jour férié</label>
             </value>
             <value>
-                <fullName>Modification</fullName>
-                <default>false</default>
-                <label>Modification</label>
-            </value>
-            <value>
-                <fullName>Modification_Delai_Carence</fullName>
+                <fullName>EVT_DELAI_CARENCE</fullName>
                 <default>false</default>
                 <label>Modification Délai Carence</label>
             </value>
             <value>
-                <fullName>Modification_Heure_Supplementaire_MAC</fullName>
+                <fullName>EVT_HEURE_SUPPLEMENTAIRE</fullName>
                 <default>false</default>
                 <label>Modification Heure Supplémentaire MAC</label>
             </value>
             <value>
-                <fullName>Modification_Heure_Occasionnel_MAC</fullName>
+                <fullName>EVT_HEURE_OCCASIONNEL</fullName>
                 <default>false</default>
                 <label>Modification Heure Occasionnel MAC</label>
             </value>
             <value>
-                <fullName>Modification_Nombre_Conges_MAC</fullName>
+                <fullName>EVT_NOMBRE_CONGES_NON_PRIS</fullName>
                 <default>false</default>
-                <label>Modification Nombre Congés MAC</label>
+                <label>Modification Nombre Congés non pris MAC</label>
             </value>
             <value>
-                <fullName>Modification_Heure_Deduite_MAC</fullName>
+                <fullName>EVT_HEURE_DEDUITE</fullName>
                 <default>false</default>
                 <label>Modification Heure Déduite MAC</label>
             </value>
             <value>
-                <fullName>Validation Contrat Directrice</fullName>
+                <fullName>EVT_VALIDATION_CONTRAT_DIRECTRICE</fullName>
                 <default>false</default>
                 <label>Validation Contrat Directrice</label>
             </value>
@@ -131,44 +126,34 @@
                 <label>Nombre de repas</label>
             </value>
             <value>
-                <fullName>Modification_Facturation_Adaptation</fullName>
+                <fullName>EVT_FACTURATION_ADAPTATION</fullName>
                 <default>false</default>
                 <label>Modification Facturation Adaptation</label>
             </value>
             <value>
-                <fullName>Commentaire_Individuel_Facture</fullName>
+                <fullName>EVT_COMMENTAIRE_INDIVIDUEL_FACTURE</fullName>
                 <default>false</default>
                 <label>Commentaire individuel facture</label>
             </value>
             <value>
-                <fullName>Commentaire_Global_Facture</fullName>
+                <fullName>EVT_COMMENTAIRE_GLOBAL_FACTURE</fullName>
                 <default>false</default>
                 <label>Commentaire global facture</label>
             </value>
             <value>
-                <fullName>Absence</fullName>
+                <fullName>EVT_ABSCENCE</fullName>
                 <default>false</default>
                 <label>Absence</label>
             </value>
             <value>
-                <fullName>NB_Heures_Realisee</fullName>
+                <fullName>EVT_NOMBRE_HEURES_REALISEE</fullName>
                 <default>false</default>
                 <label>NB Heures réalisées</label>
             </value>
             <value>
-                <fullName>Traitement_Jour_Ferie</fullName>
-                <default>false</default>
-                <label>Traitement jour férié</label>
-            </value>
-            <value>
-                <fullName>Regularisation</fullName>
+                <fullName>EVT_REGULARISATION</fullName>
                 <default>false</default>
                 <label>Regularisation</label>
-            </value>
-            <value>
-                <fullName>Conges_Pris_Periode</fullName>
-                <default>false</default>
-                <label>Congés Pris Période</label>
             </value>
         </valueSetDefinition>
     </valueSet>

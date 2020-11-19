@@ -29,36 +29,31 @@ global class APB019_AutomateRessourceFamille implements Database.Batchable<sObje
         
         set<String> contractEnfantIds = UM003_TypeManager.getFieldsOfListObjects(scope,'LPCR_ContactEnfant__c');
         
-        List<LPCR_RessourceFamille__c> ressourceFamilleList = [SELECT Id, LPCR_CompteFamille__c, LPCR_ContactEnfant__c, LPCR_DateFin__c, LPCR_DateDebut__c,LPCR_BaremeCaf__c , LPCR_TauxEffort__c 
-                                                               FROM LPCR_RessourceFamille__c 
-                                                               WHERE LPCR_CompteFamille__c IN : accFamilleIds 
-                                                               AND LPCR_ContactEnfant__c IN : contractEnfantIds 
-                                                               AND LPCR_Active__c = true];
+        List<LPCR_RessourceFamille__c> ressourceFamilleList = [SELECT id,name,recordtypeid,lpcr_active__c,lpcr_anneerevenu__c,lpcr_baremecaf__c,lpcr_commentaire__c,lpcr_comptefamille__c,lpcr_contactenfant__c,lpcr_datedebut__c,lpcr_datefin__c,lpcr_dureecontratjour__c,lpcr_estmigre__c,lpcr_fincontrat__c,lpcr_idexterne_baremecaf__c,lpcr_idexterne_comptefamille__c,lpcr_idexterne_contactenfant__c,lpcr_idexterne_creche__c,lpcr_nombreenfanthandicape__c,lpcr_nombreenfants__c,lpcr_ressourceplafond__c,lpcr_ressourcesprixplancher__c,lpcr_revenusfamille__c,lpcr_sourcedonnees__c,lpcr_statutvalidation__c,lpcr_tauxeffort__c,lpcr_typecreche__c,lpcr_typemensualisation__c,lpcr_typeplanning__c,lpcr_creche__c
+        
+                                                                FROM LPCR_RessourceFamille__c 
+                                                                WHERE   LPCR_CompteFamille__c       IN : accFamilleIds 
+                                                                        AND 
+                                                                        LPCR_ContactEnfant__c   IN : contractEnfantIds 
+                                                                        AND 
+                                                                        LPCR_Active__c          = true];
         
         List<LPCR_Log__c> listOfLog = new List<LPCR_Log__c>();
         
         List<LPCR_RessourceFamille__c> newactiveList = new List<LPCR_RessourceFamille__c>();
         
         for(LPCR_RessourceFamille__c eachResFamille : ressourceFamilleList){
-            
             LPCR_RessourceFamille__c tempRessFamille = new LPCR_RessourceFamille__c();
-            
-            eachResFamille.LPCR_DateFin__c = date.newInstance(eachResFamille.LPCR_DateDebut__c.year(), 12, 31);
-            
-            tempRessFamille.LPCR_CompteFamille__c = eachResFamille.LPCR_CompteFamille__c;
-            
-            tempRessFamille.LPCR_ContactEnfant__c = eachResFamille.LPCR_ContactEnfant__c;
-            
+            tempRessFamille = eachResFamille.clone(false, false, false, false);//Take all the fields but the 4 below
             tempRessFamille.LPCR_DateDebut__c  = date.newInstance(eachResFamille.LPCR_DateDebut__c.year()+1, 01, 01);
-            
             tempRessFamille.LPCR_DateFin__c = null;
-            
             tempRessFamille.LPCR_BaremeCaf__c = null;
-            
             tempRessFamille.LPCR_TauxEffort__c = null;
             
             newactiveList.add(tempRessFamille);
-            
+
+            eachResFamille.LPCR_DateFin__c = date.newInstance(eachResFamille.LPCR_DateDebut__c.year(), 12, 31);
+
             listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Automating Ressource Famille', 'APB019_AutomateRessourceFamille', 'Batch', String.valueOf(eachResFamille.Id), '', 'SUCCESS'));  
             
         }

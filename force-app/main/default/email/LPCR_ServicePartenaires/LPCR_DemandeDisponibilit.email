@@ -2,12 +2,12 @@ Bonjour,
  
 Voici une nouvelle demande de disponibilité 😊
 
-CRECHE(S) SOUHAITEE(S) :
-FAMILLE :
-DATE DE NAISSANCE :
-DATE D’ENTREE :
-RYTHME : 
-ENVELOPPE :
+CRECHE(S) SOUHAITEE(S) : {!Case.LPCR_ChoixN1__c}, {!Case.LPCR_ChoixN2__c}, {!Case.LPCR_ChoixN3__c}
+FAMILLE : {!Case.LPCR_CompteFamille__c}
+DATE DE NAISSANCE : {!Case.LPCR_DateNaissance__c}
+DATE D’ENTREE : {!Case.LPCR_DateEntreeSouhaitee__c}
+RYTHME : {!Case.LPCR_NombreJoursSemaine__c} jours par semaine
+ENVELOPPE : {!Case.LPCR_PrixAchat__c}
 Une place est-elle disponible ?
 
 Merci d’avance,

@@ -404,6 +404,21 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_ChoixEntrepriseConversion__c</picklist>
+        <values>
+            <fullName>A définir</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Parent 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parent 2</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_CiviliteCoDemandeur__c</picklist>
         <values>
             <fullName>M</fullName>
@@ -507,6 +522,10 @@
         </values>
         <values>
             <fullName>Associé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autre</fullName>
             <default>false</default>
         </values>
         <values>
@@ -885,23 +904,15 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Avocat%2C profession libérale</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Chief Happiness Officer</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Directeur  R%26D%2C innovation</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Directeur  communication</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Directeur  grands comptes</fullName>
             <default>false</default>
         </values>
         <values>
@@ -914,6 +925,10 @@
         </values>
         <values>
             <fullName>Directeur Internet%2C digital%2C webmarketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur R%26D%2C innovation</fullName>
             <default>false</default>
         </values>
         <values>
@@ -930,6 +945,10 @@
         </values>
         <values>
             <fullName>Directeur commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur communication</fullName>
             <default>false</default>
         </values>
         <values>
@@ -982,6 +1001,10 @@
         </values>
         <values>
             <fullName>Directeur formation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Directeur grands comptes</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1101,10 +1124,6 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Responsable  communication</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Responsable Communication RH</fullName>
             <default>false</default>
         </values>
@@ -1146,6 +1165,10 @@
         </values>
         <values>
             <fullName>Responsable commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Responsable communication</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1323,7 +1346,7 @@
     <picklistValues>
         <picklist>LPCR_RegionCommerciale__c</picklist>
         <values>
-            <fullName>Grand Nord</fullName>
+            <fullName>Grand Est</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1339,15 +1362,30 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>IDF Sédentaires</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>IDF Sud</fullName>
             <default>false</default>
         </values>
         <values>
+            <fullName>IDF Sédentaires</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Rhone Alpes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_SecteurGeoGraphique__c</picklist>
+        <values>
+            <fullName>A l%27étranger</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autres régions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Île de France</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1391,9 +1429,220 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_SourceMigration__c</picklist>
+        <values>
+            <fullName>Fichiers Excel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intranet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lead Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SFV1</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_TypeAttribution__c</picklist>
         <values>
             <fullName>TBD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeCrecheX1__c</picklist>
+        <values>
+            <fullName>ALSH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halte-Garderie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jardin d%E2%80%99enfants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MICRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PAJE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RAM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeCrecheX2__c</picklist>
+        <values>
+            <fullName>ALSH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halte-Garderie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jardin d%E2%80%99enfants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MICRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PAJE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RAM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeCrecheX3__c</picklist>
+        <values>
+            <fullName>ALSH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Halte-Garderie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jardin d%E2%80%99enfants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MICRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PAJE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RAM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeDeClient__c</picklist>
+        <values>
+            <fullName>Administration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collectivité</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Distributeur %28partenaire%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entreprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extérieur%2FLPCR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grand Compte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hopital%2FClinique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PAJE parents solo %28libéral%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PLAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PME-ETI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partenaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TPE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ville</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1411,6 +1660,10 @@
     <picklistValues>
         <picklist>LPCR_TypeFonctionCoDemandeur__c</picklist>
         <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>CE</fullName>
             <default>false</default>
         </values>
@@ -1419,11 +1672,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Pôle Finance administratif%2C juridique</fullName>
             <default>false</default>
         </values>
         <values>
+            <fullName>Pôle Marketing %26 Communication</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Pôle Ressources humaines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pôle achat%2C services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pôle commercial</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1436,28 +1705,16 @@
         </values>
         <values>
             <fullName>Pôle informatique %26 Technique</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Public</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pôle Marketing %26 Communication</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pôle achat%2C services</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pôle commercial</fullName>
             <default>false</default>
         </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_TypeFonction__c</picklist>
         <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>CE</fullName>
             <default>false</default>
         </values>
@@ -1466,11 +1723,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Pôle Finance administratif%2C juridique</fullName>
             <default>false</default>
         </values>
         <values>
+            <fullName>Pôle Marketing %26 Communication</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Pôle Ressources humaines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pôle achat%2C services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pôle commercial</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1483,22 +1756,6 @@
         </values>
         <values>
             <fullName>Pôle informatique %26 Technique</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Public</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pôle Marketing %26 Communication</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pôle achat%2C services</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pôle commercial</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1528,11 +1785,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Crèche municipale</fullName>
+            <fullName>Crèche familiale%2Fparentale</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Crèche familiale%2Fparentale</fullName>
+            <fullName>Crèche municipale</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1606,123 +1863,6 @@
         </values>
         <values>
             <fullName>Warm</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_TypeCrecheX1__c</picklist>
-        <values>
-            <fullName>ALSH</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Halte-Garderie</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Jardin d%E2%80%99enfants</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MAC</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MAF</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MICRO</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Partenaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>RAM</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>PAJE</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_TypeCrecheX2__c</picklist>
-        <values>
-            <fullName>ALSH</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Halte-Garderie</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Jardin d%E2%80%99enfants</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MAC</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MAF</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MICRO</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Partenaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>RAM</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>PAJE</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_TypeCrecheX3__c</picklist>
-        <values>
-            <fullName>ALSH</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Halte-Garderie</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Jardin d%E2%80%99enfants</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MAC</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MAF</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MICRO</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Partenaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>RAM</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>PAJE</fullName>
             <default>false</default>
         </values>
     </picklistValues>

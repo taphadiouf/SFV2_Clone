@@ -27,6 +27,7 @@ public class APB014_ModificationEntrante_Test {
         LPCR_RessourceFamille__c rf = new LPCR_RessourceFamille__c();
         rf.LPCR_CompteFamille__c = acc2.id;
         rf.LPCR_ContactEnfant__c = contact.id;
+        rf.LPCR_DateDebut__c = Date.Today();
         insert rf;
 
         LPCR_ModificationEntrante__c tempModif = new LPCR_ModificationEntrante__c(LPCR_Devis__c  = quote.Id,LPCR_Contract__c = contract.Id,LPCR_Evenement__c  = 'Validation Contrat Directrice');

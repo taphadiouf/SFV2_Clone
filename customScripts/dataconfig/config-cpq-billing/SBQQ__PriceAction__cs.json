@@ -1,0 +1,2263 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef1"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "69",
+            "SBQQ__Field__c": "SBQQ__Opportunity2__c",
+            "SBQQ__Order__c": 5,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef2"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "70",
+            "SBQQ__Field__c": "SBQQ__MasterContract__c",
+            "SBQQ__Order__c": 100,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef3"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "71",
+            "SBQQ__Field__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Formula__c": "if(LPCR_Majoration__c != null, SBQQ__ListPrice__c  + LPCR_Majoration__c, SBQQ__ListPrice__c)",
+            "SBQQ__Order__c": 30,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgqQAG"
+                },
+                "Id": "a0a3O000002DWgqQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef4"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-25T14:30:33.000+0000",
+            "Name": "72",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__Formula__c": "IF(SBQQ__RequiredBy__r.LPCR_PrixBerceau__c != null, SBQQ__RequiredBy__r.LPCR_PrixBerceau__c, SBQQ__ListPrice__c)",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgiQAG"
+                },
+                "Id": "a0a3O000002DWgiQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-09-25T14:30:33.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef5"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "73",
+            "SBQQ__Field__c": "SBQQ__SpecialPriceType__c",
+            "SBQQ__Order__c": 20,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgnQAG"
+                },
+                "Id": "a0a3O000002DWgnQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SBQQ__Value__c": "Custom",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef6"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "74",
+            "SBQQ__Field__c": "LPCR_PrixBerceau__c",
+            "SBQQ__Formula__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Order__c": 40,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgnQAG"
+                },
+                "Id": "a0a3O000002DWgnQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef7"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "75",
+            "SBQQ__Field__c": "SBQQ__BillingFrequency__c",
+            "SBQQ__Formula__c": "SBQQ__Quote__r.SBQQ__BillingFrequency__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgoQAG"
+                },
+                "Id": "a0a3O000002DWgoQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef8"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-06-18T09:22:14.000+0000",
+            "Name": "76",
+            "SBQQ__Field__c": "LPCR_MasterDevis__c",
+            "SBQQ__Formula__c": "SBQQ__Opportunity2__r.LPCR_MasterDevis__c",
+            "SBQQ__ParentRuleIsActive__c": false,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgpQAG"
+                },
+                "Id": "a0a3O000002DWgpQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-06-18T09:22:14.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef9"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "77",
+            "SBQQ__Field__c": "LPCR_TotalRegion__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgcQAG"
+                },
+                "Id": "a0a3O000002DWgcQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__SummaryVariable__c/a1A3O00000022sbUAA"
+                },
+                "Id": "a1A3O00000022sbUAA"
+            },
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef10"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "78",
+            "SBQQ__Field__c": "LPCR_TotalRegion__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgrQAG"
+                },
+                "Id": "a0a3O000002DWgrQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__SummaryVariable__c/a1A3O00000022scUAA"
+                },
+                "Id": "a1A3O00000022scUAA"
+            },
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef11"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "79",
+            "SBQQ__Field__c": "SBQQ__SpecialPriceType__c",
+            "SBQQ__Order__c": 20,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgqQAG"
+                },
+                "Id": "a0a3O000002DWgqQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SBQQ__Value__c": "Custom",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef12"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "80",
+            "SBQQ__Field__c": "SBQQ__BillingType__c",
+            "SBQQ__Formula__c": "SBQQ__Quote__r.LPCR_TypeFacturation__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgsQAG"
+                },
+                "Id": "a0a3O000002DWgsQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef13"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "81",
+            "SBQQ__Field__c": "LPCR_EntiteJuridique__c",
+            "SBQQ__Formula__c": "LPCR_Creche__r.LPCR_EntiteJuridique__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgtQAG"
+                },
+                "Id": "a0a3O000002DWgtQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef14"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "82",
+            "SBQQ__Field__c": "LPCR_PrixBerceau__c",
+            "SBQQ__Formula__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Order__c": 40,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgqQAG"
+                },
+                "Id": "a0a3O000002DWgqQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef15"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "83",
+            "SBQQ__Field__c": "LPCR_MasterDevis__c",
+            "SBQQ__Order__c": 110,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef16"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "84",
+            "SBQQ__Field__c": "LPCR_PrixPlancher__c",
+            "SBQQ__Formula__c": "LPCR_PrixBerceau__c * (1-LPCR_PourcentagePlancherMicro__c)",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWguQAG"
+                },
+                "Id": "a0a3O000002DWguQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef17"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "85",
+            "SBQQ__Field__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Formula__c": "if(LPCR_Majoration__c != null, SBQQ__ListPrice__c + LPCR_Majoration__c, SBQQ__ListPrice__c)",
+            "SBQQ__Order__c": 30,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgnQAG"
+                },
+                "Id": "a0a3O000002DWgnQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef18"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "87",
+            "SBQQ__Field__c": "LPCR_PrixPlancher__c",
+            "SBQQ__Formula__c": "IF( ISPICKVAL( LPCR_Region__c , \"Paris\"), LPCR_PrixPlancherParisIDF__c, IF(ISPICKVAL( LPCR_Region__c , \"IDF et Grandes villes\"), LPCR_PrixPlancherParisIDF__c , LPCR_PrixPlancherProvince__c))",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgvQAG"
+                },
+                "Id": "a0a3O000002DWgvQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef19"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "88",
+            "SBQQ__Field__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Formula__c": "if(LPCR_Majoration__c != null, SBQQ__ListPrice__c  + LPCR_Majoration__c, SBQQ__ListPrice__c)",
+            "SBQQ__Order__c": 30,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgwQAG"
+                },
+                "Id": "a0a3O000002DWgwQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef20"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "89",
+            "SBQQ__Field__c": "SBQQ__SpecialPriceType__c",
+            "SBQQ__Order__c": 20,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgwQAG"
+                },
+                "Id": "a0a3O000002DWgwQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SBQQ__Value__c": "Custom",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef21"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "90",
+            "SBQQ__Field__c": "LPCR_PrixBerceau__c",
+            "SBQQ__Formula__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Order__c": 40,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgwQAG"
+                },
+                "Id": "a0a3O000002DWgwQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef22"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "46",
+            "SBQQ__Field__c": "LPCR_TotalRegion__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgdQAG"
+                },
+                "Id": "a0a3O000002DWgdQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__SummaryVariable__c/a1A3O00000022sdUAA"
+                },
+                "Id": "a1A3O00000022sdUAA"
+            },
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef23"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "47",
+            "SBQQ__Field__c": "SBQQ__Quantity__c",
+            "SBQQ__Formula__c": "SBQQ__RequiredBy__r.LPCR_TotalBerceauGratuitRegion__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgeQAG"
+                },
+                "Id": "a0a3O000002DWgeQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef24"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "48",
+            "SBQQ__Field__c": "SBQQ__Primary__c",
+            "SBQQ__Order__c": 20,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SBQQ__Value__c": "TRUE",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef25"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "49",
+            "SBQQ__Field__c": "ApprovalStatus__c",
+            "SBQQ__Order__c": 30,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SBQQ__Value__c": "Brouillon",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef26"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "50",
+            "SBQQ__Field__c": "SBQQ__UpgradedSubscription__c",
+            "SBQQ__Order__c": 75,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef27"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "51",
+            "SBQQ__Field__c": "SBQQ__StartDate__c",
+            "SBQQ__Formula__c": "IF( LPCR_DateResiliation__c <> Null, (LPCR_DateResiliation__c)+1,Null)",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgkQAG"
+                },
+                "Id": "a0a3O000002DWgkQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef28"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "52",
+            "SBQQ__Field__c": "LPCR_Cloned__c",
+            "SBQQ__Order__c": 50,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SBQQ__Value__c": "TRUE",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef29"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "53",
+            "SBQQ__Field__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Formula__c": "if(LPCR_Majoration__c != null, SBQQ__ListPrice__c  + LPCR_Majoration__c, SBQQ__ListPrice__c)",
+            "SBQQ__Order__c": 30,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWghQAG"
+                },
+                "Id": "a0a3O000002DWghQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef30"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "54",
+            "SBQQ__Field__c": "SBQQ__SpecialPriceType__c",
+            "SBQQ__Order__c": 20,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWghQAG"
+                },
+                "Id": "a0a3O000002DWghQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SBQQ__Value__c": "Custom",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef31"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "55",
+            "SBQQ__Field__c": "LPCR_PrixBerceau__c",
+            "SBQQ__Formula__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Order__c": 40,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWghQAG"
+                },
+                "Id": "a0a3O000002DWghQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef32"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "56",
+            "SBQQ__Field__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Formula__c": "IF( AND( ISPICKVAL( SBQQ__ChargeType__c, \"Recurring\"),  SBQQ__HasConsumptionSchedule__c = false) , 0,  SBQQ__ListPrice__c)",
+            "SBQQ__Order__c": 70,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef33"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "58",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__Formula__c": "IF( AND( ISPICKVAL( SBQQ__ChargeType__c, \"Recurring\"),  SBQQ__HasConsumptionSchedule__c = false) , 0,  SBQQ__ListPrice__c)",
+            "SBQQ__Order__c": 65,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef34"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "61",
+            "SBQQ__Field__c": "SBQQ__Quantity__c",
+            "SBQQ__Formula__c": "IF(OR(SBQQ__PriorQuantity__c = 0, SBQQ__PriorQuantity__c = Null),  SBQQ__Quantity__c, SBQQ__PriorQuantity__c)",
+            "SBQQ__Order__c": 60,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef35"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "62",
+            "SBQQ__Field__c": "LPCR_TauxHoraire__c",
+            "SBQQ__Formula__c": "SBQQ__RequiredBy__r.LPCR_TauxHoraire__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgfQAG"
+                },
+                "Id": "a0a3O000002DWgfQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef36"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "63",
+            "SBQQ__Field__c": "SBQQ__Status__c",
+            "SBQQ__Order__c": 90,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SBQQ__Value__c": "Draft",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef37"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "64",
+            "SBQQ__Field__c": "LPCR_CloneCancel__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgmQAG"
+                },
+                "Id": "a0a3O000002DWgmQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SBQQ__Value__c": "True",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef38"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "65",
+            "SBQQ__Field__c": "LPCR_CloneCancel__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWglQAG"
+                },
+                "Id": "a0a3O000002DWglQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SBQQ__Value__c": "False",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef39"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "66",
+            "SBQQ__Field__c": "SBQQ__PriorQuantity__c",
+            "SBQQ__Order__c": 80,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef40"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "67",
+            "SBQQ__Field__c": "LPCR_TypeAvenant__c",
+            "SBQQ__Order__c": 40,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef41"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "68",
+            "SBQQ__Field__c": "SBQQ__Type__c",
+            "SBQQ__Order__c": 10,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SBQQ__Value__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef42"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-28T11:08:31.000+0000",
+            "Name": "199",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004FP4sQAG"
+                },
+                "Id": "a0a3O000004FP4sQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_Prix__c",
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-09-28T11:08:31.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef43"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-30T15:26:32.000+0000",
+            "Name": "200",
+            "SBQQ__Field__c": "SBQQ__SpecialPriceType__c",
+            "SBQQ__Order__c": 10,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004FVKWQA4"
+                },
+                "Id": "a0a3O000004FVKWQA4"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SBQQ__Value__c": "Custom",
+            "SystemModstamp": "2020-09-30T15:26:32.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef44"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-30T15:29:49.000+0000",
+            "Name": "202",
+            "SBQQ__Field__c": "LPCR_PrixBerceau__c",
+            "SBQQ__Formula__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Order__c": 30,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004FVKWQA4"
+                },
+                "Id": "a0a3O000004FVKWQA4"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-09-30T15:29:49.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef45"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-10-15T15:12:47.000+0000",
+            "Name": "207",
+            "SBQQ__Field__c": "LPCR_Creche__c",
+            "SBQQ__Formula__c": "SBQQ__RequiredBy__r.LPCR_Creche__c",
+            "SBQQ__Order__c": 2,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004L6rCQAS"
+                },
+                "Id": "a0a3O000004L6rCQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-10-15T15:12:47.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef46"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-30T15:28:22.000+0000",
+            "Name": "201",
+            "SBQQ__Field__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Formula__c": "SBQQ__ListPrice__c + LPCR_Majoration__c",
+            "SBQQ__Order__c": 20,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004FVKWQA4"
+                },
+                "Id": "a0a3O000004FVKWQA4"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-09-30T15:28:22.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef47"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "92",
+            "SBQQ__Field__c": "LPCR_Region__c",
+            "SBQQ__Formula__c": "TEXT(SBQQ__Quote__r.LPCR_Region__c)",
+            "SBQQ__Order__c": 10,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002JRXpQAO"
+                },
+                "Id": "a0a3O000002JRXpQAO"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef48"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "93",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__Order__c": 10,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWghQAG"
+                },
+                "Id": "a0a3O000002DWghQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_Prix__c",
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef49"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "94",
+            "SBQQ__Field__c": "LPCR_Creche__c",
+            "SBQQ__Formula__c": "SBQQ__Quote__r.LPCR_Creche__c",
+            "SBQQ__Order__c": 20,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002JRXpQAO"
+                },
+                "Id": "a0a3O000002JRXpQAO"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef50"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "103",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__Order__c": 10,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgnQAG"
+                },
+                "Id": "a0a3O000002DWgnQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_Prix__c",
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef51"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "104",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__Order__c": 10,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgqQAG"
+                },
+                "Id": "a0a3O000002DWgqQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_Prix__c",
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef52"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "105",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__Order__c": 10,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWgwQAG"
+                },
+                "Id": "a0a3O000002DWgwQAG"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_Prix__c",
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef53"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "135",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__Formula__c": "IF (SBQQ__StartDate__c = NULL,0, SBQQ__ListPrice__c )",
+            "SBQQ__Order__c": 3,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002U8VEQA0"
+                },
+                "Id": "a0a3O000002U8VEQA0"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef54"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "136",
+            "SBQQ__Field__c": "LPCR_HoldBilling__c",
+            "SBQQ__Formula__c": "IF (SBQQ__StartDate__c = NULL,'Yes', 'No')",
+            "SBQQ__Order__c": 4,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002U8VEQA0"
+                },
+                "Id": "a0a3O000002U8VEQA0"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef55"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "137",
+            "SBQQ__Field__c": "SBQQ__StartDate__c",
+            "SBQQ__Formula__c": "IF (LPCR_OptionNumber__c = 'One',SBQQ__Quote__r.LPCR_First_Option_Mac_Start_Date__c , SBQQ__Quote__r.LPCR_Second_Option_Mac_Start_Date__c)",
+            "SBQQ__Order__c": 1,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002U8VEQA0"
+                },
+                "Id": "a0a3O000002U8VEQA0"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef56"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "138",
+            "SBQQ__Field__c": "SBQQ__EndDate__c",
+            "SBQQ__Formula__c": "IF (LPCR_OptionNumber__c = 'One', SBQQ__Quote__r.LPCR_First_Option_Mac_End_Date__c , SBQQ__Quote__r.LPCR_Second_Option_Mac_End_Date__c)",
+            "SBQQ__Order__c": 2,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002U8VEQA0"
+                },
+                "Id": "a0a3O000002U8VEQA0"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef57"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "139",
+            "SBQQ__Field__c": "LPCR_HoldReason__c",
+            "SBQQ__Formula__c": "IF (SBQQ__StartDate__c = NULL,IF( LPCR_OptionNumber__c = 'One',' Invoice shouldn’t be issued as it started after Sep 1',' Invoice shouldn’t be issued as it has ended prior to 31st July'),NULL )",
+            "SBQQ__Order__c": 5,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002U8VEQA0"
+                },
+                "Id": "a0a3O000002U8VEQA0"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef58"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-01T09:03:11.000+0000",
+            "Name": "106",
+            "SBQQ__Field__c": "LPCR_HoldBilling__c",
+            "SBQQ__Order__c": 30,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wIQAS"
+                },
+                "Id": "a0a3O000002R6wIQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-01T09:03:11.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef59"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-01T09:03:11.000+0000",
+            "Name": "107",
+            "SBQQ__Field__c": "LPCR_HoldBilling__c",
+            "SBQQ__Order__c": 2,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wJQAS"
+                },
+                "Id": "a0a3O000002R6wJQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SBQQ__Value__c": "Yes",
+            "SystemModstamp": "2020-07-01T09:03:11.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef60"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-01T09:03:11.000+0000",
+            "Name": "108",
+            "SBQQ__Field__c": "LPCR_HoldReason__c",
+            "SBQQ__Order__c": 3,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wJQAS"
+                },
+                "Id": "a0a3O000002R6wJQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SBQQ__Value__c": "'Invoice shouldn’t be issued as it started after Sep 1'",
+            "SystemModstamp": "2020-07-01T09:03:11.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef61"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "109",
+            "SBQQ__Field__c": "LPCR_RevenusFamille__c",
+            "SBQQ__Order__c": 70,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_RevenusFamille__c",
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef62"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "110",
+            "SBQQ__Field__c": "LPCR_RessourcesPrixPlancher__c",
+            "SBQQ__Order__c": 30,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_RessourcesPrixPlancher__c",
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef63"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "111",
+            "SBQQ__Field__c": "LPCR_RevenusFamille__c",
+            "SBQQ__Order__c": 40,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_RevenusFamille__c",
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef64"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-11-03T08:27:29.000+0000",
+            "Name": "112",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__Formula__c": "CASE( SBQQ__Quote__r.LPCR_PlanningEnfant__r.LPCR_TypePlanning__c ,\r\n\"Planning Classique\", ( SBQQ__Quote__r.LPCR_PlanningEnfant__r.LPCR_NombreHeuresSemaine__c *(52 -SBQQ__Quote__r.LPCR_CongesSemaine__c )* LPCR_TauxHoraire__c )/SBQQ__Quote__r.LPCR_Creche__r.LPCR_TypeMensualisation__c,\r\n\"Multi-Planning\", (SBQQ__Quote__r.LPCR_PlanningEnfant__r.LPCR_MoyenneHeuresSemaine__c *(52 - SBQQ__Quote__r.LPCR_CongesSemaine__c )* LPCR_TauxHoraire__c )/SBQQ__Quote__r.LPCR_Creche__r.LPCR_TypeMensualisation__c,\r\n\"Planning Tournant\", (SBQQ__Quote__r.LPCR_PlanningEnfant__r.LPCR_NombreHeuresMois__c * LPCR_TauxHoraire__c),\r\n0)",
+            "SBQQ__Order__c": 60,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-11-03T08:27:29.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef65"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "113",
+            "SBQQ__Field__c": "LPCR_TauxEffort__c",
+            "SBQQ__Order__c": 80,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_TauxEffort__c",
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef66"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "114",
+            "SBQQ__Field__c": "LPCR_TauxEffort__c",
+            "SBQQ__Order__c": 10,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_TauxEffort__c",
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef67"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-24T16:39:47.000+0000",
+            "Name": "115",
+            "SBQQ__Field__c": "LPCR_TauxHoraire__c",
+            "SBQQ__Formula__c": "IF( ISPICKVAL(SBQQ__Quote__r.LPCR_ContactRepresentant1__r.LPCR_TypeAllocataire__c, 'CAF'),\r\n(IF( (LPCR_RevenusFamille__c/12) > LPCR_RessourcePlafond__c, LPCR_RessourcePlafond__c,\r\nIF( (LPCR_RevenusFamille__c/12) < LPCR_RessourcePlafond__c, (LPCR_RevenusFamille__c/12),\r\nIF( (LPCR_RevenusFamille__c/12) < LPCR_RessourcesPrixPlancher__c, LPCR_RessourcesPrixPlancher__c,\r\nIF( (LPCR_RevenusFamille__c/12) > LPCR_RessourcesPrixPlancher__c, (LPCR_RevenusFamille__c/12),\r\nNULL))))* LPCR_TauxEffort__c),\r\n\r\n(IF( (LPCR_RevenusFamille__c/12) > LPCR_RessourcePlafond__c, LPCR_RessourcePlafond__c,\r\nIF( (LPCR_RevenusFamille__c/12) < LPCR_RessourcePlafond__c, (LPCR_RevenusFamille__c/12),\r\nIF( (LPCR_RevenusFamille__c/12) < LPCR_RessourcesPrixPlancher__c, LPCR_RessourcesPrixPlancher__c,\r\nIF( (LPCR_RevenusFamille__c/12) > LPCR_RessourcesPrixPlancher__c, (LPCR_RevenusFamille__c/12),\r\nNULL))))*SBQQ__Quote__r.LPCR_Creche__r.LPCR_TauxEffort__c ))",
+            "SBQQ__Order__c": 50,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-09-24T16:39:47.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef68"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "116",
+            "SBQQ__Field__c": "LPCR_RessourcePlafond__c",
+            "SBQQ__Order__c": 20,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_RessourcePlafond__c",
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef69"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "117",
+            "SBQQ__Field__c": "LPCR_RessourcesPrixPlancher__c",
+            "SBQQ__Order__c": 100,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_RessourcesPrixPlancher__c",
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef70"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "118",
+            "SBQQ__Field__c": "LPCR_RessourcePlafond__c",
+            "SBQQ__Order__c": 90,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_RessourcePlafond__c",
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef71"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "119",
+            "SBQQ__Field__c": "LPCR_TauxHoraire__c",
+            "SBQQ__Formula__c": "IF( ISPICKVAL(LPCR_ContactRepresentant1__r.LPCR_TypeAllocataire__c, 'CAF'),\n(IF( (LPCR_RevenusFamille__c/12) > LPCR_RessourcePlafond__c, LPCR_RessourcePlafond__c,\nIF( (LPCR_RevenusFamille__c/12) < LPCR_RessourcePlafond__c, (LPCR_RevenusFamille__c/12),\nIF( (LPCR_RevenusFamille__c/12) < LPCR_RessourcesPrixPlancher__c, LPCR_RessourcesPrixPlancher__c,\nIF( (LPCR_RevenusFamille__c/12) > LPCR_RessourcesPrixPlancher__c, (LPCR_RevenusFamille__c/12),\nNULL))))* LPCR_TauxEffort__c),\n\n(IF( (LPCR_RevenusFamille__c/12) > LPCR_RessourcePlafond__c, LPCR_RessourcePlafond__c,\nIF( (LPCR_RevenusFamille__c/12) < LPCR_RessourcePlafond__c, (LPCR_RevenusFamille__c/12),\nIF( (LPCR_RevenusFamille__c/12) < LPCR_RessourcesPrixPlancher__c, LPCR_RessourcesPrixPlancher__c,\nIF( (LPCR_RevenusFamille__c/12) > LPCR_RessourcesPrixPlancher__c, (LPCR_RevenusFamille__c/12),\nNULL))))*LPCR_Creche__r.LPCR_TauxEffort__c ))",
+            "SBQQ__Order__c": 110,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef72"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "120",
+            "SBQQ__Field__c": "LPCR_TauxMensuel__c",
+            "SBQQ__Formula__c": "CASE( LPCR_PlanningEnfant__r.LPCR_TypePlanning__c ,\n\"Planning Classique\", (LPCR_PlanningEnfant__r.LPCR_NombreHeuresSemaine__c *(52 -LPCR_CongesSemaine__c )* LPCR_TauxHoraire__c )/LPCR_Creche__r.LPCR_TypeMensualisation__c,\n\"Multi-Planning\", (LPCR_PlanningEnfant__r.LPCR_MoyenneHeuresSemaine__c *(52 -LPCR_CongesSemaine__c )* LPCR_TauxHoraire__c )/LPCR_Creche__r.LPCR_TypeMensualisation__c,\n\"Planning Tournant\", (LPCR_PlanningEnfant__r.LPCR_NombreHeuresMois__c * LPCR_TauxHoraire__c),\nNULL)",
+            "SBQQ__Order__c": 120,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef73"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-01T09:03:11.000+0000",
+            "Name": "122",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__Order__c": 1,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wJQAS"
+                },
+                "Id": "a0a3O000002R6wJQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SBQQ__Value__c": "0",
+            "SystemModstamp": "2020-07-01T09:03:11.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef74"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-01T09:03:11.000+0000",
+            "Name": "123",
+            "SBQQ__Field__c": "SBQQ__EndDate__c",
+            "SBQQ__Formula__c": "IF (LPCR_OptionNumber__c = 'One',\n   IF( SBQQ__Quote__r.SBQQ__StartDate__c <=  SBQQ__Quote__r.LPCR_FirstOptionEndDate__c,  SBQQ__Quote__r.LPCR_FirstOptionEndDate__c , NULL),  SBQQ__Quote__r.SBQQ__EndDate__c  )",
+            "SBQQ__Order__c": 2,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wIQAS"
+                },
+                "Id": "a0a3O000002R6wIQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-01T09:03:11.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef75"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "124",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__Order__c": 10,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wHQAS"
+                },
+                "Id": "a0a3O000002R6wHQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceLookupField__c": "LPCR_Prix__c",
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef76"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "125",
+            "SBQQ__Field__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Formula__c": "if(LPCR_Majoration__c != null, SBQQ__ListPrice__c  + LPCR_Majoration__c, SBQQ__ListPrice__c)",
+            "SBQQ__Order__c": 30,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wHQAS"
+                },
+                "Id": "a0a3O000002R6wHQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef77"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "126",
+            "SBQQ__Field__c": "LPCR_PrixBerceau__c",
+            "SBQQ__Formula__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Order__c": 40,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wHQAS"
+                },
+                "Id": "a0a3O000002R6wHQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef78"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "127",
+            "SBQQ__Field__c": "SBQQ__SpecialPriceType__c",
+            "SBQQ__Order__c": 20,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wHQAS"
+                },
+                "Id": "a0a3O000002R6wHQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_TablePrix__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SBQQ__Value__c": "Custom",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef79"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-01T09:03:11.000+0000",
+            "Name": "128",
+            "SBQQ__Field__c": "SBQQ__EndDate__c",
+            "SBQQ__Formula__c": "if(LPCR_OptionNumber__c = 'One', SBQQ__Quote__r.LPCR_FirstOptionEndDate__c , SBQQ__Quote__r.SBQQ__EndDate__c)",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wLQAS"
+                },
+                "Id": "a0a3O000002R6wLQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-01T09:03:11.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef80"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-01T09:03:11.000+0000",
+            "Name": "129",
+            "SBQQ__Field__c": "SBQQ__StartDate__c",
+            "SBQQ__Formula__c": "IF (LPCR_OptionNumber__c = 'One',\n   IF( SBQQ__Quote__r.SBQQ__StartDate__c <=  SBQQ__Quote__r.LPCR_FirstOptionEndDate__c, SBQQ__Quote__r.SBQQ__StartDate__c, NULL),IF( SBQQ__Quote__r.SBQQ__StartDate__c <=  SBQQ__Quote__r.LPCR_FirstOptionEndDate__c,  SBQQ__Quote__r.LPCR_SecondOptionStartDate__c , SBQQ__Quote__r.SBQQ__StartDate__c) )",
+            "SBQQ__Order__c": 1,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wIQAS"
+                },
+                "Id": "a0a3O000002R6wIQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-01T09:03:11.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef81"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "LPCR_Notes__c": "Cette action vous permet de modifier le prix du berceau sur le produit parent du bundle BerceauMac11Mois et d'éviter de facturer celui-ci chaque mois dont Aout (Pas de facturation en août). des options seront utilisées pour éviter la facturation en Aout.",
+            "Name": "130",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__Formula__c": "If (SBQQ__ProductCode__c = 'BerceauMac11Mois', 0, SBQQ__ListPrice__c)",
+            "SBQQ__Order__c": 500,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wGQAS"
+                },
+                "Id": "a0a3O000002R6wGQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "LPCR_RessourceFamille__c",
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef82"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-01T09:03:11.000+0000",
+            "Name": "131",
+            "SBQQ__Field__c": "SBQQ__StartDate__c",
+            "SBQQ__Formula__c": "if(LPCR_OptionNumber__c = 'One', SBQQ__Quote__r.SBQQ__StartDate__c, SBQQ__Quote__r.LPCR_SecondOptionStartDate__c)",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wLQAS"
+                },
+                "Id": "a0a3O000002R6wLQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-01T09:03:11.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef83"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-01T09:03:11.000+0000",
+            "Name": "132",
+            "SBQQ__Field__c": "LPCR_HoldReason__c",
+            "SBQQ__Order__c": 40,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wIQAS"
+                },
+                "Id": "a0a3O000002R6wIQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-01T09:03:11.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef84"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "133",
+            "SBQQ__Field__c": "SBQQ__Quantity__c",
+            "SBQQ__Order__c": 20,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wKQAS"
+                },
+                "Id": "a0a3O000002R6wKQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000000bwrlUAA"
+                },
+                "Id": "a1A3O000000bwrlUAA"
+            },
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef85"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:00:52.000+0000",
+            "Name": "134",
+            "SBQQ__Field__c": "SBQQ__ListPrice__c",
+            "SBQQ__Formula__c": "SBQQ__Quote__r.LPCR_FraisDossier__c",
+            "SBQQ__Order__c": 10,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wKQAS"
+                },
+                "Id": "a0a3O000002R6wKQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef86"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-11-16T16:10:13.000+0000",
+            "Name": "216",
+            "SBQQ__Field__c": "SBQQ__SpecialPrice__c",
+            "SBQQ__Formula__c": "IF(NOT(ISBLANK(LPCR_DateDebut__c)),IF(year(LPCR_DateDebut__c) > year( SBQQ__Quote__r.SBQQ__StartDate__c ),0, SBQQ__SpecialPrice__c),SBQQ__SpecialPrice__c)",
+            "SBQQ__Order__c": 1,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004M0lJQAS"
+                },
+                "Id": "a0a3O000004M0lJQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-11-16T16:10:13.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef87"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-10-15T15:12:26.000+0000",
+            "Name": "206",
+            "SBQQ__Field__c": "LPCR_Region__c",
+            "SBQQ__Formula__c": "SBQQ__RequiredBy__r.LPCR_Region__c",
+            "SBQQ__Order__c": 1,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004L6rCQAS"
+                },
+                "Id": "a0a3O000004L6rCQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-10-15T15:12:26.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef88"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-11-16T16:10:25.000+0000",
+            "Name": "213",
+            "SBQQ__Field__c": "SBQQ__NetPrice__c",
+            "SBQQ__Formula__c": "IF(NOT(ISBLANK(LPCR_DateDebut__c)),IF(year(LPCR_DateDebut__c) > year( SBQQ__Quote__r.SBQQ__StartDate__c ),0, SBQQ__NetPrice__c),SBQQ__NetPrice__c)",
+            "SBQQ__Order__c": 2,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004M0lJQAS"
+                },
+                "Id": "a0a3O000004M0lJQAS"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-11-16T16:10:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef89"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-10-21T14:38:45.000+0000",
+            "Name": "209",
+            "SBQQ__Field__c": "LPCR_DateFinMaxQuoteLine__c",
+            "SBQQ__Formula__c": "MAX(LPCR_DateFin__c,LPCR_DateFinMaxQuoteLine__c)",
+            "SBQQ__Order__c": 2,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004LXhMQAW"
+                },
+                "Id": "a0a3O000004LXhMQAW"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-10-21T14:38:45.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef90"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-11-02T17:10:52.000+0000",
+            "Name": "214",
+            "SBQQ__Field__c": "LPCR_LigneBonCommandeEnvoye__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004MVuMQAW"
+                },
+                "Id": "a0a3O000004MVuMQAW"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SBQQ__Value__c": "true",
+            "SystemModstamp": "2020-11-02T17:25:26.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef91"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-10-21T14:37:43.000+0000",
+            "Name": "208",
+            "SBQQ__Field__c": "LPCR_DateFinMaxQuoteLine__c",
+            "SBQQ__Order__c": 1,
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004LXhMQAW"
+                },
+                "Id": "a0a3O000004LXhMQAW"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__SourceVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000000gzJSUAY"
+                },
+                "Id": "a1A3O000000gzJSUAY"
+            },
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-10-21T14:37:43.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef92"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-11-04T21:44:30.000+0000",
+            "Name": "215",
+            "SBQQ__Field__c": "LPCR_CheckboxTechnique__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SBQQ__Value__c": "FALSE",
+            "SystemModstamp": "2020-11-04T21:44:30.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef93"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-08-19T14:49:53.000+0000",
+            "Name": "143",
+            "SBQQ__Field__c": "LPCR_DateSignatureContrat__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-08-19T14:49:53.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef94"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-08-19T14:49:39.000+0000",
+            "Name": "142",
+            "SBQQ__Field__c": "SubmittedDate__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000002DWggQAG"
+                },
+                "Id": "a0a3O000002DWggQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2020-08-19T14:49:39.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef95"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-25T15:58:09.000+0000",
+            "Name": "197",
+            "SBQQ__Field__c": "SBQQ__Discount__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004FC0eQAG"
+                },
+                "Id": "a0a3O000004FC0eQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-09-25T15:58:09.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef96"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-25T15:58:19.000+0000",
+            "Name": "198",
+            "SBQQ__Field__c": "SBQQ__AdditionalDiscountAmount__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004FC0eQAG"
+                },
+                "Id": "a0a3O000004FC0eQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote Line",
+            "SystemModstamp": "2020-09-25T15:58:19.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef97"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-09-25T15:57:56.000+0000",
+            "Name": "196",
+            "SBQQ__Field__c": "LPCR_RecalculationMACDone__c",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__PriceRule__c/a0a3O000004FC0eQAG"
+                },
+                "Id": "a0a3O000004FC0eQAG"
+            },
+            "SBQQ__RuleTargetsCalculator__c": true,
+            "SBQQ__TargetObject__c": "Quote",
+            "SBQQ__Value__c": "True",
+            "SystemModstamp": "2020-09-25T15:57:56.000+0000"
+        }
+    ]
+}

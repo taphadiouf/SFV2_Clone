@@ -5,63 +5,82 @@
 */
 global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject>, Schedulable {
     
+    final String ClassName = APB001_ProcessLPCR_Log.class.getName();
     
     global Database.QueryLocator  start(Database.BatchableContext bc) {
+
         String tmpLabel = UM010_Constant.LOG_SEND_DOC_TO_GED;
+
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS); 
+
         return Database.getQueryLocator([SELECT Id, LPCR_TargetObject__c FROM LPCR_Log__c WHERE Name = :tmpLabel AND LPCR_Result__c = 'Success']);
         
     }
     global void execute(Database.BatchableContext bc, List<LPCR_Log__c> logs){
 
-        String ErrMsg;
-        set<String> docIds = new set<String> ();
-        set<String> delIds = new set<String> ();
-        for(LPCR_Log__c eachLog : logs){
-            docIds.add(eachLog.LPCR_TargetObject__c);
-        }
-        List<Attachment> lstAtta = [SELECT Id FROM Attachment WHERE Id IN: docIds];
-        for(Attachment eachatt : lstAtta){
-            delIds.add('' +eachatt.Id);
-        }
-        List<LPCR_Log__c> lstPurgedDoc =[SELECT Id, LPCR_TargetObject__c FROM LPCR_Log__c WHERE LPCR_TargetObject__c IN : delIds];
+        Exception[] errors = new Exception[0];
+
         try {
-            delete lstAtta;
-            PAD.log('APB001_ProcessLPCR_Log', 'execute', 'The documents are deleted successfully');
-            UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null, lstAtta.size() + ' Logs deleted', UM010_Constant.SUCCESS);  
-        } catch (Exception e) {
-            ErrMsg = String.valueOf(e.getMessage());
-        } finally {
-            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null, 'Error while deleting the documents' + ErrMsg, UM010_Constant.ERROR);  
+
+            String ErrMsg;
+            set<String> docIds = new set<String> ();
+            set<String> delIds = new set<String> ();
+
+            for(LPCR_Log__c eachLog : logs){
+                docIds.add(eachLog.LPCR_TargetObject__c);
             }
-        }
-
-
-
-        ErrMsg = null;
-        // check if all delete success..
-        lstAtta = [SELECT Id FROM Attachment WHERE Id IN: docIds ];
-        if(lstAtta.isEmpty() ){
-            for(LPCR_Log__c eachLog : lstPurgedDoc){
-                eachLog.LPCR_Result__c = 'Purged';
+            List<Attachment> lstAtta = [SELECT Id FROM Attachment WHERE Id IN: docIds];
+            for(Attachment eachatt : lstAtta){
+                delIds.add('' +eachatt.Id);
             }
+            List<LPCR_Log__c> lstPurgedDoc =[SELECT Id, LPCR_TargetObject__c FROM LPCR_Log__c WHERE LPCR_TargetObject__c IN : delIds];
             try {
-                update lstPurgedDoc;
+                delete lstAtta;
                 PAD.log('APB001_ProcessLPCR_Log', 'execute', 'The documents are deleted successfully');
-                UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null, 'Set Logs LPCR_Result__c to Purged', UM010_Constant.SUCCESS);  
+                UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null, lstAtta.size() + ' Logs deleted', UM010_Constant.SUCCESS);  
             } catch (Exception e) {
-                ErrMsg = e.getMessage();
+                ErrMsg = String.valueOf(e.getMessage());
             } finally {
                 if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null, 'Error while setting Logs LPCR_Result__c to Purged. Exception : ' + ErrMsg, UM010_Constant.ERROR);  
+                    UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null, 'Error while deleting the documents' + ErrMsg, UM010_Constant.ERROR);  
                 }
             }
-        }else{
-            PAD.log('APB001_ProcessLPCR_Log', 'execute', 'The documents are not deleted');
+
+
+
+            ErrMsg = null;
+            // check if all delete success..
+            lstAtta = [SELECT Id FROM Attachment WHERE Id IN: docIds ];
+            if(lstAtta.isEmpty() ){
+                for(LPCR_Log__c eachLog : lstPurgedDoc){
+                    eachLog.LPCR_Result__c = 'Purged';
+                }
+                try {
+                    update lstPurgedDoc;
+                    PAD.log('APB001_ProcessLPCR_Log', 'execute', 'The documents are deleted successfully');
+                    UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null, 'Set Logs LPCR_Result__c to Purged', UM010_Constant.SUCCESS);  
+                } catch (Exception e) {
+                    ErrMsg = e.getMessage();
+                } finally {
+                    if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                        UM001_LogManager.writeLogActivityWithoutFuture('Batch to delete documents of LPCR_Log__c','APB001_ProcessLPCR_Log', 'Batch' , null, 'Error while setting Logs LPCR_Result__c to Purged. Exception : ' + ErrMsg, UM010_Constant.ERROR);  
+                    }
+                }
+            }else{
+                PAD.log('APB001_ProcessLPCR_Log', 'execute', 'The documents are not deleted');
+            }
+
+        } catch(Exception e) {
+            errors.add(e);
         }
+
+        if (!errors.isEmpty()) {
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
+        } 
     }
     global void finish(Database.BatchableContext bc){
         
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish', 'Batch' , null, 'Finished Batch Processing', UM010_Constant.SUCCESS); 
     }
 
      

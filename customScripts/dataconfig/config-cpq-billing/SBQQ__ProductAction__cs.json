@@ -1,0 +1,31 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "SBQQ__ProductAction__c",
+                "referenceId": "SBQQ__ProductAction__cRef1"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-08-17T15:32:15.000+0000",
+            "Name": "PA-0000001",
+            "SBQQ__ParentRuleIsActive__c": false,
+            "SBQQ__Product__r": {
+                "attributes": {
+                    "type": "Product2",
+                    "url": "/services/data/v50.0/sobjects/Product2/01t3O0000019dYPQAY"
+                },
+                "Id": "01t3O0000019dYPQAY"
+            },
+            "SBQQ__Required__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__ProductRule__c/a0n3O0000033m49QAA"
+                },
+                "Id": "a0n3O0000033m49QAA"
+            },
+            "SBQQ__Type__c": "Show & Add",
+            "SystemModstamp": "2020-08-17T15:32:15.000+0000"
+        }
+    ]
+}

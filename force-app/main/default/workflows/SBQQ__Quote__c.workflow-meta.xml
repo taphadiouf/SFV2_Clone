@@ -397,7 +397,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Contrat Réservataire</value>
+            <value>Contrat de Réservation</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
@@ -458,7 +458,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Contrat Réservataire</value>
+            <value>Contrat de Réservation</value>
         </criteriaItems>
         <description>Ce WF notifie le service famille lors de l&apos;annulation d&apos;un contrat B2B</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -493,7 +493,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Contrat Réservataire</value>
+            <value>Contrat de Réservation</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>

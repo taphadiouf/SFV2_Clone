@@ -1,0 +1,5 @@
+<aura:component implements="lightning:isUrlAddressable,flexipage:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId,force:appHostable" >
+	
+    <c:lWC011_AmendLexContract recordId="{!v.recordId}" onclose="{!c.closeQuickAction}"/>
+
+</aura:component>

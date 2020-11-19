@@ -379,6 +379,13 @@
         <value>One-Time</value>
     </labels>
     <labels>
+        <fullName>LPCR_Recurring</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Recurring</shortDescription>
+        <value>Recurring</value>
+    </labels>
+    <labels>
         <fullName>LPCR_OppFor</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -839,5 +846,12 @@
         <protected>false</protected>
         <shortDescription>LPCR_Autres</shortDescription>
         <value>Autres</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AmendLexError</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AmendLexError</shortDescription>
+        <value>Merci de renseigner la date de début de l'amendement avant de créer votre avenant.</value>
     </labels>
 </CustomLabels>
