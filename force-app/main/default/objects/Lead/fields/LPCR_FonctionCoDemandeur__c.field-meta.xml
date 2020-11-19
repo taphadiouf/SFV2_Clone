@@ -9,474 +9,8 @@
     <type>Picklist</type>
     <valueSet>
         <controllingField>LPCR_TypeFonctionCoDemandeur__c</controllingField>
-        <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Président</fullName>
-                <default>false</default>
-                <label>Président</label>
-            </value>
-            <value>
-                <fullName>Directeur général</fullName>
-                <default>false</default>
-                <label>Directeur général</label>
-            </value>
-            <value>
-                <fullName>Directeur général adjoint</fullName>
-                <default>false</default>
-                <label>Directeur général adjoint</label>
-            </value>
-            <value>
-                <fullName>Directeur des opérations</fullName>
-                <default>false</default>
-                <label>Directeur des opérations</label>
-            </value>
-            <value>
-                <fullName>Secrétaire général</fullName>
-                <default>false</default>
-                <label>Secrétaire général</label>
-            </value>
-            <value>
-                <fullName>Gérant</fullName>
-                <default>false</default>
-                <label>Gérant</label>
-            </value>
-            <value>
-                <fullName>Associé</fullName>
-                <default>false</default>
-                <label>Associé</label>
-            </value>
-            <value>
-                <fullName>Directeur de division, business unit ou filiale</fullName>
-                <default>false</default>
-                <label>Directeur de division, business unit ou filiale</label>
-            </value>
-            <value>
-                <fullName>Directeur régional</fullName>
-                <default>false</default>
-                <label>Directeur régional</label>
-            </value>
-            <value>
-                <fullName>Directeur international</fullName>
-                <default>false</default>
-                <label>Directeur international</label>
-            </value>
-            <value>
-                <fullName>Assistante de Direction</fullName>
-                <default>false</default>
-                <label>Assistante de Direction</label>
-            </value>
-            <value>
-                <fullName>Directeur achats</fullName>
-                <default>false</default>
-                <label>Directeur achats</label>
-            </value>
-            <value>
-                <fullName>Responsable achats</fullName>
-                <default>false</default>
-                <label>Responsable achats</label>
-            </value>
-            <value>
-                <fullName>Assistant achats</fullName>
-                <default>false</default>
-                <label>Assistant achats</label>
-            </value>
-            <value>
-                <fullName>Directeur des services généraux</fullName>
-                <default>false</default>
-                <label>Directeur des services généraux</label>
-            </value>
-            <value>
-                <fullName>Responsable des services généraux</fullName>
-                <default>false</default>
-                <label>Responsable des services généraux</label>
-            </value>
-            <value>
-                <fullName>Directeur des ressources humaines</fullName>
-                <default>false</default>
-                <label>Directeur des ressources humaines</label>
-            </value>
-            <value>
-                <fullName>Directeur développement RH</fullName>
-                <default>false</default>
-                <label>Directeur développement RH</label>
-            </value>
-            <value>
-                <fullName>Directeur recrutement</fullName>
-                <default>false</default>
-                <label>Directeur recrutement</label>
-            </value>
-            <value>
-                <fullName>Directeur relations sociales</fullName>
-                <default>false</default>
-                <label>Directeur relations sociales</label>
-            </value>
-            <value>
-                <fullName>Directeur de l&#39;actions sociale</fullName>
-                <default>false</default>
-                <label>Directeur de l&#39;actions sociale</label>
-            </value>
-            <value>
-                <fullName>Directeur formation</fullName>
-                <default>false</default>
-                <label>Directeur formation</label>
-            </value>
-            <value>
-                <fullName>Directeur Gestion des carrières</fullName>
-                <default>false</default>
-                <label>Directeur Gestion des carrières</label>
-            </value>
-            <value>
-                <fullName>Responsable ressources humaines</fullName>
-                <default>false</default>
-                <label>Responsable ressources humaines</label>
-            </value>
-            <value>
-                <fullName>Responsable développement RH</fullName>
-                <default>false</default>
-                <label>Responsable développement RH</label>
-            </value>
-            <value>
-                <fullName>Responsable recrutement</fullName>
-                <default>false</default>
-                <label>Responsable recrutement</label>
-            </value>
-            <value>
-                <fullName>Responsable rémunération</fullName>
-                <default>false</default>
-                <label>Responsable rémunération</label>
-            </value>
-            <value>
-                <fullName>Responsable relations sociales</fullName>
-                <default>false</default>
-                <label>Responsable relations sociales</label>
-            </value>
-            <value>
-                <fullName>Responsable de l&#39;actions sociale</fullName>
-                <default>false</default>
-                <label>Responsable de l&#39;actions sociale</label>
-            </value>
-            <value>
-                <fullName>Responsable formation</fullName>
-                <default>false</default>
-                <label>Responsable formation</label>
-            </value>
-            <value>
-                <fullName>Responsable Qualité de Vie au Travail</fullName>
-                <default>false</default>
-                <label>Responsable Qualité de Vie au Travail</label>
-            </value>
-            <value>
-                <fullName>Assistante Ressources Humaines</fullName>
-                <default>false</default>
-                <label>Assistante Ressources Humaines</label>
-            </value>
-            <value>
-                <fullName>Responsable Communication RH</fullName>
-                <default>false</default>
-                <label>Responsable Communication RH</label>
-            </value>
-            <value>
-                <fullName>Responsable Marque Employeur</fullName>
-                <default>false</default>
-                <label>Responsable Marque Employeur</label>
-            </value>
-            <value>
-                <fullName>Chief Happiness Officer</fullName>
-                <default>false</default>
-                <label>Chief Happiness Officer</label>
-            </value>
-            <value>
-                <fullName>Directeur du développement durable/RSE</fullName>
-                <default>false</default>
-                <label>Directeur du développement durable/RSE</label>
-            </value>
-            <value>
-                <fullName>Responsable RSE</fullName>
-                <default>false</default>
-                <label>Responsable RSE</label>
-            </value>
-            <value>
-                <fullName>Directeur administratif, financier</fullName>
-                <default>false</default>
-                <label>Directeur administratif, financier</label>
-            </value>
-            <value>
-                <fullName>Directeur contrôle de gestion</fullName>
-                <default>false</default>
-                <label>Directeur contrôle de gestion</label>
-            </value>
-            <value>
-                <fullName>Directeur audit</fullName>
-                <default>false</default>
-                <label>Directeur audit</label>
-            </value>
-            <value>
-                <fullName>Directeur comptable, trésorerie</fullName>
-                <default>false</default>
-                <label>Directeur comptable, trésorerie</label>
-            </value>
-            <value>
-                <fullName>Directeur immobilier, urbanisme, habitat</fullName>
-                <default>false</default>
-                <label>Directeur immobilier, urbanisme, habitat</label>
-            </value>
-            <value>
-                <fullName>Directeur juridique</fullName>
-                <default>false</default>
-                <label>Directeur juridique</label>
-            </value>
-            <value>
-                <fullName>Responsable administratif, financier</fullName>
-                <default>false</default>
-                <label>Responsable administratif, financier</label>
-            </value>
-            <value>
-                <fullName>Responsable contrôle de gestion</fullName>
-                <default>false</default>
-                <label>Responsable contrôle de gestion</label>
-            </value>
-            <value>
-                <fullName>Responsable audit</fullName>
-                <default>false</default>
-                <label>Responsable audit</label>
-            </value>
-            <value>
-                <fullName>Responsable comptable, trésorerie</fullName>
-                <default>false</default>
-                <label>Responsable comptable, trésorerie</label>
-            </value>
-            <value>
-                <fullName>Responsable immobilier, urbanisme, habitat</fullName>
-                <default>false</default>
-                <label>Responsable immobilier, urbanisme, habitat</label>
-            </value>
-            <value>
-                <fullName>Responsable juridique</fullName>
-                <default>false</default>
-                <label>Responsable juridique</label>
-            </value>
-            <value>
-                <fullName>Directeur des systèmes d&#39;information</fullName>
-                <default>false</default>
-                <label>Directeur des systèmes d&#39;information</label>
-            </value>
-            <value>
-                <fullName>Directeur sécurité informatique</fullName>
-                <default>false</default>
-                <label>Directeur sécurité informatique</label>
-            </value>
-            <value>
-                <fullName>Directeur télécommunications</fullName>
-                <default>false</default>
-                <label>Directeur télécommunications</label>
-            </value>
-            <value>
-                <fullName>Directeur R&amp;D, innovation</fullName>
-                <default>false</default>
-                <label>Directeur R&amp;D, innovation</label>
-            </value>
-            <value>
-                <fullName>Directeur industriel</fullName>
-                <default>false</default>
-                <label>Directeur industriel</label>
-            </value>
-            <value>
-                <fullName>Directeur usine</fullName>
-                <default>false</default>
-                <label>Directeur usine</label>
-            </value>
-            <value>
-                <fullName>Directeur production</fullName>
-                <default>false</default>
-                <label>Directeur production</label>
-            </value>
-            <value>
-                <fullName>Directeur technique</fullName>
-                <default>false</default>
-                <label>Directeur technique</label>
-            </value>
-            <value>
-                <fullName>Directeur ingénierie</fullName>
-                <default>false</default>
-                <label>Directeur ingénierie</label>
-            </value>
-            <value>
-                <fullName>Directeur qualité</fullName>
-                <default>false</default>
-                <label>Directeur qualité</label>
-            </value>
-            <value>
-                <fullName>Directeur hygiène, sécurité, environnement</fullName>
-                <default>false</default>
-                <label>Directeur hygiène, sécurité, environnement</label>
-            </value>
-            <value>
-                <fullName>Directeur commercial</fullName>
-                <default>false</default>
-                <label>Directeur commercial</label>
-            </value>
-            <value>
-                <fullName>Directeur grands comptes</fullName>
-                <default>false</default>
-                <label>Directeur grands comptes</label>
-            </value>
-            <value>
-                <fullName>Directeur surfaces commerciales (magasin, hypermarché)</fullName>
-                <default>false</default>
-                <label>Directeur surfaces commerciales (magasin, hypermarché)</label>
-            </value>
-            <value>
-                <fullName>Directeur d&#39;hôtel ou palace</fullName>
-                <default>false</default>
-                <label>Directeur d&#39;hôtel ou palace</label>
-            </value>
-            <value>
-                <fullName>Responsable commercial</fullName>
-                <default>false</default>
-                <label>Responsable commercial</label>
-            </value>
-            <value>
-                <fullName>Responsable grands comptes</fullName>
-                <default>false</default>
-                <label>Responsable grands comptes</label>
-            </value>
-            <value>
-                <fullName>Responsable surfaces commerciales (magasin, hypermarché)</fullName>
-                <default>false</default>
-                <label>Responsable surfaces commerciales (magasin, hypermarché)</label>
-            </value>
-            <value>
-                <fullName>Responsable d&#39;hôtel ou palace</fullName>
-                <default>false</default>
-                <label>Responsable d&#39;hôtel ou palace</label>
-            </value>
-            <value>
-                <fullName>Directeur marketing</fullName>
-                <default>false</default>
-                <label>Directeur marketing</label>
-            </value>
-            <value>
-                <fullName>Directeur produit, marque</fullName>
-                <default>false</default>
-                <label>Directeur produit, marque</label>
-            </value>
-            <value>
-                <fullName>Directeur service client</fullName>
-                <default>false</default>
-                <label>Directeur service client</label>
-            </value>
-            <value>
-                <fullName>Directeur partenariats, licensing</fullName>
-                <default>false</default>
-                <label>Directeur partenariats, licensing</label>
-            </value>
-            <value>
-                <fullName>Directeur Internet, digital, webmarketing</fullName>
-                <default>false</default>
-                <label>Directeur Internet, digital, webmarketing</label>
-            </value>
-            <value>
-                <fullName>Directeur communication</fullName>
-                <default>false</default>
-                <label>Directeur communication</label>
-            </value>
-            <value>
-                <fullName>Responsable marketing</fullName>
-                <default>false</default>
-                <label>Responsable marketing</label>
-            </value>
-            <value>
-                <fullName>Responsable produit, marque</fullName>
-                <default>false</default>
-                <label>Responsable produit, marque</label>
-            </value>
-            <value>
-                <fullName>Responsable service client</fullName>
-                <default>false</default>
-                <label>Responsable service client</label>
-            </value>
-            <value>
-                <fullName>Responsable partenariats, licensing</fullName>
-                <default>false</default>
-                <label>Responsable partenariats, licensing</label>
-            </value>
-            <value>
-                <fullName>Responsable Internet, digital, webmarketing</fullName>
-                <default>false</default>
-                <label>Responsable Internet, digital, webmarketing</label>
-            </value>
-            <value>
-                <fullName>Responsable communication</fullName>
-                <default>false</default>
-                <label>Responsable communication</label>
-            </value>
-            <value>
-                <fullName>Responsable/Coordinatrice petite enfance</fullName>
-                <default>false</default>
-                <label>Responsable/Coordinatrice petite enfance</label>
-            </value>
-            <value>
-                <fullName>Directeur/trice Petite Enfance</fullName>
-                <default>false</default>
-                <label>Directeur/trice Petite Enfance</label>
-            </value>
-            <value>
-                <fullName>Elu petite enfance</fullName>
-                <default>false</default>
-                <label>Elu petite enfance</label>
-            </value>
-            <value>
-                <fullName>Elu - Autre</fullName>
-                <default>false</default>
-                <label>Elu - Autre</label>
-            </value>
-            <value>
-                <fullName>Directeur de cabinet</fullName>
-                <default>false</default>
-                <label>Directeur de cabinet</label>
-            </value>
-            <value>
-                <fullName>Maire</fullName>
-                <default>false</default>
-                <label>Maire</label>
-            </value>
-            <value>
-                <fullName>Haut fonctionnaire</fullName>
-                <default>false</default>
-                <label>Haut fonctionnaire</label>
-            </value>
-            <value>
-                <fullName>Directeur Général des Services</fullName>
-                <default>false</default>
-                <label>Directeur Général des Services</label>
-            </value>
-            <value>
-                <fullName>Responsable commande publique</fullName>
-                <default>false</default>
-                <label>Responsable commande publique</label>
-            </value>
-            <value>
-                <fullName>Responsable Financier</fullName>
-                <default>false</default>
-                <label>Responsable Financier</label>
-            </value>
-            <value>
-                <fullName>Avocat, profession libérale</fullName>
-                <default>false</default>
-                <label>Avocat, profession libérale</label>
-            </value>
-            <value>
-                <fullName>Secrétaire</fullName>
-                <default>false</default>
-                <label>Secrétaire</label>
-            </value>
-            <value>
-                <fullName>Trésorier</fullName>
-                <default>false</default>
-                <label>Trésorier</label>
-            </value>
-        </valueSetDefinition>
+        <restricted>true</restricted>
+        <valueSetName>LPCR_Fonction</valueSetName>
         <valueSettings>
             <controllingFieldValue>CE</controllingFieldValue>
             <valueName>Secrétaire</valueName>
@@ -507,7 +41,6 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle direction générale</controllingFieldValue>
-            <controllingFieldValue>PLAC</controllingFieldValue>
             <valueName>Gérant</valueName>
         </valueSettings>
         <valueSettings>
@@ -529,6 +62,10 @@
         <valueSettings>
             <controllingFieldValue>Pôle direction générale</controllingFieldValue>
             <valueName>Assistante de Direction</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Autre</controllingFieldValue>
+            <valueName>Autre</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle achat, services</controllingFieldValue>
@@ -568,7 +105,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
-            <valueName>Directeur de l&#39;actions sociale</valueName>
+            <valueName>Directeur de l&apos;actions sociale</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
@@ -600,7 +137,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
-            <valueName>Responsable de l&#39;actions sociale</valueName>
+            <valueName>Responsable de l&apos;actions sociale</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
@@ -684,7 +221,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
-            <valueName>Directeur des systèmes d&#39;information</valueName>
+            <valueName>Directeur des systèmes d&apos;information</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
@@ -740,7 +277,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle commercial</controllingFieldValue>
-            <valueName>Directeur d&#39;hôtel ou palace</valueName>
+            <valueName>Directeur d&apos;hôtel ou palace</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle commercial</controllingFieldValue>
@@ -756,7 +293,7 @@
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle commercial</controllingFieldValue>
-            <valueName>Responsable d&#39;hôtel ou palace</valueName>
+            <valueName>Responsable d&apos;hôtel ou palace</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
