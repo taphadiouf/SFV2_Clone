@@ -353,7 +353,7 @@ public with sharing class SM022_ModificationEntranteServices {
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }else if('EVT_NOMBRE_CONGES_NON_PRIS'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
-                blng__Usage__c newUsage = createBlngUsage(eachModifEntrante,'Jours','EVT_NOMBRE_CONGES_NON_PRIS',evenementMap.get(eachModifEntrante.LPCR_Evenement__c));
+                blng__Usage__c newUsage = createBlngUsage(eachModifEntrante,'Heures','EVT_NOMBRE_CONGES_NON_PRIS',evenementMap.get(eachModifEntrante.LPCR_Evenement__c));
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }
