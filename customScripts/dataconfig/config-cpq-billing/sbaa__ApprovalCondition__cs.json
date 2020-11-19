@@ -1,0 +1,877 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef1"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000000",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Reservataire",
+            "sbaa__Index__c": 1,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef2"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000001",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlCQAU"
+                },
+                "Id": "a4b3O0000004NlCQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "KO",
+            "sbaa__Index__c": 7,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_AmendmentDateOK__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef3"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000002",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlCQAU"
+                },
+                "Id": "a4b3O0000004NlCQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Reservataire",
+            "sbaa__Index__c": 1,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef4"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000003",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlFQAU"
+                },
+                "Id": "a4b3O0000004NlFQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Renewal",
+            "sbaa__Index__c": 2,
+            "sbaa__Operator__c": "not equals",
+            "sbaa__TestedField__c": "SBQQ__Type__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef5"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000004",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlFQAU"
+                },
+                "Id": "a4b3O0000004NlFQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "MICRO",
+            "sbaa__Index__c": 3,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeCreche__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef6"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000005",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlBQAU"
+                },
+                "Id": "a4b3O0000004NlBQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "0",
+            "sbaa__Index__c": 1,
+            "sbaa__Operator__c": "greater than",
+            "sbaa__TestedField__c": "LPCR_LigneInferieurePP__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef7"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000006",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlCQAU"
+                },
+                "Id": "a4b3O0000004NlCQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Mouvement Interne Berceau",
+            "sbaa__Index__c": 8,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeAvenant__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef8"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000007",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Quote",
+            "sbaa__Index__c": 3,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "SBQQ__Type__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef9"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000008",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlHQAU"
+                },
+                "Id": "a4b3O0000004NlHQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "0",
+            "sbaa__Index__c": 1,
+            "sbaa__Operator__c": "greater than",
+            "sbaa__TestedField__c": "LPCR_LigneInferieurePP__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef10"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000009",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlHQAU"
+                },
+                "Id": "a4b3O0000004NlHQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "0",
+            "sbaa__Index__c": 2,
+            "sbaa__Operator__c": "greater than",
+            "sbaa__TestedField__c": "LPCR_Nombreberceauxgratuits__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef11"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000010",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Referencement",
+            "sbaa__Index__c": 2,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef12"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000011",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlFQAU"
+                },
+                "Id": "a4b3O0000004NlFQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Accueil",
+            "sbaa__Index__c": 1,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef13"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000012",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlGQAU"
+                },
+                "Id": "a4b3O0000004NlGQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Accueil",
+            "sbaa__Index__c": 3,
+            "sbaa__Operator__c": "not equals",
+            "sbaa__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef14"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000013",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlEQAU"
+                },
+                "Id": "a4b3O0000004NlEQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Reservataire",
+            "sbaa__Index__c": 4,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_RTContratEntreprise__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef15"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000014",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlBQAU"
+                },
+                "Id": "a4b3O0000004NlBQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "MICRO",
+            "sbaa__Index__c": 3,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeCreche__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef16"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000015",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlHQAU"
+                },
+                "Id": "a4b3O0000004NlHQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Referencement",
+            "sbaa__Index__c": 4,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef17"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000016",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlHQAU"
+                },
+                "Id": "a4b3O0000004NlHQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Reservataire",
+            "sbaa__Index__c": 3,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef18"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000017",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlBQAU"
+                },
+                "Id": "a4b3O0000004NlBQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Accueil",
+            "sbaa__Index__c": 2,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef19"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000018",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "0",
+            "sbaa__Index__c": 6,
+            "sbaa__Operator__c": "greater than",
+            "sbaa__TestedField__c": "LPCR_LigneSuperieurePP__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef20"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000019",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlFQAU"
+                },
+                "Id": "a4b3O0000004NlFQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "0",
+            "sbaa__Index__c": 4,
+            "sbaa__Operator__c": "greater than",
+            "sbaa__TestedField__c": "LPCR_LigneInferieurePP__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef21"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000020",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlCQAU"
+                },
+                "Id": "a4b3O0000004NlCQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Referencement",
+            "sbaa__Index__c": 9,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_RTContratEntreprise__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef22"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000021",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlEQAU"
+                },
+                "Id": "a4b3O0000004NlEQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Mouvement Interne Berceau",
+            "sbaa__Index__c": 3,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeAvenant__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef23"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000022",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlCQAU"
+                },
+                "Id": "a4b3O0000004NlCQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Accueil",
+            "sbaa__Index__c": 3,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef24"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000023",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlCQAU"
+                },
+                "Id": "a4b3O0000004NlCQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Résiliation",
+            "sbaa__Index__c": 4,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeAvenant__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef25"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000024",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlFQAU"
+                },
+                "Id": "a4b3O0000004NlFQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "0",
+            "sbaa__Index__c": 5,
+            "sbaa__Operator__c": "greater than",
+            "sbaa__TestedField__c": "LPCR_LigneSuperieurePP__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef26"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000025",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "0",
+            "sbaa__Index__c": 7,
+            "sbaa__Operator__c": "greater than",
+            "sbaa__TestedField__c": "LPCR_Nombreberceauxgratuits__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef27"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000026",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlGQAU"
+                },
+                "Id": "a4b3O0000004NlGQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__Index__c": 1,
+            "sbaa__Operator__c": "not equals",
+            "sbaa__TestedField__c": "LPCR_ConditionsParticulieres__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef28"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000027",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlGQAU"
+                },
+                "Id": "a4b3O0000004NlGQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Modification des termes du contrat",
+            "sbaa__Index__c": 2,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeAvenant__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef29"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000028",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "0",
+            "sbaa__Index__c": 5,
+            "sbaa__Operator__c": "greater than",
+            "sbaa__TestedField__c": "LPCR_LigneInferieurePP__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef30"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000029",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlEQAU"
+                },
+                "Id": "a4b3O0000004NlEQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Accueil",
+            "sbaa__Index__c": 1,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef31"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000030",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlCQAU"
+                },
+                "Id": "a4b3O0000004NlCQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Referencement",
+            "sbaa__Index__c": 2,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef32"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000031",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlEQAU"
+                },
+                "Id": "a4b3O0000004NlEQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Amendment",
+            "sbaa__Index__c": 2,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "SBQQ__Type__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef33"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000032",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlCQAU"
+                },
+                "Id": "a4b3O0000004NlCQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Amendment",
+            "sbaa__Index__c": 5,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "SBQQ__Type__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef34"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000033",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlCQAU"
+                },
+                "Id": "a4b3O0000004NlCQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Modification du type/fréquence de facturation",
+            "sbaa__Index__c": 6,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeAvenant__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef35"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-07-21T21:49:25.000+0000",
+            "Name": "AC-000034",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Amendment",
+            "sbaa__Index__c": 4,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "SBQQ__Type__c",
+            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef36"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-10-20T16:27:15.000+0000",
+            "Name": "AC-000035",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "0",
+            "sbaa__Index__c": 8,
+            "sbaa__Operator__c": "greater than",
+            "sbaa__TestedField__c": "LPCR_ligneBerceauPlanFacturation__c",
+            "SystemModstamp": "2020-10-20T16:27:15.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef37"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-11-04T21:32:13.000+0000",
+            "Name": "AC-000037",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "0",
+            "sbaa__Index__c": 10,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "SBQQ__LineItemCount__c",
+            "SystemModstamp": "2020-11-04T21:32:13.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef38"
+            },
+            "IsDeleted": false,
+            "LastModifiedDate": "2020-11-04T21:31:46.000+0000",
+            "Name": "AC-000036",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "false",
+            "sbaa__Index__c": 9,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_CheckboxTechnique__c",
+            "SystemModstamp": "2020-11-04T21:31:46.000+0000"
+        }
+    ]
+}

@@ -477,6 +477,35 @@
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
+                <name>decorate</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>richTextValue</name>
+                <value>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 174, 0);&quot;&gt;Attention, le représentant 1 et/ou le représentant 2 n&apos;est pas de type &quot;Parent&quot;.&lt;/b&gt;&lt;/p&gt;</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:richText</componentName>
+            <visibilityRule>
+                <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+                <criteria>
+                    <leftValue>{!Record.LPCR_Representant1__r.RecordType.DeveloperName}</leftValue>
+                    <operator>NE</operator>
+                    <rightValue>Parent</rightValue>
+                </criteria>
+                <criteria>
+                    <leftValue>{!Record.LPCR_Representant2__r.RecordType.DeveloperName}</leftValue>
+                    <operator>NE</operator>
+                    <rightValue>Parent</rightValue>
+                </criteria>
+                <criteria>
+                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
+                    <operator>EQUAL</operator>
+                    <rightValue>Famille</rightValue>
+                </criteria>
+            </visibilityRule>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
                 <name>tabs</name>
                 <value>Facet-a9ed44c9-ec9d-4297-8c90-a80ceeaadd8f</value>
             </componentInstanceProperties>

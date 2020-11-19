@@ -202,7 +202,7 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
 
         if(!errors.isEmpty()) {
 
-            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Errors occurred during batch process : ' + errors, UM010_Constant.ERROR);
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'finish', 'Batch' , null,'Errors occurred during batch process : ' + errors, UM010_Constant.ERROR);
         }
     }
     

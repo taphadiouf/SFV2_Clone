@@ -5,50 +5,68 @@
 */
 
 global class APB014_TraitementModificationEntrante implements Database.Batchable<sObject>,Schedulable,Database.Stateful,Database.AllowsCallouts{
-    String query;
-    global set<id> allSuccessId=new set<id>();
+    
+    global set<id> allSuccessId = new set<id>();
+    final String ClassName = APB014_TraitementModificationEntrante.class.getName();
 
     global APB014_TraitementModificationEntrante() {
 
     }
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        Date today = date.today();
-        query = 'SELECT Id,LPCR_EtatTraitement__c,LPCR_Invoice__c,LPCR_TypePlanning__c,LPCR_Garde__c,LPCR_Rue__c,LPCR_Ville__c,LPCR_Pays__c,LPCR_CodePostal__c,LPCR_SituationFamiliale__c,LPCR_TypeAccueil__c,LPCR_DateEffet__c,LPCR_Evenement__c,LPCR_Quantite__c,LPCR_Compte__c,LPCR_RessourceFamille__c,LPCR_IDUnique__c,LPCR_OuiNon__c,LPCR_Contact__c,LPCR_Date__c,LPCR_Section__c,LPCR_Contract__c,LPCR_HeureDateDebut__c,LPCR_HeureDateFin__c,LPCR_Commentaire__c,LPCR_Devis__c,LPCR_Statut__c FROM LPCR_ModificationEntrante__c WHERE LPCR_DateEffet__c <=: today AND LPCR_EtatTraitement__c = false AND LPCR_Statut__c = \'Validée\' ';
         
-        return Database.getQueryLocator(query);
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS); 
+
+        return Database.getQueryLocator([
+                                            SELECT Id,LPCR_EtatTraitement__c,LPCR_Invoice__c,LPCR_TypePlanning__c,LPCR_Garde__c,LPCR_Rue__c,LPCR_Ville__c,LPCR_Pays__c,LPCR_CodePostal__c,LPCR_SituationFamiliale__c,LPCR_TypeAccueil__c,LPCR_DateEffet__c,LPCR_Evenement__c,LPCR_Quantite__c,LPCR_Compte__c,LPCR_RessourceFamille__c,LPCR_IDUnique__c,LPCR_OuiNon__c,LPCR_Contact__c,LPCR_Date__c,LPCR_Section__c,LPCR_Contract__c,LPCR_HeureDateDebut__c,LPCR_HeureDateFin__c,LPCR_Commentaire__c,LPCR_Devis__c,LPCR_Statut__c 
+                                            FROM LPCR_ModificationEntrante__c 
+                                            WHERE LPCR_DateEffet__c <= TODAY AND LPCR_EtatTraitement__c = false AND 
+                                            LPCR_Statut__c = 'Validée' and CreatedBy.Name != 'Integration LPCR' and CreatedBy.Name != 'Recette DEV' 
+                                        ]);
     }
     
     global void execute(Database.BatchableContext BC, List<LPCR_ModificationEntrante__c> scope) {
 
-        PAD.log('APB014_TraitementModificationEntrante', 'execute','scope to execute : '+scope );
-        
+        Exception[] errors = new Exception[0];
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
+
         Set<Id> modificationEntranteIds = UM003_TypeManager.getIdsOfListObjects(scope);
         Set<Id> newQuoteIds = new Set<Id>();
         
-        newQuoteIds = SM022_ModificationEntranteServices.updateQuotesFromModifEntrantesBatch(scope);
-        PAD.log('APB014_TraitementModificationEntrante', 'execute','quote ids '+newQuoteIds );
-        
-        if(newQuoteIds != null && newQuoteIds.size() > 0){
-            allSuccessId.addAll(newQuoteIds);
+        try {
+
+            newQuoteIds = SM022_ModificationEntranteServices.updateQuotesFromModifEntrantesBatch(scope);
+
+            PAD.log('APB014_TraitementModificationEntrante', 'execute','quote ids ' + newQuoteIds );
+            
+            if(newQuoteIds != null && newQuoteIds.size() > 0){
+                allSuccessId.addAll(newQuoteIds);
+            }
+
+        } catch(Exception e) {
+            errors.add(e);
         }
+
+        if (!errors.isEmpty()) {
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
+        } 
          
     }
     
     global void finish(Database.BatchableContext BC) {
-        PAD.log('APB014_TraitementModificationEntrante', 'finish','quote ids '+allSuccessId );   
-        if(allSuccessId != null && allSuccessId.size() > 0){
+
+        if (allSuccessId != null && allSuccessId.size() > 0) {
+
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish', 'Batch' , null, ClassName + ' Finished. Scheduling APB0016 to run in 2 minutes with quote lines scope :' + String.valueOf(allSuccessId), UM010_Constant.SUCCESS); 
+
             APB016_QuoteReCalculateProcess sc = new APB016_QuoteReCalculateProcess();
-            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Traitement Modification Entrante',
-                                                            'APB014_TraitementModificationEntrante', 'Batch' , null,
-                                                            'Scheduling APB0016 to run in 2 minutes with quote lines scope :' + String.valueOf(allSuccessId), 
-                                                            UM010_Constant.SUCCESS); 
             sc.quoteIds = allSuccessId;
             
             Datetime dt = Datetime.now().addMinutes(2);  // i.e. 2 mins
             String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
             Id schedId = System.Schedule('APB016_QuoteReCalculateProcess'+timeForScheduler,timeForScheduler,sc);
-            PAD.log('APB014_TraitementModificationEntrante','finish','Scheduling APB016 in 2 minutes from now : ' + dt );
-        }    
+        }  
+        
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish', 'Batch' , null, 'Finished Batch Processing', UM010_Constant.SUCCESS); 
     }
     
     global void execute(SchedulableContext sc) {
