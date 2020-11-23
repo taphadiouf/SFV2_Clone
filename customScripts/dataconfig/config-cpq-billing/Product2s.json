@@ -30,7 +30,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "REFRES",
             "LPCR_RefCodeProduit__c": "BerceauPlanFacturation",
             "Name": "Berceau - Plan de Facturation",
@@ -104,7 +103,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "OptionBerceauMac",
             "LPCR_Typemensualisation__c": "1112",
@@ -177,7 +175,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "REFRES",
             "LPCR_RefCodeProduit__c": "PlateformePersonnalisee",
             "Name": "Plateforme personnalisée",
@@ -247,7 +244,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "REFRES",
             "LPCR_RefCodeProduit__c": "ConferenceParentalite",
             "Name": "Conférence parentalité",
@@ -317,7 +313,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "REFRES",
             "LPCR_RefCodeProduit__c": "AccueilOccasionnelUrgence",
             "Name": "Accueil occasionnel et d’urgence",
@@ -391,7 +386,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "REF",
             "LPCR_PrixPlancherParisIDF__c": 12000,
             "LPCR_PrixPlancherProvince__c": 10000,
@@ -467,10 +461,9 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-03T09:32:02.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "AccueilOccasionnelMac",
-            "LPCR_TypeEvenement__c": "Modification_Heure_Occasionnel_MAC",
+            "LPCR_TypeEvenement__c": "EVT_HEURE_OCCASIONNEL",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Accueil occasionnel Mac",
             "ProductCode": "AccueilOccasionnelMac",
@@ -509,7 +502,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-03T09:32:02.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -541,7 +534,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-28T13:57:04.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "ALSH",
             "LPCR_TypeEvenement__c": "ALSH",
@@ -617,10 +609,9 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MACMICRO",
             "LPCR_RefCodeProduit__c": "Repas",
-            "LPCR_TypeEvenement__c": "Nombre_de_repas",
+            "LPCR_TypeEvenement__c": "EVT_NOMBRE_DE_REPAS",
             "Name": "Repas",
             "ProductCode": "Repas",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -658,7 +649,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-09T14:38:09.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -687,13 +678,12 @@
                 "Id": "a2I3O00000097n2UAA"
             },
             "Family": "MAC",
-            "IsActive": true,
+            "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "AccueilUrgence",
-            "LPCR_TypeEvenement__c": "Modification Accueil d'Urgence",
+            "LPCR_TypeEvenement__c": "ALSH",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Accueil d'urgence",
             "ProductCode": "AccueilUrgence",
@@ -732,7 +722,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T14:27:38.000+0000"
         },
         {
             "attributes": {
@@ -764,7 +754,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "BerceauMac11Mois",
             "LPCR_Typemensualisation__c": "11",
@@ -839,7 +828,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LastReferencedDate": "2020-10-09T16:21:36.000+0000",
             "LastViewedDate": "2020-10-09T16:21:36.000+0000",
             "LPCR_FamilyProduct__c": "RES",
@@ -912,7 +900,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LastReferencedDate": "2020-08-25T10:35:11.000+0000",
             "LastViewedDate": "2020-08-25T10:35:11.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
@@ -982,7 +969,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_RefCodeProduit__c": "BerceauMairieAIXENPROVENCE",
             "Name": "Berceau Mairie d'Aix en Provence",
             "ProductCode": "BerceauMairieAIXENPROVENCE",
@@ -1050,7 +1036,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_RefCodeProduit__c": "BerceauVilleBoulogneBillancourt",
             "Name": "Berceau - Ville de Boulogne Billancourt",
             "ProductCode": "BerceauVilleBoulogneBillancourt",
@@ -1118,7 +1103,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_RefCodeProduit__c": "BerceauMairieMantesLaJolie",
             "Name": "Berceau - Mairie de Mantes La Jolie",
             "ProductCode": "BerceauMairieMantesLaJolie",
@@ -1186,7 +1170,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_RefCodeProduit__c": "BerceauMairieYerres",
             "Name": "Berceau - Mairie De Yerres",
             "ProductCode": "BerceauMairieYerres",
@@ -1254,7 +1237,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_RefCodeProduit__c": "BerceauVilleSaintVictoret",
             "Name": "Berceau - Ville De Saint Victoret",
             "ProductCode": "BerceauVilleSaintVictoret",
@@ -1322,7 +1304,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LastReferencedDate": "2020-11-16T17:02:46.000+0000",
             "LastViewedDate": "2020-11-16T17:02:46.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
@@ -1392,7 +1373,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "REFRES",
             "LPCR_RefCodeProduit__c": "BerceauMairieCourbevoie",
             "Name": "Berceau - Mairie De Courbevoie",
@@ -1464,7 +1444,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LastReferencedDate": "2020-11-16T16:55:22.000+0000",
             "LastViewedDate": "2020-11-16T16:55:22.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
@@ -1520,7 +1499,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_RefCodeProduit__c": "BerceauVilleSaintPriest",
             "Name": "Berceau - Ville De Saint Priest",
             "ProductCode": "BerceauVilleSaintPriest",
@@ -1591,7 +1569,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_PrixPlancherParisIDF__c": 12000,
             "LPCR_PrixPlancherProvince__c": 10000,
             "LPCR_RefCodeProduit__c": "BerceauContratCadreDel",
@@ -1645,7 +1622,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_RefCodeProduit__c": "BerceauContratCadreProvince",
             "Name": "Berceau Contrat Cadre Province",
             "ProductCode": "BerceauContratCadreProvince",
@@ -1718,7 +1694,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-10-27T12:57:59.000+0000",
             "LPCR_FamilyProduct__c": "REFRES",
             "LPCR_RefCodeProduit__c": "BerceauGratuit",
             "Name": "Berceau Gratuit",
@@ -1790,7 +1765,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "BerceauMicroSpecifique",
             "Name": "Accueil MICRO \"Psu Like\"",
@@ -1864,7 +1838,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "BerceauMicroSponsorise",
             "Name": "Accueil MICRO \"Sponsorisé\"",
@@ -1938,10 +1911,9 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-17T13:41:07.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "PeriodeAdaptation",
-            "LPCR_TypeEvenement__c": "Absence",
+            "LPCR_TypeEvenement__c": "EVT_FACTURATION_ADAPTATION",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Période d’adaptation",
             "ProductCode": "PeriodeAdaptation",
@@ -1980,7 +1952,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-17T13:41:08.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2012,7 +1984,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "REFRES",
             "LPCR_RefCodeProduit__c": "RFA",
             "Name": "Remise de fin d’année",
@@ -2080,10 +2051,9 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "HeuresDeduitesMicro",
-            "LPCR_TypeEvenement__c": "Modification Heures Déduites Micro",
+            "LPCR_TypeEvenement__c": "EVT_HEURES_DEDUITE_MICRO",
             "Name": "Heures Déduites Micro",
             "ProductCode": "HeuresDeduitesMicro",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -2121,7 +2091,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2153,12 +2123,11 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LastReferencedDate": "2020-10-02T10:13:47.000+0000",
             "LastViewedDate": "2020-10-02T10:13:47.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "HeuresDeduitesMac",
-            "LPCR_TypeEvenement__c": "Modification_Heure_Deduite_MAC",
+            "LPCR_TypeEvenement__c": "EVT_HEURE_DEDUITE",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Heures déduites MAC",
             "ProductCode": "HeuresDeduitesMac",
@@ -2197,7 +2166,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2229,7 +2198,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "FraisInscriptionMicro",
             "Name": "Frais d’inscription Micro",
@@ -2263,7 +2231,7 @@
             "SBQQ__SubscriptionBase__c": "List",
             "SBQQ__SubscriptionType__c": "One-time",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2295,7 +2263,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "REFRES",
             "LPCR_RefCodeProduit__c": "Fraisdedossier",
             "Name": "Frais de dossier",
@@ -2360,10 +2327,9 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-25T12:34:22.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "AbsenceMAC",
-            "LPCR_TypeEvenement__c": "Absence",
+            "LPCR_TypeEvenement__c": "EVT_ABSCENCE",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Absence",
             "ProductCode": "AbsenceMAC",
@@ -2402,7 +2368,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-25T12:34:22.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2412,7 +2378,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-07-21T20:47:04.000+0000",
             "Name": "Test Tax",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
             "SBQQ__AssetConversion__c": "One per quote line",
@@ -2457,7 +2422,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_RefCodeProduit__c": "ProductA20",
             "Name": "Product A Tax 20",
             "ProductCode": "ProductA20",
@@ -2510,7 +2474,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_RefCodeProduit__c": "ProductA10",
             "Name": "Product A Tax 10",
             "ProductCode": "ProductA10",
@@ -2563,7 +2526,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_RefCodeProduit__c": "ProductA210",
             "Name": "Product A Tax 1.10",
             "ProductCode": "ProductA210",
@@ -2636,10 +2598,9 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "AccueilOccasionnelMicro",
-            "LPCR_TypeEvenement__c": "Modification Accueil Occasionnel Micro",
+            "LPCR_TypeEvenement__c": "EVT_ACCUEIL_OCCASIONNEL_MICRO",
             "Name": "Accueil OCC MICRO journalier",
             "ProductCode": "AccueilOccasionnelMicro",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -2677,7 +2638,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2709,7 +2670,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "DepotDeGarantie",
             "Name": "Dépôt de Garantie",
@@ -2775,10 +2735,9 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "AccueilHeuresSuppMac",
-            "LPCR_TypeEvenement__c": "Modification_Heure_Supplementaire_MAC",
+            "LPCR_TypeEvenement__c": "EVT_HEURE_SUPPLEMENTAIRE",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Accueil Heures Supplémentaires Mac",
             "ProductCode": "AccueilHeuresSuppMac",
@@ -2817,7 +2776,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2849,10 +2808,9 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "CongesNonPrisMac",
-            "LPCR_TypeEvenement__c": "Modification Congés non pris MAC",
+            "LPCR_TypeEvenement__c": "EVT_NOMBRE_CONGES_NON_PRIS",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Congés non pris MAC",
             "ProductCode": "CongesNonPrisMac",
@@ -2891,7 +2849,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2923,10 +2881,9 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "AccueilJourSuppMicro",
-            "LPCR_TypeEvenement__c": "Modification Accueil Jour Supplémentaire Micro",
+            "LPCR_TypeEvenement__c": "EVT_ACCUEIL_JOUR_SUPPLEMENTAIRE_MICRO",
             "Name": "Accueil Jour Supplémentaire Micro",
             "ProductCode": "AccueilJourSuppMicro",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -2964,7 +2921,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2996,10 +2953,9 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-25T12:33:42.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "AbsenceMicro",
-            "LPCR_TypeEvenement__c": "Absence",
+            "LPCR_TypeEvenement__c": "EVT_ABSCENCE",
             "Name": "Absence",
             "ProductCode": "AbsenceMicro",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -3037,7 +2993,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-25T12:33:42.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -3048,7 +3004,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
             "LPCR_PrixPlancherParisIDF__c": 7500,
             "LPCR_PrixPlancherProvince__c": 6000,
             "LPCR_RefCodeProduit__c": "BerceauReservataireTEST",
