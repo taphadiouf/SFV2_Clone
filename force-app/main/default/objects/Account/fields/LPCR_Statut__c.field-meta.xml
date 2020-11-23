@@ -75,6 +75,11 @@
                 <default>false</default>
                 <label>Hospitalière</label>
             </value>
+            <value>
+                <fullName>Fermeture</fullName>
+                <default>false</default>
+                <label>Fermeture</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
