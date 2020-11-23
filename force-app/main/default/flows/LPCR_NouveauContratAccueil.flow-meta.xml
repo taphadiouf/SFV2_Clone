@@ -94,6 +94,12 @@
         </value>
     </processMetadataValues>
     <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
         <name>OriginBuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
@@ -454,14 +460,14 @@
         <fields>
             <name>StartDate</name>
             <dataType>Date</dataType>
-            <fieldText>Date de Début</fieldText>
+            <fieldText>Date de début contractuelle</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
         </fields>
         <fields>
             <name>EndDate</name>
             <dataType>Date</dataType>
-            <fieldText>Date de Fin</fieldText>
+            <fieldText>Date de fin contractuelle</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
         </fields>
