@@ -467,10 +467,10 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-03T09:32:02.000+0000",
+            "LastModifiedDate": "2020-11-18T16:59:15.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "AccueilOccasionnelMac",
-            "LPCR_TypeEvenement__c": "Modification_Heure_Occasionnel_MAC",
+            "LPCR_TypeEvenement__c": "EVT_HEURE_OCCASIONNEL",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Accueil occasionnel Mac",
             "ProductCode": "AccueilOccasionnelMac",
@@ -509,7 +509,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-03T09:32:02.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -617,10 +617,10 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastModifiedDate": "2020-11-18T16:59:15.000+0000",
             "LPCR_FamilyProduct__c": "MACMICRO",
             "LPCR_RefCodeProduit__c": "Repas",
-            "LPCR_TypeEvenement__c": "Nombre_de_repas",
+            "LPCR_TypeEvenement__c": "EVT_NOMBRE_DE_REPAS",
             "Name": "Repas",
             "ProductCode": "Repas",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -658,7 +658,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-09T14:38:09.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -687,13 +687,13 @@
                 "Id": "a2I3O00000097n2UAA"
             },
             "Family": "MAC",
-            "IsActive": true,
+            "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastModifiedDate": "2020-11-18T14:27:38.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "AccueilUrgence",
-            "LPCR_TypeEvenement__c": "Modification Accueil d'Urgence",
+            "LPCR_TypeEvenement__c": "ALSH",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Accueil d'urgence",
             "ProductCode": "AccueilUrgence",
@@ -732,7 +732,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T14:27:38.000+0000"
         },
         {
             "attributes": {
@@ -1938,10 +1938,10 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-17T13:41:07.000+0000",
+            "LastModifiedDate": "2020-11-18T16:59:15.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "PeriodeAdaptation",
-            "LPCR_TypeEvenement__c": "Absence",
+            "LPCR_TypeEvenement__c": "EVT_FACTURATION_ADAPTATION",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Période d’adaptation",
             "ProductCode": "PeriodeAdaptation",
@@ -1980,7 +1980,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-17T13:41:08.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2080,10 +2080,10 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastModifiedDate": "2020-11-18T16:59:15.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "HeuresDeduitesMicro",
-            "LPCR_TypeEvenement__c": "Modification Heures Déduites Micro",
+            "LPCR_TypeEvenement__c": "EVT_HEURES_DEDUITE_MICRO",
             "Name": "Heures Déduites Micro",
             "ProductCode": "HeuresDeduitesMicro",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -2121,7 +2121,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2153,12 +2153,12 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastModifiedDate": "2020-11-18T16:59:15.000+0000",
             "LastReferencedDate": "2020-10-02T10:13:47.000+0000",
             "LastViewedDate": "2020-10-02T10:13:47.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "HeuresDeduitesMac",
-            "LPCR_TypeEvenement__c": "Modification_Heure_Deduite_MAC",
+            "LPCR_TypeEvenement__c": "EVT_HEURE_DEDUITE",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Heures déduites MAC",
             "ProductCode": "HeuresDeduitesMac",
@@ -2197,7 +2197,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2229,7 +2229,7 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastModifiedDate": "2020-11-18T16:59:15.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "FraisInscriptionMicro",
             "Name": "Frais d’inscription Micro",
@@ -2263,7 +2263,7 @@
             "SBQQ__SubscriptionBase__c": "List",
             "SBQQ__SubscriptionType__c": "One-time",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2360,10 +2360,10 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-25T12:34:22.000+0000",
+            "LastModifiedDate": "2020-11-18T16:59:15.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "AbsenceMAC",
-            "LPCR_TypeEvenement__c": "Absence",
+            "LPCR_TypeEvenement__c": "EVT_ABSCENCE",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Absence",
             "ProductCode": "AbsenceMAC",
@@ -2402,7 +2402,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-25T12:34:22.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2636,10 +2636,10 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastModifiedDate": "2020-11-18T16:59:15.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "AccueilOccasionnelMicro",
-            "LPCR_TypeEvenement__c": "Modification Accueil Occasionnel Micro",
+            "LPCR_TypeEvenement__c": "EVT_ACCUEIL_OCCASIONNEL_MICRO",
             "Name": "Accueil OCC MICRO journalier",
             "ProductCode": "AccueilOccasionnelMicro",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -2677,7 +2677,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2775,10 +2775,10 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastModifiedDate": "2020-11-18T16:59:15.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "AccueilHeuresSuppMac",
-            "LPCR_TypeEvenement__c": "Modification_Heure_Supplementaire_MAC",
+            "LPCR_TypeEvenement__c": "EVT_HEURE_SUPPLEMENTAIRE",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Accueil Heures Supplémentaires Mac",
             "ProductCode": "AccueilHeuresSuppMac",
@@ -2817,7 +2817,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2849,10 +2849,10 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastModifiedDate": "2020-11-18T16:59:15.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "CongesNonPrisMac",
-            "LPCR_TypeEvenement__c": "Modification Congés non pris MAC",
+            "LPCR_TypeEvenement__c": "EVT_NOMBRE_CONGES_NON_PRIS",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Congés non pris MAC",
             "ProductCode": "CongesNonPrisMac",
@@ -2891,7 +2891,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2923,10 +2923,10 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-05T12:53:57.000+0000",
+            "LastModifiedDate": "2020-11-18T16:59:15.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "AccueilJourSuppMicro",
-            "LPCR_TypeEvenement__c": "Modification Accueil Jour Supplémentaire Micro",
+            "LPCR_TypeEvenement__c": "EVT_ACCUEIL_JOUR_SUPPLEMENTAIRE_MICRO",
             "Name": "Accueil Jour Supplémentaire Micro",
             "ProductCode": "AccueilJourSuppMicro",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -2964,7 +2964,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
@@ -2996,10 +2996,10 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-25T12:33:42.000+0000",
+            "LastModifiedDate": "2020-11-18T16:59:15.000+0000",
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_RefCodeProduit__c": "AbsenceMicro",
-            "LPCR_TypeEvenement__c": "Absence",
+            "LPCR_TypeEvenement__c": "EVT_ABSCENCE",
             "Name": "Absence",
             "ProductCode": "AbsenceMicro",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -3037,7 +3037,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-25T12:33:42.000+0000"
+            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
         },
         {
             "attributes": {
