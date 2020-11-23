@@ -527,14 +527,14 @@
                 "referenceId": "SBQQ__PriceRule__cRef34"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T15:56:13.000+0000",
+            "LastModifiedDate": "2020-11-19T16:37:56.000+0000",
             "Name": "Set price to 0 on futur QL ( referencement)",
-            "SBQQ__Active__c": true,
+            "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 100,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T15:56:13.000+0000"
+            "SystemModstamp": "2020-11-19T16:37:56.000+0000"
         },
         {
             "attributes": {

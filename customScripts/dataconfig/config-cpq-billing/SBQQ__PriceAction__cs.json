@@ -1999,7 +1999,7 @@
             "SBQQ__Field__c": "SBQQ__SpecialPrice__c",
             "SBQQ__Formula__c": "IF(NOT(ISBLANK(LPCR_DateDebut__c)),IF(year(LPCR_DateDebut__c) > year( SBQQ__Quote__r.SBQQ__StartDate__c ),0, SBQQ__SpecialPrice__c),SBQQ__SpecialPrice__c)",
             "SBQQ__Order__c": 1,
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -2045,7 +2045,7 @@
             "SBQQ__Field__c": "SBQQ__NetPrice__c",
             "SBQQ__Formula__c": "IF(NOT(ISBLANK(LPCR_DateDebut__c)),IF(year(LPCR_DateDebut__c) > year( SBQQ__Quote__r.SBQQ__StartDate__c ),0, SBQQ__NetPrice__c),SBQQ__NetPrice__c)",
             "SBQQ__Order__c": 2,
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
