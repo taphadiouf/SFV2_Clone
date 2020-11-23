@@ -5,7 +5,7 @@
 */
 global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>,Schedulable {
     String query;
-    
+    final String ClassName = APB003_CreateOrderFromQuote.class.getName();
     global APB003_CreateOrderFromQuote() {
         
     }
@@ -15,7 +15,8 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
     *   @returns Database.QueryLocator
     */
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        PAD.log('APB003_CreateOrderFromQuote', 'start','Database.BatchableContext BC');        
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
+        PAD.log(ClassName, 'start','Database.BatchableContext BC');        
         query = 'SELECT Id,SBQQ__Status__c ,SBQQ__Ordered__c, LPCR_TypeCreche__c, SBQQ__Type__c, LPCR_RecalculationMACDone__c   FROM SBQQ__Quote__c WHERE SBQQ__Status__c =\'Prêt pour commande\' AND SBQQ__Ordered__c  = false';
         
         return Database.getQueryLocator(query);
@@ -27,23 +28,64 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
     */
     global void execute(Database.BatchableContext BC, List<SBQQ__Quote__c> scope) {
         
-        PAD.log('APB003_CreateOrderFromQuote', 'execute','scope :'+ scope.size()+'');        
-        
-        Set<Id> quoteIds = UM003_TypeManager.getIdsOfListObjects(scope);
-        List<SBQQ__Quote__c> listOfquote = [SELECT Id,SBQQ__Status__c ,SBQQ__Ordered__c, LPCR_TypeCreche__c, SBQQ__Type__c, LPCR_RecalculationMACDone__c     FROM SBQQ__Quote__c WHERE Id in :quoteIds];   
-        List<LPCR_Log__c> listOfLog = new List<LPCR_Log__c>();
-        
-        for (SBQQ__Quote__c eachquote : listOfquote) {
-            if(!Label.LPCR_MAC.equals(eachquote.LPCR_TypeCreche__c) || !Label.LPCR_Renewal.equals(eachquote.SBQQ__Type__c) || eachquote.LPCR_RecalculationMACDone__c == true){
-                eachquote.SBQQ__Ordered__c = true;
+        List<Exception> errors = new List<Exception>();
+        try {
+
+            PAD.log(ClassName, 'execute','scope :'+ scope.size()+'');        
+            
+            Set<Id> quoteIds = UM003_TypeManager.getIdsOfListObjects(scope);
+            List<SBQQ__Quote__c> listOfquote = [SELECT Id,SBQQ__Status__c ,SBQQ__Ordered__c, LPCR_TypeCreche__c, SBQQ__Type__c, LPCR_RecalculationMACDone__c     FROM SBQQ__Quote__c WHERE Id in :quoteIds];   
+            List<LPCR_Log__c> listOfLog = new List<LPCR_Log__c>();
+            
+            for (SBQQ__Quote__c eachquote : listOfquote) {
+                if(!Label.LPCR_MAC.equals(eachquote.LPCR_TypeCreche__c) || !Label.LPCR_Renewal.equals(eachquote.SBQQ__Type__c) || eachquote.LPCR_RecalculationMACDone__c == true){
+                    eachquote.SBQQ__Ordered__c = true;
+                }
+                listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Creating Order From Quote', ClassName, 'Batch', String.valueOf(eachquote.Id), '', 'SUCCESS'));
             }
-            listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Creating Order From Quote', 'APB003_CreateOrderFromQuote', 'Batch', String.valueOf(eachquote.Id), '', 'SUCCESS'));
+
+            String ErrMsg;
+            try {
+                update listOfquote; 
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',
+                                                                ClassName, 'Batch' , null,
+                                                                'Successfully updated list of quotes : ' + String.valueOf(listOfquote), 
+                                                                UM010_Constant.SUCCESS);          
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',ClassName, 'Batch' , null,'Error while updating the quotes : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            }
+            
+            ErrMsg = null ;
+            try {
+                insert listOfLog;
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',
+                                                                ClassName, 'Batch' , null,
+                                                                'Successfully inserted list of logs : ' + String.valueOf(listOfLog), 
+                                                                UM010_Constant.SUCCESS);          
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',ClassName, 'Batch' , null,'Error while inserting the logs : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            }
+
+        } catch(Exception e) {
+            errors.add(e);
         }
-        update listOfquote; 
-        insert listOfLog;
+        
+        if (!errors.isEmpty()) {
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
+        }
+            
     }
     
     global void finish(Database.BatchableContext BC) {
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish', 'Batch' , null, 'Finished Batch Processing', UM010_Constant.SUCCESS);
     }
     /*
     *   @description : this method execute the batch
@@ -51,12 +93,12 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
     *   @returns void
     */
     global void execute(SchedulableContext sc) {
-        PAD.log('APB003_CreateOrderFromQuote', 'execute','sc ');     
+        PAD.log(ClassName, 'execute','sc ');     
         APB003_CreateOrderFromQuote sc1 = new APB003_CreateOrderFromQuote();
         Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
         String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
-        boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB003_CreateOrderFromQuote');
+        boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning(ClassName);
         
         // check if there is any open place to schedule the class
         boolean isJobQueueFull = UM004_BatchUtility.isBatchJobQueueFull();
@@ -67,7 +109,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                Id schedId = System.Schedule('APB003_CreateOrderFromQuote'+timeForScheduler,timeForScheduler,new APB003_CreateOrderFromQuote());
+                Id schedId = System.Schedule(ClassName+timeForScheduler,timeForScheduler,new APB003_CreateOrderFromQuote());
             }
         }  
         
