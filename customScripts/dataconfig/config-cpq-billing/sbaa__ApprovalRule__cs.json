@@ -6,7 +6,6 @@
                 "referenceId": "sbaa__ApprovalRule__cRef1"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-07-21T21:53:09.000+0000",
             "Name": "Approval B2C : N+2",
             "sbaa__Active__c": true,
             "sbaa__ApprovalChain__r": {
@@ -60,7 +59,6 @@
                 "referenceId": "sbaa__ApprovalRule__cRef2"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-07-21T21:50:23.000+0000",
             "Name": "Approval : Responsable ADV",
             "sbaa__Active__c": true,
             "sbaa__AdvancedCondition__c": "5 AND ((1 AND (4 OR 6 OR 7)) OR (2 AND (4 OR 6)) OR (3 AND 8 AND 9))",
@@ -109,7 +107,6 @@
                 "referenceId": "sbaa__ApprovalRule__cRef3"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-04T21:33:16.000+0000",
             "Name": "Approval B2B : N+1",
             "sbaa__Active__c": true,
             "sbaa__AdvancedCondition__c": "((1 OR 2) AND (3 OR 4) AND (5 OR 6 OR 7 OR 8)) OR (3 AND 9 AND 10)",
@@ -158,7 +155,6 @@
                 "referenceId": "sbaa__ApprovalRule__cRef4"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-07-21T21:50:23.000+0000",
             "Name": "Approval : Commercial B2B",
             "sbaa__Active__c": true,
             "sbaa__ApprovalRecipients__c": "Record Owner",
@@ -199,7 +195,6 @@
                 "referenceId": "sbaa__ApprovalRule__cRef5"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-07-21T21:50:23.000+0000",
             "Name": "Approval B2C : N+1",
             "sbaa__Active__c": true,
             "sbaa__AdvancedCondition__c": "1 AND 2 AND 3 AND (4 OR 5)",
@@ -248,7 +243,6 @@
                 "referenceId": "sbaa__ApprovalRule__cRef6"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-07-21T21:53:09.000+0000",
             "Name": "Approval : Direction Juridique",
             "sbaa__Active__c": true,
             "sbaa__AdvancedCondition__c": "(1 OR 2) AND 3",
@@ -303,7 +297,6 @@
                 "referenceId": "sbaa__ApprovalRule__cRef7"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-07-21T21:53:09.000+0000",
             "Name": "Approval B2B : N+2",
             "sbaa__Active__c": true,
             "sbaa__AdvancedCondition__c": "(1 OR 2) AND (3 OR 4)",
