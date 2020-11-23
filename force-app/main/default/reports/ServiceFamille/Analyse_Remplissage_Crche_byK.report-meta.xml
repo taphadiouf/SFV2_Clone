@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>CDF1:SUM-Contract.LPCR_Creche__c.LPCR_AgrementTotal__c:SUM</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>Contract$LPCR_Creche__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Ecart ETP</masterLabel>
+        <scale>2</scale>
+    </aggregates>
     <columns>
         <field>Contract$LPCR_StatutCourt__c</field>
     </columns>
@@ -25,10 +35,6 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Contract$LPCR_PlanningEnfant__c.LPCR_NombreHeuresSemaine__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CDF1</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -60,6 +66,14 @@
     <columns>
         <field>Contract$LPCR_Section__c</field>
     </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Contract$LPCR_Creche__c.LPCR_AgrementTotal__c</field>
+    </columns>
     <customDetailFormulas>
         <calculatedFormula>((52-(Contract.SBQQ__Quote__c.LPCR_CongesSemaine__c/5))*Contract.LPCR_PlanningEnfant__c.LPCR_NombreHeuresSemaine__c)/2070</calculatedFormula>
         <dataType>Double</dataType>
@@ -89,6 +103,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Contract$LPCR_Creche__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contract$Account</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Analyse Remplissage Crèche</name>
