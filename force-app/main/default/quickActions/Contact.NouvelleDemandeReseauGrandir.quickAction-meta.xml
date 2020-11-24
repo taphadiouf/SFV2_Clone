@@ -54,6 +54,10 @@
         <formula>Contact.Account.ShippingCity</formula>
     </fieldOverrides>
     <fieldOverrides>
+        <field>Origin</field>
+        <formula>IF( $UserRole.DeveloperName = &apos;Service_Famille&apos;,&apos;Service Famille&apos;,&apos;Service Commercial&apos;)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>Status</field>
         <literalValue>New</literalValue>
     </fieldOverrides>

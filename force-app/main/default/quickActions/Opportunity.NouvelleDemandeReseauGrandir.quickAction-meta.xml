@@ -9,6 +9,10 @@
         <formula>Opportunity.Id</formula>
     </fieldOverrides>
     <fieldOverrides>
+        <field>Origin</field>
+        <formula>IF($UserRole.DeveloperName = &apos;Service_Famille&apos;,&apos;Service Famille&apos;,&apos;Service Commercial&apos;)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>Status</field>
         <literalValue>New</literalValue>
     </fieldOverrides>
@@ -90,7 +94,8 @@
         </quickActionLayoutColumns>
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
-                <emptySpace>true</emptySpace>
+                <emptySpace>false</emptySpace>
+                <field>Lead__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>

@@ -46,7 +46,7 @@
     </fieldOverrides>
     <fieldOverrides>
         <field>Origin</field>
-        <literalValue>Service Commercial</literalValue>
+        <formula>IF( $UserRole.DeveloperName = &apos;Service_Famille&apos;,&apos;Service Famille&apos;,&apos;Service Commercial&apos;)</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>Status</field>
