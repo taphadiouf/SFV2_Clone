@@ -298,15 +298,15 @@
     <picklistValues>
         <picklist>LPCR_MoyenDeTransport__c</picklist>
         <values>
+            <fullName>A pied</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Transports en commun</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Voiture</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>A pied</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -481,11 +481,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>IDF Sédentaires</fullName>
+            <fullName>IDF Sud</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>IDF Sud</fullName>
+            <fullName>IDF Sédentaires</fullName>
             <default>false</default>
         </values>
         <values>
@@ -548,6 +548,25 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_SourceMigration__c</picklist>
+        <values>
+            <fullName>Fichiers Excel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intranet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lead Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SFV1</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_StatutCreche__c</picklist>
         <values>
             <fullName>Désactivé</fullName>
@@ -586,6 +605,10 @@
         </values>
         <values>
             <fullName>Ex-adhérent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fermeture</fullName>
             <default>false</default>
         </values>
         <values>
