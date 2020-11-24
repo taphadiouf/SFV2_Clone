@@ -7158,6 +7158,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_NumeroBonCommande__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_NumeroContrat__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -7299,6 +7304,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_TauxMensuel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_TotalBonCommandeAEnvoyer__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
