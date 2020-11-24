@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>création d&apos;une demande réseau grandir à partir d&apos;un lead famille</description>
     <fieldOverrides>
         <field>LPCR_AmplitudeHoraireJeudi__c</field>
         <formula>TEXT(Lead.LPCR_AmplitudeHoraireJeudi1__c)</formula>
@@ -114,7 +115,12 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LPCR_Opportunite__c</field>
+                <field>LPCR_DevisReservataire__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_PrixVente__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
@@ -169,12 +175,12 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LPCR_ContratEntreprise__c</field>
+                <field>LPCR_Opportunite__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LPCR_PrixVente__c</field>
+                <field>LPCR_ContratEntreprise__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
