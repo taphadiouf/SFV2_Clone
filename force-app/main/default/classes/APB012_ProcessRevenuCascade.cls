@@ -180,11 +180,11 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                 Set<Id> creditNoteLineIdSet = UM003_TypeManager.getIdsOfListObjects(creditNoteLineList);
                 System.debug('>> APB012_ProcessRevenuCascade , execute(),creditNoteLineIdSet '+creditNoteLineIdSet);
 
-                list<AggregateResult> step2GroupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount,blng__OrderProduct__r.blng__GroupId__c groupId 
+                list<AggregateResult> step2GroupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount,blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c groupId 
                                                                 FROM blng__RevenueTransaction__c 
                                                                 WHERE blng__CreditNoteLine__c != null AND blng__CreditNoteLine__c In :creditNoteLineIdSet AND blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' 
-                                                                GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__OrderProduct__r.blng__GroupId__c 
-                                                                ORDER By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__OrderProduct__r.blng__GroupId__c
+                                                                GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c
+                                                                ORDER By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c
                                                             ];
                 
                 Map<String, double> step2AggregateAmountMap = new Map<String, double>();
