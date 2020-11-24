@@ -6,7 +6,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef1"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T16:04:10.000+0000",
             "Name": "Calcul de la quantité totale sur Paris",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "(1 OR 2) AND 3",
@@ -22,7 +21,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef2"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T16:04:10.000+0000",
             "Name": "Calcul de la quantité totale sur IDF",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "( 1 OR 2 ) AND 3",
@@ -38,7 +36,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef3"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Affecter nombre berceaux gratuit au produit 'berceau gratuit'",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -54,7 +51,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef4"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "MAJ le Taux horaire sur les options du produit Mac",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -69,7 +65,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef5"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Clone with related price rule",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -84,7 +79,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef6"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T16:04:10.000+0000",
             "Name": "Calcul prix berceaux Référencement (amend & renewal)",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "(( 1 AND 2 ) OR  3 ) AND 5 AND 6",
@@ -101,7 +95,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef7"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Calcul prix Dépôt de Garantie",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -116,7 +109,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef8"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Avenant Devis -Map Date de Résiliation a la date de debut standard",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -131,7 +123,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef9"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-10-15T15:15:15.000+0000",
             "Name": "Uncheck children quote lines",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -146,7 +137,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef10"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-10-15T15:15:01.000+0000",
             "Name": "Check children quote lines",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -161,7 +151,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef11"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Calcul prix berceaux micro (avec majoration)",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -177,7 +166,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef12"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Màj la fréquence de facturation sur les lignes de devis",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -192,7 +180,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef13"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Définir 'contrat cadre' sur devis (amendement/renewal)",
             "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
@@ -208,7 +195,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef14"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T16:04:10.000+0000",
             "Name": "Calcul prix berceaux réservataires New Quote",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "4 AND (1 OR 2 OR 3)",
@@ -225,7 +211,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef15"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T16:04:10.000+0000",
             "Name": "Calcul de la quantité totale sur Province",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "( 1 OR 2 ) AND 3",
@@ -241,7 +226,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef16"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Màj le type de facturation sur les lignes de devis",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -256,7 +240,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef17"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "B2C/B2B - MAJ Entite Juridique sur la Ligne de devis",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -271,7 +254,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef18"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Définition du Prix Plancher Micro non Sponsorisé",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -286,7 +268,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef19"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Définition du Prix Plancher Réservataire et Référencement",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "Any",
@@ -301,7 +282,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef20"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T16:04:10.000+0000",
             "LastReferencedDate": "2020-11-17T14:49:21.000+0000",
             "LastViewedDate": "2020-11-17T14:49:21.000+0000",
             "Name": "Calcul prix berceaux Référencement",
@@ -320,7 +300,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef21"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "B2C - MAJ Creche sur la ligne",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -335,7 +314,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef22"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T16:04:10.000+0000",
             "Name": "Calcul de la majoration",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "(1 OR 2) AND (3 OR 4) AND 5",
@@ -351,7 +329,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef23"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T16:04:10.000+0000",
             "Name": "Calcul prix berceau ALSH",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "2 AND 3 AND ( 1 OR ( 4 AND 5))",
@@ -368,7 +345,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef24"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T16:04:10.000+0000",
             "LastReferencedDate": "2020-09-30T09:02:14.000+0000",
             "LastViewedDate": "2020-09-30T09:02:14.000+0000",
             "Name": "Calcul prix berceaux MAC",
@@ -387,7 +363,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef25"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T16:04:10.000+0000",
             "Name": "Calcul prix berceaux réservataires  Amendment and Renewal",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "5 AND 6 AND  ((1 AND 3) OR (2 AND 4))",
@@ -404,7 +379,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef26"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Set Start date & End date (New/amendment MAC)",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -420,7 +394,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef27"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Set price 0 to firt option ( 11 month Mac)",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -436,7 +409,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef28"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Frais de dossier pour les contrats de référencement",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -451,7 +423,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef29"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Set Start date & End date to QL ( MAC/Renewal)",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -467,7 +438,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef30"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-09-30T12:59:21.000+0000",
             "Name": "Set dates to 11 month Options (MAC)",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -483,7 +453,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef31"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-10-15T14:42:31.000+0000",
             "Name": "MAJ région et crèche sur QL à partir du parent bundle",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -498,7 +467,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef32"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-12T14:00:47.000+0000",
             "Name": "Renseigner date de fin de quote line maximale (referencement)",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -513,7 +481,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef33"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-12T14:01:15.000+0000",
             "Name": "Mettre à jour champs QL quand bon de commande envoyé",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -527,14 +494,13 @@
                 "referenceId": "SBQQ__PriceRule__cRef34"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T15:56:13.000+0000",
             "Name": "Set price to 0 on futur QL ( referencement)",
-            "SBQQ__Active__c": true,
+            "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 100,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T15:56:13.000+0000"
+            "SystemModstamp": "2020-11-19T16:37:56.000+0000"
         },
         {
             "attributes": {
@@ -542,7 +508,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef35"
             },
             "IsDeleted": false,
-            "LastModifiedDate": "2020-11-16T16:04:10.000+0000",
             "Name": "Cancel discount on MAC renewal",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "1 AND 2 AND 3 AND 4 AND (5 OR 6)",

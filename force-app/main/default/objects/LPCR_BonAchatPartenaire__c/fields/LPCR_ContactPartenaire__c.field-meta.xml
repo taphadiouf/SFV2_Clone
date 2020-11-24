@@ -2,11 +2,21 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_ContactPartenaire__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>contact auquel on envoie le bon d&#39;achat partenaire</description>
+    <description>contact auquel on envoie le bon d&apos;achat partenaire</description>
     <externalId>false</externalId>
     <label>Contact Partenaire</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Le contact partenaire doit être un contact du compte partenaire.</errorMessage>
+        <filterItems>
+            <field>Contact.AccountId</field>
+            <operation>equals</operation>
+            <valueField>$Source.LPCR_ComptePartenaire__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Contact</referenceTo>
-    <relationshipLabel>Bons d&#39;achat partenaires (Contact Partenaire)</relationshipLabel>
+    <relationshipLabel>Bons d&apos;achat partenaires (Contact Partenaire)</relationshipLabel>
     <relationshipName>BonsAchatsPartenaires</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>

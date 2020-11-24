@@ -4654,8 +4654,15 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Order.LPCR_ChiffreAffaires__c</field>
-        <readable>true</readable>
+  <readable>true</readable>
     </fieldPermissions>
+
+ <fieldPermissions>
+        <editable>true</editable>
+        <field>Order.LPCR_MinDateOverrideNextBilling__c</field>
+  <readable>true</readable>
+    </fieldPermissions>
+        
     <fieldPermissions>
         <editable>true</editable>
         <field>Order.BillToContactId</field>
@@ -4959,6 +4966,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>OrderItem.EndDate</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>OrderItem.LPCR_DateArrondie__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

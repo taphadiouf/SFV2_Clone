@@ -5,13 +5,13 @@
 */
 global class APB005_GenerateContractFromOrder  implements Database.Batchable<sObject>,Schedulable {
     String query;
-    
+    final String ClassName = APB005_GenerateContractFromOrder.class.getName();
     global APB005_GenerateContractFromOrder() {
         
     }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
         query = 'SELECT Id,Status,SBQQ__Contracted__c FROM Order WHERE Status =\'Activated\' AND SBQQ__Contracted__c =false';
         
         return Database.getQueryLocator(query);
@@ -19,30 +19,68 @@ global class APB005_GenerateContractFromOrder  implements Database.Batchable<sOb
     
     global void execute(Database.BatchableContext BC, List<Order> scope) {
         
-        PAD.log('APB005_GenerateContractFromOrder', 'execute', 'scope to execute : '+scope);
-        
-        Set<Id> orderIds = UM003_TypeManager.getIdsOfListObjects(scope);
-        List<OrderItem> orderItemList = [Select Id, orderId, blng__BillThroughDateOverride__c  from OrderItem where orderId in:orderIds];
-        List<LPCR_Log__c> listOfLog = new List<LPCR_Log__c>();
-        Map<id,Order> OrderOrderItemMap = new Map<id,Order> ([select id,Status,SBQQ__Contracted__c,SBQQ__Quote__r.LPCR_RepriseDateProchaineFacturation__c ,(Select Id, orderId, blng__BillThroughDateOverride__c  from OrderItems) from order where id in: orderIds]);
-        
-        for ( OrderItem eachOrderItem :orderItemList)
-        {
-            order eachOrder = OrderOrderItemMap.get(eachOrderItem.orderId);
-            eachOrder.SBQQ__Contracted__c = true;
-            if(eachOrder.SBQQ__Quote__r.LPCR_RepriseDateProchaineFacturation__c != null){
-            	eachOrderItem.blng__BillThroughDateOverride__c =  eachOrder.SBQQ__Quote__r.LPCR_RepriseDateProchaineFacturation__c;
+        List<Exception> errors = new List<Exception>();
+        try {
+            
+            PAD.log(ClassName, 'execute', 'scope to execute : '+scope);
+            
+            Set<Id> orderIds = UM003_TypeManager.getIdsOfListObjects(scope);
+            List<OrderItem> orderItemList = [Select Id, orderId, blng__BillThroughDateOverride__c  from OrderItem where orderId in:orderIds];
+            List<LPCR_Log__c> listOfLog = new List<LPCR_Log__c>();
+            Map<id,Order> OrderOrderItemMap = new Map<id,Order> ([select id,Status,SBQQ__Contracted__c,SBQQ__Quote__r.LPCR_RepriseDateProchaineFacturation__c ,(Select Id, orderId, blng__BillThroughDateOverride__c  from OrderItems) from order where id in: orderIds]);
+            
+            for ( OrderItem eachOrderItem :orderItemList)
+            {
+                order eachOrder = OrderOrderItemMap.get(eachOrderItem.orderId);
+                eachOrder.SBQQ__Contracted__c = true;
+                if(eachOrder.SBQQ__Quote__r.LPCR_RepriseDateProchaineFacturation__c != null){
+                    eachOrderItem.blng__BillThroughDateOverride__c =  eachOrder.SBQQ__Quote__r.LPCR_RepriseDateProchaineFacturation__c;
+                }
+                listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Generating Contract From Order', ClassName, 'Batch', String.valueOf(eachOrder.Id), '', 'SUCCESS'));            
             }
-            listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Generating Contract From Order', 'APB005_GenerateContractFromOrder', 'Batch', String.valueOf(eachOrder.Id), '', 'SUCCESS'));            
+
+            String ErrMsg;
+            try {
+                update (OrderOrderItemMap.values());  
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Generate the Contract from the order',
+                                                                ClassName, 'Batch' , null,
+                                                                'Successfully updated list of order items : ' + String.valueOf(OrderOrderItemMap.values()), 
+                                                                UM010_Constant.SUCCESS);          
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Generate the Contract from the order',ClassName, 'Batch' , null,'Error while updating the order items : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            }
+
+
+            ErrMsg = null ;
+            try {
+                insert listOfLog;
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Generate the Contract from the order',
+                                                                ClassName, 'Batch' , null,
+                                                                'Successfully inserted list of logs : ' + String.valueOf(listOfLog), 
+                                                                UM010_Constant.SUCCESS);          
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Generate the Contract from the order',ClassName, 'Batch' , null,'Error while inserting the logs : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            }
+
+        } catch(Exception e) {
+            errors.add(e);
         }
         
-        
-        
-        update OrderOrderItemMap.values();  
-        insert listOfLog;
+        if (!errors.isEmpty()) {
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
+        }
     }
     
     global void finish(Database.BatchableContext BC) {
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish', 'Batch' , null, 'Finished Batch Processing', UM010_Constant.SUCCESS);
     }
     
     global void execute(SchedulableContext sc) {
@@ -63,7 +101,7 @@ global class APB005_GenerateContractFromOrder  implements Database.Batchable<sOb
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                Id schedId = System.Schedule('APB005_GenerateContractFromOrder'+timeForScheduler,timeForScheduler,new APB005_GenerateContractFromOrder());
+                Id schedId = System.Schedule(ClassName+timeForScheduler,timeForScheduler,new APB005_GenerateContractFromOrder());
             }
         }  
         

@@ -258,6 +258,7 @@ public with sharing class APC001_LeadFaConverController{
             Contact tmpContactRep1;
             Contact tmpContactRep2;
             currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
+            Id quoteRTAccueil = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_ContratA);
             for(Integer eachIndex : enfantsIndexes){
                 tmpContactEnfant = newContactsMap.get('contactEnfant' + eachIndex);
                 tmpContactRep1 = newContactsMap.get('contactRep1');
@@ -271,7 +272,8 @@ public with sharing class APC001_LeadFaConverController{
                         LPCR_ContactRepresentant1__c = (tmpContactRep1 != null ? tmpContactRep1.Id : null),
                         LPCR_ContactRepresentant2__c = (tmpContactRep2 != null ? tmpContactRep2.Id : null),
                         SBQQ__Opportunity2__c = currentLead.convertedOpportunityId,
-                        LPCR_Creation_conforme__c = true
+                        LPCR_Creation_conforme__c = true,
+                        RecordTypeId = quoteRTAccueil
                     )
                 );
             }
