@@ -4,6 +4,9 @@
 * @description Service class for LPCR_ModificationEntrante__c
 */
 public with sharing class SM022_ModificationEntranteServices {
+
+    static String ClassName = SM022_ModificationEntranteServices.class.getName();
+
     public static List<SBQQ__Quote__c> updateQuotesFromModifEntrantes(List<LPCR_ModificationEntrante__c> ModifEntrantesList){
         List<LPCR_ModificationEntrante__c> evtModifEntrantesList = EM016_ModificationEntranteEntity.getModifEntranteById(ModifEntrantesList); 
         Map<Id,LPCR_ModificationEntrante__c> mapDevisModifictionEntrante = new Map<Id,LPCR_ModificationEntrante__c>();
@@ -86,7 +89,6 @@ public with sharing class SM022_ModificationEntranteServices {
         
     }
     
-    // added by saurabh
     public static void sendAgreement(Map<String, String> mapSendAgreementTemplate) {
         try {
             for(String key : mapSendAgreementTemplate.keySet()){
@@ -99,8 +101,6 @@ public with sharing class SM022_ModificationEntranteServices {
         }       
     }   
     
-    
-    // added by saurabh
     public static Set<Id> updateQuotesFromModifEntrantesBatch(List<LPCR_ModificationEntrante__c> ModifEntrantesList){
         
         Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
@@ -373,7 +373,7 @@ public with sharing class SM022_ModificationEntranteServices {
                 allAccountUpdateList.add(updateAccount);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }else if('EVT_ABSCENCE'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
-                blng__Usage__c newUsage = createBlngUsage(eachModifEntrante,'Heures','Absence',evenementMap.get(eachModifEntrante.LPCR_Evenement__c));
+                blng__Usage__c newUsage = createBlngUsage(eachModifEntrante,'Heures','EVT_ABSCENCE',evenementMap.get(eachModifEntrante.LPCR_Evenement__c));
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }else if('EVT_VALIDATION_CONTRAT_DIRECTRICE'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null ){
@@ -382,7 +382,7 @@ public with sharing class SM022_ModificationEntranteServices {
                 mapOfQuoteForUpdate.put(updateQuote.id,updateQuote);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }else if('EVT_REGULARISATION'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_Quantite__c != null ){
-                blng__Usage__c newUsage = createBlngUsage(eachModifEntrante,'Heures','Regularisation',evenementMap.get(eachModifEntrante.LPCR_Evenement__c));
+                blng__Usage__c newUsage = createBlngUsage(eachModifEntrante,'Heures','EVT_REGULARISATION',evenementMap.get(eachModifEntrante.LPCR_Evenement__c));
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
             }
@@ -436,9 +436,12 @@ public with sharing class SM022_ModificationEntranteServices {
         }
         if(ModifEntrantesList.size() > 0){
             UPDATE ModifEntrantesList;
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'updateQuotesFromModifEntrantesBatch', 'Batch' , null, 'Finished Processing : '  + ModifEntrantesList, UM010_Constant.SUCCESS); 
         }
         return newQuoteIds;
     }
+
+    
     
     public static LPCR_RessourceFamille__c createNewRessourceFamille(LPCR_RessourceFamille__c oldRessourceFamille){
         Date firstDayOfNextMonthDate = Date.newInstance(Date.today().Year(), Date.today().month()+1 ,1) ;

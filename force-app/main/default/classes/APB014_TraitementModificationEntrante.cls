@@ -27,7 +27,6 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
     global void execute(Database.BatchableContext BC, List<LPCR_ModificationEntrante__c> scope) {
 
         Exception[] errors = new Exception[0];
-        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
 
         Set<Id> modificationEntranteIds = UM003_TypeManager.getIdsOfListObjects(scope);
         Set<Id> newQuoteIds = new Set<Id>();
@@ -35,12 +34,12 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
         try {
 
             newQuoteIds = SM022_ModificationEntranteServices.updateQuotesFromModifEntrantesBatch(scope);
-
             PAD.log('APB014_TraitementModificationEntrante', 'execute','quote ids ' + newQuoteIds );
             
             if(newQuoteIds != null && newQuoteIds.size() > 0){
                 allSuccessId.addAll(newQuoteIds);
             }
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size() + '\n Quotes Processed :' + newQuoteIds, UM010_Constant.SUCCESS); 
 
         } catch(Exception e) {
             errors.add(e);
