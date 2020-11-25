@@ -4587,6 +4587,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.LPCR_ChiffreAffaires__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.SBQQ__CreateContractedPrices__c</field>
         <readable>true</readable>
@@ -4648,9 +4653,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Order.LPCR_MinDateOverrideNextBilling__c</field>
-        <readable>true</readable>
+        <field>Order.LPCR_ChiffreAffaires__c</field>
+  <readable>true</readable>
     </fieldPermissions>
+
+ <fieldPermissions>
+        <editable>true</editable>
+        <field>Order.LPCR_MinDateOverrideNextBilling__c</field>
+  <readable>true</readable>
+    </fieldPermissions>
+        
     <fieldPermissions>
         <editable>true</editable>
         <field>Order.BillToContactId</field>
@@ -8387,6 +8399,21 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_PrixUnitaire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_CAUnitaire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_Clone__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.LPCR_CongesJours__c</field>
         <readable>true</readable>
@@ -9714,6 +9741,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_CheckboxTechnique__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_ChiffreAffaires__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
