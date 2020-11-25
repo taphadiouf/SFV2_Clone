@@ -25,6 +25,14 @@ public class PAD {
     }
 
     // Used to have an homogene way of debugging acrros developement team
+    public static void logList(String className, String methodName, String description, List<SObject> listObject) {
+        for (SObject o : listObject) {
+            System.Debug('>> ' + className + ' - ' + methodName + ' - ' + description + ' - element of list:' + String.valueOf(o));
+        }
+        
+    }
+
+    // Used to have an homogene way of debugging acrros developement team
     public static void log(String className, String methodName, String description, String value) {
         System.Debug('>> ' + className + ' - ' + methodName + ' - ' + description + ':' + value);
     }
