@@ -5,13 +5,13 @@
 */
 global class APB004_ActivateOrder  implements Database.Batchable<sObject>,Schedulable {
     String query;
-    
+    final String ClassName = APB004_ActivateOrder.class.getName();
     global APB004_ActivateOrder() {
         
     }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
         query = 'SELECT Id,Status FROM Order WHERE Status =\'Draft\'';
         
         return Database.getQueryLocator(query);
@@ -19,23 +19,60 @@ global class APB004_ActivateOrder  implements Database.Batchable<sObject>,Schedu
     
     global void execute(Database.BatchableContext BC, List<Order> scope) {
         
-        PAD.log('APB004_ActivateOrder', 'execute','scope to execute : ' + scope );
-        
-        Set<Id> orderIds = UM003_TypeManager.getIdsOfListObjects(scope);
-        List<Order> listOforder = [SELECT Id,Status FROM Order WHERE Id in :orderIds ];   
-		List<LPCR_Log__c> listOfLog = new List<LPCR_Log__c>();
-        
-        for (Order eachOrder : listOforder) {
+        List<Exception> errors = new List<Exception>();
+        try {
+            PAD.log(ClassName, 'execute','scope to execute : ' + scope );
             
-            eachOrder.status ='Activated';
-			listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Activating Order', 'APB004_ActivateOrder', 'Batch', String.valueOf(eachOrder.Id), '', 'SUCCESS'));            
+            Set<Id> orderIds = UM003_TypeManager.getIdsOfListObjects(scope);
+            List<Order> listOforder = [SELECT Id,Status FROM Order WHERE Id in :orderIds ];   
+            List<LPCR_Log__c> listOfLog = new List<LPCR_Log__c>();
+            
+            for (Order eachOrder : listOforder) {
+                
+                eachOrder.status ='Activated';
+                listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Activating Order', ClassName, 'Batch', String.valueOf(eachOrder.Id), '', 'SUCCESS'));            
+            }
+            
+            String ErrMsg;
+            try {
+                update listOforder;
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Activating the order',
+                                                                ClassName, 'Batch' , null,
+                                                                'Successfully updated list of orders : ' + String.valueOf(listOforder), 
+                                                                UM010_Constant.SUCCESS);          
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Activating the order',ClassName, 'Batch' , null,'Error while updating the orders : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            }
+            
+            ErrMsg = null ;
+            try {
+                insert listOfLog;
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Activating the order',
+                                                                ClassName, 'Batch' , null,
+                                                                'Successfully inserted list of logs : ' + String.valueOf(listOfLog), 
+                                                                UM010_Constant.SUCCESS);          
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Activating the order',ClassName, 'Batch' , null,'Error while inserting the logs : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            }
+        } catch(Exception e) {
+            errors.add(e);
         }
         
-        update listOforder;  
-        insert listOfLog;
+        if (!errors.isEmpty()) {
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
+        }
     }
     
     global void finish(Database.BatchableContext BC) {
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish', 'Batch' , null, 'Finished Batch Processing', UM010_Constant.SUCCESS);
     }
     
     global void execute(SchedulableContext sc) {

@@ -7,6 +7,7 @@
 NOT( $Permission.LPCR_ByPass_VR ),NOT(CONTAINS($Profile.Name,&apos;Admin&apos;)),
 OR(RecordType.DeveloperName = &apos;Referencement&apos;,RecordType.DeveloperName = &apos;Referencement_Approuve&apos;),
 ISCHANGED( SBQQ__Status__c ),
+NOT( LPCR_PbBypassVR__c),
 OR(
 TEXT(SBQQ__Status__c) = &apos;Envoyé pour signature&apos;,
 TEXT(SBQQ__Status__c) = &apos;Terminé&apos;,

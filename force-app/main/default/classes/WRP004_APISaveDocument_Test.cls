@@ -24,6 +24,10 @@ public class WRP004_APISaveDocument_Test {
             
             Account acc = UM002_TestDataFactory.createAccount('test');
             insert acc;
+            
+            Account accCreche = UM002_TestDataFactory.createAccount('test');
+            accCreche.RecordtypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Creche);
+            insert accCreche;
 
             // Increasing the code coverage by creating all types of files.
             List<Attachment> attachments = new List<Attachment>();
@@ -36,7 +40,7 @@ public class WRP004_APISaveDocument_Test {
 
             Test.startTest();
             for(Attachment att : attachments){
-                WRP004_APISaveDocument data = new WRP004_APISaveDocument(att.ParentId,att.Id,att.Name,EncodingUtil.base64Encode(att.Body));
+                WRP004_APISaveDocument data = new WRP004_APISaveDocument(att.ParentId,att.Id,att.Name,EncodingUtil.base64Encode(att.Body),accCreche.id);
                 System.assertNotEquals(null, data);
             }
             Test.stopTest();

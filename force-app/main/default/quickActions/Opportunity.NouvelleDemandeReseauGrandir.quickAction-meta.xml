@@ -9,6 +9,10 @@
         <formula>Opportunity.Id</formula>
     </fieldOverrides>
     <fieldOverrides>
+        <field>Origin</field>
+        <formula>IF($UserRole.DeveloperName = &apos;Service_Famille&apos;,&apos;Service Famille&apos;,&apos;Service Commercial&apos;)</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>Status</field>
         <literalValue>New</literalValue>
     </fieldOverrides>
@@ -84,13 +88,19 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LPCR_Opportunite__c</field>
-                <uiBehavior>Readonly</uiBehavior>
+                <field>LPCR_DevisReservataire__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>LPCR_PrixVente__c</field>
+                <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
         <quickActionLayoutColumns>
             <quickActionLayoutItems>
-                <emptySpace>true</emptySpace>
+                <emptySpace>false</emptySpace>
+                <field>Lead__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
@@ -148,12 +158,12 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LPCR_ContratEntreprise__c</field>
-                <uiBehavior>Edit</uiBehavior>
+                <field>LPCR_Opportunite__c</field>
+                <uiBehavior>Readonly</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>LPCR_PrixVente__c</field>
+                <field>LPCR_ContratEntreprise__c</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>

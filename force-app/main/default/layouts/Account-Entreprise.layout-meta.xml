@@ -6,6 +6,9 @@
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
+    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
     <excludeButtons>PartnerScorecard</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
@@ -552,9 +555,26 @@
     </relatedLists>
     <relatedLists>
         <fields>FULL_NAME</fields>
+        <fields>LEAD.TITLE</fields>
         <fields>LEAD.COMPANY</fields>
+        <fields>LEAD.EMAIL</fields>
         <fields>LEAD.PHONE</fields>
+        <fields>LEAD.STATUS</fields>
         <relatedList>Lead.LPCR_CompteSociete__c</relatedList>
+        <sortField>LEAD.STATUS</sortField>
+        <sortOrder>Asc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>FULL_NAME</fields>
+        <fields>LPCR_CiviliteCoDemandeur__c</fields>
+        <fields>LPCR_PrenomCoDemandeur__c</fields>
+        <fields>LPCR_ProfessionCoDemandeur__c</fields>
+        <fields>LPCR_SocieteCoDemandeur__c</fields>
+        <fields>LPCR_EmailCoDemandeur__c</fields>
+        <fields>LEAD.STATUS</fields>
+        <relatedList>Lead.LPCR_CompteSocieteCoDemandeur__c</relatedList>
+        <sortField>LEAD.STATUS</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <customButtons>NouvelleOpportunite</customButtons>
@@ -725,7 +745,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000001M2Zb</masterLabel>
+        <masterLabel>00h1j000001eZpa</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
