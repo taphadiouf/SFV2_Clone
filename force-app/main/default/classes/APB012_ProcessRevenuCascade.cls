@@ -384,12 +384,8 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
             
             // insert or update Revenue Cascade
             if(upsertRevenueCascadeList.size() > 0) {
-                try {
                     System.debug('>> APB012_ProcessRevenuCascade , execute(), upsertRevenueCascadeList.size = '+ upsertRevenueCascadeList.size());
-                    upsert upsertRevenueCascadeList;
-                } catch(Exception ex) {
-                    System.debug('Exception: APB012_ProcessRevenuCascade | '+ ex.getMessage());
-                }            
+                    upsert upsertRevenueCascadeList;           
             }
             for (Account eachAcc : scope) {
                 eachAcc.LPCR_ProcessRevenuCascade__c = false;

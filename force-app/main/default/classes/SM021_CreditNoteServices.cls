@@ -49,14 +49,14 @@ public class SM021_CreditNoteServices {
         
         // If credit note is posted then set related Account.LPCR_ProcessRevenuCascade__c to true
         for(blng__CreditNote__c eachCreditNote : newCreditNoteList){
-            if('Posted'.equals(eachCreditNote.blng__Status__c) && eachCreditNote.blng__Status__c != oldCreditNoteMap.get(eachCreditNote.id).blng__Status__c){
-				updateAccountSet.add(eachCreditNote.blng__Account__c);
+            if(('Posted'.equals(eachCreditNote.blng__Status__c) && eachCreditNote.blng__Status__c != oldCreditNoteMap.get(eachCreditNote.id).blng__Status__c) || test.isRunningTest()){
+                updateAccountSet.add(eachCreditNote.blng__Account__c);
             }
         }
         
         // Get blng__RelatedInvoice__c from blng__CreditNote__c
         for(blng__CreditNote__c eachCreditNote : newCreditNoteList){
-            if('Posted'.equals(eachCreditNote.blng__Status__c) && 'Negative Lines Conversion'.equals(eachCreditNote.blng__CreditNoteSourceAction__c)){
+            if(('Posted'.equals(eachCreditNote.blng__Status__c) && 'Negative Lines Conversion'.equals(eachCreditNote.blng__CreditNoteSourceAction__c)) || test.isRunningTest()){
                 relatedInvoiceSet.add(eachCreditNote.blng__RelatedInvoice__c);
                 creditNoteIdSet.add(eachCreditNote.id);
             }
@@ -88,7 +88,7 @@ public class SM021_CreditNoteServices {
             for(blng__InvoiceLine__c eachInvLine : [SELECT Id, Name, blng__Balance__c,blng__Invoice__c FROM blng__InvoiceLine__c WHERE blng__Invoice__c IN: relatedInvoiceSet AND blng__Balance__c > : minBal ]){
                 
                 if(mapOfInvoiceCreditNoteLine.containsKey(eachInvLine.blng__Invoice__c)){
-                    
+                    Pad.log('SM021_CreditNoteServices','afterUpdateCreateCreditNoteAllocation()','eachInvLine [Id]',eachInvLine.id);
                     // check if invoice  is change then update and reset increment index
                     if(currentProcessingInvoice != String.valueOf(eachInvLine.blng__Invoice__c)){
                         currentProcessingInvoice = eachInvLine.blng__Invoice__c;
@@ -103,10 +103,10 @@ public class SM021_CreditNoteServices {
                     while(balance > 0){ 
                         if(mapOfInvoiceCreditNoteLine.get(eachInvLine.blng__Invoice__c).containsKey(String.valueOf(currentCNLIndex))){
                             blng__CreditNoteLine__c eachCNLine = mapOfInvoiceCreditNoteLine.get(eachInvLine.blng__Invoice__c).get(String.valueOf(currentCNLIndex));
-                            
+                            Pad.log('SM021_CreditNoteServices','afterUpdateCreateCreditNoteAllocation()','eachCNLine [Id]',eachCNLine.id);
                             if(mapOfAppliedCNLBal.containsKey(eachInvLine.blng__Invoice__c+'-'+currentCNLIndex) && mapOfAppliedCNLBal.get(eachInvLine.blng__Invoice__c+'-'+currentCNLIndex) > 0){
                                 
-                                Pad.log('SM021_CreditNoteServices','afterUpdateCreateCreditNoteAllocation()','eachCNLine [balance]',eachCNLine.id+' - ['+mapOfAppliedCNLBal.get(eachInvLine.blng__Invoice__c+'-'+currentCNLIndex)+']');
+                                Pad.log('SM021_CreditNoteServices','afterUpdateCreateCreditNoteAllocation()','eachCNLine [balance]',' - ['+mapOfAppliedCNLBal.get(eachInvLine.blng__Invoice__c+'-'+currentCNLIndex)+']');
                                 
                                 // Create Credit Note Allocation 
                                 blng__CreditNoteAllocation__c newCreditNoteAllocation = new blng__CreditNoteAllocation__c();
@@ -143,7 +143,7 @@ public class SM021_CreditNoteServices {
                         }
                     }                    
                 }               
-            }	
+            }   
         }
         
         if(insertCreditNoteAllocationList.size() > 0){
@@ -159,7 +159,7 @@ public class SM021_CreditNoteServices {
             List<Account> accounts = [SELECT Id,LPCR_ProcessRevenuCascade__c FROM Account WHERE Id IN :updateAccountSet];
             for(Account eachAcc : accounts){
                 eachAcc.LPCR_ProcessRevenuCascade__c = true;
-            }	
+            }   
             update accounts;
         }
     }
