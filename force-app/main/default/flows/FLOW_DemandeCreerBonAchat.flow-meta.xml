@@ -3,7 +3,7 @@
     <decisions>
         <name>ContratsPartenairesNonVides</name>
         <label>Contrats Partenaires non vides</label>
-        <locationX>892</locationX>
+        <locationX>882</locationX>
         <locationY>243</locationY>
         <defaultConnector>
             <targetReference>PasContratPartenaireActif</targetReference>
@@ -164,10 +164,10 @@
     <recordCreates>
         <name>CreationBonAchat</name>
         <label>Création bon d&apos;achat</label>
-        <locationX>1219</locationX>
-        <locationY>241</locationY>
+        <locationX>1157</locationX>
+        <locationY>242</locationY>
         <connector>
-            <targetReference>Succes</targetReference>
+            <targetReference>MAJStatutDemande</targetReference>
         </connector>
         <faultConnector>
             <targetReference>ErreurCreationBonAchat</targetReference>
@@ -251,6 +251,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>LPCR_DevisReservataire__c</field>
+            <value>
+                <elementReference>RecuperationDemande.LPCR_DevisReservataire__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>LPCR_NombreJoursSemaine__c</field>
             <value>
                 <elementReference>RecuperationDemande.LPCR_NombreJoursSemaine__c</elementReference>
@@ -266,6 +272,12 @@
             <field>LPCR_PrixVente__c</field>
             <value>
                 <elementReference>RecuperationDemande.LPCR_PrixVente__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LPCR_Revalorisation25__c</field>
+            <value>
+                <elementReference>RecuperationContratsPartenaires.LPCR_Revalorisation25__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -341,6 +353,7 @@
         <queriedFields>LPCR_DateEntreeSouhaitee__c</queriedFields>
         <queriedFields>LPCR_NombreJoursSemaine__c</queriedFields>
         <queriedFields>LPCR_ContratEntreprise__c</queriedFields>
+        <queriedFields>LPCR_DevisReservataire__c</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -365,6 +378,32 @@
             <field>ParentId</field>
         </outputAssignments>
     </recordLookups>
+    <recordUpdates>
+        <name>MAJStatutDemande</name>
+        <label>MAJ Statut Demande</label>
+        <locationX>1265</locationX>
+        <locationY>242</locationY>
+        <connector>
+            <targetReference>Succes</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>ErreurCreationBonAchat_0</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>RecuperationDemande.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Edition bon d’achat</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
     <screens>
         <name>CrecheVide</name>
         <label>Crèche vide</label>
@@ -384,8 +423,8 @@
     <screens>
         <name>ErreurCreationBonAchat</name>
         <label>Erreur lors de la création du bon d&apos;achat</label>
-        <locationX>1218</locationX>
-        <locationY>431</locationY>
+        <locationX>1061</locationX>
+        <locationY>487</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -398,10 +437,26 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
+        <name>ErreurCreationBonAchat_0</name>
+        <label>Erreur lors de la mise à jour de la demande</label>
+        <locationX>1284</locationX>
+        <locationY>476</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>ErreurMessage2</name>
+            <fieldText>&lt;p&gt;Une erreur s&apos;est produite lors de la mise à jour du statut de la demande:&lt;/p&gt;&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <name>PasContratPartenaireActif</name>
         <label>Pas de contrat partenaire actif</label>
-        <locationX>898</locationX>
-        <locationY>462</locationY>
+        <locationX>885</locationX>
+        <locationY>454</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -460,7 +515,7 @@
     <screens>
         <name>Succes</name>
         <label>Succès</label>
-        <locationX>1364</locationX>
+        <locationX>1378</locationX>
         <locationY>242</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
