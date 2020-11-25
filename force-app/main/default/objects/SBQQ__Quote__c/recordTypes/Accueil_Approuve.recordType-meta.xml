@@ -228,6 +228,10 @@
             <fullName>Régulier</fullName>
             <default>true</default>
         </values>
+        <values>
+            <fullName>Urgence</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_TypeAvenant__c</picklist>
