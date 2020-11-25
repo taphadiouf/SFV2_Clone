@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_DevisReservataire__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Au moins un devis ou un contrat réservataire doit être renseigné</description>
+    <externalId>false</externalId>
+    <label>Devis Réservataire</label>
+    <referenceTo>SBQQ__Quote__c</referenceTo>
+    <relationshipLabel>Bons d&apos;achat partenaires</relationshipLabel>
+    <relationshipName>BonsAchatPartenaires</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
