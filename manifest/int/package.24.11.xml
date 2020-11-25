@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>LPCR_Type_Evenement_Intranet.EVT_ADRESSE_CONTACT_PARENT</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_AUTORITE_PARENTALE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_COMMENTAIRE_GLOBAL_FACTURE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_COMMENTAIRE_INDIVIDUEL_FACTURE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_DATE_FIN_CONTRAT</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_DATE_NAISSANCE_ENFANT</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_DELAI_CARENCE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_FACTURATION_ADAPTATION</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_HEURE_DEDUITE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_HEURE_OCCASIONNEL</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_HEURE_SUPPLEMENTAIRE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_MODE_GARDE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_MONTANT_RESSOURCE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_NOMBRE_CONGES</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_NOMBRE_CONGES_NON_PRIS</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_NOMBRE_DE_REPAS</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_NOMBRE_ENFANT_FRATRIE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_NOMBRE_HEURES_REALISEE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_NOMBRE_JOUR_CONGE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_NOMBRE_MOIS_MENSUALISE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_NUMERO_ALLOCATAIRE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_REGULARISATION</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_SECTION</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_SITUATION_FAMILIALE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_SITUATION_HANDICAPE_ENFANT</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_TRAITEMENT_JOUR_FERIE</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_TYPE_ACCUEIL</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_TYPE_PLANNING</members>
+        <members>LPCR_Type_Evenement_Intranet.EVT_VALIDATION_CONTRAT_DIRECTRICE</members>
+        <name>CustomMetadata</name>
+    </types>
+        <version>47.0</version>
+</Package>

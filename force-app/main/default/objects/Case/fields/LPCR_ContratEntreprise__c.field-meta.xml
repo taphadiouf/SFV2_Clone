@@ -3,7 +3,7 @@
     <fullName>LPCR_ContratEntreprise__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Contrat Entreprise</label>
+    <label>Contrat Réservataire</label>
     <referenceTo>Contract</referenceTo>
     <relationshipLabel>Demandes Réseau Grandir</relationshipLabel>
     <relationshipName>Demandes_Reseau_Grandir</relationshipName>
