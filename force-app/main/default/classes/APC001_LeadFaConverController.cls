@@ -110,7 +110,24 @@ public with sharing class APC001_LeadFaConverController{
         Account newFamilleAccount = new Account(
             Name = Label.LPCR_Famille + ' ' + currentLead.LastName + (nomCoDemandeur != null ? (' ' +nomCoDemandeur) : ''), 
             RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Famille),
-            Phone = currentLead.Phone
+            Phone = currentLead.Phone,
+            LPCR_SituationFamiliale__c  = currentLead.LPCR_SituationFamiliale__c,
+            ShippingStreet = currentLead.Address.getStreet(),
+            ShippingCity = currentLead.Address.getCity(),
+            ShippingState = currentLead.Address.getState(),
+            ShippingCountry = currentLead.Address.getCountry(),
+            ShippingPostalCode = currentLead.Address.getPostalCode(),
+            ShippingGeocodeAccuracy = currentLead.Address.getGeocodeAccuracy(),
+            ShippingLatitude = currentLead.Address.getLatitude(),
+            ShippingLongitude = currentLead.Address.getLongitude(),
+            BillingStreet = currentLead.Address.getStreet(),
+            BillingCity = currentLead.Address.getCity(),
+            BillingState = currentLead.Address.getState(),
+            BillingCountry = currentLead.Address.getCountry(),
+            BillingPostalCode = currentLead.Address.getPostalCode(),
+            BillingGeocodeAccuracy = currentLead.Address.getGeocodeAccuracy(),
+            BillingLatitude = currentLead.Address.getLatitude(),
+            BillingLongitude = currentLead.Address.getLongitude() 
         );
         
         List<Database.SaveResult> accountSaveResultList = new List<Database.SaveResult>();
@@ -145,7 +162,9 @@ public with sharing class APC001_LeadFaConverController{
             MailingCountry = currentLead.Address.getCountry(),
             MailingPostalCode = currentLead.Address.getPostalCode(),
             AccountId = newFamilleAccount.Id,
-            RecordTypeId = familleContactRT
+            RecordTypeId = familleContactRT,
+            LPCR_NomEntreprise__c = currentLead.Company,
+            Title = currentLead.Title 
         ));        
         if(String.isNotBlank(prenomCoDemandeur) && String.isNotBlank(nomCoDemandeur)){
             newContactsMap.put('contactRep2', new Contact(
@@ -160,7 +179,11 @@ public with sharing class APC001_LeadFaConverController{
                 MailingCountry = currentLead.Address.getCountry(),
                 MailingPostalCode = currentLead.Address.getPostalCode(),
                 AccountId = newFamilleAccount.Id,
-                RecordTypeId = familleContactRT
+                RecordTypeId = familleContactRT,
+                MobilePhone = currentLead.LPCR_TelephoneMobileCoDemandeur__c,
+                Phone = currentLead.LPCR_TelephoneCoDemandeur__c,
+                Title = currentLead.LPCR_ProfessionCoDemandeur__c,
+                LPCR_NomEntreprise__c = currentLead.LPCR_SocieteCoDemandeur__c 
             ));
         }
         //Enfants part
