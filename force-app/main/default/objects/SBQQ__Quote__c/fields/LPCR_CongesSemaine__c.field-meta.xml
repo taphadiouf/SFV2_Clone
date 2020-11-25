@@ -16,9 +16,23 @@
     CASE(
       LPCR_PlanningEnfant__r.LPCR_TypePlanning__c,
       &quot;Planning Classique&quot;,
-      (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_NombreJoursAccueil__c) * (365 / (SBQQ__EndDate__c - SBQQ__StartDate__c)),
+      IF(
+        OR(
+          ISBLANK(LPCR_PlanningEnfant__r.LPCR_NombreJoursAccueil__c),
+          LPCR_PlanningEnfant__r.LPCR_NombreJoursAccueil__c = 0
+        ),
+        0,
+        (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_NombreJoursAccueil__c) * (365 / (SBQQ__EndDate__c - SBQQ__StartDate__c))
+      ),
       &quot;Multi-Planning&quot;,
-      (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_MoyenneJoursSemaine__c) * (365 / (SBQQ__EndDate__c - SBQQ__StartDate__c)),
+      IF(
+        OR(
+          ISBLANK(LPCR_PlanningEnfant__r.LPCR_MoyenneJoursSemaine__c),
+          LPCR_PlanningEnfant__r.LPCR_MoyenneJoursSemaine__c = 0
+        ),
+        0,
+        (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_MoyenneJoursSemaine__c) * (365 / (SBQQ__EndDate__c - SBQQ__StartDate__c))
+      ),
       0
     )
   ),
@@ -31,9 +45,23 @@
     CASE(
       LPCR_PlanningEnfant__r.LPCR_TypePlanning__c,
       &quot;Planning Classique&quot;,
-      (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_NombreJoursAccueil__c) * (365 / (SBQQ__EndDate__c - SBQQ__MasterContract__r.StartDate)),
+      IF(
+        OR(
+          ISBLANK(LPCR_PlanningEnfant__r.LPCR_NombreJoursAccueil__c),
+          LPCR_PlanningEnfant__r.LPCR_NombreJoursAccueil__c = 0
+        ),
+        0,
+        (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_NombreJoursAccueil__c) * (365 / (SBQQ__EndDate__c - SBQQ__MasterContract__r.StartDate))
+      ),
       &quot;Multi-Planning&quot;,
-      (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_MoyenneJoursSemaine__c) * (365 / (SBQQ__EndDate__c - SBQQ__MasterContract__r.StartDate)),
+      IF(
+        OR(
+          ISBLANK(LPCR_PlanningEnfant__r.LPCR_MoyenneJoursSemaine__c),
+          LPCR_PlanningEnfant__r.LPCR_MoyenneJoursSemaine__c = 0
+        ),
+        0,
+        (LPCR_CongesJours__c / LPCR_PlanningEnfant__r.LPCR_MoyenneJoursSemaine__c) * (365 / (SBQQ__EndDate__c - SBQQ__MasterContract__r.StartDate))
+      ),
       0
     )
   )
