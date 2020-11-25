@@ -9738,6 +9738,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_PbBypassVR__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+      <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.EditLinesFieldSetName__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -15918,7 +15923,7 @@
     <recordTypeVisibilities>
         <recordType>SBQQ__Quote__c.Accueil</recordType>
         <visible>true</visible>
-    </recordTypeVisibilities>
+    </recordTypeVisibilities>   
     <recordTypeVisibilities>
         <recordType>SBQQ__Quote__c.Accueil_Approuve</recordType>
         <visible>true</visible>
