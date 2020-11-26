@@ -49,7 +49,7 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                 orderItemGroupingSet.add(eachOrderItem.Order.AccountId+''+eachOrderItem.SBQQ__Contract__c+''+eachOrderItem.LPCR_Creche__c);
             }
             
-            for (LPCR_RevenueCascade__c eachRevCascade : [SELECT Id, Name, LPCR_Compte__c, LPCR_CreditNoteLineAggregation__c, LPCR_CreditNoteRevenue__c, LPCR_DateDebut__c, 
+            for (LPCR_RevenueCascade__c eachRevCascade : [SELECT Id, Name, LPCR_Compte__c, LPCR_NombrePlace__c, LPCR_CreditNoteLineAggregation__c, LPCR_CreditNoteRevenue__c, LPCR_DateDebut__c, 
                                                             LPCR_MontantFacture__c, LPCR_OrderInvoiceRevenue__c, LPCR_OrderLineAggregation__c, LPCR_OrderLineGroup__c, LPCR_PCA__c 
                                                             FROM LPCR_RevenueCascade__c 
                                                             WHERE LPCR_OrderLineGroup__c IN : orderItemGroupingSet order by LPCR_DateDebut__c
@@ -134,13 +134,33 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                     }
 
                     updateRevCascade.LPCR_Contrat__c = String.valueOf(ar.get('contract'));
-                    updateRevCascade.LPCR_NombrePlace__c = Integer.valueOf(ar.get('nbPlace'));
+                    
+                    PAD.log(ClassName, 'execute', 'STEP 1 - ar.get(nbPlace):' + ar.get('nbPlace'));
+                    PAD.log(ClassName, 'execute', 'STEP 1 - Decimal.valueOf(String.valueOf(ar.get(nbPlace)):' + Integer.valueOf(String.valueOf(ar.get('nbPlace'))));
+                    PAD.log(ClassName, 'execute', 'STEP 1 - Decimal.valueOf(String.valueOf(ar.get(nbPlace)):' + Integer.valueOf(ar.get('nbPlace')));
+
+                    String tmpNumber = String.valueOf(ar.get('nbPlace'));
+
+                    PAD.log(ClassName, 'execute', 'STEP 1 - tmpNumber:' + tmpNumber);
+
+                    Integer addSub = 0 ;
+
+                    addSub = Integer.valueOf(String.valueOf(ar.get('nbPlace')));
+
+                    if (tmpNumber.startsWith('-')) {
+                        PAD.log(ClassName, 'execute', 'STEP 1 - Nombre de place Negatif:' + Integer.valueOf(ar.get('nbPlace')));
+                        addSub = -1 * Integer.valueOf(String.valueOf(ar.get('nbPlace')));
+                    } 
+                    //addSub = updateRevCascade.LPCR_NombrePlace__c + addSub;
+                    updateRevCascade.LPCR_NombrePlace__c = (updateRevCascade.LPCR_NombrePlace__c + addSub) >= 0 ? updateRevCascade.LPCR_NombrePlace__c + addSub : 0;
+                    //updateRevCascade.LPCR_NombrePlace__c = addSub >= 0 ? addSub : 0;
+
                     updateRevCascade.LPCR_PrixAnnuel__c = Double.valueOf(ar.get('totalPrixAnnuel'));
                     updateRevCascade.LPCR_NombreMois__c = UM005_DateUtility.getMonthNumberByString(String.valueOf(ar.get('nombreMois')));
                     updateRevCascade.LPCR_EntiteJuridique__c = String.valueOf(ar.get('legalEntity'));
                     updateRevCascade.LPCR_CompteCreche__c = String.valueOf(ar.get('creche'));
 
-                    PAD.log('APB012_ProcessRevenuCascade', 'execute', 'STEP 1 - Adding New LPCR_RevenueCascade__c record:' + updateRevCascade);
+                    PAD.log(ClassName, 'execute', 'STEP 1 - Adding New LPCR_RevenueCascade__c record:' + updateRevCascade);
                     upsertRevenueCascadeList.add(updateRevCascade);
                     
                 } else { // Create the Revenue Waterfall
