@@ -4542,6 +4542,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_MontantForfaitAnnuel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_NombreAgrmentCrcheSurSection__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5056,6 +5061,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.Tech_MaxDateLigneBerceauFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>blng__Invoice__c.blng__ARStatus__c</field>
         <readable>true</readable>
@@ -5288,11 +5298,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__Invoice__c.blng__UniqueId__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>blng__Invoice__c.Tech_MaxDateLigneBerceauFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
