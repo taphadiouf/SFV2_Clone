@@ -11,13 +11,14 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
     }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
+
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
         return Database.getQueryLocator([SELECT Id,Quantity, OrderId, TotalPrice,SBQQ__DefaultSubscriptionTerm__c,LPCR_Uplift__c,LPCR_ContractStartDate__c,
                                                 LPCR_ContractEndDate__c, blng__BillableUnitPrice__c, SBQQ__BillingFrequency__c, blng__NextChargeDate__c,
                                                 SBQQ__Contract__c,SBQQ__Contract__r.LPCR_DateFin__c, Order.LPCR_BDOM_OrderStartdate__c,SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c,
                                                 SBQQ__QuoteLine__r.SBQQ__ListPrice__c,Order.LPCR_RenouvellementPlanFacture__c 
                                             FROM OrderItem 
-                                            WHERE Order.Status = 'Activated'  AND LPCR_BillingPlanProcessment__c = false AND CreatedDate = TODAY]);
+                                            WHERE Order.Status = 'Activated'  AND LPCR_BillingPlanProcessment__c = false AND LastModifiedDate = TODAY]);
     }
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
@@ -45,7 +46,9 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                                                                         WHERE Id =: contractIds]);
             
             // ------------------------------------------------------------------------------------------------------------
-            // Create PlanFacturation records for each year of the order item with proper values
+            //
+            // STEP 1 : Create PlanFacturation records for each year of the order item with proper values
+            //
             // ------------------------------------------------------------------------------------------------------------
 
             for(OrderItem eachOrderItem : scope){ 
@@ -67,6 +70,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                 Decimal totalFullYearPrice = eachOrderItem.SBQQ__QuoteLine__r.SBQQ__ListPrice__c;
                 Decimal finalLastYearPrice = 0;
                 Decimal totaleGlobalePlanFacture = 0;
+                Decimal sumOfTotalContractValue = 0;
                 
                 // Store Billing plan map for order product
                 if(!billingPlanMap.containsKey(eachOrderItem.Id)){
@@ -77,20 +81,19 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                     Date lastDayOfCurrentMonthDateSetEndDate = null;
                     
                     for(integer eachYear = 1 ; eachYear <= totalNoOfYears ; eachYear++){
-                        // First Year
-                        
-                        if(eachYear == 1){
+
+                        if(eachYear == 1){ // First Year
                             
-                            System.debug('>> APB010_ProcessDailyOrderProduct 1st Year totalPrice = ' + totalPrice);
-                            System.debug('>> APB010_ProcessDailyOrderProduct 1st Year multiplier = ' + multiplier);
-                            System.debug('>> APB010_ProcessDailyOrderProduct 1st Year ProrateMultiplier = ' + eachOrderItem.SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c);
+                            PAD.log(ClassName, 'execute','First Year - totalPrice = ' + totalPrice);
+                            PAD.log(ClassName, 'execute','First Year - multiplier = ' + multiplier);
+                            PAD.log(ClassName, 'execute','First Year - ProrateMultiplier = ' + eachOrderItem.SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c);
                             
                             //totalFullYearPrice = (totalPrice * multiplier)/eachOrderItem.SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c;
                             //totalFullYearPrice = totalPrice * eachOrderItem.SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c;
                             totaleGlobalePlanFacture += totalPrice;
                             
-                            System.debug('>> APB010_ProcessDailyOrderProduct 1st Year totalFullYearPrice = ' + totalFullYearPrice);
-                            System.debug('>> APB010_ProcessDailyOrderProduct 1st Year totaleGlobalePlanFacture = ' + totaleGlobalePlanFacture);
+                            PAD.log(ClassName, 'execute','First Year - totalFullYearPrice = ' + totalFullYearPrice);
+                            PAD.log(ClassName, 'execute','First Year - totaleGlobalePlanFacture = ' + totaleGlobalePlanFacture);
                             
                             // Create new Billing Plan record
                             LPCR_PlanFacturation__c billingPlan = new LPCR_PlanFacturation__c();
@@ -105,12 +108,14 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             else
                                 billingPlan.LPCR_EndDate__c =  eachOrderItem.LPCR_ContractEndDate__c;   
                             lastDayOfCurrentMonthDateSetEndDate = billingPlan.LPCR_EndDate__c;
-                            System.debug('**** First Year billing Plan = '+ billingPlan);
-                            billingPlanMap.get(eachOrderItem.Id).add(billingPlan);
-                            
-                        }else if(eachYear != totalNoOfYears) {
 
-                            // Middle Year price
+                            sumOfTotalContractValue = billingPlan.LPCR_TotalContractValue__c;
+                            billingPlanMap.get(eachOrderItem.Id).add(billingPlan);
+
+                            PAD.log(ClassName, 'execute','First Year - billing Plan = '+ billingPlan);
+                            
+                        }else if(eachYear != totalNoOfYears) { // Middle Year price
+
                             totalFullYearPrice =  totalFullYearPrice + ((totalFullYearPrice * eachOrderItem.LPCR_Uplift__c)/100);
                             totaleGlobalePlanFacture += totalFullYearPrice;
                             
@@ -123,24 +128,27 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             Date stDate = billingPlan.LPCR_StartDate__c;
                             Date lastDayOfCurrentMonthDate=Date.newInstance(stDate.year(), 12 , 31);
 
-                            if(eachOrderItem.LPCR_ContractEndDate__c > lastDayOfCurrentMonthDate)
-                                billingPlan.LPCR_EndDate__c =   lastDayOfCurrentMonthDate;
-                            else
-                                billingPlan.LPCR_EndDate__c =   eachOrderItem.LPCR_ContractEndDate__c;    
+                            if(eachOrderItem.LPCR_ContractEndDate__c > lastDayOfCurrentMonthDate) { 
+                                billingPlan.LPCR_EndDate__c = lastDayOfCurrentMonthDate;
+                            }
+                            else {
+                                billingPlan.LPCR_EndDate__c = eachOrderItem.LPCR_ContractEndDate__c;    
+                            }
 
                             lastDayOfCurrentMonthDateSetEndDate = billingPlan.LPCR_EndDate__c;
-                            System.debug('**** Middle Year billing Plan = '+ billingPlan);
+                            sumOfTotalContractValue += billingPlan.LPCR_TotalContractValue__c;
                             billingPlanMap.get(eachOrderItem.Id).add(billingPlan);
 
-                        } else {
+                            PAD.log(ClassName, 'execute','Middle Year - billing Plan : '+ billingPlan);
 
-                            // Last Partial Year
+                        } else { // Last Partial Year
+
                             totalFullYearPrice =  totalFullYearPrice + ((totalFullYearPrice * eachOrderItem.LPCR_Uplift__c)/100);
                             Double perDayPrice = ((totalFullYearPrice)/365).setScale(4);
                             Integer diffBetweenMonths = lastDayOfCurrentMonthDateSetEndDate.addDays(1).monthsBetween(eachOrderItem.LPCR_ContractEndDate__c);
                             Integer reminderDays = Date.newInstance(eachOrderItem.LPCR_ContractEndDate__c.year(), eachOrderItem.LPCR_ContractEndDate__c.month() , 1).daysBetween(eachOrderItem.LPCR_ContractEndDate__c) + 1;
-                            System.debug('**** Last Partial Year daily price : '+ perDayPrice);
-                            
+                            PAD.log(ClassName, 'execute','Last Partial Year - perDayPrice : '+ perDayPrice);
+                                                        
                             totaleGlobalePlanFacture += totalFullYearPrice;
                             
                             // Create Billing plan record
@@ -157,12 +165,35 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             else
                                 billingPlan.LPCR_EndDate__c =   eachOrderItem.LPCR_ContractEndDate__c; 
                             
-                            Integer daysInBP =  billingPlan.LPCR_StartDate__c.daysBetween(billingPlan.LPCR_EndDate__c)+1;
-                            System.debug('**** Last Partial Year daysInBP = '+ daysInBP);
-                            billingPlan.LPCR_TotalContractValue__c = daysInBP * perDayPrice;
-                            lastDayOfCurrentMonthDateSetEndDate = billingPlan.LPCR_EndDate__c;
-                            System.debug('**** Last Partial Year billing Plan = '+ billingPlan);
+                            PAD.log(ClassName, 'execute','Last Partial Year - lastDayOfCurrentMonthDateSetEndDate.addDays(1) :' + lastDayOfCurrentMonthDateSetEndDate.addDays(1));
+                            PAD.log(ClassName, 'execute','Last Partial Year - eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth().addDays(-1) :' + eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth().addDays(-1));
+
+                            Decimal d0 = (totalPrice / 12);
+                            Decimal Subtotal_Part1 = d0 * lastDayOfCurrentMonthDateSetEndDate.addDays(1).monthsBetween(eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth());
+
+                            Decimal d1 = reminderDays;
+                            Decimal d2 = totalPrice;
+                            PAD.log(ClassName, 'execute','Last Partial Year - d1 :' + d1);
+                            PAD.log(ClassName, 'execute','Last Partial Year - d2 :' + d2);
+                            Decimal Subtotal_Part2 = ((d1 / 30) * (d2 / 12));
+
+                            PAD.log(ClassName, 'execute','Last Partial Year - Subtotal_Part1 :' + Subtotal_Part1);
+                            PAD.log(ClassName, 'execute','Last Partial Year - Subtotal_Part2 :' + Subtotal_Part2);
+
+                            // <Monthly price> : (totalPrice / 12)
+                            // <remaining number of days> : reminderDays
+                            // <number of days in the current month> : always 30
+                            // Definition of total (IS-1255) : (Number of months * <Monthly price>) + ((<remaining number of days> / <number of days in the month>) * <Monthly price>)
+
+                            PAD.log(ClassName, 'execute','Last Partial Year - (totalPrice / 12) :'+ (totalPrice / 12));
+                            PAD.log(ClassName, 'execute','Last Partial Year - reminderDays :'+ reminderDays);
+                            
+                            billingPlan.LPCR_TotalContractValue__c = Subtotal_Part1 + Subtotal_Part2;
+                            lastDayOfCurrentMonthDateSetEndDate = billingPlan.LPCR_EndDate__c;                            
+                            sumOfTotalContractValue += billingPlan.LPCR_TotalContractValue__c;
                             billingPlanMap.get(eachOrderItem.Id).add(billingPlan);
+
+                            PAD.log(ClassName, 'execute','Last Partial Year billing Plan = '+ billingPlan);
                         }
                         
                     }           
@@ -170,13 +201,13 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                     // Calculate and store the whole global price
                     if(updateContractMap.containsKey(eachOrderItem.SBQQ__Contract__c)) {
 
-                        updateContractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_TotaleGlobalePlanFacture__c = totaleGlobalePlanFacture;
+                        updateContractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_TotaleGlobalePlanFacture__c = sumOfTotalContractValue;
 
                         if((updateContractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_ValeurTotale__c == null || 
                                 updateContractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_ValeurTotale__c == 0) && 
                                 updateContractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_TotaleGlobalePlanFacture__c != null ) {
 
-                            updateContractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_ValeurTotale__c = totaleGlobalePlanFacture;
+                            updateContractMap.get(eachOrderItem.SBQQ__Contract__c).LPCR_ValeurTotale__c = sumOfTotalContractValue;
                         }
                     }
                 }
@@ -253,7 +284,12 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                 invoicePlanLineMap.get(eachInvoicePlanLine.blng__InvoicePlan__c).add(eachInvoicePlanLine);
             }
             
-            // billing plan line for billing plan
+            // ------------------------------------------------------------------------------------------------------------
+            //
+            // STEP 2 : Managing Billing Plan Line for billing plan
+            //
+            // ------------------------------------------------------------------------------------------------------------
+
             for(OrderItem eachOrderItem : scope) {
 
                 eachOrderItem.LPCR_BillingPlanProcessment__c = true;
@@ -419,7 +455,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                     }
                     
                 } else {
-                    // ------------------------------------------------------------------------------------------------------------
+                // ------------------------------------------------------------------------------------------------------------
                 // Manage Invoice Plan LPCR_LignePlanFacturation__c
                 // ------------------------------------------------------------------------------------------------------------
                     if(billingPlanMap.containsKey(eachOrderItem.Id)) {
@@ -479,8 +515,10 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
             }  
             ErrMsg = null;
             if (billingPlanLineList.size() > 0) {
-                System.debug('**** billingPlanLineList size = '+ billingPlanLineList.size());
-                System.debug('**** billingPlanLineList data = '+ billingPlanLineList);
+
+                PAD.log(ClassName, 'execute','billingPlanLineList size = '+ billingPlanLineList.size());
+                PAD.log(ClassName, 'execute','billingPlanLineList data = '+ billingPlanLineList);
+
                 try {
                     insert billingPlanLineList;
                     PAD.log(ClassName, 'execute','Insert success of :'+ billingPlanLineList);
