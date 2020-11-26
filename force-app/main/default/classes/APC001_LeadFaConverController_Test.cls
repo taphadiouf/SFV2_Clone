@@ -101,6 +101,10 @@ public with sharing class APC001_LeadFaConverController_Test {
             leadFields.add('LPCR_CompteSocieteCoDemandeur__c');
             leadFields.add('LPCR_TypePrestation__c');
             leadFields.add('LPCR_CodeCreche1__r.Name');
+            leadFields.add('Street');
+            leadFields.add('City');
+            leadFields.add('PostalCode');
+            leadFields.add('State');
             Lead currentLead = (Lead) new EM002_LeadEntity().getAll(leadFields).get(0);
             
             //Initialize the enfantsIndexes
@@ -116,7 +120,6 @@ public with sharing class APC001_LeadFaConverController_Test {
             Account entrepriseAccount = (Account) new EM005_AccountEntity().getBy(Label.LPCR_RecordTypeId, accountFilterSet, null).get(0);
             
             Test.startTest();
-            APC001_LeadFaConverController.convertLeadCtrl(currentLead.Id, enfantsIndexes, currentLead.LPCR_CodeCreche1__r.Name, entrepriseAccount.Id);
             try {
                 APC001_LeadFaConverController.convertLeadCtrl(currentLead.Id, enfantsIndexes, currentLead.LPCR_CodeCreche1__r.Name, entrepriseAccount.Id);
             } catch (Exception e ) {
@@ -130,7 +133,7 @@ public with sharing class APC001_LeadFaConverController_Test {
             accountFields.add('LPCR_Representant1__c');
             accountFields.add('LPCR_Representant2__c');
             Map<Id, Account> accountFamilleMap = new Map<Id, Account>((List<Account>) new EM005_AccountEntity().getBy(Label.LPCR_RecordTypeId, accountFilterSet, accountFields));
-            System.assertEquals(2, accountFamilleMap.size());
+            System.assertEquals(1, accountFamilleMap.size());
             System.assertNotEquals(null, accountFamilleMap.values().get(0).LPCR_Representant1__c);
             System.assertNotEquals(null, accountFamilleMap.values().get(0).LPCR_Representant2__c);
             
@@ -146,7 +149,7 @@ public with sharing class APC001_LeadFaConverController_Test {
             contactFilterSet = new Set<String>();
             contactFilterSet.add(String.valueOf(contactEnfantRTId));
             Map<Id, Contact> enfantsContactsMap = new Map<Id, Contact> ((List<Contact>) new EM011_ContactEntity().getBy(Label.LPCR_RecordTypeId, contactFilterSet, null));
-            System.assertEquals(6, enfantsContactsMap.size());
+            System.assertEquals(3, enfantsContactsMap.size());
             
             //Assert the creation of AccountContactRelation for Representant1 and Representant2
             Set<Id> relatedAccountsIds = new Set<Id>();
