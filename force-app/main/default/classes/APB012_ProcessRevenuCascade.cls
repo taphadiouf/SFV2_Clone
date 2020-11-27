@@ -30,12 +30,18 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
             
             Set<Id> accountsIdSet = UM003_TypeManager.getIdsOfListObjects(scope);
             Set<String> orderItemGroupingSet = new Set<String>();
+
+            PAD.logAllSetId(ClassName, 'execute', 'INIT - accountsIdSet : ', accountsIdSet);
+
             List<blng__RevenueTransaction__c> revenueTransList = [SELECT Id, Name, blng__Account__c, blng__RevenueFinancePeriod__c, blng__OrderProduct__c,
                                                                     blng__InvoiceLine__r.blng__Invoice__c,blng__InvoiceLine__r.blng__Invoice__r.blng__InvoiceStatus__c 
                                                                     FROM blng__RevenueTransaction__c 
                                                                     WHERE blng__Account__c IN : accountsIdSet AND (blng__OrderProduct__c != null OR blng__InvoiceLine__c != null) 
                                                                 ];
             Set<String> orderProductIds = UM003_TypeManager.getFieldsOfListObjects(revenueTransList,'blng__OrderProduct__c');
+
+            PAD.logAllSetString(ClassName, 'execute', 'INIT - orderProductIds : ', orderProductIds);
+
             Set<Id> orderLineIds = new Set<Id>();
             Map<String, Map<String,LPCR_RevenueCascade__c>> revenueCascadeMap = new Map<String, Map<String,LPCR_RevenueCascade__c>>();
             
@@ -79,6 +85,9 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
             PAD.log(ClassName, 'execute', '--------------- STEP 1 ----------- ');
             PAD.log(ClassName, 'execute', '---------------------------------- ');
 
+            PAD.log(ClassName, 'execute', 'STEP 1 - orderLineIds : ' + orderLineIds);
+            PAD.logAllSetId(ClassName, 'execute', 'STEP 1 - orderLineIds',orderLineIds);
+
             list<AggregateResult> groupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount, 
                                                             SUM(blng__OrderProduct__r.Quantity) nbPlace, SUM(LPCR_PrixAnnuel__c) totalPrixAnnuel,
                                                             MAX(LPCR_NombreMois__c) nombreMois, blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c contract,
@@ -93,7 +102,9 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                                                         blng__OrderProduct__r.blng__GroupId__c,blng__OrderProduct__r.Blng__LegalEntity__c,blng__OrderProduct__r.LPCR_Creche__c
                                                     ];        
 
-            PAD.log('APB012_ProcessRevenuCascade', 'execute', 'STEP 1 - groupedResults step1 size : ' + groupedResults.size());
+            PAD.log(ClassName, 'execute', 'STEP 1 - groupedResults step1 size : ' + groupedResults.size());
+            PAD.logAllList(ClassName, 'execute', 'STEP 2 - groupedResults',groupedResults);
+
             List<LPCR_RevenueCascade__c> upsertRevenueCascadeList = new List<LPCR_RevenueCascade__c>();
             Map<String, double> step1AggregateAmountMap = new Map<String, double>();
             
@@ -101,6 +112,10 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
 
                 PAD.log(ClassName, 'execute', 'STEP 1 - blng__RevenueFinancePeriod__c Date : ' + ar.get('rvp'));
                 PAD.log(ClassName, 'execute', 'STEP 1 - Sum amount : ' + ar.get('amount'));
+                PAD.log(ClassName, 'execute', 'STEP 1 - test1:' + ar.get('nbPlace'));
+                PAD.log(ClassName, 'execute', 'STEP 1 - test1:' + ((Decimal)ar.get('nbPlace')));
+                //PAD.log(ClassName, 'execute', 'STEP 1 - test1:' + ((Double)ar.get('nbPlace')));
+                //PAD.log(ClassName, 'execute', 'STEP 1 - test1:' + ((Integer)ar.get('nbPlace')));
 
                 String groupId = String.valueOf(ar.get('groupId'));
                 Double amount = Double.valueOf(ar.get('amount'));
@@ -134,33 +149,16 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                     }
 
                     updateRevCascade.LPCR_Contrat__c = String.valueOf(ar.get('contract'));
-                    
-                    PAD.log(ClassName, 'execute', 'STEP 1 - ar.get(nbPlace):' + ar.get('nbPlace'));
-                    PAD.log(ClassName, 'execute', 'STEP 1 - Decimal.valueOf(String.valueOf(ar.get(nbPlace)):' + Integer.valueOf(String.valueOf(ar.get('nbPlace'))));
-                    PAD.log(ClassName, 'execute', 'STEP 1 - Decimal.valueOf(String.valueOf(ar.get(nbPlace)):' + Integer.valueOf(ar.get('nbPlace')));
 
-                    String tmpNumber = String.valueOf(ar.get('nbPlace'));
+                    Decimal majNbPlace = Integer.valueOf(String.valueOf(ar.get('nbPlace')));
 
-                    PAD.log(ClassName, 'execute', 'STEP 1 - tmpNumber:' + tmpNumber);
-
-                    Integer addSub = 0 ;
-
-                    addSub = Integer.valueOf(String.valueOf(ar.get('nbPlace')));
-
-                    if (tmpNumber.startsWith('-')) {
-                        PAD.log(ClassName, 'execute', 'STEP 1 - Nombre de place Negatif:' + Integer.valueOf(ar.get('nbPlace')));
-                        addSub = -1 * Integer.valueOf(String.valueOf(ar.get('nbPlace')));
-                    } 
-                    //addSub = updateRevCascade.LPCR_NombrePlace__c + addSub;
-                    updateRevCascade.LPCR_NombrePlace__c = (updateRevCascade.LPCR_NombrePlace__c + addSub) >= 0 ? updateRevCascade.LPCR_NombrePlace__c + addSub : 0;
-                    //updateRevCascade.LPCR_NombrePlace__c = addSub >= 0 ? addSub : 0;
-
+                    updateRevCascade.LPCR_NombrePlace__c = (updateRevCascade.LPCR_NombrePlace__c + majNbPlace) >= 0 ? updateRevCascade.LPCR_NombrePlace__c + majNbPlace : 0;
                     updateRevCascade.LPCR_PrixAnnuel__c = Double.valueOf(ar.get('totalPrixAnnuel'));
                     updateRevCascade.LPCR_NombreMois__c = UM005_DateUtility.getMonthNumberByString(String.valueOf(ar.get('nombreMois')));
                     updateRevCascade.LPCR_EntiteJuridique__c = String.valueOf(ar.get('legalEntity'));
                     updateRevCascade.LPCR_CompteCreche__c = String.valueOf(ar.get('creche'));
-
-                    PAD.log(ClassName, 'execute', 'STEP 1 - Adding New LPCR_RevenueCascade__c record:' + updateRevCascade);
+                    
+                    PAD.log(ClassName, 'execute', 'STEP 1 - Add existing LPCR_RevenueCascade__c record:' + updateRevCascade);
                     upsertRevenueCascadeList.add(updateRevCascade);
                     
                 } else { // Create the Revenue Waterfall
@@ -182,15 +180,13 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                     newRevCascade.LPCR_EntiteJuridique__c = String.valueOf(ar.get('legalEntity'));
                     newRevCascade.LPCR_CompteCreche__c = String.valueOf(ar.get('creche'));
                     
-                    PAD.log('APB012_ProcessRevenuCascade', 'execute', 'STEP 1 - Updating existing LPCR_RevenueCascade__c with groupId:' + groupId);
-
                     if(groupId != null){
                         if(!revenueCascadeMap.keySet().Contains(groupId)){
                             revenueCascadeMap.put(groupId, new Map<String,LPCR_RevenueCascade__c>());
                         }
                         revenueCascadeMap.get(groupId).put(String.valueOf(ar.get('rvp')),newRevCascade);
                     }
-                    PAD.log('APB012_ProcessRevenuCascade', 'execute', 'STEP 1 - Add existing LPCR_RevenueCascade__c:' + newRevCascade);
+                    PAD.log(ClassName, 'execute', 'STEP 1 - Add new LPCR_RevenueCascade__c:' + newRevCascade);
                     upsertRevenueCascadeList.add(newRevCascade);
                 }           
             }
@@ -243,7 +239,7 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                 
                 Map<String, double> step2AggregateAmountMap = new Map<String, double>();
                 PAD.log(ClassName, 'execute', 'STEP 2 - step2GroupedResults.size()==== ' + step2GroupedResults.size());
-                PAD.logList(ClassName, 'execute', 'STEP 2 - step2GroupedResults',step2GroupedResults);
+                PAD.logAllList(ClassName, 'execute', 'STEP 2 - step2GroupedResults',step2GroupedResults);
                 
                 for (AggregateResult ar : step2GroupedResults) {
 
@@ -253,8 +249,8 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                     String groupId = String.valueOf(ar.get('groupId'));
                     Double amount = Double.valueOf(ar.get('amount'));
                     
-                    PAD.log('APB012_ProcessRevenuCascade', 'execute', 'STEP 2 - Credit Note Line Management - PART I - groupId:' + groupId);
-                    PAD.log('APB012_ProcessRevenuCascade', 'execute', 'STEP 2 - Credit Note Line Management - PART I - amount:' + amount);
+                    PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - groupId:' + groupId);
+                    PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - amount:' + amount);
 
                     if (String.isNotBlank(groupId)) {
 
@@ -267,13 +263,13 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                     
                     
                     Boolean containsGroupId = revenueCascadeMap.keySet().Contains(groupId);
-                    PAD.log('APB012_ProcessRevenuCascade', 'execute', 'STEP 2 - Credit Note Line Management - PART I - revenueCascadeMap.keySet().Contains(groupId):' + containsGroupId);
+                    PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - revenueCascadeMap.keySet().Contains(groupId):' + containsGroupId);
 
-                    PAD.log('APB012_ProcessRevenuCascade', 'execute', 'STEP 2 - Credit Note Line Management - PART I - String.valueOf(ar.get(rvp):' + String.valueOf(ar.get('rvp')));
-                    PAD.log('APB012_ProcessRevenuCascade', 'execute', 'STEP 2 - Credit Note Line Management - PART I - String.valueOf(ar.get(rvp):' + ar.get('rvp'));
+                    PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - String.valueOf(ar.get(rvp):' + String.valueOf(ar.get('rvp')));
+                    PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - String.valueOf(ar.get(rvp):' + ar.get('rvp'));
                                         
                     if (containsGroupId) {
-                        PAD.log('APB012_ProcessRevenuCascade', 'execute', 'STEP 2 - Credit Note Line Management - PART I - revenueCascadeMap.get(groupId).keySet():' + revenueCascadeMap.get(groupId).keySet());
+                        PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - revenueCascadeMap.get(groupId).keySet():' + revenueCascadeMap.get(groupId).keySet());
                     }
                     
                     PAD.log(ClassName, 'execute', 'STEP 2 - group id ' + groupId);
@@ -288,13 +284,13 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                     // Create the Revenue Waterfall records or update the existing ones
                     if (revenueCascadeMap.keySet().Contains(groupId) && revenueCascadeMap.get(groupId).keySet().Contains(stDate)) {
 
-                        PAD.log('APB012_ProcessRevenuCascade', 'execute', 'STEP 2 - Credit Note Line Management - PART II');
+                        PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART II');
                         LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(groupId).get(stDate);
                         updateRevCascade.LPCR_CreditNoteLineAggregation__c = amount;
 
                         if(step2AggregateAmountMap.keySet().Contains(groupId)){
 
-                            PAD.log('APB012_ProcessRevenuCascade', 'execute', 'STEP 2 - Credit Note Line Management - PART III :' + step1AggregateAmountMap.get(groupId));
+                            PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART III :' + step1AggregateAmountMap.get(groupId));
                             updateRevCascade.LPCR_CreditNoteRevenue__c = step1AggregateAmountMap.get(groupId); //aggregateAmount;
                         }
                         
