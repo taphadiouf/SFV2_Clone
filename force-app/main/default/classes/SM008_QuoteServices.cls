@@ -520,8 +520,8 @@ public with sharing class SM008_QuoteServices {
         Map<Id,Set<Id>> mapQuoteIDAgreementID = new Map<Id,Set<Id>>();
         mapQuoteIDAgreementID.put(agreementMac , new Set<Id>() );
         mapQuoteIDAgreementID.put(agreementMicro , new Set<Id>() );
-        List<SBQQ__Quote__c> quoteMap = [Select Id,SBQQ__Status__c,LPCR_Creche__c, LPCR_Creche__r.LPCR_TypeCreche__c From SBQQ__Quote__c Where Id=: newQuoteMap.KeySet()];
-        for(SBQQ__Quote__c eachNewQuote : quoteMap){
+        
+        for(SBQQ__Quote__c eachNewQuote : newQuoteMap.values()){
             if(eachNewQuote.SBQQ__Status__c != oldQuoteMap.get(eachNewQuote.Id).SBQQ__Status__c && eachNewQuote.SBQQ__Status__c == Label.LPCR_ValideDirectrice ){
                 if(Label.LPCR_MAC.equals(eachNewQuote.LPCR_Creche__r.LPCR_TypeCreche__c)){
                     mapQuoteIDAgreementID.get(agreementMac).add(eachNewQuote.Id);
