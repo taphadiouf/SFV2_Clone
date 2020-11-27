@@ -115,8 +115,15 @@ public class SM015_InvoiceServices {
         
         Id familleRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
         
-        List<blng__Invoice__c> invoiceList = [Select Id, LPCR_StatutFacture__c  , LPCR_CongesPrisPeriode__c, blng__Account__c,blng__Account__r.recordTypeId FROM blng__Invoice__c WHERE Id IN: newInvoiceList AND blng__Account__r.recordTypeId =: familleRecTypeId AND LPCR_StatutFacture__c = 'A Envoyer'];
+        List<blng__Invoice__c> invoiceList = new List<blng__Invoice__c>();
+        for(blng__Invoice__c i : newInvoiceList){
+            if(i.blng__Account__r.recordTypeId == familleRecTypeId && i.LPCR_StatutFacture__c == 'A Envoyer'){
+                invoiceList.add(i);
+            }
+        }
+
         List<blng__InvoiceLine__c> invoiceLines = [Select Id, blng__OrderProduct__r.OrderId, blng__Invoice__c  From blng__InvoiceLine__c WHERE blng__Invoice__c  IN:invoiceList Limit 1];
+        
         if(invoiceLines.size()>0){
             blng__InvoiceLine__c invoiceLine = invoiceLines.get(0);
             List<Contract> contractList =[select Id,SBQQ__Order__c from Contract where SBQQ__Order__c = :invoiceLine.blng__OrderProduct__r.OrderId];
@@ -145,8 +152,14 @@ public class SM015_InvoiceServices {
     	
         Id familleRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
         
-        List<blng__Invoice__c> invoiceList = [Select Id, blng__Account__c,blng__Account__r.recordTypeId FROM blng__Invoice__c WHERE Id IN: newInvoiceList AND blng__Account__r.recordTypeId =: familleRecTypeId];
-        List<blng__InvoiceLine__c> invoiceLines = [Select Id, blng__OrderProduct__r.OrderId, blng__Invoice__c  From blng__InvoiceLine__c WHERE blng__Invoice__c  IN:invoiceList Limit 1];
+        List<blng__Invoice__c> invoiceList = new List<blng__Invoice__c>();
+        for(blng__Invoice__c i : newInvoiceList){
+            if(i.blng__Account__r.recordTypeId == familleRecTypeId){
+                invoiceList.add(i);
+            }
+        }
+
+        List<blng__InvoiceLine__c> invoiceLines = [SELECT Id, blng__OrderProduct__r.OrderId, blng__Invoice__c  From blng__InvoiceLine__c WHERE blng__Invoice__c  IN:invoiceList Limit 1];
         
         Map<String,blng__Invoice__c> updateInvoiceMap = new Map<String,blng__Invoice__c>();
         
