@@ -3,8 +3,19 @@
     <fullName>Tech_DateAttestationCAF__c</fullName>
     <description>date à utiliser pour la génération de l&apos;attestation CAF</description>
     <externalId>false</externalId>
-    <formula>IF(OR(ISBLANK(LPCR_Creche__c),ISBLANK(Tech_MaxDateLigneBerceauFamille__c)),NULL,
-IF(TEXT(LPCR_Creche__r.LPCR_TypeCreche__c)=&apos;MICRO&apos;,ADDMONTHS(Tech_MaxDateLigneBerceauFamille__c,-1),Tech_MaxDateLigneBerceauFamille__c))</formula>
+    <formula>IF(
+  OR(
+    blng__Account__r.RecordType.DeveloperName != &apos;Famille&apos;,
+    ISBLANK(LPCR_Creche__c),
+    TEXT(LPCR_Creche__r.LPCR_TypeCreche__c)!=&apos;MICRO&apos;,
+    ISBLANK(Tech_MaxDateLigneBerceauFamille__c)
+  ),
+  NULL,
+  IF(TEXT(LPCR_Creche__r.LPCR_TypeFacturation__c)=&apos;Advance&apos;,
+     ADDMONTHS(Tech_MaxDateLigneBerceauFamille__c,-1),
+     Tech_MaxDateLigneBerceauFamille__c
+  )
+)</formula>
     <inlineHelpText>date à utiliser pour la génération de l&apos;attestation CAF</inlineHelpText>
     <label>Tech_DateAttestationCAF</label>
     <required>false</required>
