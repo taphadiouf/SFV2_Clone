@@ -2,7 +2,15 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_DateDebutNonConforme__c</fullName>
     <externalId>false</externalId>
-    <formula>IF( AND( ISPICKVAL(SBQQ__Quote__r.SBQQ__Type__c, &apos;Quote&apos;), NOT(ISBLANK( LPCR_DateDebut__c )), LPCR_DateDebut__c &lt; SBQQ__Quote__r.SBQQ__StartDate__c ) ,
+    <formula>IF(
+AND(
+OR(ISPICKVAL(SBQQ__Quote__r.SBQQ__Type__c, &apos;Quote&apos;),
+AND(
+ISPICKVAL(SBQQ__Quote__r.SBQQ__Type__c, &apos;Amendment&apos;),
+NOT(LPCR_Clone__c),
+NOT(SBQQ__Existing__c))),
+NOT(ISBLANK( LPCR_DateDebut__c )),
+LPCR_DateDebut__c &lt; SBQQ__Quote__r.SBQQ__StartDate__c ) ,
 true,
 false)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>

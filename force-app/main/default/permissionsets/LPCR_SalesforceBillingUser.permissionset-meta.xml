@@ -8,6 +8,14 @@
         <apexClass>QuoteExtController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+     <classAccesses>
+        <apexClass>APC006_CloneQuoteLines</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>APC008_ResetQuoteLines</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <classAccesses>
         <apexClass>QuoteExtControllerTests</apexClass>
         <enabled>true</enabled>
