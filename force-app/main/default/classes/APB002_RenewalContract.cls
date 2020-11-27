@@ -32,34 +32,23 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
             PAD.log(ClassName, 'execute', 'scope to execute : '+scope);
             
             Set<Id> contractIds = UM003_TypeManager.getIdsOfListObjects(scope);
-            Set<String> masterContractQuoteIds = new Set<String>();        
-            Set<String> masterQuoteContractIds = new Set<String>();
+            Set<String> masterContractQuoteIds = new Set<String>();
             List<LPCR_Log__c> listOfLog = new List<LPCR_Log__c>();
             List<SBQQ__Quote__c> updateQuoteList = new List<SBQQ__Quote__c>();
             
-            List<Contract> listOfContract = [SELECT Id,Name,Status,SBQQ__Quote__c,SBQQ__Quote__r.SBQQ__MasterContract__c,EndDate,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
+            List<Contract> listOfContract = [SELECT Id,Name,Status,SBQQ__Quote__c,EndDate,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c FROM Contract 
                                             WHERE Id in :contractIds ];   
             
             for(Contract eachContract : listOfContract) {
                 if(eachContract.SBQQ__Quote__c != null){
                     masterContractQuoteIds.add(eachContract.SBQQ__Quote__c);
-                    if(eachContract.SBQQ__Quote__r.SBQQ__MasterContract__c != null){
-                        masterQuoteContractIds.add(eachContract.SBQQ__Quote__r.SBQQ__MasterContract__c);
-                    }
                 } 
                 eachContract.Status = 'Terminé';
                 listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('', ClassName, 'Batch', String.valueOf(eachContract.Id), '', 'SUCCESS'));             
             }
+             
             
-            if(masterQuoteContractIds.size() > 0){
-                for(Contract eachContract : [SELECT Id,Status,SBQQ__Quote__c FROM Contract WHERE Id in :masterQuoteContractIds ]){
-                    if(eachContract.SBQQ__Quote__c != null){
-                        masterContractQuoteIds.add(eachContract.SBQQ__Quote__c);
-                    }
-                }  
-            }   
-            
-            for(SBQQ__Quote__c eachQuote : [SELECT Id,SBQQ__Status__c FROM SBQQ__Quote__c WHERE Id IN: masterContractQuoteIds]){
+            for(SBQQ__Quote__c eachQuote : [SELECT Id,SBQQ__Status__c FROM SBQQ__Quote__c WHERE Id IN: masterContractQuoteIds OR SBQQ__MasterContract__c IN: contractIds]){
                 eachQuote.SBQQ__Status__c = 'Terminé';
                 updateQuoteList.add(eachQuote);
             }
