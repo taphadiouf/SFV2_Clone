@@ -5,7 +5,7 @@
 */
 
 @isTest
-public class APB018_ProcessRenewalContract_Test {
+public class APB018_ProcessResiliationQuote_Test {
     private static final Id ACC_B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
     private static final Id ACC_B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     private static final Id ACC_CRECHE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
@@ -245,7 +245,7 @@ public class APB018_ProcessRenewalContract_Test {
     }
     
     @isTest
-    private static void APB018_ProcessRenewalContract_Test(){
+    private static void APB018_ProcessResiliationQuote_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Account B2BAccount = new Account(); 
             Account B2CAccount = new Account(); 
@@ -348,12 +348,12 @@ public class APB018_ProcessRenewalContract_Test {
             }
             update orderItems;
             
-            APB018_ProcessRenewalContract batch = new APB018_ProcessRenewalContract();
+            APB018_ProcessResiliationQuote batch = new APB018_ProcessResiliationQuote();
             batch.execute(null);            
             Test.stopTest();  
             
             Contract checkContractB2B = [SELECT Id,Status FROM Contract WHERE Id =: contractB2B.id LIMIT 1];
-            System.assertEquals('Terminé',checkContractB2B.Status, 'APB018_ProcessRenewalContract B2B Contract Status not updated');
+            System.assertEquals('Terminé',checkContractB2B.Status, 'APB018_ProcessResiliationQuote B2B Contract Status not updated');
         }
         
     }

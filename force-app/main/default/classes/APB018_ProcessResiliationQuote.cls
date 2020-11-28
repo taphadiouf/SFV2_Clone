@@ -3,11 +3,11 @@
 * @date 04/11/2020
 * @Description Batch for process renewel contract
 */
-global class APB018_ProcessRenewalContract implements Database.Batchable<sObject>,Schedulable {
+global class APB018_ProcessResiliationQuote implements Database.Batchable<sObject>,Schedulable {
     String query;
-    final String ClassName = APB018_ProcessRenewalContract.class.getName();
+    final String ClassName = APB018_ProcessResiliationQuote.class.getName();
 
-    global APB018_ProcessRenewalContract() {
+    global APB018_ProcessResiliationQuote() {
         
     }
     
@@ -39,7 +39,7 @@ global class APB018_ProcessRenewalContract implements Database.Batchable<sObject
             
             List<Contract> listOfMasterContract = [SELECT Id,Status,SBQQ__Quote__c FROM Contract WHERE Id in :masterContractIds ]; 
             
-            System.debug('>> APB018_ProcessRenewalContract , execute : listOfMasterContract = '+ listOfMasterContract);
+            System.debug('>> APB018_ProcessResiliationQuote , execute : listOfMasterContract = '+ listOfMasterContract);
             
             for(Contract eachContract : listOfMasterContract) {
                 if(eachContract.SBQQ__Quote__c != null){
@@ -87,7 +87,7 @@ global class APB018_ProcessRenewalContract implements Database.Batchable<sObject
     
     global void execute(SchedulableContext sc) {
         
-        APB018_ProcessRenewalContract sc1 = new APB018_ProcessRenewalContract();
+        APB018_ProcessResiliationQuote sc1 = new APB018_ProcessResiliationQuote();
 
         Datetime dt = Datetime.now().addMinutes(30);
         String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
@@ -99,12 +99,12 @@ global class APB018_ProcessRenewalContract implements Database.Batchable<sObject
         
         if(isBatchJobRunning == UM004_BatchUtility.BOOLEAN_FALSE){
             if (isJobQueueFull == UM004_BatchUtility.BOOLEAN_FALSE) {
-                sc1 = new APB018_ProcessRenewalContract();
+                sc1 = new APB018_ProcessResiliationQuote();
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
 
-                Id schedId = System.Schedule(ClassName+timeForScheduler,timeForScheduler,new APB018_ProcessRenewalContract());
+                Id schedId = System.Schedule(ClassName+timeForScheduler,timeForScheduler,new APB018_ProcessResiliationQuote());
             }
         }  
         
