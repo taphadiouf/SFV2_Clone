@@ -98,6 +98,7 @@ public with sharing class SM013_QuoteLineServices_Test {
         };
 
         SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+        quote.LPCR_Creation_conforme__c = true;
         insert quote;
         
         Integer price = 200;
@@ -242,6 +243,7 @@ public with sharing class SM013_QuoteLineServices_Test {
             };
 
             SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+            quote.LPCR_Creation_conforme__c = true;
             insert quote;
             
             Integer price = 200;
