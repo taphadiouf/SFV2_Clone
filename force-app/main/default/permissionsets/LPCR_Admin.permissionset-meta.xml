@@ -7993,6 +7993,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_NombrePOinvalides__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>blng__Invoice__c.LPCR_SoldeHorsTaxe__c</field>
         <readable>true</readable>
     </fieldPermissions>
