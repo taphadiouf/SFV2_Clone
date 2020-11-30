@@ -11,6 +11,11 @@
             <operation>equals</operation>
             <value>Enfant</value>
         </filterItems>
+        <filterItems>
+            <field>Contact.AccountId</field>
+            <operation>equals</operation>
+            <valueField>$Source.LPCR_CompteFamille__c</valueField>
+        </filterItems>
         <isOptional>false</isOptional>
     </lookupFilter>
     <referenceTo>Contact</referenceTo>

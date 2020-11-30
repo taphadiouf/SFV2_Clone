@@ -951,7 +951,7 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
-        <booleanFilter>1 AND 2 AND 3 AND (((NOT 5) AND 4) OR (5 AND 4 AND (6 OR 8)) OR (5 AND 7 AND (NOT 6) AND (NOT 8)))</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND (( 11 AND 7 AND 9 ) OR ( 10 AND 4) OR ( 5 AND 4 AND (6 OR 8)) OR ( 5 AND 7 AND ( NOT 6) AND (NOT 8)))</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.ApprovalStatus__c</field>
             <operation>equals</operation>
@@ -991,6 +991,21 @@
             <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
             <operation>equals</operation>
             <value>Mouvement Interne Berceau</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__LineItemCount__c</field>
+            <operation>notEqual</operation>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Renewal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Type__c</field>
+            <operation>equals</operation>
+            <value>Quote</value>
         </criteriaItems>
         <description>Update RT quand le contrat de référencement est approuvé.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>

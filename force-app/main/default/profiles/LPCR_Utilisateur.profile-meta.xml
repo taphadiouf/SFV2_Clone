@@ -141,6 +141,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>APC010_AmendLexContractController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+     <classAccesses>
+        <apexClass>APC010_AmendLexContractController_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>APC006_CloneQuoteLines_Test</apexClass>
         <enabled>false</enabled>
     </classAccesses>
