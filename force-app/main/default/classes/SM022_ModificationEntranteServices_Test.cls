@@ -126,7 +126,7 @@ public class SM022_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Traitement_Jour_Ferie',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('EVT_TRAITEMENT_JOUR_FERIE',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;           
             
             LPCR_ModificationEntrante__c modif2 = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',acc.id,cont.id,contract.id,Date.today(),10);
