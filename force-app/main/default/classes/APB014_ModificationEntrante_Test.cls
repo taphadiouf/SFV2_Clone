@@ -30,7 +30,7 @@ public class APB014_ModificationEntrante_Test {
         rf.LPCR_DateDebut__c = Date.Today();
         insert rf;
 
-        LPCR_ModificationEntrante__c tempModif = new LPCR_ModificationEntrante__c(LPCR_Devis__c  = quote.Id,LPCR_Contract__c = contract.Id,LPCR_Evenement__c  = 'Validation Contrat Directrice');
+        LPCR_ModificationEntrante__c tempModif = new LPCR_ModificationEntrante__c(LPCR_Devis__c  = quote.Id,LPCR_Contract__c = contract.Id,LPCR_Evenement__c  = 'EVT_VALIDATION_CONTRAT_DIRECTRICE');
         tempModif.LPCR_DateEffet__c = Date.today().addDays(-1);
         tempModif.LPCR_EtatTraitement__c = false;
         tempModif.LPCR_Statut__c = 'Validée';
@@ -45,7 +45,7 @@ public class APB014_ModificationEntrante_Test {
         Test.stopTest();
 
 
-        LPCR_ModificationEntrante__c afterModif = [SELECT id,LPCR_EtatTraitement__c FROM LPCR_ModificationEntrante__c WHERE LPCR_Evenement__c='Validation Contrat Directrice'];
+        LPCR_ModificationEntrante__c afterModif = [SELECT id,LPCR_EtatTraitement__c FROM LPCR_ModificationEntrante__c WHERE LPCR_Evenement__c='EVT_VALIDATION_CONTRAT_DIRECTRICE'];
         SBQQ__Quote__c afterQuote = [SELECT id,SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Account__c=:acc.id];
 
         System.assertEquals(true, afterModif.LPCR_EtatTraitement__c);
