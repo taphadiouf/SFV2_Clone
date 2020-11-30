@@ -194,6 +194,19 @@ public class SM010_ContractServices {
                 if(eachContract.SBQQ__Order__c != oldContractMap.get(eachContract.Id).SBQQ__Order__c){
                     
                     eachContract.LPCR_DateFinMaxQuoteLine__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_DateFinMaxQuoteLine__c;
+
+                    if (Contract.LPCR_DateFinMaxQuoteLine__c.Year() > Contract.Enddate.Year()) {
+
+                        Contract.Enddate = Date.newInstance(Contract.Enddate.Year(), 12, 31);
+                    }
+                    else if (Contract.LPCR_DateFinMaxQuoteLine__c.Year() == contract.Enddate.Year()) {
+
+                        if (Contract.LPCR_DateFinMaxQuoteLine__c > contract.Enddate) {
+
+                            Contract.Enddate =  Contract.LPCR_DateFinMaxQuoteLine__c;
+                        }
+                    }
+                    
                     
                     if(quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement || quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement_Approuve) {
                         eachContract.LPCR_FraisDossier__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;
