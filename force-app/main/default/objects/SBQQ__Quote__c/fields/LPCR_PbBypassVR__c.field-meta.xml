@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_PbBypassVR__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is used to allow th PB to bypass the VR about status change</description>
+    <externalId>false</externalId>
+    <label>PB_BypassVR</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

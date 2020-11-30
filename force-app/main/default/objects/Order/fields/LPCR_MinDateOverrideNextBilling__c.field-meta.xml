@@ -14,6 +14,11 @@
         <operation>notEqual</operation>
         <value/>
     </summaryFilterItems>
+    <summaryFilterItems>
+        <field>OrderItem.blng__HoldBilling__c</field>
+        <operation>equals</operation>
+        <value>No</value>
+    </summaryFilterItems>
     <summaryForeignKey>OrderItem.OrderId</summaryForeignKey>
     <summaryOperation>min</summaryOperation>
     <trackHistory>false</trackHistory>

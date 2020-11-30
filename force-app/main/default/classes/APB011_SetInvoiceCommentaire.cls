@@ -5,7 +5,7 @@
 */
 global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>,Schedulable {
     String query;
-    
+    final String ClassName = APB011_SetInvoiceCommentaire.class.getName();
     global APB011_SetInvoiceCommentaire() {
         
     }
@@ -14,57 +14,70 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
         this.query = query;
     }
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
         return Database.getQueryLocator(query);
     }
     global void execute(Database.BatchableContext BC, List<blng__InvoiceRun__c> scope) {
 
-       	PAD.log('APB011_SetInvoiceCommentaire','execute','scope to execute : '+scope);
-        Set<Id> invoiceRunIds = UM003_TypeManager.getIdsOfListObjects(scope);
-        List<blng__Invoice__c> lstOfInvoices = EM017_FactureEntity.lstPostedInvoices(invoiceRunIds);
-        for(blng__Invoice__c eachInvoice: lstOfInvoices){
-            if(!Label.LPCR_PretAValider.equals(eachInvoice.LPCR_StatutFacture__c)  && !Label.LPCR_AEnvoyer.equals(eachInvoice.LPCR_StatutFacture__c)){
-                eachInvoice.LPCR_Commentaire__c = Label.LPCR_commentaireStatut;
-            }
-            else if(Label.LPCR_PretAValider.equals(eachInvoice.LPCR_StatutFacture__c)){
-                eachInvoice.LPCR_StatutFacture__c = Label.LPCR_AEnvoyer;
-            }
-        }
-        String ErrMsg;
+        List<Exception> errors = new List<Exception>();
+
         try {
-            update lstOfInvoices;
-            PAD.log('APB011_SetInvoiceCommentaire','execute','Invoices Update success. list : ' + lstOfInvoices);
-            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field',
-                                                            'APB011_SetInvoiceCommentaire', 'Batch' , null,
-                                                            'Successfully updated invoices list : ' + String.valueOf(lstOfInvoices), 
-                                                            UM010_Constant.SUCCESS);     
-        } catch (Exception e) {
-            ErrMsg = e.getMessage();
-        } finally {
-            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field','APB011_SetInvoiceCommentaire', 'Batch' , null,'Error while updating invoices list. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+
+            PAD.log('APB011_SetInvoiceCommentaire','execute','scope to execute : '+scope);
+            Set<Id> invoiceRunIds = UM003_TypeManager.getIdsOfListObjects(scope);
+            List<blng__Invoice__c> lstOfInvoices = EM017_FactureEntity.lstPostedInvoices(invoiceRunIds);
+            for(blng__Invoice__c eachInvoice: lstOfInvoices){
+                if(!Label.LPCR_PretAValider.equals(eachInvoice.LPCR_StatutFacture__c)  && !Label.LPCR_AEnvoyer.equals(eachInvoice.LPCR_StatutFacture__c)){
+                    eachInvoice.LPCR_Commentaire__c = Label.LPCR_commentaireStatut;
+                }
+                else if(Label.LPCR_PretAValider.equals(eachInvoice.LPCR_StatutFacture__c)){
+                    eachInvoice.LPCR_StatutFacture__c = Label.LPCR_AEnvoyer;
+                }
             }
-        }
-        for(blng__InvoiceRun__c eachInvoiceRun : scope){
-            eachInvoiceRun.LPCR_EnvoyerFaitPar__c = eachInvoiceRun.OwnerId;
-        }
-        ErrMsg = null;
-        try {
-            update scope;
-            PAD.log('APB011_SetInvoiceCommentaire','execute','Invoice Runs Update success. list : ' + scope);
-            UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field',
-                                                            'APB011_SetInvoiceCommentaire', 'Batch' , null,
-                                                            'Successfully updated invoices run list : ' + String.valueOf(scope), 
-                                                            UM010_Constant.SUCCESS);     
-        } catch (Exception e) {
-            ErrMsg = e.getMessage();
-        } finally {
-            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field','APB011_SetInvoiceCommentaire', 'Batch' , null,'Error while updating invoices run list. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+            String ErrMsg;
+            try {
+                update lstOfInvoices;
+                PAD.log('APB011_SetInvoiceCommentaire','execute','Invoices Update success. list : ' + lstOfInvoices);
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field',
+                                                                'APB011_SetInvoiceCommentaire', 'Batch' , null,
+                                                                'Successfully updated invoices list : ' + String.valueOf(lstOfInvoices), 
+                                                                UM010_Constant.SUCCESS);     
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field','APB011_SetInvoiceCommentaire', 'Batch' , null,'Error while updating invoices list. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
             }
+            for(blng__InvoiceRun__c eachInvoiceRun : scope){
+                eachInvoiceRun.LPCR_EnvoyerFaitPar__c = eachInvoiceRun.OwnerId;
+            }
+            ErrMsg = null;
+            try {
+                update scope;
+                PAD.log('APB011_SetInvoiceCommentaire','execute','Invoice Runs Update success. list : ' + scope);
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field',
+                                                                'APB011_SetInvoiceCommentaire', 'Batch' , null,
+                                                                'Successfully updated invoices run list : ' + String.valueOf(scope), 
+                                                                UM010_Constant.SUCCESS);     
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for filling the \'commentaire\' field','APB011_SetInvoiceCommentaire', 'Batch' , null,'Error while updating invoices run list. Error : ' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            }
+    
+        } catch(Exception e) {
+            errors.add(e);
+        }
+        
+        if (!errors.isEmpty()) {
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
         }
     }
     global void finish(Database.BatchableContext BC) {
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish', 'Batch' , null, 'Finished Batch Processing', UM010_Constant.SUCCESS);
     }
     global void execute(SchedulableContext sc) {
         
@@ -72,7 +85,7 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
         Datetime dt = Datetime.now().addMinutes(30);  // i.e. 30 mins
         String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running
-        boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB011_SetInvoiceCommentaire');
+        boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning(ClassName);
         
         // check if there is any open place to schedule the class
         boolean isJobQueueFull = UM004_BatchUtility.isBatchJobQueueFull();
@@ -83,7 +96,7 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
                 Database.executeBatch(this, 1);
             } else {
                 //schedule this same schedulable class again in 30 mins
-                Id schedId = System.Schedule('APB011_SetInvoiceCommentaire'+timeForScheduler,timeForScheduler,new APB011_SetInvoiceCommentaire(query));
+                Id schedId = System.Schedule(ClassName+timeForScheduler,timeForScheduler,new APB011_SetInvoiceCommentaire(query));
             }
         }  
         

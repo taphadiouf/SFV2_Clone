@@ -141,6 +141,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>APC010_AmendLexContractController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+     <classAccesses>
+        <apexClass>APC010_AmendLexContractController_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>APC006_CloneQuoteLines_Test</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -32598,6 +32606,9 @@
     <layoutAssignments>
         <layout>LPCR_RessourceFamille__c-Ressource Famille Micro Layout</layout>
         <recordType>LPCR_RessourceFamille__c.Micro</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>LPCR_BaremeCAF__c-Présentation Barème CAF</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>LPCR_Structure_AO__c-Présentation Structure AO</layout>

@@ -11,8 +11,9 @@ public class WRP004_APISaveDocument {
     public String FileType; // obligatoitre    
     public String DocumentStatus; // obligatoitre
     public String DocumentType;  // obligatoitre
+    public String CrecheSfId;
     
-    public WRP004_APISaveDocument(String OwnerSfId, String DocSfID, String Name, String BinaryDocument){
+    public WRP004_APISaveDocument(String OwnerSfId, String DocSfID, String Name, String BinaryDocument, String CrecheSfId){
         
         Attachment att = [SELECT Name FROM Attachment WHERE Id = :DocSfID];
 
@@ -20,6 +21,7 @@ public class WRP004_APISaveDocument {
             this.FileType = getFileType(att.Name);
             this.DocumentStatus = 'Validé';
             this.DocumentType = 'Facture';
+            this.CrecheSfId = CrecheSfId;
         } else if(Name.contains('Pièce justificative')) {
             this.FileType = getFileType(att.Name);
             this.DocumentStatus = 'None';
@@ -28,6 +30,7 @@ public class WRP004_APISaveDocument {
             this.FileType = getFileType(att.Name);
             this.DocumentStatus = 'Validé';
             this.DocumentType = 'Contrat';
+            this.CrecheSfId = CrecheSfId;
         } else if(Name.contains('Autre')) {
             this.FileType = getFileType(att.Name);
             this.DocumentStatus = 'None';
@@ -38,6 +41,7 @@ public class WRP004_APISaveDocument {
         this.DocSfID = DocSfID;
         this.Name = Name;
         this.BinaryDocument = BinaryDocument;
+        this.CrecheSfId = CrecheSfId;
         
     }
 

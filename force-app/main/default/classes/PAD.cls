@@ -24,12 +24,28 @@ public class PAD {
         return (PAD_BypassTrigger.indexOf(';' + ApexName + ';') == -1);
     }
 
-    // Used to have an homogene way of debugging acrros developement team
+    public static void logAllList(String className, String methodName, String description, List<SObject> listObject) {
+        for (SObject o : listObject) {
+            System.Debug('>> ' + className + ' - ' + methodName + ' - ' + description + ' - element of list:' + String.valueOf(o));
+        } 
+    }
+
+    public static void logAllSetId(String className, String methodName, String description, Set<Id> setObject) {
+        for (Id o : setObject) {
+            System.Debug('>> ' + className + ' - ' + methodName + ' - ' + description + ' - element of set:' + String.valueOf(o));
+        } 
+    }
+
+    public static void logAllSetString(String className, String methodName, String description, Set<String> setObject) {
+        for (String o : setObject) {
+            System.Debug('>> ' + className + ' - ' + methodName + ' - ' + description + ' - element of set:' + String.valueOf(o));
+        } 
+    }
+
     public static void log(String className, String methodName, String description, String value) {
         System.Debug('>> ' + className + ' - ' + methodName + ' - ' + description + ':' + value);
     }
 
-    // Used to have an homogene way of debugging acrros developement team
     public static void log(String className, String methodName, String description, SObject value) {
         System.Debug('>> ' + className + ' - ' + methodName + ' - ' + description + ':' + String.valueOf(value));
     }

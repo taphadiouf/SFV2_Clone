@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EnvoiBonCommande</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>true</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>600</height>
+    <isResizable>true</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>Envoi Bon de commande</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>/apex/APXTCFQ__Conga_Composer?SolMgr=1
+&amp;serverUrl={!API.Partner_Server_URL_370}
+&amp;Id={!SBQQ__Quote__c.Id}
+&amp;ContactId={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}
+&amp;QueryId=[LignesBonCommande]a443O0000005Cmj,
+[ContactInfo]a443O00000059LA
+&amp;TemplateId=a4C3O0000004pmA
+&amp;DefaultPDF=1
+&amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;), 0,1)}
+&amp;ESVisible=1
+&amp;ESAgreementTemplateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateBonCommande__c}
+&amp;ESCustomField=LPCR_Devis__c
+&amp;ESCustomFieldValue={!SBQQ__Quote__c.Id}
+&amp;ESContactId1={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}
+&amp;ESContactId2=0033O00000JszFnQAJ</url>
+</WebLink>

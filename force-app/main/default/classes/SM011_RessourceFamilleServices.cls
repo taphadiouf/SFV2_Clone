@@ -36,11 +36,18 @@ public with sharing class SM011_RessourceFamilleServices implements Queueable{
         if( UM003_TypeManager.isNullOrEmpty(listRessFamiToAdjustBaremCaf)){
             listRessFamiToAdjustBaremCaf = new List<LPCR_RessourceFamille__c>();
             for(LPCR_RessourceFamille__c eachRessourceFamille : newMapRessourceFamille.values()){
-                if(eachRessourceFamille.LPCR_DateFin__c == null 
-                   &&(oldMapRessourceFamille.get(eachRessourceFamille.Id).LPCR_NombreEnfants__c != eachRessourceFamille.LPCR_NombreEnfants__c ||
-                      oldMapRessourceFamille.get(eachRessourceFamille.Id).LPCR_NombreEnfantHandicape__c != eachRessourceFamille.LPCR_NombreEnfantHandicape__c   )){
+                if( eachRessourceFamille.LPCR_DateFin__c == null 
+                    &&
+                    (
+                        oldMapRessourceFamille.get(eachRessourceFamille.Id).LPCR_NombreEnfants__c           != eachRessourceFamille.LPCR_NombreEnfants__c 
+                        ||
+                        oldMapRessourceFamille.get(eachRessourceFamille.Id).LPCR_DateDebut__c               != eachRessourceFamille.LPCR_DateDebut__c   
+                        ||
+                        oldMapRessourceFamille.get(eachRessourceFamille.Id).LPCR_NombreEnfantHandicape__c   != eachRessourceFamille.LPCR_NombreEnfantHandicape__c
+                    ))
+                    {
                           listRessFamiToAdjustBaremCaf.add(eachRessourceFamille);
-                      }
+                    }
             }
         }
         //Gather the start Dates for each RessourceFamille & the minimal number of Enfants

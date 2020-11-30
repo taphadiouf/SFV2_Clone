@@ -15,12 +15,46 @@ public with sharing class SM017_SendDocument_Callout {
         
         executeSendDocumentCallout(OwnerSfId, DocSfID, Name, BinaryDocument, true);
     }
+
+    public static Id getB2CFactureCrecheID(String OwnerSfId){
+
+
+        Id accueilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
+
+        Id factureCrecheId = [SELECT Id,LPCR_Creche__c,blng__Account__c FROM blng__Invoice__c WHERE blng__Account__r.RecordTypeId =: accueilRecTypeId AND ID =: OwnerSfId].LPCR_Creche__c;
+
+        return factureCrecheId;
+    }
+    
+    
+    public static Id getB2CContractCrecheID(String OwnerSfId){
+
+
+        Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_ContratA);
+        Id acceuilApprRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Accueil_Approuve);
+
+        Id acceuilDevisId = [SELECT Id,LPCR_Devis__c FROM echosign_dev1__SIGN_Agreement__c WHERE (LPCR_Devis__r.RecordTypeId =: acceuilRecTypeId OR LPCR_Devis__r.RecordTypeId =: acceuilApprRecTypeId) AND ID =: OwnerSfId].LPCR_Devis__c;
+        
+        List<SBQQ__QuoteLine__c> relatedQuoteLignes = [SELECT Id, SBQQ__Quote__c  FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c =: acceuilDevisId];
+        
+        Set<Id> quoteLigneIds = UM003_TypeManager.getIdsOfListObjects(relatedQuoteLignes);
+        
+        List<OrderItem> relatedOrderItems = [SELECT Id, SBQQ__QuoteLine__c, SBQQ__Contract__c FROM OrderItem WHERE SBQQ__QuoteLine__c IN: quoteLigneIds ];
+        
+        Id relatedContractId = relatedOrderItems.get(0).SBQQ__Contract__c;
+        
+        Id contractCrecheId = [SELECT Id, LPCR_Creche__c  FROM COntract WHERE Id=: relatedContractId ].LPCR_Creche__c;
+
+        return contractCrecheId;
+    }
+
     
     public static void executeSendDocumentCallout(String OwnerSfId, String DocSfID, String Name, String BinaryDocument, Boolean syncMode){
         
         String errorMsg = '';
         HttpResponse response;
         final String WS_NOM_SERVICE  = 'LPCR_ENVOIE_DOCUMENT';
+        Id CrecheSfId;
         
         PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'LPCR_ENVOIE_DOCUMENT');
         
@@ -35,8 +69,15 @@ public with sharing class SM017_SendDocument_Callout {
         
             request.setMethod('POST');
             request.setHeader('Content-Type', 'application/json;charset=UTF-8');
+            
+            if(Name.contains('Facture')) {
+                 CrecheSfId = SM017_SendDocument_Callout.getB2CFactureCrecheID(OwnerSfId);
+            }
+            if(Name.contains('Contrat')) {
+                 CrecheSfId = SM017_SendDocument_Callout.getB2CContractCrecheID(OwnerSfId);
+            }
         
-            WRP004_APISaveDocument data = new WRP004_APISaveDocument(OwnerSfId, DocSfID, Name, BinaryDocument);
+            WRP004_APISaveDocument data = new WRP004_APISaveDocument(OwnerSfId, DocSfID, Name, BinaryDocument,CrecheSfId);
             request.setBody(JSON.serialize(data));
             
             response = http.send(request);

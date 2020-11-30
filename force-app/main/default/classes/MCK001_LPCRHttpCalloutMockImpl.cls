@@ -12,19 +12,21 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
         String getDocumentEndpoint;
         String getDocumentListEndpoint;
         String sendMailEndpoint;
+        String sendContactEndpoint;
         LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
         if('UAT'.equals(envCS.Nom__c)){
             sendDocumentEndpoint = 'UAT_SEND_DOCUMENT';
             getDocumentEndpoint = 'UAT_GET_DOCUMENT';
             getDocumentListEndpoint = 'UAT_DOCUMENT_LISTE';
             sendMailEndpoint = 'UAT_SEND_MAIL';
-
+            sendContactEndpoint = 'UAT_ENVOIE_CONTACT_ENTREPRISE';
         }
         else if('PROD'.equals(envCS.Nom__c)){
             sendDocumentEndpoint = 'PROD_SEND_DOCUMENT';
             getDocumentEndpoint = 'PROD_GET_DOCUMENT';
             getDocumentListEndpoint = 'PROD_DOCUMENT_LISTE';
             sendMailEndpoint = 'PROD_SEND_MAIL';
+            sendContactEndpoint = 'PROD_ENVOIE_CONTACT_ENTREPRISE';
 
         }
         else{
@@ -32,6 +34,7 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
             getDocumentEndpoint = 'DEV_GET_DOCUMENT';
             getDocumentListEndpoint = 'DEV_DOCUMENT_LISTE';
             sendMailEndpoint = 'DEV_SEND_MAIL';
+            sendContactEndpoint = 'DEV_ENVOIE_CONTACT_ENTREPRISE';
         }
         if(req.getEndpoint().contains(sendDocumentEndpoint)){
             System.debug(req.getBody());
@@ -72,7 +75,12 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
             System.debug(req.getEndpoint());
             res.setBody('{"result":"200"}');
             res.setStatusCode(200);
-        }              
+        }else if(req.getEndpoint().contains(sendContactEndpoint)){
+            System.debug(req.getBody());
+            System.debug(req.getEndpoint());
+            res.setBody('true');
+            res.setStatusCode(200);
+        }            
         return res;
     }
 }

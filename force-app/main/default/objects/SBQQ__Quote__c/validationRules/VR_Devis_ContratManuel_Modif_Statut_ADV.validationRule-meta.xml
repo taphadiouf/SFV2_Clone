@@ -7,6 +7,7 @@
 NOT( $Permission.LPCR_ByPass_VR ),
 NOT (OR(RecordType.DeveloperName = &apos;Referencement&apos;,RecordType.DeveloperName = &apos;Referencement_Approuve&apos;)),
 LPCR_ContratManuel__c,
+NOT( LPCR_PbBypassVR__c),
 ISCHANGED( SBQQ__Status__c ),
 OR(
 	    TEXT(SBQQ__Status__c) = &apos;Terminé&apos;,

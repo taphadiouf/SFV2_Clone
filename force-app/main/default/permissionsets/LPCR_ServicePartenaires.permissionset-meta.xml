@@ -1080,6 +1080,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.LPCR_DevisReservataire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.LPCR_Enfant__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1444,6 +1449,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_BonAchatPartenaire__c.LPCR_DevisReservataire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_BonAchatPartenaire__c.LPCR_EmailFamille__c</field>
         <readable>true</readable>
@@ -1471,6 +1481,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_BonAchatPartenaire__c.LPCR_Representant2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_BonAchatPartenaire__c.LPCR_Revalorisation25__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5051,6 +5066,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_MethodeRenouvellement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_MontantForfaitAnnuel__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
