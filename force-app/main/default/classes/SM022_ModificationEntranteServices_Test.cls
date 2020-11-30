@@ -1331,7 +1331,7 @@ public class SM022_ModificationEntranteServices_Test {
         }
     }
     @isTest
-    public static void updateQuotesFromModifEntrantesBatch_21_Test(){
+    public static void updateQuotesFromModifEntrantesBatch_21_Test(){//TEST OK
         System.runAs(UM002_TestDataFactory.createUser()){
             Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
 			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
@@ -1371,7 +1371,7 @@ public class SM022_ModificationEntranteServices_Test {
             LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('EVT_NOMBRE_DE_REPAS',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
-
+            modif.LPCR_Statut__c = 'Validée';
             insert modif;            
 
             APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();
