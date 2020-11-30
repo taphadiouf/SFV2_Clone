@@ -21,7 +21,7 @@
 &amp;Id={!SBQQ__Quote__c.Id}
 &amp;ContactId={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}
 &amp;QueryId=[LignesBonCommande]a443O0000005Cmj,
-[ContactInfo]a443O00000059LA,
+[ContactInfo]a443O00000059LA
 &amp;TemplateId=a4C3O0000004pmA
 &amp;DefaultPDF=1
 &amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;), 0,1)}

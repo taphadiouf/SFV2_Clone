@@ -8,6 +8,14 @@
         <apexClass>APB001_ProcessLPCR_Log_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+     <classAccesses>
+        <apexClass>APC010_AmendLexContractController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+     <classAccesses>
+        <apexClass>APC010_AmendLexContractController_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <classAccesses>
         <apexClass>APB002_RenewalContract</apexClass>
         <enabled>true</enabled>
@@ -9380,6 +9388,9 @@
     <layoutAssignments>
         <layout>Account-Crèche</layout>
         <recordType>Account.Creche</recordType>
+    </layoutAssignments>
+     <layoutAssignments>
+        <layout>LPCR_BaremeCAF__c-Présentation Barème CAF</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-Crèche Externe</layout>

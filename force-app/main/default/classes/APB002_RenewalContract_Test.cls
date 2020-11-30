@@ -285,7 +285,8 @@ public class APB002_RenewalContract_Test {
             APB002_RenewalContract batch = new APB002_RenewalContract();
             batch.execute(null);            
             Test.stopTest();  
-            
+            List<SBQQ__Quote__c> quoteList = [select id,SBQQ__Status__c from SBQQ__Quote__c];
+            System.debug('quoteList '+ quoteList);
             Contract checkContractB2B = [SELECT Id,Status FROM Contract WHERE Id =: contractB2B.id LIMIT 1];
             System.assertEquals('Terminé',checkContractB2B.Status, 'APB002_RenewalContract_Test B2B Contract Status not updated');
             
