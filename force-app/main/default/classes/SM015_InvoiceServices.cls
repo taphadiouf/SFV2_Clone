@@ -67,20 +67,7 @@ public class SM015_InvoiceServices {
         }
     }
     
-    public static void setStatutFacture(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> oldInvoiceMap) {
 
-        for(blng__Invoice__c eachNewInvoice : newInvoiceList){
-
-            PAD.log('SM015_InvoiceServices', 'setStatutFacture', 'eachNewInvoice => ' + eachNewInvoice);
-
-            if(String.isNotBlank(eachNewInvoice.blng__InvoiceStatus__c) 
-               && !eachNewInvoice.blng__InvoiceStatus__c.equals(oldInvoiceMap.get(eachNewInvoice.Id).blng__InvoiceStatus__c)
-               &&  'Posted'.equals(eachNewInvoice.blng__InvoiceStatus__c)) {
-
-                eachNewInvoice.LPCR_StatutFacture__c = 'Prêt à valider';
-            }
-        }
-    }
 
     public static void resetAccountProcessRevenuCascade(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> oldInvoiceMap) {
 
@@ -115,20 +102,13 @@ public class SM015_InvoiceServices {
         
         Id familleRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
         
-        List<blng__Invoice__c> invoiceList = new List<blng__Invoice__c>();
-        for(blng__Invoice__c i : newInvoiceList){
-            if(i.blng__Account__r.recordTypeId == familleRecTypeId && i.LPCR_StatutFacture__c == 'A Envoyer'){
-                invoiceList.add(i);
-            }
-        }
-
+        List<blng__Invoice__c> invoiceList = [Select Id, LPCR_StatutFacture__c  , LPCR_CongesPrisPeriode__c, blng__Account__c,blng__Account__r.recordTypeId FROM blng__Invoice__c WHERE Id IN: newInvoiceList AND blng__Account__r.recordTypeId =: familleRecTypeId AND LPCR_StatutFacture__c = 'A Envoyer'];
         List<blng__InvoiceLine__c> invoiceLines = [Select Id, blng__OrderProduct__r.OrderId, blng__Invoice__c  From blng__InvoiceLine__c WHERE blng__Invoice__c  IN:invoiceList Limit 1];
-        
         if(invoiceLines.size()>0){
             blng__InvoiceLine__c invoiceLine = invoiceLines.get(0);
             List<Contract> contractList =[select Id,SBQQ__Order__c from Contract where SBQQ__Order__c = :invoiceLine.blng__OrderProduct__r.OrderId];
             try{
-            LPCR_ModificationEntrante__c modificationEntrante = [SELECT Id, LPCR_Quantite__c, LPCR_Evenement__c,LPCR_Contract__c  From LPCR_ModificationEntrante__c Where LPCR_Evenement__c='Conges_Pris_Periode' AND LPCR_Contract__c IN:contractList  order by createdDate DESC limit 1];
+            LPCR_ModificationEntrante__c modificationEntrante = [SELECT Id, LPCR_Quantite__c, LPCR_Evenement__c,LPCR_Contract__c  From LPCR_ModificationEntrante__c Where LPCR_Evenement__c='EVT_NOMBRE_JOUR_CONGE' AND LPCR_Contract__c IN:contractList  order by createdDate DESC limit 1];
 
                 Decimal modificationQuantity = modificationEntrante.LPCR_Quantite__c;
             
@@ -152,14 +132,8 @@ public class SM015_InvoiceServices {
     	
         Id familleRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
         
-        List<blng__Invoice__c> invoiceList = new List<blng__Invoice__c>();
-        for(blng__Invoice__c i : newInvoiceList){
-            if(i.blng__Account__r.recordTypeId == familleRecTypeId){
-                invoiceList.add(i);
-            }
-        }
-
-        List<blng__InvoiceLine__c> invoiceLines = [SELECT Id, blng__OrderProduct__r.OrderId, blng__Invoice__c  From blng__InvoiceLine__c WHERE blng__Invoice__c  IN:invoiceList Limit 1];
+        List<blng__Invoice__c> invoiceList = [Select Id, blng__Account__c,blng__Account__r.recordTypeId FROM blng__Invoice__c WHERE Id IN: newInvoiceList AND blng__Account__r.recordTypeId =: familleRecTypeId];
+        List<blng__InvoiceLine__c> invoiceLines = [Select Id, blng__OrderProduct__r.OrderId, blng__Invoice__c  From blng__InvoiceLine__c WHERE blng__Invoice__c  IN:invoiceList Limit 1];
         
         Map<String,blng__Invoice__c> updateInvoiceMap = new Map<String,blng__Invoice__c>();
         
