@@ -21,8 +21,13 @@ public class SM020_PresinscriptionInvockeService {
         PAD.log('SM020_PresinscriptionInvocableService', 'presinscriptionSendEmail', 'Presinscription Send Email');        
         
         PresinscriptionParameter param = presinscriptionParameters.get(0);
-        LPCR_Preinscription__c preinscription = [SELECT Id, Name, LPCR_Rep1Email__c, LPCR_Creche__r.Name,LPCR_CompteEntreprise__r.Name, LPCR_Creche__c,LPCR_CompteEntreprise__c,LPCR_DateEntreeCreche__c, LPCR_ContactParent__c, LPCR_ContactParent__r.email FROM LPCR_Preinscription__c WHERE Id =: param.presinscriptionId];
-        EmailTemplate template = [select id, name, body, subject from EmailTemplate where developername = : param.emailTemplate];
+        LPCR_Preinscription__c preinscription = [SELECT Id, Name, LPCR_ContactDirectriceCreche__c,LPCR_TelephoneDirectrice__c,LPCR_ContactInscriptionsCreche__c,
+                                                        LPCR_AdresseCreche__c,LPCR_Rep1Email__c, LPCR_Creche__r.Name,LPCR_CompteEntreprise__r.Name, LPCR_Creche__c,LPCR_CompteEntreprise__c,LPCR_DateEntreeCreche__c, LPCR_ContactParent__c, LPCR_ContactParent__r.email 
+                                                FROM LPCR_Preinscription__c 
+                                                WHERE Id =: param.presinscriptionId];
+
+        EmailTemplate template = [  SELECT id, name, body, subject 
+                                    FROM EmailTemplate WHERE developername = : param.emailTemplate];
         
         //send email using template
         PAD.log('SM020_PresinscriptionInvocableService', 'presinscriptionSendEmail', 'template.id:' + template.id);
@@ -32,18 +37,28 @@ public class SM020_PresinscriptionInvockeService {
             
             try {
                 
-                User conUser = [select id,FirstName, LastName, Title, CompanyName, city, country, Address, PostalCode     from user where id =: UserInfo.getUserId() limit 1] ;    
+                User conUser = [SELECT id,FirstName, LastName, Title, CompanyName, city, country, Address, PostalCode     
+                                FROM user WHERE id =: UserInfo.getUserId() limit 1] ;    
                 
                 string body = template.body;
-                if(preinscription.LPCR_Creche__c != null) body = body.replace('{!LPCR_Preinscription__c.LPCR_Creche__c}', preinscription.LPCR_Creche__r.Name);
-                if(preinscription.LPCR_CompteEntreprise__c  != null ) body = body.replace('{!LPCR_Preinscription__c.LPCR_CompteEntreprise__c}', preinscription.LPCR_CompteEntreprise__r.Name);
-                if(preinscription.LPCR_DateEntreeCreche__c  != null) body = body.replace('{!LPCR_Preinscription__c.LPCR_DateEntreeCreche__c}', string.valueOf(preinscription.LPCR_DateEntreeCreche__c));
-                if(conUser.FirstName != null) body = body.replace('{!User.FirstName}', conUser.FirstName);
-                body = body.replace('{!User.LastName}', conUser.LastName);
-                if(conUser.Title != null)  body = body.replace('{!User.Title}', conUser.Title);
-                if(conUser.CompanyName != null) body = body.replace('{!User.CompanyName}', conUser.CompanyName);
-                if(conUser.city != null && conUser.Country != null) body = body.replace('{!User.Address}', conUser.city + ' ' + conUser.Country);
-                if(conUser.PostalCode != null) body = body.replace('{!User.PostalCode}', conUser.PostalCode);
+                if(preinscription.LPCR_Creche__c != null) 
+                    body = body.replace('{!LPCR_Preinscription__c.LPCR_Creche__c}', preinscription.LPCR_Creche__r.Name);
+                if(preinscription.LPCR_CompteEntreprise__c  != null ) 
+                    body = body.replace('{!LPCR_Preinscription__c.LPCR_CompteEntreprise__c}', preinscription.LPCR_CompteEntreprise__r.Name);
+                if(preinscription.LPCR_DateEntreeCreche__c  != null) 
+                    body = body.replace('{!LPCR_Preinscription__c.LPCR_DateEntreeCreche__c}', string.valueOf(preinscription.LPCR_DateEntreeCreche__c));
+                if(conUser.FirstName != null)                       
+                    body = body.replace('{!User.FirstName}', conUser.FirstName);
+                    body = body.replace('{!User.LastName}', conUser.LastName);
+                if(conUser.Title != null)                           
+                    body = body.replace('{!User.Title}', conUser.Title);
+                if(conUser.CompanyName != null)                     
+                    body = body.replace('{!User.CompanyName}', conUser.CompanyName);
+                if(conUser.city != null && conUser.Country != null) 
+                    body = body.replace('{!User.Address}', conUser.city + ' ' + conUser.Country);
+                if(conUser.PostalCode != null)                      
+                    body = body.replace('{!User.PostalCode}', conUser.PostalCode);
+                
                 body = body.replace('{!User.FirstName}', '');
                 body = body.replace('{!User.Title}', '');
                 body = body.replace('{!User.CompanyName}', '');
@@ -53,6 +68,20 @@ public class SM020_PresinscriptionInvockeService {
                 body = body.replace('{!LPCR_Preinscription__c.LPCR_CompteEntreprise__c}', '');
                 body = body.replace('{!LPCR_Preinscription__c.LPCR_DateEntreeCreche__c}', '');
                 
+                if(preinscription.LPCR_ContactDirectriceCreche__c != null) 		
+                    body = body.replace('{!LPCR_Preinscription__c.LPCR_ContactDirectriceCreche__c}',preinscription.LPCR_ContactDirectriceCreche__c);
+                if(preinscription.LPCR_TelephoneDirectrice__c != null) 			
+                    body = body.replace('{!LPCR_Preinscription__c.LPCR_TelephoneDirectrice__c}',preinscription.LPCR_TelephoneDirectrice__c);
+                if(preinscription.LPCR_ContactInscriptionsCreche__c != null) 	
+                    body = body.replace('{!LPCR_Preinscription__c.LPCR_ContactInscriptionsCreche__c}',preinscription.LPCR_ContactInscriptionsCreche__c);
+                if(preinscription.LPCR_AdresseCreche__c != null) 				
+                    body = body.replace('{!LPCR_Preinscription__c.LPCR_AdresseCreche__c}',preinscription.LPCR_AdresseCreche__c);
+
+                body = body.replace('{!LPCR_Preinscription__c.LPCR_ContactDirectriceCreche__c}','');
+                body = body.replace('{!LPCR_Preinscription__c.LPCR_TelephoneDirectrice__c}','');
+                body = body.replace('{!LPCR_Preinscription__c.LPCR_ContactInscriptionsCreche__c}','');
+                body = body.replace('{!LPCR_Preinscription__c.LPCR_AdresseCreche__c}','');
+
                 callout(UserInfo.getUserEmail(), preinscription.LPCR_Rep1Email__c, body, template.subject, param.flagDocuments, preinscription.LPCR_Creche__c);
             
             } catch (Exception e) {
