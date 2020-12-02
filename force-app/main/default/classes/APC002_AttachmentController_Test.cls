@@ -25,12 +25,9 @@ public with sharing class APC002_AttachmentController_Test {
         } catch (Exception e ) {
             System.assertNotEquals(null, e.getMessage());
         }
-         Attachment att = APC002_AttachmentController.save(acc.Id,'Test','TEST','Test','PDF');
-        test.startTest();
-		APC002_AttachmentController.sendDocument(att.id); 
-        APC002_AttachmentController.removeSuffixBeforeSend(att.id);
-        test.stopTest();
         
+        Attachment att = APC002_AttachmentController.save(acc.Id,'Test','TEST','Test','PDF');
+        APC002_AttachmentController.sendDocument(att.id);
     }
 
 

@@ -1,7 +1,7 @@
 @isTest
 public with sharing class EM016_ModificationEntranteEntity_Test {
     @isTest
-    static void EM016_ModificationEntranteEntity_Test() {//TEST
+    static void EM016_ModificationEntranteEntity_Test() {
         EM016_ModificationEntranteEntity entity = new EM016_ModificationEntranteEntity();
         Account acc = UM002_TestDataFactory.createAccount('test acc');
         insert acc;
@@ -14,7 +14,7 @@ public with sharing class EM016_ModificationEntranteEntity_Test {
         LPCR_ModificationEntrante__c tempModif = new LPCR_ModificationEntrante__c(
                                     LPCR_Devis__c  = quote.Id,
                                     LPCR_Contract__c = contract.Id,
-                                    LPCR_Evenement__c  = 'EVT_VALIDATION_CONTRAT_DIRECTRICE');
+                                    LPCR_Evenement__c  = 'Validation Contrat Directrice');
         insert tempModif;
         
         Test.startTest();
