@@ -67,20 +67,7 @@ public class SM015_InvoiceServices {
         }
     }
     
-    public static void setStatutFacture(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> oldInvoiceMap) {
 
-        for(blng__Invoice__c eachNewInvoice : newInvoiceList){
-
-            PAD.log('SM015_InvoiceServices', 'setStatutFacture', 'eachNewInvoice => ' + eachNewInvoice);
-
-            if(String.isNotBlank(eachNewInvoice.blng__InvoiceStatus__c) 
-               && !eachNewInvoice.blng__InvoiceStatus__c.equals(oldInvoiceMap.get(eachNewInvoice.Id).blng__InvoiceStatus__c)
-               &&  'Posted'.equals(eachNewInvoice.blng__InvoiceStatus__c)) {
-
-                eachNewInvoice.LPCR_StatutFacture__c = 'Prêt à valider';
-            }
-        }
-    }
 
     public static void resetAccountProcessRevenuCascade(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> oldInvoiceMap) {
 
@@ -121,7 +108,7 @@ public class SM015_InvoiceServices {
             blng__InvoiceLine__c invoiceLine = invoiceLines.get(0);
             List<Contract> contractList =[select Id,SBQQ__Order__c from Contract where SBQQ__Order__c = :invoiceLine.blng__OrderProduct__r.OrderId];
             try{
-            LPCR_ModificationEntrante__c modificationEntrante = [SELECT Id, LPCR_Quantite__c, LPCR_Evenement__c,LPCR_Contract__c  From LPCR_ModificationEntrante__c Where LPCR_Evenement__c='Conges_Pris_Periode' AND LPCR_Contract__c IN:contractList  order by createdDate DESC limit 1];
+            LPCR_ModificationEntrante__c modificationEntrante = [SELECT Id, LPCR_Quantite__c, LPCR_Evenement__c,LPCR_Contract__c  From LPCR_ModificationEntrante__c Where LPCR_Evenement__c='EVT_NOMBRE_JOUR_CONGE' AND LPCR_Contract__c IN:contractList  order by createdDate DESC limit 1];
 
                 Decimal modificationQuantity = modificationEntrante.LPCR_Quantite__c;
             
