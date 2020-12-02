@@ -20,14 +20,12 @@
     <url>/apex/APXTCFQ__Conga_Composer?SolMgr=1
 &amp;serverUrl={!API.Partner_Server_URL_370}
 &amp;Id={!SBQQ__Quote__c.Id}
-
-&amp;QueryId=[InfosContratAccueil]a443O00000057bW
-
-&amp;TemplateId=a4C3O0000004j0h
+&amp;QueryId=[InfosContratAccueil]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQInfosContratAccueil__c}
+&amp;TemplateId={!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe3__c}
 &amp;DefaultPDF=1
 &amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;), 0,1)}
 &amp;ESVisible=1
-&amp;ESAgreementTemplateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateAnnexe3__c}
+&amp;ESAgreementTemplateId={!$Setup.LPCR_IDsCongaAdobe__c.LPCR_AATCONTRAT_ACCUEIL__c}
 &amp;ESCustomField=LPCR_Devis__c
 &amp;ESCustomFieldValue={!SBQQ__Quote__c.Id}</url>
 </WebLink>

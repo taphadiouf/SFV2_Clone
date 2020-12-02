@@ -19,14 +19,23 @@
     <url>/apex/APXTCFQ__Conga_Composer?SolMgr=1
 &amp;serverUrl={!API.Partner_Server_URL_370}
 &amp;Id={!SBQQ__Quote__c.Id}
-
-&amp;QueryId=[InfosContratAccueil]a443O00000057bW
-
-&amp;TemplateId=a4C3O0000004hII
+&amp;QueryId=[InfosContratAccueil]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQInfosContratAccueil__c}
+&amp;TemplateId={!
+IF(TEXT(SBQQ__Quote__c.LPCR_TypeCreche__c) = &apos;MICRO&apos;,
+    IF(ISBLANK(SBQQ__Quote__c.LPCR_ContractEntreprise__c),
+        $Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTContrat_Accueil_MICRO_parent_sol__c ,
+        $Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTContrat_Accueil_MICRO_sponsorise__c ),
+    $Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTContrat_Accueil_MAC__c )
+    &amp;
+    IF(TEXT(SBQQ__Quote__c.LPCR_TypeCreche__c) = &apos;MICRO&apos;,
+          IF(TEXT(SBQQ__Quote__c.LPCR_TypeAccueil__c)=&apos;Occasionnel&apos;,
+          &apos;,&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe_2_Micro_Occasionnel__c,
+          &apos;,&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe_2_Micro_Regulier__c),
+    &apos;,&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe_2_MAC__c )}
 &amp;DefaultPDF=1
 &amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;),0,1)}
 &amp;ESVisible=1
-&amp;ESAgreementTemplateId={!$Setup.LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratAccueilMAC__c}
+&amp;ESAgreementTemplateId={!$Setup.LPCR_IDsCongaAdobe__c.LPCR_AATCONTRAT_ACCUEIL__c}
 &amp;ESCustomField=LPCR_Devis__c
 ESCustomFieldValue={!SBQQ__Quote__c.Id}</url>
 </WebLink>
