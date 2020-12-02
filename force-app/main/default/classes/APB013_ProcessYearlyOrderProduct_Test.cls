@@ -43,7 +43,7 @@ public class APB013_ProcessYearlyOrderProduct_Test {
     @isTest
     public static void APB013_ProcessYearlyOrderProduct_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
-            Test.startTest();
+            
             Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
             PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
 
@@ -97,7 +97,7 @@ public class APB013_ProcessYearlyOrderProduct_Test {
             billingPlan.LPCR_OrderItem__c = orderItem.id;
             insert billingPlan;
             
-            
+            Test.startTest();
 
             APB013_ProcessYearlyOrderProduct ss = new APB013_ProcessYearlyOrderProduct();
 			ss.execute(null);

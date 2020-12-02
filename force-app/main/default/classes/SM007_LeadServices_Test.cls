@@ -119,7 +119,7 @@ public class SM007_LeadServices_Test {
             
             List<Opportunity> opporunitiesRslts = [SELECT Id FROM Opportunity WHERE RecordTypeId = :opportunityRecTypeId];
             List<Account> accountsRslts = [SELECT Id FROM Account WHERE RecordTypeId = :accountRecTypeId];
-            List<Contact> contactsRslts = [SELECT Id, RecordType.Id, RecordType.Name FROM Contact WHERE RecordTypeId = :contactRecTypeId];// Pb on RT Contact converted to fix
+            List<Contact> contactsRslts = [SELECT Id, RecordType.Id, RecordType.Name FROM Contact];// Pb on RT Contact converted to fix
             
             for (Contact c : contactsRslts) {
                 PAD.log('SM007_LeadServices_Test', 'syncLeadRT', 'c.RecordType.Name:' + c.RecordType.Name);

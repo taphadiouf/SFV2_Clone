@@ -42,7 +42,7 @@ public class SM022_ModificationEntranteServices_Test {
         
     }
     @isTest
-    public static void updateQuotesFromModifEntrantes_Test(){//TEST OK
+    public static void updateQuotesFromModifEntrantes_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
 			PricebookEntry pbEntry = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
@@ -80,7 +80,7 @@ public class SM022_ModificationEntranteServices_Test {
             system.debug('quotes'+quotes.size());
             List<Contract> contracts = [SELECT Id, SBQQ__Quote__c FROM Contract];
             system.debug('contracts'+contracts.size());
-            List<LPCR_ModificationEntrante__c> modificationsEntrantes = UM002_TestDataFactory.createModificationsEntrantes(100,quotes,contracts,'EVT_VALIDATION_CONTRAT_DIRECTRICE');
+            List<LPCR_ModificationEntrante__c> modificationsEntrantes = UM002_TestDataFactory.createModificationsEntrantes(100,quotes,contracts,'Validation Contrat Directrice');
             insert modificationsEntrantes;
             system.debug('modificationsEntrantes'+modificationsEntrantes.size());
             List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
@@ -91,7 +91,7 @@ public class SM022_ModificationEntranteServices_Test {
     }
     
     @isTest 
-    public static void sendAgreementFromModifEntrantesReglementCreche_Test(){//TEST OK
+    public static void sendAgreementFromModifEntrantesReglementCreche_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
             Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
@@ -126,10 +126,10 @@ public class SM022_ModificationEntranteServices_Test {
             Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(3));
             Insert contract;
             
-            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('EVT_TRAITEMENT_JOUR_FERIE',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('Traitement_Jour_Ferie',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif;           
             
-            LPCR_ModificationEntrante__c modif2 = UM002_TestDataFactory.createModificationsEntrante('EVT_VALIDATION_CONTRAT_DIRECTRICE',acc.id,cont.id,contract.id,Date.today(),10);
+            LPCR_ModificationEntrante__c modif2 = UM002_TestDataFactory.createModificationsEntrante('Validation Contrat Directrice',acc.id,cont.id,contract.id,Date.today(),10);
             insert modif2;
             Test.startTest();
             List<SBQQ__Quote__c> quotesValides = [SELECT Id, SBQQ__Status__c FROM SBQQ__Quote__c WHERE SBQQ__Status__c = 'Validé Directrice'];
@@ -972,7 +972,7 @@ public class SM022_ModificationEntranteServices_Test {
             System.assertEquals(true, modifChk.LPCR_EtatTraitement__c, 'Error in SM022_ModificationEntranteServices_Test : ModificationEntrante not updated');
         }
     }
-    @isTest
+   @isTest
     public static void updateQuotesFromModifEntrantesBatch_16_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
@@ -1060,7 +1060,7 @@ public class SM022_ModificationEntranteServices_Test {
     }
 
     @isTest
-    public static void updateQuotesFromModifEntrantesBatch_17_Test(){//TEST OK
+    public static void updateQuotesFromModifEntrantesBatch_17_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
 			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
@@ -1331,7 +1331,7 @@ public class SM022_ModificationEntranteServices_Test {
         }
     }
     @isTest
-    public static void updateQuotesFromModifEntrantesBatch_21_Test(){//TEST OK
+    public static void updateQuotesFromModifEntrantesBatch_21_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
             Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
 			Product2 prod = [SELECT Id FROM Product2 WHERE Name =: 'test' LIMIT 1];
@@ -1371,7 +1371,7 @@ public class SM022_ModificationEntranteServices_Test {
             LPCR_ModificationEntrante__c modif = UM002_TestDataFactory.createModificationsEntrante('EVT_NOMBRE_DE_REPAS',acc.id,cont.id,contract.id,Date.today(),10);
             modif.LPCR_HeureDateDebut__c = Datetime.newInstance(Date.today().Year(), Date.today().month() ,1);
             modif.LPCR_HeureDateFin__c = Datetime.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month()));
-            modif.LPCR_Statut__c = 'Validée';
+
             insert modif;            
 
             APB014_TraitementModificationEntrante ss = new APB014_TraitementModificationEntrante();

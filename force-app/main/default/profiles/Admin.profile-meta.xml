@@ -430,6 +430,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>UM002_TestDataFactory_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>UM003_TypeManager</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -8588,36 +8592,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>blng__InvoiceLine__c.LPCR_CompteFamille__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__InvoiceLine__c.LPCR_ContactEnfant__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__InvoiceLine__c.LPCR_DebutValiditePO__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__InvoiceLine__c.LPCR_FinValiditePO__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__InvoiceLine__c.LPCR_POInvalide__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__InvoiceLine__c.LPCR_PrixUnitaireProratise__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>blng__Invoice__c.LPCR_CommentaireGlobal__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -9014,56 +8988,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__Invoice__c.LPCR_CongesPrisPeriode__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__Invoice__c.LPCR_ContactEnfant__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__Invoice__c.LPCR_Creche__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__Invoice__c.LPCR_SoldeHorsTaxe__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__Invoice__c.LPCR_TauxTVA__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__Invoice__c.Tech_DateAttestationCAF__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__Invoice__c.Tech_NomSocieteLPCR__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__Invoice__c.LPCR_NombreLigneNegative__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__Invoice__c.LPCR_NombrePOinvalides__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__Invoice__c.Tech_MinDateLigneBerceauFamille__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__Invoice__c.Tech_MaxDateLigneBerceauFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
