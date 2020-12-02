@@ -3,11 +3,6 @@
     <fullName>SBQQ__CalculatingFields</fullName>
     <description>Quote fields that trigger recalculation of quote lines.</description>
     <displayedFields>
-        <field>LPCR_BonCommandeEnvoye__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
         <field>LPCR_TypeFacturation__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
