@@ -21,14 +21,22 @@
 &amp;serverUrl={!API.Partner_Server_URL_370}
 &amp;userName={!$User.Username}
 &amp;Id={!blng__Invoice__c.Id}
-&amp;QueryId=[LineItems]a4J3O0000008RXg,
-[CompanyDets]a4J3O0000008RXi,
-[LigneBerceau]a4J3O0000008RXf
-{!IF(NOT(ISBLANK(blng__Invoice__c.Tech_DateAttestationCAF__c)),&apos;,[AttestationCAF]a4J3O0000008WpA?pv0=&apos;&amp;blng__Invoice__c.blng__AccountId__c&amp;&apos;~pv1=&apos;&amp;TEXT(blng__Invoice__c.Tech_DateAttestationCAF__c),&apos;&apos;)},
-[CreditNotes]a4J3O0000008V1T,
-[DebitNotes]a4J3O0000008VX5
-&amp;TemplateId={!IF(Account.RecordTypeId=&apos;0123O000000QCGG&apos;,
-IF(AND(TEXT(Account.LPCR_MoyenPaiement__c)=&apos;Virement&apos;,NOT(ISBLANK(Account.LPCR_RIB__c))),&apos;a4R3O0000008T1F&apos;,&apos;a4R3O0000008T1H&apos;)&amp;IF(NOT(ISBLANK(blng__Invoice__c.Tech_DateAttestationCAF__c)),&apos;, a4R3O0000008T4P&apos;,&apos;&apos;),&apos;a4R3O0000008SwF&apos;)}
+&amp;QueryId=[LineItems]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQInvoice_Lines_LineItems__c},
+[CompanyDets]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQAccount_Details_CompanyDets__c},
+[LigneBerceau]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQLigne_Berceau_LigneBerceau__c}&amp;
+{!IF(NOT(ISBLANK(blng__Invoice__c.Tech_DateAttestationCAF__c)),&apos;,[AttestationCAF]&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQAttestation_CAF__c&amp;&apos;?pv0=&apos;&amp;blng__Invoice__c.blng__AccountId__c&amp;&apos;~pv1=&apos;&amp;TEXT(blng__Invoice__c.Tech_DateAttestationCAF__c),&apos;&apos;)},
+[CreditNotes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQCredit_Notes__c},
+[DebitNotes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQDebit_Notes__c}
+&amp;TemplateId={!
+IF(Account.RecordTypeId=&apos;0123O000000QCGG&apos;,
+    IF(AND(TEXT(Account.LPCR_MoyenPaiement__c)=&apos;Virement&apos;,NOT(ISBLANK(Account.LPCR_RIB__c))),
+        $Setup.LPCR_IDsCongaAdobe__c.LPCR_CITFacture_B2C_paiement_prelevement__c ,
+        $Setup.LPCR_IDsCongaAdobe__c.LPCR_CITFacture_B2C_paiement_CB__c )
+     &amp;
+    IF(NOT(ISBLANK(blng__Invoice__c.Tech_DateAttestationCAF__c)),
+    &apos;,&apos; &amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CITAttestation_CAF__c,
+    &apos;&apos;),
+    $Setup.LPCR_IDsCongaAdobe__c.LPCR_CITFacture_B2B__c)}
 &amp;MFTS0=LPCR_StatutFacture__c
 &amp;MFTSValue0=Envoyée</url>
     <width>900</width>
