@@ -28,7 +28,7 @@
 [CreditNotes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQCredit_Notes__c},
 [DebitNotes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQDebit_Notes__c}
 &amp;TemplateId={!
-IF(Account.RecordTypeId=&apos;0123O000000QCGG&apos;,
+IF(Account.RecordTypeId=$Setup.LPCR_IDsCongaAdobe__c.LPCRAccountRecordTypeIDFamille__c,
     IF(AND(TEXT(Account.LPCR_MoyenPaiement__c)=&apos;Virement&apos;,NOT(ISBLANK(Account.LPCR_RIB__c))),
         $Setup.LPCR_IDsCongaAdobe__c.LPCR_CITFacture_B2C_paiement_prelevement__c ,
         $Setup.LPCR_IDsCongaAdobe__c.LPCR_CITFacture_B2C_paiement_CB__c )
