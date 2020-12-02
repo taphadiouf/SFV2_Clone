@@ -13,7 +13,7 @@
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 5,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T16:04:10.000+0000"
+            "SystemModstamp": "2020-11-25T08:59:48.000+0000"
         },
         {
             "attributes": {
@@ -28,7 +28,7 @@
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 5,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T16:04:10.000+0000"
+            "SystemModstamp": "2020-11-25T08:59:48.000+0000"
         },
         {
             "attributes": {
@@ -87,7 +87,7 @@
             "SBQQ__EvaluationOrder__c": 20,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T16:04:10.000+0000"
+            "SystemModstamp": "2020-11-25T08:59:48.000+0000"
         },
         {
             "attributes": {
@@ -203,7 +203,7 @@
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T16:04:10.000+0000"
+            "SystemModstamp": "2020-11-25T08:59:48.000+0000"
         },
         {
             "attributes": {
@@ -218,7 +218,7 @@
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 5,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T16:04:10.000+0000"
+            "SystemModstamp": "2020-11-25T08:59:48.000+0000"
         },
         {
             "attributes": {
@@ -292,7 +292,7 @@
             "SBQQ__EvaluationOrder__c": 20,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T16:04:10.000+0000"
+            "SystemModstamp": "2020-11-25T08:59:48.000+0000"
         },
         {
             "attributes": {
@@ -321,7 +321,7 @@
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 24,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T16:04:10.000+0000"
+            "SystemModstamp": "2020-11-25T08:59:48.000+0000"
         },
         {
             "attributes": {
@@ -337,7 +337,7 @@
             "SBQQ__EvaluationOrder__c": 500,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T16:04:10.000+0000"
+            "SystemModstamp": "2020-11-25T08:59:48.000+0000"
         },
         {
             "attributes": {
@@ -355,7 +355,7 @@
             "SBQQ__EvaluationOrder__c": 500,
             "SBQQ__LookupObject__c": "LPCR_RessourceFamille__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T16:04:10.000+0000"
+            "SystemModstamp": "2020-11-25T08:59:48.000+0000"
         },
         {
             "attributes": {
@@ -371,7 +371,7 @@
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T16:04:10.000+0000"
+            "SystemModstamp": "2020-11-25T08:59:48.000+0000"
         },
         {
             "attributes": {
@@ -481,12 +481,14 @@
                 "referenceId": "SBQQ__PriceRule__cRef33"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2020-12-02T14:14:59.000+0000",
+            "LastViewedDate": "2020-12-02T14:14:59.000+0000",
             "Name": "Mettre à jour champs QL quand bon de commande envoyé",
-            "SBQQ__Active__c": true,
+            "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-12T14:01:15.000+0000"
+            "SystemModstamp": "2020-12-02T14:14:25.000+0000"
         },
         {
             "attributes": {
@@ -515,7 +517,7 @@
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 500,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-11-16T16:04:10.000+0000"
+            "SystemModstamp": "2020-11-25T08:59:48.000+0000"
         }
     ]
 }
