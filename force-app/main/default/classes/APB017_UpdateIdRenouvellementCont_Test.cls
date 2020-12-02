@@ -241,11 +241,10 @@ public class APB017_UpdateIdRenouvellementCont_Test {
             Product2 prod = [SELECT Id FROM Product2 LIMIT 1];
             PricebookEntry priceBookEntry1 = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod.id LIMIT 1];
                       
-            Test.startTest();
-
+			
             // Activate B2B Order
             Order  orderB2B = [SELECT Id, blng__BillNow__c ,Status,SBQQ__Quote__c FROM Order WHERE SBQQ__Quote__c = :quoteB2B.Id];  
-             
+            
             orderB2B.status='Activated';
             update orderB2B;
             
@@ -260,6 +259,7 @@ public class APB017_UpdateIdRenouvellementCont_Test {
                     };
                         Contract contractB2B = (Contract) UM002_TestDataFactory.createSObject('Contract', defaultVal);
             insert contractB2B;
+            Test.startTest();
             
             // Create B2C Contract
             defaultVal = new Map<String, Object> {
@@ -342,7 +342,7 @@ public class APB017_UpdateIdRenouvellementCont_Test {
             defaultVal.put('Name','quoteLine-B2B-2');
 
             insert quoteLineB2B;
-                
+               
             oppRenvB2B.SBQQ__PrimaryQuote__c = quoteRenvB2B.Id;
             update oppRenvB2B;
             
@@ -351,9 +351,9 @@ public class APB017_UpdateIdRenouvellementCont_Test {
             insert contractB2BRenv;
             
             APB017_UpdateIdRenouvellementContrat batch = new APB017_UpdateIdRenouvellementContrat();
-            batch.execute(null);            
+            batch.execute(null);
             Test.stopTest();  
-
+			
             Contract checkContractB2C = [SELECT Id,LPCR_ContractEntreprise__c FROM Contract WHERE Id =: contractB2C.id LIMIT 1];
             System.assertEquals(contractB2BRenv.id,checkContractB2C.LPCR_ContractEntreprise__c, 'APB017_UpdateIdRenouvellementContrat B2B Contract not linked to B2C');
             
