@@ -194,23 +194,23 @@ public class SM010_ContractServices {
                 if(eachContract.SBQQ__Order__c != oldContractMap.get(eachContract.Id).SBQQ__Order__c){
                     
                     eachContract.LPCR_DateFinMaxQuoteLine__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_DateFinMaxQuoteLine__c;
+                    if(eachContract.LPCR_DateFinMaxQuoteLine__c != null){
+                    	Integer yearDateFinMaxQuoteLine = date.valueOf(eachContract.LPCR_DateFinMaxQuoteLine__c).year();
+                    	Integer yearContractEndDate = date.valueOf(eachContract.Enddate).year();
 
-                    Integer yearDateFinMaxQuoteLine = date.valueOf(eachContract.LPCR_DateFinMaxQuoteLine__c).year();
-                    Integer yearContractEndDate = date.valueOf(eachContract.Enddate).year();
-
-                    if (yearDateFinMaxQuoteLine > yearContractEndDate) {
+                    	if (yearDateFinMaxQuoteLine > yearContractEndDate) {
 
                         
-                        eachContract.Enddate = Date.newInstance(yearContractEndDate, 12, 31);
-                    }
-                    else if (yearDateFinMaxQuoteLine == yearContractEndDate) {
+                        	eachContract.Enddate = Date.newInstance(yearContractEndDate, 12, 31);
+                    	}
+                    	else if (yearDateFinMaxQuoteLine == yearContractEndDate) {
 
-                        if (eachContract.LPCR_DateFinMaxQuoteLine__c > eachContract.Enddate) {
+                        	if (eachContract.LPCR_DateFinMaxQuoteLine__c > eachContract.Enddate) {
 
-                            eachContract.Enddate =  eachContract.LPCR_DateFinMaxQuoteLine__c;
-                        }
+                            	eachContract.Enddate =  eachContract.LPCR_DateFinMaxQuoteLine__c;
+                        	}
+                    	}
                     }
-                    
                     
                     if(quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement || quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).recordtype.DeveloperName == Label.LPCR_Referencement_Approuve) {
                         eachContract.LPCR_FraisDossier__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_FraisDossier__c;
