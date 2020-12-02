@@ -557,7 +557,36 @@ public with sharing class SM008_QuoteServices {
     }*/
 
 
+    public static void updateRelatedQuotelines(Map<Id,SBQQ__Quote__c> newQuoteMap,Map<Id,SBQQ__Quote__c> oldQuoteMap){
+        if( !UM003_TypeManager.isNullOrEmpty(newQuoteMap.values() ) ){
 
+            //Gather refer quotes that their LPCR_BonCommandeEnvoye__c changed to true.
+            List<SBQQ__Quote__c> quotesToProcess = new List<SBQQ__Quote__c>();
+            for(SBQQ__Quote__c q : newQuoteMap.values()){
 
+                if( q.RecordTypeId == referencementRecTypeId
+                    &&
+                    oldQuoteMap.get(q.Id).LPCR_BonCommandeEnvoye__c != q.LPCR_BonCommandeEnvoye__c 
+                    &&
+                    q.LPCR_BonCommandeEnvoye__c == true 
+                    ){
+                        quotesToProcess.add(q); 
+                }
+            }
 
+            //Retrieve their quotesLines having LPCR_LigneBonCommandeEnvoye__c = false and set their it to true
+            Set<Id> idsQuotes = UM003_TypeManager.getIdsOfListObjects(quotesToProcess);
+            List<SBQQ__QuoteLine__c> qLines = [  SELECT id,LPCR_LigneBonCommandeEnvoye__c 
+                                                FROM SBQQ__QuoteLine__c 
+                                                WHERE SBQQ__Quote__c IN :idsQuotes AND LPCR_LigneBonCommandeEnvoye__c=false];
+                                
+            if( !UM003_TypeManager.isNullOrEmpty(qLines)){
+                
+                for (SBQQ__QuoteLine__c ql : qLines) {
+                    ql.LPCR_LigneBonCommandeEnvoye__c = true;
+                }
+                update qLines;
+            }
+        }
+    }
 }
