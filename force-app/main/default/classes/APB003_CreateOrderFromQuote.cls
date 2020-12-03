@@ -42,7 +42,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
                 ErrMsg = e.getMessage();
             } finally {
                 if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',ClassName, 'Batch' , null,'Successfully updated list of quote lines (LPCR_LigneBonCommandeEnvoye__c=true)' + ErrMsg, UM010_Constant.ERROR);              
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',ClassName, 'Batch' , null,'error while updating list of quote lines (LPCR_LigneBonCommandeEnvoye__c=true)' + ErrMsg, UM010_Constant.ERROR);              
                 }
             }
             ErrMsg = null;
