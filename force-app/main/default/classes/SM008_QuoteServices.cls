@@ -563,12 +563,10 @@ public with sharing class SM008_QuoteServices {
             //Gather refer quotes that their LPCR_BonCommandeEnvoye__c changed to true.
             List<SBQQ__Quote__c> quotesToProcess = new List<SBQQ__Quote__c>();
             for(SBQQ__Quote__c q : newQuoteMap.values()){
-
-                if( q.RecordTypeId == referencementRecTypeId
-                    &&
-                    oldQuoteMap.get(q.Id).LPCR_BonCommandeEnvoye__c != q.LPCR_BonCommandeEnvoye__c 
-                    &&
-                    q.LPCR_BonCommandeEnvoye__c == true 
+                
+                if( (q.RecordTypeId == referencementRecTypeId || q.RecordTypeId == referencementApprRecTypeId) && 
+                        (oldQuoteMap.get(q.Id).LPCR_BonCommandeEnvoye__c != q.LPCR_BonCommandeEnvoye__c) && 
+                        (q.LPCR_BonCommandeEnvoye__c == true)
                     ){
                         quotesToProcess.add(q); 
                 }
