@@ -515,6 +515,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_MontantPSU__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_MoyenDeTransport__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -7344,6 +7349,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_ParticipationCAFHoraire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.LPCR_PourcentagePlancherMicro__c</field>
         <readable>true</readable>
@@ -11175,6 +11185,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>blng__InvoiceLine__c.LPCR_DesignationProduit__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>blng__InvoiceLine__c.LPCR_EstMigre__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -11191,6 +11206,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__InvoiceLine__c.LPCR_POInvalide__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__InvoiceLine__c.LPCR_ParticipationCAF__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
