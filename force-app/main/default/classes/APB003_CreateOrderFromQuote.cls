@@ -17,7 +17,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
     global Database.QueryLocator start(Database.BatchableContext BC) {
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
         PAD.log(ClassName, 'start','Database.BatchableContext BC');        
-        query = 'SELECT Id,SBQQ__Status__c ,SBQQ__Ordered__c, LPCR_TypeCreche__c, SBQQ__Type__c, LPCR_RecalculationMACDone__c   FROM SBQQ__Quote__c WHERE SBQQ__Status__c =\'Prêt pour commande\' AND SBQQ__Ordered__c  = false';
+        query = 'SELECT Id,RecordTypeId,LPCR_BonCommandeEnvoye__c,SBQQ__Status__c ,SBQQ__Ordered__c, LPCR_TypeCreche__c, SBQQ__Type__c, LPCR_RecalculationMACDone__c   FROM SBQQ__Quote__c WHERE SBQQ__Status__c =\'Prêt pour commande\' AND SBQQ__Ordered__c  = false';
         
         return Database.getQueryLocator(query);
     }
@@ -30,7 +30,22 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
         
         List<Exception> errors = new List<Exception>();
         try {
+            String ErrMsg;
 
+            try {
+                updateRelatedQuotelines(scope);
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',
+                                                                ClassName, 'Batch' , null,
+                                                                'Successfully updated list of quote lines (LPCR_LigneBonCommandeEnvoye__c=true)', 
+                                                                UM010_Constant.SUCCESS);          
+            } catch (Exception e) {
+                ErrMsg = e.getMessage();
+            } finally {
+                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',ClassName, 'Batch' , null,'Successfully updated list of quote lines (LPCR_LigneBonCommandeEnvoye__c=true)' + ErrMsg, UM010_Constant.ERROR);              
+                }
+            }
+            ErrMsg = null;
             PAD.log(ClassName, 'execute','scope :'+ scope.size()+'');        
             
             Set<Id> quoteIds = UM003_TypeManager.getIdsOfListObjects(scope);
@@ -44,7 +59,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
                 listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Creating Order From Quote', ClassName, 'Batch', String.valueOf(eachquote.Id), '', 'SUCCESS'));
             }
 
-            String ErrMsg;
+            
             try {
                 update listOfquote; 
                 UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',
@@ -82,6 +97,36 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
             UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
         }
             
+    }
+
+    global void updateRelatedQuotelines(List<SBQQ__Quote__c> quotes){
+
+        Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement);
+        Id referencementApprRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement_Approuve);
+
+        //Gather refer quotes that their LPCR_BonCommandeEnvoye__c changed to true.
+        List<SBQQ__Quote__c> quotesToProcess = new List<SBQQ__Quote__c>();
+        for(SBQQ__Quote__c q : quotes){
+            
+            if( (q.LPCR_BonCommandeEnvoye__c == true) &&
+                (q.RecordTypeId == referencementRecTypeId || q.RecordTypeId == referencementApprRecTypeId)                 
+                ){
+                    quotesToProcess.add(q); 
+            }
+        }
+        //Retrieve their quotesLines having LPCR_LigneBonCommandeEnvoye__c = false and set it to true
+        Set<Id> idsQuotes = UM003_TypeManager.getIdsOfListObjects(quotesToProcess);
+        List<SBQQ__QuoteLine__c> qLines = [  SELECT id,LPCR_LigneBonCommandeEnvoye__c 
+                                            FROM SBQQ__QuoteLine__c 
+                                            WHERE SBQQ__Quote__c IN :idsQuotes AND LPCR_LigneBonCommandeEnvoye__c=false];
+                                            
+        if( !UM003_TypeManager.isNullOrEmpty(qLines)){
+            
+            for (SBQQ__QuoteLine__c ql : qLines) {
+                ql.LPCR_LigneBonCommandeEnvoye__c = true;
+            }
+            update qLines;
+        }
     }
     
     global void finish(Database.BatchableContext BC) {
