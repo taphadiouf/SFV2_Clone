@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_DesignationProduit__c</fullName>
+    <description>Désignation apparaissant sur le document de facture Conga Invoice</description>
+    <externalId>false</externalId>
+    <formula>IF(
+OR(BEGINS(blng__Product__r.ProductCode, &quot;BerceauMac&quot;), BEGINS(blng__Product__r.ProductCode, &quot;BerceauMicro&quot;)),&quot;Forfait Mensuel - &quot;&amp;
+CASE(MONTH(blng__EndDate__c),1,&quot;janvier &quot;,2,&quot;février &quot;,3,&quot;mars &quot;,4,&quot;avril &quot;,5,&quot;mai &quot;,6,&quot;juin &quot;,7,&quot;juillet &quot;,8,&quot;août &quot;,9,&quot;septembre &quot;,10,&quot;octobre &quot;,11,&quot;novembre &quot;,&quot;décembre &quot;)&amp;TEXT(YEAR(blng__EndDate__c)),
+IF(BEGINS(blng__Product__r.ProductCode, &quot;FraisInscription&quot;),&quot;Frais d&apos;inscription&quot;,Name))</formula>
+    <inlineHelpText>Désignation apparaissant sur le document de facture Conga Invoice</inlineHelpText>
+    <label>Désignation Produit</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
