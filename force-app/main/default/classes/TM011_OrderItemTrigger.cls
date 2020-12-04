@@ -39,6 +39,7 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
             SM012_OrderItemServices.setupInvoiceDates(newOrderItemsList);
             SM012_OrderItemServices.setOrderItemFieldsFromContract(newOrderItemsList);
             SM012_OrderItemServices.updateHoldBillingFromQuote(newOrderItemsList, oldOrderItemsMap,newOrderItemsMap);
+            SM012_OrderItemServices.updateGroupId(oldOrderItemsMap, newOrderItemsList);
         }
     }
     
@@ -48,7 +49,7 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
             SM012_OrderItemServices.updateRelatedOrderItems(oldOrderItemsMap,newOrderItemsMap);
             SM012_OrderItemServices.legalEntityOnOrderItemConSch(newOrderItemsMap);
             SM012_OrderItemServices.updateFiledsOnBillingTransaction(oldOrderItemsMap,newOrderItemsMap);
-            SM012_OrderItemServices.updateGroupId(oldOrderItemsMap, newOrderItemsList);
+            
         } 
     }
 }

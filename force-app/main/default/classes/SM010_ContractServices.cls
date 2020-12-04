@@ -193,21 +193,23 @@ public class SM010_ContractServices {
                  
                 if(eachContract.SBQQ__Order__c != oldContractMap.get(eachContract.Id).SBQQ__Order__c){
                     
-                    eachContract.LPCR_DateFinMaxQuoteLine__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_DateFinMaxQuoteLine__c;
+                    if (mapOrders.get(eachContract.SBQQ__Order__c).RecordType.DeveloperName == Label.LPCR_Referencement) {
 
-                    Integer yearDateFinMaxQuoteLine = date.valueOf(eachContract.LPCR_DateFinMaxQuoteLine__c).year();
-                    Integer yearContractEndDate = date.valueOf(eachContract.Enddate).year();
+                        eachContract.LPCR_DateFinMaxQuoteLine__c = quoteMap.get(mapOrders.get(eachContract.SBQQ__Order__c).SBQQ__Quote__c).LPCR_DateFinMaxQuoteLine__c;
 
-                    if (yearDateFinMaxQuoteLine > yearContractEndDate) {
+                        Integer yearDateFinMaxQuoteLine = date.valueOf(eachContract.LPCR_DateFinMaxQuoteLine__c).year();
+                        Integer yearContractEndDate = date.valueOf(eachContract.Enddate).year();
 
-                        
-                        eachContract.Enddate = Date.newInstance(yearContractEndDate, 12, 31);
-                    }
-                    else if (yearDateFinMaxQuoteLine == yearContractEndDate) {
+                        if (yearDateFinMaxQuoteLine > yearContractEndDate) {
 
-                        if (eachContract.LPCR_DateFinMaxQuoteLine__c > eachContract.Enddate) {
+                            eachContract.Enddate = Date.newInstance(yearContractEndDate, 12, 31);
+                        }
+                        else if (yearDateFinMaxQuoteLine == yearContractEndDate) {
 
-                            eachContract.Enddate =  eachContract.LPCR_DateFinMaxQuoteLine__c;
+                            if (eachContract.LPCR_DateFinMaxQuoteLine__c > eachContract.Enddate) {
+
+                                eachContract.Enddate =  eachContract.LPCR_DateFinMaxQuoteLine__c;
+                            }
                         }
                     }
                     
@@ -243,11 +245,13 @@ public class SM010_ContractServices {
             }
             if(quoteMap.containsKey(eachContract.SBQQ__Quote__c)){
                 if(eachContract.RecordTypeId == referencementRecTypeId) {
+
                         if(quoteMap.get(eachContract.SBQQ__Quote__c).SBQQ__Type__c != 'Renewal'){
                             eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).Id;
                         }else{
                             eachContract.LPCR_MasterDevis__c = quoteMap.get(eachContract.SBQQ__Quote__c).LPCR_MasterDevis__c;
                         }
+
                 }       
             }
             

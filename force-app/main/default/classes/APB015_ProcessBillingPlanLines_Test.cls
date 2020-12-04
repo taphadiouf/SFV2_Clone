@@ -205,9 +205,27 @@ public class APB015_ProcessBillingPlanLines_Test {
     @isTest
     public static void billingPlanLinesForInvoicePlan_Test(){
         System.runAs(UM002_TestDataFactory.createUser()){
-            Product2 prod1 = [SELECT Id FROM Product2 WHERE Name =: 'test1' LIMIT 1];
-            PricebookEntry pbEntry1 = [SELECT Id FROM PricebookEntry WHERE Product2Id =: prod1.id LIMIT 1];
             
+            
+            blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+            blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+            blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+            blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
+            
+            Product2 prod1 = UM002_TestDataFactory.createFixedPriceProduct('test1', billingRule.Id, revRecRule.Id,taxRule.Id );
+            prod1.SBQQ__SubscriptionPricing__c ='Fixed Price';
+            prod1.SBQQ__BillingFrequency__c = 'Invoice Plan';
+            prod1.SBQQ__BillingType__c = 'Advance';
+            prod1.SBQQ__ChargeType__c = 'Recurring';
+            prod1.SBQQ__SubscriptionTerm__c = 12;
+            prod1.SBQQ__SubscriptionType__c = 'Renewable';
+            insert prod1;
+
+            PricebookEntry pbEntry1 = UM002_TestDataFactory.createPricebookEntry(standardPricebookId,prod1.Id);
+            pbEntry1.UnitPrice = 0;
+            insert pbEntry1;
+
+
             Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
             acc.SBQQ__RenewalModel__c = 'Contract Based';
             acc.RecordTypeId = B2C_RT_ID;

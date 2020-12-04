@@ -34,8 +34,8 @@
         <description>Ouvrir la page de l&apos;accord Adobe sign généré</description>
         <name>OuvrirAccord</name>
         <label>Ouvrir l&apos;accord</label>
-        <locationX>1134</locationX>
-        <locationY>198</locationY>
+        <locationX>1140</locationX>
+        <locationY>194</locationY>
         <actionName>c:RedirectDetailPage</actionName>
         <actionType>component</actionType>
         <inputParameters>
@@ -80,6 +80,12 @@
         </value>
     </processMetadataValues>
     <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
         <name>OriginBuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
@@ -90,18 +96,18 @@
         <name>RecuperationIDTemplateContratPartenaire</name>
         <label>Récup ID Template Contrat Partenaire</label>
         <locationX>320</locationX>
-        <locationY>124</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <locationY>125</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>IDTemplateNonNull</targetReference>
         </connector>
         <faultConnector>
             <targetReference>ErreurRecuperation</targetReference>
         </faultConnector>
-        <object>LPCR_TemplateSignatureElectronique__c</object>
+        <object>LPCR_IDsCongaAdobe__c</object>
         <outputAssignments>
             <assignToReference>templateId</assignToReference>
-            <field>LPCR_IDTemplateContratPartenaire__c</field>
+            <field>LPCR_AATCONTRAT_PARTENARIAT__c</field>
         </outputAssignments>
     </recordLookups>
     <screens>
@@ -121,8 +127,8 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>143</locationX>
-        <locationY>122</locationY>
+        <locationX>110</locationX>
+        <locationY>520</locationY>
         <connector>
             <targetReference>RecuperationIDTemplateContratPartenaire</targetReference>
         </connector>

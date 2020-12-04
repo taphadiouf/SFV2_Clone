@@ -4,7 +4,7 @@
     <description>champ de fusion utilisé dans le template contrat d&apos;accueil</description>
     <externalId>false</externalId>
     <formula>IF(LPCR_ContactRepresentant1__r.LPCR_AutoriteParentale__c,&apos;Représentant 1&apos;,&apos;&apos;)
-&amp;IF(AND(LPCR_ContactRepresentant1__r.LPCR_AutoriteParentale__c,LPCR_ContactRepresentant1__r.LPCR_AutoriteParentale__c),&apos; et &apos;,&apos;&apos;)
+&amp;IF(AND(LPCR_ContactRepresentant1__r.LPCR_AutoriteParentale__c,LPCR_ContactRepresentant2__r.LPCR_AutoriteParentale__c),&apos; et &apos;,&apos;&apos;)
 &amp;IF(LPCR_ContactRepresentant2__r.LPCR_AutoriteParentale__c,&apos;Représentant 2&apos;,&apos;&apos;)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Autorité parentale</label>

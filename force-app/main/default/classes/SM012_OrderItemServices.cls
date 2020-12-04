@@ -45,26 +45,35 @@ public with sharing class SM012_OrderItemServices implements Queueable{
 
     public static void updateGroupId(Map<Id, OrderItem> oldOrderItemsMap, List<OrderItem> newOrderItemsList){
 
-        Set<Id> objOrderItemIds = new Set<Id>();
+        //Set<Id> objOrderItemIds = new Set<Id>();
+        List<OrderItem> orderItemToUpdate = new List<OrderItem>();
+
+        
+        Set<String> setOrderIds = UM003_TypeManager.getFieldsOfListObjects(oldOrderItemsMap.values(),'OrderId');
+        
+        Map<Id, Order> mapOrder =  new Map<ID, Order>([SELECT Id ,AccountId FROM Order where id in :setOrderIds]);
+        
+        PAD.log('SM012_OrderItemServices', 'updateGroupId' , 'mapOrder:' + mapOrder);
+
+        PAD.log('SM012_OrderItemServices', 'updateGroupId' , 'oldOrderItemsMap:' + oldOrderItemsMap);
 
         for(OrderItem orderItem : newOrderItemsList){
+
+            PAD.log('SM012_OrderItemServices', 'updateGroupId' , 'orderItem:' + orderItem);
+            PAD.log('SM012_OrderItemServices', 'updateGroupId' , 'tmp grp id:' + mapOrder.get(orderItem.OrderId).AccountId+''+orderItem.SBQQ__Contract__c+''+orderItem.LPCR_Creche__c);
+            
             if((orderItem.LPCR_Creche__c != null) && (orderItem.SBQQ__Contract__c != null && (orderItem.SBQQ__Contract__c != oldOrderItemsMap.get(orderItem.Id).SBQQ__Contract__c))){
-                    objOrderItemIds.add(orderItem.Id);
+                    //orderItem.blng__GroupId__c = orderItem.Order.AccountId+''+orderItem.SBQQ__Contract__c+''+orderItem.LPCR_Creche__c;
+                    orderItem.blng__GroupId__c = mapOrder.get(orderItem.OrderId).AccountId+''+orderItem.SBQQ__Contract__c+''+orderItem.LPCR_Creche__c;
+
+                    //orderItemToUpdate.add(orderItem);
             }
         }
-
-        if(objOrderItemIds.size() > 0){
-              
-            List<OrderItem> objOrderItemList = [Select Id,Order.AccountId,SBQQ__Contract__c,LPCR_Creche__c,blng__GroupId__c,
-                                                blng__InvoiceGroupId__c from OrderItem where Id IN : objOrderItemIds];
-            for(OrderItem objOrderItem : objOrderItemList){
-                objOrderItem.blng__GroupId__c = objOrderItem.Order.AccountId+''+objOrderItem.SBQQ__Contract__c+''+objOrderItem.LPCR_Creche__c;
-            }
-            if(objOrderItemList.size() > 0){
-                update objOrderItemList;
-            }
-
+        /*
+        if(orderItemToUpdate.size() > 0){
+            update orderItemToUpdate;
         }
+        */
     }
     public static void legalEntityOnOrderItemConSch( Map<Id,OrderItem> mapOrderItem){
 
@@ -345,15 +354,17 @@ public with sharing class SM012_OrderItemServices implements Queueable{
     public static void setInvoiceGroupingOnOrderItem(Map<Id,OrderItem> mapOrderItem){
 
         Id recordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, 'Referencement');
-        List<OrderItem> listOrderItem = [SELECT Id, LPCR_NumeroPurchaseOrder__c, Order.SBQQ__Quote__r.RecordTypeId, blng__InvoiceGrouping__c, blng__InvoiceGroupId__c FROM OrderItem WHERE ID in :mapOrderItem.keySet() AND Order.SBQQ__Quote__r.RecordTypeId =: recordTypeId];
         List<OrderItem> listOrderItemtoSave = new List<OrderItem>();
-        for(OrderItem eachOrderItem : listOrderItem){
-            eachOrderItem.blng__InvoiceGrouping__c = 'Invoice Group ID';
-            if(String.isNotBlank(eachOrderItem.LPCR_NumeroPurchaseOrder__c)){
-                eachOrderItem.blng__InvoiceGroupId__c = eachOrderItem.LPCR_NumeroPurchaseOrder__c;
-                PAD.log('SM012_OrderItemServices' , 'setInvoiceGroupingOnOrderItem', 'invoice group id update on OrderItem '+eachOrderItem.blng__InvoiceGroupId__c);
+
+        for(OrderItem eachOrderItem : mapOrderItem.values()){
+            if(eachOrderItem.Order.SBQQ__Quote__r.RecordTypeId == recordTypeId){
+                eachOrderItem.blng__InvoiceGrouping__c = 'Invoice Group ID';
+                if(String.isNotBlank(eachOrderItem.LPCR_NumeroPurchaseOrder__c)){
+                    eachOrderItem.blng__InvoiceGroupId__c = eachOrderItem.LPCR_NumeroPurchaseOrder__c;
+                    PAD.log('SM012_OrderItemServices' , 'setInvoiceGroupingOnOrderItem', 'invoice group id update on OrderItem '+eachOrderItem.blng__InvoiceGroupId__c);
+                }
+                listOrderItemtoSave.add(eachOrderItem);
             }
-            listOrderItemtoSave.add(eachOrderItem);
         }
         if(listOrderItemtoSave.size()>0){
             update listOrderItemtoSave;
@@ -446,7 +457,6 @@ public with sharing class SM012_OrderItemServices implements Queueable{
 
         Set<String> quoteLineIds = UM003_TypeManager.getFieldsOfListObjects(newOrderItemsList,'SBQQ__QuoteLine__c');
         map<id,string> mapQuoteLine = new map<Id,String>();
-        List<OrderItem> listOrderItem = [SELECT Id,SBQQ__Status__c,SBQQ__QuoteLine__c, SBQQ__QuoteLine__r.LPCR_HoldBilling__c FROM OrderItem WHERE ID in :newMapOrderItem.keyset()];
         for(SBQQ__QuoteLine__c quoteLine: [Select id,LPCR_HoldBilling__c from SBQQ__QuoteLine__c where id in: quoteLineIds]){
             mapQuoteLine.put(quoteLine.id, quoteLine.LPCR_HoldBilling__c);
         }
@@ -473,28 +483,30 @@ public with sharing class SM012_OrderItemServices implements Queueable{
         Set<Id> orderItemIds=new Set<Id>();
         Id accountEntrepriseRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
 
+        List<OrderItem> orderItemsToProcess = new  List<OrderItem>();
         for(OrderItem eachNewOrderItem : newMapOrderItem.values()){
             if('Activated'.equals(eachNewOrderItem.SBQQ__Status__c) && oldMapOrderItem.get(eachNewOrderItem.Id).SBQQ__Status__c != eachNewOrderItem.SBQQ__Status__c){
-                orderItemIds.add(eachNewOrderItem.Id);                
+                
+                if( eachNewOrderItem.Order.blng__BillingAccount__r.RecordTypeId == accountEntrepriseRTId
+                    && eachNewOrderItem.SBQQ__BillingFrequency__c == 'Invoice Plan' 
+                    && eachNewOrderItem.Quantity < 0){
+
+                    orderItemsToProcess.add(eachNewOrderItem);              
+                }
+                
             }
         }
 
-        if(orderItemIds.size()>0){
-            Map<Id,OrderItem> mapOrderItems = new Map<Id,OrderItem>([SELECT Id,SBQQ__BillingFrequency__c,SBQQ__RevisedOrderProduct__c,ServiceDate
-                                                                     FROM OrderItem 
-                                                                     WHERE Order.blng__BillingAccount__r.RecordTypeId = :accountEntrepriseRTId
-                                                                     AND SBQQ__BillingFrequency__c = 'Invoice Plan' 
-                                                                     AND orderItem.Quantity < 0
-                                                                     AND Id IN :orderItemIds]);
+        if(orderItemsToProcess.size()>0){
             
             Map<String,OrderItem> mapOrderItemsWithSBQQRevisedOP = new Map<String,OrderItem>();
             
-            Map<String,SObject> mapSobject = UM003_TypeManager.generateMapOfObjectsByKeyField(mapOrderItems.values(),'SBQQ__RevisedOrderProduct__c');
+            Map<String,SObject> mapSobject = UM003_TypeManager.generateMapOfObjectsByKeyField(orderItemsToProcess,'SBQQ__RevisedOrderProduct__c');
             for(String eachkey : mapSobject.keyset()){
                 mapOrderItemsWithSBQQRevisedOP.put(eachkey,(OrderItem)mapSobject.get(eachkey));
             }
             
-            Set<String> revisedOrderItemIds = UM003_TypeManager.getFieldsOfListObjects(mapOrderItems.values(),'SBQQ__RevisedOrderProduct__c');
+            Set<String> revisedOrderItemIds = UM003_TypeManager.getFieldsOfListObjects(orderItemsToProcess,'SBQQ__RevisedOrderProduct__c');
             Map<Id,blng__BillingSchedule__c> mapBillingSchedule = new Map<Id,blng__BillingSchedule__c> ([ SELECT id ,blng__OrderProduct__c FROM blng__BillingSchedule__c WHERE blng__OrderProduct__c IN :revisedOrderItemIds]);   
 
             if(UM003_TypeManager.isNotNullAndNotEmpty(mapBillingSchedule.values())){

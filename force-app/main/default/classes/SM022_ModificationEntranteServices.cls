@@ -102,7 +102,7 @@ public with sharing class SM022_ModificationEntranteServices {
     }   
     
     public static Set<Id> updateQuotesFromModifEntrantesBatch(List<LPCR_ModificationEntrante__c> ModifEntrantesList){
-        
+        PAD.log('SM022_ModificationEntranteServices', 'updateQuotesFromModifEntrantesBatch()', 'ModifEntrantesList: ' + ModifEntrantesList.size());
         Date firstDayOfCurrentMonthDate = Date.newInstance(Date.today().Year(), Date.today().month() ,1) ;
         Date firstDayOfNextMonthDate = Date.newInstance(Date.today().Year(), Date.today().month()+1 ,1) ;
         Date lastDayOfCurrentMonthDate=Date.newInstance(Date.today().Year(), Date.today().month() , Date.daysInMonth(Date.today().year(), Date.today().month())) ;
@@ -160,7 +160,7 @@ public with sharing class SM022_ModificationEntranteServices {
                     listRessourceFamilleToInsert.add(oldRessourceFamille);
                     listRessourceFamilleToInsert.add(ressourceFamilleToInsert);
                     
-                    WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
+                    WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c,eachModifEntrante.LPCR_DateEffet__c);
                     cloneAndCancelSubscriptions(quoteModel);
                     
                     SBQQ__Quote__c quote = quoteModel.record;
@@ -179,7 +179,7 @@ public with sharing class SM022_ModificationEntranteServices {
                     listRessourceFamilleToInsert.add(oldRessourceFamille);
                     listRessourceFamilleToInsert.add(ressourceFamilleToInsert);
                     
-                    WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
+                    WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c,eachModifEntrante.LPCR_DateEffet__c);
                     cloneAndCancelSubscriptions(quoteModel);
                     
                     SBQQ__Quote__c quote = quoteModel.record;
@@ -188,7 +188,7 @@ public with sharing class SM022_ModificationEntranteServices {
                     eachModifEntrante.LPCR_EtatTraitement__c = true;    
                 }
             }else if('EVT_MONTANT_RESSOURCE'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_RessourceFamille__c != null && eachModifEntrante.LPCR_Compte__c != null ){
-                System.debug('Event = Modification_Montant_Ressource | '+ eachModifEntrante.Id);
+                System.debug('Event = EVT_MONTANT_RESSOURCE | '+ eachModifEntrante.Id);
                 if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
                     // 1) Update previous LPCR_FamilyRessource_c with an effective end date (LPCR_DateFin_c) corresponding to last day of current month
                     // 2) Insert a LPCR_FamilyRessource__c record dwith effective start date as 1st of next month
@@ -200,7 +200,7 @@ public with sharing class SM022_ModificationEntranteServices {
                     listRessourceFamilleToInsert.add(oldRessourceFamille);
                     listRessourceFamilleToInsert.add(ressourceFamilleToInsert);
                     
-                    WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
+                    WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c,eachModifEntrante.LPCR_DateEffet__c);
                     cloneAndCancelSubscriptions(quoteModel);
                     
                     SBQQ__Quote__c quote = quoteModel.record;
@@ -211,7 +211,7 @@ public with sharing class SM022_ModificationEntranteServices {
             }else if('EVT_TYPE_PLANNING'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_TypePlanning__c != null && eachModifEntrante.LPCR_Compte__c != null){
                 if(ressourceFamilleMap.containsKey(eachModifEntrante.LPCR_Contact__c)){
                     
-                    WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
+                    WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c,eachModifEntrante.LPCR_DateEffet__c);
                     
                     if(detailModifPlanningMap.containsKey(eachModifEntrante.Id)){
                         LPCR_Planning__c tmpPlanning = new LPCR_Planning__c();
@@ -245,7 +245,7 @@ public with sharing class SM022_ModificationEntranteServices {
                     eachModifEntrante.LPCR_EtatTraitement__c = true;
                 }
             }else if('EVT_NOMBRE_JOUR_CONGE'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Quantite__c != null && eachModifEntrante.LPCR_Contract__c != null ){
-                WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
+                WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c,eachModifEntrante.LPCR_DateEffet__c);
                 cloneAndCancelSubscriptions(quoteModel);
                 
                 SBQQ__Quote__c quote = quoteModel.record;
@@ -261,7 +261,7 @@ public with sharing class SM022_ModificationEntranteServices {
                     oldRessourceFamille.LPCR_FinContrat__c = endDate; 
                     listRessourceFamilleToInsert.add(oldRessourceFamille);
                     
-                    WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
+                    WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c,eachModifEntrante.LPCR_DateEffet__c);
                     
                     List<SBQQ__QuoteLine__c> listCloneQuoteLine = new List<SBQQ__QuoteLine__c>();
                     for(WRP002_QuoteLineModel eachQuoteLine : quoteModel.lineItems){
@@ -274,6 +274,13 @@ public with sharing class SM022_ModificationEntranteServices {
                     }                    
                     
                     SBQQ__Quote__c quote = quoteModel.record;
+                    
+                    if(quote.LPCR_DateFin__c.year() > eachModifEntrante.LPCR_DateEffet__c.year()){
+                        quote.SBQQ__EndDate__c = Date.newInstance(eachModifEntrante.LPCR_DateEffet__c.year()+1, 12 ,31) ;
+                    }else if(quote.LPCR_DateFin__c.year() == eachModifEntrante.LPCR_DateEffet__c.year()){
+                        quote.SBQQ__EndDate__c = quote.LPCR_DateFin__c;
+                    }
+                    
                     quote.SBQQ__StartDate__c = eachModifEntrante.LPCR_DateEffet__c; //endDate ;
                     quote.LPCR_DateResiliation__c = eachModifEntrante.LPCR_DateEffet__c;
                     quote.LPCR_TypeAvenant__c = 'Résiliation';
@@ -282,7 +289,7 @@ public with sharing class SM022_ModificationEntranteServices {
                     eachModifEntrante.LPCR_EtatTraitement__c = true;
                 }
             }else if('EVT_TYPE_ACCUEIL'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null && eachModifEntrante.LPCR_TypeAccueil__c != null){
-                WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c);
+                WRP001_QuoteModel quoteModel = executeContractAmenderAPI(eachModifEntrante.LPCR_Contract__c,eachModifEntrante.LPCR_DateEffet__c);
                 cloneAndCancelSubscriptions(quoteModel);
                 
                 SBQQ__Quote__c quote = quoteModel.record;
@@ -456,7 +463,7 @@ public with sharing class SM022_ModificationEntranteServices {
         
     }
     
-    public static WRP001_QuoteModel executeContractAmenderAPI(Id contractID){
+    public static WRP001_QuoteModel executeContractAmenderAPI(Id contractID,date dateEffect){
         Date firstDayOfNextMonthDate = Date.newInstance(Date.today().Year(), Date.today().month()+1 ,1) ;
         UM006_ContractAmender amender = new UM006_ContractAmender();
         WRP001_QuoteModel quote = amender.load(contractID);
@@ -464,6 +471,13 @@ public with sharing class SM022_ModificationEntranteServices {
         WRP001_QuoteModel quoteModel = reader.read(quote.record.id);
         quoteModel.record.SBQQ__StartDate__c = firstDayOfNextMonthDate;
         quoteModel.record.LPCR_DateDebut__c = firstDayOfNextMonthDate;
+        
+        if(quoteModel.record.LPCR_DateFin__c.year() > dateEffect.year()){
+            quoteModel.record.SBQQ__EndDate__c = Date.newInstance(dateEffect.year()+1, 12 ,31) ;
+        }else if(quoteModel.record.LPCR_DateFin__c.year() == dateEffect.year()){
+            quoteModel.record.SBQQ__EndDate__c = quoteModel.record.LPCR_DateFin__c;
+        }
+        
         for(WRP002_QuoteLineModel eachQuoteLine : quoteModel.lineItems){
             eachQuoteLine.record.LPCR_CloneCancel__c = true;
         }
