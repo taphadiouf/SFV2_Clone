@@ -271,29 +271,38 @@ public with sharing class SM008_QuoteServices {
         Date dueDateRenewal = date.newInstance(System.Today().year(), 08, 31);
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
         Date nextYearDueDateRenewal = date.newInstance(System.Today().year()+1, 08, 31);
-
-        for (SBQQ__Quote__c eachQuote : quotesList){           
+        
+        for (SBQQ__Quote__c eachQuote : quotesList){    
+            
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
+                
                 if(eachQuote.SBQQ__StartDate__c != null){
+                    
                     Date dueStartDateQuote = date.newInstance(eachQuote.SBQQ__StartDate__c.year(), 12, 31);
                     if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) ){
+                        
                         if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
+                            
                             eachQuote.LPCR_MethodeRenouvellement__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_MethodeRenouvellement__c;
-                            //Date endDate = eachQuote.LPCR_DateFin__c;
+
                             if(Label.LPCR_Express.equals(eachQuote.LPCR_MethodeRenouvellement__c) ||Label.LPCR_SansRenouvellement.equals(eachQuote.LPCR_MethodeRenouvellement__c) ){
-                                if (eachQuote.RecordTypeId == reservataireRecTypeId) {//eachQuote.RecordTypeId = <RESERVATAIRE>
-                                    if(eachQuote.LPCR_DateFin__c < dueStartDateQuote){
+                                
+                                // RESERVATAIRE
+                                if (eachQuote.RecordTypeId == reservataireRecTypeId || eachQuote.RecordTypeId == reservataireApprouveRecTypeId) { 
+                                    
+                                    if (eachQuote.LPCR_DateFin__c < dueStartDateQuote){
                                         eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFin__c ;
                                     }
-                                    else{
+                                    else {
                                         eachQuote.SBQQ__EndDate__c = dueStartDateQuote;
                                     }
                                 }
-                                else { //eachContract.RecordTypeId = <REFERENEMENT>
-                                    if(eachQuote.LPCR_DateFinMaxQuoteLine__c < dueStartDateQuote){
-                                        eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFinMaxQuoteLine__c;
+                                // REFERENCEMENT
+                                else { 
+                                    if (eachQuote.LPCR_DateFinMaxQuoteLine__c < dueStartDateQuote){
+                                        eachQuote.SBQQ__EndDate__c = eachQuote.LPCR_DateFinMaxQuoteLine__c;   
                                     }
-                                    else{
+                                    else {
                                         eachQuote.SBQQ__EndDate__c = dueStartDateQuote;
                                     }
                                 }
