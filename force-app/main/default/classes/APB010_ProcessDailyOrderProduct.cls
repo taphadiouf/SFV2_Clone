@@ -168,8 +168,12 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             PAD.log(ClassName, 'execute','Last Partial Year - lastDayOfCurrentMonthDateSetEndDate.addDays(1) :' + lastDayOfCurrentMonthDateSetEndDate.addDays(1));
                             PAD.log(ClassName, 'execute','Last Partial Year - eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth().addDays(-1) :' + eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth().addDays(-1));
 
-                            Decimal d0 = (totalPrice / 12);
-                            Decimal Subtotal_Part1 = d0 * lastDayOfCurrentMonthDateSetEndDate.addDays(1).monthsBetween(eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth());
+                            Decimal monthlyPrice = (totalPrice / 12);
+                            Decimal nbMonths = lastDayOfCurrentMonthDateSetEndDate.addDays(1).monthsBetween(eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth());
+                            Decimal Subtotal_Part1 = monthlyPrice * nbMonths;
+                            PAD.log(ClassName, 'execute','Last Partial Year - monthlyPrice :' + monthlyPrice);
+                            PAD.log(ClassName, 'execute','Last Partial Year - nbMonths :' + nbMonths);
+                            PAD.log(ClassName, 'execute','Last Partial Year - Subtotal_Part1 :' + Subtotal_Part1);
 
                             Decimal d1 = reminderDays;
                             Decimal d2 = totalPrice;
@@ -177,7 +181,6 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             PAD.log(ClassName, 'execute','Last Partial Year - d2 :' + d2);
                             Decimal Subtotal_Part2 = ((d1 / 30) * (d2 / 12));
 
-                            PAD.log(ClassName, 'execute','Last Partial Year - Subtotal_Part1 :' + Subtotal_Part1);
                             PAD.log(ClassName, 'execute','Last Partial Year - Subtotal_Part2 :' + Subtotal_Part2);
 
                             // <Monthly price> : (totalPrice / 12)

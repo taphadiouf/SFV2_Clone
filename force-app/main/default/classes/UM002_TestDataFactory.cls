@@ -3,7 +3,7 @@
 * @date 20/01/2020
 * @description TestDataFactory - Unit Test Management Refactoring
 */
-//@isTest
+@isTest
 public with sharing class UM002_TestDataFactory {
     //public AccountContactRelationTdf accountContactRelationTdf;
     public AccountTdf accountTdf;

@@ -54,6 +54,9 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                 orderLineIds.add(eachOrderItem.Id);
                 orderItemGroupingSet.add(eachOrderItem.Order.AccountId+''+eachOrderItem.SBQQ__Contract__c+''+eachOrderItem.LPCR_Creche__c);
             }
+
+            PAD.logAllSetId(ClassName, 'execute', 'INIT - orderLineIds : ', orderLineIds);
+            PAD.logAllSetString(ClassName, 'execute', 'INIT - orderItemGroupingSet : ', orderItemGroupingSet);
             
             for (LPCR_RevenueCascade__c eachRevCascade : [SELECT Id, Name, LPCR_Compte__c, LPCR_NombrePlace__c, LPCR_CreditNoteLineAggregation__c, LPCR_CreditNoteRevenue__c, LPCR_DateDebut__c, 
                                                             LPCR_MontantFacture__c, LPCR_OrderInvoiceRevenue__c, LPCR_OrderLineAggregation__c, LPCR_OrderLineGroup__c, LPCR_PCA__c 
@@ -152,7 +155,7 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
 
                     Decimal majNbPlace = Integer.valueOf(String.valueOf(ar.get('nbPlace')));
 
-                    updateRevCascade.LPCR_NombrePlace__c = (updateRevCascade.LPCR_NombrePlace__c + majNbPlace) >= 0 ? updateRevCascade.LPCR_NombrePlace__c + majNbPlace : 0;
+                    updateRevCascade.LPCR_NombrePlace__c = majNbPlace >= 0 ? majNbPlace : 0;
                     updateRevCascade.LPCR_PrixAnnuel__c = Double.valueOf(ar.get('totalPrixAnnuel'));
                     updateRevCascade.LPCR_NombreMois__c = UM005_DateUtility.getMonthNumberByString(String.valueOf(ar.get('nombreMois')));
                     updateRevCascade.LPCR_EntiteJuridique__c = String.valueOf(ar.get('legalEntity'));
@@ -484,7 +487,6 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                 eachAcc.LPCR_ProcessRevenuCascade__c = false;
 
                 PAD.log(ClassName, 'execute', 'FINAL EXECUTE PART - Adding to listOfLog:' + eachAcc);
-                listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Processing of Revenue Cascade', ClassName, 'Batch', String.valueOf(eachAcc.Id), '', 'SUCCESS'));   
                 UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'eachAcc : '  + eachAcc, UM010_Constant.SUCCESS);  
                   
             }

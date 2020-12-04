@@ -3,8 +3,29 @@
     <fullName>Tech_FormuleCongaBatch__c</fullName>
     <description>champ technique utilisé pour la génération automatique des factures</description>
     <externalId>false</externalId>
-    <formula>&apos;&amp;Id=&apos;&amp;Id&amp;&apos;&amp;QueryId=[LineItems]a4J3O0000008RXg,[CompanyDets]a4J3O0000008RXi,[LigneBerceau]a4J3O0000008RXf&apos;
-&amp;IF(NOT(ISBLANK(Tech_DateAttestationCAF__c)),&apos;,[AttestationCAF]a4J3O0000008WpA?pv0=&apos;&amp;blng__Account__c&amp;&apos;~pv1=&apos;&amp;TEXT(Tech_DateAttestationCAF__c),&apos;&apos;)&amp;&apos;,[CreditNotes]a4J3O0000008V1T,[DebitNotes]a4J3O0000008VX5&amp;TemplateId=&apos;&amp;IF( blng__Account__r.RecordType.DeveloperName=&apos;Famille&apos;,IF(AND(TEXT(blng__Account__r.LPCR_MoyenPaiement__c)=&apos;Virement&apos;,NOT(ISBLANK(blng__Account__r.LPCR_RIB__c))),&apos;a4R3O0000008T1F&apos;,&apos;a4R3O0000008T1H&apos;)&amp;IF(NOT(ISBLANK(Tech_DateAttestationCAF__c)),&apos;, a4R3O0000008T4P&apos;,&apos;&apos;),&apos;a4R3O0000008SwF&apos;)&amp;&apos;&amp;UF0=1&amp;MFTS0=LPCR_StatutFacture__c&amp;MFTSValue0=Envoyée&amp;SC0=1&amp;SC1=Attachments&apos;</formula>
+    <formula>&apos;&amp;Id=&apos; &amp; Id &amp; &apos;&amp;QueryId=[LineItems]&apos; &amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQInvoice_Lines_LineItems__c &amp; &apos;,[CompanyDets]&apos; &amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQAccount_Details_CompanyDets__c &amp; &apos;,[LigneBerceau]&apos; &amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQLigne_Berceau_LigneBerceau__c &amp; 
+IF(
+  NOT(ISBLANK(Tech_DateAttestationCAF__c)),
+  &apos;,[AttestationCAF]&apos; &amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQAttestation_CAF__c &amp; &apos;?pv0=&apos; &amp; blng__Account__c &amp; &apos;~pv1=&apos; &amp; TEXT(Tech_DateAttestationCAF__c),
+  &apos;&apos;
+) &amp; &apos;,[CreditNotes]&apos; &amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQCredit_Notes__c &amp; &apos;,[DebitNotes]&apos; &amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQDebit_Notes__c &amp; &apos;,[ParticipationCAF]&apos;&amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQParticipation_CAF__c &amp; &apos;&amp;TemplateId=&apos; &amp; 
+IF(
+  blng__Account__r.RecordType.DeveloperName = &apos;Famille&apos;,
+  IF(
+    AND(
+      TEXT(blng__Account__r.LPCR_MoyenPaiement__c) = &apos;Virement&apos;,
+      NOT(ISBLANK(blng__Account__r.LPCR_RIB__c))
+    ),
+    $Setup.LPCR_IDsCongaAdobe__c.LPCR_CITFacture_B2C_paiement_prelevement__c,
+    $Setup.LPCR_IDsCongaAdobe__c.LPCR_CITFacture_B2C_paiement_CB__c
+  ) &amp; 
+  IF(
+    NOT(ISBLANK(Tech_DateAttestationCAF__c)),
+    &apos;,&apos; &amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CITAttestation_CAF__c,
+    &apos;&apos;
+  ),
+  $Setup.LPCR_IDsCongaAdobe__c.LPCR_CITFacture_B2B__c
+) &amp; &apos;&amp;UF0=1&amp;MFTS0=LPCR_StatutFacture__c&amp;MFTSValue0=Envoyée&amp;SC0=1&amp;SC1=Attachments&apos;</formula>
     <label>Tech_Formule Conga Batch</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

@@ -505,6 +505,34 @@
             "SBQQ__TestedField__c": "LPCR_TypeAvenant__c",
             "SBQQ__TestedObject__c": "Quote",
             "SystemModstamp": "2020-08-05T10:09:12.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef22"
+            },
+            "IsDeleted": false,
+            "Name": "000021",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "0",
+            "SBQQ__Operator__c": "not equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__ProductRule__c/a0n3O0000035Ae1QAE"
+                },
+                "Id": "a0n3O0000035Ae1QAE"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v50.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000000igteUAA"
+                },
+                "Id": "a1A3O000000igteUAA"
+            },
+            "SystemModstamp": "2020-11-24T08:42:51.000+0000"
         }
     ]
 }

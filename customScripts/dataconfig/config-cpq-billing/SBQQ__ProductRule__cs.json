@@ -133,6 +133,21 @@
             "SBQQ__Scope__c": "Quote",
             "SBQQ__Type__c": "Validation",
             "SystemModstamp": "2020-08-05T10:08:23.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ProductRule__c",
+                "referenceId": "SBQQ__ProductRule__cRef10"
+            },
+            "IsDeleted": false,
+            "Name": "Date début QL toujours après date début quote ( Réf)",
+            "SBQQ__Active__c": true,
+            "SBQQ__ConditionsMet__c": "All",
+            "SBQQ__ErrorMessage__c": "La date de début des lignes de devis ne peut pas être antérieur à la date du devis",
+            "SBQQ__EvaluationEvent__c": "Always",
+            "SBQQ__Scope__c": "Quote",
+            "SBQQ__Type__c": "Validation",
+            "SystemModstamp": "2020-11-24T13:48:01.000+0000"
         }
     ]
 }

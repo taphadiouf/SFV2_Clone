@@ -34,8 +34,8 @@
         <description>Ouvrir la page de l&apos;accord Adobe sign généré</description>
         <name>OuvrirAccord</name>
         <label>Ouvrir l&apos;accord</label>
-        <locationX>1134</locationX>
-        <locationY>198</locationY>
+        <locationX>1165</locationX>
+        <locationY>195</locationY>
         <actionName>c:RedirectDetailPage</actionName>
         <actionType>component</actionType>
         <inputParameters>
@@ -80,6 +80,12 @@
         </value>
     </processMetadataValues>
     <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
         <name>OriginBuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
@@ -91,24 +97,24 @@
         <label>Récup ID Template Bon d&apos;achat</label>
         <locationX>320</locationX>
         <locationY>124</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>IDTemplateNonNull</targetReference>
         </connector>
         <faultConnector>
             <targetReference>ErreurRecuperation</targetReference>
         </faultConnector>
-        <object>LPCR_TemplateSignatureElectronique__c</object>
+        <object>LPCR_IDsCongaAdobe__c</object>
         <outputAssignments>
             <assignToReference>templateId</assignToReference>
-            <field>LPCR_IDTemplateBonAchat__c</field>
+            <field>LPCR_AATBON_ACHAT_PARTENAIRE__c</field>
         </outputAssignments>
     </recordLookups>
     <screens>
         <name>ErreurRecuperation</name>
         <label>Une erreur s&apos;est produite</label>
-        <locationX>846</locationX>
-        <locationY>547</locationY>
+        <locationX>814</locationX>
+        <locationY>562</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -121,8 +127,8 @@
         <showHeader>true</showHeader>
     </screens>
     <start>
-        <locationX>143</locationX>
-        <locationY>122</locationY>
+        <locationX>36</locationX>
+        <locationY>471</locationY>
         <connector>
             <targetReference>RecuperationIDTemplateBonAchat</targetReference>
         </connector>
