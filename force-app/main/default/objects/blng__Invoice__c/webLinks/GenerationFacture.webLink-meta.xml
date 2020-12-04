@@ -26,7 +26,8 @@
 [LigneBerceau]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQLigne_Berceau_LigneBerceau__c}&amp;
 {!IF(NOT(ISBLANK(blng__Invoice__c.Tech_DateAttestationCAF__c)),&apos;,[AttestationCAF]&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQAttestation_CAF__c&amp;&apos;?pv0=&apos;&amp;blng__Invoice__c.blng__AccountId__c&amp;&apos;~pv1=&apos;&amp;TEXT(blng__Invoice__c.Tech_DateAttestationCAF__c),&apos;&apos;)},
 [CreditNotes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQCredit_Notes__c},
-[DebitNotes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQDebit_Notes__c}
+[DebitNotes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQDebit_Notes__c},
+[ParticipationCAF]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQParticipation_CAF__c}
 &amp;TemplateId={!
 IF(Account.RecordTypeId=$Setup.LPCR_IDsCongaAdobe__c.LPCRAccountRecordTypeIDFamille__c,
     IF(AND(TEXT(Account.LPCR_MoyenPaiement__c)=&apos;Virement&apos;,NOT(ISBLANK(Account.LPCR_RIB__c))),
