@@ -45,18 +45,35 @@ public with sharing class SM012_OrderItemServices implements Queueable{
 
     public static void updateGroupId(Map<Id, OrderItem> oldOrderItemsMap, List<OrderItem> newOrderItemsList){
 
-        Set<Id> objOrderItemIds = new Set<Id>();
+        //Set<Id> objOrderItemIds = new Set<Id>();
         List<OrderItem> orderItemToUpdate = new List<OrderItem>();
+
+        
+        Set<String> setOrderIds = UM003_TypeManager.getFieldsOfListObjects(oldOrderItemsMap.values(),'OrderId');
+        
+        Map<Id, Order> mapOrder =  new Map<ID, Order>([SELECT Id ,AccountId FROM Order where id in :setOrderIds]);
+        
+        PAD.log('SM012_OrderItemServices', 'updateGroupId' , 'mapOrder:' + mapOrder);
+
+        PAD.log('SM012_OrderItemServices', 'updateGroupId' , 'oldOrderItemsMap:' + oldOrderItemsMap);
+
         for(OrderItem orderItem : newOrderItemsList){
+
+            PAD.log('SM012_OrderItemServices', 'updateGroupId' , 'orderItem:' + orderItem);
+            PAD.log('SM012_OrderItemServices', 'updateGroupId' , 'tmp grp id:' + mapOrder.get(orderItem.OrderId).AccountId+''+orderItem.SBQQ__Contract__c+''+orderItem.LPCR_Creche__c);
+            
             if((orderItem.LPCR_Creche__c != null) && (orderItem.SBQQ__Contract__c != null && (orderItem.SBQQ__Contract__c != oldOrderItemsMap.get(orderItem.Id).SBQQ__Contract__c))){
-                    orderItem.blng__GroupId__c = orderItem.Order.AccountId+''+orderItem.SBQQ__Contract__c+''+orderItem.LPCR_Creche__c;
-                    orderItemToUpdate.add(orderItem);
+                    //orderItem.blng__GroupId__c = orderItem.Order.AccountId+''+orderItem.SBQQ__Contract__c+''+orderItem.LPCR_Creche__c;
+                    orderItem.blng__GroupId__c = mapOrder.get(orderItem.OrderId).AccountId+''+orderItem.SBQQ__Contract__c+''+orderItem.LPCR_Creche__c;
+
+                    //orderItemToUpdate.add(orderItem);
             }
         }
-
+        /*
         if(orderItemToUpdate.size() > 0){
             update orderItemToUpdate;
         }
+        */
     }
     public static void legalEntityOnOrderItemConSch( Map<Id,OrderItem> mapOrderItem){
 
