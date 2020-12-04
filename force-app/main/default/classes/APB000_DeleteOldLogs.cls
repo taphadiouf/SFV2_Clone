@@ -13,7 +13,7 @@ global class APB000_DeleteOldLogs implements Database.Batchable<sObject>, Schedu
 
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS); 
 
-        return Database.getQueryLocator([SELECT Id, LPCR_TargetObject__c FROM LPCR_Log__c WHERE Name != :tmpLabel AND CreateDate < LAST_MONTH]);
+        return Database.getQueryLocator([SELECT Id, LPCR_TargetObject__c FROM LPCR_Log__c WHERE Name != :tmpLabel AND CreatedDate < LAST_MONTH]);
         
     }
     global void execute(Database.BatchableContext bc, List<LPCR_Log__c> logs){
