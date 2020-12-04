@@ -8,7 +8,7 @@ IF(
   NOT(ISBLANK(Tech_DateAttestationCAF__c)),
   &apos;,[AttestationCAF]&apos; &amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQAttestation_CAF__c &amp; &apos;?pv0=&apos; &amp; blng__Account__c &amp; &apos;~pv1=&apos; &amp; TEXT(Tech_DateAttestationCAF__c),
   &apos;&apos;
-) &amp; &apos;,[CreditNotes]&apos; &amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQCredit_Notes__c &amp; &apos;,[DebitNotes]&apos; &amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQDebit_Notes__c &amp; &apos;&amp;TemplateId=&apos; &amp; 
+) &amp; &apos;,[CreditNotes]&apos; &amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQCredit_Notes__c &amp; &apos;,[DebitNotes]&apos; &amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQDebit_Notes__c &amp; &apos;,[ParticipationCAF]&apos;&amp; $Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQParticipation_CAF__c &amp; &apos;&amp;TemplateId=&apos; &amp; 
 IF(
   blng__Account__r.RecordType.DeveloperName = &apos;Famille&apos;,
   IF(
