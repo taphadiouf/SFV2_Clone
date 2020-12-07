@@ -407,12 +407,12 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Référencement Approuvé</value>
+            <value>Contrat de Référencement Approuvé</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Réservataire Approuvé</value>
+            <value>Contrat de Réservation Approuvé</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Ordered__c</field>
@@ -448,12 +448,12 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Référencement Approuvé</value>
+            <value>Contrat de Référencement Approuvé</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Réservataire Approuvé</value>
+            <value>Contrat de Réservation Approuvé</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
@@ -503,12 +503,12 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Référencement Approuvé</value>
+            <value>Contrat de Référencement Approuvé</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Réservataire Approuvé</value>
+            <value>Contrat de Réservation Approuvé</value>
         </criteriaItems>
         <description>Ce WF notifie le service famille lors d&apos;un avenant sur un contrat B2B</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -779,7 +779,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Référencement Approuvé</value>
+            <value>Contrat de Référencement Approuvé</value>
         </criteriaItems>
         <description>Definition du statut du devis apres validation de l&apos;avenant. Cette update ne comprend pas le MIB et Resiliation.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -824,7 +824,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.RecordTypeId</field>
             <operation>notEqual</operation>
-            <value>Référencement Approuvé</value>
+            <value>Contrat de Référencement Approuvé</value>
         </criteriaItems>
         <description>Definition du statut du devis apres validation de l&apos;avenant. Cette update ne comprend pas le MIB et Resiliation.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
