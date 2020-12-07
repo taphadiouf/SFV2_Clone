@@ -34,15 +34,15 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
 
             try {
                 updateRelatedQuotelines(scope);
-                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',
+                UM001_LogManager.writeLogActivityWithoutFuture( 'Updating the quote lines',
                                                                 ClassName, 'Batch' , null,
-                                                                'Successfully updated list of quote lines (LPCR_LigneBonCommandeEnvoye__c=true)', 
+                                                                'Successfully updated (BonCommande) list of quote lines for the Quotes:(' + scope.size() + ')'+ UM003_TypeManager.getIdsOfListObjects(scope), 
                                                                 UM010_Constant.SUCCESS);          
             } catch (Exception e) {
                 ErrMsg = e.getMessage();
             } finally {
                 if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',ClassName, 'Batch' , null,'error while updating list of quote lines (LPCR_LigneBonCommandeEnvoye__c=true)' + ErrMsg, UM010_Constant.ERROR);              
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Updating the quote lines',ClassName, 'Batch' , null,'Error while updating list of quote lines (LPCR_LigneBonCommandeEnvoye__c=true)' + ErrMsg, UM010_Constant.ERROR);              
                 }
             }
             ErrMsg = null;
@@ -56,36 +56,46 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
                 if(!Label.LPCR_MAC.equals(eachquote.LPCR_TypeCreche__c) || !Label.LPCR_Renewal.equals(eachquote.SBQQ__Type__c) || eachquote.LPCR_RecalculationMACDone__c == true){
                     eachquote.SBQQ__Ordered__c = true;
                 }
-                listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Creating Order From Quote', ClassName, 'Batch', String.valueOf(eachquote.Id), '', 'SUCCESS'));
             }
 
             
             try {
-                update listOfquote; 
-                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',
-                                                                ClassName, 'Batch' , null,
-                                                                'Successfully updated list of quotes : ' + String.valueOf(listOfquote), 
-                                                                UM010_Constant.SUCCESS);          
+                
+                Database.SaveResult[] srList = Database.update(listOfquote,false);
+                
+                for (Integer i =0; i < listOfquote.size(); i++){
+                    if (srList[i].isSuccess()){
+                        listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('APB003 - Quote Updated successfully (Set Ordered)', ClassName, 'Batch', String.valueOf(listOfquote.get(i).Id), listOfquote.get(i).Id, 'SUCCESS'));
+                    }else{
+                        String ErrorMsg = '';
+                        for(Database.Error err : srList[i].getErrors()) {
+                            System.debug('The following error has occurred.');                    
+                            ErrorMsg += '|' + err.getMessage();
+                        }
+                        listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('APB003 - Error in Quote Update (Set Ordered)', ClassName, 'Batch', String.valueOf(listOfquote.get(i).Id), listOfquote.get(i).Id + ' - Error : ' + ErrorMsg, 'ERROR'));
+                    }
+                }
+      
             } catch (Exception e) {
                 ErrMsg = e.getMessage();
             } finally {
                 if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',ClassName, 'Batch' , null,'Error while updating the quotes : ' + ErrMsg, UM010_Constant.ERROR);              
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'APB003 - Batch for checking the box ordered on the quote',ClassName, 'Batch' , null,'Error while updating the quotes : ' + ErrMsg, UM010_Constant.ERROR);              
                 }
             }
             
             ErrMsg = null ;
             try {
                 insert listOfLog;
-                UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',
+                UM001_LogManager.writeLogActivityWithoutFuture( 'APB003 - Batch for checking the box ordered on the quote',
                                                                 ClassName, 'Batch' , null,
-                                                                'Successfully inserted list of logs : ' + String.valueOf(listOfLog), 
+                                                                'Successfully inserted list of logs : ' + listOfLog.size(), 
                                                                 UM010_Constant.SUCCESS);          
             } catch (Exception e) {
                 ErrMsg = e.getMessage();
             } finally {
                 if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for checking the box ordered on the quote',ClassName, 'Batch' , null,'Error while inserting the logs : ' + ErrMsg, UM010_Constant.ERROR);              
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'APB003 - Batch for checking the box ordered on the quote',ClassName, 'Batch' , null,'Error while inserting the logs : ' + ErrMsg, UM010_Constant.ERROR);              
                 }
             }
 
