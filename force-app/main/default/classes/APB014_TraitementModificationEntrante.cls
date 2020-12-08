@@ -40,7 +40,7 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
             if(newQuoteIds != null && newQuoteIds.size() > 0){
                 allSuccessId.addAll(newQuoteIds);
             }
-            UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, Quotes Processed :' + newQuoteIds, UM010_Constant.SUCCESS); 
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Quotes Processed :' + newQuoteIds, UM010_Constant.SUCCESS); 
 
         } catch(Exception e) {
             errors.add(e);
