@@ -141,7 +141,10 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
             for (SBQQ__QuoteLine__c ql : qLines) {
                 ql.LPCR_LigneBonCommandeEnvoye__c = true;
             }
+            // Disabling TriggerControl in order to avoid launching recalculation
+            SBQQ.TriggerControl.disable();
             update qLines;
+            SBQQ.TriggerControl.enable();
         }
     }
     
