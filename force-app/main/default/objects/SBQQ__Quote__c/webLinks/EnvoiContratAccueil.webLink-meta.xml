@@ -19,19 +19,19 @@
     <url>/apex/APXTCFQ__Conga_Composer?SolMgr=1
 &amp;serverUrl={!API.Partner_Server_URL_370}
 &amp;Id={!SBQQ__Quote__c.Id}
-&amp;QueryId=[InfosContratAccueil]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQInfosContratAccueil__c}
+&amp;QueryId=[InfosContratAccueil]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQInfosContratAccueil__c},[Annexe2]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQAnnexe2__c},[Planning]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQPlanning__c}?pv0={!SBQQ__Quote__c.LPCR_PlanningEnfantId__c}
 &amp;TemplateId={!
 IF(TEXT(SBQQ__Quote__c.LPCR_TypeCreche__c) = &apos;MICRO&apos;,
-    IF(ISBLANK(SBQQ__Quote__c.LPCR_ContractEntreprise__c),
-        $Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTContrat_Accueil_MICRO_parent_sol__c ,
-        $Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTContrat_Accueil_MICRO_sponsorise__c ),
-    $Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTContrat_Accueil_MAC__c )
-    &amp;
-    IF(TEXT(SBQQ__Quote__c.LPCR_TypeCreche__c) = &apos;MICRO&apos;,
-          IF(TEXT(SBQQ__Quote__c.LPCR_TypeAccueil__c)=&apos;Occasionnel&apos;,
-          &apos;,&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe_2_Micro_Occasionnel__c,
-          &apos;,&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe_2_Micro_Regulier__c),
-    &apos;,&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe_2_MAC__c )}
+IF(ISBLANK(SBQQ__Quote__c.LPCR_ContractEntreprise__c),
+$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTContrat_Accueil_MICRO_parent_sol__c ,
+$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTContrat_Accueil_MICRO_sponsorise__c ),
+$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTContrat_Accueil_MAC__c )
+&amp;
+IF(TEXT(SBQQ__Quote__c.LPCR_TypeCreche__c) = &apos;MICRO&apos;,
+IF(TEXT(SBQQ__Quote__c.LPCR_TypeAccueil__c)=&apos;Occasionnel&apos;,
+&apos;,&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe_2_Micro_Occasionnel__c,
+&apos;,&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe_2_Micro_Regulier__c),
+&apos;,&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe_2_MAC__c )}
 &amp;DefaultPDF=1
 &amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;),0,1)}
 &amp;ESVisible=1
