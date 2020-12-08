@@ -72,7 +72,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
 
                     if (s.isSuccess()){
                         
-                        listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert(ClassName,'APB003 - Quote Updated successfully (Set Ordered)',  'Batch', 'Successfully Updated : ' + tmpQuote.Id, tmpQuote.Id, 'SUCCESS'));
+                        listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert(ClassName,'APB003 - Quote Updated successfully (Set Ordered)',  'Batch', 'Success : ' + tmpQuote.Id, tmpQuote.Id, 'SUCCESS'));
                 
                     } else {
 
