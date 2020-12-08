@@ -28,7 +28,7 @@ public class APB020_EnvoieBonCommande_Test {
             quote.SBQQ__Status__c='Prêt pour commande';
             update quote;
 
-            APB020_EnvoieBonCommande_Test updateQLBonCommande = new APB020_EnvoieBonCommande_Test();
+            APB020_EnvoieBonCommande updateQLBonCommande = new APB020_EnvoieBonCommande();
             updateQLBonCommande.execute(null);
             Test.stopTest();
             
