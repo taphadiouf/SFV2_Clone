@@ -2265,6 +2265,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_Planning__c.LPCR_ContactEnfant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_Planning__c.LPCR_Devis__c</field>
         <readable>true</readable>
     </fieldPermissions>
