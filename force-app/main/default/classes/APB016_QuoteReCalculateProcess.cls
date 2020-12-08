@@ -12,7 +12,8 @@ global class APB016_QuoteReCalculateProcess implements Database.Batchable<sObjec
     global APB016_QuoteReCalculateProcess() {
         
     }
-    global Database.QueryLocator start(Database.BatchableContext BC) {   
+    global Database.QueryLocator start(Database.BatchableContext BC) {  
+
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS); 
         PAD.log(ClassName, 'start','quoteIds : '+quoteIds );    
         return Database.getQueryLocator([select id,LPCR_Quote_Recalculated__c from SBQQ__QuoteLine__c where SBQQ__Quote__c IN : quoteIds]);
@@ -21,6 +22,7 @@ global class APB016_QuoteReCalculateProcess implements Database.Batchable<sObjec
     global void execute(Database.BatchableContext BC, List<SBQQ__QuoteLine__c > scope) {
         
         List<Exception> errors = new List<Exception>();
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
 
         try {
 

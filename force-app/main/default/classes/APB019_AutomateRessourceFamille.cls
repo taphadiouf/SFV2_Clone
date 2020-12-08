@@ -24,6 +24,7 @@ global class APB019_AutomateRessourceFamille implements Database.Batchable<sObje
     global void execute(Database.BatchableContext BC, List<Contract> scope) {
         
         List<Exception> errors = new List<Exception>();
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
 
         try {
 

@@ -22,7 +22,9 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
         // -----------------------------------------------------------------------------------------------
         // Initialisation --------------------------------------------------------------------------------
         // -----------------------------------------------------------------------------------------------
+        
         List<Exception> errors = new List<Exception>();
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
     
         try {
 

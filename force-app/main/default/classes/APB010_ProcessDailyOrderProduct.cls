@@ -22,7 +22,8 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
     }
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
-                
+               
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
         List<Exception> errors = new List<Exception>();
 
         try {    
