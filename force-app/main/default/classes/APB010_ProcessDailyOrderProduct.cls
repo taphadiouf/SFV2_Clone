@@ -68,7 +68,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                 Integer totalNoOfYears = (endDate.year() - tmpDate.year()) + 1;
                 
                 Decimal totalPrice = eachOrderItem.TotalPrice;
-                Decimal totalFullYearPrice = eachOrderItem.SBQQ__QuoteLine__r.SBQQ__ListPrice__c;
+                Decimal totalFullYearPrice = eachOrderItem.SBQQ__QuoteLine__r.LPCR_PrixUnitaire__c;
                 Decimal finalLastYearPrice = 0;
                 Decimal totaleGlobalePlanFacture = 0;
                 Decimal sumOfTotalContractValue = 0;
@@ -169,7 +169,9 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             PAD.log(ClassName, 'execute','Last Partial Year - lastDayOfCurrentMonthDateSetEndDate.addDays(1) :' + lastDayOfCurrentMonthDateSetEndDate.addDays(1));
                             PAD.log(ClassName, 'execute','Last Partial Year - eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth().addDays(-1) :' + eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth().addDays(-1));
 
-                            Decimal monthlyPrice = (totalPrice / 12);
+                            //Decimal monthlyPrice = (totalPrice / 12);
+                            //new monthlyPrice => ( ((LPCR_PrixUnitaire__c *eachOrderItem.LPCR_Uplift__c)/100) * eachOrderItem.LPCR_Uplift__c/100 ) /12
+                            Decimal monthlyPrice = (((eachOrderItem.SBQQ__QuoteLine__r.LPCR_PrixUnitaire__c * eachOrderItem.LPCR_Uplift__c)/100) * eachOrderItem.LPCR_Uplift__c/100) / 12;
                             Decimal nbMonths = lastDayOfCurrentMonthDateSetEndDate.addDays(1).monthsBetween(eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth());
                             Decimal Subtotal_Part1 = monthlyPrice * nbMonths;
                             PAD.log(ClassName, 'execute','Last Partial Year - monthlyPrice :' + monthlyPrice);
@@ -180,7 +182,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             Decimal d2 = totalPrice;
                             PAD.log(ClassName, 'execute','Last Partial Year - d1 :' + d1);
                             PAD.log(ClassName, 'execute','Last Partial Year - d2 :' + d2);
-                            Decimal Subtotal_Part2 = ((d1 / 30) * (d2 / 12));
+                            Decimal Subtotal_Part2 = ((d1 / 30) * monthlyPrice);
 
                             PAD.log(ClassName, 'execute','Last Partial Year - Subtotal_Part2 :' + Subtotal_Part2);
 
