@@ -129,12 +129,32 @@ public class SM015_InvoiceServices {
     // added by saurabh singh IS-1651
     public static void setFieldsOnInvoice(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> newInvoiceMap, Boolean isInsert){
         Pad.log('SM015_InvoiceServices','setFieldsOnInvoice(List<blng__Invoice__c> newInvoiceList)','newInvoiceList size '+newInvoiceList.size());
-    	
+
+
+        List<blng__Invoice__c> invoicesToProcess = new List<blng__Invoice__c>();
+        if(isInsert){
+            invoicesToProcess = newInvoiceList;
+        }else{
+            invoicesToProcess = newInvoiceMap.values();
+        }
+
         Id familleRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
         
-        List<blng__Invoice__c> invoiceList = [Select Id, blng__Account__c,blng__Account__r.recordTypeId FROM blng__Invoice__c WHERE Id IN: newInvoiceList AND blng__Account__r.recordTypeId =: familleRecTypeId];
-        List<blng__InvoiceLine__c> invoiceLines = [Select Id, blng__OrderProduct__r.OrderId, blng__Invoice__c  From blng__InvoiceLine__c WHERE blng__Invoice__c  IN:invoiceList Limit 1];
-        
+        List<blng__Invoice__c> invoiceList = [SELECT Id, blng__Account__c,blng__Account__r.recordTypeId FROM blng__Invoice__c WHERE Id IN: invoicesToProcess AND blng__Account__r.recordTypeId =: familleRecTypeId];
+
+        Set<Id> invoicesIds = UM003_TypeManager.getIdsOfListObjects(invoiceList);
+
+        //Get the first invoice line of each invoice
+        List<blng__InvoiceLine__c> invoiceLines = new List<blng__InvoiceLine__c>();
+        for(blng__Invoice__c queriedInvoice : [ SELECT Id,
+                                                    ( SELECT blng__Invoice__c,blng__OrderProduct__r.OrderId FROM blng__InvoiceInvoiceLines__r LIMIT 1) // take the first one
+                                                FROM blng__Invoice__c WHERE Id in: invoicesIds]){
+
+            if(queriedInvoice.blng__InvoiceInvoiceLines__r.size() > 0) {
+                invoiceLines.add(queriedInvoice.blng__InvoiceInvoiceLines__r[0]);
+            }
+        }
+
         Map<String,blng__Invoice__c> updateInvoiceMap = new Map<String,blng__Invoice__c>();
         
         Set<String> orderIds = new Set<String>(); 
@@ -158,9 +178,10 @@ public class SM015_InvoiceServices {
         
         if(isInsert){
             if(updateInvoiceMap.size() > 0){
-                update updateInvoiceMap.values();
+                update (updateInvoiceMap.values());
             }            
         }
+
     }
     
     // added by saurabh IS-1529
