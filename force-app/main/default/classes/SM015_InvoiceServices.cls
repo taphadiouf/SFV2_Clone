@@ -128,19 +128,12 @@ public class SM015_InvoiceServices {
     
     // added by saurabh singh IS-1651
     public static void setFieldsOnInvoice(List<blng__Invoice__c> newInvoiceList, Map<Id, blng__Invoice__c> newInvoiceMap, Boolean isInsert){
-        Pad.log('SM015_InvoiceServices','setFieldsOnInvoice(List<blng__Invoice__c> newInvoiceList)','newInvoiceList size '+newInvoiceList.size());
-
-
-        List<blng__Invoice__c> invoicesToProcess = new List<blng__Invoice__c>();
-        if(isInsert){
-            invoicesToProcess = newInvoiceList;
-        }else{
-            invoicesToProcess = newInvoiceMap.values();
-        }
+        
+        PAD.log('SM015_InvoiceServices','setFieldsOnInvoice(List<blng__Invoice__c> newInvoiceList)','newInvoiceList size '+newInvoiceList.size());
 
         Id familleRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
         
-        List<blng__Invoice__c> invoiceList = [SELECT Id, blng__Account__c,blng__Account__r.recordTypeId FROM blng__Invoice__c WHERE Id IN: invoicesToProcess AND blng__Account__r.recordTypeId =: familleRecTypeId];
+        List<blng__Invoice__c> invoiceList = [SELECT Id, blng__Account__c,blng__Account__r.recordTypeId FROM blng__Invoice__c WHERE Id IN: newInvoiceList AND blng__Account__r.recordTypeId =: familleRecTypeId];
 
         Set<Id> invoicesIds = UM003_TypeManager.getIdsOfListObjects(invoiceList);
 
@@ -169,19 +162,10 @@ public class SM015_InvoiceServices {
         if(invoiceLines.size()>0){
             for(blng__InvoiceLine__c eachNewInvoiceLine : invoiceLines){
                 newInvoiceMap.get(eachNewInvoiceLine.blng__Invoice__c).LPCR_Creche__c = invoiceOrderMap.get(eachNewInvoiceLine.blng__OrderProduct__r.OrderId).LPCR_Creche__c;
-                newInvoiceMap.get(eachNewInvoiceLine.blng__Invoice__c).LPCR_ContactEnfant__c = invoiceOrderMap.get(eachNewInvoiceLine.blng__OrderProduct__r.OrderId).LPCR_ContactEnfant__c;            	
-                if(!updateInvoiceMap.containsKey(eachNewInvoiceLine.blng__Invoice__c)){
-                    updateInvoiceMap.put(eachNewInvoiceLine.blng__Invoice__c,newInvoiceMap.get(eachNewInvoiceLine.blng__Invoice__c));
-                }
+                newInvoiceMap.get(eachNewInvoiceLine.blng__Invoice__c).LPCR_ContactEnfant__c = invoiceOrderMap.get(eachNewInvoiceLine.blng__OrderProduct__r.OrderId).LPCR_ContactEnfant__c; 
             }
         }
         
-        if(isInsert){
-            if(updateInvoiceMap.size() > 0){
-                update (updateInvoiceMap.values());
-            }            
-        }
-
     }
     
     // added by saurabh IS-1529
