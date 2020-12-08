@@ -313,9 +313,16 @@
         </filters>
         <filters>
             <field>LPCR_Statut__c</field>
-            <operator>EqualTo</operator>
+            <operator>NotEqualTo</operator>
             <value>
-                <stringValue>Actif</stringValue>
+                <stringValue>Annulé</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LPCR_Statut__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Terminé</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -462,7 +469,7 @@
         <allowPause>true</allowPause>
         <fields>
             <name>PasDeContratMessage</name>
-            <fieldText>&lt;p&gt;Il n&apos;y a pas de contrat de partenariat actif sur le compte partenaire associée à la crèche sélectionnée.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Aucun contrat partenaire non annulé et non terminé n&apos;a été trouvé sur le compte partenaire lié à la crèche.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>

@@ -25,7 +25,8 @@ global class APB002_RenewalContract implements Database.Batchable<sObject>,Sched
     
     global void execute(Database.BatchableContext BC, List<Contract> scope) {
         
-        
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
+
         List<Exception> errors = new List<Exception>();
         try {
                 

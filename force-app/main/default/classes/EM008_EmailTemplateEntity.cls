@@ -6,6 +6,6 @@
 public class EM008_EmailTemplateEntity {
     
     public static List<EmailTemplate> getAllEmailTemplates(){
-        return [SELECT Id,Name,Subject,HtmlValue FROM EmailTemplate];
+        return [SELECT Id,Name,Subject,Body,HtmlValue FROM EmailTemplate];
     }
 }

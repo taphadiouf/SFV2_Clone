@@ -11,6 +11,7 @@ global class APB004_ActivateOrder  implements Database.Batchable<sObject>,Schedu
     }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
+        
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
         query = 'SELECT Id,Status FROM Order WHERE Status =\'Draft\'';
         
@@ -18,6 +19,8 @@ global class APB004_ActivateOrder  implements Database.Batchable<sObject>,Schedu
     }
     
     global void execute(Database.BatchableContext BC, List<Order> scope) {
+
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
         
         List<Exception> errors = new List<Exception>();
         try {

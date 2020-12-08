@@ -245,7 +245,7 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Information Contract</label>
+        <label>Information Contrat</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -392,11 +392,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>EnvoiContratAccueil</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>EnvoiAnnexe2</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>1</sortOrder>
@@ -420,6 +415,11 @@
             <actionName>NewEvent</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>5</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>EnvoiContratAccueil</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -484,7 +484,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000001OobK</masterLabel>
+        <masterLabel>00h1X000001iY5P</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

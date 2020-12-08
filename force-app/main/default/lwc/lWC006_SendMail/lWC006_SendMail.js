@@ -40,7 +40,7 @@ export default class LWC006_SendMail extends LightningElement {
                 });
                 this.emailTemplatesMap[data[i].Id] = {
                     subject: data[i].Subject,
-                    body: data[i].HtmlValue
+                    body: (data[i].HtmlValue) ? data[i].HtmlValue : data[i].Body
                 };
             }
         }

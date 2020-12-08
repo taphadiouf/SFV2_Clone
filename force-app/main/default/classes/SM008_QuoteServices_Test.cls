@@ -136,18 +136,18 @@ public class SM008_QuoteServices_Test {
         insert bulkify;
 
         //////
-        List<Account> accounts = UM002_TestDataFactory.createAccounts(100, 'testAccount');
-        List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(100, 'testOpp', 'Prospecting');
+        List<Account> accounts = UM002_TestDataFactory.createAccounts(5, 'testAccount');
+        List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(5, 'testOpp', 'Prospecting');
         bulkify = new List<sObject>();
         bulkify.addAll(accounts);
         bulkify.addAll(opps);
         insert bulkify;
 
         //////
-        List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(100, accounts, opps);
+        List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(5, accounts, opps);
         Account acc = UM002_TestDataFactory.createAccounts(1, 'test').get(0);acc.RecordTypeId = B2C_RT_ID;
-        List<Account> accountsMac = UM002_TestDataFactory.createAccountWithRecType(10, 'Accounts',recTypeId, 'MAC');
-        List<Account> accountsMicro = UM002_TestDataFactory.createAccountWithRecType(10, 'Accounts', recTypeId, 'MICRO');
+        List<Account> accountsMac = UM002_TestDataFactory.createAccountWithRecType(1, 'Accounts',recTypeId, 'MAC');
+        List<Account> accountsMicro = UM002_TestDataFactory.createAccountWithRecType(1, 'Accounts', recTypeId, 'MICRO');
         bulkify = new List<sObject>();
         bulkify.addAll(quotes);
         bulkify.add(acc);
@@ -170,8 +170,8 @@ public class SM008_QuoteServices_Test {
         update quotes;
         List<Account> resultAccounts = [SELECT Id,Name, LPCR_Statut__c FROM Account WHERE LPCR_Statut__c= 'Client' AND Name = 'testAccount'];
         List<Opportunity> resultOpps = [SELECT Id, StageName FROM Opportunity WHERE StageName = 'Signée'];
-        System.assertEquals(100, resultAccounts.size(), 'Error in SM008_QuoteServices_Test : problem in updating Account');
-        System.assertEquals(100, resultOpps.size(), 'Error in SM008_QuoteServices_Test : problem in updating Opportunity');
+        System.assertEquals(5, resultAccounts.size(), 'Error in SM008_QuoteServices_Test : problem in updating Account');
+        System.assertEquals(5, resultOpps.size(), 'Error in SM008_QuoteServices_Test : problem in updating Opportunity');
         Test.stopTest();
         
     }
