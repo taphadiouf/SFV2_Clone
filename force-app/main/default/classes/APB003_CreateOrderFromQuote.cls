@@ -28,7 +28,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
     */
     global void execute(Database.BatchableContext BC, List<SBQQ__Quote__c> scope) {
         
-        UM001_LogManager.writeLogActivityWithoutFuture( ClassName, 'Scope size', 'Batch' , null, String.valueOf(scope.size()), UM010_Constant.SUCCESS); 
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
 
         List<Exception> errors = new List<Exception>();
         try {

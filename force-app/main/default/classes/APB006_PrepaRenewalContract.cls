@@ -4,7 +4,9 @@
 * @Description Batch to bulk process Order and prepare them for execution of APB002_RenewalContract.
 */
 global class APB006_PrepaRenewalContract implements Database.Batchable<sObject>, Database.Stateful, Schedulable {
+
     final String ClassName = APB006_PrepaRenewalContract.class.getName();
+    
     public static final String CONTRACT_TO_RENEW_BASE_QUERY = 'SELECT Id, AccountId, Account.RecordTypeId, LPCR_Creche__c, Name, ' + 
         ' EndDate, LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c, LPCR_JoursAvance__c ' +
         ' FROM Contract WHERE Status =\'Activated\' AND LPCR_RenouvellementAutomatique__c = true AND ' + 
@@ -33,6 +35,8 @@ global class APB006_PrepaRenewalContract implements Database.Batchable<sObject>,
     *	@returns void
     */
     global void execute (Database.BatchableContext BC, List<Contract> scope) {
+        
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
         
         List<Exception> errors = new List<Exception>();
 

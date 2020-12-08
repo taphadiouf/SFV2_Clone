@@ -19,6 +19,8 @@ global class APB005_GenerateContractFromOrder  implements Database.Batchable<sOb
     
     global void execute(Database.BatchableContext BC, List<Order> scope) {
         
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
+        
         List<Exception> errors = new List<Exception>();
         try {
             

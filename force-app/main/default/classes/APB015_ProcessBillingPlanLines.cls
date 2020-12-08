@@ -32,7 +32,9 @@ global class APB015_ProcessBillingPlanLines implements Database.Batchable<sObjec
     }
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
+
         List<Exception> errors = new List<Exception>();
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
 
         try {
             String ErrMsg;

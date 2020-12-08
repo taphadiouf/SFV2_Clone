@@ -19,6 +19,8 @@ global class APB011_SetInvoiceCommentaire implements Database.Batchable<sObject>
     }
     global void execute(Database.BatchableContext BC, List<blng__InvoiceRun__c> scope) {
 
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
+        
         List<Exception> errors = new List<Exception>();
 
         try {
