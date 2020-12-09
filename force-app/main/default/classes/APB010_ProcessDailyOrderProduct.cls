@@ -18,7 +18,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                                                 SBQQ__Contract__c,SBQQ__Contract__r.LPCR_DateFin__c, Order.LPCR_BDOM_OrderStartdate__c,SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c,
                                                 SBQQ__QuoteLine__r.SBQQ__ListPrice__c,Order.LPCR_RenouvellementPlanFacture__c 
                                             FROM OrderItem 
-                                            WHERE Order.Status = 'Activated'  AND LPCR_BillingPlanProcessment__c = false AND LastModifiedDate = TODAY AND SBQQ__ChargeType__c != 'One-Time']);
+                                            WHERE Order.Status = 'Activated'  AND LPCR_BillingPlanProcessment__c = false AND LastModifiedDate = TODAY AND SBQQ__ChargeType__c != 'One-Time'  AND Order.Type != 'Renewal']);
     }
     
     global void execute(Database.BatchableContext BC, List<OrderItem> scope) {
