@@ -53,14 +53,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
             // ------------------------------------------------------------------------------------------------------------
 
             for(OrderItem eachOrderItem : scope){ 
-                //Set Multiplier value
-                Integer multiplier;
-                if(eachOrderItem.SBQQ__DefaultSubscriptionTerm__c == 1){
-                    multiplier = 12; // Set Multiplier value to 12 (B2C use case)
-                }else{
-                    multiplier = 1; // Set Multiplier value to 1 (B2B use case)
-                }
-                
+                                
                 // Calculate no. of total years
                 
                 Date tmpDate = eachOrderItem.LPCR_ContractStartDate__c;
@@ -87,11 +80,6 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                         if(eachYear == 1){ // First Year
                             
                             PAD.log(ClassName, 'execute','First Year - totalPrice = ' + totalPrice);
-                            PAD.log(ClassName, 'execute','First Year - multiplier = ' + multiplier);
-                            PAD.log(ClassName, 'execute','First Year - ProrateMultiplier = ' + eachOrderItem.SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c);
-                            
-                            //totalFullYearPrice = (totalPrice * multiplier)/eachOrderItem.SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c;
-                            //totalFullYearPrice = totalPrice * eachOrderItem.SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c;
                             totaleGlobalePlanFacture += totalPrice;
                             
                             PAD.log(ClassName, 'execute','First Year - totalFullYearPrice = ' + totalFullYearPrice);
@@ -170,8 +158,6 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             PAD.log(ClassName, 'execute','Last Partial Year - lastDayOfCurrentMonthDateSetEndDate.addDays(1) :' + lastDayOfCurrentMonthDateSetEndDate.addDays(1));
                             PAD.log(ClassName, 'execute','Last Partial Year - eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth().addDays(-1) :' + eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth().addDays(-1));
 
-                            //Decimal monthlyPrice = (totalPrice / 12);
-                            //new monthlyPrice => ( ((LPCR_PrixUnitaire__c *eachOrderItem.LPCR_Uplift__c)/100) * eachOrderItem.LPCR_Uplift__c/100 ) /12
                             Decimal monthlyPrice = (totalFullYearPrice) / 12;
                             Decimal nbMonths = lastDayOfCurrentMonthDateSetEndDate.addDays(1).monthsBetween(eachOrderItem.LPCR_ContractEndDate__c.toStartOfMonth());
                             Decimal Subtotal_Part1 = monthlyPrice * nbMonths;
@@ -187,7 +173,6 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
 
                             PAD.log(ClassName, 'execute','Last Partial Year - Subtotal_Part2 :' + Subtotal_Part2);
 
-                            // <Monthly price> : (totalPrice / 12)
                             // <remaining number of days> : reminderDays
                             // <number of days in the current month> : always 30
                             // Definition of total (IS-1255) : (Number of months * <Monthly price>) + ((<remaining number of days> / <number of days in the month>) * <Monthly price>)
