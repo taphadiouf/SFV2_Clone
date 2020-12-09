@@ -78,9 +78,16 @@
         </filters>
         <filters>
             <field>LPCR_Statut__c</field>
-            <operator>EqualTo</operator>
+            <operator>NotEqualTo</operator>
             <value>
-                <stringValue>Actif</stringValue>
+                <stringValue>Annulé</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LPCR_Statut__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Terminé</stringValue>
             </value>
         </filters>
         <object>LPCR_ContratPartenaire__c</object>
