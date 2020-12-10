@@ -310,6 +310,9 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             } 
                             else {
                                 if(eachOrderItem.LPCR_Uplift__c > 0){
+                                    if(billableUnitPrice == null){
+                                        billableUnitPrice = 0;
+                                    }
                                     billableUnitPrice += ((billableUnitPrice * eachOrderItem.LPCR_Uplift__c)/100);
                                 }
                             }

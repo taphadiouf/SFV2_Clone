@@ -101,8 +101,10 @@ public class APB010_ProcessDailyOrderProduct_Test {
             Order order = UM002_TestDataFactory.createOrder(acc.Id, contract.id,date.today(),'test','Draft','1');
             order.Pricebook2Id = standardPricebookId;
             order.SBQQ__Quote__c = quote.id;
+            order.type = 'New';
             insert order;
             
+            //Causing error
             OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Quarterly', 100);
             orderItem.SBQQ__QuoteLine__c = qlines.get(0).id;
             orderItem.SBQQ__Activated__c = false;
@@ -137,8 +139,9 @@ public class APB010_ProcessDailyOrderProduct_Test {
             orderItem1.SBQQ__Activated__c = true;
             orderItem2.SBQQ__Activated__c = true;
             orderItem3.SBQQ__Activated__c = true;
-            
-            update new List<OrderItem>{orderItem,orderItem1,orderItem2,orderItem3};
+
+            List<OrderItem> orderItems = new List<OrderItem>{orderItem,orderItem1,orderItem2,orderItem3};
+            update orderItems;
 
             order.status ='Activated';
             update order;
@@ -162,27 +165,30 @@ public class APB010_ProcessDailyOrderProduct_Test {
             order.LPCR_RenouvellementPlanFacture__c = invoicePlan.id;
             update order;
 
-            blng__BillingSchedule__c billingSchedule = new blng__BillingSchedule__c();
-            billingSchedule.blng__OrderProduct__c = orderItem1.id;
-            billingSchedule.name = 'Test';
-            billingSchedule.blng__Amount__c = 100;
-            try{
-                insert billingSchedule;
-            }catch(Exception ex){
-                PAD.log('APB010_ProcessDailyOrderProduct_Test', 'APB010_ProcessDailyOrderProduct_Test', '**** Exception : '+ ex.getMessage());
-            }            
-            
-            blng__BillingTransaction__c billingTrans = new blng__BillingTransaction__c();
-            billingTrans.blng__BillingTargetDate__c = Date.today().addDays(30);
-            billingTrans.blng__BillingSchedule__c = billingSchedule.Id;
-            billingTrans.Name = 'Test';
-            billingTrans.blng__Amount__c = 100;
-            billingTrans.blng__Status__c = 'Pending';            
-            try{
-                insert billingTrans;
-            }catch(Exception ex){
-                PAD.log('APB010_ProcessDailyOrderProduct_Test', 'APB010_ProcessDailyOrderProduct_Test', '**** Exception : '+ ex.getMessage());
+
+            List<blng__BillingSchedule__c> billingSchedules = new List<blng__BillingSchedule__c>();
+            List<blng__BillingTransaction__c> billingTransactions = new List<blng__BillingTransaction__c>();
+            for(OrderItem o : orderItems){
+                blng__BillingSchedule__c billingSchedule = new blng__BillingSchedule__c();
+                billingSchedule.blng__OrderProduct__c = o.id;
+                billingSchedule.name = 'Test';
+                billingSchedule.blng__Amount__c = 100;
+
+                billingSchedules.add(billingSchedule);      
             }
+            insert billingSchedules;
+
+            for (blng__BillingSchedule__c sche : billingSchedules) {
+                blng__BillingTransaction__c billingTrans = new blng__BillingTransaction__c();
+                billingTrans.blng__BillingTargetDate__c = Date.today().addDays(30);
+                billingTrans.blng__BillingSchedule__c = sche.Id;
+                billingTrans.Name = 'Test';
+                billingTrans.blng__Amount__c = 100;
+                billingTrans.blng__Status__c = 'Pending';
+
+                billingTransactions.add(billingTrans);          
+            }
+            insert billingTransactions;
 
             APB010_ProcessDailyOrderProduct ss = new APB010_ProcessDailyOrderProduct();
             DataBase.executeBatch(ss);
@@ -195,10 +201,14 @@ public class APB010_ProcessDailyOrderProduct_Test {
             List<LPCR_PlanFacturation__c> billingPlanCheck2 = new List<LPCR_PlanFacturation__c>();
             List<LPCR_PlanFacturation__c> billingPlanCheck3 = new List<LPCR_PlanFacturation__c>();
             List<LPCR_LignePlanFacturation__c> billingPlanLineCheck = new List<LPCR_LignePlanFacturation__c>();
-            billingPlanCheck = [select id,LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c =: orderItem.id];
-            billingPlanCheck2 = [select id,LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c =: orderItem2.id];
-            billingPlanCheck3 = [select id,LPCR_OrderItem__c from LPCR_PlanFacturation__c where LPCR_OrderItem__c =: orderItem3.id];
-            billingPlanLineCheck = [select Id, Name, LPCR_StartDate__c, LPCR_EndDate__c, LPCR_Amount__c, LPCR_PlanFacturation__c from LPCR_LignePlanFacturation__c where LPCR_PlanFacturation__c IN: billingPlanCheck];
+
+            billingPlanCheck = [SELECT id,LPCR_OrderItem__c FROM LPCR_PlanFacturation__c WHERE LPCR_OrderItem__c =: orderItem.id];
+            billingPlanCheck2 = [SELECT id,LPCR_OrderItem__c FROM LPCR_PlanFacturation__c WHERE LPCR_OrderItem__c =: orderItem2.id];
+            billingPlanCheck3 = [SELECT id,LPCR_OrderItem__c FROM LPCR_PlanFacturation__c WHERE LPCR_OrderItem__c =: orderItem3.id];
+
+            billingPlanLineCheck = [SELECT Id, Name, LPCR_StartDate__c, LPCR_EndDate__c, LPCR_Amount__c, LPCR_PlanFacturation__c 
+                                    FROM LPCR_LignePlanFacturation__c WHERE LPCR_PlanFacturation__c IN: billingPlanCheck];
+
             System.assertEquals(4, billingPlanCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan');
             System.assertEquals(13, billingPlanLineCheck.size(), 'Error in APB010_ProcessDailyOrderProduct : problem in inserting Billing Plan Line');
             System.assertNotEquals(0, billingPlanCheck2.size());
