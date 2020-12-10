@@ -167,6 +167,7 @@ public class SM008_QuoteServices_Test {
         for(SBQQ__Quote__c eachQuote : quotes){
             eachQuote.SBQQ__Status__c = 'Signé';
         }
+        TM000_TriggerHandler.runUpdateOnce = true;
         update quotes;
         List<Account> resultAccounts = [SELECT Id,Name, LPCR_Statut__c FROM Account WHERE LPCR_Statut__c= 'Client' AND Name = 'testAccount'];
         List<Opportunity> resultOpps = [SELECT Id, StageName FROM Opportunity WHERE StageName = 'Signée'];
@@ -463,20 +464,47 @@ public class SM008_QuoteServices_Test {
             Test.startTest();
             Id acceuilRecTypeId = ContratA_RT_ID;//EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Contrat_Accueil');
             //B2C Quote MAC more than Current Year before update
+            
             List<Account> accs = [SELECT Id, name , LPCR_TypeCreche__c , LPCR_EntiteJuridique__c, LPCR_TypeFacturation__c from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
+            
+            System.debug('**accounts : ' + accs);
             Account acc = accs.get(0);
+            
             List<Opportunity> oppties = [SELECT Id , Name , LPCR_IndexationConvenue__c , LPCR_TypeFacturation__c , LPCR_BillingFrequency__c from Opportunity WHERE name ='opp Famille MAC1' LIMIT 1 ];
-            SBQQ__Quote__c quoteQ1 = UM002_TestDataFactory.createQuotes(1, accs, oppties,'Re-Quote', acceuilRecTypeId, acc.Id).get(0);
-            quoteQ1.LPCR_DateDebut__c = date.newInstance(System.Today().year(), 06, 04);
-            quoteQ1.LPCR_DateFin__c = date.newInstance(System.Today().year()+1, 06, 31);
+            System.debug('**oppties : ' + oppties);
+            Opportunity opp = oppties.get(0);
+
+            SBQQ__Quote__c quoteQ1 = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = opp.Id,
+                SBQQ__Account__c = acc.Id,
+                SBQQ__Type__c = 'Re-Quote',
+		        LPCR_Creation_conforme__c = true,    
+                RecordTypeId = acceuilRecTypeId,
+                LPCR_Creche__c = acc.Id,
+                LPCR_DateDebut__c = date.newInstance(System.Today().year(), 06, 04),
+                LPCR_DateFin__c = date.newInstance(System.Today().year()+1, 06, 31),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31)
+                );
             insert quoteQ1;
+
+            System.debug('after insert : ' + [SELECT Id ,LPCR_TypeCreche__c , LPCR_DateDebut__c FROM SBQQ__Quote__c WHERE Id =: quoteQ1.Id]);
+
+            quoteQ1.LPCR_DateDebut__c = date.newInstance(System.Today().year(), 06, 04);
             quoteQ1.SBQQ__Type__c = 'Quote';
+            System.debug('TM Before My Update*******');
+            TM000_TriggerHandler.runUpdateOnce = true;
             update quoteQ1;
-            quoteQ1 = [SELECT Id ,LPCR_TypeCreche__c , SBQQ__StartDate__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c , LPCR_TypeFacturation__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Quote' AND  Id = :quoteQ1.Id];
-            System.assertEquals(quoteQ1.LPCR_TypeFacturation__c, acc.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to acc LPCR_TypeFacturation__c');
-            System.assertEquals(quoteQ1.LPCR_TypeCreche__c, acc.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
-            System.assertEquals(quoteQ1.SBQQ__StartDate__c, quoteQ1.LPCR_DateDebut__c, 'Quote SBQQ__StartDate__c not equals to quoteQ LPCR_DateDebut__c');
-            System.assertEquals(quoteQ1.SBQQ__EndDate__c, date.newInstance(System.Today().year(), 12, 31), 'Quote SBQQ__EndDate__c not equals to quote Date');
+            System.debug('TM After My Update********');
+
+            SBQQ__Quote__c q = [SELECT Id ,LPCR_TypeCreche__c , SBQQ__StartDate__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c , LPCR_TypeFacturation__c FROM SBQQ__Quote__c 
+                        WHERE SBQQ__Type__c= 'Quote' AND  Id = :quoteQ1.Id];
+            System.debug('**quoteQ1 after up' + quoteQ1);
+
+
+            System.assertEquals(q.LPCR_TypeFacturation__c, acc.LPCR_TypeFacturation__c, 'Quote LPCR_TypeFacturation__c not equals to acc LPCR_TypeFacturation__c');
+            System.assertEquals(q.LPCR_TypeCreche__c, acc.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
+            System.assertEquals(q.LPCR_DateDebut__c,q.SBQQ__StartDate__c,  'Quote SBQQ__StartDate__c not equals to quoteQ LPCR_DateDebut__c');
+            System.assertEquals(date.newInstance(System.Today().year(), 12, 31),q.SBQQ__EndDate__c, 'Quote SBQQ__EndDate__c not equals to quote Date');
             Test.stopTest();
         }
     }
@@ -621,15 +649,41 @@ public class SM008_QuoteServices_Test {
             Opportunity opp = oppties.get(0);
             List<Contract> contract = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c  From Contract WHERE Name = '0001' Limit 1];
             Contract con = contract.get(0);
-            SBQQ__Quote__c quote8 = UM002_TestDataFactory.createQuotes(1, accs, oppties,'Re-Quote', reservataireRecTypeId, acc.Id).get(0);
+
+            
+            SBQQ__Quote__c quote8 = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = opp.Id,
+                SBQQ__Account__c = acc.Id,
+                SBQQ__Type__c = 'Re-Quote',
+		        LPCR_Creation_conforme__c = true,    
+                RecordTypeId = reservataireRecTypeId,
+                LPCR_Creche__c = acc.id,
+                SBQQ__StartDate__c = date.today(),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31)
+            );
             insert quote8;
+
+            SBQQ__Quote__c q = [SELECT SBQQ__Type__c FROM SBQQ__Quote__c WHERE id=:quote8.id];
+            System.debug('q type : ' + q.SBQQ__Type__c);
+
             quote8.SBQQ__Type__c = 'Renewal';
+
+            TM000_TriggerHandler.runUpdateOnce = true;
             update quote8;
-            quote8 = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote8.Id];
-            System.assertEquals(quote8.LPCR_DateDebut__c, con.LPCR_DateDebut__c, 'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
-            System.assertEquals(quote8.LPCR_DateFin__c, con.LPCR_DateFin__c, 'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
-            System.assertEquals(quote8.LPCR_MethodeRenouvellement__c, con.LPCR_MethodeRenouvellement__c, 'Quote LPCR_MethodeRenouvellement__c not equals to oppt LPCR_MethodeRenouvellement__c');
-            System.assertEquals(quote8.SBQQ__EndDate__c, quote8.LPCR_DateFin__c, 'Quote SBQQ__EndDate__c not equals to Quote LPCR_DateFin__c');
+
+            SBQQ__Quote__c q2 = [SELECT SBQQ__Type__c FROM SBQQ__Quote__c WHERE id=:quote8.id];
+            System.debug('q2 type : ' + q2.SBQQ__Type__c); 
+
+
+            SBQQ__Quote__c qResult = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,
+                                            LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c  
+                                        FROM SBQQ__Quote__c 
+                                        WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote8.Id];
+
+            System.assertEquals(con.LPCR_DateDebut__c,              qResult.LPCR_DateDebut__c,  'Quote LPCR_DateDebut__c not equals to con LPCR_DateDebut__c');
+            System.assertEquals(con.LPCR_DateFin__c,                qResult.LPCR_DateFin__c,  'Quote LPCR_DateFin__c not equals to con LPCR_DateFin__c');
+            System.assertEquals(con.LPCR_MethodeRenouvellement__c,  qResult.LPCR_MethodeRenouvellement__c, 'Quote LPCR_MethodeRenouvellement__c not equals to oppt LPCR_MethodeRenouvellement__c');
+            System.assertEquals(qResult.LPCR_DateFin__c,             qResult.SBQQ__EndDate__c,  'Quote SBQQ__EndDate__c not equals to Quote LPCR_DateFin__c');
             Test.stopTest();            
         } 
     }
