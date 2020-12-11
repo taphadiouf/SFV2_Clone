@@ -12,11 +12,11 @@ public class APB013_ProcessYearlyOrderProduct_Test {
 
     @testSetup
     static void testSetup(){
-        List<Account> accounts = UM002_TestDataFactory.createAccounts(100, 'testAccount');
-        List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(100, 'testOpp', 'Prospecting');
+        List<Account> accounts = UM002_TestDataFactory.createAccounts(5, 'testAccount');
+        List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(5, 'testOpp', 'Prospecting');
         insert accounts;
         insert opps;
-        List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(100, accounts, opps);
+        List<SBQQ__Quote__c> quotes = UM002_TestDataFactory.createQuotes(5, accounts, opps);
         insert quotes;
 
         Id standardPricebookId = Test.getStandardPricebookId();
