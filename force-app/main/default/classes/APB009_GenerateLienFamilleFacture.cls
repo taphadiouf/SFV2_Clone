@@ -110,7 +110,6 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
 
             List<LPCR_LienFamilleFacture__c> listOfLienFamilleFacture = new List<LPCR_LienFamilleFacture__c>();
             List<blng__Invoice__c> listOfInvoiceToUpdate = new List<blng__Invoice__c>();
-            List<blng__InvoiceLine__c> listOfInvoiceLinesToUpdate = new List<blng__InvoiceLine__c>();
             blng__Invoice__c invoiceTemp = new blng__Invoice__c();
             LPCR_LienFamilleFacture__c lienFamilleFacture = new LPCR_LienFamilleFacture__c();
             
@@ -157,9 +156,6 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                                     
                                     Order invoiceLineOrder = invoiceLineOrderMap.get(eachInvoiceLine.id);
                                     if(invoiceLineOrder.RecordTypeId == orderReferencRT){
-
-                                        eachInvoiceLine.LPCR_ContactEnfant__c = eachContract.LPCR_ContactEnfant__c;
-                                        listOfInvoiceLinesToUpdate.add(eachInvoiceLine);
 
                                         lienFamilleFacture.LPCR_Enfant__c =     eachContract.LPCR_ContactEnfant__c;
                                     }
@@ -243,20 +239,6 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                 }
             }
 
-            ErrMsg = null;
-            try {
-                if (listOfInvoiceLinesToUpdate.size() > 0) {
-                    System.debug('-- updating : ' + listOfInvoiceLinesToUpdate);
-                    update listOfInvoiceLinesToUpdate;
-                    UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null, 'Updated list of invoice lines : ' + String.valueOf(listOfInvoiceLinesToUpdate), UM010_Constant.SUCCESS);   
-                }       
-            } catch (Exception e) {
-                ErrMsg = e.getMessage();
-            } finally {
-                if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Error while updating the invoice lines : ' + ErrMsg, UM010_Constant.ERROR);              
-                }
-            }
         } catch(Exception e) {
             errors.add(e);
         }
