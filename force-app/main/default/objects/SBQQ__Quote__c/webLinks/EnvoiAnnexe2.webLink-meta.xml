@@ -21,7 +21,7 @@
 &amp;serverUrl={!API.Partner_Server_URL_370}
 &amp;Id={!SBQQ__Quote__c.Id}
 &amp;TemplateId={!IF(TEXT(SBQQ__Quote__c.LPCR_TypeCreche__c) = &apos;MICRO&apos;,IF(TEXT(SBQQ__Quote__c.LPCR_TypeAccueil__c)=&apos;Occasionnel&apos;, $Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe_2_Micro_Occasionnel__c, $Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe_2_Micro_Regulier__c), $Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTAnnexe_2_MAC__c )}
-&amp;QueryId=[Annexe2]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQAnnexe2__c},[Planning]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQPlanning__c}?pv0={!SBQQ__Quote__c.LPCR_PlanningEnfantId__c}
+&amp;QueryId=[Annexe2]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQAnnexe2__c},[LigneBerceauMicro]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQLigneBerceauMicro__c},[Planning]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQPlanning__c}?pv0={!SBQQ__Quote__c.LPCR_PlanningEnfantId__c}
 &amp;DefaultPDF=1
 &amp;SC0=1
 &amp;SC1=SalesforceFile

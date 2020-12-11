@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_PrixTotalAnnuel__c</fullName>
+    <description>prix unitaire annuel x quantité</description>
+    <externalId>false</externalId>
+    <formula>LPCR_PrixUnitaire__c * SBQQ__Quantity__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>prix unitaire annuel x quantité</inlineHelpText>
+    <label>Prix total annuel</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>
