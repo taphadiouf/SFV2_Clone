@@ -243,6 +243,9 @@
                 
                 List<OrderItem> orderItems = [SELECT Id,SBQQ__DefaultSubscriptionTerm__c  FROM OrderItem WHERE OrderID = :orderB2B.Id];
                 
+                Id rtContactEnf = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contact', 'Enfant' );
+                Contact contact = UM002_TestDataFactory.createContact('test contact', rtContactEnf);
+                insert contact;
                 
                 Map<String, Object>     defaultVal = new Map<String, Object> {
                     'RecordTypeId'=>CONTRACT_B2B_RT_ID,
@@ -251,7 +254,8 @@
                         'LPCR_DureeContratJour__c'=>100,
                         'SBQQ__Quote__c'=>quoteB2B.Id,
                         'Status'=>'Draft',
-                        'LPCR_Creche__c'=>accCreche.Id
+                        'LPCR_Creche__c'=>accCreche.Id,
+                        'LPCR_ContactEnfant__c' => contact.id
                         };
                             Contract contractB2B = (Contract) UM002_TestDataFactory.createSObject('Contract', defaultVal);
                 insert contractB2B;
@@ -270,7 +274,8 @@
                         'Status'=>'Draft',
                         'LPCR_Creche__c'=>accCreche.Id,
                         'LPCR_DateDebut__c'=>todayDate,
-                		'LPCR_DateFin__c'=>todayDate.addDays(60)
+                		'LPCR_DateFin__c'=>todayDate.addDays(60),
+                        'LPCR_ContactEnfant__c' => contact.id
                         };
                             Contract contractB2C = (Contract) UM002_TestDataFactory.createSObject('Contract', defaultVal);
                 insert contractB2C;
@@ -307,18 +312,17 @@
                 Map<Id,blng__Invoice__c> mapOfInvoice = new Map<Id,blng__Invoice__c>([SELECT Id, blng__Account__c,blng__Account__r.Name ,LPCR_LiaisonFamilleFacture__c
                                                                                       FROM blng__Invoice__c
                                                                                       WHERE  blng__Order__c  = :orderB2B.Id ]);   
-                List<blng__InvoiceLine__c> listOfInvoiceLine = [SELECT Id,LPCR_Creche__c,blng__StartDate__c,blng__EndDate__c ,blng__Invoice__c,blng__Invoice__r.blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c
+                List<blng__InvoiceLine__c> listOfInvoiceLine = [SELECT Id,LPCR_ContactEnfant__c,LPCR_Creche__c,blng__StartDate__c,blng__EndDate__c ,blng__Invoice__c,blng__Invoice__r.blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c
                                                                 FROM blng__InvoiceLine__c
                                                                 WHERE blng__Invoice__c =:mapOfInvoice.values().get(0).Id ];
                 update new List<blng__InvoiceLine__c>{new blng__InvoiceLine__c(Id = listOfInvoiceLine.get(0).Id ,LPCR_Creche__c= accCreche.Id)};
-                
                 
                 APB009_GenerateLienFamilleFacture generateLienFamilleFacture = new APB009_GenerateLienFamilleFacture();
                 generateLienFamilleFacture.execute(null);
                 
                 Test.stopTest();
                 
-                List<LPCR_LienFamilleFacture__c> listOfLienFamilleFactureFromBD = [SELECT Id,LPCR_Facture__c,LPCR_LigneFacture__c,LPCR_ContratFamille__c,LPCR_ContratEntreprise__c
+                List<LPCR_LienFamilleFacture__c> listOfLienFamilleFactureFromBD = [SELECT Id,LPCR_Enfant__c,LPCR_Facture__c,LPCR_LigneFacture__c,LPCR_ContratFamille__c,LPCR_ContratEntreprise__c
                                                                                    FROM LPCR_LienFamilleFacture__c 
                                                                                    WHERE LPCR_Facture__c in :mapOfInvoice.KeySet() ];
                 
@@ -328,7 +332,7 @@
                
                 System.assertEquals(1,listOfLienFamilleFactureFromBD.size());
                 System.assertEquals(true,invoice.LPCR_LiaisonFamilleFacture__c);
-                  
+                System.assertEquals(contact.id, listOfLienFamilleFactureFromBD.get(0).LPCR_Enfant__c);
                 
             }
         }
