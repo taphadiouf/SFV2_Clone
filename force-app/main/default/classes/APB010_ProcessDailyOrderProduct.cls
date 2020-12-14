@@ -108,6 +108,8 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
 
                             totalFullYearPrice =  (totalFullYearPrice + ((totalFullYearPrice * eachOrderItem.LPCR_Uplift__c)/100)) * quantity;
                             totaleGlobalePlanFacture += totalFullYearPrice;
+
+                            
                             
                             // Create Billing plan record
                             LPCR_PlanFacturation__c billingPlan = new LPCR_PlanFacturation__c();
@@ -134,6 +136,9 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                         } else { // Last Partial Year
 
                             totalFullYearPrice =  (totalFullYearPrice + ((totalFullYearPrice * eachOrderItem.LPCR_Uplift__c)/100))  * quantity;
+
+                            PAD.log(ClassName, 'execute','Last Partial Year - totalFullYearPrice : '+ totalFullYearPrice);
+
                             Double perDayPrice = ((totalFullYearPrice)/365).setScale(4);
                             Integer diffBetweenMonths = lastDayOfCurrentMonthDateSetEndDate.addDays(1).monthsBetween(eachOrderItem.LPCR_ContractEndDate__c);
                             Integer reminderDays = Date.newInstance(eachOrderItem.LPCR_ContractEndDate__c.year(), eachOrderItem.LPCR_ContractEndDate__c.month() , 1).daysBetween(eachOrderItem.LPCR_ContractEndDate__c) + 1;
