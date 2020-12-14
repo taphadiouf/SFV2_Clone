@@ -47,7 +47,7 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
 
             List<blng__InvoiceLine__c> listOfInvoiceLine = [SELECT Id,LPCR_Creche__c,blng__StartDate__c,blng__EndDate__c ,blng__Invoice__c,
                                                                     blng__Invoice__r.blng__Account__c,blng__OrderProduct__r.Product2Id,
-                                                                    blng__OrderProduct__r.SBQQ__Contract__c,blng__OrderProduct__r.OrderId
+                                                                    blng__OrderProduct__r.SBQQ__Contract__c,blng__OrderProduct__r.OrderId,LPCR_ContactEnfant__c
                                                             FROM blng__InvoiceLine__c
                                                             WHERE blng__Invoice__c IN :invoiceIds
                                                             AND blng__OrderProduct__r.Product2.ProductCode like :prodCode];
@@ -93,6 +93,8 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                                                         LPCR_ContractEntreprise__c,LPCR_ContractEntreprise__r.AccountId
                                                 FROM Contract 
                                                 WHERE 
+                                                Status = 'Activated'
+                                                AND
                                                 LPCR_DateFin__c >= :minStartDates
                                                 AND LPCR_DateDebut__c <= :maxEndDates AND
                                                 RecordTypeId = :contratB2CRTId AND
@@ -152,7 +154,7 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                                                                                     LPCR_ContratEntreprise__c = eachContract.LPCR_ContractEntreprise__c 
                                                                                     );
                                 
-                                if(eachContract.LPCR_ContactEnfant__c != null){
+                                if(eachContract.LPCR_ContactEnfant__c != null && eachContract.LPCR_ContactEnfant__c == eachInvoiceLine.LPCR_ContactEnfant__c){
                                     
                                     Order invoiceLineOrder = invoiceLineOrderMap.get(eachInvoiceLine.id);
                                     if(invoiceLineOrder.RecordTypeId == orderReferencRT){
