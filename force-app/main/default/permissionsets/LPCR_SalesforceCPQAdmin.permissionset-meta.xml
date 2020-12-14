@@ -10971,6 +10971,15 @@
         <field>SBQQ__Subscription__c.LPCR_HoldBilling__c</field>
         <readable>true</readable>
     </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_DateDebut__c</field>
+        <readable>true</readable>
+    </fieldPermissions><fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_DateFin__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Subscription__c.LPCR_Creche__c</field>

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>blng__CreditCenter</customButtons>
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -432,6 +429,11 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>LPCR_Active__c</fields>
+        <fields>LPCR_ContactEnfant__c</fields>
+        <fields>LPCR_creche__c</fields>
+        <fields>LPCR_DateDebut__c</fields>
+        <fields>LPCR_DateFin__c</fields>
         <relatedList>LPCR_RessourceFamille__c.LPCR_CompteFamille__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -467,6 +469,7 @@
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>ORDERS.ORDER_NUMBER</fields>
+        <fields>CONTRACT.CONTRACT_NUMBER</fields>
         <fields>ORDERS.STATUS</fields>
         <fields>ORDERS.EFFECTIVE_DATE</fields>
         <fields>ORDERS.TOTAL_AMOUNT</fields>
