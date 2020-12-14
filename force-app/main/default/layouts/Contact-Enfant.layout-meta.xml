@@ -319,6 +319,17 @@
         <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
+        <fields>NAME</fields>
+        <fields>LPCR_TypePlanning__c</fields>
+        <fields>LPCR_NombreHeuresSemaine__c</fields>
+        <fields>LPCR_NombreHeuresMois__c</fields>
+        <fields>LPCR_NombreJoursAccueil__c</fields>
+        <fields>LPCR_NombrePlanning__c</fields>
+        <fields>LPCR_MoyenneHeuresSemaine__c</fields>
+        <fields>LPCR_MoyenneJoursSemaine__c</fields>
+        <relatedList>LPCR_Planning__c.LPCR_ContactEnfant__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
@@ -390,7 +401,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3E000001rFrK</masterLabel>
+        <masterLabel>00h1X000001NRTU</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

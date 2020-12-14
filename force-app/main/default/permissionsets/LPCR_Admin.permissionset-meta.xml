@@ -2653,6 +2653,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_Planning__c.LPCR_ContactEnfant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_Planning__c.LPCR_EstMigre__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6083,6 +6088,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_MontantAnnuelForfaitMICRO__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SBQQ__QuoteLine__c.LPCR_NumeroLigne__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6104,6 +6114,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.LPCR_PrixPlancher__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_PrixTotalAnnuel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_PrixUnitaire__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8044,6 +8064,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__Invoice__c.LPCR_Creche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_MontantAfficheFacture__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

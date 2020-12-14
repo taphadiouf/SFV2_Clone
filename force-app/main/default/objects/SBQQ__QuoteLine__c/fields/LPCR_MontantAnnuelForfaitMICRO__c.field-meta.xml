@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_MontantAnnuelForfaitMICRO__c</fullName>
+    <description>champ utilisé sur l&apos;annexe 2 MICRO</description>
+    <externalId>false</externalId>
+    <formula>IF(BEGINS( SBQQ__ProductCode__c, &apos;BerceauMicro&apos;), LPCR_PrixUnitaire__c * LPCR_Creche__r.LPCR_TypeMensualisation__c,NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>champ utilisé sur l&apos;annexe 2 MICRO</inlineHelpText>
+    <label>Montant annuel forfait MICRO</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

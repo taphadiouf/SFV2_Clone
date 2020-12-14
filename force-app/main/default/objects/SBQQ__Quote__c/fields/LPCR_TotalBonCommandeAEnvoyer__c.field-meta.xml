@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_TotalBonCommandeAEnvoyer__c</fullName>
-    <description>total bon de commande affiché sur le bon de commande à envoyer</description>
+    <description>total bon de commande affiché sur le bon de commande à envoyer pour les contrats de référencement</description>
     <externalId>false</externalId>
-    <inlineHelpText>total bon de commande affiché sur le bon de commande à envoyer</inlineHelpText>
+    <inlineHelpText>total bon de commande affiché sur le bon de commande à envoyer pour les contrats de référencement</inlineHelpText>
     <label>Total Bon de commande à envoyer</label>
-    <summarizedField>SBQQ__QuoteLine__c.SBQQ__NetTotal__c</summarizedField>
+    <summarizedField>SBQQ__QuoteLine__c.LPCR_PrixTotalAnnuel__c</summarizedField>
     <summaryFilterItems>
         <field>SBQQ__QuoteLine__c.LPCR_LigneBonCommandeEnvoye__c</field>
         <operation>equals</operation>

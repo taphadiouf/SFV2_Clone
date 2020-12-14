@@ -18,6 +18,7 @@ global class APB001_ProcessLPCR_Log implements Database.Batchable<sObject>, Sche
     }
     global void execute(Database.BatchableContext bc, List<LPCR_Log__c> logs){
 
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + logs.size(), UM010_Constant.SUCCESS); 
         Exception[] errors = new Exception[0];
 
         try {

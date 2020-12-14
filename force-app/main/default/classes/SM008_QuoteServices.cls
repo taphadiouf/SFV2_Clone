@@ -524,24 +524,17 @@ public with sharing class SM008_QuoteServices {
     
     
     public static Map<Id,Set<Id>> generateAgreementTemp(Map<Id,SBQQ__Quote__c> newQuoteMap,Map<Id,SBQQ__Quote__c> oldQuoteMap ){
-        ID agreementMac = LPCR_TemplateSignatureElectronique__c.getInstance().LPCR_IDTemplateContratAccueilMAC__c; 
-        ID agreementMicro = LPCR_TemplateSignatureElectronique__c.getInstance().LPCR_IDTemplateContratAccueilMICRO__c; 
+        ID agreementAcc = LPCR_IDsCongaAdobe__c.getInstance().LPCR_AATCONTRAT_ACCUEIL__c; 
         Map<Id,Set<Id>> mapQuoteIDAgreementID = new Map<Id,Set<Id>>();
-        mapQuoteIDAgreementID.put(agreementMac , new Set<Id>() );
-        mapQuoteIDAgreementID.put(agreementMicro , new Set<Id>() );
+        mapQuoteIDAgreementID.put(agreementAcc , new Set<Id>() );
         
         for(SBQQ__Quote__c eachNewQuote : newQuoteMap.values()){
             if(eachNewQuote.SBQQ__Status__c != oldQuoteMap.get(eachNewQuote.Id).SBQQ__Status__c && eachNewQuote.SBQQ__Status__c == Label.LPCR_ValideDirectrice ){
-                if(Label.LPCR_MAC.equals(eachNewQuote.LPCR_Creche__r.LPCR_TypeCreche__c)){
-                    mapQuoteIDAgreementID.get(agreementMac).add(eachNewQuote.Id);
-                }
-                if(Label.LPCR_MICRO.equals(eachNewQuote.LPCR_Creche__r.LPCR_TypeCreche__c)){
-                    mapQuoteIDAgreementID.get(agreementMicro).add(eachNewQuote.Id);
-                }
+                    mapQuoteIDAgreementID.get(agreementAcc).add(eachNewQuote.Id);
             }
         }
         
-        if(mapQuoteIDAgreementID.get(agreementMac).size() > 0 || mapQuoteIDAgreementID.get(agreementMicro).size() > 0)
+        if(mapQuoteIDAgreementID.get(agreementAcc).size() > 0)
             SM008_QuoteServices.loadAgreement(mapQuoteIDAgreementID);
         return mapQuoteIDAgreementID;
     }  

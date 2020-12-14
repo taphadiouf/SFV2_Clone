@@ -274,11 +274,12 @@ public with sharing class SM022_ModificationEntranteServices {
                     }                    
                     
                     SBQQ__Quote__c quote = quoteModel.record;
-                    
-                    if(quote.LPCR_DateFin__c.year() > eachModifEntrante.LPCR_DateEffet__c.year()){
-                        quote.SBQQ__EndDate__c = Date.newInstance(eachModifEntrante.LPCR_DateEffet__c.year()+1, 12 ,31) ;
-                    }else if(quote.LPCR_DateFin__c.year() == eachModifEntrante.LPCR_DateEffet__c.year()){
-                        quote.SBQQ__EndDate__c = quote.LPCR_DateFin__c;
+                    if(quote.LPCR_DateFin__c != null){
+                        if(quote.LPCR_DateFin__c.year() > eachModifEntrante.LPCR_DateEffet__c.year()){
+                            quote.SBQQ__EndDate__c = Date.newInstance(eachModifEntrante.LPCR_DateEffet__c.year()+1, 12 ,31) ;
+                        }else if(quote.LPCR_DateFin__c.year() == eachModifEntrante.LPCR_DateEffet__c.year()){
+                            quote.SBQQ__EndDate__c = quote.LPCR_DateFin__c;
+                        }
                     }
                     
                     quote.SBQQ__StartDate__c = eachModifEntrante.LPCR_DateEffet__c; //endDate ;
@@ -471,13 +472,13 @@ public with sharing class SM022_ModificationEntranteServices {
         WRP001_QuoteModel quoteModel = reader.read(quote.record.id);
         quoteModel.record.SBQQ__StartDate__c = firstDayOfNextMonthDate;
         quoteModel.record.LPCR_DateDebut__c = firstDayOfNextMonthDate;
-        
-        if(quoteModel.record.LPCR_DateFin__c.year() > dateEffect.year()){
-            quoteModel.record.SBQQ__EndDate__c = Date.newInstance(dateEffect.year()+1, 12 ,31) ;
-        }else if(quoteModel.record.LPCR_DateFin__c.year() == dateEffect.year()){
-            quoteModel.record.SBQQ__EndDate__c = quoteModel.record.LPCR_DateFin__c;
+        if(quoteModel.record.LPCR_DateFin__c != null){
+            if(quoteModel.record.LPCR_DateFin__c.year() > dateEffect.year()){
+                quoteModel.record.SBQQ__EndDate__c = Date.newInstance(dateEffect.year()+1, 12 ,31) ;
+            }else if(quoteModel.record.LPCR_DateFin__c.year() == dateEffect.year()){
+                quoteModel.record.SBQQ__EndDate__c = quoteModel.record.LPCR_DateFin__c;
+            }
         }
-        
         for(WRP002_QuoteLineModel eachQuoteLine : quoteModel.lineItems){
             eachQuoteLine.record.LPCR_CloneCancel__c = true;
         }

@@ -152,14 +152,14 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <gender>Feminine</gender>
-    <label>Planning Prévisionnel</label>
+    <gender>Masculine</gender>
+    <label>Détail Planning</label>
     <nameField>
         <displayFormat>PP-{0000}</displayFormat>
         <label>Numéro</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Plannings Prévisionnels</pluralLabel>
+    <pluralLabel>Détails Planning</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>

@@ -12,7 +12,7 @@ global class APB018_ProcessResiliationQuote implements Database.Batchable<sObjec
     }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
         Date today = date.today();
         
         query = 'SELECT Id,SBQQ__MasterContract__c  FROM SBQQ__Quote__c WHERE SBQQ__Type__c =\'Amendment\' AND LPCR_TypeAvenant__c = \'Résiliation\'  AND SBQQ__Ordered__c = True AND SBQQ__Status__c != \'Terminé\' AND SBQQ__StartDate__c <= :today ';
@@ -21,7 +21,9 @@ global class APB018_ProcessResiliationQuote implements Database.Batchable<sObjec
     }
     
     global void execute(Database.BatchableContext BC, List<SBQQ__Quote__c> scope) {
-            
+        
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
+    
         List<Exception> errors = new List<Exception>();
 
         try {
@@ -39,14 +41,14 @@ global class APB018_ProcessResiliationQuote implements Database.Batchable<sObjec
             
             List<Contract> listOfMasterContract = [SELECT Id,Status,SBQQ__Quote__c FROM Contract WHERE Id in :masterContractIds ]; 
             
-            System.debug('>> APB018_ProcessResiliationQuote , execute : listOfMasterContract = '+ listOfMasterContract);
+            PAD.log(ClassName, 'execute', 'listOfMasterContract = '+ listOfMasterContract);
             
             for(Contract eachContract : listOfMasterContract) {
                 if(eachContract.SBQQ__Quote__c != null){
                     masterContractQuoteIds.add(eachContract.SBQQ__Quote__c);
                 } 
                 eachContract.Status = 'Terminé';
-                listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('', ClassName, 'Batch', String.valueOf(eachContract.Id), '', 'SUCCESS'));             
+                listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert(ClassName, 'execute', 'Batch', String.valueOf(eachContract.Id), '', 'SUCCESS'));             
             } 
             
             for(SBQQ__Quote__c eachQuote : [SELECT Id,SBQQ__Status__c FROM SBQQ__Quote__c WHERE Id IN: masterContractQuoteIds OR Id IN: quoteIds OR SBQQ__MasterContract__c IN: masterContractIds ]){
@@ -64,7 +66,7 @@ global class APB018_ProcessResiliationQuote implements Database.Batchable<sObjec
                 }
                 finally {
                     if (String.isNotBlank(errorMsg)) {
-                        UM001_LogManager.writeLogActivityWithoutFuture('Update Contract Status',ClassName, 'Batch', '',  'Error:' + errorMsg, UM010_Constant.ERROR);  
+                        UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch', '',  'Error updating contract status:' + errorMsg, UM010_Constant.ERROR);  
                     } else {
                         insert listOfLog;
                     }               
