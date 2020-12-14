@@ -2097,6 +2097,15 @@
         <field>Account.LPCR_BerceauxCommercialisables__c</field>
         <readable>true</readable>
     </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_DateDebut__c</field>
+        <readable>true</readable>
+    </fieldPermissions><fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_DateFin__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.LPCR_BerceauxDisponibles__c</field>
@@ -2120,16 +2129,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.LPCR_CodeAPE__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Account.LPCR_CodeBIC__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Account.LPCR_CodeIBAN__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
