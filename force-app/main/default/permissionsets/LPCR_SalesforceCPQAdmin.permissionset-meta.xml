@@ -2134,17 +2134,7 @@
         <field>Account.LPCR_CodeAPE__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Account.LPCR_CodeBIC__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Account.LPCR_CodeIBAN__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
+     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_CodePreinscription__c</field>
         <readable>true</readable>
@@ -10969,6 +10959,15 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Subscription__c.LPCR_HoldBilling__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_DateDebut__c</field>
+        <readable>true</readable>
+    </fieldPermissions><fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_DateFin__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -304,6 +304,7 @@
                 invoiceLineList.blng__ChargeType__c = 'Recurring';
                 invoiceLineList.blng__BillingFrequency__c = 'Annual';
                 invoiceLineList.blng__Subtotal__c = 200;
+                invoiceLineList.LPCR_ContactEnfant__c = Contact.id;
                 insert invoiceLineList;  
                 
                 orderInvoice.blng__InvoiceStatus__c = 'Posted';
