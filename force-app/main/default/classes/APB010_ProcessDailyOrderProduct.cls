@@ -13,7 +13,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
     global Database.QueryLocator start(Database.BatchableContext BC) {
 
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
-        return Database.getQueryLocator([SELECT Id,Quantity, OrderId, SBQQ__QuoteLine__r.LPCR_PrixUnitaire__c,  TotalPrice,SBQQ__DefaultSubscriptionTerm__c,LPCR_Uplift__c,LPCR_ContractStartDate__c,
+        return Database.getQueryLocator([SELECT Id,Quantity, ServiceDate, OrderId, SBQQ__QuoteLine__r.LPCR_PrixUnitaire__c,  TotalPrice,SBQQ__DefaultSubscriptionTerm__c,LPCR_Uplift__c,LPCR_ContractStartDate__c,
                                                 LPCR_ContractEndDate__c, blng__BillableUnitPrice__c, SBQQ__BillingFrequency__c, blng__NextChargeDate__c,
                                                 SBQQ__Contract__c,SBQQ__Contract__r.LPCR_DateFin__c, Order.LPCR_BDOM_OrderStartdate__c,SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c,
                                                 SBQQ__QuoteLine__r.SBQQ__ListPrice__c,Order.LPCR_RenouvellementPlanFacture__c 
@@ -56,7 +56,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                                 
                 // Calculate no. of total years
                 
-                Date tmpDate = eachOrderItem.LPCR_ContractStartDate__c;
+                Date tmpDate = eachOrderItem.ServiceDate;
                 Date endDate = eachOrderItem.LPCR_ContractEndDate__c;            
                 Integer totalNoOfYears = (endDate.year() - tmpDate.year()) + 1;
                 
