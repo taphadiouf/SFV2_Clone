@@ -7,34 +7,62 @@
 public class SM019_DocumentList_Callout_Test {
     @isTest
     static void getDocumentListCallout_1_Test(){
-		Test.startTest();
+		  Test.startTest();
         
-        Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-      	SM019_DocumentList_Callout.DocumentListFullResponse documentListFullResponse = SM019_DocumentList_Callout.getDocumentListCallout('000000000000000', 'Facture');
-        // Verify mock response is not null
-        System.assertNotEquals(null, documentListFullResponse, 'The callout result returned is null.');
-        // Verify status code
-        System.assertEquals('200',documentListFullResponse.result, 'The status code is not 200.'); 
-        Test.stopTest();
+      Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
+      SM019_DocumentList_Callout.DocumentListFullResponse documentListFullResponse = SM019_DocumentList_Callout.getDocumentListCallout('000000000000000', 'Facture');
+      // Verify mock response is not null
+      System.assertNotEquals(null, documentListFullResponse, 'The callout result returned is null.');
+      // Verify status code
+      System.assertEquals('200',documentListFullResponse.result, 'The status code is not 200.'); 
+
+      Test.stopTest();
               
     }
     @isTest
     static void getDocumentListCallout_2_Test(){
-		Test.startTest();
-        
-        Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-        try{
-           SM019_DocumentList_Callout.DocumentListFullResponse documentListFullResponse = SM019_DocumentList_Callout.getDocumentListCallout('', 'Facture');
+      
+      Test.startTest();
+      Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
 
-        }catch(Exception e){
-             // Verify mock response is not null
-       // System.assertNotEquals(null, documentListFullResponse, 'The callout result returned is null.');
-        // Verify status code
+      try{
+        SM019_DocumentList_Callout.DocumentListFullResponse documentListFullResponse = SM019_DocumentList_Callout.getDocumentListCallout('', 'Facture');
+      }catch(Exception e){
         System.assertNotEquals(null,e, 'The status code is not 503.'); 
-        }
-       
-        Test.stopTest();
+      }
+      Test.stopTest();
               
     }
+
+    @isTest
+    static void getDocumentListCallout_3_Test(){
+
+      Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
+      Test.startTest();
+      
+      SM019_DocumentList_Callout.getDocumentListFutureCallout('00000', 'Facture','test@test.com');
+      try {
+        SM019_DocumentList_Callout.getDocumentListFutureCallout(null,null,null);
+      } catch (Exception e) {
+        System.assertNotEquals(null,e); 
+      }
+      Test.stopTest();
+
+    }
+
+
+    @isTest
+    static void getDocumentListCallout_4_Test(){
+
+      Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
+      Test.startTest();
+            SM019_DocumentList_Callout.getDocumentListFutureCallout('test@test.com','test2@Test2.com', 'Subject','Body','000000','Facture');
+
+      Test.stopTest();
+
+    }
+
+
+
 
 }
