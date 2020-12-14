@@ -2289,6 +2289,11 @@
         <field>Account.LPCR_LienSitePreinscription__c</field>
         <readable>true</readable>
     </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_Enfant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_MailLivraisonFacture__c</field>
