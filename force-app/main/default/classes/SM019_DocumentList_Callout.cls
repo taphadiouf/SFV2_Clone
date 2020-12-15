@@ -97,7 +97,7 @@ public with sharing class SM019_DocumentList_Callout {
                 throw new AuraHandledException(appelServiceExterne.LPCR_MessageRetour__c);
             }
         }
-        catch(System.CalloutException e) {
+        catch(Exception e) {
             if (String.isNotBlank(String.valueOf(e))){
                 UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_LIST_DOC,'SM019_DocumentList_Callout', 'Callout', null,  'Apex Callout Exception:' + e, UM010_Constant.ERROR);
             }

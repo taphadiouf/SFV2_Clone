@@ -2545,7 +2545,8 @@
         <editable>true</editable>
         <field>OrderItem.LPCR_DateDebut__c</field>
         <readable>true</readable>
-    </fieldPermissions><fieldPermissions>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>OrderItem.LPCR_DateFin__c</field>
         <readable>true</readable>
@@ -2623,6 +2624,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.SBQQ__IgnoreParentContractedPrices__c</field>
+        <readable>true</readable>
+     </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_Enfant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+     <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_LienFamilleFacture__c.LPCR_Enfant__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
