@@ -180,6 +180,70 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                     }
                 }
 
+            List<LPCR_BonAchatPartenaire__c> listBonAchats = [SELECT Id,LPCR_Creche__c,LPCR_DateFinPrestation__c,LPCR_DateDebutPrestation__c,LPCR_Client__c,LPCR_ContactEnfant__c,
+                                                                    LPCR_ContratReservataire__c
+                                                                FROM LPCR_BonAchatPartenaire__c
+                                                                WHERE 
+                                                                LPCR_DateFinPrestation__c >= :minStartDates AND
+                                                                LPCR_DateDebutPrestation__c <= :maxEndDates AND 
+                                                                LPCR_Creche__c != Null AND 
+                                                                LPCR_Client__c IN :invoiceAccountIds];
+            LPCR_BonAchatPartenaire__c bon = listBonAchats[0];
+
+            for(LPCR_BonAchatPartenaire__c bonAchat : listBonAchats){
+                
+                if (!mapOfInvoiceLine.containsKey(bonAchat.LPCR_ContratReservataire__c)) {
+                    
+                    PAD.log(ClassName, 'execute', 'skip the occurence' + bonAchat);
+                    continue; // If our scope of Invoice Line is not link to our scope of B2C Contract we skip the occurence
+                }
+
+                for (blng__InvoiceLine__c eachInvoiceLine : mapOfInvoiceLine.get(bonAchat.LPCR_ContratReservataire__c)) {
+
+                    if (eachInvoiceLine.blng__Invoice__r.blng__Account__c   == bonAchat.LPCR_Client__c 
+                        && 
+                        eachInvoiceLine.LPCR_Creche__c                      == bonAchat.LPCR_Creche__c) {
+
+
+                        if (bonAchat.LPCR_DateFinPrestation__c >= eachInvoiceLine.blng__StartDate__c && bonAchat.LPCR_DateDebutPrestation__c <= eachInvoiceLine.blng__EndDate__c) {
+
+                            if (mapNumberProdForInvoice.containsKey(eachInvoiceLine.blng__Invoice__c)) {
+                                mapNumberProdForInvoice.put(eachInvoiceLine.blng__Invoice__c,mapNumberProdForInvoice.get(eachInvoiceLine.blng__Invoice__c) +1 );
+                            }
+                            else {
+                                mapNumberProdForInvoice.put(eachInvoiceLine.blng__Invoice__c,1);
+                            }
+
+                            Order invoiceLineOrder = invoiceLineOrderMap.get(eachInvoiceLine.id);
+                            if(invoiceLineOrder.RecordTypeId == orderReferencRT){
+
+                                if(bonAchat.LPCR_ContactEnfant__c == eachInvoiceLine.LPCR_ContactEnfant__c){
+
+                                    lienFamilleFacture = new LPCR_LienFamilleFacture__c(LPCR_Facture__c = eachInvoiceLine.blng__Invoice__c,
+                                                                                LPCR_LigneFacture__c = eachInvoiceLine.Id,
+                                                                                LPCR_BonAchat__c = bonAchat.Id,
+                                                                                LPCR_ContratEntreprise__c = bonAchat.LPCR_ContratReservataire__c,
+                                                                                LPCR_Enfant__c = bonAchat.LPCR_ContactEnfant__c
+                                                                                );
+                                    if(!listOfLienFamilleFactureFromBD.contains(lienFamilleFacture)){
+                                        listOfLienFamilleFacture.add(lienFamilleFacture);
+                                    } 
+                                }
+                            }else{
+                                lienFamilleFacture = new LPCR_LienFamilleFacture__c(LPCR_Facture__c = eachInvoiceLine.blng__Invoice__c,
+                                                                                LPCR_LigneFacture__c = eachInvoiceLine.Id,
+                                                                                LPCR_BonAchat__c = bonAchat.Id,
+                                                                                LPCR_ContratEntreprise__c = bonAchat.LPCR_ContratReservataire__c 
+                                                                                );
+                                if(!listOfLienFamilleFactureFromBD.contains(lienFamilleFacture)){
+                                    listOfLienFamilleFacture.add(lienFamilleFacture);
+                                } 
+                            }
+                        }
+                    }    
+                }
+            }
+
                 PAD.log(ClassName,'execute ','listOfLienFamilleFacture size '+ listOfLienFamilleFacture.size());
                 PAD.log(ClassName,'execute ','listOfLienFamilleFacture '+ listOfLienFamilleFacture);
                 

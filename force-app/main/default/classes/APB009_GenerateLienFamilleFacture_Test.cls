@@ -8,6 +8,7 @@
         private static final Id ACC_B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
         private static final Id ACC_B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
         private static final Id ACC_CRECHE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
+        private static final Id ACC_PARTEN_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, 'Partenaire');
         private static final Id CONTRACT_B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Reservataire);
         private static final Id CONTRACT_ACCUEIL_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_ContratA);
         private static final Id OPPT_FAMILE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Opportunity, Label.LPCR_Famille);
@@ -280,6 +281,37 @@
                             Contract contractB2C = (Contract) UM002_TestDataFactory.createSObject('Contract', defaultVal);
                 insert contractB2C;
                 
+
+                Account accParten = new Account();
+                accParten.Name = 'Test-Partenaire';
+                accParten.SBQQ__RenewalModel__c = 'Contract Based';
+                accParten.LPCR_PasDeSIRET__c = true;
+                accParten.RecordTypeId = ACC_PARTEN_RT_ID;
+                insert accParten;
+
+
+                LPCR_ContratPartenaire__c ctPartenaire = new LPCR_ContratPartenaire__c();
+                ctPartenaire.LPCR_Statut__c = 'Actif';
+                ctPartenaire.LPCR_TypeContrat__c = 'Principal';
+                ctPartenaire.LPCR_CDDCDI__c='CDD';
+                ctPartenaire.LPCR_TypeReconduction__c = 'Express';
+                ctPartenaire.LPCR_Compte__c  = accParten.id;
+                ctPartenaire.LPCR_ContactPartenaire__c = contact.id;
+                
+                insert ctPartenaire ; 
+
+                LPCR_BonAchatPartenaire__c bonAchat = new LPCR_BonAchatPartenaire__c();
+
+                bonAchat.LPCR_Client__c = accB2B.id;
+                bonAchat.LPCR_Creche__c = accCreche.Id;
+                bonAchat.LPCR_DateDebutPrestation__c = todayDate;
+                bonAchat.LPCR_DateFinPrestation__c = todayDate.addDays(60);
+                bonAchat.LPCR_ContratReservataire__c = contractB2B.id;
+                bonAchat.LPCR_ContratPartenaire__c = ctPartenaire.id;
+                bonAchat.LPCR_ContactEnfant__c = Contact.id;
+
+                insert bonAchat;
+
                 //orderB2B.blng__BillNow__c=true;
                 //update orderB2B;
                 
@@ -294,18 +326,18 @@
                 blng__Invoice__c orderInvoice = invoicesList.get(0);           
                 orderInvoice.blng__Order__c = orderB2B.Id;
                 update orderInvoice;
-                blng__InvoiceLine__c invoiceLineList = UM002_TestDataFactory.createInvoiceLine(orderInvoice.id,orderItems.get(0).Id);
-                invoiceLineList.blng__InvoiceLineStatus__c = 'Draft';
-                invoiceLineList.blng__UnitPrice__c = 150;
-                invoiceLineList.blng__Quantity__c =3;
-                invoiceLineList.blng__Product__c = prod.id;
-                invoiceLineList.blng__StartDate__c = System.today();
-                invoiceLineList.blng__EndDate__c = System.today().addDays(60);
-                invoiceLineList.blng__ChargeType__c = 'Recurring';
-                invoiceLineList.blng__BillingFrequency__c = 'Annual';
-                invoiceLineList.blng__Subtotal__c = 200;
-                invoiceLineList.LPCR_ContactEnfant__c = Contact.id;
-                insert invoiceLineList;  
+                blng__InvoiceLine__c invoiceLine = UM002_TestDataFactory.createInvoiceLine(orderInvoice.id,orderItems.get(0).Id);
+                invoiceLine.blng__InvoiceLineStatus__c = 'Draft';
+                invoiceLine.blng__UnitPrice__c = 150;
+                invoiceLine.blng__Quantity__c =3;
+                invoiceLine.blng__Product__c = prod.id;
+                invoiceLine.blng__StartDate__c = System.today();
+                invoiceLine.blng__EndDate__c = System.today().addDays(60);
+                invoiceLine.blng__ChargeType__c = 'Recurring';
+                invoiceLine.blng__BillingFrequency__c = 'Annual';
+                invoiceLine.blng__Subtotal__c = 200;
+                invoiceLine.LPCR_ContactEnfant__c = Contact.id;
+                insert invoiceLine;  
                 
                 orderInvoice.blng__InvoiceStatus__c = 'Posted';
                 update orderInvoice;
@@ -331,7 +363,7 @@
                                             FROM blng__Invoice__c
                                             WHERE  Id  = :mapOfInvoice.values().get(0).Id ];   
                
-                System.assertEquals(1,listOfLienFamilleFactureFromBD.size());
+                System.assertEquals(2,listOfLienFamilleFactureFromBD.size());
                 System.assertEquals(true,invoice.LPCR_LiaisonFamilleFacture__c);
                 System.assertEquals(contact.id, listOfLienFamilleFactureFromBD.get(0).LPCR_Enfant__c);
                 
