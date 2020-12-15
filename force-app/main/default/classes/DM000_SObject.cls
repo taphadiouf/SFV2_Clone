@@ -241,6 +241,7 @@ public abstract class DM000_SObject{
 * @param sObjectName sObject name
 * @return Map<String, Schema.SObjectField> Map of fields for a given SObject
 */
+    @TestVisible
     private Map<String, Schema.SObjectField> buildFieldsMap(String sObjectName){
         
         Map <String, Schema.SObjectField> fieldsMap = fieldsMaps.get(sObjectName);
@@ -258,6 +259,7 @@ public abstract class DM000_SObject{
 * @param sObjectName  sObject name
 * @return List<String> list of fields for a given SObject
 */
+    @TestVisible
     private List<String> getFieldsListFor(String sObjectName) {
         
         Map <String, Schema.SObjectField> fieldsMap = buildFieldsMap(sObjectName);

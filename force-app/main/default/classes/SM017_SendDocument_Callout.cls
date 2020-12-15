@@ -29,22 +29,37 @@ public with sharing class SM017_SendDocument_Callout {
     
     public static Id getB2CContractCrecheID(String OwnerSfId){
 
+        String errorMsg = '';
+        Id contractCrecheId;
+        try {
+            Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_ContratA);
+            Id acceuilApprRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Accueil_Approuve);
 
-        Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_ContratA);
-        Id acceuilApprRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Accueil_Approuve);
-
-        Id acceuilDevisId = [SELECT Id,LPCR_Devis__c FROM echosign_dev1__SIGN_Agreement__c WHERE (LPCR_Devis__r.RecordTypeId =: acceuilRecTypeId OR LPCR_Devis__r.RecordTypeId =: acceuilApprRecTypeId) AND ID =: OwnerSfId].LPCR_Devis__c;
+            Id acceuilDevisId = [SELECT Id,LPCR_Devis__c FROM echosign_dev1__SIGN_Agreement__c WHERE 
+                (LPCR_Devis__r.RecordTypeId =: acceuilRecTypeId OR 
+                LPCR_Devis__r.RecordTypeId =: acceuilApprRecTypeId) 
+                AND 
+                ID =: OwnerSfId].LPCR_Devis__c;
+            
+            List<SBQQ__QuoteLine__c> relatedQuoteLignes = [SELECT Id, SBQQ__Quote__c  FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c =: acceuilDevisId];
+            
+            Set<Id> quoteLigneIds = UM003_TypeManager.getIdsOfListObjects(relatedQuoteLignes);
+            
+            List<OrderItem> relatedOrderItems = [SELECT Id, SBQQ__QuoteLine__c, SBQQ__Contract__c FROM OrderItem WHERE SBQQ__QuoteLine__c IN: quoteLigneIds ];
+            
+            Id relatedContractId = relatedOrderItems.get(0).SBQQ__Contract__c;
+            
+            contractCrecheId = [SELECT Id, LPCR_Creche__c  FROM COntract WHERE Id=: relatedContractId ].LPCR_Creche__c;
+            
+        } catch (Exception e ) {
+            errorMsg = e.getMessage();
+        } finally {
+            if (errorMsg != '') {
+                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED,'SM017_SendDocument_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+            }
+            
+        }
         
-        List<SBQQ__QuoteLine__c> relatedQuoteLignes = [SELECT Id, SBQQ__Quote__c  FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c =: acceuilDevisId];
-        
-        Set<Id> quoteLigneIds = UM003_TypeManager.getIdsOfListObjects(relatedQuoteLignes);
-        
-        List<OrderItem> relatedOrderItems = [SELECT Id, SBQQ__QuoteLine__c, SBQQ__Contract__c FROM OrderItem WHERE SBQQ__QuoteLine__c IN: quoteLigneIds ];
-        
-        Id relatedContractId = relatedOrderItems.get(0).SBQQ__Contract__c;
-        
-        Id contractCrecheId = [SELECT Id, LPCR_Creche__c  FROM COntract WHERE Id=: relatedContractId ].LPCR_Creche__c;
-
         return contractCrecheId;
     }
 
@@ -114,14 +129,17 @@ public with sharing class SM017_SendDocument_Callout {
             
             }
             else {
-            	PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'response:' + response);
-                PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'response.getStatusCode()):' + response.getStatusCode());
-                if (String.valueOf(response.getStatusCode()).equals('200')) {
-                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.SUCCESS);  
-                
-                } else {
-                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID,  'Exception:' + String.valueOf(response.getStatusCode()) + ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - Attachment.Id:' + DocSfID + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.ERROR);  
+                if(response != null){
+                    if (String.valueOf(response.getStatusCode()).equals('200')) {
+                        UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.SUCCESS);  
+                    
+                    } else {
+                        UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID,  'Exception:' + String.valueOf(response.getStatusCode()) + ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - Attachment.Id:' + DocSfID + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.ERROR);  
+                    }
+                }else{
+                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID,  'Exception: Internal Error. Response is null! - Attachment.Id:' + DocSfID + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.ERROR);  
                 }
+                
             
             }
         }

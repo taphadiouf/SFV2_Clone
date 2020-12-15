@@ -5,6 +5,16 @@
 */
 
 global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
+
+    global boolean failResponse = false;
+
+    global MCK001_LPCRHttpCalloutMockImpl(){
+
+    }
+    global MCK001_LPCRHttpCalloutMockImpl(boolean fail){
+        this.failResponse = fail;
+    }
+
     global HTTPResponse respond(HTTPRequest req) {
         HttpResponse res = new HttpResponse();
         res.setHeader('Content-Type', 'application/json');
@@ -39,13 +49,19 @@ global class MCK001_LPCRHttpCalloutMockImpl implements HttpCalloutMock{
         if(req.getEndpoint().contains(sendDocumentEndpoint)){
             System.debug(req.getBody());
             WRP004_APISaveDocument data = (WRP004_APISaveDocument) JSON.deserialize(req.getBody(), WRP004_APISaveDocument.class);
-            if(String.isNotBlank(data.OwnerSfId)){
-                res.setBody('{"result":"200"}');
-                res.setStatusCode(200);
-            }else{
+            if(!failResponse){
+                if(String.isNotBlank(data.OwnerSfId)){
+                    res.setBody('{"result":"200"}');
+                    res.setStatusCode(200);
+                }else{
+                    res.setBody('{"result":"503"}');
+                    res.setStatusCode(503);
+                }  
+            }else {
                 res.setBody('{"result":"503"}');
-                res.setStatusCode(503);
-            }                        
+                    res.setStatusCode(503);
+            }
+                      
         }else if(req.getEndpoint().contains(getDocumentEndpoint)){
             System.debug(req.getBody());
             System.debug(req.getEndpoint());
