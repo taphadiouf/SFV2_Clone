@@ -4,13 +4,13 @@
     <externalId>false</externalId>
     <formula>Case(
   LPCR_TypePlanning__c,
-  &quot;Multi-Planning&quot;, LPCR_NombreJoursAccueil__c / LPCR_NombrePlanning__c ,
+  &quot;Multi-Planning&quot;, IF(LPCR_NombrePlanning__c=0,0,LPCR_NombreJoursAccueil__c / LPCR_NombrePlanning__c) ,
   &quot;Planning Tournant&quot;, (LPCR_NombreHeuresMois__c /4.348/5),
-  &quot;Planning Classique&quot;, LPCR_NombreJoursAccueil__c / LPCR_NombrePlanning__c,
+  &quot;Planning Classique&quot;, IF(LPCR_NombrePlanning__c=0,0,LPCR_NombreJoursAccueil__c / LPCR_NombrePlanning__c),
   0
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Moyenne nombre de jour par semaines</label>
+    <label>Moyenne nombre de jours par semaine</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>
