@@ -148,23 +148,33 @@ global class APB009_GenerateLienFamilleFacture implements Database.Batchable<sOb
                                 else {
                                     mapNumberProdForInvoice.put(eachInvoiceLine.blng__Invoice__c,1);
                                 }
-                                lienFamilleFacture = new LPCR_LienFamilleFacture__c(LPCR_Facture__c = eachInvoiceLine.blng__Invoice__c,
+
+                                Order invoiceLineOrder = invoiceLineOrderMap.get(eachInvoiceLine.id);
+                                if(invoiceLineOrder.RecordTypeId == orderReferencRT){
+
+                                    if(eachContract.LPCR_ContactEnfant__c == eachInvoiceLine.LPCR_ContactEnfant__c){
+
+                                        lienFamilleFacture = new LPCR_LienFamilleFacture__c(LPCR_Facture__c = eachInvoiceLine.blng__Invoice__c,
+                                                                                    LPCR_LigneFacture__c = eachInvoiceLine.Id,
+                                                                                    LPCR_ContratFamille__c = eachContract.Id,
+                                                                                    LPCR_ContratEntreprise__c = eachContract.LPCR_ContractEntreprise__c,
+                                                                                    LPCR_Enfant__c = eachContract.LPCR_ContactEnfant__c
+                                                                                    );
+                                        if(!listOfLienFamilleFactureFromBD.contains(lienFamilleFacture)){
+                                            listOfLienFamilleFacture.add(lienFamilleFacture);
+                                        } 
+                                    }
+                                }else{
+                                    lienFamilleFacture = new LPCR_LienFamilleFacture__c(LPCR_Facture__c = eachInvoiceLine.blng__Invoice__c,
                                                                                     LPCR_LigneFacture__c = eachInvoiceLine.Id,
                                                                                     LPCR_ContratFamille__c = eachContract.Id,
                                                                                     LPCR_ContratEntreprise__c = eachContract.LPCR_ContractEntreprise__c 
                                                                                     );
-                                
-                                if(eachContract.LPCR_ContactEnfant__c != null && eachContract.LPCR_ContactEnfant__c == eachInvoiceLine.LPCR_ContactEnfant__c){
-                                    
-                                    Order invoiceLineOrder = invoiceLineOrderMap.get(eachInvoiceLine.id);
-                                    if(invoiceLineOrder.RecordTypeId == orderReferencRT){
-
-                                        lienFamilleFacture.LPCR_Enfant__c =     eachContract.LPCR_ContactEnfant__c;
-                                    }
+                                    if(!listOfLienFamilleFactureFromBD.contains(lienFamilleFacture)){
+                                        listOfLienFamilleFacture.add(lienFamilleFacture);
+                                    } 
+                                     
                                 }
-                                if(!listOfLienFamilleFactureFromBD.contains(lienFamilleFacture)){
-                                    listOfLienFamilleFacture.add(lienFamilleFacture);
-                                }   
                             }
                         }
                     }

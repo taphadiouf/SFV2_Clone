@@ -13,7 +13,7 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
     global Database.QueryLocator start(Database.BatchableContext BC) {
 
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
-        return Database.getQueryLocator([SELECT Id,Quantity, OrderId, SBQQ__QuoteLine__r.LPCR_PrixUnitaire__c,  TotalPrice,SBQQ__DefaultSubscriptionTerm__c,LPCR_Uplift__c,LPCR_ContractStartDate__c,
+        return Database.getQueryLocator([SELECT Id,Quantity, ServiceDate, OrderId, SBQQ__QuoteLine__r.LPCR_PrixUnitaire__c,  TotalPrice,SBQQ__DefaultSubscriptionTerm__c,LPCR_Uplift__c,LPCR_ContractStartDate__c,
                                                 LPCR_ContractEndDate__c, blng__BillableUnitPrice__c, SBQQ__BillingFrequency__c, blng__NextChargeDate__c,
                                                 SBQQ__Contract__c,SBQQ__Contract__r.LPCR_DateFin__c, Order.LPCR_BDOM_OrderStartdate__c,SBQQ__QuoteLine__r.SBQQ__ProrateMultiplier__c,
                                                 SBQQ__QuoteLine__r.SBQQ__ListPrice__c,Order.LPCR_RenouvellementPlanFacture__c 
@@ -56,12 +56,13 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                                 
                 // Calculate no. of total years
                 
-                Date tmpDate = eachOrderItem.LPCR_ContractStartDate__c;
+                Date tmpDate = eachOrderItem.ServiceDate;
                 Date endDate = eachOrderItem.LPCR_ContractEndDate__c;            
                 Integer totalNoOfYears = (endDate.year() - tmpDate.year()) + 1;
                 
                 Decimal totalPrice = eachOrderItem.TotalPrice;
                 Decimal totalFullYearPrice = eachOrderItem.SBQQ__QuoteLine__r.LPCR_PrixUnitaire__c;
+                Decimal evolPrixUnitaire = eachOrderItem.SBQQ__QuoteLine__r.LPCR_PrixUnitaire__c;
                 Decimal finalLastYearPrice = 0;
                 Decimal totaleGlobalePlanFacture = 0;
                 Decimal sumOfTotalContractValue = 0;
@@ -106,8 +107,16 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
                             
                         }else if(eachYear != totalNoOfYears) { // Middle Year price
 
-                            totalFullYearPrice =  (totalFullYearPrice + ((totalFullYearPrice * eachOrderItem.LPCR_Uplift__c)/100)) * quantity;
+                            evolPrixUnitaire = evolPrixUnitaire + ((evolPrixUnitaire * eachOrderItem.LPCR_Uplift__c)/100);
+                            totalFullYearPrice =  (evolPrixUnitaire) * quantity;
+                            
+
+                            PAD.log(ClassName, 'execute','Middle Year - totalFullYearPrice : '+ totalFullYearPrice);
+                            PAD.log(ClassName, 'execute','Middle Year - evolPrixUnitaire : '+ evolPrixUnitaire);
+
                             totaleGlobalePlanFacture += totalFullYearPrice;
+
+                            
                             
                             // Create Billing plan record
                             LPCR_PlanFacturation__c billingPlan = new LPCR_PlanFacturation__c();
@@ -133,7 +142,12 @@ global class APB010_ProcessDailyOrderProduct implements Database.Batchable<sObje
 
                         } else { // Last Partial Year
 
-                            totalFullYearPrice =  (totalFullYearPrice + ((totalFullYearPrice * eachOrderItem.LPCR_Uplift__c)/100))  * quantity;
+                            evolPrixUnitaire = evolPrixUnitaire + ((evolPrixUnitaire * eachOrderItem.LPCR_Uplift__c)/100);
+                            totalFullYearPrice =  (evolPrixUnitaire) * quantity;
+                            
+                            PAD.log(ClassName, 'execute','Last Partial Year - totalFullYearPrice : '+ totalFullYearPrice);
+                            PAD.log(ClassName, 'execute','Last Partial Year - evolPrixUnitaire : '+ evolPrixUnitaire);
+
                             Double perDayPrice = ((totalFullYearPrice)/365).setScale(4);
                             Integer diffBetweenMonths = lastDayOfCurrentMonthDateSetEndDate.addDays(1).monthsBetween(eachOrderItem.LPCR_ContractEndDate__c);
                             Integer reminderDays = Date.newInstance(eachOrderItem.LPCR_ContractEndDate__c.year(), eachOrderItem.LPCR_ContractEndDate__c.month() , 1).daysBetween(eachOrderItem.LPCR_ContractEndDate__c) + 1;
