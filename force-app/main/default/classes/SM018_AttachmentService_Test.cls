@@ -153,8 +153,9 @@ public class SM018_AttachmentService_Test {
         List<Attachment> attachmentList = new List<Attachment>();
         Attachment attach1 = UM002_TestDataFactory.createAttachement('Facture Famille', 'Testing Body', invoice.Id, 'Facture');
         attachmentList.add(attach1);
-        insert attachmentList;
-        
+        //insert attachmentList;
+        Attachment attach2 = UM002_TestDataFactory.createAttachement('Contrat Famille', 'Testing Body', invoice.Id, 'Contrat');
+        insert attach2;
         Test.stopTest();
         
     }
