@@ -6,7 +6,7 @@ public with sharing class APB000_DeleteOldLogs_Test {
 
             LPCR_Log__c log = new LPCR_Log__c(Name='Test log');
             insert log;
-
+ 
             Test.startTest();
             APB000_DeleteOldLogs lpcrLog = new APB000_DeleteOldLogs();
             lpcrLog.execute(null);
