@@ -30,12 +30,12 @@
                 <field>Birthdate</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_Handicape__c</field>
+                <behavior>Readonly</behavior>
+                <field>LPCR_ANaitre__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_DetailHandicap__c</field>
+                <field>LPCR_Handicape__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -54,6 +54,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_ProtocoleMedical__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_DetailHandicap__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -401,7 +405,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1X000001NRTU</masterLabel>
+        <masterLabel>00h1j000001mxFu</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
