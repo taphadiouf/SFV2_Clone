@@ -316,7 +316,7 @@
         <field>Account.LPCR_CodeAnalytique__c</field>
         <readable>true</readable>
     </fieldPermissions>
-     <fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_CodePaie__c</field>
         <readable>true</readable>
@@ -1334,6 +1334,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.HomePhone</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.LPCR_ANaitre__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5639,6 +5644,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_Option__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_PlaceCommercialisee__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_PlaceOccupee__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

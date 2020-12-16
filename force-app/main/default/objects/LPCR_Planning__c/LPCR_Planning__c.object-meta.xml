@@ -152,6 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
     <gender>Masculine</gender>
     <label>Planning Enfant</label>
     <nameField>
@@ -161,7 +162,13 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Plannings Enfants</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <searchResultsAdditionalFields>LPCR_ContactEnfant__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LPCR_TypePlanning__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LPCR_NombreJoursAccueil__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LPCR_NombreHeuresSemaine__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LPCR_NombreHeuresMois__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
