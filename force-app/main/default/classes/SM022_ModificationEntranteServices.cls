@@ -223,7 +223,6 @@ public with sharing class SM022_ModificationEntranteServices {
                         
                         for(LPCR_DetailModificationPlanning__c eachDetailModifPlan : detailModifPlanningMap.get(eachModifEntrante.Id)){
                             LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(
-                                LPCR_Contrat__c  =quoteModel.record.Id,
                                 LPCR_HeureDebutLundi__c = eachDetailModifPlan.LPCR_HeureDebutLundi__c,
                                 LPCR_HeureFinLundi__c   = eachDetailModifPlan.LPCR_HeureFinLundi__c,
                                 LPCR_HeureDebutMardi__c = eachDetailModifPlan.LPCR_HeureDebutMardi__c,
