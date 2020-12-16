@@ -37,7 +37,6 @@ public with sharing class EM006_QuoteEntity extends EM001_AbstractObjectEntity{
                      LPCR_CongesJours__c,
                      LPCR_NombreHeuresMois__c,
                      (Select Id, 
-                      LPCR_Contrat__c,
                       LPCR_HeureDebutLundi__c, 
                       LPCR_HeureFinLundi__c , 
                       LPCR_HeureDebutMardi__c, 
