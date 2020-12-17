@@ -24,16 +24,6 @@
         <field>Order.OrderItems.Billing_Plans__r.Billing_Plan_Lines__r$LPCR_Amount__c</field>
     </columns>
     <description>Ce rapport permet de faire le suivi de la facturation sur les commandes par client ( se base sur l&apos;objet Billing plan)</description>
-    <filter>
-        <criteriaItems>
-            <column>Order$RecordType</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>,Order.Accueil</value>
-        </criteriaItems>
-        <language>fr</language>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
