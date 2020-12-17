@@ -34,8 +34,8 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
     
     protected override void afterUpdate(){
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex') && runUpdateOnce){
-            SM008_QuoteServices.updateAccountsFromQuotes(newQuotesList,oldQuotesMap);
             SM008_QuoteServices.generateAgreementTemp(this.newQuotesMap,this.oldQuotesMap);
+            SM008_QuoteServices.updateAccountsFromQuotes(newQuotesList,oldQuotesMap);
         }
         runUpdateOnce = false;
     }
