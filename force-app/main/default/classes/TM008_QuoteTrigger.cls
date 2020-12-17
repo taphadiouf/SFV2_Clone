@@ -16,7 +16,6 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
     protected override void beforeUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex') && runUpdateOnce){
             SM008_QuoteServices.updateOppsFromQuotes(newQuotesList);
-            SM008_QuoteServices.updateAccountsFromQuotes(newQuotesList);
             SM008_QuoteServices.updateQuotes(newQuotesList);
         }
     }
@@ -26,9 +25,16 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
             SM008_QuoteServices.updateQuotes(newQuotesList);
         }
     }
+
+    protected override void afterInsert() {
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
+            SM008_QuoteServices.updateAccountsFromQuotes(newQuotesList,null);
+        }
+    }
     
     protected override void afterUpdate(){
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex') && runUpdateOnce){
+            SM008_QuoteServices.updateAccountsFromQuotes(newQuotesList,oldQuotesMap);
             SM008_QuoteServices.generateAgreementTemp(this.newQuotesMap,this.oldQuotesMap);
         }
         runUpdateOnce = false;
