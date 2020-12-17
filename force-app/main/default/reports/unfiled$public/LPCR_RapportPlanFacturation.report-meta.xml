@@ -32,15 +32,10 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>LPCR_PlanFacturation__c.LPCR_Compte__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
         <field>FK_$OrderItem.SBQQ__Contract__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Plan de facturation</name>
+    <name>Plan de facturation ( ancienne version)</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -51,7 +46,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>LPCR_PlanFacturation__c.LPCR_EndDate__c</dateColumn>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>
