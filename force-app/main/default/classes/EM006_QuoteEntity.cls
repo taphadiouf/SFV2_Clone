@@ -35,20 +35,7 @@ public with sharing class EM006_QuoteEntity extends EM001_AbstractObjectEntity{
                      LPCR_TauxMensuel__c ,
                      LPCR_RevenusFamille__c,
                      LPCR_CongesJours__c,
-                     LPCR_NombreHeuresMois__c,
-                     (Select Id, 
-                      LPCR_Contrat__c,
-                      LPCR_HeureDebutLundi__c, 
-                      LPCR_HeureFinLundi__c , 
-                      LPCR_HeureDebutMardi__c, 
-                      LPCR_HeureFinMardi__c, 
-                      LPCR_HeureDebutMercredi__c, 
-                      LPCR_HeureFinMercredi__c ,
-                      LPCR_HeureDebutJeudi__c, 
-                      LPCR_HeureFinJeudi__c , 
-                      LPCR_HeureDebutVendredi__c, 
-                      LPCR_HeureFinVendredi__c 
-                      FROM Plannings_Pr_visionnels__r )
+                     LPCR_NombreHeuresMois__c
                      From SBQQ__Quote__c 
                      WHERE Id=:quoteId];
             

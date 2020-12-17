@@ -169,11 +169,64 @@ public class SM008_QuoteServices_Test {
         }
         TM000_TriggerHandler.runUpdateOnce = true;
         update quotes;
-        List<Account> resultAccounts = [SELECT Id,Name, LPCR_Statut__c FROM Account WHERE LPCR_Statut__c= 'Client' AND Name = 'testAccount'];
         List<Opportunity> resultOpps = [SELECT Id, StageName FROM Opportunity WHERE StageName = 'Signée'];
-        System.assertEquals(5, resultAccounts.size(), 'Error in SM008_QuoteServices_Test : problem in updating Account');
         System.assertEquals(5, resultOpps.size(), 'Error in SM008_QuoteServices_Test : problem in updating Opportunity');
         Test.stopTest();
+        
+    }
+
+    @isTest
+    private static void updateAccountsFromQuotes_Test(){
+
+        Account acc1 = new Account(Name = 'acc1');
+        insert acc1;
+        List<Opportunity> opps = UM002_TestDataFactory.createOpportunities(1, 'testOpp', 'Prospecting');
+        insert opps;
+
+        Id priceBook = Test.getStandardPricebookId();
+
+        SBQQ__Quote__c q1 = new SBQQ__Quote__c(  SBQQ__Opportunity2__c = opps.get(0).Id, SBQQ__Account__c = acc1.Id,
+                                                        SBQQ__PriceBook__c = priceBook,
+                                                        SBQQ__StartDate__c = date.today(),
+                                                        LPCR_Creation_conforme__c = true,
+                                                        SBQQ__Status__c = 'Draft');
+        SBQQ__Quote__c q2 = new SBQQ__Quote__c(  SBQQ__Opportunity2__c = opps.get(0).Id, SBQQ__Account__c = acc1.Id,
+                                                        SBQQ__PriceBook__c = priceBook,
+                                                        SBQQ__StartDate__c = date.today(),
+                                                        LPCR_Creation_conforme__c = true,
+                                                        SBQQ__Status__c = 'Draft');
+        SBQQ__Quote__c q3 = new SBQQ__Quote__c(  SBQQ__Opportunity2__c = opps.get(0).Id, SBQQ__Account__c = acc1.Id,
+                                                        SBQQ__PriceBook__c = priceBook,
+                                                        SBQQ__StartDate__c = date.today(),
+                                                        LPCR_Creation_conforme__c = true,
+                                                        SBQQ__Status__c = 'Draft');
+
+        Test.startTest();
+        insert (new List<SBQQ__Quote__c>{q1,q2,q3});
+
+        Account accRes1 = [SELECT id,LPCR_Statut__c,(SELECT Id,SBQQ__Status__c FROM SBQQ__Quotes__r) FROM Account WHERE id=:acc1.id];
+        
+        System.assertEquals('Prospect', accRes1.LPCR_Statut__c);
+
+        q2.SBQQ__Status__c = 'Actif';
+        TM000_TriggerHandler.runUpdateOnce = true;
+        update q2;
+        Account accRes2 = [SELECT id,LPCR_Statut__c,(SELECT Id,SBQQ__Status__c FROM SBQQ__Quotes__r) FROM Account WHERE id=:acc1.id];
+        System.assertEquals('Client', accRes2.LPCR_Statut__c);
+
+        q2.SBQQ__Status__c = 'Terminé';
+        TM000_TriggerHandler.runUpdateOnce = true;
+        update q2;
+        Account accRes3 = [SELECT id,LPCR_Statut__c FROM Account WHERE id=:acc1.id];
+        System.assertEquals('Prospect', accRes3.LPCR_Statut__c);
+
+
+        q1.SBQQ__Status__c = 'Terminé';
+        q3.SBQQ__Status__c = 'Terminé';
+        TM000_TriggerHandler.runUpdateOnce = true;
+        update (new List<SBQQ__Quote__c>{q1,q3});
+        Account accRes4 = [SELECT id,LPCR_Statut__c FROM Account WHERE id=:acc1.id];
+        System.assertEquals('Ancien client', accRes4.LPCR_Statut__c);
         
     }
 

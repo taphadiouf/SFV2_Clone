@@ -1120,7 +1120,6 @@ newMe.FederationIdentifier = null;
 
         for(Integer i=0;i<numPlann;i++){
             LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(
-                                                                                LPCR_Contrat__c = idQuote,
                                                                                LPCR_Planning__c = tmpPlanning.Id,
                                                                                LPCR_HeureDebutLundi__c = debutLundi,
                                                                                LPCR_HeureFinLundi__c   = finLundi,
@@ -1146,7 +1145,7 @@ newMe.FederationIdentifier = null;
     
         List<LPCR_PlanningPrevisionnel__c>  plannings = new List<LPCR_PlanningPrevisionnel__c>();
         for(Integer i=0;i<numPlann;i++){
-            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Planning__c = tmpPlanning.id, LPCR_Contrat__c = idQuote);
+            LPCR_PlanningPrevisionnel__c pl = new LPCR_PlanningPrevisionnel__c(LPCR_Planning__c = tmpPlanning.id);
             plannings.add(pl);
         }
         return plannings;   
