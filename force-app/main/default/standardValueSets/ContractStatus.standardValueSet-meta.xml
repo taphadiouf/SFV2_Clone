@@ -5,20 +5,24 @@
         <fullName>In Approval Process</fullName>
         <default>false</default>
         <label>En cours d&apos;approbation</label>
+        <statusCode>InApproval</statusCode>
     </standardValue>
     <standardValue>
         <fullName>Activated</fullName>
         <default>false</default>
         <label>Activé</label>
+        <statusCode>Activated</statusCode>
     </standardValue>
     <standardValue>
         <fullName>Draft</fullName>
         <default>false</default>
         <label>Version préliminaire</label>
+        <statusCode>Draft</statusCode>
     </standardValue>
     <standardValue>
         <fullName>Terminé</fullName>
         <default>false</default>
         <label>Terminé</label>
+        <statusCode>Activated</statusCode>
     </standardValue>
 </StandardValueSet>
