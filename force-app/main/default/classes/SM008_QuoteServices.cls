@@ -398,18 +398,88 @@ public with sharing class SM008_QuoteServices {
         update oppsToUpdate;
         
     }
-    public static void updateAccountsFromQuotes(List<SBQQ__Quote__c> quotesList){
-        Set<Id> accountsIds = new Set<Id>();
-        for(SBQQ__Quote__c eachQuote : quotesList){
-            if(eachQuote.SBQQ__Status__c.equals('Signé')){
-                accountsIds.add(eachQuote.SBQQ__Account__c);
+
+    /*
+        > Si au moin un Devis est en statut ("Signé", "Prêt pour commande", ou "Actif") et que la valeur du statut n'était pas client
+        ==> Mettre à jour le statut du compte à Client 
+        > Sinon si tous les devis au statut terminé ou annulé
+        ==> Mettre à jour le statut du compte à Ancien Client 
+        > Sinon 
+        ==> Mettre à jour le statut du compte à Prospect 
+    */
+    public static void updateAccountsFromQuotes(List<SBQQ__Quote__c> quotesList,Map<Id, SBQQ__Quote__c> oldQuotesMap){
+
+        List<SBQQ__Quote__c> quotesToProcess = new List<SBQQ__Quote__c>();
+        if(oldQuotesMap != null){
+            // We are in update context => take only the quotes whos their status changed
+            for(SBQQ__Quote__c q : quotesList){
+                if(q.SBQQ__Status__c != oldQuotesMap.get(q.id).SBQQ__Status__c){
+                    quotesToProcess.add(q);
+                }
+            }
+        }else{
+            // We are in insert mode => take all new quotes
+            quotesToProcess = quotesList;
+        }
+
+        if(quotesToProcess.size()>0){
+
+            List<Account> accountsToUpdate = new List<Account>();
+
+            Set<Id> accountsIds = new Set<Id>();
+            for(SBQQ__Quote__c eachQuote : quotesList){
+                if(!accountsIds.contains(eachQuote.SBQQ__Account__c)){
+                    accountsIds.add(eachQuote.SBQQ__Account__c);
+                }
+            }
+
+            List<Account> accountsInScope = [SELECT Id,LPCR_Statut__c,(SELECT Id,SBQQ__Status__c FROM SBQQ__Quotes__r) FROM Account WHERE Id IN :accountsIds];
+
+            for(Account eachAcc : accountsInScope){
+
+                Boolean allQuotesClos = true;
+                Boolean isClient = false;
+                for(SBQQ__Quote__c eachQuote : eachAcc.SBQQ__Quotes__r){
+                    
+                    if(eachQuote.SBQQ__Status__c != 'Terminé' && eachQuote.SBQQ__Status__c != 'Annulé'){
+                        
+                        allQuotesClos = false;
+
+                        if( eachQuote.SBQQ__Status__c == 'Signé'                ||
+                            eachQuote.SBQQ__Status__c == 'Prêt pour commande'   ||
+                            eachQuote.SBQQ__Status__c == 'Actif' )
+                        {
+                            // Il existe au moins un devis signé actif ou pret 
+                            isClient = true;
+                            break;
+                        }
+
+                    }
+                }
+                
+                if(allQuotesClos){
+                    // tous les devis au statut terminé ou annulé
+                    if(eachAcc.LPCR_Statut__c != 'Ancien client'){
+                        eachAcc.LPCR_Statut__c = 'Ancien client';
+                        accountsToUpdate.add(eachAcc);
+                    }
+                }else{
+                    if(isClient){
+                        if(eachAcc.LPCR_Statut__c != 'Client'){
+                            //au moin un Devis est en statut ("Signé", "Prêt pour commande", ou "Actif") et que la valeur du statut n'était pas client
+                            eachAcc.LPCR_Statut__c = 'Client';
+                            accountsToUpdate.add(eachAcc);
+                        }
+                    }else if(eachAcc.LPCR_Statut__c != 'Prospect'){
+                        eachAcc.LPCR_Statut__c = 'Prospect';
+                        accountsToUpdate.add(eachAcc);
+                    }
+                }
+            }
+            if(accountsToUpdate.size() > 0 ){
+                update accountsToUpdate;
             }
         }
-        List<Account> accountsToUpdate = EM005_AccountEntity.getAccsByIds(accountsIds);
-        for(Account eachAcc : accountsToUpdate){
-            eachAcc.LPCR_Statut__c = 'Client';
-        }
-        update accountsToUpdate;
     }
     
     

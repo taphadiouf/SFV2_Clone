@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Order.OrderItems$Product2</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Order.OrderItems$Quantity</field>
+    </columns>
+    <columns>
+        <field>Order.OrderItems$LPCR_Creche__c</field>
+    </columns>
+    <columns>
+        <field>Order.OrderItems$LPCR_Region__c</field>
+    </columns>
+    <columns>
+        <field>Order.OrderItems.Billing_Plans__r.Billing_Plan_Lines__r$LPCR_StartDate__c</field>
+    </columns>
+    <columns>
+        <field>Order.OrderItems.Billing_Plans__r.Billing_Plan_Lines__r$LPCR_EndDate__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Order.OrderItems.Billing_Plans__r.Billing_Plan_Lines__r$LPCR_Amount__c</field>
+    </columns>
+    <description>Ce rapport permet de faire le suivi de la facturation sur les commandes par client ( se base sur l&apos;objet Billing plan)</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Order$Account</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Order$LPCR_NumeroContrat__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Order.OrderItems$LPCR_NumBonCommande__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Suivi plan de facturation</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Commandes_avec_produits_command_s_et_plan_de_factu__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Order$ActivatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
