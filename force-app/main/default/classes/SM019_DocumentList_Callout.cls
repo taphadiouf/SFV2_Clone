@@ -46,10 +46,12 @@ public with sharing class SM019_DocumentList_Callout {
             throw e;
         }
         finally { 
-            if (statusCode.equals('200')) {
-                documentListFullResponse.response = (List<DocumentListResponse>) JSON.deserialize(response.getBody(), List<DocumentListResponse>.class);
-                documentListFullResponse.result = '200';
-            } 
+            if(statusCode!=null){
+                if (statusCode.equals('200')) {
+                    documentListFullResponse.response = (List<DocumentListResponse>) JSON.deserialize(response.getBody(), List<DocumentListResponse>.class);
+                    documentListFullResponse.result = '200';
+                } 
+            }
         }
         
         
@@ -72,9 +74,10 @@ public with sharing class SM019_DocumentList_Callout {
         }
     }
     
-     @future(callout=true)
+    @future(callout=true)
     public static void getDocumentListFutureCallout(String ownerid, String doc_type, String email) {
         final String WS_NOM_SERVICE  = 'LPCR_RECUPERATION_DOCUMENT';
+        String ErrMsg ='';
         try{
             
         	DocumentListFullResponse documentListFullResponse = getDocumentListCallout(ownerid, doc_type);  
@@ -98,8 +101,11 @@ public with sharing class SM019_DocumentList_Callout {
             }
         }
         catch(Exception e) {
-            if (String.isNotBlank(String.valueOf(e))){
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_LIST_DOC,'SM019_DocumentList_Callout', 'Callout', null,  'Apex Callout Exception:' + e, UM010_Constant.ERROR);
+            ErrMsg = '-- SM018 : errorMsg:' + e.getMessage() + '|Line:' + e.getLineNumber();
+            System.debug(ErrMsg);
+        }finally{
+            if(ErrMsg != ''){
+                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_LIST_DOC,'SM019_DocumentList_Callout', 'Callout', null,  'Apex Callout Exception:' + ErrMsg, UM010_Constant.ERROR);
             }
         }
     }

@@ -108,6 +108,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
             OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(pbEntry.id, order.Id, prod.id, 'Recurring','Quarterly', 100);
             orderItem.SBQQ__QuoteLine__c = qlines.get(0).id;
             orderItem.SBQQ__Activated__c = false;
+            orderItem.ServiceDate = date.today();
             orderItem.EndDate = System.today().addMonths(36);
             orderItem.blng__NextChargeDate__c = System.today();
             orderItem.SBQQ__Contract__c = contract.id;
@@ -115,6 +116,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
             OrderItem orderItem2 = UM002_TestDataFactory.createOrderProduct(pbEntry1.id, order.Id, prod1.id, 'Recurring','Semiannual', 100);
             orderItem2.SBQQ__QuoteLine__c = qlines.get(1).id;
             orderItem2.SBQQ__Activated__c = false;
+            orderItem2.ServiceDate = date.today();
             orderItem2.EndDate = System.today().addMonths(36);
             orderItem2.blng__NextChargeDate__c = System.today();
             orderItem2.SBQQ__Contract__c = contract.id;
@@ -122,6 +124,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
             OrderItem orderItem3 = UM002_TestDataFactory.createOrderProduct(pbEntry1.id, order.Id, prod1.id, 'Recurring','Annual', 100);
             orderItem3.SBQQ__QuoteLine__c = qlines.get(1).id;
             orderItem3.SBQQ__Activated__c = false;
+            orderItem3.ServiceDate = date.today();
             orderItem3.EndDate = System.today().addMonths(36);
             orderItem3.blng__NextChargeDate__c = System.today();
             orderItem3.SBQQ__Contract__c = contract.id;
@@ -129,6 +132,7 @@ public class APB010_ProcessDailyOrderProduct_Test {
             OrderItem orderItem1 = UM002_TestDataFactory.createOrderProduct(pbEntry1.id, order.Id, prod1.id, 'Recurring','Invoice Plan', 100);
             orderItem1.SBQQ__QuoteLine__c = qlines.get(1).id;
             orderItem1.SBQQ__Activated__c = false;
+            orderItem1.ServiceDate = date.today();
             orderItem1.EndDate = System.today().addMonths(36);
             orderItem1.blng__NextChargeDate__c = System.today();
             orderItem1.SBQQ__Contract__c = contract.id;
@@ -192,7 +196,6 @@ public class APB010_ProcessDailyOrderProduct_Test {
 
             APB010_ProcessDailyOrderProduct ss = new APB010_ProcessDailyOrderProduct();
             DataBase.executeBatch(ss);
-            ss.execute(null);
             
             Test.stopTest();
 
