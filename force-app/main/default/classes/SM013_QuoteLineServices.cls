@@ -5,6 +5,22 @@
 */
 public with sharing class SM013_QuoteLineServices {
     
+    private static Map<String, Integer> billingPeriodMultiplier {
+        get {
+            if(billingPeriodMultiplier == null) {
+                billingPeriodMultiplier = new Map<String, Integer>();
+                billingPeriodMultiplier.put('Monthly', 1);
+                billingPeriodMultiplier.put('Quarterly', 3);
+                billingPeriodMultiplier.put('Semiannual', 6);
+                billingPeriodMultiplier.put('Annual', 12);
+            }
+            return billingPeriodMultiplier;
+        }
+        
+        set;
+        
+    }
+
     /*
 	*	@description : this method check if any registration fee had been alredy applied for a given customer / nursery.
 	*	@param List<SBQQ__QuoteLine__c> quoteLineList to process
