@@ -83,6 +83,56 @@ public with sharing class SM013_QuoteLineServices {
         }
     }
 
+    /*
+	*	@description : this method check if any registration fee had been alredy applied for a given customer / nursery.
+	*	@param List<SBQQ__QuoteLine__c> quoteLineList to process
+    *	@returns void
+    */
+    public static void setBillThroughDateOverride (List<SBQQ__QuoteLine__c> quoteLineList) {
+
+        PAD.logAllList('SM013_QuoteLineServices', 'setBillThroughDateOverride', 'quoteLineList', quoteLineList);
+
+        Set<String> quoteIdSet = new Set<String>();
+
+        for(SBQQ__QuoteLine__c quoteLine : quoteLineList) { 
+
+                quoteIdSet.add(quoteLine.SBQQ__Quote__c);
+        }
+        
+        Map<Id, SBQQ__Quote__c> quoteMap = new Map<Id, SBQQ__Quote__c>([Select SBQQ__StartDate__c, SBQQ__EndDate__c from SBQQ__Quote__c Where Id IN :quoteIdSet]);
+        
+        for(SBQQ__QuoteLine__c quoteLine : quoteLineList) {
+
+            if (quoteLine.SBQQ__Quote__r.LPCR_InitAutoAvecDateDebut__c == false && 
+                quoteLine.SBQQ__BillingFrequency__c != null && 
+                quoteLine.SBQQ__BillingFrequency__c != 'Invoice Plan' && 
+                quoteLine.SBQQ__HasConsumptionSchedule__c == false) {
+            
+                SBQQ__Quote__c quote = quoteMap.get(quoteLine.SBQQ__Quote__c);
+
+                // Get right start date depending if Quote Line is empty
+                Date rightStartDate = quoteLine.SBQQ__StartDate__c == null ? quote.SBQQ__StartDate__c : quoteLine.SBQQ__StartDate__c;
+                Date rightEndDate = quoteLine.SBQQ__EndDate__c == null ? quote.SBQQ__EndDate__c : quoteLine.SBQQ__EndDate__c;         
+
+                if (quoteLine.SBQQ__BillingFrequency__c == 'Monthly') {
+                    quoteLine.LPCR_BillThroughDateOverride__c = UM005_DateUtility.lastDateOfMonth(rightStartDate);
+                }
+                else if (quoteLine.SBQQ__BillingFrequency__c == 'Quarterly') {
+                    quoteLine.LPCR_BillThroughDateOverride__c = UM005_DateUtility.lastDayOfDatePeriod (rightStartDate, UM005_DateUtility.quarterlyMonths);
+                }
+                else if (quoteLine.SBQQ__BillingFrequency__c == 'Semiannual') {
+                    quoteLine.LPCR_BillThroughDateOverride__c = UM005_DateUtility.lastDayOfDatePeriod (rightStartDate, UM005_DateUtility.semiannualMonths);
+                }
+                else if (quoteLine.SBQQ__BillingFrequency__c == 'Annual') {
+                    quoteLine.LPCR_BillThroughDateOverride__c = UM005_DateUtility.lastDayOfYear(rightStartDate);
+                }
+            }
+        }
+
+        PAD.logAllList('SM013_QuoteLineServices', 'setBillThroughDateOverride', 'quoteLineList', quoteLineList);
+
+    }
+
     public static void calculateQuoteLine (List<SBQQ__QuoteLine__c> quoteLineList) {
         
            
