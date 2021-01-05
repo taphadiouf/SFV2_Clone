@@ -69,7 +69,7 @@ public with sharing class SM013_QuoteLineServices {
 
     public static void calculateQuoteLine (List<SBQQ__QuoteLine__c> quoteLineList) {
         
-        /*    
+           
         // Query Quote Info
         Set<String> quoteIdSet = new Set<String>();
         for(SBQQ__QuoteLine__c quoteLine : quoteLineList) {
@@ -132,9 +132,9 @@ public with sharing class SM013_QuoteLineServices {
             quoteLine.SBQQ__ProrateMultiplier__c = prorateMultiplier;
             quoteLine.LPCR_BillingMultiplier__c = billingMultiplier;
     	}
-        */
+        
     }    
-    /*
+    
     public static Decimal getBillingMultiplier(Date quoteStartDate, Date billThroughDate, Date quoteEndDate, Integer bpMultiplier) {
         
         // Initialize the start date to quote start date
@@ -219,5 +219,5 @@ public with sharing class SM013_QuoteLineServices {
             return perPeriodMultiplier;
         }
     }
-    */
+    
 }

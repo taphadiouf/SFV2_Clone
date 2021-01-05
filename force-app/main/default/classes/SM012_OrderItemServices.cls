@@ -126,7 +126,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             }
             
             Map<Id, Order> orderMap = new Map<Id, Order> ([SELECT Id,name,RecordTypeId,LPCR_MinDateOverrideNextBilling__c,LPCR_TypeFacturation__c ,LPCR_FrequenceFacturation__c ,LPCR_InitAutoAvecDateDebut__c , 
-                                                            LPCR_TypeCreche__c, LPCR_InitAutoAvecDateDebut__c, blng__BillingAccount__c, blng__BillingAccount__r.RecordTypeId 
+                                                            LPCR_TypeCreche__c, blng__BillingAccount__c, blng__BillingAccount__r.RecordTypeId 
                                                            FROM Order WHERE Id IN :orderIds]);
             
             Set<Id> orderItemIds = new Set<Id>();
