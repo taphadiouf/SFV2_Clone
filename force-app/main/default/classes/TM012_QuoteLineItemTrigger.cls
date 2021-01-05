@@ -12,8 +12,17 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
         this.newQuoteLineList = (List<SBQQ__QuoteLine__c>) Trigger.new;
     }
     protected override void beforeInsert() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
+        
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')) {
             SM013_QuoteLineServices.checkExistingRegistrationFee(newQuoteLineList);
+            SM013_QuoteLineServices.calculateQuoteLine(newQuoteLineList);
+        } 
+    }
+
+    protected override void beforeUpdate() {
+
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')) {
+            SM013_QuoteLineServices.calculateQuoteLine(newQuoteLineList);
         }
     }
 }

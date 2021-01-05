@@ -142,6 +142,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
 
                 if (item.blng__NextChargeDate__c != null) {
                     
+                    // B2C 
                     if(orderMap.get(item.OrderId).blng__BillingAccount__c != null && orderMap.get(item.OrderId).blng__BillingAccount__r.RecordTypeId == accountFamilleRTId && item.ServiceDate != null) {
                         
                         Integer orderItemStartDay = item.ServiceDate.day();
@@ -165,7 +166,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                         }
                         
                     } 
-                    // All Frequency but Invoice Plan
+                    // B2B (With All Frequency but Invoice Plan)
                     else if(   (
                                     orderMap.get(item.OrderId).blng__BillingAccount__c              != null
                                     && 
@@ -181,14 +182,19 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                             Date annualLastDay = UM005_DateUtility.lastDayOfYear(item.blng__NextChargeDate__c);
                             
                         //Advance
-                        if( orderMap.get(item.OrderId).LPCR_TypeFacturation__c == Label.LPCR_Advance){
+                        if( orderMap.get(item.OrderId).LPCR_TypeFacturation__c == Label.LPCR_Advance) {
+
                             currentYr = item.ServiceDate.year();
                             Date nextBillingDate = item.blng__NextChargeDate__c.addDays(invoiceDelta);
                             item.blng__OverrideNextBillingDate__c = nextBillingDate;
                             
-                            if (item.SBQQ__BillingFrequency__c == Label.LPCR_Quarterly ){
+                            if (item.SBQQ__BillingFrequency__c == Label.LPCR_Quarterly ) {
+
                                 // lastDayOfQuarterPeriod return the last date of the given quarter (1,4,7,10)
-                                if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayofQuarter < item.SBQQ__TerminatedDate__c))){
+                                if (item.Quantity > 0 && !orderMap.get(item.OrderId).LPCR_InitAutoAvecDateDebut__c &&
+                                        (item.SBQQ__TerminatedDate__c == null || 
+                                            (item.SBQQ__TerminatedDate__c != null && lastDayofQuarter < item.SBQQ__TerminatedDate__c))) {
+
                                     item.blng__BillThroughDateOverride__c = lastDayofQuarter;
                                 }
                             
@@ -211,7 +217,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                             }else if (item.SBQQ__BillingFrequency__c == Label.LPCR_Monthly){
                                 
                                 // lastDateOfMonth
-                                if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayOfMonth < item.SBQQ__TerminatedDate__c))){
+                                if(item.Quantity > 0 && !orderMap.get(item.OrderId).LPCR_InitAutoAvecDateDebut__c && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastDayOfMonth < item.SBQQ__TerminatedDate__c))){
                                     item.blng__BillThroughDateOverride__c = lastDayOfMonth;
                                 }
                                 //Populate Order Item > LPCR_DateArrondie__c
@@ -221,7 +227,7 @@ public with sharing class SM012_OrderItemServices implements Queueable{
 
                             }else if (item.SBQQ__BillingFrequency__c == Label.LPCR_Semiannual ) {
                                 // lastDayOfHalfYearPeriod return the last date of the given Half Year period (1,7)
-                                if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && semiannualLastDay < item.SBQQ__TerminatedDate__c))){
+                                if(item.Quantity > 0 && !orderMap.get(item.OrderId).LPCR_InitAutoAvecDateDebut__c && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && semiannualLastDay < item.SBQQ__TerminatedDate__c))){
                                     item.blng__BillThroughDateOverride__c = semiannualLastDay;
                                 }
                                 //Populate Order Item > LPCR_DateArrondie__c
@@ -236,16 +242,12 @@ public with sharing class SM012_OrderItemServices implements Queueable{
 
                             }else if(item.SBQQ__BillingFrequency__c == Label.LPCR_Annual  ) {
                                 
-                                if( item.Quantity > 0 
-                                    && 
-                                    (
-                                        item.SBQQ__TerminatedDate__c == null 
-                                        || 
-                                        (item.SBQQ__TerminatedDate__c != null   &&      annualLastDay < item.SBQQ__TerminatedDate__c)
-                                    ))
-                                    {
-                                        item.blng__BillThroughDateOverride__c = annualLastDay;
-                                    }
+                                if(item.Quantity > 0 && !orderMap.get(item.OrderId).LPCR_InitAutoAvecDateDebut__c && 
+                                        (item.SBQQ__TerminatedDate__c == null || 
+                                            (item.SBQQ__TerminatedDate__c != null && annualLastDay < item.SBQQ__TerminatedDate__c))) {
+
+                                    item.blng__BillThroughDateOverride__c = annualLastDay;
+                                }
                                  
                                 //Populate Order Item > LPCR_DateArrondie__c
                                 if(orderMap.get(item.OrderId).RecordTypeId == rtReferencementId){// only for orders rt=referencement
