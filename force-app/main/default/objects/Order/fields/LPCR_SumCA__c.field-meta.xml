@@ -3,7 +3,7 @@
     <fullName>LPCR_SumCA__c</fullName>
     <externalId>false</externalId>
     <label>Chiffre d&apos;affaire</label>
-    <summarizedField>OrderItem.LPCR_ChiffreAffaires__c</summarizedField>
+    <summarizedField>OrderItem.LPCR_CAUnitaire__c</summarizedField>
     <summaryForeignKey>OrderItem.OrderId</summaryForeignKey>
     <summaryOperation>sum</summaryOperation>
     <trackHistory>false</trackHistory>
