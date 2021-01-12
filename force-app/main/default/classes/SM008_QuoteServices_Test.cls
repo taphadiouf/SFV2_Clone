@@ -865,19 +865,6 @@ public class SM008_QuoteServices_Test {
             );
             insert simpleQuote;
 
-            SBQQ__Quote__c amendmentQuote = new SBQQ__Quote__c(
-                SBQQ__Opportunity2__c = opp.Id,
-                SBQQ__Account__c = acc.Id,
-                SBQQ__Type__c = 'Amendment',
-		        LPCR_Creation_conforme__c = true,    
-                RecordTypeId = reservataireRecTypeId,
-                LPCR_Creche__c = acc.id,
-                SBQQ__StartDate__c = date.today(),
-                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31),
-                SBQQ__MasterContract__c = con.Id
-            );
-            insert amendmentQuote;
-
             Id standardPricebookId = Test.getStandardPricebookId();
             UM002_TestDataFactory.insertBillingCustomSettings();
         
@@ -902,6 +889,20 @@ public class SM008_QuoteServices_Test {
             simpleQuote.SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 17);
             update simpleQuote;
             /*
+
+            SBQQ__Quote__c amendmentQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = opp.Id,
+                SBQQ__Account__c = acc.Id,
+                SBQQ__Type__c = 'Amendment',
+		        LPCR_Creation_conforme__c = true,    
+                RecordTypeId = reservataireRecTypeId,
+                LPCR_Creche__c = acc.id,
+                SBQQ__StartDate__c = date.today(),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31),
+                SBQQ__MasterContract__c = con.Id
+            );
+            insert amendmentQuote;
+            
             opp.SBQQ__AmendedContract__c = con.Id;
             update opp;
 
