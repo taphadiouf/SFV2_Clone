@@ -888,10 +888,14 @@ public class SM008_QuoteServices_Test {
 
             simpleQuote.SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 17);
             update simpleQuote;
-            /*
+
+            List<Opportunity> oppAmends = UM002_TestDataFactory.createOpportunities(1, 'testOppAmend', 'Prospecting');
+            Opportunity oppAmend = oppAmends.get(0);
+            oppAmend.SBQQ__AmendedContract__c = con.Id;
+            insert oppAmends;
 
             SBQQ__Quote__c amendmentQuote = new SBQQ__Quote__c(
-                SBQQ__Opportunity2__c = opp.Id,
+                SBQQ__Opportunity2__c = oppAmend.id,
                 SBQQ__Account__c = acc.Id,
                 SBQQ__Type__c = 'Amendment',
 		        LPCR_Creation_conforme__c = true,    
@@ -902,24 +906,14 @@ public class SM008_QuoteServices_Test {
                 SBQQ__MasterContract__c = con.Id
             );
             insert amendmentQuote;
-            
-            opp.SBQQ__AmendedContract__c = con.Id;
-            update opp;
 
             SBQQ__QuoteLine__c quoteLineAmend = UM002_TestDataFactory.createQuoteLine(prod.Id, amendmentQuote.Id, priceBookEntry1.Id, 200,1);
             insert quoteLineAmend;
 
-            
-
             amendmentQuote.SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 17);
-            update amendmentQuote;*/
+            update amendmentQuote;
 
-            Test.stopTest();
-
-
-            
-            
+            Test.stopTest();       
         } 
     }
-    
 }
