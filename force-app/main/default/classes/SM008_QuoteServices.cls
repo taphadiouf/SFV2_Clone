@@ -380,10 +380,6 @@ public with sharing class SM008_QuoteServices {
         }
     }
     
-    
-    
-    //end of hanae's part
-    
     public static void updateOppsFromQuotes(List<SBQQ__Quote__c> quotesList){
         Set<Id> oppsIds = new Set<Id>();
         for(SBQQ__Quote__c eachQuote : quotesList){
@@ -599,6 +595,42 @@ public with sharing class SM008_QuoteServices {
         return mapQuoteIDAgreementID;
     }  
     
+    // Update current quote, masterContract's Order and masterContract's quote
+    public static void updateDueToResilisationAnticipe(List<SBQQ__Quote__c> quotesList){
+        
+        Set<Id> contractIds = new Set<Id>();
+        Map<Id,Boolean> contractFlagMap = new Map<Id,Boolean>();
+
+        for(SBQQ__Quote__c eachQuote : quotesList) {
+
+            if (eachQuote.SBQQ__Type__c == 'Amendment' && eachQuote.LPCR_TypeAvenant__c == 'Résiliation') {
+
+                if (eachQuote.SBQQ__StartDate__c == eachQuote.LPCR_DateDebut__c) {
+                    eachQuote.LPCR_AnnulationAnticipee__c = true;
+                } else {
+                    eachQuote.LPCR_AnnulationAnticipee__c = false;
+                }
+                contractFlagMap.put(eachQuote.SBQQ__MasterContract__c, eachQuote.LPCR_AnnulationAnticipee__c);
+            }
+        }
+
+        List<SBQQ__Quote__c> quoteListToUpdate = new List<SBQQ__Quote__c>();
+        List<Order> orderListToUpdate = new List<Order>();
+
+        for (Contract c : [SELECT Id, SBQQ__Order__c, SBQQ__Quote__c FROM Contract where id in :contractFlagMap.keySet()]) {
+            quoteListToUpdate.add(new SBQQ__Quote__c(Id = c.SBQQ__Quote__c, LPCR_AnnulationAnticipee__c = contractFlagMap.get(c.Id)));
+            orderListToUpdate.add(new Order(Id = c.SBQQ__Order__c, LPCR_AnnulationAnticipee__c = contractFlagMap.get(c.Id)));
+        }
+        
+        if (quoteListToUpdate.size() > 0) { 
+            update quoteListToUpdate;
+        }
+        if (orderListToUpdate.size() > 0) {
+            update orderListToUpdate;
+        }
+
+        
+    }
 
     public static Decimal ExactDiffBeetweenDate(Date startDate, Date endDate) {
 
