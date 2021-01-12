@@ -482,21 +482,11 @@ public with sharing class SM008_QuoteServices {
         }
     }
     
-    
-    //added by Ayoub
     public static void setQuoteFields(List<SBQQ__Quote__c> quotesList,Map<Id,Contract> renewedContract,Map<Id,Contract> amendedContract, Map<Id,Opportunity> opptyMap, Map<Id,Account> acctMap){
          Map<String,Schema.RecordTypeInfo> mapQuoteRT = Schema.getGlobalDescribe().get(Label.LPCR_Quote).getDescribe().getRecordTypeInfosByDeveloperName();
 		
         for (SBQQ__Quote__c eachQuote : quotesList){
-            /* deleted in IS-1165 
-            Id quoteRecTypeId = null;
-            if(eachQuote.LPCR_TypeEnregistrement__c != '' && Schema.getGlobalDescribe().get(Label.LPCR_Quote).getDescribe().getRecordTypeInfosByDeveloperName().get(eachQuote.LPCR_TypeEnregistrement__c)!=null){
-                quoteRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,eachQuote.LPCR_TypeEnregistrement__c);
-            }
             
-            if(quoteRecTypeId != null){
-                eachQuote.RecordTypeId = quoteRecTypeId;
-            }*/
             if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) && 'Renewal'.equals(eachQuote.SBQQ__Type__c)){
                 eachQuote.ApprovalStatus__c = Label.LPCR_ApprovalStatusApproved;
                 eachQuote.SBQQ__BillingFrequency__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_BillingFrequency__c;
@@ -609,24 +599,188 @@ public with sharing class SM008_QuoteServices {
         return mapQuoteIDAgreementID;
     }  
     
-      /*
-    * deleted in IS-1165
-     public static void setTypeEnregistrement(List<SBQQ__Quote__c> quotesList){
-        Set<Id> opportunitiesIdsSet = new Set<Id>();
-        for(SBQQ__Quote__c eachQuote : quotesList){
-            opportunitiesIdsSet.add(eachQuote.SBQQ__Opportunity2__c);
+
+    public static Decimal ExactDiffBeetweenDate(Date startDate, Date endDate) {
+
+        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','startDate:'+ startDate);
+        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','endDate:'+ endDate);
+
+        if (startDate == null || endDate == null) {
+            PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','one of the date is null');
+            return 0;
         }
-        //Map : Id=>Order (Parent records of the current contracts)
-        Map<Id, Opportunity> parentOpportunitiesMap = new Map<Id, Opportunity>([SELECT Id, LPCR_TypeEnregistrement__c FROM Opportunity WHERE Id IN :opportunitiesIdsSet and LPCR_TypeEnregistrement__c !='']);
-        if(parentOpportunitiesMap.size()>0){
-            for(SBQQ__Quote__c eachQuote: quotesList){
-                if(parentOpportunitiesMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
-                    eachQuote.LPCR_TypeEnregistrement__c = parentOpportunitiesMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_TypeEnregistrement__c;
-                }
+
+        Integer nbMonths = endDate.monthsBetween(startDate);
+        
+        // Nombre de mois entre premier jour du mois suivant startDate et premier jour du mois de endDate
+        Date tmpStartDate = startDate.day() == 1 ? startDate : UM005_DateUtility.lastDateOfMonth(startDate).addDays(1);
+        Date tmpEndDate = endDate.day() == 1 ? endDate : Date.newInstance(endDate.year(), endDate.month(), 1); 
+
+        Decimal partOne = tmpStartDate.monthsBetween(tmpEndDate);
+
+        //Nombre de mois (decimal) du nombre de jour de startDate si jour différent du premier jour du mois
+        Decimal partTwo = startDate.day() / Date.daysInMonth(startDate.year(),startDate.month());
+
+        //Nombre de mois (decimal) du nombre de jour de endDate si jour différent du premier jour du mois
+        Decimal partThree = endDate.day() / Date.daysInMonth(endDate.year(),endDate.month());
+
+        return  (partOne + partTwo + partThree);
+
+    }
+
+    // Update quoteline LPCR_CAUnitaire__c and LPCR_NombrePlace__c for B2B and B2C Micro scope of quote line
+    @future(Callout=true)
+    public static void updateQuoteLineChiffreAffaire(Set<Id> quoteIds){
+
+        PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteIds:'+ quoteIds);
+
+        List<SBQQ__QuoteLine__c> tmpQuoteLineList = new List<SBQQ__QuoteLine__c>([SELECT Id, SBQQ__Quote__c, SBQQ__ChargeType__c, SBQQ__HasConsumptionSchedule__c,
+                                                                                    SBQQ__Existing__c, LPCR_PriorQty__c, LPCR_DateDebut__c, LPCR_PrixUnitaire__c, LPCR_DateFin__c, 
+                                                                                    SBQQ__PriorQuantity__c, SBQQ__Quantity__c
+                                                                                    FROM SBQQ__QuoteLine__c where SBQQ__Quote__c in : quoteIds]);
+        List<SBQQ__QuoteLine__c> quoteLineListToUpdate = new List<SBQQ__QuoteLine__c>();
+        Map<Id, SBQQ__Quote__c> mapQuote = new Map<Id, SBQQ__Quote__c>([SELECT Id, SBQQ__Type__c, LPCR_TypeCreche__c, LPCR_DateDebut__c, LPCR_DateFin__c, SBQQ__LineItemCount__c, SBQQ__Ordered__c 
+                                                                        FROM SBQQ__Quote__c where Id in : quoteIds]);
+
+        for(SBQQ__QuoteLine__c quoteLine : tmpQuoteLineList){
+                
+            SBQQ__Quote__c quote = mapQuote.get(quoteLine.SBQQ__Quote__c);
+
+            PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quote:'+ quote);
+            PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteLine:'+ quoteLine);
+
+            if (quote.SBQQ__Type__c == 'Quote' && quote.LPCR_TypeCreche__c != 'MAC' && quote.SBQQ__LineItemCount__c > 0 && quote.SBQQ__Ordered__c == false) {
+
+                PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','PART I');
+
+                        if (quoteLine.SBQQ__ChargeType__c == 'Recurring' && quoteLine.SBQQ__HasConsumptionSchedule__c == false) { //then calculate CA field on the Quote Line 
+                            
+                            quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c;
+                            Date startDate1 = quoteLine.LPCR_DateDebut__c != null ? quoteLine.LPCR_DateDebut__c : quote.LPCR_DateDebut__c;
+                            Date endDate1 = quoteLine.LPCR_DateFin__c != null ? quoteLine.LPCR_DateFin__c : quote.LPCR_DateFin__c;
+                            
+                            Decimal nbMonths = ExactDiffBeetweenDate(startDate1, endDate1);
+
+                            if (nbMonths < 12)
+                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * quoteLine.LPCR_PrixUnitaire__c * nbMonths) / 12;
+
+                            if (nbMonths >= 12)
+                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * quoteLine.LPCR_PrixUnitaire__c);
+
+                            quoteLineListToUpdate.add(quoteLine);
+                        }
+                        else {
+                            quoteLine.LPCR_CAUnitaire__c = 0; //for One time or Usage.
+                            quoteLine.LPCR_NombrePlace__c = 0;
+                            quoteLineListToUpdate.add(quoteLine);
+                        }
             }
+
+            if (quote.SBQQ__Type__c == 'Amendment' && quote.LPCR_TypeCreche__c != 'MAC' && quote.SBQQ__LineItemCount__c > 0 && quote.SBQQ__Ordered__c == false) {
+
+                PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','PART II');
+
+                if (quoteLine.SBQQ__ChargeType__c == 'Recurring' && quoteLine.SBQQ__HasConsumptionSchedule__c == false) { //then populate CA field on the Quote Line  
+
+                    Date startDate2 = quoteLine.SBQQ__StartDate__c != null ? quoteLine.SBQQ__StartDate__c : quote.SBQQ__StartDate__c;                                                                                                                                     
+                    Date endDate2 = quoteLine.LPCR_DateFin__c != null ? quoteLine.LPCR_DateFin__c : quote.LPCR_DateFin__c;                                                                                                                                               
+                    Date oneYearMark = quoteLine.LPCR_DateDebut__c != null ? quoteLine.LPCR_DateDebut__c.addYears(1) : quote.LPCR_DateDebut__c.addYears(1);  
+                    
+                    Decimal remainingMonths = ExactDiffBeetweenDate(startDate2, endDate2);
+                    Decimal canceledMonths = ExactDiffBeetweenDate(startDate2, oneYearMark);                                                              
+
+                    if (quoteLine.SBQQ__NetTotal__c == 0) { //(QL with no change in term of price nor qty)
+
+                        quoteLine.LPCR_CAUnitaire__c = 0;
+                        quoteLine.LPCR_NombrePlace__c = 0;
+                    }
+                    else if (quoteLine.SBQQ__Existing__c == true && quoteLine.SBQQ__PriorQuantity__c < quoteLine.SBQQ__Quantity__c) { //(original QL with increase of qty)
+
+                        quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__EffectiveQuantity__c;
+
+                        if (remainingMonths < 12)
+                            quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__EffectiveQuantity__c * quoteLine.LPCR_PrixUnitaire__c * remainingMonths ) / 12;
+                        if (remainingMonths >= 12)
+                            quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__EffectiveQuantity__c * quoteLine.LPCR_PrixUnitaire__c);
+                    }    
+                    else if (quoteLine.SBQQ__Existing__c == true && quoteLine.SBQQ__PriorQuantity__c >= quoteLine.SBQQ__Quantity__c) { //(original QL with decrease of qty)
+
+                        if  (startDate2 >= oneYearMark) {// ( amendment after one year mark)
+                            quoteLine.LPCR_CAUnitaire__c = 0;
+                            quoteLine.LPCR_NombrePlace__c = 0;
+                        }
+                        else if (startDate2 < oneYearMark) { // ( amendment before one year mark)
+                            quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__EffectiveQuantity__c * quoteLine.LPCR_PrixUnitaire__c * canceledMonths) / 12;
+                            quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__EffectiveQuantity__c;
+                        }
+                    }
+                    else if (quoteLine.LPCR_Clone__c == true && quoteLine.LPCR_PriorQty__c < quoteLine.SBQQ__Quantity__c) { //(Cloned QL with increase QTY)
+
+                        if  (startDate2 >= oneYearMark) { // ( amendment after one year mark)
+
+                            quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c - quoteLine.LPCR_PriorQty__c;
+                            
+                            if (remainingMonths < 12)
+                                quoteLine.LPCR_CAUnitaire__c = ((quoteLine.SBQQ__Quantity__c - quoteLine.LPCR_PriorQty__c)  * quoteLine.LPCR_PrixUnitaire__c  * remainingMonths) / 12;
+                            if (remainingMonths >= 12)
+                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c - quoteLine.LPCR_PriorQty__c) * quoteLine.LPCR_PrixUnitaire__c;
+                        }
+                        if  (startDate2 < oneYearMark) { // ( amendment before one year mark)
+
+                            quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c; 
+                            
+                            if (remainingMonths < 12)
+                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * quoteLine.LPCR_PrixUnitaire__c  * remainingMonths) / 12;
+                            if (remainingMonths >= 12)
+                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * quoteLine.LPCR_PrixUnitaire__c);
+                        }
+                    }
+                    else if (quoteLine.LPCR_Clone__c == true && quoteLine.LPCR_PriorQty__c >= quoteLine.SBQQ__Quantity__c) { //(Cloned QL with decrease QTY)
+
+                        if  (startDate2 >= oneYearMark) { // ( amendment after one year mark)
+                                quoteLine.LPCR_CAUnitaire__c = 0;
+                                quoteLine.LPCR_NombrePlace__c = 0;
+                        }
+                        if  (startDate2 < oneYearMark) { // ( amendment before one year mark)
+                            
+                            quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c;
+                            
+                            if (remainingMonths < 12)
+                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * quoteLine.LPCR_PrixUnitaire__c  * remainingMonths) / 12;
+                            if (remainingMonths >= 12)
+                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * quoteLine.LPCR_PrixUnitaire__c);
+                        }
+                    }
+                    else if (quoteLine.LPCR_Clone__c == false && quoteLine.SBQQ__Existing__c == false) { //(brand new QL)
+
+                        quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c;
+
+                        if (remainingMonths < 12)
+                            quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * quoteLine.LPCR_PrixUnitaire__c  * remainingMonths) / 12;
+                        if (remainingMonths >= 12)
+                            quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * quoteLine.LPCR_PrixUnitaire__c);
+                    }
+
+                    quoteLineListToUpdate.add(quoteLine);
+                }
+                else {
+                    quoteLine.LPCR_CAUnitaire__c = 0;
+                    quoteLine.LPCR_NombrePlace__c = 0;
+                    quoteLineListToUpdate.add(quoteLine);
+                }
+            }        
         }
-      
-    }*/
 
+        if(quoteLineListToUpdate.size() > 0) {
+            
+            PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','PART III - quoteLineListToUpdate.size():' + quoteLineListToUpdate.size());
 
+            SBQQ.TriggerControl.disable();
+            try {
+                update quoteLineListToUpdate; 
+            } finally {
+                SBQQ.TriggerControl.enable();
+            }
+        } 
+    }
 }

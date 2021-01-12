@@ -571,6 +571,16 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CAUnitaire__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NombrePlace__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>blng__BillingTreatment__c</field>
             <table>Order.OrderItems</table>
         </columns>
