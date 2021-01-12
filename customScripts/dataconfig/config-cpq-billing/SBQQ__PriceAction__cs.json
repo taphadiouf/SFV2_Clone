@@ -507,7 +507,7 @@
             "Name": "47",
             "SBQQ__Field__c": "SBQQ__Quantity__c",
             "SBQQ__Formula__c": "SBQQ__RequiredBy__r.LPCR_TotalBerceauGratuitRegion__c",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -1276,7 +1276,7 @@
             "Name": "106",
             "SBQQ__Field__c": "LPCR_HoldBilling__c",
             "SBQQ__Order__c": 30,
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -1297,7 +1297,7 @@
             "Name": "107",
             "SBQQ__Field__c": "LPCR_HoldBilling__c",
             "SBQQ__Order__c": 2,
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -1319,7 +1319,7 @@
             "Name": "108",
             "SBQQ__Field__c": "LPCR_HoldReason__c",
             "SBQQ__Order__c": 3,
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -1617,7 +1617,7 @@
             "Name": "122",
             "SBQQ__Field__c": "SBQQ__ListPrice__c",
             "SBQQ__Order__c": 1,
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -1640,7 +1640,7 @@
             "SBQQ__Field__c": "SBQQ__EndDate__c",
             "SBQQ__Formula__c": "IF (LPCR_OptionNumber__c = 'One',\n   IF( SBQQ__Quote__r.SBQQ__StartDate__c <=  SBQQ__Quote__r.LPCR_FirstOptionEndDate__c,  SBQQ__Quote__r.LPCR_FirstOptionEndDate__c , NULL),  SBQQ__Quote__r.SBQQ__EndDate__c  )",
             "SBQQ__Order__c": 2,
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -1753,7 +1753,7 @@
             "Name": "128",
             "SBQQ__Field__c": "SBQQ__EndDate__c",
             "SBQQ__Formula__c": "if(LPCR_OptionNumber__c = 'One', SBQQ__Quote__r.LPCR_FirstOptionEndDate__c , SBQQ__Quote__r.SBQQ__EndDate__c)",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -1775,7 +1775,7 @@
             "SBQQ__Field__c": "SBQQ__StartDate__c",
             "SBQQ__Formula__c": "IF (LPCR_OptionNumber__c = 'One',\n   IF( SBQQ__Quote__r.SBQQ__StartDate__c <=  SBQQ__Quote__r.LPCR_FirstOptionEndDate__c, SBQQ__Quote__r.SBQQ__StartDate__c, NULL),IF( SBQQ__Quote__r.SBQQ__StartDate__c <=  SBQQ__Quote__r.LPCR_FirstOptionEndDate__c,  SBQQ__Quote__r.LPCR_SecondOptionStartDate__c , SBQQ__Quote__r.SBQQ__StartDate__c) )",
             "SBQQ__Order__c": 1,
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -1820,7 +1820,7 @@
             "Name": "131",
             "SBQQ__Field__c": "SBQQ__StartDate__c",
             "SBQQ__Formula__c": "if(LPCR_OptionNumber__c = 'One', SBQQ__Quote__r.SBQQ__StartDate__c, SBQQ__Quote__r.LPCR_SecondOptionStartDate__c)",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -1841,7 +1841,7 @@
             "Name": "132",
             "SBQQ__Field__c": "LPCR_HoldReason__c",
             "SBQQ__Order__c": 40,
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
