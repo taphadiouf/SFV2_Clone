@@ -913,12 +913,7 @@ public class SM008_QuoteServices_Test {
             amendmentQuote.SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 17);
             update amendmentQuote;
 
-            Test.stopTest();
-
-
-            
-            
+            Test.stopTest();       
         } 
     }
-    
 }
