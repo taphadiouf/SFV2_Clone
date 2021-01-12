@@ -106,7 +106,7 @@
             "SBQQ__FilterType__c": "Value",
             "SBQQ__Object__c": "Quote",
             "SBQQ__Operator__c": "not equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -175,7 +175,7 @@
             "SBQQ__FilterType__c": "Value",
             "SBQQ__Object__c": "Quote",
             "SBQQ__Operator__c": "equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -222,7 +222,7 @@
             "SBQQ__FilterType__c": "Value",
             "SBQQ__Object__c": "Quote Line",
             "SBQQ__Operator__c": "not equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -244,7 +244,7 @@
             "SBQQ__FilterType__c": "Value",
             "SBQQ__Object__c": "Quote",
             "SBQQ__Operator__c": "equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -335,7 +335,7 @@
             "SBQQ__FilterType__c": "Value",
             "SBQQ__Object__c": "Quote Line",
             "SBQQ__Operator__c": "not equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -732,7 +732,7 @@
             "SBQQ__FilterType__c": "Value",
             "SBQQ__Object__c": "Quote",
             "SBQQ__Operator__c": "not equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -755,7 +755,7 @@
             "SBQQ__FilterType__c": "Value",
             "SBQQ__Object__c": "Quote Line",
             "SBQQ__Operator__c": "equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -779,7 +779,7 @@
             "SBQQ__FilterType__c": "Formula",
             "SBQQ__Object__c": "Quote",
             "SBQQ__Operator__c": "greater than",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -801,7 +801,7 @@
             "SBQQ__FilterType__c": "Value",
             "SBQQ__Object__c": "Quote",
             "SBQQ__Operator__c": "equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -824,7 +824,7 @@
             "SBQQ__FilterType__c": "Value",
             "SBQQ__Object__c": "Quote",
             "SBQQ__Operator__c": "equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -1410,7 +1410,7 @@
             "SBQQ__FilterType__c": "Value",
             "SBQQ__Object__c": "Quote Line",
             "SBQQ__Operator__c": "equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",
@@ -1663,7 +1663,7 @@
             "SBQQ__FilterType__c": "Value",
             "SBQQ__Object__c": "Quote Line",
             "SBQQ__Operator__c": "not equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__PriceRule__c",

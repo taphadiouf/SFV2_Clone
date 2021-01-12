@@ -37,13 +37,13 @@
             },
             "IsDeleted": false,
             "Name": "Affecter nombre berceaux gratuit au produit 'berceau gratuit'",
-            "SBQQ__Active__c": true,
+            "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
             "SBQQ__ConfiguratorEvaluationEvent__c": "Edit",
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-09-30T12:59:21.000+0000"
+            "SystemModstamp": "2020-12-22T11:49:54.000+0000"
         },
         {
             "attributes": {
@@ -345,8 +345,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef24"
             },
             "IsDeleted": false,
-            "LastReferencedDate": "2020-09-30T09:02:14.000+0000",
-            "LastViewedDate": "2020-09-30T09:02:14.000+0000",
             "Name": "Calcul prix berceaux MAC",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "1 AND 8 AND  (2 OR 3 OR 7) AND (4 OR (5 AND 6))",
@@ -380,13 +378,13 @@
             },
             "IsDeleted": false,
             "Name": "Set Start date & End date (New/amendment MAC)",
-            "SBQQ__Active__c": true,
+            "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
             "SBQQ__ConfiguratorEvaluationEvent__c": "Edit",
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 600,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-09-30T12:59:21.000+0000"
+            "SystemModstamp": "2020-12-22T11:23:41.000+0000"
         },
         {
             "attributes": {
@@ -395,13 +393,13 @@
             },
             "IsDeleted": false,
             "Name": "Set price 0 to firt option ( 11 month Mac)",
-            "SBQQ__Active__c": true,
+            "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
             "SBQQ__ConfiguratorEvaluationEvent__c": "Edit",
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-09-30T12:59:21.000+0000"
+            "SystemModstamp": "2020-12-22T11:24:51.000+0000"
         },
         {
             "attributes": {
@@ -424,13 +422,13 @@
             },
             "IsDeleted": false,
             "Name": "Set Start date & End date to QL ( MAC/Renewal)",
-            "SBQQ__Active__c": true,
+            "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
             "SBQQ__ConfiguratorEvaluationEvent__c": "Edit",
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-09-30T12:59:21.000+0000"
+            "SystemModstamp": "2020-12-22T11:23:45.000+0000"
         },
         {
             "attributes": {
@@ -481,14 +479,14 @@
                 "referenceId": "SBQQ__PriceRule__cRef33"
             },
             "IsDeleted": false,
-            "LastReferencedDate": "2020-12-02T14:14:59.000+0000",
-            "LastViewedDate": "2020-12-02T14:14:59.000+0000",
+            "LastReferencedDate": "2020-12-03T15:59:32.000+0000",
+            "LastViewedDate": "2020-12-03T15:59:32.000+0000",
             "Name": "Mettre à jour champs QL quand bon de commande envoyé",
             "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
-            "SBQQ__EvaluationEvent__c": "On Calculate",
+            "SBQQ__EvaluationEvent__c": "After Calculate",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2020-12-02T14:14:25.000+0000"
+            "SystemModstamp": "2020-12-03T15:59:35.000+0000"
         },
         {
             "attributes": {
