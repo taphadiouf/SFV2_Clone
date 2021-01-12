@@ -650,7 +650,7 @@ public with sharing class SM008_QuoteServices {
             PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteLine:'+ quoteLine);
 
             Decimal prixUnitaire = quoteLine.LPCR_PrixUnitaire__c;
-            Integer numberOfMonthInYear = 12;
+            Decimal numberOfMonthInYear = 12;
 
             if (QuoteLine.SBQQ__ProductCode__c.startsWith('BerceauMicro')) {
 
