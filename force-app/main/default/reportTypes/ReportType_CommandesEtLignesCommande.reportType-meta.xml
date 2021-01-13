@@ -227,6 +227,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AnnulationAnticipee__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>blng__InvoiceBatch__c</field>
             <table>Order</table>
         </columns>

@@ -4662,15 +4662,18 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Order.LPCR_ChiffreAffaires__c</field>
-  <readable>true</readable>
+        <readable>true</readable>
     </fieldPermissions>
-
- <fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Order.LPCR_AnnulationAnticipee__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Order.LPCR_MinDateOverrideNextBilling__c</field>
-  <readable>true</readable>
+        <readable>true</readable>
     </fieldPermissions>
-        
     <fieldPermissions>
         <editable>true</editable>
         <field>Order.BillToContactId</field>
@@ -9821,7 +9824,11 @@
         <field>OrderItem.LPCR_CAUnitaire__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_AnnulationAnticipee__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_Creation_conforme__c</field>
