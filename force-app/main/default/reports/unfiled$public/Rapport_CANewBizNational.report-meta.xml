@@ -69,6 +69,13 @@
             <operator>equals</operator>
             <value>Activated</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Order$LPCR_AnnulationAnticipee__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>

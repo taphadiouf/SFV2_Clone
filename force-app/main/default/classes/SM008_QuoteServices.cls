@@ -16,6 +16,7 @@ public with sharing class SM008_QuoteServices {
     
     //added by hanae
     public static void updateQuotes(List<SBQQ__Quote__c> quotesList){
+
         List<SBQQ__Quote__c> renewalOppList = new List<SBQQ__Quote__c>();
         List<SBQQ__Quote__c> cummonQuoteList = new List<SBQQ__Quote__c>();
         List<SBQQ__Quote__c> B2CQuoteList = new List<SBQQ__Quote__c>();
@@ -380,10 +381,6 @@ public with sharing class SM008_QuoteServices {
         }
     }
     
-    
-    
-    //end of hanae's part
-    
     public static void updateOppsFromQuotes(List<SBQQ__Quote__c> quotesList){
         Set<Id> oppsIds = new Set<Id>();
         for(SBQQ__Quote__c eachQuote : quotesList){
@@ -599,6 +596,54 @@ public with sharing class SM008_QuoteServices {
         return mapQuoteIDAgreementID;
     }  
     
+    // Update current quote, masterContract's Order and masterContract's quote
+    public static void updateDueToResilisationAnticipe(List<SBQQ__Quote__c> quotesList){
+        
+        PAD.logAllList('SM008_QuoteServices','updateDueToResilisationAnticipe','quotesList', quotesList);
+
+        Set<Id> contractIds = new Set<Id>();
+        Map<Id,Boolean> contractFlagMap = new Map<Id,Boolean>();
+
+        for(SBQQ__Quote__c eachQuote : quotesList) {
+
+            if (eachQuote.SBQQ__Type__c == 'Amendment' && eachQuote.LPCR_TypeAvenant__c == 'Résiliation') {
+
+                PAD.log('SM008_QuoteServices','updateDueToResilisationAnticipe','eachQuote.SBQQ__StartDate__c:'+ eachQuote.SBQQ__StartDate__c);
+                PAD.log('SM008_QuoteServices','updateDueToResilisationAnticipe','eachQuote.LPCR_DateDebut__c:'+ eachQuote.LPCR_DateDebut__c);
+
+                if (eachQuote.SBQQ__StartDate__c == eachQuote.LPCR_DateDebut__c) {
+                    eachQuote.LPCR_AnnulationAnticipee__c = true;
+                    PAD.log('SM008_QuoteServices','updateDueToResilisationAnticipe','eachQuote.LPCR_AnnulationAnticipee__c:'+ eachQuote.LPCR_AnnulationAnticipee__c);
+                } else {
+                    eachQuote.LPCR_AnnulationAnticipee__c = false;
+                    PAD.log('SM008_QuoteServices','updateDueToResilisationAnticipe','eachQuote.LPCR_AnnulationAnticipee__c:'+ eachQuote.LPCR_AnnulationAnticipee__c);
+                }
+                contractFlagMap.put(eachQuote.SBQQ__MasterContract__c, eachQuote.LPCR_AnnulationAnticipee__c);
+            }
+        }
+
+        List<SBQQ__Quote__c> quoteListToUpdate = new List<SBQQ__Quote__c>();
+        List<Order> orderListToUpdate = new List<Order>();
+
+        for (Contract c : [SELECT Id, SBQQ__Order__c, SBQQ__Quote__c FROM Contract where id in :contractFlagMap.keySet()]) {
+            if (c.SBQQ__Quote__c != null)
+                quoteListToUpdate.add(new SBQQ__Quote__c(Id = c.SBQQ__Quote__c, LPCR_AnnulationAnticipee__c = contractFlagMap.get(c.Id)));
+            if (c.SBQQ__Order__c != null)
+            orderListToUpdate.add(new Order(Id = c.SBQQ__Order__c, LPCR_AnnulationAnticipee__c = contractFlagMap.get(c.Id)));
+        }
+
+        PAD.log('SM008_QuoteServices','updateDueToResilisationAnticipe','quoteListToUpdate.size():'+ quoteListToUpdate.size());
+        PAD.log('SM008_QuoteServices','updateDueToResilisationAnticipe','orderListToUpdate.size():'+ orderListToUpdate.size());
+        
+        if (quoteListToUpdate.size() > 0) { 
+            update quoteListToUpdate;
+        }
+        if (orderListToUpdate.size() > 0) {
+            update orderListToUpdate;
+        }
+        
+        PAD.logAllList('SM008_QuoteServices','updateDueToResilisationAnticipe','quotesList', quotesList);
+    }
 
     public static Decimal ExactDiffBeetweenDate(Date startDate, Date endDate) {
 
@@ -634,7 +679,7 @@ public with sharing class SM008_QuoteServices {
 
         PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteIds:'+ quoteIds);
 
-        List<SBQQ__QuoteLine__c> tmpQuoteLineList = new List<SBQQ__QuoteLine__c>([SELECT Id, SBQQ__Quote__c, SBQQ__ChargeType__c, SBQQ__HasConsumptionSchedule__c,
+        List<SBQQ__QuoteLine__c> tmpQuoteLineList = new List<SBQQ__QuoteLine__c>([SELECT Id, SBQQ__ProductCode__c, SBQQ__Quote__c, SBQQ__ChargeType__c, SBQQ__HasConsumptionSchedule__c,
                                                                                     SBQQ__Existing__c, LPCR_PriorQty__c, LPCR_DateDebut__c, LPCR_PrixUnitaire__c, LPCR_DateFin__c, 
                                                                                     SBQQ__PriorQuantity__c, SBQQ__Quantity__c
                                                                                     FROM SBQQ__QuoteLine__c where SBQQ__Quote__c in : quoteIds]);
@@ -652,130 +697,134 @@ public with sharing class SM008_QuoteServices {
             Decimal prixUnitaire = quoteLine.LPCR_PrixUnitaire__c;
             Decimal numberOfMonthInYear = 12;
 
-            if (QuoteLine.SBQQ__ProductCode__c.startsWith('BerceauMicro')) {
+
+
+            if (QuoteLine.SBQQ__ProductCode__c != null && QuoteLine.SBQQ__ProductCode__c.startsWith('BerceauMicro')) {
 
                 prixUnitaire = QuoteLine.LPCR_MontantAnnuelForfaitMICRO__c;
                 numberOfMonthInYear = QuoteLine.LPCR_Creche__r.LPCR_TypeMensualisation__c;
-            }
+            
 
-            if (quote.SBQQ__Type__c == 'Quote' && quote.LPCR_TypeCreche__c != 'MAC' && quote.SBQQ__LineItemCount__c > 0 && quote.SBQQ__Ordered__c == false) {
+                if (quote.SBQQ__Type__c == 'Quote' && quote.LPCR_TypeCreche__c != 'MAC' && quote.SBQQ__LineItemCount__c > 0 && quote.SBQQ__Ordered__c == false) {
 
-                PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','PART I');
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','PART I');
 
-                        if (quoteLine.SBQQ__ChargeType__c == 'Recurring' && quoteLine.SBQQ__HasConsumptionSchedule__c == false) { //then calculate CA field on the Quote Line 
-                            
-                            quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c;
-                            Date startDate1 = quoteLine.LPCR_DateDebut__c != null ? quoteLine.LPCR_DateDebut__c : quote.LPCR_DateDebut__c;
-                            Date endDate1 = quoteLine.LPCR_DateFin__c != null ? quoteLine.LPCR_DateFin__c : quote.LPCR_DateFin__c;
-                            
-                            Decimal nbMonths = ExactDiffBeetweenDate(startDate1, endDate1);
+                            if (quoteLine.SBQQ__ChargeType__c == 'Recurring' && quoteLine.SBQQ__HasConsumptionSchedule__c == false) { //then calculate CA field on the Quote Line 
+                                
+                                quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c;
+                                Date startDate1 = quoteLine.LPCR_DateDebut__c != null ? quoteLine.LPCR_DateDebut__c : quote.LPCR_DateDebut__c;
+                                Date endDate1 = quoteLine.LPCR_DateFin__c != null ? quoteLine.LPCR_DateFin__c : quote.LPCR_DateFin__c;
+                                
+                                Decimal nbMonths = ExactDiffBeetweenDate(startDate1, endDate1);
 
-                            if (nbMonths < 12)
-                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire * nbMonths) / numberOfMonthInYear;
+                                if (nbMonths < 12)
+                                    quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire * nbMonths) / numberOfMonthInYear;
 
-                            if (nbMonths >= 12)
-                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire);
+                                if (nbMonths >= 12)
+                                    quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire);
 
-                            quoteLineListToUpdate.add(quoteLine);
-                        }
-                        else {
-                            quoteLine.LPCR_CAUnitaire__c = 0; //for One time or Usage.
-                            quoteLine.LPCR_NombrePlace__c = 0;
-                            quoteLineListToUpdate.add(quoteLine);
-                        }
-            }
+                                quoteLineListToUpdate.add(quoteLine);
+                            }
+                            else {
+                                quoteLine.LPCR_CAUnitaire__c = 0; //for One time or Usage.
+                                quoteLine.LPCR_NombrePlace__c = 0;
+                                quoteLineListToUpdate.add(quoteLine);
+                            }
+                }
+            
 
-            if (quote.SBQQ__Type__c == 'Amendment' && quote.LPCR_TypeCreche__c != 'MAC' && quote.SBQQ__LineItemCount__c > 0 && quote.SBQQ__Ordered__c == false) {
+                if (quote.SBQQ__Type__c == 'Amendment' && quote.LPCR_TypeCreche__c != 'MAC' && quote.SBQQ__LineItemCount__c > 0 && quote.SBQQ__Ordered__c == false) {
 
-                PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','PART II');
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','PART II');
 
-                if (quoteLine.SBQQ__ChargeType__c == 'Recurring' && quoteLine.SBQQ__HasConsumptionSchedule__c == false) { //then populate CA field on the Quote Line  
+                    if (quoteLine.SBQQ__ChargeType__c == 'Recurring' && quoteLine.SBQQ__HasConsumptionSchedule__c == false) { //then populate CA field on the Quote Line  
 
-                    Date startDate2 = quoteLine.SBQQ__StartDate__c != null ? quoteLine.SBQQ__StartDate__c : quote.SBQQ__StartDate__c;                                                                                                                                     
-                    Date endDate2 = quoteLine.LPCR_DateFin__c != null ? quoteLine.LPCR_DateFin__c : quote.LPCR_DateFin__c;                                                                                                                                               
-                    Date oneYearMark = quoteLine.LPCR_DateDebut__c != null ? quoteLine.LPCR_DateDebut__c.addYears(1) : quote.LPCR_DateDebut__c.addYears(1);  
-                    
-                    Decimal remainingMonths = ExactDiffBeetweenDate(startDate2, endDate2);
-                    Decimal canceledMonths = ExactDiffBeetweenDate(startDate2, oneYearMark);                                                              
+                        Date startDate2 = quoteLine.SBQQ__StartDate__c != null ? quoteLine.SBQQ__StartDate__c : quote.SBQQ__StartDate__c;                                                                                                                                     
+                        Date endDate2 = quoteLine.LPCR_DateFin__c != null ? quoteLine.LPCR_DateFin__c : quote.LPCR_DateFin__c;                                                                                                                                               
+                        Date oneYearMark = quoteLine.LPCR_DateDebut__c != null ? quoteLine.LPCR_DateDebut__c.addYears(1) : quote.LPCR_DateDebut__c.addYears(1);  
+                        
+                        Decimal remainingMonths = ExactDiffBeetweenDate(startDate2, endDate2);
+                        Decimal canceledMonths = ExactDiffBeetweenDate(startDate2, oneYearMark);                                                              
 
-                    if (quoteLine.SBQQ__NetTotal__c == 0) { //(QL with no change in term of price nor qty)
+                        if (quoteLine.SBQQ__NetTotal__c == 0) { //(QL with no change in term of price nor qty)
 
-                        quoteLine.LPCR_CAUnitaire__c = 0;
-                        quoteLine.LPCR_NombrePlace__c = 0;
-                    }
-                    else if (quoteLine.SBQQ__Existing__c == true && quoteLine.SBQQ__PriorQuantity__c < quoteLine.SBQQ__Quantity__c) { //(original QL with increase of qty)
-
-                        quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__EffectiveQuantity__c;
-
-                        if (remainingMonths < 12)
-                            quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__EffectiveQuantity__c * prixUnitaire * remainingMonths ) / numberOfMonthInYear;
-                        if (remainingMonths >= 12)
-                            quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__EffectiveQuantity__c * prixUnitaire);
-                    }    
-                    else if (quoteLine.SBQQ__Existing__c == true && quoteLine.SBQQ__PriorQuantity__c >= quoteLine.SBQQ__Quantity__c) { //(original QL with decrease of qty)
-
-                        if  (startDate2 >= oneYearMark) {// ( amendment after one year mark)
                             quoteLine.LPCR_CAUnitaire__c = 0;
                             quoteLine.LPCR_NombrePlace__c = 0;
                         }
-                        else if (startDate2 < oneYearMark) { // ( amendment before one year mark)
-                            quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__EffectiveQuantity__c * prixUnitaire * canceledMonths) / numberOfMonthInYear;
+                        else if (quoteLine.SBQQ__Existing__c == true && quoteLine.SBQQ__PriorQuantity__c < quoteLine.SBQQ__Quantity__c) { //(original QL with increase of qty)
+
                             quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__EffectiveQuantity__c;
-                        }
-                    }
-                    else if (quoteLine.LPCR_Clone__c == true && quoteLine.LPCR_PriorQty__c < quoteLine.SBQQ__Quantity__c) { //(Cloned QL with increase QTY)
 
-                        if  (startDate2 >= oneYearMark) { // ( amendment after one year mark)
-
-                            quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c - quoteLine.LPCR_PriorQty__c;
-                            
                             if (remainingMonths < 12)
-                                quoteLine.LPCR_CAUnitaire__c = ((quoteLine.SBQQ__Quantity__c - quoteLine.LPCR_PriorQty__c)  * prixUnitaire  * remainingMonths) / numberOfMonthInYear;
+                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__EffectiveQuantity__c * prixUnitaire * remainingMonths ) / numberOfMonthInYear;
                             if (remainingMonths >= 12)
-                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c - quoteLine.LPCR_PriorQty__c) * prixUnitaire;
-                        }
-                        if  (startDate2 < oneYearMark) { // ( amendment before one year mark)
+                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__EffectiveQuantity__c * prixUnitaire);
+                        }    
+                        else if (quoteLine.SBQQ__Existing__c == true && quoteLine.SBQQ__PriorQuantity__c >= quoteLine.SBQQ__Quantity__c) { //(original QL with decrease of qty)
 
-                            quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c; 
-                            
-                            if (remainingMonths < 12)
-                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire  * remainingMonths) / numberOfMonthInYear;
-                            if (remainingMonths >= 12)
-                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire);
-                        }
-                    }
-                    else if (quoteLine.LPCR_Clone__c == true && quoteLine.LPCR_PriorQty__c >= quoteLine.SBQQ__Quantity__c) { //(Cloned QL with decrease QTY)
-
-                        if  (startDate2 >= oneYearMark) { // ( amendment after one year mark)
+                            if  (startDate2 >= oneYearMark) {// ( amendment after one year mark)
                                 quoteLine.LPCR_CAUnitaire__c = 0;
                                 quoteLine.LPCR_NombrePlace__c = 0;
+                            }
+                            else if (startDate2 < oneYearMark) { // ( amendment before one year mark)
+                                quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__EffectiveQuantity__c * prixUnitaire * canceledMonths) / numberOfMonthInYear;
+                                quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__EffectiveQuantity__c;
+                            }
                         }
-                        if  (startDate2 < oneYearMark) { // ( amendment before one year mark)
-                            
+                        else if (quoteLine.LPCR_Clone__c == true && quoteLine.LPCR_PriorQty__c < quoteLine.SBQQ__Quantity__c) { //(Cloned QL with increase QTY)
+
+                            if  (startDate2 >= oneYearMark) { // ( amendment after one year mark)
+
+                                quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c - quoteLine.LPCR_PriorQty__c;
+                                
+                                if (remainingMonths < 12)
+                                    quoteLine.LPCR_CAUnitaire__c = ((quoteLine.SBQQ__Quantity__c - quoteLine.LPCR_PriorQty__c)  * prixUnitaire  * remainingMonths) / numberOfMonthInYear;
+                                if (remainingMonths >= 12)
+                                    quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c - quoteLine.LPCR_PriorQty__c) * prixUnitaire;
+                            }
+                            if  (startDate2 < oneYearMark) { // ( amendment before one year mark)
+
+                                quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c; 
+                                
+                                if (remainingMonths < 12)
+                                    quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire  * remainingMonths) / numberOfMonthInYear;
+                                if (remainingMonths >= 12)
+                                    quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire);
+                            }
+                        }
+                        else if (quoteLine.LPCR_Clone__c == true && quoteLine.LPCR_PriorQty__c >= quoteLine.SBQQ__Quantity__c) { //(Cloned QL with decrease QTY)
+
+                            if  (startDate2 >= oneYearMark) { // ( amendment after one year mark)
+                                    quoteLine.LPCR_CAUnitaire__c = 0;
+                                    quoteLine.LPCR_NombrePlace__c = 0;
+                            }
+                            if  (startDate2 < oneYearMark) { // ( amendment before one year mark)
+                                
+                                quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c;
+                                
+                                if (remainingMonths < 12)
+                                    quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire  * remainingMonths) / numberOfMonthInYear;
+                                if (remainingMonths >= 12)
+                                    quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire);
+                            }
+                        }
+                        else if (quoteLine.LPCR_Clone__c == false && quoteLine.SBQQ__Existing__c == false) { //(brand new QL)
+
                             quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c;
-                            
+
                             if (remainingMonths < 12)
                                 quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire  * remainingMonths) / numberOfMonthInYear;
                             if (remainingMonths >= 12)
                                 quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire);
                         }
+
+                        quoteLineListToUpdate.add(quoteLine);
                     }
-                    else if (quoteLine.LPCR_Clone__c == false && quoteLine.SBQQ__Existing__c == false) { //(brand new QL)
-
-                        quoteLine.LPCR_NombrePlace__c = quoteLine.SBQQ__Quantity__c;
-
-                        if (remainingMonths < 12)
-                            quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire  * remainingMonths) / numberOfMonthInYear;
-                        if (remainingMonths >= 12)
-                            quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire);
+                    else {
+                        quoteLine.LPCR_CAUnitaire__c = 0;
+                        quoteLine.LPCR_NombrePlace__c = 0;
+                        quoteLineListToUpdate.add(quoteLine);
                     }
-
-                    quoteLineListToUpdate.add(quoteLine);
-                }
-                else {
-                    quoteLine.LPCR_CAUnitaire__c = 0;
-                    quoteLine.LPCR_NombrePlace__c = 0;
-                    quoteLineListToUpdate.add(quoteLine);
                 }
             }        
         }
