@@ -49,13 +49,6 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>Order$LPCR_TypeOpportunite__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>New Business,Upsell</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Order.OrderItems$Product2</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -75,6 +68,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Order$LPCR_TypeDeVente__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>NewBiz,Upsell</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -51,6 +51,10 @@
                 <behavior>Required</behavior>
                 <field>LPCR_CompteFacturation__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeDeVente__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
