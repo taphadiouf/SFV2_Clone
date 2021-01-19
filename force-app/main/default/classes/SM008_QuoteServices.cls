@@ -664,10 +664,22 @@ public with sharing class SM008_QuoteServices {
         Decimal partOne = tmpStartDate.monthsBetween(tmpEndDate);
 
         //Nombre de mois (decimal) du nombre de jour de startDate si jour différent du premier jour du mois
-        Decimal partTwo = startDate.day() / Date.daysInMonth(startDate.year(),startDate.month());
+        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','for partTwo...');
+        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','Date.daysInMonth(startDate.year(),startDate.month():'+ Date.daysInMonth(startDate.year(),startDate.month()));
+        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','startDate.day():'+ startDate.day());
+        //Decimal partTwo = Decimal.valueOf(startDate.day()) / Date.daysInMonth(startDate.year(),startDate.month());
+        Decimal partTwo = Decimal.valueOf(startDate.daysBetween(UM005_DateUtility.lastDateOfMonth(startDate))) / Date.daysInMonth(startDate.year(),startDate.month());
 
         //Nombre de mois (decimal) du nombre de jour de endDate si jour différent du premier jour du mois
-        Decimal partThree = endDate.day() / Date.daysInMonth(endDate.year(),endDate.month());
+        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','for partThree...');
+        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','Date.daysInMonth(endDate.year(),endDate.month():'+ Date.daysInMonth(endDate.year(),endDate.month()));
+        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','endDate.day():'+ endDate.day());
+        Decimal partThree = Decimal.valueOf(endDate.day()) / Date.daysInMonth(endDate.year(),endDate.month());
+
+        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','partOne:'+ partOne);
+        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','partTwo:'+ partTwo);
+        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','partThree:'+ partThree);
+        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','total:'+ (partOne + partTwo + partThree));
 
         return  (partOne + partTwo + partThree);
 
@@ -679,9 +691,9 @@ public with sharing class SM008_QuoteServices {
 
         PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteIds:'+ quoteIds);
 
-        List<SBQQ__QuoteLine__c> tmpQuoteLineList = new List<SBQQ__QuoteLine__c>([SELECT Id, SBQQ__ProductCode__c, SBQQ__Quote__c, SBQQ__ChargeType__c, SBQQ__HasConsumptionSchedule__c,
-                                                                                    SBQQ__Existing__c, LPCR_PriorQty__c, LPCR_DateDebut__c, LPCR_PrixUnitaire__c, LPCR_DateFin__c, 
-                                                                                    SBQQ__PriorQuantity__c, SBQQ__Quantity__c
+        List<SBQQ__QuoteLine__c> tmpQuoteLineList = new List<SBQQ__QuoteLine__c>([SELECT Id, SBQQ__ProductCode__c, SBQQ__Quote__c, SBQQ__ChargeType__c, SBQQ__HasConsumptionSchedule__c, SBQQ__EffectiveQuantity__c,
+                                                                                    SBQQ__Existing__c, LPCR_PriorQty__c, LPCR_DateDebut__c, LPCR_PrixUnitaire__c, LPCR_DateFin__c, SBQQ__StartDate__c, LPCR_Clone__c,
+                                                                                    SBQQ__PriorQuantity__c, SBQQ__Quantity__c, LPCR_MontantAnnuelForfaitMICRO__c, LPCR_Creche__r.LPCR_TypeMensualisation__c
                                                                                     FROM SBQQ__QuoteLine__c where SBQQ__Quote__c in : quoteIds]);
         List<SBQQ__QuoteLine__c> quoteLineListToUpdate = new List<SBQQ__QuoteLine__c>();
         Map<Id, SBQQ__Quote__c> mapQuote = new Map<Id, SBQQ__Quote__c>([SELECT Id, SBQQ__Type__c, LPCR_TypeCreche__c, LPCR_DateDebut__c, LPCR_DateFin__c, SBQQ__LineItemCount__c, SBQQ__Ordered__c 
@@ -715,6 +727,11 @@ public with sharing class SM008_QuoteServices {
                             
                             Decimal nbMonths = ExactDiffBeetweenDate(startDate1, endDate1);
 
+                            PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','nbMonths:' + nbMonths);
+                            PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteLine.SBQQ__Quantity__c:' + quoteLine.SBQQ__Quantity__c);
+                            PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','prixUnitaire:' + prixUnitaire);
+                            PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','numberOfMonthInYear:' + numberOfMonthInYear);
+
                             if (nbMonths < 12)
                                 quoteLine.LPCR_CAUnitaire__c = (quoteLine.SBQQ__Quantity__c * prixUnitaire * nbMonths) / numberOfMonthInYear;
 
@@ -742,8 +759,23 @@ public with sharing class SM008_QuoteServices {
                     Date oneYearMark = quoteLine.LPCR_DateDebut__c != null ? quoteLine.LPCR_DateDebut__c.addYears(1) : quote.LPCR_DateDebut__c.addYears(1);  
                     
                     Decimal remainingMonths = ExactDiffBeetweenDate(startDate2, endDate2);
-                    Decimal canceledMonths = ExactDiffBeetweenDate(startDate2, oneYearMark);                                                              
+                    Decimal canceledMonths = ExactDiffBeetweenDate(startDate2, oneYearMark);  
+                    
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','remainingMonths:' + remainingMonths);
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','canceledMonths:' + canceledMonths);
 
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteLine.SBQQ__Existing__c:' + quoteLine.SBQQ__Existing__c);
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteLine.SBQQ__PriorQuantity__c:' + quoteLine.SBQQ__PriorQuantity__c);
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteLine.SBQQ__Quantity__c:' + quoteLine.SBQQ__Quantity__c);
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteLine.SBQQ__EffectiveQuantity__c:' + quoteLine.SBQQ__EffectiveQuantity__c);
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteLine.LPCR_PriorQty__c:' + quoteLine.LPCR_PriorQty__c);
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteLine.LPCR_Clone__c:' + quoteLine.LPCR_Clone__c);
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','prixUnitaire:' + prixUnitaire);
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','numberOfMonthInYear:' + numberOfMonthInYear);
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','remainingMonths:' + remainingMonths);
+                    PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','oneYearMark:' + oneYearMark);
+                    
+                    
                     if (quoteLine.SBQQ__NetTotal__c == 0) { //(QL with no change in term of price nor qty)
 
                         quoteLine.LPCR_CAUnitaire__c = 0;
