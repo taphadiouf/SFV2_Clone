@@ -655,26 +655,36 @@ public with sharing class SM008_QuoteServices {
             return 0;
         }
 
+        Decimal partOne = 0;
+        Decimal partTwo = 0;
+        Decimal partThree = 0;
+
+
+
         Integer nbMonths = endDate.monthsBetween(startDate);
         
         // Nombre de mois entre premier jour du mois suivant startDate et premier jour du mois de endDate
         Date tmpStartDate = startDate.day() == 1 ? startDate : UM005_DateUtility.lastDateOfMonth(startDate).addDays(1);
         Date tmpEndDate = endDate.day() == 1 ? endDate : Date.newInstance(endDate.year(), endDate.month(), 1); 
 
-        Decimal partOne = tmpStartDate.monthsBetween(tmpEndDate);
+        partOne = tmpStartDate.monthsBetween(tmpEndDate);
 
-        //Nombre de mois (decimal) du nombre de jour de startDate si jour différent du premier jour du mois
-        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','for partTwo...');
-        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','Date.daysInMonth(startDate.year(),startDate.month():'+ Date.daysInMonth(startDate.year(),startDate.month()));
-        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','startDate.day():'+ startDate.day());
-        //Decimal partTwo = Decimal.valueOf(startDate.day()) / Date.daysInMonth(startDate.year(),startDate.month());
-        Decimal partTwo = Decimal.valueOf(startDate.daysBetween(UM005_DateUtility.lastDateOfMonth(startDate))) / Date.daysInMonth(startDate.year(),startDate.month());
+        if (startDate.day() != 1) {
+            //Nombre de mois (decimal) du nombre de jour de startDate si jour différent du premier jour du mois
+            PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','for partTwo...');
+            PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','Date.daysInMonth(startDate.year(),startDate.month():'+ Date.daysInMonth(startDate.year(),startDate.month()));
+            PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','startDate.day():'+ startDate.day());
+            //Decimal partTwo = Decimal.valueOf(startDate.day()) / Date.daysInMonth(startDate.year(),startDate.month());
+            partTwo = Decimal.valueOf(startDate.daysBetween(UM005_DateUtility.lastDateOfMonth(startDate))) / Date.daysInMonth(startDate.year(),startDate.month());
+        }
 
-        //Nombre de mois (decimal) du nombre de jour de endDate si jour différent du premier jour du mois
-        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','for partThree...');
-        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','Date.daysInMonth(endDate.year(),endDate.month():'+ Date.daysInMonth(endDate.year(),endDate.month()));
-        PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','endDate.day():'+ endDate.day());
-        Decimal partThree = Decimal.valueOf(endDate.day()) / Date.daysInMonth(endDate.year(),endDate.month());
+        if (endDate.day() != 1) {
+            //Nombre de mois (decimal) du nombre de jour de endDate si jour différent du premier jour du mois
+            PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','for partThree...');
+            PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','Date.daysInMonth(endDate.year(),endDate.month():'+ Date.daysInMonth(endDate.year(),endDate.month()));
+            PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','endDate.day():'+ endDate.day());
+            partThree = Decimal.valueOf(endDate.day()) / Date.daysInMonth(endDate.year(),endDate.month());
+        }
 
         PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','partOne:'+ partOne);
         PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','partTwo:'+ partTwo);
@@ -693,10 +703,10 @@ public with sharing class SM008_QuoteServices {
 
         List<SBQQ__QuoteLine__c> tmpQuoteLineList = new List<SBQQ__QuoteLine__c>([SELECT Id, SBQQ__ProductCode__c, SBQQ__Quote__c, SBQQ__ChargeType__c, SBQQ__HasConsumptionSchedule__c, SBQQ__EffectiveQuantity__c,
                                                                                     SBQQ__Existing__c, LPCR_PriorQty__c, LPCR_DateDebut__c, LPCR_PrixUnitaire__c, LPCR_DateFin__c, SBQQ__StartDate__c, LPCR_Clone__c,
-                                                                                    SBQQ__PriorQuantity__c, SBQQ__Quantity__c, LPCR_MontantAnnuelForfaitMICRO__c, LPCR_Creche__r.LPCR_TypeMensualisation__c
+                                                                                    SBQQ__PriorQuantity__c, SBQQ__Quantity__c, LPCR_MontantAnnuelForfaitMICRO__c, LPCR_Creche__r.LPCR_TypeMensualisation__c, SBQQ__NetTotal__c
                                                                                     FROM SBQQ__QuoteLine__c where SBQQ__Quote__c in : quoteIds]);
         List<SBQQ__QuoteLine__c> quoteLineListToUpdate = new List<SBQQ__QuoteLine__c>();
-        Map<Id, SBQQ__Quote__c> mapQuote = new Map<Id, SBQQ__Quote__c>([SELECT Id, SBQQ__Type__c, LPCR_TypeCreche__c, LPCR_DateDebut__c, LPCR_DateFin__c, SBQQ__LineItemCount__c, SBQQ__Ordered__c 
+        Map<Id, SBQQ__Quote__c> mapQuote = new Map<Id, SBQQ__Quote__c>([SELECT Id, SBQQ__Type__c, LPCR_TypeCreche__c, SBQQ__StartDate__c, LPCR_DateDebut__c, LPCR_DateFin__c, SBQQ__LineItemCount__c, SBQQ__Ordered__c 
                                                                         FROM SBQQ__Quote__c where Id in : quoteIds]);
 
         for(SBQQ__QuoteLine__c quoteLine : tmpQuoteLineList){
@@ -712,7 +722,9 @@ public with sharing class SM008_QuoteServices {
             if (QuoteLine.SBQQ__ProductCode__c != null && QuoteLine.SBQQ__ProductCode__c.startsWith('BerceauMicro')) {
 
                 prixUnitaire = QuoteLine.LPCR_MontantAnnuelForfaitMICRO__c;
-                numberOfMonthInYear = QuoteLine.LPCR_Creche__r.LPCR_TypeMensualisation__c;
+                
+                if (QuoteLine.LPCR_Creche__r.LPCR_TypeMensualisation__c != null)
+                    numberOfMonthInYear = QuoteLine.LPCR_Creche__r.LPCR_TypeMensualisation__c;
             } 
 
             if (quote.SBQQ__Type__c == 'Quote' && quote.LPCR_TypeCreche__c != 'MAC' && quote.SBQQ__LineItemCount__c > 0 && quote.SBQQ__Ordered__c == false) {
@@ -759,8 +771,14 @@ public with sharing class SM008_QuoteServices {
                     Date oneYearMark = quoteLine.LPCR_DateDebut__c != null ? quoteLine.LPCR_DateDebut__c.addYears(1) : quote.LPCR_DateDebut__c.addYears(1);  
                     
                     Decimal remainingMonths = ExactDiffBeetweenDate(startDate2, endDate2);
-                    Decimal canceledMonths = ExactDiffBeetweenDate(startDate2, oneYearMark);  
-                    
+                    //Decimal canceledMonths = ExactDiffBeetweenDate(startDate2, oneYearMark);  
+                    Decimal canceledMonths = remainingMonths;
+
+                    if (EndDate2 >= oneYearMark) 
+                        canceledMonths = ExactDiffBeetweenDate(startDate2, oneYearMark);
+        
+        
+
                     PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','remainingMonths:' + remainingMonths);
                     PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','canceledMonths:' + canceledMonths);
 

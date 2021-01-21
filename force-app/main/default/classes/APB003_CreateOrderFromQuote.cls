@@ -4,7 +4,7 @@
 * @Description Batch for checking the box ordered on the quote which will create the order
 */
 global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>,Schedulable {
-    String query;
+
     final String ClassName = APB003_CreateOrderFromQuote.class.getName();
     global APB003_CreateOrderFromQuote() {
         
@@ -17,9 +17,12 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
     global Database.QueryLocator start(Database.BatchableContext BC) {
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
         PAD.log(ClassName, 'start','Database.BatchableContext BC');        
-        query = 'SELECT Id,RecordTypeId,LPCR_BonCommandeEnvoye__c,SBQQ__Status__c ,SBQQ__Ordered__c, LPCR_TypeCreche__c, SBQQ__Type__c, LPCR_RecalculationMACDone__c   FROM SBQQ__Quote__c WHERE SBQQ__Status__c =\'Prêt pour commande\' AND SBQQ__Ordered__c  = false';
         
-        return Database.getQueryLocator(query);
+        
+        return Database.getQueryLocator([SELECT Id,RecordTypeId,LPCR_BonCommandeEnvoye__c,SBQQ__Status__c ,SBQQ__Ordered__c, 
+									LPCR_TypeCreche__c, SBQQ__Type__c, LPCR_RecalculationMACDone__c   
+								FROM SBQQ__Quote__c 
+								WHERE SBQQ__Status__c ='Prêt pour commande' AND SBQQ__Ordered__c  = false]);
     }
     /*
     *   @description : this method generate Orders for the Quotes with SBQQ__Status__c = 'Prêt pour commande\' AND SBQQ__Ordered__c  = false', to generate order
