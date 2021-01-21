@@ -10,7 +10,7 @@
         <scale>2</scale>
     </aggregates>
     <aggregates>
-        <calculatedFormula>(OrderItem.TotalPrice:SUM / OrderItem.Quantity:SUM)*OrderItem.LPCR_JoursSemaineFormule__c:SUM/5</calculatedFormula>
+        <calculatedFormula>OrderItem.LPCR_CAUnitaire__c:SUM / OrderItem.LPCR_NombrePlace__c:SUM</calculatedFormula>
         <datatype>number</datatype>
         <developerName>FORMULA2</developerName>
         <isActive>true</isActive>
@@ -48,6 +48,13 @@
         <field>Order$LPCR_TypeOpportunite__c</field>
     </columns>
     <filter>
+        <criteriaItems>
+            <column>Order$Type</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Renewal</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Order.OrderItems$Product2</column>
             <columnToColumn>false</columnToColumn>
