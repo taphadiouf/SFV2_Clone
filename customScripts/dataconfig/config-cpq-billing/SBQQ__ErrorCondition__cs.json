@@ -403,7 +403,7 @@
             "SBQQ__FilterType__c": "Value",
             "SBQQ__FilterValue__c": "Résiliation",
             "SBQQ__Operator__c": "equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__ProductRule__c",
@@ -448,7 +448,7 @@
             "Name": "000005",
             "SBQQ__FilterType__c": "Value",
             "SBQQ__Operator__c": "equals",
-            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__ParentRuleIsActive__c": false,
             "SBQQ__Rule__r": {
                 "attributes": {
                     "type": "SBQQ__ProductRule__c",
