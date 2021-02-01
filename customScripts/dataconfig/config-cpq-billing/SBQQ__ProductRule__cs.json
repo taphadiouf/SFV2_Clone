@@ -81,13 +81,13 @@
             },
             "IsDeleted": false,
             "Name": "Date de résiliation obligatoire si avenant de type 'Resiliation'",
-            "SBQQ__Active__c": true,
+            "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
             "SBQQ__ErrorMessage__c": "La date de résiliation est obligatoire pour le type d'avenant 'Resiliation'",
             "SBQQ__EvaluationEvent__c": "Always",
             "SBQQ__Scope__c": "Quote",
             "SBQQ__Type__c": "Validation",
-            "SystemModstamp": "2020-07-21T21:06:33.000+0000"
+            "SystemModstamp": "2021-01-28T08:08:10.000+0000"
         },
         {
             "attributes": {
