@@ -18,15 +18,6 @@
         <masterLabel>Taux Occupation Section</masterLabel>
         <scale>2</scale>
     </aggregates>
-    <aggregates>
-        <calculatedFormula>IF(SBQQ__Quote__c.LPCR_PlaceOccupee__c:SUM=0,0,SBQQ__Quote__c.LPCR_PlaceCommercialisee__c:SUM/SBQQ__Quote__c.LPCR_PlaceOccupee__c:SUM)</calculatedFormula>
-        <datatype>percent</datatype>
-        <developerName>FORMULA3</developerName>
-        <isActive>true</isActive>
-        <isCrossBlock>false</isCrossBlock>
-        <masterLabel>Places commercialisées/Occupées</masterLabel>
-        <scale>2</scale>
-    </aggregates>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -105,11 +96,11 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SBQQ__Quote__c$LPCR_PlaceCommercialisee__c</field>
+        <field>SBQQ__Quote__c$LPCR_PlaceCommercialiseeLibre__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>SBQQ__Quote__c$LPCR_PlaceOccupee__c</field>
+        <field>SBQQ__Quote__c$LPCR_PlaceCommercialiseeOccupee__c</field>
     </columns>
     <customDetailFormulas>
         <calculatedFormula>((52-(SBQQ__Quote__c.LPCR_CongesSemaine__c/5))*SBQQ__Quote__c.LPCR_PlanningEnfant__c.LPCR_NombreHeuresSemaine__c)/2070</calculatedFormula>

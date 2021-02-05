@@ -1,0 +1,83 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "csfb__Conga_Merge_Query__c",
+                "referenceId": "csfb__Conga_Merge_Query__cRef1"
+            },
+            "csfb__Name__c": "Ligne Berceau [LigneBerceau]",
+            "csfb__Query__c": "SELECT blng__EndDate__c, Name, blng__Quantity__c, blng__StartDate__c,\r\nblng__Subtotal__c, blng__TotalAmount__c, blng__UnitPrice__c,\r\nblng__Product__r.ProductCode,\r\nblng__OrderProduct__r.SBQQ__QuoteLine__r.SBQQ__Quote__r.LPCR_ContactEnfant__r.Name,\r\nblng__OrderProduct__r.SBQQ__QuoteLine__r.SBQQ__Quote__r.LPCR_CongesJours__c,\r\nblng__OrderProduct__r.LPCR_Creche__r.Name,\r\nblng__OrderProduct__r.LPCR_Creche__r.LPCR_TypeCreche__c,\r\nblng__OrderProduct__r.LPCR_Creche__r.ShippingCity,\r\nblng__OrderProduct__r.LPCR_Creche__r.ShippingPostalCode,\r\nblng__OrderProduct__r.LPCR_Creche__r.ShippingStreet,\r\nblng__OrderProduct__r.SBQQ__QuoteLine__r.SBQQ__Quote__r.LPCR_ContractEntreprise__r.Account.Name\r\nFROM blng__InvoiceLine__c\r\nWHERE blng__Invoice__c = '{pv0}' AND blng__Product__r.ProductCode LIKE 'Berceau%'\r\nAND blng__OrderProduct__r.SBQQ__QuoteLine__r.SBQQ__Quote__r.LPCR_ContactEnfant__c != null\r\nAND blng__OrderProduct__r.LPCR_Creche__c != null\r\nORDER BY blng__EndDate__c DESC LIMIT 1"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Merge_Query__c",
+                "referenceId": "csfb__Conga_Merge_Query__cRef2"
+            },
+            "csfb__Name__c": "Account Details [CompanyDets]",
+            "csfb__Description__c": "Created By Solution Pack for Composer Solution: Generate Invoice (blng__Invoice__c)",
+            "csfb__Query__c": "SELECT blng__Account__r.Name,\nblng__Account__r.LPCR_IdSage__c,\nblng__Account__r.LPCR_NumeroAllocataire__c,\nblng__Account__r.Owner.FirstName,\nblng__Account__r.Owner.LastName,\nblng__Account__r.LPCR_ResponsableADV__r.LastName,\nblng__Account__r.LPCR_ResponsableADV__r.FirstName,\nblng__Account__r.BillingCity, blng__Account__r.BillingCountry, \nblng__Account__r.BillingState, blng__Account__r.BillingStreet, \nblng__Account__r.BillingPostalCode FROM blng__Invoice__c WHERE Id = '{pv0}'"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Merge_Query__c",
+                "referenceId": "csfb__Conga_Merge_Query__cRef3"
+            },
+            "csfb__Name__c": "Credit Notes",
+            "csfb__Description__c": "notes de crédit allouées aux lignes de factures",
+            "csfb__Query__c": "SELECT Id, blng__InvoiceLine__r.blng__Invoice__c, blng__CreditNoteLine__r.blng__Notes__c, blng__CreditNoteLine__r.blng__CreditNoteLineDate__c, blng__ImpactAmount__c, LPCR_TypeEvenement__c, blng__CreditNoteLine__c FROM blng__CreditNoteAllocation__c WHERE blng__InvoiceLine__r.blng__Invoice__c = '{pv0}' AND blng__CreditNoteLine__r.blng__CreditNote__r.blng__CreditNoteSourceAction__c = 'Manual'"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Merge_Query__c",
+                "referenceId": "csfb__Conga_Merge_Query__cRef4"
+            },
+            "csfb__Name__c": "Debit Notes",
+            "csfb__Description__c": "notes de débit allouées aux lignes de factures",
+            "csfb__Query__c": "SELECT Id, blng__InvoiceLine__r.blng__Invoice__c, blng__DebitNoteLine__r.blng__Notes__c, blng__DebitNoteLine__r.blng__DebitNoteLineDate__c, blng__ImpactAmount__c, blng__DebitNoteLine__c FROM blng__DebitNoteAllocation__c WHERE blng__InvoiceLine__r.blng__Invoice__c = '{pv0}' AND blng__DebitNoteLine__r.blng__DebitNote__r.blng__DebitNoteSourceAction__c = 'Manual'"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Merge_Query__c",
+                "referenceId": "csfb__Conga_Merge_Query__cRef5"
+            },
+            "csfb__Name__c": "Invoice Batch Query",
+            "csfb__Description__c": "Requête utilisée pour le conga batch de génération des factures",
+            "csfb__Query__c": "SELECT Id FROM  blng__Invoice__c WHERE LPCR_StatutFacture__c = 'A Envoyer'"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Merge_Query__c",
+                "referenceId": "csfb__Conga_Merge_Query__cRef6"
+            },
+            "csfb__Name__c": "Invoice Lines [LineItems]",
+            "csfb__Description__c": "Lignes de factures avec Liens Familles factures",
+            "csfb__Query__c": "SELECT blng__Balance__c, LPCR_DesignationProduit__c, LPCR_Creche__r.Name, blng__BalancewithoutDebits__c,\r\nblng__CalculatedQuantity__c, blng__ChargeDate__c,\r\nblng__Credits__c, blng__Debits__c, blng__DebitsPaymentAllocations__c,\r\nblng__DebitsPaymentUnallocations__c, blng__EndDate__c, blng__GroupedQuantity__c,\r\nblng__OrderProduct__c, Name, blng__OrderProduct__r.SBQQ__Contract__r.LPCR_NumeroContrat__c, blng__Quantity__c, blng__StartDate__c,\r\nblng__Subtotal__c, blng__TaxAmount__c, blng__TotalAmount__c, blng__UnitPrice__c, LPCR_PrixUnitaireProratise__c,\r\nblng__Product__r.ProductCode, (Select Id, LPCR_Facture__c, LPCR_ContratFamille__c,\r\nLPCR_ContratFamille__r.LPCR_NumeroContrat__c,\r\nLPCR_ContratFamille__r.Account.Name,\r\nLPCR_ContratFamille__r.Account.LPCR_InformationsFacture__c,\r\nLPCR_ContratFamille__r.LPCR_Creche__r.Name,\r\nLPCR_ContratFamille__r.LPCR_ContactEnfant__r.Name, Tech_InformationsFamille__c from LPCR_Liens_Familles_et_Factures__r)\r\nFROM blng__InvoiceLine__c\r\nWHERE blng__Invoice__r.Id = '{pv0}' AND blng__Subtotal__c <> 0 ORDER BY blng__Subtotal__c DESC"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Merge_Query__c",
+                "referenceId": "csfb__Conga_Merge_Query__cRef7"
+            },
+            "csfb__Name__c": "Query de test Erwan INT",
+            "csfb__Query__c": "SELECT Id FROM blng__Invoice__c WHERE LPCR_StatutFacture__c = 'A Envoyer' AND id = 'a1o3O000000VULbQAO'"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Merge_Query__c",
+                "referenceId": "csfb__Conga_Merge_Query__cRef8"
+            },
+            "csfb__Name__c": "Attestation CAF",
+            "csfb__Description__c": "ligne correspondant à l'attestation CAF",
+            "csfb__Query__c": "Select ID, LPCR_NbHeuresRealise__c, blng__Balance__c, Tech_MaxDateLigneBerceauFamille__c, Tech_MinDateLigneBerceauFamille__c,\r\nLPCR_Creche__r.Name , LPCR_Creche__r.ShippingStreet, LPCR_Creche__r.ShippingCity, LPCR_Creche__r.ShippingPostalCode,\r\nLPCR_ContactEnfant__r.Name\r\nFROM blng__Invoice__c\r\nWHERE blng__Account__c = '{pv0}' AND Tech_MaxDateLigneBerceauFamille__c <= {pv1}\r\nORDER BY Tech_MaxDateLigneBerceauFamille__c DESC LIMIT 1"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Merge_Query__c",
+                "referenceId": "csfb__Conga_Merge_Query__cRef9"
+            },
+            "csfb__Name__c": "Participation CAF",
+            "csfb__Description__c": "montant de la participation CAF dans le cas d'une famille en crèche MAC",
+            "csfb__Query__c": "SELECT SUM(LPCR_ParticipationCAF__c) ParticipationCAF FROM blng__InvoiceLine__c WHERE blng__Invoice__c = '{pv0}'"
+        }
+    ]
+}

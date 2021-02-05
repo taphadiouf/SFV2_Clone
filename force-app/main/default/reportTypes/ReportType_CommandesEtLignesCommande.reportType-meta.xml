@@ -187,6 +187,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_TypeDeVente__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_InitAutoAvecDateDebut__c</field>
             <table>Order</table>
         </columns>
@@ -223,6 +228,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_IdExterne__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AnnulationAnticipee__c</field>
             <table>Order</table>
         </columns>
         <columns>
@@ -567,6 +577,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>blng__BillingRule__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CAUnitaire__c</field>
+            <table>Order.OrderItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NombrePlace__c</field>
             <table>Order.OrderItems</table>
         </columns>
         <columns>

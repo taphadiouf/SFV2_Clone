@@ -833,6 +833,162 @@ public class SM008_QuoteServices_Test {
             Test.stopTest();
             
             
-        } }
-    
+        } 
+    }
+
+    @isTest()
+    public static void updateQuoteLineChiffreAffaire_Test(){
+
+        System.runAs(UM002_TestDataFactory.createUser()){
+
+            Test.startTest();
+            Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Referencement');
+            Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Reservataire');
+            //B2B Renewal Express Current Year before update
+            List<Account> accs = [SELECT Id, name   from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
+            Account acc = accs.get(0);
+            List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name ='opp Famille MAC1' LIMIT 1 ];
+            Opportunity opp = oppties.get(0);
+            List<Contract> contract = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c  From Contract WHERE Name = '0001' Limit 1];
+            Contract con = contract.get(0);
+
+            
+            SBQQ__Quote__c simpleQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = opp.Id,
+                SBQQ__Account__c = acc.Id,
+                SBQQ__Type__c = 'Quote',
+		        LPCR_Creation_conforme__c = true,    
+                RecordTypeId = reservataireRecTypeId,
+                LPCR_Creche__c = acc.id,
+                SBQQ__StartDate__c = date.today(),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31)
+            );
+            insert simpleQuote;
+
+            Id standardPricebookId = Test.getStandardPricebookId();
+            UM002_TestDataFactory.insertBillingCustomSettings();
+        
+            blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+            
+            blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+            
+            blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+            
+            blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
+            
+            Product2 prod = UM002_TestDataFactory.createProduct('BerceauMicrotest', billingRule.Id, revRecRule.Id,taxRule.Id );
+            prod.SBQQ__SubscriptionPricing__c ='Fixed Price';
+            insert prod;
+            
+            PricebookEntry priceBookEntry1 = UM002_TestDataFactory.createPricebookEntry(standardPricebookId,prod.Id);
+            insert priceBookEntry1;
+            
+            SBQQ__QuoteLine__c quoteLine = UM002_TestDataFactory.createQuoteLine(prod.Id, simpleQuote.Id, priceBookEntry1.Id, 200,1);
+            insert quoteLine;
+
+            simpleQuote.SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 17);
+            update simpleQuote;
+
+            List<Opportunity> oppAmends = UM002_TestDataFactory.createOpportunities(1, 'testOppAmend', 'Prospecting');
+            Opportunity oppAmend = oppAmends.get(0);
+            oppAmend.SBQQ__AmendedContract__c = con.Id;
+            insert oppAmends;
+
+            SBQQ__Quote__c amendmentQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = oppAmend.id,
+                SBQQ__Account__c = acc.Id,
+                SBQQ__Type__c = 'Amendment',
+		        LPCR_Creation_conforme__c = true,    
+                RecordTypeId = reservataireRecTypeId,
+                LPCR_Creche__c = acc.id,
+                SBQQ__StartDate__c = date.today(),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31),
+                SBQQ__MasterContract__c = con.Id
+            );
+            insert amendmentQuote;
+
+            SBQQ__QuoteLine__c quoteLineAmend = UM002_TestDataFactory.createQuoteLine(prod.Id, amendmentQuote.Id, priceBookEntry1.Id, 200,1);
+            insert quoteLineAmend;
+
+            amendmentQuote.SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 17);
+            update amendmentQuote;
+
+            Test.stopTest();       
+        } 
+    }
+
+    @isTest()
+    public static void updateDueToResilisationAnticipe_Test(){
+
+        System.runAs(UM002_TestDataFactory.createUser()){
+
+            Test.startTest();
+            Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Referencement');
+            Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Reservataire');
+            //B2B Renewal Express Current Year before update
+            List<Account> accs = [SELECT Id, name   from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
+            Account acc = accs.get(0);
+            List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name ='opp Famille MAC1' LIMIT 1];
+            Opportunity opp = oppties.get(0);
+            List<Contract> contract = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c  From Contract WHERE Name = '0001' Limit 1];
+            Contract con = contract.get(0);
+
+            SBQQ__Quote__c simpleQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = opp.Id,
+                SBQQ__Account__c = acc.Id,
+                SBQQ__Type__c = 'Quote',
+		        LPCR_Creation_conforme__c = true,    
+                RecordTypeId = reservataireRecTypeId,
+                LPCR_Creche__c = acc.id,
+                SBQQ__StartDate__c = date.today(),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31)
+            );
+            insert simpleQuote;
+
+            Id standardPricebookId = Test.getStandardPricebookId();
+            UM002_TestDataFactory.insertBillingCustomSettings();
+        
+            blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+            blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+            blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+            blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
+            Product2 prod = UM002_TestDataFactory.createProduct('test', billingRule.Id, revRecRule.Id,taxRule.Id );
+            prod.SBQQ__SubscriptionPricing__c ='Fixed Price';
+            insert prod;
+            
+            PricebookEntry priceBookEntry1 = UM002_TestDataFactory.createPricebookEntry(standardPricebookId,prod.Id);
+            insert priceBookEntry1;
+            
+            SBQQ__QuoteLine__c quoteLine = UM002_TestDataFactory.createQuoteLine(prod.Id, simpleQuote.Id, priceBookEntry1.Id, 200,1);
+            insert quoteLine;
+
+            simpleQuote.SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 17);
+            update simpleQuote;
+
+            List<Opportunity> oppAmends = UM002_TestDataFactory.createOpportunities(1, 'testOppAmend', 'Prospecting');
+            Opportunity oppAmend = oppAmends.get(0);
+            oppAmend.SBQQ__AmendedContract__c = con.Id;
+            insert oppAmends;
+
+            SBQQ__Quote__c amendmentQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = oppAmend.id,
+                SBQQ__Account__c = acc.Id,
+                SBQQ__Type__c = 'Amendment',
+                LPCR_TypeAvenant__c = 'Résiliation',
+		        LPCR_Creation_conforme__c = true,    
+                RecordTypeId = reservataireRecTypeId,
+                LPCR_Creche__c = acc.id,
+                SBQQ__StartDate__c = date.today(),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31),
+                SBQQ__MasterContract__c = con.Id
+            );
+            insert amendmentQuote;
+
+            amendmentQuote.LPCR_DateDebut__c = date.today();
+            update amendmentQuote;
+
+            System.assertEquals(amendmentQuote.LPCR_AnnulationAnticipee__c, false, 'Error in SM008_QuoteServices_Test : problem setting LPCR_AnnulationAnticipee__c flag');
+            Test.stopTest();       
+        } 
+    }
 }

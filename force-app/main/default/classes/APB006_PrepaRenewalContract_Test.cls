@@ -6,20 +6,19 @@
 @isTest
 public with sharing class APB006_PrepaRenewalContract_Test {
     // These attributes are from the APB006 Test class
-    private static final Integer NUMBER_OF_B2C = 3;
+    private static final Id standardPricebookId = Test.getStandardPricebookId();
+    private static final Integer NUMBER_OF_B2C = 1;
     private static final Integer NUMBER_OF_B2B = 0; // we set this to 0 due to the lookupfilter on Contract.AccountId which force the RT of the related account to (and just to) Famille
-    private static final Integer NUMBER_OF_CRECHE = 3;
+    private static final Integer NUMBER_OF_CRECHE = 1;
     private static final Id B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
     private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     private static final Id CRECHE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
     @testsetup
     static void setup() {
-        Id standardPricebookId = Test.getStandardPricebookId();
+        
 
          UM002_TestDataFactory.insertBillingCustomSettings();
         
-            
-
         blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
         blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
         blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
@@ -34,8 +33,6 @@ public with sharing class APB006_PrepaRenewalContract_Test {
 
         quote.SBQQ__Primary__c =true;
         insert quote;
-      
-      
 
         Product2 prod = UM002_TestDataFactory.createProduct('test', billingRule.Id, revRecRule.Id,taxRule.Id );
         //This line is for the APB006 test
@@ -74,8 +71,6 @@ public with sharing class APB006_PrepaRenewalContract_Test {
     //This test is from the APB006 Test Class
     @isTest
     private static void testAPB006PrepaRenewalContract(){
-
-        System.runAs(UM002_TestDataFactory.createUser()){
             
         //Data setup from The APB006 Test Class
 
@@ -85,11 +80,6 @@ public with sharing class APB006_PrepaRenewalContract_Test {
         for (Integer i = 0; i < NUMBER_OF_B2C; i++) {
             Account tmpAccount = UM002_TestDataFactory.createAccByRT('Customer B2C ' + i, B2C_RT_ID);
             tmpAccount.LPCR_IDCompteFamille__c = 'extId-' + i;
-            accounts.add(tmpAccount);
-        }
-
-        for (Integer i = 0; i < NUMBER_OF_B2B; i++) {
-            Account tmpAccount = UM002_TestDataFactory.createAccByRT('Customer B2B ' + i, B2B_RT_ID);
             accounts.add(tmpAccount);
         }
 
@@ -113,7 +103,7 @@ public with sharing class APB006_PrepaRenewalContract_Test {
         PricebookEntry priceBookEntry1 = [SELECT Id FROM PricebookEntry limit 1];
 
         //create 2 oppty for each customer
-        List<Opportunity> opps = UM002_TestDataFactory.createOpportunities((NUMBER_OF_B2C + NUMBER_OF_B2B) * 2, 'test', 'Prospecting');
+        List<Opportunity> opps = UM002_TestDataFactory.createOpportunities((NUMBER_OF_B2C) * 2, 'test', 'Prospecting');
         insert opps;
 
         List<SBQQ__Quote__c> quotes = new List<SBQQ__Quote__c>();
@@ -134,7 +124,13 @@ public with sharing class APB006_PrepaRenewalContract_Test {
         insert quotes;
         List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
         List<Opportunity> opptToUpdate = new List<Opportunity> ();
-        for (SBQQ__Quote__c q : quotes) {
+        
+        
+        integer qSize = quotes.size();
+
+        for(Integer i=0;i<qSize;i++){
+            SBQQ__Quote__c q = quotes[i];
+
             qlines.add(UM002_TestDataFactory.createQuoteLine(prod.Id, q.Id, priceBookEntry1.Id, 200, 1));
             opptToUpdate.add(new Opportunity(id = q.SBQQ__Opportunity2__c, SBQQ__PrimaryQuote__c = q.Id));
 
@@ -146,15 +142,18 @@ public with sharing class APB006_PrepaRenewalContract_Test {
         }
 
         insert qlines;
+
         List<SObject> toUpdate = new list<SObject>();
         toUpdate.addAll(opptToUpdate);
         toUpdate.addAll(quotes);
         update toUpdate;
         //The ' WHERE Name != 'from_setup' statement is to get just the orders created in this method and not the ones created in setup method
         List<Order> orders = [SELECT Id, Name, SBQQ__Contracted__c, Status, OpportunityId, EffectiveDate, AccountId, SBQQ__Quote__c FROM Order WHERE Name != 'from_setup'];
-        for (Order order : orders) {
-            order.status = 'Activated';
-            //order.SBQQ__Contracted__c=true; 
+        
+        integer oSize = orders.size();
+
+        for(Integer i=0;i<oSize;i++){
+            orders[i].status = 'Activated';
         }
         update orders;
 
@@ -162,7 +161,10 @@ public with sharing class APB006_PrepaRenewalContract_Test {
         Map<Id, Id> crecheByCustomer = new Map<Id, Id>();
         counter = 0;
         Id ReservataireRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract,Label.LPCR_Reservataire);
-        for (Order order : orders) {
+        
+        
+        for(Integer i=0;i<oSize;i++){
+            Order order = orders[i];
             Contract tmpContract = UM002_TestDataFactory.createContract(order.AccountId, order.SBQQ__Quote__c, order.Id);
             tmpContract.LPCR_RenouvellementAutomatique__c = true;
             tmpContract.StartDate = System.today().addMonths(-1);
@@ -183,40 +185,31 @@ public with sharing class APB006_PrepaRenewalContract_Test {
 
         // adjust contract LPCR_JoursAvance__c
         contracts = [SELECT Id, LPCR_Creche__c,LPCR_JoursAvance__c, EndDate FROM Contract];
-        for (Contract c : contracts) {
+
+        integer cSize = contracts.size();
+        for(Integer i=0;i<cSize;i++){
+            Contract c = contracts[i];
+
             if (c != null && c.EndDate != null) {
                 Integer diffEndDate = c.EndDate.daysBetween(System.today());
                 c.LPCR_JoursAvance__c = (c.EndDate < System.today()) ? diffEndDate : -1 * diffEndDate;
                 c.LPCR_Creche__c = accountsCreche.get(0).id;
             }
         }
-
         update contracts;
 
-        for (Contract c : contracts) {
-            c.Status='Activated';
+        for(Integer i=0;i<cSize;i++){
+            contracts[i].Status='Activated';
         }
         update contracts;
 
+        APB006_PrepaRenewalContract btch = new APB006_PrepaRenewalContract();
+        Database.executeBatch(btch, 2000);
+        Test.stopTest();
 
+        List<Contract> listAllContracts = [SELECT Id, SBQQ__Order__c, TECH_AjoutFraisGestion__c, LPCR_TypeFacturation__c, Status, StartDate, ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c, LPCR_JoursAvance__c, SBQQ__RenewalForecast__c, EndDate FROM Contract];
 
-        //End Of Data setup from The APB006 Test Class
+        System.assertEquals((NUMBER_OF_B2C) * 2, listAllContracts.size());
 
-        
-
-            APB006_PrepaRenewalContract btch = new APB006_PrepaRenewalContract();
-            Database.executeBatch(btch, 2000);
-            btch.execute(null);
-            List<Contract> listAllContracts = [SELECT Id, SBQQ__Order__c, TECH_AjoutFraisGestion__c, LPCR_TypeFacturation__c, Status, StartDate, ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c, LPCR_JoursAvance__c, SBQQ__RenewalForecast__c, EndDate FROM Contract];
-
-            //List<Contract> listContractsWithFees = [SELECT Id, SBQQ__Order__c, TECH_AjoutFraisGestion__c, LPCR_TypeFacturation__c, Status, StartDate, ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c, LPCR_JoursAvance__c, SBQQ__RenewalForecast__c, EndDate FROM Contract WHERE TECH_AjoutFraisGestion__c = true];
-            // Assert to verify that just a subset of contract (50% - 1 for each pair customer / creche) have been updated by the batch 
-
-            System.assertEquals((NUMBER_OF_B2C + NUMBER_OF_B2B) * 2, listAllContracts.size());
-            //System.assertEquals(NUMBER_OF_B2C + NUMBER_OF_B2B, listContractsWithFees.size());
-            Test.stopTest();
-
-            // ASSERT one contract has TECH_AjoutFraisGestion__c = true
-        }
     }
 }

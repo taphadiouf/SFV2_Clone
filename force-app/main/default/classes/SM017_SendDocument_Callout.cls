@@ -5,23 +5,18 @@
 */
 public with sharing class SM017_SendDocument_Callout {
     
-    @future(callout=true)
-    public static void sendDocumentCallout(String OwnerSfId, String DocSfID, String Name, String BinaryDocument){
-        
-        executeSendDocumentCallout(OwnerSfId, DocSfID, Name, BinaryDocument, false);
-    }
-    
-    public static void sendDocumentCallout_SYNC(String OwnerSfId, String DocSfID, String Name, String BinaryDocument){
-        
-        executeSendDocumentCallout(OwnerSfId, DocSfID, Name, BinaryDocument, true);
-    }
+    static String className = SM017_SendDocument_Callout.class.getName();
 
     public static Id getB2CFactureCrecheID(String OwnerSfId){
 
-
+        Id factureCrecheId;
         Id accueilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
 
-        Id factureCrecheId = [SELECT Id,LPCR_Creche__c,blng__Account__c FROM blng__Invoice__c WHERE blng__Account__r.RecordTypeId =: accueilRecTypeId AND ID =: OwnerSfId].LPCR_Creche__c;
+        blng__Invoice__c tmpFacture = [SELECT Id,LPCR_Creche__c,blng__Account__c FROM blng__Invoice__c WHERE blng__Account__r.RecordTypeId =: accueilRecTypeId AND ID =: OwnerSfId order by createdDAte desc limit 1];
+        
+        if (tmpFacture != null) {
+            factureCrecheId = tmpFacture.LPCR_Creche__c;
+        }
 
         return factureCrecheId;
     }
@@ -54,8 +49,8 @@ public with sharing class SM017_SendDocument_Callout {
         } catch (Exception e ) {
             errorMsg = e.getMessage();
         } finally {
-            if (errorMsg != '') {
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED,'SM017_SendDocument_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+            if (errorMsg != '') { // ERROR
+                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, className, 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
             }
             
         }
@@ -64,14 +59,14 @@ public with sharing class SM017_SendDocument_Callout {
     }
 
     
-    public static void executeSendDocumentCallout(String OwnerSfId, String DocSfID, String Name, String BinaryDocument, Boolean syncMode){
+    public static void executeSendDocumentCallout(String OwnerSfId, String DocSfID, String Name, String BinaryDocument){
         
         String errorMsg = '';
         HttpResponse response;
         final String WS_NOM_SERVICE  = 'LPCR_ENVOIE_DOCUMENT';
         Id CrecheSfId;
         
-        PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'LPCR_ENVOIE_DOCUMENT');
+        PAD.Log(className, 'executeSendDocumentCallout', 'LPCR_ENVOIE_DOCUMENT');
         
         try {
             Http http = new Http();
@@ -97,50 +92,43 @@ public with sharing class SM017_SendDocument_Callout {
             
             response = http.send(request);
         
-            PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'Doc Sent by Callout...');
+            PAD.Log(className, 'executeSendDocumentCallout', 'Doc Sent by Callout...');
             
         }catch(System.CalloutException e){ 
-            PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'In catch');
+            PAD.Log(className, 'executeSendDocumentCallout', 'In catch');
             errorMsg = String.valueOf(e);
         }
         finally {
-            PAD.Log('SM017_SendDocument_Callout', 'executeSendDocumentCallout', 'errorMsg:' + errorMsg);
-            if (errorMsg != '') {
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED,'SM017_SendDocument_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
-            }
-            if (syncMode == true) {
+
+            PAD.Log(className, 'executeSendDocumentCallout', 'errorMsg:' + errorMsg);
+
+            if (response != null && response.getStatusCode() != null) {
                 
-                if (String.valueOf(response.getStatusCode()).equals('200')) {
+                if (String.valueOf(response.getStatusCode()).equals('200')) { // SUCCESS
                     
-                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.SUCCESS);  
-                } else {
+                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, className, 'Callout', DocSfID, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.SUCCESS);  
+                } 
+                else if (String.valueOf(response.getStatusCode()) != '200'){ // ERROR with different status code
                     
                     List<LPCR_AppelServiceExterne__mdt> appelServiceExterne = [SELECT LPCR_CodeRetour__c ,LPCR_MessageRetour__c , LPCR_NomService__c  
                                                                                FROM LPCR_AppelServiceExterne__mdt  
                                                                                WHERE LPCR_CodeRetour__c = : String.valueOf(response.getStatusCode()) AND LPCR_NomService__c = :WS_NOM_SERVICE ];
                     
-                    if(appelServiceExterne != null && appelServiceExterne.size()>0){
-                        throw new AuraHandledException(appelServiceExterne[0].LPCR_MessageRetour__c);
+                    if(appelServiceExterne != null && appelServiceExterne.size() > 0) {
+
+                        throw new AuraHandledException('Error - ' + appelServiceExterne[0].LPCR_MessageRetour__c);
                     }
-                    else{
-                        throw new AuraHandledException('Response status is not 200');
+                    else {
+                        throw new AuraHandledException('Error - Response status :' + String.valueOf(response.getStatusCode()));
                     }
                 }
             
             }
-            else {
-                if(response != null){
-                    if (String.valueOf(response.getStatusCode()).equals('200')) {
-                        UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.SUCCESS);  
-                    
-                    } else {
-                        UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID,  'Exception:' + String.valueOf(response.getStatusCode()) + ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - Attachment.Id:' + DocSfID + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.ERROR);  
-                    }
-                }else{
-                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, 'SM017_SendDocument_Callout', 'Callout', DocSfID,  'Exception: Internal Error. Response is null! - Attachment.Id:' + DocSfID + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.ERROR);  
-                }
-                
-            
+            else if (errorMsg != '') { // ERROR
+                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED,className, 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+            }
+            else { // ERROR
+                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, className, 'Callout', DocSfID,  'Exception: Internal Error. Response is null! - Attachment.Id:' + DocSfID + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.ERROR);  
             }
         }
         
