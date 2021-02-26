@@ -21,6 +21,7 @@ global class APB014_TraitementModificationEntrante implements Database.Batchable
                                             FROM LPCR_ModificationEntrante__c 
                                             WHERE LPCR_DateEffet__c <= TODAY AND LPCR_EtatTraitement__c = false AND 
                                             LPCR_Statut__c = 'Validée' and CreatedBy.Name != 'Recette DEV' 
+
                                         ]);
     }
     
