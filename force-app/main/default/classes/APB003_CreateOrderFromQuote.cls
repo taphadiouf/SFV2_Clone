@@ -6,23 +6,40 @@
 global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>,Schedulable {
 
     final String ClassName = APB003_CreateOrderFromQuote.class.getName();
+    global List<SBQQ__Quote__c> inputQuoteList;
+    global String lot;
+
     global APB003_CreateOrderFromQuote() {
-        
+        lot = '';        
     }
+
+    global APB003_CreateOrderFromQuote(List<SBQQ__Quote__c> inputQuoteListParam, String lotParam) {
+        
+        inputQuoteList = inputQuoteListParam;
+        lot = ' - LOT:' + lotParam;
+    }
+
      /*
     *   @description : this method search the Quotes with SBQQ__Status__c = 'Prêt pour commande\' AND SBQQ__Ordered__c  = false', to generate order
     *   @param Database.BatchableContext BC
     *   @returns Database.QueryLocator
     */
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
-        PAD.log(ClassName, 'start','Database.BatchableContext BC');        
+
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start' + lot, 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
         
-        
-        return Database.getQueryLocator([SELECT Id,RecordTypeId,LPCR_BonCommandeEnvoye__c,SBQQ__Status__c ,SBQQ__Ordered__c, 
+        // Serial Mode for the whole scope
+        if (inputQuoteList == null) {
+            return Database.getQueryLocator([SELECT Id,RecordTypeId,LPCR_BonCommandeEnvoye__c,SBQQ__Status__c ,SBQQ__Ordered__c, 
 									LPCR_TypeCreche__c, SBQQ__Type__c, LPCR_RecalculationMACDone__c   
 								FROM SBQQ__Quote__c 
 								WHERE SBQQ__Status__c ='Prêt pour commande' AND SBQQ__Ordered__c  = false]);
+        }
+        
+        // Parallel mode used to process highr volume of quote at the same time
+        Set<Id> tmpSet = UM003_TypeManager.getIdsOfListObjects(inputQuoteList);
+        return Database.getQueryLocator([SELECT Id,RecordTypeId,LPCR_BonCommandeEnvoye__c,SBQQ__Status__c ,SBQQ__Ordered__c, 
+                                    LPCR_TypeCreche__c, SBQQ__Type__c, LPCR_RecalculationMACDone__c FROM SBQQ__Quote__c WHERE Id in :tmpSet]);
     }
     /*
     *   @description : this method generate Orders for the Quotes with SBQQ__Status__c = 'Prêt pour commande\' AND SBQQ__Ordered__c  = false', to generate order
@@ -31,7 +48,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
     */
     global void execute(Database.BatchableContext BC, List<SBQQ__Quote__c> scope) {
         
-        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute' + lot, 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
 
         List<Exception> errors = new List<Exception>();
         try {
@@ -39,7 +56,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
 
             try {
                 updateRelatedQuotelines(scope);
-                UM001_LogManager.writeLogActivityWithoutFuture( ClassName, 'Updating the quote lines',
+                UM001_LogManager.writeLogActivityWithoutFuture( ClassName, 'Updating the quote lines' + lot,
                                                                 'Batch' , null,
                                                                 'Successfully updated (BonCommande) list of quote lines for the Quotes:(' + scope.size() + ')'+ UM003_TypeManager.getIdsOfListObjects(scope), 
                                                                 UM010_Constant.SUCCESS);          
@@ -47,7 +64,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
                 ErrMsg = e.getMessage();
             } finally {
                 if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture(ClassName,  'Updating the quote lines','Batch' , null,'Error while updating list of quote lines (LPCR_LigneBonCommandeEnvoye__c=true)' + ErrMsg, UM010_Constant.ERROR);              
+                    UM001_LogManager.writeLogActivityWithoutFuture(ClassName,  'Updating the quote lines' + lot,'Batch' , null,'Error while updating list of quote lines (LPCR_LigneBonCommandeEnvoye__c=true)' + ErrMsg, UM010_Constant.ERROR);              
                 }
             }
             ErrMsg = null;
@@ -75,7 +92,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
 
                     if (s.isSuccess()){
                         
-                        listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert(ClassName,'APB003 - Quote Updated successfully (Set Ordered)',  'Batch', 'Success : ' + tmpQuote.Id, tmpQuote.Id, 'SUCCESS'));
+                        listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert(ClassName,'APB003 - Quote Updated successfully (Set Ordered)' + lot,  'Batch', 'Success : ' + tmpQuote.Id, tmpQuote.Id, 'SUCCESS'));
                 
                     } else {
 
@@ -83,7 +100,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
                             String tmpErr = '';
                             tmpErr += 'The following error has occurred.\n';                    
                             tmpErr += err.getStatusCode() + ': ' + err.getMessage();
-                            listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert(ClassName,'APB003 - Error in Quote Update (Set Ordered)',  'Batch', tmpQuote.Id, tmpErr, 'ERROR'));
+                            listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert(ClassName,'APB003 - Error in Quote Update (Set Ordered)' + lot,  'Batch', tmpQuote.Id, tmpErr, 'ERROR'));
                         }
                      }
                 }
@@ -92,7 +109,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
                 ErrMsg = e.getMessage();
             } finally {
                 if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'APB003 - Batch for checking the box ordered on the quote', 'Batch' , null,'Error while updating the quotes : ' + ErrMsg, UM010_Constant.ERROR);              
+                    UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'APB003 - Batch for checking the box ordered on the quote' + lot, 'Batch' , null,'Error while updating the quotes : ' + ErrMsg, UM010_Constant.ERROR);              
                 }
             }
             
@@ -104,7 +121,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
                 ErrMsg = e.getMessage();
             } finally {
                 if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'APB003 - Batch for checking the box ordered on the quote', 'Batch' , null,'Error while inserting the logs : ' + ErrMsg, UM010_Constant.ERROR);              
+                    UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'APB003 - Batch for checking the box ordered on the quote' + lot, 'Batch' , null,'Error while inserting the logs : ' + ErrMsg, UM010_Constant.ERROR);              
                 }
             }
 
@@ -113,7 +130,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
         }
         
         if (!errors.isEmpty()) {
-            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute' + lot, 'Batch' , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
         }
             
     }
@@ -152,7 +169,7 @@ global class APB003_CreateOrderFromQuote  implements Database.Batchable<sObject>
     }
     
     global void finish(Database.BatchableContext BC) {
-        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish', 'Batch' , null, 'Finished Batch Processing', UM010_Constant.SUCCESS);
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish' + lot, 'Batch' , null, 'Finished Batch Processing', UM010_Constant.SUCCESS);
     }
     /*
     *   @description : this method execute the batch

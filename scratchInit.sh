@@ -13,10 +13,10 @@ sfdx force:org:create --setdefaultusername -f config/project-scratch-def.json --
 echo "------> Starting managed package installation..."
 
 echo "----------- CPQ : ( w = 40)"
-sfdx force:package:install -p 04t4N000000gc4eQAA -u $YourAlias  -w 40 --noprompt
+sfdx force:package:install -p 04t4N000000szMmQAI -u $YourAlias  -w 40 --noprompt
 
 echo "----------- Billing :"
-sfdx force:package:install -p 04t0K000001E2m7QAC -u $YourAlias  -w 40
+sfdx force:package:install -p 04t0K000001CpjYQAS -u $YourAlias  -w 40
 
 echo "----------- Salesforce Billing Reporting Add-on :"
 sfdx force:package:install -p 04t4P000002icr9QAA -u $YourAlias  -w 40
