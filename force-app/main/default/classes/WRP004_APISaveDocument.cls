@@ -31,7 +31,7 @@ public class WRP004_APISaveDocument {
             this.DocumentStatus = 'Validé';
             this.DocumentType = 'Contrat';
             this.CrecheSfId = CrecheSfId;
-        } else if(Name.contains('Autre')) {
+        } else { //if(Name.contains('Autre')) {
             this.FileType = getFileType(att.Name);
             this.DocumentStatus = 'None';
             this.DocumentType = 'Autre';
@@ -41,7 +41,7 @@ public class WRP004_APISaveDocument {
         this.DocSfID = DocSfID;
         this.Name = Name;
         this.BinaryDocument = BinaryDocument;
-        this.CrecheSfId = CrecheSfId;
+        this.CrecheSfId = (CrecheSfId == null ? 'null' : CrecheSfId);
         
     }
 

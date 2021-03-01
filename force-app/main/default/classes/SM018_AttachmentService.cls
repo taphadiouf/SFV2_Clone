@@ -1,12 +1,22 @@
 /**
-* @author Saurabh
 * @date 30/06/2020
-* @description Service class for SM018_AttachmentService
+* @description Service class for SM018_AttachmentService :
+*
+    - In Sync mode (attachment inserted from LWC) do nothing (whole logic embedded by APC002_AttachmentController)
+
+    - In Async mode (insertion called from Conga or Adobe) logic will be performed by chaining callouts with queueable class
+        - 1) Send each inserted document to LPCR GED by enqueuing  QA001
+        - If Document is related to an invoice, 
+            - 2) Get reference from GED by enqueuing QA002
+            - 3) send it to customer by enqueuing QA003
 */
+
 public with sharing class SM018_AttachmentService {
-    
+
     public static void sendLPCRDocumentByCallout(List<Attachment> newAttachmentList){
         
+        String className = SM018_AttachmentService.class.getName();
+
         Set<String> parentIds = UM003_TypeManager.getFieldsOfListObjects(newAttachmentList, 'ParentId');
         Map<String, String> invoiceAccountMap = new Map<String, String>();
         
@@ -22,39 +32,30 @@ public with sharing class SM018_AttachmentService {
             blng__Invoice__c invoice;
             String Description = eachAttachment.Description;
             
-            PAD.log('SM018_AttachmentService', 'sendLPCRDocumentByCallout', 'eachAttachment:' + eachAttachment);   
+            PAD.log(className, 'sendLPCRDocumentByCallout', 'eachAttachment:' + eachAttachment);   
             
             if (!objectTypeAuthorizedToBeSentToLPCR(eachAttachment.ParentId)) {
-                PAD.log('SM018_AttachmentService', 'sendLPCRDocumentByCallout', 'Adobe temporary attachment not to be sent to LPCR GED');   
+                PAD.log(className, 'sendLPCRDocumentByCallout', 'Adobe temporary attachment not to be sent to LPCR GED');   
                 continue;
             }
-            PAD.log('SM018_AttachmentService', 'sendLPCRDocumentByCallout', 'continuing...');   
+            PAD.log(className, 'sendLPCRDocumentByCallout', 'continuing...');   
             if(invoiceCreatedByMap.containsKey(eachAttachment.ParentId)){  
                 invoice = invoiceCreatedByMap.get(eachAttachment.ParentId);
             }
             
             if(!(invoice != null && invoice.CreatedBy.Name.contains('Migration'))){
                 
-                // In Sync mode (attachment inserted from LWC) do nothing
-                // In Async mode (insertion called from Conga or Adobe)
-                // Send Doc to LPCR GED
-                // If Document is related to an invoice, send it to customer
-                
-                if(!eachAttachment.Name.contains('_SYNC')){
+                if(!eachAttachment.Name.contains('_SYNC')){ // By Pass this logic if called from APC002 Controller
                     
-                    SM017_SendDocument_Callout.sendDocumentCallout(eachAttachment.ParentId, eachAttachment.Id, eachAttachment.Name, EncodingUtil.base64Encode(eachAttachment.Body));
-                    
-                    if(invoice != null){
-                        
-                        invoice.LPCR_StatutFacture__c = 'Envoyée';
-                        invoiceToUpdate.put(invoice.id,invoice);
-                        
-                        // Retrieve Again list and Send an Email to Customer :
-                        SM019_DocumentList_Callout.getDocumentListFutureCallout(eachAttachment.ParentId, 'Facture',invoiceAccountMap.get(eachAttachment.ParentId));                 
-                    }   
+                    QA001_CalloutEnvoieDocumentGED sendDoc = new QA001_CalloutEnvoieDocumentGED(String.valueOf(eachAttachment.ParentId), 
+                                                                                                String.valueOf(eachAttachment.Id), 
+                                                                                                eachAttachment.Name, 
+                                                                                                EncodingUtil.base64Encode(eachAttachment.Body), 
+                                                                                                invoice, 
+                                                                                                invoiceAccountMap.get(eachAttachment.ParentId));
+                    ID jobIdSendDoc = System.enqueueJob(sendDoc); 
                 }
             }
-            
         }
         if(invoiceToUpdate.size() !=0 ){
             update invoiceToUpdate.values();

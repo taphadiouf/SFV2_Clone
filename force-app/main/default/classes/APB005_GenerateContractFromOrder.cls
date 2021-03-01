@@ -4,22 +4,40 @@
 * @Description Batch for Generate the Contract from the order
 */
 global class APB005_GenerateContractFromOrder  implements Database.Batchable<sObject>,Schedulable {
+    
     String query;
     final String ClassName = APB005_GenerateContractFromOrder.class.getName();
+    global List<Order> inputOrderList;
+    global String lot;
+
     global APB005_GenerateContractFromOrder() {
         
     }
+
+    global APB005_GenerateContractFromOrder(List<Order> inputOrderListParam, String lotParam) {
+        
+        inputOrderList = inputOrderListParam;
+        lot = ' - LOT:' + lotParam;
+    }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
-        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
-        query = 'SELECT Id,Status,SBQQ__Contracted__c FROM Order WHERE Status =\'Activated\' AND SBQQ__Contracted__c =false';
-        
-        return Database.getQueryLocator(query);
+
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' + lot , null, 'Starting Batch', UM010_Constant.SUCCESS);
+
+        // Serial Mode for the whole scope
+        if (inputOrderList == null) {
+
+            query = 'SELECT Id,Status,SBQQ__Contracted__c FROM Order WHERE Status =\'Activated\' AND SBQQ__Contracted__c =false';
+            return Database.getQueryLocator(query);
+        }
+        // Parallel mode used to process higher volume of order at the same time
+        Set<Id> tmpSet = UM003_TypeManager.getIdsOfListObjects(inputOrderList);
+        return Database.getQueryLocator([SELECT Id,Status,SBQQ__Contracted__c FROM Order WHERE Status ='Activated' AND SBQQ__Contracted__c =false AND Id in :tmpSet]);
     }
     
     global void execute(Database.BatchableContext BC, List<Order> scope) {
         
-        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' + lot , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
         
         List<Exception> errors = new List<Exception>();
         try {
@@ -38,21 +56,21 @@ global class APB005_GenerateContractFromOrder  implements Database.Batchable<sOb
                 if(eachOrder.SBQQ__Quote__r.LPCR_RepriseDateProchaineFacturation__c != null){
                     eachOrderItem.blng__BillThroughDateOverride__c =  eachOrder.SBQQ__Quote__r.LPCR_RepriseDateProchaineFacturation__c;
                 }
-                listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Generating Contract From Order', ClassName, 'Batch', String.valueOf(eachOrder.Id), '', 'SUCCESS'));            
+                listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Generating Contract From Order', ClassName, 'Batch' + lot, String.valueOf(eachOrder.Id), '', 'SUCCESS'));            
             }
 
             String ErrMsg;
             try {
                 update (OrderOrderItemMap.values());  
                 UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Generate the Contract from the order',
-                                                                ClassName, 'Batch' , null,
+                                                                ClassName, 'Batch' + lot , null,
                                                                 'Successfully updated list of order items : ' + String.valueOf(OrderOrderItemMap.values()), 
                                                                 UM010_Constant.SUCCESS);          
             } catch (Exception e) {
                 ErrMsg = e.getMessage();
             } finally {
                 if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Generate the Contract from the order',ClassName, 'Batch' , null,'Error while updating the order items : ' + ErrMsg, UM010_Constant.ERROR);              
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Generate the Contract from the order',ClassName, 'Batch' + lot , null,'Error while updating the order items : ' + ErrMsg, UM010_Constant.ERROR);              
                 }
             }
 
@@ -61,14 +79,14 @@ global class APB005_GenerateContractFromOrder  implements Database.Batchable<sOb
             try {
                 insert listOfLog;
                 UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Generate the Contract from the order',
-                                                                ClassName, 'Batch' , null,
+                                                                ClassName, 'Batch' + lot , null,
                                                                 'Successfully inserted list of logs : ' + String.valueOf(listOfLog), 
                                                                 UM010_Constant.SUCCESS);          
             } catch (Exception e) {
                 ErrMsg = e.getMessage();
             } finally {
                 if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Generate the Contract from the order',ClassName, 'Batch' , null,'Error while inserting the logs : ' + ErrMsg, UM010_Constant.ERROR);              
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Generate the Contract from the order',ClassName, 'Batch' + lot , null,'Error while inserting the logs : ' + ErrMsg, UM010_Constant.ERROR);              
                 }
             }
 
@@ -77,12 +95,12 @@ global class APB005_GenerateContractFromOrder  implements Database.Batchable<sOb
         }
         
         if (!errors.isEmpty()) {
-            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' + lot , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
         }
     }
     
     global void finish(Database.BatchableContext BC) {
-        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish', 'Batch' , null, 'Finished Batch Processing', UM010_Constant.SUCCESS);
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish', 'Batch' + lot , null, 'Finished Batch Processing', UM010_Constant.SUCCESS);
     }
     
     global void execute(SchedulableContext sc) {

@@ -8,6 +8,8 @@ public with sharing class SM016_SendMail_Callout {
     public static HttpResponse sendMailCallout(String from1, String to, String subject, String body, Set<String> docsId) {
         String errorMsg;
         HttpResponse res = new HttpResponse();
+        String bodyJSON;
+        
         try {
             Http h = new Http();
             HttpRequest req = new HttpRequest();
@@ -35,7 +37,7 @@ public with sharing class SM016_SendMail_Callout {
         
             EmailStructureWrapper emailStructure = new EmailStructureWrapper(from1, to, subject, body, docsIdSet);
 
-            String bodyJSON = JSON.serialize(emailStructure);
+            bodyJSON = JSON.serialize(emailStructure);
             bodyJSON = bodyJson.replace('from1', 'From');
             req.setBody(bodyJSON);
         
@@ -49,12 +51,12 @@ public with sharing class SM016_SendMail_Callout {
         }
         finally {
             if (String.isNotBlank(errorMsg)) {
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_REF_SENDMAIL,'SM016_SendMail_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_REF_SENDMAIL,'SM016_SendMail_Callout', 'Callout', null,  'sendMailCallout - Body :' + bodyJSON + ' - Apex Callout Exception:' + errorMsg + ' - res' + res, UM010_Constant.ERROR);  
             }
                 if (res.getStatusCode() == 200) {
-                	UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_REF_SENDMAIL, 'SM016_SendMail_Callout', 'Callout', from1, 'statusCode:' + res.getStatusCode() + ' - From:' + from1 + ' - To:' + to + ' - Subject:' + subject , UM010_Constant.SUCCESS);           
+                	UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_REF_SENDMAIL, 'SM016_SendMail_Callout', 'Callout', from1, 'sendMailCallout - Body :' + bodyJSON + 'statusCode:' + res.getStatusCode() + ' - From:' + from1 + ' - To:' + to + ' - Subject:' + subject , UM010_Constant.SUCCESS);           
             	} else {
-                	UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_REF_SENDMAIL, 'SM016_SendMail_Callout', 'Callout', from1,  'Exception:' + res.getStatusCode() + ' - statusCode:' + res.getStatusCode() + ' - From:' + from1 + ' - To:' + to + ' - Subject:' + subject, UM010_Constant.ERROR);
+                	UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_REF_SENDMAIL, 'SM016_SendMail_Callout', 'Callout', from1,  'sendMailCallout - Body :' + bodyJSON + 'Exception:' + res.getStatusCode() + ' - statusCode:' + res.getStatusCode() + ' - From:' + from1 + ' - To:' + to + ' - Subject:' + subject + ' - res' + res,  UM010_Constant.ERROR);
             	}
             
         }
