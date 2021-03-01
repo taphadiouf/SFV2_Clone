@@ -4,23 +4,41 @@
 * @Description Batch for Activating the order
 */
 global class APB004_ActivateOrder  implements Database.Batchable<sObject>,Schedulable {
+    
     String query;
     final String ClassName = APB004_ActivateOrder.class.getName();
+    global List<Order> inputOrderList;
+    global String lot;
+
     global APB004_ActivateOrder() {
+        lot = '';  
+    }
+
+    global APB004_ActivateOrder(List<Order> inputOrderListParam, String lotParam) {
         
+        inputOrderList = inputOrderListParam;
+        lot = ' - LOT:' + lotParam;
     }
     
     global Database.QueryLocator start(Database.BatchableContext BC) {
         
-        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
-        query = 'SELECT Id,Status FROM Order WHERE Status =\'Draft\'';
-        
-        return Database.getQueryLocator(query);
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start' + lot, 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
+
+        // Serial Mode for the whole scope
+        if (inputOrderList == null) {
+
+            query = 'SELECT Id,Status FROM Order WHERE Status =\'Draft\'';
+            return Database.getQueryLocator(query);
+        }
+        // Parallel mode used to process higher volume of order at the same time
+        Set<Id> tmpSet = UM003_TypeManager.getIdsOfListObjects(inputOrderList);
+        return Database.getQueryLocator([SELECT Id,Status FROM Order WHERE Id in :tmpSet]);
+
     }
     
     global void execute(Database.BatchableContext BC, List<Order> scope) {
 
-        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute' + lot, 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
         
         List<Exception> errors = new List<Exception>();
         try {
@@ -33,21 +51,21 @@ global class APB004_ActivateOrder  implements Database.Batchable<sObject>,Schedu
             for (Order eachOrder : listOforder) {
                 
                 eachOrder.status ='Activated';
-                listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Activating Order', ClassName, 'Batch', String.valueOf(eachOrder.Id), '', 'SUCCESS'));            
+                listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('Activating Order', ClassName, 'Batch' + lot, String.valueOf(eachOrder.Id), '', 'SUCCESS'));            
             }
             
             String ErrMsg;
             try {
                 update listOforder;
                 UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Activating the order',
-                                                                ClassName, 'Batch' , null,
+                                                                ClassName, 'Batch' + lot, null,
                                                                 'Successfully updated list of orders : ' + String.valueOf(listOforder), 
                                                                 UM010_Constant.SUCCESS);          
             } catch (Exception e) {
                 ErrMsg = e.getMessage();
             } finally {
                 if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Activating the order',ClassName, 'Batch' , null,'Error while updating the orders : ' + ErrMsg, UM010_Constant.ERROR);              
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Activating the order',ClassName, 'Batch' + lot, null,'Error while updating the orders : ' + ErrMsg, UM010_Constant.ERROR);              
                 }
             }
             
@@ -55,14 +73,14 @@ global class APB004_ActivateOrder  implements Database.Batchable<sObject>,Schedu
             try {
                 insert listOfLog;
                 UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Activating the order',
-                                                                ClassName, 'Batch' , null,
+                                                                ClassName, 'Batch' + lot, null,
                                                                 'Successfully inserted list of logs : ' + String.valueOf(listOfLog), 
                                                                 UM010_Constant.SUCCESS);          
             } catch (Exception e) {
                 ErrMsg = e.getMessage();
             } finally {
                 if(ErrMsg != null && String.isNotBlank(ErrMsg)){
-                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Activating the order',ClassName, 'Batch' , null,'Error while inserting the logs : ' + ErrMsg, UM010_Constant.ERROR);              
+                    UM001_LogManager.writeLogActivityWithoutFuture( 'Batch for Activating the order',ClassName, 'Batch' + lot , null,'Error while inserting the logs : ' + ErrMsg, UM010_Constant.ERROR);              
                 }
             }
         } catch(Exception e) {
@@ -70,12 +88,12 @@ global class APB004_ActivateOrder  implements Database.Batchable<sObject>,Schedu
         }
         
         if (!errors.isEmpty()) {
-            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' + lot , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
         }
     }
     
     global void finish(Database.BatchableContext BC) {
-        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish', 'Batch' , null, 'Finished Batch Processing', UM010_Constant.SUCCESS);
+        UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'finish', 'Batch' + lot , null, 'Finished Batch Processing', UM010_Constant.SUCCESS);
     }
     
     global void execute(SchedulableContext sc) {

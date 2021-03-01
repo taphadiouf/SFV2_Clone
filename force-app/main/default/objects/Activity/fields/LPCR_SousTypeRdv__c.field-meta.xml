@@ -6,6 +6,7 @@
     <required>false</required>
     <type>Picklist</type>
     <valueSet>
+        <controllingField>LPCR_TypeRdv__c</controllingField>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
@@ -64,5 +65,52 @@
                 <label>RP (Evenements)</label>
             </value>
         </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>RDV Téléphonique</controllingFieldValue>
+            <controllingFieldValue>RDV Physique</controllingFieldValue>
+            <valueName>Découverte</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>RDV Téléphonique</controllingFieldValue>
+            <controllingFieldValue>RDV Physique</controllingFieldValue>
+            <valueName>Soutenance/Négociation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>RDV Téléphonique</controllingFieldValue>
+            <controllingFieldValue>RDV Physique</controllingFieldValue>
+            <valueName>Suivi</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>RDV Téléphonique</controllingFieldValue>
+            <controllingFieldValue>RDV Physique</controllingFieldValue>
+            <valueName>Commission d&apos;attribution</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>RDV Téléphonique</controllingFieldValue>
+            <controllingFieldValue>RDV Physique</controllingFieldValue>
+            <valueName>Immobilier</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>RDV Téléphonique</controllingFieldValue>
+            <controllingFieldValue>RDV Physique</controllingFieldValue>
+            <valueName>Post-Mortem (perte client)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>RDV Téléphonique</controllingFieldValue>
+            <controllingFieldValue>RDV Physique</controllingFieldValue>
+            <valueName>RP (Evenements)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>RDV Physique</controllingFieldValue>
+            <valueName>Visite de Crèche</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>RDV Physique</controllingFieldValue>
+            <valueName>Remise d&apos;Offre</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>RDV Physique</controllingFieldValue>
+            <valueName>Atelier Parentalité</valueName>
+        </valueSettings>
     </valueSet>
 </CustomField>

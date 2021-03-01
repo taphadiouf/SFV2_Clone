@@ -22,9 +22,9 @@ public with sharing class SM013_QuoteLineServices {
     }
 
     /*
-	*	@description : this method check if any registration fee had been alredy applied for a given customer / nursery.
-	*	@param List<SBQQ__QuoteLine__c> quoteLineList to process
-    *	@returns void
+    *    @description : this method check if any registration fee had been alredy applied for a given customer / nursery.
+    *    @param List<SBQQ__QuoteLine__c> quoteLineList to process
+    *    @returns void
     */
     public static void checkExistingRegistrationFee (List<SBQQ__QuoteLine__c> quoteLineList) {
         PAD.log('SM013_QuoteLineServices', 'checkExistingRegistrationFee', 'start method with quoteLineList: ' + quoteLineList.size());
@@ -84,9 +84,9 @@ public with sharing class SM013_QuoteLineServices {
     }
 
     /*
-	*	@description : this method check if any registration fee had been alredy applied for a given customer / nursery.
-	*	@param List<SBQQ__QuoteLine__c> quoteLineList to process
-    *	@returns void
+    *    @description : this method check if any registration fee had been alredy applied for a given customer / nursery.
+    *    @param List<SBQQ__QuoteLine__c> quoteLineList to process
+    *    @returns void
     */
     public static void setBillThroughDateOverride (List<SBQQ__QuoteLine__c> quoteLineList) {
 
@@ -144,15 +144,20 @@ public with sharing class SM013_QuoteLineServices {
         
         Map<Id, SBQQ__Quote__c> quoteMap = new Map<Id, SBQQ__Quote__c>([Select SBQQ__StartDate__c, SBQQ__EndDate__c from SBQQ__Quote__c Where Id IN :quoteIdSet]);
         
-        for(SBQQ__QuoteLine__c quoteLine : quoteLineList) {
+       for(SBQQ__QuoteLine__c quoteLine : quoteLineList) {
             
-            //BillingCPQFormulaTriggerHandler.calculateQuoteLine(quoteMap.get(quoteLine.SBQQ__Quote__c), quoteLine);
-            SBQQ__Quote__c quote = quoteMap.get(quoteLine.SBQQ__Quote__c);
+          //BillingCPQFormulaTriggerHandler.calculateQuoteLine(quoteMap.get(quoteLine.SBQQ__Quote__c), quoteLine);
+                SBQQ__Quote__c quote = quoteMap.get(quoteLine.SBQQ__Quote__c);
             
             // If BillThroughDate__c is not set on the quote line
             // Do not proceed further
-            if (quoteLine.LPCR_BillThroughDateOverride__c == null || quoteLine.SBQQ__NetTotal__c == 0) {
-                return;
+            if (quoteLine.LPCR_BillThroughDateOverride__c == null || 
+                quoteLine.SBQQ__DefaultSubscriptionTerm__c == null || 
+                quoteLine.SBQQ__ProrateMultiplier__c == null || 
+                quoteLine.SBQQ__NetTotal__c == null || 
+                quoteLine.SBQQ__NetTotal__c == 0) {
+               // return;
+               Continue;
             }
             
             // Billing Frequency Multiplier
@@ -161,6 +166,9 @@ public with sharing class SM013_QuoteLineServices {
             // Billable Unit Price Formula 
             // CPQ Formula has been used
             // Since we use NetTotal, Quantity is included in the Billable Unit Price 
+            System.debug('quoteLine.SBQQ__ProrateMultiplier__c CPQ Calculation: '+ quoteLine.SBQQ__ProrateMultiplier__c);
+            System.debug('quoteLine.SBQQ__NetTotal__c CPQ Calculation: '+ quoteLine.SBQQ__NetTotal__c);
+            System.debug('quoteLine.SBQQ__DefaultSubscriptionTerm__c CPQ Calculation: '+ quoteLine.SBQQ__DefaultSubscriptionTerm__c);
             Decimal billableUnitPriceWithQuantity = (quoteLine.SBQQ__NetTotal__c * bpMultiplier) / (quoteLine.SBQQ__ProrateMultiplier__c * quoteLine.SBQQ__DefaultSubscriptionTerm__c);
             System.debug('billableUnitPriceWithQuantity: '+ billableUnitPriceWithQuantity);
             
@@ -191,13 +199,30 @@ public with sharing class SM013_QuoteLineServices {
             billableUnitPriceWithQuantity = billableUnitPrice * netPriceTotalRatio;
             Decimal prorateMultiplier = ((netUnitPrice * netPriceTotalRatio) * bpMultiplier) / (billableUnitPriceWithQuantity * quoteLine.SBQQ__DefaultSubscriptionTerm__c);
             System.debug('Updated SBQQ__ProrateMultiplier__c: '+ prorateMultiplier);
+            Decimal Discountvar = 0;
             
-    
             // Assign the values to the quote line
-            quoteLine.SBQQ__NetPrice__c = netUnitPrice;
+            
             quoteLine.SBQQ__ProrateMultiplier__c = prorateMultiplier;
             quoteLine.LPCR_BillingMultiplier__c = billingMultiplier;
-    	}
+            quoteline.SBQQ__ProratedListPrice__c = quoteline.SBQQ__ListPrice__c * prorateMultiplier;
+            quoteline.SBQQ__ProratedPrice__c = quoteline.SBQQ__ListPrice__c * prorateMultiplier;
+            quoteline.SBQQ__RegularPrice__c = quoteline.SBQQ__SpecialPrice__c * prorateMultiplier;
+    
+            if (quoteline.SBQQ__Discount__c != null){
+            Discountvar = quoteline.SBQQ__RegularPrice__c *(quoteline.SBQQ__Discount__c / 100);
+            } 
+            else if (quoteline.SBQQ__AdditionalDiscountAmount__c != null){
+            Discountvar = quoteline.SBQQ__AdditionalDiscountAmount__c * prorateMultiplier;
+            }
+    
+            quoteline.SBQQ__CustomerPrice__c = quoteline.SBQQ__RegularPrice__c - Discountvar;
+            quoteLine.SBQQ__NetPrice__c = netUnitPrice;
+    
+           
+            
+                       
+        }
         
     }    
     
@@ -285,5 +310,4 @@ public with sharing class SM013_QuoteLineServices {
             return perPeriodMultiplier;
         }
     }
-    
-}
+    }

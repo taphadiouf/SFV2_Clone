@@ -304,10 +304,10 @@
         <fields>TotalPrice</fields>
         <fields>ODER_ITEM.START_DATE</fields>
         <fields>ODER_ITEM.END_DATE</fields>
-        <fields>blng__PendingBillings__c</fields>
         <fields>blng__NextBillingDate__c</fields>
         <fields>SBQQ__Status__c</fields>
-        <fields>blng__HoldBilling__c</fields>
+        <fields>LPCR_Creche__c</fields>
+        <fields>blng__InvoiceGrouping__c</fields>
         <relatedList>RelatedOrderItemList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -336,7 +336,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000001OobH</masterLabel>
+        <masterLabel>00h1x000001d2CK</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

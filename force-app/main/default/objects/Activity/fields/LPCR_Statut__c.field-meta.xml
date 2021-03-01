@@ -23,6 +23,16 @@
                 <default>false</default>
                 <label>Planifié</label>
             </value>
+            <value>
+                <fullName>A faire</fullName>
+                <default>false</default>
+                <label>A faire</label>
+            </value>
+            <value>
+                <fullName>Fait</fullName>
+                <default>false</default>
+                <label>Fait</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

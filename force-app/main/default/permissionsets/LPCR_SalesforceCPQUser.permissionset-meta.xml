@@ -9264,7 +9264,12 @@
         <field>SBQQ__QuoteLine__c.SBQQ__SubscriptionScope__c</field>
         <readable>true</readable>
     </fieldPermissions>
-     <fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Subscription__c.SBQQ__SubscriptionPricing__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Subscription__c.LPCR_HoldBilling__c</field>
         <readable>true</readable>
