@@ -4,6 +4,21 @@
 * @description Services class on Opportunity Object
 */
 public class SM004_OpportunityServices {
+
+    
+    public static void setOpportunityFields(List<Opportunity> newOpportunitiesList) {
+
+        for (Opportunity opp : newOpportunitiesList) {
+
+            opp.LPCR_Ref_ContactFacturation__c = opp.Account.blng__BillToContact__c;
+            opp.LPCR_Ref_ContactInscription__c = opp.Account.LPCR_ContactInscriptions__c;
+            opp.LPCR_Ref_IdCompte__c = opp.Account.Id;
+            opp.LPCR_Ref_RespADV__c = opp.Account.LPCR_ResponsableADV__c;
+            opp.LPCR_Ref_RespServiceFam__c = opp.Account.LPCR_ResponsableServiceFamille__c;
+        }
+    }
+    
+
     public static void setAccountStatus(Map<Id, Opportunity> newOpportunitiesMap, Map<Id, Opportunity> oldOpportunitiesMap ){
         List<Account> accountListNew = new List<Account>();
         
@@ -30,6 +45,7 @@ public class SM004_OpportunityServices {
         cl.dmlExecuteRequest('update',  accountListNew, true, methodName, DM000_SObject.ProcessType.TRIGGER_SRC);
                
     }
+
     public static void setAccountStatus(Map<Id, Opportunity> newOpportunitiesMap)
     {
         List<Account> accountListNew = new List<Account>();

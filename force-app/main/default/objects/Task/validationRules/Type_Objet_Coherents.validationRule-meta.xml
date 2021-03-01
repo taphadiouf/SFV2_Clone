@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_Objet_Coherents</fullName>
+    <active>true</active>
+    <description>Permet de forcer les utilisateurs à renseigner des champs Type et Objet cohérents</description>
+    <errorConditionFormula>ISPICKVAL(  LPCR_TypeTache__c, &quot;Appel&quot;) &amp;&amp; (BEGINS(Subject, &quot;E-mail -&quot;)
+|| BEGINS(Subject, &quot;Gestion interne -&quot;))
+||
+ISPICKVAL(LPCR_TypeTache__c, &quot;E-mail&quot;) &amp;&amp; (BEGINS( Subject, &quot;Appel -&quot;)
+|| BEGINS(Subject, &quot;Gestion interne -&quot;))
+||
+ISPICKVAL(LPCR_TypeTache__c, &quot;Gestion interne&quot;) &amp;&amp; (BEGINS( Subject, &quot;Appel -&quot;)
+|| BEGINS(Subject, &quot;E-mail -&quot;))</errorConditionFormula>
+    <errorMessage>Les champs &quot;Type de tâche&quot; et &quot;Objet&quot; doivent être cohérents</errorMessage>
+</ValidationRule>

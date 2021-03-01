@@ -34,8 +34,9 @@ public with sharing class APC002_AttachmentController {
     }
     @AuraEnabled
     public static void sendDocument(Id attachmentId) {
+        PAD.log('APC002_AttachmentController', 'sendDocument', 'Before Callout');
         Attachment att = [SELECT ParentId, Description, Body FROM Attachment WHERE Id = :attachmentId];
-        SM017_SendDocument_Callout.sendDocumentCallout_SYNC(att.ParentId, att.Id, att.Description, EncodingUtil.base64Encode(att.Body));
+        SM017_SendDocument_Callout.executeSendDocumentCallout(att.ParentId, att.Id, att.Description, EncodingUtil.base64Encode(att.Body));
     }
 
     @AuraEnabled

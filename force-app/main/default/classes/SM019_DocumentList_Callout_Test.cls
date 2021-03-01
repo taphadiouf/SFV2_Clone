@@ -33,36 +33,4 @@ public class SM019_DocumentList_Callout_Test {
       Test.stopTest();
               
     }
-
-    @isTest
-    static void getDocumentListCallout_3_Test(){
-
-      Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-      Test.startTest();
-      
-      SM019_DocumentList_Callout.getDocumentListFutureCallout('00000', 'Facture','test@test.com');
-      try {
-        SM019_DocumentList_Callout.getDocumentListFutureCallout(null,null,null);
-      } catch (Exception e) {
-        System.assertNotEquals(null,e); 
-      }
-      Test.stopTest();
-
-    }
-
-
-    @isTest
-    static void getDocumentListCallout_4_Test(){
-
-      Test.setMock(HttpCalloutMock.class, new MCK001_LPCRHttpCalloutMockImpl());
-      Test.startTest();
-            SM019_DocumentList_Callout.getDocumentListFutureCallout('test@test.com','test2@Test2.com', 'Subject','Body','000000','Facture');
-
-      Test.stopTest();
-
-    }
-
-
-
-
 }

@@ -75,13 +75,15 @@ public with sharing class SM022_ModificationEntranteServices {
             sendAgreement(mapSendAgreementTemplate);
             if(UM003_TypeManager.isNotNullAndNotEmpty(mapModEentIdWithTypeEve.values())){
                 for(Id eachModEnt : mapModEentIdWithTypeEve.keySet()){
-                    SM019_DocumentList_Callout.getDocumentListFutureCallout(SEND_FROM_EMAIL,
-                                                                            mapModificationEntrante.get(eachModEnt).LPCR_Contract__r.Account.Email__c,
-                                                                            REGLEMENT_FONCTIONNEMENT_CRECHE_LABEL,
-                                                                            EMAIL_BODY,
-                                                                            mapModificationEntrante.get(eachModEnt).LPCR_Contract__r.OwnerId,
-                                                                            REGLEMENT_FONCTIONNEMENT_CRECHE_NAME
-                                                                           );
+
+                    QA002_CalloutListeDocumentGED docListJob = new QA002_CalloutListeDocumentGED(mapModificationEntrante.get(eachModEnt).LPCR_Contract__r.OwnerId, 
+                                                                                                    REGLEMENT_FONCTIONNEMENT_CRECHE_NAME, 
+                                                                                                    mapModificationEntrante.get(eachModEnt).LPCR_Contract__r.Account.Email__c, 
+                                                                                                    SEND_FROM_EMAIL, 
+                                                                                                    REGLEMENT_FONCTIONNEMENT_CRECHE_LABEL, 
+                                                                                                    EMAIL_BODY,
+                                                                                                    'ENVOIE_REGLE_FONCTIONNEMENT_CRECHE');
+                    ID jobID = System.enqueueJob(docListJob);
                     
                 }
             }
@@ -383,8 +385,8 @@ public with sharing class SM022_ModificationEntranteServices {
                 blng__Usage__c newUsage = createBlngUsage(eachModifEntrante,'Heures','EVT_ABSCENCE',evenementMap.get(eachModifEntrante.LPCR_Evenement__c));
                 allUsageList.add(newUsage);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
-            }else if('EVT_VALIDATION_CONTRAT_DIRECTRICE'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Contract__c != null ){
-                SBQQ__Quote__c updateQuote = new SBQQ__Quote__c(Id = modifEntrantesContractMap.get(eachModifEntrante.LPCR_Contract__c).SBQQ__Quote__c);
+            }else if('EVT_VALIDATION_CONTRAT_DIRECTRICE'.equals(eachModifEntrante.LPCR_Evenement__c) && eachModifEntrante.LPCR_Devis__c != null ){
+                SBQQ__Quote__c updateQuote = new SBQQ__Quote__c(Id = eachModifEntrante.LPCR_Devis__c);
                 updateQuote.SBQQ__Status__c = 'Validé directrice';
                 mapOfQuoteForUpdate.put(updateQuote.id,updateQuote);
                 eachModifEntrante.LPCR_EtatTraitement__c = true;
