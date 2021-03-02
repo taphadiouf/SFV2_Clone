@@ -3085,6 +3085,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.LPCR_GestionnaireRetenu__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Lead.LPCR_IDAO__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6966,6 +6971,18 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
+        <recordType>Event.LPCR_Evenement</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Event.LPCR_RDV_Physique</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Event.LPCR_RDV_Telephonique</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
         <recordType>Lead.AO_PublicDSP</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -6987,6 +7004,22 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>SBQQ__Quote__c.Reservataire</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Task.LPCR_Tache</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Task.LPCR_Appel</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Task.LPCR_Email</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Task.LPCR_Gestion_Interne</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabSettings>
