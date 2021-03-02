@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Tache</fullName>
+    <active>true</active>
+    <description>Type d&apos;enregistrement pour les tâches</description>
+    <label>Tâche</label>
+    <picklistValues>
+        <picklist>LPCR_SousTypeRdv__c</picklist>
+        <values>
+            <fullName>Atelier Parentalité</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commission d%27attribution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Découverte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Immobilier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Négociation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post-Mortem %28perte client%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RP %28Evenements%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Remise d%27Offre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Soutenance%2FNégociation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suivi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Visite de Crèche</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_SousTypeTache__c</picklist>
+        <values>
+            <fullName>ADV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Attribution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BDC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contrat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proposition commerciale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Préparation BDC%2FContrat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rappel Campagne Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rappel Famille</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Relance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suivi</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Statut__c</picklist>
+        <values>
+            <fullName>A faire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Annulé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Planifié</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tenu</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeRdv__c</picklist>
+        <values>
+            <fullName>RDV Physique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RDV Téléphonique</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeTache__c</picklist>
+        <values>
+            <fullName>Appel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E-mail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gestion interne</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status</picklist>
+        <values>
+            <fullName>A faire</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Fait</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Subject</picklist>
+        <values>
+            <fullName>Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gestion interne</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E-mail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gestion interne</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>
