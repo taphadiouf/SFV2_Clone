@@ -2,6 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_Creche__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Crèche</description>
     <externalId>false</externalId>
     <label>Crèche</label>
     <lookupFilter>
