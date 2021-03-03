@@ -471,12 +471,12 @@
     </quickActionList>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
-        <fields>NAME</fields>
-        <fields>LPCR_NumBonCommande__c</fields>
         <fields>SBQQ__Product__c</fields>
         <fields>SBQQ__Quantity__c</fields>
-        <fields>SBQQ__NetPrice__c</fields>
-        <fields>SBQQ__NetTotal__c</fields>
+        <fields>LPCR_Creche__c</fields>
+        <fields>LPCR_Region__c</fields>
+        <fields>LPCR_MontantAnnuelForfaitMICRO__c</fields>
+        <fields>SBQQ__ListPrice__c</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -503,7 +503,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1X000001mKvH</masterLabel>
+        <masterLabel>00h1j000002CH75</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
