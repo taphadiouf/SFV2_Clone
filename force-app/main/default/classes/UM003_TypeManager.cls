@@ -124,8 +124,8 @@ public with sharing class UM003_TypeManager{
      Date maxDate = null;
      if(UM003_TypeManager.isNotNullAndNotEmpty(listSObject))
             for(SObject eachObj: listSObject){
-                minDate=(minDate==null || minDate> (Date)eachObj.get(fieldAPI)) ? minDate=(Date)eachObj.get(fieldAPI):minDate;
-                 maxDate=(maxDate==null || maxDate< (Date)eachObj.get(fieldAPI)) ? maxDate=(Date)eachObj.get(fieldAPI):maxDate;
+                minDate = (minDate == null || minDate > (Date)eachObj.get(fieldAPI)) ? minDate = (Date)eachObj.get(fieldAPI) : minDate;
+                maxDate = (maxDate == null || maxDate < (Date)eachObj.get(fieldAPI)) ? maxDate = (Date)eachObj.get(fieldAPI) : maxDate;
             }
 
         return new Date[]{minDate,maxDate};
