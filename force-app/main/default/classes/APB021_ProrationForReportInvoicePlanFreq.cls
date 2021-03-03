@@ -1,7 +1,10 @@
 /**
 * @author Erwan Yhuellou
 * @date 22/02/2021
-* @Description Batch Logic to populate and adjust the LPCR_Amount__c field on the Revenue Transaction accordingly to what LPCR wants
+* @Description :
+* Only For Invoice Plan
+* Input : blng__BillingTransaction__c with blng__BillingSchedule__r.blng__OrderProduct__c != null AND LPCR_ProcessProrate__c = false
+* Output : Populate and adjust the LPCR_Amount__c field on the Revenue Transaction accordingly to what LPCR wants
 */
 global class APB021_ProrationForReportInvoicePlanFreq implements Database.Batchable<sObject>,Schedulable {
     
@@ -18,7 +21,8 @@ global class APB021_ProrationForReportInvoicePlanFreq implements Database.Batcha
         return Database.getQueryLocator([SELECT Id, Name, blng__Amount__c, blng__OverrideAmount__c, blng__BillingSchedule__c,
                                                 blng__BillingTargetDate__c, blng__OverrideBillingTargetDate__c, blng__BillingSchedule__r.blng__OrderProduct__c 
                                                 FROM blng__BillingTransaction__c 
-                                                WHERE blng__BillingSchedule__r.blng__OrderProduct__c != null AND LPCR_ProcessProrate__c = false]);
+                                                WHERE blng__BillingSchedule__r.blng__OrderProduct__c != null AND LPCR_ProcessProrate__c = false
+                                                        AND blng__BillingSchedule__r.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c != null]);
     }
 
     global void execute(Database.BatchableContext BC, List<blng__BillingTransaction__c> scope) {
