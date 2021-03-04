@@ -34,6 +34,7 @@
             <targetReference>Get_Account</targetReference>
         </connector>
     </assignments>
+    <description>Ajouter valeure par defaut 0</description>
     <dynamicChoiceSets>
         <name>Choix_Contact_Enfant</name>
         <dataType>String</dataType>
@@ -614,6 +615,9 @@
         <fields>
             <name>Conges_en_Jours</name>
             <dataType>Number</dataType>
+            <defaultValue>
+                <numberValue>0.0</numberValue>
+            </defaultValue>
             <fieldText>Congés en Jours</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>

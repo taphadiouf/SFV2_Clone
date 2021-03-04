@@ -6,6 +6,7 @@
     <required>false</required>
     <type>Picklist</type>
     <valueSet>
+        <controllingField>LPCR_TypeTache__c</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
@@ -54,6 +55,63 @@
                 <default>false</default>
                 <label>Suivi</label>
             </value>
+            <value>
+                <fullName>Rappel Famille</fullName>
+                <default>false</default>
+                <label>Rappel Famille</label>
+            </value>
+            <value>
+                <fullName>Rappel Campagne Marketing</fullName>
+                <default>false</default>
+                <label>Rappel Campagne Marketing</label>
+            </value>
         </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Appel</controllingFieldValue>
+            <controllingFieldValue>E-mail</controllingFieldValue>
+            <valueName>Prospection</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Appel</controllingFieldValue>
+            <controllingFieldValue>E-mail</controllingFieldValue>
+            <valueName>Relance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Appel</controllingFieldValue>
+            <controllingFieldValue>E-mail</controllingFieldValue>
+            <valueName>Suivi</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Appel</controllingFieldValue>
+            <valueName>Rappel Famille</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Appel</controllingFieldValue>
+            <valueName>Rappel Campagne Marketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>E-mail</controllingFieldValue>
+            <valueName>BDC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>E-mail</controllingFieldValue>
+            <valueName>Contrat</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>E-mail</controllingFieldValue>
+            <valueName>Proposition commerciale</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Gestion interne</controllingFieldValue>
+            <valueName>ADV</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Gestion interne</controllingFieldValue>
+            <valueName>Attribution</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Gestion interne</controllingFieldValue>
+            <valueName>Préparation BDC/Contrat</valueName>
+        </valueSettings>
     </valueSet>
 </CustomField>

@@ -306,6 +306,8 @@ public with sharing class SM022_ModificationEntranteServices {
                     updateContact.MailingCity = eachModifEntrante.LPCR_Ville__c;
                     updateContact.MailingCountry = eachModifEntrante.LPCR_Pays__c;
                     updateContact.MailingPostalCode = eachModifEntrante.LPCR_CodePostal__c;
+                    updateContact.Phone = eachModifEntrante.LPCR_Tel1__c;
+                    updateContact.MobilePhone = eachModifEntrante.LPCR_Tel2__c;
                     allContactUpdateList.add(updateContact);
                     eachModifEntrante.LPCR_EtatTraitement__c = true;
                 }
