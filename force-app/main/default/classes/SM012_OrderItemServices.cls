@@ -164,6 +164,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                         else if(item.Quantity > 0 && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && lastdayofmonth < item.SBQQ__TerminatedDate__c))){
                             item.blng__BillThroughDateOverride__c = lastdayofmonth;
                         }
+
+                        item = setFirstInvoiceEndDate(item, lastdayofmonth);
                         
                     } 
                     // B2B (With All Frequency but Invoice Plan)
@@ -197,6 +199,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
 
                                     item.blng__BillThroughDateOverride__c = lastDayofQuarter;
                                 }
+
+                                item = setFirstInvoiceEndDate(item, lastDayofQuarter);
                             
                                 //Populate Order Item > LPCR_DateArrondie__c
                                 if(orderMap.get(item.OrderId).RecordTypeId == rtReferencementId){// only for orders rt=referencement
@@ -225,6 +229,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                     item.LPCR_DateArrondie__c = item.blng__NextBillingDate__c;
                                 }
 
+                                item = setFirstInvoiceEndDate(item, lastDayOfMonth);
+
                             }else if (item.SBQQ__BillingFrequency__c == Label.LPCR_Semiannual ) {
                                 // lastDayOfHalfYearPeriod return the last date of the given Half Year period (1,7)
                                 if(item.Quantity > 0 && !orderMap.get(item.OrderId).LPCR_InitAutoAvecDateDebut__c && (item.SBQQ__TerminatedDate__c == null || (item.SBQQ__TerminatedDate__c != null && semiannualLastDay < item.SBQQ__TerminatedDate__c))){
@@ -239,6 +245,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                         item.LPCR_DateArrondie__c = Date.newInstance(currentYr, 07, 01); //Give the 1st day of this period
                                     }
                                 }
+
+                                item = setFirstInvoiceEndDate(item, semiannualLastDay);
 
                             }else if(item.SBQQ__BillingFrequency__c == Label.LPCR_Annual  ) {
                                 
@@ -255,6 +263,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                         item.LPCR_DateArrondie__c = Date.newInstance(currentYr, 01, 01); //Give the 1st day of this period
                                     }
                                 }
+
+                                item = setFirstInvoiceEndDate(item, annualLastDay);
                             }
                             
                             //Populate item.blng__OverrideNextBillingDate__c
@@ -289,6 +299,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                         item.blng__BillThroughDateOverride__c = lastDayofQuarter;
                                     }
                                 }
+
+                                item = setFirstInvoiceEndDate(item, lastDayofQuarter);
                             }
                             else if ( (item.SBQQ__BillingFrequency__c == Label.LPCR_Monthly )
                                     || (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Monthly)) {
@@ -299,6 +311,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                         item.blng__BillThroughDateOverride__c = lastDayOfMonth;
                                     }
                                 }
+
+                                item = setFirstInvoiceEndDate(item, lastDayOfMonth);
 
                                 item.blng__OverrideNextBillingDate__c = item.SBQQ__ChargeType__c ==Label.LPCR_OneTime ? UM005_DateUtility.lastDateOfMonth(item.blng__NextChargeDate__c).addDays(1):null;
                             }
@@ -314,6 +328,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                         item.blng__BillThroughDateOverride__c = semiannualLastDay;
                                     }
                                 }
+
+                                item = setFirstInvoiceEndDate(item, semiannualLastDay);
                             }
                             else if ((item.SBQQ__BillingFrequency__c == Label.LPCR_Annual )
                                     || (item.SBQQ__ChargeType__c ==Label.LPCR_OneTime && orderMap.get(item.OrderId).LPCR_FrequenceFacturation__c == Label.LPCR_Annual)) {
@@ -324,6 +340,8 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                                         item.blng__BillThroughDateOverride__c = annualLastDay;
                                     }
                                 }
+
+                                item = setFirstInvoiceEndDate(item, annualLastDay);
                             }
                         }
                     }
@@ -335,6 +353,19 @@ public with sharing class SM012_OrderItemServices implements Queueable{
                 }
             }
         }
+    }
+
+    private static OrderItem setFirstInvoiceEndDate(OrderItem tmpOrderItem, Date tmpDate) {
+        
+        OrderItem orderItemToUpdate = tmpOrderItem;
+
+        // Setting LPCR_FirstInvoiceEndDate__c in order to calculate the proration between the startdate and the first invoice end date
+        // this needs to be populated always even when there is termination date on OL
+        if (orderItemToUpdate.LPCR_FirstInvoiceEndDate__c == null) {
+            orderItemToUpdate.LPCR_FirstInvoiceEndDate__c = tmpDate;
+        }
+
+        return orderItemToUpdate;
     }
     
     public static void setInvoiceGrouping(List<OrderItem> newOrderItem){

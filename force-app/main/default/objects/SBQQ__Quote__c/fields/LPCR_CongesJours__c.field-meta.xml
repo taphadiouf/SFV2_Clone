@@ -2,6 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_CongesJours__c</fullName>
     <externalId>false</externalId>
+    <inlineHelpText>Nombre de jours de congés pour la PERIODE du contrat</inlineHelpText>
     <label>Congés en jours</label>
     <precision>5</precision>
     <required>false</required>

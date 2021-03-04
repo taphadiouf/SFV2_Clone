@@ -2552,6 +2552,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>OrderItem.LPCR_FirstInvoiceEndDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Account.LPCR_TypeEntreprise__c</field>
         <readable>true</readable>
@@ -3849,6 +3854,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__BillingTransaction__c.blng__Source__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__BillingTransaction__c.LPCR_ProcessProrate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8174,6 +8184,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__RevenueTransaction__c.blng__SystemPeriodStartDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__RevenueTransaction__c.LPCR_Amount__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -506,7 +506,7 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
             finally {
                 if (conclusionError != null) {
                     PAD.log(ClassName, 'execute', 'FINAL EXECUTE PART - Error:' + conclusionError);
-                    UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Error : ' + conclusionError, UM010_Constant.ERROR);
+                    UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Error : ' + conclusionError + showLineError(errors), UM010_Constant.ERROR);
                 }
             }
             
@@ -517,9 +517,20 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
         }
         
         if (!errors.isEmpty()) {
-            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Processing with errors occurred : ' + errors, UM010_Constant.ERROR);
+            UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'execute', 'Batch' , null,'Processing with errors occurred : ' + errors + showLineError(errors), UM010_Constant.ERROR);
         }
     
+    }
+
+    global String showLineError(List<Exception> errList) {
+        
+        String result = '';
+        
+        for (Exception tmpE : errList) {
+            result += 'line:' + tmpE.getLineNumber() + '-';
+        }
+        return result;
+        
     }
     
     global void finish(Database.BatchableContext BC) {
