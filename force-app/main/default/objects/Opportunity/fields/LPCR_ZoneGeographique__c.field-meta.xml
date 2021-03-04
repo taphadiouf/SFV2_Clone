@@ -7,7 +7,7 @@
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>true</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>Picklist</type>
+    <type>MultiselectPicklist</type>
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
@@ -33,15 +33,16 @@
                 <label>Rhone Alpes</label>
             </value>
             <value>
-                <fullName>PACA</fullName>
+                <fullName>PACA_LR</fullName>
                 <default>false</default>
-                <label>PACA</label>
+                <label>PACA-LR</label>
             </value>
             <value>
-                <fullName>LR&quot;</fullName>
+                <fullName>National</fullName>
                 <default>false</default>
-                <label>LR&quot;</label>
+                <label>National</label>
             </value>
         </valueSetDefinition>
     </valueSet>
+    <visibleLines>6</visibleLines>
 </CustomField>

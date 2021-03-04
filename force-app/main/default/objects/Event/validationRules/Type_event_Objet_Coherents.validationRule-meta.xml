@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_event_Objet_Coherents</fullName>
+    <active>true</active>
+    <description>Les champs &quot;Type de RDV&quot; et &quot;Objets&quot; doivent être cohérents.</description>
+    <errorConditionFormula>ISPICKVAL(LPCR_TypeRdv__c, &quot;RDV Physique&quot;) &amp;&amp; (BEGINS(Subject, &quot;RDV Téléphonique - &quot;))
+||
+ISPICKVAL(LPCR_TypeRdv__c, &quot;RDV Téléphonique&quot;) &amp;&amp; (BEGINS( Subject, &quot;RDV Physique -&quot;))</errorConditionFormula>
+    <errorMessage>Les champs &quot;Type de tâche&quot; et &quot;Objet&quot; doivent être cohérents.</errorMessage>
+</ValidationRule>

@@ -30,7 +30,7 @@
 [ParticipationCAF]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQParticipation_CAF__c}
 &amp;TemplateId={!
 IF(Account.RecordTypeId=$Setup.LPCR_IDsCongaAdobe__c.LPCRAccountRecordTypeIDFamille__c,
-    IF(AND(TEXT(Account.LPCR_MoyenPaiement__c)=&apos;Virement&apos;,NOT(ISBLANK(Account.LPCR_RIB__c))),
+    IF(AND(blng__Invoice__c.LPCR_CompteMoyenPaiement__c=&apos;Virement&apos;,NOT(ISBLANK(Account.LPCR_RIB__c))),
         $Setup.LPCR_IDsCongaAdobe__c.LPCR_CITFacture_B2C_paiement_prelevement__c ,
         $Setup.LPCR_IDsCongaAdobe__c.LPCR_CITFacture_B2C_paiement_CB__c )
      &amp;

@@ -13,6 +13,13 @@ public class TM004_OpportunityTrigger extends TM000_TriggerHandler{
         this.oldOpportunitiesMap = (Map<Id, Opportunity>) Trigger.oldMap;
         this.newOpportunitiesList = (List<Opportunity>) Trigger.new;
     }
+
+    protected override void beforeInsert() {
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
+            SM004_OpportunityServices.setOpportunityFields(this.newOpportunitiesList);
+        }
+    }
+
     protected override void afterInsert() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM007_LeadServices.opportunitiesIds = new Set<Id>(newOpportunitiesMap.keySet());
@@ -20,6 +27,12 @@ public class TM004_OpportunityTrigger extends TM000_TriggerHandler{
         }
     }
     
+    protected override void beforeUpdate() {
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
+            SM004_OpportunityServices.setOpportunityFields(this.newOpportunitiesList);
+        }
+    }
+
     protected override void afterUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM004_OpportunityServices.setAccountStatus(newOpportunitiesMap,oldOpportunitiesMap);
