@@ -3,7 +3,7 @@
     <fullName>LPCR_PrixUnitaireManuel__c</fullName>
     <description>conga invoice template</description>
     <externalId>false</externalId>
-    <formula>IF( AND(blng__UnitPrice__c=0,blng__Quantity__c !=0),  blng__TotalAmount__c / blng__Quantity__c ,blng__UnitPrice__c)</formula>
+    <formula>IF( AND(ISBLANK(blng__UnitPrice__c),blng__Quantity__c !=0),  blng__TotalAmount__c / blng__Quantity__c ,blng__UnitPrice__c)</formula>
     <label>LPCR_PrixUnitaireManuel</label>
     <precision>18</precision>
     <required>false</required>
