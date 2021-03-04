@@ -146,7 +146,27 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
                 Decimal tmpAmount = 0;
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpRT.blng__OrderProduct__r.ServiceDate:' + tmpRT.blng__OrderProduct__r.ServiceDate);
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c:' + tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c);
-                Decimal tmpReminderDays = math.mod(tmpRT.blng__OrderProduct__r.ServiceDate.daysBetween(tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c), 30);
+
+                //Decimal tmpReminderDays = math.mod(tmpRT.blng__OrderProduct__r.ServiceDate.daysBetween(tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c), 30);
+                Integer tmpMonthSD = tmpRT.blng__OrderProduct__r.ServiceDate.Month();
+                Integer tmpMonthFEED = tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c.Month();
+                Integer count = Date.daysInMonth(tmpRT.blng__OrderProduct__r.ServiceDate.year(), tmpRT.blng__OrderProduct__r.ServiceDate.month());
+                Date tmpDate = tmpRT.blng__OrderProduct__r.ServiceDate;
+
+                PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpMonthSD:' + tmpMonthSD);
+                PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpMonthFEED:' + tmpMonthFEED);
+                PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - count:' + count);
+                PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpDate:' + tmpDate);
+
+                for (Integer tmpMmonth = tmpMonthSD; tmpMmonth < tmpMonthFEED; tmpMmonth++) {
+
+                    count = Date.daysInMonth(tmpDate.year(), tmpDate.month());
+                    tmpDate = tmpDate.addDays(count - 1);
+                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - count:' + count);
+                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpDate after adding count:' + tmpDate);
+                }
+
+                Decimal tmpReminderDays = tmpDate.daysBetween(tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c);
 
                 Date[] tmpDateMinMax = UM003_TypeManager.getMinMaxOfListObjectsDate(tmpListRevTransaction, 'blng__SystemPeriodStartDate__c');
                 Date tmpMaxDateRevenueTransaction = tmpDateMinMax[1];
@@ -181,8 +201,25 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
                         
                     }
                     
-                    tmpAmount = (tmpReminderDays / (365 / 12)) * tmpBillableUnitPrice;
+                    //PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpBillableUnitPrice arrondis :' + tmpBillableUnitPrice.setScale(4, RoundingMode.HALF_EVEN));
+                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpBillableUnitPrice arrondis :' + tmpBillableUnitPrice.setScale(4));
 
+                    //Decimal a = tmpBillableUnitPrice.setScale(4, RoundingMode.HALF_EVEN);
+                    Decimal a = tmpBillableUnitPrice.setScale(4);
+                    Decimal abis = 30.4166666667; // (365 / 12) value because SF dont manage well two decimal divison at same time
+                    Decimal b = tmpReminderDays / abis;
+                    tmpAmount = a * b;
+
+                    String myNumber = String.valueOf(tmpAmount);
+                    String myTruncatedNumber = myNumber.subString(0,myNumber.indexOf('.')+5);
+                    Decimal d = Decimal.valueOf(myTruncatedNumber);
+                    System.debug(d);
+                    tmpAmount = d;
+
+
+                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - a:' + a);
+                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - abis:' + abis);
+                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - b:' + b);
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpReminderDays:' + tmpReminderDays);
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpBillableUnitPrice:' + tmpBillableUnitPrice);
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpAmount:' + tmpAmount);
