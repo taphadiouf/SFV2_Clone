@@ -141,6 +141,8 @@
         <fields>UnitPrice</fields>
         <fields>TotalPrice</fields>
         <fields>Description</fields>
+        <fields>LPCR_Creche__c</fields>
+        <fields>blng__InvoiceGrouping__c</fields>
         <relatedList>RelatedOrderItemList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -174,7 +176,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1X000001BSKH</masterLabel>
+        <masterLabel>00h1x000001qOiZ</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
