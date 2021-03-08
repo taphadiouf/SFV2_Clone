@@ -149,4 +149,16 @@ public with sharing class UM003_TypeManager{
         return mapSObject;
     }
     
+     /*
+    * 	@Author : Erwan Yhuellou
+    * 	@Created 08/03/2021
+    *	@Description : this method extract scale correctly without rounding
+    * 	@Inputs	Decimal value
+    */
+    public static Decimal getDecimalValueWithScale(Decimal tmpDec, Integer tmpScale) {
+
+        String myNumber = String.valueOf(tmpDec);
+        String myTruncatedNumber = myNumber.subString(0,myNumber.indexOf('.') + tmpScale + 1);
+        return Decimal.valueOf(myTruncatedNumber);
+    }
 }
