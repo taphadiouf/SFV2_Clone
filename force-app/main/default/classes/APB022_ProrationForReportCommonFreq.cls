@@ -28,7 +28,6 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
 
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'execute', 'Batch' , null, 'Scope size : '  + scope.size(), UM010_Constant.SUCCESS); 
         
-        //Set<Id> setRevenueSchedules = UM003_TypeManager.getIdsOfListObjects(scope, 'blng__RevenueSchedule__c');
         Set<Id> setRevenueSchedules = UM003_TypeManager.getIdsOfListObjects(scope);
         List<blng__RevenueTransaction__c> revenueTransactionToUpdate = new List<blng__RevenueTransaction__c>();
         List<Exception> errors = new List<Exception>();
@@ -147,7 +146,6 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpRT.blng__OrderProduct__r.ServiceDate:' + tmpRT.blng__OrderProduct__r.ServiceDate);
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c:' + tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c);
 
-                //Decimal tmpReminderDays = math.mod(tmpRT.blng__OrderProduct__r.ServiceDate.daysBetween(tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c), 30);
                 Integer tmpMonthSD = tmpRT.blng__OrderProduct__r.ServiceDate.Month();
                 Integer tmpMonthFEED = tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c.Month();
                 Integer count = Date.daysInMonth(tmpRT.blng__OrderProduct__r.ServiceDate.year(), tmpRT.blng__OrderProduct__r.ServiceDate.month());
@@ -201,20 +199,12 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
                         
                     }
                     
-                    //PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpBillableUnitPrice arrondis :' + tmpBillableUnitPrice.setScale(4, RoundingMode.HALF_EVEN));
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpBillableUnitPrice arrondis :' + tmpBillableUnitPrice.setScale(4));
 
-                    //Decimal a = tmpBillableUnitPrice.setScale(4, RoundingMode.HALF_EVEN);
                     Decimal a = tmpBillableUnitPrice.setScale(4);
                     Decimal abis = 30.4166666667; // (365 / 12) value because SF dont manage well two decimal divison at same time
                     Decimal b = tmpReminderDays / abis;
-                    //tmpAmount = a * b;
-
-                    //String myNumber = String.valueOf(tmpAmount);
-                    //String myTruncatedNumber = myNumber.subString(0,myNumber.indexOf('.')+5);
-                    //tmpAmount = Decimal.valueOf(myTruncatedNumber);
                     tmpAmount = UM003_TypeManager.getDecimalValueWithScale(a * b, 4);
-
 
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - a:' + a);
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - abis:' + abis);
@@ -276,7 +266,6 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - totalAmount:' + totalAmount);
                 
                 rtToAdd = tmpRtElem;
-                //rtToAdd.LPCR_Amount__c = tmpRtElem.blng__RevenueSchedule__r.blng__TotalRevenueAmount__c - totalAmount;
                 rtToAdd.LPCR_Amount__c = UM003_TypeManager.getDecimalValueWithScale(tmpRtElem.blng__RevenueSchedule__r.blng__TotalRevenueAmount__c - totalAmount, 4);
                 
                 tmpRevenueTransactionToUpdate.add(rtToAdd);
