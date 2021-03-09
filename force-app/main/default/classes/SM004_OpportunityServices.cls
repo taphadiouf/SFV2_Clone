@@ -16,14 +16,22 @@ public class SM004_OpportunityServices {
 
         for (Opportunity opp : newOpportunitiesList) {
 
-            opp.LPCR_Ref_ContactFacturation__c = mapAccount.get(opp.AccountId).blng__BillToContact__c;
-            opp.LPCR_Ref_ContactInscription__c = mapAccount.get(opp.AccountId).LPCR_ContactInscriptions__c;
-            opp.LPCR_Ref_IdCompte__c = mapAccount.get(opp.AccountId).Id;
-            opp.LPCR_Ref_RespADV__c = mapAccount.get(opp.AccountId).LPCR_ResponsableADV__c;
-            opp.LPCR_Ref_RespServiceFam__c = mapAccount.get(opp.AccountId).LPCR_ResponsableServiceFamille__c;
+            if (mapAccount.get(opp.AccountId) != null) {
 
-            PAD.log('SM004_OpportunityServices', 'setOpportunityFields', 'opp.Account:' + opp.Account);
-            PAD.log('SM004_OpportunityServices', 'setOpportunityFields', 'opp.Account:' + opp.AccountId);
+                if (mapAccount.get(opp.AccountId).blng__BillToContact__c != null)
+                    opp.LPCR_Ref_ContactFacturation__c = mapAccount.get(opp.AccountId).blng__BillToContact__c;
+                if (mapAccount.get(opp.AccountId).LPCR_ContactInscriptions__c != null)
+                    opp.LPCR_Ref_ContactInscription__c = mapAccount.get(opp.AccountId).LPCR_ContactInscriptions__c;
+                if (mapAccount.get(opp.AccountId).Id != null)
+                    opp.LPCR_Ref_IdCompte__c = mapAccount.get(opp.AccountId).Id;
+                if (mapAccount.get(opp.AccountId).LPCR_ResponsableADV__c != null)
+                    opp.LPCR_Ref_RespADV__c = mapAccount.get(opp.AccountId).LPCR_ResponsableADV__c;
+                if (mapAccount.get(opp.AccountId).LPCR_ResponsableServiceFamille__c != null)
+                    opp.LPCR_Ref_RespServiceFam__c = mapAccount.get(opp.AccountId).LPCR_ResponsableServiceFamille__c;
+
+                PAD.log('SM004_OpportunityServices', 'setOpportunityFields', 'opp.Account:' + opp.Account);
+                PAD.log('SM004_OpportunityServices', 'setOpportunityFields', 'opp.Account:' + opp.AccountId);
+            }
         }
     }
     
