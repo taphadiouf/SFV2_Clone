@@ -581,7 +581,7 @@ public with sharing class SM008_QuoteServices {
     
     
     public static Map<Id,Set<Id>> generateAgreementTemp(Map<Id,SBQQ__Quote__c> newQuoteMap,Map<Id,SBQQ__Quote__c> oldQuoteMap ){
-        ID agreementAcc = LPCR_IDsCongaAdobe__c.getInstance().LPCR_AATCONTRAT_ACCUEIL__c; 
+        ID agreementAcc = LPCR_IDsCongaAdobe__c.getInstance().LPCR_AAT_ACCUEIL_ADOBE__c; 
         Map<Id,Set<Id>> mapQuoteIDAgreementID = new Map<Id,Set<Id>>();
         mapQuoteIDAgreementID.put(agreementAcc , new Set<Id>() );
         
