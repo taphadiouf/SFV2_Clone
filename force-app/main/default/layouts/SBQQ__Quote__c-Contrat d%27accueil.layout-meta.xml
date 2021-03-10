@@ -473,10 +473,10 @@
         <excludeButtons>New</excludeButtons>
         <fields>SBQQ__Product__c</fields>
         <fields>SBQQ__Quantity__c</fields>
+        <fields>SBQQ__ListPrice__c</fields>
         <fields>LPCR_Creche__c</fields>
         <fields>LPCR_Region__c</fields>
         <fields>LPCR_MontantAnnuelForfaitMICRO__c</fields>
-        <fields>SBQQ__ListPrice__c</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
     </relatedLists>
     <relatedLists>
