@@ -336,6 +336,7 @@
     </layoutSections>
     <relatedLists>
         <fields>Product2</fields>
+        <fields>LPCR_Creche__c</fields>
         <fields>LPCR_NumBonCommande__c</fields>
         <fields>Quantity</fields>
         <fields>TotalPrice</fields>
@@ -343,8 +344,7 @@
         <fields>ODER_ITEM.END_DATE</fields>
         <fields>blng__NextBillingDate__c</fields>
         <fields>SBQQ__Status__c</fields>
-        <fields>LPCR_Creche__c</fields>
-        <fields>blng__InvoiceGrouping__c</fields>
+        <fields>blng__InvoiceGroupId__c</fields>
         <relatedList>RelatedOrderItemList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -373,7 +373,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000001d1Ad</masterLabel>
+        <masterLabel>00h1x000001l8y7</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
