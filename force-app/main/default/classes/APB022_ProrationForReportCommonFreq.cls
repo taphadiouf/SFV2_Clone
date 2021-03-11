@@ -156,12 +156,18 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - count:' + count);
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpDate:' + tmpDate);
 
-                for (Integer tmpMmonth = tmpMonthSD; tmpMmonth < tmpMonthFEED; tmpMmonth++) {
+                if (tmpMonthSD >= tmpMonthFEED) {
+                    tmpDate = tmpDate.addDays(- 1);
+                }
+                else {
 
-                    count = Date.daysInMonth(tmpDate.year(), tmpDate.month());
-                    tmpDate = tmpDate.addDays(count - 1);
-                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - count:' + count);
-                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpDate after adding count:' + tmpDate);
+                    for (Integer tmpMmonth = tmpMonthSD; tmpMmonth < tmpMonthFEED; tmpMmonth++) {
+
+                        count = Date.daysInMonth(tmpDate.year(), tmpDate.month());
+                        tmpDate = tmpDate.addDays(count - 1);
+                        PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - count:' + count);
+                        PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpDate after adding count:' + tmpDate);
+                    }
                 }
 
                 Decimal tmpReminderDays = tmpDate.daysBetween(tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c);
