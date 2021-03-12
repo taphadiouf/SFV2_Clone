@@ -148,8 +148,8 @@
                 <field>LPCR_DispositifsExistants__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_RegionCommerciale__c</field>
+                <behavior>Readonly</behavior>
+                <field>LPCR_Region_commerciale__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -767,7 +767,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1X000001mKuQ</masterLabel>
+        <masterLabel>00h1X000002CpTF</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
