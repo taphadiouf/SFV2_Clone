@@ -2113,6 +2113,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Event.LPCR_Compte_rendu__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event.LPCR_Echeance__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Event.LPCR_SousTypeRdv__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8114,6 +8124,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Task.LPCR_Abouti__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.LPCR_Compte_rendu__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.LPCR_Echeance__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
