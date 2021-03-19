@@ -12,6 +12,7 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
         this.newQuotesMap = (Map<Id, SBQQ__Quote__c>) Trigger.newMap;
         this.oldQuotesMap = (Map<Id, SBQQ__Quote__c>) Trigger.oldMap;
         this.newQuotesList = (List<SBQQ__Quote__c>) Trigger.new;
+        
     } 
     protected override void beforeUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex') && runUpdateOnce && !System.isFuture()){
@@ -36,6 +37,8 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
     protected override void afterInsert() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM008_QuoteServices.updateAccountsFromQuotes(newQuotesList,null);
+            SM008_QuoteServices.updateMontantIndexation(newQuotesMap);
+            
         }
     }
     

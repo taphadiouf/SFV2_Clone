@@ -991,4 +991,65 @@ public class SM008_QuoteServices_Test {
             Test.stopTest();       
         } 
     }
+    @isTest()
+    public static void updateMontantIndexation(){
+        Test.startTest();
+            LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
+            insert planningEnfant;
+            List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
+        	
+            List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,accs[0].Id,'0006',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 08, 31),123, 'Express', 'Non', Null, Null );
+            insert Renewalcontract;
+            Contract con2 = Renewalcontract.get(0);
+            con2.LPCR_Sales_Rep__c = UserInfo.getUserId();
+            con2.LPCR_ResponsableADV__c = UserInfo.getUserId();
+            con2.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+            con2.RecordTypeId = CONTRACT_CONTRAT_ACCUEIL_RT_ID;
+    
+            update con2;
+            
+            
+            List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
+            Opportunity opp = oppties.get(0);
+            opp.LPCR_IndexationConvenue__c='Oui';
+            opp.LPCR_TypeFacturation__c='Arrears';
+            opp.LPCR_BillingFrequency__c='Invoice Plan';
+            opp.LPCR_PlanningEnfant__c = planningEnfant.id;
+            opp.SBQQ__RenewedContract__c = con2.id;
+            update opp;
+        	//quote before 
+      		SBQQ__Quote__c quote1 = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
+        	quote1.SBQQ__RenewalUpliftRate__c=3;
+        	insert quote1;
+            SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
+            quote.SBQQ__Type__c='Renewal';
+           // quote.LPCR_TypeEnregistrement__c = Label.LPCR_ContratA;
+            quote.RecordTypeId = ContratA_RT_ID;
+            insert quote;
+            Id standardPricebookId = Test.getStandardPricebookId();
+            UM002_TestDataFactory.insertBillingCustomSettings();
+        
+            blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+                
+            blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+                
+            blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+            
+            blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
+            
+            Product2 prod = UM002_TestDataFactory.createProduct('BerceauMicrotest', billingRule.Id, revRecRule.Id,taxRule.Id );
+            prod.SBQQ__SubscriptionPricing__c ='Fixed Price';
+            insert prod;
+            PricebookEntry priceBookEntry1 = UM002_TestDataFactory.createPricebookEntry(standardPricebookId,prod.Id);
+                insert priceBookEntry1;
+                
+            SBQQ__QuoteLine__c quoteLine = UM002_TestDataFactory.createQuoteLine(prod.Id, quote1.Id, priceBookEntry1.Id, 200,1);
+            insert quoteLine;
+            con2.SBQQ__Quote__c=quote1.ID;
+            update con2;
+        
+        Test.stopTest();
+        quote = [SELECT Id ,LPCR_IndexationConvenue__c,ApprovalStatus__c,LPCR_SommePrixAnnuel__c,LPCR_MontantIndexation__c, recordtype.developername, recordtypeid,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
+        
+    }
 }
