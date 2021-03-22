@@ -126,6 +126,11 @@ public with sharing class SM013_QuoteLineServices {
                 else if (quoteLine.SBQQ__BillingFrequency__c == 'Annual') {
                     quoteLine.LPCR_BillThroughDateOverride__c = UM005_DateUtility.lastDayOfYear(rightStartDate);
                 }
+
+                if (quoteLine.LPCR_BillThroughDateOverride__c > rightEndDate) {
+                    quoteLine.LPCR_BillThroughDateOverride__c = rightEndDate;
+                }
+
             }
         }
 
