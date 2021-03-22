@@ -3,8 +3,8 @@
     <fullName>LPCR_RegionComFormule__c</fullName>
     <externalId>false</externalId>
     <formula>IF(
-ISNULL(TEXT(Owner.LPCR_RegionComFormule__c)), &quot;Pas de région / utilisateur inactif&quot;,
-TEXT( Owner.LPCR_RegionComFormule__c ))</formula>
+ISNULL(TEXT(LPCR_RegionComFormule__c)), &quot;Pas de région / utilisateur inactif&quot;,
+TEXT(LPCR_RegionComFormule__c ))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Région commerciale</label>
     <required>false</required>
