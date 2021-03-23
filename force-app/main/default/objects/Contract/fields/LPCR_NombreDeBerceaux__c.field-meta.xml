@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_CommentaireIndividuel__c</fullName>
+    <fullName>LPCR_NombreDeBerceaux__c</fullName>
+    <defaultValue>0</defaultValue>
     <externalId>false</externalId>
-    <label>Nom de la transaction</label>
-    <length>255</length>
+    <label>Nombre de berceaux</label>
+    <precision>18</precision>
     <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
-    <trackTrending>false</trackTrending>
-    <type>Text</type>
+    <type>Number</type>
     <unique>false</unique>
 </CustomField>

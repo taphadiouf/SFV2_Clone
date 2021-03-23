@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_RegionComFormule__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ISNULL(TEXT(Owner.LPCR_RegionCommerciale__c)), &quot;Pas de région / utilisateur inactif&quot;,
+TEXT(Owner.LPCR_RegionCommerciale__c ))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Région commerciale</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
