@@ -296,19 +296,22 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Information Remise</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>SBQQ__AdditionalDiscountAmount__c</field>
-            </layoutItems>
-        </layoutColumns>
+        <label>Information Remise et Indexation</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>SBQQ__NetAmount__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_MontantIndexation__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_Montant_Remise__c</field>
+            </layoutItems>
         </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -487,7 +490,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N0000029rJH</masterLabel>
+        <masterLabel>00h1j000002CqS7</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

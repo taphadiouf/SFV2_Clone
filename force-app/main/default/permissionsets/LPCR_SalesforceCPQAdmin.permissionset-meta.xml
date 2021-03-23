@@ -14303,6 +14303,22 @@
         <field>sbaa__Approval__c.Quote__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_MontantIndexation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_Montant_Remise__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+	    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_SommePrixAnnuel__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+	
     <hasActivationRequired>false</hasActivationRequired>
     <label>LPCR - Salesforce CPQ Admin</label>
     <objectPermissions>
