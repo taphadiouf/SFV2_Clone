@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_RegionCommerciale__c</fullName>
+    <externalId>false</externalId>
+    <label>Region Commerciale</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>false</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Nord-Est</fullName>
+                <default>false</default>
+                <label>Nord-Est</label>
+            </value>
+            <value>
+                <fullName>Rhône-Alpes</fullName>
+                <default>false</default>
+                <label>Rhône-Alpes</label>
+            </value>
+            <value>
+                <fullName>PACA-LR</fullName>
+                <default>false</default>
+                <label>PACA-LR</label>
+            </value>
+            <value>
+                <fullName>Grand-Ouest</fullName>
+                <default>false</default>
+                <label>Grand-Ouest</label>
+            </value>
+            <value>
+                <fullName>IDF-Sud</fullName>
+                <default>false</default>
+                <label>IDF-Sud</label>
+            </value>
+            <value>
+                <fullName>IDF-Nord</fullName>
+                <default>false</default>
+                <label>IDF-Nord</label>
+            </value>
+            <value>
+                <fullName>IDF-Sédentaires</fullName>
+                <default>false</default>
+                <label>IDF-Sédentaires</label>
+            </value>
+            <value>
+                <fullName>Grands-Comptes</fullName>
+                <default>false</default>
+                <label>Grands-Comptes</label>
+            </value>
+            <value>
+                <fullName>Marchés Publics</fullName>
+                <default>false</default>
+                <label>Marchés Publics</label>
+            </value>
+            <value>
+                <fullName>Réseau Grandir</fullName>
+                <default>false</default>
+                <label>Réseau Grandir</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
