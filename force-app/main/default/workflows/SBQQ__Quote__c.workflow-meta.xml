@@ -45,6 +45,16 @@
         <template>unfiled$public/LPCR_AmendContrat</template>
     </alerts>
     <alerts>
+        <fullName>LPCR_Amendement_refuse</fullName>
+        <description>Amendement refusé</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Demande_approbation_rejete</template>
+    </alerts>
+    <alerts>
         <fullName>LPCR_ContratRejete</fullName>
         <description>Validation de prix rejeté</description>
         <protected>false</protected>
@@ -75,6 +85,26 @@
         </recipients>
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/LPCR_MIBB2B</template>
+    </alerts>
+    <alerts>
+        <fullName>LPCR_Notif_email_approb_refusee</fullName>
+        <description>Notification email pour approbation refusée</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Demande_approbation_rejete</template>
+    </alerts>
+    <alerts>
+        <fullName>LPCR_Notif_email_approbation_approuvee</fullName>
+        <description>Notification email pour approbation approuvée</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Demande_d_approbation_accepte</template>
     </alerts>
     <alerts>
         <fullName>LPCR_ValidationAcceptee</fullName>
@@ -119,6 +149,61 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/LPCR_MIBB2B</template>
     </alerts>
+    <fieldUpdates>
+        <fullName>LPCR_Approb_approuvee_changmt_statut</fullName>
+        <description>Le statut de l&apos;approbation est modifié par &quot;Approuvé&quot; lors que l&apos;approbation est acceptée.</description>
+        <field>SBQQ__Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Approbation approuvée changement statut</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>LPCR_Changmt_statut_approb_acceptee</fullName>
+        <description>Le statut d&apos;approbation passe à &quot;approuvé&quot; lorsque l&apos;approbation est acceptée.</description>
+        <field>ApprovalStatus__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Changement statut approbation acceptée</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>LPCR_Changmt_statut_approb_refusee</fullName>
+        <description>Le statut passe à &quot;rejeté&quot; lors que l&apos;approbation est refusée.</description>
+        <field>ApprovalStatus__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Changement statut approbation refusée</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>LPCR_Changmt_statut_rappel_approb</fullName>
+        <description>Lorsqu&apos;une approbation est rappelée, le statut d&apos;approbation passe à &quot;Rappel&quot;</description>
+        <field>ApprovalStatus__c</field>
+        <literalValue>Recalled</literalValue>
+        <name>Changement statut rappel approbation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>LPCR_Soumission_Approbation</fullName>
+        <description>Le devis est envoyé pour approbation.</description>
+        <field>ApprovalStatus__c</field>
+        <literalValue>Pending</literalValue>
+        <name>Soumission Approbation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
     <fieldUpdates>
         <fullName>LPCR_StatusActif</fullName>
         <description>Cette action met le statut du devis à actif</description>

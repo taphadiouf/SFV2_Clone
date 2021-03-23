@@ -3,7 +3,7 @@
     <fullName>LPCR_Sales_Rep__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Sales Rep</label>
+    <label>Responsable Commercial</label>
     <referenceTo>User</referenceTo>
     <relationshipName>Contracts</relationshipName>
     <required>false</required>

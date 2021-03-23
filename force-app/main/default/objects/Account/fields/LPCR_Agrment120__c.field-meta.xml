@@ -2,7 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_Agrment120__c</fullName>
     <externalId>false</externalId>
-    <formula>LPCR_AgrementTotal__c*1.2</formula>
+    <formula>IF(LPCR_AgrementTotal__c &lt;= 20, LPCR_AgrementTotal__c*1.1,
+IF(LPCR_AgrementTotal__c &gt; 20, LPCR_AgrementTotal__c*1.15, 
+LPCR_AgrementTotal__c*1.2))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Agrément +120%</label>
     <precision>18</precision>

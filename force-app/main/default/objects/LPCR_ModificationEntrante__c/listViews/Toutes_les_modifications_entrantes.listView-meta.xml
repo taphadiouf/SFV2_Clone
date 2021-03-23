@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Toutes_les_modifications_entrantes</fullName>
+    <columns>LAST_UPDATE</columns>
+    <columns>LPCR_DateEffet__c</columns>
+    <columns>LPCR_EtatTraitement__c</columns>
+    <columns>LPCR_Evenement__c</columns>
+    <columns>LPCR_Compte__c</columns>
+    <columns>LPCR_Contact__c</columns>
+    <columns>LPCR_Devis__c</columns>
+    <columns>LPCR_Contract__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>Toutes les modifications entrantes</label>
+</ListView>

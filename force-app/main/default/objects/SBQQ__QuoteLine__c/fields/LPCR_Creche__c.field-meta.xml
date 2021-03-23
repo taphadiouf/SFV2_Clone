@@ -2,14 +2,21 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_Creche__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
+    <description>Crèche</description>
     <externalId>false</externalId>
     <label>Crèche</label>
     <lookupFilter>
         <active>true</active>
+        <booleanFilter>(1 OR 2) AND 3</booleanFilter>
         <filterItems>
             <field>Account.RecordType.Name</field>
             <operation>equals</operation>
             <value>Crèche</value>
+        </filterItems>
+        <filterItems>
+            <field>Account.RecordType.Name</field>
+            <operation>equals</operation>
+            <value>Crèche Externe</value>
         </filterItems>
         <filterItems>
             <field>Account.LPCR_Region__c</field>
