@@ -271,19 +271,19 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Date_de_r_ception_courrier_r_siliation__c</field>
+                <field>LPCR_DateReceptionCourrierResiliation__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Date_de_r_siliation_souhait_e__c</field>
+                <field>LPCR_DateResiliationSouhaitee__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Date_l_gale_de_r_siliation__c</field>
+                <field>LPCR_DateResiliationEffective__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Date_de_r_siliation_Effective__c</field>
+                <field>LPCR_DateResiliationEffective__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
