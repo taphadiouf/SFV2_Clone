@@ -9,11 +9,12 @@ public class SM027_SubscriptionService {
         Map<Id,Integer> mapContratIDNombreBerceau=new Map<Id,Integer>();
         List<Contract> lstContractUpdate=new List<Contract>();
         for(Id key : newSubscriptionMap.keyset()){
-            if(newSubscriptionMap.get(key).SBQQ__ProductName__c.startsWith(Label.LPCR_ProduitBerceauNom)){
+            //accueil occasionel pour contrat reservataire
+            if(newSubscriptionMap.get(key).SBQQ__ProductName__c.startsWith(Label.LPCR_ProduitBerceauNom) || newSubscriptionMap.get(key).SBQQ__ProductName__c.equals(Label.LPCR_BerceauOccasionel) ){
                 if(!mapContratIDNombreBerceau.containsKey(newSubscriptionMap.get(key).SBQQ__Contract__c)){
-                mapContratIDNombreBerceau.put(newSubscriptionMap.get(key).SBQQ__Contract__c,1);
+                    mapContratIDNombreBerceau.put(newSubscriptionMap.get(key).SBQQ__Contract__c,(Integer)(1*newSubscriptionMap.get(key).LPCR_QuantiteProduits__c));
                 }else{
-                    mapContratIDNombreBerceau.put(newSubscriptionMap.get(key).SBQQ__Contract__c,mapContratIDNombreBerceau.get(newSubscriptionMap.get(key).SBQQ__Contract__c)+1);
+                    mapContratIDNombreBerceau.put(newSubscriptionMap.get(key).SBQQ__Contract__c,mapContratIDNombreBerceau.get(newSubscriptionMap.get(key).SBQQ__Contract__c)+(Integer)(1*newSubscriptionMap.get(key).LPCR_QuantiteProduits__c));
                 }
             }
             
