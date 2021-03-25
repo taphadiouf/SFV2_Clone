@@ -3,7 +3,7 @@
     <baseObject>Account</baseObject>
     <category>accounts</category>
     <deployed>true</deployed>
-    <description>Comptes avec contrats partenaires et bons d&#39;achat partenaires</description>
+    <description>Comptes avec contrats partenaires et bons d&apos;achat partenaires</description>
     <join>
         <join>
             <outerJoin>false</outerJoin>
@@ -12,7 +12,7 @@
         <outerJoin>false</outerJoin>
         <relationship>ContratsPartenaires__r</relationship>
     </join>
-    <label>Comptes avec contrats partenaires et bons d&#39;achat partenaires</label>
+    <label>Comptes avec contrats partenaires et bons d&apos;achat partenaires</label>
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
@@ -571,7 +571,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_RegionCommerciale__c</field>
+            <field>LPCR_RegionComFormule__c</field>
             <table>Account</table>
         </columns>
         <columns>
@@ -995,6 +995,6 @@
             <field>LPCR_Representant2__c</field>
             <table>Account.ContratsPartenaires__r.BonsAchatPartenaires__r</table>
         </columns>
-        <masterLabel>Bons d&#39;achat</masterLabel>
+        <masterLabel>Bons d&apos;achat</masterLabel>
     </sections>
 </ReportType>

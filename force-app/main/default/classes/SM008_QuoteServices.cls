@@ -3,6 +3,7 @@
 * @date 28/02/2020
 * @description Service class for SBQQ__Quote__c
 * @edited by hanae
+* @edited by pari
 */
 public with sharing class SM008_QuoteServices {
     public static Id acceuilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_ContratA);
@@ -480,12 +481,10 @@ public with sharing class SM008_QuoteServices {
     }
     
     public static void setQuoteFields(List<SBQQ__Quote__c> quotesList,Map<Id,Contract> renewedContract,Map<Id,Contract> amendedContract, Map<Id,Opportunity> opptyMap, Map<Id,Account> acctMap){
-         Map<String,Schema.RecordTypeInfo> mapQuoteRT = Schema.getGlobalDescribe().get(Label.LPCR_Quote).getDescribe().getRecordTypeInfosByDeveloperName();
-		
-        for (SBQQ__Quote__c eachQuote : quotesList){
-            
+        Map<String,Schema.RecordTypeInfo> mapQuoteRT = Schema.getGlobalDescribe().get(Label.LPCR_Quote).getDescribe().getRecordTypeInfosByDeveloperName();
+		for (SBQQ__Quote__c eachQuote : quotesList){
             if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) && 'Renewal'.equals(eachQuote.SBQQ__Type__c)){
-                eachQuote.ApprovalStatus__c = Label.LPCR_ApprovalStatusApproved;
+               eachQuote.ApprovalStatus__c = Label.LPCR_ApprovalStatusApproved;
                 eachQuote.SBQQ__BillingFrequency__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_BillingFrequency__c;
                 eachQuote.LPCR_TypeFacturation__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_TypeFacturation__c;
                 eachQuote.LPCR_IndexationConvenue__c=opptyMap.get(eachQuote.SBQQ__Opportunity2__c).LPCR_IndexationConvenue__c;
@@ -917,5 +916,46 @@ public with sharing class SM008_QuoteServices {
                 SBQQ.TriggerControl.enable();
             }
         } 
+    }
+    /*
+        > Si un Devis est de type Renouvellement 
+        ==> Mettre à jour le montant indexation 
+    */
+   
+    public static void updateMontantIndexation(Map<Id,SBQQ__Quote__c> newQuoteMap ){ 
+        List<Id> lstContractRenewed=new List<Id>();
+        Map<Id,SBQQ__Quote__c> mapRenewalOppIDQuote=new Map<Id,SBQQ__Quote__c>();
+        Map<Id,Id> mapRenewalOppIDQuoteOriginialID =new Map<Id,Id> ();
+        Map<Id,Decimal> mapRenewalOppIDQuoteTotal=new Map<Id,Decimal>();
+        List<SBQQ__Quote__c> quoteListToUpdate=new List<SBQQ__Quote__c>();
+        for(SBQQ__Quote__c eachNewQuote : newQuoteMap.values()){
+            //Montant indextion est calculé pour renouvellement 
+            //recuperer le l'opportunite renouvellement 
+            if(eachNewQuote.SBQQ__Type__c== 'Renewal'){
+                //SBQQ__Opportunity2__c
+                System.debug('pdo this is renewd contrat '+eachNewQuote.SBQQ__Opportunity2__r.SBQQ__RenewedContract__c);
+                mapRenewalOppIDQuote.put(eachNewQuote.SBQQ__Opportunity2__c,eachNewQuote);
+                lstContractRenewed.add(eachNewQuote.SBQQ__Opportunity2__r.SBQQ__RenewedContract__c);
+            }
+        }
+        //select renewed contrat 
+        Map<Id,Opportunity> opptyMap = new  Map<Id,Opportunity>([SELECT Id,LPCR_BillingFrequency__c, LPCR_TypeFacturation__c,LPCR_IndexationConvenue__c, SBQQ__RenewedContract__c, SBQQ__AmendedContract__c,LPCR_PlanningEnfant__c  from Opportunity WHERE Id in :mapRenewalOppIDQuote.keyset()]);
+        Set<String> renewedContractIds = UM003_TypeManager.getFieldsOfListObjects(opptyMap.Values(),Label.LPCR_RenewedContract);
+        //get original contrat 
+        for (Contract c : [SELECT Id, SBQQ__Order__c, SBQQ__Quote__c,SBQQ__Quote__r.LPCR_SommePrixAnnuel__c ,SBQQ__Quote__r.SBQQ__RenewalUpliftRate__c,SBQQ__RenewalOpportunity__c FROM Contract where ID  IN :renewedContractIds]){
+            if(c.SBQQ__Quote__r.LPCR_SommePrixAnnuel__c != null){
+               mapRenewalOppIDQuoteTotal.put(c.Id,c.SBQQ__Quote__r.LPCR_SommePrixAnnuel__c*(c.SBQQ__Quote__r.SBQQ__RenewalUpliftRate__c/100)); 
+            }
+            
+        }
+        //loop in new quote )
+        for(SBQQ__Quote__c eachQuote : mapRenewalOppIDQuote.values()){
+            SBQQ__Quote__c quoteUpdate=new SBQQ__Quote__c (Id=eachQuote.Id,LPCR_MontantIndexation__c=mapRenewalOppIDQuoteTotal.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c));
+            quoteListToUpdate.add(quoteUpdate);
+        }
+        if(quoteListToUpdate.size() > 0) update quoteListToUpdate;
+        
+        
+        
     }
 }

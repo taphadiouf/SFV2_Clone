@@ -15,6 +15,48 @@
         <value>A Envoyer</value>
     </labels>
     <labels>
+        <fullName>LPCR_AOPublicDSP</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AOPublicDSP</shortDescription>
+        <value>AOPublicDSP</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AOPublicReservation</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AOPublicReservation</shortDescription>
+        <value>AOPublicReservation</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AORTAccountErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AORTAccountErrMsg</shortDescription>
+        <value>Le Compte choisi doit être du type entreprise</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AORTContactErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AORTContactErrMsg</shortDescription>
+        <value>Le Contact choisi doit être du type entreprise</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AO_PublicDSP</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AO_PublicDSP</shortDescription>
+        <value>AO_PublicDSP</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AO_PublicReservation</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AO_PublicReservation</shortDescription>
+        <value>AO_PublicReservation</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Account</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -43,6 +85,13 @@
         <value>Advance</value>
     </labels>
     <labels>
+        <fullName>LPCR_AmendLexError</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AmendLexError</shortDescription>
+        <value>Merci de renseigner la date de début de l&apos;amendement avant de créer votre avenant.</value>
+    </labels>
+    <labels>
         <fullName>LPCR_AmendedContract</fullName>
         <language>fr</language>
         <protected>false</protected>
@@ -64,6 +113,20 @@
         <value>Annual</value>
     </labels>
     <labels>
+        <fullName>LPCR_AoDSPOpportunityRTErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AoDSPOpportunityRTErrMsg</shortDescription>
+        <value>Opportunité choisi doit être du type AO Public DSP</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_AoRESOpportunityRTErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_AoRESOpportunityRTErrMsg</shortDescription>
+        <value>Opportunité choisi doit être du type AO Public Reservation</value>
+    </labels>
+    <labels>
         <fullName>LPCR_ApprovalStatusApproved</fullName>
         <language>fr</language>
         <protected>false</protected>
@@ -76,6 +139,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_Arrears</shortDescription>
         <value>Arrears</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Autres</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Autres</shortDescription>
+        <value>Autres</value>
     </labels>
     <labels>
         <fullName>LPCR_Client</fullName>
@@ -141,11 +211,25 @@
         <value>Accueil</value>
     </labels>
     <labels>
+        <fullName>LPCR_ContratAccueil</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContratAccueil</shortDescription>
+        <value>Contrat Accueil</value>
+    </labels>
+    <labels>
         <fullName>LPCR_ContratEnfant</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>LPCR_ContratEnfant</shortDescription>
         <value>Contrat au bénéfice de l&apos;enfant :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ContratReservataire</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContratReservataire</shortDescription>
+        <value>Contrat Réservataire</value>
     </labels>
     <labels>
         <fullName>LPCR_Contrat_B2B</fullName>
@@ -169,6 +253,27 @@
         <value>Convertir Lead Famille en Compte Famille et Contacts Parents et Enfant(s)</value>
     </labels>
     <labels>
+        <fullName>LPCR_ConvertedAccountId</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ConvertedAccountId</shortDescription>
+        <value>ConvertedAccountId</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ConvertedContactId</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ConvertedContactId</shortDescription>
+        <value>ConvertedContactId</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_ConvertedOpportunityId</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ConvertedOpportunityId</shortDescription>
+        <value>ConvertedOpportunityId</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Creche</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -180,7 +285,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>LPCR_CrecheAProximite</shortDescription>
-        <value>Crèches LPCR à proximité </value>
+        <value>Crèches LPCR à proximité</value>
     </labels>
     <labels>
         <fullName>LPCR_CrecheF</fullName>
@@ -260,6 +365,20 @@
         <value>Express</value>
     </labels>
     <labels>
+        <fullName>LPCR_FactureEntreprise</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_FactureEntreprise</shortDescription>
+        <value>Facture Entreprise</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_FactureFamille</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_FactureFamille</shortDescription>
+        <value>Facture Famille</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Famille</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -272,6 +391,13 @@
         <protected>true</protected>
         <shortDescription>LPCR_Identifiant</shortDescription>
         <value>N° d&apos;identifiant :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_InvoicePlan</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_InvoicePlan</shortDescription>
+        <value>Invoice Plan</value>
     </labels>
     <labels>
         <fullName>LPCR_Lead</fullName>
@@ -379,13 +505,6 @@
         <value>One-Time</value>
     </labels>
     <labels>
-        <fullName>LPCR_Recurring</fullName>
-        <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Recurring</shortDescription>
-        <value>Recurring</value>
-    </labels>
-    <labels>
         <fullName>LPCR_OppFor</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -428,6 +547,13 @@
         <value>Pour la période du :</value>
     </labels>
     <labels>
+        <fullName>LPCR_PieceJustificative</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_PieceJustificative</shortDescription>
+        <value>Pièce justificative</value>
+    </labels>
+    <labels>
         <fullName>LPCR_PlanningType</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -463,6 +589,13 @@
         <value>Prêt à valider</value>
     </labels>
     <labels>
+        <fullName>LPCR_ProduitBerceauNom</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ProduitBerceauNom</shortDescription>
+        <value>Berceau</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Prospect</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -482,13 +615,6 @@
         <protected>false</protected>
         <shortDescription>LPCR_PublicDSP</shortDescription>
         <value>AOPublicDSP</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_InvoicePlan</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_InvoicePlan</shortDescription>
-        <value>Invoice Plan</value>
     </labels>
     <labels>
         <fullName>LPCR_Quarterly</fullName>
@@ -519,6 +645,27 @@
         <value>Validé Directrice</value>
     </labels>
     <labels>
+        <fullName>LPCR_RTAccountErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RTAccountErrMsg</shortDescription>
+        <value>Le Compte choisi doit être du même type que le Lead</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RTContactErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RTContactErrMsg</shortDescription>
+        <value>Le Contact choisi doit être du même type que le Lead</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_RTOpportunityErrMsg</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_RTOpportunityErrMsg</shortDescription>
+        <value>Opportunité choisi doit être du même type que le Lead</value>
+    </labels>
+    <labels>
         <fullName>LPCR_RecordType</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -531,6 +678,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_RecordTypeId</shortDescription>
         <value>RecordTypeId</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Recurring</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Recurring</shortDescription>
+        <value>Recurring</value>
     </labels>
     <labels>
         <fullName>LPCR_Referencement</fullName>
@@ -701,157 +855,10 @@
         <value>Le statut des factures devrait être Prêt à valider pour pouvoir les envoyer</value>
     </labels>
     <labels>
-        <fullName>LPCR_ConvertedAccountId</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_ConvertedAccountId</shortDescription>
-        <value>ConvertedAccountId</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_ConvertedContactId</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_ConvertedContactId</shortDescription>
-        <value>ConvertedContactId</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_ConvertedOpportunityId</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_ConvertedOpportunityId</shortDescription>
-        <value>ConvertedOpportunityId</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_AO_PublicReservation</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_AO_PublicReservation</shortDescription>
-        <value>AO_PublicReservation</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_AO_PublicDSP</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_AO_PublicDSP</shortDescription>
-        <value>AO_PublicDSP</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_AOPublicReservation</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_AOPublicReservation</shortDescription>
-        <value>AOPublicReservation</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_AOPublicDSP</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_AOPublicDSP</shortDescription>
-        <value>AOPublicDSP</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_RTAccountErrMsg</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_RTAccountErrMsg</shortDescription>
-        <value>Le Compte choisi doit être du même type que le Lead</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_RTContactErrMsg</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_RTContactErrMsg</shortDescription>
-        <value>Le Contact choisi doit être du même type que le Lead</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_RTOpportunityErrMsg</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_RTOpportunityErrMsg</shortDescription>
-        <value>Opportunité choisi doit être du même type que le Lead</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_AORTAccountErrMsg</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_AORTAccountErrMsg</shortDescription>
-        <value>Le Compte choisi doit être du type entreprise</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_AORTContactErrMsg</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_AORTContactErrMsg</shortDescription>
-        <value>Le Contact choisi doit être du type entreprise</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_AoRESOpportunityRTErrMsg</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_AoRESOpportunityRTErrMsg</shortDescription>
-        <value>Opportunité choisi doit être du type AO Public Reservation</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_AoDSPOpportunityRTErrMsg</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_AoDSPOpportunityRTErrMsg</shortDescription>
-        <value>Opportunité choisi doit être du type AO Public DSP</value>
-    </labels>
-    <labels>
         <fullName>Product_Code_Depot_Garantie</fullName>
         <language>fr</language>
         <protected>false</protected>
         <shortDescription>Product Code Depot Garantie</shortDescription>
         <value>DepotDeGarantie</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_ContratAccueil</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_ContratAccueil</shortDescription>
-        <value>Contrat Accueil</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_ContratReservataire</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_ContratReservataire</shortDescription>
-        <value>Contrat Réservataire</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_FactureFamille</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_FactureFamille</shortDescription>
-        <value>Facture Famille</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_FactureEntreprise</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_FactureEntreprise</shortDescription>
-        <value>Facture Entreprise</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_PieceJustificative</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_PieceJustificative</shortDescription>
-        <value>Pièce justificative</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_Autres</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_Autres</shortDescription>
-        <value>Autres</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_AmendLexError</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_AmendLexError</shortDescription>
-        <value>Merci de renseigner la date de début de l'amendement avant de créer votre avenant.</value>
     </labels>
 </CustomLabels>

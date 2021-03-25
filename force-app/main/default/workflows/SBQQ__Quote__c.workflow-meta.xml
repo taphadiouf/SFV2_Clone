@@ -128,6 +128,28 @@
         <template>unfiled$public/LPCR_MIBB2B</template>
     </alerts>
     <alerts>
+        <fullName>Notification_de_r_siliation_au_client_B2B</fullName>
+        <description>Notification de résiliation au client B2B</description>
+        <protected>false</protected>
+        <recipients>
+            <field>SBQQ__PrimaryContact__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Notification_R_siliation_B2B</template>
+    </alerts>
+    <alerts>
+        <fullName>Notification_de_r_siliation_au_client_B2C</fullName>
+        <description>Notification de résiliation au client B2C</description>
+        <protected>false</protected>
+        <recipients>
+            <field>LPCR_ContactRepresentant1__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Notification_R_siliation_B2C</template>
+    </alerts>
+    <alerts>
         <fullName>R_siliation_contrat_d_accueil</fullName>
         <description>Résiliation contrat d&apos;accueil</description>
         <protected>false</protected>
@@ -667,6 +689,48 @@
         </criteriaItems>
         <description>Notifier le user famille lorsque le processus d&apos;avenant pour un MIB B2B est terminé.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Notification client résiliation B2B</fullName>
+        <actions>
+            <name>Notification_de_r_siliation_au_client_B2B</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>equals</operation>
+            <value>Résiliation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Contrat de Référencement,Contrat de Référencement Approuvé,Contrat de Réservation,Contrat de Réservation Approuvé</value>
+        </criteriaItems>
+        <description>Notifie le client B2B lorsque le contrat est résilié</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Notification client résiliation B2C</fullName>
+        <actions>
+            <name>Notification_de_r_siliation_au_client_B2C</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
+            <operation>equals</operation>
+            <value>Résiliation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Contrat D’accueil,Contrat D&apos;accueil Approuvé</value>
+        </criteriaItems>
+        <description>Notifie le client B2C lorsque le contrat est résilié</description>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Renewal quote status</fullName>
