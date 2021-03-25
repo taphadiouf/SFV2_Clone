@@ -2118,6 +2118,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Event.LPCR_Compte_rendu__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event.LPCR_Echeance__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Event.LPCR_SousTypeRdv__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -7407,6 +7417,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_MontantIndexation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_Montant_Remise__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_MoyenPaiement__c</field>
         <readable>true</readable>
@@ -7594,6 +7614,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_Section__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_SommePrixAnnuel__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8117,8 +8142,23 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Subscription__c.LPCR_QuantiteProduits__c</field>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_DateReceptionCourrierResiliation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_DateResiliationEffective__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_DateResiliationSouhaitee__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_DateLegaleResiliation__c</field>
         <readable>true</readable>
     </fieldPermissions>
    
@@ -8205,6 +8245,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>User.LPCR_IdExterne__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>User.LPCR_RegionCommerciale__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
