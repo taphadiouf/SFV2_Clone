@@ -11034,11 +11034,7 @@
         <field>SBQQ__Subscription__c.LPCR_ContactEnfant__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Subscription__c.LPCR_ContratRT__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
+   
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Subscription__c.LPCR_Creche__c</field>
@@ -11072,6 +11068,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Subscription__c.LPCR_Majoration__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract.LPCR_NombreDeBerceaux__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
