@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_IDTemplateBonAchat__c</fullName>
+    <description>Id du modèle d&apos;accord pour le bon d&apos;achat partenaire</description>
+    <externalId>false</externalId>
+    <label>ID Template Bon d&apos;achat</label>
+    <length>18</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
