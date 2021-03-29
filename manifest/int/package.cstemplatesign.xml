@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDContactSignataireLPCR__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDQueryAnnexe2__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDQueryContactInfo__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDQueryGetListPriceIDFetGV__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDQueryGetListPriceParis__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDQueryGetListPriceProvince__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDQueryInfosContratAccueil__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDQueryLignesBonsdecommande__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDQueryListTablePrix__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDQueryPlanning__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDQueryServicesAnnexes__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateAnnexe2MAC__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateAnnexe2MICRO__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateAnnexe3__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateBonAchat__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateBonCommande__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateCongaAnnexe2MAC__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateCongaAnnexe2MICRO__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateCongaAnnexe2MICROHorsOc__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateCongaAnnexe2MICROOccasion__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratAccueilMAC__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratAccueilMICRO__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratPartenaire__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratReferencement__c</members>
+        <members>LPCR_TemplateSignatureElectronique__c.LPCR_IDTemplateContratReservation__c</members>
+        <name>CustomField</name>
+    </types>
+
+    <types>
+        <members>LPCR_TemplateSignatureElectronique__c</members>
+    <name>CustomObject</name>
+    </types>
+
+    <version>47.0</version>
+</Package>
