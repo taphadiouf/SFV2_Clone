@@ -118,15 +118,15 @@ public with sharing class QA002_CalloutListeDocumentGED implements Queueable,Dat
                         ID jobID = System.enqueueJob(envoieMailJob);
                     }
                     
-                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_LIST_DOC, className, 'Callout', this.currentParentObjectId, 'getDocumentListCallout - Body : ' + JSON.serialize(docListStructure) + ' - statusCode:' + documentListFullResponse.result + ' - OwnerId:' + this.ownerid, UM010_Constant.SUCCESS);  
+                    UM001_LogManager.writeLogActivityWithoutFuture(className, 'getDocumentListCallout', 'Callout', this.currentParentObjectId, 'getDocumentListCallout - Body : ' + JSON.serialize(docListStructure) + ' - statusCode:' + documentListFullResponse.result + ' - OwnerId:' + this.ownerid, UM010_Constant.SUCCESS);  
                 } 
                 else { // ERROR
-                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_LIST_DOC, className, 'Callout', this.currentParentObjectId ,  'getDocumentListFutureCallout - Exception:' + documentListFullResponse.result + ' - statusCode:' + statusCode + ' - this.ownerId :' + this.ownerId  + ' - OwnerSfId:' + this.ownerId , UM010_Constant.ERROR);  
+                    UM001_LogManager.writeLogActivityWithoutFuture(className, 'getDocumentListCallout', 'Callout', this.currentParentObjectId ,  'getDocumentListFutureCallout - Exception:' + documentListFullResponse.result + ' - statusCode:' + statusCode + ' - this.ownerId :' + this.ownerId  + ' - OwnerSfId:' + this.ownerId , UM010_Constant.ERROR);  
                 }
             }
             else if(errMsg != '') { // ERROR
 
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_LIST_DOC,className, 'Callout', this.currentParentObjectId,  'getDocumentListCallout - Body : ' + JSON.serialize(docListStructure) + ' - Apex Callout Exception:' + errMsg + ' - Response : ' + response, UM010_Constant.ERROR);
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'getDocumentListCallout', 'Callout', this.currentParentObjectId,  'getDocumentListCallout - Body : ' + JSON.serialize(docListStructure) + ' - Apex Callout Exception:' + errMsg + ' - Response : ' + response, UM010_Constant.ERROR);
             }
         }
         
