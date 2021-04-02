@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_DureePreavisMois__c</fullName>
+    <defaultValue>&quot;3&quot;</defaultValue>
     <externalId>false</externalId>
     <label>Durée Préavis résiliation en mois</label>
     <required>false</required>
