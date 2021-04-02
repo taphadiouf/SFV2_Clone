@@ -50,7 +50,7 @@ public with sharing class SM017_SendDocument_Callout {
             errorMsg = e.getMessage();
         } finally {
             if (errorMsg != '') { // ERROR
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, className, 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'getB2CContractCrecheID', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
             }
             
         }
@@ -106,7 +106,7 @@ public with sharing class SM017_SendDocument_Callout {
                 
                 if (String.valueOf(response.getStatusCode()).equals('200')) { // SUCCESS
                     
-                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, className, 'Callout', DocSfID, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.SUCCESS);  
+                    UM001_LogManager.writeLogActivityWithoutFuture(className, 'executeSendDocumentCallout', 'Callout', DocSfID, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.SUCCESS);  
                 } 
                 else if (String.valueOf(response.getStatusCode()) != '200'){ // ERROR with different status code
                     
@@ -125,10 +125,10 @@ public with sharing class SM017_SendDocument_Callout {
             
             }
             else if (errorMsg != '') { // ERROR
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED,className, 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'executeSendDocumentCallout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
             }
             else { // ERROR
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, className, 'Callout', DocSfID,  'Exception: Internal Error. Response is null! - Attachment.Id:' + DocSfID + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'executeSendDocumentCallout', 'Callout', DocSfID,  'Exception: Internal Error. Response is null! - Attachment.Id:' + DocSfID + ' - OwnerSfId:' + OwnerSfId, UM010_Constant.ERROR);  
             }
         }
         

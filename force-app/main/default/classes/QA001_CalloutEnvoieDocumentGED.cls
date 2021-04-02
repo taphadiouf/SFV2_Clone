@@ -5,7 +5,7 @@
 */
 public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Database.AllowsCallouts {
 
-    private String className = QA001_CalloutEnvoieDocumentGED.class.getName();
+    static private String className = QA001_CalloutEnvoieDocumentGED.class.getName();
     private String ownerId;
     private String docSfId;
     private String name;
@@ -84,7 +84,7 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
             }
 
             if (errorMsg != '') { // ERROR
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED,className, 'Callout', this.currentParentObjectId, 'body:' + JSON.serialize(data) +  ' - Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'execute', 'Callout', this.currentParentObjectId, 'body:' + JSON.serialize(data) +  ' - Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
             }
             
             if(response != null && response.getStatusCode() != null){
@@ -99,17 +99,17 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
                         ID jobID = System.enqueueJob(docListJob);
                     }
 
-                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, className, 'Callout', this.currentParentObjectId, /*'body:' + JSON.serialize(data) +*/ ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - this.ownerId:' + this.ownerId, UM010_Constant.SUCCESS);  
+                    UM001_LogManager.writeLogActivityWithoutFuture(className, 'execute', 'Callout', this.currentParentObjectId, /*'body:' + JSON.serialize(data) +*/ ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - this.ownerId:' + this.ownerId, UM010_Constant.SUCCESS);  
 
                     if(invoiceToUpdate.size() !=0 ){
                         update invoiceToUpdate.values();
                     }
                 
                 } else { // ERROR
-                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, className, 'Callout', this.currentParentObjectId,  /*'body:' + JSON.serialize(data) +*/ 'Exception:' + String.valueOf(response.getStatusCode()) + ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - Attachment.Id:' + DocSfID + ' - this.ownerId:' + this.ownerId, UM010_Constant.ERROR);  
+                    UM001_LogManager.writeLogActivityWithoutFuture(className, 'execute', 'Callout', this.currentParentObjectId,  /*'body:' + JSON.serialize(data) +*/ 'Exception:' + String.valueOf(response.getStatusCode()) + ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - Attachment.Id:' + DocSfID + ' - this.ownerId:' + this.ownerId, UM010_Constant.ERROR);  
                 }
             }else{ // ERROR
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, className, 'Callout', this.currentParentObjectId,  /*'body:' + JSON.serialize(data) +*/ 'Exception: Internal Error. Response is null! - Attachment.Id:' + DocSfID + ' - this.ownerId:' + this.ownerId, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'execute', 'Callout', this.currentParentObjectId,  /*'body:' + JSON.serialize(data) +*/ 'Exception: Internal Error. Response is null! - Attachment.Id:' + DocSfID + ' - this.ownerId:' + this.ownerId, UM010_Constant.ERROR);  
             }
             
         }
@@ -158,7 +158,7 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
             errorMsg = e.getMessage();
         } finally {
             if (errorMsg != '') {
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED,'SM017_SendDocument_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'getB2CContractCrecheID', 'Apex Logic', null,  'Apex Logic Exception:' + errorMsg, UM010_Constant.ERROR);  
             }
             
         }
