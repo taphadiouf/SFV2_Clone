@@ -74,8 +74,21 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
         }
         catch (System.CalloutException e) { 
 
-            PAD.Log(className, 'execute', 'In catch');
+            PAD.Log(className, 'execute', 'CalloutException In catch');
             errorMsg = String.valueOf(e);
+            errorMsg += ' - line:' + e.getLineNumber();
+        }
+        catch (System.DMLException e) { 
+
+            PAD.Log(className, 'execute', 'DMLException In catch');
+            errorMsg = String.valueOf(e);
+            errorMsg += ' - line:' + e.getLineNumber();
+        }
+        catch (System.Exception e) { 
+
+            PAD.Log(className, 'execute', 'Exception In catch');
+            errorMsg = String.valueOf(e);
+            errorMsg += ' - line:' + e.getLineNumber();
         }
         finally {
 
@@ -118,13 +131,14 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
 
     public static Id getB2CFactureCrecheID(String OwnerSfId){
 
-        Id factureCrecheId;
+        Id factureCrecheId = null;
         Id accueilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
 
-        blng__Invoice__c tmpFacture = [SELECT Id,LPCR_Creche__c,blng__Account__c FROM blng__Invoice__c WHERE blng__Account__r.RecordTypeId =: accueilRecTypeId AND ID =: OwnerSfId order by createdDAte desc limit 1];
+        //blng__Invoice__c tmpFacture = [SELECT Id,LPCR_Creche__c,blng__Account__c FROM blng__Invoice__c WHERE blng__Account__r.RecordTypeId =: accueilRecTypeId AND ID =: OwnerSfId order by createdDAte desc limit 1];
+        List<blng__Invoice__c> tmpListFacture = new List<blng__Invoice__c>([SELECT Id,LPCR_Creche__c,blng__Account__c FROM blng__Invoice__c WHERE blng__Account__r.RecordTypeId =: accueilRecTypeId AND ID =: OwnerSfId order by createdDAte desc limit 1]);
         
-        if (tmpFacture != null) {
-            factureCrecheId = tmpFacture.LPCR_Creche__c;
+        if (tmpListFacture != null && tmpListFacture.size() > 0) {
+            factureCrecheId = tmpListFacture[0].LPCR_Creche__c;
         }
 
         return factureCrecheId;
