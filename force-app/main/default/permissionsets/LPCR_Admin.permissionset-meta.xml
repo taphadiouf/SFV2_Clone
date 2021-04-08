@@ -996,6 +996,11 @@
         <field>Account.blng__DefaultPaymentType__c</field>
         <readable>true</readable>
     </fieldPermissions>
+        <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheRegionCommerciale__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Activity.LPCR_Compte_rendu__c</field>
