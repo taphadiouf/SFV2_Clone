@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_JoursDeGardeSouhaitesEnfant3__c</fullName>
+    <fullName>LPCR_CrecheRegionCommerciale__c</fullName>
     <externalId>false</externalId>
-    <label>Jours de garde souhaités Enfant 3</label>
+    <label>Région commerciale</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
-    <type>MultiselectPicklist</type>
+    <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Lundi</fullName>
+                <fullName>IDF</fullName>
                 <default>false</default>
-                <label>Lundi</label> 
+                <label>IDF</label>
             </value>
             <value>
-                <fullName>Mardi</fullName>
+                <fullName>Grand-Ouest</fullName>
                 <default>false</default>
-                <label>Mardi</label>
+                <label>Grand-Ouest</label>
             </value>
             <value>
-                <fullName>Mercredi</fullName>
+                <fullName>PACA-LR</fullName>
                 <default>false</default>
-                <label>Mercredi</label>
+                <label>PACA-LR</label>
             </value>
             <value>
-                <fullName>Jeudi</fullName>
+                <fullName>RA</fullName>
                 <default>false</default>
-                <label>Jeudi</label>
+                <label>RA</label>
             </value>
             <value>
-                <fullName>Vendredi</fullName>
+                <fullName>Nord-Est</fullName>
                 <default>false</default>
-                <label>Vendredi</label>
+                <label>Nord-Est</label>
+            </value>
+            <value>
+                <fullName>Grand-Sud</fullName>
+                <default>false</default>
+                <label>Grand-Sud</label>
             </value>
         </valueSetDefinition>
     </valueSet>
-    <visibleLines>4</visibleLines>
 </CustomField>
