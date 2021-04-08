@@ -213,6 +213,12 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
                 accountResultId = tmpList[0].SBQQ__Account__c;
             }
         }
+        else if (sobjectName == 'echosign_dev1__SIGN_Agreement__c') {
+            List<echosign_dev1__SIGN_Agreement__c> tmpList = new List<echosign_dev1__SIGN_Agreement__c>([Select Id, LPCR_Devis__r.SBQQ__Account__c from echosign_dev1__SIGN_Agreement__c where Id = :tmpId]);
+            if (tmpList != null && tmpList.size() > 0) {
+                accountResultId = tmpList[0].LPCR_Devis__r.SBQQ__Account__c;
+            }
+        }
         else {
             accountResultId = tmpId;
         }
