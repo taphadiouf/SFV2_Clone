@@ -998,7 +998,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Account.LPCR_CrecheRegionCommerciale__c</field>
+        <field>Activity.LPCR_Compte_rendu__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Activity.LPCR_Echeance__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1783,11 +1788,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contract.LPCR_NombreDeBerceaux__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Contract.LPCR_NouveauPlanFacturation__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2094,16 +2094,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Event.LPCR_Abouti__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Event.LPCR_Compte_rendu__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Event.LPCR_Echeance__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4633,6 +4623,36 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.LPCR_JoursDeGardeSouhaitesEnfant1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_JoursDeGardeSouhaitesEnfant2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_JoursDeGardeSouhaitesEnfant3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_TailleDelEntreprise__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_IndiquezNousVosBesoins__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_RaisonDuPartenariat__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Opportunity.AccountId</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6327,11 +6347,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__QuoteLine__c.LPCR_NombreDeJour__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__QuoteLine__c.LPCR_NumeroLigne__c</field>
         <readable>true</readable>
@@ -7237,26 +7252,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_DateLegaleResiliation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_DateReceptionCourrierResiliation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_DateResiliationEffective__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_DateResiliationSouhaitee__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_DateResiliation__c</field>
         <readable>true</readable>
@@ -7437,16 +7432,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_MontantIndexation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_Montant_Remise__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_MoyenPaiement__c</field>
         <readable>true</readable>
@@ -7464,11 +7449,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_NombreHeuresMois__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_NombreJoursCummul__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7639,11 +7619,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_Section__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_SommePrixAnnuel__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8173,16 +8148,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Task.LPCR_Compte_rendu__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Task.LPCR_Echeance__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Task.LPCR_IdExterne_CreatedBy__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -8249,11 +8214,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>User.LPCR_IdExterne__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>User.LPCR_RegionCommerciale__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8832,6 +8792,10 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
+        <recordType>Task.LPCR_Tache</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
         <recordType>Task.LPCR_Appel</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -8841,10 +8805,6 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Task.LPCR_Gestion_Interne</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Task.LPCR_Tache</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
