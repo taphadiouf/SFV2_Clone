@@ -20,14 +20,14 @@
         <field>Account.AnnualRevenue</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
+    <fieldPermissions> 
         <editable>true</editable>
         <field>Account.BillingAddress</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Account.Description</field>
+        <field>Account.Description</field> 
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
