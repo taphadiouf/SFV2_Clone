@@ -22,7 +22,7 @@ public with sharing class SM018_AttachmentService {
         
         Map<Id, blng__Invoice__c> invoiceCreatedByMap = new Map<Id, blng__Invoice__c>();
         Map<Id,blng__Invoice__c> invoiceToUpdate = new Map<Id,blng__Invoice__c>();
-        for(blng__Invoice__c invoice : [select id, blng__Account__r.Email__c, CreatedBy.Name, LPCR_StatutFacture__c  from blng__Invoice__c where id in: parentIds]){
+        for(blng__Invoice__c invoice : [select id, blng__Account__r.Email__c, CreatedBy.Name, LPCR_StatutFacture__c, LPCR_Creche__c  from blng__Invoice__c where id in: parentIds]){
             invoiceAccountMap.put(invoice.id, invoice.blng__Account__r.Email__c);
             invoiceCreatedByMap.put(invoice.id, invoice);
         }
@@ -65,6 +65,7 @@ public with sharing class SM018_AttachmentService {
     static private Boolean objectTypeAuthorizedToBeSentToLPCR(Id tmpId) {
         
         if ((String.valueOf(tmpId.getsobjecttype()) == 'SBQQ__Quote__c') || 
+            (String.valueOf(tmpId.getsobjecttype()) == 'echosign_dev1__SIGN_Agreement__c') || 
             (String.valueOf(tmpId.getsobjecttype()) == 'blng__Invoice__c') || 
             (String.valueOf(tmpId.getsobjecttype()) == 'Account') || 
             (String.valueOf(tmpId.getsobjecttype()) == 'Lead') || 

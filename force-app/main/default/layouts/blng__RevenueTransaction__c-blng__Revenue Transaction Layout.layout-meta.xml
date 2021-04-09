@@ -71,8 +71,8 @@
         <label>Revenue Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_Amount__c</field>
+                <behavior>Readonly</behavior>
+                <field>LPCR_MontantBascule__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
