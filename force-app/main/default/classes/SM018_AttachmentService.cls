@@ -65,6 +65,7 @@ public with sharing class SM018_AttachmentService {
     static private Boolean objectTypeAuthorizedToBeSentToLPCR(Id tmpId) {
         
         if ((String.valueOf(tmpId.getsobjecttype()) == 'SBQQ__Quote__c') || 
+            (String.valueOf(tmpId.getsobjecttype()) == 'echosign_dev1__SIGN_Agreement__c') || 
             (String.valueOf(tmpId.getsobjecttype()) == 'blng__Invoice__c') || 
             (String.valueOf(tmpId.getsobjecttype()) == 'Account') || 
             (String.valueOf(tmpId.getsobjecttype()) == 'Lead') || 
