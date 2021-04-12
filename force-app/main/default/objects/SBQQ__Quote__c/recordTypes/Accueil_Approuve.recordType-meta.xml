@@ -287,11 +287,30 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>PAJE</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Partenaire</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>RAM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeDeVente__c</picklist>
+        <values>
+            <fullName>NewBiz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renouvellement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Upsell</fullName>
             <default>false</default>
         </values>
     </picklistValues>

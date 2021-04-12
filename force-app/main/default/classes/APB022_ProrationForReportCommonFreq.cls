@@ -3,7 +3,7 @@
 * @date 22/02/2021
 * @Description :
 * Only For Common Frequency (Monthly, Quarterly, Semiannual, Annual)
-* Input : blng__RevenueTransaction__c with LPCR_Amount__c empty
+* Input : blng__RevenueSchedule__c with blng__RevenueTransaction__c with LPCR_Amount__c empty
 * Output : Populate and adjust the LPCR_Amount__c field on the Revenue Transaction accordingly to what LPCR wants
 */
 global class APB022_ProrationForReportCommonFreq implements Database.Batchable<sObject>,Schedulable {
@@ -20,7 +20,7 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
         return Database.getQueryLocator([SELECT Id, Name FROM blng__RevenueSchedule__c where Id in (SELECT blng__RevenueSchedule__c 
                                                                                                     FROM blng__RevenueTransaction__c
-                                                                                                    WHERE blng__OrderProduct__c != null AND LPCR_Amount__c = null AND 
+                                                                                                    WHERE blng__OrderProduct__c != null AND blng__OrderProduct__r.Order.LPCR_InitAutoAvecDateDebut__c = false AND LPCR_Amount__c = null AND 
 																										((blng__OrderProduct__r.SBQQ__ChargeType__c != 'One-Time' AND blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c != null) 
 																											OR 
 																										(blng__OrderProduct__r.SBQQ__ChargeType__c = 'One-Time' AND blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c = null)))
@@ -39,9 +39,9 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
         List<blng__RevenueTransaction__c> listRevTransaction = new List<blng__RevenueTransaction__c>([SELECT Id, blng__OrderProduct__r.ServiceDate, blng__RevenueSchedule__c, blng__OrderProduct__r.SBQQ__ChargeType__c, 
                                                                                                         blng__OrderProduct__r.SBQQ__BillingFrequency__c, blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c,
                                                                                                         blng__SystemPeriodStartDate__c, blng__RevenueSchedule__r.blng__TotalRevenueAmount__c, 
-                                                                                                        blng__OrderProduct__r.blng__BillableUnitPrice__c 
+                                                                                                        blng__OrderProduct__r.blng__BillableUnitPrice__c, blng__OrderProduct__r.EndDate 
                                                                                                         FROM blng__RevenueTransaction__c
-                                                                                                        WHERE blng__OrderProduct__c != null AND LPCR_Amount__c = null and blng__RevenueSchedule__c in :setRevenueSchedules
+                                                                                                        WHERE blng__OrderProduct__c != null AND blng__OrderProduct__r.Order.LPCR_InitAutoAvecDateDebut__c = false AND LPCR_Amount__c = null and blng__RevenueSchedule__c in :setRevenueSchedules
                                                                                                         ORDER BY blng__RevenueSchedule__c, blng__SystemPeriodStartDate__c asc]);
 
         PAD.logAllList(ClassName,'execute','listRevTransaction', listRevTransaction);
@@ -131,13 +131,13 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
 
         for (blng__RevenueTransaction__c tmpRT : tmpListRevTransaction) {
 
-            PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - ***************************************************');
+            PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction -----------------');
+            PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - NEW ITERATION');
+            PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction -----------------');
             PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpRT:' + tmpRT);
 
             blng__RevenueTransaction__c tmpRtToAdd = new blng__RevenueTransaction__c();
             tmpRtToAdd = tmpRT;
-
-
 
             if (tmpRT.blng__OrderProduct__r.SBQQ__ChargeType__c == 'One-Time') { // ONE TIME Charge Type
             
@@ -152,13 +152,25 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
             } 
             else { // RECURRING Charge Type
 
+                Date targetDate;
+
+                targetDate = tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c;
+
+                if (tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c > tmpRT.blng__OrderProduct__r.EndDate) {
+
+                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - LPCR_FirstInvoiceEndDate__c > tmpRT.blng__OrderProduct__r.EndDate');
+                    targetDate = tmpRT.blng__OrderProduct__r.EndDate;
+                }
+
                 Decimal tmpBillableUnitPrice; 
                 Decimal tmpAmount = 0;
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpRT.blng__OrderProduct__r.ServiceDate:' + tmpRT.blng__OrderProduct__r.ServiceDate);
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c:' + tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c);
+                PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpRT.blng__OrderProduct__r.EndDate:' + tmpRT.blng__OrderProduct__r.EndDate);
+                PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - targetDate:' + targetDate);
 
                 Integer tmpMonthSD = tmpRT.blng__OrderProduct__r.ServiceDate.Month();
-                Integer tmpMonthFEED = tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c.Month();
+                Integer tmpMonthFEED = targetDate.Month();
                 Integer count = Date.daysInMonth(tmpRT.blng__OrderProduct__r.ServiceDate.year(), tmpRT.blng__OrderProduct__r.ServiceDate.month());
                 Date tmpDate = tmpRT.blng__OrderProduct__r.ServiceDate;
 
@@ -182,7 +194,7 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
                     tmpDate = tmpDate.addDays(- 1);
                 }
 
-                Decimal tmpReminderDays = tmpDate.daysBetween(tmpRT.blng__OrderProduct__r.LPCR_FirstInvoiceEndDate__c);
+                Decimal tmpReminderDays = tmpDate.daysBetween(targetDate);
 
                 Date[] tmpDateMinMax = UM003_TypeManager.getMinMaxOfListObjectsDate(tmpListRevTransaction, 'blng__SystemPeriodStartDate__c');
                 Date tmpMaxDateRevenueTransaction = tmpDateMinMax[1];
@@ -192,14 +204,14 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpMaxDateRevenueTransaction:' + tmpMaxDateRevenueTransaction);
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpMinDateRevenueTransaction:' + tmpMinDateRevenueTransaction);
 
-
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - Critical conditions value:');
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpRT.blng__SystemPeriodStartDate__c:' + tmpRT.blng__SystemPeriodStartDate__c);
                 PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpMinDateRevenueTransaction:' + tmpMinDateRevenueTransaction);
 
-                if (tmpRT.blng__SystemPeriodStartDate__c == tmpMinDateRevenueTransaction) { // FIRST REV TRANSACTION
+                // FIRST REV TRANSACTION ------------------------------------------------------------------------------------------------------------------------
+                if (tmpRT.blng__SystemPeriodStartDate__c == tmpMinDateRevenueTransaction) { 
 
-                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - FIRST REV TRANSACTION - tmpRT:' + tmpRT);
+                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction ==========================> FIRST REV TRANSACTION - tmpRT:' + tmpRT);
 
                     if (tmpRT.blng__OrderProduct__r.SBQQ__BillingFrequency__c == 'Monthly') {
                         tmpBillableUnitPrice = tmpRT.blng__OrderProduct__r.blng__BillableUnitPrice__c;
@@ -219,27 +231,36 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
                     
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpBillableUnitPrice arrondis :' + tmpBillableUnitPrice.setScale(4));
 
-                    Decimal a = tmpBillableUnitPrice.setScale(4);
-                    Decimal abis = 30.4166666667; // (365 / 12) value because SF dont manage well two decimal divison at same time
-                    Decimal b = tmpReminderDays / abis;
-                    tmpAmount = UM003_TypeManager.getDecimalValueWithScale(a * b, 4);
+                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpRT.blng__OrderProduct__r.ServiceDate :' + tmpRT.blng__OrderProduct__r.ServiceDate);
+                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpRT.blng__OrderProduct__r.ServiceDate.Day() :' + tmpRT.blng__OrderProduct__r.ServiceDate.Day());
 
-                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - a:' + a);
-                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - abis:' + abis);
-                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - b:' + b);
+                    if (tmpRT.blng__OrderProduct__r.ServiceDate.Day() == 1){ 
+                        tmpAmount = tmpBillableUnitPrice.setScale(4);
+                    }
+                    else {
+                        Decimal a = tmpBillableUnitPrice.setScale(4);
+                        Decimal abis = 30.4166666667; // (365 / 12) value because SF dont manage well two decimal divison at same time
+                        Decimal b = tmpReminderDays / abis;
+                        tmpAmount = UM003_TypeManager.getDecimalValueWithScale(a * b, 4);
+
+                        PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - a:' + a);
+                        PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - abis:' + abis);
+                        PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - b:' + b);
+                    }
+
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpAmount:' + tmpAmount);
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpReminderDays:' + tmpReminderDays);
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpBillableUnitPrice:' + tmpBillableUnitPrice);
-                    
 
                     tmpRtToAdd.LPCR_Amount__c = tmpAmount;
                     totalAmount += tmpAmount;
                     tmpRevenueTransactionToUpdate.add(tmpRtToAdd);
                 }
+                // MID REV TRANSACTION ------------------------------------------------------------------------------------------------------------------------
                 else if (tmpRT.blng__SystemPeriodStartDate__c != tmpMinDateRevenueTransaction && 
-                            tmpRT.blng__SystemPeriodStartDate__c != tmpMaxDateRevenueTransaction) { // MID REV TRANSACTION
+                            tmpRT.blng__SystemPeriodStartDate__c != tmpMaxDateRevenueTransaction) { 
 
-                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - MID REV TRANSACTION - tmpRT:' + tmpRT);
+                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction ==========================> MID REV TRANSACTION - tmpRT:' + tmpRT);
                     
                     if (tmpRT.blng__OrderProduct__r.SBQQ__BillingFrequency__c == 'Monthly') {
                         tmpAmount = tmpRT.blng__OrderProduct__r.blng__BillableUnitPrice__c;
@@ -278,10 +299,10 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
                 Date tmpMaxDateRevenueTransaction = tmpDateMinMax[1];
                 Date tmpMinDateRevenueTransaction = tmpDateMinMax[0];
 
-                if (tmpRtElem.blng__SystemPeriodStartDate__c == tmpMaxDateRevenueTransaction) { // LAST REV TRANSACTION
+                // LAST REV TRANSACTION ------------------------------------------------------------------------------------------------------------------------
+                if (tmpRtElem.blng__SystemPeriodStartDate__c == tmpMaxDateRevenueTransaction) { 
 
-                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - ***************************************************');
-                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - LAST REV TRANSACTION - tmpRtElem:' + tmpRtElem);
+                    PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction ==========================> LAST REV TRANSACTION - tmpRtElem:' + tmpRtElem);
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - tmpRtElem.blng__RevenueSchedule__r.blng__TotalRevenueAmount__c:' + tmpRtElem.blng__RevenueSchedule__r.blng__TotalRevenueAmount__c);
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - totalAmount:' + totalAmount);
                     
@@ -292,9 +313,7 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
 
                     PAD.log(ClassName,'processRevenueSchedule','tmpListRevTransaction - rtToAdd.LPCR_Amount__c:' + rtToAdd.LPCR_Amount__c);
                 }
-
             }
-            
         }
 
         PAD.logAllList(ClassName,'processRevenueSchedule','tmpRevenueTransactionToUpdate', tmpRevenueTransactionToUpdate);

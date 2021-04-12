@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_MontantBascule__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( blng__OrderProduct__r.Order.LPCR_InitAutoAvecDateDebut__c = false, LPCR_Amount__c , blng__RevenueAmount__c )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Montant</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>4</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

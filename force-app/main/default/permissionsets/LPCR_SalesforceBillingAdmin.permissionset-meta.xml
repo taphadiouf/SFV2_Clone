@@ -8192,6 +8192,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__RevenueTransaction__c.LPCR_MontantBascule__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>blng__SubInvoiceLine__c.blng__BillingTransaction__c</field>
         <readable>true</readable>
