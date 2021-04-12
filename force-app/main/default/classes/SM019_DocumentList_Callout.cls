@@ -66,12 +66,12 @@ public with sharing class SM019_DocumentList_Callout {
 
                     documentListFullResponse.response = (List<DocumentListResponse>) JSON.deserialize(response.getBody(), List<DocumentListResponse>.class);
                     documentListFullResponse.result = '200';
-                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_LIST_DOC, className, 'Callout', ownerid, 'getDocumentListCallout - Body : ' + JSON.serialize(docListStructure) + ' - statusCode:' + documentListFullResponse.result + ' - OwnerId:' + ownerid, UM010_Constant.SUCCESS);  
+                    UM001_LogManager.writeLogActivityWithoutFuture(className, 'getDocumentListCallout', 'Callout', ownerid, 'getDocumentListCallout - Body : ' + JSON.serialize(docListStructure) + ' - statusCode:' + documentListFullResponse.result + ' - OwnerId:' + ownerid, UM010_Constant.SUCCESS);  
                 } 
             }
             else if(errMsg != '' || !statusCode.equals('200')){ // ERROR
 
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_LIST_DOC,className, 'Callout', null,  'getDocumentListCallout - Body : ' + JSON.serialize(docListStructure) + ' - Apex Callout Exception:' + errMsg + ' - Response : ' + response + ' - statusCode:' + statusCode, UM010_Constant.ERROR);
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'getDocumentListCallout', 'Callout', null,  'getDocumentListCallout - Body : ' + JSON.serialize(docListStructure) + ' - Apex Callout Exception:' + errMsg + ' - Response : ' + response + ' - statusCode:' + statusCode, UM010_Constant.ERROR);
             }
         }
         

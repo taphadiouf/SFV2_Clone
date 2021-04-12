@@ -17,12 +17,15 @@ public with sharing class TM005_ContactTrigger extends TM000_TriggerHandler{
     }
 
     protected override void beforeInsert() {
+
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')) {
             SM024_ContactServices.prepareContactsToBeSent(newContactsList);
+        }
     }
 
     protected override void afterInsert() {
-        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
-            SM007_LeadServices.contactsIds = new Set<Id>(newContactsMap.keySet());
+        
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')) {
             SM024_ContactServices.sendContacts(newContactsList);
         }
     }

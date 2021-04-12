@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_MotifResiliation__c</fullName>
+    <fullName>LPCR_SocieteFacturante__c</fullName>
     <externalId>false</externalId>
-    <label>Motif de résiliation</label>
-    <length>255</length>
+    <formula>SBQQ__Quote__r.LPCR_SocieteFacturante__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Société Facturante</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <type>Text</type>
     <unique>false</unique>

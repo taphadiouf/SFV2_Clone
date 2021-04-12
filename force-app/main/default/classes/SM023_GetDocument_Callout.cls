@@ -39,14 +39,14 @@ public with sharing class SM023_GetDocument_Callout {
         }
         finally {
             if (errorMsg != '') {
-                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_REF_DOC_REC,'SM023_GetDocument_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);
+                UM001_LogManager.writeLogActivity('SM023_GetDocument_Callout', 'getDocumentBySFIdCallout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);
             }
             if (statusCode=='200') {
-                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_REF_DOC_REC, 'SM023_GetDocument_Callout', 'Callout', ownerId, 'statusCode:' + statusCode + ' - docId:' + docId, UM010_Constant.SUCCESS);  
+                UM001_LogManager.writeLogActivity('SM023_GetDocument_Callout', 'getDocumentBySFIdCallout', 'Callout', ownerId, 'statusCode:' + statusCode + ' - docId:' + docId, UM010_Constant.SUCCESS);  
                 docWrp = (DocumentWrapper) JSON.deserialize(response.getBody(), DocumentWrapper.class);
             } 
             else {
-                UM001_LogManager.writeLogActivity(UM010_Constant.LOG_REF_DOC_REC, 'SM023_GetDocument_Callout', 'Callout', ownerId,  'Exception:' + statusCode + ' - statusCode:' + statusCode + ' - ownerId:' + ownerId + ' - docId:' + docId, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivity('SM023_GetDocument_Callout', 'getDocumentBySFIdCallout', 'Callout', ownerId,  'Exception:' + statusCode + ' - statusCode:' + statusCode + ' - ownerId:' + ownerId + ' - docId:' + docId, UM010_Constant.ERROR);  
                 
                 LPCR_AppelServiceExterne__mdt appelServiceExterne = [SELECT LPCR_CodeRetour__c ,LPCR_MessageRetour__c , LPCR_NomService__c  
                                                                      FROM LPCR_AppelServiceExterne__mdt  
