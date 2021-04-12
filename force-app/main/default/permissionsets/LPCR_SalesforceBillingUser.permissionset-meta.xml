@@ -4474,6 +4474,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>blng__CreditNote__c.blng__Debits__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>blng__DebitNoteAllocationCreditNoteLine__c.blng__Balance__c</field>
         <readable>true</readable>
     </fieldPermissions>
