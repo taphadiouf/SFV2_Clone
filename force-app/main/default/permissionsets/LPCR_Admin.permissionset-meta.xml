@@ -2118,6 +2118,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contract.LPCR_SocieteFacturante__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Contract.LPCR_MotifResiliation__c</field>
         <readable>true</readable>
     </fieldPermissions>

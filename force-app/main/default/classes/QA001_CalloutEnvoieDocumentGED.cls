@@ -5,7 +5,7 @@
 */
 public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Database.AllowsCallouts {
 
-    private String className = QA001_CalloutEnvoieDocumentGED.class.getName();
+    static private String className = QA001_CalloutEnvoieDocumentGED.class.getName();
     private String ownerId;
     private String docSfId;
     private String name;
@@ -22,13 +22,22 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
     // mail : mail adress to be sent
     public QA001_CalloutEnvoieDocumentGED(String ownerSfId, String docSfID, String name, String binaryDocument, blng__Invoice__c invoice, String mail) {
 
-        this.ownerId = ownerSfId;
+        PAD.log(className, 'QA001_CalloutEnvoieDocumentGED', 'ownerSfId:' + ownerSfId);
+
+        this.ownerId = this.getCorrespondingAccount(ownerSfId);
         this.docSfId = docSfID;
         this.name = name;
         this.binary = binaryDocument;
         this.currentInvoice = invoice;
         this.currentMail = mail;
         this.currentParentObjectId = docSfID;
+
+        PAD.log(className, 'QA001_CalloutEnvoieDocumentGED', 'this.ownerId:' + this.ownerId);
+        PAD.log(className, 'QA001_CalloutEnvoieDocumentGED', 'this.docSfId:' + this.docSfId);
+        PAD.log(className, 'QA001_CalloutEnvoieDocumentGED', 'this.name:' + this.name);
+        PAD.log(className, 'QA001_CalloutEnvoieDocumentGED', 'this.currentInvoice:' + this.currentInvoice);
+        PAD.log(className, 'QA001_CalloutEnvoieDocumentGED', 'this.currentMail:' + this.currentMail);
+        PAD.log(className, 'QA001_CalloutEnvoieDocumentGED', 'this.currentParentObjectId:' + this.currentParentObjectId);
     }   
 
     public void execute(QueueableContext context) {
@@ -62,7 +71,7 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
                  CrecheSfId = getB2CContractCrecheID(this.ownerId);
             }
         
-            data = new WRP004_APISaveDocument(this.ownerId, DocSfID, Name, this.binary, CrecheSfId);
+            data = new WRP004_APISaveDocument(this.ownerId, DocSfID, Name, this.binary, String.valueOf(this.currentInvoice.LPCR_Creche__c));
             request.setBody(JSON.serialize(data));
             
             response = http.send(request);
@@ -74,8 +83,21 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
         }
         catch (System.CalloutException e) { 
 
-            PAD.Log(className, 'execute', 'In catch');
+            PAD.Log(className, 'execute', 'CalloutException In catch');
             errorMsg = String.valueOf(e);
+            errorMsg += ' - line:' + e.getLineNumber();
+        }
+        catch (System.DMLException e) { 
+
+            PAD.Log(className, 'execute', 'DMLException In catch');
+            errorMsg = String.valueOf(e);
+            errorMsg += ' - line:' + e.getLineNumber();
+        }
+        catch (System.Exception e) { 
+
+            PAD.Log(className, 'execute', 'Exception In catch');
+            errorMsg = String.valueOf(e);
+            errorMsg += ' - line:' + e.getLineNumber();
         }
         finally {
 
@@ -84,7 +106,7 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
             }
 
             if (errorMsg != '') { // ERROR
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED,className, 'Callout', this.currentParentObjectId, 'body:' + JSON.serialize(data) +  ' - Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'execute', 'Callout', this.currentParentObjectId, 'body:' + JSON.serialize(data) +  ' - Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
             }
             
             if(response != null && response.getStatusCode() != null){
@@ -99,32 +121,33 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
                         ID jobID = System.enqueueJob(docListJob);
                     }
 
-                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, className, 'Callout', this.currentParentObjectId, /*'body:' + JSON.serialize(data) +*/ ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - this.ownerId:' + this.ownerId, UM010_Constant.SUCCESS);  
+                    UM001_LogManager.writeLogActivityWithoutFuture(className, 'execute', 'Callout', this.currentParentObjectId, /*'body:' + JSON.serialize(data) +*/ ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - this.ownerId:' + this.ownerId, UM010_Constant.SUCCESS);  
 
                     if(invoiceToUpdate.size() !=0 ){
                         update invoiceToUpdate.values();
                     }
                 
                 } else { // ERROR
-                    UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, className, 'Callout', this.currentParentObjectId,  /*'body:' + JSON.serialize(data) +*/ 'Exception:' + String.valueOf(response.getStatusCode()) + ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - Attachment.Id:' + DocSfID + ' - this.ownerId:' + this.ownerId, UM010_Constant.ERROR);  
+                    UM001_LogManager.writeLogActivityWithoutFuture(className, 'execute', 'Callout', this.currentParentObjectId,  /*'body:' + JSON.serialize(data) +*/ 'Exception:' + String.valueOf(response.getStatusCode()) + ' - statusCode:' + String.valueOf(response.getStatusCode()) + ' - Attachment.Id:' + DocSfID + ' - this.ownerId:' + this.ownerId, UM010_Constant.ERROR);  
                 }
             }else{ // ERROR
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED, className, 'Callout', this.currentParentObjectId,  /*'body:' + JSON.serialize(data) +*/ 'Exception: Internal Error. Response is null! - Attachment.Id:' + DocSfID + ' - this.ownerId:' + this.ownerId, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'execute', 'Callout', this.currentParentObjectId,  /*'body:' + JSON.serialize(data) +*/ 'Exception: Internal Error. Response is null! - Attachment.Id:' + DocSfID + ' - this.ownerId:' + this.ownerId, UM010_Constant.ERROR);  
             }
             
         }
 
     }
 
-    public static Id getB2CFactureCrecheID(String OwnerSfId){
+    // Should return Id of Creche if invoice is linked to a B2C Invoice
+    public static Id getB2CFactureCrecheID(String idInvoice){
 
-        Id factureCrecheId;
-        Id accueilRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Famille);
+        Id factureCrecheId = null;
+        Id crecheRecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Creche);
 
-        blng__Invoice__c tmpFacture = [SELECT Id,LPCR_Creche__c,blng__Account__c FROM blng__Invoice__c WHERE blng__Account__r.RecordTypeId =: accueilRecTypeId AND ID =: OwnerSfId order by createdDAte desc limit 1];
+        List<blng__Invoice__c> tmpListFacture = new List<blng__Invoice__c>([SELECT Id,LPCR_Creche__c,blng__Account__c FROM blng__Invoice__c WHERE blng__Account__r.RecordTypeId =: crecheRecordTypeId AND ID =: idInvoice order by createdDAte desc limit 1]);
         
-        if (tmpFacture != null) {
-            factureCrecheId = tmpFacture.LPCR_Creche__c;
+        if (tmpListFacture != null && tmpListFacture.size() > 0) {
+            factureCrecheId = tmpListFacture[0].LPCR_Creche__c;
         }
 
         return factureCrecheId;
@@ -158,11 +181,47 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
             errorMsg = e.getMessage();
         } finally {
             if (errorMsg != '') {
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_SEND_DOC_TO_GED,'SM017_SendDocument_Callout', 'Callout', null,  'Apex Callout Exception:' + errorMsg, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'getB2CContractCrecheID', 'Apex Logic', null,  'Apex Logic Exception:' + errorMsg, UM010_Constant.ERROR);  
             }
             
         }
         
         return contractCrecheId;
     }
+
+    // As Attachment can be created with different parentId and as document as to be sent to GED with corresponding Account for Invoice and Signed Quote
+    // This method will determine the right Account id corresponding to the Quote or Invoice Id
+    public Id getCorrespondingAccount(String ownerSfId) {
+
+        Id tmpId = Id.valueOf(ownerSfId);
+        Id accountResultId = null;
+
+        Schema.SObjectType sobjectType = tmpId.getSObjectType();
+        String sobjectName = sobjectType.getDescribe().getName();
+
+        PAD.log(className, 'getCorrespondingAccount', 'sobjectName:' + sobjectName);
+
+        if (sobjectName == 'blng__invoice__c') { 
+            List<blng__invoice__c> tmpList = new List<blng__invoice__c>([Select Id, blng__Account__c from blng__invoice__c where Id = :tmpId]);
+            if (tmpList != null && tmpList.size() > 0) {
+                accountResultId = tmpList[0].blng__Account__c;
+            }
+        }
+        else if (sobjectName == 'SBQQ__Quote__c') {
+            List<SBQQ__Quote__c> tmpList = new List<SBQQ__Quote__c>([Select Id, SBQQ__Account__c from SBQQ__Quote__c where Id = :tmpId]);
+            if (tmpList != null && tmpList.size() > 0) {
+                accountResultId = tmpList[0].SBQQ__Account__c;
+            }
+        }
+        else if (sobjectName == 'echosign_dev1__SIGN_Agreement__c') {
+            List<echosign_dev1__SIGN_Agreement__c> tmpList = new List<echosign_dev1__SIGN_Agreement__c>([Select Id, LPCR_Devis__r.SBQQ__Account__c from echosign_dev1__SIGN_Agreement__c where Id = :tmpId]);
+            if (tmpList != null && tmpList.size() > 0) {
+                accountResultId = tmpList[0].LPCR_Devis__r.SBQQ__Account__c;
+            }
+        }
+        else {
+            accountResultId = tmpId;
+        }
+        return accountResultId;
+    }  
 }

@@ -93,13 +93,13 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
             PAD.log(ClassName, 'execute', 'STEP 1 - orderLineIds : ' + orderLineIds);
             PAD.logAllSetId(ClassName, 'execute', 'STEP 1 - orderLineIds',orderLineIds);
 
-            list<AggregateResult> groupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount, 
+            list<AggregateResult> groupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(LPCR_MontantBascule__c) amount, 
                                                             SUM(blng__OrderProduct__r.Quantity) nbPlace, SUM(LPCR_PrixAnnuel__c) totalPrixAnnuel,
                                                             MAX(LPCR_NombreMois__c) nombreMois, blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c contract,
                                                             blng__OrderProduct__r.blng__GroupId__c groupId,blng__OrderProduct__r.Blng__LegalEntity__c legalEntity,
                                                             blng__OrderProduct__r.LPCR_Creche__c creche 
                                                         FROM blng__RevenueTransaction__c 
-                                                        WHERE blng__OrderProduct__c != null AND blng__OrderProduct__c In :orderLineIds AND 
+                                                        WHERE blng__OrderProduct__c != null AND blng__OrderProduct__c In :orderLineIds AND LPCR_MontantBascule__c != null AND
                                                         blng__OrderProduct__r.SBQQ__ChargeType__c != 'One-Time' 
                                                         GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c ,
                                                         blng__OrderProduct__r.blng__GroupId__c,blng__OrderProduct__r.Blng__LegalEntity__c,blng__OrderProduct__r.LPCR_Creche__c 

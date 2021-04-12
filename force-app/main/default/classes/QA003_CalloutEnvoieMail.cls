@@ -71,13 +71,13 @@ public with sharing class QA003_CalloutEnvoieMail implements Queueable,Database.
         finally {
             
             if (res.getStatusCode() == 200) { //SUCCESS
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_REF_SENDMAIL, className, 'Callout', this.currentParentObjectId, 'sendMailCallout - Body :' + bodyJSON + 'statusCode:' + res.getStatusCode() + ' - From:' + this.mailFrom + ' - this.mailTo:' + this.mailTo + ' - this.subject:' + this.subject , UM010_Constant.SUCCESS);           
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'execute', 'Callout', this.currentParentObjectId, 'sendMailCallout - Body :' + bodyJSON + 'statusCode:' + res.getStatusCode() + ' - From:' + this.mailFrom + ' - this.mailTo:' + this.mailTo + ' - this.subject:' + this.subject , UM010_Constant.SUCCESS);           
             } 
             else if (res != null && res.getStatusCode() != null && res.getStatusCode() != 200) { //ERROR
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_REF_SENDMAIL, className, 'Callout', this.currentParentObjectId,  'sendMailCallout - Body :' + bodyJSON + 'Exception:' + res.getStatusCode() + ' - statusCode:' + res.getStatusCode() + ' - From:' + this.mailFrom + ' - this.mailTo:' + this.mailTo + ' - this.subject:' + this.subject + ' - res' + res,  UM010_Constant.ERROR);
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'execute', 'Callout', this.currentParentObjectId,  'sendMailCallout - Body :' + bodyJSON + 'Exception:' + res.getStatusCode() + ' - statusCode:' + res.getStatusCode() + ' - From:' + this.mailFrom + ' - this.mailTo:' + this.mailTo + ' - this.subject:' + this.subject + ' - res' + res,  UM010_Constant.ERROR);
             }
             else { // ERROR
-                UM001_LogManager.writeLogActivityWithoutFuture(UM010_Constant.LOG_REF_SENDMAIL,className, 'Callout', this.currentParentObjectId,  'sendMailCallout - Body :' + bodyJSON + ' - Apex Callout Exception:' + errorMsg + ' - res' + res, UM010_Constant.ERROR);  
+                UM001_LogManager.writeLogActivityWithoutFuture(className, 'execute', 'Callout', this.currentParentObjectId,  'sendMailCallout - Body :' + bodyJSON + ' - Apex Callout Exception:' + errorMsg + ' - res' + res, UM010_Constant.ERROR);  
             }
         }
     }
