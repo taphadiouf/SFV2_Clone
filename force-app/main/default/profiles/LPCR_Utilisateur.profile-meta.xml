@@ -17682,6 +17682,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_Creation_conforme__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.SBQQ__Account__c</field>
         <readable>false</readable>
