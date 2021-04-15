@@ -48,6 +48,10 @@
                 <field>SBQQ__Opportunity2__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeOpportunite__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>SBQQ__Account__c</field>
             </layoutItems>
@@ -92,10 +96,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>RecordTypeId</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_TypeOpportunite__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
