@@ -5703,7 +5703,7 @@
         <allowDelete>true</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
+        <modifyAllRecords>false</modifyAllRecords>
         <object>Activity</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
@@ -5712,7 +5712,7 @@
         <allowDelete>true</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
+        <modifyAllRecords>false</modifyAllRecords>
         <object>Event</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
@@ -5721,7 +5721,7 @@
         <allowDelete>true</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
+        <modifyAllRecords>false</modifyAllRecords>
         <object>Task</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
