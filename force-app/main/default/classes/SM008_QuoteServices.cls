@@ -958,23 +958,4 @@ public with sharing class SM008_QuoteServices {
         
         
     }
-    //Method to popultae the RT of opp on Quote ( limitation 15 span lookup)
-    public static void updateRTDevis(Map<Id,SBQQ__Quote__c> newQuoteMap ){ 
-        List<SBQQ__Quote__c> quoteListToUpdate=new List<SBQQ__Quote__c>();
-        List<ID> opportunityList=new List<ID>();
-        Map<Id,String> mapOpportunityIDRTName=new Map<Id,String>();
-        //get RT of opportunities
-        for(SBQQ__Quote__c eachNewQuote : newQuoteMap.values()){
-           opportunityList.add(eachNewQuote.SBQQ__Opportunity2__c);
-        }
-        for(Opportunity opp  :[Select Id,Recordtype.Name from Opportunity where Id IN:opportunityList]){
-           mapOppIDRTName.put(opp.Id, opp.Recordtype.Name);
-        }
-        for(SBQQ__Quote__c eachNewQuote : newQuoteMap.values()){
-            quoteListToUpdate.add(new SBQQ__Quote__c(id=eachNewQuote.ID,LPCR_TypeOpportunite__c=mapOppIDRTName.get(eachNewQuote.SBQQ__Opportunity2__c)));
-        }
-        if(quoteListToUpdate.size() >0 ){
-            update quoteListToUpdate;
-        }
-    }
 }
