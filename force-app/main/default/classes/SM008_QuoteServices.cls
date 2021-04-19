@@ -968,10 +968,10 @@ public with sharing class SM008_QuoteServices {
            opportunityList.add(eachNewQuote.SBQQ__Opportunity2__c);
         }
         for(Opportunity opp  :[Select Id,Recordtype.Name from Opportunity where Id IN:opportunityList]){
-           mapOppIDRTName.put(opp.Id, opp.Recordtype.Name);
+            mapOpportunityIDRTName.put(opp.Id, opp.Recordtype.Name);
         }
         for(SBQQ__Quote__c eachNewQuote : newQuoteMap.values()){
-            quoteListToUpdate.add(new SBQQ__Quote__c(id=eachNewQuote.ID,LPCR_TypeOpportunite__c=mapOppIDRTName.get(eachNewQuote.SBQQ__Opportunity2__c)));
+            quoteListToUpdate.add(new SBQQ__Quote__c(id=eachNewQuote.ID,LPCR_TypeOpportunite__c=mapOpportunityIDRTName.get(eachNewQuote.SBQQ__Opportunity2__c)));
         }
         if(quoteListToUpdate.size() >0 ){
             update quoteListToUpdate;
