@@ -8,23 +8,6 @@
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
-        <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Bébés</fullName>
-                <default>false</default>
-                <label>Bébés</label>
-            </value>
-            <value>
-                <fullName>Moyens</fullName>
-                <default>false</default>
-                <label>Moyens</label>
-            </value>
-            <value>
-                <fullName>Grands</fullName>
-                <default>false</default>
-                <label>Grands</label>
-            </value>
-        </valueSetDefinition>
+        <valueSetName>Section</valueSetName>
     </valueSet>
 </CustomField>
