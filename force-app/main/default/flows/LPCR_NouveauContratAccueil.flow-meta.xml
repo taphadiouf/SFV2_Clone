@@ -3,8 +3,8 @@
     <actionCalls>
         <name>RedirectToDetailPage</name>
         <label>RedirectToDetailPage</label>
-        <locationX>1205</locationX>
-        <locationY>62</locationY>
+        <locationX>1350</locationX>
+        <locationY>259</locationY>
         <actionName>c:RedirectDetailPage</actionName>
         <actionType>component</actionType>
         <inputParameters>
@@ -34,7 +34,36 @@
             <targetReference>Get_Account</targetReference>
         </connector>
     </assignments>
-    <description>Ajouter valeure par defaut 0</description>
+    <decisions>
+        <name>Creer_Devis_ou_nom</name>
+        <label>Creer Devis ou nom</label>
+        <locationX>818</locationX>
+        <locationY>99</locationY>
+        <defaultConnector>
+            <targetReference>Message_Erreur_DOB_Enfant</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Résultat par défaut</defaultConnectorLabel>
+        <rules>
+            <name>creerDevis</name>
+            <conditionLogic>1 AND 2</conditionLogic>
+            <conditions>
+                <leftValueReference>StartDate</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>ContactEnfant10semaines</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ContactEnfantDOB</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Creer_Opportunite</targetReference>
+            </connector>
+            <label>creerDevis</label>
+        </rules>
+    </decisions>
+    <description>IS-2196 : refus ou blocage = si la date d&apos;entrée ne correspond pas à la date de naissance + 10 semaines minimum</description>
     <dynamicChoiceSets>
         <name>Choix_Contact_Enfant</name>
         <dataType>String</dataType>
@@ -55,6 +84,10 @@
         </filters>
         <limit>10</limit>
         <object>Contact</object>
+        <outputAssignments>
+            <assignToReference>ContactEnfantDOB</assignToReference>
+            <field>Birthdate</field>
+        </outputAssignments>
         <outputAssignments>
             <assignToReference>ContactEnfant</assignToReference>
             <field>Id</field>
@@ -81,6 +114,21 @@
         <picklistField>StageName</picklistField>
         <picklistObject>Opportunity</picklistObject>
     </dynamicChoiceSets>
+    <formulas>
+        <name>ContactEnfant10semaines</name>
+        <dataType>Date</dataType>
+        <expression>{!ContactEnfantDOB}+70</expression>
+    </formulas>
+    <formulas>
+        <name>CustomErrorMessage</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.LPCR_MessageErreurNaisance}</expression>
+    </formulas>
+    <formulas>
+        <name>MessageErreurDateNaissanceVide</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.LPCR_MessageErreurPasDEDOB}</expression>
+    </formulas>
     <formulas>
         <name>NomOppty</name>
         <dataType>String</dataType>
@@ -110,8 +158,8 @@
     <recordCreates>
         <name>Creer_Devis</name>
         <label>Créer Devis</label>
-        <locationX>1023</locationX>
-        <locationY>62</locationY>
+        <locationX>1188</locationX>
+        <locationY>189</locationY>
         <assignRecordIdToReference>QuoteID</assignRecordIdToReference>
         <connector>
             <targetReference>RedirectToDetailPage</targetReference>
@@ -211,8 +259,8 @@
     <recordCreates>
         <name>Creer_Opportunite</name>
         <label>Créer l&apos;opportunité</label>
-        <locationX>851</locationX>
-        <locationY>62</locationY>
+        <locationX>1066</locationX>
+        <locationY>138</locationY>
         <assignRecordIdToReference>OpportunityID</assignRecordIdToReference>
         <connector>
             <targetReference>Creer_Devis</targetReference>
@@ -594,15 +642,50 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
+        <name>Message_Erreur_DOB_Enfant</name>
+        <label>Message Erreur DOB Enfant</label>
+        <locationX>952</locationX>
+        <locationY>431</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>DateNaissanceEnfantVide</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(231, 23, 23);&quot;&gt;{!MessageErreurDateNaissanceVide}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>ContactEnfantDOB</leftValueReference>
+                    <operator>EqualTo</operator>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>SalesforceTest</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(231, 23, 23); font-size: 11.36px;&quot;&gt;{!CustomErrorMessage}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(231, 23, 23); font-size: 11.36px;&quot;&gt;Date naissance de l&apos;enfant : {!ContactEnfantDOB}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(231, 23, 23); font-size: 11.36px;&quot;&gt;Date d&apos;entrée souhaitée : {!StartDate}&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>ContactEnfantDOB</leftValueReference>
+                    <operator>NotEqualTo</operator>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
         <name>Suite</name>
         <label>Suite</label>
-        <locationX>898</locationX>
-        <locationY>291</locationY>
+        <locationX>698</locationX>
+        <locationY>86</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Creer_Opportunite</targetReference>
+            <targetReference>Creer_Devis_ou_nom</targetReference>
         </connector>
         <fields>
             <name>Contact_Enfant</name>
@@ -672,6 +755,14 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>la date de naissance de l&apos;enfant</description>
+        <name>ContactEnfantDOB</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
     </variables>
     <variables>
         <name>ContratEntreprise</name>
