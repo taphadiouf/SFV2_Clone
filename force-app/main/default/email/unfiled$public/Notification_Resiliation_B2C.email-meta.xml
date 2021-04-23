@@ -3,7 +3,7 @@
     <available>true</available>
     <description>Notification de résiliation envoyée au client B2C</description>
     <encodingKey>UTF-8</encodingKey>
-    <name>Notification Résiliation (B2C)</name>
+    <name>Template Notification Résiliation (B2C)</name>
     <style>none</style>
     <subject>Confirmation de la résiliation de votre contrat {!SBQQ__Quote__c.SBQQ__MasterContract__c}</subject>
     <type>text</type>
