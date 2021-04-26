@@ -47,6 +47,16 @@
                 <default>false</default>
                 <label>Garde d’enfants périscolaire</label>
             </value>
+            <value>
+                <fullName>Aucun</fullName>
+                <default>false</default>
+                <label>Aucun</label>
+            </value>
+            <value>
+                <fullName>Travaille avec la concurrence</fullName>
+                <default>false</default>
+                <label>Travaille avec la concurrence</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
