@@ -435,6 +435,20 @@
         <value>MICRO</value>
     </labels>
     <labels>
+        <fullName>LPCR_MessageErreurNaisance</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_MessageErreurNaisance</shortDescription>
+        <value>Date d&apos;entrée  incorrecte par rapport a la date de naissance de l&apos;enfant</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_MessageErreurPasDEDOB</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_MessageErreurPasDEDOB</shortDescription>
+        <value>Date de naissance enfant est vide</value>
+    </labels>
+    <labels>
         <fullName>LPCR_MontantM</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -468,6 +482,13 @@
         <protected>true</protected>
         <shortDescription>LPCR_NomEnfant</shortDescription>
         <value>Nom de l&apos;enfant :</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_NomProduitAccueilSupp</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_NomProduitAccueilSupp</shortDescription>
+        <value>Accueil Jour Supplémentaire Micro</value>
     </labels>
     <labels>
         <fullName>LPCR_Non</fullName>

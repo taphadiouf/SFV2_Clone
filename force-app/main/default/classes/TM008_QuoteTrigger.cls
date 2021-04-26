@@ -38,7 +38,7 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM008_QuoteServices.updateAccountsFromQuotes(newQuotesList,null);
             SM008_QuoteServices.updateMontantIndexation(newQuotesMap);
-            
+            SM008_QuoteServices.updateRTDevis(newQuotesMap);
         }
     }
     

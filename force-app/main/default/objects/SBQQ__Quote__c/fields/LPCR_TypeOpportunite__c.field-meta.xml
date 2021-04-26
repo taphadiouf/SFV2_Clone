@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Date_de_r_siliation_souhait_e__c</fullName>
-    <description>Date de résiliation souhaitée par le client qui est contenue dans le courrier de résiliation</description>
+    <fullName>LPCR_TypeOpportunite__c</fullName>
     <externalId>false</externalId>
-    <label>Date de résiliation souhaitée</label>
+    <label>Type d&apos;opportunité</label>
+    <length>255</length>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>Date</type>
+    <type>Text</type>
+    <unique>false</unique>
 </CustomField>

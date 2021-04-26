@@ -1,19 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Bébés</fullName>
+        <fullName>BB</fullName>
         <default>false</default>
-        <label>Bébés</label>
+        <label>BB</label>
     </customValue>
     <customValue>
-        <fullName>Moyens</fullName>
+        <fullName>BB1</fullName>
         <default>false</default>
-        <label>Moyens</label>
+        <label>BB1</label>
+    </customValue>
+    <customValue>
+        <fullName>BB2</fullName>
+        <default>false</default>
+        <label>BB2</label>
+    </customValue>
+    <customValue>
+        <fullName>BM</fullName>
+        <default>false</default>
+        <label>BM</label>
+    </customValue>
+    <customValue>
+        <fullName>M</fullName>
+        <default>false</default>
+        <label>M</label>
+    </customValue>
+    <customValue>
+        <fullName>M1</fullName>
+        <default>false</default>
+        <label>M1</label>
+    </customValue>
+    <customValue>
+        <fullName>M2</fullName>
+        <default>false</default>
+        <label>M2</label>
+    </customValue>
+    <customValue>
+        <fullName>MG</fullName>
+        <default>false</default>
+        <label>MG</label>
+    </customValue>
+    <customValue>
+        <fullName>G</fullName>
+        <default>false</default>
+        <label>G</label>
+    </customValue>
+    <customValue>
+        <fullName>GG</fullName>
+        <default>false</default>
+        <label>GG</label>
+    </customValue>
+    <customValue>
+        <fullName>SAT</fullName>
+        <default>false</default>
+        <label>SAT</label>
     </customValue>
     <customValue>
         <fullName>Grands</fullName>
         <default>false</default>
+        <isActive>false</isActive>
         <label>Grands</label>
+    </customValue>
+    <customValue>
+        <fullName>Moyens</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Moyens</label>
+    </customValue>
+    <customValue>
+        <fullName>Bébés</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Bébés</label>
     </customValue>
     <masterLabel>Section</masterLabel>
     <sorted>false</sorted>

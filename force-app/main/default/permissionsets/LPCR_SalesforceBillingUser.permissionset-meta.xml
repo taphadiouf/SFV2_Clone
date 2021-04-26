@@ -4474,6 +4474,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>blng__CreditNote__c.blng__Debits__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>blng__DebitNoteAllocationCreditNoteLine__c.blng__Balance__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6210,6 +6215,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_TypeCreche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_NombreJoursUtilisation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

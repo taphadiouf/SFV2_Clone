@@ -177,6 +177,11 @@
                 <default>false</default>
                 <label>LPCR_BonCommandeEnvoye__c</label>
             </value>
+            <value>
+                <fullName>LPCR_NombreDeJour__c</fullName>
+                <default>false</default>
+                <label>LPCR_NombreDeJour__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Date_de_r_siliation_Effective__c</fullName>
+    <fullName>LPCR_DateResiliationEffective__c</fullName>
     <externalId>false</externalId>
-    <formula>IF (  Date_l_gale_de_r_siliation__c  &lt;=  Date_de_r_siliation_souhait_e__c ,Date_de_r_siliation_souhait_e__c ,Date_l_gale_de_r_siliation__c)</formula>
+    <formula>IF (  LPCR_DateLegaleResiliation__c  &lt;=  LPCR_DateResiliationSouhaitee__c ,LPCR_DateResiliationSouhaitee__c ,LPCR_DateLegaleResiliation__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Date de résiliation Effective</label>
     <required>false</required>
