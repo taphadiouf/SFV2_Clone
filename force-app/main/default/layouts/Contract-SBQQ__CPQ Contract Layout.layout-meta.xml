@@ -56,6 +56,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_InitAutoAvecDateDebut__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Nombre_de_jours_cumul_s__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

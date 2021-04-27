@@ -1725,6 +1725,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contract.LPCR_Nombre_de_jours_cumul_s__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Event.LPCR_Abouti__c</field>
         <readable>true</readable>
     </fieldPermissions>
