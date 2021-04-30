@@ -82,6 +82,16 @@
         <isRequired>false</isRequired>
     </availableFields>
     <availableFields>
+        <field>SBQQ__NetPrice__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </availableFields>
+    <availableFields>
+        <field>SBQQ__NetTotal__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </availableFields>
+    <availableFields>
         <field>SBQQ__Optional__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
@@ -193,22 +203,7 @@
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
-        <field>LPCR_PrixUnitaire__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
-        <field>LPCR_MontantAnnuelForfaitMICRO__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
         <field>SBQQ__ListPrice__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </displayedFields>
-    <displayedFields>
-        <field>SBQQ__Uplift__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
@@ -218,12 +213,17 @@
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
-        <field>SBQQ__NetPrice__c</field>
+        <field>SBQQ__Uplift__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
     <displayedFields>
-        <field>SBQQ__NetTotal__c</field>
+        <field>LPCR_PrixUnitaire__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>LPCR_MontantAnnuelForfaitMICRO__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
