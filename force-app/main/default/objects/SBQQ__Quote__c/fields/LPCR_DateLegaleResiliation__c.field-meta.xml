@@ -9,7 +9,7 @@
 &quot;6&quot;, ADDMONTHS(LPCR_DateReceptionCourrierResiliation__c ,6), null
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Date légale de résiliation</label>
+    <label>Résiliation Suivant Préavis</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
