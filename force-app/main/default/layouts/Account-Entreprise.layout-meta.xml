@@ -162,6 +162,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_DateProchainAppelOffre__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_CTNum__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
