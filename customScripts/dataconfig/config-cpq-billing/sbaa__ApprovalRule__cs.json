@@ -6,12 +6,14 @@
                 "referenceId": "sbaa__ApprovalRule__cRef1"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-04-07T12:20:56.000+0000",
+            "LastViewedDate": "2021-04-07T12:20:56.000+0000",
             "Name": "Approval B2C : N+2",
             "sbaa__Active__c": true,
             "sbaa__ApprovalChain__r": {
                 "attributes": {
                     "type": "sbaa__ApprovalChain__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
+                    "url": "/services/data/v51.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
                 },
                 "Id": "a4Z3O00000053U3UAI"
             },
@@ -20,14 +22,14 @@
             "sbaa__ApprovalTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
                 },
                 "Id": "a4h3O0000008S6iQAE"
             },
             "sbaa__Approver__r": {
                 "attributes": {
                     "type": "sbaa__Approver__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__Approver__c/a4g3O0000000NZWQA2"
+                    "url": "/services/data/v51.0/sobjects/sbaa__Approver__c/a4g3O0000000NZWQA2"
                 },
                 "Id": "a4g3O0000000NZWQA2"
             },
@@ -37,14 +39,14 @@
             "sbaa__RejectionTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
                 },
                 "Id": "a4h3O0000008S6dQAE"
             },
             "sbaa__RequestTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
                 },
                 "Id": "a4h3O0000008S6nQAE"
             },
@@ -61,11 +63,11 @@
             "IsDeleted": false,
             "Name": "Approval : Responsable ADV",
             "sbaa__Active__c": true,
-            "sbaa__AdvancedCondition__c": "5 AND ((1 AND (4 OR 6 OR 7)) OR (2 AND (4 OR 6)) OR (3 AND 8 AND 9))",
+            "sbaa__AdvancedCondition__c": "5 AND ((1 AND (  6 OR 7) AND 10) OR (2 AND ( 6)) OR (3 AND 8 AND 9))",
             "sbaa__ApprovalChain__r": {
                 "attributes": {
                     "type": "sbaa__ApprovalChain__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U2UAI"
+                    "url": "/services/data/v51.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U2UAI"
                 },
                 "Id": "a4Z3O00000053U2UAI"
             },
@@ -74,7 +76,7 @@
             "sbaa__ApprovalTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
                 },
                 "Id": "a4h3O0000008S6iQAE"
             },
@@ -85,21 +87,21 @@
             "sbaa__RejectionTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
                 },
                 "Id": "a4h3O0000008S6dQAE"
             },
             "sbaa__RequestTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
                 },
                 "Id": "a4h3O0000008S6nQAE"
             },
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2020-07-21T21:50:23.000+0000"
+            "SystemModstamp": "2021-04-30T13:44:28.000+0000"
         },
         {
             "attributes": {
@@ -107,13 +109,15 @@
                 "referenceId": "sbaa__ApprovalRule__cRef3"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-04-07T18:09:11.000+0000",
+            "LastViewedDate": "2021-04-07T18:09:11.000+0000",
             "Name": "Approval B2B : N+1",
             "sbaa__Active__c": true,
             "sbaa__AdvancedCondition__c": "((1 OR 2) AND (3 OR 4) AND (5 OR 6 OR 7 OR 8)) OR (3 AND 9 AND 10)",
             "sbaa__ApprovalChain__r": {
                 "attributes": {
                     "type": "sbaa__ApprovalChain__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
+                    "url": "/services/data/v51.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
                 },
                 "Id": "a4Z3O00000053U3UAI"
             },
@@ -122,7 +126,7 @@
             "sbaa__ApprovalTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
                 },
                 "Id": "a4h3O0000008S6iQAE"
             },
@@ -133,14 +137,14 @@
             "sbaa__RejectionTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
                 },
                 "Id": "a4h3O0000008S6dQAE"
             },
             "sbaa__RequestTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
                 },
                 "Id": "a4h3O0000008S6nQAE"
             },
@@ -155,6 +159,8 @@
                 "referenceId": "sbaa__ApprovalRule__cRef4"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-04-07T12:45:01.000+0000",
+            "LastViewedDate": "2021-04-07T12:45:01.000+0000",
             "Name": "Approval : Commercial B2B",
             "sbaa__Active__c": true,
             "sbaa__ApprovalRecipients__c": "Record Owner",
@@ -162,7 +168,7 @@
             "sbaa__ApprovalTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
                 },
                 "Id": "a4h3O0000008S6iQAE"
             },
@@ -173,14 +179,14 @@
             "sbaa__RejectionTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
                 },
                 "Id": "a4h3O0000008S6dQAE"
             },
             "sbaa__RequestTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
                 },
                 "Id": "a4h3O0000008S6nQAE"
             },
@@ -195,13 +201,15 @@
                 "referenceId": "sbaa__ApprovalRule__cRef5"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-04-07T18:09:11.000+0000",
+            "LastViewedDate": "2021-04-07T18:09:11.000+0000",
             "Name": "Approval B2C : N+1",
             "sbaa__Active__c": true,
             "sbaa__AdvancedCondition__c": "1 AND 2 AND 3 AND (4 OR 5)",
             "sbaa__ApprovalChain__r": {
                 "attributes": {
                     "type": "sbaa__ApprovalChain__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
+                    "url": "/services/data/v51.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
                 },
                 "Id": "a4Z3O00000053U3UAI"
             },
@@ -210,7 +218,7 @@
             "sbaa__ApprovalTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
                 },
                 "Id": "a4h3O0000008S6iQAE"
             },
@@ -221,14 +229,14 @@
             "sbaa__RejectionTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
                 },
                 "Id": "a4h3O0000008S6dQAE"
             },
             "sbaa__RequestTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
                 },
                 "Id": "a4h3O0000008S6nQAE"
             },
@@ -249,7 +257,7 @@
             "sbaa__ApprovalChain__r": {
                 "attributes": {
                     "type": "sbaa__ApprovalChain__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U1UAI"
+                    "url": "/services/data/v51.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U1UAI"
                 },
                 "Id": "a4Z3O00000053U1UAI"
             },
@@ -258,14 +266,14 @@
             "sbaa__ApprovalTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
                 },
                 "Id": "a4h3O0000008S6iQAE"
             },
             "sbaa__Approver__r": {
                 "attributes": {
                     "type": "sbaa__Approver__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__Approver__c/a4g3O0000000NZXQA2"
+                    "url": "/services/data/v51.0/sobjects/sbaa__Approver__c/a4g3O0000000NZXQA2"
                 },
                 "Id": "a4g3O0000000NZXQA2"
             },
@@ -275,14 +283,14 @@
             "sbaa__RejectionTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
                 },
                 "Id": "a4h3O0000008S6dQAE"
             },
             "sbaa__RequestTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
                 },
                 "Id": "a4h3O0000008S6nQAE"
             },
@@ -303,7 +311,7 @@
             "sbaa__ApprovalChain__r": {
                 "attributes": {
                     "type": "sbaa__ApprovalChain__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
+                    "url": "/services/data/v51.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
                 },
                 "Id": "a4Z3O00000053U3UAI"
             },
@@ -312,14 +320,14 @@
             "sbaa__ApprovalTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
                 },
                 "Id": "a4h3O0000008S6iQAE"
             },
             "sbaa__Approver__r": {
                 "attributes": {
                     "type": "sbaa__Approver__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__Approver__c/a4g3O0000000NZWQA2"
+                    "url": "/services/data/v51.0/sobjects/sbaa__Approver__c/a4g3O0000000NZWQA2"
                 },
                 "Id": "a4g3O0000000NZWQA2"
             },
@@ -329,14 +337,14 @@
             "sbaa__RejectionTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
                 },
                 "Id": "a4h3O0000008S6dQAE"
             },
             "sbaa__RequestTemplate__r": {
                 "attributes": {
                     "type": "sbaa__EmailTemplate__c",
-                    "url": "/services/data/v50.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
                 },
                 "Id": "a4h3O0000008S6nQAE"
             },
@@ -344,6 +352,150 @@
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
             "SystemModstamp": "2020-07-21T21:53:09.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalRule__c",
+                "referenceId": "sbaa__ApprovalRule__cRef8"
+            },
+            "IsDeleted": false,
+            "Name": "Approval Ajout/Suppression Berceau : Commercial N+1",
+            "sbaa__Active__c": true,
+            "sbaa__AdvancedCondition__c": "1 AND 2",
+            "sbaa__ApprovalChain__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalChain__c",
+                    "url": "/services/data/v51.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
+                },
+                "Id": "a4Z3O00000053U3UAI"
+            },
+            "sbaa__ApprovalRecipients__c": "Record Owner",
+            "sbaa__ApprovalStep__c": 1,
+            "sbaa__ApprovalTemplate__r": {
+                "attributes": {
+                    "type": "sbaa__EmailTemplate__c",
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
+                },
+                "Id": "a4h3O0000008S6iQAE"
+            },
+            "sbaa__ApproverField__c": "LPCR_OwnerManager__c",
+            "sbaa__ConditionsMet__c": "All",
+            "sbaa__Parallel__c": false,
+            "sbaa__RejectionRecipients__c": "Record Owner",
+            "sbaa__RejectionTemplate__r": {
+                "attributes": {
+                    "type": "sbaa__EmailTemplate__c",
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
+                },
+                "Id": "a4h3O0000008S6dQAE"
+            },
+            "sbaa__RequestTemplate__r": {
+                "attributes": {
+                    "type": "sbaa__EmailTemplate__c",
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
+                },
+                "Id": "a4h3O0000008S6nQAE"
+            },
+            "sbaa__RequireExplicitApproval__c": false,
+            "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
+            "sbaa__TargetObject__c": "SBQQ__Quote__c",
+            "SystemModstamp": "2021-03-19T10:39:10.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalRule__c",
+                "referenceId": "sbaa__ApprovalRule__cRef9"
+            },
+            "IsDeleted": false,
+            "Name": "Approval Ajout/Suppression Berceau : ADV",
+            "sbaa__Active__c": true,
+            "sbaa__AdvancedCondition__c": "1 AND 2",
+            "sbaa__ApprovalChain__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalChain__c",
+                    "url": "/services/data/v51.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U2UAI"
+                },
+                "Id": "a4Z3O00000053U2UAI"
+            },
+            "sbaa__ApprovalRecipients__c": "Record Owner",
+            "sbaa__ApprovalStep__c": 2,
+            "sbaa__ApprovalTemplate__r": {
+                "attributes": {
+                    "type": "sbaa__EmailTemplate__c",
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
+                },
+                "Id": "a4h3O0000008S6iQAE"
+            },
+            "sbaa__ApproverField__c": "LPCR_ResponsableADV__c",
+            "sbaa__ConditionsMet__c": "All",
+            "sbaa__Parallel__c": false,
+            "sbaa__RejectionRecipients__c": "Record Owner",
+            "sbaa__RejectionTemplate__r": {
+                "attributes": {
+                    "type": "sbaa__EmailTemplate__c",
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
+                },
+                "Id": "a4h3O0000008S6dQAE"
+            },
+            "sbaa__RequestTemplate__r": {
+                "attributes": {
+                    "type": "sbaa__EmailTemplate__c",
+                    "url": "/services/data/v51.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
+                },
+                "Id": "a4h3O0000008S6nQAE"
+            },
+            "sbaa__RequireExplicitApproval__c": false,
+            "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
+            "sbaa__TargetObject__c": "SBQQ__Quote__c",
+            "SystemModstamp": "2021-03-19T10:38:52.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalRule__c",
+                "referenceId": "sbaa__ApprovalRule__cRef10"
+            },
+            "IsDeleted": false,
+            "Name": "Approbation de Résiliation Suite Préavis SC",
+            "sbaa__Active__c": true,
+            "sbaa__AdvancedCondition__c": "900",
+            "sbaa__ApprovalChain__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalChain__c",
+                    "url": "/services/data/v51.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
+                },
+                "Id": "a4Z3O00000053U3UAI"
+            },
+            "sbaa__ApproverField__c": "LPCR_CommercialB2B__c",
+            "sbaa__ConditionsMet__c": "All",
+            "sbaa__Parallel__c": false,
+            "sbaa__RequireExplicitApproval__c": false,
+            "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
+            "sbaa__TargetObject__c": "SBQQ__Quote__c",
+            "SystemModstamp": "2021-04-30T12:46:31.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalRule__c",
+                "referenceId": "sbaa__ApprovalRule__cRef11"
+            },
+            "IsDeleted": false,
+            "Name": "Approbation de Résiliation Suite Préavis ADV",
+            "sbaa__Active__c": true,
+            "sbaa__AdvancedCondition__c": "901",
+            "sbaa__ApprovalChain__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalChain__c",
+                    "url": "/services/data/v51.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U2UAI"
+                },
+                "Id": "a4Z3O00000053U2UAI"
+            },
+            "sbaa__ApproverField__c": "LPCR_ResponsableADV__c",
+            "sbaa__ConditionsMet__c": "All",
+            "sbaa__Parallel__c": false,
+            "sbaa__RequireExplicitApproval__c": false,
+            "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
+            "sbaa__TargetObject__c": "SBQQ__Quote__c",
+            "SystemModstamp": "2021-04-30T12:53:18.000+0000"
         }
     ]
 }

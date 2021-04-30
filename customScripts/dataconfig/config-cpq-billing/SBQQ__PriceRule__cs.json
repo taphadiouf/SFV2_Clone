@@ -6,6 +6,8 @@
                 "referenceId": "SBQQ__PriceRule__cRef1"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-03-30T08:56:00.000+0000",
+            "LastViewedDate": "2021-03-30T08:56:00.000+0000",
             "Name": "Calcul de la quantité totale sur Paris",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "(1 OR 2) AND 3",
@@ -13,7 +15,7 @@
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 5,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -21,6 +23,8 @@
                 "referenceId": "SBQQ__PriceRule__cRef2"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-03-29T21:42:46.000+0000",
+            "LastViewedDate": "2021-03-29T21:42:46.000+0000",
             "Name": "Calcul de la quantité totale sur IDF",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "( 1 OR 2 ) AND 3",
@@ -28,7 +32,7 @@
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 5,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -36,6 +40,8 @@
                 "referenceId": "SBQQ__PriceRule__cRef3"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-03-29T21:16:48.000+0000",
+            "LastViewedDate": "2021-03-29T21:16:48.000+0000",
             "Name": "Affecter nombre berceaux gratuit au produit 'berceau gratuit'",
             "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
@@ -51,13 +57,15 @@
                 "referenceId": "SBQQ__PriceRule__cRef4"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-03-29T21:43:01.000+0000",
+            "LastViewedDate": "2021-03-29T21:43:01.000+0000",
             "Name": "MAJ le Taux horaire sur les options du produit Mac",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 505,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -65,13 +73,15 @@
                 "referenceId": "SBQQ__PriceRule__cRef5"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-03-30T05:38:25.000+0000",
+            "LastViewedDate": "2021-03-30T05:38:25.000+0000",
             "Name": "Clone with related price rule",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 5,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -79,6 +89,8 @@
                 "referenceId": "SBQQ__PriceRule__cRef6"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-03-30T12:41:35.000+0000",
+            "LastViewedDate": "2021-03-30T12:41:35.000+0000",
             "Name": "Calcul prix berceaux Référencement (amend & renewal)",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "(( 1 AND 2 ) OR  3 ) AND 5 AND 6",
@@ -87,7 +99,7 @@
             "SBQQ__EvaluationOrder__c": 20,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -101,7 +113,7 @@
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 20,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -115,7 +127,7 @@
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 550,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -129,7 +141,7 @@
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -143,7 +155,7 @@
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -151,8 +163,8 @@
                 "referenceId": "SBQQ__PriceRule__cRef11"
             },
             "IsDeleted": false,
-            "LastReferencedDate": "2021-01-26T15:19:35.000+0000",
-            "LastViewedDate": "2021-01-26T15:19:35.000+0000",
+            "LastReferencedDate": "2021-03-29T19:58:23.000+0000",
+            "LastViewedDate": "2021-03-29T19:58:23.000+0000",
             "Name": "Calcul prix berceaux micro (avec majoration)",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -160,7 +172,7 @@
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -174,7 +186,7 @@
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 40,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -182,6 +194,8 @@
                 "referenceId": "SBQQ__PriceRule__cRef13"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-03-30T05:44:54.000+0000",
+            "LastViewedDate": "2021-03-30T05:44:54.000+0000",
             "Name": "Définir 'contrat cadre' sur devis (amendement/renewal)",
             "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
@@ -205,7 +219,7 @@
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -220,7 +234,7 @@
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 5,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -234,7 +248,7 @@
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 30,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -248,7 +262,7 @@
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 50,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -262,7 +276,7 @@
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -276,7 +290,7 @@
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -284,8 +298,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef20"
             },
             "IsDeleted": false,
-            "LastReferencedDate": "2020-11-17T14:49:21.000+0000",
-            "LastViewedDate": "2020-11-17T14:49:21.000+0000",
             "Name": "Calcul prix berceaux Référencement",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "3 AND (1 OR 2)",
@@ -294,7 +306,7 @@
             "SBQQ__EvaluationOrder__c": 20,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-04-06T14:29:17.000+0000"
         },
         {
             "attributes": {
@@ -308,7 +320,7 @@
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 45,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -323,7 +335,7 @@
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 24,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -331,8 +343,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef23"
             },
             "IsDeleted": false,
-            "LastReferencedDate": "2021-01-26T11:22:30.000+0000",
-            "LastViewedDate": "2021-01-26T11:22:30.000+0000",
             "Name": "Calcul prix berceau ALSH",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "2 AND 3 AND ( 1 OR ( 4 AND 5))",
@@ -341,7 +351,7 @@
             "SBQQ__EvaluationOrder__c": 500,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
@@ -349,6 +359,25 @@
                 "referenceId": "SBQQ__PriceRule__cRef24"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-04-28T15:17:22.000+0000",
+            "LastViewedDate": "2021-04-28T15:17:22.000+0000",
+            "Name": "Default value nombre de jour",
+            "SBQQ__Active__c": true,
+            "SBQQ__ConditionsMet__c": "All",
+            "SBQQ__ConfiguratorEvaluationEvent__c": "Edit",
+            "SBQQ__EvaluationEvent__c": "Before Calculate",
+            "SBQQ__EvaluationOrder__c": 60,
+            "SBQQ__TargetObject__c": "Calculator",
+            "SystemModstamp": "2021-04-12T07:29:14.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceRule__c",
+                "referenceId": "SBQQ__PriceRule__cRef25"
+            },
+            "IsDeleted": false,
+            "LastReferencedDate": "2021-03-29T19:44:35.000+0000",
+            "LastViewedDate": "2021-03-29T19:44:35.000+0000",
             "Name": "Calcul prix berceaux MAC",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "1 AND 8 AND  (2 OR 3 OR 7) AND (4 OR (5 AND 6))",
@@ -357,12 +386,12 @@
             "SBQQ__EvaluationOrder__c": 500,
             "SBQQ__LookupObject__c": "LPCR_RessourceFamille__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
                 "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef25"
+                "referenceId": "SBQQ__PriceRule__cRef26"
             },
             "IsDeleted": false,
             "Name": "Calcul prix berceaux réservataires  Amendment and Renewal",
@@ -373,12 +402,12 @@
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
                 "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef26"
+                "referenceId": "SBQQ__PriceRule__cRef27"
             },
             "IsDeleted": false,
             "Name": "Set Start date & End date (New/amendment MAC)",
@@ -393,7 +422,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef27"
+                "referenceId": "SBQQ__PriceRule__cRef28"
             },
             "IsDeleted": false,
             "Name": "Set price 0 to firt option ( 11 month Mac)",
@@ -408,21 +437,23 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef28"
+                "referenceId": "SBQQ__PriceRule__cRef29"
             },
             "IsDeleted": false,
+            "LastReferencedDate": "2021-03-29T21:52:36.000+0000",
+            "LastViewedDate": "2021-03-29T21:52:36.000+0000",
             "Name": "Frais de dossier pour les contrats de référencement",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 25,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
                 "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef29"
+                "referenceId": "SBQQ__PriceRule__cRef30"
             },
             "IsDeleted": false,
             "Name": "Set Start date & End date to QL ( MAC/Renewal)",
@@ -437,7 +468,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef30"
+                "referenceId": "SBQQ__PriceRule__cRef31"
             },
             "IsDeleted": false,
             "Name": "Set dates to 11 month Options (MAC)",
@@ -447,12 +478,12 @@
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 600,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
                 "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef31"
+                "referenceId": "SBQQ__PriceRule__cRef32"
             },
             "IsDeleted": false,
             "Name": "MAJ région et crèche sur QL à partir du parent bundle",
@@ -461,12 +492,12 @@
             "SBQQ__ConfiguratorEvaluationEvent__c": "Edit",
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
                 "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef32"
+                "referenceId": "SBQQ__PriceRule__cRef33"
             },
             "IsDeleted": false,
             "Name": "Renseigner date de fin de quote line maximale (referencement)",
@@ -475,16 +506,14 @@
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         },
         {
             "attributes": {
                 "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef33"
+                "referenceId": "SBQQ__PriceRule__cRef34"
             },
             "IsDeleted": false,
-            "LastReferencedDate": "2020-12-03T15:59:32.000+0000",
-            "LastViewedDate": "2020-12-03T15:59:32.000+0000",
             "Name": "Mettre à jour champs QL quand bon de commande envoyé",
             "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
@@ -495,7 +524,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef34"
+                "referenceId": "SBQQ__PriceRule__cRef35"
             },
             "IsDeleted": false,
             "Name": "Set price to 0 on futur QL ( referencement)",
@@ -509,7 +538,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef35"
+                "referenceId": "SBQQ__PriceRule__cRef36"
             },
             "IsDeleted": false,
             "Name": "Cancel discount on MAC renewal",
@@ -519,7 +548,7 @@
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 500,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-01-26T18:53:57.000+0000"
+            "SystemModstamp": "2021-03-30T08:38:49.000+0000"
         }
     ]
 }
