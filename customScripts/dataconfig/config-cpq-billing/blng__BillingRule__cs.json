@@ -123,6 +123,8 @@
             "blng__InitialBillingTrigger__c": "Order Product Activation Date",
             "blng__PartialPeriodTreatment__c": "Separate",
             "IsDeleted": false,
+            "LastReferencedDate": "2021-04-30T11:03:43.000+0000",
+            "LastViewedDate": "2021-04-30T11:03:43.000+0000",
             "Name": "LPCR Règle de facturation",
             "SystemModstamp": "2020-10-29T18:02:25.000+0000"
         },
@@ -139,6 +141,20 @@
             "IsDeleted": false,
             "Name": "Règle de facturation - sans facture",
             "SystemModstamp": "2020-07-21T21:37:59.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__BillingRule__c",
+                "referenceId": "blng__BillingRule__cRef11"
+            },
+            "blng__Active__c": true,
+            "blng__AmendmentBillCycleDateAlignment__c": "Do not align amended Order Product",
+            "blng__GenerateInvoices__c": "Yes",
+            "blng__InitialBillingTrigger__c": "Order Product Activation Date",
+            "blng__PartialPeriodTreatment__c": "Separate",
+            "IsDeleted": false,
+            "Name": "REGLE_FACT_MARIE_NOM",
+            "SystemModstamp": "2021-03-23T16:14:02.000+0000"
         }
     ]
 }
