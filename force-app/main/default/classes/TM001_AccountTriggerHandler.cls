@@ -18,7 +18,6 @@ public without sharing class TM001_AccountTriggerHandler extends TM000_TriggerHa
     protected override void afterInsert() {
 
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
-            SM007_LeadServices.accountsIds = new Set<Id>(newAccountsMap.keySet());
             SM029_AccountService.defautCounterCTNum(newAccountsMap);
         }
     }
