@@ -120,6 +120,10 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_InitAutoAvecDateDebut__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_SocieteFacturante__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>

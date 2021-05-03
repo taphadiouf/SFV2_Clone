@@ -76,7 +76,7 @@ echo ">> Processing CONGA CIQ..."
 sfdx force:data:tree:export -q "select csfb__Name__c, csfb__Description__c, csfb__Query__c from csfb__Conga_Merge_Query__c  "  -d $OUTPUT_DIR -p -u $TARGET_ENV
 
 echo ">> Processing CONGA CQT..."
-sfdx force:data:tree:export -q "select APXTCFQ__Name__c, APXTCFQ__Description__c, APXTCFQ__Key__c, APXTCFQ__Label_Template_Use_Detail_Data__c, APXTCFQ__Master_Field_to_Set_1__c, APXTCFQ__Master_Field_to_Set_2__c, APXTCFQ__Master_Field_to_Set_3__c, APXTCFQ__Template_Extension__c, APXTCFQ__Template_Group__c, APXTCFQ__Template_Type__c  from APXTCFQ__Conga_Template__c"  -d $OUTPUT_DIR -p -u $TARGET_ENV
+sfdx force:data:tree:export -q "select APXTCFQ__Name__c, APXTCFQ__Description__c, APXTCFQ__Label_Template_Use_Detail_Data__c, APXTCFQ__Master_Field_to_Set_1__c, APXTCFQ__Master_Field_to_Set_2__c, APXTCFQ__Master_Field_to_Set_3__c, APXTCFQ__Template_Extension__c, APXTCFQ__Template_Group__c, APXTCFQ__Template_Type__c  from APXTCFQ__Conga_Template__c"  -d $OUTPUT_DIR -p -u $TARGET_ENV
 
 echo ">> Processing CONGA CQQ..."
 sfdx force:data:tree:export -q "select APXTCFQ__Name__c, APXTCFQ__Description__c, APXTCFQ__Query__c from APXTCFQ__Conga_Merge_Query__c"  -d $OUTPUT_DIR -p -u $TARGET_ENV

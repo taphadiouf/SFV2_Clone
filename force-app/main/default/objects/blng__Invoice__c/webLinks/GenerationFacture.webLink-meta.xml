@@ -24,7 +24,7 @@
 &amp;QueryId=[LineItems]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQInvoice_Lines_LineItems__c},
 [CompanyDets]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQAccount_Details_CompanyDets__c},
 [LigneBerceau]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQLigne_Berceau_LigneBerceau__c}
-{!IF(NOT(ISBLANK(blng__Invoice__c.Tech_DateAttestationCAF__c)),&apos;,[AttestationCAF]&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQAttestation_CAF__c&amp;&apos;?pv0=&apos;&amp;blng__Invoice__c.blng__AccountId__c&amp;&apos;~pv1=&apos;&amp;TEXT(blng__Invoice__c.Tech_DateAttestationCAF__c)&amp;&apos;~pv2=&apos;&amp;blng__Invoice__c.LPCR_ContactEnfantId__c,&apos;&apos;)},
+{!IF(NOT(ISBLANK(blng__Invoice__c.Tech_DateAttestationCAF__c)),&apos;,[AttestationCAF]&apos;&amp;$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQAttestation_CAF__c&amp;&apos;?pv0=&apos;&amp;blng__Invoice__c.blng__AccountId__c&amp;&apos;~pv1=&apos;&amp;TEXT(blng__Invoice__c.Tech_DateAttestationCAF__c)&amp;&apos;~pv2=&apos;&amp;blng__Invoice__c.Id,&apos;&apos;)},
 [CreditNotes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQCredit_Notes__c},
 [DebitNotes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQDebit_Notes__c},
 [ParticipationCAF]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQParticipation_CAF__c}

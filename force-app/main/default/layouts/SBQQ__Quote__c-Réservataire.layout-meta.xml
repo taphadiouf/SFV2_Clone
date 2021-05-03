@@ -121,6 +121,10 @@
                 <field>LPCR_InitAutoAvecDateDebut__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_SocieteFacturante__c</field>
+            </layoutItems>
+            <layoutItems>
                 <emptySpace>true</emptySpace>
             </layoutItems>
             <layoutItems>

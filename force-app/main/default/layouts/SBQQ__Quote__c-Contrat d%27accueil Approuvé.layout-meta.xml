@@ -107,7 +107,12 @@
                 <field>LPCR_DateFin__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_SocieteFacturante__c</field>
+            </layoutItems>
+        </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -424,11 +429,6 @@
             <actionName>EnvoiAnnexe2</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Conga_Composer_Annexe3</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>SBQQ__CloneWithRelatedClassic</actionName>
