@@ -1052,4 +1052,103 @@ public class SM008_QuoteServices_Test {
         quote = [SELECT Id ,LPCR_IndexationConvenue__c,ApprovalStatus__c,LPCR_SommePrixAnnuel__c,LPCR_MontantIndexation__c, recordtype.developername, recordtypeid,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
         
     }
+    @isTest()
+    public static void updateDate_Test(){
+
+        System.runAs(UM002_TestDataFactory.createUser()){
+            
+        
+            Test.startTest();
+                Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Reservataire');
+                LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
+                insert planningEnfant;
+                List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
+                
+                List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,accs[0].Id,'0006',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 08, 31),123, 'Express', 'Non', Null, Null );
+                insert Renewalcontract;
+                Contract con2 = Renewalcontract.get(0);
+                con2.LPCR_Sales_Rep__c = UserInfo.getUserId();
+                con2.LPCR_ResponsableADV__c = UserInfo.getUserId();
+                con2.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+                con2.RecordTypeId = CONTRACT_CONTRAT_ACCUEIL_RT_ID;
+        
+                update con2;
+                
+                
+                List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
+                Opportunity opp = oppties.get(0);
+                opp.LPCR_IndexationConvenue__c='Oui';
+                opp.LPCR_TypeFacturation__c='Arrears';
+                opp.LPCR_BillingFrequency__c='Invoice Plan';
+                opp.LPCR_PlanningEnfant__c = planningEnfant.id;
+                opp.SBQQ__RenewedContract__c = con2.id;
+                update opp;
+                //quote before 
+                SBQQ__Quote__c quote1 = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
+                quote1.SBQQ__RenewalUpliftRate__c=3;
+                
+                quote1.recordtypeid=ContratA_RT_ID;
+                insert quote1;
+                SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
+                quote.SBQQ__Type__c='Renewal';
+                
+                List<Account> accs2 = [SELECT Id, name   from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
+                Account acc = accs2.get(0);
+                List<Contract> contract = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c  From Contract WHERE Name = '0001' Limit 1];
+                Contract con = contract.get(0);
+                List<Opportunity> oppAmends = UM002_TestDataFactory.createOpportunities(1, 'testOppAmend', 'Prospecting');
+                Opportunity oppAmend = oppAmends.get(0);
+                SBQQ__Quote__c amendmentQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = oppAmend.id,
+                SBQQ__Account__c = acc.Id,
+                SBQQ__Type__c = 'Amendment',
+		        LPCR_Creation_conforme__c = true,    
+                RecordTypeId = reservataireRecTypeId,
+                LPCR_Creche__c = acc.id,
+                SBQQ__StartDate__c = date.today(),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31),
+                SBQQ__MasterContract__c = con.Id,LPCR_TypeAvenant__c ='Résiliation'
+            );
+                insert amendmentQuote;
+                quote.RecordTypeId = ContratA_RT_ID;
+                insert quote;
+                Id standardPricebookId = Test.getStandardPricebookId();
+                UM002_TestDataFactory.insertBillingCustomSettings();
+            
+                blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+                    
+                blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+                    
+                blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+                
+                blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
+                
+                Product2 prod = UM002_TestDataFactory.createProduct('BerceauMicrotest', billingRule.Id, revRecRule.Id,taxRule.Id );
+                prod.SBQQ__SubscriptionPricing__c ='Fixed Price';
+                insert prod;
+                PricebookEntry priceBookEntry1 = UM002_TestDataFactory.createPricebookEntry(standardPricebookId,prod.Id);
+                    insert priceBookEntry1;
+                    
+                
+                con2.SBQQ__Quote__c=quote1.ID;
+                update con2;
+                Map<Id, SBQQ__Quote__c> mapOld= new Map<Id, SBQQ__Quote__c>([SELECT Id, SBQQ__Status__c from SBQQ__Quote__c where id=:amendmentQuote.ID]);
+               //updtae quote1
+               //
+               //
+               SBQQ__QuoteLine__c quoteLine = UM002_TestDataFactory.createQuoteLine(prod.Id, amendmentQuote.Id, priceBookEntry1.Id, 200,1);
+                insert quoteLine;
+               amendmentQuote.LPCR_DateResiliation__c=System.today()+5;
+               update amendmentQuote;
+                Map<Id, SBQQ__Quote__c> mapNew=new  Map<Id, SBQQ__Quote__c> ([SELECT Id, SBQQ__Status__c from SBQQ__Quote__c where id=:amendmentQuote.ID]);
+                
+               // update mapNew.values();
+                
+                String strnewQuotesMap=JSON.serialize(mapNew);
+                String stroldQuotesMap=JSON.serialize(mapOld);
+                //invoke method 
+                SM008_QuoteServices.updateStartDate( strnewQuotesMap , stroldQuotesMap );
+            Test.stopTest();       
+        } 
+    }
 }
