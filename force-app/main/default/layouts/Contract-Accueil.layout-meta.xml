@@ -48,6 +48,10 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_SocieteFacturante__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_NombreJoursCumules__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
