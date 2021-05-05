@@ -994,6 +994,31 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_ClientVip__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_EnvoiProforma__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_EmailFacture__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_FacturerCrecheMarche__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_FacturerDepotPlateforme__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Activity.LPCR_Compte_rendu__c</field>
         <readable>true</readable>
