@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_CodeCrecheLienCrecheLead2__c</fullName>
+    <description>Champ à utiliser pour permettre la création d&apos;un enregistrement Lien Crèche-Lead 2 associé</description>
+    <externalId>false</externalId>
+    <label>Code Crèche Lien Crèche Lead 2</label>
+    <length>10</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
