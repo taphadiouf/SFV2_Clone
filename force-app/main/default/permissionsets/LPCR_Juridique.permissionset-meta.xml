@@ -967,6 +967,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_ContactPrincipalCompte__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Activity.LPCR_Compte_rendu__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3488,6 +3493,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Type</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.LPCR_ContactPrincipalOpport__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
