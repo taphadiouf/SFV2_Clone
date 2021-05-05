@@ -4,10 +4,6 @@
         <field>AccountId</field>
         <formula>Account.Id</formula>
     </fieldOverrides>
-    <fieldOverrides>
-        <field>LPCR_ContactPrincipalOpport__c</field>
-        <formula>Account.LPCR_ContactPrincipalCompte__c</formula>
-    </fieldOverrides>
     <label>Nouvelle Opportunité Entreprise</label>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
     <quickActionLayout>
