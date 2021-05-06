@@ -12,14 +12,19 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Réserver des places en crèches privées pour vos salariés</fullName>
+                <fullName>Être rappelé sous 48h</fullName>
                 <default>false</default>
-                <label>Réserver des places en crèches privées pour vos salariés</label>
+                <label>Être rappelé sous 48h</label>
             </value>
             <value>
-                <fullName>Créer une crèche d&apos;entreprise dédiée</fullName>
+                <fullName>Réservez des places en crèches privées pour vos salariés</fullName>
                 <default>false</default>
-                <label>Créer une crèche d&apos;entreprise dédiée</label>
+                <label>Réservez des places en crèches privées pour vos salariés</label>
+            </value>
+            <value>
+                <fullName>Créer une crèche d’entreprise dédiée</fullName>
+                <default>false</default>
+                <label>Créer une crèche d’entreprise dédiée</label>
             </value>
             <value>
                 <fullName>Simuler un devis et connaitre mes avantages fiscaux</fullName>
@@ -32,19 +37,14 @@
                 <label>Se renseigner sur le dispositif crèches</label>
             </value>
             <value>
-                <fullName>Lancer un appel d&apos;offre</fullName>
+                <fullName>Lancer un appel d’offre</fullName>
                 <default>false</default>
-                <label>Lancer un appel d&apos;offre</label>
+                <label>Lancer un appel d’offre</label>
             </value>
             <value>
                 <fullName>Réaliser un audit social</fullName>
                 <default>false</default>
                 <label>Réaliser un audit social</label>
-            </value>
-            <value>
-                <fullName>Etre rappelé sous 48h</fullName>
-                <default>false</default>
-                <label>Etre rappelé sous 48h</label>
             </value>
         </valueSetDefinition>
     </valueSet>
