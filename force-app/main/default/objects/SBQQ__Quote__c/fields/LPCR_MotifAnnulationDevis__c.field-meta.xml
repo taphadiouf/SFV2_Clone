@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_MotifAnnulationDevis__c</fullName>
+    <externalId>false</externalId>
+    <label>Motif d&apos;annulation du devis</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Signature concurrence - Tarif</fullName>
+                <default>false</default>
+                <label>Signature concurrence - Tarif</label>
+            </value>
+            <value>
+                <fullName>Signature concurrence - Visite non concluante</fullName>
+                <default>false</default>
+                <label>Signature concurrence - Visite non concluante</label>
+            </value>
+            <value>
+                <fullName>Signature concurrence - Détails inconnus</fullName>
+                <default>false</default>
+                <label>Signature concurrence - Détails inconnus</label>
+            </value>
+            <value>
+                <fullName>Abandon projet</fullName>
+                <default>false</default>
+                <label>Abandon projet</label>
+            </value>
+            <value>
+                <fullName>Report Projet</fullName>
+                <default>false</default>
+                <label>Report Projet</label>
+            </value>
+            <value>
+                <fullName>Pas de disponibilité</fullName>
+                <default>false</default>
+                <label>Pas de disponibilité</label>
+            </value>
+            <value>
+                <fullName>Refus conditions particulières</fullName>
+                <default>false</default>
+                <label>Refus conditions particulières</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

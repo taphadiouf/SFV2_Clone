@@ -234,6 +234,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_ContactInscriptions__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ContactPrincipalCompte__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

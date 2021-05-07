@@ -620,4 +620,32 @@ public with sharing class SM012_OrderItemServices implements Queueable{
             update relatedOneTimeOrderItems;
         }
     }
+    public static void updateContratBerceau(Map<Id,OrderItem> mapOrderItem){
+        Map<Id,Integer> mapOppIdNombreBerceau=new Map<Id,Integer> ();
+        Map<Id,Id> mapOppIdCOntratID=new Map<Id,Id> ();
+        Set<id> setOrderId=new Set<id>();
+        List<Contract> lstContractUpdate=new  List<Contract> ();
+        for(OrderItem eachOrderItem : mapOrderItem.values()){
+          setOrderId.add(eachOrderItem.OrderId);                                        
+        }
+        //select all order items
+        for(OrderItem produitCommande :[SELECT Id,Quantity, OrderId,Product2id ,Order.Type,Order.OpportunityId,Order.Opportunity.SBQQ__AmendedContract__c ,product2.Name,Order.SBQQ__Quote__c FROM OrderItem where OrderId IN:setOrderId and Order.Type='Amendment' and Product2.Name like 'Ber%']){
+            if(!mapOppIdNombreBerceau.containsKey(produitCommande.Order.OpportunityId)){
+                mapOppIdNombreBerceau.put(produitCommande.Order.OpportunityId,(Integer)produitCommande.Quantity);
+            }else{
+                mapOppIdNombreBerceau.put(produitCommande.Order.OpportunityId,mapOppIdNombreBerceau.get(produitCommande.Order.OpportunityId)+(Integer)produitCommande.Quantity);
+            }
+            
+        }
+        for(Opportunity opp :[Select id ,SBQQ__AmendedContract__c from Opportunity where ID IN: mapOppIdNombreBerceau.keyset()]){
+            mapOppIdCOntratID.put(opp.SBQQ__AmendedContract__c,opp.Id);
+        }
+        for(Contract con :[Select id,LPCR_NombreDeBerceaux__c from Contract where ID IN:mapOppIdCOntratID.keySet() ] ){
+           Contract contratUpdate=new COntract(Id=con.Id,LPCR_NombreDeBerceaux__c=con.LPCR_NombreDeBerceaux__c != null ? con.LPCR_NombreDeBerceaux__c+mapOppIdNombreBerceau.get(mapOppIdCOntratID.get(con.ID)):mapOppIdNombreBerceau.get(mapOppIdCOntratID.get(con.ID)));
+            lstContractUpdate.add(contratUpdate);
+        }
+        if(lstContractUpdate.size() > 0){
+            update lstContractUpdate;
+        }
+    }
 }
