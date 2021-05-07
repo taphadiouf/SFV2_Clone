@@ -14,8 +14,7 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
         this.newQuotesMap = (Map<Id, SBQQ__Quote__c>) Trigger.newMap;
         this.oldQuotesMap = (Map<Id, SBQQ__Quote__c>) Trigger.oldMap;
         this.newQuotesList = (List<SBQQ__Quote__c>) Trigger.new;
-        this.strnewQuotesMap=JSON.serialize((Map<Id, SBQQ__Quote__c>) Trigger.newMap);
-        this.stroldQuotesMap=JSON.serialize((Map<Id, SBQQ__Quote__c>) Trigger.oldMap);
+        
         
         
     } 
@@ -50,9 +49,7 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
     }
     
     protected override void afterUpdate(){
-        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')&&!System.isBatch() && !System.isFuture()){
-            SM008_QuoteServices.updateStartDate(strnewQuotesMap,stroldQuotesMap);
-        } 
+        
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex') && runUpdateOnce && !System.isFuture()){
 
                 SM008_QuoteServices.generateAgreementTemp(this.newQuotesMap,this.oldQuotesMap);

@@ -978,50 +978,5 @@ public with sharing class SM008_QuoteServices {
             
         }
     }
-    //Method to modify start date on Quote and Quote Line Item after date resiliation modified  IS-2352
-    @future
-    public static void updateStartDate(String strnewQuotesMap ,String stroldQuotesMap ){ 
-                                                                                                                    
-        Map<Id, SBQQ__Quote__c> newQuotesMap =  (Map<Id, SBQQ__Quote__c> )JSON.deserialize(strnewQuotesMap, Map<Id, SBQQ__Quote__c>.class); 
-        Map<Id, SBQQ__Quote__c> oldQuotesMap =  (Map<Id, SBQQ__Quote__c> )JSON.deserialize(stroldQuotesMap, Map<Id, SBQQ__Quote__c>.class);                                     
-                                                     
-        Map<Id,Date> mapQuoteIDDateResiliation=new Map<Id,Date>();
-        List<SBQQ__Quote__c> listQuoteToUpdate=new List<SBQQ__Quote__c> ();
-        List<SBQQ__QuoteLine__c> listQuoteLinesToUpdate=new List<SBQQ__QuoteLine__c> ();
-        set<id> setIDQuote=new  set<id> ();
-        for(SBQQ__Quote__c eachNewQuote :newQuotesMap.values() ){
-            
-            if(eachNewQuote.LPCR_TypeAvenant__c =='Résiliation' && eachNewQuote.SBQQ__Type__c == 'Amendment' && eachNewQuote.LPCR_DateResiliation__c !=oldQuotesMap.get(eachNewQuote.Id).LPCR_DateResiliation__c ){
-                //modify start date quote and quotelines 
-                mapQuoteIDDateResiliation.put(eachNewQuote.Id,eachNewQuote.LPCR_DateResiliation__c);
-                listQuoteToUpdate.add(new SBQQ__Quote__c(SBQQ__StartDate__c=eachNewQuote.LPCR_DateResiliation__c.addDays(1),id=eachNewQuote.ID));
-                setIDQuote.add(eachNewQuote.ID);
-                
-            }
-        }  
-        //update QLI 
-        for(SBQQ__QuoteLine__c eachQLI : [Select Id,LPCR_DateDebut__c,SBQQ__StartDate__c,	SBQQ__Quote__c from SBQQ__QuoteLine__c where  SBQQ__Quote__c IN:setIDQuote]){
-            listQuoteLinesToUpdate.add(new SBQQ__QuoteLine__c(Id=eachQLI.ID,SBQQ__StartDate__c=mapQuoteIDDateResiliation.get(eachQLI.SBQQ__Quote__c).addDays(1)));
-            
-        }    
-        
-        
-        //update qli 
-        if(listQuoteToUpdate.size() > 0){
-            SBQQ.TriggerControl.disable();
-            try {
-                update listQuoteToUpdate; 
-            } finally {
-                SBQQ.TriggerControl.enable();
-            }
-        } 
-        if(listQuoteLinesToUpdate.size() > 0){
-            SBQQ.TriggerControl.disable();
-            try {
-                update listQuoteLinesToUpdate; 
-            } finally {
-                SBQQ.TriggerControl.enable();
-            }
-        }                                                                                      
-    }
+    
 }
