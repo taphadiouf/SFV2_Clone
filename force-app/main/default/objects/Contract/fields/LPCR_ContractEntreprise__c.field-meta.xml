@@ -4,6 +4,15 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Contrat Entreprise</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Contract.LPCR_CompteFacturation__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.LPCR_SponsorEntreprise__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Contract</referenceTo>
     <relationshipLabel>Contrats Familles</relationshipLabel>
     <relationshipName>Contracts</relationshipName>
