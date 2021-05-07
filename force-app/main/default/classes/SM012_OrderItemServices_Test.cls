@@ -5,6 +5,8 @@
 */
 @isTest
 public with sharing class SM012_OrderItemServices_Test {
+    private static final Id CONTACT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contact, Label.LPCR_Parent);
+    
     private static final Id B2B_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
     private static final Id B2C_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
     private static final Id CRECHE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
@@ -33,8 +35,14 @@ public with sharing class SM012_OrderItemServices_Test {
                 };
                     List<Account> accounts = new List<Account> ();
         Account b2cAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
+        defaultVal = new Map<String, Object> {
+            'RecordTypeId' => B2C_RT_ID,
+                'Name' => 'testAccount',
+                'SBQQ__RenewalModel__c' => 'Contract Based'
+                };
+         Account b2cAccount2 = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);      
         accounts.add(b2cAccount);
-        
+        accounts.add(b2cAccount2);
         defaultVal = new Map<String, Object> {
             'RecordTypeId' => B2B_RT_ID,
                 'Name' => 'Test-B2B',
@@ -44,7 +52,16 @@ public with sharing class SM012_OrderItemServices_Test {
                     
                     Account b2bAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
         accounts.add(b2bAccount);
+        defaultVal = new Map<String, Object> {
+            'RecordTypeId' => B2B_RT_ID,
+                'Name' => 'Test-B2B2',
+                'SBQQ__RenewalModel__c' => 'Contract Based',
+                'LPCR_PasDeSIRET__c' => true
+                };
+                    
+                    Account b2bAccount2 = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
         
+        accounts.add(b2bAccount2);
         defaultVal = new Map<String, Object> {
             'RecordTypeId' => CRECHE_RT_ID,
                 'Name' => 'Creche',
@@ -94,7 +111,11 @@ public with sharing class SM012_OrderItemServices_Test {
         defaultVal.put('Name', 'test-oppt-ref');
         defaultVal.put('AccountId', b2bAccount.Id);
         Opportunity oppForRef = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-        insert new List<Opportunity> {oppForAccuel, oppForRef};
+       
+       defaultVal.put('Name', 'testOpp');
+        defaultVal.put('AccountId', b2bAccount2.Id);
+        Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
+        insert new List<Opportunity> {oppForAccuel, oppForRef,opp};
             
             defaultVal = new Map<String, Object> {
                 'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
@@ -113,7 +134,8 @@ public with sharing class SM012_OrderItemServices_Test {
                     'SBQQ__Opportunity2__c' => oppForAccuel.Id,
                      'SBQQ__RenewalUpliftRate__c' => 10
                     };
-                        
+                         
+            
         SBQQ__Quote__c quoteForAccueil = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
         quoteForAccueil.LPCR_Creation_conforme__c = true;
 
@@ -123,8 +145,15 @@ public with sharing class SM012_OrderItemServices_Test {
         
         SBQQ__Quote__c quoteForRef = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
         quoteForRef.LPCR_Creation_conforme__c = true;
-
-        insert new List<SBQQ__Quote__c> {quoteForAccueil, quoteForRef};
+        defaultVal.put('RecordTypeId', QUOTE_CONTRAT_REF_RT_ID);
+        defaultVal.put('SBQQ__Opportunity2__c', opp.Id);
+        defaultVal.put('SBQQ__Account__c', b2bAccount2.Id);
+        
+		
+                        SBQQ__Quote__c quoteForRef2 = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
+        quoteForRef2.LPCR_Creation_conforme__c = true;
+                        
+        insert new List<SBQQ__Quote__c> {quoteForAccueil, quoteForRef,quoteForRef2};
             
             Integer price = 200;
         defaultVal = new Map<String, Object> {
@@ -192,7 +221,7 @@ public with sharing class SM012_OrderItemServices_Test {
     @isTest
     private static void setOrderItemFields_Test () {     
         Account customerAcc = null; 
-        Account billingAccount = [SELECT id  FROM Account WHERE name = 'Test-B2B'];
+        Account billingAccount = [SELECT id  FROM Account WHERE name = 'Test-B2B' limit 1];
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
             //setup data for this particular test
@@ -1957,7 +1986,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
             blng__BillingRule__c   billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
             blng__TaxRule__c   taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);        
             
-            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Ordered__c FROM SBQQ__Quote__c WHERE RecordTypeId = :QUOTE_CONTRAT_REF_RT_ID];
+            SBQQ__Quote__c quote = [SELECT Id,SBQQ__Ordered__c FROM SBQQ__Quote__c WHERE RecordTypeId = :QUOTE_CONTRAT_REF_RT_ID limit 1];
             
             Test.startTest(); 
             quote.SBQQ__Ordered__c  = true; 
@@ -2098,5 +2127,125 @@ System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.bln
             
         }    
     }
+    @isTest
+    public static void testNombreBerceau(){
+        Test.startTest();
+       
+                
+        blng__LegalEntity__c billingLegalEntity = UM002_TestDataFactory.setupLegalEntity();
+        blng__RevenueRecognitionRule__c revRecRule = UM002_TestDataFactory.setupRevRec(billingLegalEntity.Id);
+        blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
+        blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
+        
+        Product2 prod1 = UM002_TestDataFactory.createFixedPriceProduct('Berceau', billingRule.Id, revRecRule.Id,taxRule.Id );
+        prod1.SBQQ__SubscriptionPricing__c ='Fixed Price';
+        prod1.SBQQ__BillingFrequency__c = 'Invoice Plan';
+        prod1.SBQQ__BillingType__c = 'Advance';
+        prod1.SBQQ__ChargeType__c = 'Recurring';
+        prod1.SBQQ__SubscriptionTerm__c = 12;
+        prod1.SBQQ__SubscriptionType__c = 'Renewable';
+        insert prod1;
     
+        PricebookEntry pbEntry1 = UM002_TestDataFactory.createPricebookEntry(standardPricebookId,prod1.Id);
+        pbEntry1.UnitPrice = 0;
+        insert pbEntry1;
+    
+    
+        Account acc = [SELECT Id,SBQQ__RenewalModel__c,RecordTypeId FROM Account WHERE Name =: 'testAccount' LIMIT 1];
+        acc.SBQQ__RenewalModel__c = 'Contract Based';
+        acc.RecordTypeId = B2C_RT_ID;
+        acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
+        acc.SBQQ__RenewalPricingMethod__c = 'List';
+        update acc;
+        
+        Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
+        insert cont;
+        
+        Opportunity opp = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 1];
+        opp.AccountId = acc.id;
+        update opp;
+        
+        SBQQ__Quote__c quote = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp.Id LIMIT 1];
+        quote.SBQQ__Type__c='Quote';
+        quote.SBQQ__StartDate__c = System.today();
+        quote.SBQQ__SubscriptionTerm__c = 36;
+        quote.SBQQ__Primary__c = true;
+        update quote;
+        
+        List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
+        qlines.add(UM002_TestDataFactory.createQuoteLine(prod1.Id, quote.Id, pbEntry1.Id, 100, 1));
+        insert qlines;
+        
+        List<Opportunity> oppList = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 3];
+        Opportunity opp1 = oppList.get(0);
+        opp1.AccountId = acc.id;
+        
+        update opp1;
+        
+        Contract contract = UM002_TestDataFactory.createContract(acc.id,quote.id,opp.id,Date.Today().addmonths(36));
+        contract.Status = 'Draft';
+        contract.SBQQ__RenewalUpliftRate__c = 2;
+        contract.LPCR_DateFin__c = Date.Today().addmonths(36);
+        Insert contract;
+        
+        contract.Status = 'Activated';
+        update contract;
+        opp1.SBQQ__AmendedContract__c=contract.ID;
+        update opp1;
+        // create quote record
+        SBQQ__Quote__c quote1 = [SELECT Id,SBQQ__Type__c,SBQQ__SubscriptionTerm__c,SBQQ__StartDate__c FROM SBQQ__Quote__c WHERE SBQQ__Opportunity2__c =: opp1.Id LIMIT 1];
+        quote1.SBQQ__Type__c='Quote';
+        quote1.SBQQ__StartDate__c = System.today();
+        quote1.SBQQ__SubscriptionTerm__c = 36;
+        quote1.SBQQ__Primary__c = true;
+        quote1.SBQQ__RenewalUpliftRate__c = 2;
+        quote1.SBQQ__MasterContract__c = contract.id; 
+        update quote1;
+        
+        // create quote line record
+        List<SBQQ__QuoteLine__c> qlines1 = new List<SBQQ__QuoteLine__c> ();
+        qlines1.add(UM002_TestDataFactory.createQuoteLine(prod1.Id, quote1.Id, pbEntry1.Id, 100, 1));
+        qlines1.add(UM002_TestDataFactory.createQuoteLine(prod1.Id, quote1.Id, pbEntry1.Id, 0, -1));
+        insert qlines1;
+        
+        // create Contract record
+        Contract contract1 = UM002_TestDataFactory.createContract(acc.id,quote1.id,opp1.id,Date.Today().addmonths(36));
+        contract1.Status = 'Draft';
+        contract1.SBQQ__RenewalUpliftRate__c = 2;
+        contract1.LPCR_DateFin__c = Date.Today().addmonths(36);
+        Insert contract1;
+        
+        contract1.Status = 'Activated';
+        update contract1;
+        
+        
+        Order order = UM002_TestDataFactory.createOrder(acc.Id, contract.id,date.today(),'test','Draft','1');
+        order.Pricebook2Id = standardPricebookId;
+        order.SBQQ__Quote__c = quote.id;
+        insert order;
+       
+                   
+        // Create new order with order item
+        Order order1 = UM002_TestDataFactory.createOrder(acc.Id, contract1.id,date.today(),'test','Draft','1');
+        order1.Pricebook2Id = standardPricebookId;
+        order1.SBQQ__Quote__c = quote1.id;
+        order1.Type='Amendment';
+        insert order1;
+        
+        OrderItem orderItem2 = UM002_TestDataFactory.createOrderProduct(pbEntry1.id, order1.Id, prod1.id, 'Recurring','Invoice Plan', 100);
+        orderItem2.SBQQ__QuoteLine__c = qlines1.get(0).id;
+        orderItem2.SBQQ__Activated__c = false;
+        orderItem2.EndDate = System.today().addMonths(36);
+        orderItem2.SBQQ__TerminatedDate__c = System.today().addDays(5);
+        orderItem2.blng__NextChargeDate__c = null;//System.today();
+        orderItem2.SBQQ__Contract__c = contract1.id;
+        orderItem2.LPCR_BillingPlanProcessment__c = false;
+        
+        orderItem2.SBQQ__PricingMethod__c = 'Custom';
+        orderItem2.Quantity = 1;
+        insert orderItem2;
+        
+        Test.stopTest();
+        
+    } 
 }
