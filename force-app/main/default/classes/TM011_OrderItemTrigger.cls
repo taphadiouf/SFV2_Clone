@@ -29,6 +29,7 @@ public with sharing class TM011_OrderItemTrigger extends TM000_TriggerHandler{
 
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')) {
             SM012_OrderItemServices.setInvoiceGroupingOnOrderItem(newOrderItemsMap);
+            SM012_OrderItemServices.updateContratBerceau(newOrderItemsMap);
             SM012_OrderItemServices.enqueueJob(newOrderItemsList);
         }    
     }

@@ -606,7 +606,7 @@ public with sharing class SM008_QuoteServices {
         for(SBQQ__Quote__c eachQuote : quotesList) {
 
             if (eachQuote.SBQQ__Type__c == 'Amendment' && eachQuote.LPCR_TypeAvenant__c == 'Résiliation') {
-
+               
                 PAD.log('SM008_QuoteServices','updateDueToResilisationAnticipe','eachQuote.SBQQ__StartDate__c:'+ eachQuote.SBQQ__StartDate__c);
                 PAD.log('SM008_QuoteServices','updateDueToResilisationAnticipe','eachQuote.LPCR_DateDebut__c:'+ eachQuote.LPCR_DateDebut__c);
 
@@ -975,6 +975,8 @@ public with sharing class SM008_QuoteServices {
         }
         if(quoteListToUpdate.size() >0 ){
             update quoteListToUpdate;
+            
         }
     }
+    
 }

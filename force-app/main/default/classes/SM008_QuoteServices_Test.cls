@@ -1052,4 +1052,5 @@ public class SM008_QuoteServices_Test {
         quote = [SELECT Id ,LPCR_IndexationConvenue__c,ApprovalStatus__c,LPCR_SommePrixAnnuel__c,LPCR_MontantIndexation__c, recordtype.developername, recordtypeid,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_PlanningEnfant__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote.Id];
         
     }
+   
 }

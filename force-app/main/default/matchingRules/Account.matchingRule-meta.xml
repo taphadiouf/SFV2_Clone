@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MatchingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <matchingRules>
-        <fullName>LPCR_Compte</fullName>
-        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5) OR 6</booleanFilter>
+        <fullName>LPCR_Compte_SIRET</fullName>
+        <description>Empêche la création de doublons de comptes sur la base d&apos;un SIRET identique</description>
+        <label>LPCR_Compte_SIRET</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>LPCR_SIRET__c</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Active</ruleStatus>
+    </matchingRules>
+    <matchingRules>
+        <fullName>LPCR_Comptes</fullName>
+        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5)</booleanFilter>
         <label>Compte</label>
         <matchingRuleItems>
             <blankValueBehavior>NullNotAllowed</blankValueBehavior>
@@ -28,11 +39,6 @@
             <blankValueBehavior>NullNotAllowed</blankValueBehavior>
             <fieldName>BillingStreet</fieldName>
             <matchingMethod>Street</matchingMethod>
-        </matchingRuleItems>
-        <matchingRuleItems>
-            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
-            <fieldName>LPCR_SIRET__c</fieldName>
-            <matchingMethod>Exact</matchingMethod>
         </matchingRuleItems>
         <ruleStatus>Active</ruleStatus>
     </matchingRules>

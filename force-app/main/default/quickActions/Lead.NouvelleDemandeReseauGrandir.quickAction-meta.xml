@@ -26,10 +26,6 @@
         <formula>Lead.PostalCode</formula>
     </fieldOverrides>
     <fieldOverrides>
-        <field>LPCR_CodePostalTravail__c</field>
-        <formula>Lead.LPCR_CodePostalSociete__c</formula>
-    </fieldOverrides>
-    <fieldOverrides>
         <field>LPCR_DateEntreeSouhaitee__c</field>
         <formula>Lead.LPCR_DateEntreeCreche1__c</formula>
     </fieldOverrides>
@@ -40,10 +36,6 @@
     <fieldOverrides>
         <field>LPCR_VilleDomicile__c</field>
         <formula>Lead.City</formula>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>LPCR_VilleTravail__c</field>
-        <formula>Lead.LPCR_VilleSociete__c</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>Origin</field>
