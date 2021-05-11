@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_OrdreTri__c</fullName>
-    <description>Champ permettant de trier le rapport Liste d&#39;attribution suivant les 3 critères : Score, Date de préinscription et Date d&#39;entrée</description>
+    <description>Champ permettant de trier le rapport Liste d&apos;attribution suivant les 3 critères : Score, Date de préinscription et Date d&apos;entrée</description>
     <externalId>false</externalId>
-    <formula>TEXT(LPCR_Score__c)&amp;&#39;-&#39;&amp;TEXT( CreatedDate )&amp;&#39;-&#39;&amp; TEXT(LPCR_DateEntreeCreche__c)</formula>
+    <formula>TEXT(LPCR_Score__c)&amp;&apos;-&apos;&amp;TEXT( CreatedDate )&amp;&apos;-&apos;&amp; TEXT(LPCR_DateEntreeCreche__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Permet de trier le rapport Liste d&#39;attribution suivant les 3 critères : Score, Date de préinscription et Date d&#39;entrée</inlineHelpText>
+    <inlineHelpText>Permet de trier le rapport Liste d&apos;attribution suivant les 3 critères : Score, Date de préinscription et Date d&apos;entrée</inlineHelpText>
     <label>Ordre de tri</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

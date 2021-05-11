@@ -8,6 +8,488 @@
         <plural>true</plural>
         <value>Devis</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Calculating Fields --></label>
+        <name>SBQQ__CalculatingFields</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Line Editor --></label>
+        <name>SBQQ__LineEditor</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Non-Current Quote Locked Fields --></label>
+        <name>SBQQ__NonCurrentQuoteLockedFields</name>
+    </fieldSets>
     <gender>Masculine</gender>
+    <layouts>
+        <layout>Contrat d&apos;accueil</layout>
+        <sections>
+            <label><!-- Adresse --></label>
+            <section>Adresse</section>
+        </sections>
+        <sections>
+            <label><!-- Avenant --></label>
+            <section>Avenant</section>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <section>Contacts</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Information Contrat --></label>
+            <section>Information Contrat</section>
+        </sections>
+        <sections>
+            <label><!-- Information Crèche --></label>
+            <section>Information Crèche</section>
+        </sections>
+        <sections>
+            <label><!-- Information Famille --></label>
+            <section>Information Famille</section>
+        </sections>
+        <sections>
+            <label><!-- Information Remise et Indexation --></label>
+            <section>Information Remise et Indexation</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label><!-- Recalculating --></label>
+            <section>Recalculating</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Contrat d&apos;accueil Approuvé</layout>
+        <sections>
+            <label><!-- Adresse --></label>
+            <section>Adresse</section>
+        </sections>
+        <sections>
+            <label><!-- Avenant --></label>
+            <section>Avenant</section>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <section>Contacts</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Information Contrat --></label>
+            <section>Information Contrat</section>
+        </sections>
+        <sections>
+            <label><!-- Information Crèche --></label>
+            <section>Information Crèche</section>
+        </sections>
+        <sections>
+            <label><!-- Information Famille --></label>
+            <section>Information Famille</section>
+        </sections>
+        <sections>
+            <label><!-- Information Remise et Indexation --></label>
+            <section>Information Remise et Indexation</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label><!-- Recalculating --></label>
+            <section>Recalculating</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Quote Layout</layout>
+        <sections>
+            <label>Texte supplémentaire</label>
+            <section>Additional Text</section>
+        </sections>
+        <sections>
+            <label>Coordonnées</label>
+            <section>Address Information</section>
+        </sections>
+        <sections>
+            <label>Informations sur le contrat</label>
+            <section>Contract Information</section>
+        </sections>
+        <sections>
+            <label>Liens personnalisés</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Informations sur la remise</label>
+            <section>Discount Information</section>
+        </sections>
+        <sections>
+            <label>Informations sur le partenaire</label>
+            <section>Partner Information</section>
+        </sections>
+        <sections>
+            <label>Options de devis</label>
+            <section>Quote Options</section>
+        </sections>
+        <sections>
+            <label>Recalcul</label>
+            <section>Recalculating</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Référencement</layout>
+        <sections>
+            <label><!-- Adresse --></label>
+            <section>Adresse</section>
+        </sections>
+        <sections>
+            <label><!-- Avenant --></label>
+            <section>Avenant</section>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <section>Contacts</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Information Contrat --></label>
+            <section>Information Contrat</section>
+        </sections>
+        <sections>
+            <label><!-- Information Remise et Indexation --></label>
+            <section>Information Remise et Indexation</section>
+        </sections>
+        <sections>
+            <label><!-- Information sur la facturation --></label>
+            <section>Information sur la facturation</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label><!-- PO --></label>
+            <section>PO</section>
+        </sections>
+        <sections>
+            <label><!-- Pour Produit à plan de facturation --></label>
+            <section>Pour Produit à plan de facturation</section>
+        </sections>
+        <sections>
+            <label><!-- Recalculating --></label>
+            <section>Recalculating</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Référencement Approuvé</layout>
+        <sections>
+            <label><!-- Adresse --></label>
+            <section>Adresse</section>
+        </sections>
+        <sections>
+            <label><!-- Avenant --></label>
+            <section>Avenant</section>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <section>Contacts</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Information Contrat --></label>
+            <section>Information Contrat</section>
+        </sections>
+        <sections>
+            <label><!-- Information Remise et Indexation --></label>
+            <section>Information Remise et Indexation</section>
+        </sections>
+        <sections>
+            <label><!-- Information sur la facturation --></label>
+            <section>Information sur la facturation</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label><!-- PO --></label>
+            <section>PO</section>
+        </sections>
+        <sections>
+            <label><!-- Pour Produit à plan de facturation --></label>
+            <section>Pour Produit à plan de facturation</section>
+        </sections>
+        <sections>
+            <label><!-- Recalculating --></label>
+            <section>Recalculating</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Réservataire</layout>
+        <sections>
+            <label><!-- Adresse --></label>
+            <section>Adresse</section>
+        </sections>
+        <sections>
+            <label><!-- Avenant --></label>
+            <section>Avenant</section>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <section>Contacts</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Information Contrat --></label>
+            <section>Information Contrat</section>
+        </sections>
+        <sections>
+            <label><!-- Information Remise et Indexation --></label>
+            <section>Information Remise et Indexation</section>
+        </sections>
+        <sections>
+            <label><!-- Information sur la facturation --></label>
+            <section>Information sur la facturation</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label><!-- Pour Produit à plan de facturation --></label>
+            <section>Pour Produit à plan de facturation</section>
+        </sections>
+        <sections>
+            <label><!-- Recalculating --></label>
+            <section>Recalculating</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Réservataire Approuvé</layout>
+        <sections>
+            <label><!-- Adresse --></label>
+            <section>Adresse</section>
+        </sections>
+        <sections>
+            <label><!-- Avenant --></label>
+            <section>Avenant</section>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <section>Contacts</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Information Contrat --></label>
+            <section>Information Contrat</section>
+        </sections>
+        <sections>
+            <label><!-- Information Remise et Indexation --></label>
+            <section>Information Remise et Indexation</section>
+        </sections>
+        <sections>
+            <label><!-- Information sur la facturation --></label>
+            <section>Information sur la facturation</section>
+        </sections>
+        <sections>
+            <label><!-- New Section --></label>
+            <section>New Section</section>
+        </sections>
+        <sections>
+            <label><!-- Pour Produit à plan de facturation --></label>
+            <section>Pour Produit à plan de facturation</section>
+        </sections>
+        <sections>
+            <label><!-- Recalculating --></label>
+            <section>Recalculating</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Numéro du devis</nameFieldLabel>
+    <quickActions>
+        <label><!-- Nouveau contrat de référencement --></label>
+        <name>LPCR_NouveauContratReferencement</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Nouveau prix de référencement --></label>
+        <name>LPCR_Nouveau_prix_de_referencement</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Order --></label>
+        <name>SBQQ__CreateOrderLightning</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Contrat D’accueil --></label>
+        <name>Accueil</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Type d&apos;enregistrement pour les contrats d&apos;accueil approuvés. --></description>
+        <label><!-- Contrat D&apos;accueil Approuvé --></label>
+        <name>Accueil_Approuve</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Contrat D’accueil old --></label>
+        <name>Contrat_Accueil</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Type d&apos;enregistrement pour les contrats d&apos;accueil approuvés. --></description>
+        <label><!-- Contrat D&apos;accueil Approuvé old --></label>
+        <name>Contrat_Accueil_Approuve</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Contrat de Référencement --></label>
+        <name>Referencement</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Type d&apos;enregistrement pour les contrats de référencement approuvés. --></description>
+        <label><!-- Contrat de Référencement Approuvé --></label>
+        <name>Referencement_Approuve</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Contrat de Réservation --></label>
+        <name>Reservataire</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Type d&apos;enregistrement pour les contrats de réservation approuvés. --></description>
+        <label><!-- Contrat de Réservation Approuvé --></label>
+        <name>Reservataire_Approuve</name>
+    </recordTypes>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Merci de renseigner la valeur de l&apos;augmentation du renouvellement. --></errorMessage>
+        <name>LPCR_IndexationConvenueUpliftObligatoire</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Vous ne pouvez pas générer de commande car il existe des lignes de devis sans PO --></errorMessage>
+        <name>LPCR_Quote_lines_sans_PO</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The End Date must come after the Start Date. --></errorMessage>
+        <name>SBQQ__End_Date_Before_Start_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- First Segment Term End Date must fall between Quote Start Date and Quote End Date --></errorMessage>
+        <name>SBQQ__Invalid_First_Segment_Term_End_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The subscription term must be a positive number. --></errorMessage>
+        <name>SBQQ__Invalid_Subscription_Term</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Ce bouton &quot;Nouveau devis&quot; est désactivé : La création d&apos;un devis doit se faire à partir d&apos;une opportunité entreprise ou d&apos;un compte famille comme l&apos;indique le processus LPCR. --></errorMessage>
+        <name>VR_CreationConformeProcess</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Dans le cas d&apos;un contrat manuel, seul l&apos;ADV est autorisée à mettre à jour ce statut. --></errorMessage>
+        <name>VR_Devis_ContratManuel_Modif_Statut_ADV</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Dans le cas d&apos;un contrat de référencement, le changement manuel à ce statut n&apos;est pas possible. --></errorMessage>
+        <name>VR_Devis_Modif_Statut_Contrat_Ref</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Dans le cas de l&apos;utilisation du modèle LPCR,  le passage à cette valeur de statut &quot; est automatique. --></errorMessage>
+        <name>VR_Devis_Modif_Statut_Non_Autorise</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Conga_Composer_Annexe3 --></label>
+        <name>Conga_Composer_Annexe3</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Conga_Composer_ContratReferencement --></label>
+        <name>Conga_Composer_ContratReferencement</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Conga_Composer_ContratReservation --></label>
+        <name>Conga_Composer_ContratReservation</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- EnvoiAnnexe2 --></label>
+        <name>EnvoiAnnexe2</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- EnvoiBonCommande --></label>
+        <name>EnvoiBonCommande</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- EnvoiContratAccueil --></label>
+        <name>EnvoiContratAccueil</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Preview_Approval --></label>
+        <name>Preview_Approval</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Recall_Approval --></label>
+        <name>Recall_Approval</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CalculateQuote --></label>
+        <name>SBQQ__CalculateQuote</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CloneWithRelated --></label>
+        <name>SBQQ__CloneWithRelated</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CloneWithRelatedClassic --></label>
+        <name>SBQQ__CloneWithRelatedClassic</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateOrderFromQuote --></label>
+        <name>SBQQ__CreateOrderFromQuote</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- EditLines --></label>
+        <name>SBQQ__EditLines</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GenerateDocument --></label>
+        <name>SBQQ__GenerateDocument</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- ImportLines --></label>
+        <name>SBQQ__ImportLines</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- IncludeDocument --></label>
+        <name>SBQQ__IncludeDocument</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- ModifyQuoteTerms --></label>
+        <name>SBQQ__ModifyQuoteTerms</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- PreviewDocument --></label>
+        <name>SBQQ__PreviewDocument</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- RefreshMultiplePrices --></label>
+        <name>SBQQ__RefreshMultiplePrices</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- RefreshPrices --></label>
+        <name>SBQQ__RefreshPrices</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Submit_for_Approval --></label>
+        <name>Submit_for_Approval</name>
+    </webLinks>
 </CustomObjectTranslation>

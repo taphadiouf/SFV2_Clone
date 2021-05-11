@@ -16,7 +16,7 @@
         <field>Name</field>
         <formula>LPCR_ContratPartenaire__c.Name +  &quot;.&quot;+ TEXT(LPCR_ContratPartenaire__c.LPCR_NombreBonsAchat__c + 1)</formula>
     </fieldOverrides>
-    <label>Nouveau Bon d&#39;achat</label>
+    <label>Nouveau Bon d&apos;achat</label>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
     <quickActionLayout>
         <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>

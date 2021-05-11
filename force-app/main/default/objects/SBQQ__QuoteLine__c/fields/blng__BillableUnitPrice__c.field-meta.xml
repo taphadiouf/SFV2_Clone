@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>The unprorated amount that will bill each billing period. Equals ((TotalPrice * BillingFrequency) / (ProrateMultiplier * DefaultSubscriptionTerm)).</description>
     <externalId>false</externalId>
-    <formula>IF(ISPICKVAL(SBQQ__ChargeType__c , &#39;One-Time&#39;),  SBQQ__NetTotal__c,
+    <formula>IF(ISPICKVAL(SBQQ__ChargeType__c , &apos;One-Time&apos;),  SBQQ__NetTotal__c,
         (SBQQ__NetTotal__c * (CASE(SBQQ__BillingFrequency__c,
         &quot;Monthly&quot;, 1,
         &quot;Quarterly&quot;, 3,
@@ -12,7 +12,7 @@
         &quot;Annual&quot;, 12,
         0))) / ( SBQQ__ProrateMultiplier__c * SBQQ__DefaultSubscriptionTerm__c )
         )</formula>
-    <inlineHelpText>The unprorated amount that will bill each billing period. Equals ((TotalPrice * BillingFrequency) / (ProrateMultiplier * DefaultSubscriptionTerm)).</inlineHelpText>
+    <inlineHelpText>Le montant non proraté facturé à chaque période de facturation. Égal à ((Prix total * Fréquence de facturation) / (Multiplicateur au prorata * Durée d&apos;abonnement par défaut)).</inlineHelpText>
     <label>Billable Unit Price</label>
     <precision>18</precision>
     <required>false</required>

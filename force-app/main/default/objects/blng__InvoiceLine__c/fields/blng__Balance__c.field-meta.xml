@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <formula>blng__TotalAmount__c - blng__Payments__c - blng__Credits__c + blng__Debits__c + blng__NegativeLineConversion__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Total Amount (with tax) - Payments - Credits + Debits + Negative Line Conversion</inlineHelpText>
+    <inlineHelpText>Montant total (avec taxe) - paiements - crédits + débits + conversion de ligne négative</inlineHelpText>
     <label>Balance</label>
     <precision>18</precision>
     <required>false</required>

@@ -6,7 +6,7 @@
     <externalId>false</externalId>
     <formula>SBQQ__ComponentCost__c + (SBQQ__UnitCost__c * SBQQ__Quantity__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Total cost for this package including the cost of its components.</inlineHelpText>
+    <inlineHelpText>Coût total de ce package, qui inclut le coût des composants.</inlineHelpText>
     <label>Package Cost</label>
     <precision>18</precision>
     <required>false</required>

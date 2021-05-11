@@ -4,7 +4,7 @@
     <externalId>false</externalId>
     <formula>((Hour(LPCR_HeureFinJeudi__c) - Hour(LPCR_HeureDebutJeudi__c)) + ((Minute(LPCR_HeureFinJeudi__c) - Minute(LPCR_HeureDebutJeudi__c))/60))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Nombre d&#39;heures Jeudi</label>
+    <label>Nombre d&apos;heures Jeudi</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>

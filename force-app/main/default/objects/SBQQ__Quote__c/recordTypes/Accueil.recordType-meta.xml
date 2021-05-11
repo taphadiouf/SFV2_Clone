@@ -154,6 +154,37 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_MotifAnnulationDevis__c</picklist>
+        <values>
+            <fullName>Abandon projet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pas de disponibilité</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refus conditions particulières</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Report Projet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Signature concurrence - Détails inconnus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Signature concurrence - Tarif</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Signature concurrence - Visite non concluante</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_MoyenPaiement__c</picklist>
         <values>
             <fullName>Carte Bancaire</fullName>
@@ -206,6 +237,14 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>G</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GG</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>M</fullName>
             <default>false</default>
         </values>
@@ -219,14 +258,6 @@
         </values>
         <values>
             <fullName>MG</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>G</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>GG</fullName>
             <default>false</default>
         </values>
         <values>

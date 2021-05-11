@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Prorated price for the product quoted by this line item. This price will only differ from Special Price if the product is a subscription and the line item is being prorated.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Prorated price for the product quoted by this line item. This price will only differ from Special Price if the product is a subscription and the line item is being prorated.</inlineHelpText>
+    <inlineHelpText>Prix au prorata du produit généré dans le devis par cet élément de ligne. Ce prix diffère du prix spécial uniquement si le produit est un abonnement et si l&apos;élément de ligne est calculé au prorata.</inlineHelpText>
     <label>Prorated Unit Price</label>
     <precision>14</precision>
     <required>false</required>

@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Product that this discount schedule applies to. Only used in combination with Price Book lookup to assign product/price book specific schedule.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Produit auquel ce barème de remise s&#39;applique. Utilisé uniquement en combinaison d&#39;une référence Catalogue de prix pour attribuer un barème spécifique au produit/catalogue de prix.</inlineHelpText>
+    <inlineHelpText>Produit auquel ce barème de remise s&apos;applique. Utilisé uniquement en combinaison d&apos;une référence Catalogue de prix pour attribuer un barème spécifique au produit/catalogue de prix.</inlineHelpText>
     <label>Product</label>
     <referenceTo>Product2</referenceTo>
     <relationshipLabel>Discount Schedules</relationshipLabel>

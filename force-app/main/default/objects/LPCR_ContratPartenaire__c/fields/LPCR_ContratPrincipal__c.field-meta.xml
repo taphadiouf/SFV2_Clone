@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_ContratPrincipal__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>S&#39;il s&#39;agit d&#39;un avenant, lien vers le contrat principal</description>
+    <description>S&apos;il s&apos;agit d&apos;un avenant, lien vers le contrat principal</description>
     <externalId>false</externalId>
-    <inlineHelpText>S&#39;il s&#39;agit d&#39;un avenant, lien vers le contrat principal</inlineHelpText>
+    <inlineHelpText>S&apos;il s&apos;agit d&apos;un avenant, lien vers le contrat principal</inlineHelpText>
     <label>Contrat principal</label>
     <referenceTo>LPCR_ContratPartenaire__c</referenceTo>
     <relationshipLabel>Avenants</relationshipLabel>

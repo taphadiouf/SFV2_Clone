@@ -3,8 +3,8 @@
     <fullName>LPCR_ChargeAffaire__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <inlineHelpText>Attribution au chargé d&#39;affaire</inlineHelpText>
-    <label>Chargé d&#39;affaire</label>
+    <inlineHelpText>Attribution au chargé d&apos;affaire</inlineHelpText>
+    <label>Chargé d&apos;affaire</label>
     <referenceTo>User</referenceTo>
     <relationshipName>Leads</relationshipName>
     <required>false</required>

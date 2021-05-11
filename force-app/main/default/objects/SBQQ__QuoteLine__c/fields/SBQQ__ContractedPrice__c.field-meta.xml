@@ -3,9 +3,9 @@
     <fullName>SBQQ__ContractedPrice__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <deprecated>false</deprecated>
-    <description>Contracted price if the product has negotiated pricing for opportunity&#39;s account. Contracted Prices are available on the Account and can be applied to any product in any price book.</description>
+    <description>Contracted price if the product has negotiated pricing for opportunity&apos;s account. Contracted Prices are available on the Account and can be applied to any product in any price book.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Contracted price if the product has negotiated pricing for the opportunity&#39;s account. Contracted Prices are available on the Account and can be applied to any product in any price book.</inlineHelpText>
+    <inlineHelpText>Prix contracté si le produit a une tarification négociée pour le compte de l&apos;opportunité. Les prix contractés sont disponibles dans le compte et peuvent être appliqués à n&apos;importe quel produit de n&apos;importe quel catalogue de prix.</inlineHelpText>
     <label>Contracted Price</label>
     <referenceTo>SBQQ__ContractedPrice__c</referenceTo>
     <relationshipLabel>Quote Lines</relationshipLabel>

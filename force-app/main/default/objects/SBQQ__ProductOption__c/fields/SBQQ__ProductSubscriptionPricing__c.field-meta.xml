@@ -6,7 +6,7 @@
     <externalId>false</externalId>
     <formula>TEXT(SBQQ__OptionalSKU__r.SBQQ__SubscriptionPricing__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Type of pricing to use for this subscription. &quot;None&quot; means this product is not a subscription.</inlineHelpText>
+    <inlineHelpText>Type de tarification à utiliser pour cet abonnement. « Aucun » signifie que ce produit est sans abonnement.</inlineHelpText>
     <label>Product Subscription Pricing</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

@@ -2,18 +2,18 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_SponsorEntreprise__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Nom de l&#39;entreprise si la place est sponsorisé</description>
+    <description>Nom de l&apos;entreprise si la place est sponsorisé</description>
     <externalId>false</externalId>
     <label>Sponsor (entreprise)</label>
     <lookupFilter>
         <active>true</active>
-        <errorMessage>Le compte doit avoir un type d&#39;enregistrement = entreprise</errorMessage>
+        <errorMessage>Le compte doit avoir un type d&apos;enregistrement = entreprise</errorMessage>
         <filterItems>
             <field>Account.RecordTypeId</field>
             <operation>equals</operation>
             <value>Entreprise</value>
         </filterItems>
-        <infoMessage>Le compte doit avoir un type d&#39;enregistrement = entreprise</infoMessage>
+        <infoMessage>Le compte doit avoir un type d&apos;enregistrement = entreprise</infoMessage>
         <isOptional>false</isOptional>
     </lookupFilter>
     <referenceTo>Account</referenceTo>

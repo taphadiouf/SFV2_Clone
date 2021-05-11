@@ -110,4 +110,4 @@ global class APB006_PrepaRenewalContract implements Database.Batchable<sObject>,
             else { Id schedId = System.Schedule(ClassName + timeForScheduler, timeForScheduler, sc1);}
         }  
     }
-} 
+}

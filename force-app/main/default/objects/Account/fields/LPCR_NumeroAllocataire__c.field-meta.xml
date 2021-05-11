@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_NumeroAllocataire__c</fullName>
-    <description>Pour un compte famille, il s&#39;agit du numéro d&#39;allocataire du représentant sélectionné comme Allocataire CAF</description>
+    <description>Pour un compte famille, il s&apos;agit du numéro d&apos;allocataire du représentant sélectionné comme Allocataire CAF</description>
     <externalId>false</externalId>
-    <formula>IF(ISPICKVAL(LPCR_AllocataireCAF__c,&#39;Représentant 1&#39;),LPCR_Representant1__r.LPCR_NumeroAllocataire__c, 
-IF(ISPICKVAL(LPCR_AllocataireCAF__c,&#39;Représentant 2&#39;),LPCR_Representant2__r.LPCR_NumeroAllocataire__c,&#39;&#39;))</formula>
-    <inlineHelpText>Il s&#39;agit du numéro d&#39;allocation du représentant sélectionné comme Allocataire CAF</inlineHelpText>
-    <label>Numéro d&#39;allocataire</label>
+    <formula>IF(ISPICKVAL(LPCR_AllocataireCAF__c,&apos;Représentant 1&apos;),LPCR_Representant1__r.LPCR_NumeroAllocataire__c, 
+IF(ISPICKVAL(LPCR_AllocataireCAF__c,&apos;Représentant 2&apos;),LPCR_Representant2__r.LPCR_NumeroAllocataire__c,&apos;&apos;))</formula>
+    <inlineHelpText>Il s&apos;agit du numéro d&apos;allocation du représentant sélectionné comme Allocataire CAF</inlineHelpText>
+    <label>Numéro d&apos;allocataire</label>
     <required>false</required>
     <type>Text</type>
     <unique>false</unique>

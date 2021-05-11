@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Indicates that related product is bundled with the main product. Bundled options have fixed quantity and zero price.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Select the checkbox to indicate that the related product is bundled with the main product. Bundled options have fixed quantity and zero price as price is included in the main product. Leave this unchecked if the price should be added to the option.</inlineHelpText>
+    <inlineHelpText>Sélectionnez cette case pour indiquer que le produit associé est groupé avec le produit principal. Les options d&apos;offres groupées ont une quantité fixe et un prix nul, car le prix est inclus dans le produit principal. Laissez cette case désactivée si le prix doit être ajouté à l&apos;option.</inlineHelpText>
     <label>Bundled</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

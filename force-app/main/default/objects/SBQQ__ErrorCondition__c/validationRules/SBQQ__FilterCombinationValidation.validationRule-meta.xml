@@ -4,5 +4,5 @@
     <active>true</active>
     <description>Validation for the combination of Filter Type Variable.</description>
     <errorConditionFormula>AND(ISPICKVAL(SBQQ__FilterType__c, &quot;Variable&quot;), ISBLANK(SBQQ__FilterVariable__c))</errorConditionFormula>
-    <errorMessage>A Filter Type of &#39;Variable&#39; must have a Filter Variable.</errorMessage>
+    <errorMessage>A Filter Type of &apos;Variable&apos; must have a Filter Variable.</errorMessage>
 </ValidationRule>

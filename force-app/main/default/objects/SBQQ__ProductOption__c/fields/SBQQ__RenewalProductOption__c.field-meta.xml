@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Product option that replaces this product option on renewal.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Product option that replaces this product option on renewal. Use this to quote a different SKU when renewing.</inlineHelpText>
+    <inlineHelpText>Option produit qui remplace cette option produit lors d&apos;un renouvellement. Utilisez-la pour générer un devis avec une Unité de gestion de stock différente lors du renouvellement.</inlineHelpText>
     <label>Renewal Product Option</label>
     <referenceTo>SBQQ__ProductOption__c</referenceTo>
     <relationshipLabel>Product Options</relationshipLabel>

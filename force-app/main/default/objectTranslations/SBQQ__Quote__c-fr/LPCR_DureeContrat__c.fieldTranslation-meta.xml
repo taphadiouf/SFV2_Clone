@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Durée contrat --></label>
+    <name>LPCR_DureeContrat__c</name>
+    <picklistValues>
+        <masterLabel>Durée déterminée</masterLabel>
+        <translation><!-- Durée déterminée --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Durée indéterminée</masterLabel>
+        <translation><!-- Durée indéterminée --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

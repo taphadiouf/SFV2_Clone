@@ -38,5 +38,3 @@ public with sharing class EM004_OpportunityEntity extends DM000_SObject{
     }
 
 }
-
-

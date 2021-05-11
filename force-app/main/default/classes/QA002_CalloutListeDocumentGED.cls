@@ -164,9 +164,3 @@ public with sharing class QA002_CalloutListeDocumentGED implements Queueable,Dat
         public String fileType{get;set;} 
     }
 }
-
-
-
-
-
-

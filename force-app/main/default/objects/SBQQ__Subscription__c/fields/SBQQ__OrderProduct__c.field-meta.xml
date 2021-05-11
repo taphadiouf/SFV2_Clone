@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>The order product where this subscription is originated from.</description>
     <externalId>false</externalId>
-    <inlineHelpText>The order product where this subscription is generated from.</inlineHelpText>
+    <inlineHelpText>Le produit commandé à partir duquel cet abonnement est généré.</inlineHelpText>
     <label>Order Product</label>
     <referenceTo>OrderItem</referenceTo>
     <relationshipLabel>Subscriptions</relationshipLabel>

@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Order in which this price rule is evaluated.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specify the order of evaluation for this price rule. Higher ordered rules are evaluated last which means they &quot;win&quot; in case of conflict.</inlineHelpText>
+    <inlineHelpText>Spécifiez l&apos;ordre d&apos;évaluation de cette règle de prix. Les règles de niveau supérieur sont évaluées en dernier, ce qui signifie qu&apos;elles « gagnent » en cas de conflit.</inlineHelpText>
     <label>Evaluation Order</label>
     <precision>5</precision>
     <required>false</required>

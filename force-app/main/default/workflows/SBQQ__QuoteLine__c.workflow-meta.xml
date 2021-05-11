@@ -40,10 +40,7 @@
         </actions>
         <active>true</active>
         <description>Rempli le champ text technique ProductCode</description>
-        <formula>OR(
-ISNEW(),
-ISCHANGED(SBQQ__Product__c)
-)</formula>
+        <formula>OR( ISNEW(), ISCHANGED(SBQQ__Product__c) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
 </Workflow>

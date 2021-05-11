@@ -14,7 +14,7 @@ IF((blng__Balance__c = 0), Image(&quot;/img/samples/flag_green.gif&quot;,&quot;G
 			Image(&quot;/img/samples/flag_yellow.gif&quot;,&quot;Yellow&quot;)
 		)
 ))</formula>
-    <inlineHelpText>Orange = active invoice with a balance;  Green = no balance due; Red = past due; White = canceled</inlineHelpText>
+    <inlineHelpText>Orange = facture active avec un solde ; Vert = pas de solde dû ; Rouge = arriéré ; Blanc = annulé</inlineHelpText>
     <label>Status Flag</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

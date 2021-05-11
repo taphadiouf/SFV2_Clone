@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_LeadFamille__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Lead Famille à l&#39;origine de la création d&#39;un lead entreprises</description>
+    <description>Lead Famille à l&apos;origine de la création d&apos;un lead entreprises</description>
     <externalId>false</externalId>
     <label>Lead Famille</label>
     <referenceTo>Lead</referenceTo>

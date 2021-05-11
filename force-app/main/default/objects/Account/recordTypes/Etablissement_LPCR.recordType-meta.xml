@@ -190,6 +190,33 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_CrecheRegionCommerciale__c</picklist>
+        <values>
+            <fullName>Grand-Ouest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grand-Sud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IDF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nord-Est</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PACA-LR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RA</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_DispositifsExistants__c</picklist>
         <values>
             <fullName>Accompagnement scolaire</fullName>
@@ -481,11 +508,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>IDF Sédentaires</fullName>
+            <fullName>IDF Sud</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>IDF Sud</fullName>
+            <fullName>IDF Sédentaires</fullName>
             <default>false</default>
         </values>
         <values>

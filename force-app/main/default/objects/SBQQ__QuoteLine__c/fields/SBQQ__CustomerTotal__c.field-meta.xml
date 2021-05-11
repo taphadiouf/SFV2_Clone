@@ -5,7 +5,7 @@
     <description>Customer total price for this quote line item. This is the Net Total excluding any partner discounts.</description>
     <externalId>false</externalId>
     <formula>IF(AND(SBQQ__Renewal__c, !SBQQ__Existing__c, ISBLANK(SBQQ__PriorQuantity__c)), 0, SBQQ__CustomerPrice__c * SBQQ__EffectiveQuantity__c)</formula>
-    <inlineHelpText>Customer total price for this quote line item. This is the Net Total excluding any partner discounts.</inlineHelpText>
+    <inlineHelpText>Le prix total client de cet élément de ligne de devis. Correspond au prix total net sans aucune remise partenaire.</inlineHelpText>
     <label>Customer Total</label>
     <precision>18</precision>
     <required>false</required>

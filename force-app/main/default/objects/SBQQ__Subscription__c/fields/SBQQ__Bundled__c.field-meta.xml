@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Indicates the product on this line item is bundled (included) by another product in this quote. Bundled lines items are zero price and do not allow price or quantity to be edited.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Indicates the product on this line item is bundled (included) by another product in this quote. Bundled lines items have a zero price and do not allow price or quantity to be edited.</inlineHelpText>
+    <inlineHelpText>Indique que le produit de cet élément de ligne est groupé (inclus) à un autre produit de ce devis. Les éléments de ligne d&apos;offres groupées ont un prix nul et n&apos;autorisent pas la modification du prix ou de la quantité.</inlineHelpText>
     <label>Bundled</label>
     <trackTrending>false</trackTrending>
     <type>Checkbox</type>

@@ -7,13 +7,13 @@
     <label>Crèche</label>
     <lookupFilter>
         <active>true</active>
-        <errorMessage>Le compte n&#39; a pas un type d&#39;enregistrement = Crèche</errorMessage>
+        <errorMessage>Le compte n&apos; a pas un type d&apos;enregistrement = Crèche</errorMessage>
         <filterItems>
             <field>Account.RecordTypeId</field>
             <operation>equals</operation>
             <value>Crèche</value>
         </filterItems>
-        <infoMessage>type d&#39;enregistrement = Crèche</infoMessage>
+        <infoMessage>type d&apos;enregistrement = Crèche</infoMessage>
         <isOptional>false</isOptional>
     </lookupFilter>
     <referenceTo>Account</referenceTo>

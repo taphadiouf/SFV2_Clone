@@ -97,7 +97,3 @@ public with sharing class QA003_CalloutEnvoieMail implements Queueable,Database.
         }
     }
 }
-
-
-
-

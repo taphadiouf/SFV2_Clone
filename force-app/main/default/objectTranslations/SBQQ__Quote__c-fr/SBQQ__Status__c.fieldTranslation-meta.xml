@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>Statut indiquant la position du devis dans son cycle de vie.</help>
+    <label><!-- Status --></label>
+    <name>SBQQ__Status__c</name>
+    <picklistValues>
+        <masterLabel>Actif</masterLabel>
+        <translation><!-- Actif --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Annulé</masterLabel>
+        <translation><!-- Annulé --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Approved</masterLabel>
+        <translation>Approuvé</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brouillon</masterLabel>
+        <translation><!-- Brouillon --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Draft</masterLabel>
+        <translation>Brouillon</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Envoi directrice</masterLabel>
+        <translation><!-- Envoi directrice --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Envoyé pour signature</masterLabel>
+        <translation><!-- Envoyé pour signature --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Review</masterLabel>
+        <translation>Révision en cours</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Prêt pour commande</masterLabel>
+        <translation><!-- Prêt pour commande --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Prêt à envoyer</masterLabel>
+        <translation><!-- Prêt à envoyer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Signé</masterLabel>
+        <translation><!-- Signé --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Terminé</masterLabel>
+        <translation><!-- Terminé --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Validé directrice</masterLabel>
+        <translation><!-- Validé directrice --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

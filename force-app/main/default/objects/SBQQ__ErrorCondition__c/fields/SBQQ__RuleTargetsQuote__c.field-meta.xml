@@ -3,7 +3,7 @@
     <fullName>SBQQ__RuleTargetsQuote__c</fullName>
     <deprecated>false</deprecated>
     <externalId>false</externalId>
-    <formula>ISPICKVAL(SBQQ__Rule__r.SBQQ__Scope__c, &#39;Quote&#39;)</formula>
+    <formula>ISPICKVAL(SBQQ__Rule__r.SBQQ__Scope__c, &apos;Quote&apos;)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>RuleTargetsQuote</label>
     <trackTrending>false</trackTrending>

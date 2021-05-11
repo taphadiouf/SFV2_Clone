@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Event that causes this rule to be evaluated.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Specify when this rule should be evaluated. Only to be used when targeting Quote Line and not supported on legacy calculator.</inlineHelpText>
+    <inlineHelpText>Spécifiez quand cette règle doit être évaluée. Utilisé uniquement pour cibler une ligne de devis et lorsque le champ de l&apos;événement d&apos;évaluation n&apos;est pas pris en charge dans le calculateur hérité.</inlineHelpText>
     <label>Calculator Evaluation Event</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

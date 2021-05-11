@@ -9,5 +9,5 @@
     <masterLabel>Clone with Related</masterLabel>
     <openType>replace</openType>
     <protected>false</protected>
-    <url>{!URLFOR($Action.SBQQ__PriceRule__c.Clone, SBQQ__PriceRule__c.Id, [retURL=$Site.Prefix &amp; &#39;/&#39; &amp; SBQQ__PriceRule__c.Id,saveURL=$Site.Prefix &amp; &#39;/apex/SBQQ__ClonePriceRule?id=&#39; &amp; SBQQ__PriceRule__c.Id])}</url>
+    <url>{!URLFOR($Action.SBQQ__PriceRule__c.Clone, SBQQ__PriceRule__c.Id, [retURL=$Site.Prefix &amp; &apos;/&apos; &amp; SBQQ__PriceRule__c.Id,saveURL=$Site.Prefix &amp; &apos;/apex/SBQQ__ClonePriceRule?id=&apos; &amp; SBQQ__PriceRule__c.Id])}</url>
 </WebLink>

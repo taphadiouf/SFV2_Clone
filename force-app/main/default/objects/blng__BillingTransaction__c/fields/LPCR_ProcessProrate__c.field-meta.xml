@@ -2,10 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_ProcessProrate__c</fullName>
     <defaultValue>false</defaultValue>
-    <description>Permet d'identifier les billing transaction qui seront traités par le batch APB021 afin de reporter le montant sur le revenue transaction associé</description>
+    <description>Permet d&apos;identifier les billing transaction qui seront traités par le batch APB021 afin de reporter le montant sur le revenue transaction associé</description>
     <externalId>false</externalId>
     <label>Report Revenue transaction traité</label>
-    <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
     <type>Checkbox</type>
 </CustomField>

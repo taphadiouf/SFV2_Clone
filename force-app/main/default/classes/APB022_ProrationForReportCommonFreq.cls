@@ -321,9 +321,3 @@ global class APB022_ProrationForReportCommonFreq implements Database.Batchable<s
         return tmpRevenueTransactionToUpdate;
     }
 }
-
-
-
-
-
-

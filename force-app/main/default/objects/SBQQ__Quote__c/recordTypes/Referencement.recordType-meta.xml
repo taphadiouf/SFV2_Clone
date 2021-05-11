@@ -154,6 +154,37 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_MotifAnnulationDevis__c</picklist>
+        <values>
+            <fullName>Abandon projet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pas de disponibilité</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refus conditions particulières</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Report Projet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Signature concurrence - Détails inconnus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Signature concurrence - Tarif</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Signature concurrence - Visite non concluante</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_MoyenPaiement__c</picklist>
         <values>
             <fullName>Carte Bancaire</fullName>
@@ -206,6 +237,14 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>G</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GG</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>M</fullName>
             <default>false</default>
         </values>
@@ -219,14 +258,6 @@
         </values>
         <values>
             <fullName>MG</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>G</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>GG</fullName>
             <default>false</default>
         </values>
         <values>
@@ -319,6 +350,21 @@
         </values>
         <values>
             <fullName>RAM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_TypeDeVente__c</picklist>
+        <values>
+            <fullName>NewBiz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renouvellement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Upsell</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -477,6 +523,133 @@
         </values>
         <values>
             <fullName>Net 90</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SBQQ__ProrationDayOfMonth__c</picklist>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>11</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>13</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>14</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>16</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>17</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>18</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>19</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>20</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>21</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>22</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>23</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>24</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>26</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>27</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>28</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>30</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>31</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>7</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>8</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9</fullName>
             <default>false</default>
         </values>
     </picklistValues>

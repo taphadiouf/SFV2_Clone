@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Exists for convenience of not having to run relationship queries.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Original Quote Line of the subscription.</inlineHelpText>
+    <inlineHelpText>Ligne de devis d&apos;origine de l&apos;abonnement.</inlineHelpText>
     <label>Original Quote Line</label>
     <referenceTo>SBQQ__QuoteLine__c</referenceTo>
     <relationshipLabel>Quote Lines (Derived)</relationshipLabel>

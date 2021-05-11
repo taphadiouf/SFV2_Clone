@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Configuration Attribute that is evaluated by this query. Required if Match Type = Configuration Attribute and only if this Query is associated with a Product Rule.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Configuration Attribute that is evaluated by this query. Required if Match Type = Configuration Attribute and only if this Query is associated with a Product Rule.</inlineHelpText>
+    <inlineHelpText>Attribut de configuration évalué par cette requête. Requis si Type de correspondance = Attribut de configuration et uniquement si cette requête est associée à une règle produit.</inlineHelpText>
     <label>Tested Configuration Attribute</label>
     <referenceTo>SBQQ__ConfigurationAttribute__c</referenceTo>
     <relationshipLabel>Lookup Queries</relationshipLabel>

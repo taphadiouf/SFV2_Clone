@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Utiliser le représentant 1 ou le représentant 2 pour le numéro d&apos;allocataire CAF ? --></help>
+    <label><!-- Allocataire CAF --></label>
+    <name>LPCR_AllocataireCAF__c</name>
+    <picklistValues>
+        <masterLabel>Représentant 1</masterLabel>
+        <translation><!-- Représentant 1 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Représentant 2</masterLabel>
+        <translation><!-- Représentant 2 --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

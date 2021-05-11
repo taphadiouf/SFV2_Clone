@@ -20,5 +20,3 @@ public class EM009_StructureAOEntity_Test {
         System.assertNotEquals(0, res.size());
     }
 }
-
-

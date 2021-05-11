@@ -6,7 +6,7 @@
     <externalId>false</externalId>
     <formula>TEXT(SBQQ__OptionalSKU__r.SBQQ__ConfigurationType__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Pulls in the value of Configuration Type on Product object in order to avoid loading related product record.</inlineHelpText>
+    <inlineHelpText>Extrait la valeur du Type de configuration de l&apos;objet Produit afin d&apos;éviter le chargement d&apos;un enregistrement produit associé.</inlineHelpText>
     <label>Product Configuration Type</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

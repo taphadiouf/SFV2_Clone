@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_NombreJoursAccueil__c</fullName>
     <externalId>false</externalId>
-    <label>Nombre de jours d&#39;accueil</label>
+    <label>Nombre de jours d&apos;accueil</label>
     <summarizedField>LPCR_PlanningPrevisionnel__c.LPCR_JourSemaine__c</summarizedField>
     <summaryForeignKey>LPCR_PlanningPrevisionnel__c.LPCR_Planning__c</summaryForeignKey>
     <summaryOperation>sum</summaryOperation>

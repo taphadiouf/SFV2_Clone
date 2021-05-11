@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Résiliation anticipé --></label>
+    <name>LPCR_ResiliationAnticipe__c</name>
+    <picklistValues>
+        <masterLabel>1 an ferme</masterLabel>
+        <translation><!-- 1 an ferme --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>2 ans ferme</masterLabel>
+        <translation><!-- 2 ans ferme --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>3 ans ferme</masterLabel>
+        <translation><!-- 3 ans ferme --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Immédiate</masterLabel>
+        <translation><!-- Immédiate --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

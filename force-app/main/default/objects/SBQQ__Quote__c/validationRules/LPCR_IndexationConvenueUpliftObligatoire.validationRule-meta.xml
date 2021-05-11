@@ -2,7 +2,7 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_IndexationConvenueUpliftObligatoire</fullName>
     <active>true</active>
-    <description>Si l&#39;indexation est convenue l&#39;utilisateur doit renseigner la valeur de l&#39;augmentation du renouvellement.</description>
-    <errorConditionFormula>AND( ISPICKVAL( SBQQ__Type__c ,&#39;Quote&#39;), ISPICKVAL(LPCR_IndexationConvenue__c, &#39;Oui&#39;), ISNULL( SBQQ__RenewalUpliftRate__c ), NOT( $Permission.LPCR_ByPass_VR ), OR(RecordType.DeveloperName = &#39;Referencement&#39;,RecordType.DeveloperName = &#39;Reservataire&#39;))</errorConditionFormula>
-    <errorMessage>Merci de renseigner la valeur de l&#39;augmentation du renouvellement.</errorMessage>
+    <description>Si l&apos;indexation est convenue l&apos;utilisateur doit renseigner la valeur de l&apos;augmentation du renouvellement.</description>
+    <errorConditionFormula>AND( ISPICKVAL( SBQQ__Type__c ,&apos;Quote&apos;), ISPICKVAL(LPCR_IndexationConvenue__c, &apos;Oui&apos;), ISNULL( SBQQ__RenewalUpliftRate__c ), NOT( $Permission.LPCR_ByPass_VR ), OR(RecordType.DeveloperName = &apos;Referencement&apos;,RecordType.DeveloperName = &apos;Reservataire&apos;))</errorConditionFormula>
+    <errorMessage>Merci de renseigner la valeur de l&apos;augmentation du renouvellement.</errorMessage>
 </ValidationRule>

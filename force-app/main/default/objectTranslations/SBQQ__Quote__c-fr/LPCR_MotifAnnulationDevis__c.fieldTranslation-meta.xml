@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Motif d&apos;annulation du devis --></label>
+    <name>LPCR_MotifAnnulationDevis__c</name>
+    <picklistValues>
+        <masterLabel>Abandon projet</masterLabel>
+        <translation><!-- Abandon projet --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pas de disponibilité</masterLabel>
+        <translation><!-- Pas de disponibilité --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Refus conditions particulières</masterLabel>
+        <translation><!-- Refus conditions particulières --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Report Projet</masterLabel>
+        <translation><!-- Report Projet --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Signature concurrence - Détails inconnus</masterLabel>
+        <translation><!-- Signature concurrence - Détails inconnus --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Signature concurrence - Tarif</masterLabel>
+        <translation><!-- Signature concurrence - Tarif --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Signature concurrence - Visite non concluante</masterLabel>
+        <translation><!-- Signature concurrence - Visite non concluante --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

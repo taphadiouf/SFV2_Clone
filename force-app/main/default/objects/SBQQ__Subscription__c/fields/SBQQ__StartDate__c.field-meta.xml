@@ -6,7 +6,7 @@
     <externalId>false</externalId>
     <formula>if ( ISBLANK (SBQQ__SubscriptionStartDate__c), SBQQ__Contract__r.StartDate, SBQQ__SubscriptionStartDate__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>The first date this subscription is in effect.</inlineHelpText>
+    <inlineHelpText>La date à laquelle cet abonnement prend effet.</inlineHelpText>
     <label>Start Date</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

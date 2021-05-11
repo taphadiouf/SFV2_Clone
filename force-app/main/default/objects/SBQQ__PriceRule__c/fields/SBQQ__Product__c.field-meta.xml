@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Optional field that makes this rule specific to the product.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Choose a product to associate to this rule.</inlineHelpText>
+    <inlineHelpText>Sélectionnez un produit auquel associer cette règle.</inlineHelpText>
     <label>Product</label>
     <referenceTo>Product2</referenceTo>
     <relationshipLabel>Price Rules</relationshipLabel>

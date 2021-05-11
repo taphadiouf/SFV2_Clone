@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <formula>IF(
 AND(blng__Balance__c &gt; 0, blng__Payments__c &gt; 0),
-&#39;Partially Paid&#39;, IF(blng__Balance__c &gt; 0, &#39;Unpaid&#39;, &#39;Paid&#39;)
+&apos;Partially Paid&apos;, IF(blng__Balance__c &gt; 0, &apos;Unpaid&apos;, &apos;Paid&apos;)
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Payment Status</label>

@@ -3,7 +3,7 @@
     <fullName>blng__DebitPayments__c</fullName>
     <deprecated>false</deprecated>
     <externalId>false</externalId>
-    <inlineHelpText>Sum of all payment allocations and unallocations against Debit Notes allocated to this invoice.</inlineHelpText>
+    <inlineHelpText>Somme de toutes les allocations et désallocations de paiements contre les notes de débit allouées à cette facture.</inlineHelpText>
     <label>Debit Payments</label>
     <summarizedField>blng__InvoiceLine__c.blng__DebitPayments__c</summarizedField>
     <summaryForeignKey>blng__InvoiceLine__c.blng__Invoice__c</summaryForeignKey>

@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>SBQQ__DiscountScheduleType__c</fullName>
     <deprecated>false</deprecated>
-    <description>Discount schedule type. Must be a stored value because it&#39;s used in formula fields that are rolled up.</description>
+    <description>Discount schedule type. Must be a stored value because it&apos;s used in formula fields that are rolled up.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Discount schedule type. Copied from Type field in associated discount schedule.</inlineHelpText>
+    <inlineHelpText>Type de barème de remise. Copié depuis le champ Type du barème de remise associé.</inlineHelpText>
     <label>Discount Schedule Type</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Price Rule associated with this Lookup Query. Replaces the legacy master-detail field.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Price Rule associated with this Lookup Query. Replaces the legacy master-detail field.</inlineHelpText>
+    <inlineHelpText>La règle de tarification associée à cette requête de référence. Remplace le champ principal-détails hérité.</inlineHelpText>
     <label>Price Rule</label>
     <referenceTo>SBQQ__PriceRule__c</referenceTo>
     <relationshipLabel>Lookup Queries (Price Rule)</relationshipLabel>

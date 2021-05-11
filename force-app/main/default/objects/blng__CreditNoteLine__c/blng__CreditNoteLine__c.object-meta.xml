@@ -154,6 +154,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
     <label>Credit Note Line</label>
     <nameField>
         <displayFormat>{000000}</displayFormat>

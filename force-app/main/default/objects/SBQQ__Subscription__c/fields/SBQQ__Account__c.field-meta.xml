@@ -5,7 +5,7 @@
     <deprecated>false</deprecated>
     <description>Account that owns this subscription. This relationship is used for volume discount calculations.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Account that owns this subscription. This relationship is used for volume discount calculations.</inlineHelpText>
+    <inlineHelpText>Compte propriétaire de cet abonnement. Cette relation est utilisée pour les calculs de remise sur volume.</inlineHelpText>
     <label>Account</label>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Subscriptions</relationshipLabel>

@@ -4,8 +4,8 @@
     <deprecated>false</deprecated>
     <description>Brings over the value of Price Editable field on the optional SKU in order to avoid loading optional product just to know if the price is editable.</description>
     <externalId>false</externalId>
-    <formula>IF(SBQQ__OptionalSKU__r.SBQQ__PriceEditable__c, &#39;Yes&#39;, &#39;No&#39;)</formula>
-    <inlineHelpText>Select to mark the price as editable, allowing users to make changes to option prices.</inlineHelpText>
+    <formula>IF(SBQQ__OptionalSKU__r.SBQQ__PriceEditable__c, &apos;Yes&apos;, &apos;No&apos;)</formula>
+    <inlineHelpText>Sélectionnez cette case pour marquer le prix comme modifiable, ce qui autorise les utilisateurs à apporter des modifications aux prix des options.</inlineHelpText>
     <label>Price Editable</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

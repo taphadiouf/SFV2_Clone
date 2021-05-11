@@ -8,9 +8,9 @@
         <isCrossBlock>false</isCrossBlock>
         <masterLabel>ARPU par prestation</masterLabel>
         <scale>2</scale>
-    </aggregates> 
+    </aggregates>
     <aggregates>
-        <calculatedFormula>OrderItem.LPCR_CAUnitaire__c:SUM / OrderItem.LPCR_NombrePlace__c:SUM </calculatedFormula>
+        <calculatedFormula>OrderItem.LPCR_CAUnitaire__c:SUM / OrderItem.LPCR_NombrePlace__c:SUM</calculatedFormula>
         <datatype>number</datatype>
         <developerName>FORMULA2</developerName>
         <isActive>true</isActive>
@@ -88,7 +88,7 @@
             <column>Order.OrderItems$Product2</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator> 
+            <operator>contains</operator>
             <value>Accueil MICRO</value>
         </criteriaItems>
         <criteriaItems>

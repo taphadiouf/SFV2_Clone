@@ -3,6 +3,6 @@
     <fullName>SBQQ__Tested_attr_required_if_global_field</fullName>
     <active>true</active>
     <description>Tested Attribute required since the Tested Field is a global Configuration Attribute field.</description>
-    <errorConditionFormula>IF(TEXT(SBQQ__TestedObject__c) == &#39;Configuration Attributes&#39; &amp;&amp; CONTAINS(TEXT(SBQQ__TestedField__c), &#39;.&#39;) &amp;&amp; SBQQ__TestedAttribute__c == &#39;&#39;, true, false)</errorConditionFormula>
+    <errorConditionFormula>IF(TEXT(SBQQ__TestedObject__c) == &apos;Configuration Attributes&apos; &amp;&amp; CONTAINS(TEXT(SBQQ__TestedField__c), &apos;.&apos;) &amp;&amp; SBQQ__TestedAttribute__c == &apos;&apos;, true, false)</errorConditionFormula>
     <errorMessage>Tested Attribute required since the Tested Field is a global Configuration Attribute field.</errorMessage>
 </ValidationRule>

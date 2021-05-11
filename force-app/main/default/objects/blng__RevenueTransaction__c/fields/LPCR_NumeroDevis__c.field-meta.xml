@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_NumeroDevis__c</fullName>
     <externalId>false</externalId>
-    <formula>name</formula>
+    <formula>Name</formula>
     <label>Numero de Devis</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

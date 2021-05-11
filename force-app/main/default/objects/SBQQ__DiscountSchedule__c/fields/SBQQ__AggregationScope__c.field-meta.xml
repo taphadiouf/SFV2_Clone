@@ -4,7 +4,7 @@
     <deprecated>false</deprecated>
     <description>Indicates whether quote lines referencing this schedule should be aggregated within quote, group or not at all for the purposes of volume discount calculation.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Spécifiez le mode d&#39;agrégation des quantités de ligne de devis pour les produits qui utilisent ce barème. Par défaut, la quantité de chaque ligne est considérée de façon indépendante (même pour un produit identique).</inlineHelpText>
+    <inlineHelpText>Spécifiez le mode d&apos;agrégation des quantités de ligne de devis pour les produits qui utilisent ce barème. Par défaut, la quantité de chaque ligne est considérée de façon indépendante (même pour un produit identique).</inlineHelpText>
     <label>Aggregation Scope</label>
     <required>false</required>
     <trackHistory>false</trackHistory>

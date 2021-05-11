@@ -3,6 +3,6 @@
     <fullName>SBQQ__Column_Order_is_required</fullName>
     <active>true</active>
     <description>Column Order is required</description>
-    <errorConditionFormula>if (Text( SBQQ__ColumnOrder__c ) == &#39;&#39;, true, false)</errorConditionFormula>
+    <errorConditionFormula>if (Text( SBQQ__ColumnOrder__c ) == &apos;&apos;, true, false)</errorConditionFormula>
     <errorMessage>Column Order is required.</errorMessage>
 </ValidationRule>

@@ -3,15 +3,15 @@
     <label><!-- Moyen de transport --></label>
     <name>LPCR_MoyenDeTransport__c</name>
     <picklistValues>
+        <masterLabel>A pied</masterLabel>
+        <translation><!-- A pied --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Transports en commun</masterLabel>
         <translation><!-- Transports en commun --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Voiture</masterLabel>
         <translation><!-- Voiture --></translation>
-    </picklistValues>
-    <picklistValues>
-        <masterLabel>A pied</masterLabel>
-        <translation><!-- A pied --></translation>
     </picklistValues>
 </CustomFieldTranslation>

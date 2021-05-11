@@ -5,7 +5,7 @@
     <externalId>false</externalId>
     <formula>blng__TotalAmount__c - blng__Allocations__c + blng__Unallocations__c -  blng__Refunds__c - blng__Debits__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Amount that has not yet been allocated</inlineHelpText>
+    <inlineHelpText>Montant pas encore alloué</inlineHelpText>
     <label>Balance</label>
     <precision>18</precision>
     <required>false</required>

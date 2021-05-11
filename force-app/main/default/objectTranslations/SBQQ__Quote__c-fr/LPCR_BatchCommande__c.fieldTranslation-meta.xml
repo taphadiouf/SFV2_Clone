@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Lot de facture --></label>
+    <name>LPCR_BatchCommande__c</name>
+    <picklistValues>
+        <masterLabel>Ad-hoc</masterLabel>
+        <translation><!-- Ad-hoc --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>B2B</masterLabel>
+        <translation><!-- B2B --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Batch 1</masterLabel>
+        <translation><!-- Batch 1 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Batch 2</masterLabel>
+        <translation><!-- Batch 2 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Batch 3</masterLabel>
+        <translation><!-- Batch 3 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Batch 4</masterLabel>
+        <translation><!-- Batch 4 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Batch 5</masterLabel>
+        <translation><!-- Batch 5 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Batch 6</masterLabel>
+        <translation><!-- Batch 6 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>En Attente</masterLabel>
+        <translation><!-- En Attente --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MAC</masterLabel>
+        <translation><!-- MAC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MICRO</masterLabel>
+        <translation><!-- MICRO --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

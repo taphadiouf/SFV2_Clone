@@ -4,11 +4,11 @@
     <active>true</active>
     <errorConditionFormula>AND (
      NOT ( $Permission.LPCR_ByPass_VR ),
-     OR  ( RecordType.DeveloperName = &#39;Entreprise&#39;,
-           RecordType.DeveloperName = &#39;Famille&#39; )
+     OR  ( RecordType.DeveloperName = &apos;Entreprise&apos;,
+           RecordType.DeveloperName = &apos;Famille&apos; )
      ,
 
-    ISPICKVAL(StageName,&#39;Signée&#39; ),
+    ISPICKVAL(StageName,&apos;Signée&apos; ),
 Probability &lt;&gt; 1.0
     
 )</errorConditionFormula>

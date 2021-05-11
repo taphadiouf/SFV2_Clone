@@ -202,7 +202,7 @@
         <fields>
             <name>ErreurCreationAvenant</name>
             <defaultValue>
-                <stringValue>Une erreur s&#39;est produite lors de la création de l&#39;avenant : {!$Flow.FaultMessage}</stringValue>
+                <stringValue>Une erreur s&apos;est produite lors de la création de l&apos;avenant : {!$Flow.FaultMessage}</stringValue>
             </defaultValue>
             <fieldText>Erreur lors de la création</fieldText>
             <fieldType>LargeTextArea</fieldType>
@@ -222,7 +222,7 @@
         <fields>
             <name>ErreurCreationOpportunite</name>
             <defaultValue>
-                <stringValue>Une erreur s&#39;est produite lors de la création de l&#39;opportunité : {!$Flow.FaultMessage}</stringValue>
+                <stringValue>Une erreur s&apos;est produite lors de la création de l&apos;opportunité : {!$Flow.FaultMessage}</stringValue>
             </defaultValue>
             <fieldText>Erreur lors de la création</fieldText>
             <fieldType>LargeTextArea</fieldType>
@@ -314,7 +314,7 @@
         <fields>
             <name>MessageSuccess</name>
             <defaultValue>
-                <stringValue>L&#39;avenant a été créé avec succès.</stringValue>
+                <stringValue>L&apos;avenant a été créé avec succès.</stringValue>
             </defaultValue>
             <fieldText>Message</fieldText>
             <fieldType>LargeTextArea</fieldType>
