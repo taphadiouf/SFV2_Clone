@@ -5,7 +5,7 @@ public  class SM029_AccountService_Test {
     @testSetup 
     static void testSetup(){
         
-        Account acc= new Account(Name='test',RecordTypeId=entrepriseRecTypeId,LPCR_IDSage__c ='12',LPCR_PasDeSIRET__c=true);
+        Account acc= new Account(Name='test',RecordTypeId=entrepriseRecTypeId,LPCR_IDSage__c ='4110000001',LPCR_PasDeSIRET__c=true);
         lstAccount.add(acc);
         insert lstAccount;
     }
