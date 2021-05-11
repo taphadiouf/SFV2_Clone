@@ -1024,6 +1024,36 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_ClientVip__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_EnvoiProforma__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_EmailFacture__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_FacturerCrecheMarche__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_FacturerDepotPlateforme__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_ContactPrincipalCompte__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Case.AccountId</field>
         <readable>true</readable>
@@ -4615,7 +4645,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+<<<<<<< HEAD
         <field>Lead.LPCR_Concurrence__c</field>
+=======
+        <field>Opportunity.LPCR_ContactPrincipalOpport__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.ActivatedById</field>
+>>>>>>> fb303abaa238b9f2ae2241d8bd45375492968b77
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

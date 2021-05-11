@@ -1018,8 +1018,43 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+<<<<<<< HEAD
         <field>AccountContactRelation.LPCR_AutoriteParentale__c</field>
         <readable>false</readable>
+=======
+        <field>Account.LPCR_CTNum__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_ClientVip__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_EnvoiProforma__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_EmailFacture__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_FacturerCrecheMarche__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_FacturerDepotPlateforme__c</field>
+            <readable>true</readable>
+  </fieldPermissions>
+   <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_ContactPrincipalCompte__c</field>
+        <readable>true</readable>
+>>>>>>> fb303abaa238b9f2ae2241d8bd45375492968b77
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -5704,6 +5739,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.sbaa__SubmittedUser__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.LPCR_ContactPrincipalOpport__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

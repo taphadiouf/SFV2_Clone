@@ -1008,6 +1008,36 @@
         <field>AccountContactRelation.LPCR_AutoriteParentale__c</field>
         <readable>false</readable>
     </fieldPermissions>
+    	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_ClientVip__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_EnvoiProforma__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_EmailFacture__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_FacturerCrecheMarche__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_FacturerDepotPlateforme__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_ContactPrincipalCompte__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>AccountContactRelation.LPCR_Facture__c</field>
@@ -10541,6 +10571,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Task.LPCR_Echeance__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.LPCR_ContactPrincipalOpport__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

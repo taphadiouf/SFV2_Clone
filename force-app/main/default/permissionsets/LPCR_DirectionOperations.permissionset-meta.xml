@@ -1005,9 +1005,45 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+<<<<<<< HEAD
         <editable>false</editable>
         <field>AccountContactRelation.LPCR_Facture__c</field>
         <readable>false</readable>
+=======
+            <editable>false</editable>
+            <field>Account.LPCR_ClientVip__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_EnvoiProforma__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_EmailFacture__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_FacturerCrecheMarche__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+            <editable>false</editable>
+            <field>Account.LPCR_FacturerDepotPlateforme__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_ContactPrincipalCompte__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Activity.LPCR_Compte_rendu__c</field>
+        <readable>true</readable>
+>>>>>>> fb303abaa238b9f2ae2241d8bd45375492968b77
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -10528,6 +10564,11 @@
         <editable>false</editable>
         <field>blng__CreditNoteLine__c.blng__TaxStreet2__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.LPCR_ContactPrincipalOpport__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>

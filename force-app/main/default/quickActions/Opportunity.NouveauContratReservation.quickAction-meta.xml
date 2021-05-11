@@ -49,6 +49,13 @@
         <formula>true</formula>
     </fieldOverrides>
     <fieldOverrides>
+<<<<<<< HEAD
+=======
+        <field>SBQQ__PrimaryContact__c</field>
+        <formula>Opportunity.LPCR_ContactPrincipalOpport__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+>>>>>>> fb303abaa238b9f2ae2241d8bd45375492968b77
         <field>SBQQ__RenewalUpliftRate__c</field>
         <formula>3</formula>
     </fieldOverrides>

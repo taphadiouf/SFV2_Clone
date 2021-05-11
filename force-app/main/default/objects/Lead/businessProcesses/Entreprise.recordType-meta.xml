@@ -1381,6 +1381,7 @@
     <picklistValues>
         <picklist>LPCR_IndiquezNousVosBesoins__c</picklist>
         <values>
+<<<<<<< HEAD
             <fullName>Créer une crèche d%27entreprise dédiée</fullName>
             <default>false</default>
         </values>
@@ -1390,6 +1391,13 @@
         </values>
         <values>
             <fullName>Lancer un appel d%27offre</fullName>
+=======
+            <fullName>Créer une crèche d%E2%80%99entreprise dédiée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lancer un appel d%E2%80%99offre</fullName>
+>>>>>>> fb303abaa238b9f2ae2241d8bd45375492968b77
             <default>false</default>
         </values>
         <values>
@@ -1397,7 +1405,11 @@
             <default>false</default>
         </values>
         <values>
+<<<<<<< HEAD
             <fullName>Réserver des places en crèches privées pour vos salariés</fullName>
+=======
+            <fullName>Réservez des places en crèches privées pour vos salariés</fullName>
+>>>>>>> fb303abaa238b9f2ae2241d8bd45375492968b77
             <default>false</default>
         </values>
         <values>
@@ -1408,6 +1420,13 @@
             <fullName>Simuler un devis et connaitre mes avantages fiscaux</fullName>
             <default>false</default>
         </values>
+<<<<<<< HEAD
+=======
+        <values>
+            <fullName>Être rappelé sous 48h</fullName>
+            <default>false</default>
+        </values>
+>>>>>>> fb303abaa238b9f2ae2241d8bd45375492968b77
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_JoursDeGardeSouhaitesEnfant1__c</picklist>
