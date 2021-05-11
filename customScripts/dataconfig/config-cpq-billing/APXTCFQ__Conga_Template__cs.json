@@ -105,6 +105,17 @@
                 "type": "APXTCFQ__Conga_Template__c",
                 "referenceId": "APXTCFQ__Conga_Template__cRef11"
             },
+            "APXTCFQ__Name__c": "Basic Quote Template",
+            "APXTCFQ__Description__c": "Created By Solution Pack for Composer Solution: Composer Basic Quote (SBQQ__Quote__c)",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Group__c": "Basic Quote with Line Items",
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef12"
+            },
             "APXTCFQ__Name__c": "Bon de commande",
             "APXTCFQ__Description__c": "Bon de commande lié à un contrat de référencement",
             "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
@@ -113,7 +124,7 @@
         {
             "attributes": {
                 "type": "APXTCFQ__Conga_Template__c",
-                "referenceId": "APXTCFQ__Conga_Template__cRef12"
+                "referenceId": "APXTCFQ__Conga_Template__cRef13"
             },
             "APXTCFQ__Name__c": "Annexe 2 Micro - Régulier",
             "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
@@ -122,7 +133,7 @@
         {
             "attributes": {
                 "type": "APXTCFQ__Conga_Template__c",
-                "referenceId": "APXTCFQ__Conga_Template__cRef13"
+                "referenceId": "APXTCFQ__Conga_Template__cRef14"
             },
             "APXTCFQ__Name__c": "Annexe 2 Micro - Occasionnel",
             "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
