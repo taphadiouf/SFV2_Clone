@@ -1113,6 +1113,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_SocieteFacturanteCompte__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Activity.LPCR_Echeance__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4264,6 +4269,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.LPCR_ContactPrincipalOpport__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.LPCR_SocieteFacturanteOpport__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

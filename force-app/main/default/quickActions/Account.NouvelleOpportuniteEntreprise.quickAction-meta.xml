@@ -8,6 +8,10 @@
         <field>LPCR_ContactPrincipalOpport__c</field>
         <formula>Account.LPCR_ContactPrincipalCompte__c</formula>
     </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_SocieteFacturanteOpport__c</field>
+        <formula>Account.LPCR_SocieteFacturanteCompte__c</formula>
+    </fieldOverrides>
     <label>Nouvelle Opportunité Entreprise</label>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
     <quickActionLayout>

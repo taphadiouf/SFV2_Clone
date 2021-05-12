@@ -37,6 +37,10 @@
         <formula>Opportunity.LPCR_Ref_RespServiceFam__c</formula>
     </fieldOverrides>
     <fieldOverrides>
+        <field>LPCR_SocieteFacturante__c</field>
+        <formula>Opportunity.LPCR_SocieteFacturanteOpport__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>SBQQ__Account__c</field>
         <formula>Opportunity.LPCR_Ref_IdCompte__c</formula>
     </fieldOverrides>
