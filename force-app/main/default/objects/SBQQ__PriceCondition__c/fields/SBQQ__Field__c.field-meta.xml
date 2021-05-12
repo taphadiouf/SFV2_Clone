@@ -182,6 +182,12 @@
                 <default>false</default>
                 <label>LPCR_NombreDeJour__c</label>
             </value>
+            <value>
+                <fullName>LPCR_ByPassPricceRule__c</fullName>
+                <default>false</default>
+                <label>LPCR_ByPassPricceRule__c</label>
+            </value>
+            
         </valueSetDefinition>
     </valueSet>
 </CustomField>
