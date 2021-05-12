@@ -6,5 +6,51 @@
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
-    <type>TextArea</type>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Eloigné de nos bases</fullName>
+                <default>false</default>
+                <label>Eloigné de nos bases</label>
+            </value>
+            <value>
+                <fullName>Forte demande associative</fullName>
+                <default>false</default>
+                <label>Forte demande associative</label>
+            </value>
+            <value>
+                <fullName>Micro-crèche uniquement</fullName>
+                <default>false</default>
+                <label>Micro-crèche uniquement</label>
+            </value>
+            <value>
+                <fullName>Prestations hors cœur de métier</fullName>
+                <default>false</default>
+                <label>Prestations hors cœur de métier</label>
+            </value>
+            <value>
+                <fullName>Refus connu d’avance</fullName>
+                <default>false</default>
+                <label>Refus connu d’avance</label>
+            </value>
+            <value>
+                <fullName>Volume insuffisant</fullName>
+                <default>false</default>
+                <label>Volume insuffisant</label>
+            </value>
+            <value>
+                <fullName>Pas présent sur la zone demandée</fullName>
+                <default>false</default>
+                <label>Pas présent sur la zone demandée</label>
+            </value>
+            <value>
+                <fullName>Pas de places disponibles</fullName>
+                <default>false</default>
+                <label>Pas de places disponibles</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
 </CustomField>
