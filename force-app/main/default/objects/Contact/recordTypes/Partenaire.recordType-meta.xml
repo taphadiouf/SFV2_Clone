@@ -627,4 +627,23 @@
             <default>false</default>
         </values>
     </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_SourceMigration__c</picklist>
+        <values>
+            <fullName>Fichiers Excel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intranet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lead Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SFV1</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
 </RecordType>

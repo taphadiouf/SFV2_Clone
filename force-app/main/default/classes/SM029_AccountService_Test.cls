@@ -5,7 +5,7 @@ public  class SM029_AccountService_Test {
     @testSetup 
     static void testSetup(){
         
-        Account acc= new Account(Name='test',RecordTypeId=entrepriseRecTypeId,LPCR_CTNum__c=12,LPCR_PasDeSIRET__c=true);
+        Account acc= new Account(Name='test',RecordTypeId=entrepriseRecTypeId,LPCR_IDSage__c ='12',LPCR_PasDeSIRET__c=true);
         lstAccount.add(acc);
         insert lstAccount;
     }
@@ -17,8 +17,8 @@ public  class SM029_AccountService_Test {
         insert lstAccount;
         Test.startTest();
         Test.stopTest();
-        List<Account> lstAccountUp=[Select id,LPCR_CTNum__c from Account where id=:lstAccount[0].id];
-        System.assertNotEquals(null, lstAccountUp[0].LPCR_CTNum__c, 'Error in Ctnum');
+        List<Account> lstAccountUp=[Select id,LPCR_IDSage__c  from Account where id=:lstAccount[0].id];
+        System.assertNotEquals(null, lstAccountUp[0].LPCR_IDSage__c , 'Error in Ctnum');
     }
     
 }
