@@ -70,7 +70,7 @@
         <label>Attente DCE</label>
         <closed>false</closed>
         <forecastCategory>Pipeline</forecastCategory>
-        <probability>30</probability>
+        <probability>20</probability>
         <won>false</won>
     </standardValue>
     <standardValue>
@@ -79,7 +79,7 @@
         <label>Candidature + Offre</label>
         <closed>false</closed>
         <forecastCategory>Pipeline</forecastCategory>
-        <probability>50</probability>
+        <probability>20</probability>
         <won>false</won>
     </standardValue>
     <standardValue>
@@ -88,7 +88,7 @@
         <label>Offre</label>
         <closed>false</closed>
         <forecastCategory>Pipeline</forecastCategory>
-        <probability>60</probability>
+        <probability>20</probability>
         <won>false</won>
     </standardValue>
     <standardValue>
@@ -97,7 +97,7 @@
         <label>Négociation</label>
         <closed>false</closed>
         <forecastCategory>Forecast</forecastCategory>
-        <probability>70</probability>
+        <probability>40</probability>
         <won>false</won>
     </standardValue>
     <standardValue>
@@ -106,7 +106,7 @@
         <label>Attente de réponse</label>
         <closed>false</closed>
         <forecastCategory>Pipeline</forecastCategory>
-        <probability>80</probability>
+        <probability>40</probability>
         <won>false</won>
     </standardValue>
     <standardValue>
