@@ -3745,6 +3745,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_NumeroContratCommande__c</field>
+        <readable>true</readable>
+    </fieldPermissions> 
+    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.Custom_Quantity__c</field>
         <readable>true</readable>

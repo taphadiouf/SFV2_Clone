@@ -192,6 +192,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LPCR_CTNum__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_Capital__c</field>
         <readable>true</readable>
@@ -209,6 +214,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_ClientInternational__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LPCR_ClientVip__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -274,6 +284,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_ContactInscriptions__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_ContactPrincipalCompte__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheRegionCommerciale__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -352,6 +372,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LPCR_EmailFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_EnCoursCreation__c</field>
         <readable>true</readable>
@@ -372,6 +397,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LPCR_EnvoiProforma__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_EnvoieFactureParent__c</field>
         <readable>true</readable>
@@ -389,6 +419,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_FILOUE__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LPCR_FacturerCrecheMarche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LPCR_FacturerDepotPlateforme__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -994,56 +1034,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.blng__DefaultPaymentType__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-        <fieldPermissions>
-        <editable>true</editable>
-        <field>Account.LPCR_CrecheRegionCommerciale__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Account.LPCR_CTNum__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-            <editable>false</editable>
-            <field>Account.LPCR_ClientVip__c</field>
-            <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-            <editable>false</editable>
-            <field>Account.LPCR_EnvoiProforma__c</field>
-            <readable>true</readable>
-    </fieldPermissions>
-	<fieldPermissions>
-            <editable>false</editable>
-            <field>Account.LPCR_EmailFacture__c</field>
-            <readable>true</readable>
-    </fieldPermissions>
-	<fieldPermissions>
-            <editable>false</editable>
-            <field>Account.LPCR_FacturerCrecheMarche__c</field>
-            <readable>true</readable>
-    </fieldPermissions>
-	<fieldPermissions>
-            <editable>false</editable>
-            <field>Account.LPCR_FacturerDepotPlateforme__c</field>
-            <readable>true</readable>
-  </fieldPermissions>
-   <fieldPermissions>
-        <editable>true</editable>
-        <field>Account.LPCR_ContactPrincipalCompte__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Activity.LPCR_Compte_rendu__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Activity.LPCR_Echeance__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1712,8 +1702,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.LPCR_DateLegaleResiliation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Contract.LPCR_DateLiberationBerceau__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract.LPCR_DateReceptionCourrierResiliation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1724,6 +1724,21 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_DateRenouvellement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract.LPCR_DateResiliationChoisie__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.LPCR_DateResiliationEffective__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract.LPCR_DateResiliationSouhaitee__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1822,8 +1837,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract.LPCR_MotifResiliation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Contract.LPCR_NombreAgrmentCrcheSurSection__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.LPCR_NombreJoursCumules__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1834,11 +1859,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contract.LPCR_NouveauPlanFacture__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contract.LPCR_NumeroContrat__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1889,6 +1909,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contract.LPCR_Section__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.LPCR_SocieteFacturante__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2133,51 +2158,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contract.LPCR_DateReceptionCourrierResiliation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contract.LPCR_DateResiliationEffective__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contract.LPCR_DateResiliationSouhaitee__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contract.LPCR_DateLegaleResiliation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contract.LPCR_SocieteFacturante__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contract.LPCR_MotifResiliation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contract.LPCR_SocieteFacturante__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contract.LPCR_NombreJoursCumules__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Contract.LPCR_DateResiliationChoisie__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Event.LPCR_Abouti__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2185,7 +2165,8 @@
         <editable>true</editable>
         <field>Event.LPCR_Compte_rendu__c</field>
         <readable>true</readable>
-    </fieldPermissions><fieldPermissions>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Event.LPCR_Echeance__c</field>
         <readable>true</readable>
@@ -4087,6 +4068,21 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.LPCR_CodeCrecheLienCrecheLead1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_CodeCrecheLienCrecheLead2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_CodeCrecheLienCrecheLead3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Lead.LPCR_CodePostalSocieteCoDemandeur__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4336,6 +4332,26 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_IndiquezNousVosBesoins__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_JoursDeGardeSouhaitesEnfant1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_JoursDeGardeSouhaitesEnfant2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_JoursDeGardeSouhaitesEnfant3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Lead.LPCR_JoursRestantCommercial__c</field>
         <readable>true</readable>
@@ -4512,6 +4528,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.LPCR_RaisonDuPartenariat__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Lead.LPCR_RaisonSociale__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4573,6 +4594,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_Sparklane_ProfileName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_TailleDelEntreprise__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4717,51 +4743,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Lead.LPCR_JoursDeGardeSouhaitesEnfant1__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Lead.LPCR_JoursDeGardeSouhaitesEnfant2__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Lead.LPCR_JoursDeGardeSouhaitesEnfant3__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Lead.LPCR_TailleDelEntreprise__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Lead.LPCR_IndiquezNousVosBesoins__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Lead.LPCR_RaisonDuPartenariat__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Lead.LPCR_CodeCrecheLienCrecheLead1__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Lead.LPCR_CodeCrecheLienCrecheLead2__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Lead.LPCR_CodeCrecheLienCrecheLead3__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Opportunity.AccountId</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4828,6 +4809,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.LPCR_Collectivite__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.LPCR_ContactPrincipalOpport__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5216,11 +5202,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Opportunity.LPCR_ContactPrincipalOpport__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Order.ActivatedById</field>
         <readable>true</readable>
@@ -5276,9 +5257,144 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_AnnulationAnticipee__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Order.LPCR_BDOM_OrderStartdate__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_ChiffreAffaires__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_ContactEnfant__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_Creche__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_DateDebut__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_DateFin__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_EstMigre__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_FrequenceFacturation__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_IdExterne_AccountId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_IdExterne_ContractId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_IdExterne_MasterDevis__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_IdExterne_OpportunityId__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_IdExterne__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_InitAutoAvecDateDebut__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_MasterDevis__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_MinDateOverrideNextBilling__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_MoyenPaiement__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_NouveauPlanFacture__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_NumeroContratCommande__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_NumeroContrat__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_ProprietaireCommande__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_RenouvellementPlanFacture__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_ResponsableADV__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_SocieteFacturante__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_SumCA__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_TypeAvenant__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_TypeCompte__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -5289,6 +5405,21 @@
         <editable>true</editable>
         <field>Order.LPCR_TypeDeVente__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_TypeEnregistrement__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_TypeFacturation__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_TypeOpportunite__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -5432,7 +5563,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Order.LPCR_SocieteFacturante__c</field>
+        <field>Order.LPCR_NumeroContratCommande__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7571,6 +7702,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_MotifAnnulationDevis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_MoyenPaiement__c</field>
         <readable>true</readable>
@@ -7761,6 +7897,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_SocieteFacturante__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_StatutApprobation__c</field>
         <readable>true</readable>
@@ -7858,6 +7999,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_TypeMensualisation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_TypeOpportunite__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8281,41 +8427,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_SocieteFacturante__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_TypeOpportunite__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SBQQ__Quote__c.LPCR_MotifAnnulationDevis__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Task.LPCR_Compte_rendu__c</field>
-        <readable>true</readable>
-    </fieldPermissions><fieldPermissions>
-        <editable>true</editable>
-        <field>Task.LPCR_Echeance__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Task.LPCR_Compte_rendu__c</field>
-        <readable>true</readable>
-    </fieldPermissions><fieldPermissions>
-        <editable>true</editable>
-        <field>Task.LPCR_Echeance__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Task.LPCR_Abouti__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.LPCR_Compte_rendu__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Task.LPCR_Echeance__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8534,6 +8657,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_NombreJoursUtilisation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_NombreLigneNegative__c</field>
         <readable>true</readable>
@@ -8541,6 +8669,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__Invoice__c.LPCR_NombrePOinvalides__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__Invoice__c.LPCR_SocieteFacturante__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8569,11 +8702,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>blng__Invoice__c.LPCR_NombreJoursUtilisation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>blng__Invoice__c.Tech_DateAttestationCAF__c</field>
         <readable>true</readable>
@@ -8596,11 +8724,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>blng__Invoice__c.Tech_NomSocieteLPCR__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>blng__Invoice__c.LPCR_SocieteFacturante__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -8850,33 +8973,6 @@
         <object>echosign_dev1__SIGN_Agreement__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
-    <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
-        <object>Activity</object>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
-        <object>Event</object>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
-        <object>Task</object>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
     <recordTypeVisibilities>
         <recordType>Account.Creche</recordType>
         <visible>true</visible>
@@ -9006,10 +9102,6 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <recordType>Task.LPCR_Tache</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
         <recordType>Task.LPCR_Appel</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -9019,6 +9111,10 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Task.LPCR_Gestion_Interne</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Task.LPCR_Tache</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
