@@ -8482,6 +8482,11 @@
         <field>sbaa__Approval__c.sbaa__Unanimous__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>User.LPCR_ObjectifCommercial__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>LPCR_Commercial</label>
     <objectPermissions>

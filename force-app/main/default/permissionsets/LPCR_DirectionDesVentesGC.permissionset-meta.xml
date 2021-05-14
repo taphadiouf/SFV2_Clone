@@ -6935,6 +6935,11 @@
         <field>blng__Invoice__c.LPCR_SocieteFacturante__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>User.LPCR_ObjectifCommercial__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>LPCR_Direction des ventes / GC​</label>
     <objectPermissions>
