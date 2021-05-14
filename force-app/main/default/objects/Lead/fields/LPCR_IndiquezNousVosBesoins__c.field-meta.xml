@@ -8,14 +8,8 @@
     <trackHistory>false</trackHistory>
     <type>MultiselectPicklist</type>
     <valueSet>
-        <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
-            <value>
-                <fullName>Être rappelé sous 48h</fullName>
-                <default>false</default>
-                <label>Être rappelé sous 48h</label>
-            </value>
             <value>
                 <fullName>Réservez des places en crèches privées pour vos salariés</fullName>
                 <default>false</default>
@@ -45,6 +39,11 @@
                 <fullName>Réaliser un audit social</fullName>
                 <default>false</default>
                 <label>Réaliser un audit social</label>
+            </value>
+            <value>
+                <fullName>Être rappelé sous 48h</fullName>
+                <default>false</default>
+                <label>Être rappelé sous 48h</label>
             </value>
         </valueSetDefinition>
     </valueSet>
