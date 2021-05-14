@@ -3296,6 +3296,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Opportunity.LPCR_ConcurrentAO__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Opportunity.LPCR_ObjetAO__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3347,6 +3352,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.LPCR_TypeMarche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_IndexationConvenueAO__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
