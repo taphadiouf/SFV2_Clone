@@ -3735,6 +3735,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Order.LPCR_OpportuniteCommande__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Order.SBQQ__Contracted__c</field>
         <readable>true</readable>
     </fieldPermissions>
