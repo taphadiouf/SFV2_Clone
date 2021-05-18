@@ -68,7 +68,7 @@
             },
             "csfb__Name__c": "Attestation CAF",
             "csfb__Description__c": "ligne correspondant à l'attestation CAF",
-            "csfb__Query__c": "Select ID, LPCR_NbHeuresRealise__c, blng__Balance__c, Tech_MaxDateLigneBerceauFamille__c, Tech_MinDateLigneBerceauFamille__c,\r\nLPCR_Creche__r.Name , LPCR_Creche__r.ShippingStreet, LPCR_Creche__r.ShippingCity, LPCR_Creche__r.ShippingPostalCode,\r\nLPCR_ContactEnfant__r.Name\r\nFROM blng__Invoice__c\r\nWHERE blng__Account__c = '{pv0}' AND Tech_MaxDateLigneBerceauFamille__c <= {pv1} AND LPCR_ContactEnfant__c='{pv2}'\r\nORDER BY Tech_MaxDateLigneBerceauFamille__c DESC LIMIT 1"
+            "csfb__Query__c": "Select ID, LPCR_NbHeuresRealise__c, blng__Balance__c, Tech_MaxDateLigneBerceauFamille__c, Tech_MinDateLigneBerceauFamille__c,\r\nLPCR_Creche__r.Name , LPCR_Creche__r.ShippingStreet, LPCR_Creche__r.ShippingCity, LPCR_Creche__r.ShippingPostalCode,\r\nLPCR_ContactEnfant__r.Name\r\nFROM blng__Invoice__c\r\nWHERE id='{pv2}'"
         },
         {
             "attributes": {
