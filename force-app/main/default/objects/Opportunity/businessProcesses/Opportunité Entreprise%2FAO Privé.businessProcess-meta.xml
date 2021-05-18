@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunité Entreprise%2FAO Privé</fullName>
+    <isActive>true</isActive>
+    <values>
+        <fullName>Négociation%2F Contractualisation</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Perdue</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Proposition Commerciale</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Proposition de Partenariat</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Prospection%2FDécouverte</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Signée</fullName>
+        <default>false</default>
+    </values>
+</BusinessProcess>
