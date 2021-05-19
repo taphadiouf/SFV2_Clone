@@ -1011,6 +1011,51 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Avoir.LPCR_CompteClient__c</field>
+        <readable>true</readable>
+        </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Avoir.LPCR_Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Avoir.LPCR_Montant__c</field>
+        <readable>true</readable>
+        </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Avoir.LPCR_MontantAvoir__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Avoir.LPCR_NatureAvoir__c</field>
+        <readable>true</readable>
+        </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Avoir.LPCR_Periode__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Avoir.LPCR_PrixUnitaire__c</field>
+        <readable>true</readable>
+        </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Avoir.LPCR_Quantite__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Avoir.LPCR_Statut__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.AccountId</field>
         <readable>true</readable>
     </fieldPermissions>
