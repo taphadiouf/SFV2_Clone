@@ -5646,6 +5646,9 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>User.LPCR_ObjectifCommercial__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
         <field>Account.LPCR_CrecheDepartement__C</field>
         <readable>true</readable>
     </fieldPermissions>

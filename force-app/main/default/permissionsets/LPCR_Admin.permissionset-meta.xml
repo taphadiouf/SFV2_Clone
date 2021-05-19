@@ -8415,6 +8415,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>User.LPCR_ObjectifCommercial__c</field>
+        <readable>true</readable>
+    </fieldPermissions> 
+    <fieldPermissions>
+        <editable>true</editable>
         <field>User.LPCR_BypassTrigger__c</field>
         <readable>true</readable>
     </fieldPermissions>
