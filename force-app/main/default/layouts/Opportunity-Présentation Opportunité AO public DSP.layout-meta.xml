@@ -111,7 +111,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Concurrent__c</field>
+                <field>LPCR_ConcurrentAO__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -148,7 +148,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_IndexationConvenue__c</field>
+                <field>LPCR_IndexationConvenueAO__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -388,7 +388,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000002Ljh8</masterLabel>
+        <masterLabel>00h1X000002R9ai</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

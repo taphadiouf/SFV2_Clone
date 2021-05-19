@@ -13,6 +13,8 @@ public class TM023_SubscriptionTrigger extends TM000_TriggerHandler {
     protected override void afterInsert() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
            SM027_SubscriptionService.updateContratNombreBerceau(newSubscriptionMap);
+           SM027_SubscriptionService.updateBonDachat(newSubscriptionMap);
+           
         }
     }
 
