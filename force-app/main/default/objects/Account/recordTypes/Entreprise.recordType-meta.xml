@@ -712,23 +712,35 @@
     <picklistValues>
         <picklist>LPCR_TypeStructure__c</picklist>
         <values>
-            <fullName>Autre</fullName>
+            <fullName>ASSOCIATIVE</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Crèche associative</fullName>
+            <fullName>AUTRE</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Crèche municipale</fullName>
+            <fullName>FAMILIALES</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Crèches Familiales %2F Parentale</fullName>
+            <fullName>HOSPITALIERE</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Micro crèches</fullName>
+            <fullName>MICRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MUNICIPALE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MUTUALISTE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRIVEE</fullName>
             <default>false</default>
         </values>
     </picklistValues>
