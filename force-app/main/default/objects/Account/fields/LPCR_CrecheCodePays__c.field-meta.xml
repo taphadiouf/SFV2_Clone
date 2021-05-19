@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_IDExterne_CompteParent__c</fullName>
+    <fullName>LPCR_CrecheCodePays__c</fullName>
+    <description>code pays [ISO-3166 2-letter country code]</description>
     <externalId>false</externalId>
-    <label>Gestionnaire (societe)</label>
-    <length>50</length>
+    <label>Pays</label>
+    <length>3</length>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Text</type>

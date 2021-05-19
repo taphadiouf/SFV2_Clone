@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_CrecheAmplitude__c</fullName>
+    <externalId>false</externalId>
+    <formula>(Hour(LPCR_CrecheHoraireFermeture__c) - Hour(LPCR_CrecheHoraireOuverture__c)) + ((Minute(LPCR_CrecheHoraireFermeture__c) - Minute(LPCR_CrecheHoraireOuverture__c))/60)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Amplitude</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

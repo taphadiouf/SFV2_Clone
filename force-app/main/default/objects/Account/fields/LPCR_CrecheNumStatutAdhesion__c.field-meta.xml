@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_CrecheNumStatutAdhesion__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL(LPCR_CrecheStatutAdhesion__c, &quot;Adherent&quot;),1,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Valeur Adhesion</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>
