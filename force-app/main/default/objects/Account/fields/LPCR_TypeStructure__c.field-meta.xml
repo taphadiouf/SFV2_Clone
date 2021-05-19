@@ -11,44 +11,29 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>MUNICIPALE</fullName>
+                <fullName>Crèche municipale</fullName>
                 <default>false</default>
                 <label>Crèche municipale</label>
             </value>
             <value>
-                <fullName>ASSOCIATIVE</fullName>
+                <fullName>Crèche associative</fullName>
                 <default>false</default>
                 <label>Crèche associative</label>
             </value>
             <value>
-                <fullName>MICRO</fullName>
+                <fullName>Micro crèches</fullName>
                 <default>false</default>
                 <label>Micro crèches</label>
             </value>
             <value>
-                <fullName>FAMILIALES</fullName>
+                <fullName>Crèches Familiales / Parentale</fullName>
                 <default>false</default>
                 <label>Crèches Familiales / Parentale</label>
             </value>
             <value>
-                <fullName>HOSPITALIERE</fullName>
-                <default>false</default>
-                <label>Hospitalière</label>
-            </value>
-            <value>
-                <fullName>AUTRE</fullName>
+                <fullName>Autre</fullName>
                 <default>false</default>
                 <label>Autre</label>
-            </value>
-            <value>
-                <fullName>MUTUALISTE</fullName>
-                <default>false</default>
-                <label>Mutualiste</label>
-            </value>
-            <value>
-                <fullName>PRIVEE</fullName>
-                <default>false</default>
-                <label>Privée</label>
             </value>
         </valueSetDefinition>
     </valueSet>
