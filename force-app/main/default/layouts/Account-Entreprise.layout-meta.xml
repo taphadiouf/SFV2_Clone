@@ -502,11 +502,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Account.NouvelleOpportuniteEntreprise</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>MAJ_Preinscriptions</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>1</sortOrder>
@@ -605,6 +600,11 @@
             <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>20</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.NouvelleOpportuniteEntreprise</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -721,6 +721,15 @@
         <fields>LPCR_NombreDeBerceaux__c</fields>
         <fields>LPCR_ContratActif__c</fields>
         <relatedList>RelatedContractList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
+        <fields>NAME</fields>
+        <fields>LPCR_CompteClient__c</fields>
+        <fields>LPCR_Montant__c</fields>
+        <fields>LPCR_DateFacture__c</fields>
+        <fields>LPCR_Description__c</fields>
+        <relatedList>LPCR_Avoir__c.LPCR_NomSociete__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>ORDERS.ORDER_NUMBER</fields>
@@ -854,6 +863,7 @@
         <relatedList>RelatedNoteList</relatedList>
     </relatedLists>
     <relatedLists>
+        <excludeButtons>MassChangeOwner</excludeButtons>
         <fields>NAME</fields>
         <fields>LPCR_Client__c</fields>
         <fields>LPCR_NombreMois__c</fields>
@@ -869,7 +879,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1X000002UKM6</masterLabel>
+        <masterLabel>00h1X000002Usqz</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
