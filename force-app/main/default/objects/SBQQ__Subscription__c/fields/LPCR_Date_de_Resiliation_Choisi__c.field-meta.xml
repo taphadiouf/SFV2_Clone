@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Date_de_Resiliation_Choisi__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Date de Résiliation Choisie</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Contract.LPCR_DateResiliationChoisie__c</field>
+            <operation>equals</operation>
+            <valueField>Contract.SBQQ__AmendmentStartDate__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contract</referenceTo>
+    <relationshipLabel>Abonnements (Date de Résiliation Choisie)</relationshipLabel>
+    <relationshipName>Abonnements</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
