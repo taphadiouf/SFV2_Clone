@@ -77,11 +77,6 @@
         <isRequired>false</isRequired>
     </availableFields>
     <availableFields>
-        <field>SBQQ__EndDate__c</field>
-        <isFieldManaged>false</isFieldManaged>
-        <isRequired>false</isRequired>
-    </availableFields>
-    <availableFields>
         <field>SBQQ__ExpirationDate__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
@@ -133,6 +128,11 @@
     </availableFields>
     <availableFields>
         <field>SBQQ__PrimaryContact__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </availableFields>
+    <availableFields>
+        <field>SBQQ__ProrationDayOfMonth__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </availableFields>
@@ -189,6 +189,16 @@
     <description>Quote fields displayed in Edit Lines page above the line items table.</description>
     <displayedFields>
         <field>SBQQ__StartDate__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>SBQQ__EndDate__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>LPCR_AmendmentDateOK__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
