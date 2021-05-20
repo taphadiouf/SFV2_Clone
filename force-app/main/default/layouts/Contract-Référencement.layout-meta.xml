@@ -118,6 +118,10 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_BillingFrequency__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_SocieteFacturante__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -330,6 +334,16 @@
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>LPCR_RDV_Telephonique</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>5</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SendEmail</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>6</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>2</sortOrder>
@@ -343,16 +357,6 @@
             <actionName>LPCR_RDV_Physique</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>4</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>LPCR_RDV_Telephonique</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>SendEmail</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>6</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedContent>
@@ -371,6 +375,7 @@
         <fields>SBQQ__EndDate__c</fields>
         <fields>SBQQ__RenewedDate__c</fields>
         <fields>SBQQ__TerminatedDate__c</fields>
+        <fields>LPCR_BonDachatPartenaire__c</fields>
         <relatedList>SBQQ__Subscription__c.SBQQ__Contract__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -449,7 +454,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000002F7RQ</masterLabel>
+        <masterLabel>00h1X000002RTtE</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

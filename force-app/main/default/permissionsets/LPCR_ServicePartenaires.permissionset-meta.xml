@@ -1000,6 +1000,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_SocieteFacturanteCompte__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Activity.LPCR_Compte_rendu__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3510,6 +3515,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Opportunity.LPCR_ConcurrentAO__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Opportunity.LPCR_ObjetAO__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3561,6 +3571,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.LPCR_TypeMarche__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.LPCR_IndexationConvenueAO__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3649,6 +3664,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.LPCR_SocieteFacturanteOpport__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Order.ActivatedById</field>
         <readable>true</readable>
@@ -3731,6 +3751,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Order.PoNumber</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Order.LPCR_OpportuniteCommande__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5708,6 +5733,16 @@
         <field>SBQQ__Quote__c.LPCR_MotifAnnulationDevis__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Subscription__c.LPCR_BonDachatPartenaire__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+	<fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Subscription__c.LPCR_SocieteFacturanteAbo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
      <fieldPermissions>
         <editable>true</editable>
         <field>Task.LPCR_Abouti__c</field>
@@ -6053,6 +6088,126 @@
         <field>echosign_dev1__SIGN_Agreement__c.LPCR_Devis__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheDepartement__C</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheHoraireOuverture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheHoraireFermeture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheLatitude__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheLongitude__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheEspaceExterieur__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheRepas__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheLait__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheCouches__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheCodePays__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_Creche_LienCapitalistique__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheMarcheurs__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheBio__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheBilingue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheLDS__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheAmplitudeSpecifique__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheNumStatutAdhesion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheRachat__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrechePMI__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheAgrement__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheAmplitude__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheRF__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_IDExterne_CompteParent__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheProjet__c</field>
+        <readable>true</readable>
+    </fieldPermissions>   
     <hasActivationRequired>false</hasActivationRequired>
     <label>LPCR_Service Partenaires</label>
     <objectPermissions>

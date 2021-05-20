@@ -15,10 +15,10 @@
     <excludeButtons>Submit</excludeButtons>
     <excludeButtons>XClean</excludeButtons>
     <layoutSections>
-        <customLabel>false</customLabel>
-        <detailHeading>false</detailHeading>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Account Information</label>
+        <label>Information générale</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -33,40 +33,34 @@
                 <field>LPCR_Statut__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_Actif__c</field>
+                <behavior>Edit</behavior>
+                <field>LPCR_RegionCommerciale__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>LPCR_TypeEntreprise__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>LPCR_PrivePublic__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>ShippingAddress</field>
+                <field>LPCR_Activite__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>BillingAddress</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_Departement__c</field>
+                <field>LPCR_SousActivite__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Phone</field>
+                <field>LPCR_DispositifsExistants__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Email__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Website</field>
-            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_RaisonSociale__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Ownership</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -86,45 +80,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_BudgetAnnuel__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Rating</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_CompteAnalytiqueClient__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>RecordTypeId</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>LPCR_TypeEntreprise__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>LPCR_PrivePublic__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_LienChorus__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_Activite__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_SousActivite__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_LibelleAPE__c</field>
+                <field>Ownership</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -132,15 +88,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>AnnualRevenue</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_Capital__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>NumberOfEmployees</field>
+                <field>LPCR_LibelleAPE__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -148,26 +96,135 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_DispositifsExistants__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_RegionComFormule__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_DateDernierAppelOffre__c</field>
+                <field>LPCR_Capital__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_DateProchainAppelOffre__c</field>
+                <field>AnnualRevenue</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>NumberOfEmployees</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_BudgetAnnuel__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Description</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Description</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>OneColumn</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Coordonnée du compte</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ShippingAddress</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Phone</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Website</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>BillingAddress</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Email__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_CTNum__c</field>
+                <field>LPCR_Departement__c</field>
             </layoutItems>
         </layoutColumns>
-        <style>TwoColumnsTopToBottom</style>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Equipe de compte</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>LPCR_ResponsableADV__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>LPCR_ResponsableServiceFamille__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Contacts chez le client</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ContactInscriptions__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ContactPrincipalCompte__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>blng__BillToContact__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Informations sur la préinscripton</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_CodePreinscription__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_LienSitePreinscription__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_NombreMaximalPlaces__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -208,60 +265,33 @@
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Equipe de compte</label>
+        <label>International</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>OwnerId</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>LPCR_ResponsableADV__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>LPCR_ResponsableServiceFamille__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Contacts</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_ContactInscriptions__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_ContactPrincipalCompte__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>blng__BillToContact__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Purchase Order</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_PurchaseOrder__c</field>
+                <field>LPCR_ClientInternational__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Appel d&apos;offre</label>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_DateDernierAppelOffre__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_DateProchainAppelOffre__c</field>
+            </layoutItems>
+        </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -337,6 +367,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_IDSage__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_SocieteFacturanteCompte__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -355,28 +389,9 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_ProcessRevenuCascade__c</field>
             </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Informations sur la préinscripton</label>
-        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_CodePreinscription__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_LienSitePreinscription__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_NombreMaximalPlaces__c</field>
+                <field>LPCR_PurchaseOrder__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -395,6 +410,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_IBAN__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_LienChorus__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -404,6 +423,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_DateSignatureRUM__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_CompteAnalytiqueClient__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -415,11 +438,19 @@
         <label>System Information</label>
         <layoutColumns>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>RecordTypeId</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>CreatedById</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>OwnerId</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LastModifiedById</field>
@@ -430,7 +461,16 @@
     <layoutSections>
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
-        <editHeading>true</editHeading>
+        <editHeading>false</editHeading>
+        <label>Account Information</label>
+        <layoutColumns/>
+        <layoutColumns/>
+        <style>TwoColumnsTopToBottom</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>false</customLabel>
+        <detailHeading>false</detailHeading>
+        <editHeading>false</editHeading>
         <label>Address Information</label>
         <layoutColumns/>
         <layoutColumns/>
@@ -439,7 +479,7 @@
     <layoutSections>
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
-        <editHeading>true</editHeading>
+        <editHeading>false</editHeading>
         <label>Additional Information</label>
         <layoutColumns/>
         <layoutColumns/>
@@ -448,7 +488,7 @@
     <layoutSections>
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
-        <editHeading>true</editHeading>
+        <editHeading>false</editHeading>
         <label>Description Information</label>
         <layoutColumns/>
         <style>OneColumn</style>
@@ -465,26 +505,6 @@
     </layoutSections>
     <platformActionList>
         <actionListContext>Record</actionListContext>
-        <platformActionListItems>
-            <actionName>NewEvent</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>9</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.LinkPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>10</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.QuestionPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>11</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Delete</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>12</sortOrder>
-        </platformActionListItems>
         <platformActionListItems>
             <actionName>Share</actionName>
             <actionType>StandardButton</actionType>
@@ -524,6 +544,11 @@
             <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>20</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.NouvelleOpportuniteEntreprise</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>MAJ_Preinscriptions</actionName>
@@ -566,9 +591,24 @@
             <sortOrder>8</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Account.NouvelleOpportuniteEntreprise</actionName>
+            <actionName>NewEvent</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
+            <sortOrder>9</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.LinkPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>10</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>FeedItem.QuestionPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>11</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Delete</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>12</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -617,76 +657,86 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
+        <customButtons>NouvelleOpportunite</customButtons>
+        <fields>OPPORTUNITY.NAME</fields>
+        <fields>OPPORTUNITY.TYPE</fields>
+        <fields>LPCR_ChiffreAffaires__c</fields>
+        <fields>OPPORTUNITY.STAGE_NAME</fields>
+        <fields>OPPORTUNITY.CLOSE_DATE</fields>
+        <relatedList>RelatedOpportunityList</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>CONTACT.FULL_NAME</fields>
         <fields>CONTACT.ACCOUNT_NAME</fields>
         <fields>LPCR_Fonction__c</fields>
         <fields>CONTACT.EMAIL</fields>
         <fields>CONTACT.PHONE1</fields>
-        <fields>ACCCONRELATION.ROLES</fields>
         <fields>ACCCONRELATION.IS_DIRECT</fields>
+        <fields>CONTACT.LAST_NAME</fields>
+        <fields>CONTACT.FIRST_NAME</fields>
+        <fields>LPCR_TypeFonction__c</fields>
         <relatedList>RelatedAccountContactRelationList</relatedList>
         <sortField>ACCCONRELATION.IS_DIRECT</sortField>
         <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>FULL_NAME</fields>
-        <fields>LEAD.TITLE</fields>
-        <fields>LEAD.COMPANY</fields>
-        <fields>LEAD.EMAIL</fields>
-        <fields>LEAD.PHONE</fields>
         <fields>LEAD.STATUS</fields>
+        <fields>LEAD.TITLE</fields>
+        <fields>LEAD.CONVERTED</fields>
         <relatedList>Lead.LPCR_CompteSociete__c</relatedList>
         <sortField>LEAD.STATUS</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>FULL_NAME</fields>
-        <fields>LPCR_CiviliteCoDemandeur__c</fields>
-        <fields>LPCR_PrenomCoDemandeur__c</fields>
-        <fields>LPCR_ProfessionCoDemandeur__c</fields>
-        <fields>LPCR_SocieteCoDemandeur__c</fields>
-        <fields>LPCR_EmailCoDemandeur__c</fields>
         <fields>LEAD.STATUS</fields>
+        <fields>LPCR_ProfessionCoDemandeur__c</fields>
+        <fields>LEAD.CONVERTED</fields>
         <relatedList>Lead.LPCR_CompteSocieteCoDemandeur__c</relatedList>
         <sortField>LEAD.STATUS</sortField>
         <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
-        <customButtons>NouvelleOpportunite</customButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>OPPORTUNITY.NAME</fields>
-        <fields>OPPORTUNITY.STAGE_NAME</fields>
-        <fields>OPPORTUNITY.AMOUNT</fields>
-        <fields>OPPORTUNITY.CLOSE_DATE</fields>
-        <relatedList>RelatedOpportunityList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>New</excludeButtons>
+        <customButtons>SBQQ__RefreshMultiplePrices</customButtons>
         <fields>NAME</fields>
         <fields>LPCR_NumeroContrat__c</fields>
         <fields>SBQQ__Opportunity2__c</fields>
-        <fields>SBQQ__NetAmount__c</fields>
-        <fields>SBQQ__PrimaryContact__c</fields>
+        <fields>SBQQ__Type__c</fields>
+        <fields>LPCR_TypeAvenant__c</fields>
+        <fields>LPCR_TypeDeVente__c</fields>
+        <fields>LPCR_ChiffreAffaires__c</fields>
+        <fields>LPCR_DateDebut__c</fields>
+        <fields>LPCR_DateFin__c</fields>
         <fields>SBQQ__Status__c</fields>
-        <fields>CREATEDBY_USER</fields>
         <relatedList>SBQQ__Quote__c.SBQQ__Account__c</relatedList>
+        <sortField>SBQQ__Status__c</sortField>
+        <sortOrder>Asc</sortOrder>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
+        <customButtons>SBQQ__RenewContracts</customButtons>
         <fields>CONTRACT.CONTRACT_NUMBER</fields>
+        <fields>SBQQ__Opportunity__c</fields>
         <fields>LPCR_NumeroContrat__c</fields>
-        <fields>CONTRACT.START_DATE</fields>
+        <fields>LPCR_NumeroDevis__c</fields>
+        <fields>LPCR_NumeroCommande__c</fields>
         <fields>CONTRACT.END_DATE</fields>
         <fields>CONTRACT.STATUS</fields>
+        <fields>LPCR_NombreDeBerceaux__c</fields>
+        <fields>LPCR_ContratActif__c</fields>
         <relatedList>RelatedContractList</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>New</excludeButtons>
         <fields>ORDERS.ORDER_NUMBER</fields>
         <fields>CONTRACT.CONTRACT_NUMBER</fields>
         <fields>ORDERS.STATUS</fields>
         <fields>ORDERS.EFFECTIVE_DATE</fields>
+        <fields>ORDERS.END_DATE</fields>
         <fields>ORDERS.TOTAL_AMOUNT</fields>
+        <fields>LPCR_OpportuniteCommande__c</fields>
+        <fields>SBQQ__Quote__c</fields>
+        <fields>ORDERS.TYPE</fields>
+        <fields>LPCR_TypeDeVente__c</fields>
         <relatedList>RelatedOrderList</relatedList>
     </relatedLists>
     <relatedLists>
@@ -823,7 +873,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x0000026vNi</masterLabel>
+        <masterLabel>00h1X000002RTt2</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

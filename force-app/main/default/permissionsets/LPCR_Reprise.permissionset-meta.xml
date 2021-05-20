@@ -1225,6 +1225,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contact.LPCR_IdPourLienFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Contact.LeadSource</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1605,7 +1610,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contract.Pricebook2Id</field>
+        <field>Contract.LPCR_NumeroCommande__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract.LPCR_NumeroDevis__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

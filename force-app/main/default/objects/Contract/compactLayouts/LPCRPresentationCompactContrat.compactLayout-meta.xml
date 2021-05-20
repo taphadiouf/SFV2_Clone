@@ -4,8 +4,8 @@
     <fields>LPCR_NumeroContrat__c</fields>
     <fields>AccountId</fields>
     <fields>Status</fields>
-    <fields>StartDate</fields>
-    <fields>EndDate</fields>
+    <fields>LPCR_DateDebut__c</fields>
+    <fields>LPCR_DateFin__c</fields>
     <fields>ContractTerm</fields>
     <fields>LPCR_DateResiliationChoisie__c</fields>
     <label>Presentation Compact Contrat</label>
