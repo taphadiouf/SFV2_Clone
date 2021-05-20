@@ -91,12 +91,12 @@
                 <stringValue>[Contract].LPCR_DateResiliationChoisie__c </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_5786382101</name>
+        <name>formula_3_myRule_1_A1_3639020477</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.LPCR_DateResiliationChoisie__c}</expression>
     </formulas>
-    <interviewLabel>Date_Amendement_pour_la_Resiliation-1_InterviewLabel</interviewLabel>
-    <label>Date Amendement pour la résiliation</label>
+    <interviewLabel>LPCR_Date_Amendement_pour_la_resiliation-1_InterviewLabel</interviewLabel>
+    <label>LPCR_Date Amendement pour la résiliation</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
@@ -197,7 +197,7 @@
             </processMetadataValues>
             <field>SBQQ__AmendmentStartDate__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_5786382101</elementReference>
+                <elementReference>formula_3_myRule_1_A1_3639020477</elementReference>
             </value>
         </inputAssignments>
         <object>Contract</object>
