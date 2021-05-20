@@ -66,7 +66,7 @@ public  class SM030_BonAchatPartenaireService_Test {
         contactEnfant.Birthdate=Date.today()-100;
             contactEnfant.LPCR_DateEntreeCrecheSouhaitee__c=Date.today()+100;
         insert contactEnfant;
-        Contact contactPartner=UM002_TestDataFactory.createContact('testchild',contactPatner);
+        Contact contactPartner=UM002_TestDataFactory.createContact('testchild1',contactPatner);
         contactPartner.AccountId=lstAcc[3].Id;
         insert contactPartner;
         
@@ -80,90 +80,23 @@ public  class SM030_BonAchatPartenaireService_Test {
         //opp2.recordtypeid=OPP_ENT;
         lstOpp=new List<Opportunity>{opp,opp2,oppPartenaire};
         insert lstOpp;
-        //create quote resa
-        SBQQ__Quote__c quote = UM002_TestDataFactory.createQuote('test',opp.Id, lstAcc[0].Id, standardPricebookId, 'Quote');
-        quote.SBQQ__Primary__c =true;
-        //quote.recordtypeid=QUOTE_Referencement_RT_ID;
-        SBQQ__Quote__c quote2 = UM002_TestDataFactory.createQuote('test2',opp2.Id, lstAcc[0].Id, standardPricebookId, 'Quote');
-        quote2.SBQQ__Primary__c =true;
-        //quote2.recordtypeid=QUOTE_Referencement_RT_ID;
-        lstQuote=new List<SBQQ__Quote__c>{quote,quote2};
-        insert lstQuote;
-        //QLI
-        SBQQ__QuoteLine__c quoteLine = UM002_TestDataFactory.createQuoteLine(prod.Id, lstQuote[0].Id, priceBookEntry1.Id, 200,1);
-        quoteLine.SBQQ__SubscriptionPricing__c='Fixed Price';
-        //quoteLine.LPCR_ContactEnfant__c=contactEnfant.ID;
-       // quoteLine.LPCR_Creche__c =compteCreche.Id;
-        //quoteLine.LPCR_CompteFamille__c=lstAcc[2].Id;
-        SBQQ__QuoteLine__c quoteLine2 = UM002_TestDataFactory.createQuoteLine(prod.Id, lstQuote[1].Id, priceBookEntry1.Id, 150,1);
-        quoteLine2.SBQQ__SubscriptionPricing__c='Fixed Price';
-        quoteLine2.LPCR_ContactEnfant__c=contactEnfant.ID;
-        quoteLine2.LPCR_Creche__c =compteCreche.Id;
-        quoteLine2.LPCR_CompteFamille__c=lstAcc[2].Id;
-        lstQli=new List<SBQQ__QuoteLine__c>{quoteLine,quoteLine2};
-        insert lstQli;
-        System.debug('##pdo this is qli '+lstQli[0].LPCR_ContactEnfant__c);
-        System.debug('##pdo this is qli '+lstQli[1].LPCR_ContactEnfant__c);
-        //generate order
-        lstQuote[0].SBQQ__Ordered__c  = true; 
-        lstQuote[0].LPCR_IndexationConvenue__c='non';
-        lstQuote[0].LPCR_TypeFacturation__c='Arrears';
-        lstQuote[0].SBQQ__BillingFrequency__c='Quarterly';
-        lstQuote[0].LPCR_DateDebut__c = Date.today();
-        lstQuote[0].LPCR_DateFin__c = Date.today() + 100;
-        lstQuote[0].LPCR_ChiffreAffaire__c = 100;
-        lstQuote[0].SBQQ__RenewalUpliftRate__c = 2; 
-        lstQuote[0].LPCR_BatchCommande__c = 'Batch 2';
-        lstQuote[0].LPCR_TypeCreche__c = 'MICRO';
-        lstQuote[1].SBQQ__Ordered__c  = true; 
-        lstQuote[1].LPCR_IndexationConvenue__c='non';
-        lstQuote[1].LPCR_TypeFacturation__c='Arrears';
-        lstQuote[1].SBQQ__BillingFrequency__c='Quarterly';
-        lstQuote[1].LPCR_DateDebut__c = Date.today();
-        lstQuote[1].LPCR_DateFin__c = Date.today() + 111;
-        lstQuote[1].LPCR_ChiffreAffaire__c = 111;
-        lstQuote[1].SBQQ__RenewalUpliftRate__c = 2; 
-        lstQuote[1].LPCR_BatchCommande__c = 'Batch 2';
-        lstQuote[1].LPCR_TypeCreche__c = 'MICRO';
-        update lstQuote;
-        Set<Id> quotesIds = new Set<Id>{lstQuote[1].Id,lstQuote[0].Id};
-        List<Order> orders = Database.query('SELECT Id ,SBQQ__Contracted__c , Status ,OpportunityId,EffectiveDate FROM Order WHERE SBQQ__Quote__c  in :quotesIds');
-        for(Order order: orders)
-        {
-            order.status ='Activated';
-            order.LPCR_NumeroContrat__c = '4';
-            order.LPCR_ContactEnfant__c=contactEnfant.ID;
-        }
-        update orders;
-        //create bda
-        LPCR_ContratPartenaire__c contratPartenaire=new LPCR_ContratPartenaire__c (LPCR_Opportunite__c=oppPartenaire.ID,LPCR_CDDCDI__c='CDD', LPCR_Compte__c=comptePartner.ID,LPCR_ContactPartenaire__c=contactPartner.Id);
-        insert contratPartenaire;
-        LPCR_BonAchatPartenaire__c bda = new LPCR_BonAchatPartenaire__c(LPCR_ContratPartenaire__c =contratPartenaire.id,LPCR_ComptePartenaire__c=comptePartner.ID,LPCR_ContactEnfant__c=contactEnfant.Id,LPCR_Creche__c=compteCreche.ID);
-        insert bda;
         
-        
-        
-    }
-    @isTest
-    private static void testContratReservataire() {
-      //  System.runAs(UM002_TestDataFactory.createUser()){
-            
             Date lastMonth=Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day()+1) ;
-            Test.startTest();
-            Contact contactEnfant=[Select id from Contact where name='testchild' limit 1];
+            
+           // Contact contactEnfant=[Select id from Contact where name='testchild' limit 1];
             Product2 Berceautest=[select id from Product2 where name='Berceautest' limit 1  ];
-            Account acc = [SELECT Id, name from Account where name ='test' limit 1 ];
+            //Account acc = [SELECT Id, name from Account where name ='test' limit 1 ];
             Account accreche = [SELECT Id, name from Account where name ='testcreche' limit 1 ];
             acc.RecordTypeId = ACCOUNT_ENTREPRISE_RT_ID;
             update acc;
             Contract contract2 = new Contract(
-            AccountId = acc.Id, 
+            AccountId = lstAcc[0].Id, 
             SBQQ__PreserveBundleStructureUponRenewals__c = true, 
             ContractTerm = 12,
-            StartDate = Date.today());
+            StartDate = Date.today(),recordtypeid=ContratRefID);
         insert contract2;
         SBQQ__Subscription__c subs = new SBQQ__Subscription__c(
-            SBQQ__Contract__c = contract2.Id, 
+            SBQQ__Contract__c = contract2.Id, LPCR_BonDachatPartenaire__c=null,
             SBQQ__Product__c = Berceautest.ID, 
             SBQQ__Quantity__c = 10, 
             SBQQ__Account__c = acc.Id,
@@ -171,34 +104,26 @@ public  class SM030_BonAchatPartenaireService_Test {
             SBQQ__SubscriptionEndDate__c = Date.today()+100,LPCR_Creche__c=accreche.id,LPCR_ContactEnfant__c=contactEnfant.ID
         );
         insert subs;
-            //Contact contactEnfant=[Select id from Contact where name='testchild' limit 1];
-            
-             blng__InvoicePlan__c invoicePlan =   new blng__InvoicePlan__c(blng__BillingScheduleCreation__c='Manual',blng__Active__c =true);
-            insert    invoicePlan;
-            SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_DureeContratJour__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test2\'');
-            Order order = [SELECT Id ,LPCR_NouveauPlanFacture__c, LPCR_RenouvellementPlanFacture__c,Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = :quote.Id];       
-           
-            order.SBQQ__Contracted__c=true; 
-            order.LPCR_NouveauPlanFacture__c=invoicePlan.Id;
-            order.LPCR_RenouvellementPlanFacture__c=invoicePlan.Id;
-            //order.LPCR_ContactEnfant__c=contactEnfant.ID;
-            update order;
-
-             Contract contract =null; 
-            try{
-                contract = [SELECT Id,RecordTypeId,LPCR_NouveauPlanFacture__c,LPCR_RenouvellementPlanFacture__c,SBQQ__Order__c, LPCR_Sales_Rep__c ,LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c, LPCR_BillingFrequency__c,LPCR_TypeFacturation__c,Status,StartDate,ContractTerm,LPCR_DateRenouvellement__c,LPCR_RenouvellementAutomatique__c, SBQQ__RenewalQuoted__c,LPCR_JoursAvance__c, LPCR_PlanningEnfant__c FROM Contract 
-
-                            WHERE SBQQ__Order__c =:order.Id ]; 
-            }catch(Exception e){
-                PAD.log('SM010_ContractServices_Test','setContractFieldsTest','Error , Contract not get generated');
-                contract = UM002_TestDataFactory.createContract(acc.Id,quote.Id,order.Id);
-                //contract.LPCR_ContactEnfant__c=contactEnfant.ID;
-            }
-            
-			 Test.stopTest();
+        
+        //create bda
+        LPCR_ContratPartenaire__c contratPartenaire=new LPCR_ContratPartenaire__c (LPCR_Opportunite__c=oppPartenaire.ID,LPCR_CDDCDI__c='CDD', LPCR_Compte__c=comptePartner.ID,LPCR_ContactPartenaire__c=contactPartner.Id);
+        insert contratPartenaire;
+        
+        LPCR_BonAchatPartenaire__c bda = new LPCR_BonAchatPartenaire__c(Name='testbda',LPCR_ContratPartenaire__c =contratPartenaire.id,LPCR_ComptePartenaire__c=comptePartner.ID,LPCR_ContactEnfant__c=contactEnfant.Id,LPCR_Creche__c=accreche.ID);
+        insert bda;
+        
+    }
+    @isTest
+    private static void testContratReservataire() {
+      
+        Test.startTest();
+        Test.stopTest();
+        LPCR_BonAchatPartenaire__c bda =[Select LPCR_ContratReservataire__c,Name from LPCR_BonAchatPartenaire__c ];
+        System.assertNotEquals(bda.LPCR_ContratReservataire__c, null);
+        
             
             
-      //  }
+    
        
     }
     
