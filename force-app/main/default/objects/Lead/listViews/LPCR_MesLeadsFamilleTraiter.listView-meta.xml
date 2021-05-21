@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_MesLeadsFamilleTraiter</fullName>
+    <columns>LEAD.RECORDTYPE</columns>
+    <columns>LEAD.CREATED_DATE</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>LEAD.LAST_ACTIVITY</columns>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.ZIP</columns>
+    <columns>LPCR_DateEntreeCreche2__c</columns>
+    <columns>LPCR_CodeCrecheLienCrecheLead1__c</columns>
+    <columns>LPCR_CodeCrecheLienCrecheLead2__c</columns>
+    <columns>LPCR_CodeCrecheLienCrecheLead3__c</columns>
+    <columns>LEAD.COMPANY</columns>
+    <columns>LPCR_SocieteCoDemandeur__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>LEAD.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Lead.Famille</value>
+    </filters>
+    <filters>
+        <field>LEAD.STATUS</field>
+        <operation>equals</operation>
+        <value>Nouveau</value>
+    </filters>
+    <filters>
+        <field>LEAD.UNREAD</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Mes Leads famille à traiter</label>
+</ListView>
