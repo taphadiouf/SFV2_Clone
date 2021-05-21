@@ -128,14 +128,11 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Facture_Page_d_enregistrement1</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -144,51 +141,27 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>blng__InvoiceDetails</compactLayoutAssignment>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <deprecated>false</deprecated>
-    <description>Storing the Invoices.</description>
-    <enableActivities>true</enableActivities>
+    <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
-    <enableEnhancedLookup>true</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>true</enableHistory>
+    <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <label>Invoice</label>
+    <externalSharingModel>Private</externalSharingModel>
+    <gender>Masculine</gender>
+    <label>Avoir</label>
     <nameField>
-        <displayFormat>INV-{0000}</displayFormat>
-        <label>Invoice Number</label>
-        <trackHistory>false</trackHistory>
+        <displayFormat>{00000}</displayFormat>
+        <label>Nom de Avoir</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Invoices</pluralLabel>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
-    <searchLayouts>
-        <customTabListAdditionalFields>blng__Account__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>blng__InvoiceDate__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>blng__TotalAmount__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>blng__Balance__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>blng__ARStatus__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>blng__StatusFlag__c</customTabListAdditionalFields>
-        <excludedStandardButtons>New</excludedStandardButtons>
-        <lookupDialogsAdditionalFields>blng__Account__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>blng__InvoiceDate__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>blng__PaymentStatus__c</lookupDialogsAdditionalFields>
-        <searchFilterFields>NAME</searchFilterFields>
-        <searchFilterFields>blng__Account__c</searchFilterFields>
-        <searchFilterFields>blng__InvoiceDate__c</searchFilterFields>
-        <searchFilterFields>blng__PaymentStatus__c</searchFilterFields>
-        <searchFilterFields>CREATEDBY_USER</searchFilterFields>
-        <searchResultsAdditionalFields>blng__Account__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>blng__InvoiceDate__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>blng__StatusFlag__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>blng__PaymentStatus__c</searchResultsAdditionalFields>
-    </searchLayouts>
-    <sharingModel>ControlledByParent</sharingModel>
-    <startsWith>Vowel</startsWith>
+    <pluralLabel>Avoirs</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
