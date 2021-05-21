@@ -4,7 +4,7 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <description>lien vers le contrat du client réservataire</description>
     <externalId>false</externalId>
-    <label>Contrat de Réservation</label>
+    <label>Contrat de Référencement</label>
     <referenceTo>Contract</referenceTo>
     <relationshipLabel>Bons d&#39;achat partenaires</relationshipLabel>
     <relationshipName>BonsAchatsPartenaires</relationshipName>
