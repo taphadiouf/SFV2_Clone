@@ -187,8 +187,7 @@
         <searchResultsAdditionalFields>blng__StatusFlag__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>blng__PaymentStatus__c</searchResultsAdditionalFields>
     </searchLayouts>
-     <!-- To review -->
-    <!-- <sharingModel>ControlledByParent</sharingModel> -->
+    <sharingModel>ControlledByParent</sharingModel>
     <startsWith>Vowel</startsWith>
     <visibility>Public</visibility>
 </CustomObject>
