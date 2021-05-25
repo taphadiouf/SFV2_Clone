@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Maj_Ancien_client_statut</fullName>
+        <description>Met à jour le statut du compte avec la valeur &quot;Ancien Client&quot;</description>
+        <field>LPCR_Statut__c</field>
+        <literalValue>Ancien client</literalValue>
+        <name>Maj  Ancien client statut</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Maj_Client_statut</fullName>
+        <description>Met à jour le statut du compte avec la valeur &quot;Client&quot;</description>
+        <field>LPCR_Statut__c</field>
+        <literalValue>Client</literalValue>
+        <name>Maj Client statut</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>WF_Account_as_Active_customer_status</fullName>
+        <actions>
+            <name>Maj_Client_statut</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.LPCR_Actif__c</field>
+            <operation>equals</operation>
+            <value>Vrai</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Entreprise</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Contrat_existant__c</field>
+            <operation>equals</operation>
+            <value>Vrai</value>
+        </criteriaItems>
+        <description>Mise à jour automatique du statut du compte comme client</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WF_Account_as_Old_customer_status</fullName>
+        <actions>
+            <name>Maj_Ancien_client_statut</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Entreprise</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.LPCR_Actif__c</field>
+            <operation>equals</operation>
+            <value>Faux</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Contrat_existant__c</field>
+            <operation>equals</operation>
+            <value>Vrai</value>
+        </criteriaItems>
+        <description>Mise à jour du statut du compte comme ancien client</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>
