@@ -57,9 +57,28 @@
         <label>Autre</label>
     </standardValue>
     <standardValue>
-        <fullName>Other</fullName>
+        <fullName>Associative</fullName>
         <default>false</default>
-        <isActive>false</isActive>
-        <label>Other</label>
+        <label>Associative</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Hospitalière</fullName>
+        <default>false</default>
+        <label>Hospitalière</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Municipale</fullName>
+        <default>false</default>
+        <label>Municipale</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Mutualiste</fullName>
+        <default>false</default>
+        <label>Mutualiste</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Privée</fullName>
+        <default>false</default>
+        <label>Privée</label>
     </standardValue>
 </StandardValueSet>
