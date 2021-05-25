@@ -38,7 +38,7 @@
             <value>Entreprise</value>
         </criteriaItems>
         <criteriaItems>
-            <field>Account.Contrat_existant__c</field>
+            <field>Account.LPCR_Contrat_existant__c</field>
             <operation>equals</operation>
             <value>Vrai</value>
         </criteriaItems>
@@ -63,7 +63,7 @@
             <value>Faux</value>
         </criteriaItems>
         <criteriaItems>
-            <field>Account.Contrat_existant__c</field>
+            <field>Account.LPCR_Contrat_existant__c</field>
             <operation>equals</operation>
             <value>Vrai</value>
         </criteriaItems>
