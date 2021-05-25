@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_SocieteFacturanteAbo__c</fullName>
+    <fullName>LPCR_Quantite__c</fullName>
     <externalId>false</externalId>
-    <formula>SBQQ__Contract__r.SBQQ__Order__r.SBQQ__Quote__r.SBQQ__Account__r.LPCR_SocieteFacturanteCompte__r.Name</formula>
-    <label>Société Facturante</label>
+    <label>Quantité</label>
+    <precision>18</precision>
     <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>Text</type>
+    <type>Number</type>
     <unique>false</unique>
 </CustomField>
