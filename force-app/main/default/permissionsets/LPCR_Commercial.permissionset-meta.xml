@@ -2414,7 +2414,7 @@
 </fieldPermissions>
 <fieldPermissions>
         <editable>true</editable>
-        <field>blng__Invoice__c.LPCR_QuantiteAvoirFacture__c</field>
+        <field>blng__Invoice__c.LPCR_Quantite__c</field>
         <readable>true</readable>
 </fieldPermissions>
 <fieldPermissions>
@@ -4955,6 +4955,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Order.blng__TotalBilling__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Order.LPCR_TypeDeVente__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7670,6 +7675,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_MotifAnnulationDevis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_TypeDeVente__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
