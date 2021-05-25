@@ -102,7 +102,24 @@ public with sharing class SM013_QuoteLineServices_Test {
         insert quote;
         
         Integer price = 200;
-        defaultVal = new Map<String, Object> {
+       
+         Contract contract2 = new Contract(
+            AccountId = accounts[0].Id, 
+            SBQQ__PreserveBundleStructureUponRenewals__c = true, 
+            ContractTerm = 12,
+            StartDate = Date.today());
+        insert contract2;
+        SBQQ__Subscription__c subs = new SBQQ__Subscription__c(
+            SBQQ__Contract__c = contract2.Id, LPCR_BonDachatPartenaire__c=null,SBQQ__CustomerPrice__c=200,
+            SBQQ__Product__c = prod.ID, 
+            SBQQ__Quantity__c = 10, 
+            SBQQ__Account__c = accounts[0].Id,
+            SBQQ__NetPrice__c = 2000,
+            SBQQ__SubscriptionEndDate__c = Date.today()+100,LPCR_Creche__c=creche.id,SBQQ__ProrateMultiplier__c=6
+        );
+        insert subs;
+        List<SBQQ__QuoteLine__c> lstQli =new  List<SBQQ__QuoteLine__c>();
+         defaultVal = new Map<String, Object> {
             'Name' => 'prod-test',
             'SBQQ__StartDate__c' => System.Today(),
             'SBQQ__Product__c' => prod.Id,
@@ -119,12 +136,49 @@ public with sharing class SM013_QuoteLineServices_Test {
             'SBQQ__BillingFrequency__c' => 'Monthly',
             'LPCR_Region__c' => 'Paris',
             'LPCR_Creche__c' => creche.Id,
-            'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+            'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id,
+                'SBQQ__ProrateMultiplier__c' =>5
         };
+            
 
         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-        insert quoteLine;
+        lstQli.add(quoteLine);
+        //insert quoteLine;
         
+        defaultVal = new Map<String, Object> {
+            'Name' => 'prod-test12',
+            'SBQQ__StartDate__c' => System.Today(),
+            'SBQQ__Product__c' => prod.Id,
+            'SBQQ__Quantity__c' => 1,
+            'SBQQ__ListPrice__c' => price,
+            'SBQQ__CustomerPrice__c' => price,
+            'SBQQ__NetPrice__c' => price,
+            'SBQQ__SpecialPrice__c' => price,
+            'SBQQ__Quote__c' => quote.Id,
+            'SBQQ__PricebookEntryId__c' => priceBookEntry.Id,
+            'SBQQ__PricingMethod__c' => 'List',
+            'SBQQ__ChargeType__c' => 'Recurring',
+            'SBQQ__BillingType__c' => 'Advance',
+            'SBQQ__BillingFrequency__c' => 'Monthly',
+            'LPCR_Region__c' => 'Paris',
+            'LPCR_Creche__c' => creche.Id,
+            'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id,
+            'SBQQ__RenewedSubscription__c'=>subs.Id,
+                 'SBQQ__ProrateMultiplier__c' =>5 ,'SBQQ__Uplift__c'=>3
+        };
+
+        SBQQ__QuoteLine__c quoteLine2 = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+        //insert quoteLine2;
+        //
+        quoteLine2.SBQQ__ProrateMultiplier__c=5;
+        lstQli.add(quoteLine2);
+        
+         SBQQ__QuoteLine__c quoteLine3 = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+        //insert quoteLine2;
+        //
+        quoteLine3.SBQQ__ProrateMultiplier__c=5;
+         lstQli.add(quoteLine3);
+        insert lstQli;
         opp.SBQQ__PrimaryQuote__c = quote.Id;
         update opp;
 
@@ -193,6 +247,11 @@ public with sharing class SM013_QuoteLineServices_Test {
 
         Asset asset = (Asset) UM002_TestDataFactory.createSObject('Asset', defaultVal);
         insert Asset;
+        
+       
+        //
+        
+        
     }
     
     @IsTest
@@ -289,5 +348,9 @@ public with sharing class SM013_QuoteLineServices_Test {
             System.assert(String.isNotBlank(excepMessage));
             System.assert(excepMessage.contains(Label.LPCR_RegistrationFeeErrorMessage));
         }
+    }
+    static void testIndexation(){
+        Test.startTest();
+        Test.stopTest();
     }
 }

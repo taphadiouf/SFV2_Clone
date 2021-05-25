@@ -1012,6 +1012,26 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_Avoir__c.LPCR_CompteClient__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+            <editable>true</editable>
+            <field>LPCR_Avoir__c.LPCR_Description__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+            <editable>true</editable>
+            <field>LPCR_Avoir__c.LPCR_Montant__c</field>
+            <readable>true</readable>
+        </fieldPermissions>
+    <fieldPermissions>
+            <editable>true</editable>
+            <field>LPCR_Avoir__c.LPCR_NomSociete__c</field>
+            <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.AccountId</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1415,6 +1435,41 @@
         <field>Event.LPCR_Compte_rendu__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_DateDerniereModification__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_MontantAvoirFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+<fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_NatureAvoirFacture__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_PeriodeAvoirFacture__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_PrixUnitaireAvoir__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_QuantiteAvoirFacture__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+    <editable>true</editable>
+    <field>blng__Invoice__c.LPCR_StatutAvoirFacture__c</field>
+    <readable>true</readable>
+</fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Event.LPCR_Echeance__c</field>
@@ -4563,6 +4618,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__QuoteLine__c.blng__BillableUnitPrice__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_Indexation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_Remise__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
