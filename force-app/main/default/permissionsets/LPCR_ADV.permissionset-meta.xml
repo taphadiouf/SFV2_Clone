@@ -2118,12 +2118,7 @@
         <field>blng__Invoice__c.LPCR_Quantite__c</field>
         <readable>true</readable>
 </fieldPermissions>
-<fieldPermissions>
-    <editable>true</editable>
-    <field>blng__Invoice__c.LPCR_StatutAvoirFacture__c</field>
-    <readable>true</readable>
-</fieldPermissions>
-    <fieldPermissions>
+ <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_GestionnaireRetenu__c</field>
         <readable>true</readable>
