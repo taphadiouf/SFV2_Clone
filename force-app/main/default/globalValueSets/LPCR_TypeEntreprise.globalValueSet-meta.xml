@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Grand Compte</fullName>
+        <fullName>PLAC</fullName>
         <default>false</default>
-        <label>Grand Compte</label>
-    </customValue>
-    <customValue>
-        <fullName>PME-ETI</fullName>
-        <default>false</default>
-        <label>PME-ETI</label>
+        <label>PLAC</label>
     </customValue>
     <customValue>
         <fullName>TPE</fullName>
@@ -16,19 +11,14 @@
         <label>TPE</label>
     </customValue>
     <customValue>
-        <fullName>PLAC</fullName>
+        <fullName>PME-ETI</fullName>
         <default>false</default>
-        <label>PLAC</label>
+        <label>PME-ETI</label>
     </customValue>
     <customValue>
-        <fullName>MID</fullName>
+        <fullName>Grand Compte</fullName>
         <default>false</default>
-        <label>MID</label>
-    </customValue>
-    <customValue>
-        <fullName>Public</fullName>
-        <default>false</default>
-        <label>Public</label>
+        <label>Grand Compte</label>
     </customValue>
     <customValue>
         <fullName>Partenaire</fullName>
@@ -36,59 +26,19 @@
         <label>Partenaire</label>
     </customValue>
     <customValue>
-        <fullName>Collectivité</fullName>
+        <fullName>Collectivites</fullName>
         <default>false</default>
-        <label>Collectivité</label>
+        <label>Collectivités</label>
+    </customValue>
+    <customValue>
+        <fullName>Administrations Publiques</fullName>
+        <default>false</default>
+        <label>Administrations Publiques</label>
     </customValue>
     <customValue>
         <fullName>CE</fullName>
         <default>false</default>
         <label>CE</label>
-    </customValue>
-    <customValue>
-        <fullName>Entreprise</fullName>
-        <default>false</default>
-        <label>Entreprise</label>
-    </customValue>
-    <customValue>
-        <fullName>Ville</fullName>
-        <default>false</default>
-        <label>Ville</label>
-    </customValue>
-    <customValue>
-        <fullName>Administration</fullName>
-        <default>false</default>
-        <label>Administration</label>
-    </customValue>
-    <customValue>
-        <fullName>Hopital/Clinique</fullName>
-        <default>false</default>
-        <label>Hopital/Clinique</label>
-    </customValue>
-    <customValue>
-        <fullName>CAF</fullName>
-        <default>false</default>
-        <label>CAF</label>
-    </customValue>
-    <customValue>
-        <fullName>Extérieur/LPCR</fullName>
-        <default>false</default>
-        <label>Extérieur/LPCR</label>
-    </customValue>
-    <customValue>
-        <fullName>Distributeur (partenaire)</fullName>
-        <default>false</default>
-        <label>Distributeur (partenaire)</label>
-    </customValue>
-    <customValue>
-        <fullName>PAJE parents solo (libéral)</fullName>
-        <default>false</default>
-        <label>PAJE parents solo (libéral)</label>
-    </customValue>
-    <customValue>
-        <fullName>Autre</fullName>
-        <default>false</default>
-        <label>Autre</label>
     </customValue>
     <masterLabel>Type de client</masterLabel>
     <sorted>false</sorted>
