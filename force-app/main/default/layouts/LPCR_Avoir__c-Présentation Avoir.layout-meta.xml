@@ -30,6 +30,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_Description__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_AvoirCommande__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

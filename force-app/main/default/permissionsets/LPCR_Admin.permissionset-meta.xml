@@ -1053,26 +1053,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>LPCR_Avoir__c.LPCR_CompteClient__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-            <editable>true</editable>
-            <field>LPCR_Avoir__c.LPCR_Description__c</field>
-            <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-            <editable>true</editable>
-            <field>LPCR_Avoir__c.LPCR_Montant__c</field>
-            <readable>true</readable>
-        </fieldPermissions>
-    <fieldPermissions>
-            <editable>true</editable>
-            <field>LPCR_Avoir__c.LPCR_NomSociete__c</field>
-            <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Case.AccountId</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2305,7 +2285,32 @@
     <field>blng__Invoice__c.LPCR_StatutAvoirFacture__c</field>
     <readable>true</readable>
 </fieldPermissions>
-    <fieldPermissions>
+<fieldPermissions>
+    <editable>true</editable>
+    <field>LPCR_Avoir__c.LPCR_CompteClient__c</field>
+    <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Avoir__c.LPCR_Description__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Avoir__c.LPCR_Montant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+<fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Avoir__c.LPCR_NomSociete__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+    <editable>true</editable>
+    <field>LPCR_Avoir__c.LPCR_AvoirCommande__c</field>
+    <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
         <editable>false</editable>
         <field>LPCR_BonAchatPartenaire__c.LPCR_ANatitre__c</field>
         <readable>true</readable>
@@ -5363,6 +5368,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Order.LPCR_BDOM_OrderStartdate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Order.LPCR_NumeroContratCommande__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

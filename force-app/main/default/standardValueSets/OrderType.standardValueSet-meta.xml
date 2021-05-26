@@ -2,18 +2,18 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>false</sorted>
     <standardValue>
-        <fullName>New</fullName>
+        <fullName>LPCR_NouveauTypeCommande</fullName>
         <default>false</default>
-        <label>New</label>
+        <label>Nouveau</label>
     </standardValue>
     <standardValue>
-        <fullName>Renewal</fullName>
+        <fullName>LPCR_RenouvellementTypeCommande</fullName>
         <default>false</default>
-        <label>Renewal</label>
+        <label>Renouvellement</label>
     </standardValue>
     <standardValue>
-        <fullName>Amendment</fullName>
+        <fullName>LPCR_AmendementTypeCommande</fullName>
         <default>false</default>
-        <label>Amendment</label>
+        <label>Amendement</label>
     </standardValue>
 </StandardValueSet>
