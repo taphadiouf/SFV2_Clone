@@ -23,7 +23,7 @@ public with sharing class SM029_AccountService {
             //for RT entreprise only
             if(newAccountsMap.get(key).RecordTypeId == entrepriseRecTypeId){
                 String sLong = String.valueOf(counter);
-                lstAccountUpdate.add(new Account(LPCR_IDSage__c=(String)sLong,ID=newAccountsMap.get(key).ID,LPCR_SocieteFacturanteCompte__c=socFacExsitant.size() > 0 ?socFacExsitant[0].Id:null )); 
+                lstAccountUpdate.add(new Account(LPCR_IDSage__c=(String)sLong,ID=newAccountsMap.get(key).ID,LPCR_SocieteFacturanteCompte__c=newAccountsMap.get(key).LPCR_SocieteFacturanteCompte__c == null ? socFacExsitant.size() > 0 ?socFacExsitant[0].Id:null :newAccountsMap.get(key).LPCR_SocieteFacturanteCompte__c )); 
                 counter++; 
             }
             
