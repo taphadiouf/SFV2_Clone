@@ -2301,6 +2301,11 @@
         <readable>true</readable>
 </fieldPermissions>
 <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_Quantite__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
     <editable>true</editable>
     <field>blng__Invoice__c.LPCR_StatutAvoirFacture__c</field>
     <readable>true</readable>
@@ -7283,6 +7288,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__QuoteLine__c.blng__BillableUnitPrice__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_Indexation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_Remise__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

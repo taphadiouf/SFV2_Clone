@@ -469,10 +469,9 @@
         <fields>SBQQ__Product__c</fields>
         <fields>SBQQ__Quantity__c</fields>
         <fields>SBQQ__ListPrice__c</fields>
-        <fields>LPCR_Creche__c</fields>
-        <fields>LPCR_TypeDeVente__c</fields>
-        <fields>LPCR_Region__c</fields>
         <fields>LPCR_PrixUnitaire__c</fields>
+        <fields>LPCR_Creche__c</fields>
+        <fields>LPCR_Region__c</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -507,7 +506,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000002Ng3H</masterLabel>
+        <masterLabel>00h1j000002d5D4</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
