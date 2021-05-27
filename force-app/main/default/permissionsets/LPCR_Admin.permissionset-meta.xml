@@ -8614,6 +8614,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__InvoiceLine__c.LPCR_MontantAvoirLigneFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>blng__Invoice__c.LPCR_CommentaireGlobal__c</field>
         <readable>true</readable>
