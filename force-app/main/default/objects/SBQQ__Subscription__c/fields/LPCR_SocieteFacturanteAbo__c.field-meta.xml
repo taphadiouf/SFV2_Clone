@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_SocieteFacturanteAbo__c</fullName>
     <externalId>false</externalId>
-    <formula>SBQQ__Contract__r.SBQQ__Order__r.SBQQ__Quote__r.SBQQ__Account__r.LPCR_SocieteFacturanteCompte__r.Name</formula>
+    <formula>SBQQ__Contract__r.SBQQ__Order__r.SBQQ__Quote__r.LPCR_SocieteFacturante__c</formula>
     <label>Société Facturante</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

@@ -67,7 +67,7 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
             if(Name.contains('Facture')) {
                  CrecheSfId = getB2CFactureCrecheID(this.ownerId);
             }
-            if(Name.contains('Contrat')) {
+            if(Name.contains('Contrat') && Name.contains('ccueil')) { // Contrat d'accueil B2C
                  CrecheSfId = getB2CContractCrecheID(this.ownerId);
             }
         
@@ -179,6 +179,7 @@ public with sharing class QA001_CalloutEnvoieDocumentGED implements Queueable,Da
             
         } catch (Exception e ) {
             errorMsg = e.getMessage();
+            errorMsg += ' - line:' + e.getLineNumber();
         } finally {
             if (errorMsg != '') {
                 UM001_LogManager.writeLogActivityWithoutFuture(className, 'getB2CContractCrecheID', 'Apex Logic', null,  'Apex Logic Exception:' + errorMsg, UM010_Constant.ERROR);  

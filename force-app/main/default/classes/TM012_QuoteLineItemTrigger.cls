@@ -29,5 +29,11 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
             SM013_QuoteLineServices.calculateQuoteLine(newQuoteLineList);
         }
     }
+    protected override void afterInsert() {
+        if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')) {
+            SM013_QuoteLineServices.updateIndexationRemiseQuote(newQuoteLineList);
+        }
+        
+    }
 
 }
