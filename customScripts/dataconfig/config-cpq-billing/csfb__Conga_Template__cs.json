@@ -35,7 +35,74 @@
                 "type": "csfb__Conga_Template__c",
                 "referenceId": "csfb__Conga_Template__cRef4"
             },
+            "csfb__Name__c": "Facture Proforma",
+            "csfb__Template_Type__c": "Document",
+            "csfb__Label_Template_Use_Detail_Data__c": false
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Template__c",
+                "referenceId": "csfb__Conga_Template__cRef5"
+            },
             "csfb__Name__c": "Attestation CAF",
+            "csfb__Template_Type__c": "Document",
+            "csfb__Label_Template_Use_Detail_Data__c": false
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Template__c",
+                "referenceId": "csfb__Conga_Template__cRef6"
+            },
+            "csfb__Name__c": "Standard Invoice",
+            "csfb__Template_Type__c": "Document",
+            "csfb__Template_Group__c": "Invoice",
+            "csfb__Label_Template_Use_Detail_Data__c": false,
+            "csfb__Description__c": "Created By Solution Pack for Composer Solution: Generate Invoice (blng__Invoice__c)"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Template__c",
+                "referenceId": "csfb__Conga_Template__cRef7"
+            },
+            "csfb__Name__c": "AVOIR PROFORMA TOTAL B2B 20210520",
+            "csfb__Template_Type__c": "Document",
+            "csfb__Label_Template_Use_Detail_Data__c": false,
+            "csfb__Description__c": "Avoir total proforma"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Template__c",
+                "referenceId": "csfb__Conga_Template__cRef8"
+            },
+            "csfb__Name__c": "testpdo",
+            "csfb__Template_Type__c": "Document",
+            "csfb__Label_Template_Use_Detail_Data__c": false
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Template__c",
+                "referenceId": "csfb__Conga_Template__cRef9"
+            },
+            "csfb__Name__c": "AVOIR TOTAL B2B 20210520",
+            "csfb__Template_Type__c": "Document",
+            "csfb__Label_Template_Use_Detail_Data__c": false,
+            "csfb__Description__c": "Avoir total"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Template__c",
+                "referenceId": "csfb__Conga_Template__cRef10"
+            },
+            "csfb__Name__c": "AVOIR PARTIEL B2B",
+            "csfb__Template_Type__c": "Document",
+            "csfb__Label_Template_Use_Detail_Data__c": false
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Template__c",
+                "referenceId": "csfb__Conga_Template__cRef11"
+            },
+            "csfb__Name__c": "AVOIR PARTIEL B2B PROFORMA",
             "csfb__Template_Type__c": "Document",
             "csfb__Label_Template_Use_Detail_Data__c": false
         }

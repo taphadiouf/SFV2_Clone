@@ -315,8 +315,6 @@
                 "referenceId": "sbaa__Approval__cRef7"
             },
             "IsDeleted": false,
-            "LastReferencedDate": "2021-02-17T07:13:48.000+0000",
-            "LastViewedDate": "2021-02-17T07:13:48.000+0000",
             "Name": "A-00015",
             "Quote__r": {
                 "attributes": {
@@ -471,8 +469,6 @@
                 "referenceId": "sbaa__Approval__cRef10"
             },
             "IsDeleted": false,
-            "LastReferencedDate": "2021-02-17T07:16:03.000+0000",
-            "LastViewedDate": "2021-02-17T07:16:03.000+0000",
             "Name": "A-00008",
             "Quote__r": {
                 "attributes": {
@@ -529,6 +525,62 @@
                 "referenceId": "sbaa__Approval__cRef11"
             },
             "IsDeleted": false,
+            "Name": "A-00094",
+            "Quote__r": {
+                "attributes": {
+                    "type": "SBQQ__Quote__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__Quote__c/a0x3O000001XnqKQAS"
+                },
+                "Id": "a0x3O000001XnqKQAS"
+            },
+            "sbaa__Actions__c": "<a href=\"/apex/sbaa__Approve?id=a4f3O000000PLfk\" target=\"_self\">Approuver</a> | <a href=\"/apex/sbaa__Reject?id=a4f3O000000PLfk\" target=\"_self\">Refuser</a>",
+            "sbaa__ApprovalChain__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalChain__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
+                },
+                "Id": "a4Z3O00000053U3UAI"
+            },
+            "sbaa__ApprovalStep__c": 1,
+            "sbaa__ApprovalTemplateId__c": "00X3O000000bWDfUAM",
+            "sbaa__ApprovedBy__r": {
+                "attributes": {
+                    "type": "User",
+                    "url": "/services/data/v52.0/sobjects/User/0055J000000rdCPQAY"
+                },
+                "Id": "0055J000000rdCPQAY"
+            },
+            "sbaa__ApproverField__c": "LPCR_OwnerManager__c",
+            "sbaa__Archived__c": false,
+            "sbaa__AssignedTo__r": {
+                "attributes": {
+                    "type": "User",
+                    "url": "/services/data/v52.0/sobjects/User/0053O0000021cwTQAQ"
+                },
+                "Id": "0053O0000021cwTQAQ"
+            },
+            "sbaa__AssignedToMe__c": false,
+            "sbaa__RecordField__c": "Quote__c",
+            "sbaa__RejectionTemplateId__c": "00X3O000000bWDeUAM",
+            "sbaa__RequestTemplateId__c": "00X3O000000bWDdUAM",
+            "sbaa__RequireExplicitApproval__c": false,
+            "sbaa__Rule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__Status__c": "Approved",
+            "sbaa__Unanimous__c": false,
+            "SystemModstamp": "2021-05-17T08:00:48.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__Approval__c",
+                "referenceId": "sbaa__Approval__cRef12"
+            },
+            "IsDeleted": false,
             "Name": "A-00006",
             "Quote__r": {
                 "attributes": {
@@ -575,7 +627,63 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef12"
+                "referenceId": "sbaa__Approval__cRef13"
+            },
+            "IsDeleted": false,
+            "Name": "A-00096",
+            "Quote__r": {
+                "attributes": {
+                    "type": "SBQQ__Quote__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__Quote__c/a0x3O000001Xp51QAC"
+                },
+                "Id": "a0x3O000001Xp51QAC"
+            },
+            "sbaa__Actions__c": "<a href=\"/apex/sbaa__Approve?id=a4f3O000000PLfu\" target=\"_self\">Approuver</a> | <a href=\"/apex/sbaa__Reject?id=a4f3O000000PLfu\" target=\"_self\">Refuser</a>",
+            "sbaa__ApprovalChain__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalChain__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
+                },
+                "Id": "a4Z3O00000053U3UAI"
+            },
+            "sbaa__ApprovalStep__c": 1,
+            "sbaa__ApprovalTemplateId__c": "00X3O000000bWDfUAM",
+            "sbaa__ApprovedBy__r": {
+                "attributes": {
+                    "type": "User",
+                    "url": "/services/data/v52.0/sobjects/User/0055J000000rdCPQAY"
+                },
+                "Id": "0055J000000rdCPQAY"
+            },
+            "sbaa__ApproverField__c": "LPCR_OwnerManager__c",
+            "sbaa__Archived__c": false,
+            "sbaa__AssignedTo__r": {
+                "attributes": {
+                    "type": "User",
+                    "url": "/services/data/v52.0/sobjects/User/0053O0000021cwTQAQ"
+                },
+                "Id": "0053O0000021cwTQAQ"
+            },
+            "sbaa__AssignedToMe__c": false,
+            "sbaa__RecordField__c": "Quote__c",
+            "sbaa__RejectionTemplateId__c": "00X3O000000bWDeUAM",
+            "sbaa__RequestTemplateId__c": "00X3O000000bWDdUAM",
+            "sbaa__RequireExplicitApproval__c": false,
+            "sbaa__Rule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__Status__c": "Approved",
+            "sbaa__Unanimous__c": false,
+            "SystemModstamp": "2021-05-17T08:53:35.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__Approval__c",
+                "referenceId": "sbaa__Approval__cRef14"
             },
             "IsDeleted": false,
             "Name": "A-00067",
@@ -631,7 +739,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef13"
+                "referenceId": "sbaa__Approval__cRef15"
             },
             "IsDeleted": false,
             "Name": "A-00077",
@@ -681,7 +789,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef14"
+                "referenceId": "sbaa__Approval__cRef16"
             },
             "IsDeleted": false,
             "Name": "A-00078",
@@ -730,7 +838,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef15"
+                "referenceId": "sbaa__Approval__cRef17"
             },
             "IsDeleted": false,
             "Name": "A-00070",
@@ -780,7 +888,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef16"
+                "referenceId": "sbaa__Approval__cRef18"
             },
             "IsDeleted": false,
             "Name": "A-00071",
@@ -836,7 +944,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef17"
+                "referenceId": "sbaa__Approval__cRef19"
             },
             "IsDeleted": false,
             "Name": "A-00093",
@@ -885,7 +993,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef18"
+                "referenceId": "sbaa__Approval__cRef20"
             },
             "IsDeleted": false,
             "Name": "A-00072",
@@ -935,7 +1043,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef19"
+                "referenceId": "sbaa__Approval__cRef21"
             },
             "IsDeleted": false,
             "Name": "A-00073",
@@ -991,7 +1099,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef20"
+                "referenceId": "sbaa__Approval__cRef22"
             },
             "IsDeleted": false,
             "Name": "A-00085",
@@ -1040,7 +1148,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef21"
+                "referenceId": "sbaa__Approval__cRef23"
             },
             "IsDeleted": false,
             "Name": "A-00090",
@@ -1089,7 +1197,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef22"
+                "referenceId": "sbaa__Approval__cRef24"
             },
             "IsDeleted": false,
             "Name": "A-00091",
@@ -1138,7 +1246,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef23"
+                "referenceId": "sbaa__Approval__cRef25"
             },
             "IsDeleted": false,
             "Name": "A-00076",
@@ -1201,7 +1309,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef24"
+                "referenceId": "sbaa__Approval__cRef26"
             },
             "IsDeleted": false,
             "Name": "A-00081",
@@ -1264,7 +1372,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef25"
+                "referenceId": "sbaa__Approval__cRef27"
             },
             "IsDeleted": false,
             "Name": "A-00082",
@@ -1327,7 +1435,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef26"
+                "referenceId": "sbaa__Approval__cRef28"
             },
             "IsDeleted": false,
             "Name": "A-00074",
@@ -1377,7 +1485,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef27"
+                "referenceId": "sbaa__Approval__cRef29"
             },
             "IsDeleted": false,
             "Name": "A-00075",
@@ -1426,7 +1534,63 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef28"
+                "referenceId": "sbaa__Approval__cRef30"
+            },
+            "IsDeleted": false,
+            "Name": "A-00095",
+            "Quote__r": {
+                "attributes": {
+                    "type": "SBQQ__Quote__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__Quote__c/a0x3O000001XnwmQAC"
+                },
+                "Id": "a0x3O000001XnwmQAC"
+            },
+            "sbaa__Actions__c": "<a href=\"/apex/sbaa__Approve?id=a4f3O000000PLfp\" target=\"_self\">Approuver</a> | <a href=\"/apex/sbaa__Reject?id=a4f3O000000PLfp\" target=\"_self\">Refuser</a>",
+            "sbaa__ApprovalChain__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalChain__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
+                },
+                "Id": "a4Z3O00000053U3UAI"
+            },
+            "sbaa__ApprovalStep__c": 1,
+            "sbaa__ApprovalTemplateId__c": "00X3O000000bWDfUAM",
+            "sbaa__ApprovedBy__r": {
+                "attributes": {
+                    "type": "User",
+                    "url": "/services/data/v52.0/sobjects/User/0055J000000rdCPQAY"
+                },
+                "Id": "0055J000000rdCPQAY"
+            },
+            "sbaa__ApproverField__c": "LPCR_OwnerManager__c",
+            "sbaa__Archived__c": false,
+            "sbaa__AssignedTo__r": {
+                "attributes": {
+                    "type": "User",
+                    "url": "/services/data/v52.0/sobjects/User/0053O0000021cwTQAQ"
+                },
+                "Id": "0053O0000021cwTQAQ"
+            },
+            "sbaa__AssignedToMe__c": false,
+            "sbaa__RecordField__c": "Quote__c",
+            "sbaa__RejectionTemplateId__c": "00X3O000000bWDeUAM",
+            "sbaa__RequestTemplateId__c": "00X3O000000bWDdUAM",
+            "sbaa__RequireExplicitApproval__c": false,
+            "sbaa__Rule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__Status__c": "Approved",
+            "sbaa__Unanimous__c": false,
+            "SystemModstamp": "2021-05-17T08:20:45.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__Approval__c",
+                "referenceId": "sbaa__Approval__cRef31"
             },
             "IsDeleted": false,
             "Name": "A-00000",
@@ -1476,7 +1640,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef29"
+                "referenceId": "sbaa__Approval__cRef32"
             },
             "IsDeleted": false,
             "Name": "A-00001",
@@ -1525,7 +1689,63 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef30"
+                "referenceId": "sbaa__Approval__cRef33"
+            },
+            "IsDeleted": false,
+            "Name": "A-00097",
+            "Quote__r": {
+                "attributes": {
+                    "type": "SBQQ__Quote__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__Quote__c/a0x3O000001YK1iQAG"
+                },
+                "Id": "a0x3O000001YK1iQAG"
+            },
+            "sbaa__Actions__c": "<a href=\"/apex/sbaa__Approve?id=a4f3O000000PLj3\" target=\"_self\">Approuver</a> | <a href=\"/apex/sbaa__Reject?id=a4f3O000000PLj3\" target=\"_self\">Refuser</a>",
+            "sbaa__ApprovalChain__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalChain__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalChain__c/a4Z3O00000053U3UAI"
+                },
+                "Id": "a4Z3O00000053U3UAI"
+            },
+            "sbaa__ApprovalStep__c": 1,
+            "sbaa__ApprovalTemplateId__c": "00X3O000000bWDfUAM",
+            "sbaa__Approver__r": {
+                "attributes": {
+                    "type": "sbaa__Approver__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__Approver__c/a4g3O0000000NZdQAM"
+                },
+                "Id": "a4g3O0000000NZdQAM"
+            },
+            "sbaa__ApproverField__c": "LPCR_OwnerManager__c",
+            "sbaa__Archived__c": false,
+            "sbaa__AssignedTo__r": {
+                "attributes": {
+                    "type": "User",
+                    "url": "/services/data/v52.0/sobjects/User/0055J000000rimJQAQ"
+                },
+                "Id": "0055J000000rimJQAQ"
+            },
+            "sbaa__AssignedToMe__c": false,
+            "sbaa__RecordField__c": "Quote__c",
+            "sbaa__RejectionTemplateId__c": "00X3O000000bWDeUAM",
+            "sbaa__RequestTemplateId__c": "00X3O000000bWDdUAM",
+            "sbaa__RequireExplicitApproval__c": false,
+            "sbaa__Rule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlDQAU"
+                },
+                "Id": "a4b3O0000004NlDQAU"
+            },
+            "sbaa__Status__c": "Requested",
+            "sbaa__Unanimous__c": false,
+            "SystemModstamp": "2021-05-26T14:03:05.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__Approval__c",
+                "referenceId": "sbaa__Approval__cRef34"
             },
             "IsDeleted": false,
             "Name": "A-00041",
@@ -1574,7 +1794,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef31"
+                "referenceId": "sbaa__Approval__cRef35"
             },
             "IsDeleted": false,
             "Name": "A-00065",
@@ -1638,7 +1858,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef32"
+                "referenceId": "sbaa__Approval__cRef36"
             },
             "IsDeleted": false,
             "Name": "A-00024",
@@ -1694,11 +1914,9 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef33"
+                "referenceId": "sbaa__Approval__cRef37"
             },
             "IsDeleted": false,
-            "LastReferencedDate": "2021-02-18T10:28:32.000+0000",
-            "LastViewedDate": "2021-02-18T10:28:32.000+0000",
             "Name": "A-00062",
             "Quote__r": {
                 "attributes": {
@@ -1752,7 +1970,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef34"
+                "referenceId": "sbaa__Approval__cRef38"
             },
             "IsDeleted": false,
             "Name": "A-00066",
@@ -1815,7 +2033,7 @@
         {
             "attributes": {
                 "type": "sbaa__Approval__c",
-                "referenceId": "sbaa__Approval__cRef35"
+                "referenceId": "sbaa__Approval__cRef39"
             },
             "IsDeleted": false,
             "Name": "A-00064",
