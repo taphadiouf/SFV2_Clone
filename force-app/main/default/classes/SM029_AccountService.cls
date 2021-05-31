@@ -33,4 +33,9 @@ public with sharing class SM029_AccountService {
             update lstAccountUpdate;
         }
     }
+    //method to initialise variable on lead conversion to synch record types
+    public static void initialiseVariableLeadConversion(Map<Id, Account> newAccountsMap){
+        SM007_LeadServices.accountsIds = new Set<Id>(newAccountsMap.keySet());
+        
+    }
 }
