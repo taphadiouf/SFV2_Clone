@@ -1126,19 +1126,19 @@
     <picklistValues>
         <picklist>LPCR_TypeEntreprise__c</picklist>
         <values>
+            <fullName>Administrations Publiques</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>CE</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Collectivité</fullName>
+            <fullName>Collectivites</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Grand Compte</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MID</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1151,10 +1151,6 @@
         </values>
         <values>
             <fullName>Partenaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Public</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1211,23 +1207,47 @@
     <picklistValues>
         <picklist>Ownership</picklist>
         <values>
-            <fullName>Associative</fullName>
+            <fullName>Association</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Hospitalière</fullName>
+            <fullName>Autre</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Municipale</fullName>
+            <fullName>EURL</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Mutualiste</fullName>
+            <fullName>SA</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Privée</fullName>
+            <fullName>SARL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SAS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SASU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SCIC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SCOP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SPRL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Société mutualiste</fullName>
             <default>false</default>
         </values>
     </picklistValues>
