@@ -23,8 +23,9 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
 
                 SM008_QuoteServices.updateOppsFromQuotes(newQuotesList);
                 SM008_QuoteServices.updateQuotes(newQuotesList);
-                SM008_QuoteServices.updateDueToResilisationAnticipe(newQuotesList);
+                
                 if (!System.isBatch() && !System.isFuture()) {
+                    SM008_QuoteServices.updateDueToResilisationAnticipe(newQuotesList);
                     SM008_QuoteServices.updateQuoteLineChiffreAffaire(UM003_TypeManager.getIdsOfListObjects(newQuotesList));
                 }
             

@@ -31,4 +31,8 @@ public with sharing class SM024_ContactServices {
     public static void sendContacts(List<Contact> contacts) {
         SM025_SendContact_Callout.sendContactsCallout();
     }
+    //method to initialise variable on lead conversion to synch record types
+    public static void initialiseVariableLeadConversion(Map<Id, Contact> newContactsMap){
+        SM007_LeadServices.contactsIds = new Set<Id>(newContactsMap.keySet());
+    }
 }

@@ -8,8 +8,9 @@ public class SM007_LeadServices {
     public static Set<Id> opportunitiesIds;
     public static Set<Id> accountsIds;
     public static Set<Id> contactsIds;
+    public static  Id ACCOUNT_CRECHE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Creche);
     public static void syncRecordTypesWithLeads(List<Lead> leadsList){
-        //Map : target Object API Name => (Map : Lead recordtype developerName =>  target Recordtype DeveloperName)
+       //Map : target Object API Name => (Map : Lead recordtype developerName =>  target Recordtype DeveloperName)
         Map<String, Map<String, String>> leadRtToTargetRtMap = new Map<String, Map<String, String>>();
         leadRtToTargetRtMap.put('Opportunity', new Map<String, String>());
         leadRtToTargetRtMap.put('Account', new Map<String, String>());
@@ -22,13 +23,12 @@ public class SM007_LeadServices {
             leadRtToTargetRtMap.get('Account').put(tempEachLeadConvRTMap.LPCR_LeadRT__c, tempEachLeadConvRTMap.LPCR_AccountRT__c);
             leadRtToTargetRtMap.get('Contact').put(tempEachLeadConvRTMap.LPCR_LeadRT__c, tempEachLeadConvRTMap.LPCR_ContactRT__c);
         }
-        
-        //Map : Object API Name => (Map : recordtype DeveloperName =>  Recordtype Id)
+       //Map : Object API Name => (Map : recordtype DeveloperName =>  Recordtype Id)
         Map<String, Map<String, Id>> rtNamesToIdsMap = new Map<String, Map<String, String>>();
         rtNamesToIdsMap.put('Opportunity', new Map<String, Id>());
         rtNamesToIdsMap.put('Account', new Map<String, Id>());
         rtNamesToIdsMap.put('Contact', new Map<String, Id>());
-        //End Map Def
+       //End Map Def
         //Map : Lead RecordTypeId => Lead recordtype Developer Name
         Map<Id, String> leadRTIdToName = new Map<Id, String>();
         //End Map  Def
@@ -53,8 +53,7 @@ public class SM007_LeadServices {
         targetIdToLeadRtIdMap.put('Account', new Map<Id, Id>());
         targetIdToLeadRtIdMap.put('Contact', new Map<Id, Id>());
         //End Map def
-        
-        //This loop populates opportunitiesMap, accountsMap and  contactsMap with the mapping between (target record Id) => (Lead recordtypeId)
+       //This loop populates opportunitiesMap, accountsMap and  contactsMap with the mapping between (target record Id) => (Lead recordtypeId)
         for(Lead eachLead : leadsList){
             if(SM007_LeadServices.opportunitiesIds != null && SM007_LeadServices.opportunitiesIds.contains(eachLead.convertedOpportunityId)){
                 targetIdToLeadRtIdMap.get('Opportunity').put(eachLead.convertedOpportunityId, eachLead.recordTypeId);
@@ -72,7 +71,7 @@ public class SM007_LeadServices {
         targetRecordsMap.put('Opportunity', new EM004_OpportunityEntity().getByIds(targetIdToLeadRtIdMap.get('Opportunity').keySet(), targetFields));
         targetRecordsMap.put('Account', new EM005_AccountEntity().getByIds(targetIdToLeadRtIdMap.get('Account').keySet(), targetFields));
         targetRecordsMap.put('Contact', new EM011_ContactEntity().getByIds(targetIdToLeadRtIdMap.get('Contact').keySet(), targetFields));
-        
+        SYstem.debug('##pdo tih record type map '+targetRecordsMap);
         Id tmpLeadRecordTypeId;
         String tmpLeadRecordTypeName;
         String tmpTargetRecordTypeName;
@@ -100,32 +99,82 @@ public class SM007_LeadServices {
     }
     public static void  createLiensCrecheLead(List<Lead> leadsList){
         List<LPCR_LienCrecheLead__c> liensCrechesLeads = new  List<LPCR_LienCrecheLead__c>();
+        Map<String,String> mapLeadIDCrecheNum =new Map<String,String>();
+        Map<String,Id> mapCrecheCodeCompteId=new Map<String,Id>();
+        Map<Id,Lead> mapleadsUpdate=new Map<Id,Lead> ();
         for(Lead eachLead : leadsList){
-            if(!String.isEmpty(eachLead.LPCR_CodeCreche1__c)){
-                liensCrechesLeads.add(new LPCR_LienCrecheLead__c(
-                    LPCR_Creche__c = eachLead.LPCR_CodeCreche1__c,
-                    LPCR_Lead__c = eachLead.Id,
-                    LPCR_OrdrePreference__c = 1
-                ));
+            if(!String.isEmpty(eachLead.LPCR_CodeCrecheLienCrecheLead1__c)){
+                mapLeadIDCrecheNum.put('LPCR_CodeCreche1__c'+'-'+eachLead.ID+'-'+'1'+'-'+eachLead.LPCR_CodeCrecheLienCrecheLead1__c,eachLead.LPCR_CodeCrecheLienCrecheLead1__c);
             }
-            if(!String.isEmpty(eachLead.LPCR_CodeCreche2__c)){
-                liensCrechesLeads.add(new LPCR_LienCrecheLead__c(
-                    LPCR_Creche__c = eachLead.LPCR_CodeCreche2__c,
-                    LPCR_Lead__c = eachLead.Id,
-                    LPCR_OrdrePreference__c = 2
-                ));
+            if(!String.isEmpty(eachLead.LPCR_CodeCrecheLienCrecheLead2__c)){
+                mapLeadIDCrecheNum.put('LPCR_CodeCreche2__c'+'-'+eachLead.ID+'-'+'2'+'-'+eachLead.LPCR_CodeCrecheLienCrecheLead2__c,eachLead.LPCR_CodeCrecheLienCrecheLead2__c);
             }
-            if(!String.isEmpty(eachLead.LPCR_CodeCreche3__c)){
-                liensCrechesLeads.add(new LPCR_LienCrecheLead__c(
-                    LPCR_Creche__c = eachLead.LPCR_CodeCreche3__c,
-                    LPCR_Lead__c = eachLead.Id,
-                    LPCR_OrdrePreference__c = 3
-                ));
+            if(!String.isEmpty(eachLead.LPCR_CodeCrecheLienCrecheLead3__c)){
+                mapLeadIDCrecheNum.put('LPCR_CodeCreche3__c'+'-'+eachLead.ID+'-'+'3'+'-'+eachLead.LPCR_CodeCrecheLienCrecheLead3__c,eachLead.LPCR_CodeCrecheLienCrecheLead3__c);
             }
+        }
+        mapCrecheCodeCompteId=getAccountIdCreche(mapLeadIDCrecheNum);
+        for(String key : mapLeadIDCrecheNum.keySet()){
+            String[] strSplit;
+            if(!String.isEmpty(key)){
+                strSplit= key.split('-');
+                
+                if(mapCrecheCodeCompteId.containsKey(strSplit[3])){
+                    liensCrechesLeads.add(new LPCR_LienCrecheLead__c(
+                    LPCR_Creche__c =mapCrecheCodeCompteId.get(strSplit[3]),
+                    LPCR_Lead__c = strSplit[1],
+                    LPCR_OrdrePreference__c = Integer.valueof(strSplit[2])
+                    ));
+                    if(Integer.valueof(strSplit[2])== 1){
+                        if(!mapleadsUpdate.containsKey(strSplit[1])){
+                            Lead ld=new Lead(Id=strSplit[1],LPCR_CodeCreche1__c=mapCrecheCodeCompteId.get(strSplit[3]));
+                            mapleadsUpdate.put(strSplit[1],ld);
+                        }else {
+                            mapleadsUpdate.get(strSplit[1]).LPCR_CodeCreche1__c=mapCrecheCodeCompteId.get(strSplit[3]);
+                        }
+                        
+                    }
+                    if(Integer.valueof(strSplit[2]) == 2){
+                        if(!mapleadsUpdate.containsKey(strSplit[1])){
+                            Lead ld=new Lead(Id=strSplit[1],LPCR_CodeCreche2__c=mapCrecheCodeCompteId.get(strSplit[3]));
+                            mapleadsUpdate.put(strSplit[1],ld);
+                        }else {
+                            mapleadsUpdate.get(strSplit[1]).LPCR_CodeCreche2__c=mapCrecheCodeCompteId.get(strSplit[3]);
+                        }
+                        
+                    }
+                    if(Integer.valueof(strSplit[2]) == 3){
+                        if(!mapleadsUpdate.containsKey(strSplit[1])){
+                            Lead ld=new Lead(Id=strSplit[1],LPCR_CodeCreche3__c=mapCrecheCodeCompteId.get(strSplit[3]));
+                            mapleadsUpdate.put(strSplit[1],ld);
+                        }else {
+                            mapleadsUpdate.get(strSplit[1]).LPCR_CodeCreche3__c=mapCrecheCodeCompteId.get(strSplit[3]);
+                        }
+                        
+                    }
+                }
+                
+                
+                
+            }
+                
+                
+                
         }
         EM018_LienCrecheLead cl = new EM018_LienCrecheLead();
         String methodName = 'createLiensCrecheLead';
         cl.dmlExecuteRequest('insert', (List<SObject>) liensCrechesLeads, true, methodName, DM000_SObject.ProcessType.TRIGGER_SRC);
+        if(!mapleadsUpdate.isempty()){
+            update mapleadsUpdate.values();
+        }
+    }
+    public static Map<String,Id> getAccountIdCreche(Map<String,String> mapLeadIDCrecheNum ){
+        Map<String,Id> mapCodeAccountId= new Map<String,Id> ();
+        for (Account acc:[Select id, LPCR_CodeAnalytique__c from Account where RecordtypeId=:ACCOUNT_CRECHE_RT_ID and LPCR_CodeAnalytique__c IN:mapLeadIDCrecheNum.values()]){
+            mapCodeAccountId.put(acc.LPCR_CodeAnalytique__c,acc.Id);
+        }
+        return mapCodeAccountId;
+        
     }
     
     /* 
