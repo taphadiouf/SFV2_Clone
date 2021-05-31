@@ -315,4 +315,24 @@ public with sharing class SM013_QuoteLineServices {
             return perPeriodMultiplier;
         }
     }
+    public static void updateIndexationRemiseQuote(List<SBQQ__QuoteLine__c> quoteLineList){
+        List<SBQQ__Quote__c> lstQuoteUpdate=new List<SBQQ__Quote__c>();
+        Map<Id,Decimal> mapQuoteIndexationMontant =new Map<Id,Decimal>();
+        for(SBQQ__QuoteLine__c qli : quoteLineList){
+            if(qli.SBQQ__RenewedSubscription__c != null && qli.LPCR_Indexation__c != null){
+                if(!mapQuoteIndexationMontant.containsKey(qli.SBQQ__Quote__c )){
+                    mapQuoteIndexationMontant.put(qli.SBQQ__Quote__c ,qli.LPCR_Indexation__c );
+                }else{
+                    mapQuoteIndexationMontant.put(qli.SBQQ__Quote__c ,mapQuoteIndexationMontant.get(qli.SBQQ__Quote__c )+qli.LPCR_Indexation__c );
+                }
+            }
+        }
+        for(Id key :mapQuoteIndexationMontant.keyset() ){
+            lstQuoteUpdate.add(new SBQQ__Quote__c(Id=key,LPCR_MontantIndexation__c=mapQuoteIndexationMontant.containsKey(key)? mapQuoteIndexationMontant.get(key):0) );
+        }
+        if(lstQuoteUpdate.size() > 0){
+            update lstQuoteUpdate;
+        }
+        
     }
+}

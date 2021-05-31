@@ -26,6 +26,7 @@ public with sharing class TM005_ContactTrigger extends TM000_TriggerHandler{
     protected override void afterInsert() {
         
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')) {
+            SM024_ContactServices.initialiseVariableLeadConversion(newContactsMap);
             SM024_ContactServices.sendContacts(newContactsList);
         }
     }
