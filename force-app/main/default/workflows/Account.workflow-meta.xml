@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>LPCR_AlerteRemiseConcurrence</fullName>
+        <description>Alerte de remise en concurrence</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Alerte_Remise_en_concurrence</template>
+    </alerts>
+</Workflow>
