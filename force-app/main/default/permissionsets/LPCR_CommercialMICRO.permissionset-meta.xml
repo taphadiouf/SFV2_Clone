@@ -7075,11 +7075,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>blng__Invoice__c.LPCR_AvoirTotalHT__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>blng__Invoice__c.LPCR_AvoirTotalNet__c</field>
         <readable>true</readable>
     </fieldPermissions>
