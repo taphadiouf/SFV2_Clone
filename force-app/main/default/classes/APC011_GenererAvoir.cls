@@ -16,7 +16,7 @@ public with sharing class APC011_GenererAvoir {
         String orgId=UserInfo.getOrganizationId();
         AvoirID=sc.getId();
        
-        List<Document> lstDocHead=[Select id,Name from Document where Name IN ('LCPR_AvoirFb','LPCR_AvoirYoutube','LCPR_AvoirTwitter','LCPR_AvoirIn','LCPR_AvoirJoinus','LCPR_AvoirInsta','LPCR_Upper') ];
+        List<Document> lstDocHead=[Select id,Name from Document where Name IN ('LCPR_AvoirFb','LPCR_AvoirYoutube','LCPR_AvoirTwitter','LCPR_AvoirIn','LCPR_AvoirJoinus','LCPR_AvoirInsta','LPCR_Upper') order by Name asc];
         //fb
         urlFB=Test.isRunningTest()?'': baseUrl+'/servlet/servlet.ImageServer?id='+lstDocHead[0].id+'&oid='+orgId;
         //linkedin
