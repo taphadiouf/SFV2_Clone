@@ -381,6 +381,85 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_AnneeImpactBudget__c</picklist>
+        <values>
+            <fullName>2021</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2022</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2023</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2024</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2025</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2026</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2027</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2028</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2029</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2030</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2031</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2032</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2034</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2035</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2036</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2037</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2038</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2039</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2040</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_AutresEnfantsFoyer__c</picklist>
         <values>
             <fullName>1</fullName>
@@ -1482,6 +1561,41 @@
         <picklist>LPCR_Micro__c</picklist>
         <values>
             <fullName>TBD</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_MotifDisqualification__c</picklist>
+        <values>
+            <fullName>Eloigné de nos bases</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Forte demande associative</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Micro-crèche uniquement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pas de places disponibles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pas présent sur la zone demandée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prestations hors cœur de métier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refus connu d%E2%80%99avance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Volume insuffisant</fullName>
             <default>false</default>
         </values>
     </picklistValues>
