@@ -45,8 +45,7 @@ public with sharing class APC011_GenererAvoir {
             periodAvoir=avoir.LPCR_DateFacture__c;
             montantAvoir=avoir.LPCR_Montant__c;
         }
-        System.debug('##pdo company dets '+mapCompanyDets);
-        System.debug('##pdo company dets '+mapAvoirDets);
+        
 
 
     }
