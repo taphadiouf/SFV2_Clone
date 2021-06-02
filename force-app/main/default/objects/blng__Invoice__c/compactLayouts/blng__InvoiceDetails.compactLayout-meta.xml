@@ -4,8 +4,6 @@
     <fields>blng__TotalAmount__c</fields>
     <fields>Name</fields>
     <fields>blng__Account__c</fields>
-    <fields>blng__DaysOutstanding__c</fields>
-    <fields>blng__StatusFlag__c</fields>
-    <fields>LPCR_NombrePOinvalides__c</fields>
+    <fields>blng__InvoiceDate__c</fields>
     <label>Invoice details</label>
 </CompactLayout>
