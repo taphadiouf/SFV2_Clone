@@ -39,10 +39,10 @@ public with sharing class APC011_GenererAvoir {
                 addCompteClient=addCompteClient+avoir.LPCR_CompteClient__r.BillingStreet;
             }
             if(avoir.LPCR_CompteClient__r.BillingPostalCode != null ){
-                addCompteClient=addCompteClient+avoir.LPCR_CompteClient__r.BillingPostalCode;
+                addCompteClient=addCompteClient+' '+avoir.LPCR_CompteClient__r.BillingPostalCode;
             }
             if(avoir.LPCR_CompteClient__r.BillingCity != null ){
-                addCompteClient=addCompteClient+avoir.LPCR_CompteClient__r.BillingCity;
+                addCompteClient=addCompteClient+' '+avoir.LPCR_CompteClient__r.BillingCity;
             }
             if(avoir.LPCR_CompteClient__c == null){
                 mapCompanyDets=new  Map<String,String>{'compteclien' => ' ','name'=>' ' ,'address'=>' ','owner'=>' ','adv'=>' ','nomsociete'=>' ' };
@@ -94,7 +94,7 @@ public with sharing class APC011_GenererAvoir {
             FROM ContentVersion 
             WHERE Id =: contentVersionId
         ].ContentDocumentId;
-        cdl.LinkedEntityId = '0011x00001HQ8AXAA1';
+        cdl.LinkedEntityId = recordId;
         // ShareType is either 'V', 'C', or 'I'
         // V = Viewer, C = Collaborator, I = Inferred
         cdl.ShareType = 'V';
