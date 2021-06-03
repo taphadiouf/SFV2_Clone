@@ -34,6 +34,8 @@ public class SM027_SubscriptionService {
         Set<Id> setContactEnfant =new Set<Id>();
         List<SBQQ__Subscription__c> lstSubscriptionUpdate=new List<SBQQ__Subscription__c>();
         Map<Id,Id> mapContactEnfantContrat = new Map<Id,Id>();
+        List<LPCR_BonAchatPartenaire__c> lstBonAchatUpdate=new List<LPCR_BonAchatPartenaire__c>();
+        Map<String,Id> mapCrecheIDEnfantContrat=new Map<String,Id> ();
         for(Id key : newSubscriptionMap.keyset()){
            if(newSubscriptionMap.get(key).LPCR_Creche__c != null && newSubscriptionMap.get(key).LPCR_ContactEnfant__c != null  ){
                 if(!mapCrecheIDEnfantSubscription.containsKey(newSubscriptionMap.get(key).LPCR_Creche__c+'-'+newSubscriptionMap.get(key).LPCR_ContactEnfant__c)){
@@ -41,6 +43,7 @@ public class SM027_SubscriptionService {
                     setCreche.add(newSubscriptionMap.get(key).LPCR_Creche__c);
                     setContrat.add(newSubscriptionMap.get(key).SBQQ__Contract__c);
                     setContactEnfant.add(newSubscriptionMap.get(key).LPCR_ContactEnfant__c);
+                    mapCrecheIDEnfantContrat.put(newSubscriptionMap.get(key).LPCR_Creche__c+'-'+newSubscriptionMap.get(key).LPCR_ContactEnfant__c,newSubscriptionMap.get(key).SBQQ__Contract__c);
                 }
             }
         }
@@ -69,10 +72,14 @@ public class SM027_SubscriptionService {
                 sub.LPCR_ContratFamille__c=mapContactEnfantContrat.get(keySplit[1]);
             }
             lstSubscriptionUpdate.add(sub);
+            lstBonAchatUpdate.add(new LPCR_BonAchatPartenaire__c(Id=mapCrecheIDEnfantBonDachat.get(key),LPCR_ContratReservataire__c=mapCrecheIDEnfantContrat.containsKey(key)?mapCrecheIDEnfantContrat.get(key):null));
             
         }
         if(lstSubscriptionUpdate.size() > 0 ){
             update lstSubscriptionUpdate;
+            if(lstBonAchatUpdate.size() > 0){
+                update lstBonAchatUpdate;
+            }
         }
         
     }
