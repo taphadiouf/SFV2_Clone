@@ -33,6 +33,7 @@ public class SM027_SubscriptionService {
         Set<Id> setContrat =new Set<Id>();
         Set<Id> setContactEnfant =new Set<Id>();
         List<SBQQ__Subscription__c> lstSubscriptionUpdate=new List<SBQQ__Subscription__c>();
+        Map<Id,Id> mapContactEnfantContrat = new Map<Id,Id>();
         for(Id key : newSubscriptionMap.keyset()){
            if(newSubscriptionMap.get(key).LPCR_Creche__c != null && newSubscriptionMap.get(key).LPCR_ContactEnfant__c != null  ){
                 if(!mapCrecheIDEnfantSubscription.containsKey(newSubscriptionMap.get(key).LPCR_Creche__c+'-'+newSubscriptionMap.get(key).LPCR_ContactEnfant__c)){
@@ -50,11 +51,24 @@ public class SM027_SubscriptionService {
             }
             
         }
+        //look for contrat Acceuil famille with enfant LPCR_ContactEnfant__c
+        for (Contract  con : [select Id ,LPCR_ContactEnfant__c from Contract where LPCR_ContactEnfant__c IN:setContactEnfant]){
+            mapContactEnfantContrat.put(con.LPCR_ContactEnfant__c,con.Id);
+            
+        }
+        
         //loop in all newly created subscription 
         for(String key : mapCrecheIDEnfantSubscription.keyset()){
+            String[] keySplit=key.split('-');
+            SBQQ__Subscription__c sub=new SBQQ__Subscription__c(Id=mapCrecheIDEnfantSubscription.get(key));
             if(!mapCrecheIDEnfantBonDachat.isEmpty() && mapCrecheIDEnfantBonDachat.containsKey(key) ){
-                lstSubscriptionUpdate.add(new SBQQ__Subscription__c(Id=mapCrecheIDEnfantSubscription.get(key),LPCR_BonDachatPartenaire__c=mapCrecheIDEnfantBonDachat.get(key)));
+                // lstSubscriptionUpdate.add(new SBQQ__Subscription__c(Id=mapCrecheIDEnfantSubscription.get(key),LPCR_BonDachatPartenaire__c=mapCrecheIDEnfantBonDachat.get(key)));
+                sub.LPCR_BonDachatPartenaire__c=mapCrecheIDEnfantBonDachat.get(key);
             }
+            if(keySplit[1] !=null){
+                sub.LPCR_ContratFamille__c=mapContactEnfantContrat.get(keySplit[1]);
+            }
+            lstSubscriptionUpdate.add(sub);
             
         }
         if(lstSubscriptionUpdate.size() > 0 ){

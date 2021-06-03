@@ -35,6 +35,10 @@
                 <behavior>Edit</behavior>
                 <field>blng__Notes__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_MontantAvoirLigneFacture__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

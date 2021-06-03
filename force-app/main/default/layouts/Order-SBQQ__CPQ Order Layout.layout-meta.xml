@@ -64,6 +64,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_TypeDeVente__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_NumeroContratCommande__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -259,12 +263,20 @@
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>LPCR_CompteClient__c</fields>
+        <fields>LPCR_Montant__c</fields>
+        <fields>LPCR_Description__c</fields>
+        <fields>LPCR_DateFacture__c</fields>
+        <relatedList>LPCR_Avoir__c.LPCR_AvoirCommande__c</relatedList>
+    </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1j0000026suI</masterLabel>
+        <masterLabel>00h1x000002Ouj4</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

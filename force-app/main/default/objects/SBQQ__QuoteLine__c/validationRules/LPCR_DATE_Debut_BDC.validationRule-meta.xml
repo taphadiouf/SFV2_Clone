@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_DATE_Debut_BDC</fullName>
+    <active>true</active>
+    <description>Message d&apos;erreur que la date de début du Bdc ne peut être antérieur à la date de l&apos;amendement</description>
+    <errorConditionFormula>SBQQ__StartDate__c  &lt;  LPCR_DateDebut__c</errorConditionFormula>
+    <errorMessage>La date de début du bon de commande ne doit pas être inférieure à la date de début de l&apos;amendement</errorMessage>
+</ValidationRule>

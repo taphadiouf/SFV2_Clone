@@ -3793,7 +3793,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>blng__BillingSchedule__c.blng__TaxZipCode__c</field>
+        <field>blng__BillingSchedule__c.LPCR_CompteCalendrierFacturation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5512,6 +5512,41 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__InvoiceLine__c.LPCR_NomAvoirLigneFacture__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+        <editable>false</editable>
+        <field>blng__InvoiceLine__c.LPCR_NatureAvoirLigneFacture__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+        <editable>false</editable>
+        <field>blng__InvoiceLine__c.LPCR_DescriptionAvoirLigneFacture__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+        <editable>false</editable>
+        <field>blng__InvoiceLine__c.LPCR_PeriodeAvoirLigneFacture__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+        <editable>false</editable>
+        <field>blng__InvoiceLine__c.LPCR_QuantiteAvoirLigneFacture__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+        <editable>false</editable>
+        <field>blng__InvoiceLine__c.LPCR_PrixUnitaireAvoirLigneFacture__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+        <editable>false</editable>
+        <field>blng__InvoiceLine__c.LPCR_StatutAvoirLigneFacture__c</field>
+        <readable>true</readable>
+</fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>blng__InvoiceLine__c.blng__ARStatus__c</field>
         <readable>true</readable>
@@ -5889,6 +5924,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__InvoiceLine__c.blng__UsageSummary__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>blng__InvoiceLine__c.LPCR_MontantAvoirLigneFacture__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
