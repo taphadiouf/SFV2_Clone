@@ -65,13 +65,14 @@ public class SM027_SubscriptionService {
             String[] keySplit=key.split('-');
             SBQQ__Subscription__c sub=new SBQQ__Subscription__c(Id=mapCrecheIDEnfantSubscription.get(key));
             if(!mapCrecheIDEnfantBonDachat.isEmpty() && mapCrecheIDEnfantBonDachat.containsKey(key) ){
-                sub.LPCR_BonDachatPartenaire__c=mapCrecheIDEnfantBonDachat.get(key);
+               sub.LPCR_BonDachatPartenaire__c=mapCrecheIDEnfantBonDachat.get(key);
             }
             if(keySplit[1] !=null){
                 sub.LPCR_ContratFamille__c=mapContactEnfantContrat.get(keySplit[1]);
             }
             lstSubscriptionUpdate.add(sub);
             lstBonAchatUpdate.add(new LPCR_BonAchatPartenaire__c(Id=mapCrecheIDEnfantBonDachat.get(key),LPCR_ContratReservataire__c=mapCrecheIDEnfantContrat.containsKey(key)?mapCrecheIDEnfantContrat.get(key):null));
+
             
         }
         if(lstSubscriptionUpdate.size() > 0 ){

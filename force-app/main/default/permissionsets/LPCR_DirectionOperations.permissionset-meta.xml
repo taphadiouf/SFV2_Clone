@@ -1469,6 +1469,11 @@
     <field>blng__Invoice__c.LPCR_StatutAvoirFacture__c</field>
     <readable>true</readable>
 </fieldPermissions>
+<fieldPermissions>
+    <editable>true</editable>
+    <field>blng__Invoice__c.LPCR_DescriptionAvoirFacture__c</field>
+    <readable>true</readable>
+</fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_BonAchatPartenaire__c.LPCR_ANatitre__c</field>
@@ -2902,6 +2907,21 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_NomCoDemandeur__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_NomCreche1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_NomCreche2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_NomCreche3__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5302,6 +5322,11 @@
 	<fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Subscription__c.LPCR_SocieteFacturanteAbo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Subscription__c.LPCR_ContratFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
