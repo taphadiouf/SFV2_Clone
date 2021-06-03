@@ -26,14 +26,19 @@
         <label>Partenaire</label>
     </customValue>
     <customValue>
-        <fullName>Collectivites</fullName>
+        <fullName>Collectivité</fullName>
         <default>false</default>
-        <label>Collectivités</label>
+        <label>Collectivité</label>
     </customValue>
     <customValue>
-        <fullName>Administrations Publiques</fullName>
+        <fullName>Administration</fullName>
         <default>false</default>
-        <label>Administrations Publiques</label>
+        <label>Administration</label>
+    </customValue>
+    <customValue>
+        <fullName>Public</fullName>
+        <default>false</default>
+        <label>Public</label>
     </customValue>
     <customValue>
         <fullName>CE</fullName>
