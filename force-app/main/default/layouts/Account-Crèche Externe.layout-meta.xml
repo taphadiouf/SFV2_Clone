@@ -5,9 +5,6 @@
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
     <excludeButtons>PartnerScorecard</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
@@ -20,7 +17,7 @@
         <label>Account Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>LPCR_IdExterne_Compte__c</field>
             </layoutItems>
             <layoutItems>
@@ -45,7 +42,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>LPCR_CrecheStatutAdhesion__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LPCR_DateVisite__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_TypeCreche__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_DateOuverture__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -86,10 +95,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_CrecheRachat__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_CrecheStatutAdhesion__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -144,8 +149,8 @@
                 <field>LPCR_CrecheProjet__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_CrecheNumStatutAdhesion__c</field>
+                <behavior>Required</behavior>
+                <field>LPCR_Enseigne__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -497,7 +502,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000002LmzX</masterLabel>
+        <masterLabel>00h1j000002W9Kn</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
