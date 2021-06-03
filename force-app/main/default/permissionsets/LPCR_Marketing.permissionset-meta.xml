@@ -5189,6 +5189,11 @@
         <field>SBQQ__Subscription__c.LPCR_SocieteFacturanteAbo__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Subscription__c.LPCR_ContratFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
      <fieldPermissions>
         <editable>true</editable>
         <field>Task.LPCR_Abouti__c</field>
