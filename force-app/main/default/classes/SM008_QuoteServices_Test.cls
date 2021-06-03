@@ -25,16 +25,16 @@ public class SM008_QuoteServices_Test {
         Map<String,Id> RTNameIdContract = new Map<String,Id>();
         for(RecordType rt : AllRts){
             switch on rt.sobjecttype {
-                when 'Account' {		
+                when 'Account' {        
                     RTNameIdAccount.put(rt.developername,rt.id);
-                }	
-                when 'Contact' {		
+                }   
+                when 'Contact' {        
                     RTNameIdContact.put(rt.developername,rt.id);
                 }
-                when 'SBQQ__Quote__c' {		
+                when 'SBQQ__Quote__c' {     
                     RTNameIdQuote.put(rt.developername,rt.id);
                 }
-                when 'Contract' {		
+                when 'Contract' {       
                     RTNameIdContract.put(rt.developername,rt.id);
                 }
             }
@@ -50,7 +50,7 @@ public class SM008_QuoteServices_Test {
 
 
         blng__LegalEntity__c entiteJuridique = UM002_TestDataFactory.setupLegalEntity();
-        LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
+        LPCR_Planning__c planningEnfant = new LPCR_Planning__c();   
         insert planningEnfant;
         Contact contact = UM002_TestDataFactory.createContact('contact Enfant',recTypeEnfantId);
         Contact conErpresentant1 = UM002_TestDataFactory.createContact('contact Rep1',recTypecontactFamilleId);
@@ -235,7 +235,7 @@ public class SM008_QuoteServices_Test {
         
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
+            LPCR_Planning__c planningEnfant = new LPCR_Planning__c();   
             insert planningEnfant;
             List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
             List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,accs[0].Id,'0006',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 08, 31),123, 'Express', 'Non', Null, Null );
@@ -284,7 +284,7 @@ public class SM008_QuoteServices_Test {
         
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
-            LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
+            LPCR_Planning__c planningEnfant = new LPCR_Planning__c();   
             insert planningEnfant;
             List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
             List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name = 'test' LIMIT 1];
@@ -531,7 +531,7 @@ public class SM008_QuoteServices_Test {
                 SBQQ__Opportunity2__c = opp.Id,
                 SBQQ__Account__c = acc.Id,
                 SBQQ__Type__c = 'Re-Quote',
-		        LPCR_Creation_conforme__c = true,    
+                LPCR_Creation_conforme__c = true,    
                 RecordTypeId = acceuilRecTypeId,
                 LPCR_Creche__c = acc.Id,
                 LPCR_DateDebut__c = date.newInstance(System.Today().year(), 06, 04),
@@ -605,7 +605,7 @@ public class SM008_QuoteServices_Test {
             quoteQ3.LPCR_DateDebut__c = date.newInstance(System.Today().year(), 06, 04);
             quoteQ3.LPCR_DateFin__c = date.newInstance(System.Today().year()+1, 09, 31);
             quoteQ3.SBQQ__RenewalUpliftRate__c = 10;
-			insert quoteQ3;
+            insert quoteQ3;
             quoteQ3 = [SELECT Id ,LPCR_TypeCreche__c , SBQQ__StartDate__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Quote' AND  Id = :quoteQ3.Id];
             System.assertEquals(quoteQ3.LPCR_TypeCreche__c, acc3.LPCR_TypeCreche__c, 'Quote LPCR_TypeCreche__c not equals to acc LPCR_TypeCreche__c');
             System.assertEquals(quoteQ3.SBQQ__StartDate__c, quoteQ3.LPCR_DateDebut__c, 'Quote SBQQ__StartDate__c not equals to quoteQ LPCR_DateDebut__c');
@@ -708,7 +708,7 @@ public class SM008_QuoteServices_Test {
                 SBQQ__Opportunity2__c = opp.Id,
                 SBQQ__Account__c = acc.Id,
                 SBQQ__Type__c = 'Re-Quote',
-		        LPCR_Creation_conforme__c = true,    
+                LPCR_Creation_conforme__c = true,    
                 RecordTypeId = reservataireRecTypeId,
                 LPCR_Creche__c = acc.id,
                 SBQQ__StartDate__c = date.today(),
@@ -857,7 +857,7 @@ public class SM008_QuoteServices_Test {
                 SBQQ__Opportunity2__c = opp.Id,
                 SBQQ__Account__c = acc.Id,
                 SBQQ__Type__c = 'Quote',
-		        LPCR_Creation_conforme__c = true,    
+                LPCR_Creation_conforme__c = true,    
                 RecordTypeId = reservataireRecTypeId,
                 LPCR_Creche__c = acc.id,
                 SBQQ__StartDate__c = date.today(),
@@ -898,7 +898,7 @@ public class SM008_QuoteServices_Test {
                 SBQQ__Opportunity2__c = oppAmend.id,
                 SBQQ__Account__c = acc.Id,
                 SBQQ__Type__c = 'Amendment',
-		        LPCR_Creation_conforme__c = true,    
+                LPCR_Creation_conforme__c = true,    
                 RecordTypeId = reservataireRecTypeId,
                 LPCR_Creche__c = acc.id,
                 SBQQ__StartDate__c = date.today(),
@@ -937,7 +937,7 @@ public class SM008_QuoteServices_Test {
                 SBQQ__Opportunity2__c = opp.Id,
                 SBQQ__Account__c = acc.Id,
                 SBQQ__Type__c = 'Quote',
-		        LPCR_Creation_conforme__c = true,    
+                LPCR_Creation_conforme__c = true,    
                 RecordTypeId = reservataireRecTypeId,
                 LPCR_Creche__c = acc.id,
                 SBQQ__StartDate__c = date.today(),
@@ -975,7 +975,7 @@ public class SM008_QuoteServices_Test {
                 SBQQ__Account__c = acc.Id,
                 SBQQ__Type__c = 'Amendment',
                 LPCR_TypeAvenant__c = 'Résiliation',
-		        LPCR_Creation_conforme__c = true,    
+                LPCR_Creation_conforme__c = true,    
                 RecordTypeId = reservataireRecTypeId,
                 LPCR_Creche__c = acc.id,
                 SBQQ__StartDate__c = date.today(),
@@ -994,10 +994,10 @@ public class SM008_QuoteServices_Test {
     @isTest()
     public static void updateMontantIndexation(){
         Test.startTest();
-            LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
+            LPCR_Planning__c planningEnfant = new LPCR_Planning__c();   
             insert planningEnfant;
             List<Account> accs = [SELECT Id, name from Account WHERE name ='test' LIMIT 1];
-        	
+            
             List<Contract> Renewalcontract = UM002_TestDataFactory.createContracts(1,accs[0].Id,'0006',date.newInstance(System.Today().year(), 07, 02), date.newInstance(System.Today().year(), 08, 31),123, 'Express', 'Non', Null, Null );
             insert Renewalcontract;
             Contract con2 = Renewalcontract.get(0);
@@ -1017,10 +1017,10 @@ public class SM008_QuoteServices_Test {
             opp.LPCR_PlanningEnfant__c = planningEnfant.id;
             opp.SBQQ__RenewedContract__c = con2.id;
             update opp;
-        	//quote before 
-      		SBQQ__Quote__c quote1 = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
-        	quote1.SBQQ__RenewalUpliftRate__c=3;
-        	insert quote1;
+            //quote before 
+            SBQQ__Quote__c quote1 = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
+            quote1.SBQQ__RenewalUpliftRate__c=3;
+            insert quote1;
             SBQQ__Quote__c quote = UM002_TestDataFactory.createQuotes(1, accs, oppties).get(0);
             quote.SBQQ__Type__c='Renewal';
            // quote.LPCR_TypeEnregistrement__c = Label.LPCR_ContratA;
