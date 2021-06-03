@@ -2409,6 +2409,11 @@
 </fieldPermissions>
 <fieldPermissions>
     <editable>true</editable>
+    <field>blng__Invoice__c.LPCR_DescriptionAvoirFacture__c</field>
+    <readable>true</readable>
+</fieldPermissions>
+<fieldPermissions>
+    <editable>true</editable>
     <field>LPCR_Avoir__c.LPCR_CompteClient__c</field>
     <readable>true</readable>
 </fieldPermissions>

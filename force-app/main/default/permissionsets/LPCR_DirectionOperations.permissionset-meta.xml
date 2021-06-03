@@ -1469,6 +1469,11 @@
     <field>blng__Invoice__c.LPCR_StatutAvoirFacture__c</field>
     <readable>true</readable>
 </fieldPermissions>
+<fieldPermissions>
+    <editable>true</editable>
+    <field>blng__Invoice__c.LPCR_DescriptionAvoirFacture__c</field>
+    <readable>true</readable>
+</fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_BonAchatPartenaire__c.LPCR_ANatitre__c</field>
