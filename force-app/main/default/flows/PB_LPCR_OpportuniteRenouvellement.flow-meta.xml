@@ -47,18 +47,18 @@
             <processMetadataValues>
                 <name>objectType</name>
                 <value>
-                    <stringValue/>
+                    <stringValue>LPCR_LienCrecheOpportunite__c</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
                 <name>rightHandSideType</name>
                 <value>
-                    <stringValue>Reference</stringValue>
+                    <stringValue>String</stringValue>
                 </value>
             </processMetadataValues>
             <name>IdOppty</name>
             <value>
-                <elementReference>myVariable_current.Id</elementReference>
+                <stringValue>[Opportunity].Id</stringValue>
             </value>
         </inputParameters>
     </actionCalls>
@@ -111,7 +111,7 @@
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_1</name>
-            <conditionLogic>1 AND 2 AND 3 AND (4 OR 5)</conditionLogic>
+            <conditionLogic>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</conditionLogic>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
@@ -273,10 +273,72 @@
                     <stringValue>Prospect</stringValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.Account.LPCR_Statut__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Ancien client</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.Account.LPCR_Statut__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Client</stringValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>New Business</label>
+            <label>New business</label>
         </rules>
     </decisions>
     <decisions>
@@ -296,7 +358,7 @@
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_3</name>
-            <conditionLogic>1 AND 2 AND 3 AND (4 OR 5) AND 6</conditionLogic>
+            <conditionLogic>1 AND 2 AND 3 AND (4 OR 5) AND 6 AND 7</conditionLogic>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
@@ -486,6 +548,37 @@
                 <leftValueReference>myVariable_current.Account.LPCR_Statut__c</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
+                    <stringValue>Prospect</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.Account.LPCR_Statut__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
                     <stringValue>Ancien client</stringValue>
                 </rightValue>
             </conditions>
@@ -512,7 +605,7 @@
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_5</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>1 AND (2 OR ( 3 AND 4)) AND 5 AND 6 AND 7</conditionLogic>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
@@ -606,6 +699,68 @@
                         <stringValue>Picklist</stringValue>
                     </value>
                 </processMetadataValues>
+                <leftValueReference>myVariable_current.Account.LPCR_Statut__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Prospect</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Number</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.Account.Tech_NbOpportunitesGagnees__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
                 <leftValueReference>myVariable_current.Type</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
@@ -641,6 +796,37 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.Account.LPCR_Statut__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Client</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -701,9 +887,9 @@
             <label>IsClosed change</label>
         </rules>
     </decisions>
-    <description>Processus déclenché à la mise à jour d&apos;une opportunité</description>
-    <interviewLabel>PB_Opportunity-2_InterviewLabel</interviewLabel>
-    <label>PB_Opportunity (Old)</label>
+    <description>Mise à jour automatique du type de renouvellement d&apos;une opportunité</description>
+    <interviewLabel>PB_LPCR_OpportuniteRenouvellement-3_InterviewLabel</interviewLabel>
+    <label>PB_LPCR_OpportunitéRenouvellement</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
@@ -755,7 +941,7 @@
             <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>Type New business</label>
+        <label>New Business</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
         <connector>
@@ -838,7 +1024,7 @@
             <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_3_A1</name>
-        <label>type upsell</label>
+        <label>Upsell</label>
         <locationX>300</locationX>
         <locationY>200</locationY>
         <connector>
@@ -921,7 +1107,7 @@
             <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_5_A1</name>
-        <label>Type renouvellement</label>
+        <label>Renouvellement</label>
         <locationX>500</locationX>
         <locationY>200</locationY>
         <connector>
@@ -979,7 +1165,7 @@
         <object>Opportunity</object>
     </recordUpdates>
     <startElementReference>isChangedDecision8_myRule_7_IsClosed</startElementReference>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
