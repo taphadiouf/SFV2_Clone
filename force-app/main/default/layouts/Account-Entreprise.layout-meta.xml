@@ -53,6 +53,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_DispositifsExistants__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_NAF__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
