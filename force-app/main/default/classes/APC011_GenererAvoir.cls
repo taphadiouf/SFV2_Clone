@@ -16,7 +16,8 @@ public with sharing class APC011_GenererAvoir {
         String orgId=UserInfo.getOrganizationId();
         AvoirID=sc.getId();
        
-        List<Document> lstDocHead=[Select id,Name from Document where Name IN ('LCPR_AvoirFb','LPCR_AvoirYoutube','LCPR_AvoirTwitter','LCPR_AvoirIn','LCPR_AvoirJoinus','LCPR_AvoirInsta','LPCR_Upper') order by Name asc];
+        List<Document> lstDocHead=[Select id,Name from Document where Name IN ('LCPR_AvoirFb','LPCR_AvoirYoutube','LCPR_AvoirTwitter','LCPR_AvoirIn','LCPR_AvoirJoinus','LCPR_AvoirInsta','LPCR_Upper') order by Name asc ];
+
         //fb
         urlFB=Test.isRunningTest()?'': baseUrl+'/servlet/servlet.ImageServer?id='+lstDocHead[0].id+'&oid='+orgId;
         //linkedin
@@ -34,10 +35,20 @@ public with sharing class APC011_GenererAvoir {
         //mapCompanyDets=new  Map<String,String> ();
         //mapCompanyDets.put('hu','pari');
         for(LPCR_Avoir__c avoir : [SELECT LPCR_CompteClient__c, LPCR_CompteClient__r.Name,LPCR_CompteClient__r.LPCR_IdSage__c,LPCR_CompteClient__r.LPCR_NumeroAllocataire__c,LPCR_CompteClient__r.Owner.FirstName,LPCR_CompteClient__r.Owner.LastName,LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName,LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName,LPCR_CompteClient__r.BillingCity, LPCR_CompteClient__r.BillingCountry,LPCR_CompteClient__r.BillingState, LPCR_CompteClient__r.BillingStreet,LPCR_CompteClient__r.BillingPostalCode ,Name,LPCR_NomSociete__r.Name,LPCR_Description__c ,LPCR_DateFacture__c ,LPCR_Montant__c from LPCR_Avoir__c where ID=:AvoirID]){
+            String addCompteClient='';
+            if(avoir.LPCR_CompteClient__r.BillingStreet != null){
+                addCompteClient=addCompteClient+avoir.LPCR_CompteClient__r.BillingStreet;
+            }
+            if(avoir.LPCR_CompteClient__r.BillingPostalCode != null ){
+                addCompteClient=addCompteClient+avoir.LPCR_CompteClient__r.BillingPostalCode;
+            }
+            if(avoir.LPCR_CompteClient__r.BillingCity != null ){
+                addCompteClient=addCompteClient+avoir.LPCR_CompteClient__r.BillingCity;
+            }
             if(avoir.LPCR_CompteClient__c == null){
                 mapCompanyDets=new  Map<String,String>{'compteclien' => ' ','name'=>' ' ,'address'=>' ','owner'=>' ','adv'=>' ','nomsociete'=>' ' };
             }else{
-                mapCompanyDets=new  Map<String,String>{'compteclien' => avoir.LPCR_CompteClient__r.Name != null? avoir.LPCR_CompteClient__r.Name: '','name'=>avoir.LPCR_CompteClient__r.Name != null ?avoir.LPCR_CompteClient__r.Name :'' ,'address'=>avoir.LPCR_CompteClient__r.BillingStreet != null ? avoir.LPCR_CompteClient__r.BillingStreet :'' +' '+avoir.LPCR_CompteClient__r.BillingPostalCode != null ?avoir.LPCR_CompteClient__r.BillingPostalCode :'' +' '+avoir.LPCR_CompteClient__r.BillingCity != null ? avoir.LPCR_CompteClient__r.BillingCity :'','owner'=>avoir.LPCR_CompteClient__r.Owner.FirstName != null ?avoir.LPCR_CompteClient__r.Owner.FirstName :'' +' '+avoir.LPCR_CompteClient__r.Owner.LastName != null ? avoir.LPCR_CompteClient__r.Owner.LastName :'','adv'=>avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName != null ? avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName : ''+' '+avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName != null ?avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName:'' ,'nomsociete'=>avoir.LPCR_NomSociete__r.Name != null ?avoir.LPCR_NomSociete__r.Name  :''};
+                mapCompanyDets=new  Map<String,String>{'compteclien' => avoir.LPCR_CompteClient__r.Name != null? avoir.LPCR_CompteClient__r.Name: '','name'=>avoir.LPCR_CompteClient__r.Name != null ?avoir.LPCR_CompteClient__r.Name :'' ,'address'=>addCompteClient,'owner'=>avoir.LPCR_CompteClient__r.Owner.FirstName != null ?avoir.LPCR_CompteClient__r.Owner.FirstName :'' +' '+avoir.LPCR_CompteClient__r.Owner.LastName != null ? avoir.LPCR_CompteClient__r.Owner.LastName :'','adv'=>avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName != null ? avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName : ''+' '+avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName != null ?avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName:'' ,'nomsociete'=>avoir.LPCR_NomSociete__r.Name != null ?avoir.LPCR_NomSociete__r.Name  :''};
             }
             
             
