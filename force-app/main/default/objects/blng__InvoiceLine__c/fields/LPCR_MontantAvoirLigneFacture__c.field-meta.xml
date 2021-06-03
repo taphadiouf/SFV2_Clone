@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_MontantAvoirLigneFacture__c</fullName>
+    <defaultValue>-0.1</defaultValue>
     <externalId>false</externalId>
-    <formula>blng__Invoice__r.LPCR_MontantAvoirFacture__c</formula>
-    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Montant avoir</label>
     <precision>18</precision>
     <required>false</required>
