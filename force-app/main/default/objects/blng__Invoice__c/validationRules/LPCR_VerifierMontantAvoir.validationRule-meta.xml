@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_VerifierMontantAvoir</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT($Permission.LPCR_ByPass_VR)&amp;&amp;ISCHANGED(LPCR_MontantAvoirFacture__c) &amp;&amp; LPCR_MontantAvoirFacture__c &gt; 0</errorConditionFormula>
+    <errorDisplayField>LPCR_MontantAvoirFacture__c</errorDisplayField>
+    <errorMessage>Le montant avoir doit etre négatif</errorMessage>
+</ValidationRule>
