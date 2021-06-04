@@ -53,12 +53,12 @@
             <processMetadataValues>
                 <name>rightHandSideType</name>
                 <value>
-                    <stringValue>String</stringValue>
+                    <stringValue>Reference</stringValue>
                 </value>
             </processMetadataValues>
             <name>IdOppty</name>
             <value>
-                <stringValue>[Opportunity].Id</stringValue>
+                <elementReference>myVariable_current.Id</elementReference>
             </value>
         </inputParameters>
     </actionCalls>
@@ -888,7 +888,7 @@
         </rules>
     </decisions>
     <description>Mise à jour automatique du type de renouvellement d&apos;une opportunité</description>
-    <interviewLabel>PB_LPCR_OpportuniteRenouvellement-3_InterviewLabel</interviewLabel>
+    <interviewLabel>PB_LPCR_OpportuniteRenouvellement-4_InterviewLabel</interviewLabel>
     <label>PB_LPCR_OpportunitéRenouvellement</label>
     <processMetadataValues>
         <name>ObjectType</name>
