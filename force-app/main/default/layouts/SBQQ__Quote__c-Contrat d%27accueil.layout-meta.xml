@@ -444,31 +444,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>SBQQ__EditLines</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Preview_Approval</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>SBQQ__CloneWithRelated</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>4</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>LPCR_RDV_Physique</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>LPCR_RDV_Telephonique</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>6</sortOrder>
@@ -489,9 +464,34 @@
             <sortOrder>9</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__EditLines</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Preview_Approval</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>2</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Submit_for_Approval</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>3</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__CloneWithRelated</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>4</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>LPCR_RDV_Physique</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>5</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -516,12 +516,16 @@
     </quickActionList>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
+        <fields>NAME</fields>
+        <fields>LPCR_MontantAnnuelForfaitMICRO__c</fields>
         <fields>SBQQ__Product__c</fields>
         <fields>SBQQ__Quantity__c</fields>
         <fields>LPCR_Creche__c</fields>
         <fields>LPCR_Region__c</fields>
-        <fields>LPCR_MontantAnnuelForfaitMICRO__c</fields>
         <fields>SBQQ__ListPrice__c</fields>
+        <fields>LPCR_DateDebut__c</fields>
+        <fields>SBQQ__EndDate__c</fields>
+        <fields>LAST_UPDATE</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -548,7 +552,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000002OwBp</masterLabel>
+        <masterLabel>00h0E000001nZgA</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

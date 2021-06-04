@@ -31,6 +31,10 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_SocieteFacturanteAbo__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ContratFamille__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

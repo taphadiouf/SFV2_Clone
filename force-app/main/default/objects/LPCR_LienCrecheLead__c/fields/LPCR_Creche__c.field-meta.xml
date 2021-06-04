@@ -3,6 +3,15 @@
     <fullName>LPCR_Creche__c</fullName>
     <externalId>false</externalId>
     <label>Crèche</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Account.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>Creche</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Account</referenceTo>
     <relationshipLabel>Leads liés à la crèche</relationshipLabel>
     <relationshipName>LPCR_LienCrecheLeads</relationshipName>
