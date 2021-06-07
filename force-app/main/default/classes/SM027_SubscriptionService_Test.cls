@@ -179,10 +179,7 @@ public class SM027_SubscriptionService_Test {
             }
             
 			 Test.stopTest();
-            contract = [SELECT Id,LPCR_BatchCommande__c	,LPCR_NombreDeBerceaux__c FROM Contract
-                        WHERE SBQQ__Order__c =:order.Id]; 
-           
-           System.assertEquals(1,contract.LPCR_NombreDeBerceaux__c,'Berceau nbr not same');
+            
             
         }
        

@@ -1,7 +1,7 @@
 /**
 * @author  PDO
 * @created 19/03/2021
-* @description Trigger on SBQQ__Subscription__c Object
+* @description Trigger on SBQQ__Subscription__c Object records
 */
 public class SM027_SubscriptionService {
     //Nombre de berceau sur contrat B2B pour calcul l'ARPU journalier
@@ -33,6 +33,9 @@ public class SM027_SubscriptionService {
         Set<Id> setContrat =new Set<Id>();
         Set<Id> setContactEnfant =new Set<Id>();
         List<SBQQ__Subscription__c> lstSubscriptionUpdate=new List<SBQQ__Subscription__c>();
+        Map<Id,Id> mapContactEnfantContrat = new Map<Id,Id>();
+        List<LPCR_BonAchatPartenaire__c> lstBonAchatUpdate=new List<LPCR_BonAchatPartenaire__c>();
+        Map<String,Id> mapCrecheIDEnfantContrat=new Map<String,Id> ();
         for(Id key : newSubscriptionMap.keyset()){
            if(newSubscriptionMap.get(key).LPCR_Creche__c != null && newSubscriptionMap.get(key).LPCR_ContactEnfant__c != null  ){
                 if(!mapCrecheIDEnfantSubscription.containsKey(newSubscriptionMap.get(key).LPCR_Creche__c+'-'+newSubscriptionMap.get(key).LPCR_ContactEnfant__c)){
@@ -40,6 +43,7 @@ public class SM027_SubscriptionService {
                     setCreche.add(newSubscriptionMap.get(key).LPCR_Creche__c);
                     setContrat.add(newSubscriptionMap.get(key).SBQQ__Contract__c);
                     setContactEnfant.add(newSubscriptionMap.get(key).LPCR_ContactEnfant__c);
+                    mapCrecheIDEnfantContrat.put(newSubscriptionMap.get(key).LPCR_Creche__c+'-'+newSubscriptionMap.get(key).LPCR_ContactEnfant__c,newSubscriptionMap.get(key).SBQQ__Contract__c);
                 }
             }
         }
@@ -50,15 +54,32 @@ public class SM027_SubscriptionService {
             }
             
         }
+        //look for contrat Acceuil famille with enfant LPCR_ContactEnfant__c
+        for (Contract  con : [select Id ,LPCR_ContactEnfant__c from Contract where LPCR_ContactEnfant__c IN:setContactEnfant]){
+            mapContactEnfantContrat.put(con.LPCR_ContactEnfant__c,con.Id);
+            
+        }
+        
         //loop in all newly created subscription 
         for(String key : mapCrecheIDEnfantSubscription.keyset()){
+            String[] keySplit=key.split('-');
+            SBQQ__Subscription__c sub=new SBQQ__Subscription__c(Id=mapCrecheIDEnfantSubscription.get(key));
             if(!mapCrecheIDEnfantBonDachat.isEmpty() && mapCrecheIDEnfantBonDachat.containsKey(key) ){
-                lstSubscriptionUpdate.add(new SBQQ__Subscription__c(Id=mapCrecheIDEnfantSubscription.get(key),LPCR_BonDachatPartenaire__c=mapCrecheIDEnfantBonDachat.get(key)));
+               sub.LPCR_BonDachatPartenaire__c=mapCrecheIDEnfantBonDachat.get(key);
             }
+            if(keySplit[1] !=null){
+                sub.LPCR_ContratFamille__c=mapContactEnfantContrat.get(keySplit[1]);
+            }
+            lstSubscriptionUpdate.add(sub);
+            lstBonAchatUpdate.add(new LPCR_BonAchatPartenaire__c(Id=mapCrecheIDEnfantBonDachat.get(key),LPCR_ContratReservataire__c=mapCrecheIDEnfantContrat.containsKey(key)?mapCrecheIDEnfantContrat.get(key):null));
+
             
         }
         if(lstSubscriptionUpdate.size() > 0 ){
             update lstSubscriptionUpdate;
+            if(lstBonAchatUpdate.size() > 0){
+                update lstBonAchatUpdate;
+            }
         }
         
     }
