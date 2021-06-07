@@ -703,7 +703,7 @@
     </decisions>
     <description>Processus déclenché à la mise à jour d&apos;une opportunité</description>
     <interviewLabel>PB_Opportunity-2_InterviewLabel</interviewLabel>
-    <label>PB_Opportunity</label>
+    <label>PB_Opportunity (Old)</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
@@ -979,7 +979,7 @@
         <object>Opportunity</object>
     </recordUpdates>
     <startElementReference>isChangedDecision8_myRule_7_IsClosed</startElementReference>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

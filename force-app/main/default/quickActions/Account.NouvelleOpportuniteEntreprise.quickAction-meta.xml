@@ -12,6 +12,10 @@
         <field>LPCR_SocieteFacturanteOpport__c</field>
         <formula>Account.LPCR_SocieteFacturanteCompte__c</formula>
     </fieldOverrides>
+    <fieldOverrides>
+        <field>StageName</field>
+        <literalValue>Prospection/Découverte</literalValue>
+    </fieldOverrides>
     <label>Nouvelle Opportunité Entreprise</label>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
     <quickActionLayout>

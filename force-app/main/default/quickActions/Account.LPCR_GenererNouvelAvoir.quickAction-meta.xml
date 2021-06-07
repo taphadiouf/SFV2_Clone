@@ -8,22 +8,22 @@
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>LPCR_NomSociete__c</field>
-                <uiBehavior>Required</uiBehavior>
+                <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>LPCR_CompteClient__c</field>
-                <uiBehavior>Required</uiBehavior>
+                <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>LPCR_Montant__c</field>
-                <uiBehavior>Required</uiBehavior>
+                <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
                 <field>LPCR_DateFacture__c</field>
-                <uiBehavior>Required</uiBehavior>
+                <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
@@ -34,6 +34,6 @@
         <quickActionLayoutColumns/>
     </quickActionLayout>
     <targetObject>LPCR_Avoir__c</targetObject>
-    <targetParentField>LPCR_CompteClient__c</targetParentField>
+    <targetParentField>LPCR_NomSociete__c</targetParentField>
     <type>Create</type>
 </QuickAction>

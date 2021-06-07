@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_GenererAvoirPartiel</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>true</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>600</height>
+    <isResizable>true</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>Génerer avoir partiel</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>/apex/csfb__Conga_Composer?SolMgr=1
+&amp;serverUrl={!API.Partner_Server_URL_370}
+&amp;userName={!$User.Username}
+&amp;Id={!blng__Invoice__c.Id}
+
+&amp;QueryId=[CompanyDets]a4J3O0000008RXi,
+[LineItems]a4J3O0000008cy4
+&amp;TemplateId={!
+IF(TEXT(blng__Invoice__c.blng__InvoiceStatus__c)=&apos;Draft&apos;,&apos;a4R3O0000008haoUAA&apos;
+,
+&apos;a4R3O0000008hajUAA&apos;)}
+
+&amp;invoiceID={!blng__Invoice__c.Id}
+&amp;invoiceStatus={!blng__Invoice__c.blng__InvoiceStatus__c}</url>
+</WebLink>
