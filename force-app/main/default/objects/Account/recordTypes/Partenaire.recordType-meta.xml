@@ -766,47 +766,23 @@
     <picklistValues>
         <picklist>Ownership</picklist>
         <values>
-            <fullName>Association</fullName>
+            <fullName>Associative</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Other</fullName>
+            <fullName>Hospitalière</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>EURL</fullName>
+            <fullName>Municipale</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>SA</fullName>
+            <fullName>Mutualiste</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>SARL</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>SAS</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>SASU</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>SCIC</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>SCOP</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>SPRL</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Société mutualiste</fullName>
+            <fullName>Privée</fullName>
             <default>false</default>
         </values>
     </picklistValues>
