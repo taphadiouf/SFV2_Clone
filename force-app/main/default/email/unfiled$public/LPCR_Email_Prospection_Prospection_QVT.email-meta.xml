@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>LPCR_PiedsPageEmails</letterhead>
+    <name>Email – Prospection – Prospection QVT</name>
+    <style>freeForm</style>
+    <subject>Elaborons ensemble votre politique QVT</subject>
+    <textOnly>Bonjour {!Contact.Name}
+
+
+Je suis {!User.Name}, chargé d&apos;affaire chez les Petits Chaperons Rouges, groupe Grandir.
+
+J&apos;accompagne les entreprises dans leur politique de qualité de vie au travail en proposant des solutions personnalisées :
+
+Accueil en crèche, babysitting,
+Soutien scolaire, soutien aux aidant familiaux, accompagnement et coaching parentalité…
+
+Qui sommes-nous ?
+
+Le groupe Grandir est pionnier des crèches privées avec un réseau de plus 1940 établissements en France et à l’international.
+
+
+Pourquoi travailler avec nous ?
+
+- Nos services sont plébiscités par 97% des parents
+
+- Nous sommes le seul opérateur petite enfance en France à être certifié par SGS pour la qualité de l&apos;accueil des familles et de l&apos;éveil des enfants
+
+- Nos services permettent d’attirer des talents, réduire le turnover, améliorer la marque employeur et favoriser l’équilibre des temps de vie des collaborateurs.
+
+
+Je serai ravie de vous rencontrer pour échanger sur les enjeux RH de {!Account.Name} et vous présenter les derniers dispositifs mis en place dans votre secteur d’activité.
+
+
+Seriez-vous disponible pour un rendez-vous d’information prochainement ?
+
+
+Dans l’attente de votre retour, je reste à votre disposition pour échanger.
+
+
+Bien cordialement.
+
+
+{!User.Name}
+
+{!User.Title}
+
+
+{!User.Email}
+
+{!User.Phone}
+
+
+{!User.MobilePhone}
+
+
+Les Petits Chaperons Rouges – Groupe Grandir
+
+6 allée Jean Prouvé, 92110 Clichy
+
+
+Plus d’informations sur www.lespetitschaperonsrouges.fr
+
+Suivez-nous sur les réseaux sociaux :</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

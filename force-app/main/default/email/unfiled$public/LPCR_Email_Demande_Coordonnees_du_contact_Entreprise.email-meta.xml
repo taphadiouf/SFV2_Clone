@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>LPCR_PiedsPageEmails</letterhead>
+    <name>Email – Demande Coordonnées du contact Entreprise</name>
+    <style>freeForm</style>
+    <subject>Suite à votre demande de place en crèche</subject>
+    <textOnly>Bonjour,
+
+
+Suite à notre conversation téléphonique de ce jour, et comme convenu, je vous prie de bien vouloir adresser les coordonnées des personnes décisionnaires au sein de votre entreprise et/ou celle de votre conjoint(e), à {!User.Name} à l&apos;adresse suivante: {!User.Email}.
+
+
+Restant à votre disposition pour toutes informations complémentaires.
+
+
+Bien cordialement.
+
+
+{!User.Name}
+
+{!User.Title}
+
+
+{!User.Email}
+
+{!User.Phone}
+
+
+{!User.MobilePhone}
+
+
+Les Petits Chaperons Rouges – Groupe Grandir
+
+6 allée Jean Prouvé, 92110 Clichy
+
+
+Plus d’informations sur www.lespetitschaperonsrouges.fr
+
+Suivez-nous sur les réseaux sociaux :</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
