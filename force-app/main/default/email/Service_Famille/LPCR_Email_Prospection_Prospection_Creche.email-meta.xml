@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>LPCR_PiedsPageEmails</letterhead>
+    <name>Email – Prospection – Prospection Crèche</name>
+    <style>freeForm</style>
+    <subject>Les Petits Chaperons Rouges</subject>
+    <textOnly>Bonjour {!Contact.Name}
+
+
+Je suis {!User.Name}, chargé d&apos;affaire chez les Petits Chaperons Rouges, groupe Grandir.
+
+
+Nous accompagnons les entreprises dans la mise en place de solutions d&apos;accueils en crèche, réguliers ou temporaires, pour les enfants de leurs salariés.
+
+
+Pionniers des crèches interentreprises, nous sommes partenaires de plus de 1 400 entreprises, de la TPE au grand groupe, dont des entreprises de votre secteur telles que « ENTREPRISE », « ENTREPRISE ».
+
+
+Pourquoi travailler avec nous ?
+
+
+- Un réseau de plus de 1940 crèche en France et à l&apos;international
+
+- 97% des parents nous recommandent
+
+- Réduire l&apos;absentéisme et fidéliser vos collaborateurs
+
+- Bénéficier d&apos;un cadre fiscal attractif
+
+
+Nous proposons un partenariat flexible et ajusté aux objectifs de la politique sociale de chacune des entreprises.
+
+
+Je serai ravie de vous rencontrer pour vous présenter le dispositif crèche dans sa globalité.
+
+Seriez-vous disponible pour un rendez-vous d’information prochainement ?
+
+
+Dans l’attente de votre retour, je reste à votre disposition pour échanger.
+
+
+Bien cordialement.
+
+
+{!User.Name}
+
+{!User.Title}
+
+
+{!User.Email}
+
+{!User.Phone}
+
+
+{!User.MobilePhone}
+
+
+Les Petits Chaperons Rouges – Groupe Grandir
+
+6 allée Jean Prouvé, 92110 Clichy
+
+
+Plus d’informations sur www.lespetitschaperonsrouges.fr
+
+Suivez-nous sur les réseaux sociaux :</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

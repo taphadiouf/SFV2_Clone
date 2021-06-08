@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>LPCR_PiedsPageEmails</letterhead>
+    <name>Email - Réponse contact avec Sponsor</name>
+    <style>freeForm</style>
+    <subject>Votre demande de place en crèche</subject>
+    <textOnly>Cher parent,
+
+Nous avons bien enregistré votre demande d’inscription cependant vous n’avez pas rempli le bon formulaire. En effet, votre entreprise XXXX ou votre commune XXXX réserve des berceaux au sein de notre réseau.
+
+
+Vous devez vous préinscrire sur notre site internet
+
+https://www.grandir.com/fr/nurseries/registration
+
+Sélectionner « Oui » à la question « Disposez-vous d&apos;un code d’inscription fourni par votre entreprise ou votre commune ? »
+Créer votre compte et valider votre adresse mail
+Entrer le code : XXXX
+
+Dès réception de votre demande, notre service sera en mesure de vous faire un retour sous 10 jours.
+
+
+Nous restons à votre disposition et vous souhaitons une bonne journée.
+Cordialement,
+
+Service Familles
+
+
+Service familles par régions:
+
+- Paris &amp; IDF: 01 41 40 81 79 /familles@lpcr.fr
+
+
+Permanence du lundi au vendredi de 09h30 à 12h30 et de 14h00 à 17h30
+- Auvergne Rhône-Alpes et Bourgogne : 04 74 72 66 03 /familles-rhonealpes@lpcr.fr
+Permanence du lundi au vendredi de 09h30 à 12h30 et de 14h00 à 17h30
+- Paca / Occitanie : 04 42 95 17 55 familles-sud@lpcr.fr
+Permanence du lundi au vendredi de 09h30 à 12h30
+- Aix en Provence : 04 42 95 17 43 /familles-aixoises@lpcr.fr
+Permanence les mardis mercredis et jeudis de 09h00 à 12h00
+
+
+Les Petits Chaperons Rouges – Groupe Grandir
+
+6 allée Jean Prouvé, 92110 Clichy
+
+
+Plus d’informations sur www.lespetitschaperonsrouges.fr
+
+Suivez-nous sur les réseaux sociaux :</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
