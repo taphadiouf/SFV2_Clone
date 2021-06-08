@@ -8,9 +8,9 @@
     <columns>FULL_NAME</columns>
     <columns>LEAD.ZIP</columns>
     <columns>LPCR_DateEntreeCreche1__c</columns>
-    <columns>LPCR_CodeCreche1__c</columns>
-    <columns>LPCR_CodeCreche2__c</columns>
-    <columns>LPCR_CodeCreche3__c</columns>
+    <columns>LPCR_NomCreche1__c</columns>
+    <columns>LPCR_NomCreche2__c</columns>
+    <columns>LPCR_NomCreche3__c</columns>
     <columns>LEAD.COMPANY</columns>
     <columns>LPCR_SocieteCoDemandeur__c</columns>
     <filterScope>Mine</filterScope>
@@ -27,7 +27,7 @@
     <filters>
         <field>LEAD.UNREAD</field>
         <operation>equals</operation>
-        <value>1</value>
+        <value>0</value>
     </filters>
     <label>Mes Leads famille en cours</label>
 </ListView>

@@ -22,7 +22,7 @@
     <filters>
         <field>LEAD.UNREAD</field>
         <operation>equals</operation>
-        <value>1</value>
+        <value>0</value>
     </filters>
     <label>Mes Leads entreprise en cours</label>
 </ListView>
