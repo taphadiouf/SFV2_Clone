@@ -8,7 +8,7 @@
         </style>
         </head>
     <!-- renderAs="pdf" -->
-    <body style="background-image: url({!urlUpper}); background-repeat: no-repeat;background-position: right top;margin-left:10px;font-family:Arial; " >
+    <body style="background-image: url({!urlUpper}); background-repeat: no-repeat;background-position: right top;margin-left:10px;font-family:Arial; margin-right:0.25in;" >
     <div style="display: inline-block; width: 100%; margin-top: 0px;">
         <apex:image url="{!$Resource.LPCR_logo}" width="150px"/>
     
@@ -60,6 +60,7 @@
     </div>
     
     <div style="font-size: 11px;">
+    <center>
         <table style="border: 1px solid black; border-collapse: collapse; font-size: 11px; width: 100%;">
             <tr style="line-height: 25px">
                 <th style="border: 1px solid black; text-align: center;background:#dfdce3;color:#003d56; height: 70px;">Désignation</th>
@@ -80,6 +81,7 @@
             
             </tr>
         </table>
+    </center>
     </div>
   
     

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>LPCR_PiedsPageEmails</letterhead>
+    <name>Email – Réponse Lead sans Potentiel</name>
+    <style>freeForm</style>
+    <subject>Votre demande de place en crèche</subject>
+    <textOnly>Cher parent,
+
+
+Nous avons bien reçu votre demande de pré-inscription et vous remercions de l’intérêt que vous portez aux crèches Les Petits Chaperons Rouges.
+
+
+Nous accompagnons les entreprises dans la mise à disposition de places en crèches pour leurs collaborateurs.
+
+
+Si vous souhaitez bénéficier d’une place au sein de notre réseau, nous devons mettre en place un partenariat avec votre employeur.
+
+
+Pour cela deux possibilités :
+
+· Votre employeur nous contacte directement par mail à l’adresse suivante : entreprise@lpcr.fr
+
+· Vous nous communiquez les coordonnées (nom/email/téléphone) de votre Responsable des ressources humaines ou des relations sociales en répondant à ce mail
+
+Dans les deux cas, nous reviendrons vers votre employeur dans les meilleurs délais afin de lui présenter les avantages le fonctionnement d’un éventuel partenariat.
+
+
+Bien cordialement
+
+
+Service Relation Clients
+
+
+Les Petits Chaperons Rouges – Groupe Grandir
+
+6 allée Jean Prouvé, 92110 Clichy
+
+
+Plus d’informations sur www.lespetitschaperonsrouges.fr
+
+Suivez-nous sur les réseaux sociaux :</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

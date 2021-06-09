@@ -1014,10 +1014,6 @@
     <picklistValues>
         <picklist>LPCR_StatutCreche__c</picklist>
         <values>
-            <fullName>Désactivé</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Fermeture</fullName>
             <default>false</default>
         </values>
@@ -1034,15 +1030,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Projet</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Prospect</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Rachat concurrence</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1099,19 +1087,7 @@
     <picklistValues>
         <picklist>LPCR_TypeCreche__c</picklist>
         <values>
-            <fullName>ALSH</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Autre</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Halte-Garderie</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Jardin d%E2%80%99enfants</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1119,23 +1095,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>MAF</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>MICRO</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>PAJE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Partenaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>RAM</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1196,19 +1156,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>AUTRE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>FAMILIALES</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>HOSPITALIERE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MICRO</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1231,11 +1179,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Other</fullName>
+            <fullName>EURL</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>EURL</fullName>
+            <fullName>Other</fullName>
             <default>false</default>
         </values>
         <values>
