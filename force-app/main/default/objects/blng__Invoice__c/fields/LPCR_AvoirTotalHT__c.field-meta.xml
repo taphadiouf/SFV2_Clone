@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_AvoirTotalHT__c</fullName>
     <externalId>false</externalId>
-    <formula>LPCR_SoldeHorsTaxe__c - LPCR_MontantAvoirFacture__c</formula>
+    <formula>LPCR_SoldeHorsTaxe__c + LPCR_MontantAvoirFacture__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>LPCR AvoirTotalHT</label>
     <precision>18</precision>

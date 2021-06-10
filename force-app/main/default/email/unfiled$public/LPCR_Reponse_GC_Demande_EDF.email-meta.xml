@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>LPCR_PiedsPageEmails</letterhead>
+    <name>Réponse GC - Demande EDF</name>
+    <style>freeForm</style>
+    <subject>Votre demande de place en crèche</subject>
+    <textOnly>Cher Parent,
+
+
+Je vous remercie pour votre pré-inscription sur notre site internet. Nous serions ravis de pouvoir accueillir votre enfant dans l’une de nos crèches.
+
+
+Pour ce faire, en tant que crèche inter-entreprises, nous devons dans un premier temps établir un partenariat de réservation avec votre employeur. Bonne nouvelle, nous disposons d’un contrat cadre mis en place avec le groupe EDF ; votre unité pourrait mettre en place un partenariat avec nous très simplement. C’est pourquoi nous vous invitons à transmettre le document joint à votre interlocuteur RH et à lui proposer que nous nous mettions en relation.
+
+Vous pouvez également simplement nous transmettre ses coordonnées (nom/ email/ téléphone) afin que nous puissions le contacter pour lui présenter le projet.
+
+Dans l&apos;attente de votre retour, je reste à votre entière disposition pour toutes questions et vous souhaite une agréable journée.
+
+
+Cordialement
+
+
+Joachim VELUT
+
+Responsable Grands Comptes
+
+
+01 85 63 56 30 – 06 09 68 21 95
+
+
+Les Petits Chaperons Rouges – Groupe Grandir
+
+6 allée Jean Prouvé, 92110 Clichy
+
+
+Plus d’informations sur www.lespetitschaperonsrouges.fr
+
+Suivez-nous sur les réseaux sociaux :</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

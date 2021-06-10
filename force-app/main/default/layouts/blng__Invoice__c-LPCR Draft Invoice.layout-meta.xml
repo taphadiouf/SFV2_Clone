@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customButtons>LPCR_GenererAvoirPartiel</customButtons>
+    <customButtons>GenerationFacture</customButtons>
     <customButtons>blng__Cancel_Rebill</customButtons>
     <customButtons>blng__Credit</customButtons>
     <customButtons>blng__ConvertNegativeLines</customButtons>
@@ -420,7 +422,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000002Gm1V</masterLabel>
+        <masterLabel>00h1x000002PsUe</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
