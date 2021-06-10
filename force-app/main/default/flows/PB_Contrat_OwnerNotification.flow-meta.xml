@@ -18,7 +18,7 @@
             <value>
                 <stringValue>@[{!myVariable_current.OwnerId}]
 
-Le service famille à résilié le contrat {!myVariable_current.ContractNumber}. Ce contrat est associé au contrat {!myVariable_current.LPCR_ContractEntreprise__r.ContractNumber} contenant des commandes actives.</stringValue>
+Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. Ce contrat est associé au contrat {!myVariable_current.LPCR_ContractEntreprise__r.ContractNumber} contenant des commandes actives.</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
