@@ -5627,16 +5627,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Account.LPCR_CrecheLatitude__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Account.LPCR_CrecheLongitude__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Account.LPCR_CrecheEspaceExterieur__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5695,6 +5685,11 @@
         <field>Account.LPCR_CrecheNumStatutAdhesion__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>True</editable>
+        <field>Account.LPCR_CrecheStatutAdhesion__c</field>
+        <readable>true</readable>
+    </fieldPermissions> 
     <fieldPermissions>
         <editable>true</editable>
         <field>Account.LPCR_CrecheRachat__c</field>
