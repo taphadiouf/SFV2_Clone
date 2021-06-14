@@ -172,6 +172,38 @@
         <template>unfiled$public/LPCR_MIBB2B</template>
     </alerts>
     <fieldUpdates>
+        <fullName>Contrat_Resa_signe</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Contrat_reservation_signe</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Contrat de Resa signé</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Contrat_accueil_signe</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Contrat_accueil_signe</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Contrat d&apos;accueil signé</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Contrat_ref_signe</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Contrat_referencement_signe</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Contrat de ref signé</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>LPCR_Approb_approuvee_changmt_statut</fullName>
         <description>Le statut de l&apos;approbation est modifié par &quot;Approuvé&quot; lors que l&apos;approbation est acceptée.</description>
         <field>SBQQ__Status__c</field>
@@ -1024,6 +1056,66 @@
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
+        <fullName>WF_Quote_ContratAccueil_ReadOnly</fullName>
+        <actions>
+            <name>Contrat_accueil_signe</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Signé</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Contrat D’accueil,Contrat D&apos;accueil Approuvé</value>
+        </criteriaItems>
+        <description>Attribution dynamique du type d&apos;enregistrement d&apos;un contrat d&apos;accueil signé</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WF_Quote_ContratRef_ReadOnly</fullName>
+        <actions>
+            <name>Contrat_ref_signe</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Signé</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Contrat de Référencement,Contrat de Référencement Approuvé</value>
+        </criteriaItems>
+        <description>Attribution dynamique du type d&apos;enregistrement d&apos;un contrat de référencement signé</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WF_Quote_ContratRes_ReadOnly</fullName>
+        <actions>
+            <name>Contrat_Resa_signe</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Signé</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Contrat de Réservation,Contrat de Réservation Approuvé</value>
+        </criteriaItems>
+        <description>Attribution dynamique du type d&apos;enregistrement d&apos;un contrat de réservation signé</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
         <fullName>WF_Quote_LancerRecalcul</fullName>
         <active>true</active>
         <criteriaItems>
@@ -1056,6 +1148,17 @@
             <timeLength>-1</timeLength>
             <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
         </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>WF_Quote_ReadOnly</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Signé,Actif,Annulé,Terminé</value>
+        </criteriaItems>
+        <description>Modification du type de présentation de page lorsque le statut d&apos;un devis devient &quot;Signé&quot;</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
         <fullName>WF_Quote_Update RT Contrat d%27accueil approuvé</fullName>
