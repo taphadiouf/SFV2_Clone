@@ -154,12 +154,13 @@
                 <behavior>Readonly</behavior>
                 <field>blng__InvoiceDate__c</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>blng__DueDate__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -213,12 +214,13 @@
                 <behavior>Readonly</behavior>
                 <field>blng__TaxStatus__c</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>blng__TaxErrorMessage__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
