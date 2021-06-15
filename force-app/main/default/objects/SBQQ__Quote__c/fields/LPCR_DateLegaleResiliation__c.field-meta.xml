@@ -9,6 +9,7 @@
 &quot;6&quot;, ADDMONTHS(LPCR_DateReceptionCourrierResiliation__c ,6), null
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Date théorique de fin de contrat, en fonction du préavis prévu initialement</inlineHelpText>
     <label>Résiliation Suivant Préavis</label>
     <required>false</required>
     <trackHistory>false</trackHistory>
