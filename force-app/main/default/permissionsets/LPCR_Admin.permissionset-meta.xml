@@ -7335,6 +7335,21 @@
         <field>SBQQ__QuoteLine__c.LPCR_IndexationCustom__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_MasterContrat__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_QuoteOriginal__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_TypeDeDevis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     
     <fieldPermissions>
         <editable>true</editable>
