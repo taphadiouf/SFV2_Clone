@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>ReseauLPCR</fullName>
+    <fullName>Creche</fullName>
     <active>true</active>
-    <compactLayoutAssignment>LPCR</compactLayoutAssignment>
-    <label>Réseau LPCR</label>
+    <compactLayoutAssignment>Creche</compactLayoutAssignment>
+    <label>Crèche</label>
     <picklistValues>
         <picklist>AccountSource</picklist>
         <values>
@@ -20,7 +20,7 @@
         </values>
         <values>
             <fullName>Chargé d%27affaire</fullName>
-            <default>true</default>
+            <default>false</default>
         </values>
         <values>
             <fullName>Directrice de crèche</fullName>
@@ -975,6 +975,10 @@
     <picklistValues>
         <picklist>LPCR_SourceMigration__c</picklist>
         <values>
+            <fullName>Fichiers Excel</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Intranet</fullName>
             <default>false</default>
         </values>
@@ -1088,6 +1092,10 @@
         </values>
         <values>
             <fullName>MICRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PAJE</fullName>
             <default>false</default>
         </values>
         <values>
