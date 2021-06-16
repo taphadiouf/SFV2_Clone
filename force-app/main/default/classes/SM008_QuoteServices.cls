@@ -925,20 +925,34 @@ public with sharing class SM008_QuoteServices {
     public static void updateMontantIndexation(Map<Id,SBQQ__Quote__c> newQuoteMap ){ 
         Map<Id,Decimal> mapMasterIDQuoteTotal=new Map<Id,Decimal>();
         List<SBQQ__Quote__c> quoteListToUpdate=new List<SBQQ__Quote__c>();
-        Map<Id,Id> mapIDMasterAmendment=new Map<Id,Id>();
-        Set<Id> setID=new Set<Id> ();
-        for(SBQQ__Quote__c eachNewQuote : newQuoteMap.values()){
-           if(eachNewQuote.SBQQ__Type__c== 'Amendment'){
-                mapIDMasterAmendment.put(eachNewQuote.SBQQ__MasterContract__c,eachNewQuote.Id);
-                setID.add(eachNewQuote.SBQQ__MasterContract__c);
-            }
-        }
-        //LPCR_MontantIndexation__c
-        for(Contract eachCon : [Select id,SBQQ__Quote__c,SBQQ__Quote__r.LPCR_MontantIndexation__c from Contract where ID IN:setID ]){
-            if(eachCon.SBQQ__Quote__r.LPCR_MontantIndexation__c!= null){
-                quoteListToUpdate.add(new SBQQ__Quote__c(Id=mapIDMasterAmendment.get(eachCon.Id),LPCR_MontantIndexation__c=eachCon.SBQQ__Quote__r.LPCR_MontantIndexation__c));
+        Map<id,Decimal> mapQuoteRemiseMontant =new Map<id,Decimal>();
+        
+        for(SBQQ__QuoteLine__c qli:[SELECT Id ,SBQQ__Quote__c ,SBQQ__Quote__r.SBQQ__Type__c  ,SBQQ__Quote__r.SBQQ__MasterContract__r.SBQQ__Quote__c,LPCR_IndexationCustom__c,SBQQ__ProductCode__c,SBQQ__Quote__r.SBQQ__MasterContract__c ,LPCR_Remise__c FROM SBQQ__QuoteLine__c where SBQQ__Quote__c IN :newQuoteMap.keyset()]){
+            if(qli.LPCR_Remise__c != null){
+                if(qli.SBQQ__Quote__r.SBQQ__Type__c== 'Amendment' && qli.LPCR_Clone__c){
+                    if(!mapQuoteRemiseMontant.containsKey(qli.SBQQ__Quote__c)){
+                        mapQuoteRemiseMontant.put(qli.SBQQ__Quote__c,qli.LPCR_Remise__c);
+                    }else{
+                        mapQuoteRemiseMontant.put(qli.SBQQ__Quote__c,mapQuoteRemiseMontant.get(qli.SBQQ__Quote__c)+qli.LPCR_Remise__c);
+                        
+                    }
+                }else{
+                    if(!mapQuoteRemiseMontant.containsKey(qli.SBQQ__Quote__c)){
+                        mapQuoteRemiseMontant.put(qli.SBQQ__Quote__c,qli.LPCR_Remise__c);
+                    }else{
+                        mapQuoteRemiseMontant.put(qli.SBQQ__Quote__c,mapQuoteRemiseMontant.get(qli.SBQQ__Quote__c)+qli.LPCR_Remise__c);
+                        
+                    }
+                }  
+                System.debug('##pdo this map quote remise montant '+mapQuoteRemiseMontant);
+            
                 
-            }
+               
+            
+        }
+        }
+        for(Id key : mapQuoteRemiseMontant.keySet()){
+            quoteListToUpdate.add(new SBQQ__Quote__c(id=key,LPCR_RemiseCustom__c=mapQuoteRemiseMontant.get(key)));
         }
         if(quoteListToUpdate.size() > 0){
             update quoteListToUpdate;
