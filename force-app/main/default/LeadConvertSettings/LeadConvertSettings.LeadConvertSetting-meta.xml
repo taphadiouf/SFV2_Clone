@@ -16,8 +16,8 @@
             <outputField>LPCR_RemiseConcurrence__c</outputField>
         </mappingFields>
         <mappingFields>
-            <inputField>LPCR_DispositifsExistants__c</inputField>
-            <outputField>LPCR_DispositifsExistants__c</outputField>
+            <inputField>LPCR_DispositifExistantLead__c</inputField>
+            <outputField>LPCR_DispositifExistantCompte__c</outputField>
         </mappingFields>
         <mappingFields>
             <inputField>LPCR_Enjeux__c</inputField>
@@ -100,6 +100,14 @@
             <outputField>LPCR_TypeFonction__c</outputField>
         </mappingFields>
         <outputObject>Contact</outputObject>
+    </objectMapping>
+    <objectMapping>
+        <inputObject>Lead</inputObject>
+        <mappingFields>
+            <inputField>LPCR_DispositifExistantLead__c</inputField>
+            <outputField>LPCR_DispositifExistant__c</outputField>
+        </mappingFields>
+        <outputObject>Opportunity</outputObject>
     </objectMapping>
     <opportunityCreationOptions>VisibleOptional</opportunityCreationOptions>
 </LeadConvertSettings>
