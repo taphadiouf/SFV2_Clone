@@ -69,6 +69,7 @@ public with sharing class APC006_CloneQuoteLines {
                 currentQL.SBQQ__UpgradedQuantity__c = null;
                 currentQL.SBQQ__Existing__c = false;
                 currentQL.LPCR_Clone__c = true;
+                currentQL.LPCR_IndexationCustom__c=ql.LPCR_IndexationCustom__c;
                 //To insure the order
                 if(currentQL.SBQQ__Number__c != null){
                     currentQL.SBQQ__Number__c = ql.SBQQ__Number__c + 1000;

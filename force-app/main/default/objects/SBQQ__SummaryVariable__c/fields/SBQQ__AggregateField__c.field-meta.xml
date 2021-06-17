@@ -32,6 +32,16 @@
                 <default>false</default>
                 <label>LPCR_DateFin__c</label>
             </value>
+            <value>
+                <fullName>LPCR_Majoration__c</fullName>
+                <default>false</default>
+                <label>LPCR_Majoration__c</label>
+            </value>
+            <value>
+                <fullName>SBQQ__AdditionalDiscount__c</fullName>
+                <default>false</default>
+                <label>SBQQ__AdditionalDiscount__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
