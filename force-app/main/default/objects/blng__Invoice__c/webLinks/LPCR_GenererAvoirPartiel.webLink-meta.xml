@@ -21,12 +21,9 @@
 &amp;userName={!$User.Username}
 &amp;Id={!blng__Invoice__c.Id}
 
-&amp;QueryId=[CompanyDets]a4J3O0000008RXi,
-[LineItems]a4J3O0000008cy4
-&amp;TemplateId={!
-IF(TEXT(blng__Invoice__c.blng__InvoiceStatus__c)=&apos;Draft&apos;,&apos;a4R3O0000008haoUAA&apos;
-,
-&apos;a4R3O0000008hajUAA&apos;)}
+&amp;QueryId=[CompanyDets]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQAccount_Details_CompanyDets__c},
+[LineItems]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_Lines__c}
+
 
 &amp;invoiceID={!blng__Invoice__c.Id}
 &amp;invoiceStatus={!blng__Invoice__c.blng__InvoiceStatus__c}</url>
