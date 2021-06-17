@@ -1015,6 +1015,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_DispositifExistantCompte__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_Avoir__c.LPCR_CompteClient__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3796,6 +3801,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_CodeCrecheLienCrecheLead3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_DispositifExistantLead__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
