@@ -5,7 +5,7 @@ public with sharing class SM029_AccountService {
         //get latest CTNUM 
         Long counter= 4110000001L;
         Pattern p = Pattern.compile('^411[0-9]{7}$');
-        for(Account acc :[SELECT LPCR_IDSage__c FROM Account where LPCR_IDSage__c != null  and RecordTypeId =:entrepriseRecTypeId ORDER BY LPCR_IDSage__c DESC limit 1]){
+        for(Account acc :[SELECT LPCR_IDSage__c FROM Account where LPCR_IDSage__c != null  and RecordTypeId =:entrepriseRecTypeId and LPCR_IsNumericIDSage__c=true ORDER BY LPCR_IDSage__c DESC limit 1]){
             if(p.matcher(acc.LPCR_IDSage__c).matches()){
                 counter=Long.valueof(acc.LPCR_IDSage__c);
                 counter++;

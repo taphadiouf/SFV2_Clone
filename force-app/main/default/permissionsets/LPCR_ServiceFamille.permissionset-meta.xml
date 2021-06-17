@@ -1117,6 +1117,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.LPCR_IsNumericIDSage__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_DispositifExistantCompte__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Activity.LPCR_Echeance__c</field>
         <readable>true</readable>
@@ -1140,6 +1150,16 @@
             <editable>true</editable>
             <field>LPCR_Avoir__c.LPCR_NomSociete__c</field>
             <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Avoir__c.LPCR_DateFinAvoir__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Avoir__c.LPCR_DateFacture__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -4038,6 +4058,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Lead.LPCR_DispositifExistantLead__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Opportunity.AccountId</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5949,11 +5974,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_MontantForfaitAnnuel__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>False</editable>
-        <field>SBQQ__Quote__c.LPCR_NameRecordType__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
