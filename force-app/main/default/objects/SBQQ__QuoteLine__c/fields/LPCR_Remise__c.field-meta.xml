@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_Remise__c</fullName>
     <externalId>false</externalId>
-    <formula>SBQQ__AdditionalDiscount__c + LPCR_Indexation__c</formula>
+    <formula>(SBQQ__AdditionalDiscountAmount__c+LPCR_IndexationCustom__c  )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Remise</label>
+    <label>Remise appliquée</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>

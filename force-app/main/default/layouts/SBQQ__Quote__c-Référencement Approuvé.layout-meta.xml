@@ -48,16 +48,8 @@
                 <field>SBQQ__Opportunity2__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_TypeOpportunite__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>SBQQ__Account__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_TypeEntreprise__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -102,13 +94,29 @@
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
-        <detailHeading>false</detailHeading>
-        <editHeading>false</editHeading>
-        <label>New Section</label>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Information sur la facturation</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_DateDebut__c</field>
+                <field>LPCR_NouveauPlanFacture__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>SBQQ__BillingFrequency__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_TypeFacturation__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>SBQQ__PaymentTerms__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>SBQQ__RenewalUpliftRate__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -175,15 +183,15 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>SBQQ__PrimaryContact__c</field>
+                <field>LPCR_ContactPrincipalFormule__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_ContactInscriptions__c</field>
+                <field>LPCR_ContactInscriptionsFormule__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_ContactFacturation__c</field>
+                <field>LPCR_ContactFacturationFormule__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -277,6 +285,14 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_Conditionsparticulieres__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_ResiliationPossibleAu__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_Annee__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
@@ -286,7 +302,8 @@
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Avenant</label>
-        <layoutColumns>
+ <label>Contacts</label>
+ <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LPCR_TypeAvenant__c</field>
@@ -391,16 +408,26 @@
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
+        <customLabel>true</customLabel>
+        <detailHeading>false</detailHeading>
+        <editHeading>false</editHeading>
+        <label>New Section</label>
+        <layoutColumns/>
+        <layoutColumns/>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
         <editHeading>true</editHeading>
         <label>System Information</label>
-        <layoutColumns/>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>CreatedById</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LastModifiedById</field>
@@ -482,6 +509,8 @@
         <fields>SBQQ__Product__c</fields>
         <fields>LPCR_PrixUnitaire__c</fields>
         <fields>SBQQ__Quantity__c</fields>
+        <fields>SBQQ__ListPrice__c</fields>
+        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>LPCR_Creche__c</fields>
         <fields>LPCR_Region__c</fields>
         <fields>LPCR_DateDebut__c</fields>

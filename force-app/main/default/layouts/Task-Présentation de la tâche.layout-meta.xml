@@ -16,6 +16,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>LPCR_Echeance__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>ActivityDate</field>
             </layoutItems>
             <layoutItems>
@@ -25,10 +29,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_Compte_rendu__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_Echeance__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -124,11 +124,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Task.UpdateStatus_0</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Task.UpdatePriority_0</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
@@ -157,6 +152,11 @@
             <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>6</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Task.UpdateStatus_0</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Task.EditDescription</actionName>
@@ -265,7 +265,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6E0000015H2D</masterLabel>
+        <masterLabel>00h3N000002ajAg</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

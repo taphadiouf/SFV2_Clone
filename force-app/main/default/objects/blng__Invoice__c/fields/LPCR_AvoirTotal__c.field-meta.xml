@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_AvoirTotal__c</fullName>
+    <description>montant avoir cummulé sur ligne de facture</description>
+    <externalId>false</externalId>
+    <label>LPCR AvoirTotal</label>
+    <summarizedField>blng__InvoiceLine__c.LPCR_MontantAvoirLigneFacture__c</summarizedField>
+    <summaryForeignKey>blng__InvoiceLine__c.blng__Invoice__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

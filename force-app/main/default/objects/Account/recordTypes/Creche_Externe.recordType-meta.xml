@@ -637,31 +637,11 @@
     <picklistValues>
         <picklist>LPCR_DispositifsExistants__c</picklist>
         <values>
-            <fullName>Accompagnement scolaire</fullName>
+            <fullName>Aucun</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Chéque CESU</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Conciergerie</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Conférences %2F Ateliers parentalité</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Garde d%E2%80%99enfants périscolaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Place en crèche</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Plateforme service à la personne</fullName>
+            <fullName>Travaille avec la concurrence</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1014,10 +994,6 @@
     <picklistValues>
         <picklist>LPCR_StatutCreche__c</picklist>
         <values>
-            <fullName>Désactivé</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Fermeture</fullName>
             <default>false</default>
         </values>
@@ -1034,15 +1010,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Projet</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Prospect</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Rachat concurrence</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1099,19 +1067,7 @@
     <picklistValues>
         <picklist>LPCR_TypeCreche__c</picklist>
         <values>
-            <fullName>ALSH</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Autre</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Halte-Garderie</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Jardin d%E2%80%99enfants</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1119,23 +1075,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>MAF</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>MICRO</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>PAJE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Partenaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>RAM</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1151,10 +1091,6 @@
         </values>
         <values>
             <fullName>Grand Compte</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MID</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1196,19 +1132,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>AUTRE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>FAMILIALES</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>HOSPITALIERE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MICRO</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1231,11 +1155,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Other</fullName>
+            <fullName>EURL</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>EURL</fullName>
+            <fullName>Other</fullName>
             <default>false</default>
         </values>
         <values>

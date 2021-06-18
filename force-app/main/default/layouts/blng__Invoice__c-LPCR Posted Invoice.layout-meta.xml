@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customButtons>blng__Cancel_Rebill</customButtons>
-    <customButtons>blng__Credit</customButtons>
+    <customButtons>LPCR_GenererAvoirPartiel</customButtons>
+    <customButtons>LPCR_GenererAvoirTotal</customButtons>
+    <customButtons>GenerationFacture</customButtons>
     <customButtons>blng__ConvertNegativeLines</customButtons>
+    <customButtons>blng__Cancel_Rebill</customButtons>
     <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>Clone</excludeButtons>
@@ -152,12 +154,13 @@
                 <behavior>Readonly</behavior>
                 <field>blng__InvoiceDate__c</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>blng__DueDate__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -166,14 +169,6 @@
         <editHeading>true</editHeading>
         <label>Montant de la facture</label>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>blng__Subtotal__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>blng__TaxAmount__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>blng__TotalAmount__c</field>
@@ -200,10 +195,6 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_MontantAvoirFacture__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>LPCR_PeriodeAvoirFacture__c</field>
             </layoutItems>
         </layoutColumns>
@@ -219,12 +210,13 @@
                 <behavior>Readonly</behavior>
                 <field>blng__TaxStatus__c</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>blng__TaxErrorMessage__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -331,15 +323,15 @@
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>blng__ChargeType__c</fields>
-        <fields>blng__Quantity__c</fields>
+        <fields>LPCR_POInvalide__c</fields>
+        <fields>LPCR_Creche__c</fields>
         <fields>blng__StartDate__c</fields>
         <fields>blng__EndDate__c</fields>
-        <fields>blng__Subtotal__c</fields>
+        <fields>blng__Quantity__c</fields>
         <fields>blng__TotalAmount__c</fields>
+        <fields>LPCR_MontantAvoirLigneFacture__c</fields>
         <fields>blng__Balance__c</fields>
         <fields>blng__Credits__c</fields>
-        <fields>LPCR_POInvalide__c</fields>
         <relatedList>blng__InvoiceLine__c.blng__Invoice__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -358,33 +350,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>blng__PaymentType__c</fields>
-        <fields>blng__Transaction__c</fields>
-        <fields>blng__Amount__c</fields>
-        <fields>blng__Allocations__c</fields>
-        <fields>blng__Unallocations__c</fields>
-        <fields>blng__Balance__c</fields>
-        <fields>blng__Status__c</fields>
-        <relatedList>blng__Payment__c.blng__Invoice__c</relatedList>
-        <sortField>NAME</sortField>
-        <sortOrder>Desc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>New</excludeButtons>
-        <fields>blng__Payment__c.CREATED_DATE</fields>
-        <fields>blng__Payment__c.NAME</fields>
-        <fields>blng__Payment__c.blng__PaymentType__c</fields>
-        <fields>blng__Payment__c.blng__Amount__c</fields>
-        <fields>blng__Payment__c.blng__Invoice__c</fields>
-        <fields>NAME</fields>
-        <fields>blng__Amount__c</fields>
-        <fields>blng__Type__c</fields>
-        <relatedList>blng__PaymentAllocationInvoice__c.blng__Invoice__c</relatedList>
-        <sortField>NAME</sortField>
-        <sortOrder>Desc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
         <fields>LPCR_ContratEntreprise__c</fields>
         <fields>LPCR_ContratFamille__c</fields>
         <fields>LPCR_TotalFacture__c</fields>
@@ -396,7 +361,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000002Gm1W</masterLabel>
+        <masterLabel>00h3N000002QKIL</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

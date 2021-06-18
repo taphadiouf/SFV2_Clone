@@ -128,17 +128,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactFacturation__c</field>
+            <field>LPCR_ContactFacturationFormule__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactInscriptions__c</field>
+            <field>LPCR_ContactInscriptionsFormule__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__PrimaryContact__c</field>
+            <field>LPCR_ContactPrincipalFormule__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
@@ -174,11 +174,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>SBQQ__MasterEvergreenContract__c</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__MasterContract__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>

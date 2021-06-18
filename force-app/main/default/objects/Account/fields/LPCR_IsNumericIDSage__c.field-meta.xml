@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_IsNumericIDSage__c</fullName>
+    <externalId>false</externalId>
+    <formula>ISNUMBER( LPCR_IDSage__c )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>LPCR_IsNumericIDSage</label>
+    <type>Checkbox</type>
+</CustomField>

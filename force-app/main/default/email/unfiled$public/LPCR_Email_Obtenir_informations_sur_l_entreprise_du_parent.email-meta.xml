@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>LPCR_PiedsPageEmails</letterhead>
+    <name>Email – Obtenir informations sur l’entreprise du parent</name>
+    <style>freeForm</style>
+    <subject>Important : votre pré-inscription en crèche</subject>
+    <textOnly>Bonjour {!Contact.Name},
+
+
+Je vous remercie de l’intérêt que vous portez au réseau Grandir. Nous serions ravis de pouvoir accueillir votre enfant au sein de nos crèches.
+
+
+En tant que crèche inter-entreprises, nous devons dans un premier temps établir un partenariat de réservation avec votre employeur (ou celle de votre conjoint(e)).
+
+
+Sachez que votre employeur pourrait bénéficier d&apos;une déduction fiscale à hauteur de 80% et vous pourrez ainsi obtenir une place dans l&apos;une de nos 1600 crèches.
+
+
+Dans l’optique de créer ce partenariat, je vous invite à m’indiquer les coordonnées (nom/ email/ téléphone) soit de votre
+
+DRH
+Responsable des Ressources humaines ou des Relations Sociales
+C.E
+
+Dans l&apos;attente de votre retour, je reste à votre entière disposition pour toutes questions et vous souhaite une agréable journée.
+
+
+Bien cordialement.
+
+
+{!User.Name}
+
+{!User.Title}
+
+
+{!User.Email}
+
+{!User.Phone}
+
+
+{!User.MobilePhone}
+
+
+Les Petits Chaperons Rouges – Groupe Grandir
+
+6 allée Jean Prouvé, 92110 Clichy
+
+
+Plus d’informations sur www.lespetitschaperonsrouges.fr
+
+Suivez-nous sur les réseaux sociaux :</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

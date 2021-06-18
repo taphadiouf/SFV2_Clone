@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_ResiliationPossibleAu__c</fullName>
+    <externalId>false</externalId>
+    <label>Résiliation possible au</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>31 Août</fullName>
+                <default>false</default>
+                <label>31 Août</label>
+            </value>
+            <value>
+                <fullName>31 Décembre</fullName>
+                <default>false</default>
+                <label>31 Décembre</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

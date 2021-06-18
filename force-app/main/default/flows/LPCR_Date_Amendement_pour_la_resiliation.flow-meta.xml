@@ -11,17 +11,17 @@
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>isChangedRule_2_myRule_1_LPCR_DateResiliationChoisie_c</name>
-            <conditionLogic>or</conditionLogic>
+            <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>myVariable_old</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <leftValueReference>myVariable_old.LPCR_DateResiliationChoisie__c</leftValueReference>
-                <operator>EqualTo</operator>
+                <operator>NotEqualTo</operator>
                 <rightValue>
                     <elementReference>myVariable_current.LPCR_DateResiliationChoisie__c</elementReference>
                 </rightValue>
@@ -46,7 +46,7 @@
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_1</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>1 AND 2</conditionLogic>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
@@ -78,6 +78,37 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Date</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>Date</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.LPCR_MasterDevis__r.LPCR_DateResiliation__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
@@ -91,11 +122,11 @@
                 <stringValue>[Contract].LPCR_DateResiliationChoisie__c </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_3639020477</name>
+        <name>formula_3_myRule_1_A1_2848428704</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.LPCR_DateResiliationChoisie__c}</expression>
     </formulas>
-    <interviewLabel>LPCR_Date_Amendement_pour_la_resiliation-1_InterviewLabel</interviewLabel>
+    <interviewLabel>LPCR_Date_Amendement_pour_la_resiliation-2_InterviewLabel</interviewLabel>
     <label>LPCR_Date Amendement pour la résiliation</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -197,7 +228,7 @@
             </processMetadataValues>
             <field>SBQQ__AmendmentStartDate__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_3639020477</elementReference>
+                <elementReference>formula_3_myRule_1_A1_2848428704</elementReference>
             </value>
         </inputAssignments>
         <object>Contract</object>
