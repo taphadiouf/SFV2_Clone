@@ -127,6 +127,22 @@
                 "referenceId": "SBQQ__ProductRule__cRef9"
             },
             "IsDeleted": false,
+            "Name": "Message d'erreur si remise ou majoration appliqué sur frais de dossier",
+            "SBQQ__Active__c": true,
+            "SBQQ__AdvancedCondition__c": "10 AND (20 OR 30)",
+            "SBQQ__ConditionsMet__c": "Custom",
+            "SBQQ__ErrorMessage__c": "Vous ne pouvez pas ajouter une remise ou majoration a un frais de dossier",
+            "SBQQ__EvaluationEvent__c": "Save",
+            "SBQQ__Scope__c": "Quote",
+            "SBQQ__Type__c": "Alert",
+            "SystemModstamp": "2021-06-16T08:21:40.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ProductRule__c",
+                "referenceId": "SBQQ__ProductRule__cRef10"
+            },
+            "IsDeleted": false,
             "Name": "Type d'avenant obligatoire sur amendment quote",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
@@ -139,7 +155,7 @@
         {
             "attributes": {
                 "type": "SBQQ__ProductRule__c",
-                "referenceId": "SBQQ__ProductRule__cRef10"
+                "referenceId": "SBQQ__ProductRule__cRef11"
             },
             "IsDeleted": false,
             "Name": "Date début QL toujours après date début quote ( Réf)",
