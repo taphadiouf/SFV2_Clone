@@ -524,7 +524,7 @@
         <fields>LPCR_Creche__c</fields>
         <fields>LPCR_Region__c</fields>
         <fields>LPCR_DateDebut__c</fields>
-        <fields>LPCR_DateFin__c</fields>
+        <fields>SBQQ__EndDate__c</fields>
         <fields>LAST_UPDATE</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
     </relatedLists>
@@ -552,7 +552,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h7a000001JdiP</masterLabel>
+        <masterLabel>00h1X000002kvuU</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
