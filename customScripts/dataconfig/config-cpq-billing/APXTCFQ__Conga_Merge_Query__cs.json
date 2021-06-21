@@ -7,7 +7,7 @@
             },
             "APXTCFQ__Name__c": "ContactInfo",
             "APXTCFQ__Description__c": "contact info du contrat de réservation de berceaux",
-            "APXTCFQ__Query__c": "Select Id, \r\nSBQQ__SalesRep__r.Name, SBQQ__SalesRep__r.Email, SBQQ__SalesRep__r.Phone,\r\nLPCR_ResponsableServiceFamille__r.Name, LPCR_ResponsableServiceFamille__r.Email, LPCR_ResponsableServiceFamille__r.Phone, LPCR_ResponsableADV__r.Name,  LPCR_ResponsableADV__r.Email, LPCR_ResponsableADV__r.Phone, LPCR_ContactInscriptions__r.Name,\r\nLPCR_ContactInscriptions__r.Email, LPCR_ContactInscriptions__r.Phone, LPCR_ContactFacturation__r.Name, LPCR_ContactFacturation__r.Email, LPCR_ContactFacturation__r.Phone FROM SBQQ__Quote__c WHERE Id = '{pv0}'"
+            "APXTCFQ__Query__c": "Select Id, \r\nSBQQ__SalesRep__r.Name, SBQQ__SalesRep__r.Email, SBQQ__SalesRep__r.Phone,\r\nLPCR_ResponsableServiceFamille__r.Name, LPCR_ResponsableServiceFamille__r.Email, LPCR_ResponsableServiceFamille__r.Phone, LPCR_ResponsableADV__r.Name,  LPCR_ResponsableADV__r.Email, LPCR_ResponsableADV__r.Phone, SBQQ__Account__r.LPCR_ContactInscriptions__r.Name,\r\nSBQQ__Account__r.LPCR_ContactInscriptions__r.Email, SBQQ__Account__r.LPCR_ContactInscriptions__r.Phone, SBQQ__Account__r.blng__BillToContact__r.Name, SBQQ__Account__r.blng__BillToContact__r.Email, SBQQ__Account__r.blng__BillToContact__r.Phone, SBQQ__Account__r.blng__BillToContact__r.MailingStreet, SBQQ__Account__r.blng__BillToContact__r.MailingPostalCode, SBQQ__Account__r.blng__BillToContact__r.MailingCity FROM SBQQ__Quote__c WHERE Id = '{pv0}'"
         },
         {
             "attributes": {
@@ -85,6 +85,15 @@
                 "type": "APXTCFQ__Conga_Merge_Query__c",
                 "referenceId": "APXTCFQ__Conga_Merge_Query__cRef10"
             },
+            "APXTCFQ__Name__c": "LigneBerceauResa",
+            "APXTCFQ__Description__c": "Ligne Berceau Réservataire sur un devis pour un contrat de réservation",
+            "APXTCFQ__Query__c": "SELECT Id,SBQQ__Quantity__c,SBQQ__ProductCode__c, SBQQ__EFFECTIVESTARTDATE__c ,SBQQ__ListPrice__c,LPCR_Creche__r.Name,LPCR_Creche__r.ShippingStreet,LPCR_Creche__r.ShippingPostalCode,LPCR_Creche__r.ShippingCity,LPCR_PrixUnitaire__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = '{pv0}' AND SBQQ__ProductCode__c = 'BerceauReservataire'  LIMIT 1"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Merge_Query__c",
+                "referenceId": "APXTCFQ__Conga_Merge_Query__cRef11"
+            },
             "APXTCFQ__Name__c": "InfosContratAccueil",
             "APXTCFQ__Description__c": "infos contact enfant et contacts représentants",
             "APXTCFQ__Query__c": "Select Id, LPCR_ContactEnfant__r.FirstName,\r\nLPCR_ContactEnfant__r.LastName,\r\nLPCR_ContactEnfant__r.BirthDate,\r\nLPCR_ContactEnfant__r.LPCR_IdExterne_Contact__c,\r\nLPCR_ContactEnfant__r.LPCR_Handicape__c,\r\nLPCR_ContactRepresentant1__r.FirstName,\r\nLPCR_ContactRepresentant1__r.LastName,\r\nLPCR_ContactRepresentant1__r.MobilePhone,\r\nLPCR_ContactRepresentant1__r.Phone,\r\nLPCR_ContactRepresentant1__r.Email,\r\nLPCR_ContactRepresentant1__r.MailingStreet,\r\nLPCR_ContactRepresentant1__r.MailingPostalCode,\r\nLPCR_ContactRepresentant1__r.MailingCity,\r\nLPCR_ContactRepresentant1__r.LPCR_AutoriteParentale__c,\r\nLPCR_ContactRepresentant2__r.FirstName,\r\nLPCR_ContactRepresentant2__r.LastName,\r\nLPCR_ContactRepresentant2__r.MobilePhone,\r\nLPCR_ContactRepresentant2__r.Phone,\r\nLPCR_ContactRepresentant2__r.Email,\r\nLPCR_ContactRepresentant2__r.MailingStreet,\r\nLPCR_ContactRepresentant2__r.MailingPostalCode,\r\nLPCR_ContactRepresentant2__r.MailingCity,\r\nLPCR_ContactRepresentant2__r.LPCR_AutoriteParentale__c,\r\nLPCR_Creche__r.Name,\r\nLPCR_Creche__r.Phone,\r\nLPCR_Creche__r.Email__c,\r\nLPCR_Creche__r.ShippingStreet,\r\nLPCR_Creche__r.ShippingCity,\r\nLPCR_Creche__r.ShippingPostalCode,\r\nLPCR_Creche__r.Parent.Name,\r\nLPCR_Creche__r.Parent.Ownership,\r\nLPCR_Creche__r.Parent.LPCR_Capital__c,\r\nLPCR_Creche__r.Parent.LPCR_Siret__c,\r\nLPCR_Creche__r.Parent.LPCR_RCS__c,\r\nLPCR_Creche__r.Parent.ShippingStreet,\r\nLPCR_Creche__r.Parent.ShippingCity,\r\nLPCR_Creche__r.Parent.ShippingPostalCode,\r\nLPCR_NumeroAllocataire__c\r\nFROM SBQQ__Quote__c WHERE Id='{pv0}'"
@@ -92,7 +101,7 @@
         {
             "attributes": {
                 "type": "APXTCFQ__Conga_Merge_Query__c",
-                "referenceId": "APXTCFQ__Conga_Merge_Query__cRef11"
+                "referenceId": "APXTCFQ__Conga_Merge_Query__cRef12"
             },
             "APXTCFQ__Name__c": "Lignes Bons de commande",
             "APXTCFQ__Description__c": "Lignes de bon de commande liées à un contrat de référencement",

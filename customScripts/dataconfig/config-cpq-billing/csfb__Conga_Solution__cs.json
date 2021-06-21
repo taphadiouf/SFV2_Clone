@@ -91,6 +91,21 @@
             "csfb__Sample_Record_Id__c": "a1o3O000000WJPx",
             "csfb__Solution_Description__c": "Created By Conga Composer Quick Start",
             "csfb__Weblink_Id__c": "00b3O000000bR65"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Solution__c",
+                "referenceId": "csfb__Conga_Solution__cRef7"
+            },
+            "Name": "Generer Avoir Partiel",
+            "csfb__Button_body_field__c": "/apex/csfb__Conga_Composer?SolMgr=1\n&serverUrl={!API.Partner_Server_URL_370}\n&userName={!$User.Username}\n&Id={!blng__InvoiceLine__c.Id}\n\n&QueryId=[CompanyDets]a4J3O0000008cy6%3Fpv0%3D{!blng__InvoiceLine__c.blng__InvoiceId__c},\n[LineItems]a4J3O0000008d4i%3Fpv0%3D{!blng__InvoiceLine__c.Id}\n\n&TemplateId=a4R3O0000008haj,a4R3O0000008hao\n\n&invoiceID={!blng__InvoiceLine__c.blng__Invoice__c}",
+            "csfb__Button_Link_API_Name__c": "Conga_Composer_Generer_Avoir_Partiel",
+            "csfb__Composer_Parameters__c": "&QueryId=[CompanyDets]a4J3O0000008cy6%3Fpv0%3D{!blng__InvoiceLine__c.blng__InvoiceId__c},\n[LineItems]a4J3O0000008d4i%3Fpv0%3D{!blng__InvoiceLine__c.Id}&TemplateId=a4R3O0000008haj,a4R3O0000008hao&invoiceID={!blng__InvoiceLine__c.blng__Invoice__c}",
+            "csfb__CongaEmailTemplateCount__c": 0,
+            "csfb__Launch_C8_Formula_Button__c": "<img src=\"/resource/csfb__DisabledLaunchButton\" alt=\"Launch Composer\" border=\"0\"/>",
+            "csfb__Master_Object_Type__c": "blng__InvoiceLine__c",
+            "csfb__Master_Object_Type_Validator__c": "blng__InvoiceLine__c",
+            "csfb__Weblink_Id__c": "00b3O000000bdZj"
         }
     ]
 }

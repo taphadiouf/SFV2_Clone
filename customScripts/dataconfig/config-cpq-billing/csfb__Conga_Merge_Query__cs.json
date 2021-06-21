@@ -24,7 +24,7 @@
             },
             "csfb__Name__c": "Credit Notes",
             "csfb__Description__c": "notes de crédit allouées aux lignes de factures",
-            "csfb__Query__c": "SELECT Id, blng__InvoiceLine__r.blng__Invoice__c, blng__CreditNoteLine__r.blng__Notes__c, blng__CreditNoteLine__r.blng__CreditNoteLineDate__c, blng__ImpactAmount__c, LPCR_TypeEvenement__c, blng__CreditNoteLine__c FROM blng__CreditNoteAllocation__c WHERE blng__InvoiceLine__r.blng__Invoice__c = '{pv0}' AND blng__CreditNoteLine__r.blng__CreditNote__r.blng__CreditNoteSourceAction__c = 'Manual'"
+            "csfb__Query__c": "SELECT Id, blng__InvoiceLine__r.blng__Invoice__c, blng__CreditNoteLine__r.blng__Notes__c, blng__CreditNoteLine__r.blng__CreditNoteLineDate__c, blng__ImpactAmount__c, Conga_Type_Evenement__c, blng__CreditNoteLine__c FROM blng__CreditNoteAllocation__c WHERE blng__InvoiceLine__r.blng__Invoice__c = '{pv0}' AND (blng__CreditNoteLine__r.blng__CreditNote__r.blng__CreditNoteSourceAction__c = 'Manual' OR blng__CreditNoteLine__r.blng__CreditNote__r.blng__CreditNoteSourceAction__c = 'Invoice Line Credit')"
         },
         {
             "attributes": {
@@ -33,7 +33,7 @@
             },
             "csfb__Name__c": "Debit Notes",
             "csfb__Description__c": "notes de débit allouées aux lignes de factures",
-            "csfb__Query__c": "SELECT Id, blng__InvoiceLine__r.blng__Invoice__c, blng__DebitNoteLine__r.blng__Notes__c, blng__DebitNoteLine__r.blng__DebitNoteLineDate__c, blng__ImpactAmount__c, blng__DebitNoteLine__c FROM blng__DebitNoteAllocation__c WHERE blng__InvoiceLine__r.blng__Invoice__c = '{pv0}' AND blng__DebitNoteLine__r.blng__DebitNote__r.blng__DebitNoteSourceAction__c = 'Manual'"
+            "csfb__Query__c": "SELECT Id, blng__InvoiceLine__r.blng__Invoice__c, blng__DebitNoteLine__r.blng__Notes__c, blng__DebitNoteLine__r.blng__DebitNoteLineDate__c, blng__ImpactAmount__c, blng__DebitNoteLine__c FROM blng__DebitNoteAllocation__c WHERE blng__InvoiceLine__r.blng__Invoice__c = '{pv0}' AND (blng__DebitNoteLine__r.blng__DebitNote__r.blng__DebitNoteSourceAction__c = 'Manual'"
         },
         {
             "attributes": {
@@ -60,7 +60,7 @@
             },
             "csfb__Name__c": "Invoice Lines [LineItems]",
             "csfb__Description__c": "Created By Solution Pack for Composer Solution: Generate Invoice (blng__Invoice__c) 18-May-2021 05 03 22 PM",
-            "csfb__Query__c": "SELECT blng__Balance__c, blng__BalancewithoutDebits__c, blng__CalculatedQuantity__c, blng__ChargeDate__c, blng__Credits__c, blng__Debits__c, blng__DebitsPaymentAllocations__c, blng__DebitsPaymentUnallocations__c, blng__EndDate__c, blng__GroupedQuantity__c, blng__OrderProduct__c, Name, blng__Quantity__c, blng__StartDate__c, blng__Subtotal__c, blng__TaxAmount__c, blng__TotalAmount__c, blng__UnitPrice__c, blng__Product__r.ProductCode FROM blng__InvoiceLine__c  WHERE blng__Invoice__r.Id = '{pv0}' ORDER BY Name ASC"
+            "csfb__Query__c": "SELECT blng__Balance__c, blng__BalancewithoutDebits__c, blng__CalculatedQuantity__c, blng__ChargeDate__c, blng__Credits__c, blng__Debits__c, blng__DebitsPaymentAllocations__c, blng__DebitsPaymentUnallocations__c, blng__EndDate__c, blng__GroupedQuantity__c, blng__OrderProduct__c, Name, blng__Quantity__c, blng__StartDate__c, blng__Subtotal__c, blng__TaxAmount__c, blng__TotalAmount__c, blng__UnitPrice__c, blng__Product__r.ProductCode ,LPCR_MontantAvoirLigneFacture__c ,LPCR_NomAvoirLigneFacture__c ,LPCR_NatureAvoirLigneFacture__c FROM blng__InvoiceLine__c  WHERE blng__Invoice__r.Id = '{pv0}' ORDER BY Name ASC"
         },
         {
             "attributes": {
@@ -85,12 +85,21 @@
                 "type": "csfb__Conga_Merge_Query__c",
                 "referenceId": "csfb__Conga_Merge_Query__cRef10"
             },
-            "csfb__Name__c": "testpdoQuery"
+            "csfb__Name__c": "Invoice Lines [LineItems]",
+            "csfb__Description__c": "Lignes de factures avec Liens Familles factures",
+            "csfb__Query__c": "SELECT blng__Balance__c, LPCR_DesignationProduit__c, LPCR_Creche__r.Name, blng__BalancewithoutDebits__c,\r\nblng__CalculatedQuantity__c, blng__ChargeDate__c,\r\nblng__Credits__c, blng__Debits__c, blng__DebitsPaymentAllocations__c,\r\nblng__DebitsPaymentUnallocations__c, blng__EndDate__c, blng__GroupedQuantity__c,\r\nblng__OrderProduct__c, Name, blng__OrderProduct__r.SBQQ__Contract__r.LPCR_NumeroContrat__c, blng__Quantity__c, blng__StartDate__c,\r\nblng__Subtotal__c, blng__TaxAmount__c, blng__TotalAmount__c, blng__UnitPrice__c, LPCR_PrixUnitaireProratise__c,\r\nblng__Product__r.ProductCode, LPCR_PrixUnitaireManuel__c,blng__Invoice__r.LPCR_NombreJoursUtilisation__c,(Select Id, LPCR_Facture__c, LPCR_ContratFamille__c,\r\nLPCR_ContratFamille__r.LPCR_NumeroContrat__c,\r\nLPCR_ContratFamille__r.Account.Name,\r\nLPCR_ContratFamille__r.Account.LPCR_InformationsFacture__c,\r\nLPCR_ContratFamille__r.LPCR_Creche__r.Name,\r\nLPCR_ContratFamille__r.LPCR_ContactEnfant__r.Name, Tech_InformationsFamille__c from LPCR_Liens_Familles_et_Factures__r)\r\nFROM blng__InvoiceLine__c\r\nWHERE Id = '{pv0}' AND blng__Subtotal__c <> 0 ORDER BY blng__Subtotal__c DESC limit 1"
         },
         {
             "attributes": {
                 "type": "csfb__Conga_Merge_Query__c",
                 "referenceId": "csfb__Conga_Merge_Query__cRef11"
+            },
+            "csfb__Name__c": "testpdoQuery"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Merge_Query__c",
+                "referenceId": "csfb__Conga_Merge_Query__cRef12"
             },
             "csfb__Name__c": "Query de test Erwan INT",
             "csfb__Query__c": "SELECT Id FROM blng__Invoice__c WHERE LPCR_StatutFacture__c = 'A Envoyer' AND id = 'a1o3O000000VULbQAO'"
@@ -98,7 +107,7 @@
         {
             "attributes": {
                 "type": "csfb__Conga_Merge_Query__c",
-                "referenceId": "csfb__Conga_Merge_Query__cRef12"
+                "referenceId": "csfb__Conga_Merge_Query__cRef13"
             },
             "csfb__Name__c": "Attestation CAF",
             "csfb__Description__c": "ligne correspondant à l'attestation CAF",
@@ -107,7 +116,7 @@
         {
             "attributes": {
                 "type": "csfb__Conga_Merge_Query__c",
-                "referenceId": "csfb__Conga_Merge_Query__cRef13"
+                "referenceId": "csfb__Conga_Merge_Query__cRef14"
             },
             "csfb__Name__c": "Participation CAF",
             "csfb__Description__c": "montant de la participation CAF dans le cas d'une famille en crèche MAC",
