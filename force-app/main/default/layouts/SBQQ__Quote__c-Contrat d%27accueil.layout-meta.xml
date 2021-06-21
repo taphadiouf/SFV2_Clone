@@ -475,11 +475,6 @@
             <sortOrder>5</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>LPCR_RDV_Telephonique</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>6</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>LogACall</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>7</sortOrder>
@@ -493,6 +488,11 @@
             <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>9</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>LPCR_RDV_Telephonique</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>6</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -544,6 +544,19 @@
         <relatedList>sbaa__Approval__c.Quote__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <customButtons>echosign_dev1__Cancel_Agreement_Bulk</customButtons>
+        <customButtons>echosign_dev1__Send_Reminder_Bulk</customButtons>
+        <customButtons>echosign_dev1__Send_Agreement_Bulk</customButtons>
+        <customButtons>echosign_dev1__Update_Agreement_Bulk</customButtons>
+        <customButtons>echosign_dev1__Delete_Agreement_Bulk</customButtons>
+        <fields>NAME</fields>
+        <fields>echosign_dev1__DateSent__c</fields>
+        <fields>echosign_dev1__Recipient__c</fields>
+        <fields>echosign_dev1__Status__c</fields>
+        <fields>echosign_dev1__Document__c</fields>
+        <relatedList>echosign_dev1__SIGN_Agreement__c.LPCR_Devis__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -552,7 +565,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1X000002kvuU</masterLabel>
+        <masterLabel>00h1j000002ryYo</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
