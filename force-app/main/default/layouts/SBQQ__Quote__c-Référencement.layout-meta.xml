@@ -178,7 +178,7 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+     <behavior>Edit</behavior>
                 <field>LPCR_DateReceptionCourrierResiliation__c</field>
             </layoutItems>
             <layoutItems>
@@ -188,7 +188,7 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_MotifAnnulationDevis__c</field>
-            </layoutItems>
+ </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -460,6 +460,7 @@
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>SBQQ__Product__c</fields>
+        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>SBQQ__Quantity__c</fields>
         <fields>SBQQ__ListPrice__c</fields>
         <fields>LPCR_Creche__c</fields>
@@ -492,7 +493,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1X000002kvuY</masterLabel>
+        <masterLabel>00h7a000001JdiT</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
