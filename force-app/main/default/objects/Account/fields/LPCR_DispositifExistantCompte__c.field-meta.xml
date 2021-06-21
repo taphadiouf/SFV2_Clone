@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_DispositifExistantCompte__c</fullName>
+    <externalId>false</externalId>
+    <label>Dispositif existant</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aucun</fullName>
+                <default>false</default>
+                <label>Aucun</label>
+            </value>
+            <value>
+                <fullName>Travaille avec la concurrence</fullName>
+                <default>false</default>
+                <label>Travaille avec la concurrence</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

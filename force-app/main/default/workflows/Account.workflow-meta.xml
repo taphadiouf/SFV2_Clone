@@ -10,4 +10,52 @@
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/Alerte_Remise_en_concurrence</template>
     </alerts>
+    <fieldUpdates>
+        <fullName>Creche_Adherente</fullName>
+        <field>LPCR_CrecheStatutAdhesion__c</field>
+        <literalValue>Adherent</literalValue>
+        <name>Creche Adhérente</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Creche_NonAdherente</fullName>
+        <field>LPCR_CrecheStatutAdhesion__c</field>
+        <literalValue>Non-adherent</literalValue>
+        <name>Creche Non Adhérente</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>WF_Account_CrecheAdherente</fullName>
+        <actions>
+            <name>Creche_Adherente</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.LPCR_AdhesionStatusValue__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>WF_Account_CrecheNonAdherente</fullName>
+        <actions>
+            <name>Creche_NonAdherente</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.LPCR_AdhesionStatusValue__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
 </Workflow>

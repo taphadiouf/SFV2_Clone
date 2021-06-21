@@ -459,31 +459,11 @@
     <picklistValues>
         <picklist>LPCR_DispositifsExistants__c</picklist>
         <values>
-            <fullName>Accompagnement scolaire</fullName>
+            <fullName>Aucun</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Chèque CESU</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Conciergerie</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Conférences %2F Ateliers parentalité</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Garde d%E2%80%99enfants périscolaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Place en crèche</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Plateforme service à la personne</fullName>
+            <fullName>Travaille avec la concurrence</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1578,14 +1558,6 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Autre</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>CAF</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>CE</fullName>
             <default>false</default>
         </values>
@@ -1594,31 +1566,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Distributeur %28partenaire%29</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Entreprise</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Extérieur%2FLPCR</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Grand Compte</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Hopital%2FClinique</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MID</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>PAJE parents solo %28libéral%29</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1639,10 +1587,6 @@
         </values>
         <values>
             <fullName>TPE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Ville</fullName>
             <default>false</default>
         </values>
     </picklistValues>

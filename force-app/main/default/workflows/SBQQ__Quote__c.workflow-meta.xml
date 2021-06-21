@@ -822,9 +822,9 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
             <operation>notEqual</operation>
-            <value>Résiliation,Mouvement Interne Berceau</value>
+            <value>Mouvement Interne Berceau</value>
         </criteriaItems>
-        <description>Ce WF met le status du devis à actif une fois qu&apos;il est commandé et que ce n&apos;est pas une résiliation ou un mIB</description>
+        <description>Ce WF met le status du devis à actif une fois qu&apos;il est commandé et que ce n&apos;est pas  un mIB</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

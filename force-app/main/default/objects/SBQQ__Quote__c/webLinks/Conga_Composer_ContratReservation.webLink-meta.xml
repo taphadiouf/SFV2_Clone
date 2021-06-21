@@ -24,7 +24,8 @@
 [ListPriceIDFGV]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQGet_List_Price_IDF_et_GrandesVil__c},
 [ListPriceProv]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQGet_List_Price_Province__c},
 [ContactInfo]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQContactInfo__c},
-[ServicesAnnexes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQServicesAnnexes__c}
+[ServicesAnnexes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQServicesAnnexes__c},
+[LigneBerceauResa]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQLigneBerceauResa__c}
 &amp;TemplateId={!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQTTemplateReservation__c}
 &amp;DefaultPDF=1
 &amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;),0,1)}
