@@ -514,7 +514,8 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Renouvellement</fullName>
+            <fullName>Renouvellement</fullName>facturation
+
             <default>false</default>
         </values>
         <values>
@@ -525,7 +526,7 @@
     <picklistValues>
         <picklist>LPCR_TypeFacturation__c</picklist>
         <values>
-            <fullName>>Advance</fullName>
+            <fullName>Advance</fullName>
             <default>true</default>
         </values>
         <values>
