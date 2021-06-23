@@ -71,8 +71,9 @@ public class SM027_SubscriptionService {
                 sub.LPCR_ContratFamille__c=mapContactEnfantContrat.get(keySplit[1]);
             }
             lstSubscriptionUpdate.add(sub);
-            lstBonAchatUpdate.add(new LPCR_BonAchatPartenaire__c(Id=mapCrecheIDEnfantBonDachat.get(key),LPCR_ContratReservataire__c=mapCrecheIDEnfantContrat.containsKey(key)?mapCrecheIDEnfantContrat.get(key):null));
-
+            if(mapCrecheIDEnfantBonDachat.containsKey(key)){
+                lstBonAchatUpdate.add(new LPCR_BonAchatPartenaire__c(Id=mapCrecheIDEnfantBonDachat.get(key),LPCR_ContratReservataire__c=mapCrecheIDEnfantContrat.containsKey(key)?mapCrecheIDEnfantContrat.get(key):null));
+            }    
             
         }
         if(lstSubscriptionUpdate.size() > 0 ){

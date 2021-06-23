@@ -71,7 +71,7 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
@@ -143,7 +143,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
@@ -354,7 +354,7 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
@@ -429,7 +429,7 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2021-04-13T15:54:20.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
@@ -502,7 +502,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
@@ -577,7 +577,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-28T13:57:04.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
@@ -649,7 +649,7 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
@@ -722,79 +722,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-18T14:27:38.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
                 "referenceId": "Product2Ref11"
-            },
-            "blng__BillingRule__r": {
-                "attributes": {
-                    "type": "blng__BillingRule__c",
-                    "url": "/services/data/v52.0/sobjects/blng__BillingRule__c/a1R3O000000PKpBUAW"
-                },
-                "Id": "a1R3O000000PKpBUAW"
-            },
-            "blng__RevenueRecognitionRule__r": {
-                "attributes": {
-                    "type": "blng__RevenueRecognitionRule__c",
-                    "url": "/services/data/v52.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
-                },
-                "Id": "a2A3O0000000yjYUAQ"
-            },
-            "blng__TaxRule__r": {
-                "attributes": {
-                    "type": "blng__TaxRule__c",
-                    "url": "/services/data/v52.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
-                },
-                "Id": "a2I3O00000097n2UAA"
-            },
-            "Family": "B2B",
-            "IsActive": false,
-            "IsArchived": false,
-            "IsDeleted": false,
-            "LPCR_RefCodeProduit__c": "BerceauMairieYerres",
-            "Name": "Berceau - Mairie De Yerres",
-            "ProductCode": "BerceauMairieYerres",
-            "SBQQ__BillingFrequency__c": "Invoice Plan",
-            "SBQQ__BillingType__c": "Advance",
-            "SBQQ__ChargeType__c": "Recurring",
-            "SBQQ__Component__c": false,
-            "SBQQ__ConfigurationEvent__c": "Always",
-            "SBQQ__ConfigurationType__c": "Allowed",
-            "SBQQ__CostEditable__c": false,
-            "SBQQ__CustomConfigurationRequired__c": false,
-            "SBQQ__DefaultQuantity__c": 1,
-            "SBQQ__DescriptionLocked__c": false,
-            "SBQQ__EnableLargeConfiguration__c": false,
-            "SBQQ__ExcludeFromMaintenance__c": false,
-            "SBQQ__ExcludeFromOpportunity__c": false,
-            "SBQQ__ExternallyConfigurable__c": false,
-            "SBQQ__HasConfigurationAttributes__c": false,
-            "SBQQ__HasConsumptionSchedule__c": false,
-            "SBQQ__Hidden__c": false,
-            "SBQQ__HidePriceInSearchResults__c": false,
-            "SBQQ__IncludeInMaintenance__c": false,
-            "SBQQ__NewQuoteGroup__c": false,
-            "SBQQ__NonDiscountable__c": false,
-            "SBQQ__NonPartnerDiscountable__c": false,
-            "SBQQ__Optional__c": false,
-            "SBQQ__PriceEditable__c": true,
-            "SBQQ__PricingMethod__c": "List",
-            "SBQQ__PricingMethodEditable__c": false,
-            "SBQQ__QuantityEditable__c": true,
-            "SBQQ__ReconfigurationDisabled__c": false,
-            "SBQQ__SubscriptionPricing__c": "Fixed Price",
-            "SBQQ__SubscriptionTerm__c": 12,
-            "SBQQ__SubscriptionType__c": "Renewable",
-            "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
-        },
-        {
-            "attributes": {
-                "type": "Product2",
-                "referenceId": "Product2Ref12"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -861,86 +794,12 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2021-01-13T14:54:41.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref13"
-            },
-            "blng__BillingRule__r": {
-                "attributes": {
-                    "type": "blng__BillingRule__c",
-                    "url": "/services/data/v52.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
-                },
-                "Id": "a1R3O000000PKpFUAW"
-            },
-            "blng__RevenueRecognitionRule__r": {
-                "attributes": {
-                    "type": "blng__RevenueRecognitionRule__c",
-                    "url": "/services/data/v52.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
-                },
-                "Id": "a2A3O0000000yjaUAA"
-            },
-            "blng__TaxRule__r": {
-                "attributes": {
-                    "type": "blng__TaxRule__c",
-                    "url": "/services/data/v52.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
-                },
-                "Id": "a2I3O00000097n2UAA"
-            },
-            "Family": "MAC",
-            "IsActive": true,
-            "IsArchived": false,
-            "IsDeleted": false,
-            "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "BerceauMac11Mois",
-            "LPCR_Typemensualisation__c": "11",
-            "Name": "Accueil MAC \"forfait 11 mois\"",
-            "ProductCode": "BerceauMac11Mois",
-            "SBQQ__AssetAmendmentBehavior__c": "Default",
-            "SBQQ__AssetConversion__c": "One per quote line",
-            "SBQQ__BillingFrequency__c": "Monthly",
-            "SBQQ__BillingType__c": "Advance",
-            "SBQQ__BlockPricingField__c": "Quantity",
-            "SBQQ__ChargeType__c": "Recurring",
-            "SBQQ__Component__c": false,
-            "SBQQ__ConfigurationEvent__c": "Always",
-            "SBQQ__ConfigurationType__c": "Allowed",
-            "SBQQ__CostEditable__c": false,
-            "SBQQ__CustomConfigurationRequired__c": false,
-            "SBQQ__DefaultQuantity__c": 1,
-            "SBQQ__DescriptionLocked__c": false,
-            "SBQQ__EnableLargeConfiguration__c": false,
-            "SBQQ__ExcludeFromMaintenance__c": false,
-            "SBQQ__ExcludeFromOpportunity__c": false,
-            "SBQQ__ExternallyConfigurable__c": false,
-            "SBQQ__HasConfigurationAttributes__c": false,
-            "SBQQ__HasConsumptionSchedule__c": false,
-            "SBQQ__Hidden__c": false,
-            "SBQQ__HidePriceInSearchResults__c": false,
-            "SBQQ__IncludeInMaintenance__c": false,
-            "SBQQ__NewQuoteGroup__c": false,
-            "SBQQ__NonDiscountable__c": false,
-            "SBQQ__NonPartnerDiscountable__c": false,
-            "SBQQ__Optional__c": false,
-            "SBQQ__OptionSelectionMethod__c": "Click",
-            "SBQQ__PriceEditable__c": true,
-            "SBQQ__PricingMethod__c": "List",
-            "SBQQ__PricingMethodEditable__c": false,
-            "SBQQ__QuantityEditable__c": false,
-            "SBQQ__ReconfigurationDisabled__c": false,
-            "SBQQ__SubscriptionBase__c": "List",
-            "SBQQ__SubscriptionPricing__c": "Fixed Price",
-            "SBQQ__SubscriptionTerm__c": 1,
-            "SBQQ__SubscriptionType__c": "Renewable",
-            "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
-        },
-        {
-            "attributes": {
-                "type": "Product2",
-                "referenceId": "Product2Ref14"
+                "referenceId": "Product2Ref12"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1005,12 +864,12 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref15"
+                "referenceId": "Product2Ref13"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1079,12 +938,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref16"
+                "referenceId": "Product2Ref14"
             },
             "blng__RevenueRecognitionRule__r": {
                 "attributes": {
@@ -1139,12 +998,12 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref17"
+                "referenceId": "Product2Ref15"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1206,12 +1065,12 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref18"
+                "referenceId": "Product2Ref16"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1273,12 +1132,79 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref19"
+                "referenceId": "Product2Ref17"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v52.0/sobjects/blng__BillingRule__c/a1R3O000000PKpBUAW"
+                },
+                "Id": "a1R3O000000PKpBUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v52.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v52.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LPCR_RefCodeProduit__c": "BerceauMairieYerres",
+            "Name": "Berceau - Mairie De Yerres",
+            "ProductCode": "BerceauMairieYerres",
+            "SBQQ__BillingFrequency__c": "Invoice Plan",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref18"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1340,12 +1266,12 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref20"
+                "referenceId": "Product2Ref19"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1372,8 +1298,8 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastReferencedDate": "2021-05-21T08:36:46.000+0000",
-            "LastViewedDate": "2021-05-21T08:36:46.000+0000",
+            "LastReferencedDate": "2021-06-04T14:25:04.000+0000",
+            "LastViewedDate": "2021-06-04T14:25:04.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "FraisInscriptionMac",
             "LPCR_Typemensualisation__c": "1112",
@@ -1414,7 +1340,7 @@
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref21"
+                "referenceId": "Product2Ref20"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1480,12 +1406,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref22"
+                "referenceId": "Product2Ref21"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1512,8 +1438,8 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LastReferencedDate": "2021-05-21T08:27:35.000+0000",
-            "LastViewedDate": "2021-05-21T08:27:35.000+0000",
+            "LastReferencedDate": "2021-06-04T14:14:41.000+0000",
+            "LastViewedDate": "2021-06-04T14:14:41.000+0000",
             "LPCR_FamilyProduct__c": "MAC",
             "LPCR_RefCodeProduit__c": "BerceauMac",
             "LPCR_Typemensualisation__c": "12",
@@ -1556,12 +1482,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref23"
+                "referenceId": "Product2Ref22"
             },
             "Family": "B2B",
             "IsActive": true,
@@ -1605,12 +1531,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref24"
+                "referenceId": "Product2Ref23"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1679,12 +1605,12 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref25"
+                "referenceId": "Product2Ref24"
             },
             "Family": "B2B",
             "IsActive": false,
@@ -1730,12 +1656,12 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref26"
+                "referenceId": "Product2Ref25"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1801,12 +1727,12 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-10-27T12:57:59.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref27"
+                "referenceId": "Product2Ref26"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1874,12 +1800,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref28"
+                "referenceId": "Product2Ref27"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1947,12 +1873,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref29"
+                "referenceId": "Product2Ref28"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -2020,12 +1946,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref30"
+                "referenceId": "Product2Ref29"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -2092,7 +2018,7 @@
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref31"
+                "referenceId": "Product2Ref30"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -2159,12 +2085,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref32"
+                "referenceId": "Product2Ref31"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -2232,12 +2158,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref33"
+                "referenceId": "Product2Ref32"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -2302,7 +2228,7 @@
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref34"
+                "referenceId": "Product2Ref33"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -2357,16 +2283,16 @@
             "SBQQ__PriceEditable__c": true,
             "SBQQ__PricingMethod__c": "List",
             "SBQQ__PricingMethodEditable__c": false,
-            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__QuantityEditable__c": false,
             "SBQQ__ReconfigurationDisabled__c": false,
             "SBQQ__SubscriptionBase__c": "List",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-15T14:39:48.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref35"
+                "referenceId": "Product2Ref34"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -2434,12 +2360,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref36"
+                "referenceId": "Product2Ref35"
             },
             "IsActive": false,
             "IsArchived": false,
@@ -2482,7 +2408,7 @@
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref37"
+                "referenceId": "Product2Ref36"
             },
             "Family": "B2B",
             "IsActive": false,
@@ -2529,12 +2455,12 @@
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
             "SBQQ__TaxCode__c": "TVA20",
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref38"
+                "referenceId": "Product2Ref37"
             },
             "Family": "B2B",
             "IsActive": false,
@@ -2581,12 +2507,12 @@
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
             "SBQQ__TaxCode__c": "TVA10",
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref39"
+                "referenceId": "Product2Ref38"
             },
             "Family": "B2B",
             "IsActive": false,
@@ -2632,12 +2558,12 @@
             "SBQQ__SubscriptionTerm__c": 12,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref40"
+                "referenceId": "Product2Ref39"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -2704,12 +2630,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref41"
+                "referenceId": "Product2Ref40"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -2774,7 +2700,7 @@
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref42"
+                "referenceId": "Product2Ref41"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -2842,12 +2768,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref43"
+                "referenceId": "Product2Ref42"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -2915,12 +2841,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref44"
+                "referenceId": "Product2Ref43"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -2987,12 +2913,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref45"
+                "referenceId": "Product2Ref44"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -3059,12 +2985,12 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-11-18T16:59:15.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         },
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref46"
+                "referenceId": "Product2Ref45"
             },
             "Family": "B2B",
             "IsActive": false,
@@ -3107,7 +3033,81 @@
             "SBQQ__SubscriptionTerm__c": 1,
             "SBQQ__SubscriptionType__c": "Renewable",
             "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2020-09-05T12:53:57.000+0000"
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref46"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v52.0/sobjects/blng__BillingRule__c/a1R3O000000PKpFUAW"
+                },
+                "Id": "a1R3O000000PKpFUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v52.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjaUAA"
+                },
+                "Id": "a2A3O0000000yjaUAA"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v52.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "MAC",
+            "IsActive": true,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "LPCR_FamilyProduct__c": "MAC",
+            "LPCR_RefCodeProduit__c": "BerceauMac11Mois",
+            "LPCR_Typemensualisation__c": "11",
+            "Name": "Accueil MAC \"forfait 11 mois\"",
+            "ProductCode": "BerceauMac11Mois",
+            "SBQQ__AssetAmendmentBehavior__c": "Default",
+            "SBQQ__AssetConversion__c": "One per quote line",
+            "SBQQ__BillingFrequency__c": "Monthly",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__BlockPricingField__c": "Quantity",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__OptionSelectionMethod__c": "Click",
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": false,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionBase__c": "List",
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 1,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2021-06-21T05:17:31.000+0000"
         }
     ]
 }
