@@ -1147,6 +1147,18 @@
             <fullName>PRIVEE</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>MICRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FAMILIALES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AUTRE</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>Ownership</picklist>
