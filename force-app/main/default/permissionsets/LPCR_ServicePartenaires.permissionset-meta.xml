@@ -5220,7 +5220,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SBQQ__QuoteLine__c.LPCR_Indexation__c</field>
+        <field>SBQQ__QuoteLine__c.LPCR_IndexationCustom__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5998,6 +5998,17 @@
         <field>SBQQ__Quote__c.LPCR_DateLegaleResiliation__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_RemiseCustom__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_MontantIndexation2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__Invoice__c.LPCR_MethodesPaiement__c</field>
