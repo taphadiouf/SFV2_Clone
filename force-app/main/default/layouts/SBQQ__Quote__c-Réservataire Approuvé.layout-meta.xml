@@ -373,11 +373,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Conga_Composer_ContratReservation</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>SBQQ__CloneWithRelated</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>1</sortOrder>
@@ -412,6 +407,11 @@
             <actionType>QuickAction</actionType>
             <sortOrder>7</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Conga_Composer_ContratReservation</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <quickActionList>
         <quickActionListItems>
@@ -436,8 +436,8 @@
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>SBQQ__Product__c</fields>
+        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>SBQQ__Quantity__c</fields>
         <fields>LPCR_Creche__c</fields>
         <fields>LPCR_Region__c</fields>
@@ -484,7 +484,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1X000002kvub</masterLabel>
+        <masterLabel>00h1j000002sG4I</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

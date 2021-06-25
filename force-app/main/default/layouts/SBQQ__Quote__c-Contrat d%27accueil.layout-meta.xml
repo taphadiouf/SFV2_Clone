@@ -445,11 +445,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>SBQQ__EditLines</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>1</sortOrder>
@@ -475,6 +470,11 @@
             <sortOrder>5</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>LPCR_RDV_Telephonique</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>6</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>LogACall</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>7</sortOrder>
@@ -490,9 +490,9 @@
             <sortOrder>9</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>LPCR_RDV_Telephonique</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>6</sortOrder>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -519,11 +519,12 @@
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>SBQQ__Product__c</fields>
+        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>LPCR_MontantAnnuelForfaitMICRO__c</fields>
         <fields>SBQQ__Quantity__c</fields>
         <fields>LPCR_Creche__c</fields>
         <fields>LPCR_Region__c</fields>
-        <fields>LPCR_DateDebut__c</fields>
+        <fields>SBQQ__StartDate__c</fields>
         <fields>SBQQ__EndDate__c</fields>
         <fields>LAST_UPDATE</fields>
         <relatedList>SBQQ__QuoteLine__c.SBQQ__Quote__c</relatedList>
@@ -565,7 +566,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1j000002ryYo</masterLabel>
+        <masterLabel>00h1j000002sG43</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
