@@ -34,6 +34,10 @@
                 <behavior>Edit</behavior>
                 <field>Amount</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_LeadFamille__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
