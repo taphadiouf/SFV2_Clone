@@ -231,12 +231,12 @@
                 <field>SBQQ__TargetCustomerAmount__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_MontantIndexation__c</field>
+                <behavior>Readonly</behavior>
+                <field>LPCR_MontantIndexation2__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_Montant_Remise__c</field>
+                <behavior>Edit</behavior>
+                <field>LPCR_RemiseCustom__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -540,7 +540,9 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
+
         <masterLabel>00h0E000001quOR</masterLabel>
+
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
