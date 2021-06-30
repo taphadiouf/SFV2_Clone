@@ -93,10 +93,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_TypeDeVente__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>LPCR_MotifAnnulationDevis__c</field>
             </layoutItems>
         </layoutColumns>
@@ -544,7 +540,9 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0E000001iNZE</masterLabel>
+
+        <masterLabel>00h0E000001quOR</masterLabel>
+
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
