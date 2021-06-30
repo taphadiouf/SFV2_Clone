@@ -6,7 +6,7 @@
 IF(LPCR_AgrementTotal__c &lt;= 40, LPCR_AgrementTotal__c*1.15, 
 LPCR_AgrementTotal__c*1.2))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Agrément +120%</label>
+    <label>Agrément avec Surbook</label>
     <precision>18</precision>
     <required>false</required>
     <scale>1</scale>
