@@ -4831,6 +4831,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_NomsCrecheLibre__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_NumeroActeEngagement__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5352,6 +5357,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_ResiliationPossibleAu__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_AccesReseauLimite__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

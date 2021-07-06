@@ -8774,6 +8774,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_NomsCrecheLibre__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_Nombre_de_lignes_sans_PO__c</field>
         <readable>true</readable>
@@ -9416,6 +9421,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_ResiliationPossibleAu__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_AccesReseauLimite__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
