@@ -76,7 +76,7 @@ public with sharing class APC001_LeadFaConverController{
     }
     
     @AuraEnabled()
-    public static void convertLeadCtrl(Id leadId, List<Integer> enfantsIndexes, String chosenCrecheId, Id chosenCompteId){
+    public static string convertLeadCtrl(Id leadId, List<Integer> enfantsIndexes, String chosenCrecheId, Id chosenCompteId){
         
         Lead currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
         String prenomCoDemandeur = currentLead.LPCR_PrenomCoDemandeur__c;                                         
@@ -197,7 +197,15 @@ public with sharing class APC001_LeadFaConverController{
                     Birthdate = (Date) currentLead.get('LPCR_DateNaissance' + eachIndex + '__c'), 
                     OwnerId = currentLead.OwnerId, 
                     AccountId = newFamilleAccount.Id,
-                    RecordTypeId = enfantContactRT
+                    RecordTypeId = enfantContactRT,
+                    // IS-2502 Mapping contact enfant depuis le lead
+                    LPCR_AmplitudeHoraireLundi__c = (String) currentLead.get('LPCR_AmplitudeHoraireLundi' + eachIndex + '__c'),
+                    LPCR_AmplitudeHoraireMardi__c = (String) currentLead.get('LPCR_AmplitudeHoraireMardi' + eachIndex + '__c'),
+                    LPCR_AmplitudeHoraireMercredi__c = (String) currentLead.get('LPCR_AmplitudeHoraireMercredi' + eachIndex + '__c'),
+                    LPCR_AmplitudeHoraireJeudi__c = (String) currentLead.get('LPCR_AmplitudeHoraireJeudi' + eachIndex + '__c'),
+                    LPCR_AmplitudeHoraireVendredi__c = (String) currentLead.get('LPCR_AmplitudeHoraireVendredi' + eachIndex + '__c'),
+                    LPCR_DatePreinscription__c=(Date) currentLead.LPCR_DatePreinscription__c, 
+                    LPCR_DateEntreeCrecheSouhaitee__c=(Date) currentLead.get('LPCR_DateEntreeCreche' + eachIndex + '__c')
                 ));
         }
         
@@ -209,6 +217,19 @@ public with sharing class APC001_LeadFaConverController{
             errMsg = 'Un doublon a été détécté sur le '+ saveResultMsg;
             isvalid = False ;
             throw new AuraHandledException(errMsg);
+        }
+        //Set Reprsentants1 and Reprsentants2 fields for contactEnfant
+        // IS-2502 Mapping contact enfant depuis le lead
+        for(Integer eachIndex : enfantsIndexes){
+            if(newContactsMap.get('contactRep1') != null)
+                newContactsMap.get('contactEnfant'+ eachIndex).LPCR_Representant1__c=newContactsMap.get('contactRep1').Id;
+            if(newContactsMap.get('contactRep2') != null)
+                newContactsMap.get('contactEnfant'+ eachIndex).LPCR_Representant2__c=newContactsMap.get('contactRep2').Id;
+        }
+        try {
+            upsert newContactsMap.values();
+        } catch (Exception e ) {
+            throw new AuraHandledException(e.getMessage() + '|Line :' + e.getLineNumber());
         }
         
         //Set Reprsentants1 and Reprsentants2 fields for newFamilleAccount  
@@ -321,6 +342,9 @@ public with sharing class APC001_LeadFaConverController{
                 }
             }
         }
+        // PRA IS-2330 Modification de la page d'atterrissage conversion pour le renvoyer sur l'opp famille
+        currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
+        return currentLead.convertedOpportunityId;
     }
     
     public static string validateSaveResult(List<Database.SaveResult> saveResultList) {
