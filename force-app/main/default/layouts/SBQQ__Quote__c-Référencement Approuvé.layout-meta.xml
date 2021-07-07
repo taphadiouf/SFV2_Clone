@@ -146,7 +146,7 @@
                 <field>SBQQ__NetAmount__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_MontantIndexation__c</field>
             </layoutItems>
             <layoutItems>
@@ -176,7 +176,7 @@
                 <field>LPCR_DateResiliation__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_MotifAnnulationDevis__c</field>
             </layoutItems>
         </layoutColumns>
@@ -242,7 +242,7 @@
                 <field>LPCR_MethodeRenouvellement__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_DureeEngagementRef__c</field>
             </layoutItems>
         </layoutColumns>
@@ -252,11 +252,11 @@
                 <field>SBQQ__MasterContract__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_ResiliationPossibleAu__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_Annee__c</field>
             </layoutItems>
         </layoutColumns>
@@ -318,7 +318,7 @@
                 <field>LPCR_InitAutoAvecDateDebut__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_SocieteFacturante__c</field>
             </layoutItems>
         </layoutColumns>
@@ -488,7 +488,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0E000001qvay</masterLabel>
+        <masterLabel>00h1X0000022zNg</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
