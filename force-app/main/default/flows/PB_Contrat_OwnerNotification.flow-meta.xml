@@ -50,13 +50,13 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
                 <processMetadataValues>
                     <name>inputDataType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>ID</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>leftHandSideType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>ID</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
@@ -68,13 +68,13 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
                 <processMetadataValues>
                     <name>rightHandSideType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>ID</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.RecordType.DeveloperName</leftValueReference>
+                <leftValueReference>myVariable_current.RecordType.Id</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Accueil</stringValue>
+                    <stringValue>0121j000001JOzWAAW</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -146,7 +146,7 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
         </rules>
     </decisions>
     <description>Notification au propriétaire d&apos;un contrat de réservation avec des commandes actives lors de la résiliation d&apos;un contrat d&apos;accueil associé</description>
-    <interviewLabel>PB_Contrat_OwnerNotification-1_InterviewLabel</interviewLabel>
+    <interviewLabel>PB_Contrat_OwnerNotification-2_InterviewLabel</interviewLabel>
     <label>PB_Contrat_OwnerNotification</label>
     <processMetadataValues>
         <name>ObjectType</name>
