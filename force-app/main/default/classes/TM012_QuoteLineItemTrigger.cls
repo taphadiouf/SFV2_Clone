@@ -8,6 +8,8 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
     private List<SBQQ__QuoteLine__c> newQuoteLineList;
     private Map<Id,SBQQ__QuoteLine__c> newQuoteLineMap;
     private Map<Id,SBQQ__QuoteLine__c> oldQuoteLineMap;
+   
+    
     public TM012_QuoteLineItemTrigger() {
         
         this.newQuoteLineList = (List<SBQQ__QuoteLine__c>) Trigger.new;
@@ -35,6 +37,7 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
     protected override void afterInsert() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')) {
             SM013_QuoteLineServices.updateIndexationRemiseQuote(newQuoteLineList,newQuoteLineMap);
+            SM013_QuoteLineServices.updateContactQLI(newQuoteLineMap);
         }
         
     }

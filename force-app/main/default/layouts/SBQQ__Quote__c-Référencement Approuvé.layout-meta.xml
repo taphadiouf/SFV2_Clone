@@ -146,12 +146,12 @@
                 <field>SBQQ__NetAmount__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_MontantIndexation__c</field>
+                <behavior>Readonly</behavior>
+                <field>LPCR_MontantIndexation2__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_Montant_Remise__c</field>
+                <field>LPCR_RemiseCustom__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -176,7 +176,7 @@
                 <field>LPCR_DateResiliation__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_MotifAnnulationDevis__c</field>
             </layoutItems>
         </layoutColumns>
@@ -242,8 +242,16 @@
                 <field>LPCR_MethodeRenouvellement__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_DureeEngagementRef__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_AccesReseauLimite__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_NomsCrecheLibre__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -252,11 +260,11 @@
                 <field>SBQQ__MasterContract__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_ResiliationPossibleAu__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_Annee__c</field>
             </layoutItems>
         </layoutColumns>
@@ -318,7 +326,7 @@
                 <field>LPCR_InitAutoAvecDateDebut__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_SocieteFacturante__c</field>
             </layoutItems>
         </layoutColumns>
@@ -391,11 +399,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>EnvoiBonCommande</actionName>
-            <actionType>CustomButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>NewEvent</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
@@ -434,6 +437,11 @@
             <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>8</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>EnvoiBonCommande</actionName>
+            <actionType>CustomButton</actionType>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
@@ -488,7 +496,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0E000001qvay</masterLabel>
+        <masterLabel>00h1j000002qXCz</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

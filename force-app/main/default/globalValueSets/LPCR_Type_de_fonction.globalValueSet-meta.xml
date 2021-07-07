@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
+        <fullName>À qualifier</fullName>
+        <default>false</default>
+        <label>À qualifier</label>
+    </customValue>
+    <customValue>
         <fullName>Pôle direction générale</fullName>
         <default>false</default>
         <label>Pôle direction générale</label>

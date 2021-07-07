@@ -13,11 +13,31 @@
         <valueSetName>LPCR_Fonction</valueSetName>
         <valueSettings>
             <controllingFieldValue>CE</controllingFieldValue>
+            <controllingFieldValue>Autre</controllingFieldValue>
+            <controllingFieldValue>À qualifier</controllingFieldValue>
+            <controllingFieldValue>Pôle direction générale</controllingFieldValue>
+            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
+            <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
+            <controllingFieldValue>Pôle développement durable, environnement, RSE</controllingFieldValue>
+            <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
+            <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <controllingFieldValue>Pôle commercial</controllingFieldValue>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <controllingFieldValue>Public</controllingFieldValue>
+            <controllingFieldValue>PLAC</controllingFieldValue>
+            <valueName>À qualifier</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>CE</controllingFieldValue>
             <valueName>Secrétaire</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>CE</controllingFieldValue>
             <valueName>Trésorier</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Autre</controllingFieldValue>
+            <valueName>Autre</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle direction générale</controllingFieldValue>
@@ -62,10 +82,6 @@
         <valueSettings>
             <controllingFieldValue>Pôle direction générale</controllingFieldValue>
             <valueName>Assistante de Direction</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Autre</controllingFieldValue>
-            <valueName>Autre</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle achat, services</controllingFieldValue>

@@ -452,5 +452,45 @@ public with sharing class SM013_QuoteLineServices {
         
         
     }
-    
+     //method to update contacts on QLI
+     public static void updateContactQLI(Map<Id,SBQQ__QuoteLine__c> newQuoteLineMap){
+        List<id> lstQuote=new List<id> () ;  
+        Map<String,Id> mapContactTypeQuote =new Map<String,Id>();
+        List<SBQQ__QuoteLine__c> lstQLIUpdate=new List<SBQQ__QuoteLine__c>();
+        for(SBQQ__QuoteLine__c qli:newQuoteLineMap.values()){
+            lstQuote.add(qli.SBQQ__Quote__c );
+        }
+        for(SBQQ__Quote__c eachNewQuote :[Select id,LPCR_ContactFacturation__c,SBQQ__PrimaryContact__c ,LPCR_ContactInscriptions__c from SBQQ__Quote__c  where Id IN:lstQuote]){
+            if(eachNewQuote.LPCR_ContactFacturation__c != null){
+                mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Fac',eachNewQuote.LPCR_ContactFacturation__c );
+            }
+            if(eachNewQuote.LPCR_ContactInscriptions__c != null){
+                mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Insc',eachNewQuote.LPCR_ContactInscriptions__c );
+            }
+            if(eachNewQuote.SBQQ__PrimaryContact__c != null){
+                mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Primary',eachNewQuote.SBQQ__PrimaryContact__c );
+            }
+        }
+        
+        for(SBQQ__QuoteLine__c qli:newQuoteLineMap.values()){
+            SBQQ__QuoteLine__c qli2=new SBQQ__QuoteLine__c(Id=qli.ID);
+            if(mapContactTypeQuote.containsKey(qli.SBQQ__Quote__c+'-'+'Fac')){
+            qli2.LPCR_ContactFacturation__c=mapContactTypeQuote.get(qli.SBQQ__Quote__c+'-'+'Fac');
+            }
+            //
+            if(mapContactTypeQuote.containsKey(qli.SBQQ__Quote__c+'-'+'Insc')){
+            qli2.LPCR_ContactInscriptions__c=mapContactTypeQuote.get(qli.SBQQ__Quote__c+'-'+'Insc');
+         
+            }
+            //
+            if(mapContactTypeQuote.containsKey(qli.SBQQ__Quote__c+'-'+'Primary')){
+            qli2.LPCR_PrimaryContact__c=mapContactTypeQuote.get(qli.SBQQ__Quote__c+'-'+'Primary');
+            }
+            lstQLIUpdate.add(qli2);
+        }
+       if(lstQLIUpdate.size() > 0){
+        update lstQLIUpdate;
+        }
+        
+    }
 }
