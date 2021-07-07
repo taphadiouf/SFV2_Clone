@@ -49,8 +49,8 @@ export default class Lwc002_ConvertButton_LeadFamille extends NavigationMixin(Li
             chosenCrecheId : this.chosenCrecheId,
             chosenCompteId : this.chosenCompteId
         })
-        .then(()=>{
-            this.redirect();
+        .then((response)=>{
+            this.redirect(response);
         })
         .then(()=>{
             this.dispatchEvent(new ShowToastEvent({
@@ -71,12 +71,13 @@ export default class Lwc002_ConvertButton_LeadFamille extends NavigationMixin(Li
          
         });
     }
-    redirect(){
+    redirect(opportunityId){
         this[NavigationMixin.Navigate]({
-            type: 'standard__objectPage',
+            type: 'standard__recordPage',
             attributes: {
-                objectApiName: 'Lead',
-                actionName: 'home'
+                recordId: opportunityId,
+                objectApiName: 'Opportunity',
+                actionName: 'view'
             }
         });
     }
