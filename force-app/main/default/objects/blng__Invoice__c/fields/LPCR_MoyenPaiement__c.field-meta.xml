@@ -26,6 +26,11 @@
                 <default>false</default>
                 <label>Virement</label>
             </value>
+            <value>
+                <fullName>Prélèvement auto</fullName>
+                <default>false</default>
+                <label>Prélèvement auto</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
