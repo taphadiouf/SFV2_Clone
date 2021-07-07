@@ -1400,6 +1400,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contact.LPCR_OptinEmailCom__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Contact.LPCR_ProtocoleMedical__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3531,6 +3536,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_ObjetMessage__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_OptinEmailCom__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

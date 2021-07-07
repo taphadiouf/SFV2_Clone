@@ -1508,6 +1508,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contact.LPCR_OptinEmailCom__c</field>
+        <readable>true</readable>
+    </fieldPermissions>        
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Contact.LPCR_OffresPartFamillePetiteEnfance__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4580,6 +4585,11 @@
         <field>Lead.LPCR_ObjetMessage__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_OptinEmailCom__c</field>
+        <readable>true</readable>
+    </fieldPermissions>        
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_PardotRecordType__c</field>
