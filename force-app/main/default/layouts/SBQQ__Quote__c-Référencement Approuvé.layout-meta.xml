@@ -175,23 +175,19 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_DateResiliation__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_MotifAnnulationDevis__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_ContactPrincipalFormule__c</field>
+                <field>LPCR_DateReceptionCourrierResiliation__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_ContactInscriptionsFormule__c</field>
+                <field>LPCR_DateResiliationSouhaitee__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_ContactFacturationFormule__c</field>
+                <field>LPCR_MotifAnnulationDevis__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -496,7 +492,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1j000002qXCz</masterLabel>
+        <masterLabel>00h3O000000i96M</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
