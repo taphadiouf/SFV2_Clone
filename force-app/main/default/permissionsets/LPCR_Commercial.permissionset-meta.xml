@@ -2472,6 +2472,11 @@
     <field>LPCR_Avoir__c.LPCR_LigneFacture__c</field>
     <readable>true</readable>
 </fieldPermissions>
+<fieldPermissions>
+    <editable>true</editable>
+    <field>LPCR_Avoir__c.LPCR_TypeAvoir__c</field>
+    <readable>true</readable>
+</fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_BaremeCAF__c.LPCR_DateDebut__c</field>
