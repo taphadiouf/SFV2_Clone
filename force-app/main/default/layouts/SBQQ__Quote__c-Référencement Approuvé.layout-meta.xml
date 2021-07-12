@@ -195,23 +195,19 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_DateResiliation__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_MotifAnnulationDevis__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_ContactPrincipalFormule__c</field>
+                <field>LPCR_DateReceptionCourrierResiliation__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_ContactInscriptionsFormule__c</field>
+                <field>LPCR_DateResiliationSouhaitee__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_ContactFacturationFormule__c</field>
+                <field>LPCR_MotifAnnulationDevis__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
