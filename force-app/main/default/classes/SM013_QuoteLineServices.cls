@@ -328,6 +328,8 @@ public with sharing class SM013_QuoteLineServices {
         Map<String,Id> mapUniqueKeyQLIamendement=new Map<String,Id>();
         Map<String,Decimal> mapUniqueKeyQLIoriginal=new Map<String,Decimal>();
         Map<Id,String> mapUniqueKeyQLIamendementReverse = new Map<Id,String>();
+        Map<id,Decimal> mapQuoteRemiseMontant =new Map<id,Decimal>();
+        List<SBQQ__Quote__c> quoteListToUpdate=new List<SBQQ__Quote__c>();
         for(SBQQ__QuoteLine__c qli : quoteLineList){
             System.debug('#pdo this is type '+qli.LPCR_TypeDeDevis__c);
             System.debug('#pdo this is contrat devis '+qli.LPCR_MasterContrat__c);
@@ -340,6 +342,14 @@ public with sharing class SM013_QuoteLineServices {
                 quoteOriginalQLIAmendement.put(qli.LPCR_QuoteOriginal__c,qli.Id);
                 mapUniqueKeyQLIamendement.put(qli.LPCR_QuoteOriginal__c+qli.SBQQ__ProductCode__c+qli.SBQQ__Quantity__c ,qli.Id);
                 mapUniqueKeyQLIamendementReverse.put(qli.Id,qli.LPCR_QuoteOriginal__c+qli.SBQQ__ProductCode__c+qli.SBQQ__Quantity__c );
+            }
+            if(qli.LPCR_TypeDeDevis__c == 'Quote' && qli.LPCR_Remise__c != 0 ){
+                if(!mapQuoteRemiseMontant.containsKey(qli.SBQQ__Quote__c)){
+                    mapQuoteRemiseMontant.put(qli.SBQQ__Quote__c,qli.LPCR_Remise__c);
+                }else{
+                    mapQuoteRemiseMontant.put(qli.SBQQ__Quote__c,mapQuoteRemiseMontant.get(qli.SBQQ__Quote__c)+qli.LPCR_Remise__c);
+                    
+                }
             }
             
         }
@@ -355,8 +365,14 @@ public with sharing class SM013_QuoteLineServices {
             if(qli.LPCR_TypeDeDevis__c=='Amendment'){
                 lstQuoteLineUpdate.add(new SBQQ__QuoteLine__c (Id=qli.Id,LPCR_IndexationCustom__c=mapUniqueKeyQLIoriginal.get(mapUniqueKeyQLIamendementReverse.get(qli.ID))));
                 //lstQuoteLineUpdate.add(new SBQQ__QuoteLine__c (Id=qli.Id,LPCR_IndexationCustom__c=100));
+                //if cloned 
+                if(qli.LPCR_Clone__c){
+                    
+                }
             }
+            
         }
+        System.debug('pdo this is remise montant '+mapQuoteRemiseMontant);
         System.debug('pdo this is list to update'+lstQuoteLineUpdate);
         //query data in abonnement 
         for(SBQQ__Subscription__c subs :[SELECT Id,SBQQ__CustomerPrice__c,SBQQ__ProrateMultiplier__c FROM SBQQ__Subscription__c where id IN : mapQuoteInitialQuoteRenewal.values()]){
@@ -380,10 +396,101 @@ public with sharing class SM013_QuoteLineServices {
             }
             
         }
+        //update quote 
+        for(Id key : mapQuoteRemiseMontant.keySet()){
+            quoteListToUpdate.add(new SBQQ__Quote__c(id=key,LPCR_RemiseCustom__c=mapQuoteRemiseMontant.get(key)));
+        }
+        if(quoteListToUpdate.size() > 0){
+            update quoteListToUpdate;
+        }
         if(lstQuoteLineUpdate.size() > 0 ){
             update lstQuoteLineUpdate;
         }
         
+        
+        
+    }
+    public static void updateRemiseQuote(Map<Id,SBQQ__QuoteLine__c> oldQuoteLineMap, Map<Id,SBQQ__QuoteLine__c> newQuoteLineMap){
+        Map<id,Decimal> mapQuoteRemiseMontant =new Map<id,Decimal>();
+        List<SBQQ__Quote__c> quoteListToUpdate=new List<SBQQ__Quote__c>();
+        List<SBQQ__Quote__c> quoteListUnmatch=new List<SBQQ__Quote__c>();
+        Map<id,Decimal> mapQuoteRemiseMontantDevis =new Map<id,Decimal>();
+        for(Id key :newQuoteLineMap.keySet() ){
+            System.debug('##Pdo this is qli type '+newQuoteLineMap.get(key).LPCR_TypeDeDevis__c);
+            System.debug('##Pdo this is qli type '+newQuoteLineMap.get(key).id);
+            if(newQuoteLineMap.get(key).LPCR_Remise__c != oldQuoteLineMap.get(key).LPCR_Remise__c && newQuoteLineMap.get(key).LPCR_Clone__c &&newQuoteLineMap.get(key).LPCR_TypeDeDevis__c=='Amendment' ){
+                if(!mapQuoteRemiseMontant.containsKey(newQuoteLineMap.get(key).SBQQ__Quote__c)){
+                    mapQuoteRemiseMontant.put(newQuoteLineMap.get(key).SBQQ__Quote__c,newQuoteLineMap.get(key).LPCR_Remise__c);
+                }else{
+                    mapQuoteRemiseMontant.put(newQuoteLineMap.get(key).SBQQ__Quote__c,mapQuoteRemiseMontant.get(newQuoteLineMap.get(key).SBQQ__Quote__c)+newQuoteLineMap.get(key).LPCR_Remise__c);
+                    
+                }
+            }
+            //for quote devis 
+            if(newQuoteLineMap.get(key).LPCR_Remise__c != oldQuoteLineMap.get(key).LPCR_Remise__c && newQuoteLineMap.get(key).LPCR_TypeDeDevis__c=='Quote' ){
+                if(!mapQuoteRemiseMontantDevis.containsKey(newQuoteLineMap.get(key).SBQQ__Quote__c)){
+                    mapQuoteRemiseMontantDevis.put(newQuoteLineMap.get(key).SBQQ__Quote__c,newQuoteLineMap.get(key).LPCR_Remise__c -oldQuoteLineMap.get(key).LPCR_Remise__c );
+                }else{
+                    mapQuoteRemiseMontantDevis.put(newQuoteLineMap.get(key).SBQQ__Quote__c,mapQuoteRemiseMontantDevis.get(newQuoteLineMap.get(key).SBQQ__Quote__c)+(newQuoteLineMap.get(key).LPCR_Remise__c-oldQuoteLineMap.get(key).LPCR_Remise__c));
+                    
+                }
+            }
+        }
+        //get existing quote
+        for(SBQQ__Quote__c quot :[Select id, LPCR_RemiseCustom__c from SBQQ__Quote__c where id IN:mapQuoteRemiseMontantDevis.keyset() ]){
+            //to add verif map 
+        	quoteListToUpdate.add(new SBQQ__Quote__c(id=quot.Id, LPCR_RemiseCustom__c=quot.LPCR_RemiseCustom__c+mapQuoteRemiseMontantDevis.get(quot.Id)));
+    	}
+        System.debug('##pdot quore to update '+quoteListToUpdate);
+        //update quote 
+        for(Id key : mapQuoteRemiseMontant.keySet()){
+            quoteListToUpdate.add(new SBQQ__Quote__c(id=key,LPCR_RemiseCustom__c=mapQuoteRemiseMontant.get(key)));
+        }
+        if(quoteListToUpdate.size() > 0){
+            update quoteListToUpdate;
+        }
+        
+        
+    }
+     //method to update contacts on QLI
+     public static void updateContactQLI(Map<Id,SBQQ__QuoteLine__c> newQuoteLineMap){
+        List<id> lstQuote=new List<id> () ;  
+        Map<String,Id> mapContactTypeQuote =new Map<String,Id>();
+        List<SBQQ__QuoteLine__c> lstQLIUpdate=new List<SBQQ__QuoteLine__c>();
+        for(SBQQ__QuoteLine__c qli:newQuoteLineMap.values()){
+            lstQuote.add(qli.SBQQ__Quote__c );
+        }
+        for(SBQQ__Quote__c eachNewQuote :[Select id,LPCR_ContactFacturation__c,SBQQ__PrimaryContact__c ,LPCR_ContactInscriptions__c from SBQQ__Quote__c  where Id IN:lstQuote]){
+            if(eachNewQuote.LPCR_ContactFacturation__c != null){
+                mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Fac',eachNewQuote.LPCR_ContactFacturation__c );
+            }
+            if(eachNewQuote.LPCR_ContactInscriptions__c != null){
+                mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Insc',eachNewQuote.LPCR_ContactInscriptions__c );
+            }
+            if(eachNewQuote.SBQQ__PrimaryContact__c != null){
+                mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Primary',eachNewQuote.SBQQ__PrimaryContact__c );
+            }
+        }
+        
+        for(SBQQ__QuoteLine__c qli:newQuoteLineMap.values()){
+            SBQQ__QuoteLine__c qli2=new SBQQ__QuoteLine__c(Id=qli.ID);
+            if(mapContactTypeQuote.containsKey(qli.SBQQ__Quote__c+'-'+'Fac')){
+            qli2.LPCR_ContactFacturation__c=mapContactTypeQuote.get(qli.SBQQ__Quote__c+'-'+'Fac');
+            }
+            //
+            if(mapContactTypeQuote.containsKey(qli.SBQQ__Quote__c+'-'+'Insc')){
+            qli2.LPCR_ContactInscriptions__c=mapContactTypeQuote.get(qli.SBQQ__Quote__c+'-'+'Insc');
+         
+            }
+            //
+            if(mapContactTypeQuote.containsKey(qli.SBQQ__Quote__c+'-'+'Primary')){
+            qli2.LPCR_PrimaryContact__c=mapContactTypeQuote.get(qli.SBQQ__Quote__c+'-'+'Primary');
+            }
+            lstQLIUpdate.add(qli2);
+        }
+       if(lstQLIUpdate.size() > 0){
+        update lstQLIUpdate;
+        }
         
     }
 }

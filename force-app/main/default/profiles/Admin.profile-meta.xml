@@ -6381,6 +6381,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_AccesReseauLimite__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_Added_Product_Using_QCP__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6697,6 +6702,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_Nombreberceauxgratuits__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_NomsCrecheLibre__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9408,7 +9418,7 @@
         <recordType>Account.Entreprise</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Account-Entreprise</layout>
+        <layout>Account-Etablissement</layout>
         <recordType>Account.Etablissement_LPCR</recordType>
     </layoutAssignments>
     <layoutAssignments>

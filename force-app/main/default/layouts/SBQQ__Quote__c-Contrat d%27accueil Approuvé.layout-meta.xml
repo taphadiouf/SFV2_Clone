@@ -44,7 +44,7 @@
                 <field>SBQQ__Opportunity2__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_TypeOpportunite__c</field>
             </layoutItems>
             <layoutItems>
@@ -54,10 +54,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LPCR_CompteFacturation__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_TypeDeVente__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -99,7 +95,7 @@
         <label>Information de facturation</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_NouveauPlanFacture__c</field>
             </layoutItems>
             <layoutItems>
@@ -117,7 +113,7 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_RenouvellementPlanFacture__c</field>
             </layoutItems>
             <layoutItems>
@@ -142,12 +138,12 @@
                 <field>SBQQ__NetAmount__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_MontantIndexation__c</field>
+                <behavior>Readonly</behavior>
+                <field>LPCR_MontantIndexation2__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>LPCR_Montant_Remise__c</field>
+                <field>LPCR_RemiseCustom__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -172,17 +168,17 @@
                 <field>LPCR_DateResiliation__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_MotifAnnulationDevis__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_DateReceptionCourrierResiliation__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_DateResiliationSouhaitee__c</field>
             </layoutItems>
             <layoutItems>
@@ -234,7 +230,7 @@
                 <field>LPCR_MasterDevis__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_MethodeRenouvellement__c</field>
             </layoutItems>
         </layoutColumns>
@@ -402,7 +398,7 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_SocieteFacturante__c</field>
             </layoutItems>
         </layoutColumns>
@@ -448,16 +444,6 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
-            <actionName>NewTask</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>8</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>SendEmail</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>7</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>EnvoiContratAccueil</actionName>
             <actionType>CustomButton</actionType>
             <sortOrder>0</sortOrder>
@@ -491,6 +477,16 @@
             <actionName>LogACall</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>6</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SendEmail</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>7</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>NewTask</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>8</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
@@ -555,7 +551,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0E000001nZgB</masterLabel>
+        <masterLabel>00h1X0000022zNP</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
