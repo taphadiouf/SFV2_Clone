@@ -179,6 +179,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_AdhesionStatusValue__c</picklist>
+        <values>
+            <fullName>0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_AllocataireCAF__c</picklist>
         <values>
             <fullName>Représentant 1</fullName>
@@ -635,6 +646,17 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_DispositifExistantCompte__c</picklist>
+        <values>
+            <fullName>Aucun</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Travaille avec la concurrence</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_DispositifsExistants__c</picklist>
         <values>
             <fullName>Aucun</fullName>
@@ -751,6 +773,10 @@
         </values>
         <values>
             <fullName>Espèce</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prélèvement auto</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1123,10 +1149,6 @@
         </values>
         <values>
             <fullName>Grand Compte</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MID</fullName>
             <default>false</default>
         </values>
         <values>

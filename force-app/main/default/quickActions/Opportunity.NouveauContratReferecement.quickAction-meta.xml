@@ -10,7 +10,7 @@
     </fieldOverrides>
     <fieldOverrides>
         <field>LPCR_ContactInscriptions__c</field>
-        <formula>Opportunity.LPCR_Ref_ContactFacturation__c</formula>
+        <formula>Opportunity.LPCR_Ref_ContactInscription__c</formula>
     </fieldOverrides>
     <fieldOverrides>
         <field>LPCR_Creation_conforme__c</field>

@@ -263,16 +263,16 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_ContactPrincipalFormule__c</field>
+                <behavior>Edit</behavior>
+                <field>SBQQ__PrimaryContact__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_ContactInscriptionsFormule__c</field>
+                <behavior>Edit</behavior>
+                <field>LPCR_ContactInscriptions__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_ContactFacturationFormule__c</field>
+                <behavior>Edit</behavior>
+                <field>LPCR_ContactFacturation__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -466,9 +466,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-
-        <masterLabel>00h0E000001qvaz</masterLabel>
-
+        <masterLabel>00h3O000000i96N</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
