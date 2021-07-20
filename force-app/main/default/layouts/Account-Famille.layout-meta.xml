@@ -495,6 +495,15 @@
     </relatedLists>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
+        <fields>SBQQ__Contract__c</fields>
+        <fields>SBQQ__QuoteLine__c</fields>
+        <fields>SBQQ__Account__c</fields>
+        <fields>SBQQ__StartDate__c</fields>
+        <fields>SBQQ__EndDate__c</fields>
+        <relatedList>SBQQ__Subscription__c.LPCR_CompteFamille__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>blng__InvoiceDate__c</fields>
         <fields>blng__TotalAmount__c</fields>
