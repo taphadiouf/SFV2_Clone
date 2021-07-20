@@ -21,6 +21,13 @@
                     <lightning-input type="date"  name="datedebut"   label="Date de début de l'avoir " value={DateDebut} ></lightning-input>
                     <lightning-input type="date" name="datefin"   label="Date de fin de l'avoir: " value={DateFin} ></lightning-input>
                     </template>
+                    <lightning-combobox
+                    name="progress"
+                    label="Nature de l'avoir"
+                    value={natureavoir}
+                    placeholder="Choisir nature d'avoir"
+                    options={optionsNature}
+                    onchange={handleChangeNature} ></lightning-combobox>
                     <lightning-input type="text"   label="Societe Facturante" value={socfac} readonly></lightning-input>
                     <lightning-input type="text" label="CT Num" value={ctnum} readonly></lightning-input>   
                 </div>		
