@@ -864,6 +864,10 @@
             <fullName>Trésorier</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>À qualifier</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_Fonction__c</picklist>
@@ -1243,6 +1247,10 @@
             <fullName>Trésorier</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>À qualifier</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_Garde__c</picklist>
@@ -1256,6 +1264,21 @@
         </values>
         <values>
             <fullName>Garde parent unique</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_MotifDisqualification__c</picklist>
+        <values>
+            <fullName>Aide pour création d%27une structure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Franchise</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1651,6 +1674,10 @@
             <fullName>Pôle informatique %26 Technique</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>À qualifier</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_TypeFonction__c</picklist>
@@ -1702,6 +1729,10 @@
             <fullName>Pôle informatique %26 Technique</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>À qualifier</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_TypePrestation__c</picklist>
@@ -1721,19 +1752,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>AUTRE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>FAMILIALES</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>HOSPITALIERE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MICRO</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1752,7 +1771,7 @@
     <picklistValues>
         <picklist>LeadSource</picklist>
         <values>
-            <fullName>Appel d%27Offre</fullName>
+            <fullName>Prospection</fullName>
             <default>false</default>
         </values>
         <values>
@@ -1760,35 +1779,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Challenge</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Chargé d%27affaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Directrice de crèche</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Evènement</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Publicité</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Recherche Internet</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Site Internet Grandir</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Siège</fullName>
             <default>false</default>
         </values>
     </picklistValues>
