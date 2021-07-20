@@ -382,13 +382,20 @@
         <fields>LPCR_TotalFacture__c</fields>
         <relatedList>LPCR_LienFamilleFacture__c.LPCR_Facture__c</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>LPCR_Montant__c</fields>
+        <fields>LPCR_TypeAvoir__c</fields>
+        <fields>CREATED_DATE</fields>
+        <relatedList>LPCR_Avoir__c.LPCR_Facture__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h9E000000Ty9H</masterLabel>
+        <masterLabel>00h3N000002h73L</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
