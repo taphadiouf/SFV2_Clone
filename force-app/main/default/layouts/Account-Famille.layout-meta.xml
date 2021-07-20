@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>blng__CreditCenter</customButtons>
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -490,6 +487,15 @@
     </relatedLists>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
+        <fields>SBQQ__Contract__c</fields>
+        <fields>SBQQ__QuoteLine__c</fields>
+        <fields>SBQQ__Account__c</fields>
+        <fields>SBQQ__StartDate__c</fields>
+        <fields>SBQQ__EndDate__c</fields>
+        <relatedList>SBQQ__Subscription__c.LPCR_CompteFamille__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>blng__InvoiceDate__c</fields>
         <fields>blng__TotalAmount__c</fields>
@@ -532,7 +538,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000002Qwo5</masterLabel>
+        <masterLabel>00h3O000000qV2w</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
