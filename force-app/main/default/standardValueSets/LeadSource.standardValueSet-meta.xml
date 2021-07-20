@@ -27,6 +27,11 @@
         <label>Recherche Internet</label>
     </standardValue>
     <standardValue>
+        <fullName>Advertisement</fullName>
+        <default>false</default>
+        <label>Publicité Non Utilisé</label>
+    </standardValue>
+    <standardValue>
         <fullName>Publicité</fullName>
         <default>false</default>
         <label>Publicité</label>
@@ -45,6 +50,11 @@
         <fullName>Evènement</fullName>
         <default>false</default>
         <label>Evènement</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
     </standardValue>
     <standardValue>
         <fullName>Autre</fullName>
