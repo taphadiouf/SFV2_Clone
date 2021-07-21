@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_PrimaryContact__c</fullName>
+    <fullName>LPCR_PrimaryContactDEL__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Contact Principal</label>
-    <referenceTo>Contact</referenceTo>
+    <label>Contact PrincipalDEL</label>
+    <referenceTo>Contract</referenceTo>
     <relationshipLabel>Abonnements (Contact Principal)</relationshipLabel>
-    <relationshipName>Abonnements3</relationshipName>
+    <relationshipName>Abonnements2</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
