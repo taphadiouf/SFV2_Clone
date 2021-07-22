@@ -232,7 +232,20 @@
                 <field>LPCR_ResponsableServiceFamille__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_ContactFacturation__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_ContactInscriptions__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_ContactPrincipal__c</field>
+            </layoutItems>
+        </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -386,6 +399,8 @@
     <relatedLists>
         <fields>NAME</fields>
         <fields>LPCR_NumBonCommande__c</fields>
+        <fields>LPCR_QuantiteProduits__c</fields>
+        <fields>LPCR_Creche__c</fields>
         <fields>SBQQ__StartDate__c</fields>
         <fields>SBQQ__EndDate__c</fields>
         <fields>LPCR_PrixUnitaire__c</fields>

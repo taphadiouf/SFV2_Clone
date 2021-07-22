@@ -864,6 +864,10 @@
             <fullName>Trésorier</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>À qualifier</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_Fonction__c</picklist>
@@ -1241,6 +1245,10 @@
         </values>
         <values>
             <fullName>Trésorier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>À qualifier</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -1651,6 +1659,10 @@
             <fullName>Pôle informatique %26 Technique</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>À qualifier</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LPCR_TypeFonction__c</picklist>
@@ -1700,6 +1712,10 @@
         </values>
         <values>
             <fullName>Pôle informatique %26 Technique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>À qualifier</fullName>
             <default>false</default>
         </values>
     </picklistValues>
