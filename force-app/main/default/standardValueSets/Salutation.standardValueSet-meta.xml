@@ -20,5 +20,17 @@
         <fullName>Fe</fullName>
         <default>false</default>
         <label>F</label>
+    </standardValue>      
+    <standardValue>
+        <fullName>Mr.</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Mr.</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Mrs.</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Mrs.</label>
     </standardValue>
 </StandardValueSet>
