@@ -1064,6 +1064,7 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
+        <booleanFilter>(1 AND 2 AND 3) OR (2 AND 4)</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.ApprovalStatus__c</field>
             <operation>equals</operation>
@@ -1079,6 +1080,11 @@
             <operation>equals</operation>
             <value>Prêt à envoyer,Prêt pour commande</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Signé</value>
+        </criteriaItems>
         <description>Update RT quand le contrat d&apos;accueil est approuvé.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
@@ -1089,8 +1095,33 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
+        <booleanFilter>1 AND 2 AND ((3 AND 4) OR 5)</booleanFilter>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Contrat de Réservation</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Primary__c</field>
+            <operation>equals</operation>
+            <value>Vrai</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.ApprovalStatus__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Prêt à envoyer,Prêt pour commande</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Signé</value>
+        </criteriaItems>
         <description>Update RT quand le Contrat de Réservation est approuvé.</description>
-        <formula>AND(TEXT( ApprovalStatus__c ) = &apos;Approved&apos;, RecordType.DeveloperName = &apos;Reservataire&apos;, SBQQ__Primary__c = TRUE, OR( ISPICKVAL(SBQQ__Status__c, &apos;Prêt à envoyer&apos;),ISPICKVAL(SBQQ__Status__c,&apos;Prêt pour commande&apos;) ) )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
@@ -1100,7 +1131,7 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
-        <booleanFilter>1 AND 2 AND 3 AND (( 11 AND 7 AND 9 ) OR ( 10 AND 4) OR ( 5 AND 4 AND (6 OR 8)) OR ( 5 AND 7 AND ( NOT 6) AND (NOT 8)))</booleanFilter>
+        <booleanFilter>(2 AND 11 AND 12) OR (1 AND 2 AND 3 AND (( 11 AND 7 AND 9 ) OR ( 10 AND 4) OR ( 5 AND 4 AND (6 OR 8)) OR ( 5 AND 7 AND ( NOT 6) AND (NOT 8))))</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.ApprovalStatus__c</field>
             <operation>equals</operation>
@@ -1155,6 +1186,11 @@
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
             <operation>equals</operation>
             <value>Quote</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
+            <operation>equals</operation>
+            <value>Signé</value>
         </criteriaItems>
         <description>Update RT quand le contrat de référencement est approuvé.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>

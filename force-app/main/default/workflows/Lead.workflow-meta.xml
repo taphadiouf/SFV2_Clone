@@ -1,2 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Workflow xmlns="http://soap.sforce.com/2006/04/metadata"/>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>LPCR_AlerteTraitementLead</fullName>
+        <description>Alerte non traitement du lead</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/LPCR_AlerteNonTraitementLead</template>
+    </alerts>
+    <alerts>
+        <fullName>LPCR_LeadTraiter</fullName>
+        <description>Lead à Traiter</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/LPCR_AlerteNonTraitementLead</template>
+    </alerts>
+    <rules>
+        <fullName>WF_AlerteDelaiLead</fullName>
+        <actions>
+            <name>LPCR_AlerteTraitementLead</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Famille</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.LPCR_JoursRestantCommercial__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>
