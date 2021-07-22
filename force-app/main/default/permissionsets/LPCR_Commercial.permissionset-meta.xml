@@ -8308,6 +8308,9 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__Subscription__c.LPCR_PrixUnitaire__c</field>
+    </fieldPermissions>
+    <fieldPermissions>
         <field>SBQQ__Subscription__c.LPCR_CAUnitaire__c</field>
         <readable>true</readable>
     </fieldPermissions>
