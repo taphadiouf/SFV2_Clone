@@ -4,7 +4,7 @@
     <externalId>false</externalId>
     <formula>IF( SBQQ__AdditionalDiscountAmount__c + LPCR_MontantIndexation__c &gt; 0 ,SBQQ__AdditionalDiscountAmount__c + LPCR_MontantIndexation__c ,0 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Montant Remise</label>
+    <label>Remise Globale €</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>
