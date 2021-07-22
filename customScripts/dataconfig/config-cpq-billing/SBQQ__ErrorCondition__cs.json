@@ -554,6 +554,29 @@
                 "referenceId": "SBQQ__ErrorCondition__cRef23"
             },
             "IsDeleted": false,
+            "Name": "000025",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "Referencement",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O000003nW39QAE"
+                },
+                "Id": "a0n3O000003nW39QAE"
+            },
+            "SBQQ__RuleTargetsQuote__c": false,
+            "SBQQ__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2021-07-02T15:36:06.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef24"
+            },
+            "IsDeleted": false,
             "Name": "000017",
             "SBQQ__FilterType__c": "Value",
             "SBQQ__FilterValue__c": "Amendment",
@@ -574,7 +597,7 @@
         {
             "attributes": {
                 "type": "SBQQ__ErrorCondition__c",
-                "referenceId": "SBQQ__ErrorCondition__cRef24"
+                "referenceId": "SBQQ__ErrorCondition__cRef25"
             },
             "IsDeleted": false,
             "Name": "000018",
@@ -596,7 +619,7 @@
         {
             "attributes": {
                 "type": "SBQQ__ErrorCondition__c",
-                "referenceId": "SBQQ__ErrorCondition__cRef25"
+                "referenceId": "SBQQ__ErrorCondition__cRef26"
             },
             "IsDeleted": false,
             "Name": "000021",
