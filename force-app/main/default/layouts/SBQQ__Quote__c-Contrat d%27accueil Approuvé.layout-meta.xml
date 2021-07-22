@@ -512,8 +512,9 @@
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>SBQQ__Product__c</fields>
+        <fields>LPCR_MontantAnnuelForfaitMICRO__c</fields>
+        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>SBQQ__Quantity__c</fields>
         <fields>LPCR_Creche__c</fields>
         <fields>LPCR_Region__c</fields>
