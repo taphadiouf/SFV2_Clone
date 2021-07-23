@@ -64,7 +64,7 @@
             "sbaa__Index__c": 1,
             "sbaa__Operator__c": "equals",
             "sbaa__TestedField__c": "LPCR_TypeDenregistrement__c",
-            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+            "SystemModstamp": "2021-07-01T10:53:05.000+0000"
         },
         {
             "attributes": {
@@ -150,9 +150,9 @@
             "sbaa__FilterType__c": "Value",
             "sbaa__FilterValue__c": "Mouvement Interne Berceau",
             "sbaa__Index__c": 8,
-            "sbaa__Operator__c": "equals",
+            "sbaa__Operator__c": "not equals",
             "sbaa__TestedField__c": "LPCR_TypeAvenant__c",
-            "SystemModstamp": "2020-07-21T21:49:25.000+0000"
+            "SystemModstamp": "2021-07-01T09:47:21.000+0000"
         },
         {
             "attributes": {
@@ -787,9 +787,9 @@
             "sbaa__FilterType__c": "Value",
             "sbaa__FilterValue__c": "0",
             "sbaa__Index__c": 8,
-            "sbaa__Operator__c": "greater than",
+            "sbaa__Operator__c": "not equals",
             "sbaa__TestedField__c": "LPCR_ligneBerceauPlanFacturation__c",
-            "SystemModstamp": "2020-10-20T16:27:15.000+0000"
+            "SystemModstamp": "2021-06-24T09:41:34.000+0000"
         },
         {
             "attributes": {
@@ -841,6 +841,28 @@
                 "referenceId": "sbaa__ApprovalCondition__cRef39"
             },
             "IsDeleted": false,
+            "Name": "AC-000048",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004kUUQAY"
+                },
+                "Id": "a4b3O0000004kUUQAY"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "0",
+            "sbaa__Index__c": 11,
+            "sbaa__Operator__c": "greater than",
+            "sbaa__TestedField__c": "LPCR_ligneBerceauPlanFacturation__c",
+            "SystemModstamp": "2021-06-24T09:30:30.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef40"
+            },
+            "IsDeleted": false,
             "Name": "AC-000042",
             "sbaa__ApprovalRule__r": {
                 "attributes": {
@@ -860,7 +882,29 @@
         {
             "attributes": {
                 "type": "sbaa__ApprovalCondition__c",
-                "referenceId": "sbaa__ApprovalCondition__cRef40"
+                "referenceId": "sbaa__ApprovalCondition__cRef41"
+            },
+            "IsDeleted": false,
+            "Name": "AC-000050",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004kfaQAA"
+                },
+                "Id": "a4b3O0000004kfaQAA"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Mouvement Interne Berceau",
+            "sbaa__Index__c": 1,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeAvenant__c",
+            "SystemModstamp": "2021-07-01T08:58:30.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef42"
             },
             "IsDeleted": false,
             "Name": "AC-000044",
@@ -882,7 +926,7 @@
         {
             "attributes": {
                 "type": "sbaa__ApprovalCondition__c",
-                "referenceId": "sbaa__ApprovalCondition__cRef41"
+                "referenceId": "sbaa__ApprovalCondition__cRef43"
             },
             "IsDeleted": false,
             "Name": "AC-000045",
@@ -904,7 +948,7 @@
         {
             "attributes": {
                 "type": "sbaa__ApprovalCondition__c",
-                "referenceId": "sbaa__ApprovalCondition__cRef42"
+                "referenceId": "sbaa__ApprovalCondition__cRef44"
             },
             "IsDeleted": false,
             "Name": "AC-000041",
@@ -926,7 +970,7 @@
         {
             "attributes": {
                 "type": "sbaa__ApprovalCondition__c",
-                "referenceId": "sbaa__ApprovalCondition__cRef43"
+                "referenceId": "sbaa__ApprovalCondition__cRef45"
             },
             "IsDeleted": false,
             "Name": "AC-000043",
@@ -948,7 +992,73 @@
         {
             "attributes": {
                 "type": "sbaa__ApprovalCondition__c",
-                "referenceId": "sbaa__ApprovalCondition__cRef44"
+                "referenceId": "sbaa__ApprovalCondition__cRef46"
+            },
+            "IsDeleted": false,
+            "Name": "AC-000054",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004kl9QAA"
+                },
+                "Id": "a4b3O0000004kl9QAA"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Mouvement Interne Berceau",
+            "sbaa__Index__c": 2,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeAvenant__c",
+            "SystemModstamp": "2021-07-01T14:37:31.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef47"
+            },
+            "IsDeleted": false,
+            "Name": "AC-000053",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004kl9QAA"
+                },
+                "Id": "a4b3O0000004kl9QAA"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Amendment",
+            "sbaa__Index__c": 1,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "SBQQ__Type__c",
+            "SystemModstamp": "2021-07-01T14:37:11.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef48"
+            },
+            "IsDeleted": false,
+            "Name": "AC-000052",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v52.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004kfaQAA"
+                },
+                "Id": "a4b3O0000004kfaQAA"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Amendment",
+            "sbaa__Index__c": 2,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "SBQQ__Type__c",
+            "SystemModstamp": "2021-07-01T08:55:31.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef49"
             },
             "IsDeleted": false,
             "Name": "AC-000046",
@@ -970,7 +1080,7 @@
         {
             "attributes": {
                 "type": "sbaa__ApprovalCondition__c",
-                "referenceId": "sbaa__ApprovalCondition__cRef45"
+                "referenceId": "sbaa__ApprovalCondition__cRef50"
             },
             "IsDeleted": false,
             "Name": "AC-000047",
