@@ -1566,35 +1566,15 @@
     <picklistValues>
         <picklist>LPCR_MotifDisqualification__c</picklist>
         <values>
-            <fullName>Eloigné de nos bases</fullName>
+            <fullName>Aide pour création d%27une structure</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Forte demande associative</fullName>
+            <fullName>Autre</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Micro-crèche uniquement</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pas de places disponibles</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pas présent sur la zone demandée</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Prestations hors cœur de métier</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Refus connu d%E2%80%99avance</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Volume insuffisant</fullName>
+            <fullName>Franchise</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -2107,19 +2087,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>AUTRE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>FAMILIALES</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>HOSPITALIERE</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>MICRO</fullName>
             <default>false</default>
         </values>
         <values>
@@ -2138,43 +2106,15 @@
     <picklistValues>
         <picklist>LeadSource</picklist>
         <values>
-            <fullName>Appel d%27Offre</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Autre</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Challenge</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Chargé d%27affaire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Directrice de crèche</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Evènement</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Publicité</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Recherche Internet</fullName>
+            <fullName>Prospection</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Site Internet Grandir</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Siège</fullName>
             <default>false</default>
         </values>
     </picklistValues>

@@ -1859,34 +1859,6 @@
                 "referenceId": "SBQQ__PriceAction__cRef84"
             },
             "IsDeleted": false,
-            "Name": "133",
-            "SBQQ__Field__c": "SBQQ__Quantity__c",
-            "SBQQ__Order__c": 20,
-            "SBQQ__ParentRuleIsActive__c": true,
-            "SBQQ__Rule__r": {
-                "attributes": {
-                    "type": "SBQQ__PriceRule__c",
-                    "url": "/services/data/v52.0/sobjects/SBQQ__PriceRule__c/a0a3O000002R6wKQAS"
-                },
-                "Id": "a0a3O000002R6wKQAS"
-            },
-            "SBQQ__RuleTargetsCalculator__c": true,
-            "SBQQ__SourceVariable__r": {
-                "attributes": {
-                    "type": "SBQQ__SummaryVariable__c",
-                    "url": "/services/data/v52.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000000bwrlUAA"
-                },
-                "Id": "a1A3O000000bwrlUAA"
-            },
-            "SBQQ__TargetObject__c": "Quote Line",
-            "SystemModstamp": "2020-07-21T21:00:52.000+0000"
-        },
-        {
-            "attributes": {
-                "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef85"
-            },
-            "IsDeleted": false,
             "Name": "134",
             "SBQQ__Field__c": "SBQQ__ListPrice__c",
             "SBQQ__Formula__c": "SBQQ__Quote__r.LPCR_FraisDossier__c",
@@ -1906,7 +1878,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef86"
+                "referenceId": "SBQQ__PriceAction__cRef85"
             },
             "IsDeleted": false,
             "Name": "216",
@@ -1928,7 +1900,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef87"
+                "referenceId": "SBQQ__PriceAction__cRef86"
             },
             "IsDeleted": false,
             "Name": "206",
@@ -1950,7 +1922,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef88"
+                "referenceId": "SBQQ__PriceAction__cRef87"
             },
             "IsDeleted": false,
             "Name": "213",
@@ -1972,7 +1944,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef89"
+                "referenceId": "SBQQ__PriceAction__cRef88"
             },
             "IsDeleted": false,
             "Name": "209",
@@ -1994,7 +1966,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef90"
+                "referenceId": "SBQQ__PriceAction__cRef89"
             },
             "IsDeleted": false,
             "Name": "214",
@@ -2015,7 +1987,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef91"
+                "referenceId": "SBQQ__PriceAction__cRef90"
             },
             "IsDeleted": false,
             "Name": "208",
@@ -2043,7 +2015,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef92"
+                "referenceId": "SBQQ__PriceAction__cRef91"
             },
             "IsDeleted": false,
             "Name": "215",
@@ -2064,7 +2036,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef93"
+                "referenceId": "SBQQ__PriceAction__cRef92"
             },
             "IsDeleted": false,
             "Name": "143",
@@ -2084,7 +2056,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef94"
+                "referenceId": "SBQQ__PriceAction__cRef93"
             },
             "IsDeleted": false,
             "Name": "217",
@@ -2105,7 +2077,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef95"
+                "referenceId": "SBQQ__PriceAction__cRef94"
             },
             "IsDeleted": false,
             "Name": "142",
@@ -2125,7 +2097,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef96"
+                "referenceId": "SBQQ__PriceAction__cRef95"
             },
             "IsDeleted": false,
             "Name": "197",
@@ -2145,7 +2117,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef97"
+                "referenceId": "SBQQ__PriceAction__cRef96"
             },
             "IsDeleted": false,
             "Name": "198",
@@ -2165,7 +2137,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef98"
+                "referenceId": "SBQQ__PriceAction__cRef97"
             },
             "IsDeleted": false,
             "Name": "196",
