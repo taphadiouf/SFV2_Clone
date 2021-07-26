@@ -89,6 +89,8 @@ public class SM008_QuoteServices_Test {
             eachContract.LPCR_CongesJours__c = 33;
             eachContract.LPCR_DureePreavisMois__c = '3';
             eachContract.LPCR_TypeAccueil__c = 'Occasionnel';
+            // PRA
+            eachContract.LPCR_NumeroContrat__c = 'CREF0690';
         }       
         for(Contract eachContract : Renewalcontract6){
              eachContract.LPCR_EntiteJuridique__c = entiteJuridique.Id;
@@ -917,6 +919,43 @@ public class SM008_QuoteServices_Test {
         } 
     }
 
+    @isTest()
+    public static void updateNumeroAvenant_Test(){
+        Test.startTest();
+        Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Reservataire');
+        List<Account> accs = [SELECT Id, name   from Account WHERE name ='Compte Crèche MAC1' LIMIT 1];
+        Account acc = accs.get(0);
+        List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name ='opp Famille MAC1' LIMIT 1];
+        Opportunity opp = oppties.get(0);
+        List<Contract> contract = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c,LPCR_NumeroContrat__c  From Contract WHERE LPCR_NumeroContrat__c !=null Limit 1];
+        Contract con = contract.get(0);
+        System.debug('pra con.LPCR_NumeroContrat__c '+con.LPCR_NumeroContrat__c );
+        List<Opportunity> oppAmends = UM002_TestDataFactory.createOpportunities(1, 'testOppAmend', 'Prospecting');
+            Opportunity oppAmend = oppAmends.get(0);
+            oppAmend.SBQQ__AmendedContract__c = con.Id;
+            insert oppAmends;
+
+        SBQQ__Quote__c amendmentQuote = new SBQQ__Quote__c(
+                SBQQ__Opportunity2__c = oppAmend.id,
+                SBQQ__Account__c = acc.Id,
+                SBQQ__Type__c = 'Amendment',
+                LPCR_TypeAvenant__c = 'Résiliation',
+		        LPCR_Creation_conforme__c = true,    
+                RecordTypeId = reservataireRecTypeId,
+                LPCR_Creche__c = acc.id,
+                SBQQ__StartDate__c = date.today(),
+                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31),
+                SBQQ__MasterContract__c = con.Id
+            );
+            insert amendmentQuote;
+            amendmentQuote.LPCR_NumeroContrat__c ='Test' ;
+            update amendmentQuote;
+            // PRA
+            System.debug('pra amendmentQuote.SBQQ__MasterContract__r.TECH_Nombre_Devis__c '+amendmentQuote.SBQQ__MasterContract__r.TECH_Nombre_Devis__c);
+            System.debug('pra amendmentQuote.SBQQ__MasterContract__r.LPCR_NumeroContrat__c '+amendmentQuote.SBQQ__MasterContract__r.LPCR_NumeroContrat__c);
+            System.assertEquals(amendmentQuote.LPCR_Numero_avenant__c,amendmentQuote.SBQQ__MasterContract__r.LPCR_NumeroContrat__c + ' - 00'+amendmentQuote.SBQQ__MasterContract__r.TECH_Nombre_Devis__c);
+            amendmentQuote.LPCR_DateDebut__c = date.today();
+    }
     @isTest()
     public static void updateDueToResilisationAnticipe_Test(){
 
