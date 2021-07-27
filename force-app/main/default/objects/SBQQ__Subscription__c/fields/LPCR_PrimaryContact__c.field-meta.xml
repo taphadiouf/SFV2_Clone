@@ -4,9 +4,9 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Contact Principal</label>
-    <referenceTo>Contract</referenceTo>
+    <referenceTo>Contact</referenceTo>
     <relationshipLabel>Abonnements (Contact Principal)</relationshipLabel>
-    <relationshipName>Abonnements2</relationshipName>
+    <relationshipName>AbonnementsContactPrincipal</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
