@@ -63,6 +63,10 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_NombreJoursCummul__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_Numero_avenant__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
