@@ -407,6 +407,25 @@ newMe.FederationIdentifier = null;
         
         return usr;
     }
+
+    public static User createUser(Id roleId){
+        User usr = null;
+
+        Profile prof = [SELECT Id, Name FROM Profile Where UserType = 'Standard' AND PermissionsCustomizeApplication = true limit 1].get(0);
+        
+        String uniqueUserName = 'standarduser' +Integer.valueof((Math.random() * 10000))+ DateTime.now().millisecond() + '@testorg.com';            
+        usr = new User(Alias = 'testusr', Email = uniqueUserName,
+                        EmailEncodingKey = 'UTF-8', LastName = 'Testing', LanguageLocaleKey = 'en_US',
+                        LocaleSidKey = 'en_US', ProfileId = prof.Id,
+                        TimeZoneSidKey = 'America/Los_Angeles',
+                        UserName = uniqueUserName,
+                        UserRoleId = roleId);
+        insert usr;
+        
+        
+        return usr;
+    }
+
     public static List<Lead> createLeads(Integer numLeads, String recTypeId, String lastName, String company,String Email){
         List<Lead> leads = new List<Lead>();
         for(Integer i=0;i<numLeads;i++){
