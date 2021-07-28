@@ -3797,6 +3797,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_AccepteRecevoirOffres__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_EnregistreeBrouillon__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_RessourceFamille__c.LPCR_IdExterne_BaremeCaf__c</field>
         <readable>true</readable>
     </fieldPermissions>
