@@ -23,17 +23,6 @@
         <template>unfiled$public/LPCR_ResiliationContrat</template>
     </alerts>
     <alerts>
-        <fullName>LPCR_Alerte_Service_Famille_Contrat_accueil_annule</fullName>
-        <description>Alerte Service Famille ( Contrat accueil annulé)</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>Service_Famille</recipient>
-            <type>role</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_NotificationContratAnnule</template>
-    </alerts>
-    <alerts>
         <fullName>LPCR_Alerte_Service_Famille_devis_annule</fullName>
         <description>Alerte Service Famille ( devis annulé)</description>
         <protected>false</protected>
@@ -146,8 +135,8 @@
             <field>SBQQ__PrimaryContact__c</field>
             <type>contactLookup</type>
         </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/Notification_R_siliation_B2B</template>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Notification_Resiliation_B2B</template>
     </alerts>
     <alerts>
         <fullName>Notification_de_r_siliation_au_client_B2C</fullName>
@@ -246,6 +235,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>LPCR_StatusTermine</fullName>
@@ -256,6 +246,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>LPCR_StatutBrouillon</fullName>
@@ -335,6 +326,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>LPCR_UpdateRTQuote</fullName>
@@ -345,6 +337,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>LPCR_UpdateStatusDevisMIB</fullName>
@@ -374,6 +367,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_accueil_approuve</fullName>
@@ -384,6 +378,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_referencement</fullName>
@@ -394,6 +389,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_referencement_approuve</fullName>
@@ -404,6 +400,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_reservataire</fullName>
@@ -415,6 +412,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_reservataire_approuve</fullName>
@@ -425,6 +423,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Recalculer</fullName>
@@ -434,6 +433,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Statut_standard_approuv</fullName>
@@ -443,6 +443,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Update_Numero_Contrat</fullName>
@@ -708,7 +709,7 @@
             <type>Alert</type>
         </actions>
         <active>true</active>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
             <operation>equals</operation>
@@ -719,8 +720,12 @@
             <operation>equals</operation>
             <value>Contrat de Référencement,Contrat de Référencement Approuvé,Contrat de Réservation,Contrat de Réservation Approuvé</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_DateResiliation__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
         <description>Notifie le client B2B lorsque le contrat est résilié</description>
-        <triggerType>onAllChanges</triggerType>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
         <fullName>Notification client résiliation B2C</fullName>
@@ -729,7 +734,7 @@
             <type>Alert</type>
         </actions>
         <active>true</active>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
             <operation>equals</operation>
@@ -740,8 +745,12 @@
             <operation>equals</operation>
             <value>Contrat D’accueil,Contrat D&apos;accueil Approuvé</value>
         </criteriaItems>
+        <criteriaItems>
+            <field>SBQQ__Quote__c.LPCR_DateResiliation__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
         <description>Notifie le client B2C lorsque le contrat est résilié</description>
-        <triggerType>onAllChanges</triggerType>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
         <fullName>Renewal quote status</fullName>

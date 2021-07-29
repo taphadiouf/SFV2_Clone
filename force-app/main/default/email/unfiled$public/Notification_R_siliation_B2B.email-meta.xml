@@ -3,9 +3,9 @@
     <available>true</available>
     <description>Notification de résiliation envoyée au client B2B</description>
     <encodingKey>UTF-8</encodingKey>
-    <name>Notification Résiliation (B2B)</name>
+    <name>OLD_Notification Résiliation (B2B)</name>
     <style>none</style>
-    <subject>Confirmation de la résiliation de votre contrat {!SBQQ__Quote__c.LPCR_NumeroContrat__c}</subject>
+    <subject>Confirmation de la résiliation de votre contrat {!SBQQ__Quote__c.SBQQ__MasterContract__c}</subject>
     <type>text</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>
