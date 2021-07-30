@@ -484,7 +484,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Ordered__c</field>
             <operation>equals</operation>
-            <value>true</value>
+            <value>Vrai</value>
         </criteriaItems>
         <description>Ce WF notifie l&apos;ADV lorsque le contrat Micro est résilié</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -535,7 +535,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Ordered__c</field>
             <operation>equals</operation>
-            <value>true</value>
+            <value>Vrai</value>
         </criteriaItems>
         <description>Ce WF informe le service famille quand le contrat est résilié</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -597,7 +597,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Ordered__c</field>
             <operation>equals</operation>
-            <value>true</value>
+            <value>Vrai</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.LPCR_TypeAvenant__c</field>
@@ -818,7 +818,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Ordered__c</field>
             <operation>equals</operation>
-            <value>true</value>
+            <value>Vrai</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
@@ -848,7 +848,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Ordered__c</field>
             <operation>equals</operation>
-            <value>true</value>
+            <value>Vrai</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
@@ -1049,7 +1049,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.LPCR_RecalculationMACDone__c</field>
             <operation>equals</operation>
-            <value>false</value>
+            <value>Faux</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.LPCR_TypeCreche__c</field>
@@ -1115,7 +1115,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Primary__c</field>
             <operation>equals</operation>
-            <value>true</value>
+            <value>Vrai</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.ApprovalStatus__c</field>
@@ -1156,7 +1156,7 @@
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Primary__c</field>
             <operation>equals</operation>
-            <value>true</value>
+            <value>Vrai</value>
         </criteriaItems>
         <criteriaItems>
             <field>SBQQ__Quote__c.SBQQ__Status__c</field>
