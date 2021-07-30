@@ -23,17 +23,6 @@
         <template>unfiled$public/LPCR_ResiliationContrat</template>
     </alerts>
     <alerts>
-        <fullName>LPCR_Alerte_Service_Famille_Contrat_accueil_annule</fullName>
-        <description>Alerte Service Famille ( Contrat accueil annulé)</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>Service_Famille</recipient>
-            <type>role</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_NotificationContratAnnule</template>
-    </alerts>
-    <alerts>
         <fullName>LPCR_Alerte_Service_Famille_devis_annule</fullName>
         <description>Alerte Service Famille ( devis annulé)</description>
         <protected>false</protected>
