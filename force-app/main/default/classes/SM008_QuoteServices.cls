@@ -552,8 +552,8 @@ public with sharing class SM008_QuoteServices {
                     }
                     eachQuote.LPCR_CompteFacturation__c = amendedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_CompteFacturation__c;
                 }
-                
-            }       
+            } 
+        }      
     }
     
     //added by hanae
