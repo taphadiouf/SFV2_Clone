@@ -55,6 +55,10 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_CompteFacturation__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_Numero_avenant__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -512,8 +516,9 @@
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
-        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>SBQQ__Product__c</fields>
+        <fields>LPCR_MontantAnnuelForfaitMICRO__c</fields>
+        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>SBQQ__Quantity__c</fields>
         <fields>LPCR_Creche__c</fields>
         <fields>LPCR_Region__c</fields>

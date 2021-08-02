@@ -951,7 +951,6 @@ public class SM008_QuoteServices_Test {
         System.assertEquals(quote[0].LPCR_Numero_avenant__c,con.LPCR_NumeroContrat__c + ' - 00'+con.LPCR_TECH_Nombre_Devis__c);
         Test.stopTest();     
     }
-
     @isTest()
     public static void updateDueToResilisationAnticipe_Test(){
 
