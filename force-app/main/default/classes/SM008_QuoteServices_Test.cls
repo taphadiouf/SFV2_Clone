@@ -927,9 +927,8 @@ public class SM008_QuoteServices_Test {
         Account acc = accs.get(0);
         List<Opportunity> oppties = [SELECT Id , Name from Opportunity WHERE name ='opp Famille MAC1' LIMIT 1];
         Opportunity opp = oppties.get(0);
-        List<Contract> contract = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c,LPCR_NumeroContrat__c  From Contract WHERE LPCR_NumeroContrat__c !=null Limit 1];
+        List<Contract> contract = [Select Id, LPCR_DateDebut__c , LPCR_DateFin__c , LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c,LPCR_NumeroContrat__c,LPCR_TECH_Nombre_Devis__c  From Contract WHERE LPCR_NumeroContrat__c !=null Limit 1];
         Contract con = contract.get(0);
-        System.debug('pra con.LPCR_NumeroContrat__c '+con.LPCR_NumeroContrat__c );
         List<Opportunity> oppAmends = UM002_TestDataFactory.createOpportunities(1, 'testOppAmend', 'Prospecting');
             Opportunity oppAmend = oppAmends.get(0);
             oppAmend.SBQQ__AmendedContract__c = con.Id;
@@ -947,12 +946,10 @@ public class SM008_QuoteServices_Test {
                 SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31),
                 SBQQ__MasterContract__c = con.Id
             );
-            insert amendmentQuote;
-            amendmentQuote.LPCR_NumeroContrat__c ='Test' ;
-            update amendmentQuote;
-            // PRA
-            System.assertEquals(amendmentQuote.LPCR_Numero_avenant__c,amendmentQuote.SBQQ__MasterContract__r.LPCR_NumeroContrat__c + ' - 00'+amendmentQuote.SBQQ__MasterContract__r.LPCR_TECH_Nombre_Devis__c);
-            amendmentQuote.LPCR_DateDebut__c = date.today();
+        insert amendmentQuote;
+        List<SBQQ__Quote__c> quote =[SELECT LPCR_Numero_avenant__c FROM SBQQ__Quote__c where SBQQ__MasterContract__c = :con.Id LIMIT 1];
+        System.assertEquals(quote[0].LPCR_Numero_avenant__c,con.LPCR_NumeroContrat__c + ' - 00'+con.LPCR_TECH_Nombre_Devis__c);
+        Test.stopTest();     
     }
     @isTest()
     public static void updateDueToResilisationAnticipe_Test(){
