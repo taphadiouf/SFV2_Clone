@@ -4720,7 +4720,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SBQQ__QuoteLine__c.LPCR_PrimaryContact__c</field>
+        <field>SBQQ__QuoteLine__c.LPCR_ContactPrincipal__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -6210,7 +6210,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SBQQ__Subscription__c.LPCR_PrimaryContact__c</field>
+        <field>SBQQ__Subscription__c.LPCR_ContactPrincipal__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
