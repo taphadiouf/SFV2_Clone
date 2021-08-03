@@ -24,8 +24,6 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
             SM013_QuoteLineServices.checkExistingRegistrationFee(newQuoteLineList);
             SM013_QuoteLineServices.setBillThroughDateOverride(newQuoteLineList);
             SM013_QuoteLineServices.calculateQuoteLine(newQuoteLineList);
-            // PRA IS-2518
-            SM013_QuoteLineServices.setContactOnDevis(newQuoteLineList);
         }
     }
     
