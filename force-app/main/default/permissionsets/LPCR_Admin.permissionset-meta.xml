@@ -4991,6 +4991,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.LPCR_ARPU__c</field>
+        <readable>true</readable>
+    </fieldPermissions>    
+    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.LPCR_AnneeImpactBudget__c</field>
         <readable>true</readable>
@@ -5310,6 +5315,11 @@
         <field>Opportunity.LPCR_ZoneGeographique__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.LPCR_ZoneGeo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>        
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.LeadSource</field>
