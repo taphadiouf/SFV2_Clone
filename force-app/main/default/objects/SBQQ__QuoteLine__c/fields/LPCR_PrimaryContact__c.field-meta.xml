@@ -3,7 +3,7 @@
     <fullName>LPCR_PrimaryContact__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Contact principal</label>
+    <label>Contact principal DEL</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Lignes de devis (Contact principal)</relationshipLabel>
     <relationshipName>Lignes_de_devis2</relationshipName>

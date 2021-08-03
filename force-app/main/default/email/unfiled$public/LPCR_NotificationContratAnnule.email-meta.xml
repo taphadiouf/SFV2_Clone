@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notification d&apos;annulation contrat accueil envoyée au service famille</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>LPCR_PiedsPageEmails</letterhead>
+    <name>Notification contrat accueil annulé</name>
+    <style>freeForm</style>
+    <subject>Le contrat {!Contract} est annulé</subject>
+    <textOnly>Bonjour {(!Account.OwnerId).Salutation} {!Account.OwnerLastName},
+
+le contrat suivant a été annulé: {!Contract.Link}.
+
+Il était lié au contrat réservataire suivant, dont vous êtes en charge:{(!Contract.LPCR_ContractEntreprise__c).Link}
+
+Merci de prendre contact au plus vite avec le réservataire afin d&apos;étudier le remplacement de cette famille.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
