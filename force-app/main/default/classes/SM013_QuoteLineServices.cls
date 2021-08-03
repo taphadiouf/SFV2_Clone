@@ -493,4 +493,24 @@ public with sharing class SM013_QuoteLineServices {
         }
         
     }
+
+    // PRA 29/07/2021  IS-2518
+    public static void setContactOnDevis(List<SBQQ__QuoteLine__c> quoteLineList){
+        List<SBQQ__Quote__c> quoteToUpdate = new List<SBQQ__Quote__c>();
+        for(SBQQ__QuoteLine__c eachQuoteLine : quoteLineList){
+            if(eachQuoteLine.LPCR_ContactFacturation__c <> null || eachQuoteLine.LPCR_ContactInscriptions__c <> null || eachQuoteLine.LPCR_PrimaryContact__c <> null){
+                if(Label.LPCR_Amendment.equals(eachQuoteLine.SBQQ__Quote__r.SBQQ__Type__c)){
+                    quoteToUpdate.add(new SBQQ__Quote__c(
+                        id=eachQuoteLine.SBQQ__Quote__r.id,
+                        LPCR_ContactFacturation__c=eachQuoteLine.LPCR_ContactFacturation__c,
+                        LPCR_ContactInscriptions__c=eachQuoteLine.LPCR_ContactInscriptions__c,
+                        SBQQ__PrimaryContact__c=eachQuoteLine.LPCR_PrimaryContact__c
+                        )
+                    );
+                }
+            }
+        }
+        if(quoteToUpdate.size()>0)
+            update quoteToUpdate;
+    }
 }
