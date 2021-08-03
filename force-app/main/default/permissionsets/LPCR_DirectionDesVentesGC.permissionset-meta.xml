@@ -2957,6 +2957,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_Structure_AO__c.LPCR_NombrePlacesACommercialiser__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_TablePrix__c.LPCR_BaremePrix__c</field>
         <readable>true</readable>
     </fieldPermissions>
