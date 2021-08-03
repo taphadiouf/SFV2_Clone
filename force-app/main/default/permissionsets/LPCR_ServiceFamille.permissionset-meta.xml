@@ -1998,6 +1998,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contract.LPCR_TECH_Nombre_Devis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Event.LPCR_Abouti__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3083,6 +3088,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_AccepteRecevoirOffres__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Preinscription__c.LPCR_EnregistreeBrouillon__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_Structure_AO__c.LPCR_Creation__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4119,6 +4134,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_MotifTransfert__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.LPCR_ConvertedOpp__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -6632,6 +6652,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_Numero_avenant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Subscription__c.LPCR_BonDachatPartenaire__c</field>
         <readable>true</readable>
@@ -6666,7 +6691,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SBQQ__Subscription__c.LPCR_PrimaryContact__c</field>
+        <field>SBQQ__Subscription__c.LPCR_ContactPrincipal__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
