@@ -482,10 +482,6 @@ public with sharing class SM008_QuoteServices {
     
     public static void setQuoteFields(List<SBQQ__Quote__c> quotesList,Map<Id,Contract> renewedContract,Map<Id,Contract> amendedContract, Map<Id,Opportunity> opptyMap, Map<Id,Account> acctMap){
         Map<String,Schema.RecordTypeInfo> mapQuoteRT = Schema.getGlobalDescribe().get(Label.LPCR_Quote).getDescribe().getRecordTypeInfosByDeveloperName();
-        // PRA IS-2089
-        List<Contract> contratToUpdateList =new List<Contract>();
-        Map<id,Integer> NbDevisOnContratMap = new Map<id,Integer>();
-        Map<id,Contract> ContratToUpdateMap = new Map<id,Contract>();
 		for (SBQQ__Quote__c eachQuote : quotesList){
             if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) && 'Renewal'.equals(eachQuote.SBQQ__Type__c)){
                eachQuote.ApprovalStatus__c = Label.LPCR_ApprovalStatusApproved;
@@ -556,40 +552,8 @@ public with sharing class SM008_QuoteServices {
                     }
                     eachQuote.LPCR_CompteFacturation__c = amendedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_CompteFacturation__c;
                 }
-                
-            }
-
-            // PRA IS-2089
-            if(Label.LPCR_Amendment.equals(eachQuote.SBQQ__Type__c) && eachQuote.SBQQ__MasterContract__c <> null && eachQuote.SBQQ__MasterContract__r.LPCR_NumeroContrat__c <>''){
-                Integer nbDevis = eachQuote.SBQQ__MasterContract__r.LPCR_TECH_Nombre_Devis__c <> null ? Integer.valueOf(eachQuote.SBQQ__MasterContract__r.LPCR_TECH_Nombre_Devis__c):1;
-                String nbDevisForContractText = NbDevisOnContratMap.containsKey(eachQuote.SBQQ__MasterContract__c) ? String.valueOf(NbDevisOnContratMap.get(eachQuote.SBQQ__MasterContract__c)) :String.valueOf(nbDevis);
-                switch on nbDevisForContractText.length() {
-                    when 1 {
-                        nbDevisForContractText='00'+nbDevisForContractText;
-                    }	
-                    when 2 {
-                        nbDevisForContractText='0'+nbDevisForContractText;
-                    }
-                    when else {
-                        nbDevisForContractText=nbDevisForContractText;
-                    }
-                }
-                eachQuote.LPCR_Numero_avenant__c = eachQuote.SBQQ__MasterContract__r.LPCR_NumeroContrat__c + ' - '+nbDevisForContractText ;
-                System.debug('pra eachQuote.SBQQ__MasterContract__r.LPCR_NumeroContrat__c' + eachQuote.SBQQ__MasterContract__r.LPCR_NumeroContrat__c);
-                System.debug('Pra eachQuote.LPCR_Numero_avenant__c'+eachQuote.LPCR_Numero_avenant__c);
-
-                if(NbDevisOnContratMap.containsKey(eachQuote.SBQQ__MasterContract__c)){
-                    NbDevisOnContratMap.put(eachQuote.SBQQ__MasterContract__c,NbDevisOnContratMap.get(eachQuote.SBQQ__MasterContract__c)+1);
-                }else{
-                    NbDevisOnContratMap.put(eachQuote.SBQQ__MasterContract__c,nbDevis+1);
-                }
-
-                ContratToUpdateMap.put(eachQuote.SBQQ__MasterContract__c,new Contract(id =eachQuote.SBQQ__MasterContract__c,LPCR_TECH_Nombre_Devis__c=NbDevisOnContratMap.get(eachQuote.SBQQ__MasterContract__c)));
-            }
-        }
-        if(ContratToUpdateMap.size()>0)
-                update ContratToUpdateMap.values();
-        
+            } 
+        }      
     }
     
     //added by hanae
