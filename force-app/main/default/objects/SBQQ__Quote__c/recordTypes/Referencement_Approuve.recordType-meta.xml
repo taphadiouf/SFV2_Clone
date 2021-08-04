@@ -3,8 +3,8 @@
     <fullName>Referencement_Approuve</fullName>
     <active>true</active>
     <compactLayoutAssignment>PresentationCompacteDevis</compactLayoutAssignment>
-    <description>Type d&apos;enregistrement pour les contrats de référencement approuvés.</description>
-    <label>Contrat de Référencement Approuvé</label>
+    <description>Type d&apos;enregistrement pour les devis de référencement approuvés.</description>
+    <label>Devis de Référencement Approuvé</label>
     <picklistValues>
         <picklist>ApprovalStatus__c</picklist>
         <values>
@@ -515,7 +515,6 @@
         </values>
         <values>
             <fullName>Renouvellement</fullName>
-
             <default>false</default>
         </values>
         <values>
