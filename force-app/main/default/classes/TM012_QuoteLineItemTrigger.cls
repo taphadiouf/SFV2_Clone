@@ -6,7 +6,6 @@
 public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandler {
     
     private List<SBQQ__QuoteLine__c> newQuoteLineList;
-    private List<SBQQ__QuoteLine__c> oldQuoteLineList;
     private Map<Id,SBQQ__QuoteLine__c> newQuoteLineMap;
     private Map<Id,SBQQ__QuoteLine__c> oldQuoteLineMap;
    
@@ -14,7 +13,6 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
     public TM012_QuoteLineItemTrigger() {
         
         this.newQuoteLineList = (List<SBQQ__QuoteLine__c>) Trigger.new;
-        this.oldQuoteLineList = (List<SBQQ__QuoteLine__c>) Trigger.old;
         this.newQuoteLineMap = (Map<Id, SBQQ__QuoteLine__c>) Trigger.newMap;
         this.oldQuoteLineMap = (Map<Id, SBQQ__QuoteLine__c>) Trigger.oldMap;
     }
