@@ -6,6 +6,7 @@
 public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandler {
     
     private List<SBQQ__QuoteLine__c> newQuoteLineList;
+    private List<SBQQ__QuoteLine__c> oldQuoteLineList;
     private Map<Id,SBQQ__QuoteLine__c> newQuoteLineMap;
     private Map<Id,SBQQ__QuoteLine__c> oldQuoteLineMap;
    
@@ -13,6 +14,7 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
     public TM012_QuoteLineItemTrigger() {
         
         this.newQuoteLineList = (List<SBQQ__QuoteLine__c>) Trigger.new;
+        this.oldQuoteLineList = (List<SBQQ__QuoteLine__c>) Trigger.old;
         this.newQuoteLineMap = (Map<Id, SBQQ__QuoteLine__c>) Trigger.newMap;
         this.oldQuoteLineMap = (Map<Id, SBQQ__QuoteLine__c>) Trigger.oldMap;
     }
@@ -46,8 +48,6 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
     protected override void afterUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')) {
             SM013_QuoteLineServices.updateRemiseQuote(oldQuoteLineMap,newQuoteLineMap);
-            // PRA 29/07/2021  IS-2518
-            SM013_QuoteLineServices.setContactOnDevis(newQuoteLineList);
         }
     }
 

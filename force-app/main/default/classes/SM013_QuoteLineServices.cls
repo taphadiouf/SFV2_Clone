@@ -460,15 +460,15 @@ public with sharing class SM013_QuoteLineServices {
         for(SBQQ__QuoteLine__c qli:newQuoteLineMap.values()){
             lstQuote.add(qli.SBQQ__Quote__c );
         }
-        for(SBQQ__Quote__c eachNewQuote :[Select id,LPCR_ContactFacturation__c,SBQQ__PrimaryContact__c ,LPCR_ContactInscriptions__c from SBQQ__Quote__c  where Id IN:lstQuote]){
+        for(SBQQ__Quote__c eachNewQuote :[Select id,LPCR_ContactFacturation__c,LPCR_ContactPrincipal__c ,LPCR_ContactInscriptions__c from SBQQ__Quote__c  where Id IN:lstQuote]){
             if(eachNewQuote.LPCR_ContactFacturation__c != null){
                 mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Fac',eachNewQuote.LPCR_ContactFacturation__c );
             }
             if(eachNewQuote.LPCR_ContactInscriptions__c != null){
                 mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Insc',eachNewQuote.LPCR_ContactInscriptions__c );
             }
-            if(eachNewQuote.SBQQ__PrimaryContact__c != null){
-                mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Primary',eachNewQuote.SBQQ__PrimaryContact__c );
+            if(eachNewQuote.LPCR_ContactPrincipal__c != null){
+                mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Primary',eachNewQuote.LPCR_ContactPrincipal__c );
             }
         }
         
@@ -495,20 +495,19 @@ public with sharing class SM013_QuoteLineServices {
     }
 
     // PRA 29/07/2021  IS-2518
-    public static void setContactOnDevis(List<SBQQ__QuoteLine__c> quoteLineList){
+    public static void setContactOnDevis(List<SBQQ__QuoteLine__c> newQuoteLineList){
         List<SBQQ__Quote__c> quoteToUpdate = new List<SBQQ__Quote__c>();
-        for(SBQQ__QuoteLine__c eachQuoteLine : quoteLineList){
-            if(eachQuoteLine.LPCR_ContactFacturation__c <> null || eachQuoteLine.LPCR_ContactInscriptions__c <> null || eachQuoteLine.LPCR_PrimaryContact__c <> null){
-                if(Label.LPCR_Amendment.equals(eachQuoteLine.SBQQ__Quote__r.SBQQ__Type__c)){
-                    quoteToUpdate.add(new SBQQ__Quote__c(
-                        id=eachQuoteLine.SBQQ__Quote__r.id,
-                        LPCR_ContactFacturation__c=eachQuoteLine.LPCR_ContactFacturation__c,
-                        LPCR_ContactInscriptions__c=eachQuoteLine.LPCR_ContactInscriptions__c,
-                        SBQQ__PrimaryContact__c=eachQuoteLine.LPCR_PrimaryContact__c
-                        )
-                    );
-                }
+        for(Integer i = 0 ; i<newQuoteLineList.size();i++){
+            if(Label.LPCR_Amendment.equals(newQuoteLineList[i].LPCR_TypeDeDevis__c) && (newQuoteLineList[i].LPCR_ContactPrincipal__c <> null || newQuoteLineList[i].LPCR_ContactInscriptions__c <> null ||newQuoteLineList[i].LPCR_ContactFacturation__c <> null)){
+                quoteToUpdate.add(new SBQQ__Quote__c(
+                    id=newQuoteLineList[i].SBQQ__Quote__c,
+                    LPCR_ContactFacturation__c=newQuoteLineList[i].LPCR_ContactFacturation__c,
+                    LPCR_ContactInscriptions__c=newQuoteLineList[i].LPCR_ContactInscriptions__c,
+                    SBQQ__PrimaryContact__c=newQuoteLineList[i].LPCR_ContactPrincipal__c
+                	)
+				);
             }
+            
         }
         if(quoteToUpdate.size()>0)
             update quoteToUpdate;
