@@ -4,7 +4,7 @@
     <active>true</active>
     <businessProcess>Opportunité Partenaire</businessProcess>
     <compactLayoutAssignment>OpportunitePartenaire</compactLayoutAssignment>
-    <label>Partenaire</label>
+    <label>Gestionnaire</label>
     <picklistValues>
         <picklist>ForecastCategoryName</picklist>
         <values>
@@ -48,6 +48,21 @@
         </values>
         <values>
             <fullName>Semiannual</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_ConcurrentAO__c</picklist>
+        <values>
+            <fullName>Gestionnaire actuel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gestionnaire retenu</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LPCR</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -422,11 +437,11 @@
     <picklistValues>
         <picklist>LeadSource</picklist>
         <values>
-            <fullName>Prospection</fullName>
+            <fullName>Autre</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Autre</fullName>
+            <fullName>Prospection</fullName>
             <default>false</default>
         </values>
         <values>
