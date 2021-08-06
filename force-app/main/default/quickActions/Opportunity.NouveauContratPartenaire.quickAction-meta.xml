@@ -20,7 +20,7 @@
         <field>LPCR_Ville__c</field>
         <formula>Opportunity.Account.ShippingCity</formula>
     </fieldOverrides>
-    <label>Nouveau Contrat Partenaire</label>
+    <label>Nouveau Devis Gestionnaire</label>
     <optionsCreateFeedItem>true</optionsCreateFeedItem>
     <quickActionLayout>
         <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
