@@ -118,6 +118,10 @@
                 <behavior>Readonly</behavior>
                 <field>LPCR_PrixUnitaire__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_CAUnitaire__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -127,10 +131,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>SBQQ__NetTotal__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LPCR_CAUnitaire__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -208,6 +208,10 @@
                 <field>SBQQ__Discount__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SBQQ__AdditionalDiscountAmount__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>SBQQ__AdditionalDiscount__c</field>
             </layoutItems>
@@ -281,7 +285,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000002HNVc</masterLabel>
+        <masterLabel>00h3O000000mt10</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
