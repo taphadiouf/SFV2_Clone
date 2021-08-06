@@ -460,15 +460,15 @@ public with sharing class SM013_QuoteLineServices {
         for(SBQQ__QuoteLine__c qli:newQuoteLineMap.values()){
             lstQuote.add(qli.SBQQ__Quote__c );
         }
-        for(SBQQ__Quote__c eachNewQuote :[Select id,LPCR_ContactFacturation__c,LPCR_ContactPrincipal__c ,LPCR_ContactInscriptions__c from SBQQ__Quote__c  where Id IN:lstQuote]){
+        for(SBQQ__Quote__c eachNewQuote :[Select id,LPCR_ContactFacturation__c,SBQQ__PrimaryContact__c ,LPCR_ContactInscriptions__c from SBQQ__Quote__c  where Id IN:lstQuote]){
             if(eachNewQuote.LPCR_ContactFacturation__c != null){
                 mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Fac',eachNewQuote.LPCR_ContactFacturation__c );
             }
             if(eachNewQuote.LPCR_ContactInscriptions__c != null){
                 mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Insc',eachNewQuote.LPCR_ContactInscriptions__c );
             }
-            if(eachNewQuote.LPCR_ContactPrincipal__c != null){
-                mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Primary',eachNewQuote.LPCR_ContactPrincipal__c );
+            if(eachNewQuote.SBQQ__PrimaryContact__c != null){
+                mapContactTypeQuote.put(eachNewQuote.Id+'-'+'Primary',eachNewQuote.SBQQ__PrimaryContact__c );
             }
         }
         
