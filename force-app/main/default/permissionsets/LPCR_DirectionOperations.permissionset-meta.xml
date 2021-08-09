@@ -1576,12 +1576,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>LPCR_Avoir__c.LPCR_NatureAvoirFacture__c</field>
-        <field>Event.LPCR_Statut__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Event.LPCR_TypeRdv__c</field>
         <readable>true</readable>
     </fieldPermissions>
