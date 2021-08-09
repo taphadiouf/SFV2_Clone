@@ -1692,6 +1692,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_Avoir__c.LPCR_NatureAvoirFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_ContratPartenaire__c.LPCR_CDDCDI__c</field>
         <readable>true</readable>
     </fieldPermissions>
