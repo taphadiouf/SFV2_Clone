@@ -1,0 +1,77 @@
+<template>
+    <template if:true={loaded}>
+    <div class="slds-p-around_medium lgc-bg"><h3 >
+        Créer un avoir
+    </h3></div>
+   
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-combobox
+            name="progress"
+            label="Type d'avoir"
+            value={value}
+            placeholder="Choisir type d'avoir"
+            options={options}
+            onchange={handleChange} ></lightning-combobox></div>
+        <lightning-card title={title}>
+            
+            <template if:true={showAll}>
+                <div class="slds-form_horizontal slds-form slds-grid slds-wrap slds-p-around_medium">
+                    <lightning-input type="text" name="nomavoir" class="slds-size_2-of-2" label="Nom avoir : " value={nomavoir} ></lightning-input>
+                    <template if:true={isAvoirPartiel}>
+                    <lightning-input type="date"  name="datedebut"   label="Date de début de l'avoir " value={DateDebut} ></lightning-input>
+                    <lightning-input type="date" name="datefin"   label="Date de fin de l'avoir: " value={DateFin} ></lightning-input>
+                    </template>
+                    <lightning-input type="text"   label="Societe Facturante" value={socfac} readonly></lightning-input>
+                    <lightning-input type="text" label="CT Num" value={ctnum} readonly></lightning-input>   
+                </div>		
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-textarea  name="avoirdesc" label="Description :"  value={desc}></lightning-textarea >
+                </div>
+        <template if:true={isAvoirPartiel}>
+            
+    <div class="slds-form_horizontal slds-form slds-grid slds-wrap slds-p-around_medium">
+        
+        <lightning-input type="number" name="avoirmontant" value={montantavoir} max=-1 message-when-too-short="Veuillez mettre un montant négatif" label="Montant de l'avoir" ></lightning-input>
+       
+    </div>
+    <lightning-input type="checkbox"
+    label="Appliquer a toutes les lignes" value={checkApplyAll} name="checkApply"
+    >
+</lightning-input>
+        <div class="resultsContainer slds-m-top_small">
+            <div class="slds-m-around_small">
+            
+                <div class="slds-col slds-no-flex">
+                    <h2 class="slds-m-bottom--xx-small">
+                        <a class="slds-page-header__title slds-text-color--default slds-show--inline-block uiOutputURL"
+                            href="javascript:void(0);" dir="ltr" title="">Ligne de facture</a>
+                    </h2>
+                </div>
+                <lightning-datatable id="tableLines" key-field="recId" selected-rows={preselectedRows} data={visibleLines} columns={columns} onsave={handleSaveTbl} >
+                </lightning-datatable>
+                
+            </div>
+            <div slot="footer" class="slds-var-m-vertical_medium">
+                <c-l-w-c014_-pagination records={totalLigneFacture} record-size="5" onupdate={updateLinesHandler} ></c-l-w-c014_-pagination>
+            </div>
+        </div>
+   
+       </template>
+            </template>
+          
+        
+           <template if:true={errorMsg}>
+            <!-- handle Apex error -->
+            <span class="slds-align_absolute-center">{errorMsg}</span>
+        </template>
+      <div slot="footer">
+        <lightning-button variant="neutral" label="Cancel" onclick={closeAction}></lightning-button>
+        <lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button>
+      </div>
+    </lightning-card>
+</template>
+
+<template if:false={loaded}>
+    <lightning-spinner alternative-text="Loading"></lightning-spinner>
+</template>
+</template>
