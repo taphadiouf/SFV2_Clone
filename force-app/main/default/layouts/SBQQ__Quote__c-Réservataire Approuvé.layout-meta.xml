@@ -103,11 +103,11 @@
                 <field>LPCR_NouveauPlanFacture__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>LPCR_TypeFacturation__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>SBQQ__BillingFrequency__c</field>
             </layoutItems>
             <layoutItems>
