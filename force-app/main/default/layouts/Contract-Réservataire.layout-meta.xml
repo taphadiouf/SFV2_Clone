@@ -397,12 +397,11 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
-        <fields>NAME</fields>
         <fields>LPCR_NumBonCommande__c</fields>
         <fields>SBQQ__StartDate__c</fields>
         <fields>SBQQ__EndDate__c</fields>
-        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>LPCR_Creche__c</fields>
+        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>LPCR_CompteFamille__c</fields>
         <fields>LPCR_QuantiteProduits__c</fields>
         <fields>SBQQ__TerminatedDate__c</fields>
@@ -489,7 +488,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000002HNjk</masterLabel>
+        <masterLabel>00h3O000000n3To</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
