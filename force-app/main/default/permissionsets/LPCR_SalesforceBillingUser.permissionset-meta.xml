@@ -3554,6 +3554,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__Subscription__c.LPCR_DateResiliationChoisie__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>blng__AccountBalanceSnapshot__c.blng__AccountBalance__c</field>
         <readable>true</readable>
     </fieldPermissions>

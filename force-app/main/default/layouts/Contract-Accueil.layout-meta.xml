@@ -380,7 +380,7 @@
         <fields>SBQQ__ListPrice__c</fields>
         <fields>LPCR_QuantiteProduits__c</fields>
         <fields>SBQQ__TerminatedDate__c</fields>
-        <fields>LPCR_Date_de_Resiliation_Choisi__c</fields>
+        <fields>LPCR_DateResiliationChoisie__c</fields>
         <relatedList>SBQQ__Subscription__c.SBQQ__Contract__c</relatedList>
     </relatedLists>
     <relatedLists>
