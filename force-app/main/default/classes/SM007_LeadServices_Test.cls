@@ -19,15 +19,18 @@ public class SM007_LeadServices_Test {
         Id aoPublicReservLeadRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'AO_PublicReservation');
         Id aoPublicDSPLeadRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'AO_PublicDSP');
         Id partenaireLeadRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'Partenaire');
+        Id familleLeadRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'Famille');
         List<Lead> entrepriseLeads = UM002_TestDataFactory.createLeads(5, entrepriseLeadRecordType, 'entrepriseLead', 'entrepriseLead', 'Nouveau', 'test@test.com');
         List<Lead> aoPublicReservLeads = UM002_TestDataFactory.createLeads(5, aoPublicReservLeadRT, 'aoPublicReservLeads', 'aoPublicReservLeads', 'Nouveau', 'test@test.com');
         List<Lead> aoPublicDSPLeads = UM002_TestDataFactory.createLeads(5, aoPublicDSPLeadRT, 'aoPublicDSPLeads', 'aoPublicDSPLeads', 'Nouveau', 'test@test.com');
         List<Lead> aoPartenaireLeads = UM002_TestDataFactory.createLeads(5, partenaireLeadRT, 'aoPartenaireLeads', 'aoPartenaireLeads', 'Nouveau', 'test@test.com');
+        List<Lead> aoFamilleLeads = UM002_TestDataFactory.createLeads(5, familleLeadRT, 'FamilleLead', 'FamilleLead', 'Nouveau', 'test@test.com');
         
         insert entrepriseLeads;
         insert aoPublicReservLeads;
         insert aoPublicDSPLeads;
         insert aoPartenaireLeads;
+        insert aoFamilleLeads;
         
         List<Account> accs =  new List<Account>();
         Account acc1=UM002_TestDataFactory.createAccount('creche1');
@@ -48,6 +51,7 @@ public class SM007_LeadServices_Test {
         insert UM002_TestDataFactory.createStructuresAOFromLeads(3, aoPublicReservLeads);
         insert UM002_TestDataFactory.createStructuresAOFromLeads(3, aoPublicDSPLeads);
         insert UM002_TestDataFactory.createStructuresAOFromLeads(3, aoPartenaireLeads);
+        insert UM002_TestDataFactory.createStructuresAOFromLeads(3, aoFamilleLeads);
         
         
         Map<String, Object> defaultVal = new Map<String, Object> {
@@ -55,8 +59,18 @@ public class SM007_LeadServices_Test {
                 'Name' => 'Famille'
                 };
                     
-                    Account familleAcc = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
-        insert familleAcc;
+		Account familleAcc = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
+        // PRA 27/07/2021 - Correction erreur FIELD_FILTER_VALIDATION_EXCEPTION, Value does not exist or does not match filter criteria.: LPCR_ResponsableADV__c
+        System.runAs(UM002_TestDataFactory.createUser()){	
+            UserRole roleAdv = [select id,name,developername from userrole where developername like 'LPCR_ResponsableADV'];
+            UserRole roleFamille = [select id,name,developername from userrole where developername like 'LPCR_ChargeRelationFamillesInscriptions'];
+            User usrResponsableAdv = UM002_TestDataFactory.createUser(roleAdv.Id);    
+            User usrResponsableServiceFamille = UM002_TestDataFactory.createUser(roleFamille.Id); 
+            familleAcc.LPCR_ResponsableADV__c = usrResponsableAdv.id;
+            familleAcc.LPCR_ResponsableServiceFamille__c = usrResponsableServiceFamille.id;
+        	insert familleAcc;
+        }
+        
         
         
         defaultVal = new Map<String, Object> {
@@ -228,9 +242,9 @@ public class SM007_LeadServices_Test {
 
     @isTest 
     public static void mapFieldsFromLeadToOpp_Test(){
-        List<Lead> leadsPublicToConvert = [SELECT Id,RecordTypeId FROM Lead WHERE Name IN ('aoPublicReservLeads','aoPublicDSPLeads')];
+        List<Lead> leadsPublicToConvert = [SELECT Id,RecordTypeId FROM Lead WHERE Name IN ('aoPublicReservLeads','aoPublicDSPLeads','entrepriseLead')];
 
-         Test.startTest();
+        Test.startTest();
         LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
         List<Database.LeadConvert> leadsToConvert = new List<Database.LeadConvert>();
         Database.LeadConvert tempLc;

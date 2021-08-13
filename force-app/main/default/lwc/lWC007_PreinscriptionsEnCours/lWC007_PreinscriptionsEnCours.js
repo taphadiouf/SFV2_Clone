@@ -40,28 +40,33 @@ export default class LWC007_PreinscriptionsEnCours extends LightningElement {
             },
             {
                 label: 'Préinscription',
-                fieldName: 'name',
-                type: ''
+                fieldName: 'recId',
+                type: 'url',
+                typeAttributes: {label: { fieldName: 'name' }, target: '_blank'}
             },
             {
                 label: 'Compte Famille',
-                fieldName: 'compteFamille',
-                type: ''
+                fieldName: 'compteFamilleId',
+                type: 'url',
+                typeAttributes: {label: { fieldName: 'compteFamille' }, target: '_blank'}
             },
             {
                 label: 'Compte Crèche',
-                fieldName: 'creche',
-                type: ''
+                fieldName: 'crecheId',
+                type: 'url',
+                typeAttributes: {label: { fieldName: 'creche' }, target: '_blank'}
             },
             {
                 label: 'Contact Parent',
-                fieldName: 'contactParent',
-                type: ''
+                fieldName: 'contactParentId',
+                type: 'url',
+                typeAttributes: {label: { fieldName: 'contactParent' }, target: '_blank'}
             },
             {
                 label: 'Enfant',
-                fieldName: 'nomEnfant',
-                type: ''
+                fieldName: 'contactEnfantId',
+                type: 'url',
+                typeAttributes: {label: { fieldName: 'nomEnfant' }, target: '_blank'}
             },
             {
                 label: 'Statut',

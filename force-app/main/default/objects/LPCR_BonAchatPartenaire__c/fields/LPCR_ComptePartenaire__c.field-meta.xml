@@ -3,9 +3,9 @@
     <fullName>LPCR_ComptePartenaire__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Compte partenaire</label>
+    <label>Compte gestionnaire</label>
     <referenceTo>Account</referenceTo>
-    <relationshipLabel>Bons d&#39;achat partenaires</relationshipLabel>
+    <relationshipLabel>Bons d&apos;achat partenaires</relationshipLabel>
     <relationshipName>BonsAchatPartenaires</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>

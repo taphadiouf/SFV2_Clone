@@ -46,6 +46,7 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
             SM008_QuoteServices.updateAccountsFromQuotes(newQuotesList,null);
             SM008_QuoteServices.updateMontantIndexation(newQuotesMap);
             SM008_QuoteServices.updateRTDevis(newQuotesMap);
+            SM008_QuoteServices.updateNumeroAvenant(newQuotesList);
         }
     }
     

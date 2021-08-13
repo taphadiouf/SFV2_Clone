@@ -552,10 +552,8 @@ public with sharing class SM008_QuoteServices {
                     }
                     eachQuote.LPCR_CompteFacturation__c = amendedContract.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_CompteFacturation__c;
                 }
-                
-            }
-        }
-        
+            } 
+        }      
     }
     
     //added by hanae
@@ -982,6 +980,38 @@ public with sharing class SM008_QuoteServices {
             update quoteListToUpdate;
             
         }
+    }
+
+    public static void updateNumeroAvenant(List<SBQQ__Quote__c> quotesList){
+        // PRA IS-2089
+        List<SBQQ__Quote__c> quotesListToUpdate =  new List<SBQQ__Quote__c> ();
+        Set<String> MasterContractidset =  UM003_TypeManager.getFieldsOfListObjects(quotesList,'SBQQ__MasterContract__c');
+        Map<Id,Contract> masterContractList = new Map<Id,Contract>([SELECT id,LPCR_NumeroContrat__c,LPCR_TECH_Nombre_Devis__c FROM contract where id in :MasterContractidset]);
+        for(SBQQ__Quote__c eachQuote : quotesList){
+            if(masterContractList.containsKey(eachQuote.SBQQ__MasterContract__c) && Label.LPCR_Amendment.equals(eachQuote.SBQQ__Type__c)){
+                Integer nbDevis =masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c <> null ? Integer.valueOf(masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c) :1  ;
+                String nbDevisForContractText = String.valueOf(nbDevis);
+                switch on nbDevisForContractText.length() {
+                    when 1 {
+                        nbDevisForContractText='00'+nbDevisForContractText;
+                    }	
+                    when 2 {
+                        nbDevisForContractText='0'+nbDevisForContractText;
+                    }
+                    when else {
+                        nbDevisForContractText=nbDevisForContractText;
+                    }
+                }
+                quotesListToUpdate.add(new SBQQ__Quote__c(id=eachQuote.id,LPCR_Numero_avenant__c = masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_NumeroContrat__c + ' - '+nbDevisForContractText));
+
+                masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c ++;
+            }
+        }
+        
+        if(quotesListToUpdate.size()>0){
+            update quotesListToUpdate;
+            update masterContractList.values();
+        }	    	
     }
     
 }

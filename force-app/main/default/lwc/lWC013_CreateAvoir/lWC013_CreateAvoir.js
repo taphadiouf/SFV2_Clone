@@ -5,7 +5,9 @@ import {
     wire,track
   } from 'lwc';
   import getLigneFacture from '@salesforce/apex/APC012_CreateAvoir.getLigneFacture';
+
   import getPicklistvalues from '@salesforce/apex/APC012_CreateAvoir.getPicklistvalues';
+
   import saveAvoir from '@salesforce/apex/APC012_CreateAvoir.saveAvoir';
   import { CloseActionScreenEvent } from 'lightning/actions';
   import {ShowToastEvent} from 'lightning/platformShowToastEvent';
@@ -55,6 +57,7 @@ import {
           this.showAll=true;
       }
     }
+
     handleChangeNature(event){
       this.natureavoir = event.detail.value;
     }
@@ -78,6 +81,7 @@ import {
         }
 
     }
+
     @wire(getLigneFacture, { invId :'$recordId'})
       wiredaccount({error, data}){
         if(data){
@@ -250,9 +254,10 @@ import {
       
     }
      objettosend.TypeAvoir=this.value
+
      objettosend.NatureAvoir=this.natureavoir
       // debugger
-      
+
       saveAvoir({resp : JSON.stringify(objettosend)})
       .then(result => {
         this.loaded = true;
