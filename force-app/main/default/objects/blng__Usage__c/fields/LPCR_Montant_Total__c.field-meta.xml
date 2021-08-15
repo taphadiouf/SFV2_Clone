@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Montant_Total__c</fullName>
+    <externalId>false</externalId>
+    <formula>blng__PreratedQuantity__c  *  LPCR_Prix_Usage__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Montant total de l&apos;utilisation quand son prix unitaire est différent du prix par défaut qui est de 75e</inlineHelpText>
+    <label>Montant Total</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>
