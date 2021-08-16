@@ -390,7 +390,7 @@
         <fields>SBQQ__Product__c</fields>
         <fields>LPCR_QuantiteProduits__c</fields>
         <fields>SBQQ__TerminatedDate__c</fields>
-        <fields>LPCR_Date_de_Resiliation_Choisi__c</fields>
+        <fields>LPCR_DateResiliationChoisie__c</fields>
         <relatedList>SBQQ__Subscription__c.SBQQ__Contract__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -469,7 +469,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3O000000n3Tn</masterLabel>
+        <masterLabel>00h7a000001KsGy</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
