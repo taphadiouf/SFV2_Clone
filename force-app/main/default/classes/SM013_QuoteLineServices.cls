@@ -484,7 +484,7 @@ public with sharing class SM013_QuoteLineServices {
             }
             //
             if(mapContactTypeQuote.containsKey(qli.SBQQ__Quote__c+'-'+'Primary')){
-            qli2.LPCR_PrimaryContact__c=mapContactTypeQuote.get(qli.SBQQ__Quote__c+'-'+'Primary');
+                qli2.LPCR_ContactPrincipal__c=mapContactTypeQuote.get(qli.SBQQ__Quote__c+'-'+'Primary');
             }
             lstQLIUpdate.add(qli2);
         }
