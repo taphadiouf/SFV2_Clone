@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MandatoryCreche</fullName>
+    <active>true</active>
+    <description>La saisie de la crèche est obligatoire pour l&apos;enregistrement du devis</description>
+    <errorConditionFormula>ISBLANK(LPCR_Creche__c)</errorConditionFormula>
+    <errorDisplayField>LPCR_Creche__c</errorDisplayField>
+    <errorMessage>La saisie de la crèche est obligatoire pour l&apos;enregistrement du devis</errorMessage>
+</ValidationRule>
