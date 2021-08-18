@@ -2,7 +2,7 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Partenaire</fullName>
     <active>true</active>
-    <label>Partenaire</label>
+    <label>Gestionnaire</label>
     <picklistValues>
         <picklist>LPCR_AmplitudeHoraireJeudi__c</picklist>
         <values>
@@ -81,10 +81,6 @@
     <picklistValues>
         <picklist>LPCR_Fonction__c</picklist>
         <values>
-            <fullName>Autre</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Assistant achats</fullName>
             <default>false</default>
         </values>
@@ -98,6 +94,10 @@
         </values>
         <values>
             <fullName>Associé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autre</fullName>
             <default>false</default>
         </values>
         <values>
@@ -458,6 +458,371 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_Genre__c</picklist>
+        <values>
+            <fullName>F</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>M</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Metier__c</picklist>
+        <values>
+            <fullName>AGENT DE PUERICULTURE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AGENT DE SERVICE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AGENT POLYVALENT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AGENT QUALIFIE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AGT ACCOMPT SOCIAL ET FAMILIAL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AGT%2EACCOMPT%2ESOCIAL ET FAMILIAL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AIDE AUXILIAIRE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ANIMATEUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ANIMATRICE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>APPRENTI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ARCHITECTES SALARIÉS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ASPE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ASSIST%2E RESSOURCES HUMAINES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ASSIST%2ERESSOURCES HUMAINES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ASSISTANTE ARTISTIQUE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ASSISTANTE COMPTABLE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ASSISTANTE MATERNELLE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AUXILIAIRE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AUXILIAIRE ADMINISTRATIF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AUXILIAIRE CERTIFIEE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AUXILIAIRE CERTIFIEE ASF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AUXILIAIRE DE CRECHE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AUXILIAIRE DE PUERICULTURE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAD%2E ORGANISATION OU DU CONTRÔLE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAD%2ECHARGÉ ÉTUDES ECO%2FFIN%2FCIALES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CADRES REL%2E PUB%2E %26 COMMUNICAT%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CADRES SCES FINANC%2E%2FCOMPT%2E PME</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CADRES SPÉCIALISTES RH ET RECRUT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CHEF SCE LOGISTIQUE ET IMMO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CHEF SERVICE INFORMATIQUE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CHEF SVCE LOGISTIQUE ET IMMOB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CHEFS PROJETS%5C RESPONS%2E INFORM%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CIAUX %26 TC REP%2E EN BIENS CONSOM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CIAUX %26 TC REP%2E EN SERVICES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COMMIS DE CUISINE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CONCEPT%2E%26ASSIST%2ETECHN%2EART GRAPH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COORDINATRICE SCE INSC%2EFACT%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COORDINATRICE SVCE INSC%2E FACT%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COUTURIERE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DIR%2ECENTRE SOCIOCULTUR%26LOISIRS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DIRECTEUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DIRECTEUR ADJOINT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DIRECTEUR DE CRECHE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DIRECTEUR FINANCIER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DIRECTEUR GENERAL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DIRECTEUR RESSOURCES HUMAINES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DIRECTRICE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DIRECTRICE ADJOINTE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DIRECTRICE DE CRECHE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EDUCATEUR DE JEUNES ENFANTS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EDUCATEUR SPORTIF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EDUCATEURS SPÉCIALISÉS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EDUCATRICE DE JEUNES ENFANTS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EJE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMPLOYEE ADMINISTRATIVE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FORMATRICE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INFIRMIERE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INFORMATICIEN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ING%2E%26CAD%2EMÉTHODES DE PROD%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INTERVENANT ARTISTIQUE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JURISTES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LINGERE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MANUTENTIONNAIRES NON QUALIFIÉS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MEDECIN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MEDECIN GENERALISTE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MONTEURS%5C METTEUR POINT TQUAL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OUV%2EQUAL%2E MANUTENTION%5C CARISTES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OUVRIER HAUTEMENT QUALIFIE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PEINTRE EN BATIMENT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PSYCHOLOGUE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PSYCHOMOTRICIEN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PSYCHOMOTRICIENNE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PUERICULTRICE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PUÉRICULTRICES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RESP%2ED%27ENTREPOT%5C DE MAGASINAGE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RESPONSABLE ARTISTIQUE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RESPONSABLE SANTE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RESPONSABLE SCE  PREVENTION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RESPONSABLE SERVICE PREVENTION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SECRETAIRE GENER%2E DE DIRECTION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SECRETAIRE GENER%2EDE DIRECTION</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SECRÉTAIRES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TECHN%2ELOGIST%2EPLANNING%5CORDONN%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TECHNICIEN ADMINISTRATIF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TECHNICIEN LOGISTIQUE</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_Rattachement__c</picklist>
+        <values>
+            <fullName>Crèche</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Siège</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_SituationProfessionnelle__c</picklist>
         <values>
             <fullName>Autre</fullName>
@@ -477,6 +842,25 @@
         </values>
         <values>
             <fullName>Étudiant</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_SourceMigration__c</picklist>
+        <values>
+            <fullName>Fichiers Excel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intranet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lead Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SFV1</fullName>
             <default>false</default>
         </values>
     </picklistValues>
@@ -537,11 +921,27 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Pôle Finance administratif%2C juridique</fullName>
             <default>false</default>
         </values>
         <values>
+            <fullName>Pôle Marketing %26 Communication</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Pôle Ressources humaines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pôle achat%2C services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pôle commercial</fullName>
             <default>false</default>
         </values>
         <values>
@@ -556,31 +956,15 @@
             <fullName>Pôle informatique %26 Technique</fullName>
             <default>false</default>
         </values>
-        <values>
-            <fullName>Public</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pôle Marketing %26 Communication</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pôle achat%2C services</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Pôle commercial</fullName>
-            <default>false</default>
-        </values>
     </picklistValues>
     <picklistValues>
         <picklist>LeadSource</picklist>
         <values>
-            <fullName>Prospection</fullName>
+            <fullName>Autre</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Autre</fullName>
+            <fullName>Prospection</fullName>
             <default>false</default>
         </values>
         <values>
@@ -596,25 +980,6 @@
         </values>
         <values>
             <fullName>Mme</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>LPCR_SourceMigration__c</picklist>
-        <values>
-            <fullName>Fichiers Excel</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Intranet</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Lead Manager</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>SFV1</fullName>
             <default>false</default>
         </values>
     </picklistValues>

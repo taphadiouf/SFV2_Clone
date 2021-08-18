@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
     <decisions>
         <processMetadataValues>
             <name>index</name>
@@ -220,9 +221,40 @@
         <label>myDecision5</label>
         <locationX>50</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision7</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_6</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_6</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_6_A1</targetReference>
+            </connector>
+            <label>MAJ Date de résiliation pour amendement</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>3.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision7</name>
+        <label>myDecision7</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_8</name>
             <conditionLogic>1 AND (2 OR 3)</conditionLogic>
             <conditions>
                 <processMetadataValues>
@@ -318,7 +350,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_6_pmetdec</targetReference>
+                <targetReference>myRule_8_pmetdec</targetReference>
             </connector>
             <label>MAJ Envoi pour signature référencement</label>
         </rules>
@@ -450,16 +482,16 @@
         </rules>
     </decisions>
     <decisions>
-        <name>myRule_6_pmetdec</name>
+        <name>myRule_8_pmetdec</name>
         <label>Previously Met Decision</label>
-        <locationX>600</locationX>
+        <locationX>800</locationX>
         <locationY>100</locationY>
         <defaultConnector>
-            <targetReference>myRule_6_A1</targetReference>
+            <targetReference>myRule_8_A1</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
         <rules>
-            <name>myRule_6_pmetnullrule</name>
+            <name>myRule_8_pmetnullrule</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>myVariable_old</leftValueReference>
@@ -469,12 +501,12 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>myRule_6_A1</targetReference>
+                <targetReference>myRule_8_A1</targetReference>
             </connector>
             <label>Previously Met - Null</label>
         </rules>
         <rules>
-            <name>myRule_6_pmetrule</name>
+            <name>myRule_8_pmetrule</name>
             <conditionLogic>1 AND (2 OR 3)</conditionLogic>
             <conditions>
                 <processMetadataValues>
@@ -580,7 +612,7 @@
                 <stringValue>TODAY() </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_4_myRule_3_A1_5013297919</name>
+        <name>formula_4_myRule_3_A1_1613975353</name>
         <dataType>Date</dataType>
         <expression>TODAY()</expression>
     </formulas>
@@ -591,12 +623,23 @@
                 <stringValue>BLANKVALUE([SBQQ__Quote__c].LPCR_NumeroBonCommande__c,0 )+1</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_7_myRule_6_A1_2569817570</name>
+        <name>formula_9_myRule_8_A1_5747875084</name>
         <dataType>Number</dataType>
         <expression>BLANKVALUE({!myVariable_current.LPCR_NumeroBonCommande__c},0 )+1</expression>
         <scale>18</scale>
     </formulas>
-    <interviewLabel>PB_Quote_UpdateRenewalPricingAccount-3_InterviewLabel</interviewLabel>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>ISNEW() &amp;&amp; ISPICKVAL([SBQQ__Quote__c].SBQQ__Type__c,&quot;Amendment&quot;)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_6</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW() &amp;&amp; ISPICKVAL({!myVariable_current.SBQQ__Type__c},&quot;Amendment&quot;)</expression>
+    </formulas>
+    <interviewLabel>PB_Quote_UpdateRenewalPricingAccount-2_InterviewLabel</interviewLabel>
     <label>PB_Quote</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -655,6 +698,7 @@
         <connector>
             <targetReference>myDecision2</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -738,6 +782,7 @@
         <connector>
             <targetReference>myDecision5</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -784,7 +829,7 @@
             </processMetadataValues>
             <field>LPCR_DateSignatureContrat__c</field>
             <value>
-                <elementReference>formula_4_myRule_3_A1_5013297919</elementReference>
+                <elementReference>formula_4_myRule_3_A1_1613975353</elementReference>
             </value>
         </inputAssignments>
         <object>SBQQ__Quote__c</object>
@@ -815,9 +860,94 @@
             <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_6_A1</name>
-        <label>MAJ num bon commande</label>
+        <label>Date de résiliation</label>
         <locationX>600</locationX>
         <locationY>200</locationY>
+        <connector>
+            <targetReference>myDecision7</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Date</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Date de Résiliation Choisie</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>LPCR_DateResiliation__c</field>
+            <value>
+                <elementReference>myVariable_current.SBQQ__MasterContract__r.LPCR_DateResiliationChoisie__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>SBQQ__Quote__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>extraTypeInfo</name>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[SBQQ__Quote__c]</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>referenceTargetField</name>
+        </processMetadataValues>
+        <name>myRule_8_A1</name>
+        <label>MAJ num bon commande</label>
+        <locationX>800</locationX>
+        <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -864,7 +994,7 @@
             </processMetadataValues>
             <field>LPCR_NumeroBonCommande__c</field>
             <value>
-                <elementReference>formula_7_myRule_6_A1_2569817570</elementReference>
+                <elementReference>formula_9_myRule_8_A1_5747875084</elementReference>
             </value>
         </inputAssignments>
         <object>SBQQ__Quote__c</object>

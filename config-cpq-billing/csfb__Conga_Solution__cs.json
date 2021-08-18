@@ -1,0 +1,111 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "csfb__Conga_Solution__c",
+                "referenceId": "csfb__Conga_Solution__cRef1"
+            },
+            "Name": "Facturation Famille",
+            "csfb__Composer_Parameters__c": "&QueryId=[LineItems]a4L3O0000001DnF,\n[CompanyDets]a4L3O0000001DnH,\n[LigneBerceau]a4L3O0000001E47&TemplateId=a4T3O0000004IGa,a4T3O0000004IGV,a4T3O0000004IIv",
+            "csfb__CongaEmailTemplateCount__c": 0,
+            "csfb__Launch_C8_Formula_Button__c": "<img src=\"/resource/csfb__DisabledLaunchButton\" alt=\"Launch Composer\" border=\"0\"/>",
+            "csfb__Master_Object_Type__c": "blng__Invoice__c",
+            "csfb__Master_Object_Type_Validator__c": "blng__Invoice__c",
+            "csfb__Solution_Weblink_Syntax__c": "/apex/csfb__Conga_Composer?SolMgr=1\n&serverUrl={!API.Partner_Server_URL_370}\n&userName={!$User.Username}\n&Id={!blng__Invoice__c.Id}\n\n&QueryId=[LineItems]a4J3O0000008RXg,\n[CompanyDets]a4J3O0000008RXi,\n[LigneBerceau]a4J3O0000008RXf\n\n&TemplateId=a4R3O0000008T1F,a4R3O0000008T1H,a4R3O0000008T4P\n\n&MFTS0=LPCR_StatutFacture__c\n&MFTSValue0=Envoyée"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Solution__c",
+                "referenceId": "csfb__Conga_Solution__cRef2"
+            },
+            "Name": "Facture B2B",
+            "csfb__Button_body_field__c": "/apex/csfb__Conga_Composer?SolMgr=1\n&serverUrl={!API.Partner_Server_URL_370}\n&userName={!$User.Username}\n&Id={!blng__Invoice__c.Id}\n\n&QueryId=[LineItems]a4J3O0000008RQg,\n[CreditNotes]a4J3O0000008V1T\n\n&TemplateId=a4R3O0000008SwF\n\n&FP0=0\n&AC1=Invoice Generated\n&SC0=1\n&SC1=SalesforceFile\n&OFN=Facture {!blng__Invoice__c.blng__Account__c} - {!TEXT(TODAY())}\n&AC0=1\n&TemplateGroup=Invoice\n&XDO=CIA\n&ContactId={!blng__Invoice__c.blng__BillToContactId__c}\n&XDO2=GenerateInvoice\n&GEO={!$User.Country}",
+            "csfb__Button_Link_API_Name__c": "Conga_Composer_Facture_B2B",
+            "csfb__Composer_Parameters__c": "&QueryId=[LineItems]a4J3O0000008RQg,\n[CreditNotes]a4J3O0000008V1T&TemplateId=a4R3O0000008SwF&FP0=0\n&AC1=Invoice Generated\n&SC0=1\n&SC1=SalesforceFile\n&OFN=Facture {!blng__Invoice__c.blng__Account__c} - {!TEXT(TODAY())}\n&AC0=1\n&TemplateGroup=Invoice\n&XDO=CIA\n&ContactId={!blng__Invoice__c.blng__BillToContactId__c}\n&XDO2=GenerateInvoice\n&GEO={!$User.Country}",
+            "csfb__CongaEmailTemplateCount__c": 0,
+            "csfb__Is_Quick_Start__c": "true",
+            "csfb__Launch_C8_Formula_Button__c": "<img src=\"/resource/csfb__DisabledLaunchButton\" alt=\"Launch Composer\" border=\"0\"/>",
+            "csfb__Master_Object_Type__c": "blng__Invoice__c",
+            "csfb__Solution_Description__c": "Created By Conga Composer Quick Start",
+            "csfb__Solution_Weblink_Syntax__c": "/apex/csfb__Conga_Composer?SolMgr=1\n&serverUrl={!API.Partner_Server_URL_370}\n&userName={!$User.Username}\n&Id={!blng__Invoice__c.Id}\n\n&QueryId=[LineItems]a4J3O0000008RQg,\n[Usages]a4J3O0000008RQh,\n[CompanyDets]a4J3O0000008RQi\n\n&TemplateId=a4R3O0000008SwF\n\n&FP0=0\n&AC1=Invoice+Generated\n&SC0=1\n&SC1=SalesforceFile\n&OFN=Facture+{!blng__Invoice__c.blng__Account__c}+-+{!TEXT(TODAY())}\n&AC0=1\n&TemplateGroup=Invoice\n&XDO=CIA\n&ContactId={!blng__Invoice__c.blng__BillToContactId__c}\n&XDO2=GenerateInvoice\n&GEO={!$User.Country}",
+            "csfb__Weblink_Id__c": "00b3O000000bR60"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Solution__c",
+                "referenceId": "csfb__Conga_Solution__cRef3"
+            },
+            "Name": "Gnerer avoir total",
+            "csfb__Button_body_field__c": "/apex/csfb__Conga_Composer?SolMgr=1\n&serverUrl={!API.Partner_Server_URL_370}\n&userName={!$User.Username}\n&Id={!blng__Invoice__c.Id}\n\n&QueryId=[CompanyDets]a4J3O0000008RXi,\n[LineItems]a4J3O0000008cy4\n\n&TemplateId=a4R3O0000008hZE,a4R3O0000008hZJ\n\n&invoiceID={!blng__Invoice__c.Id}\n&invoiceStatus={!blng__Invoice__c.blng__InvoiceStatus__c}",
+            "csfb__Button_Link_API_Name__c": "Conga_Composer_Gnerer_avoir_total",
+            "csfb__Composer_Parameters__c": "&QueryId=[CompanyDets]a4J3O0000008RXi,\n[LineItems]a4J3O0000008cy4&TemplateId=a4R3O0000008hZE,a4R3O0000008hZJ&invoiceID={!blng__Invoice__c.Id}\n&invoiceStatus={!blng__Invoice__c.blng__InvoiceStatus__c}",
+            "csfb__CongaEmailTemplateCount__c": 0,
+            "csfb__Launch_C8_Formula_Button__c": "<img src=\"/resource/csfb__DisabledLaunchButton\" alt=\"Launch Composer\" border=\"0\"/>",
+            "csfb__Master_Object_Type__c": "blng__Invoice__c",
+            "csfb__Master_Object_Type_Validator__c": "blng__Invoice__c",
+            "csfb__Weblink_Id__c": "00b3O000000bRvE"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Solution__c",
+                "referenceId": "csfb__Conga_Solution__cRef4"
+            },
+            "Name": "Gnration Proforma",
+            "csfb__Button_body_field__c": "/apex/csfb__Conga_Composer?SolMgr=1\n&serverUrl={!API.Partner_Server_URL_370}\n&userName={!$User.Username}\n&Id={!blng__Invoice__c.Id}\n\n&TemplateId=a4R3O0000008hSt",
+            "csfb__Button_Link_API_Name__c": "Conga_Composer_Gnration_Proforma",
+            "csfb__Composer_Parameters__c": "&TemplateId=a4R3O0000008hSt",
+            "csfb__CongaEmailTemplateCount__c": 0,
+            "csfb__Launch_C8_Formula_Button__c": "<img src=\"/resource/csfb__DisabledLaunchButton\" alt=\"Launch Composer\" border=\"0\"/>",
+            "csfb__Master_Object_Type__c": "blng__Invoice__c",
+            "csfb__Master_Object_Type_Validator__c": "blng__Invoice__c",
+            "csfb__Weblink_Id__c": "00b3O000000bRAc"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Solution__c",
+                "referenceId": "csfb__Conga_Solution__cRef5"
+            },
+            "Name": "testpdo",
+            "csfb__Button_body_field__c": "/apex/csfb__Conga_Composer?SolMgr=1\n&serverUrl={!API.Partner_Server_URL_370}\n&userName={!$User.Username}\n&Id={!Account.Id}\n\n&TemplateId=a4R3O0000008hQU",
+            "csfb__Button_Link_API_Name__c": "Conga_Composer_testpdo",
+            "csfb__Composer_Parameters__c": "&TemplateId=a4R3O0000008hQU",
+            "csfb__CongaEmailTemplateCount__c": 0,
+            "csfb__Launch_C8_Formula_Button__c": "<img src=\"/resource/csfb__DisabledLaunchButton\" alt=\"Launch Composer\" border=\"0\"/>",
+            "csfb__Master_Object_Type__c": "Account",
+            "csfb__Master_Object_Type_Validator__c": "Account",
+            "csfb__Weblink_Id__c": "00b3O000000bR6F"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Solution__c",
+                "referenceId": "csfb__Conga_Solution__cRef6"
+            },
+            "Name": "Generate Invoice",
+            "csfb__Button_body_field__c": "/apex/csfb__Conga_Composer?SolMgr=1\n&serverUrl={!API.Partner_Server_URL_370}\n&userName={!$User.Username}\n&Id={!blng__Invoice__c.Id}\n\n&QueryId=[LineItems]a4J3O0000008cy4,\n[Usages]a4J3O0000008cy5,\n[CompanyDets]a4J3O0000008cy6\n\n&TemplateId=a4R3O0000008hOJ\n\n&FP0=1\n&AC1=Invoice Generated\n&SC0=1\n&SC1=SalesforceFile\n&OFN=Invoice for {!blng__Invoice__c.blng__Account__c} - {!TEXT(TODAY())}\n&AC0=1\n&TemplateGroup=Invoice\n&XDO=CIA\n&ContactId={!blng__Invoice__c.blng__BillToContactId__c}\n&XDO2=GenerateInvoice\n&GEO={!$User.Country}",
+            "csfb__Button_Link_API_Name__c": "Conga_Composer_Generate_Invoice",
+            "csfb__Composer_Parameters__c": "&QueryId=[LineItems]a4J3O0000008cy4,\n[Usages]a4J3O0000008cy5,\n[CompanyDets]a4J3O0000008cy6&TemplateId=a4R3O0000008hOJ&FP0=1\n&AC1=Invoice Generated\n&SC0=1\n&SC1=SalesforceFile\n&OFN=Invoice for {!blng__Invoice__c.blng__Account__c} - {!TEXT(TODAY())}\n&AC0=1\n&TemplateGroup=Invoice\n&XDO=CIA\n&ContactId={!blng__Invoice__c.blng__BillToContactId__c}\n&XDO2=GenerateInvoice\n&GEO={!$User.Country}",
+            "csfb__CongaEmailTemplateCount__c": 0,
+            "csfb__Is_Quick_Start__c": "true",
+            "csfb__Launch_C8_Formula_Button__c": "<a href=\"https://nlpcr--int.my.salesforce.com/servlet/servlet.Integration?lid=00b3O000000bR65&amp;eid=a1o3O000000WJPx&amp;ic=1\" target=\"_blank\"><img src=\"/resource/csfb__ComposerLaunchButton\" alt=\"Launch Composer\" border=\"0\"/></a>",
+            "csfb__Master_Object_Type__c": "blng__Invoice__c",
+            "csfb__Sample_Record_Id__c": "a1o3O000000WJPx",
+            "csfb__Solution_Description__c": "Created By Conga Composer Quick Start",
+            "csfb__Weblink_Id__c": "00b3O000000bR65"
+        },
+        {
+            "attributes": {
+                "type": "csfb__Conga_Solution__c",
+                "referenceId": "csfb__Conga_Solution__cRef7"
+            },
+            "Name": "Generer Avoir Partiel",
+            "csfb__Button_body_field__c": "/apex/csfb__Conga_Composer?SolMgr=1\n&serverUrl={!API.Partner_Server_URL_370}\n&userName={!$User.Username}\n&Id={!blng__InvoiceLine__c.Id}\n\n&QueryId=[CompanyDets]a4J3O0000008cy6%3Fpv0%3D{!blng__InvoiceLine__c.blng__InvoiceId__c},\n[LineItems]a4J3O0000008d4i%3Fpv0%3D{!blng__InvoiceLine__c.Id}\n\n&TemplateId=a4R3O0000008haj,a4R3O0000008hao\n\n&invoiceID={!blng__InvoiceLine__c.blng__Invoice__c}",
+            "csfb__Button_Link_API_Name__c": "Conga_Composer_Generer_Avoir_Partiel",
+            "csfb__Composer_Parameters__c": "&QueryId=[CompanyDets]a4J3O0000008cy6%3Fpv0%3D{!blng__InvoiceLine__c.blng__InvoiceId__c},\n[LineItems]a4J3O0000008d4i%3Fpv0%3D{!blng__InvoiceLine__c.Id}&TemplateId=a4R3O0000008haj,a4R3O0000008hao&invoiceID={!blng__InvoiceLine__c.blng__Invoice__c}",
+            "csfb__CongaEmailTemplateCount__c": 0,
+            "csfb__Launch_C8_Formula_Button__c": "<img src=\"/resource/csfb__DisabledLaunchButton\" alt=\"Launch Composer\" border=\"0\"/>",
+            "csfb__Master_Object_Type__c": "blng__InvoiceLine__c",
+            "csfb__Master_Object_Type_Validator__c": "blng__InvoiceLine__c",
+            "csfb__Weblink_Id__c": "00b3O000000bdZj"
+        }
+    ]
+}

@@ -2,12 +2,12 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_ContactPartenaire__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>contact auquel on envoie le bon d&apos;achat partenaire</description>
+    <description>contact auquel on envoie le bon d&apos;achat gestionnaire</description>
     <externalId>false</externalId>
-    <label>Contact Partenaire</label>
+    <label>Contact Gestionnaire</label>
     <lookupFilter>
         <active>true</active>
-        <errorMessage>Le contact partenaire doit être un contact du compte partenaire.</errorMessage>
+        <errorMessage>Le contact gestionnaire doit être un contact du compte gestionnaire.</errorMessage>
         <filterItems>
             <field>Contact.AccountId</field>
             <operation>equals</operation>

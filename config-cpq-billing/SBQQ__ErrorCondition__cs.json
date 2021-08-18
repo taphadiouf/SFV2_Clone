@@ -1,0 +1,648 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef1"
+            },
+            "IsDeleted": false,
+            "Name": "000009",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "MAC",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O000003396bQAA"
+                },
+                "Id": "a0n3O000003396bQAA"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "LPCR_TypeCreche__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef2"
+            },
+            "IsDeleted": false,
+            "Name": "000010",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "MAC",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O000003396cQAA"
+                },
+                "Id": "a0n3O000003396cQAA"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "LPCR_TypeCreche__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef3"
+            },
+            "IsDeleted": false,
+            "Name": "000011",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "0",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O000003396bQAA"
+                },
+                "Id": "a0n3O000003396bQAA"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000000cxPRUAY"
+                },
+                "Id": "a1A3O000000cxPRUAY"
+            },
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef4"
+            },
+            "IsDeleted": false,
+            "Name": "000012",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "11",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O000003396bQAA"
+                },
+                "Id": "a0n3O000003396bQAA"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "LPCR_TypeMensualisation__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef5"
+            },
+            "IsDeleted": false,
+            "Name": "000013",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "0",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O000003396cQAA"
+                },
+                "Id": "a0n3O000003396cQAA"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000000cxPQUAY"
+                },
+                "Id": "a1A3O000000cxPQUAY"
+            },
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef6"
+            },
+            "IsDeleted": false,
+            "Name": "000014",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "12",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O000003396cQAA"
+                },
+                "Id": "a0n3O000003396cQAA"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "LPCR_TypeMensualisation__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef7"
+            },
+            "IsDeleted": false,
+            "Name": "000006",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "0",
+            "SBQQ__Operator__c": "greater than",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O00000338qQQAQ"
+                },
+                "Id": "a0n3O00000338qQQAQ"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000000cpSeUAI"
+                },
+                "Id": "a1A3O000000cpSeUAI"
+            },
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef8"
+            },
+            "IsDeleted": false,
+            "Name": "000007",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "Quote",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O00000338qQQAQ"
+                },
+                "Id": "a0n3O00000338qQQAQ"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "SBQQ__Type__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef9"
+            },
+            "IsDeleted": false,
+            "Name": "000008",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "0",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O00000338qQQAQ"
+                },
+                "Id": "a0n3O00000338qQQAQ"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedObject__c": "Quote",
+            "SBQQ__TestedVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000000cpSfUAI"
+                },
+                "Id": "a1A3O000000cpSfUAI"
+            },
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef10"
+            },
+            "IsDeleted": false,
+            "Name": "000024",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "0",
+            "SBQQ__Index__c": 30,
+            "SBQQ__Operator__c": "greater than",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O000003nKTEQA2"
+                },
+                "Id": "a0n3O000003nKTEQA2"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000001EOjeUAG"
+                },
+                "Id": "a1A3O000001EOjeUAG"
+            },
+            "SystemModstamp": "2021-06-16T08:17:41.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef11"
+            },
+            "IsDeleted": false,
+            "Name": "000019",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "MAC",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": false,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O0000033m49QAA"
+                },
+                "Id": "a0n3O0000033m49QAA"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "LPCR_TypeCreche__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-08-17T14:20:26.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef12"
+            },
+            "IsDeleted": false,
+            "Name": "000020",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "12",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": false,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O0000033m49QAA"
+                },
+                "Id": "a0n3O0000033m49QAA"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "LPCR_TypeMensualisation__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-08-17T14:38:59.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef13"
+            },
+            "IsDeleted": false,
+            "Name": "000015",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "0",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O00000339RVQAY"
+                },
+                "Id": "a0n3O00000339RVQAY"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedObject__c": "Quote",
+            "SBQQ__TestedVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000000dGslUAE"
+                },
+                "Id": "a1A3O000000dGslUAE"
+            },
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef14"
+            },
+            "IsDeleted": false,
+            "Name": "000016",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "MAC",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O00000339RVQAY"
+                },
+                "Id": "a0n3O00000339RVQAY"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "LPCR_TypeCreche__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef15"
+            },
+            "IsDeleted": false,
+            "Name": "000000",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O0000032vWpQAI"
+                },
+                "Id": "a0n3O0000032vWpQAI"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "SBQQ__StartDate__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef16"
+            },
+            "IsDeleted": false,
+            "Name": "000001",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "Ajout/Suppression Berceau",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O0000032vWqQAI"
+                },
+                "Id": "a0n3O0000032vWqQAI"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "LPCR_TypeAvenant__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef17"
+            },
+            "IsDeleted": false,
+            "Name": "000002",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O0000032vWqQAI"
+                },
+                "Id": "a0n3O0000032vWqQAI"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "SBQQ__StartDate__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef18"
+            },
+            "IsDeleted": false,
+            "Name": "000003",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "Résiliation",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O0000032vWoQAI"
+                },
+                "Id": "a0n3O0000032vWoQAI"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "LPCR_TypeAvenant__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef19"
+            },
+            "IsDeleted": false,
+            "Name": "000004",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "Changement de Prix",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O0000032vWpQAI"
+                },
+                "Id": "a0n3O0000032vWpQAI"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "LPCR_TypeAvenant__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef20"
+            },
+            "IsDeleted": false,
+            "Name": "000005",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O0000032vWoQAI"
+                },
+                "Id": "a0n3O0000032vWoQAI"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "LPCR_DateResiliation__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-07-21T21:05:36.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef21"
+            },
+            "IsDeleted": false,
+            "Name": "000022",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "0",
+            "SBQQ__Index__c": 10,
+            "SBQQ__Operator__c": "greater than",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O000003nKTEQA2"
+                },
+                "Id": "a0n3O000003nKTEQA2"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000001EOjBUAW"
+                },
+                "Id": "a1A3O000001EOjBUAW"
+            },
+            "SystemModstamp": "2021-06-16T08:15:43.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef22"
+            },
+            "IsDeleted": false,
+            "Name": "000023",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "0",
+            "SBQQ__Index__c": 20,
+            "SBQQ__Operator__c": "greater than",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O000003nKTEQA2"
+                },
+                "Id": "a0n3O000003nKTEQA2"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000001EOjZUAW"
+                },
+                "Id": "a1A3O000001EOjZUAW"
+            },
+            "SystemModstamp": "2021-06-16T08:16:26.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef23"
+            },
+            "IsDeleted": false,
+            "Name": "000025",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "Referencement",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O000003nW39QAE"
+                },
+                "Id": "a0n3O000003nW39QAE"
+            },
+            "SBQQ__RuleTargetsQuote__c": false,
+            "SBQQ__TestedField__c": "LPCR_TypeDenregistrement__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2021-07-02T15:36:06.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef24"
+            },
+            "IsDeleted": false,
+            "Name": "000017",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "Amendment",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O0000033RhoQAE"
+                },
+                "Id": "a0n3O0000033RhoQAE"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "SBQQ__Type__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-08-05T10:08:56.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef25"
+            },
+            "IsDeleted": false,
+            "Name": "000018",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__Operator__c": "equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O0000033RhoQAE"
+                },
+                "Id": "a0n3O0000033RhoQAE"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedField__c": "LPCR_TypeAvenant__c",
+            "SBQQ__TestedObject__c": "Quote",
+            "SystemModstamp": "2020-08-05T10:09:12.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ErrorCondition__c",
+                "referenceId": "SBQQ__ErrorCondition__cRef26"
+            },
+            "IsDeleted": false,
+            "Name": "000021",
+            "SBQQ__FilterType__c": "Value",
+            "SBQQ__FilterValue__c": "0",
+            "SBQQ__Operator__c": "not equals",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O0000035Ae1QAE"
+                },
+                "Id": "a0n3O0000035Ae1QAE"
+            },
+            "SBQQ__RuleTargetsQuote__c": true,
+            "SBQQ__TestedVariable__r": {
+                "attributes": {
+                    "type": "SBQQ__SummaryVariable__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__SummaryVariable__c/a1A3O000000igteUAA"
+                },
+                "Id": "a1A3O000000igteUAA"
+            },
+            "SystemModstamp": "2020-11-24T08:42:51.000+0000"
+        }
+    ]
+}

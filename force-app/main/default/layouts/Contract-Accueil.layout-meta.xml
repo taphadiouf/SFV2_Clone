@@ -332,11 +332,6 @@
             <sortOrder>1</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>NewTask</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>2</sortOrder>
@@ -361,6 +356,11 @@
             <actionType>QuickAction</actionType>
             <sortOrder>6</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <relatedContent>
         <relatedContentItems>
@@ -371,16 +371,15 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
-        <fields>NAME</fields>
         <fields>LPCR_NumBonCommande__c</fields>
         <fields>SBQQ__StartDate__c</fields>
         <fields>SBQQ__EndDate__c</fields>
         <fields>LPCR_Creche__c</fields>
+        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>LPCR_CompteFamille__c</fields>
-        <fields>SBQQ__ListPrice__c</fields>
         <fields>LPCR_QuantiteProduits__c</fields>
         <fields>SBQQ__TerminatedDate__c</fields>
-        <fields>LPCR_Date_de_Resiliation_Choisi__c</fields>
+        <fields>LPCR_DateResiliationChoisie__c</fields>
         <relatedList>SBQQ__Subscription__c.SBQQ__Contract__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -412,7 +411,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000002QWuJ</masterLabel>
+        <masterLabel>00h7a000001KsGx</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

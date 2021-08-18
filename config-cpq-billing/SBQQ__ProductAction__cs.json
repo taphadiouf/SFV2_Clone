@@ -1,0 +1,56 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "SBQQ__ProductAction__c",
+                "referenceId": "SBQQ__ProductAction__cRef1"
+            },
+            "IsDeleted": false,
+            "Name": "PA-0000001",
+            "SBQQ__ParentRuleIsActive__c": false,
+            "SBQQ__Product__r": {
+                "attributes": {
+                    "type": "Product2",
+                    "url": "/services/data/v52.0/sobjects/Product2/01t3O0000019dYPQAY"
+                },
+                "Id": "01t3O0000019dYPQAY"
+            },
+            "SBQQ__Required__c": true,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O0000033m49QAA"
+                },
+                "Id": "a0n3O0000033m49QAA"
+            },
+            "SBQQ__Type__c": "Show & Add",
+            "SystemModstamp": "2020-08-17T15:32:15.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ProductAction__c",
+                "referenceId": "SBQQ__ProductAction__cRef2"
+            },
+            "IsDeleted": false,
+            "Name": "PA-0000002",
+            "SBQQ__ParentRuleIsActive__c": true,
+            "SBQQ__Product__r": {
+                "attributes": {
+                    "type": "Product2",
+                    "url": "/services/data/v52.0/sobjects/Product2/01t3O0000019dYbQAI"
+                },
+                "Id": "01t3O0000019dYbQAI"
+            },
+            "SBQQ__Required__c": false,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__ProductRule__c",
+                    "url": "/services/data/v52.0/sobjects/SBQQ__ProductRule__c/a0n3O000003nW39QAE"
+                },
+                "Id": "a0n3O000003nW39QAE"
+            },
+            "SBQQ__Type__c": "Hide & Remove",
+            "SystemModstamp": "2021-07-02T15:36:38.000+0000"
+        }
+    ]
+}
