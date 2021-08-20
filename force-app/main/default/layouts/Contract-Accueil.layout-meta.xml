@@ -327,6 +327,11 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Contract.LPCR_AmendLexContract</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
@@ -356,11 +361,6 @@
             <actionType>QuickAction</actionType>
             <sortOrder>6</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
     </platformActionList>
     <relatedContent>
         <relatedContentItems>
@@ -371,7 +371,7 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
-        <fields>LPCR_NumBonCommande__c</fields>
+        <fields>NAME</fields>
         <fields>SBQQ__StartDate__c</fields>
         <fields>SBQQ__EndDate__c</fields>
         <fields>LPCR_Creche__c</fields>
