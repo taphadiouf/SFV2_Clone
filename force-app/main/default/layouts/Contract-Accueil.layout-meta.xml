@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>SBQQ__Amend</customButtons>
+    <customButtons>Envoyer_Avenant</customButtons>
+    <excludeButtons>Activate</excludeButtons>
+    <excludeButtons>ChangeOwnerOne</excludeButtons>
+    <excludeButtons>ChangeRecordType</excludeButtons>
+    <excludeButtons>Clone</excludeButtons>
+    <excludeButtons>Delete</excludeButtons>
+    <excludeButtons>IsotopeSubscription</excludeButtons>
+    <excludeButtons>PrintableView</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -324,6 +332,7 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+<<<<<<< Updated upstream
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
@@ -362,6 +371,8 @@
             <sortOrder>6</sortOrder>
         </platformActionListItems>
     </platformActionList>
+=======
+>>>>>>> Stashed changes
     <relatedContent>
         <relatedContentItems>
             <layoutItem>
@@ -371,7 +382,10 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
+<<<<<<< Updated upstream
         <fields>NAME</fields>
+=======
+>>>>>>> Stashed changes
         <fields>LPCR_NumBonCommande__c</fields>
         <fields>SBQQ__StartDate__c</fields>
         <fields>SBQQ__EndDate__c</fields>
@@ -412,7 +426,11 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
+<<<<<<< Updated upstream
         <masterLabel>00h3N000002QWuJ</masterLabel>
+=======
+        <masterLabel>00h1X000002xHco</masterLabel>
+>>>>>>> Stashed changes
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
