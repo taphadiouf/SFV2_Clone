@@ -13036,6 +13036,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>blng__Invoice__c.LPCR_TypeAvoir__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>blng__LegalEntity__c.LPCR_RaisonSociale__c</field>
         <readable>true</readable>
     </fieldPermissions>
