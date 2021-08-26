@@ -482,6 +482,10 @@ public with sharing class SM008_QuoteServices {
     
     public static void setQuoteFields(List<SBQQ__Quote__c> quotesList,Map<Id,Contract> renewedContract,Map<Id,Contract> amendedContract, Map<Id,Opportunity> opptyMap, Map<Id,Account> acctMap){
         Map<String,Schema.RecordTypeInfo> mapQuoteRT = Schema.getGlobalDescribe().get(Label.LPCR_Quote).getDescribe().getRecordTypeInfosByDeveloperName();
+        // PRA IS-2089
+        List<Contract> contratToUpdateList =new List<Contract>();
+        Map<id,Integer> NbDevisOnContratMap = new Map<id,Integer>();
+        Map<id,Contract> ContratToUpdateMap = new Map<id,Contract>();
 		for (SBQQ__Quote__c eachQuote : quotesList){
             if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) && 'Renewal'.equals(eachQuote.SBQQ__Type__c)){
                eachQuote.ApprovalStatus__c = Label.LPCR_ApprovalStatusApproved;
