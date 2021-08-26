@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
     <decisions>
         <processMetadataValues>
             <name>index</name>
@@ -19,46 +20,117 @@
                 <processMetadataValues>
                     <name>inputDataType</name>
                     <value>
-                        <stringValue>Boolean</stringValue>
+                        <stringValue>Picklist</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>leftHandSideType</name>
                     <value>
-                        <stringValue>Date</stringValue>
+                        <stringValue>Picklist</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>operatorDataType</name>
                     <value>
-                        <stringValue>Date</stringValue>
+                        <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>rightHandSideType</name>
                     <value>
-                        <stringValue>Boolean</stringValue>
+                        <stringValue>Picklist</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.LPCR_DateResiliationChoisie__c</leftValueReference>
+                <leftValueReference>myVariable_current.SBQQ__Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Annulé</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_pmetdec</targetReference>
+            </connector>
+            <label>Devis annulé</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_1_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>100</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_1_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
-                    <booleanValue>false</booleanValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>Contrat résilié</label>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_1_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_old.SBQQ__Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Annulé</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
         </rules>
     </decisions>
-    <description>Mise à jour d&apos;un contrat au statut résilié</description>
-    <interviewLabel>PB_Contrat_ContratResilie-2_InterviewLabel</interviewLabel>
-    <label>PB_Contrat_ContratRésilié</label>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>TODAY() </stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_2_myRule_1_A1_2812203679</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <interviewLabel>LPCR_Renseigner_Date_Annulation-1_InterviewLabel</interviewLabel>
+    <label>Renseigner Date</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
-            <stringValue>Contract</stringValue>
+            <stringValue>SBQQ__Quote__c</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -99,16 +171,17 @@
         <processMetadataValues>
             <name>reference</name>
             <value>
-                <stringValue>[Contract]</stringValue>
+                <stringValue>[SBQQ__Quote__c]</stringValue>
             </value>
         </processMetadataValues>
         <processMetadataValues>
             <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>Contrat résilié</label>
+        <label>Date d&apos;annulation</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -126,7 +199,7 @@
             <processMetadataValues>
                 <name>dataType</name>
                 <value>
-                    <stringValue>Boolean</stringValue>
+                    <stringValue>Date</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -138,7 +211,7 @@
             <processMetadataValues>
                 <name>leftHandSideLabel</name>
                 <value>
-                    <stringValue>Contrat Résilié</stringValue>
+                    <stringValue>Date d&apos;annulation</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -150,15 +223,15 @@
             <processMetadataValues>
                 <name>rightHandSideType</name>
                 <value>
-                    <stringValue>Boolean</stringValue>
+                    <stringValue>Formula</stringValue>
                 </value>
             </processMetadataValues>
-            <field>LPCR_ContratResilie__c</field>
+            <field>LPCR_Date_Annulation__c</field>
             <value>
-                <booleanValue>true</booleanValue>
+                <elementReference>formula_2_myRule_1_A1_2812203679</elementReference>
             </value>
         </inputAssignments>
-        <object>Contract</object>
+        <object>SBQQ__Quote__c</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
     <status>Active</status>
@@ -168,7 +241,7 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-        <objectType>Contract</objectType>
+        <objectType>SBQQ__Quote__c</objectType>
     </variables>
     <variables>
         <name>myVariable_old</name>
@@ -176,6 +249,6 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-        <objectType>Contract</objectType>
+        <objectType>SBQQ__Quote__c</objectType>
     </variables>
 </Flow>

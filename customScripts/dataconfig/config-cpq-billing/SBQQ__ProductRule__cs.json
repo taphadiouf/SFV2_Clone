@@ -6,110 +6,19 @@
                 "referenceId": "SBQQ__ProductRule__cRef1"
             },
             "IsDeleted": false,
-            "LastReferencedDate": "2021-04-21T10:08:27.000+0000",
-            "LastViewedDate": "2021-04-21T10:08:27.000+0000",
-            "Name": "Frais de dossier obligatoire",
+            "Name": "Type d'avenant obligatoire sur amendment quote",
             "SBQQ__Active__c": true,
             "SBQQ__ConditionsMet__c": "All",
-            "SBQQ__ErrorMessage__c": "Merci de verifier si les frais de dossier sont applicables sur ce devis.",
-            "SBQQ__EvaluationEvent__c": "Save",
+            "SBQQ__ErrorMessage__c": "Merci de renseigner le type d'avenant",
+            "SBQQ__EvaluationEvent__c": "Always",
             "SBQQ__Scope__c": "Quote",
-            "SBQQ__Type__c": "Alert",
-            "SystemModstamp": "2020-07-21T21:06:33.000+0000"
+            "SBQQ__Type__c": "Validation",
+            "SystemModstamp": "2020-08-05T10:08:23.000+0000"
         },
         {
             "attributes": {
                 "type": "SBQQ__ProductRule__c",
                 "referenceId": "SBQQ__ProductRule__cRef2"
-            },
-            "IsDeleted": false,
-            "Name": "Check 'BerceauMac11Mois' si mensualisation 11 mois",
-            "SBQQ__Active__c": true,
-            "SBQQ__ConditionsMet__c": "All",
-            "SBQQ__ErrorMessage__c": "Merci de sélectionner le produit 'Berceau Mac - 11 Mois'",
-            "SBQQ__EvaluationEvent__c": "Save",
-            "SBQQ__Scope__c": "Quote",
-            "SBQQ__Type__c": "Validation",
-            "SystemModstamp": "2020-07-21T21:06:33.000+0000"
-        },
-        {
-            "attributes": {
-                "type": "SBQQ__ProductRule__c",
-                "referenceId": "SBQQ__ProductRule__cRef3"
-            },
-            "IsDeleted": false,
-            "Name": "Check 'BerceauMac12Mois' si mensualisation 12 mois",
-            "SBQQ__Active__c": true,
-            "SBQQ__ConditionsMet__c": "All",
-            "SBQQ__ErrorMessage__c": "Merci de sélectionner le produit 'Berceau Mac - 12 Mois'",
-            "SBQQ__EvaluationEvent__c": "Save",
-            "SBQQ__Scope__c": "Quote",
-            "SBQQ__Type__c": "Validation",
-            "SystemModstamp": "2020-07-21T21:06:33.000+0000"
-        },
-        {
-            "attributes": {
-                "type": "SBQQ__ProductRule__c",
-                "referenceId": "SBQQ__ProductRule__cRef4"
-            },
-            "IsDeleted": false,
-            "Name": "Test",
-            "SBQQ__Active__c": false,
-            "SBQQ__ConditionsMet__c": "All",
-            "SBQQ__EvaluationEvent__c": "Always",
-            "SBQQ__Scope__c": "Quote",
-            "SBQQ__Type__c": "Selection",
-            "SystemModstamp": "2020-09-09T21:53:43.000+0000"
-        },
-        {
-            "attributes": {
-                "type": "SBQQ__ProductRule__c",
-                "referenceId": "SBQQ__ProductRule__cRef5"
-            },
-            "IsDeleted": false,
-            "Name": "Frais d'inscription MAC obligatoire",
-            "SBQQ__Active__c": true,
-            "SBQQ__ConditionsMet__c": "All",
-            "SBQQ__ErrorMessage__c": "Merci de verifier si les frais d'inscription Mac sont applicables sur ce devis.",
-            "SBQQ__EvaluationEvent__c": "Save",
-            "SBQQ__Scope__c": "Quote",
-            "SBQQ__Type__c": "Alert",
-            "SystemModstamp": "2020-07-21T21:06:33.000+0000"
-        },
-        {
-            "attributes": {
-                "type": "SBQQ__ProductRule__c",
-                "referenceId": "SBQQ__ProductRule__cRef6"
-            },
-            "IsDeleted": false,
-            "Name": "Date de résiliation obligatoire si avenant de type 'Resiliation'",
-            "SBQQ__Active__c": true,
-            "SBQQ__ConditionsMet__c": "All",
-            "SBQQ__ErrorMessage__c": "La date de résiliation est obligatoire pour le type d'avenant 'Resiliation'",
-            "SBQQ__EvaluationEvent__c": "Always",
-            "SBQQ__Scope__c": "Quote",
-            "SBQQ__Type__c": "Validation",
-            "SystemModstamp": "2021-04-01T13:41:02.000+0000"
-        },
-        {
-            "attributes": {
-                "type": "SBQQ__ProductRule__c",
-                "referenceId": "SBQQ__ProductRule__cRef7"
-            },
-            "IsDeleted": false,
-            "Name": "Date début obligatoire si avenant de type 'changement de prix'",
-            "SBQQ__Active__c": true,
-            "SBQQ__ConditionsMet__c": "All",
-            "SBQQ__ErrorMessage__c": "La date de début est obligatoire pour le type d'avenant 'Changement de prix'",
-            "SBQQ__EvaluationEvent__c": "Always",
-            "SBQQ__Scope__c": "Quote",
-            "SBQQ__Type__c": "Validation",
-            "SystemModstamp": "2020-07-21T21:06:33.000+0000"
-        },
-        {
-            "attributes": {
-                "type": "SBQQ__ProductRule__c",
-                "referenceId": "SBQQ__ProductRule__cRef8"
             },
             "IsDeleted": false,
             "Name": "Date de début obligatoire si avenant de type 'Ajout/Suppression Berceau'",
@@ -124,7 +33,81 @@
         {
             "attributes": {
                 "type": "SBQQ__ProductRule__c",
-                "referenceId": "SBQQ__ProductRule__cRef9"
+                "referenceId": "SBQQ__ProductRule__cRef3"
+            },
+            "IsDeleted": false,
+            "Name": "Frais de dossier obligatoire",
+            "SBQQ__Active__c": true,
+            "SBQQ__ConditionsMet__c": "All",
+            "SBQQ__ErrorMessage__c": "Merci de verifier si les frais de dossier sont applicables sur ce devis.",
+            "SBQQ__EvaluationEvent__c": "Save",
+            "SBQQ__Scope__c": "Quote",
+            "SBQQ__Type__c": "Alert",
+            "SystemModstamp": "2020-07-21T21:06:33.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ProductRule__c",
+                "referenceId": "SBQQ__ProductRule__cRef4"
+            },
+            "IsDeleted": false,
+            "Name": "Check 'BerceauMac12Mois' si mensualisation 12 mois",
+            "SBQQ__Active__c": true,
+            "SBQQ__ConditionsMet__c": "All",
+            "SBQQ__ErrorMessage__c": "Merci de sélectionner le produit 'Berceau Mac - 12 Mois'",
+            "SBQQ__EvaluationEvent__c": "Save",
+            "SBQQ__Scope__c": "Quote",
+            "SBQQ__Type__c": "Validation",
+            "SystemModstamp": "2020-07-21T21:06:33.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ProductRule__c",
+                "referenceId": "SBQQ__ProductRule__cRef5"
+            },
+            "IsDeleted": false,
+            "Name": "Date début obligatoire si avenant de type 'changement de prix'",
+            "SBQQ__Active__c": true,
+            "SBQQ__ConditionsMet__c": "All",
+            "SBQQ__ErrorMessage__c": "La date de début est obligatoire pour le type d'avenant 'Changement de prix'",
+            "SBQQ__EvaluationEvent__c": "Always",
+            "SBQQ__Scope__c": "Quote",
+            "SBQQ__Type__c": "Validation",
+            "SystemModstamp": "2020-07-21T21:06:33.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ProductRule__c",
+                "referenceId": "SBQQ__ProductRule__cRef6"
+            },
+            "IsDeleted": false,
+            "Name": "Check 'BerceauMac11Mois' si mensualisation 11 mois",
+            "SBQQ__Active__c": true,
+            "SBQQ__ConditionsMet__c": "All",
+            "SBQQ__ErrorMessage__c": "Merci de sélectionner le produit 'Berceau Mac - 11 Mois'",
+            "SBQQ__EvaluationEvent__c": "Save",
+            "SBQQ__Scope__c": "Quote",
+            "SBQQ__Type__c": "Validation",
+            "SystemModstamp": "2020-07-21T21:06:33.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ProductRule__c",
+                "referenceId": "SBQQ__ProductRule__cRef7"
+            },
+            "IsDeleted": false,
+            "Name": "Hide frais de dossier contrat ref",
+            "SBQQ__Active__c": true,
+            "SBQQ__ConditionsMet__c": "All",
+            "SBQQ__EvaluationEvent__c": "Load",
+            "SBQQ__Scope__c": "Product",
+            "SBQQ__Type__c": "Selection",
+            "SystemModstamp": "2021-07-02T15:42:53.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ProductRule__c",
+                "referenceId": "SBQQ__ProductRule__cRef8"
             },
             "IsDeleted": false,
             "Name": "Message d'erreur si remise ou majoration appliqué sur frais de dossier",
@@ -140,22 +123,21 @@
         {
             "attributes": {
                 "type": "SBQQ__ProductRule__c",
-                "referenceId": "SBQQ__ProductRule__cRef10"
+                "referenceId": "SBQQ__ProductRule__cRef9"
             },
             "IsDeleted": false,
-            "Name": "Type d'avenant obligatoire sur amendment quote",
-            "SBQQ__Active__c": true,
+            "Name": "Test",
+            "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
-            "SBQQ__ErrorMessage__c": "Merci de renseigner le type d'avenant",
             "SBQQ__EvaluationEvent__c": "Always",
             "SBQQ__Scope__c": "Quote",
-            "SBQQ__Type__c": "Validation",
-            "SystemModstamp": "2020-08-05T10:08:23.000+0000"
+            "SBQQ__Type__c": "Selection",
+            "SystemModstamp": "2020-09-09T21:53:43.000+0000"
         },
         {
             "attributes": {
                 "type": "SBQQ__ProductRule__c",
-                "referenceId": "SBQQ__ProductRule__cRef11"
+                "referenceId": "SBQQ__ProductRule__cRef10"
             },
             "IsDeleted": false,
             "Name": "Date début QL toujours après date début quote ( Réf)",
@@ -166,6 +148,51 @@
             "SBQQ__Scope__c": "Quote",
             "SBQQ__Type__c": "Validation",
             "SystemModstamp": "2020-11-24T13:48:01.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ProductRule__c",
+                "referenceId": "SBQQ__ProductRule__cRef11"
+            },
+            "IsDeleted": false,
+            "Name": "Frais d'inscription MAC obligatoire",
+            "SBQQ__Active__c": true,
+            "SBQQ__ConditionsMet__c": "All",
+            "SBQQ__ErrorMessage__c": "Merci de verifier si les frais d'inscription Mac sont applicables sur ce devis.",
+            "SBQQ__EvaluationEvent__c": "Save",
+            "SBQQ__Scope__c": "Quote",
+            "SBQQ__Type__c": "Alert",
+            "SystemModstamp": "2020-07-21T21:06:33.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ProductRule__c",
+                "referenceId": "SBQQ__ProductRule__cRef12"
+            },
+            "IsDeleted": false,
+            "Name": "Date de résiliation obligatoire si avenant de type 'Resiliation'",
+            "SBQQ__Active__c": true,
+            "SBQQ__ConditionsMet__c": "All",
+            "SBQQ__ErrorMessage__c": "La date de résiliation est obligatoire pour le type d'avenant 'Resiliation'",
+            "SBQQ__EvaluationEvent__c": "Always",
+            "SBQQ__Scope__c": "Quote",
+            "SBQQ__Type__c": "Validation",
+            "SystemModstamp": "2021-04-01T13:41:02.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__ProductRule__c",
+                "referenceId": "SBQQ__ProductRule__cRef13"
+            },
+            "IsDeleted": false,
+            "Name": "Remise supérieure à 100% impossible",
+            "SBQQ__Active__c": false,
+            "SBQQ__ConditionsMet__c": "All",
+            "SBQQ__ErrorMessage__c": "Impossible de renseigner une remise supérieure ou égale à 100%",
+            "SBQQ__EvaluationEvent__c": "Save",
+            "SBQQ__Scope__c": "Quote",
+            "SBQQ__Type__c": "Validation",
+            "SystemModstamp": "2021-07-27T12:28:45.000+0000"
         }
     ]
 }

@@ -367,19 +367,16 @@
         </relatedContentItems>
     </relatedContent>
     <relatedLists>
-<<<<<<< Updated upstream
         <fields>NAME</fields>
         <fields>LPCR_NumBonCommande__c</fields>
-        <fields>LPCR_QuantiteProduits__c</fields>
-        <fields>LPCR_Creche__c</fields>
-=======
-        <fields>LPCR_NumBonCommande__c</fields>
->>>>>>> Stashed changes
         <fields>SBQQ__StartDate__c</fields>
         <fields>SBQQ__EndDate__c</fields>
+        <fields>LPCR_Creche__c</fields>
+        <fields>LPCR_PrixUnitaire__c</fields>
         <fields>LPCR_CompteFamille__c</fields>
+        <fields>LPCR_QuantiteProduits__c</fields>
         <fields>SBQQ__TerminatedDate__c</fields>
-        <fields>LPCR_Date_de_Resiliation_Choisi__c</fields>
+        <fields>LPCR_DateResiliationChoisie__c</fields>
         <relatedList>SBQQ__Subscription__c.SBQQ__Contract__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -462,11 +459,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-<<<<<<< Updated upstream
-        <masterLabel>00h3O000000i95j</masterLabel>
-=======
         <masterLabel>00h1X000002xHcq</masterLabel>
->>>>>>> Stashed changes
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

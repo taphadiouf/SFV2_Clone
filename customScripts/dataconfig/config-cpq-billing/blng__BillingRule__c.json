@@ -1,0 +1,158 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "blng__BillingRule__c",
+                "referenceId": "blng__BillingRule__cRef1"
+            },
+            "blng__Active__c": true,
+            "blng__AmendmentBillCycleDateAlignment__c": "Do not align amended Order Product",
+            "blng__GenerateInvoices__c": "Yes",
+            "blng__InitialBillingTrigger__c": "Order Product Activation Date",
+            "blng__PartialPeriodTreatment__c": "Separate",
+            "IsDeleted": false,
+            "Name": "Règle 10-20-70",
+            "SystemModstamp": "2020-10-13T15:35:33.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__BillingRule__c",
+                "referenceId": "blng__BillingRule__cRef2"
+            },
+            "blng__Active__c": true,
+            "blng__AmendmentBillCycleDateAlignment__c": "Do not align amended Order Product",
+            "blng__GenerateInvoices__c": "Yes",
+            "blng__InitialBillingTrigger__c": "Order Product Activation Date",
+            "blng__PartialPeriodTreatment__c": "Separate",
+            "IsDeleted": false,
+            "Name": "Règle 50-50 sur 6 mois",
+            "SystemModstamp": "2020-07-21T21:37:59.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__BillingRule__c",
+                "referenceId": "blng__BillingRule__cRef3"
+            },
+            "blng__Active__c": true,
+            "blng__AmendmentBillCycleDateAlignment__c": "Do not align amended Order Product",
+            "blng__GenerateInvoices__c": "Yes",
+            "blng__InitialBillingTrigger__c": "Order Product Activation Date",
+            "blng__PartialPeriodTreatment__c": "Separate",
+            "IsDeleted": false,
+            "Name": "Règle 11 mois",
+            "SystemModstamp": "2020-07-21T21:27:34.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__BillingRule__c",
+                "referenceId": "blng__BillingRule__cRef4"
+            },
+            "blng__Active__c": true,
+            "blng__AmendmentBillCycleDateAlignment__c": "Do not align amended Order Product",
+            "blng__GenerateInvoices__c": "Yes",
+            "blng__InitialBillingTrigger__c": "Order Product Activation Date",
+            "blng__PartialPeriodTreatment__c": "Separate",
+            "IsDeleted": false,
+            "Name": "Règle 40-40-20 Aix En Provence",
+            "SystemModstamp": "2020-07-21T21:27:34.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__BillingRule__c",
+                "referenceId": "blng__BillingRule__cRef5"
+            },
+            "blng__Active__c": true,
+            "blng__AmendmentBillCycleDateAlignment__c": "Do not align amended Order Product",
+            "blng__GenerateInvoices__c": "Yes",
+            "blng__InitialBillingTrigger__c": "Order Product Activation Date",
+            "blng__PartialPeriodTreatment__c": "Separate",
+            "IsDeleted": false,
+            "Name": "Règle 70-20-10 Yerres",
+            "SystemModstamp": "2020-07-21T21:27:34.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__BillingRule__c",
+                "referenceId": "blng__BillingRule__cRef6"
+            },
+            "blng__Active__c": true,
+            "blng__AmendmentBillCycleDateAlignment__c": "Do not align amended Order Product",
+            "blng__GenerateInvoices__c": "Yes",
+            "blng__InitialBillingTrigger__c": "Order Product Activation Date",
+            "blng__PartialPeriodTreatment__c": "Separate",
+            "IsDeleted": false,
+            "Name": "Règle 50-50 Victoret",
+            "SystemModstamp": "2020-07-21T21:27:34.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__BillingRule__c",
+                "referenceId": "blng__BillingRule__cRef7"
+            },
+            "blng__Active__c": true,
+            "blng__AmendmentBillCycleDateAlignment__c": "Do not align amended Order Product",
+            "blng__GenerateInvoices__c": "Yes",
+            "blng__InitialBillingTrigger__c": "Order Product Activation Date",
+            "blng__PartialPeriodTreatment__c": "Separate",
+            "IsDeleted": false,
+            "Name": "Règle 30-30-30-10 Boulogne",
+            "SystemModstamp": "2020-07-21T21:27:34.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__BillingRule__c",
+                "referenceId": "blng__BillingRule__cRef8"
+            },
+            "blng__Active__c": true,
+            "blng__AmendmentBillCycleDateAlignment__c": "Do not align amended Order Product",
+            "blng__GenerateInvoices__c": "Yes",
+            "blng__InitialBillingTrigger__c": "Order Product Activation Date",
+            "blng__PartialPeriodTreatment__c": "Separate",
+            "IsDeleted": false,
+            "Name": "Règle 30-30-30-10 Mantes La Jolie",
+            "SystemModstamp": "2020-07-21T21:27:34.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__BillingRule__c",
+                "referenceId": "blng__BillingRule__cRef9"
+            },
+            "blng__Active__c": true,
+            "blng__AmendmentBillCycleDateAlignment__c": "Do not align amended Order Product",
+            "blng__GenerateInvoices__c": "Yes",
+            "blng__InitialBillingTrigger__c": "Order Product Activation Date",
+            "blng__PartialPeriodTreatment__c": "Separate",
+            "IsDeleted": false,
+            "Name": "LPCR Règle de facturation",
+            "SystemModstamp": "2020-10-29T18:02:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__BillingRule__c",
+                "referenceId": "blng__BillingRule__cRef10"
+            },
+            "blng__Active__c": true,
+            "blng__AmendmentBillCycleDateAlignment__c": "Do not align amended Order Product",
+            "blng__GenerateInvoices__c": "No",
+            "blng__InitialBillingTrigger__c": "Order Product Activation Date",
+            "blng__PartialPeriodTreatment__c": "Separate",
+            "IsDeleted": false,
+            "Name": "Règle de facturation - sans facture",
+            "SystemModstamp": "2020-07-21T21:37:59.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__BillingRule__c",
+                "referenceId": "blng__BillingRule__cRef11"
+            },
+            "blng__Active__c": true,
+            "blng__AmendmentBillCycleDateAlignment__c": "Do not align amended Order Product",
+            "blng__GenerateInvoices__c": "Yes",
+            "blng__InitialBillingTrigger__c": "Order Product Activation Date",
+            "blng__PartialPeriodTreatment__c": "Separate",
+            "IsDeleted": false,
+            "Name": "REGLE_FACT_MARIE_NOM",
+            "SystemModstamp": "2021-03-23T16:14:02.000+0000"
+        }
+    ]
+}

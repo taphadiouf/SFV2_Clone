@@ -22,8 +22,8 @@
 &amp;Id={!blng__Invoice__c.Id}
 
 &amp;QueryId=[CompanyDets]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQAccount_Details_CompanyDets__c},
-[LineItems]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_Lines__c}
-
+[LineItems]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_Lines__c},
+[LineAvoir]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_TemplateAvoirPartiel__c}
 
 &amp;invoiceID={!blng__Invoice__c.Id}
 &amp;invoiceStatus={!blng__Invoice__c.blng__InvoiceStatus__c}</url>

@@ -23,6 +23,17 @@
         <template>unfiled$public/LPCR_ResiliationContrat</template>
     </alerts>
     <alerts>
+        <fullName>LPCR_Alerte_Service_Famille_Contrat_accueil_annule</fullName>
+        <description>Alerte Service Famille ( Contrat accueil annulé)</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Service_Famille</recipient>
+            <type>role</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_NotificationContratAnnule</template>
+    </alerts>
+    <alerts>
         <fullName>LPCR_Alerte_Service_Famille_devis_annule</fullName>
         <description>Alerte Service Famille ( devis annulé)</description>
         <protected>false</protected>
@@ -136,7 +147,7 @@
             <type>contactLookup</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>unfiled$public/Notification_R_siliation_B2B</template>
+        <template>unfiled$public/LPCR_NotificationResiliationB2B</template>
     </alerts>
     <alerts>
         <fullName>Notification_de_r_siliation_au_client_B2C</fullName>
@@ -147,7 +158,7 @@
             <type>contactLookup</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>unfiled$public/Notification_R_siliation_B2C</template>
+        <template>unfiled$public/LPCR_Notification_R_siliation_B2C</template>
     </alerts>
     <alerts>
         <fullName>R_siliation_contrat_d_accueil</fullName>
@@ -235,6 +246,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>LPCR_StatusTermine</fullName>
@@ -245,6 +257,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>LPCR_StatutBrouillon</fullName>
@@ -324,6 +337,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>LPCR_UpdateRTQuote</fullName>
@@ -334,6 +348,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>LPCR_UpdateStatusDevisMIB</fullName>
@@ -363,6 +378,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_accueil_approuve</fullName>
@@ -373,6 +389,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_referencement</fullName>
@@ -383,6 +400,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_referencement_approuve</fullName>
@@ -393,6 +411,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_reservataire</fullName>
@@ -404,6 +423,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>RT_Contrat_reservataire_approuve</fullName>
@@ -414,6 +434,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Recalculer</fullName>
@@ -423,6 +444,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Statut_standard_approuv</fullName>
@@ -432,6 +454,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Update_Numero_Contrat</fullName>
@@ -1131,7 +1154,7 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
-        <booleanFilter>(2 AND 11 AND 12) OR (1 AND 2 AND 3 AND (( 11 AND 7 AND 9 ) OR ( 10 AND 4) OR ( 5 AND 4 AND (6 OR 8)) OR ( 5 AND 7 AND ( NOT 6) AND (NOT 8))))</booleanFilter>
+        <booleanFilter>(1 AND 2 AND 3 AND (( 11 AND 7 AND 9 ) OR (11 AND 4) OR ( 10 AND 4) OR ( 5 AND 4 AND (6 OR 8)) OR ( 5 AND 7 AND ( NOT 6) AND (NOT 8))))</booleanFilter>
         <criteriaItems>
             <field>SBQQ__Quote__c.ApprovalStatus__c</field>
             <operation>equals</operation>
@@ -1186,11 +1209,6 @@
             <field>SBQQ__Quote__c.SBQQ__Type__c</field>
             <operation>equals</operation>
             <value>Quote</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>SBQQ__Quote__c.SBQQ__Status__c</field>
-            <operation>equals</operation>
-            <value>Signé</value>
         </criteriaItems>
         <description>Update RT quand le contrat de référencement est approuvé.</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>

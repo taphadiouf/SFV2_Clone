@@ -3543,6 +3543,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Subscription__c.LPCR_DateResiliationChoisie__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Subscription__c.LPCR_HoldBilling__c</field>
         <readable>true</readable>
@@ -8820,6 +8825,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__Usage__c.blng__UsageSummary__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Usage__c.LPCR_Montant_Total__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__Usage__c.LPCR_Prix_Usage__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>

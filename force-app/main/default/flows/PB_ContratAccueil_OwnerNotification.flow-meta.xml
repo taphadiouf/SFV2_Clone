@@ -2,67 +2,26 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
         <processMetadataValues>
-            <name>textJson</name>
+            <name>emailAlertSelection</name>
             <value>
-                <stringValue>{&quot;mentions&quot;:[],&quot;message&quot;:&quot;@[{![Contract].OwnerId}]\n\nLe service famille à résilié le contrat {![Contract].ContractNumber}. Ce contrat est associé au contrat {![Contract].LPCR_ContractEntreprise__r.ContractNumber} contenant des commandes actives.&quot;}</stringValue>
+                <stringValue>LPCR_Alerte_Service_Famille_Contrat_accueil_annule</stringValue>
             </value>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>Notification Chatter</label>
+        <label>Envoyé mail au service famille</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
-        <actionName>chatterPost</actionName>
-        <actionType>chatterPost</actionType>
+        <actionName>SBQQ__Quote__c.LPCR_Alerte_Service_Famille_Contrat_accueil_annule</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>text</name>
-            <value>
-                <stringValue>@[{!myVariable_current.OwnerId}]
-
-Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. Ce contrat est associé au contrat {!myVariable_current.LPCR_ContractEntreprise__r.ContractNumber} contenant des commandes actives.</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>type</name>
-        </inputParameters>
-        <inputParameters>
-            <name>subjectNameOrId</name>
+            <name>SObjectRowId</name>
             <value>
                 <elementReference>myVariable_current.Id</elementReference>
             </value>
         </inputParameters>
     </actionCalls>
-    <decisions>
-        <name>isChangedDecision2_myRule_1_LPCR_ContratResilie_c</name>
-        <label>isChangedDecision2_myRule_1_LPCR_ContratResilie_c</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myDecision</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>isChangedRule_2_myRule_1_LPCR_ContratResilie_c</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>myVariable_old.LPCR_ContratResilie__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.LPCR_ContratResilie__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myDecision</targetReference>
-            </connector>
-            <label>isChangedRule_2_myRule_1_LPCR_ContratResilie_c</label>
-        </rules>
-    </decisions>
+    <apiVersion>52.0</apiVersion>
     <decisions>
         <processMetadataValues>
             <name>index</name>
@@ -77,7 +36,38 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_1</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>2 AND 3 AND (1 OR 4)</conditionLogic>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.SBQQ__Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Annulé</stringValue>
+                </rightValue>
+            </conditions>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
@@ -103,7 +93,38 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
                         <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.RecordType.Name</leftValueReference>
+                <leftValueReference>myVariable_current.LPCR_ContractEntreprise__r.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Réservataire</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.LPCR_ContractEntreprise__r.RecordType.Name</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Accueil</stringValue>
@@ -113,37 +134,6 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
                 <processMetadataValues>
                     <name>inputDataType</name>
                     <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.LPCR_ContratResilie__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
                         <stringValue>Picklist</stringValue>
                     </value>
                 </processMetadataValues>
@@ -165,56 +155,25 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
                         <stringValue>Picklist</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.LPCR_ContractEntreprise__r.SBQQ__Order__r.Status</leftValueReference>
+                <leftValueReference>myVariable_current.LPCR_TypeAvenant__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Activated</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>Boolean</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>isChangedRule_2_myRule_1_LPCR_ContratResilie_c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <stringValue>Résiliation</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>CT Accueil lié à CT Ref avec commande active</label>
+            <label>Devis de type Compte de famille</label>
         </rules>
     </decisions>
-    <description>Notification au propriétaire d&apos;un contrat de réservation avec des commandes actives lors de la résiliation d&apos;un contrat d&apos;accueil associé</description>
-    <interviewLabel>PB_Contrat_OwnerNotification-5_InterviewLabel</interviewLabel>
-    <label>PB_Contrat_OwnerNotification</label>
+    <description>Notification par mail au propriétaire d&apos;un contrat d&apos;accueil annulé</description>
+    <interviewLabel>PB_ContratAccueil_OwnerNotification-1_InterviewLabel</interviewLabel>
+    <label>PB_ContratAccueil_OwnerNotification</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
-            <stringValue>Contract</stringValue>
+            <stringValue>SBQQ__Quote__c</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -236,7 +195,7 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
         </value>
     </processMetadataValues>
     <processType>Workflow</processType>
-    <startElementReference>isChangedDecision2_myRule_1_LPCR_ContratResilie_c</startElementReference>
+    <startElementReference>myDecision</startElementReference>
     <status>Active</status>
     <variables>
         <name>myVariable_current</name>
@@ -244,7 +203,7 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-        <objectType>Contract</objectType>
+        <objectType>SBQQ__Quote__c</objectType>
     </variables>
     <variables>
         <name>myVariable_old</name>
@@ -252,6 +211,6 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-        <objectType>Contract</objectType>
+        <objectType>SBQQ__Quote__c</objectType>
     </variables>
 </Flow>

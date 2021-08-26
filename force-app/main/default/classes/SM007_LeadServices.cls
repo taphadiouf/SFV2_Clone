@@ -256,6 +256,7 @@ update recordsToSync;
         Id aoPublicReservationRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'AO_PublicReservation');
         Id aoPublicDSPRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'AO_PublicDSP');
         Id entrepriseRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'Entreprise');
+        Id familleRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Lead', 'Famille');
         // MAP(lead, idopp)
         Map<Lead, Id> filtredLeadsMap = new Map<Lead, Id>();
         for(Lead eachLead : convertedLeadsList){
@@ -282,6 +283,9 @@ update recordsToSync;
                 // IS-2408 OPPORTUNITE - Faire suivre le lead famille à l'origine
                 LeadOpps.get(eachLead).LPCR_LeadFamille__c = eachLead.LPCR_LeadFamille__c ;
             }
+            // IS-2499 Lien entre le lead famille converti et l'opportunité famille créée
+            if(!String.isEmpty(eachLead.recordTypeId) && (eachLead.recordTypeId.equals(familleRT)))
+                eachLead.LPCR_ConvertedOpp__c=eachLead.convertedOpportunityId;
         }        
         update LeadOpps.values();
     }

@@ -38,6 +38,8 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')) {
             SM013_QuoteLineServices.updateIndexationRemiseQuote(newQuoteLineList,newQuoteLineMap);
             SM013_QuoteLineServices.updateContactQLI(newQuoteLineMap);
+            // PRA 29/07/2021  IS-2518
+            SM013_QuoteLineServices.setContactOnDevis(newQuoteLineList);
         }
         
     }
