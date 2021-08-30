@@ -1,5 +1,6 @@
-<aura:component implements="lightning:isUrlAddressable,flexipage:availableForAllPageTypes,force:lightningQuickAction,force:hasRecordId,force:appHostable" >
-	
+<aura:component implements="lightning:isUrlAddressable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:lightningQuickAction,force:hasRecordId,force:appHostable,force:hasRecordId" access="global">
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:quickActionAPI aura:id="quickActionAPI"/>
     <c:lWC012_GenererAvoir recordId="{!v.recordId}" onclose="{!c.closeQuickAction}"/>
 
 </aura:component>
