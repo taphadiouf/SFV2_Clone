@@ -184,7 +184,7 @@ public with sharing class APC012_CreateAvoir {
             lstfacture.add(new blng__Invoice__c(Id=invID,LPCR_MontantAvoirFacture__c=totalPartiel,LPCR_TypeAvoir__c='Partiel',LPCR_CommentaireIndividuel__c=mapSrtr.containsKey('nomavoir')?(String)mapSrtr.get('nomavoir'):''));
         }
         if(String.isEmpty(errorMsg) && typeAvoir=='Avoir total'){
-            lstfacture.add(new blng__Invoice__c(Id=invID,LPCR_TypeAvoir__c='Total',LPCR_CommentaireIndividuel__c,LPCR_DescriptionAvoirFacture__c=mapSrtr.containsKey('descavoir')?(String)mapSrtr.get('descavoir'):'',LPCR_CommentaireIndividuel__c=mapSrtr.containsKey('nomavoir')?(String)mapSrtr.get('nomavoir'):''));
+            lstfacture.add(new blng__Invoice__c(Id=invID,LPCR_TypeAvoir__c='Total',LPCR_DescriptionAvoirFacture__c=mapSrtr.containsKey('descavoir')?(String)mapSrtr.get('descavoir'):'',LPCR_CommentaireIndividuel__c=mapSrtr.containsKey('nomavoir')?(String)mapSrtr.get('nomavoir'):''));
       
         }
         try{
