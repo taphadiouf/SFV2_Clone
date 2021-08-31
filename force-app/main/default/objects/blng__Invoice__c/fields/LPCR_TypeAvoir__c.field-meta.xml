@@ -2,8 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_TypeAvoir__c</fullName>
     <externalId>false</externalId>
-    <label>Type d&apos;avoir</label>
+    <label>Type Avoir</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
@@ -11,19 +12,14 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Avoir total</fullName>
+                <fullName>Total</fullName>
                 <default>false</default>
-                <label>Avoir total</label>
+                <label>Total</label>
             </value>
             <value>
-                <fullName>Avoir partiel</fullName>
+                <fullName>Partiel</fullName>
                 <default>false</default>
-                <label>Avoir partiel</label>
-            </value>
-            <value>
-                <fullName>Avoir direct</fullName>
-                <default>false</default>
-                <label>Avoir direct</label>
+                <label>Partiel</label>
             </value>
         </valueSetDefinition>
     </valueSet>

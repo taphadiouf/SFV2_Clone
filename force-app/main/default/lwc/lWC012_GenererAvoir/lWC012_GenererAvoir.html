@@ -1,9 +1,21 @@
 <template>
+    <lightning-card title="">
+    <div class="slds-p-around_medium lgc-bg">
+        <lightning-radio-group name="radioGroup"
+                          label="Choisir type de PDF"
+                          options={options}
+                          value={value}
+                          type="radio" onchange={handleChange}></lightning-radio-group>
+    </div>
     <div class="slds-m-around_large">
-    <div if:false={isLoaded} class="slds-is-relative">
+    
+    <div if:true={isLoaded} class="slds-is-relative">
         <lightning-spinner
             alternative-text="Loading...">
         </lightning-spinner>
     </div>
     </div>
+    <div slot="footer">
+    <lightning-button variant="neutral" label="Génerer PDF" onclick={GenererAvoirF}></lightning-button>
+    <lightning-button variant="neutral" label="Annuler" onclick={closeAction}></lightning-button></div></lightning-card>
 </template>
