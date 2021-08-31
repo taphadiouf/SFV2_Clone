@@ -993,9 +993,9 @@ public with sharing class SM008_QuoteServices {
         Map<Id,Contract> masterContractList = new Map<Id,Contract>([SELECT id,LPCR_NumeroContrat__c,LPCR_TECH_Nombre_Devis__c FROM contract where id in :MasterContractidset]);
         for(SBQQ__Quote__c eachQuote : quotesList){
             if(masterContractList.containsKey(eachQuote.SBQQ__MasterContract__c) && Label.LPCR_Amendment.equals(eachQuote.SBQQ__Type__c)){
-                masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c = masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c <> null ? Integer.valueOf(masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c) :1;
+                masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c = masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c <> null ? masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c : 1;
 
-                Integer nbDevis =masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c;
+                Integer nbDevis =Integer.valueOf(masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c);
                 String nbDevisForContractText = String.valueOf(nbDevis);
                 switch on nbDevisForContractText.length() {
                     when 1 {
