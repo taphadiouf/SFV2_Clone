@@ -123,19 +123,36 @@ import {
                 type: ''
             },
             {
-                label: 'Name',
+                label: 'Nom du produit',
                 fieldName: 'name',
                 type: ''
             },
+           
             {
-                label: 'ID',
-                fieldName: 'recId',
+                label: 'Crèche',
+                fieldName: 'Creche',
                 type: ''
             },
+           
             {
-                label: 'Montant',
-                fieldName: 'Montant',
-                type: ''
+              label: 'Date de début',
+              fieldName: 'datedebut',
+              type: ''
+            },
+            {
+            label: 'Date de fin',
+            fieldName: 'datefin',
+            type: ''
+            },
+            {
+              label: 'Quantité',
+              fieldName: 'qty',
+              type: ''
+            },
+            {
+              label: 'Montant total',
+              fieldName: 'Montant',
+              type: ''
             }
         ];
     }

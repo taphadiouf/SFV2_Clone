@@ -4,12 +4,90 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>Edit</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CustomButton.SBQQ__Quote__c.SBQQ__EditLines</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>SBQQ__Quote__c.LPCR_Nouveau_prix_de_referencement</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CustomButton.SBQQ__Quote__c.Submit_for_Approval</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CustomButton.SBQQ__Quote__c.Conga_Composer_ContratReferencement</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CustomButton.SBQQ__Quote__c.Preview_Approval</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CustomButton.SBQQ__Quote__c.SBQQ__CloneWithRelated</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Global.LPCR_RDV_Physique</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Global.LPCR_RDV_Telephonique</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Global.LogACall</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Global.NewTask</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CustomButton.SBQQ__Quote__c.Envoyer_Avenant</value>
+                            <visibilityRule>
+                                <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.Name}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Contrat D’accueil</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.Name}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Contrat D&apos;accueil Approuvé</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.Name}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Contrat de Référencement</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.Name}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Contrat de Référencement Approuvé</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.Name}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Contrat de Réservation</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.RecordType.Name}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Contrat de Réservation Approuvé</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>collapsed</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableActionsConfiguration</name>
-                    <value>false</value>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableActionsInNative</name>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>
