@@ -129,7 +129,8 @@ public with sharing class APC012_CreateAvoir {
                 sommePartielCustom+=Decimal.valueof((string)mapSrtr.get('avoirmontant'));
                 }
 
-                LPCR_Avoir__c avoir=new LPCR_Avoir__c(LPCR_Facture__c=mapSrtr.containsKey('invoiceID')?(ID)mapSrtr.get('invoiceID'):null,LPCR_DateFacture__c=datedebut,LPCR_DateFinAvoir__c=dateFin,LPCR_Description__c=mapSrtr.containsKey('descavoir')?(String)mapSrtr.get('descavoir'):'',LPCR_Montant__c=mapSrtr.containsKey('avoirmontant')?Decimal.valueof((string)mapSrtr.get('avoirmontant')):0,LPCR_LigneFacture__c=(Id)mapObjet.get('recId'),LPCR_TypeAvoir__c =(String)mapSrtr.get('TypeAvoir'),LPCR_NatureAvoirFacture__c =mapSrtr.containsKey('NatureAvoir')?(String)mapSrtr.get('NatureAvoir'):null);
+                LPCR_Avoir__c avoir=new LPCR_Avoir__c(LPCR_Facture__c=mapSrtr.containsKey('invoiceID')?(ID)mapSrtr.get('invoiceID'):null,
+                LPCR_Statut__c='Brouillon',LPCR_DateFacture__c=datedebut,LPCR_DateFinAvoir__c=dateFin,LPCR_Description__c=mapSrtr.containsKey('descavoir')?(String)mapSrtr.get('descavoir'):'',LPCR_Montant__c=mapSrtr.containsKey('avoirmontant')?Decimal.valueof((string)mapSrtr.get('avoirmontant')):0,LPCR_LigneFacture__c=(Id)mapObjet.get('recId'),LPCR_TypeAvoir__c =(String)mapSrtr.get('TypeAvoir'),LPCR_NatureAvoirFacture__c =mapSrtr.containsKey('NatureAvoir')?(String)mapSrtr.get('NatureAvoir'):null);
 
         
                 if(typeAvoir=='Avoir partiel'){
@@ -145,7 +146,7 @@ public with sharing class APC012_CreateAvoir {
                 }
                 
 
-                LPCR_Avoir__c avoir=new LPCR_Avoir__c(LPCR_Facture__c=mapSrtr.containsKey('invoiceID')?(ID)mapSrtr.get('invoiceID'):null,LPCR_Description__c=mapSrtr.containsKey('descavoir')?(String)mapSrtr.get('descavoir'):'',LPCR_LigneFacture__c=invLine.Id,LPCR_TypeAvoir__c =(String)mapSrtr.get('TypeAvoir'),LPCR_NatureAvoirFacture__c =mapSrtr.containsKey('NatureAvoir')?(String)mapSrtr.get('NatureAvoir'):null);
+                LPCR_Avoir__c avoir=new LPCR_Avoir__c(LPCR_Facture__c=mapSrtr.containsKey('invoiceID')?(ID)mapSrtr.get('invoiceID'):null,LPCR_Statut__c='Brouillon',LPCR_Description__c=mapSrtr.containsKey('descavoir')?(String)mapSrtr.get('descavoir'):'',LPCR_LigneFacture__c=invLine.Id,LPCR_TypeAvoir__c =(String)mapSrtr.get('TypeAvoir'),LPCR_NatureAvoirFacture__c =mapSrtr.containsKey('NatureAvoir')?(String)mapSrtr.get('NatureAvoir'):null);
 
                 if(typeAvoir=='Avoir partiel'){
                     avoir.LPCR_DateFacture__c=datedebut;
@@ -164,7 +165,7 @@ public with sharing class APC012_CreateAvoir {
         }
         
         if(typeAvoir =='Avoir total'){
-            LPCR_Avoir__c avoir=new LPCR_Avoir__c(LPCR_Facture__c=(ID)mapSrtr.get('invoiceID'),LPCR_DateFacture__c=datedebut,LPCR_DateFinAvoir__c=dateFin,LPCR_Description__c=(String)mapSrtr.get('descavoir'),LPCR_Montant__c=montantFacture,LPCR_TypeAvoir__c =(String)mapSrtr.get('TypeAvoir'));
+            LPCR_Avoir__c avoir=new LPCR_Avoir__c(LPCR_Facture__c=(ID)mapSrtr.get('invoiceID'),LPCR_Statut__c='Brouillon',LPCR_DateFacture__c=datedebut,LPCR_DateFinAvoir__c=dateFin,LPCR_Description__c=(String)mapSrtr.get('descavoir'),LPCR_Montant__c=montantFacture,LPCR_TypeAvoir__c =(String)mapSrtr.get('TypeAvoir'));
            // lstavoirInsertTotal.add(avoir);
         }
         if((sommePartiel.abs()+sommePartielCustom.abs()) > montantFacture){
