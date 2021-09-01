@@ -2,7 +2,8 @@ import { LightningElement , api } from 'lwc';
 import  GenererAvoir from '@salesforce/apex/APC011_GenererAvoir.GenererAvoir';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { CloseActionScreenEvent } from 'lightning/actions';
-export default class LWC012_GenererAvoir extends LightningElement {
+import { NavigationMixin } from 'lightning/navigation';
+export default class LWC012_GenererAvoir extends NavigationMixin(LightningElement) {
     @api recordId;
     @api isLoaded = false;
     
@@ -31,7 +32,9 @@ export default class LWC012_GenererAvoir extends LightningElement {
         .then(result => {
             console.log('first');
             this.loaded = false;
-          
+          console.log('this is resi',result);
+          console.log('this is resi nav');
+          this.redirect(result);
               this.dispatchEvent(new CloseActionScreenEvent());
             
             
@@ -62,5 +65,15 @@ export default class LWC012_GenererAvoir extends LightningElement {
     }
     closeAction() {
         this.dispatchEvent(new CloseActionScreenEvent());
-      }
+    }
+    redirect(fileID){
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: fileID,
+                objectApiName: 'File',
+                actionName: 'view'
+            }
+          })
+    }
 }
