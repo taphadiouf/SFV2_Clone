@@ -519,19 +519,6 @@
                 "referenceId": "SBQQ__PriceRule__cRef36"
             },
             "IsDeleted": false,
-            "Name": "Remise supérieure à 100%",
-            "SBQQ__Active__c": false,
-            "SBQQ__ConditionsMet__c": "All",
-            "SBQQ__EvaluationEvent__c": "After Calculate",
-            "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-07-27T12:32:07.000+0000"
-        },
-        {
-            "attributes": {
-                "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef37"
-            },
-            "IsDeleted": false,
             "Name": "Cancel discount on MAC renewal",
             "SBQQ__Active__c": true,
             "SBQQ__AdvancedCondition__c": "1 AND 2 AND 3 AND 4 AND (5 OR 6)",
