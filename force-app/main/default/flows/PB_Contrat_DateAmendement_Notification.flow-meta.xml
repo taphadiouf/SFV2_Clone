@@ -4,7 +4,7 @@
         <processMetadataValues>
             <name>textJson</name>
             <value>
-                <stringValue>{&quot;mentions&quot;:[],&quot;message&quot;:&quot;@[{![Contract].OwnerId}]\n\nLe service famille a résilié le contrat {![Contract].ContractNumber}. Ce contrat est associé au contrat {![Contract].LPCR_ContractEntreprise__r.ContractNumber} contenant des commandes actives.&quot;}</stringValue>
+                <stringValue>{&quot;mentions&quot;:[],&quot;message&quot;:&quot;@[{![Contract].LPCR_ContractEntreprise__r.OwnerId}]\n\nLe service famille a résilié le contrat {![Contract].ContractNumber}. Ce contrat est associé au contrat {![Contract].LPCR_ContractEntreprise__r.ContractNumber} contenant des commandes actives.&quot;}</stringValue>
             </value>
         </processMetadataValues>
         <name>myRule_5_A1</name>
@@ -17,7 +17,7 @@
         <inputParameters>
             <name>text</name>
             <value>
-                <stringValue>@[{!myVariable_current.OwnerId}]
+                <stringValue>@[{!myVariable_current.LPCR_ContractEntreprise__r.OwnerId}]
 
 Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. Ce contrat est associé au contrat {!myVariable_current.LPCR_ContractEntreprise__r.ContractNumber} contenant des commandes actives.</stringValue>
             </value>
@@ -39,7 +39,7 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>isChangedDecision6_myRule_5_LPCR_DateResiliationChoisie_c</targetReference>
+            <targetReference>isChangedDecision6_myRule_5_LPCR_ContratResilie_c</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
@@ -60,14 +60,14 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>isChangedDecision6_myRule_5_LPCR_DateResiliationChoisie_c</targetReference>
+                <targetReference>isChangedDecision6_myRule_5_LPCR_ContratResilie_c</targetReference>
             </connector>
             <label>isChangedRule_2_myRule_1_LPCR_DateResiliationChoisie_c</label>
         </rules>
     </decisions>
     <decisions>
-        <name>isChangedDecision6_myRule_5_LPCR_DateResiliationChoisie_c</name>
-        <label>isChangedDecision6_myRule_5_LPCR_DateResiliationChoisie_c</label>
+        <name>isChangedDecision6_myRule_5_LPCR_ContratResilie_c</name>
+        <label>isChangedDecision6_myRule_5_LPCR_ContratResilie_c</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
@@ -75,7 +75,7 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
         </defaultConnector>
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
-            <name>isChangedRule_6_myRule_5_LPCR_DateResiliationChoisie_c</name>
+            <name>isChangedRule_6_myRule_5_LPCR_ContratResilie_c</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>myVariable_old</leftValueReference>
@@ -85,16 +85,16 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>myVariable_old.LPCR_DateResiliationChoisie__c</leftValueReference>
+                <leftValueReference>myVariable_old.LPCR_ContratResilie__c</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
-                    <elementReference>myVariable_current.LPCR_DateResiliationChoisie__c</elementReference>
+                    <elementReference>myVariable_current.LPCR_ContratResilie__c</elementReference>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>myDecision</targetReference>
             </connector>
-            <label>isChangedRule_6_myRule_5_LPCR_DateResiliationChoisie_c</label>
+            <label>isChangedRule_6_myRule_5_LPCR_ContratResilie_c</label>
         </rules>
     </decisions>
     <decisions>
@@ -270,13 +270,13 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
                 <processMetadataValues>
                     <name>leftHandSideType</name>
                     <value>
-                        <stringValue>Date</stringValue>
+                        <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>operatorDataType</name>
                     <value>
-                        <stringValue>Date</stringValue>
+                        <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
@@ -285,7 +285,7 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
                         <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>isChangedRule_6_myRule_5_LPCR_DateResiliationChoisie_c</leftValueReference>
+                <leftValueReference>isChangedRule_6_myRule_5_LPCR_ContratResilie_c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -305,11 +305,11 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
                 <stringValue>[Contract].LPCR_DateResiliationChoisie__c </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_3620164599</name>
+        <name>formula_3_myRule_1_A1_2383598593</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.LPCR_DateResiliationChoisie__c}</expression>
     </formulas>
-    <interviewLabel>PB_Contrat_DateAmendement_Notification-1_InterviewLabel</interviewLabel>
+    <interviewLabel>PB_Contrat_DateAmendement_Notification-2_InterviewLabel</interviewLabel>
     <label>PB_Contrat_DateAmendement_Notification</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -415,7 +415,7 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
             </processMetadataValues>
             <field>SBQQ__AmendmentStartDate__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_3620164599</elementReference>
+                <elementReference>formula_3_myRule_1_A1_2383598593</elementReference>
             </value>
         </inputAssignments>
         <object>Contract</object>

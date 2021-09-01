@@ -949,7 +949,7 @@ public class SM008_QuoteServices_Test {
         insert amendmentQuote;
         List<SBQQ__Quote__c> quote =[SELECT LPCR_Numero_avenant__c FROM SBQQ__Quote__c where SBQQ__MasterContract__c = :con.Id LIMIT 1];
         System.assertEquals(quote[0].LPCR_Numero_avenant__c,con.LPCR_NumeroContrat__c + ' - 00'+con.LPCR_TECH_Nombre_Devis__c);
-        Test.stopTest();     
+        Test.stopTest();
     }
     @isTest()
     public static void updateDueToResilisationAnticipe_Test(){

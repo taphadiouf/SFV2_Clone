@@ -1596,6 +1596,12 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Avoir__c.LPCR_Statut__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+   
+    <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_BonAchatPartenaire__c.LPCR_ANatitre__c</field>
         <readable>true</readable>
@@ -5678,6 +5684,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__Invoice__c.LPCR_DateDerniereModification__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_Numero_avenant__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

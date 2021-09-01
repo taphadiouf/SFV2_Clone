@@ -482,6 +482,10 @@ public with sharing class SM008_QuoteServices {
     
     public static void setQuoteFields(List<SBQQ__Quote__c> quotesList,Map<Id,Contract> renewedContract,Map<Id,Contract> amendedContract, Map<Id,Opportunity> opptyMap, Map<Id,Account> acctMap){
         Map<String,Schema.RecordTypeInfo> mapQuoteRT = Schema.getGlobalDescribe().get(Label.LPCR_Quote).getDescribe().getRecordTypeInfosByDeveloperName();
+        // PRA IS-2089
+        List<Contract> contratToUpdateList =new List<Contract>();
+        Map<id,Integer> NbDevisOnContratMap = new Map<id,Integer>();
+        Map<id,Contract> ContratToUpdateMap = new Map<id,Contract>();
 		for (SBQQ__Quote__c eachQuote : quotesList){
             if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c) && 'Renewal'.equals(eachQuote.SBQQ__Type__c)){
                eachQuote.ApprovalStatus__c = Label.LPCR_ApprovalStatusApproved;
@@ -989,7 +993,9 @@ public with sharing class SM008_QuoteServices {
         Map<Id,Contract> masterContractList = new Map<Id,Contract>([SELECT id,LPCR_NumeroContrat__c,LPCR_TECH_Nombre_Devis__c FROM contract where id in :MasterContractidset]);
         for(SBQQ__Quote__c eachQuote : quotesList){
             if(masterContractList.containsKey(eachQuote.SBQQ__MasterContract__c) && Label.LPCR_Amendment.equals(eachQuote.SBQQ__Type__c)){
-                Integer nbDevis =masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c <> null ? Integer.valueOf(masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c) :1  ;
+                masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c = masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c <> null ? masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c : 1;
+
+                Integer nbDevis =Integer.valueOf(masterContractList.get(eachQuote.SBQQ__MasterContract__c).LPCR_TECH_Nombre_Devis__c);
                 String nbDevisForContractText = String.valueOf(nbDevis);
                 switch on nbDevisForContractText.length() {
                     when 1 {
