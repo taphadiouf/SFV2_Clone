@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldOverrides>
+        <field>LPCR_NomSociete__c</field>
+        <formula>Account.Id</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>LPCR_Statut__c</field>
         <formula>&quot;Brouillon&quot;</formula>
         <literalValue>Brouillon</literalValue>
