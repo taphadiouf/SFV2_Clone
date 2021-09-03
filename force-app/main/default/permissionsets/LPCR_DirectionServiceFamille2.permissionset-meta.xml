@@ -2023,6 +2023,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contract.LPCR_UpliftNow__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Event.LPCR_Abouti__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6659,6 +6664,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.SBQQ__WatermarkShown__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_UpliftNow__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_DateRevisionPrix__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
