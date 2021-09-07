@@ -4,12 +4,12 @@
     <deprecated>false</deprecated>
     <description>Rate of renewal price increases.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Le taux du prix de renouvellement augmente.</inlineHelpText>
+    <inlineHelpText>Rate of renewal price increases.</inlineHelpText>
     <label>Renewal Uplift (%)</label>
     <precision>11</precision>
     <required>false</required>
     <scale>3</scale>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <type>Percent</type>
 </CustomField>
