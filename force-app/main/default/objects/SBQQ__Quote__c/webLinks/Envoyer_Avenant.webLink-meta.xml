@@ -26,12 +26,13 @@
 [ContactInfo]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQContactInfo__c},
 [ServicesAnnexes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQServicesAnnexes__c},
 [LigneBerceauResa]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQLigneBerceauResa__c}
-&amp;TemplateId={!$Label.LPCR_TemplateIDAvenant}
+&amp;TemplateId={!$Setup.LPCR_IDsCongaAdobe__c.LPCR_TemplateIdAvenant__c}
 &amp;DefaultPDF=1
 &amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;),0,1)}
 &amp;ESVisible=1
 &amp;ESCustomField=LPCR_Devis__c
 &amp;ESCustomFieldValue={!SBQQ__Quote__c.Id}
 &amp;ESContactId1={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}
-&amp;ESContactId2={!$Setup.LPCR_IDsCongaAdobe__c.LPCR_SignataireLPCR__c}</url>
+&amp;ESContactId2={!$Setup.LPCR_IDsCongaAdobe__c.LPCR_SignataireLPCR__c}
+&amp;ESAgreementTemplateId={!$Setup.LPCR_IDsCongaAdobe__c.LPCR_AATBON_DE_COMMANDE__c}</url>
 </WebLink>
