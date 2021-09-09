@@ -34,5 +34,5 @@
 &amp;ESCustomFieldValue={!SBQQ__Quote__c.Id}
 &amp;ESContactId1={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}
 &amp;ESContactId2={!$Setup.LPCR_IDsCongaAdobe__c.LPCR_SignataireLPCR__c}
-&amp;ESAgreementTemplateId={!$Setup.LPCR_IDsCongaAdobe__c.LPCR_AATBON_DE_COMMANDE__c}</url>
+&amp;ESAgreementTemplateId={!$Setup.LPCR_IDsCongaAdobe__c.LPCR_ModeleAccordAdobeSignAvenant__c}</url>
 </WebLink>
