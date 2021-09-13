@@ -5,6 +5,9 @@
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
+    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>DisableCustomerPortalAccount</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
     <excludeButtons>PartnerScorecard</excludeButtons>
@@ -82,6 +85,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_PrivePublic__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_Top100__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -290,8 +297,7 @@
             <sortOrder>21</sortOrder>
         </platformActionListItems>
     </platformActionList>
-    <quickActionList>
-    </quickActionList>
+    <quickActionList/>
     <relatedContent>
         <relatedContentItems>
             <layoutItem>
@@ -376,7 +382,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h7a000000xTOX</masterLabel>
+        <masterLabel>00h0E000001ukVn</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
