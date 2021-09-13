@@ -226,6 +226,30 @@
                 "type": "echosign_dev1__Agreement_Template__c",
                 "referenceId": "echosign_dev1__Agreement_Template__cRef11"
             },
+            "echosign_dev1__Name__c": "Avenant",
+            "echosign_dev1__Active__c": true,
+            "echosign_dev1__Auto_Send__c": false,
+            "echosign_dev1__Automatic_Reminders__c": "Every Week, Until Signed",
+            "echosign_dev1__Available_Publisher_Actions__c": false,
+            "echosign_dev1__Days_Until_Expiration2__c": "30",
+            "echosign_dev1__Default__c": false,
+            "echosign_dev1__Fill_Sign__c": false,
+            "echosign_dev1__Hosted_Signing__c": false,
+            "echosign_dev1__Language__c": "French (France)",
+            "echosign_dev1__Master_Object_Type__c": "SBQQ__Quote__c",
+            "echosign_dev1__Post_Sign_Redirect_Delay__c": 3,
+            "echosign_dev1__Post_Sign_Redirect_URL__c": "http://www.grandir.com",
+            "echosign_dev1__Preview_Position__c": false,
+            "echosign_dev1__Sender_Signs_Only__c": false,
+            "echosign_dev1__Sign_Password__c": false,
+            "echosign_dev1__Signature_Type__c": "e-Signature",
+            "echosign_dev1__View_Password__c": false
+        },
+        {
+            "attributes": {
+                "type": "echosign_dev1__Agreement_Template__c",
+                "referenceId": "echosign_dev1__Agreement_Template__cRef12"
+            },
             "echosign_dev1__Name__c": "Bon de commande",
             "echosign_dev1__Active__c": true,
             "echosign_dev1__Auto_Send__c": false,
