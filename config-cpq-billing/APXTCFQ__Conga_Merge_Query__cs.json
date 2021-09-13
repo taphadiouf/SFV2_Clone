@@ -87,7 +87,7 @@
             },
             "APXTCFQ__Name__c": "LigneBerceauResa",
             "APXTCFQ__Description__c": "Ligne Berceau Réservataire sur un devis pour un contrat de réservation",
-            "APXTCFQ__Query__c": "SELECT Id,SBQQ__Quantity__c,SBQQ__ProductCode__c, SBQQ__EFFECTIVESTARTDATE__c ,SBQQ__ListPrice__c,LPCR_Creche__r.Name,LPCR_Creche__r.ShippingStreet,LPCR_Creche__r.ShippingPostalCode,LPCR_Creche__r.ShippingCity,LPCR_PrixUnitaire__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = '{pv0}' AND SBQQ__ProductCode__c = 'BerceauReservataire'  LIMIT 1"
+            "APXTCFQ__Query__c": "SELECT Id,SBQQ__Quantity__c,SBQQ__ProductCode__c, SBQQ__EFFECTIVESTARTDATE__c ,SBQQ__ListPrice__c,LPCR_Creche__r.Name,LPCR_Creche__r.ShippingStreet,LPCR_Creche__r.ShippingPostalCode,LPCR_Creche__r.ShippingCity,LPCR_PrixUnitaire__c FROM SBQQ__QuoteLine__c WHERE SBQQ__Quote__c = '{pv0}' AND SBQQ__ProductCode__c = 'BerceauReservataire'"
         },
         {
             "attributes": {
