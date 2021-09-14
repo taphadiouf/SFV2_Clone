@@ -152,6 +152,13 @@
                         </valueListItems>
                         <valueListItems>
                             <value>CustomButton.SBQQ__Quote__c.Envoyer_Avenant</value>
+                            <visibilityRule>
+                                <criteria>
+                                    <leftValue>{!Record.SBQQ__Type__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Amendment</rightValue>
+                                </criteria>
+                            </visibilityRule>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>

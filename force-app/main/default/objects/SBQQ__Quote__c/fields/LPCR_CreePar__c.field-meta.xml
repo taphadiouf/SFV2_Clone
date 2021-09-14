@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_LeadFamille__c</fullName>
+    <fullName>LPCR_CreePar__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Lead Famille à l&apos;origine de la création d&apos;un lead entreprises qui sera convertit en opportunity</description>
     <externalId>false</externalId>
-    <label>Lead Famille</label>
-    <referenceTo>Lead</referenceTo>
-    <relationshipLabel>Opportunités Entreprise</relationshipLabel>
-    <relationshipName>Opportunit_s</relationshipName>
+    <label>Créé par</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Devis1</relationshipName>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
