@@ -711,10 +711,10 @@ public with sharing class SM008_QuoteServices {
 
         List<SBQQ__QuoteLine__c> tmpQuoteLineList = new List<SBQQ__QuoteLine__c>([SELECT Id, SBQQ__ProductCode__c, SBQQ__Quote__c, SBQQ__ChargeType__c, SBQQ__HasConsumptionSchedule__c, SBQQ__EffectiveQuantity__c,
                                                                                     SBQQ__Existing__c, LPCR_PriorQty__c, LPCR_PrixUnitaire__c, SBQQ__StartDate__c, LPCR_Clone__c,
-                                                                                    SBQQ__PriorQuantity__c, SBQQ__Quantity__c, LPCR_MontantAnnuelForfaitMICRO__c, LPCR_Creche__r.LPCR_TypeMensualisation__c, SBQQ__NetTotal__c
+                                                                                    SBQQ__PriorQuantity__c, SBQQ__Quantity__c, LPCR_MontantAnnuelForfaitMICRO__c, LPCR_Creche__r.LPCR_TypeMensualisation__c, SBQQ__NetTotal__c,SBQQ__EndDate__c
                                                                                     FROM SBQQ__QuoteLine__c where SBQQ__Quote__c in : quoteIds]);
         List<SBQQ__QuoteLine__c> quoteLineListToUpdate = new List<SBQQ__QuoteLine__c>();
-        Map<Id, SBQQ__Quote__c> mapQuote = new Map<Id, SBQQ__Quote__c>([SELECT Id, SBQQ__Type__c, LPCR_TypeCreche__c, LPCR_DateFin__c, SBQQ__LineItemCount__c, SBQQ__Ordered__c 
+        Map<Id, SBQQ__Quote__c> mapQuote = new Map<Id, SBQQ__Quote__c>([SELECT Id, SBQQ__Type__c, LPCR_TypeCreche__c, LPCR_DateFin__c, SBQQ__LineItemCount__c, SBQQ__Ordered__c, SBQQ__StartDate__c,SBQQ__EndDate__c
                                                                         FROM SBQQ__Quote__c where Id in : quoteIds]);
 
         for(SBQQ__QuoteLine__c quoteLine : tmpQuoteLineList){
