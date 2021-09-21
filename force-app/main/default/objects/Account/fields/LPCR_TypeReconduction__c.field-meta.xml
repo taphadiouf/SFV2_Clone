@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_TypeContratPrincipal__c</fullName>
+    <fullName>LPCR_TypeReconduction__c</fullName>
     <externalId>false</externalId>
-    <label>Type de Contrat Principal
-    </label>
+    <label>Type de reconduction</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Picklist</type>
@@ -11,14 +10,14 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Réservation</fullName>
+                <fullName>Expresse</fullName>
                 <default>false</default>
-                <label>Réservation</label>
+                <label>Expresse</label>
             </value>
             <value>
-                <fullName>Référencement</fullName>
+                <fullName>Tacite</fullName>
                 <default>false</default>
-                <label>Référencement</label>
+                <label>Tacite</label>
             </value>
         </valueSetDefinition>
     </valueSet>

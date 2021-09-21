@@ -76,7 +76,7 @@ public with sharing class APC001_LeadFaConverController{
     }
     
     @AuraEnabled()
-    public static string convertLeadCtrl(Id leadId, List<Integer> enfantsIndexes, String chosenCrecheId, Id chosenCompteId){
+    public static string convertLeadCtrl(Id leadId, List<Integer> enfantsIndexes, String chosenCrecheId, Id chosenCompteId,Boolean isContratAccueil){
         
         Lead currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
         String prenomCoDemandeur = currentLead.LPCR_PrenomCoDemandeur__c;                                         
@@ -166,7 +166,7 @@ public with sharing class APC001_LeadFaConverController{
             LPCR_NomEntreprise__c = currentLead.Company,
             Title = currentLead.Title 
         ));        
-        if(String.isNotBlank(prenomCoDemandeur) && String.isNotBlank(nomCoDemandeur)){
+        if(String.isNotBlank(prenomCoDemandeur) || String.isNotBlank(nomCoDemandeur)){
             newContactsMap.put('contactRep2', new Contact(
                 FirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur,
                 LastName = nomCoDemandeur, 
@@ -188,6 +188,15 @@ public with sharing class APC001_LeadFaConverController{
         }
         //Enfants part
         Id enfantContactRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Contact, System.Label.LPCR_Enfant);
+        if(! isContratAccueil){
+            System.debug('PRA JSON getEnfants((Id)currentLead.get(id)' +getEnfants((Id)currentLead.get('id')));
+            List<WRP002_EnfantWrapper> listEnfants = (List<WRP002_EnfantWrapper>) JSON.deserialize(getEnfants((Id)currentLead.get('id')),List<WRP002_EnfantWrapper>.class);
+            List<Integer> listNumeroEnfant = new List<Integer>();
+            for(WRP002_EnfantWrapper enfant :listEnfants){
+                listNumeroEnfant.add(enfant.num);
+            }
+            enfantsIndexes = listNumeroEnfant;
+        }
         for(Integer eachIndex : enfantsIndexes){
             newContactsMap.put(
                 ('contactEnfant'+ eachIndex),
@@ -279,12 +288,14 @@ public with sharing class APC001_LeadFaConverController{
         LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1];
         Database.LeadConvert lc = new Database.LeadConvert();
         lc.setLeadId(leadId);
-        lc.setDoNotCreateOpportunity(false);
+        lc.setDoNotCreateOpportunity(!isContratAccueil);
         lc.setConvertedStatus(convertStatus.MasterLabel);
         lc.setAccountId(newFamilleAccount.Id);
         lc.setContactId(newContactsMap.get('contactRep1').Id);
         if(chosenCompteId == null){
-            lc.setOpportunityName(newFamilleAccount.name);
+            if(isContratAccueil){
+                lc.setOpportunityName(newFamilleAccount.name);
+            }
         }
         try {
             Database.LeadConvertResult lcr = Database.convertLead(lc); 
@@ -315,7 +326,7 @@ public with sharing class APC001_LeadFaConverController{
                         LPCR_ContactEnfant__c = (tmpContactEnfant != null ? tmpContactEnfant.Id : null),
                         LPCR_ContactRepresentant1__c = (tmpContactRep1 != null ? tmpContactRep1.Id : null),
                         LPCR_ContactRepresentant2__c = (tmpContactRep2 != null ? tmpContactRep2.Id : null),
-                        SBQQ__Opportunity2__c = currentLead.convertedOpportunityId,
+                        SBQQ__Opportunity2__c = currentLead.convertedOpportunityId !=null ? currentLead.convertedOpportunityId : '',
                         LPCR_Creation_conforme__c = true,
                         RecordTypeId = quoteRTAccueil
                     )
@@ -342,9 +353,13 @@ public with sharing class APC001_LeadFaConverController{
                 }
             }
         }
-        // PRA IS-2330 Modification de la page d'atterrissage conversion pour le renvoyer sur l'opp famille
-        currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
-        return currentLead.convertedOpportunityId;
+        if(isContratAccueil){
+            // PRA IS-2330 Modification de la page d'atterrissage conversion pour le renvoyer sur l'opp famille
+            currentLead = EM002_LeadEntity.getAllLeadfielsById(leadId);
+            return currentLead.convertedOpportunityId;
+        }
+
+        return null;
     }
     
     public static string validateSaveResult(List<Database.SaveResult> saveResultList) {
