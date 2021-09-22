@@ -1200,6 +1200,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Creche__c.LPCR_CrecheRegionCommerciale__c</field>
+            <table>SBQQ__Quote__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_Creche__c.LPCR_NombreEnfantsMardi__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
@@ -1236,11 +1241,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_Creche__c.Name</field>
-            <table>SBQQ__Quote__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_Creche__c.LPCR_RegionCommerciale__c</field>
             <table>SBQQ__Quote__c</table>
         </columns>
         <columns>
