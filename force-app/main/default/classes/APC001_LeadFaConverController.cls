@@ -108,7 +108,7 @@ public with sharing class APC001_LeadFaConverController{
         
         //Create Account (Famille)
         Account newFamilleAccount = new Account(
-            Name = Label.LPCR_Famille + ' ' + currentLead.LastName + (nomCoDemandeur != null ? (' ' +nomCoDemandeur) : ''), 
+            Name = Label.LPCR_Famille + ' ' + currentLead.LastName + ((nomCoDemandeur != null && nomCoDemandeur <> currentLead.LastName) ? (' ' +nomCoDemandeur) : ''), 
             RecordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(System.Label.LPCR_Account,System.Label.LPCR_Famille),
             Phone = currentLead.Phone,
             LPCR_SituationFamiliale__c  = currentLead.LPCR_SituationFamiliale__c,
@@ -171,7 +171,7 @@ public with sharing class APC001_LeadFaConverController{
                 FirstName = (String.isNotBlank(civiliteCoDemandeur) ? (civiliteCoDemandeur + ' ') : '') + prenomCoDemandeur,
                 LastName = nomCoDemandeur, 
                 OwnerId = currentLead.OwnerId, 
-                Birthdate = currentLead.LPCR_DateNaissance1__c,
+                // Birthdate = currentLead.LPCR_DateNaissance1__c,
                 Email = currentLead.LPCR_EmailCoDemandeur__c,
                 MailingStreet = currentLead.Address.getStreet(),
                 MailingCity = currentLead.Address.getCity(),
