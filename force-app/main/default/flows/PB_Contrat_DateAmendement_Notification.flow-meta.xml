@@ -4,7 +4,7 @@
         <processMetadataValues>
             <name>textJson</name>
             <value>
-                <stringValue>{&quot;mentions&quot;:[],&quot;message&quot;:&quot;@[{![Contract].LPCR_ContractEntreprise__r.OwnerId}]\n\nLe service famille a résilié le contrat {![Contract].ContractNumber}. Ce contrat est associé au contrat {![Contract].LPCR_ContractEntreprise__r.ContractNumber} contenant des commandes actives.&quot;}</stringValue>
+                <stringValue>{&quot;mentions&quot;:[],&quot;message&quot;:&quot;@[{![Contract].LPCR_ContractEntreprise__r.OwnerId}]\n\nLe contrat N°{![Contract].ContractNumber} de la famille {![Contract].Account.Name} pour l&apos;enfant {![Contract].LPCR_ContactEnfant__r.FirstName} {![Contract].LPCR_ContactEnfant__r.LastName} a été résilié.\n\nCe contrat d&apos;accueil était lié au contrat sponsor N°{![Contract].LPCR_ContractEntreprise__r.ContractNumber} de l&apos;entreprise {![Contract].LPCR_ContractEntreprise__r.Account.Name}.\n\nMerci de contacter l&apos;entreprise afin de remplacer cette famille.\n\nContrat famille : {![Contract].Tech_ContractURL__c}\nCompte famille : {![Contract].Account.Tech_AccountURL__c}\nContact enfant : {![Contract].LPCR_ContactEnfant__r.Tech_ContactURL__c}\n\nContrat entreprise : {![Contract].LPCR_ContractEntreprise__r.Tech_ContractURL__c}\nCompte entreprise : {![Contract].LPCR_ContractEntreprise__r.Account.Tech_AccountURL__c}&quot;}</stringValue>
             </value>
         </processMetadataValues>
         <name>myRule_5_A1</name>
@@ -19,7 +19,18 @@
             <value>
                 <stringValue>@[{!myVariable_current.LPCR_ContractEntreprise__r.OwnerId}]
 
-Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. Ce contrat est associé au contrat {!myVariable_current.LPCR_ContractEntreprise__r.ContractNumber} contenant des commandes actives.</stringValue>
+Le contrat N°{!myVariable_current.ContractNumber} de la famille {!myVariable_current.Account.Name} pour l&apos;enfant {!myVariable_current.LPCR_ContactEnfant__r.FirstName} {!myVariable_current.LPCR_ContactEnfant__r.LastName} a été résilié.
+
+Ce contrat d&apos;accueil était lié au contrat sponsor N°{!myVariable_current.LPCR_ContractEntreprise__r.ContractNumber} de l&apos;entreprise {!myVariable_current.LPCR_ContractEntreprise__r.Account.Name}.
+
+Merci de contacter l&apos;entreprise afin de remplacer cette famille.
+
+Contrat famille : {!myVariable_current.Tech_ContractURL__c}
+Compte famille : {!myVariable_current.Account.Tech_AccountURL__c}
+Contact enfant : {!myVariable_current.LPCR_ContactEnfant__r.Tech_ContactURL__c}
+
+Contrat entreprise : {!myVariable_current.LPCR_ContractEntreprise__r.Tech_ContractURL__c}
+Compte entreprise : {!myVariable_current.LPCR_ContractEntreprise__r.Account.Tech_AccountURL__c}</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -305,11 +316,12 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
                 <stringValue>[Contract].LPCR_DateResiliationChoisie__c </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_2383598593</name>
+        <name>formula_3_myRule_1_A1_2799693663</name>
         <dataType>Date</dataType>
         <expression>{!myVariable_current.LPCR_DateResiliationChoisie__c}</expression>
     </formulas>
-    <interviewLabel>PB_Contrat_DateAmendement_Notification-2_InterviewLabel</interviewLabel>
+    <interviewLabel>PB_Contrat_DateAmendement_Notification-3_InterviewLabel</interviewLabel>
+    <isTemplate>true</isTemplate>
     <label>PB_Contrat_DateAmendement_Notification</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -415,7 +427,7 @@ Le service famille a résilié le contrat {!myVariable_current.ContractNumber}. 
             </processMetadataValues>
             <field>SBQQ__AmendmentStartDate__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_2383598593</elementReference>
+                <elementReference>formula_3_myRule_1_A1_2799693663</elementReference>
             </value>
         </inputAssignments>
         <object>Contract</object>
