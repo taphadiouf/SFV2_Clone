@@ -1611,13 +1611,13 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-<<<<<<< HEAD
         <field>Contact.TECH_IsCreatedBy__c</field>
         <readable>true</readable> 
-=======
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contact.Tech_ContactURL__c</field>
         <readable>true</readable>
->>>>>>> origin/bug/IS-2596
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
