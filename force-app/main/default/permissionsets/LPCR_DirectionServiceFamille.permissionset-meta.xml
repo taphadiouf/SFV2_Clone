@@ -1248,6 +1248,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.Tech_AccountURL__c</field>
+        <readable>true</readable>
+    </fieldPermissions>  
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.Tech_NbOpportunitesGagnees__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1726,6 +1731,11 @@
         <field>Contact.TECH_IsCreatedBy__c</field>
         <readable>true</readable> 
     </fieldPermissions>
+     <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.Tech_ContactURL__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Contact.TECH_IsOwner__c</field>
@@ -2110,6 +2120,11 @@
         <editable>false</editable>
         <field>Contract.TECH_IsCreatedBy__c</field>
         <readable>true</readable> 
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contract.Tech_ContractURL__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
