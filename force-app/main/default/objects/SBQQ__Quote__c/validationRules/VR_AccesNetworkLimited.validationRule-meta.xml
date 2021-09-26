@@ -5,5 +5,5 @@
     <errorConditionFormula>LPCR_AccesReseauLimite__c &amp;&amp;  ISBLANK(LPCR_NomsCrecheLibre__c) ||
 (NOT(LPCR_AccesReseauLimite__c)) &amp;&amp;  NOT(ISBLANK(LPCR_NomsCrecheLibre__c))</errorConditionFormula>
     <errorDisplayField>LPCR_AccesReseauLimite__c</errorDisplayField>
-    <errorMessage>Noms des crèches ou champs Accès réseau limité manquant.</errorMessage>
+    <errorMessage>Pour saisir le noms des crèches, le champ &quot;Accès réseau limité&quot; doit être coché</errorMessage>
 </ValidationRule>
