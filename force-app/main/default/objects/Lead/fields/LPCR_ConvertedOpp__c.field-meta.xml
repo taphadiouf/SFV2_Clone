@@ -3,7 +3,7 @@
     <fullName>LPCR_ConvertedOpp__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Nom de l&apos;opportunité converti</label>
+    <label>Nom opportunité famille suite conversion</label>
     <referenceTo>Opportunity</referenceTo>
     <relationshipLabel>Leads</relationshipLabel>
     <relationshipName>Leads</relationshipName>
