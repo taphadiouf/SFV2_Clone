@@ -89,6 +89,10 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_DispositifExistant__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Description</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>
@@ -131,11 +135,6 @@
     </miniLayout>
     <platformActionList>
         <actionListContext>Record</actionListContext>
-        <platformActionListItems>
-            <actionName>Opportunity.NouveauContratReferecement</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
         <platformActionListItems>
             <actionName>Opportunity.NouveauContratReservation</actionName>
             <actionType>QuickAction</actionType>
@@ -197,6 +196,11 @@
             <sortOrder>12</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>LPCR_RDV_Physique</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>13</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>LPCR_RDV_Telephonique</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>14</sortOrder>
@@ -217,9 +221,9 @@
             <sortOrder>17</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>LPCR_RDV_Physique</actionName>
+            <actionName>Opportunity.NouveauContratReferecement</actionName>
             <actionType>QuickAction</actionType>
-            <sortOrder>13</sortOrder>
+            <sortOrder>0</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedContent>
@@ -284,7 +288,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h5r000000JwPs</masterLabel>
+        <masterLabel>00h1j0000032nP7</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
