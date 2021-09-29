@@ -7,7 +7,7 @@ public with sharing class APC007_ShowCrechesLpcrController {
 
     @AuraEnabled(cacheable=false)
     public static String getLocations(String currentId,String modeAffich){
-        Id reseauCrecheAccountRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_ReseauLPCR);
+        Id reseauCrecheAccountRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
        
         List<Location> locations = new List<Location>();
         Location centerLocation = new Location();

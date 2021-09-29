@@ -9,7 +9,7 @@ public with sharing class APC007_ShowCrechesLpcrController_Test {
     @testsetup
     public static void setup(){
         Id accountFamilleRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
-        Id reseauCrecheAccountRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_ReseauLPCR);
+        Id reseauCrecheAccountRTId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
         Account familleAccount= UM002_TestDataFactory.createAccounts(1, accountFamilleRTId, 'testAccount').get(0);
         familleAccount.ShippingLatitude = 38.8951;
         familleAccount.ShippingLongitude = -77.0364;
