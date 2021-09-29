@@ -1233,69 +1233,7 @@ public class SM008_QuoteServices_Test {
              System.assertEquals(date.newInstance(newYear.year(), 1, 1), quoteUpdated.LPCR_DateRevisionPrix__c);
  
          }
-    }
-
-    /**
-      @isTest()
-    public static void updateDateRevisionUpdateQuote(){
-        
-        User commercialUser = createCommercialUser();
-        SBQQ__Quote__c newQuoteAdmin;
-       
-        System.runAs(createAdminUser()){
-            Account newAccount = [SELECT Id, name from Account WHERE name ='Compte Crèche MAC1' LIMIT 1].get(0);
-            Opportunity newOpportunity = [SELECT Id , Name from Opportunity WHERE name ='opp Famille MAC1' LIMIT 1].get(0);
-            SBQQ__Quote__c newQuote = new SBQQ__Quote__c(
-                SBQQ__Opportunity2__c = newOpportunity.Id,
-                SBQQ__Account__c = newAccount.Id,
-                SBQQ__Type__c = 'Quote',
-                LPCR_InitAutoAvecDateDebut__c = false,
-                RecordTypeId = ContratA_RT_ID,
-                LPCR_Creche__c = newAccount.id,
-                SBQQ__StartDate__c = date.today(),
-                LPCR_Creation_conforme__c = true,
-                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31),
-                LPCR_TypeCreche__c = 'MAC'
-            );
-
-            Database.insert(newQuote);
-            newQuoteAdmin = newQuote;
-    
-
-        }
-
-        System.runAs(commercialUser){
-            Date newYear;
-            System.debug('#####updateDateRevision:UPDATE:');
-
-            Test.startTest();  
-            System.debug('OLD_SBQQ__StartDate__c'+newQuoteAdmin.SBQQ__StartDate__c);               
-            System.debug('SBQQ__StartDate__c'+newQuoteAdmin.SBQQ__StartDate__c.addyears(2));
-            System.debug('SBQQ__EndDate__c'+newQuoteAdmin.SBQQ__EndDate__c.addyears(2));
-
-            SBQQ__Quote__c newQuote = [SELECT LPCR_DateRevisionPrix__c FROM SBQQ__Quote__c WHERE Id=:newQuoteAdmin.Id LIMIT 1];
-            newQuote.SBQQ__StartDate__c =  newQuoteAdmin.SBQQ__StartDate__c.addyears(2);
-            newQuote.SBQQ__EndDate__c = newQuoteAdmin.SBQQ__EndDate__c.addyears(2);
-            Database.update(newQuote);
-
-            //Database.update(new SBQQ__Quote__c(
-            //                                    Id=newQuoteAdmin.Id,
-            //                                    SBQQ__StartDate__c =  newQuoteAdmin.SBQQ__StartDate__c.addyears(2),
-            //                                    SBQQ__EndDate__c = newQuoteAdmin.SBQQ__EndDate__c.addyears(2)));
-           
-           
-            Test.stopTest();
-            newYear = newQuoteAdmin.SBQQ__StartDate__c.addyears(3);
-            System.assertEquals(date.newInstance(newYear.year(), 1, 1), [SELECT LPCR_DateRevisionPrix__c FROM SBQQ__Quote__c WHERE Id=:newQuoteAdmin.Id LIMIT 1].LPCR_DateRevisionPrix__c);
-
-        }
-
-       
-    }
-
-     */
-
-   
+    }   
 
     @isTest()
     public static void updateDateRevisionInsertContract(){
@@ -1356,27 +1294,6 @@ public class SM008_QuoteServices_Test {
         return commercialUser;
 
     }
-
-    /**
-    private static User createAdminUser(){
-
-    User newAdminUser = new User(
-        Alias = 'testusr', 
-        Email = 'LPCR_devadmin@test.com',
-        EmailEncodingKey = 'UTF-8', 
-        LastName = 'Testing', 
-        LanguageLocaleKey = 'en_US',
-        LocaleSidKey = 'en_US', 
-        ProfileId = [SELECT Id FROM Profile WHERE Name=:ADMIN_PROFILE].Id,
-        TimeZoneSidKey = 'Europe/Paris',
-        UserName = 'LPCR_devadmin@test.com');
-        insert newAdminUser;
-    
-    return newAdminUser;
-
-    }
-     
-     */
 
    
 }

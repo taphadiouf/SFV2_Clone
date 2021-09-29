@@ -1024,17 +1024,10 @@ public with sharing class SM008_QuoteServices {
 
     public static void updateDateRevision(List<SBQQ__Quote__c> quotesList, Map<Id, SBQQ__Quote__c> oldQuotesMap){
         Date newYear;
-        System.debug('#####updateDateRevision:oldQuotesMap is empty:'+oldQuotesMap);
-        System.debug('#####newQuote.SBQQ__Status__c:'+quotesList.get(0).SBQQ__Status__c);
-        System.debug('#####quotesList.get(0).SBQQ__StartDate__c:'+quotesList.get(0).SBQQ__StartDate__c);
-        System.debug('#####oldQuotesMap.get(newQuote.Id).SBQQ__StartDate__c:'+oldQuotesMap?.get(quotesList.get(0).Id).SBQQ__StartDate__c);
-        System.debug('#####quotesList.get(0).LPCR_InitAutoAvecDateDebut__c:'+quotesList.get(0).LPCR_InitAutoAvecDateDebut__c);
-       
        
         for(SBQQ__Quote__c newQuote : quotesList) if(oldQuotesMap==null ||
                                                         (newQuote.SBQQ__Status__c==QUOTE_STATUS_DRAFT&&
-                                                        newQuote.SBQQ__StartDate__c!=oldQuotesMap.get(newQuote.Id).SBQQ__StartDate__c)){
-            System.debug('#####updateDateRevision:startDate:'+newQuote.LPCR_DateRevisionPrix__c); 
+                                                        newQuote.SBQQ__StartDate__c!=oldQuotesMap.get(newQuote.Id).SBQQ__StartDate__c)){ 
             if(newQuote.LPCR_InitAutoAvecDateDebut__c){
                 newQuote.LPCR_DateRevisionPrix__c = newQuote.SBQQ__StartDate__c.addyears(1);
             }else if((newQuote.RecordTypeId==reservataireRecTypeId || newQuote.RecordTypeId==reservataireApprouveRecTypeId)|| 
@@ -1042,7 +1035,6 @@ public with sharing class SM008_QuoteServices {
                     newQuote.LPCR_TypeQuote__c==QUOTE_TYPE_MAC)){
                     newYear = newQuote.SBQQ__StartDate__c.addyears(1);
                     newQuote.LPCR_DateRevisionPrix__c = date.newInstance(newYear.year(), 1, 1);
-                    System.debug('#####inside');
             }else if((newQuote.RecordTypeId==acceuilRecTypeId||newQuote.RecordTypeId==acceuilApprRecTypeId) && 
                     newQuote.LPCR_TypeQuote__c==QUOTE_TYPE_MICRO){
                     newYear = newQuote.SBQQ__StartDate__c.addyears(1);
