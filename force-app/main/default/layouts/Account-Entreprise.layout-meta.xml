@@ -6,9 +6,6 @@
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
     <excludeButtons>PartnerScorecard</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
@@ -33,8 +30,8 @@
                 <field>LPCR_Statut__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_RegionCommerciale__c</field>
+                <behavior>Readonly</behavior>
+                <field>LPCR_RegionComFormule__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -229,7 +226,7 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_DateDebutContrat__c</field>
             </layoutItems>
-			<layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_DateFinContrat__c</field>
             </layoutItems>
@@ -243,11 +240,11 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_MinimumFacturation__c</field>
             </layoutItems>
-			<layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_FormuleRevalorisation__c</field>
             </layoutItems>
-			<layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_RFA__c</field>
             </layoutItems>
@@ -937,7 +934,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0E000001ukTy</masterLabel>
+        <masterLabel>00h0E00000255nO</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
