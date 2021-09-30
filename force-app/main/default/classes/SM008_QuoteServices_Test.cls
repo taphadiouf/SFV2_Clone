@@ -1154,7 +1154,6 @@ public class SM008_QuoteServices_Test {
             Test.stopTest();
 
             SBQQ__Quote__c quoteUpdated =[SELECT LPCR_DateRevisionPrix__c FROM SBQQ__Quote__c WHERE Id=:newQuote.Id LIMIT 1];
-            System.debug('#####updateDateRevisionInsertQuoteMicro ----> LPCR_DateRevisionPrix__c:'+quoteUpdated.LPCR_DateRevisionPrix__c);
             Date newYear = newQuote.SBQQ__StartDate__c.addyears(1);
             System.assertEquals(date.newInstance(newYear.year(), 9, 1), quoteUpdated.LPCR_DateRevisionPrix__c);
 
