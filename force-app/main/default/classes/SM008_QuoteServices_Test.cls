@@ -12,11 +12,7 @@ public class SM008_QuoteServices_Test {
     private static final Id CONTRACT_CONTRAT_ACCUEIL_RT_ID =        EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_ContratA);
     private static final Id CONTRACT_RESERVATRICE_RT_ID =           EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Reservataire);
     private static final Id CONTRACT_REFERENCEMENT_RT_ID =          EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Referencement);
-    private static final String PERMISSIONSET_COMMERCIAL = 'LPCR_ChargeAffairesGC';
-    private static final String PROFILE_NAME_COMMERCIAL = 'Chargé d\'Affaires Grands Comptes';
-    private static final String ROLE_DEVELOPER_NAME_COMMERCIAL = 'LPCR_ChargeAffairesGrandsComptes';
-    private static final String PSET_LICENSE_NAME_CPQ = 'SalesforceCPQ_CPQStandardPerm';
-    private static String ADMIN_PROFILE = 'System Administrator';
+   
 
 @testSetup 
     static void testSetup(){
@@ -1094,7 +1090,7 @@ public class SM008_QuoteServices_Test {
 
     @isTest()
     public static void updateDateRevisionInsertQuoteAuto(){
-        System.runAs(createCommercialUser()){
+        System.runAs(UM002_TestDataFactory.createCommercialUser()){
             Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Reservataire');
 
             Account newAccount = [SELECT Id, name from Account WHERE name ='Compte Crèche MICRO' LIMIT 1].get(0);
@@ -1129,7 +1125,7 @@ public class SM008_QuoteServices_Test {
     @isTest()
     public static void updateDateRevisionInsertQuoteMicro(){
         
-        System.runAs(createCommercialUser()){
+        System.runAs(UM002_TestDataFactory.createCommercialUser()){
             Account newAccount = [SELECT Id, name from Account WHERE name ='Compte Crèche MICRO' LIMIT 1].get(0);
             Opportunity newOpportunity = [SELECT Id , Name from Opportunity WHERE name ='opp Famille MICRO' LIMIT 1].get(0);
 
@@ -1164,7 +1160,7 @@ public class SM008_QuoteServices_Test {
     @isTest()
     public static void updateDateRevisionInsertQuoteMAC(){
         
-        System.runAs(createCommercialUser()){
+        System.runAs(UM002_TestDataFactory.createCommercialUser()){
             Account newAccount = [SELECT Id, name from Account WHERE name ='Compte Crèche MAC1' LIMIT 1].get(0);
             Opportunity newOpportunity = [SELECT Id , Name from Opportunity WHERE name ='opp Famille MAC1' LIMIT 1].get(0);
 
@@ -1199,7 +1195,7 @@ public class SM008_QuoteServices_Test {
     @isTest()
     public static void updateDateRevisionInsertQuoteEnterprise(){
 
-         User commercialUser = createCommercialUser();
+         User commercialUser = UM002_TestDataFactory.createCommercialUser();
  
          System.runAs(commercialUser){
             Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Reservataire');
@@ -1236,7 +1232,7 @@ public class SM008_QuoteServices_Test {
 
     @isTest()
     public static void updateDateRevisionInsertContract(){
-        User commercialUser = createCommercialUser();
+        User commercialUser = UM002_TestDataFactory.createCommercialUser();
  
         System.runAs(commercialUser){
             Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('SBQQ__Quote__c','Reservataire');
@@ -1269,30 +1265,5 @@ public class SM008_QuoteServices_Test {
         }
        
     }
-
-    private static User createCommercialUser(){
-        UserRole roleCommercial = [SELECT Id FROM UserRole WHERE  DeveloperName =:ROLE_DEVELOPER_NAME_COMMERCIAL];
-
-        User commercialUser = UM002_TestDataFactory.createUser(roleCommercial.Id);
-        commercialUser.ProfileId = [SELECT Id FROM Profile WHERE Name=:PROFILE_NAME_COMMERCIAL].Id;
-
-        PermissionSetLicense psetLicense = [SELECT Id FROM PermissionSetLicense WHERE DeveloperName=:PSET_LICENSE_NAME_CPQ LIMIT 1];
-        PermissionSetLicenseAssign permSetLicenseAssignment = new PermissionSetLicenseAssign(
-            AssigneeId = commercialUser.Id,
-            PermissionSetLicenseId = psetLicense.Id
-        );
-        insert permSetLicenseAssignment;
-        
-        PermissionSet commercialPSet = [SELECT Id FROM PermissionSet WHERE Name=:PERMISSIONSET_COMMERCIAL];
-        PermissionSetAssignment psetAssignment = new PermissionSetAssignment(
-            AssigneeId = commercialUser.Id,
-            PermissionSetId = commercialPSet.Id
-        );
-        insert psetAssignment;
-        
-        return commercialUser;
-
-    }
-
    
 }
