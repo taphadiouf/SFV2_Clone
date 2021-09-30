@@ -3,6 +3,7 @@
 * @date 08/06/2020
 * @Description Reset the custom start and end date on the contract
 */
+//PDO Refonte replace custom date by standard : Reconduction a la fin du contrat
 global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<sObject>,Schedulable {
     final String ClassName = APB008_ResetStartEndDatesOnContract.class.getName();
 
@@ -15,7 +16,7 @@ global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<s
         Date today = date.today();
         Id accountEntrepriseRTId  = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Entreprise);
         String methodeRenouvellementValue='Tacite';
-        String query = 'SELECT Id, LPCR_DateFin__c ,LPCR_DureeContratJour__c ,LPCR_DateDebut__c ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId  FROM Contract WHERE Account.RecordTypeId = :accountEntrepriseRTId AND LPCR_MethodeRenouvellement__c = :methodeRenouvellementValue AND LPCR_DateFin__c  =:today';
+        String query = 'SELECT Id, EndDate ,LPCR_DureeContratJour__c ,StartDate ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId  FROM Contract WHERE Account.RecordTypeId = :accountEntrepriseRTId AND LPCR_MethodeRenouvellement__c = :methodeRenouvellementValue AND EndDate  =:today';
         
         return Database.getQueryLocator(query);
     }
@@ -30,12 +31,12 @@ global class APB008_ResetStartEndDatesOnContract implements Database.Batchable<s
             PAD.log(ClassName,'execute','scope to execute : '+scope);
 
             Set<Id> contractIds = UM003_TypeManager.getIdsOfListObjects(scope);
-            List<Contract> listOfContract = [SELECT Id, LPCR_DureeContratJour__c ,LPCR_DateFin__c ,LPCR_DateDebut__c ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId FROM Contract 
+            List<Contract> listOfContract = [SELECT Id, LPCR_DureeContratJour__c ,EndDate ,StartDate ,LPCR_MethodeRenouvellement__c, Account.RecordTypeId FROM Contract 
                                             WHERE Id in :contractIds ];   
             for (Contract eachContract : listOfContract) {
-                eachContract.LPCR_DateDebut__c =eachContract.LPCR_DateFin__c.addDays(1);
-                eachContract.LPCR_DateFin__c=eachContract.LPCR_DateDebut__c.addDays(Integer.valueOf(eachContract.LPCR_DureeContratJour__c)); 
-                PAD.log(ClassName,'execute','set LPCR_DateDebut__c value to ' + eachContract.LPCR_DateDebut__c + ' for contract ' + eachContract);
+                eachContract.StartDate =eachContract.EndDate.addDays(1);
+                eachContract.EndDate=eachContract.StartDate.addDays(Integer.valueOf(eachContract.LPCR_DureeContratJour__c)); 
+                PAD.log(ClassName,'execute','set StartDate value to ' + eachContract.StartDate + ' for contract ' + eachContract);
                 PAD.log(ClassName,'execute','set LPCR_DateFin__c value to ' + eachContract.LPCR_DateFin__c + ' for contract ' + eachContract);
             }
             
