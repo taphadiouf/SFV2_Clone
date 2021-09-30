@@ -283,6 +283,9 @@ public class SM010_ContractServices {
         contract.LPCR_ChiffreAffaire__c = quote.LPCR_ChiffreAffaire__c;
         
         contract.LPCR_DateRevisionPrix__c = quote.LPCR_DateRevisionPrix__c;
+
+        contract.SBQQ__RenewalUpliftRate__c = quote.SBQQ__RenewalUpliftRate__c;
+
         
         if(quote.recordtype.DeveloperName == Label.LPCR_Referencement || quote.recordtype.DeveloperName == Label.LPCR_Referencement_Approuve || quote.recordtype.DeveloperName == Label.LPCR_Reservataire || quote.recordtype.DeveloperName == Label.LPCR_Reservataire_Approuve ) {
             contract.LPCR_MethodeRenouvellement__c = quote.LPCR_MethodeRenouvellement__c;
