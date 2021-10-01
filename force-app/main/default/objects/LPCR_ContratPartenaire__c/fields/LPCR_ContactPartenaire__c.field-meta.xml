@@ -3,10 +3,9 @@
     <fullName>LPCR_ContactPartenaire__c</fullName>
     <deleteConstraint>Restrict</deleteConstraint>
     <externalId>false</externalId>
-    <inlineHelpText>Lien vers le contact signataire du contrat côté partenaire</inlineHelpText>
-    <label>Contact partenaire</label>
+    <inlineHelpText>Lien vers le contact signataire du contrat côté gestionnaire</inlineHelpText>
+    <label>Contact Gestionnaire</label>
     <referenceTo>Contact</referenceTo>
-    <relationshipLabel>Contrats Partenaires</relationshipLabel>
     <relationshipName>ContratsPartenaires</relationshipName>
     <required>true</required>
     <trackHistory>false</trackHistory>

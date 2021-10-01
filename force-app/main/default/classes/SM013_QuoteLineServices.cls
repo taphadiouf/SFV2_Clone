@@ -484,7 +484,7 @@ public with sharing class SM013_QuoteLineServices {
             }
             //
             if(mapContactTypeQuote.containsKey(qli.SBQQ__Quote__c+'-'+'Primary')){
-            qli2.LPCR_PrimaryContact__c=mapContactTypeQuote.get(qli.SBQQ__Quote__c+'-'+'Primary');
+                qli2.LPCR_ContactPrincipal__c=mapContactTypeQuote.get(qli.SBQQ__Quote__c+'-'+'Primary');
             }
             lstQLIUpdate.add(qli2);
         }
@@ -495,22 +495,46 @@ public with sharing class SM013_QuoteLineServices {
     }
 
     // PRA 29/07/2021  IS-2518
-    public static void setContactOnDevis(List<SBQQ__QuoteLine__c> quoteLineList){
-        List<SBQQ__Quote__c> quoteToUpdate = new List<SBQQ__Quote__c>();
-        for(SBQQ__QuoteLine__c eachQuoteLine : quoteLineList){
-            if(eachQuoteLine.LPCR_ContactFacturation__c <> null || eachQuoteLine.LPCR_ContactInscriptions__c <> null || eachQuoteLine.LPCR_PrimaryContact__c <> null){
-                if(Label.LPCR_Amendment.equals(eachQuoteLine.SBQQ__Quote__r.SBQQ__Type__c)){
-                    quoteToUpdate.add(new SBQQ__Quote__c(
-                        id=eachQuoteLine.SBQQ__Quote__r.id,
-                        LPCR_ContactFacturation__c=eachQuoteLine.LPCR_ContactFacturation__c,
-                        LPCR_ContactInscriptions__c=eachQuoteLine.LPCR_ContactInscriptions__c,
-                        SBQQ__PrimaryContact__c=eachQuoteLine.LPCR_PrimaryContact__c
-                        )
-                    );
-                }
+    //PDO refonte 
+    public static void setContactOnDevis(List<SBQQ__QuoteLine__c> newQuoteLineList){
+        Map<id,SBQQ__Quote__c> MapQuoteToUpdate = new Map<id,SBQQ__Quote__c>();
+        for(Integer i = 0 ; i<newQuoteLineList.size();i++){
+            if(Label.LPCR_Amendment.equals(newQuoteLineList[i].LPCR_TypeDeDevis__c) && (newQuoteLineList[i].LPCR_ContactPrincipal__c <> null || newQuoteLineList[i].LPCR_ContactInscriptions__c <> null ||newQuoteLineList[i].LPCR_ContactFacturation__c <> null)){
+                MapQuoteToUpdate.put(newQuoteLineList[i].SBQQ__Quote__c,
+                                        new SBQQ__Quote__c(
+                                        id=newQuoteLineList[i].SBQQ__Quote__c,
+                                        LPCR_ContactFacturation__c=newQuoteLineList[i].LPCR_ContactFacturation__c,
+                                        LPCR_ContactInscriptions__c=newQuoteLineList[i].LPCR_ContactInscriptions__c,
+                                        SBQQ__PrimaryContact__c=newQuoteLineList[i].LPCR_ContactPrincipal__c
+                                    )
+                );
+            }
+            
+        }
+        if(MapQuoteToUpdate.size()>0)
+            update MapQuoteToUpdate.values();
+    }
+    public static void setCAAmendementIndexation(List<SBQQ__QuoteLine__c> newQuoteLineList){
+        Set<id> setQuoteIds=new Set<id>();
+        List<SBQQ__QuoteLine__c> lstQuotelineUpdate=new List<SBQQ__QuoteLine__c>();
+        //filter quote
+        for(SBQQ__QuoteLine__c qli :newQuoteLineList ){
+            if(qli.LPCR_IndexationQuote__c){
+                setQuoteIds.add(qli.SBQQ__Quote__c );
             }
         }
-        if(quoteToUpdate.size()>0)
-            update quoteToUpdate;
+        //set CA to 0 on non amnendment indexation QLI 
+        for(SBQQ__QuoteLine__c qli : [SELECT Id, SBQQ__Quote__c, LPCR_IndexationQuote__c,LPCR_CAUnitaire__c ,SBQQ__ListPrice__c   FROM SBQQ__QuoteLine__c where  SBQQ__Quote__c IN:setQuoteIds]){
+            if(!qli.LPCR_IndexationQuote__c){
+                lstQuotelineUpdate.add(new SBQQ__QuoteLine__c(Id=qli.Id,LPCR_CAUnitaire__c =0) );
+            }else{
+                lstQuotelineUpdate.add(new SBQQ__QuoteLine__c(Id=qli.Id,LPCR_CAUnitaire__c =qli.SBQQ__ListPrice__c ) );
+            }
+            
+        }
+        if(lstQuotelineUpdate.size()>0){
+            update lstQuotelineUpdate;
+        }
+        //set CA on amendment indexation QLI
     }
 }

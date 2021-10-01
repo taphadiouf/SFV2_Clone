@@ -46,6 +46,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>LPCR_Top100__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LPCR_Activite__c</field>
             </layoutItems>
             <layoutItems>
@@ -337,6 +341,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_FacturerDepotPlateforme__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_EnvoiProforma__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -758,6 +766,8 @@
         <relatedList>blng__Invoice__c.blng__Account__c</relatedList>
     </relatedLists>
     <relatedLists>
+        <customButtons>New_usage</customButtons>
+        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <relatedList>blng__Usage__c.blng__Account__c</relatedList>
     </relatedLists>
@@ -884,7 +894,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1X000002oMyI</masterLabel>
+        <masterLabel>00h0E000001ukTy</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

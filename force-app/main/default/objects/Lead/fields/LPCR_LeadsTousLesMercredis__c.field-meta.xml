@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_LeadsTousLesMercredis__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(AND(INCLUDES(LPCR_JoursDeGardeSouhaitesEnfant1__c, &quot;Mercredi&quot;), TEXT(LeadSource) = &quot;Site Internet Grandir&quot;, TEXT(LPCR_TypePrestation__c)= &quot;Régulier&quot;), true, false)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Leads Tous les Mercredis</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

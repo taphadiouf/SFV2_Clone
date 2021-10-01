@@ -6,7 +6,7 @@
     <formula>IF( blng__Quantity__c =0, blng__UnitPrice__c ,  blng__Subtotal__c /blng__Quantity__c)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <inlineHelpText>Prix unitaire proratisé affiché sur le document</inlineHelpText>
-    <label>Prix unitaire proratisé</label>
+    <label>Prix Unitaire du berceau sur la période</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>
