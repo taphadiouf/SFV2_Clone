@@ -20,6 +20,12 @@ public with sharing class UM002_TestDataFactory {
 	private static final Map<String, Id> defaultRecTypeCache = new Map<String, Id>();
 	private static final Map<String, Id> referenceObjectCache = new Map<String, Id>();
     private static final Map<String, Schema.SObjectType> GlobalDescribe = Schema.getGlobalDescribe();
+
+    private static final String PERMISSIONSET_COMMERCIAL = 'LPCR_ChargeAffairesGC';
+    private static final String PROFILE_NAME_COMMERCIAL = 'Chargé d\'Affaires Grands Comptes';
+    private static final String ROLE_DEVELOPER_NAME_COMMERCIAL = 'LPCR_ChargeAffairesGrandsComptes';
+    private static final String PSET_LICENSE_NAME_CPQ = 'SalesforceCPQ_CPQStandardPerm';
+    private static String ADMIN_PROFILE = 'System Administrator';
     
     public static map<String, set<String>> ExcludedFields = new map<String, set<String>>{
 		'All' => new set<String>{'OwnerId', 'LastModifiedById', 'CreatedById', 'LastModifiedDate', 'CreatedDate'},
@@ -425,6 +431,51 @@ newMe.FederationIdentifier = null;
         
         return usr;
     }
+
+    public static User createCommercialUser(){
+        UserRole roleCommercial = [SELECT Id FROM UserRole WHERE  DeveloperName =:ROLE_DEVELOPER_NAME_COMMERCIAL];
+
+        User commercialUser = UM002_TestDataFactory.createUser(roleCommercial.Id);
+        commercialUser.ProfileId = [SELECT Id FROM Profile WHERE Name=:PROFILE_NAME_COMMERCIAL].Id;
+
+        PermissionSetLicense psetLicense = [SELECT Id FROM PermissionSetLicense WHERE DeveloperName=:PSET_LICENSE_NAME_CPQ LIMIT 1];
+        PermissionSetLicenseAssign permSetLicenseAssignment = new PermissionSetLicenseAssign(
+            AssigneeId = commercialUser.Id,
+            PermissionSetLicenseId = psetLicense.Id
+        );
+        insert permSetLicenseAssignment;
+        
+        PermissionSet commercialPSet = [SELECT Id FROM PermissionSet WHERE Name=:PERMISSIONSET_COMMERCIAL];
+        PermissionSetAssignment psetAssignment = new PermissionSetAssignment(
+            AssigneeId = commercialUser.Id,
+            PermissionSetId = commercialPSet.Id
+        );
+        insert psetAssignment;
+        
+        return commercialUser;
+
+    }
+
+    public static User createAdminUser(){
+
+        User newAdminUser = new User(
+            Alias = 'testusr', 
+            Email = 'LPCR_devadmin@test.com',
+            EmailEncodingKey = 'UTF-8', 
+            LastName = 'Testing', 
+            LanguageLocaleKey = 'en_US',
+            LocaleSidKey = 'en_US', 
+            ProfileId = [SELECT Id FROM Profile WHERE Name=:ADMIN_PROFILE].Id,
+            TimeZoneSidKey = 'Europe/Paris',
+            UserName = 'LPCR_devadmin@test.com');
+            insert newAdminUser;
+        
+        return newAdminUser;
+    
+        }
+         
+    
+
 
     public static List<Lead> createLeads(Integer numLeads, String recTypeId, String lastName, String company,String Email){
         List<Lead> leads = new List<Lead>();
