@@ -422,45 +422,5 @@ public class SM010_ContractServices {
         }       
         
     }
-    //create amendment d'indexation si convenue  SC-9
-    @future(callout=true)
-    public static void createCAAmendement(String strnewContractMap, String stroldContractMap){
-        //deserialize maps 
-        Map<Id,Contract> newContractMap=(Map<Id,Contract>) JSON.deserialize(strnewContractMap,Map<Id,Contract>.class);
-        Map<Id,Contract> oldContractMap=(Map<Id,Contract>) JSON.deserialize(stroldContractMap,Map<Id,Contract>.class);
-        Map<Id,Contract> contractMap = new Map<Id,Contract>();
-        List<SBQQ__Quote__c> lstQuoteUpdate=new List<SBQQ__Quote__c>();
-        List<SBQQ__QuoteLine__c> listCloneQuoteLine = new List<SBQQ__QuoteLine__c>();
-                
-        Map<Id,SBQQ__Quote__c > mapQuoteToIndex =new Map<Id,SBQQ__Quote__c >();
-        List<Id> lstIdQuoteAmended =new List<Id>();
-        List<WRP001_QuoteModel> lstQuoteModelBulk=new List<WRP001_QuoteModel>();
-        for(Contract eachNewContract : newContractMap.values()){ //get all contracts where Uplift is changed
-             System.debug('pdo 1 '+eachNewContract.SBQQ__RenewalUpliftRate__c );
-             System.debug('pdo 2 '+oldContractMap.get(eachNewContract.Id).SBQQ__RenewalUpliftRate__c);   
-             System.debug('pdo 3 '+eachNewContract.LPCR_UpliftNow__c);       
-             System.debug('pdo 4 '+oldContractMap.get(eachNewContract.Id).LPCR_UpliftNow__c); 
-             System.debug('pdo 5 '+oldContractMap.get(eachNewContract.Id).LPCR_IndexationConvenue__c);                                                    
-            if(eachNewContract.SBQQ__RenewalUpliftRate__c != oldContractMap.get(eachNewContract.Id).SBQQ__RenewalUpliftRate__c && eachNewContract.LPCR_UpliftNow__c != oldContractMap.get(eachNewContract.Id).LPCR_UpliftNow__c && eachNewContract.LPCR_UpliftNow__c && (oldContractMap.get(eachNewContract.Id).LPCR_IndexationConvenue__c =='Oui' && eachNewContract.LPCR_IndexationConvenue__c !='Non') ) {
-                System.debug('##pdo hiiii');
-                UM006_ContractAmender amender = new UM006_ContractAmender();
-                
-                WRP001_QuoteModel quote = amender.load(eachNewContract.Id);
-                UM007_QuoteReader reader = new UM007_QuoteReader();
-                WRP001_QuoteModel quoteModel = reader.read(quote.record.id);
-                APC006_CloneQuoteLinesIndexation.cloneAndResetQL(quoteModel.record.id, eachNewContract.SBQQ__RenewalUpliftRate__c, eachNewContract.LPCR_DateRevisionPrix__c);
-                lstQuoteUpdate.add(new SBQQ__Quote__c(Id=quoteModel.record.id,SBQQ__RenewalUpliftRate__c= eachNewContract.SBQQ__RenewalUpliftRate__c,LPCR_DateRevisionPrix__c=eachNewContract.LPCR_DateRevisionPrix__c.addYears(1)));
-            }
-        }
-        if(lstQuoteUpdate.size() > 0){
-            update lstQuoteUpdate;
-        }
-       
-            
-        
-        
-        
-        
-    }
     
 }
