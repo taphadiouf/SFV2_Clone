@@ -40,7 +40,6 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
             SM013_QuoteLineServices.updateContactQLI(newQuoteLineMap);
             // PRA 29/07/2021  IS-2518
             SM013_QuoteLineServices.setContactOnDevis(newQuoteLineList);
-            SM013_QuoteLineServices.setCAAmendementIndexation(newQuoteLineList);
         }
         
     }
