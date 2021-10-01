@@ -749,21 +749,6 @@
             <field>LPCR_TypeFacturation__c</field>
             <table>Account</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactEnfant1__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactEnfant3__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactEnfant2__c</field>
-            <table>Account</table>
-        </columns>
         <masterLabel>Comptes</masterLabel>
     </sections>
     <sections>
