@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_FrequenceFacturation__c</fullName>
+    <externalId>false</externalId>
+    <label>LPCR_FrequenceFacturation</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Mensuelle</fullName>
+                <default>false</default>
+                <label>Mensuelle</label>
+            </value>
+            <value>
+                <fullName>Trimestrielle</fullName>
+                <default>false</default>
+                <label>Trimestrielle</label>
+            </value>
+            <value>
+                <fullName>Semestrielle</fullName>
+                <default>false</default>
+                <label>Semestrielle</label>
+            </value>
+            <value>
+                <fullName>Annuelle</fullName>
+                <default>false</default>
+                <label>Annuelle</label>
+            </value>
+            <value>
+                <fullName>Plan de facturation</fullName>
+                <default>false</default>
+                <label>Plan de facturation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
