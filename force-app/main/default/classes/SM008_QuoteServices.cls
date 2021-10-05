@@ -14,9 +14,6 @@ public with sharing class SM008_QuoteServices {
     public static Id referencementApprouveRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Referencement_Approuve);
     public static Id reservataireApprouveRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Reservataire_Approuve);
     public static Id reservataireApprRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote,Label.LPCR_Reservataire_Approuve);
-    final private static String QUOTE_TYPE_MAC = 'MAC';
-    final private static String QUOTE_TYPE_MICRO = 'MICRO';
-    final private static String QUOTE_STATUS_DRAFT = 'Draft';
     
     //added by hanae
     public static void updateQuotes(List<SBQQ__Quote__c> quotesList){
@@ -1020,27 +1017,6 @@ public with sharing class SM008_QuoteServices {
             update quotesListToUpdate;
             update masterContractList.values();
         }	    	
-    }
-
-    public static void updateDateRevision(List<SBQQ__Quote__c> quotesList, Map<Id, SBQQ__Quote__c> oldQuotesMap){
-        Date newYear;
-       
-        for(SBQQ__Quote__c newQuote : quotesList) if(oldQuotesMap==null ||
-                                                        (newQuote.SBQQ__Status__c==QUOTE_STATUS_DRAFT&&
-                                                        newQuote.SBQQ__StartDate__c!=oldQuotesMap.get(newQuote.Id).SBQQ__StartDate__c)){ 
-            if(newQuote.LPCR_InitAutoAvecDateDebut__c){
-                newQuote.LPCR_DateRevisionPrix__c = newQuote.SBQQ__StartDate__c.addyears(1);
-            }else if((newQuote.RecordTypeId==reservataireRecTypeId || newQuote.RecordTypeId==reservataireApprouveRecTypeId)|| 
-                    ((newQuote.RecordTypeId==acceuilRecTypeId||newQuote.RecordTypeId==acceuilApprRecTypeId) &&
-                    newQuote.LPCR_TypeQuote__c==QUOTE_TYPE_MAC)){
-                    newYear = newQuote.SBQQ__StartDate__c.addyears(1);
-                    newQuote.LPCR_DateRevisionPrix__c = date.newInstance(newYear.year(), 1, 1);
-            }else if((newQuote.RecordTypeId==acceuilRecTypeId||newQuote.RecordTypeId==acceuilApprRecTypeId) && 
-                    newQuote.LPCR_TypeQuote__c==QUOTE_TYPE_MICRO){
-                    newYear = newQuote.SBQQ__StartDate__c.addyears(1);
-                    newQuote.LPCR_DateRevisionPrix__c = date.newInstance(newYear.year(), 9, 1);
-            }
-        }
     }
     
 }
