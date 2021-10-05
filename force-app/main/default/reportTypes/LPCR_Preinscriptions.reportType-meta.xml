@@ -247,6 +247,16 @@
             <field>LPCR_TypeAccueil__c</field>
             <table>LPCR_Preinscription__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Tech_IsChanged__c</field>
+            <table>LPCR_Preinscription__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NbrJoursPriseEnCharge__c</field>
+            <table>LPCR_Preinscription__c</table>
+        </columns>
         <masterLabel>Préinscriptions</masterLabel>
     </sections>
     <sections>
