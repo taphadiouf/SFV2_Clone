@@ -5419,6 +5419,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Order.LPCR_societeFacturanteName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>OrderItem.Description</field>
         <readable>true</readable>
@@ -5976,6 +5981,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>OrderItem.blng__UsageFloorQuantity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>OrderItem.LPCR_societeFacturanteName__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
