@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_NbrJoursPriseEnCharge__c</fullName>
     <externalId>false</externalId>
-    <formula>IF(Tech_IsChanged__c,
+    <formula>IF(LPCR_IsChanged__c,
 			Null,
 			((5 * ( FLOOR( ( DATEVALUE(CreatedDate) - DATE( 1900, 1, 8) ) / 7 ) ) + MIN( 5, MOD( DATEVALUE(CreatedDate) - DATE( 1900, 1, 8), 7 ) ) ) + 10)
 			-
