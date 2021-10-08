@@ -4,9 +4,9 @@
 * @description Trigger  handler on Billing Treatement Object
 */
 public class TM026_BillingTreatementTrigger extends TM000_TriggerHandler{
-    private Map<Id, blng__BillingTreatement__c> newBillingTransactionMap;
-    private Map<Id, blng__BillingTreatement__c> oldBillingTransactionMap;
-    private List<blng__BillingTreatement__c> newBillingTransactionList;
+    private Map<Id, blng__BillingTreatement__c> newBillingTreatementMap;
+    private Map<Id, blng__BillingTreatement__c> oldBillingTreatementMap;
+    private List<blng__BillingTreatement__c> newBillingTreatementList;
     
     public TM026_BillingTreatementTrigger() {
         this.newBillingTreatementMap = (Map<Id, blng__BillingTreatement__c>) Trigger.newMap;
