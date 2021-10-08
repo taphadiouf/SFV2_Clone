@@ -26,18 +26,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_JoursDeGardeSouhaitesEnfant1__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_JoursDeGardeSouhaitesEnfant2__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_JoursDeGardeSouhaitesEnfant3__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>LPCR_MotifTransfert__c</field>
             </layoutItems>
             <layoutItems>
@@ -267,6 +255,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>LPCR_JoursDeGardeSouhaitesEnfant1__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LPCR_AmplitudeHoraireLundi1__c</field>
             </layoutItems>
             <layoutItems>
@@ -277,14 +269,6 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_AmplitudeHoraireMercredi1__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_AmplitudeHoraireJeudi1__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_AmplitudeHoraireVendredi1__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -294,6 +278,17 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_DateEntreeCreche1__c</field>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_AmplitudeHoraireJeudi1__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_AmplitudeHoraireVendredi1__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -314,6 +309,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>LPCR_JoursDeGardeSouhaitesEnfant2__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LPCR_AmplitudeHoraireLundi2__c</field>
             </layoutItems>
             <layoutItems>
@@ -324,14 +323,6 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_AmplitudeHoraireMercredi2__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_AmplitudeHoraireJeudi2__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_AmplitudeHoraireVendredi2__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -341,6 +332,17 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_DateEntreeCreche2__c</field>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_AmplitudeHoraireJeudi2__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_AmplitudeHoraireVendredi2__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -361,6 +363,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>LPCR_JoursDeGardeSouhaitesEnfant3__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LPCR_AmplitudeHoraireLundi3__c</field>
             </layoutItems>
             <layoutItems>
@@ -371,14 +377,6 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_AmplitudeHoraireMercredi3__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_AmplitudeHoraireJeudi3__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_AmplitudeHoraireVendredi3__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -388,6 +386,17 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>LPCR_DateEntreeCreche3__c</field>
+            </layoutItems>
+            <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_AmplitudeHoraireJeudi3__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_AmplitudeHoraireVendredi3__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -665,7 +674,7 @@
     <showRunAssignmentRulesCheckbox>true</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0E000001uUHk</masterLabel>
+        <masterLabel>00h1X000003AHa7</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

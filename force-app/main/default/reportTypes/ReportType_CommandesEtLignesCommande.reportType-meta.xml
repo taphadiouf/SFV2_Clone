@@ -496,9 +496,8 @@
             <table>Order</table>
         </columns>
         <columns>
-            <checkedByDefault>true</checkedByDefault>
-            <displayNameOverride>Région  commerciale</displayNameOverride>
-            <field>Account.LPCR_RegionCommerciale__c</field>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.LPCR_RegionComFormule__c</field>
             <table>Order</table>
         </columns>
         <masterLabel>Orders</masterLabel>

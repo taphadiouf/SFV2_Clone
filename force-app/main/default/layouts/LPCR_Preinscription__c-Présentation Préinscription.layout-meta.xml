@@ -86,11 +86,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_Rep1Prenom__c</field>
+                <field>LPCR_Rep1Nom__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_Rep1Nom__c</field>
+                <field>LPCR_Rep1Prenom__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -548,7 +548,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3N000001wSmt</masterLabel>
+        <masterLabel>00h1j000003DQjd</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
