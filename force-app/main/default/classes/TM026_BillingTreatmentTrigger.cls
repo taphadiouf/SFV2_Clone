@@ -14,7 +14,7 @@ public class TM026_BillingTreatmentTrigger extends TM000_TriggerHandler{
         this.newBillingTreatmentList = (List<blng__BillingTreatment__c>) Trigger.new;
     }
 
-    protected override void beforeUpdate() {
+    protected override void beforeInsert() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM031_BillingTreatmentServices.setFinanceBook(newBillingTreatmentList);
         }

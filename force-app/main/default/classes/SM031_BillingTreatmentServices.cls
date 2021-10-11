@@ -6,12 +6,9 @@
 
 public with sharing class SM031_BillingTreatmentServices {
     
-    public static void setFinanceBook(List<blng__BillingTreatment__c> newBillingTreatmentList){
-
-        blng__FinanceBook__c accountingBook = [SELECT Id FROM blng__FinanceBook__c WHERE Name='Accounting' LIMIT 1];
-        
+    public static void setFinanceBook(List<blng__BillingTreatment__c> newBillingTreatmentList){    
         for(blng__BillingTreatment__c newBillingTreatment : newBillingTreatmentList){
-            newBillingTreatment.blng__BillingFinanceBook__c = accountingBook.Id;
+            newBillingTreatment.blng__BillingFinanceBook__c = [SELECT Id FROM blng__FinanceBook__c WHERE Name='Accounting' LIMIT 1]?.Id;
         }
     }
 }
