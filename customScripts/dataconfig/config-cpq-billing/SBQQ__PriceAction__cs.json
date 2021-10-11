@@ -2039,6 +2039,28 @@
                 "referenceId": "SBQQ__PriceAction__cRef92"
             },
             "IsDeleted": false,
+            "Name": "218",
+            "SBQQ__Field__c": "SBQQ__BillingFrequency__c",
+            "SBQQ__Formula__c": "CASE(LPCR__FrequenceFacturation__c,\r\n\"Monthly\",\"Monthly\",\r\n\"Quarterly\",\"Quarterly\",\r\n\"Semiannual\",\"Semiannual\",\r\n\"Annual\",\"Annual\",\r\n\"Invoice Plan\"\r\n)",
+            "SBQQ__ParentRuleIsActive__c": false,
+            "SBQQ__Rule__r": {
+                "attributes": {
+                    "type": "SBQQ__PriceRule__c",
+                    "url": "/services/data/v53.0/sobjects/SBQQ__PriceRule__c/a0a3O000006J4zMQAS"
+                },
+                "Id": "a0a3O000006J4zMQAS"
+            },
+            "SBQQ__RuleLookupObject__c": "SBQQ__Quote__c",
+            "SBQQ__RuleTargetsCalculator__c": false,
+            "SBQQ__TargetObject__c": "Quote",
+            "SystemModstamp": "2021-10-07T10:13:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceAction__c",
+                "referenceId": "SBQQ__PriceAction__cRef93"
+            },
+            "IsDeleted": false,
             "Name": "143",
             "SBQQ__Field__c": "LPCR_DateSignatureContrat__c",
             "SBQQ__ParentRuleIsActive__c": true,
@@ -2056,7 +2078,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef93"
+                "referenceId": "SBQQ__PriceAction__cRef94"
             },
             "IsDeleted": false,
             "Name": "217",
@@ -2077,7 +2099,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef94"
+                "referenceId": "SBQQ__PriceAction__cRef95"
             },
             "IsDeleted": false,
             "Name": "142",
@@ -2097,7 +2119,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef95"
+                "referenceId": "SBQQ__PriceAction__cRef96"
             },
             "IsDeleted": false,
             "Name": "197",
@@ -2117,7 +2139,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef96"
+                "referenceId": "SBQQ__PriceAction__cRef97"
             },
             "IsDeleted": false,
             "Name": "198",
@@ -2137,7 +2159,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceAction__c",
-                "referenceId": "SBQQ__PriceAction__cRef97"
+                "referenceId": "SBQQ__PriceAction__cRef98"
             },
             "IsDeleted": false,
             "Name": "196",

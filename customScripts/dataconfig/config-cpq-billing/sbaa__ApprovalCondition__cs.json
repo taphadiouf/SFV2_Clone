@@ -973,6 +973,28 @@
                 "referenceId": "sbaa__ApprovalCondition__cRef45"
             },
             "IsDeleted": false,
+            "Name": "AC-000058",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v53.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004iunQAA"
+                },
+                "Id": "a4b3O0000004iunQAA"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Amendment",
+            "sbaa__Index__c": 2,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "SBQQ__Type__c",
+            "SystemModstamp": "2021-10-05T13:35:21.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef46"
+            },
+            "IsDeleted": false,
             "Name": "AC-000054",
             "sbaa__ApprovalRule__r": {
                 "attributes": {
@@ -992,7 +1014,7 @@
         {
             "attributes": {
                 "type": "sbaa__ApprovalCondition__c",
-                "referenceId": "sbaa__ApprovalCondition__cRef46"
+                "referenceId": "sbaa__ApprovalCondition__cRef47"
             },
             "IsDeleted": false,
             "Name": "AC-000053",
@@ -1014,7 +1036,7 @@
         {
             "attributes": {
                 "type": "sbaa__ApprovalCondition__c",
-                "referenceId": "sbaa__ApprovalCondition__cRef47"
+                "referenceId": "sbaa__ApprovalCondition__cRef48"
             },
             "IsDeleted": false,
             "Name": "AC-000052",
@@ -1036,7 +1058,7 @@
         {
             "attributes": {
                 "type": "sbaa__ApprovalCondition__c",
-                "referenceId": "sbaa__ApprovalCondition__cRef48"
+                "referenceId": "sbaa__ApprovalCondition__cRef49"
             },
             "IsDeleted": false,
             "Name": "AC-000046",
@@ -1050,15 +1072,15 @@
             "sbaa__EnableSmartApproval__c": false,
             "sbaa__FilterField__c": "LPCR_DateLegaleResiliation__c",
             "sbaa__FilterType__c": "Field",
-            "sbaa__Index__c": 900,
+            "sbaa__Index__c": 1,
             "sbaa__Operator__c": "less than",
-            "sbaa__TestedField__c": "LPCR_DateResiliationChoisie__c",
-            "SystemModstamp": "2021-06-16T13:53:27.000+0000"
+            "sbaa__TestedField__c": "LPCR_DateResiliation__c",
+            "SystemModstamp": "2021-10-05T14:16:46.000+0000"
         },
         {
             "attributes": {
                 "type": "sbaa__ApprovalCondition__c",
-                "referenceId": "sbaa__ApprovalCondition__cRef49"
+                "referenceId": "sbaa__ApprovalCondition__cRef50"
             },
             "IsDeleted": false,
             "Name": "AC-000047",
@@ -1072,10 +1094,97 @@
             "sbaa__EnableSmartApproval__c": false,
             "sbaa__FilterField__c": "LPCR_DateLegaleResiliation__c",
             "sbaa__FilterType__c": "Field",
-            "sbaa__Index__c": 901,
+            "sbaa__Index__c": 1,
             "sbaa__Operator__c": "less than",
-            "sbaa__TestedField__c": "LPCR_DateResiliationChoisie__c",
-            "SystemModstamp": "2021-06-16T13:49:06.000+0000"
+            "sbaa__TestedField__c": "LPCR_DateResiliation__c",
+            "SystemModstamp": "2021-10-05T14:16:50.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef51"
+            },
+            "IsDeleted": false,
+            "Name": "AC-000059",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v53.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004iunQAA"
+                },
+                "Id": "a4b3O0000004iunQAA"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Résiliation",
+            "sbaa__Index__c": 3,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeAvenant__c",
+            "SystemModstamp": "2021-10-05T13:35:47.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef52"
+            },
+            "IsDeleted": false,
+            "Name": "AC-000057",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v53.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004iwUQAQ"
+                },
+                "Id": "a4b3O0000004iwUQAQ"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Résiliation",
+            "sbaa__Index__c": 3,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_TypeAvenant__c",
+            "SystemModstamp": "2021-10-05T13:33:54.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef53"
+            },
+            "IsDeleted": false,
+            "Name": "AC-000056",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v53.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004iwUQAQ"
+                },
+                "Id": "a4b3O0000004iwUQAQ"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__FilterValue__c": "Amendment",
+            "sbaa__Index__c": 2,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "SBQQ__Type__c",
+            "SystemModstamp": "2021-10-05T13:33:15.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "sbaa__ApprovalCondition__c",
+                "referenceId": "sbaa__ApprovalCondition__cRef54"
+            },
+            "IsDeleted": false,
+            "Name": "AC-000060",
+            "sbaa__ApprovalRule__r": {
+                "attributes": {
+                    "type": "sbaa__ApprovalRule__c",
+                    "url": "/services/data/v53.0/sobjects/sbaa__ApprovalRule__c/a4b3O0000004NlCQAU"
+                },
+                "Id": "a4b3O0000004NlCQAU"
+            },
+            "sbaa__EnableSmartApproval__c": false,
+            "sbaa__FilterType__c": "Value",
+            "sbaa__Index__c": 11,
+            "sbaa__Operator__c": "equals",
+            "sbaa__TestedField__c": "LPCR_DateLegaleResiliation__c",
+            "SystemModstamp": "2021-10-05T14:08:25.000+0000"
         }
     ]
 }
