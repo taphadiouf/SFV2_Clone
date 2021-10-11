@@ -7,8 +7,9 @@ global class APB023_CreateIndexationAmendment implements Database.Batchable<sObj
     global Database.QueryLocator start(Database.BatchableContext BC) {
         
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
+        Id contratResaID  = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Reservataire);
         //select Contract for which amendement indexation needs to be created
-        return Database.getQueryLocator([Select id ,LPCR_IndexationConvenue__c,LPCR_DateRevisionPrix__c,LPCR_InitAutoAvecDateDebut__c,SBQQ__RenewalUpliftRate__c,SBQQ__Order__c From Contract where  LPCR_DateRevisionPrix__c !=null and LPCR_DateRevisionPrix__c = TODAY ]);
+        return Database.getQueryLocator([Select id ,LPCR_IndexationConvenue__c,LPCR_DateRevisionPrix__c,LPCR_InitAutoAvecDateDebut__c,SBQQ__RenewalUpliftRate__c,SBQQ__Order__c From Contract where  LPCR_DateRevisionPrix__c !=null and LPCR_DateRevisionPrix__c = TODAY and RecordTypeId =:contratResaID]);
         
     }
     public void execute(Database.BatchableContext BC, list<Contract> scope){
@@ -55,7 +56,7 @@ global class APB023_CreateIndexationAmendment implements Database.Batchable<sObj
     }
     global void execute(SchedulableContext sc) {
         APB023_CreateIndexationAmendment sc1 = new APB023_CreateIndexationAmendment();
-        
+        //PDO : Modify waiting time for test 
         Datetime dt = Datetime.now().addMinutes(30);
         String timeForScheduler = dt.format('s m H d M \'?\' yyyy');
         // schedule the apex class only if their is not existing job running

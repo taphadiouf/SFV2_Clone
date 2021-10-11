@@ -8,8 +8,9 @@ global class APB025_MAJChampAmendment implements Database.Batchable<sObject>,Dat
     global Database.QueryLocator start(Database.BatchableContext BC) {
 
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
+        Id contratResaID  = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Reservataire);
         //select Contract for which amendement indexation needs to be created
-        return Database.getQueryLocator([Select id ,LPCR_IndexationConvenue__c,LPCR_DateRevisionPrix__c,LPCR_InitAutoAvecDateDebut__c,SBQQ__RenewalUpliftRate__c,SBQQ__Order__c From Contract where  LPCR_DateRevisionPrix__c !=null]);
+        return Database.getQueryLocator([Select id ,LPCR_IndexationConvenue__c,LPCR_DateRevisionPrix__c,LPCR_InitAutoAvecDateDebut__c,SBQQ__RenewalUpliftRate__c,SBQQ__Order__c From Contract where  LPCR_DateRevisionPrix__c !=null  and RecordTypeId =:contratResaID]);
                                         
     }
     public void execute(Database.BatchableContext BC, list<Contract> scope){
@@ -21,10 +22,51 @@ global class APB025_MAJChampAmendment implements Database.Batchable<sObject>,Dat
             listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert('', ClassName, 'Batch', String.valueOf(tmpContract.Id), '', 'SUCCESS'));             
            
         }
-        if(lstContractUpd.size() > 0 ){
-            update lstContractUpd;
-            insert listOfLog;
+       
+        String ErrMsg;
+        try {
+            Database.SaveResult[] srList = Database.update(lstContractUpd,false);
+            
+            for (Integer i = 0; i < lstContractUpd.size(); i++){
+        
+                Database.SaveResult s = srList[i];
+                Contract tmpContrat = lstContractUpd[i];
+        
+                if (s.isSuccess()){
+                    
+                    listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert(ClassName,'APB025 MAJ Date Amendement Indexation',  'Batch', 'Success : ' + tmpContrat.Id, tmpContrat.Id, 'SUCCESS'));
+            
+                } else {
+        
+                    for(Database.Error err : s.getErrors()) {
+                        String tmpErr = '';
+                        tmpErr += 'The following error has occurred.\n';                    
+                        tmpErr += err.getStatusCode() + ': ' + err.getMessage();
+                        listOfLog.add(UM001_LogManager.getWriteLogActivityForBulkInsert(ClassName,'APB025 MAJ Date Amendement Indexation',  'Batch', tmpContrat.Id, tmpErr, 'ERROR'));
+                    }
+                 }
+            }
+        
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'APB025 MAJ Date Amendement Indexation', 'Batch' , null,'Error while updating the contracts : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
         }
+        
+        ErrMsg = null ;
+        try {
+            insert listOfLog;
+                     
+        } catch (Exception e) {
+            ErrMsg = e.getMessage();
+        } finally {
+            if(ErrMsg != null && String.isNotBlank(ErrMsg)){
+                UM001_LogManager.writeLogActivityWithoutFuture(ClassName, 'APB025 MAJ Date Amendement Indexation' , 'Batch' , null,'Error while inserting the logs : ' + ErrMsg, UM010_Constant.ERROR);              
+            }
+        }
+        
         
     }
     public void finish(Database.BatchableContext BC){
