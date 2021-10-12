@@ -13,16 +13,16 @@
         <valueSetName>LPCR_Fonction</valueSetName>
         <valueSettings>
             <controllingFieldValue>CE</controllingFieldValue>
-            <controllingFieldValue>Autre</controllingFieldValue>
-            <controllingFieldValue>À qualifier</controllingFieldValue>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
             <controllingFieldValue>Pôle direction générale</controllingFieldValue>
-            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
             <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
             <controllingFieldValue>Pôle développement durable, environnement, RSE</controllingFieldValue>
             <controllingFieldValue>Pôle Finance administratif, juridique</controllingFieldValue>
             <controllingFieldValue>Pôle informatique &amp; Technique</controllingFieldValue>
+            <controllingFieldValue>Autre</controllingFieldValue>
+            <controllingFieldValue>À qualifier</controllingFieldValue>
+            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
             <controllingFieldValue>Pôle commercial</controllingFieldValue>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
             <controllingFieldValue>Public</controllingFieldValue>
             <controllingFieldValue>PLAC</controllingFieldValue>
             <valueName>À qualifier</valueName>
@@ -36,8 +36,52 @@
             <valueName>Trésorier</valueName>
         </valueSettings>
         <valueSettings>
-            <controllingFieldValue>Autre</controllingFieldValue>
-            <valueName>Autre</valueName>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Directeur marketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Directeur produit, marque</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Directeur service client</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Directeur partenariats, licensing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Directeur Internet, digital, webmarketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Directeur communication</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Responsable marketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Responsable produit, marque</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Responsable service client</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Responsable partenariats, licensing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Responsable Internet, digital, webmarketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
+            <valueName>Responsable communication</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle direction générale</controllingFieldValue>
@@ -82,26 +126,6 @@
         <valueSettings>
             <controllingFieldValue>Pôle direction générale</controllingFieldValue>
             <valueName>Assistante de Direction</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
-            <valueName>Directeur achats</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
-            <valueName>Responsable achats</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
-            <valueName>Assistant achats</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
-            <valueName>Directeur des services généraux</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
-            <valueName>Responsable des services généraux</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Pôle Ressources humaines</controllingFieldValue>
@@ -280,6 +304,30 @@
             <valueName>Directeur hygiène, sécurité, environnement</valueName>
         </valueSettings>
         <valueSettings>
+            <controllingFieldValue>Autre</controllingFieldValue>
+            <valueName>Autre</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
+            <valueName>Directeur achats</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
+            <valueName>Responsable achats</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
+            <valueName>Assistant achats</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
+            <valueName>Directeur des services généraux</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pôle achat, services</controllingFieldValue>
+            <valueName>Responsable des services généraux</valueName>
+        </valueSettings>
+        <valueSettings>
             <controllingFieldValue>Pôle commercial</controllingFieldValue>
             <valueName>Directeur commercial</valueName>
         </valueSettings>
@@ -310,54 +358,6 @@
         <valueSettings>
             <controllingFieldValue>Pôle commercial</controllingFieldValue>
             <valueName>Responsable d&apos;hôtel ou palace</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
-            <valueName>Directeur marketing</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
-            <valueName>Directeur produit, marque</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
-            <valueName>Directeur service client</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
-            <valueName>Directeur partenariats, licensing</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
-            <valueName>Directeur Internet, digital, webmarketing</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
-            <valueName>Directeur communication</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
-            <valueName>Responsable marketing</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
-            <valueName>Responsable produit, marque</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
-            <valueName>Responsable service client</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
-            <valueName>Responsable partenariats, licensing</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
-            <valueName>Responsable Internet, digital, webmarketing</valueName>
-        </valueSettings>
-        <valueSettings>
-            <controllingFieldValue>Pôle Marketing &amp; Communication</controllingFieldValue>
-            <valueName>Responsable communication</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>Public</controllingFieldValue>

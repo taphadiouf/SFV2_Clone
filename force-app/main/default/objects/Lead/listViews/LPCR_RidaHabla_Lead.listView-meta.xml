@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_RidaHabla_Lead</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Rida Habla</label>
+    <queue>LPCR_RidaHabla</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

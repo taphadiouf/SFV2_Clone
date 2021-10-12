@@ -21,6 +21,48 @@
                 <default>false</default>
                 <label>Travaille avec la concurrence</label>
             </value>
+            <value>
+                <fullName>Accompagnement scolaire</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Accompagnement scolaire</label>
+            </value>
+            <value>
+                <fullName>Chèque CESU</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Chèque CESU</label>
+            </value>
+            <value>
+                <fullName>Conciergerie</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Conciergerie</label>
+            </value>
+            <value>
+                <fullName>Conférences / Ateliers parentalité</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Conférences / Ateliers parentalité</label>
+            </value>
+            <value>
+                <fullName>Garde d’enfants périscolaire</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Garde d’enfants périscolaire</label>
+            </value>
+            <value>
+                <fullName>Place en crèche</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Place en crèche</label>
+            </value>
+            <value>
+                <fullName>Plateforme service à la personne</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Plateforme service à la personne</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
     <visibleLines>4</visibleLines>

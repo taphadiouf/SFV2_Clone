@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_77MicroAutres_Lead</fullName>
+    <filterScope>Queue</filterScope>
+    <label>77 - Micro + Autres</label>
+    <queue>LPCR_77MicroAutres</queue>
+    <sharedTo>
+        <allInternalUsers/>
+    </sharedTo>
+</ListView>

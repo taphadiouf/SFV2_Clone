@@ -5,5 +5,6 @@
     <formula>IF(CreatedBy.Id = $User.Id, True, False)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Est créateur</label>
+    <trackHistory>false</trackHistory>
     <type>Checkbox</type>
 </CustomField>
