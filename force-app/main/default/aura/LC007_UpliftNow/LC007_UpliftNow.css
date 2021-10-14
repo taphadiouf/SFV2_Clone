@@ -1,5 +1,7 @@
 .THIS {
 }
 
-.THIS .pinner-container .slds-spinner_container{
+.THIS .spinner-container > .slds-spinner_container {
     position: static !important;
+    color: red;
+}
