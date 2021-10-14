@@ -296,14 +296,6 @@
         <label>New Section</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_DateDebut__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_DateFin__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LPCR_ChiffreAffaires__c</field>
             </layoutItems>
@@ -478,7 +470,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1j000002tPq4</masterLabel>
+        <masterLabel>00h5r000000P5Yu</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
