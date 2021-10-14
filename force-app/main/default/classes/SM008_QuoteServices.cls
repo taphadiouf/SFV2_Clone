@@ -123,7 +123,7 @@ public with sharing class SM008_QuoteServices {
                         //eachQuote.SBQQ__StartDate__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).StartDate;
                         eachQuote.SBQQ__EndDate__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).EndDate ;
                         if(eachQuote.RecordTypeId != referencementRecTypeId && eachQuote.RecordTypeId != referencementApprRecTypeId && eachQuote.RecordTypeId != reservataireRecTypeId && eachQuote.RecordTypeId != reservataireApprRecTypeId){
-                            eachQuote. = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__OpportunityLPCR_ChiffreAffaire__c2__c).SBQQ__AmendedContract__c).LPCR_ChiffreAffaire__c  ;
+                            eachQuote. = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_ChiffreAffaire__c  ;
                             //PDO add criteria here for CA indexation ??? 
                         }
                         if(eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == referencementApprRecTypeId){
