@@ -100,6 +100,7 @@ public with sharing class SM008_QuoteServices {
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
                     if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
                         eachQuote.SBQQ__StartDate__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).StartDate;
+                        //PDO : to comment as well ?? 
                         eachQuote.SBQQ__EndDate__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).EndDate ;
                         if(eachQuote.RecordTypeId != referencementRecTypeId && eachQuote.RecordTypeId != referencementApprRecTypeId && eachQuote.RecordTypeId != reservataireRecTypeId && eachQuote.RecordTypeId != reservataireApprRecTypeId){
                             eachQuote.LPCR_ChiffreAffaire__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_ChiffreAffaire__c  ;
@@ -110,18 +111,20 @@ public with sharing class SM008_QuoteServices {
                     }
                 }
             }
-            if(Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c)){
-                if(eachQuote.LPCR_DateDebut__c != Null){
-                    eachQuote.SBQQ__StartDate__c = eachQuote.LPCR_DateDebut__c ;
-                }
-            }
+            //Refonte PDO
+            // if(Label.LPCR_QuoteT.equals(eachQuote.SBQQ__Type__c)){
+            //     if(eachQuote.LPCR_DateDebut__c != Null){
+            //         eachQuote.SBQQ__StartDate__c = eachQuote.LPCR_DateDebut__c ;
+            //     }
+            // }
             if(Label.LPCR_Amendment.equals(eachQuote.SBQQ__Type__c)){
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
                     if(amendedContractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c)){
-                        eachQuote.SBQQ__StartDate__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).StartDate;
+                        //eachQuote.SBQQ__StartDate__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).StartDate;
                         eachQuote.SBQQ__EndDate__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).EndDate ;
                         if(eachQuote.RecordTypeId != referencementRecTypeId && eachQuote.RecordTypeId != referencementApprRecTypeId && eachQuote.RecordTypeId != reservataireRecTypeId && eachQuote.RecordTypeId != reservataireApprRecTypeId){
-                            eachQuote.LPCR_ChiffreAffaire__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_ChiffreAffaire__c  ;
+                            eachQuote. = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__OpportunityLPCR_ChiffreAffaire__c2__c).SBQQ__AmendedContract__c).LPCR_ChiffreAffaire__c  ;
+                            //PDO add criteria here for CA indexation ??? 
                         }
                         if(eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == referencementApprRecTypeId){
                             eachQuote.LPCR_MasterDevis__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_MasterDevis__c;
