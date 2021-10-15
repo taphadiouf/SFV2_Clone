@@ -960,11 +960,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_RegionCommerciale__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_Region__c</field>
             <table>Account</table>
         </columns>
@@ -1131,6 +1126,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Tech_NbOpportunitesGagnees__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContactEnfant1__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContactEnfant3__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContactEnfant2__c</field>
             <table>Account</table>
         </columns>
         <masterLabel>Comptes</masterLabel>

@@ -13,6 +13,11 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
+                <fullName>LPCR</fullName>
+                <default>false</default>
+                <label>LPCR</label>
+            </value>
+            <value>
                 <fullName>Babilou</fullName>
                 <default>false</default>
                 <label>Babilou</label>
@@ -131,11 +136,6 @@
                 <fullName>Autre</fullName>
                 <default>false</default>
                 <label>Autre</label>
-            </value>
-			<value>
-                <fullName>LPCR</fullName>
-                <default>false</default>
-                <label>LPCR</label>
             </value>
         </valueSetDefinition>
     </valueSet>

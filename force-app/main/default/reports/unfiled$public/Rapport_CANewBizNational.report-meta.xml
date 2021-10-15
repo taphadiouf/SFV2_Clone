@@ -1,31 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <aggregates>
-        <calculatedFormula>OrderItem.LPCR_CAUnitaire__c:SUM / OrderItem.LPCR_NombrePlace__c:SUM</calculatedFormula>
-        <datatype>number</datatype>
-        <developerName>FORMULA1</developerName>
-        <isActive>true</isActive>
-        <isCrossBlock>false</isCrossBlock>
-        <masterLabel>ARPU par prestation</masterLabel>
-        <scale>2</scale>
-    </aggregates> 
-    <aggregates>
-        <calculatedFormula>OrderItem.LPCR_CAUnitaire__c:SUM / OrderItem.LPCR_NombrePlace__c:SUM </calculatedFormula>
-        <datatype>number</datatype>
-        <developerName>FORMULA2</developerName>
-        <isActive>true</isActive>
-        <isCrossBlock>false</isCrossBlock>
-        <masterLabel>ARPU Journalier</masterLabel>
-        <scale>2</scale>
-    </aggregates>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Order.OrderItems$LPCR_CAUnitaire__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Order.OrderItems$LPCR_NombrePlace__c</field>
-    </columns>
     <columns>
         <field>Order$LPCR_NumeroContrat__c</field>
     </columns>
@@ -48,7 +22,7 @@
         <field>Order$LPCR_TypeDeVente__c</field>
     </columns>
     <filter>
-        <booleanFilter>(2 OR 6) AND 1 AND 3 AND 4 AND (5 AND 7)</booleanFilter>
+        <booleanFilter>(2 OR 5) AND 1 AND 3 AND (4 AND 6)</booleanFilter>
         <criteriaItems>
             <column>Order$Type</column>
             <columnToColumn>false</columnToColumn>
@@ -71,13 +45,6 @@
             <value>Activated</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Order$LPCR_AnnulationAnticipee__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Order$LPCR_TypeDeVente__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -88,11 +55,11 @@
             <column>Order.OrderItems$Product2</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator> 
+            <operator>contains</operator>
             <value>Accueil MICRO</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Order.OrderItems$LPCR_CAUnitaire__c</column>
+            <column>Order.OrderItems$TotalPrice</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
@@ -100,20 +67,15 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Matrix</format>
-    <groupingsAcross>
-        <dateGranularity>Day</dateGranularity>
-        <field>Order$LPCR_TypeCompte__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
+    <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Order$Account.LPCR_RegionCommerciale__c</field>
+        <field>Order$Account.LPCR_RegionComFormule__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Order$LPCR_ProprietaireCommande__c</field>
+        <field>Order$LPCR_TypeCompte__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>CA New Biz National</name>

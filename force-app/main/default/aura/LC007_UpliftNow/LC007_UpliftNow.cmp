@@ -1,0 +1,21 @@
+<!--
+  @description       : 
+  @author            : Rakshak Rajjoo
+  @last modified on  : 13/10/2021
+  @last modified by  : Rakshak Rajjoo
+  Modifications Log
+  Ver   Date         Author           Modification
+  1.0   13/10/2021   Rakshak Rajjoo   Initial Version
+-->
+<aura:component implements="force:lightningQuickActionWithoutHeader, force:hasRecordId" controller="APC013_UpliftNow">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <div>
+        <header>
+            <h2 class="slds-modal__title slds-hyphenate">Uplift Now</h2>
+        </header>
+        <div class="spinner-container">
+            <lightning:spinner alternativeText="Loading" variant="brand" size="medium" />
+        </div>
+    </div>
+</aura:component>

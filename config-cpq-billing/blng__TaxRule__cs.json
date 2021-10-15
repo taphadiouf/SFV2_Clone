@@ -1,0 +1,70 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "blng__TaxRule__c",
+                "referenceId": "blng__TaxRule__cRef1"
+            },
+            "blng__Active__c": true,
+            "blng__TaxableYesNo__c": "No",
+            "IsDeleted": false,
+            "Name": "Sans Taxe",
+            "SystemModstamp": "2020-07-21T21:37:45.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__TaxRule__c",
+                "referenceId": "blng__TaxRule__cRef2"
+            },
+            "blng__Active__c": true,
+            "blng__TaxableYesNo__c": "Yes",
+            "IsDeleted": false,
+            "Name": "Taxable 2.10%",
+            "SystemModstamp": "2020-07-21T21:32:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__TaxRule__c",
+                "referenceId": "blng__TaxRule__cRef3"
+            },
+            "blng__Active__c": true,
+            "blng__TaxableYesNo__c": "Yes",
+            "IsDeleted": false,
+            "Name": "Taxable 5.50%",
+            "SystemModstamp": "2020-07-21T21:32:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__TaxRule__c",
+                "referenceId": "blng__TaxRule__cRef4"
+            },
+            "blng__Active__c": true,
+            "blng__TaxableYesNo__c": "Yes",
+            "IsDeleted": false,
+            "Name": "Taxable 20%",
+            "SystemModstamp": "2020-07-21T21:32:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__TaxRule__c",
+                "referenceId": "blng__TaxRule__cRef5"
+            },
+            "blng__Active__c": true,
+            "blng__TaxableYesNo__c": "Yes",
+            "IsDeleted": false,
+            "Name": "Taxable 10%",
+            "SystemModstamp": "2020-07-21T21:32:25.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__TaxRule__c",
+                "referenceId": "blng__TaxRule__cRef6"
+            },
+            "blng__Active__c": true,
+            "blng__TaxableYesNo__c": "Yes",
+            "IsDeleted": false,
+            "Name": "Test Tax Rule",
+            "SystemModstamp": "2020-07-21T21:37:45.000+0000"
+        }
+    ]
+}
