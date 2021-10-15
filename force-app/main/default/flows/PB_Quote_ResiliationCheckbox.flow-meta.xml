@@ -1,37 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <decisions>
-        <name>isChangedDecision2_myRule_1_LPCR_DateResiliationChoisie_c</name>
-        <label>isChangedDecision2_myRule_1_LPCR_DateResiliationChoisie_c</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myDecision</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>isChangedRule_2_myRule_1_LPCR_DateResiliationChoisie_c</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>myVariable_old.LPCR_DateResiliationChoisie__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.LPCR_DateResiliationChoisie__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myDecision</targetReference>
-            </connector>
-            <label>isChangedRule_2_myRule_1_LPCR_DateResiliationChoisie_c</label>
-        </rules>
-    </decisions>
+    <apiVersion>52.0</apiVersion>
     <decisions>
         <processMetadataValues>
             <name>index</name>
@@ -46,92 +15,113 @@
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_1</name>
-            <conditionLogic>1 AND 2</conditionLogic>
+            <conditionLogic>1 AND 2 AND 3</conditionLogic>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
                     <value>
-                        <stringValue>Boolean</stringValue>
+                        <stringValue>Picklist</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>leftHandSideType</name>
                     <value>
-                        <stringValue>Date</stringValue>
+                        <stringValue>Picklist</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>operatorDataType</name>
                     <value>
-                        <stringValue>Date</stringValue>
+                        <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>rightHandSideType</name>
                     <value>
-                        <stringValue>Boolean</stringValue>
+                        <stringValue>Picklist</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>isChangedRule_2_myRule_1_LPCR_DateResiliationChoisie_c</leftValueReference>
+                <leftValueReference>myVariable_current.SBQQ__Type__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <stringValue>Amendment</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
                     <value>
-                        <stringValue>Boolean</stringValue>
+                        <stringValue>Picklist</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>leftHandSideType</name>
                     <value>
-                        <stringValue>Date</stringValue>
+                        <stringValue>Picklist</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>operatorDataType</name>
                     <value>
-                        <stringValue>Date</stringValue>
+                        <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>rightHandSideType</name>
                     <value>
-                        <stringValue>Boolean</stringValue>
+                        <stringValue>Picklist</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.LPCR_MasterDevis__r.LPCR_DateResiliation__c</leftValueReference>
-                <operator>IsNull</operator>
+                <leftValueReference>myVariable_current.LPCR_TypeAvenant__c</leftValueReference>
+                <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>false</booleanValue>
+                    <stringValue>Résiliation</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.SBQQ__Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Actif</stringValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>Alimenter Date d&apos;amendement par Date de Résiliation</label>
+            <label>Amendement de résiliation</label>
         </rules>
     </decisions>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>[Contract].LPCR_DateResiliationChoisie__c </stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_3_myRule_1_A1_2848428704</name>
-        <dataType>Date</dataType>
-        <expression>{!myVariable_current.LPCR_DateResiliationChoisie__c}</expression>
-    </formulas>
-    <interviewLabel>LPCR_Date_Amendement_pour_la_resiliation-2_InterviewLabel</interviewLabel>
-    <label>LPCR_Date Amendement pour la résiliation</label>
+    <description>Process builder qui coche la case Contrat Résilié sur l&apos;objet Contrat une fois que le devis est effectivement résilié</description>
+    <interviewLabel>PB_Quote_ResiliationCheckbox-1_InterviewLabel</interviewLabel>
+    <label>PB_Quote_ResiliationCheckbox</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
-            <stringValue>Contract</stringValue>
+            <stringValue>SBQQ__Quote__c</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -172,16 +162,17 @@
         <processMetadataValues>
             <name>reference</name>
             <value>
-                <stringValue>[Contract]</stringValue>
+                <stringValue>[SBQQ__Quote__c].Contrat principal</stringValue>
             </value>
         </processMetadataValues>
         <processMetadataValues>
             <name>referenceTargetField</name>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>Résiliation</label>
+        <label>Coche la case Contrat résilié</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
+        <filterLogic>and</filterLogic>
         <filters>
             <processMetadataValues>
                 <name>implicit</name>
@@ -192,14 +183,14 @@
             <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>myVariable_current.Id</elementReference>
+                <elementReference>myVariable_current.SBQQ__MasterContract__c</elementReference>
             </value>
         </filters>
         <inputAssignments>
             <processMetadataValues>
                 <name>dataType</name>
                 <value>
-                    <stringValue>Date</stringValue>
+                    <stringValue>Boolean</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -211,7 +202,7 @@
             <processMetadataValues>
                 <name>leftHandSideLabel</name>
                 <value>
-                    <stringValue>Date de début de l&apos;amendement</stringValue>
+                    <stringValue>Contrat Résilié</stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -223,17 +214,17 @@
             <processMetadataValues>
                 <name>rightHandSideType</name>
                 <value>
-                    <stringValue>Formula</stringValue>
+                    <stringValue>Boolean</stringValue>
                 </value>
             </processMetadataValues>
-            <field>SBQQ__AmendmentStartDate__c</field>
+            <field>LPCR_ContratResilie__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_2848428704</elementReference>
+                <booleanValue>true</booleanValue>
             </value>
         </inputAssignments>
         <object>Contract</object>
     </recordUpdates>
-    <startElementReference>isChangedDecision2_myRule_1_LPCR_DateResiliationChoisie_c</startElementReference>
+    <startElementReference>myDecision</startElementReference>
     <status>Active</status>
     <variables>
         <name>myVariable_current</name>
@@ -241,7 +232,7 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-        <objectType>Contract</objectType>
+        <objectType>SBQQ__Quote__c</objectType>
     </variables>
     <variables>
         <name>myVariable_old</name>
@@ -249,6 +240,6 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-        <objectType>Contract</objectType>
+        <objectType>SBQQ__Quote__c</objectType>
     </variables>
 </Flow>

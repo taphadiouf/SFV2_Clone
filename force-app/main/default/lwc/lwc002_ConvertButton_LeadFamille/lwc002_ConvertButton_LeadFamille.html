@@ -5,5 +5,11 @@
  */-->
 
 <template>
+    <div class="spinner">
+        <template if:true={isLoading}>
+             <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+             </lightning-spinner>
+        </template>
+    </div>
     <lightning-button label="Convertir" variant="brand" onclick={convertLeadCtrlF}></lightning-button>
 </template> 

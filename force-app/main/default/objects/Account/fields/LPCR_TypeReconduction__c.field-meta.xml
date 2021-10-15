@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_TypeReconduction__c</fullName>
+    <externalId>false</externalId>
+    <label>Type de reconduction</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Expresse</fullName>
+                <default>false</default>
+                <label>Expresse</label>
+            </value>
+            <value>
+                <fullName>Tacite</fullName>
+                <default>false</default>
+                <label>Tacite</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

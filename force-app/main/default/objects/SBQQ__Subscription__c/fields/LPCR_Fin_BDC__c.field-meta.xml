@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Fin_BDC__c</fullName>
+    <description>Champ qui récupère la date de fin du bon de commande du contrat de référencement</description>
+    <externalId>false</externalId>
+    <formula>SBQQ__QuoteLine__r.LPCR_DateFin__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Fin_BDC</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,153 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef1"
+            },
+            "APXTCFQ__Name__c": "Avenant",
+            "APXTCFQ__Description__c": "Template Avenant pour les amendements de contrats",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef2"
+            },
+            "APXTCFQ__Name__c": "TemplateReservation",
+            "APXTCFQ__Description__c": "Template Contrat de Réservation",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef3"
+            },
+            "APXTCFQ__Name__c": "Contrat Accueil MAC",
+            "APXTCFQ__Description__c": "Template Contrat d'accueil MAC régulier ou occasionnel, sponsorisé ou non",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef4"
+            },
+            "APXTCFQ__Name__c": "TemplateReferencement",
+            "APXTCFQ__Description__c": "Template Contrat Réferencement",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef5"
+            },
+            "APXTCFQ__Name__c": "Annexe3",
+            "APXTCFQ__Description__c": "Contrat d'accueil - Annexe 3",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef6"
+            },
+            "APXTCFQ__Name__c": "Annexe 2 - MAC",
+            "APXTCFQ__Description__c": "Annexe 2 au contrat accueil MAC",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef7"
+            },
+            "APXTCFQ__Name__c": "Contrat Accueil MICRO parent solo",
+            "APXTCFQ__Description__c": "Template contrat accueil MICRO régulier, pour parents solo",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef8"
+            },
+            "APXTCFQ__Name__c": "Contrat Accueil MAC DSP AIX",
+            "APXTCFQ__Description__c": "Template Contrat d'accueil MAC DSP AIX",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef9"
+            },
+            "APXTCFQ__Name__c": "Contrat Accueil ALSH",
+            "APXTCFQ__Description__c": "Contrat Accueil ALSH",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef10"
+            },
+            "APXTCFQ__Name__c": "Contrat Accueil MICRO sponsorisé",
+            "APXTCFQ__Description__c": "Template contrat accueil MICRO régulier, pour parents sponsorisés",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef11"
+            },
+            "APXTCFQ__Name__c": "Contrat Accueil MICRO occasionnel",
+            "APXTCFQ__Description__c": "Contrat Accueil MICRO occasionnel",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef12"
+            },
+            "APXTCFQ__Name__c": "Basic Quote Template",
+            "APXTCFQ__Description__c": "Created By Solution Pack for Composer Solution: Composer Basic Quote (SBQQ__Quote__c)",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Group__c": "Basic Quote with Line Items",
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef13"
+            },
+            "APXTCFQ__Name__c": "Bon de commande",
+            "APXTCFQ__Description__c": "Bon de commande lié à un contrat de référencement",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef14"
+            },
+            "APXTCFQ__Name__c": "Annexe 2 Micro - Régulier",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        },
+        {
+            "attributes": {
+                "type": "APXTCFQ__Conga_Template__c",
+                "referenceId": "APXTCFQ__Conga_Template__cRef15"
+            },
+            "APXTCFQ__Name__c": "Annexe 2 Micro - Occasionnel",
+            "APXTCFQ__Label_Template_Use_Detail_Data__c": false,
+            "APXTCFQ__Template_Type__c": "Document"
+        }
+    ]
+}
