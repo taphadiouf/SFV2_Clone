@@ -461,7 +461,7 @@ public with sharing class SM013_QuoteLineServices {
             mapUniqueKeyQLIoriginal.put(qli.SBQQ__Quote__c+qli.SBQQ__ProductCode__c+qli.SBQQ__Quantity__c ,qli.LPCR_IndexationCustom__c);
         }
 
-        for(SBQQ__QuoteLine__c qli : newQuoteLineMap.values())if(qli.LPCR_TypeDeDevis__c=='Amendment'&&qli.LPCR_IndexationQuote__c  == true){
+        for(SBQQ__QuoteLine__c qli : newQuoteLineMap.values())if(qli.LPCR_TypeDeDevis__c=='Amendment'&&(qli.LPCR_IndexationQuote__c  == true || qli.LPCR_TypeAvenant__c='Amendement d\'indexation' )){
            lstQuoteLineUpdate.add(new SBQQ__QuoteLine__c (Id=qli.Id,LPCR_IndexationCustom__c=mapUniqueKeyQLIoriginal.get(mapUniqueKeyQLIamendementReverse.get(qli.ID))));
         }
 
