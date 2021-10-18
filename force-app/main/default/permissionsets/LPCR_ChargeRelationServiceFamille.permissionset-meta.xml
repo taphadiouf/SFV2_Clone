@@ -2913,6 +2913,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>LPCR_Preinscription__c.LPCR_NbrJoursPriseEnCharge__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_OrdreTri__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3224,6 +3229,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_Preinscription__c.NomEnfant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LPCR_Preinscription__c.LPCR_NbrJoursPriseEnCharge__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4294,6 +4304,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_LeadsTousLesMercredis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_PasDActivite__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

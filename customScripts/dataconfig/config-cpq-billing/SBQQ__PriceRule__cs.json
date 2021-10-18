@@ -505,6 +505,20 @@
                 "referenceId": "SBQQ__PriceRule__cRef35"
             },
             "IsDeleted": false,
+            "Name": "BillingFrequency",
+            "SBQQ__Active__c": false,
+            "SBQQ__ConditionsMet__c": "Any",
+            "SBQQ__ConfiguratorEvaluationEvent__c": "Save",
+            "SBQQ__LookupObject__c": "SBQQ__Quote__c",
+            "SBQQ__TargetObject__c": "Configurator",
+            "SystemModstamp": "2021-10-07T13:14:11.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "SBQQ__PriceRule__c",
+                "referenceId": "SBQQ__PriceRule__cRef36"
+            },
+            "IsDeleted": false,
             "Name": "Set price to 0 on futur QL ( referencement)",
             "SBQQ__Active__c": false,
             "SBQQ__ConditionsMet__c": "All",
@@ -516,7 +530,7 @@
         {
             "attributes": {
                 "type": "SBQQ__PriceRule__c",
-                "referenceId": "SBQQ__PriceRule__cRef36"
+                "referenceId": "SBQQ__PriceRule__cRef37"
             },
             "IsDeleted": false,
             "Name": "Cancel discount on MAC renewal",
