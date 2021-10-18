@@ -286,7 +286,12 @@
             <fullName>Résiliation</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>Amendement d&apos;indexation</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
+    
     <picklistValues>
         <picklist>LPCR_TypeCreche__c</picklist>
         <values>
