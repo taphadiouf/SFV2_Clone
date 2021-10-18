@@ -10,7 +10,7 @@
     <height>600</height>
     <isResizable>true</isResizable>
     <linkType>url</linkType>
-    <masterLabel>Créer un avoir partiel</masterLabel>
+    <masterLabel>Générer l&apos;avoir partiel PDF</masterLabel>
     <openType>newWindow</openType>
     <position>none</position>
     <protected>false</protected>
@@ -22,8 +22,8 @@
 &amp;Id={!blng__Invoice__c.Id}
 
 &amp;QueryId=[CompanyDets]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CIQAccount_Details_CompanyDets__c},
-[LineItems]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_Lines__c}
-
+[LineItems]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_Lines__c},
+[LineAvoir]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_TemplateAvoirPartiel__c}
 
 &amp;invoiceID={!blng__Invoice__c.Id}
 &amp;invoiceStatus={!blng__Invoice__c.blng__InvoiceStatus__c}</url>
