@@ -1739,6 +1739,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.LPCR_Preinscription__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>ConsumptionRate.Description</field>
         <readable>true</readable>
     </fieldPermissions>
