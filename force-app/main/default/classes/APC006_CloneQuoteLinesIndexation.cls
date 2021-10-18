@@ -50,6 +50,7 @@ public class APC006_CloneQuoteLinesIndexation {
             	currentQL.LPCR_IndexationQuote__c  = true;
                 currentQL.SBQQ__ListPrice__c = ql.SBQQ__ListPrice__c + (ql.SBQQ__ListPrice__c * (tmpRate/100));
                 currentQL.SBQQ__Uplift__c = tmpRate;
+                currentQL.LPCR_IndexationCustom__c = (tmpRate/100) * ql.SBQQ__ListPrice__c;
                 if(currentQL.SBQQ__Number__c != null){
                     currentQL.SBQQ__Number__c = ql.SBQQ__Number__c + 1000;
                 }

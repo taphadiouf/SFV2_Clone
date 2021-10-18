@@ -33,7 +33,8 @@ public with sharing class APC013_UpliftNow {
                 new SBQQ__Quote__c(
                     Id = quoteModel.record.id,
                     SBQQ__RenewalUpliftRate__c = con.SBQQ__RenewalUpliftRate__c,
-                    LPCR_DateRevisionPrix__c = con.LPCR_DateRevisionPrix__c.addYears(1)
+                    LPCR_DateRevisionPrix__c = con.LPCR_DateRevisionPrix__c.addYears(1),
+                    LPCR_TypeAvenant__c = 'Amendement d\'indexation'
                 )
             );
 
