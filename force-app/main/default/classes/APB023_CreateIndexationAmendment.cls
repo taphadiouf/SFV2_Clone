@@ -25,6 +25,7 @@ global class APB023_CreateIndexationAmendment implements Database.Batchable<sObj
             
             quoteModel.record.SBQQ__RenewalUpliftRate__c = tmpContract.SBQQ__RenewalUpliftRate__c;
             quoteModel.record.LPCR_DateRevisionPrix__c = tmpContract.LPCR_DateRevisionPrix__c.addYears(1);
+            quoteModel.record.LPCR_TypeAvenant__c ='Amendement d\'indexation';
             
             SBQQ__Quote__c quote1 = quoteModel.record;
             update quote1;
