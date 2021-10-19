@@ -358,7 +358,12 @@ public with sharing class SM013_QuoteLineServices {
         for(Id key :newQuoteLineMap.keySet() ){
             System.debug('##Pdo this is qli type '+newQuoteLineMap.get(key).LPCR_TypeDeDevis__c);
             System.debug('##Pdo this is qli type '+newQuoteLineMap.get(key).id);
-            if(newQuoteLineMap.get(key).LPCR_Remise__c != oldQuoteLineMap.get(key).LPCR_Remise__c && newQuoteLineMap.get(key).LPCR_Clone__c &&newQuoteLineMap.get(key).LPCR_TypeDeDevis__c=='Amendment' ){
+            //amendement 
+            if(newQuoteLineMap.get(key).LPCR_TypeDeDevis__c=='Amendment' && newQuoteLineMap.get(key).SBQQ__Quantity__c != 0 ){
+                //changement de prix to discard
+                
+                
+                //indexation 
                 if(!mapQuoteRemiseMontant.containsKey(newQuoteLineMap.get(key).SBQQ__Quote__c)){
                     mapQuoteRemiseMontant.put(newQuoteLineMap.get(key).SBQQ__Quote__c,newQuoteLineMap.get(key).LPCR_Remise__c);
                 }else{
@@ -368,6 +373,7 @@ public with sharing class SM013_QuoteLineServices {
             }
             //for quote devis 
             if(newQuoteLineMap.get(key).LPCR_Remise__c != oldQuoteLineMap.get(key).LPCR_Remise__c && newQuoteLineMap.get(key).LPCR_TypeDeDevis__c=='Quote' ){
+                System.debug('type quote ');
                 if(!mapQuoteRemiseMontantDevis.containsKey(newQuoteLineMap.get(key).SBQQ__Quote__c)){
                     mapQuoteRemiseMontantDevis.put(newQuoteLineMap.get(key).SBQQ__Quote__c,newQuoteLineMap.get(key).LPCR_Remise__c -oldQuoteLineMap.get(key).LPCR_Remise__c );
                 }else{
