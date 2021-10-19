@@ -8,6 +8,8 @@
  * 1.0   12/10/2021   Rakshak Rajjoo   Initial Version
  **/
 public with sharing class APC013_UpliftNow {
+    final private static String TYPEAVENANT_INDEXATION = 'Amendement d\'indexation';
+
     @AuraEnabled
     public static void doUplift(String contractId) {
         try {
@@ -34,7 +36,7 @@ public with sharing class APC013_UpliftNow {
                     Id = quoteModel.record.id,
                     SBQQ__RenewalUpliftRate__c = con.SBQQ__RenewalUpliftRate__c,
                     LPCR_DateRevisionPrix__c = con.LPCR_DateRevisionPrix__c.addYears(1),
-                    LPCR_TypeAvenant__c = 'Amendement d\'indexation'
+                    LPCR_TypeAvenant__c = TYPEAVENANT_INDEXATION
                 )
             );
 
