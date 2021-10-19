@@ -316,33 +316,12 @@ public with sharing class SM013_QuoteLineServices {
         }
     }
     public static void updateIndexationRemiseQuote(List<SBQQ__QuoteLine__c> quoteLineList,Map<Id,SBQQ__QuoteLine__c> newQuoteLineMap){
-        //List<SBQQ__Quote__c> lstQuoteUpdate=new List<SBQQ__Quote__c>();
-    
-        List<SBQQ__QuoteLine__c> lstQuoteLineUpdate=new List<SBQQ__QuoteLine__c>();
-        Map<Id,Decimal> mapQuoteIndexationMontant =new Map<Id,Decimal>();
-        Map<Id,Id> mapQuoteInitialQuoteRenewal = new Map<Id,Id>();
-        Map<Id,Decimal> mapAbonnementPrix = new Map<Id,Decimal>();
-        Map<Id,Decimal> mapAbonnementMultiplier = new Map<Id,Decimal>();
-        Set <Id> setQuoteOriginal=new Set <Id>();
-        Map<id,id> quoteOriginalQLIAmendement = new Map<id,id> ();
-        Map<String,Id> mapUniqueKeyQLIamendement=new Map<String,Id>();
-        Map<String,Decimal> mapUniqueKeyQLIoriginal=new Map<String,Decimal>();
-        Map<Id,String> mapUniqueKeyQLIamendementReverse = new Map<Id,String>();
         Map<id,Decimal> mapQuoteRemiseMontant =new Map<id,Decimal>();
         List<SBQQ__Quote__c> quoteListToUpdate=new List<SBQQ__Quote__c>();
         for(SBQQ__QuoteLine__c qli : quoteLineList){
             System.debug('#pdo this is type '+qli.LPCR_TypeDeDevis__c);
             System.debug('#pdo this is contrat devis '+qli.LPCR_MasterContrat__c);
-            System.debug('##pdo this is quote '+qli.LPCR_QuoteOriginal__c);
-            if(qli.SBQQ__RenewedSubscription__c != null){
-                mapQuoteInitialQuoteRenewal.put(qli.Id,qli.SBQQ__RenewedSubscription__c);
-            }
-            if(qli.LPCR_TypeDeDevis__c=='Amendment'){
-                setQuoteOriginal.add(qli.LPCR_QuoteOriginal__c);
-                quoteOriginalQLIAmendement.put(qli.LPCR_QuoteOriginal__c,qli.Id);
-                mapUniqueKeyQLIamendement.put(qli.LPCR_QuoteOriginal__c+qli.SBQQ__ProductCode__c+qli.SBQQ__Quantity__c ,qli.Id);
-                mapUniqueKeyQLIamendementReverse.put(qli.Id,qli.LPCR_QuoteOriginal__c+qli.SBQQ__ProductCode__c+qli.SBQQ__Quantity__c );
-            }
+             
             if(qli.LPCR_TypeDeDevis__c == 'Quote' && qli.LPCR_Remise__c != 0 ){
                 if(!mapQuoteRemiseMontant.containsKey(qli.SBQQ__Quote__c)){
                     mapQuoteRemiseMontant.put(qli.SBQQ__Quote__c,qli.LPCR_Remise__c);
@@ -353,49 +332,10 @@ public with sharing class SM013_QuoteLineServices {
             }
             
         }
-        //select QLI in orginal quotes 
-        for(SBQQ__QuoteLine__c qli:[SELECT Id ,SBQQ__Quote__c  ,SBQQ__PriorQuantity__c,LPCR_IndexationCustom__c ,SBQQ__ProductCode__c,SBQQ__StartDate__c, SBQQ__EndDate__c,SBQQ__Quantity__c FROM SBQQ__QuoteLine__c where SBQQ__Quote__c IN :setQuoteOriginal]){
-            System.debug('qli amendemnet id'+quoteOriginalQLIAmendement.get(qli.SBQQ__Quote__c));
-            mapUniqueKeyQLIoriginal.put(qli.SBQQ__Quote__c+qli.SBQQ__ProductCode__c+qli.SBQQ__Quantity__c ,qli.LPCR_IndexationCustom__c);
-        }
-        System.debug('##Pdo this is map '+mapUniqueKeyQLIoriginal);
-        System.debug('##Pdo this is map '+mapUniqueKeyQLIamendement);
-        System.debug('##Pdo this is map '+setQuoteOriginal);
-        for(SBQQ__QuoteLine__c qli : quoteLineList){
-            if(qli.LPCR_TypeDeDevis__c=='Amendment'){
-                lstQuoteLineUpdate.add(new SBQQ__QuoteLine__c (Id=qli.Id,LPCR_IndexationCustom__c=mapUniqueKeyQLIoriginal.get(mapUniqueKeyQLIamendementReverse.get(qli.ID))));
-                //lstQuoteLineUpdate.add(new SBQQ__QuoteLine__c (Id=qli.Id,LPCR_IndexationCustom__c=100));
-                //if cloned 
-                if(qli.LPCR_Clone__c){
-                    
-                }
-            }
-            
-        }
+    
+
         System.debug('pdo this is remise montant '+mapQuoteRemiseMontant);
-        System.debug('pdo this is list to update'+lstQuoteLineUpdate);
-        //query data in abonnement 
-        for(SBQQ__Subscription__c subs :[SELECT Id,SBQQ__CustomerPrice__c,SBQQ__ProrateMultiplier__c FROM SBQQ__Subscription__c where id IN : mapQuoteInitialQuoteRenewal.values()]){
-            System.debug('pdo '+subs.SBQQ__CustomerPrice__c);
-            if(subs.SBQQ__CustomerPrice__c != null){
-                mapAbonnementPrix.put(subs.Id,subs.SBQQ__CustomerPrice__c);
-            }
-            if(subs.SBQQ__ProrateMultiplier__c != null){
-                mapAbonnementMultiplier.put(subs.Id,subs.SBQQ__ProrateMultiplier__c);
-            }
-        }
-        //loop in map quote line items 
-        for(Id key :newQuoteLineMap.keySet() ){
-            if(mapQuoteInitialQuoteRenewal.containsKey(key)){
-                //(SBQQ__Uplift__c * ( SBQQ__RenewedSubscription__r.SBQQ__CustomerPrice__c / SBQQ__RenewedSubscription__r.SBQQ__ProrateMultiplier__c )) * SBQQ__ProrateMultiplier__c
-            Decimal quotelineUplift=newQuoteLineMap.get(key).SBQQ__Uplift__c != null ? newQuoteLineMap.get(key).SBQQ__Uplift__c/100 : 0;
-            Decimal renewalSubscriptionCustomerprice =mapAbonnementPrix.containsKey(mapQuoteInitialQuoteRenewal.get(key))? mapAbonnementPrix.get(mapQuoteInitialQuoteRenewal.get(key)) :0;
-            Decimal renewalSubscriptionmultiplier=mapAbonnementMultiplier.containsKey(mapQuoteInitialQuoteRenewal.get(key))? mapAbonnementMultiplier.get(mapQuoteInitialQuoteRenewal.get(key)) :0;
-            Decimal quotelineProrate=newQuoteLineMap.get(key).SBQQ__ProrateMultiplier__c != null ? newQuoteLineMap.get(key).SBQQ__ProrateMultiplier__c : 0;
-            lstQuoteLineUpdate.add(new  SBQQ__QuoteLine__c(id=key,LPCR_IndexationCustom__c=(quotelineUplift *renewalSubscriptionCustomerprice/ renewalSubscriptionmultiplier) *quotelineProrate));
-            }
-            
-        }
+ 
         //update quote 
         for(Id key : mapQuoteRemiseMontant.keySet()){
             quoteListToUpdate.add(new SBQQ__Quote__c(id=key,LPCR_RemiseCustom__c=mapQuoteRemiseMontant.get(key)));
@@ -403,10 +343,6 @@ public with sharing class SM013_QuoteLineServices {
         if(quoteListToUpdate.size() > 0){
             update quoteListToUpdate;
         }
-        if(lstQuoteLineUpdate.size() > 0 ){
-            update lstQuoteLineUpdate;
-        }
-        
         
         
     }
