@@ -88,12 +88,6 @@ public with sharing class SM008_QuoteServices {
         }
     }
     
-    
-    
-    
-    
-    
-    
     public static void setB2BandB2CQuotesFromContract(List<SBQQ__Quote__c> quotesList,  Map<ID,Account> acctMap, Map<Id,Opportunity> opptyMap,  Map<Id,Contract> contractMap, Map<Id,Contract> amendedContractMap){
         for (SBQQ__Quote__c eachQuote : quotesList){
             if(Label.LPCR_Renewal.equals(eachQuote.SBQQ__Type__c)){
@@ -273,9 +267,6 @@ public with sharing class SM008_QuoteServices {
         }
     }
     
-    
-    
-    
     public static void setB2BQuotesFromContract(List<SBQQ__Quote__c> quotesList,  Map<ID,Account> acctMap, Map<Id,Opportunity> opptyMap,  Map<Id,Contract> contractMap){
         Date dueDateRenewal = date.newInstance(System.Today().year(), 08, 31);
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
@@ -380,7 +371,6 @@ public with sharing class SM008_QuoteServices {
             }
         }
     }
-    
     
     public static void setB2BbeforInsertBQuotesFromContract(List<SBQQ__Quote__c> quotesList,  Map<ID,Account> acctMap, Map<Id,Opportunity> opptyMap,  Map<Id,Contract> contractMap, Map<Id,Contract> amendedContractMap){
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
@@ -570,8 +560,6 @@ public with sharing class SM008_QuoteServices {
     }
     
     //added by hanae
-    
-    
     public static void loadAgreement(Map<Id,Set<Id>> mapQuoteAgreement) {
         try {
             for (Id key: mapQuoteAgreement.KeySet()){
@@ -587,8 +575,6 @@ public with sharing class SM008_QuoteServices {
         }  
         
     }
-    
-    
     
     public static Map<Id,Set<Id>> generateAgreementTemp(Map<Id,SBQQ__Quote__c> newQuoteMap,Map<Id,SBQQ__Quote__c> oldQuoteMap ){
         ID agreementAcc = LPCR_IDsCongaAdobe__c.getInstance().LPCR_AAT_ACCUEIL_ADOBE__c; 
@@ -702,15 +688,12 @@ public with sharing class SM008_QuoteServices {
         PAD.log('SM008_QuoteServices','ExactDiffBeetweenDate','total:'+ (partOne + partTwo + partThree));
 
         return  (partOne + partTwo + partThree);
-
     }
 
     // Update quoteline LPCR_CAUnitaire__c and LPCR_NombrePlace__c for B2B and B2C Micro scope of quote line
     //PDO : Replace custom fields with standard fields (Refonte CPQ) , when Order is generated no calculation of CA
     //PDO : Nombre de place LPCR_NombrePlace__c (quantity increase/decrease)
     @future
-    
-    
     public static void updateQuoteLineChiffreAffaire(Set<Id> quoteIds){
 
         PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','quoteIds:'+ quoteIds);
@@ -722,6 +705,13 @@ public with sharing class SM008_QuoteServices {
         List<SBQQ__QuoteLine__c> quoteLineListToUpdate = new List<SBQQ__QuoteLine__c>();
         Map<Id, SBQQ__Quote__c> mapQuote = new Map<Id, SBQQ__Quote__c>([SELECT Id, SBQQ__Type__c, LPCR_TypeCreche__c, LPCR_DateFin__c, SBQQ__LineItemCount__c, SBQQ__Ordered__c, SBQQ__StartDate__c,SBQQ__EndDate__c
                                                                         FROM SBQQ__Quote__c where Id in : quoteIds]);
+
+        Set<Id> setIndexationQuoteIds = new Set<Id>();
+        for (SBQQ__QuoteLine__c qli : tmpQuoteLineList) {
+            if (qli.LPCR_IndexationQuote__c) {
+                setIndexationQuoteIds.add(qli.SBQQ__Quote__c);
+            }
+        }
 
         for(SBQQ__QuoteLine__c quoteLine : tmpQuoteLineList){
                 
@@ -772,9 +762,7 @@ public with sharing class SM008_QuoteServices {
                             quoteLineListToUpdate.add(quoteLine);
                         }
             }
-        
-
-            if (quote.SBQQ__Type__c == 'Amendment' && quote.LPCR_TypeCreche__c != 'MAC' && quote.SBQQ__LineItemCount__c > 0 && quote.SBQQ__Ordered__c == false) {
+            if (quote.SBQQ__Type__c == 'Amendment' && quote.LPCR_TypeCreche__c != 'MAC' && quote.SBQQ__LineItemCount__c > 0 && quote.SBQQ__Ordered__c == false && !setIndexationQuoteIds.contains(quote.Id)) {
 
                 PAD.log('SM008_QuoteServices','updateQuoteLineChiffreAffaire','PART II');
 
@@ -924,11 +912,11 @@ public with sharing class SM008_QuoteServices {
             }
         } 
     }
+
     /*
         > Si un Devis est de type Renouvellement 
         ==> Mettre à jour le montant indexation 
     */
-   
     public static void updateMontantIndexation(Map<Id,SBQQ__Quote__c> newQuoteMap ){ 
         Map<Id,Decimal> mapMasterIDQuoteTotal=new Map<Id,Decimal>();
         List<SBQQ__Quote__c> quoteListToUpdate=new List<SBQQ__Quote__c>();
@@ -963,13 +951,9 @@ public with sharing class SM008_QuoteServices {
         }
         if(quoteListToUpdate.size() > 0){
             update quoteListToUpdate;
-        }
-        
-       
-        
-        
-        
+        }   
     }
+
     //Method to popultae the RT of opp on Quote ( limitation 15 span lookup)
     public static void updateRTDevis(Map<Id,SBQQ__Quote__c> newQuoteMap ){ 
         List<SBQQ__Quote__c> quoteListToUpdate=new List<SBQQ__Quote__c>();
@@ -1045,5 +1029,4 @@ public with sharing class SM008_QuoteServices {
             }
         }
     }
-    
 }
