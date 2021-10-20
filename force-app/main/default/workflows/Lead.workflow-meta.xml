@@ -50,7 +50,7 @@
     </fieldUpdates>
     <rules>
         <fullName>WF_AlerteDelaiLead</fullName>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>Lead.RecordTypeId</field>
             <operation>equals</operation>
