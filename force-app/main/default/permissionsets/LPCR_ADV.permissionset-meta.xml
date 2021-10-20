@@ -1450,6 +1450,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Case.LPCR_Preinscription__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>ConsumptionRate.UpperBound</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3516,6 +3521,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>LPCR_Preinscription__c.LPCR_NbrJoursPriseEnCharge__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_OrdreTri__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5085,6 +5095,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_PasDActivite__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.AccountId</field>
         <readable>true</readable>
@@ -5766,6 +5781,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Order.LPCR_societeFacturanteName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Order.blng__TotalBilling__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6292,6 +6312,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>OrderItem.blng__UsageFloorQuantity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>OrderItem.LPCR_societeFacturanteName__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -14772,6 +14797,26 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>blng__Usage__c.LPCR_Prix_Usage__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__LegalEntity__c.Ownership__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__LegalEntity__c.LPCR_Capital__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__LegalEntity__c.LPCR_RCS__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>blng__LegalEntity__c.LPCR_SIREN__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

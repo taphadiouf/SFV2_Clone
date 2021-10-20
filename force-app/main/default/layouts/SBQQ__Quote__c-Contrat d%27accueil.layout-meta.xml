@@ -63,6 +63,14 @@
                 <behavior>Edit</behavior>
                 <field>LPCR_Date_Annulation__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_Uplift__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LPCR_DateRevisionPrix__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -550,7 +558,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>echosign_dev1__DateSentDate__c</fields>
         <fields>echosign_dev1__Recipient__c</fields>
         <fields>echosign_dev1__Status__c</fields>
         <fields>echosign_dev1__Document__c</fields>
@@ -565,7 +572,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000002ia8S</masterLabel>
+        <masterLabel>00h0E000000U0Qu</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

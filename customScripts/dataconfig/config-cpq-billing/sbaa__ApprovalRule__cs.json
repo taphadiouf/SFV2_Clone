@@ -46,7 +46,7 @@
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2021-07-01T14:30:23.000+0000"
+            "SystemModstamp": "2021-10-05T14:04:40.000+0000"
         },
         {
             "attributes": {
@@ -56,7 +56,7 @@
             "IsDeleted": false,
             "Name": "Approval : Responsable ADV",
             "sbaa__Active__c": true,
-            "sbaa__AdvancedCondition__c": "5 AND ((1 AND (  6 OR 7) AND 10 AND 8) OR (2 AND ( 6)) OR (3 AND 8 AND 9))",
+            "sbaa__AdvancedCondition__c": "5 AND 11 AND ((1 AND (  6 OR 7) AND 10 AND 8) OR (2 AND ( 6)) OR (3 AND 8 AND 9))",
             "sbaa__ApprovalChain__r": {
                 "attributes": {
                     "type": "sbaa__ApprovalChain__c",
@@ -94,7 +94,7 @@
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2021-07-01T13:29:25.000+0000"
+            "SystemModstamp": "2021-10-05T14:09:07.000+0000"
         },
         {
             "attributes": {
@@ -142,7 +142,7 @@
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2021-03-19T10:39:10.000+0000"
+            "SystemModstamp": "2021-10-05T14:04:40.000+0000"
         },
         {
             "attributes": {
@@ -196,7 +196,7 @@
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2020-07-21T21:53:09.000+0000"
+            "SystemModstamp": "2021-10-05T14:04:40.000+0000"
         },
         {
             "attributes": {
@@ -243,7 +243,7 @@
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2021-09-01T09:42:23.000+0000"
+            "SystemModstamp": "2021-10-05T14:04:40.000+0000"
         },
         {
             "attributes": {
@@ -290,7 +290,7 @@
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2021-06-28T15:03:59.000+0000"
+            "SystemModstamp": "2021-10-05T14:04:40.000+0000"
         },
         {
             "attributes": {
@@ -300,7 +300,7 @@
             "IsDeleted": false,
             "Name": "Approbation de Résiliation Suite Préavis ADV",
             "sbaa__Active__c": true,
-            "sbaa__AdvancedCondition__c": "901",
+            "sbaa__AdvancedCondition__c": "1 AND 2 AND 3",
             "sbaa__ApprovalChain__r": {
                 "attributes": {
                     "type": "sbaa__ApprovalChain__c",
@@ -308,13 +308,37 @@
                 },
                 "Id": "a4Z3O00000053U2UAI"
             },
+            "sbaa__ApprovalRecipients__c": "Record Owner",
+            "sbaa__ApprovalStep__c": 2,
+            "sbaa__ApprovalTemplate__r": {
+                "attributes": {
+                    "type": "sbaa__EmailTemplate__c",
+                    "url": "/services/data/v53.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
+                },
+                "Id": "a4h3O0000008S6iQAE"
+            },
             "sbaa__ApproverField__c": "LPCR_ResponsableADV__c",
-            "sbaa__ConditionsMet__c": "All",
+            "sbaa__ConditionsMet__c": "Custom",
             "sbaa__Parallel__c": false,
+            "sbaa__RejectionRecipients__c": "Record Owner",
+            "sbaa__RejectionTemplate__r": {
+                "attributes": {
+                    "type": "sbaa__EmailTemplate__c",
+                    "url": "/services/data/v53.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
+                },
+                "Id": "a4h3O0000008S6dQAE"
+            },
+            "sbaa__RequestTemplate__r": {
+                "attributes": {
+                    "type": "sbaa__EmailTemplate__c",
+                    "url": "/services/data/v53.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
+                },
+                "Id": "a4h3O0000008S6nQAE"
+            },
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2021-04-30T12:53:18.000+0000"
+            "SystemModstamp": "2021-10-05T13:34:19.000+0000"
         },
         {
             "attributes": {
@@ -368,7 +392,7 @@
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2020-07-21T21:53:09.000+0000"
+            "SystemModstamp": "2021-10-05T14:04:40.000+0000"
         },
         {
             "attributes": {
@@ -421,7 +445,7 @@
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2020-07-21T21:53:09.000+0000"
+            "SystemModstamp": "2021-10-05T14:04:40.000+0000"
         },
         {
             "attributes": {
@@ -468,7 +492,7 @@
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2021-07-01T10:30:52.000+0000"
+            "SystemModstamp": "2021-10-05T14:04:40.000+0000"
         },
         {
             "attributes": {
@@ -478,7 +502,7 @@
             "IsDeleted": false,
             "Name": "Approbation de Résiliation Suite Préavis SC",
             "sbaa__Active__c": true,
-            "sbaa__AdvancedCondition__c": "900",
+            "sbaa__AdvancedCondition__c": "1 AND 2 AND 3",
             "sbaa__ApprovalChain__r": {
                 "attributes": {
                     "type": "sbaa__ApprovalChain__c",
@@ -486,13 +510,37 @@
                 },
                 "Id": "a4Z3O00000053U3UAI"
             },
-            "sbaa__ApproverField__c": "LPCR_CommercialB2B__c",
-            "sbaa__ConditionsMet__c": "All",
+            "sbaa__ApprovalRecipients__c": "Record Owner",
+            "sbaa__ApprovalStep__c": 1,
+            "sbaa__ApprovalTemplate__r": {
+                "attributes": {
+                    "type": "sbaa__EmailTemplate__c",
+                    "url": "/services/data/v53.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6iQAE"
+                },
+                "Id": "a4h3O0000008S6iQAE"
+            },
+            "sbaa__ApproverField__c": "SBQQ__SalesRep__c",
+            "sbaa__ConditionsMet__c": "Custom",
             "sbaa__Parallel__c": false,
+            "sbaa__RejectionRecipients__c": "Record Owner",
+            "sbaa__RejectionTemplate__r": {
+                "attributes": {
+                    "type": "sbaa__EmailTemplate__c",
+                    "url": "/services/data/v53.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6dQAE"
+                },
+                "Id": "a4h3O0000008S6dQAE"
+            },
+            "sbaa__RequestTemplate__r": {
+                "attributes": {
+                    "type": "sbaa__EmailTemplate__c",
+                    "url": "/services/data/v53.0/sobjects/sbaa__EmailTemplate__c/a4h3O0000008S6nQAE"
+                },
+                "Id": "a4h3O0000008S6nQAE"
+            },
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2021-04-30T12:46:31.000+0000"
+            "SystemModstamp": "2021-10-05T13:59:38.000+0000"
         },
         {
             "attributes": {
@@ -540,7 +588,7 @@
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2021-03-19T10:38:52.000+0000"
+            "SystemModstamp": "2021-10-05T14:04:40.000+0000"
         },
         {
             "attributes": {
@@ -588,7 +636,7 @@
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2020-07-21T21:50:23.000+0000"
+            "SystemModstamp": "2021-10-05T14:04:40.000+0000"
         },
         {
             "attributes": {
@@ -636,7 +684,7 @@
             "sbaa__RequireExplicitApproval__c": false,
             "sbaa__SmartApprovalIgnoresConditionsMet__c": false,
             "sbaa__TargetObject__c": "SBQQ__Quote__c",
-            "SystemModstamp": "2021-09-01T09:40:55.000+0000"
+            "SystemModstamp": "2021-10-05T14:04:40.000+0000"
         }
     ]
 }

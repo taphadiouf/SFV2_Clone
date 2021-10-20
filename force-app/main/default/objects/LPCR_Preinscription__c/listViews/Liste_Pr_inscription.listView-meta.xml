@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Liste_Pr_inscription</fullName>
+    <columns>NAME</columns>
+    <columns>LPCR_ContactParent__c</columns>
+    <columns>LPCR_ContactEnfant__c</columns>
+    <columns>LPCR_Creche__c</columns>
+    <columns>LPCR_ValidationFormulaire__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LPCR_Statut__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>Liste Préinscription</label>
+</ListView>
