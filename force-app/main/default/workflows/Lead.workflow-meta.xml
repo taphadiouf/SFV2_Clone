@@ -29,6 +29,20 @@
         <template>unfiled$public/LPCR_AlerteNonTraitementLead</template>
     </alerts>
     <alerts>
+        <fullName>LPCR_AlerteTraitementLimiteLead</fullName>
+        <description>Alerte non traitement du lead</description>
+        <protected>false</protected>
+        <recipients>
+            <field>LPCR_ManagerEmail__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LPCR_AlerteNonTraitementLead</template>
+    </alerts>
+    <alerts>
         <fullName>LPCR_LeadTraiter</fullName>
         <description>Lead à Traiter</description>
         <protected>false</protected>
@@ -50,18 +64,18 @@
     </fieldUpdates>
     <rules>
         <fullName>WF_AlerteDelaiLead</fullName>
+        <actions>
+            <name>LPCR_AlerteTraitementLimiteLead</name>
+            <type>Alert</type>
+        </actions>
         <active>true</active>
-        <criteriaItems>
-            <field>Lead.RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Famille</value>
-        </criteriaItems>
-        <triggerType>onCreateOnly</triggerType>
+        <formula>RecordType.DeveloperName =&quot;Famille&quot;
+	&amp;&amp;
+	ISPICKVAL(Status,&quot;Nouveau&quot;)
+ &amp;&amp;
+	LPCR_DateLimiteCommerce__c = TODAY() + 1</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
-            <actions>
-                <name>LPCR_AlerteNonTraitementLead</name>
-                <type>Alert</type>
-            </actions>
             <offsetFromField>Lead.LPCR_DateLimiteCommerce__c</offsetFromField>
             <timeLength>-1</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
