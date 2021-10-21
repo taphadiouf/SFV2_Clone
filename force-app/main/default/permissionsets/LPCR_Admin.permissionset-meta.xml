@@ -1263,9 +1263,35 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_CrecheChoix1__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheChoix2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheChoix3__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_IDIntranetCompteFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+       
         <field>Case.LPCR_AmplitudeHoraireMardi__c</field>
         <readable>true</readable>
     </fieldPermissions>
+   <fieldPermissions>
+      <editable>true</editable>
+        <field>Activity.LPCR_Compte_rendu__c</field>
+      <readable>true</readable>
+  </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.LPCR_AmplitudeHoraireMercredi__c</field>

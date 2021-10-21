@@ -4,16 +4,20 @@
     <objectMapping>
         <inputObject>Lead</inputObject>
         <mappingFields>
-            <inputField>LPCR_AutrePrestataire__c</inputField>
-            <outputField>LPCR_AutrePrestataire__c</outputField>
-        </mappingFields>
-        <mappingFields>
             <inputField>LPCR_Capital__c</inputField>
             <outputField>LPCR_Capital__c</outputField>
         </mappingFields>
         <mappingFields>
+            <inputField>LPCR_AutrePrestataire__c</inputField>
+            <outputField>LPCR_AutrePrestataire__c</outputField>
+        </mappingFields>
+        <mappingFields>
             <inputField>LPCR_DateRemiseConcurrence__c</inputField>
             <outputField>LPCR_RemiseConcurrence__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>LPCR_RegionCommerciale__c</inputField>
+            <outputField>LPCR_RegionCommerciale__c</outputField>
         </mappingFields>
         <mappingFields>
             <inputField>LPCR_DispositifExistantLead__c</inputField>
@@ -26,6 +30,18 @@
         <mappingFields>
             <inputField>LPCR_Garde__c</inputField>
             <outputField>LPCR_Garde__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>LPCR_NomCreche1__c</inputField>
+            <outputField>LPCR_CrecheChoix1__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>LPCR_NomCreche2__c</inputField>
+            <outputField>LPCR_CrecheChoix2__c</outputField>
+        </mappingFields>
+        <mappingFields>
+            <inputField>LPCR_NomCreche3__c</inputField>
+            <outputField>LPCR_CrecheChoix3__c</outputField>
         </mappingFields>
         <mappingFields>
             <inputField>LPCR_BerceauxConcurrence__c</inputField>
@@ -50,10 +66,6 @@
         <mappingFields>
             <inputField>LPCR_RaisonSociale__c</inputField>
             <outputField>LPCR_RaisonSociale__c</outputField>
-        </mappingFields>
-        <mappingFields>
-            <inputField>LPCR_RegionCommerciale__c</inputField>
-            <outputField>LPCR_RegionCommerciale__c</outputField>
         </mappingFields>
         <mappingFields>
             <inputField>LPCR_SIREN__c</inputField>
