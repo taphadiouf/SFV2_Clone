@@ -1,7 +1,7 @@
 /**
  * @description       : Controller class for LWC015_UpliftNow
  * @author            : Rakshak Rajjoo
- * @last modified on  : 20/10/2021
+ * @last modified on  : 21/10/2021
  * @last modified by  : Rakshak Rajjoo
  * Modifications Log
  * Ver   Date         Author           Modification
@@ -17,8 +17,6 @@ public with sharing class APC013_UpliftNow {
 
             String a_Object_API_Name = 'Contract';
             Map<String, Schema.SObjectField> contractFields = Schema.getGlobalDescribe().get(a_Object_API_Name).getDescribe().fields.getMap();
-            String fldLabel = contractFields.get('LPCR_DateRevisionPrix__c').getDescribe().getLabel();
-
             if (con.LPCR_DateRevisionPrix__c == null) {
                 throw new CustomException(System.Label.LPCR_ErrorMessageUplift+' \''+contractFields.get('LPCR_DateRevisionPrix__c').getDescribe().getLabel()+'\'');
             }
