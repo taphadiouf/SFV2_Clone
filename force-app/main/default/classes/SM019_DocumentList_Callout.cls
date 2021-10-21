@@ -9,44 +9,36 @@ public with sharing class SM019_DocumentList_Callout {
     static String className = SM019_DocumentList_Callout.class.getName();
   
     @AuraEnabled
-    public static DocumentListFullResponse getDocumentListCallout(String ownerid, String doc_type) {
+    public static DocumentListFullResponse getDocumentListCallout(List<String> ownerids) {
 
-        PAD.log(className, 'getDocumentListCallout', 'ownerid:' + ownerid);
-        PAD.log(className, 'getDocumentListCallout', 'doc_type:' + doc_type);
+        PAD.log(className, 'getDocumentListCallout', 'ownerids:' + ownerids);
 
-        DocumentListFullResponse documentListFullResponse;
         errMsg = '';
-        
+        DocumentListFullResponse fullResponse = new DocumentListFullResponse();
         String statusCode;
         HttpResponse response;
         final String WS_NOM_SERVICE  = 'LPCR_RECUPERATION_DOCUMENT';
         DocumentListStructureWrapper docListStructure;
 
         try {
-            documentListFullResponse = new DocumentListFullResponse();
             Http http = new Http();
             HttpRequest request = new HttpRequest();
             LPCR_Environnement__c envCS = LPCR_Environnement__c.getInstance();
 
             if('UAT'.equals(envCS.Nom__c)){
-                request.setEndpoint('callout:UAT_DOCUMENT_LISTE');
+                request.setEndpoint('callout:LPCR_UAT_DOCUMENT_LIST');
             }
             else if('PROD'.equals(envCS.Nom__c)){
-                request.setEndpoint('callout:PROD_DOCUMENT_LISTE');
+                request.setEndpoint('callout:LPCR_PRO_DOCUMENT_LIST');
             }
             else{
-                request.setEndpoint('callout:DEV_DOCUMENT_LISTE');
+                request.setEndpoint('callout:LPCR_DEV_DOCUMENT_LIST');
             }
-            request.setMethod('POST');
+            request.setHeader('Authorization', 'Bearer {!$Credential.Password}');
             request.setHeader('Content-Type', 'application/json;charset=UTF-8');
-            request.setTimeout(2000);
+            request.setMethod('POST');
 
-            docListStructure = new DocumentListStructureWrapper(ownerid);
-
-            if(!String.isBlank(doc_type)){
-                docListStructure.DocType = doc_type;
-            }
-
+            docListStructure = new DocumentListStructureWrapper(ownerids);
             request.setBody(JSON.serialize(docListStructure));
 
             PAD.log(className, 'getDocumentListCallout', 'JSON.serialize(docListStructure):' + JSON.serialize(docListStructure));
@@ -59,14 +51,10 @@ public with sharing class SM019_DocumentList_Callout {
             throw e;
         }
         finally { 
-
             if(statusCode != null) {
-
                 if (statusCode.equals('200')) { // SUCCESS
-
-                    documentListFullResponse.response = (List<DocumentListResponse>) JSON.deserialize(response.getBody(), List<DocumentListResponse>.class);
-                    documentListFullResponse.result = '200';
-                    UM001_LogManager.writeLogActivityWithoutFuture(className, 'getDocumentListCallout', 'Callout', ownerid, 'getDocumentListCallout - Body : ' + JSON.serialize(docListStructure) + ' - statusCode:' + documentListFullResponse.result + ' - OwnerId:' + ownerid, UM010_Constant.SUCCESS);  
+                    fullResponse = (DocumentListFullResponse) JSON.deserialize(response.getBody(), DocumentListFullResponse.class);
+                    // UM001_LogManager.writeLogActivityWithoutFuture(className, 'getDocumentListCallout', 'Callout', ownerids[0], 'getDocumentListCallout - Body : ' + JSON.serialize(docListStructure) + ' - statusCode:' + '200' + ' - OwnerId:' + ownerids[0], UM010_Constant.SUCCESS);  
                 } 
             }
             else if(errMsg != '' || !statusCode.equals('200')){ // ERROR
@@ -76,38 +64,48 @@ public with sharing class SM019_DocumentList_Callout {
         }
         
         
-        return documentListFullResponse;
+        return fullResponse;
     }
 
     public class DocumentListStructureWrapper{
-        public String OwnerSfId; // obligatoitre
-        public String DocType;
-        public DocumentListStructureWrapper(String OwnerSfId){
-            this.OwnerSfId = OwnerSfId;   
+        public List<String> owners;
+        public DocumentListStructureWrapper(List<String>  ownerSfId){
+            this.owners = ownerSfId;   
         }
     }
+    // Objet
     public class DocumentListFullResponse {
         @AuraEnabled
-        public String result {get;set;} 
+        public Integer totalResultSize; 
         @AuraEnabled
-        public List<DocumentListResponse> response {get;set;} 
-    }
-    public class DocumentListResponse {
-        @AuraEnabled
-        public String id {get;set;} 
-        @AuraEnabled
-        public String documentType {get;set;}
-        @AuraEnabled 
-        public String ownerSfId {get;set;} 
-        @AuraEnabled 
-        public String docSfID {get;set;} 
-        @AuraEnabled
-        public String documentStatus {get;set;} 
-        @AuraEnabled
-        public String name {get;set;} 
-        @AuraEnabled
-        public String fileType{get;set;} 
+        public List<pageResultWrapper> pageResult; 
     }
 
+    public class VersionWrapper{
+        @AuraEnabled
+        public String blobGUID; 
+        @AuraEnabled
+        public String fileExtension;
+        @AuraEnabled 
+        public String fileSize; 
+        @AuraEnabled 
+        public String date1; 
+        @AuraEnabled 
+        public String checksum; 
+        @AuraEnabled 
+        public String modifiedBy; 
+    }
 
+    public class pageResultWrapper{
+        @AuraEnabled
+        public String guid; 
+        @AuraEnabled
+        public List<String> owners;
+        @AuraEnabled 
+        public String fileName; 
+        @AuraEnabled 
+        public String fileCategory; 
+        @AuraEnabled
+        public List<VersionWrapper> versions; 
+    }
 }

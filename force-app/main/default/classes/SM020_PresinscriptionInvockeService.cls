@@ -95,26 +95,29 @@ public class SM020_PresinscriptionInvockeService {
     
     @future(callout = true)
     public static void callout(string fromemail, string to, string body, string template, boolean flagDoc, Id presCrechId){
-        
-        Set<String> docTmp = new Set<String>();
+        List<SM019_DocumentList_Callout.pageResultWrapper> lstdocinfo;
+        List<SM016_SendMail_Callout.Document> lstDoc;
         if(flagDoc){
-            SM019_DocumentList_Callout.DocumentListFullResponse fullResponse1 = SM019_DocumentList_Callout.getDocumentListCallout(presCrechId, 'Calendrier Congés');
-            if(fullResponse1.result == '200') {
-                for(SM019_DocumentList_Callout.DocumentListResponse eachDoc : fullResponse1.response){
-                    docTmp.add(eachDoc.id);
-                }                
-            }
-            SM019_DocumentList_Callout.DocumentListFullResponse fullResponse2 = SM019_DocumentList_Callout.getDocumentListCallout(presCrechId, 'Règle de fonctionnement');
+            SM019_DocumentList_Callout.DocumentListFullResponse fullResponse2 = SM019_DocumentList_Callout.getDocumentListCallout(new List<String>{String.valueOf(presCrechId)});
+            if(fullResponse2.totalResultSize > 0) {
+                lstdocinfo = new List<SM019_DocumentList_Callout.pageResultWrapper>();
+                for(SM019_DocumentList_Callout.pageResultWrapper eachDoc : fullResponse2.pageResult){
+                    lstdocinfo.add(eachDoc);
+                }
 
-            if(fullResponse2.result == '200') {
-                for(SM019_DocumentList_Callout.DocumentListResponse eachDoc : fullResponse2.response){
-                    docTmp.add(eachDoc.id);
+                lstDoc = new List<SM016_SendMail_Callout.Document>(); 
+                for(SM019_DocumentList_Callout.pageResultWrapper docInfo: lstdocinfo){
+                    Blob blobDoc =  SM031_DocumentDownload_Callout.downloadDocument(docInfo.owners[0],docInfo.versions[0].blobGUID);
+                    if(blobDoc <> null){
+                        SM016_SendMail_Callout.Document doc = new SM016_SendMail_Callout.Document(docInfo.fileName,docInfo.versions[0].fileExtension,EncodingUtil.base64Encode(blobDoc));
+                        lstDoc.add(doc);
+                    }
                 }
             }
         }
 
         //fromemail = 'e.yhuellou-ext@lpcr.fr';
-        HttpResponse response = SM016_SendMail_Callout.sendMailCallout(fromemail, to, template, body, docTmp);
+        HttpResponse response = SM016_SendMail_Callout.sendMailCallout(fromemail, to, template, body, lstDoc);
         String toLog;
 
         toLog = 'fromemail: ' + fromemail;
@@ -124,17 +127,21 @@ public class SM020_PresinscriptionInvockeService {
         toLog += 'body: ' + body;
         toLog += ' - ';
         toLog += 'template: ' + template;
-        toLog += ' - ';
-        toLog += 'docTmp: ' + docTmp;
+        toLog += ' - docTmp: ';
+        if(lstdocinfo <> null){
+            for(SM019_DocumentList_Callout.pageResultWrapper docTmp:lstdocinfo){
+                toLog += '- '+docTmp.owners[0] +' '+ docTmp.versions[0].blobGUID;
+            }
+        }
 
         if(response.getStatusCode() == 200){
             PAD.log('SM020_PresinscriptionInvocableService', 'presinscriptionSendEmail', 'SM016_SendMail_Callout');
 
-            UM001_LogManager.writeLogActivityWithoutFuture('Appel Externe ENVOIE MAIL', 'SM020_PresinscriptionInvocableService', 'Callout', null, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - ' + toLog, 'SUCCESS');  
+            UM001_LogManager.writeLogActivityWithoutFuture('Appel Externe ENVOIE MAIL', 'SM020_PresinscriptionInvocableService', 'Callout', null, 'statusCode:' + String.valueOf(response.getStatusCode()), 'SUCCESS');  
         }
         else {
-            UM001_LogManager.writeLogActivityWithoutFuture('Appel Externe ENVOIE MAIL', 'SM020_PresinscriptionInvocableService', 'Callout', null, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - ' + String.valueOf(response) + ' - ' + toLog, 'ERROR');     
+            UM001_LogManager.writeLogActivityWithoutFuture('Appel Externe ENVOIE MAIL', 'SM020_PresinscriptionInvocableService', 'Callout', null, 'statusCode:' + String.valueOf(response.getStatusCode()) + ' - ' + String.valueOf(response), 'ERROR');     
         }
     }
-    
+
 }
