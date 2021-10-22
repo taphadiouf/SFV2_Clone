@@ -4,7 +4,7 @@
     <externalId>false</externalId>
     <formula>(SBQQ__Uplift__c * ( SBQQ__RenewedSubscription__r.SBQQ__CustomerPrice__c  /  SBQQ__RenewedSubscription__r.SBQQ__ProrateMultiplier__c ))  *  SBQQ__ProrateMultiplier__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Indexation</label>
+    <label>Montant Unitaire Indexation</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>

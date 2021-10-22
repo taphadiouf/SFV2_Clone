@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_LeadsFamille</fullName>
+    <columns>LEAD.STATE</columns>
+    <columns>LPCR_NomCreche1__c</columns>
+    <columns>LPCR_NomCreche2__c</columns>
+    <columns>LPCR_NomCreche3__c</columns>
     <columns>FULL_NAME</columns>
-    <columns>LEAD.COMPANY</columns>
-    <columns>LPCR_SocieteCoDemandeur__c</columns>
-    <columns>LEAD.EMAIL</columns>
-    <columns>LEAD.STATUS</columns>
+    <columns>LPCR_NomCoDemandeur__c</columns>
+    <columns>LPCR_DateNaissance1__c</columns>
+    <columns>LPCR_DateNaissance2__c</columns>
+    <columns>LPCR_DateNaissance3__c</columns>
+    <columns>LPCR_DateEntreeCreche1__c</columns>
+    <columns>LPCR_DateEntreeCreche2__c</columns>
+    <columns>LPCR_DateEntreeCreche3__c</columns>
+    <columns>LPCR_DelaiPriseChargeServiceFamille__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>LEAD.RECORDTYPE</field>

@@ -16,7 +16,15 @@ public with sharing class APC011_GenererAvoir {
         String baseUrl = URL.getSalesforceBaseUrl().toExternalForm();
         String orgId=UserInfo.getOrganizationId();
         AvoirID=sc.getId();
+       System.debug('pdo this is param '+ ApexPages.currentPage().getParameters().get('typeAvoir') );
+       String labelName='';
        
+        if(ApexPages.currentPage().getParameters().get('typeAvoir') =='Avoir'){
+            labelName='AVOIR N°:';  
+        }else{
+            
+            labelName='AVOIR PROFORMA  N°:';    
+        }
         List<Document> lstDocHead=[Select id,Name from Document where Name IN ('LCPR_AvoirFb','LPCR_AvoirYoutube','LCPR_AvoirTwitter','LCPR_AvoirIn','LCPR_AvoirJoinus','LCPR_AvoirInsta','LPCR_Upper') order by Name asc ];
 
         //fb
@@ -35,8 +43,12 @@ public with sharing class APC011_GenererAvoir {
         //company dets
         //mapCompanyDets=new  Map<String,String> ();
         //mapCompanyDets.put('hu','pari');
-        for(LPCR_Avoir__c avoir : [SELECT LPCR_CompteClient__c,LPCR_DateFinAvoir__c, LPCR_CompteClient__r.Name,LPCR_CompteClient__r.LPCR_IdSage__c,LPCR_CompteClient__r.LPCR_NumeroAllocataire__c,LPCR_CompteClient__r.Owner.FirstName,LPCR_CompteClient__r.Owner.LastName,LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName,LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName,LPCR_CompteClient__r.BillingCity, LPCR_CompteClient__r.BillingCountry,LPCR_CompteClient__r.BillingState, LPCR_CompteClient__r.BillingStreet,LPCR_CompteClient__r.BillingPostalCode ,Name,LPCR_NomSociete__r.Name,LPCR_Description__c ,LPCR_DateFacture__c ,LPCR_Montant__c ,LPCR_CompteClient__r.LPCR_SocieteFacturanteCompte__c ,LPCR_CompteClient__r.LPCR_SocieteFacturanteCompte__r.Name from LPCR_Avoir__c where ID=:AvoirID]){
+        for(LPCR_Avoir__c avoir : [SELECT LPCR_CompteClient__c,LPCR_DateFinAvoir__c, LPCR_CompteClient__r.Name,LPCR_CompteClient__r.LPCR_IdSage__c,LPCR_CompteClient__r.LPCR_NumeroAllocataire__c,LPCR_CompteClient__r.Owner.FirstName,LPCR_CompteClient__r.Owner.LastName,LPCR_CompteClient__r.LPCR_ResponsableADV__c,LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName,LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName,LPCR_CompteClient__r.BillingCity, LPCR_CompteClient__r.BillingCountry,LPCR_CompteClient__r.BillingState, LPCR_CompteClient__r.BillingStreet,LPCR_CompteClient__r.BillingPostalCode ,Name,LPCR_NomSociete__r.Name,LPCR_Description__c ,LPCR_DateFacture__c ,LPCR_Montant__c ,LPCR_CompteClient__r.LPCR_SocieteFacturanteCompte__c ,LPCR_CompteClient__r.LPCR_SocieteFacturanteCompte__r.Name from LPCR_Avoir__c where ID=:AvoirID]){
             String addCompteClient='';
+            String responsableAdv='';
+            if(avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__c != null){
+                responsableAdv=avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName != null ? avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName : ''+' '+avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName != null ?avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName:'' ;
+            }
             if(avoir.LPCR_CompteClient__r.BillingStreet != null){
                 addCompteClient=addCompteClient+avoir.LPCR_CompteClient__r.BillingStreet;
             }
@@ -49,11 +61,11 @@ public with sharing class APC011_GenererAvoir {
             if(avoir.LPCR_CompteClient__c == null){
                 mapCompanyDets=new  Map<String,String>{'compteclien' => ' ','name'=>' ' ,'address'=>' ','owner'=>' ','adv'=>' ','nomsociete'=>' ' ,'socfac' =>' '};
             }else{
-                mapCompanyDets=new  Map<String,String>{'compteclien' => avoir.LPCR_CompteClient__r.LPCR_IDSage__c != null? avoir.LPCR_CompteClient__r.LPCR_IDSage__c: '','name'=>avoir.LPCR_CompteClient__r.Name != null ?avoir.LPCR_CompteClient__r.Name :'' ,'address'=>addCompteClient,'owner'=>avoir.LPCR_CompteClient__r.Owner.FirstName != null ?avoir.LPCR_CompteClient__r.Owner.FirstName :'' +' '+avoir.LPCR_CompteClient__r.Owner.LastName != null ? avoir.LPCR_CompteClient__r.Owner.LastName :'','adv'=>avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName != null ? avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName : ''+' '+avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName != null ?avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName:'' ,'nomsociete'=>avoir.LPCR_NomSociete__c!= null ?avoir.LPCR_NomSociete__r.Name  :'','socfac' =>avoir.LPCR_CompteClient__r.LPCR_SocieteFacturanteCompte__c != null ?avoir.LPCR_CompteClient__r.LPCR_SocieteFacturanteCompte__r.Name :''};
+                mapCompanyDets=new  Map<String,String>{'compteclien' => avoir.LPCR_CompteClient__r.LPCR_IDSage__c != null? avoir.LPCR_CompteClient__r.LPCR_IDSage__c: '','name'=>avoir.LPCR_CompteClient__r.Name != null ?avoir.LPCR_CompteClient__r.Name :'' ,'address'=>addCompteClient,'owner'=>avoir.LPCR_CompteClient__r.Owner.FirstName != null ?avoir.LPCR_CompteClient__r.Owner.FirstName :'' +' '+avoir.LPCR_CompteClient__r.Owner.LastName != null ? avoir.LPCR_CompteClient__r.Owner.LastName :'','adv'=>responsableAdv ,'nomsociete'=>avoir.LPCR_NomSociete__c!= null ?avoir.LPCR_NomSociete__r.Name  :'','socfac' =>avoir.LPCR_CompteClient__r.LPCR_SocieteFacturanteCompte__c != null ?avoir.LPCR_CompteClient__r.LPCR_SocieteFacturanteCompte__r.Name :''};
             }
             
             
-            mapAvoirDets= new  Map<String,String>{'avoirName'=>avoir.Name != null ?avoir.Name :'' ,'datetoday'=> System.now().format('dd/MM/yyyy'),'description'=>avoir.LPCR_Description__c!= null ? avoir.LPCR_Description__c:'' };
+            mapAvoirDets= new  Map<String,String>{'avoirNameLabel'=>labelName ,'avoirName'=>avoir.Name != null ?avoir.Name :'' ,'datetoday'=> System.now().format('dd/MM/yyyy'),'description'=>avoir.LPCR_Description__c!= null ? avoir.LPCR_Description__c:'' };
             periodAvoir=avoir.LPCR_DateFacture__c;
             periodAvoirFin=avoir.LPCR_DateFinAvoir__c;
             montantAvoir=avoir.LPCR_Montant__c;
@@ -63,11 +75,16 @@ public with sharing class APC011_GenererAvoir {
 
     }
     @AuraEnabled
-    public static String GenererAvoir(Id AccountID) {
+    public static String GenererAvoir(Id AccountID,String typePDF) {
         String filename = 'AvoirDirect';
         PageReference pdf = Page.VFP003_GenererAvoir;
         System.debug('##pdo this is acc '+AccountID);
+        System.debug('##pdo this is type  '+typePDF);
         pdf.getParameters().put('id',AccountID);
+        pdf.getParameters().put('typeAvoir',typePDF);
+        if(typePDF !='Avoir'){
+            filename='AvoirDirectProforma';
+        }
         ContentVersion conVersion = new ContentVersion();
         conVersion.ContentLocation = 'S';
         conVersion.PathOnClient = filename+'.pdf';
@@ -78,12 +95,14 @@ public with sharing class APC011_GenererAvoir {
             conVersion.VersionData = pdf.getContentAsPDF();
         }
         //get accountID 
-        List<LPCR_Avoir__c> lstAcc=[SELECT Id, LPCR_NomSociete__c, LPCR_CompteClient__c, LPCR_Description__c, LPCR_Montant__c FROM LPCR_Avoir__c where id=:AccountID ];
+        List<LPCR_Avoir__c> lstAcc=[SELECT Id, LPCR_NomSociete__c,LPCR_Statut__c, LPCR_CompteClient__c, LPCR_Description__c, LPCR_Montant__c FROM LPCR_Avoir__c where id=:AccountID ];
+        lstAcc[0].LPCR_Statut__c='Envoyée';
         try{
+            update lstAcc;
             insert conVersion;
             ContentDocumentLink cdl = createContentLink(conVersion.Id, lstAcc[0].LPCR_CompteClient__c);
            
-            return null;
+            return cdl.ContentDocumentId;
         }catch(Exception e ){
             return e.getMessage();
         }

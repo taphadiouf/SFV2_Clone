@@ -123,7 +123,13 @@ export default class LWC001_Lead_Famille_Conversion extends LightningElement {
         return enfantsOptions;
     }
     handleContrDaccCheckbox(event) {
-        this.showCreches = event.target.checked;
+        // IS 2565 send value to aura component parent
+        const value = event.target.checked;
+        this.showCreches = value;
+        const valueChangeEvent = new CustomEvent("valuechange", {
+            detail: { value }
+        });
+        this.dispatchEvent(valueChangeEvent);
     }
     handleEnfantCheckbox(event){
         this.enfantsIndexes = event.detail.value;

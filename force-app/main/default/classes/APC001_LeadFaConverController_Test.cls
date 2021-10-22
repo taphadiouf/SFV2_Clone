@@ -121,7 +121,7 @@ public with sharing class APC001_LeadFaConverController_Test {
             
             Test.startTest();
             try {
-                APC001_LeadFaConverController.convertLeadCtrl(currentLead.Id, enfantsIndexes, currentLead.LPCR_CodeCreche1__r.Name, entrepriseAccount.Id);
+                APC001_LeadFaConverController.convertLeadCtrl(currentLead.Id, enfantsIndexes, currentLead.LPCR_CodeCreche1__r.Name, entrepriseAccount.Id,true);
             } catch (Exception e ) {
                 System.assertNotEquals(null,e);
             }
