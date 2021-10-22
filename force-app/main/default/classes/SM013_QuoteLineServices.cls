@@ -478,4 +478,9 @@ public with sharing class SM013_QuoteLineServices {
             update lstQuotelineUpdate;
         }
     }
+    public static void updatePGGlobalQuoteLine(Map<Id,SBQQ__QuoteLine__c> newQuoteLineMap){
+        for(Id key :newQuoteLineMap.keyset() ){
+            newQuoteLineMap.get(key).LPCR_PGFDossier__c=newQuoteLineMap.get(key).SBQQ__NetTotal__c;
+        }
+    }
 }
