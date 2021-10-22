@@ -173,7 +173,7 @@
                         <stringValue>Number</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.Index_Enfant__c</leftValueReference>
+                <leftValueReference>myVariable_current.LPCR_Index_Enfant__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <numberValue>1.0</numberValue>
@@ -259,7 +259,7 @@
                         <stringValue>Number</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.Index_Enfant__c</leftValueReference>
+                <leftValueReference>myVariable_current.LPCR_Index_Enfant__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <numberValue>2.0</numberValue>
@@ -385,7 +385,7 @@
                         <stringValue>Number</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.Index_Enfant__c</leftValueReference>
+                <leftValueReference>myVariable_current.LPCR_Index_Enfant__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <numberValue>3.0</numberValue>
