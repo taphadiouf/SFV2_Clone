@@ -27,7 +27,6 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
                 
                 
                 if (!System.isBatch() && !System.isFuture()) {
-                    SM008_QuoteServices.updateDueToResilisationAnticipe(newQuotesList);
                     SM008_QuoteServices.updateQuoteLineChiffreAffaire(UM003_TypeManager.getIdsOfListObjects(newQuotesList));
                 }
                 
@@ -39,7 +38,6 @@ public class TM008_QuoteTrigger extends TM000_TriggerHandler{
     protected override void beforeInsert() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){     
             SM008_QuoteServices.updateQuotes(newQuotesList); 
-            SM008_QuoteServices.updateDueToResilisationAnticipe(newQuotesList);
             SM008_QuoteServices.updateDateRevision(newQuotesList,null);
             
         }
