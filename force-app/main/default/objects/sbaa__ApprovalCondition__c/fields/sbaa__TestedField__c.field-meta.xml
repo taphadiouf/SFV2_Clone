@@ -87,6 +87,16 @@
                 <default>false</default>
                 <label>LPCR_DateResiliationSouhaitee__c</label>
             </value>
+            <value>
+                <fullName>LPCR_DateResiliation__c</fullName>
+                <default>false</default>
+                <label>LPCR_DateResiliation__c</label>
+            </value>
+            <value>
+                <fullName>LPCR_DateLegaleResiliation__c</fullName>
+                <default>false</default>
+                <label>LPCR_DateLegaleResiliation__c</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

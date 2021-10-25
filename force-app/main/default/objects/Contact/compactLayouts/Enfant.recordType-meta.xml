@@ -5,6 +5,21 @@
     <compactLayoutAssignment>Enfant</compactLayoutAssignment>
     <label>Enfant</label>
     <picklistValues>
+        <picklist>LPCR_AccueilPreinscription__c</picklist>
+        <values>
+            <fullName>Occasionnel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Régulier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Urgent</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_AmplitudeHoraireJeudi__c</picklist>
         <values>
             <fullName>Après-midi</fullName>
@@ -824,6 +839,33 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_RecordType__c</picklist>
+        <values>
+            <fullName>Collaborateur</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enfant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entreprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Famille</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gestionnaire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parent</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_SituationProfessionnelle__c</picklist>
         <values>
             <fullName>Autre</fullName>
@@ -862,6 +904,45 @@
         </values>
         <values>
             <fullName>SFV1</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>LPCR_StatutPreinscription__c</picklist>
+        <values>
+            <fullName>Annulé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Attribuée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Confirmé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inscrit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liste d%27attente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nouveau</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Option</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recommandation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recommandation validée</fullName>
             <default>false</default>
         </values>
     </picklistValues>
