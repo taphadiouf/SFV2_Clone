@@ -415,6 +415,16 @@ public with sharing class SM013_QuoteLineServices {
         List<SBQQ__Quote__c> quoteListToUpdate=new List<SBQQ__Quote__c>();
         List<SBQQ__Quote__c> quoteListUnmatch=new List<SBQQ__Quote__c>();
         Map<id,Decimal> mapQuoteRemiseMontantDevis =new Map<id,Decimal>();
+
+        /****************************AMENDMENT ****************************/
+        Set <Id> setQuoteOriginal=new Set <Id>();
+        Map<id,id> quoteOriginalQLIAmendement = new Map<id,id> ();
+        Map<String,Id> mapUniqueKeyQLIamendement=new Map<String,Id>();
+        Map<Id,String> mapUniqueKeyQLIamendementReverse = new Map<Id,String>();
+        Map<String,Decimal> mapUniqueKeyQLIoriginal=new Map<String,Decimal>();
+        List<SBQQ__QuoteLine__c> lstQuoteLineUpdate=new List<SBQQ__QuoteLine__c>();
+        /****************************AMENDMENT ****************************/
+
         for(Id key :newQuoteLineMap.keySet() ){
             System.debug('##Pdo this is qli type '+newQuoteLineMap.get(key).LPCR_TypeDeDevis__c);
             System.debug('##Pdo this is qli type '+newQuoteLineMap.get(key).id);
@@ -435,7 +445,33 @@ public with sharing class SM013_QuoteLineServices {
                     
                 }
             }
+
+        /****************************AMENDMENT ****************************/
+            //for quote amendment
+            if(newQuoteLineMap.get(key).LPCR_Remise__c != oldQuoteLineMap.get(key).LPCR_Remise__c && newQuoteLineMap.get(key).LPCR_TypeDeDevis__c=='Amendment'){
+                setQuoteOriginal.add(newQuoteLineMap.get(key).LPCR_QuoteOriginal__c);
+                quoteOriginalQLIAmendement.put(newQuoteLineMap.get(key).LPCR_QuoteOriginal__c,key);
+                mapUniqueKeyQLIamendement.put(newQuoteLineMap.get(key).LPCR_QuoteOriginal__c+newQuoteLineMap.get(key).SBQQ__ProductCode__c+newQuoteLineMap.get(key).SBQQ__Quantity__c ,key);
+                mapUniqueKeyQLIamendementReverse.put(newQuoteLineMap.get(key).Id,newQuoteLineMap.get(key).LPCR_QuoteOriginal__c+newQuoteLineMap.get(key).SBQQ__ProductCode__c+newQuoteLineMap.get(key).SBQQ__Quantity__c );
+            }
+
         }
+
+        for(SBQQ__QuoteLine__c qli:[SELECT Id ,SBQQ__Quote__c  ,SBQQ__PriorQuantity__c,LPCR_IndexationCustom__c ,SBQQ__ProductCode__c,SBQQ__StartDate__c, SBQQ__EndDate__c,SBQQ__Quantity__c FROM SBQQ__QuoteLine__c where SBQQ__Quote__c IN :setQuoteOriginal]){
+            mapUniqueKeyQLIoriginal.put(qli.SBQQ__Quote__c+qli.SBQQ__ProductCode__c+qli.SBQQ__Quantity__c ,qli.LPCR_IndexationCustom__c);
+        }
+
+        for(SBQQ__QuoteLine__c qli : newQuoteLineMap.values())if(qli.LPCR_TypeDeDevis__c=='Amendment'&&(qli.LPCR_IndexationQuote__c  == true || qli.LPCR_TypeAvenant__c=='Amendement d\'indexation' )){
+           lstQuoteLineUpdate.add(new SBQQ__QuoteLine__c (Id=qli.Id,LPCR_IndexationCustom__c=mapUniqueKeyQLIoriginal.get(mapUniqueKeyQLIamendementReverse.get(qli.ID))));
+        }
+
+        if(!lstQuoteLineUpdate.isEmpty()){ 
+            update lstQuoteLineUpdate;
+        }
+
+        /****************************AMENDMENT ****************************/
+
+
         //get existing quote
         for(SBQQ__Quote__c quot :[Select id, LPCR_RemiseCustom__c from SBQQ__Quote__c where id IN:mapQuoteRemiseMontantDevis.keyset() ]){
             //to add verif map 
@@ -495,6 +531,7 @@ public with sharing class SM013_QuoteLineServices {
     }
 
     // PRA 29/07/2021  IS-2518
+    //PDO refonte 
     public static void setContactOnDevis(List<SBQQ__QuoteLine__c> newQuoteLineList){
         Map<id,SBQQ__Quote__c> MapQuoteToUpdate = new Map<id,SBQQ__Quote__c>();
         for(Integer i = 0 ; i<newQuoteLineList.size();i++){
@@ -508,8 +545,32 @@ public with sharing class SM013_QuoteLineServices {
                                     )
                 );
             }
+            
         }
         if(MapQuoteToUpdate.size()>0)
             update MapQuoteToUpdate.values();
+    }
+    public static void setCAAmendementIndexation(List<SBQQ__QuoteLine__c> newQuoteLineList){
+        Set<id> setQuoteIds=new Set<id>();
+        List<SBQQ__QuoteLine__c> lstQuotelineUpdate=new List<SBQQ__QuoteLine__c>();
+        //filter quote
+        for(SBQQ__QuoteLine__c qli :newQuoteLineList ){
+            if(qli.LPCR_IndexationQuote__c){
+                setQuoteIds.add(qli.SBQQ__Quote__c );
+            }
+        }
+        //set CA to 0 on non amnendment indexation QLI 
+        for(SBQQ__QuoteLine__c qli : [SELECT Id, SBQQ__Quote__c, LPCR_IndexationQuote__c,LPCR_CAUnitaire__c ,SBQQ__ListPrice__c   FROM SBQQ__QuoteLine__c where  SBQQ__Quote__c IN:setQuoteIds]){
+            if(!qli.LPCR_IndexationQuote__c){
+                lstQuotelineUpdate.add(new SBQQ__QuoteLine__c(Id=qli.Id,LPCR_CAUnitaire__c =0) );
+            }else{
+                lstQuotelineUpdate.add(new SBQQ__QuoteLine__c(Id=qli.Id,LPCR_CAUnitaire__c =qli.SBQQ__ListPrice__c ) );
+            }
+            
+        }
+        if(lstQuotelineUpdate.size()>0){
+            update lstQuotelineUpdate;
+        }
+        //set CA on amendment indexation QLI
     }
 }
