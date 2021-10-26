@@ -2,10 +2,24 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_TypeContratPrincipal__c</fullName>
     <externalId>false</externalId>
-    <label>type de contrat principal</label>
-    <length>80</length>
+    <label>Type de Contrat Principal
+    </label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <type>Text</type>
-    <unique>false</unique>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Réservation</fullName>
+                <default>false</default>
+                <label>Réservation</label>
+            </value>
+            <value>
+                <fullName>Référencement</fullName>
+                <default>false</default>
+                <label>Référencement</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
 </CustomField>

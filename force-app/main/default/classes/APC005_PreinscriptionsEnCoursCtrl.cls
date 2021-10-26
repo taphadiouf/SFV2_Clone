@@ -13,31 +13,43 @@ public with sharing class APC005_PreinscriptionsEnCoursCtrl {
                     eachPreInsc.Name,
                     eachPreInsc.LPCR_Statut__c,
                     eachPreInsc.LPCR_CompteFamille__r.Name,
+                    eachPreInsc.LPCR_CompteFamille__c,
                     eachPreInsc.LPCR_Creche__r.Name, 
+                    eachPreInsc.LPCR_Creche__c, 
                     eachPreInsc.LPCR_ContactParent__r.Name,
+                    eachPreInsc.LPCR_ContactParent__c,
                     eachPreInsc.LPCR_EnfantNom__c,
                     eachPreInsc.LPCR_EnfantPrenom__c,
+                    eachPreInsc.LPCR_ContactEnfant__c,
                     eachPreInsc.LPCR_DateEntreeCreche__c));
         }
         return JSON.serialize(preinscWrapperList);
     }
     public class WRP001_PreinscriptionWrapper{
+        private String domain = URL.getSalesforceBaseUrl().getProtocol()+'://'+System.URL.getSalesforceBaseUrl().getHost().remove('-api' );
         private String recId;
         private String name;
         private String statut;
         private String compteFamille;
+        private String compteFamilleId;
         private String creche;
+        private String crecheId;
         private String contactParent;
+        private String contactParentId;
         private String nomEnfant;
         private String prenomEnfant;
+        private String contactEnfantId;
         private Date dateEntree;
-        WRP001_PreinscriptionWrapper(String recId,String name, String statut,String compteFamille, String creche,String contactParent, String nomEnfant,String prenomEnfant, Date dateEntree){
-          this.recId = recId;
+        WRP001_PreinscriptionWrapper(String recId,String name, String statut,String compteFamille,String compteFamilleId, String creche,String crecheId,String contactParent,String contactParentId, String nomEnfant,String prenomEnfant,String contactEnfantId, Date dateEntree){
+          this.recId = domain+'/'+recId;
           this.name = name;
           this.statut = statut;
           this.compteFamille = compteFamille;  
+          this.compteFamilleId = compteFamilleId <> null ? domain+'/'+compteFamilleId :'';  
           this.creche = creche;
+          this.crecheId = crecheId <> null ? domain+'/'+crecheId :'';   
           this.contactParent = contactParent;
+          this.contactParentId = contactParentId <> null ? domain+'/'+contactParentId :'';   
           if(nomEnfant != null && prenomEnfant != null  ){
               this.nomEnfant = nomEnfant+ ' ' + prenomEnfant;
           }
@@ -50,6 +62,7 @@ public with sharing class APC005_PreinscriptionsEnCoursCtrl {
           if(nomEnfant == null && prenomEnfant == null){
               this.nomEnfant = ' ' ;
           }
+          this.contactEnfantId = contactEnfantId <> null ? domain+'/'+contactEnfantId :'';   
           this.dateEntree = dateEntree;
         }
     }

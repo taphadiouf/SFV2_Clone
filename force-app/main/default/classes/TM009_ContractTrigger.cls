@@ -7,11 +7,17 @@ public class TM009_ContractTrigger extends TM000_TriggerHandler{
     private Map<Id, Contract> newContractMap;
     private Map<Id, Contract> oldContractMap;
     private List<Contract> newContractList;
+    private String strnewContractMap;
+    private String stroldContractMap;
+    
+
     
     public TM009_ContractTrigger() {
         this.newContractMap = (Map<Id, Contract>) Trigger.newMap;
         this.oldContractMap = (Map<Id, Contract>) Trigger.oldMap;
         this.newContractList = (List<Contract>) Trigger.new;
+        this.strnewContractMap=JSON.serialize((Map<Id, Contract>) Trigger.newMap);
+        this.stroldContractMap=JSON.serialize((Map<Id, Contract>) Trigger.oldMap);
     }
    
     protected override void beforeInsert() {
@@ -29,7 +35,9 @@ public class TM009_ContractTrigger extends TM000_TriggerHandler{
     protected override void beforeUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM010_ContractServices.setContractFields(oldContractMap,newContractMap);
+            if (!System.isBatch() && !System.isFuture()) {
             SM010_ContractServices.setRenewalContractFields(this.newContractMap,this.oldContractMap);
+            }
         }
     }
 
@@ -37,6 +45,9 @@ public class TM009_ContractTrigger extends TM000_TriggerHandler{
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM010_ContractServices.setOrderFields(this.newContractMap,this.oldContractMap);
             SM010_ContractServices.setOrderItemFields(this.newContractMap,this.oldContractMap);
+            if (!System.isBatch() && !System.isFuture()) {
+            SM010_ContractServices.createCAAmendement(this.strnewContractMap,this.stroldContractMap);
+            }
         }
     }
 }

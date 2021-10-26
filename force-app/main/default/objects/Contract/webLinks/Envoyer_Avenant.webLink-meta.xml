@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Envoyer_Avenant</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>true</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>600</height>
+    <isResizable>true</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>Envoyer Avenant</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>/apex/APXTCFQ__Conga_Composer?SolMgr=1
+&amp;serverUrl={!API.Partner_Server_URL_370}
+&amp;Id={!SBQQ__Quote__c.Id}
+&amp;ContactId={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}
+&amp;QueryId=[ListPriceParis]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQGet_List_Price_Paris__c},
+[ListPriceIDFGV]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQGet_List_Price_IDF_et_GrandesVil__c},
+[ListPriceProv]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQGet_List_Price_Province__c},
+[ContactInfo]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQContactInfo__c},
+[ServicesAnnexes]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQServicesAnnexes__c},
+[LigneBerceauResa]{!$Setup.LPCR_IDsCongaAdobe__c.LPCR_CQQLigneBerceauResa__c}
+&amp;TemplateId={!$Label.LPCR_TemplateIDAvenant}
+&amp;DefaultPDF=1
+&amp;FP0={!IF(OR($Permission.LPCR_ADV,$Profile.Name=&apos;Administrateur système&apos;),0,1)}
+&amp;ESVisible=1
+&amp;ESCustomField=LPCR_Devis__c
+&amp;ESCustomFieldValue={!SBQQ__Quote__c.Id}
+&amp;ESContactId1={!SBQQ__Quote__c.SBQQ__PrimaryContactId__c}
+&amp;ESContactId2={!$Setup.LPCR_IDsCongaAdobe__c.LPCR_SignataireLPCR__c}</url>
+</WebLink>

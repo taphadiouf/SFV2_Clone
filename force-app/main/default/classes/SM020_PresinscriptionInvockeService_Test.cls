@@ -48,7 +48,7 @@ public class SM020_PresinscriptionInvockeService_Test {
         SM020_PresinscriptionInvockeService.PresinscriptionParameter perms = new SM020_PresinscriptionInvockeService.PresinscriptionParameter();
         perms.presinscriptionId = preinsciption.id;
         perms.emailTemplate = 'Mail_de_relance';
-        perms.flagDocuments = false;
+        perms.flagDocuments = true;
         presinscriptionParameters.add(perms);
         SM020_PresinscriptionInvockeService.presinscriptionSendEmail(presinscriptionParameters);
         
