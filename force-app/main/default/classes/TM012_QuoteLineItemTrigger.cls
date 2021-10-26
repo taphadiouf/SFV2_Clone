@@ -24,6 +24,7 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
             SM013_QuoteLineServices.checkExistingRegistrationFee(newQuoteLineList);
             SM013_QuoteLineServices.setBillThroughDateOverride(newQuoteLineList);
             SM013_QuoteLineServices.calculateQuoteLine(newQuoteLineList);
+          //  SM013_QuoteLineServices.updatePGGlobalQuoteLine(newQuoteLineMap);
         }
     }
     
@@ -32,6 +33,7 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
 
 			SM013_QuoteLineServices.setBillThroughDateOverride(newQuoteLineList);            
             SM013_QuoteLineServices.calculateQuoteLine(newQuoteLineList);
+            SM013_QuoteLineServices.updatePGGlobalQuoteLine(newQuoteLineMap);
         }
     }
     protected override void afterInsert() {
