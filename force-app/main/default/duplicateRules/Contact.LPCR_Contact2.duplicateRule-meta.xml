@@ -3,7 +3,8 @@
     <actionOnInsert>Allow</actionOnInsert>
     <actionOnUpdate>Allow</actionOnUpdate>
     <alertText>Il semblerait que ce contact existe déjà dans Salesforce</alertText>
-    <description xsi:nil="true"/>
+    <description>Bloque Contact existant
+Nom, Prénom, Adresse mail OU Nom, Prénom, Type d&apos;enregistrement</description>
     <duplicateRuleFilter xsi:nil="true"/>
     <duplicateRuleMatchRules>
         <matchRuleSObjectType>Contact</matchRuleSObjectType>

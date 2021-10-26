@@ -3,10 +3,10 @@
     <fullName>Famille</fullName>
     <fields>Name</fields>
     <fields>RecordTypeId</fields>
-    <fields>LPCR_SituationFamiliale__c</fields>
     <fields>LPCR_Representant1__c</fields>
     <fields>LPCR_Representant2__c</fields>
-    <fields>ShippingAddress</fields>
-    <fields>Phone</fields>
+    <fields>LPCR_CrecheChoix1__c</fields>
+    <fields>LPCR_CrecheChoix2__c</fields>
+    <fields>LPCR_CrecheChoix3__c</fields>
     <label>Famille</label>
 </CompactLayout>

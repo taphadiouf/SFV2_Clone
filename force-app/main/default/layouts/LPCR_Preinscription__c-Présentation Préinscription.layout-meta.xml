@@ -31,6 +31,10 @@
                 <behavior>Required</behavior>
                 <field>LPCR_ContactEnfant__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LPCR_NbrJoursPriseEnCharge__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -334,23 +338,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureDebutLundi__c</field>
+                <field>LPCR_AmplitudeHoraireLundi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureDebutMardi__c</field>
+                <field>LPCR_AmplitudeHoraireMercredi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureDebutMercredi__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_HeureDebutJeudi__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_HeureDebutVendredi__c</field>
+                <field>LPCR_AmplitudeHoraireVendredi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -364,23 +360,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureFinLundi__c</field>
+                <field>LPCR_AmplitudeHoraireMardi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>LPCR_HeureFinMardi__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_HeureFinMercredi__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_HeureFinJeudi__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_HeureFinVendredi__c</field>
+                <field>LPCR_AmplitudeHoraireJeudi__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -548,7 +532,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1j000003DQjd</masterLabel>
+        <masterLabel>00h1x000002tQ8U</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
