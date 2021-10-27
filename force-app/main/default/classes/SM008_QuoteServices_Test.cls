@@ -315,8 +315,6 @@ public class SM008_QuoteServices_Test {
             
         } }
     
-    
-    
     //added by Hanae
     @isTest
     public static void generateAgreementTemp_Test(){
