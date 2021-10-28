@@ -401,6 +401,7 @@ public class SM008_QuoteServices_Test {
             update con2;
             SBQQ__Quote__c quote2 = UM002_TestDataFactory.createQuotes(1, accs, oppties2,'Renewal', acceuilRecTypeId, acc.Id).get(0);
              quote2.RecordTypeId = acceuilRecTypeId;
+             quote2.SBQQ__EndDate__c = System.Today().addYears(1);
             insert quote2;
             quote2 = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__StartDate__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_EntiteJuridique__c, SBQQ__RenewalUpliftRate__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote2.Id];
             System.assertNotEquals(null,quote2.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
@@ -469,6 +470,7 @@ public class SM008_QuoteServices_Test {
             update con4;
             SBQQ__Quote__c quote4 = UM002_TestDataFactory.createQuotes(1, accs3, oppties4,'Renewal', acceuilRecTypeId, acc3.Id).get(0);
             quote4.RecordTypeId = acceuilRecTypeId;
+            quote4.SBQQ__EndDate__c = System.Today().addYears(1);
             insert quote4;
             quote4 = [SELECT Id ,LPCR_TypeCreche__c , LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c, LPCR_DateDebut__c,LPCR_DateFin__c,SBQQ__StartDate__c, SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_EntiteJuridique__c, SBQQ__RenewalUpliftRate__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote4.Id];
             System.assertNotEquals(null,quote4.LPCR_IndexationConvenue__c,'LPCR_IndexationConvenue__c is null');
@@ -680,6 +682,7 @@ public class SM008_QuoteServices_Test {
             opp2.SBQQ__RenewedContract__c = con2.Id;
             update opp2;
             SBQQ__Quote__c quote7 = UM002_TestDataFactory.createQuotes(1, accs, oppties2,'Renewal', referencementRecTypeId, acc.Id).get(0);
+            quote7.SBQQ__EndDate__c = System.Today().addYears(1);
             insert quote7;
             quote7 = [SELECT Id ,RecordTypeId, LPCR_IndexationConvenue__c, LPCR_TypeFacturation__c, SBQQ__BillingFrequency__c , LPCR_DateDebut__c,LPCR_DateFin__c, SBQQ__EndDate__c,SBQQ__StartDate__c, LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c, SBQQ__RenewalUpliftRate__c, LPCR_BatchCommande__c  from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Renewal' AND  Id = :quote7.Id];
             System.assertEquals(quote7.LPCR_IndexationConvenue__c, opp2.LPCR_IndexationConvenue__c, 'Quote LPCR_IndexationConvenue__c not equals to oppt LPCR_IndexationConvenue__c');
@@ -833,7 +836,6 @@ public class SM008_QuoteServices_Test {
             update con4;
             SBQQ__Quote__c quote12 = UM002_TestDataFactory.createQuotes(1, accs, oppties4,'Amendment', referencementRecTypeId, acc.Id).get(0);
             quote12.RecordTypeId = referencementRecTypeId;
-            quote12.SBQQ__EndDate__c = System.Today().addYears(1);
             insert quote12;
             quote12 = [SELECT Id, LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c , LPCR_MethodeRenouvellement__c, SBQQ__StartDate__c, SBQQ__EndDate__c, LPCR_IndexationConvenue__c from SBQQ__Quote__c WHERE SBQQ__Type__c= 'Amendment' AND  Id = :quote12.Id ];
             // System.assertEquals(quote12.SBQQ__StartDate__c, con4.StartDate, 'Quote SBQQ__StartDate__c not equals to con.StartDate');
@@ -1194,10 +1196,12 @@ public class SM008_QuoteServices_Test {
             Test.startTest();
             Contract newContract = UM002_TestDataFactory.createContract(newAccount.Id, newQuote.Id,null);
             Database.insert(newContract);
+            Date quote_Date = [SELECT LPCR_DateRevisionPrix__c FROM SBQQ__Quote__c WHERE Id=:newQuote.Id LIMIT 1].LPCR_DateRevisionPrix__c;
+            Date contract_Date = [SELECT LPCR_DateRevisionPrix__c FROM Contract WHERE Id=:newContract.Id LIMIT 1].LPCR_DateRevisionPrix__c;
             Test.stopTest();
 
             
-            System.assertEquals([SELECT LPCR_DateRevisionPrix__c FROM SBQQ__Quote__c WHERE Id=:newQuote.Id LIMIT 1].LPCR_DateRevisionPrix__c,[SELECT LPCR_DateRevisionPrix__c FROM Contract WHERE Id=:newContract.Id LIMIT 1].LPCR_DateRevisionPrix__c);
+            System.assertEquals(quote_Date,contract_Date);
 
         }
        
