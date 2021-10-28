@@ -12,7 +12,8 @@ public class SM010_ContractServices_Test {
     private static final Id ACCOUNT_ENTREPRISE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Entreprise);
     private static final Id QUOTE_Referencement_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, Label.LPCR_Referencement);
     private static final Id Order_Referencement_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Order, Label.LPCR_Referencement);
-    
+    private static final Id ACCOUNT_CRECHE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Creche);
+ 
     @testsetup
     static void setup(){
         Id standardPricebookId = Test.getStandardPricebookId();
@@ -26,7 +27,13 @@ public class SM010_ContractServices_Test {
         blng__BillingRule__c billingRule = UM002_TestDataFactory.setupBillingRule(billingLegalEntity.Id);
         
         blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
-        
+        SBQQ.TriggerControl.disable();
+        try {
+        //Account creche
+        Account compteCreche=UM002_TestDataFactory.createAccounts(1,ACCOUNT_CRECHE_RT_ID,'testcreche').get(0);
+        compteCreche.LPCR_TypeCreche__c='MICRO';
+        insert compteCreche;
+
         Id familleAccountRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
         Account acc = UM002_TestDataFactory.createAccounts(1,familleAccountRT,'test').get(0);
         acc.SBQQ__RenewalModel__c ='Contract Based';
@@ -54,17 +61,20 @@ public class SM010_ContractServices_Test {
         insert priceBookEntry1;
         
         SBQQ__QuoteLine__c quoteLine = UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, priceBookEntry1.Id, 200,1);
+        quoteline.LPCR_Creche__c = compteCreche.id;
         insert quoteLine;
         opp.SBQQ__PrimaryQuote__c =quote.Id;
         
         
         
         SBQQ__QuoteLine__c quoteLine2 = UM002_TestDataFactory.createQuoteLine(prod.Id, quote2.Id, priceBookEntry1.Id, 150,1);
+        quoteline2.LPCR_Creche__c = compteCreche.id;
         insert quoteLine2;
         opp2.SBQQ__PrimaryQuote__c =quote2.Id;
         
         
         update new List<Opportunity>{opp,opp2};
+    
         Test.startTest();    
         LPCR_Planning__c planningEnfant = new LPCR_Planning__c();
         insert planningEnfant;
@@ -73,8 +83,8 @@ public class SM010_ContractServices_Test {
         quote.LPCR_IndexationConvenue__c='Oui';
         quote.LPCR_TypeFacturation__c='Arrears';
         quote.SBQQ__BillingFrequency__c='Invoice Plan';
-        quote.LPCR_DateDebut__c = Date.today();
-        quote.LPCR_DateFin__c = Date.today() + 10;
+        quote.SBQQ__StartDate__c = Date.today();
+        quote.SBQQ__EndDate__c = Date.today() + 10;
         quote.LPCR_ChiffreAffaire__c = 1000;
         quote.SBQQ__RenewalUpliftRate__c = 2; 
         quote.LPCR_PlanningEnfant__c = planningEnfant.id;
@@ -88,10 +98,10 @@ public class SM010_ContractServices_Test {
         quote2.LPCR_IndexationConvenue__c='non';
         quote2.LPCR_TypeFacturation__c='Arrears';
         quote2.SBQQ__BillingFrequency__c='Invoice Plan';
-        quote2.LPCR_DateDebut__c = Date.today();
-        quote2.LPCR_DateFin__c = Date.today() + 100;
+        quote2.SBQQ__StartDate__c = Date.today();
+        quote2.SBQQ__EndDate__c = Date.today() + 100;
         quote2.LPCR_ChiffreAffaire__c = 100;
-        quote2.SBQQ__RenewalUpliftRate__c = 2; 
+        
         quote2.LPCR_PlanningEnfant__c = planningEnfant.id;
         quote2.LPCR_BatchCommande__c = 'Batch 2';
         
@@ -106,7 +116,9 @@ public class SM010_ContractServices_Test {
             order.LPCR_NumeroContrat__c = '4';
         }
         update orders;
-        
+    } finally {
+        SBQQ.TriggerControl.enable();
+    }
         
     }
     
@@ -120,9 +132,10 @@ public class SM010_ContractServices_Test {
             Account acc = [SELECT Id, name from Account where name ='test' ];
             acc.RecordTypeId = ACCOUNT_ENTREPRISE_RT_ID;
             update acc;
-             blng__InvoicePlan__c invoicePlan =   new blng__InvoicePlan__c(blng__BillingScheduleCreation__c='Manual',blng__Active__c =true);
+             blng__InvoicePlan__c invoicePlan =   new blng__InvoicePlan__c(blng__BillingScheduleCreation__c='Order Product Activation',blng__Active__c =true);
             insert    invoicePlan;
-            SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_DureeContratJour__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'');
+            SBQQ__Quote__c quote = Database.query('SELECT Id,	SBQQ__Ordered__c, LPCR_DureeContratJour__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,SBQQ__StartDate__c,SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__Account__c = \''+acc.id+'\' LIMIT 1');
+
             Order order = [SELECT Id ,LPCR_NouveauPlanFacture__c, LPCR_RenouvellementPlanFacture__c,Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = :quote.Id];       
             
             order.SBQQ__Contracted__c=true; 

@@ -1299,7 +1299,7 @@ newMe.FederationIdentifier = null;
         List<Contract>  contracts = new List<Contract>();
         Contract tempCont;
         for(Integer i = 0; i<numConts; i++){
-            tempCont = new Contract(AccountID = accountID, Name = name, LPCR_DateDebut__c = dateDebut, LPCR_DateFin__c = dateFin, LPCR_ChiffreAffaire__c = chiffreAffaire, LPCR_MethodeRenouvellement__c = methodeRen, SBQQ__RenewalUpliftRate__c  = renewalUplift, LPCR_TypeCreche__c = typeCreche);
+            tempCont = new Contract(AccountID = accountID, Name = name, StartDate = dateDebut, EndDate = dateFin, LPCR_ChiffreAffaire__c = chiffreAffaire, LPCR_MethodeRenouvellement__c = methodeRen, SBQQ__RenewalUpliftRate__c  = renewalUplift, LPCR_TypeCreche__c = typeCreche);
             contracts.add(tempCont);
         }
         return contracts;   
