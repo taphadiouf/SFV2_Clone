@@ -2,70 +2,6 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>52.0</apiVersion>
     <decisions>
-        <name>isChangedDecision2_myRule_1_MailingLongitude</name>
-        <label>isChangedDecision2_myRule_1_MailingLongitude</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>isChangedDecision3_myRule_1_MailingLatitude</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>isChangedRule_2_myRule_1_MailingLongitude</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>myVariable_old.LPCR_ContactParent__r.MailingLongitude</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.LPCR_ContactParent__r.MailingLongitude</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>isChangedDecision3_myRule_1_MailingLatitude</targetReference>
-            </connector>
-            <label>isChangedRule_2_myRule_1_MailingLongitude</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>isChangedDecision3_myRule_1_MailingLatitude</name>
-        <label>isChangedDecision3_myRule_1_MailingLatitude</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>myDecision</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>default</defaultConnectorLabel>
-        <rules>
-            <name>isChangedRule_3_myRule_1_MailingLatitude</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>myVariable_old</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>myVariable_old.LPCR_ContactParent__r.MailingLatitude</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>myVariable_current.LPCR_ContactParent__r.MailingLatitude</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>myDecision</targetReference>
-            </connector>
-            <label>isChangedRule_3_myRule_1_MailingLatitude</label>
-        </rules>
-    </decisions>
-    <decisions>
         <processMetadataValues>
             <name>index</name>
             <value>
@@ -105,10 +41,10 @@
                         <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>isChangedRule_2_myRule_1_MailingLongitude</leftValueReference>
-                <operator>EqualTo</operator>
+                <leftValueReference>myVariable_current.LPCR_ContactParent__r.MailingLongitude</leftValueReference>
+                <operator>IsNull</operator>
                 <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -136,10 +72,10 @@
                         <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>isChangedRule_3_myRule_1_MailingLatitude</leftValueReference>
-                <operator>EqualTo</operator>
+                <leftValueReference>myVariable_current.LPCR_ContactParent__r.MailingLatitude</leftValueReference>
+                <operator>IsNull</operator>
                 <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -292,7 +228,7 @@
         </inputAssignments>
         <object>LPCR_Preinscription__c</object>
     </recordUpdates>
-    <startElementReference>isChangedDecision2_myRule_1_MailingLongitude</startElementReference>
+    <startElementReference>myDecision</startElementReference>
     <status>Active</status>
     <variables>
         <name>myVariable_current</name>
