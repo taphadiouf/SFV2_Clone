@@ -6,10 +6,11 @@
     <label>Crèche (Préinscription)</label>
     <lookupFilter>
         <active>true</active>
+        <errorMessage>Merci de sélectionner un compte avec un record type de &quot;Crèche&quot;</errorMessage>
         <filterItems>
             <field>Account.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Crèche</value>
+            <value>Crèche, Crèche Externe</value>
         </filterItems>
         <isOptional>false</isOptional>
     </lookupFilter>
