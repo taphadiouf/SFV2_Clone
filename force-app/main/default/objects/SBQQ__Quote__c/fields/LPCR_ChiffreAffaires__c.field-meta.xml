@@ -14,6 +14,11 @@
         <operation>equals</operation>
         <value>False</value>
     </summaryFilterItems>
+    <summaryFilterItems>
+        <field>SBQQ__QuoteLine__c.SBQQ__Quantity__c</field>
+        <operation>notEqual</operation>
+        <value>0</value>
+    </summaryFilterItems>
     <summaryForeignKey>SBQQ__QuoteLine__c.SBQQ__Quote__c</summaryForeignKey>
     <summaryOperation>sum</summaryOperation>
     <trackHistory>false</trackHistory>
