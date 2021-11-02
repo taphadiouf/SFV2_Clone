@@ -842,7 +842,7 @@
             <operation>equals</operation>
             <value>Amendment</value>
         </criteriaItems>
-        <description>Ce WF met le status du devis à actif une fois qu&apos;il est commandé</description>
+        <description>Ce WF met le status du devis à actif une fois qu&apos;il est commandé et que ce n&apos;est pas  un mIB</description>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
