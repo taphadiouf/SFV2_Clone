@@ -3,7 +3,7 @@
     <fullName>LPCR_CreePar__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Créé par</label>
+    <label>Créé par User</label>
     <referenceTo>User</referenceTo>
     <relationshipName>Devis1</relationshipName>
     <required>false</required>
