@@ -47,9 +47,14 @@ public class APC006_CloneQuoteLinesIndexation {
                 currentQL.SBQQ__Existing__c = false;
                 currentQL.LPCR_Creche__c=ql.LPCR_Creche__c;
                 currentQL.LPCR_Region__c=ql.LPCR_Region__c; 
+                //customer price unprorated
+                Decimal customerpriceunprorated=ql.SBQQ__CustomerPrice__c /ql.SBQQ__ProrateMultiplier__c;
+                currentQL.SBQQ__ListPrice__c = customerpriceunprorated+(customerpriceunprorated*( tmpRate/100));
+                if(ql.SBQQ__AdditionalDiscountAmount__c != null )currentQL.SBQQ__AdditionalDiscountAmount__c=0;
+                if(ql.SBQQ__Discount__c != null )currentQL.SBQQ__Discount__c=0;
             	currentQL.LPCR_IndexationQuote__c  = true;
-                currentQL.SBQQ__ListPrice__c = ql.SBQQ__ListPrice__c + (ql.SBQQ__ListPrice__c * (tmpRate/100));
                 currentQL.SBQQ__Uplift__c = tmpRate;
+                currentQL.LPCR_IndexationCustom__c =customerpriceunprorated*( tmpRate/100);
                 if(currentQL.SBQQ__Number__c != null){
                     currentQL.SBQQ__Number__c = ql.SBQQ__Number__c + 1000;
                 }

@@ -718,7 +718,7 @@ newMe.FederationIdentifier = null;
         return prod;
     }
 
-        public static Product2 createProduct(String name){
+    public static Product2 createProduct(String name){
         Product2 prod = new Product2();
         prod.isActive = true;
         prod.Name = name;
@@ -1299,7 +1299,7 @@ newMe.FederationIdentifier = null;
         List<Contract>  contracts = new List<Contract>();
         Contract tempCont;
         for(Integer i = 0; i<numConts; i++){
-            tempCont = new Contract(AccountID = accountID, Name = name, LPCR_DateDebut__c = dateDebut, LPCR_DateFin__c = dateFin, LPCR_ChiffreAffaire__c = chiffreAffaire, LPCR_MethodeRenouvellement__c = methodeRen, SBQQ__RenewalUpliftRate__c  = renewalUplift, LPCR_TypeCreche__c = typeCreche);
+            tempCont = new Contract(AccountID = accountID, Name = name, StartDate = dateDebut, EndDate = dateFin, LPCR_ChiffreAffaire__c = chiffreAffaire, LPCR_MethodeRenouvellement__c = methodeRen, SBQQ__RenewalUpliftRate__c  = renewalUplift, LPCR_TypeCreche__c = typeCreche);
             contracts.add(tempCont);
         }
         return contracts;   
@@ -1325,7 +1325,7 @@ newMe.FederationIdentifier = null;
                 RecordTypeId = recTypeId,
                 LPCR_Creche__c = crecheId,
                 SBQQ__StartDate__c = date.today(),
-                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31)
+                SBQQ__EndDate__c = System.Today().addYears(1)
             );
             quotes.add(tempQuote);
         }
