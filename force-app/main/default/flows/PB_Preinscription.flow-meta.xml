@@ -232,7 +232,7 @@
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_3</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
@@ -384,7 +384,7 @@
             <label>Statut modifié ?</label>
         </rules>
     </decisions>
-    <interviewLabel>PB_Preinscription-2_InterviewLabel</interviewLabel>
+    <interviewLabel>PB_Preinscription-3_InterviewLabel</interviewLabel>
     <label>PB_Preinscription</label>
     <processMetadataValues>
         <name>ObjectType</name>
