@@ -1,6 +1,8 @@
 global class APB023_CreateIndexationAmendment implements Database.Batchable<sObject>,Database.AllowsCallouts,Schedulable {
     String query;
     final String ClassName = APB023_CreateIndexationAmendment.class.getName();
+    final private static String TYPEAVENANT_INDEXATION = 'Amendement d\'indexation';
+
     global APB023_CreateIndexationAmendment() {
         
     }
@@ -9,7 +11,7 @@ global class APB023_CreateIndexationAmendment implements Database.Batchable<sObj
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
         Id contratResaID  = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Reservataire);
         //select Contract for which amendement indexation needs to be created
-        return Database.getQueryLocator([Select id ,LPCR_IndexationConvenue__c,LPCR_DateRevisionPrix__c,LPCR_InitAutoAvecDateDebut__c,SBQQ__RenewalUpliftRate__c,SBQQ__Order__c From Contract where  LPCR_DateRevisionPrix__c !=null and LPCR_DateRevisionPrix__c = TODAY and RecordTypeId =:contratResaID]);
+        return Database.getQueryLocator([Select id ,LPCR_IndexationConvenue__c,LPCR_DateRevisionPrix__c,LPCR_InitAutoAvecDateDebut__c,SBQQ__RenewalUpliftRate__c,SBQQ__Order__c From Contract where  LPCR_DateRevisionPrix__c !=null and LPCR_TechDateRevisionActuel__c =TODAY and RecordTypeId =:contratResaID]);
         
     }
     public void execute(Database.BatchableContext BC, list<Contract> scope){
@@ -25,7 +27,7 @@ global class APB023_CreateIndexationAmendment implements Database.Batchable<sObj
             
             quoteModel.record.SBQQ__RenewalUpliftRate__c = tmpContract.SBQQ__RenewalUpliftRate__c;
             quoteModel.record.LPCR_DateRevisionPrix__c = tmpContract.LPCR_DateRevisionPrix__c.addYears(1);
-            quoteModel.record.LPCR_TypeAvenant__c ='Amendement d\'indexation';
+            quoteModel.record.LPCR_TypeAvenant__c = TYPEAVENANT_INDEXATION;
             
             SBQQ__Quote__c quote1 = quoteModel.record;
             update quote1;

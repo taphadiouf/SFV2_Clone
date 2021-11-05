@@ -9,6 +9,7 @@ public class SM007_LeadServices {
     public static Set<Id> accountsIds;
     public static Set<Id> contactsIds;
     public static  Id ACCOUNT_CRECHE_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Creche);
+    public static  Id ACCOUNT_CRECHE_EXT_RT_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account,Label.LPCR_Creche_externe);
     public static void syncRecordTypesWithLeads(List<Lead> leadsList){
        //Map : target Object API Name => (Map : Lead recordtype developerName =>  target Recordtype DeveloperName)
         Map<String, Map<String, String>> leadRtToTargetRtMap = new Map<String, Map<String, String>>();
@@ -170,7 +171,7 @@ public class SM007_LeadServices {
     }
     public static Map<String,Id> getAccountIdCreche(Map<String,String> mapLeadIDCrecheNum ){
         Map<String,Id> mapCodeAccountId= new Map<String,Id> ();
-        for (Account acc:[Select id, LPCR_CodeAnalytique__c from Account where RecordtypeId=:ACCOUNT_CRECHE_RT_ID and LPCR_CodeAnalytique__c IN:mapLeadIDCrecheNum.values()]){
+        for (Account acc:[Select id, LPCR_CodeAnalytique__c from Account where (RecordtypeId=:ACCOUNT_CRECHE_RT_ID OR RecordtypeId=:ACCOUNT_CRECHE_EXT_RT_ID) and LPCR_CodeAnalytique__c IN:mapLeadIDCrecheNum.values()]){
             mapCodeAccountId.put(acc.LPCR_CodeAnalytique__c,acc.Id);
         }
         return mapCodeAccountId;
