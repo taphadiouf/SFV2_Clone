@@ -7,11 +7,6 @@
     <lookupFilter>
         <active>true</active>
         <filterItems>
-            <field>$Source.Id</field>
-            <operation>equals</operation>
-            <valueField>Contact.Account.Id</valueField>
-        </filterItems>
-        <filterItems>
             <field>Contact.RecordType.DeveloperName</field>
             <operation>equals</operation>
             <value>Enfant</value>

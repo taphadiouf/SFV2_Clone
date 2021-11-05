@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_PasDActivite__c</fullName>
-    <defaultValue>true</defaultValue>
+    <fullName>LPCR_Indexation__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>champ pour determiner si le contrat a ete indexé</description>
     <externalId>false</externalId>
-    <label>DEL Pas d&apos;activité</label>
+    <label>LPCR_Indexation</label>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <type>Checkbox</type>

@@ -91,8 +91,8 @@
     <recordLookups>
         <name>getLeadRecord</name>
         <label>getLeadRecord</label>
-        <locationX>487</locationX>
-        <locationY>344</locationY>
+        <locationX>488</locationX>
+        <locationY>343</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>LoopLead</targetReference>
@@ -106,7 +106,7 @@
             </value>
         </filters>
         <filters>
-            <field>LPCR_PasDActivite__c</field>
+            <field>LPCR_PasActivite__c</field>
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>true</booleanValue>
@@ -123,7 +123,7 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>50</locationX>
+        <locationX>49</locationX>
         <locationY>268</locationY>
         <connector>
             <targetReference>getLeadRecord</targetReference>
@@ -137,7 +137,7 @@
             </value>
         </filters>
         <filters>
-            <field>LPCR_PasDActivite__c</field>
+            <field>LPCR_PasActivite__c</field>
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>true</booleanValue>

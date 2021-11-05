@@ -572,7 +572,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Account.LPCR_IdExterne_Compte__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1212,7 +1212,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Account.LPCR_IDIntranetCompteFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4414,7 +4414,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_PasDActivite__c</field>
+        <field>Lead.LPCR_PasActivite__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7341,7 +7341,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>blng__Invoice__c.blng__UniqueId__c</field>
         <readable>true</readable>
     </fieldPermissions>
