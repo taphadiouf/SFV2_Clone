@@ -6,6 +6,9 @@
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
+    <excludeButtons>DataDotComAccountInsights</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
     <excludeButtons>IncludeOffline</excludeButtons>
     <excludeButtons>PartnerScorecard</excludeButtons>
     <excludeButtons>PrintableView</excludeButtons>
@@ -801,7 +804,7 @@
         <fields>NAME</fields>
         <fields>blng__InvoiceDate__c</fields>
         <fields>blng__TotalAmount__c</fields>
-        <fields>LPCR_StatutAvoirFacture__c</fields>
+        <fields>blng__InvoiceStatus__c</fields>
         <fields>LPCR_StatutFacture__c</fields>
         <relatedList>blng__Invoice__c.blng__Account__c</relatedList>
     </relatedLists>
@@ -934,7 +937,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0E00000255nO</masterLabel>
+        <masterLabel>00h5E0000018bsb</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
