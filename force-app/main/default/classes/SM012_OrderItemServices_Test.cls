@@ -18,6 +18,8 @@ public with sharing class SM012_OrderItemServices_Test {
     
     @TestSetup
     static void setup(){
+        SBQQ.TriggerControl.disable();
+        try {
         Id standardPricebookId = Test.getStandardPricebookId();
         //Id recordTypeId = UM003_TypeManager.getQuoteRecordTypeIdByDeveloperName('Referencement');
         //Id recordTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Quote, 'Referencement');
@@ -43,11 +45,16 @@ public with sharing class SM012_OrderItemServices_Test {
          Account b2cAccount2 = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);      
         accounts.add(b2cAccount);
         accounts.add(b2cAccount2);
+
+        User userFamille = [SELECT id FROM User where UserRole.Name = 'Chargé de Relation Familles et Inscriptions' LIMIT 1];
+
         defaultVal = new Map<String, Object> {
             'RecordTypeId' => B2B_RT_ID,
                 'Name' => 'Test-B2B',
                 'SBQQ__RenewalModel__c' => 'Contract Based',
-                'LPCR_PasDeSIRET__c' => true
+                'LPCR_PasDeSIRET__c' => true,
+                'LPCR_ResponsableServiceFamille__c' => userFamille.id,
+                'LPCR_ResponsableADV__c' => '0053O000004JZYDQA4'
                 };
                     
                     Account b2bAccount = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
@@ -56,7 +63,9 @@ public with sharing class SM012_OrderItemServices_Test {
             'RecordTypeId' => B2B_RT_ID,
                 'Name' => 'Test-B2B2',
                 'SBQQ__RenewalModel__c' => 'Contract Based',
-                'LPCR_PasDeSIRET__c' => true
+                'LPCR_PasDeSIRET__c' => true,
+                'LPCR_ResponsableServiceFamille__c' => '0053O000004JZYNQA4',
+                'LPCR_ResponsableADV__c' => '0053O000004JZYDQA4'
                 };
                     
                     Account b2bAccount2 = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
@@ -180,12 +189,18 @@ public with sharing class SM012_OrderItemServices_Test {
         
         defaultVal.put('SBQQ__Quote__c', quoteForRef.Id);
         SBQQ__QuoteLine__c quoteLineForRef = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+        quoteLineForRef.LPCR_Creche__c = creches.get(1).id;
+        quoteLineForAccueil.LPCR_Creche__c = creches.get(1).id;
         insert new List<SBQQ__QuoteLine__c> {quoteLineForAccueil, quoteLineForRef};
             
             oppForAccuel.SBQQ__PrimaryQuote__c = quoteForAccueil.Id;
         oppForRef.SBQQ__PrimaryQuote__c = quoteForRef.Id;
         update new List<Opportunity> {oppForAccuel, oppForRef};
+    } finally {
+        SBQQ.TriggerControl.enable();
+    }
             }
+
      @IsTest
     private static void lastDayOfDatePeriod_test(){
         Date[] expected = new Date[]{
@@ -222,6 +237,7 @@ public with sharing class SM012_OrderItemServices_Test {
     private static void setOrderItemFields_Test () {     
         Account customerAcc = null; 
         Account billingAccount = [SELECT id  FROM Account WHERE name = 'Test-B2B' limit 1];
+        List<Account> creches = [SELECT id FROM Account WHERE LPCR_TypeCreche__c = 'MAC'];
         System.runAs(UM002_TestDataFactory.createUser()){
             Test.startTest();
             //setup data for this particular test
@@ -243,7 +259,7 @@ public with sharing class SM012_OrderItemServices_Test {
             
             insert new List<Opportunity>{opp};
                 
-                blng__InvoicePlan__c invoicePlan =   new blng__InvoicePlan__c(blng__BillingScheduleCreation__c='Manual',blng__Active__c =true);
+                blng__InvoicePlan__c invoicePlan =   new blng__InvoicePlan__c(blng__BillingScheduleCreation__c='Order Product Activation',blng__Active__c =true);
             insert    invoicePlan;
             defaultVal = new Map<String, Object> {
                 'LPCR_NouveauPlanFacture__c'=>invoicePlan.Id,
@@ -293,6 +309,7 @@ public with sharing class SM012_OrderItemServices_Test {
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(0).id;
            
             insert new List<SBQQ__QuoteLine__c>{quoteLine};
                 
@@ -505,6 +522,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(1).id;
             insert quoteLine;
             
             opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -644,6 +662,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(1).id;
             insert quoteLine;
             
             opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -905,6 +924,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(1).id;
             insert quoteLine;
             
             opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -1041,6 +1061,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(1).id;
             insert quoteLine;
             
             opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -1161,6 +1182,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(1).id;
             insert quoteLine;
             
             opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -1282,6 +1304,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(1).id;
             insert quoteLine;
             
             opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -1420,6 +1443,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(1).id;
             insert quoteLine;
             
             opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -1547,6 +1571,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(1).id;
             insert quoteLine;
             
             opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -1676,6 +1701,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(1).id;
             insert quoteLine;
             
             opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -1803,6 +1829,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(1).id;
             insert quoteLine;
             
             opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -1929,6 +1956,7 @@ System.assertEquals(eachOrderItemConSch.blng__LegalEntity__c, eachOrderItemConSc
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(1).id;
             insert quoteLine;
             
             opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -2113,6 +2141,7 @@ System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.bln
                     };
                         
                         SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
+                        quoteLine.LPCR_Creche__c = creches.get(1).id;
             insert quoteLine;
             
             opp.SBQQ__PrimaryQuote__c = quote.Id;
@@ -2157,6 +2186,9 @@ System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.bln
         acc.LPCR_ResponsableServiceFamille__c = UserInfo.getUserId();
         acc.SBQQ__RenewalPricingMethod__c = 'List';
         update acc;
+
+        List<Account> creches = [SELECT id FROM Account WHERE Name = 'Creche'];
+        creches.get(0).RecordTypeId = CRECHE_RT_ID;
         
         Contact cont = UM002_TestDataFactory.createContacts(1, CONTACT_RT_ID, 'test_lastname', 'test_address').get(0);
         insert cont;
@@ -2172,9 +2204,9 @@ System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.bln
         quote.SBQQ__Primary__c = true;
         update quote;
         
-        List<SBQQ__QuoteLine__c> qlines = new List<SBQQ__QuoteLine__c> ();
-        qlines.add(UM002_TestDataFactory.createQuoteLine(prod1.Id, quote.Id, pbEntry1.Id, 100, 1));
-        insert qlines;
+        SBQQ__QuoteLine__c qline = UM002_TestDataFactory.createQuoteLine(prod1.Id, quote.Id, pbEntry1.Id, 100, 1);
+        qline.LPCR_Creche__c = creches.get(0).id;
+        insert qline;
         
         List<Opportunity> oppList = [SELECT Id,AccountId FROM Opportunity WHERE Name =: 'testOpp' LIMIT 3];
         Opportunity opp1 = oppList.get(0);
