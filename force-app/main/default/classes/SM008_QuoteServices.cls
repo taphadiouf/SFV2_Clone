@@ -100,7 +100,7 @@ public with sharing class SM008_QuoteServices {
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
                     if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
                         //PDO refonte : start date= end date of original contrat 
-                        eachQuote.SBQQ__StartDate__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).EndDate;
+                        eachQuote.SBQQ__StartDate__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).EndDate.addDaysDays(1);
                         if(contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DureeContratJour__c != null){
                             eachQuote.SBQQ__EndDate__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).EndDate.addDays((Integer)contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DureeContratJour__c) ;
                         }
