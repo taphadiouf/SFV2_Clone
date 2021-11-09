@@ -351,8 +351,6 @@ public with sharing class SM012_OrderItemServices_Test {
             );
             
             OrderItem originalOrderItem = orderItems.get(0);
-            // originalOrderItem.ServiceDate = Date.today();
-            // update originalOrderItem;
 
             System.assertNotEquals(null, originalOrderItem.blng__BillingRule__c, 'blng__BillingRule__c on OrderItem is null');
             System.assertEquals(billingTreatmentsForRenewal.blng__BillingRule__c, originalOrderItem.blng__BillingRule__c, 'blng__BillingRule__c on OrderItem is null');
