@@ -33,9 +33,7 @@ public with sharing class SM012_OrderItemServices_Test {
 
                 User userFamille = UM002_TestDataFactory.createServiceFamilleUser();
                 User userADV = UM002_TestDataFactory.createADVUser();
-                System.debug('userADV: ' + userADV);
-                System.debug('userADV: ' + userADV.UserRole.DeveloperName);
-                System.debug('userFamille: ' + userFamille);
+
 
                 Map<String, Object> defaultVal = new Map<String, Object>{
                     'RecordTypeId' => B2C_RT_ID,
@@ -56,7 +54,6 @@ public with sharing class SM012_OrderItemServices_Test {
                 Account b2cAccount2 = (Account) UM002_TestDataFactory.createSObject('Account', defaultVal);
                 accounts.add(b2cAccount);
                 accounts.add(b2cAccount2);
-                System.debug('#### accounts 1: ' + accounts);
 
                 defaultVal = new Map<String, Object>{
                     'RecordTypeId' => B2B_RT_ID,
@@ -94,7 +91,6 @@ public with sharing class SM012_OrderItemServices_Test {
                 creches.get(1).LPCR_TypeCreche__c = 'MICRO';
 
                 accounts.addAll(creches);
-                System.debug('accounts: ' + accounts);
                 insert accounts;
 
                 defaultVal = new Map<String, Object>{
@@ -232,11 +228,13 @@ public with sharing class SM012_OrderItemServices_Test {
 
     @isTest
     private static void setOrderItemFields_Test() {
-        Account customerAcc = null;
-        Account billingAccount = [SELECT id FROM Account WHERE name = 'Test-B2B' LIMIT 1];
-        List<Account> creches = [SELECT id FROM Account WHERE LPCR_TypeCreche__c = 'MAC'];
+    
         System.runAs(UM002_TestDataFactory.createUser()) {
+
             Test.startTest();
+
+            Account billingAccount = [SELECT id FROM Account WHERE name = 'Test-B2B' LIMIT 1];
+            List<Account> creches = [SELECT id FROM Account WHERE LPCR_TypeCreche__c = 'MAC'];
             //setup data for this particular test
 
             Product2 prod = [SELECT Id FROM Product2].get(0);
@@ -252,12 +250,11 @@ public with sharing class SM012_OrderItemServices_Test {
                 'Type' => 'New Business'
             };
 
-            Opportunity opp = (Opportunity) UM002_TestDataFactory.createSObject('Opportunity', defaultVal);
-
-            insert new List<Opportunity>{ opp };
+            Opportunity opp = [SELECT id FROM Opportunity WHERE AccountId =: billingAccount.id];
 
             blng__InvoicePlan__c invoicePlan = new blng__InvoicePlan__c(blng__BillingScheduleCreation__c = 'Order Product Activation', blng__Active__c = true);
             insert invoicePlan;
+
             defaultVal = new Map<String, Object>{
                 'LPCR_NouveauPlanFacture__c' => invoicePlan.Id,
                 'RecordTypeId' => QUOTE_CONTRAT_ACCUEIL_RT_ID,
@@ -274,13 +271,12 @@ public with sharing class SM012_OrderItemServices_Test {
                 'SBQQ__BillingCity__c' => 'Paris',
                 'SBQQ__Primary__c' => true,
                 'SBQQ__Opportunity2__c' => opp.Id,
-                'SBQQ__RenewalUpliftRate__c' => 10
+                'SBQQ__RenewalUpliftRate__c' => 10,
+                'LPCR_Creation_conforme__c' => true,
+                'SBQQ__Type__c' => 'Renewal'
             };
 
             SBQQ__Quote__c quote = (SBQQ__Quote__c) UM002_TestDataFactory.createSObject('SBQQ__Quote__c', defaultVal);
-            quote.LPCR_Creation_conforme__c = true;
-
-            defaultVal.put('SBQQ__Type__c', 'Renewal');
 
             insert new List<SBQQ__Quote__c>{ quote };
 
@@ -301,11 +297,11 @@ public with sharing class SM012_OrderItemServices_Test {
                 'SBQQ__BillingType__c' => 'Advance',
                 'LPCR_Region__c' => 'Paris',
                 'SBQQ__BillingFrequency__c' => 'Invoice Plan',
-                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id
+                'LPCR_EntiteJuridique__c' => UM002_TestDataFactory.setupLegalEntity().Id,
+                'LPCR_Creche__c' => creches.get(0).id
             };
 
             SBQQ__QuoteLine__c quoteLine = (SBQQ__QuoteLine__c) UM002_TestDataFactory.createSObject('SBQQ__QuoteLine__c', defaultVal);
-            quoteLine.LPCR_Creche__c = creches.get(0).id;
 
             insert new List<SBQQ__QuoteLine__c>{ quoteLine };
 
@@ -314,8 +310,8 @@ public with sharing class SM012_OrderItemServices_Test {
             update new List<Opportunity>{ opp };
 
             //Order the quote to create Order / OrderItems
-            update new List<SBQQ__Quote__c>{ new SBQQ__Quote__c(Id = quote.Id, SBQQ__Ordered__c = true) }; //,new SBQQ__Quote__c (Id = quoteRenewal.Id, SBQQ__Ordered__c = true)};
-
+            update new List<SBQQ__Quote__c>{ new SBQQ__Quote__c(Id = quote.Id, SBQQ__Ordered__c = true) }; 
+         
             Order order = [
                 SELECT
                     Id,
@@ -331,14 +327,16 @@ public with sharing class SM012_OrderItemServices_Test {
                 FROM Order
                 WHERE SBQQ__Quote__c = :quote.Id
             ];
-            //OrderItem ordrItem = Database.query('SELECT Id , blng__HoldBilling__c  FROM OrderItem  WHERE OrderId = \'' + order.Id + '\'');
 
-            blng__BillingRule__c br = [SELECT Id FROM blng__BillingRule__c LIMIT 1];
+            //fetch billing rule
+            blng__BillingRule__c billingRule = [SELECT Id FROM blng__BillingRule__c LIMIT 1];
+
             blng__FinanceBook__c accoutingFinanceBook = new blng__FinanceBook__c(blng__Active__c = true, Name = 'Accounting Finance Book', blng__PeriodType__c = 'Accounting');
             insert accoutingFinanceBook;
 
+            //create billing treatment
             blng__BillingTreatment__c billingTreatmentsForRenewal = new blng__BillingTreatment__c(
-                blng__BillingRule__c = br.Id,
+                blng__BillingRule__c = billingRule.Id,
                 blng__InvoicePlan__c = invoicePlan.Id,
                 blng__BillingFinanceBook__c = accoutingFinanceBook.Id
             );
@@ -351,11 +349,15 @@ public with sharing class SM012_OrderItemServices_Test {
                     WHERE SBQQ__BillingFrequency__c = 'Invoice Plan' AND OrderId = :order.Id
                 ]
             );
+            
             OrderItem originalOrderItem = orderItems.get(0);
-            originalOrderItem.ServiceDate = Date.today();
-            update originalOrderItem;
+            // originalOrderItem.ServiceDate = Date.today();
+            // update originalOrderItem;
+
             System.assertNotEquals(null, originalOrderItem.blng__BillingRule__c, 'blng__BillingRule__c on OrderItem is null');
             System.assertEquals(billingTreatmentsForRenewal.blng__BillingRule__c, originalOrderItem.blng__BillingRule__c, 'blng__BillingRule__c on OrderItem is null');
+
+            Test.stopTest();
 
             /*  Ayoub :   this commented code starting from the line bellow is testing the updateFiledsOnBillingTransaction with Quantity > 0, and works fine,
          *  now commenting this code because the test should be on Quantity<0 which I did not succeed to get it generated from CPQ
@@ -400,8 +402,9 @@ public with sharing class SM012_OrderItemServices_Test {
                 System.assertNotEquals(null,eachBT.blng__ServicePeriodEnd__c,'blng__OverrideBillingTargetDate__c on BT is null');
                 
             }*/
-            Test.stopTest();
-        }
+        } 
+        
+    
     }
 
     @IsTest
@@ -2321,10 +2324,6 @@ System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.bln
         quote.SBQQ__Primary__c = true;
         update quote;
 
-        SBQQ__QuoteLine__c qline = UM002_TestDataFactory.createQuoteLine(prod1.Id, quote.Id, pbEntry1.Id, 100, 1);
-        qline.LPCR_Creche__c =accCreche.id;
-        insert qline;
-
         List<Opportunity> oppList = [SELECT Id, AccountId FROM Opportunity WHERE Name = :'testOpp' LIMIT 3];
         Opportunity opp1 = oppList.get(0);
         opp1.AccountId = acc.id;
@@ -2352,14 +2351,11 @@ System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.bln
         update quote1;
 
         // create quote line record
-        List<SBQQ__QuoteLine__c> qlines1 = new List<SBQQ__QuoteLine__c>();
         SBQQ__QuoteLine__c qline1 = UM002_TestDataFactory.createQuoteLine(prod1.Id, quote1.Id, pbEntry1.Id, 100, 1);
         qline1.LPCR_Creche__c = accCreche.id;
-        qlines1.add(qline1);
         SBQQ__QuoteLine__c qline2 = UM002_TestDataFactory.createQuoteLine(prod1.Id, quote1.Id, pbEntry1.Id, 0, -1);
-        qline1.LPCR_Creche__c = accCreche.id;
-        qlines1.add(qline2);
-        insert qlines1;
+        qline2.LPCR_Creche__c = accCreche.id;
+        insert new List<SBQQ__QuoteLine__c>{ qline1, qline2 };
 
         // create Contract record
         Contract contract1 = UM002_TestDataFactory.createContract(acc.id, quote1.id, opp1.id, Date.Today().addmonths(36));
@@ -2384,14 +2380,15 @@ System.assertEquals(eachOrderItem.LPCR_NumeroPurchaseOrder__c, eachOrderItem.bln
         insert order1;
 
         OrderItem orderItem2 = UM002_TestDataFactory.createOrderProduct(pbEntry1.id, order1.Id, prod1.id, 'Recurring', 'Invoice Plan', 100);
-        orderItem2.SBQQ__QuoteLine__c = qlines1.get(0).id;
+        orderItem2.SBQQ__QuoteLine__c = qline1.id;
         orderItem2.SBQQ__Activated__c = false;
         orderItem2.EndDate = System.today().addMonths(36);
         orderItem2.SBQQ__TerminatedDate__c = System.today().addDays(5);
         orderItem2.blng__NextChargeDate__c = null; //System.today();
         orderItem2.SBQQ__Contract__c = contract1.id;
         orderItem2.LPCR_BillingPlanProcessment__c = false;
-
+        orderItem2.blng__RevenueRecognitionRule__c = revRecRule.Id;
+        orderItem2.blng__TaxRule__c = taxRule.Id;
         orderItem2.SBQQ__PricingMethod__c = 'Custom';
         orderItem2.Quantity = 1;
         insert orderItem2;
