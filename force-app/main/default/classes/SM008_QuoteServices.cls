@@ -100,7 +100,7 @@ public with sharing class SM008_QuoteServices {
                 if(opptyMap.containsKey(eachQuote.SBQQ__Opportunity2__c)){
                     if(contractMap.containsKey(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c)){
                         //PDO refonte : start date= end date of original contrat 
-                        eachQuote.SBQQ__StartDate__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).EndDate.addDays(1);
+                        eachQuote.SBQQ__StartDate__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).EndDate;
                         if(contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DureeContratJour__c != null){
                             eachQuote.SBQQ__EndDate__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).EndDate.addDays((Integer)contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_DureeContratJour__c) ;
                         }
@@ -1034,16 +1034,15 @@ public with sharing class SM008_QuoteServices {
 
     public static void updateDateRevision(List<SBQQ__Quote__c> quotesList, Map<Id, SBQQ__Quote__c> oldQuotesMap){
         Date newYear;
-       
         for(SBQQ__Quote__c newQuote : quotesList) if(oldQuotesMap==null ||
                                                         (newQuote.SBQQ__Status__c==QUOTE_STATUS_DRAFT&&
-                                                        newQuote.SBQQ__StartDate__c!=oldQuotesMap.get(newQuote.Id).SBQQ__StartDate__c)){ 
-            if(newQuote.LPCR_InitAutoAvecDateDebut__c){
-                newQuote.LPCR_DateRevisionPrix__c = newQuote.SBQQ__StartDate__c.addyears(1);
-            }else if((newQuote.RecordTypeId==reservataireRecTypeId || newQuote.RecordTypeId==reservataireApprouveRecTypeId)|| 
+                                                        (newQuote.SBQQ__StartDate__c!=oldQuotesMap.get(newQuote.Id).SBQQ__StartDate__c ||Trigger.isUpdate))){ 
+           if(newQuote.LPCR_InitAutoAvecDateDebut__c){
+                 newQuote.LPCR_DateRevisionPrix__c = newQuote.SBQQ__StartDate__c.addyears(1);
+            }else if(((newQuote.RecordTypeId==reservataireRecTypeId || newQuote.RecordTypeId==reservataireApprouveRecTypeId)  && !newQuote.LPCR_InitAutoAvecDateDebut__c)|| 
                     ((newQuote.RecordTypeId==acceuilRecTypeId||newQuote.RecordTypeId==acceuilApprRecTypeId) &&
                     newQuote.LPCR_TypeQuote__c==QUOTE_TYPE_MAC)){
-                    newYear = newQuote.SBQQ__StartDate__c.addyears(1);
+                   newYear = newQuote.SBQQ__StartDate__c.addyears(1);
                     newQuote.LPCR_DateRevisionPrix__c = date.newInstance(newYear.year(), 1, 1);
             }else if((newQuote.RecordTypeId==acceuilRecTypeId||newQuote.RecordTypeId==acceuilApprRecTypeId) && 
                     newQuote.LPCR_TypeQuote__c==QUOTE_TYPE_MICRO){
