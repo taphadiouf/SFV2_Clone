@@ -1253,6 +1253,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>AccountContactRelation.LPCR_AccountIdExterne__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>AccountContactRelation.LPCR_IdExterne_Contact__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Case.AccountId</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4942,11 +4952,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.LPCR_NoFlowTrigger__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_NomCoDemandeur__c</field>
         <readable>true</readable>
@@ -5105,11 +5110,6 @@
         <editable>true</editable>
         <field>Lead.LPCR_RaisonSociale__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Lead.LPCR_RecordType__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -10194,9 +10194,5 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>AllowViewEditConvertedLeads</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>CreateAuditFields</name>
     </userPermissions>
 </PermissionSet>
