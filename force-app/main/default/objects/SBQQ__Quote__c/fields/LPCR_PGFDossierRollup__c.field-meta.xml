@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_PGFDossierRollup__c</fullName>
     <externalId>false</externalId>
-    <label>PG +FDossier %</label>
+    <label>CA Global (Bcx+ FD)</label>
     <summarizedField>SBQQ__QuoteLine__c.LPCR_PGFDossier__c</summarizedField>
     <summaryFilterItems>
         <field>SBQQ__QuoteLine__c.SBQQ__Quantity__c</field>
