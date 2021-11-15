@@ -291,7 +291,7 @@ public class SM010_ContractServices {
             contract.LPCR_MethodeRenouvellement__c = quote.LPCR_MethodeRenouvellement__c;
         }
         
-        contract.LPCR_DureeContratJour__c = quote.LPCR_DureeContratJour__c;
+        if(quote.SBQQ__Type__c != 'Amendment')contract.LPCR_DureeContratJour__c = quote.LPCR_DureeContratJour__c;
         
         contract.LPCR_InitAutoAvecDateDebut__c = quote.LPCR_InitAutoAvecDateDebut__c;
 

@@ -5757,6 +5757,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__CustomScript__c.SBQQ__GroupFields__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__CustomScript__c.SBQQ__QuoteLineFields__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__QuoteLine__c.Custom_Quantity__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6766,8 +6776,13 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_MontantIndexation2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_MontantIndexation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

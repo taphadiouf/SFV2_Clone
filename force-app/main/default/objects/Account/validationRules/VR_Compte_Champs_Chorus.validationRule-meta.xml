@@ -9,5 +9,5 @@ RecordType.DeveloperName = &apos;Entreprise&apos;,
 ISPICKVAL( LPCR_PrivePublic__c ,&apos;Public&apos;),
 ISBLANK( LPCR_SIRETChorus__c ))</errorConditionFormula>
     <errorDisplayField>LPCR_SIRETChorus__c</errorDisplayField>
-    <errorMessage>Pour les entreprises publiques, les champs SIRET Chorus est obligatoire.</errorMessage>
+    <errorMessage>Pour les entreprises publiques, les champs SIRET est obligatoire.</errorMessage>
 </ValidationRule>

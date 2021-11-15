@@ -32,17 +32,10 @@
             <name>Famille</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>LoopLead.RecordType.DeveloperName</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Famille</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
                 <leftValueReference>LoopLead.LPCR_DateLimiteCommerce__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <elementReference>tomorrowDay</elementReference>
+                    <elementReference>$Flow.CurrentDate</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -51,11 +44,6 @@
             <label>Envoi email</label>
         </rules>
     </decisions>
-    <formulas>
-        <name>tomorrowDay</name>
-        <dataType>Date</dataType>
-        <expression>{!$Flow.CurrentDate} + 1</expression>
-    </formulas>
     <interviewLabel>FLOW_AlerteTraitementLead {!$Flow.CurrentDateTime}</interviewLabel>
     <label>FLOW_AlerteTraitementLead</label>
     <loops>
@@ -112,6 +100,20 @@
                 <booleanValue>true</booleanValue>
             </value>
         </filters>
+        <filters>
+            <field>LPCR_RecordType__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Famille</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LPCR_NoFlowTrigger__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Lead</object>
         <queriedFields>Id</queriedFields>
@@ -141,6 +143,20 @@
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LPCR_RecordType__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Famille</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LPCR_NoFlowTrigger__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
             </value>
         </filters>
         <object>Lead</object>

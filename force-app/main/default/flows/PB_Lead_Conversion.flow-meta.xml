@@ -1097,7 +1097,7 @@
                 <stringValue>&quot;Famille&quot;&amp;&quot; &quot;&amp;[Lead].LastName </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_18_myRule_16_A1_6626004930</name>
+        <name>formula_18_myRule_16_A1_0471043073</name>
         <dataType>String</dataType>
         <expression>&quot;Famille&quot;&amp;&quot; &quot;&amp;{!myVariable_current.LastName}</expression>
     </formulas>
@@ -1714,6 +1714,42 @@
             <field>FirstName</field>
             <value>
                 <elementReference>myVariable_current.LPCR_PrenomCoDemandeur__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Number</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Index Enfant</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Number</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>LPCR_Index_Enfant__c</field>
+            <value>
+                <numberValue>2.0</numberValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -3102,6 +3138,42 @@
             <processMetadataValues>
                 <name>dataType</name>
                 <value>
+                    <stringValue>Number</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Index Enfant</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Number</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>LPCR_Index_Enfant__c</field>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
                     <stringValue>String</stringValue>
                 </value>
             </processMetadataValues>
@@ -3320,7 +3392,7 @@
             </processMetadataValues>
             <field>Name</field>
             <value>
-                <elementReference>formula_18_myRule_16_A1_6626004930</elementReference>
+                <elementReference>formula_18_myRule_16_A1_0471043073</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
