@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>LPCR_PiedsPageEmails</letterhead>
+    <name>Mail pour indiquer qu’il manque des pièces justificatives</name>
+    <style>freeForm</style>
+    <subject>Crèche : Justificatifs manquants</subject>
+    <textOnly>Clichy, le {!Today()}
+
+
+Chers parents,
+
+
+
+Nous vous remercions pour votre pré-inscription et pour l’intérêt que vous portez à nos crèches.
+
+
+
+Nous vous confirmons avoir bien reçu votre demande de place pour votre enfant {!LPCR_Preinscription__c.LPCR_EnfantPrenom__c} à compter de {!LPCR_Preinscription__c.LPCR_DateEntreeCreche__c} via votre employeur {!LPCR_Preinscription__c.LPCR_CompteEntreprise__c}.
+
+
+
+Après étude attentive de votre dossier, il semblerait que certaines pièces indispensables soient manquantes :
+
+Avis d&apos;imposition,
+Fiche de paie des deux parents et/ou bilan d&apos;activité (pour les professions libérales), attestation pôle emploi, carte d&apos;étudiant et ou d&apos;invalidité...),
+Copie du livret de famille,
+Attestation CDAPH ou certificat médical si handicap d&apos;un parent/d&apos;un enfant,
+Justificatif de votre demande, refus ou liste d&apos;attente de votre crèche municipale,
+Tout autre document que vous jugerez utile (attestation de divorce, décès etc.…).
+
+Nous vous remercions par avance de télécharger ces pièces sur votre espace personnel sous 7 jours. Sans cela votre dossier ne pourra malheureusement pas être étudié lors de la prochaine commission d’attribution.
+
+
+Pour toute question supplémentaire, notre service Familles reste à votre entière écoute au 01 41 40 81 79.du lundi au vendredi de 9h30 à 12h30 et de 14h à 17h30) ou par mail à familles@lpcr.fr
+
+
+
+
+En souhaitant à toute votre famille une très belle journée.
+
+
+Les équipes des Petits Chaperons Rouges</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
