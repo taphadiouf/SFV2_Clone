@@ -8,12 +8,12 @@
             "IsDeleted": false,
             "Name": "Calcul de la quantité totale sur Paris",
             "SBQQ__Active__c": true,
-            "SBQQ__AdvancedCondition__c": "(1 OR 2) AND 3",
+            "SBQQ__AdvancedCondition__c": "(1 OR 2 ) AND 3 AND 4 AND 5",
             "SBQQ__ConditionsMet__c": "Custom",
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 5,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-10-15T12:56:13.000+0000"
+            "SystemModstamp": "2021-11-10T14:02:27.000+0000"
         },
         {
             "attributes": {
@@ -23,12 +23,12 @@
             "IsDeleted": false,
             "Name": "Calcul de la quantité totale sur IDF",
             "SBQQ__Active__c": true,
-            "SBQQ__AdvancedCondition__c": "( 1 OR 2 ) AND 3",
+            "SBQQ__AdvancedCondition__c": "(( 1 OR 2 ) AND 3 ) AND 4",
             "SBQQ__ConditionsMet__c": "Custom",
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 5,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-10-15T12:56:13.000+0000"
+            "SystemModstamp": "2021-11-10T14:50:28.000+0000"
         },
         {
             "attributes": {
@@ -197,13 +197,13 @@
             "IsDeleted": false,
             "Name": "Calcul prix berceaux réservataires New Quote",
             "SBQQ__Active__c": true,
-            "SBQQ__AdvancedCondition__c": "4 AND (1 OR 2 OR 3)",
+            "SBQQ__AdvancedCondition__c": "4 AND (1 OR 2 OR 3) AND 5 AND 6",
             "SBQQ__ConditionsMet__c": "Custom",
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-10-15T12:56:13.000+0000"
+            "SystemModstamp": "2021-11-10T15:12:49.000+0000"
         },
         {
             "attributes": {
@@ -213,12 +213,12 @@
             "IsDeleted": false,
             "Name": "Calcul de la quantité totale sur Province",
             "SBQQ__Active__c": true,
-            "SBQQ__AdvancedCondition__c": "( 1 OR 2 ) AND 3",
+            "SBQQ__AdvancedCondition__c": "(( 1 OR 2) AND 3) AND 4",
             "SBQQ__ConditionsMet__c": "Custom",
             "SBQQ__EvaluationEvent__c": "Before Calculate",
             "SBQQ__EvaluationOrder__c": 5,
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-10-15T12:56:13.000+0000"
+            "SystemModstamp": "2021-11-10T14:36:51.000+0000"
         },
         {
             "attributes": {
@@ -376,13 +376,13 @@
             "IsDeleted": false,
             "Name": "Calcul prix berceaux réservataires  Amendment and Renewal",
             "SBQQ__Active__c": true,
-            "SBQQ__AdvancedCondition__c": "5 AND 6 AND  ((1 AND 3) OR (2 AND 4))",
+            "SBQQ__AdvancedCondition__c": "7 AND 8  AND 5 AND 6 AND  ((1 AND 3) OR (2 AND 4))",
             "SBQQ__ConditionsMet__c": "Custom",
             "SBQQ__EvaluationEvent__c": "On Calculate",
             "SBQQ__EvaluationOrder__c": 10,
             "SBQQ__LookupObject__c": "LPCR_TablePrix__c",
             "SBQQ__TargetObject__c": "Calculator",
-            "SystemModstamp": "2021-10-15T12:56:13.000+0000"
+            "SystemModstamp": "2021-11-10T15:00:33.000+0000"
         },
         {
             "attributes": {
