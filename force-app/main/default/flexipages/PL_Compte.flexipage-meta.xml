@@ -30,16 +30,6 @@
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
-                            <value>Account.LPCR_NouveauContratAccueil</value>
-                            <visibilityRule>
-                                <criteria>
-                                    <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>Famille</rightValue>
-                                </criteria>
-                            </visibilityRule>
-                        </valueListItems>
-                        <valueListItems>
                             <value>Account.NouveauContactEnfant</value>
                             <visibilityRule>
                                 <criteria>
