@@ -1,10 +1,10 @@
 /**
- * @description       : 
+ * @description       :
  * @author            : Widaad Papauretty
- * @group             : 
+ * @group             :
  * @last modified on  : 11-16-2021
  * @last modified by  : Widaad Papauretty
-**/
+ **/
 @isTest
 public with sharing class APB024_HoldBilling_Test {
     private static final Id standardPricebookId = Test.getStandardPricebookId();
@@ -13,7 +13,6 @@ public with sharing class APB024_HoldBilling_Test {
 
     @testsetup
     static void setup() {
-
         SBQQ.TriggerControl.disable();
         try {
             UM002_TestDataFactory.insertBillingCustomSettings();
@@ -33,7 +32,7 @@ public with sharing class APB024_HoldBilling_Test {
             insert opp;
 
             SBQQ__Quote__c quote = UM002_TestDataFactory.createQuote('test', opp.Id, acc.Id, standardPricebookId, 'Quote');
-quote.LPCR_IndexationConvenue__c = 'Non';
+            quote.LPCR_IndexationConvenue__c = 'Non';
             quote.SBQQ__Primary__c = true;
             quote.SBQQ__Ordered__c = true;
             quote.LPCR_DateRevisionPrix__c = System.today();
@@ -49,7 +48,6 @@ quote.LPCR_IndexationConvenue__c = 'Non';
             SBQQ__QuoteLine__c quoteLine = UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, priceBookEntry1.Id, 200, 1);
             quoteline.LPCR_Creche__c = compteCreche.id;
             insert quoteLine;
-
 
             opp.SBQQ__PrimaryQuote__c = quote.Id;
             update opp;
@@ -68,30 +66,27 @@ quote.LPCR_IndexationConvenue__c = 'Non';
             insert order;
 
             contract.SBQQ__Order__c = order.id;
-            update contract; 
-            
-            OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(priceBookEntry1.id, order.Id, prod.id, 'Recurring','Quarterly', 100);
+            update contract;
+
+            OrderItem orderItem = UM002_TestDataFactory.createOrderProduct(priceBookEntry1.id, order.Id, prod.id, 'Recurring', 'Quarterly', 100);
             orderItem.blng__RevenueRecognitionRule__c = revRecRule.id;
             orderItem.blng__BillingRule__c = billingRule.id;
             orderItem.blng__TaxRule__c = taxRule.id;
             insert orderItem;
-
         } finally {
             SBQQ.TriggerControl.enable();
         }
-       
     }
 
     @isTest
     private static void testAPB024() {
         Test.startTest();
 
-        APB024_HoldBilling holdBilling  = new APB024_HoldBilling();
+        APB024_HoldBilling holdBilling = new APB024_HoldBilling();
         Database.executeBatch(holdBilling, 1);
 
         Test.stopTest();
-        
-        holdBilling .execute(null);
 
+        holdBilling.execute(null);
     }
 }
