@@ -3063,7 +3063,11 @@
         <editable>true</editable>
         <field>Contact.LPCR_AccueilPreinscription__c</field>
         <readable>true</readable>
+<<<<<<< HEAD
     </fieldPermissions>
+=======
+    </fieldPermissions>    
+>>>>>>> c287a50b95a9c46864475df895c3ee4c7a97a8ae
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.LPCR_Actif__c</field>
@@ -3108,7 +3112,11 @@
         <editable>true</editable>
         <field>Contact.LPCR_CrechePreinscription__c</field>
         <readable>true</readable>
+<<<<<<< HEAD
     </fieldPermissions>
+=======
+    </fieldPermissions>   
+>>>>>>> c287a50b95a9c46864475df895c3ee4c7a97a8ae
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.LPCR_DateEntreeCrecheSouhaitee__c</field>
@@ -3193,7 +3201,11 @@
         <editable>true</editable>
         <field>Contact.LPCR_HeureFinVendredi__c</field>
         <readable>true</readable>
+<<<<<<< HEAD
     </fieldPermissions>
+=======
+    </fieldPermissions>  
+>>>>>>> c287a50b95a9c46864475df895c3ee4c7a97a8ae
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.LPCR_IdExterne_Contact__c</field>
@@ -3253,7 +3265,11 @@
         <editable>true</editable>
         <field>Contact.LPCR_StatutPreinscription__c</field>
         <readable>true</readable>
+<<<<<<< HEAD
     </fieldPermissions>
+=======
+    </fieldPermissions> 
+>>>>>>> c287a50b95a9c46864475df895c3ee4c7a97a8ae
     <fieldPermissions>
         <editable>true</editable>
         <field>Contact.LPCR_TypeAllocataire__c</field>
@@ -10261,6 +10277,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_MontantIndexation2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_MontantIndexation__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -11170,6 +11191,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Subscription__c.LPCR_DateResiliationChoisie__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Subscription__c.LPCR_DateFin__c</field>
         <readable>true</readable>
@@ -11607,6 +11633,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Subscription__c.SBQQ__UnitCost__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_Debut_BDC__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_Fin_BDC__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

@@ -190,6 +190,13 @@
         <value>Contact</value>
     </labels>
     <labels>
+        <fullName>LPCR_ContactColl</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContactColl</shortDescription>
+        <value>Collaborateur</value>
+    </labels>
+    <labels>
         <fullName>LPCR_ContactEnfant</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -309,6 +316,13 @@
         <value>Crèche</value>
     </labels>
     <labels>
+        <fullName>LPCR_Creche_externe</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Creche_externe</shortDescription>
+        <value>Creche_Externe</value>
+    </labels>
+    <labels>
         <fullName>LPCR_DEF</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -358,6 +372,13 @@
         <value>Entreprise</value>
     </labels>
     <labels>
+        <fullName>LPCR_ErrorMessageUplift</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ErrorMessageUplift</shortDescription>
+        <value>Ce devis n&apos;est pas éligible pour l&apos;uplift, veuillez renseigner le champ</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Etablissement</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -405,6 +426,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_InvoicePlan</shortDescription>
         <value>Invoice Plan</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_LPCRGroupe</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_LPCRGroupe</shortDescription>
+        <value>LPCR GROUPE</value>
     </labels>
     <labels>
         <fullName>LPCR_Lead</fullName>
@@ -855,6 +883,13 @@
         <value>Taux d&apos;effort :</value>
     </labels>
     <labels>
+        <fullName>LPCR_TemplateIDAvenant</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_TemplateIDAvenant</shortDescription>
+        <value>a4C3O0000005C1gUAE</value>
+    </labels>
+    <labels>
         <fullName>LPCR_Title1</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -895,12 +930,5 @@
         <protected>false</protected>
         <shortDescription>Product Code Depot Garantie</shortDescription>
         <value>DepotDeGarantie</value>
-    </labels>
-    <labels>
-        <fullName>LPCR_LPCRGroupe</fullName>
-        <language>fr</language>
-        <protected>false</protected>
-        <shortDescription>LPCR_LPCRGroupe</shortDescription>
-        <value>LPCR GROUPE</value>
     </labels>
 </CustomLabels>

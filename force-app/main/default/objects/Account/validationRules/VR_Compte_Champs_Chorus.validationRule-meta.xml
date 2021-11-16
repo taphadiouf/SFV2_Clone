@@ -7,9 +7,7 @@
 NOT( $Permission.LPCR_ByPass_VR ),
 RecordType.DeveloperName = &apos;Entreprise&apos;,
 ISPICKVAL( LPCR_PrivePublic__c ,&apos;Public&apos;),
-OR(
-ISBLANK( LPCR_SIRETChorus__c ),
-ISBLANK( LPCR_CodeServiceChorus__c )))</errorConditionFormula>
+ISBLANK( LPCR_SIRETChorus__c ))</errorConditionFormula>
     <errorDisplayField>LPCR_SIRETChorus__c</errorDisplayField>
-    <errorMessage>Pour les entreprises publiques, les champs SIRET Chorus et Code Service Chorus sont obligatoires.</errorMessage>
+    <errorMessage>Pour les entreprises publiques, les champs SIRET est obligatoire.</errorMessage>
 </ValidationRule>

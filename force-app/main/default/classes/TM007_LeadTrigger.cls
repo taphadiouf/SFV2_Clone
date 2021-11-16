@@ -17,16 +17,21 @@ public class TM007_LeadTrigger extends TM000_TriggerHandler{
     protected override void beforeUpdate() {
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             List<Lead> convertedLeadsList = new List<Lead>();
+            List<Lead> convertedLeadsListWithOpportunity = new List<Lead>();
             for(Lead eachLead : newLeadsList){
                 if(eachLead.isConverted){
                     convertedLeadsList.add(eachLead);
                 }
+                if(eachLead.isConverted && eachLead.convertedOpportunityId <> null){
+                    convertedLeadsListWithOpportunity.add(eachLead);
+                }
+
             }
             if(!convertedLeadsList.isEmpty()){
                 SM007_LeadServices.syncRecordTypesWithLeads(convertedLeadsList);
                 SM007_LeadServices.blockConversionwithWrongRecType(convertedLeadsList);
                 SM007_LeadServices.linkStructureAOsToOpps(convertedLeadsList);
-                SM007_LeadServices.mapFieldsFromLeadToOpp(convertedLeadsList);
+                SM007_LeadServices.mapFieldsFromLeadToOpp(convertedLeadsListWithOpportunity);
             }
         }    
     }

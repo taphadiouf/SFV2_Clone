@@ -1,4 +1,3 @@
-
 /**
 * @author Achraf ABOUL
 * @created 26/03/2020
@@ -14,6 +13,7 @@ public with sharing class TM005_ContactTrigger extends TM000_TriggerHandler{
         this.newContactsMap = (Map<Id, Contact>) Trigger.newMap;
         this.oldContactsMap = (Map<Id, Contact>) Trigger.oldMap;
         this.newContactsList = (List<Contact>) Trigger.new;
+        PAD.byPassTriggerAccContRel = true;
     }
 
     protected override void beforeInsert() {

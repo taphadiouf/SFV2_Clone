@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
-        <fullName>LPCR_AlerteTraitementLead</fullName>
+        <fullName>LPCR_AlerteNonTraitementLead</fullName>
         <description>Alerte non traitement du lead</description>
         <protected>false</protected>
+        <recipients>
+            <field>LPCR_ManagerEmail__c</field>
+            <type>email</type>
+        </recipients>
         <recipients>
             <type>owner</type>
         </recipients>
@@ -20,22 +24,26 @@
         <senderType>DefaultWorkflowUser</senderType>
         <template>unfiled$public/LPCR_AlerteNonTraitementLead</template>
     </alerts>
+    <fieldUpdates>
+        <fullName>Manager_Email</fullName>
+        <field>LPCR_ManagerEmail__c</field>
+        <formula>Owner:User.Manager.Email</formula>
+        <name>Manager Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
     <rules>
-        <fullName>WF_AlerteDelaiLead</fullName>
+        <fullName>WF_ManagerEmail</fullName>
         <actions>
-            <name>LPCR_AlerteTraitementLead</name>
-            <type>Alert</type>
+            <name>Manager_Email</name>
+            <type>FieldUpdate</type>
         </actions>
         <active>true</active>
         <criteriaItems>
-            <field>Lead.RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Famille</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Lead.LPCR_JoursRestantCommercial__c</field>
-            <operation>equals</operation>
-            <value>1</value>
+            <field>Lead.OwnerId</field>
+            <operation>notEqual</operation>
         </criteriaItems>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>

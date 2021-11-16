@@ -1,0 +1,37 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "blng__RevenueRecognitionRule__c",
+                "referenceId": "blng__RevenueRecognitionRule__cRef1"
+            },
+            "blng__Active__c": true,
+            "blng__CreateRevenueSchedule__c": "Yes",
+            "IsDeleted": false,
+            "Name": "LPCR Reconnaissance de revenu",
+            "SystemModstamp": "2021-10-15T13:11:41.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__RevenueRecognitionRule__c",
+                "referenceId": "blng__RevenueRecognitionRule__cRef2"
+            },
+            "blng__Active__c": true,
+            "blng__CreateRevenueSchedule__c": "Yes",
+            "IsDeleted": false,
+            "Name": "LPCR Reconnaissance de revenu Complete",
+            "SystemModstamp": "2021-10-15T12:33:13.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "blng__RevenueRecognitionRule__c",
+                "referenceId": "blng__RevenueRecognitionRule__cRef3"
+            },
+            "blng__Active__c": true,
+            "blng__CreateRevenueSchedule__c": "No",
+            "IsDeleted": false,
+            "Name": "LPCR - Sans reconnaissance de revenu",
+            "SystemModstamp": "2021-10-15T13:11:41.000+0000"
+        }
+    ]
+}

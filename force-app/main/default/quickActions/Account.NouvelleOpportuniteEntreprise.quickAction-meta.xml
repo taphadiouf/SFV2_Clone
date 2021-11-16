@@ -9,6 +9,22 @@
         <formula>Account.LPCR_ContactPrincipalCompte__c</formula>
     </fieldOverrides>
     <fieldOverrides>
+        <field>LPCR_Ref_ContactFacturation__c</field>
+        <formula>Account.blng__BillToContact__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_Ref_ContactInscription__c</field>
+        <formula>Account.LPCR_ContactInscriptions__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_Ref_RespADV__c</field>
+        <formula>Account.LPCR_ResponsableADV__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>LPCR_Ref_RespServiceFam__c</field>
+        <formula>Account.LPCR_ResponsableServiceFamille__c</formula>
+    </fieldOverrides>
+    <fieldOverrides>
         <field>LPCR_SocieteFacturanteOpport__c</field>
         <formula>Account.LPCR_SocieteFacturanteCompte__c</formula>
     </fieldOverrides>
@@ -47,11 +63,6 @@
                 <emptySpace>false</emptySpace>
                 <field>CloseDate</field>
                 <uiBehavior>Required</uiBehavior>
-            </quickActionLayoutItems>
-            <quickActionLayoutItems>
-                <emptySpace>false</emptySpace>
-                <field>LPCR_ZoneGeographique__c</field>
-                <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
     </quickActionLayout>

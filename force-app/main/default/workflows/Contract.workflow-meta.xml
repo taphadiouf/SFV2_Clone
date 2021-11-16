@@ -54,7 +54,7 @@
         </actions>
         <active>true</active>
         <criteriaItems>
-            <field>Contract.LPCR_DateDebut__c</field>
+            <field>Contract.StartDate</field>
             <operation>notEqual</operation>
         </criteriaItems>
         <triggerType>onCreateOnly</triggerType>
