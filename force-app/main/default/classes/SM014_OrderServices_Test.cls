@@ -24,9 +24,13 @@ public class SM014_OrderServices_Test {
         blng__TaxRule__c taxRule = UM002_TestDataFactory.setupTaxRule(billingLegalEntity.Id);
         
         Id familleAccountRT = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Famille);
+        Id ACCOUNT_CRECHE_ID = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Account, Label.LPCR_Creche);
+
         Account acc = UM002_TestDataFactory.createAccounts(1,familleAccountRT,'test').get(0);
         acc.SBQQ__RenewalModel__c ='Contract Based';
-        insert acc;
+
+        Account accCreche = UM002_TestDataFactory.createAccounts(1,ACCOUNT_CRECHE_ID,'testCreche').get(0);
+        insert new List<Account>{acc, accCreche};
         
         Opportunity opp = UM002_TestDataFactory.createOpportunities(1, 'test', 'Prospecting').get(0);
         insert opp;
@@ -43,6 +47,7 @@ public class SM014_OrderServices_Test {
         insert priceBookEntry1;
         
         SBQQ__QuoteLine__c quoteLine = UM002_TestDataFactory.createQuoteLine(prod.Id, quote.Id, priceBookEntry1.Id, 200,1);
+        quoteLine.LPCR_Creche__c = accCreche.id;
         insert quoteLine;
         opp.SBQQ__PrimaryQuote__c =quote.Id;
         update opp;
@@ -70,10 +75,15 @@ public class SM014_OrderServices_Test {
             quote.LPCR_InitAutoAvecDateDebut__c = true;
 
             update quote;
-            Test.stopTest();
+           
             
 
-            Order order = Database.query('SELECT Id,RecordTypeId,blng__BillingAccount__c, blng__BillingDayOfMonth__c,EffectiveDate,LPCR_TypeFacturation__c,LPCR_FrequenceFacturation__c , Status ,blng__InvoiceBatch__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
+            Order order = Database.query('SELECT Id,RecordTypeId,blng__BillingAccount__c, blng__BillingDayOfMonth__c,EffectiveDate,LPCR_TypeFacturation__c,LPCR_FrequenceFacturation__c , Status ,blng__InvoiceBatch__c,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \''+quote.Id+'\'');
+            order.SBQQ__Contracted__c = true;
+            order.Status ='Activated';
+            update order;
+            Test.stopTest();
+            
             System.assertEquals('Batch 2', order.blng__InvoiceBatch__c,'blng__InvoiceBatch__c on the quote is not the same on the order');
 			      System.assertEquals(quote.SBQQ__BillingFrequency__c, order.LPCR_FrequenceFacturation__c,'SBQQ__BillingFrequency__c on the quote is not the same on the order');
 			      System.assertEquals(quote.LPCR_TypeFacturation__c, order.LPCR_TypeFacturation__c,'LPCR_TypeFacturation__c on the quote is not the same on the order');
