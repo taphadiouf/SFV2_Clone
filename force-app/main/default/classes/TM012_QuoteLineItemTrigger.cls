@@ -33,7 +33,7 @@ public with sharing class TM012_QuoteLineItemTrigger extends TM000_TriggerHandle
 
 			SM013_QuoteLineServices.setBillThroughDateOverride(newQuoteLineList);            
             SM013_QuoteLineServices.calculateQuoteLine(newQuoteLineList);
-            SM013_QuoteLineServices.updatePGGlobalQuoteLine(newQuoteLineMap);
+            SM013_QuoteLineServices.updatePGGlobalQuoteLine(newQuoteLineMap,oldQuoteLineMap);
         }
     }
     protected override void afterInsert() {
