@@ -792,11 +792,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_NoFlowTrigger__c</field>
-            <table>Lead</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>LPCR_NomCoDemandeur__c</field>
             <table>Lead</table>
         </columns>
@@ -958,11 +953,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_RaisonSociale__c</field>
-            <table>Lead</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_RecordType__c</field>
             <table>Lead</table>
         </columns>
         <columns>
