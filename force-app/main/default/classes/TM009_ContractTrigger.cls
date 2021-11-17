@@ -45,9 +45,7 @@ public class TM009_ContractTrigger extends TM000_TriggerHandler{
         if (!FeatureManagement.checkPermission('LPCR_ByPass_Apex')){
             SM010_ContractServices.setOrderFields(this.newContractMap,this.oldContractMap);
             SM010_ContractServices.setOrderItemFields(this.newContractMap,this.oldContractMap);
-            if (!System.isBatch() && !System.isFuture()) {
-            SM010_ContractServices.createCAAmendement(this.strnewContractMap,this.stroldContractMap);
-            }
+           
         }
     }
 }
