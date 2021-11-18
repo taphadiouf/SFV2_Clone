@@ -2,8 +2,15 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>LPCR_DateLimiteCommerce__c</fullName>
     <externalId>false</externalId>
-    <formula>IF(MOD( DATEVALUE(CreatedDate) - DATE(1900, 1, 6), 7) &lt;= 1, DATEVALUE(CreatedDate)+5, 
-							DATEVALUE(CreatedDate)+7)</formula>
+    <formula>CASE(MOD( DATEVALUE(CreatedDate) - DATE(1900, 1, 7), 7), 
+					0, DATEVALUE(CreatedDate)+5, 
+			  1, DATEVALUE(CreatedDate)+4,
+					2, DATEVALUE(CreatedDate)+6,
+					3, DATEVALUE(CreatedDate)+6,
+					4, DATEVALUE(CreatedDate)+6,
+					5, DATEVALUE(CreatedDate)+6,
+					DATEVALUE(CreatedDate)+6
+				)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Date limite traitement commerce</label>
     <required>false</required>

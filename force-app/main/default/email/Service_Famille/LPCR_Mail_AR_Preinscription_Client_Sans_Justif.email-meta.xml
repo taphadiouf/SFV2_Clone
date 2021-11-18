@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>LPCR_PiedsPageEmails</letterhead>
+    <name>Mail AR Préinscription client dédié sans justif</name>
+    <style>freeForm</style>
+    <subject>Crèche : confirmation de votre pré-inscription</subject>
+    <textOnly>Clichy, le {!Today()}
+
+
+Cher(s) parent(s),
+
+
+
+Nous vous remercions pour votre pré-inscription et pour l’intérêt que vous portez à nos crèches.
+
+
+
+Nous vous confirmons avoir bien reçu votre demande de place pour votre enfant {!LPCR_Preinscription__c.LPCR_EnfantPrenom__c} à compter de {!LPCR_Preinscription__c.LPCR_DateEntreeCreche__c} via votre employeur {!LPCR_Preinscription__c.LPCR_CompteEntreprise__c}.
+
+
+
+Dans cette attente, vous pouvez consultez sur votre espace personnel l’avancée de votre dossier.
+
+
+
+Également, notre service Familles reste à votre entière écoute. Vous pouvez les joindre par téléphone au 01 41 40 81 79 (du lundi au vendredi de 9h30 à 12h30 et de 14h à 17h30) ou par mail à familles@lpcr.fr .
+
+
+
+En souhaitant à toute votre famille une très belle journée,
+
+
+
+Les équipes des Petits Chaperons Rouges</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

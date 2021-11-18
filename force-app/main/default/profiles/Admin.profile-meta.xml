@@ -4015,6 +4015,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_NoFlowTrigger__c</field>
+        <readable>true</readable>
+    </fieldPermissions>        
+    <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_NomCoDemandeur__c</field>
         <readable>true</readable>
@@ -4149,6 +4154,11 @@
         <field>Lead.LPCR_RaisonSociale__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.LPCR_RecordType__c</field>
+        <readable>true</readable>
+    </fieldPermissions>        
     <fieldPermissions>
         <editable>true</editable>
         <field>Lead.LPCR_RegionCommerciale__c</field>
