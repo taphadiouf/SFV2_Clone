@@ -1220,11 +1220,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>IsVisibleInSelfService</field>
-            <table>Lead.Activities</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>CallDurationInSeconds</field>
             <table>Lead.Activities</table>
         </columns>
