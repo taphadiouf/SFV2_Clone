@@ -20,7 +20,7 @@ public with sharing class UM002_TestDataFactory {
 	private static final Map<String, Id> defaultRecTypeCache = new Map<String, Id>();
 	private static final Map<String, Id> referenceObjectCache = new Map<String, Id>();
     private static final Map<String, Schema.SObjectType> GlobalDescribe = Schema.getGlobalDescribe();
-
+    
     private static final String PERMISSIONSET_COMMERCIAL = 'LPCR_ChargeAffairesGC';
     private static final String PROFILE_NAME_COMMERCIAL = 'Chargé d\'Affaires Grands Comptes';
     private static final String ROLE_DEVELOPER_NAME_COMMERCIAL = 'LPCR_ChargeAffairesGrandsComptes';
