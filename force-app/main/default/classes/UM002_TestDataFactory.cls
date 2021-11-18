@@ -453,6 +453,7 @@ newMe.FederationIdentifier = null;
         
         return newFamilleUser;
     }
+
     public static User createUser(Id roleId){
         User usr = null;
 

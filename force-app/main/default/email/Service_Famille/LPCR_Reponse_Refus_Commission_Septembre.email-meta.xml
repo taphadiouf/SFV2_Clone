@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>LPCR_PiedsPageEmails</letterhead>
+    <name>Réponse : Refus à l’issue de la commission pour septembre</name>
+    <style>freeForm</style>
+    <subject>Crèche : réponse à votre demande de place</subject>
+    <textOnly>Clichy, le {!Today()}
+
+
+
+
+
+Chers parents,
+
+
+
+Nous vous remercions pour l’intérêt que vous portez à nos crèches.
+
+
+
+Nos équipes ont étudié attentivement votre dossier qui a été présenté lors de la dernière commission d’attribution.
+
+
+
+
+Malheureusement, nous avons le regret de vous informer que votre dossier n’a pas été retenu pour la rentrée {!YEAR(LPCR_Preinscription__c.LPCR_DateEntreeCreche__c)}, en effet nous avions plus de demandes que de place à pourvoir.
+
+
+
+Cependant, nous conservons votre demande de place en crèche en cas de départs / annulations, et n’hésiterons pas à vous contacter si une place se libère.
+
+
+
+Nous vous remercions de nous tenir informés si, entre temps, vous avez trouvé un autre mode de garde et que vous souhaitez annuler votre demande.
+
+
+
+Vous recevrez un e-mail régulièrement pour vous donner la possibilité de confirmer ou non votre demande.
+
+
+
+Notre autre solution d’accueil*
+
+
+
+Tout au long de l’année nous vous proposons de l’accueil occasionnel ; cette solution permet à votre enfant de faire ses premiers pas en collectivité, et de vous dépanner en cas de nounou malade ou pendant les vacances scolaires,
+
+
+
+Ces disponibilités ponctuelles se font au gré du temps, aussi n’hésitez pas à vous renseigner auprès de notre service Familles.
+
+
+
+Cela vous intéresse ? Contactez dès maintenant notre service Familles au 01 41 40 81 79 (du lundi au vendredi de 9h30 à 12h30 et de 14h à 17h30). Nos équipes vous indiqueront alors les coordonnées de la crèche que vous souhaitez et vous pourrez la contacter directement pour connaître les créneaux disponibles !
+
+
+
+En souhaitant à toute votre famille une très belle journée,
+
+
+
+Les équipes des Petits Chaperons Rouges
+
+
+
+
+*cette solution d’accueil occasionnel est uniquement valable sur les crèches Les Petits Chaperons Rouges et non nos crèches partenaires. Vous pouvez voir où se trouvent toutes nos crèches sur notre carte, elles sont symbolisées par notre logo, contrairement à nos crèches partenaires qui sont en bleu.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

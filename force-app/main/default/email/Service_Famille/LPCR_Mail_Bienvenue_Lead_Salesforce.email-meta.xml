@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>LPCR_PiedsPageEmails</letterhead>
+    <name>Mail de Bienvenue lead Salesforce</name>
+    <style>freeForm</style>
+    <subject>Crèche : suivi de votre demande</subject>
+    <textOnly>Clichy, le {!Today()}
+
+
+
+
+
+Chers parents,
+
+
+
+Nous revenons vers vous suite à votre demande de place en crèche au sein des Petits Chaperons Rouges pour votre enfant {!LPCR_Preinscription__c.LPCR_EnfantPrenom__c}.
+
+
+
+Comme convenu, nos équipes ont pris contact avec votre employeur. Nous vous remercions encore pour cette mise en relation. Malheureusement, votre entreprise n’a pas souhaité réserver des places en crèche pour ses salariés.
+
+
+
+Cependant, comme indiqué dans notre précédent mail, en fonction de la disponibilité, nous pouvons être amené à vous proposer un contrat sans le sponsor de votre employeur.
+
+
+
+Qu’est-ce qu’un contrat sans sponsor* ?
+
+
+
+Comme vous le savez, nous sommes un réseau de crèches privées. Par conséquent, les places réservées avec sponsor sont prioritaires, malgré tout, en fonction des disponibilités nous ouvrons des places mais sous les conditions suivantes :
+
+
+
+
+Il s’agit d’un contrat qui ne garantit pas la place jusqu’à l’entrée en maternelle. En effet, si, au cours de l’année, une entreprise vient à réserver une ou plusieurs place(s) dans cette même crèche, nous pouvons mettre un terme à l’accueil de votre enfant, tout en respectant un délai de préavis de 2 mois.
+Le prix reste le même pour vous. En effet, le tarif est calculé suivant le barème de la CNAF (valable pour toutes les crèches de France, privées comme publiques) et de votre quotient familial (revenus N-2 et nombre d’enfants à charge). Vous pouvez utiliser notre simulateur de coût pour avoir une estimation du prix de votre place en crèche.
+
+
+Si ce contrat sans sponsor vous intéresse et que vous êtes toujours à la recherche d’une place en crèche, nous vous invitons à procéder aux étapes suivantes.
+
+
+
+Vous êtes intéressé par le contrat sans sponsor, quelles sont les prochaines démarches ?
+
+
+
+Afin de mettre à jour votre dossier, merci de confirmer ou compléter les informations ci-dessous :
+
+
+
+
+Le nom et le prénom de votre enfant (si connu) :
+La date de naissance ou terme prévu :
+La date d’entrée en crèche souhaitée :
+Les jours et les horaires de garde dont vous avez besoin :
+Les 3 crèches Les Petits Chaperons Rouges qui vous intéressent :
+
+
+Nos équipes étudieront avec attention l’adéquation entre votre demande et nos disponibilités.
+
+
+
+Nos équipes reviendront vers vous dès qu’une place se libérera dans l’une de nos crèches Les Petits Chaperons Rouges** uniquement, cela peut varier entre quelques semaines et plusieurs mois.
+
+
+
+N’hésitez pas à relancer notre service Familles afin de maintenir votre demande active et ainsi de nous indiquer que vous êtes toujours en recherche active. Nous vous invitons à relancer notre service tous les 2 mois à partir de votre date de pré-inscription ou de votre dernière relance.
+
+
+
+Par exemple : si vous avez fait votre demande de pré-inscription ou votre dernière relance en septembre, la prochaine sera à effectuer en novembre, et ainsi de suite.
+
+
+
+Comment nous relancer ?
+
+
+
+- Par téléphone : 01 41 40 81 79 (du lundi au vendredi de 9h30 à 12h30 et de 14h à 17h30)
+
+- Par mail : familles@lpcr.fr
+
+
+
+Sans ces relances, nous considérerons que vous avez trouvé un mode de garde qui vous convient et nous en serons très heureux pour vous ! 😊
+
+
+
+Restant à votre entière disposition pour toute précision, nous vous souhaitons, à toute votre famille, une très belle journée.
+
+
+
+Les équipes des Petits Chaperons Rouges
+
+
+**Vous pouvez voir où se trouvent toutes nos crèches sur notre carte, elles sont symbolisées par notre logo, contrairement à nos crèches partenaires qui sont en bleu.
+
+
+
+*A noter que ce contrat n’est possible que sur nos crèches Les Petits Chaperons Rouges</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
