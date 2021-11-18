@@ -27,7 +27,7 @@ public with sharing class UM002_TestDataFactory {
     private static final String ROLE_DEVELOPER_NAME_ADV = 'LPCR_ResponsableADV';
     private static final String ROLE_DEVELOPER_NAME_SERVICE_FAMILLE = 'LPCR_ChargeRelationFamillesInscriptions';
     private static final String PSET_LICENSE_NAME_CPQ = 'SalesforceCPQ_CPQStandardPerm';
-    private static String ADMIN_PROFILE = 'System Administrator';
+    private static String ADMIN_PROFILE = 'Administrateur système';
     private static String ADV_PROFILE = 'LPCR_Utilisateur';
     private static String SERVICE_FAMILLE_PROFILE = 'Chargé de Relation Service Famille';
     
