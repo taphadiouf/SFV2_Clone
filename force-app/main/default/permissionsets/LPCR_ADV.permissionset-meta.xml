@@ -2396,6 +2396,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contract.LPCR_Indexation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Event.LPCR_Abouti__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -10194,6 +10199,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_Indexation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_OptionNumber__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
