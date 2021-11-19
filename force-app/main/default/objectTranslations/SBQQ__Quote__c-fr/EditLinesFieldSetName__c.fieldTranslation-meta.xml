@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Field set --></label>
+    <name>EditLinesFieldSetName__c</name>
+    <picklistValues>
+        <masterLabel>B2C</masterLabel>
+        <translation><!-- B2C --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>B2C_Amendment</masterLabel>
+        <translation><!-- B2C_Amendment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>LPCR_Amendment</masterLabel>
+        <translation><!-- LPCR_Amendment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Referencement</masterLabel>
+        <translation><!-- Referencement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Referencement_amendment</masterLabel>
+        <translation><!-- Referencement_amendment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SBQQ__LineEditor</masterLabel>
+        <translation><!-- SBQQ__LineEditor --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
