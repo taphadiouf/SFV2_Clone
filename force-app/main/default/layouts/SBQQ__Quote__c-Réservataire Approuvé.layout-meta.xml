@@ -175,7 +175,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>SBQQ__NetAmount__c</field>
+                <field>LPCR_PGFDossierRollup__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
@@ -489,7 +489,11 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
+<<<<<<< HEAD
+        <masterLabel>00h1j000003MWC9</masterLabel>
+=======
         <masterLabel>00h1j0000031LRM</masterLabel>
+>>>>>>> c287a50b95a9c46864475df895c3ee4c7a97a8ae
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
