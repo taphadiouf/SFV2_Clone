@@ -66,11 +66,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>IsProfilePhotoActive</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>EmailEncodingKey</field>
             <table>User</table>
         </columns>
@@ -166,11 +161,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>IsSystemControlled</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Extension</field>
             <table>User</table>
         </columns>
@@ -232,11 +222,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Individual</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>IsPortalSelfRegistered</field>
             <table>User</table>
         </columns>
         <columns>
@@ -645,11 +630,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>IsPrivate</field>
-            <table>User.Activity$OwnerId</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>IsVisibleInSelfService</field>
             <table>User.Activity$OwnerId</table>
         </columns>
         <columns>
