@@ -1,0 +1,46 @@
+# Unique name for this workflow
+name: INT_Dev
+
+# Workflow starts when receiving new PR to the branch
+on:
+  pull_request:
+    branches: [ cidcd/workAction ]
+
+# Jobs to be executed
+jobs:
+    int-pipeline:
+        runs-on: self-hosted
+        steps:
+            # Checkout the source code
+            - name: 'Checkout source code'
+              uses: actions/checkout@v2
+              with:
+                  ref: ${{ github.event.client_payload.ref }}
+                  
+                  
+            # Install Salesforce CLI
+            - name: 'Install Salesforce CLI'
+              run: echo "$HOME/sfdx/bin" >> $GITHUB_PATH
+
+            # Store secret for the org
+            - name: 'Populate auth file with secret code'
+              shell: bash
+              run: |
+                  echo ${{ secrets.INT_ORG}} > ./INT_ORG.txt
+                  secretFileSize=$(wc -c "./INT_ORG.txt" | awk '{print $1}')
+                  if [ $secretFileSize == 1 ]; then
+                      echo "Missing secret code. Is this workflow running on a fork?";
+                      exit 1;
+                  fi
+
+            # Authenticate the org
+            - name: 'Authenticate the org'
+              run: sfdx auth:sfdxurl:store -f ./INT_ORG.txt -a INT_ORG
+
+            # Remove auth file
+            - name: 'Remove auth file'
+              run: rm -f ./INT_ORG.txt
+
+            # Deploy the source code
+            - name: 'Deploy to the org'
+              run: 'sfdx force:source:deploy --sourcepath ./force-app/main/default -u INT_ORG'
