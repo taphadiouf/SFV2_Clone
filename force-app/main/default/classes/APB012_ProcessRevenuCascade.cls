@@ -3,6 +3,7 @@
 * @date 21/07/2020
 * @Description Batch for ProcessRevenuCascade
 */
+//a tester avec date de but de facture 1  du mois 
 global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,Schedulable{
     
     final String ClassName = APB012_ProcessRevenuCascade.class.getName();
@@ -14,7 +15,7 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
 
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
 
-        return Database.getQueryLocator([select id,LPCR_ProcessRevenuCascade__c from account where LPCR_ProcessRevenuCascade__c = true]);
+        return Database.getQueryLocator([select id,LPCR_ProcessRevenuCascade__c from account where LPCR_ProcessRevenuCascade__c = true and id ='0013O00000nLkVUQA0']);
     }
     
     global void execute(Database.BatchableContext BC, List<Account> scope) {
@@ -221,91 +222,107 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
             PAD.log(ClassName, 'execute', '---------------------------------- ');
             PAD.log(ClassName, 'execute', '--------------- STEP 2 ----------- ');
             PAD.log(ClassName, 'execute', '---------------------------------- ');
-
-            List<blng__CreditNoteLine__c> creditNoteLineList = [SELECT Id,blng__CreditNote__c, blng__CreditNote__r.blng__Status__c, blng__InvoiceLine__r.blng__OrderProduct__c 
-                                                                FROM blng__CreditNoteLine__c 
-                                                                WHERE /*blng__CreditNote__r.blng__Status__c = 'Posted' AND*/ blng__InvoiceLine__r.blng__OrderProduct__c IN: orderLineIds];
-
-            PAD.log(ClassName, 'execute', 'STEP 2 - creditNoteLineList size : '+ creditNoteLineList.size());
-            PAD.log(ClassName, 'execute', 'STEP 2 - creditNoteLineList:' + creditNoteLineList);
+            //pdo start
+            // // List<blng__CreditNoteLine__c> creditNoteLineList = [SELECT Id,blng__CreditNote__c, blng__CreditNote__r.blng__Status__c, blng__InvoiceLine__r.blng__OrderProduct__c 
+            // //                                                     FROM blng__CreditNoteLine__c 
+            // //                                                     WHERE /*blng__CreditNote__r.blng__Status__c = 'Posted' AND*/ blng__InvoiceLine__r.blng__OrderProduct__c IN: orderLineIds];
+            List<LPCR_Avoir__c> creditNoteLineList = [SELECT 		id	from LPCR_Avoir__c	where LPCR_LigneFacture__r.blng__OrderProduct__c IN: orderLineIds							];
+            SYstem.debug('list avoir '+creditNoteLineList);
+            // PAD.log(ClassName, 'execute', 'STEP 2 - creditNoteLineList size : '+ creditNoteLineList.size());
+            // PAD.log(ClassName, 'execute', 'STEP 2 - creditNoteLineList:' + creditNoteLineList);
             
-            if(creditNoteLineList.size() > 0){
+            // if(creditNoteLineList.size() > 0){
 
-                Set<Id> creditNoteLineIdSet = UM003_TypeManager.getIdsOfListObjects(creditNoteLineList);
+            //     Set<Id> creditNoteLineIdSet = UM003_TypeManager.getIdsOfListObjects(creditNoteLineList);
 
-                PAD.log(ClassName, 'execute', 'STEP 2 - creditNoteLineIdSet :'+creditNoteLineIdSet);
-
-                list<AggregateResult> step2GroupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount,blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c groupId 
-                                                                FROM blng__RevenueTransaction__c 
-                                                                WHERE blng__CreditNoteLine__c != null AND blng__CreditNoteLine__c In :creditNoteLineIdSet AND blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' 
-                                                                GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c
-                                                                ORDER By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c
-                                                            ];
+            //     PAD.log(ClassName, 'execute', 'STEP 2 - creditNoteLineIdSet :'+creditNoteLineIdSet);
+            //     //pdo 19 nov
+            //     // list<AggregateResult> step2GroupedResults = [SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(blng__RevenueAmount__c) amount,blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c groupId 
+            //     //                                                 FROM blng__RevenueTransaction__c 
+            //     //                                                 WHERE blng__CreditNoteLine__c != null AND blng__CreditNoteLine__c In :creditNoteLineIdSet AND blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' 
+            //     //                                                 GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c
+            //     //                                                 ORDER By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__CreditNoteLine__r.blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c
+            //     //                                             ];
+            //     // list<AggregateResult> step2GroupedResults =[SELECT LPCR_LigneFacture__r.blng__OrderProduct__r.blng__GroupId__c rvp, SUM(LPCR_Montant__c) amount from LPCR_Avoir__c where LPCR_Facture__c IN: invoiceIdsSet GROUP BY LPCR_LigneFacture__r.blng__OrderProduct__r.blng__GroupId__c
+            //     // Order By LPCR_LigneFacture__r.blng__OrderProduct__r.blng__GroupId__c];
+            //     list<AggregateResult> step2GroupedResults=[SELECT blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c rvp, SUM(LPCR_MontantBascule__c) amount, 
+            //     SUM(blng__OrderProduct__r.Quantity) nbPlace, SUM(LPCR_PrixAnnuel__c) totalPrixAnnuel,
+            //     MAX(LPCR_NombreMois__c) nombreMois, blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c contract,
+            //     blng__OrderProduct__r.blng__GroupId__c groupId,blng__OrderProduct__r.Blng__LegalEntity__c legalEntity,
+            //     blng__OrderProduct__r.LPCR_Creche__c creche 
+            // FROM blng__RevenueTransaction__c 
+            // WHERE blng__OrderProduct__c != null AND blng__OrderProduct__c In :orderLineIds AND LPCR_MontantBascule__c != null AND
+            // blng__OrderProduct__r.SBQQ__ChargeType__c != 'One-Time' 
+            // GROUP BY blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c ,
+            // blng__OrderProduct__r.blng__GroupId__c,blng__OrderProduct__r.Blng__LegalEntity__c,blng__OrderProduct__r.LPCR_Creche__c 
+            // Order By blng__RevenueFinancePeriod__r.blng__PeriodStartDate__c,blng__Account__c,blng__OrderProduct__r.SBQQ__Contract__c ,
+            // blng__OrderProduct__r.blng__GroupId__c,blng__OrderProduct__r.Blng__LegalEntity__c,blng__OrderProduct__r.LPCR_Creche__c];
                 
-                Map<String, double> step2AggregateAmountMap = new Map<String, double>();
-                PAD.log(ClassName, 'execute', 'STEP 2 - step2GroupedResults.size()==== ' + step2GroupedResults.size());
-                PAD.logAllList(ClassName, 'execute', 'STEP 2 - step2GroupedResults',step2GroupedResults);
+            //     Map<String, double> step2AggregateAmountMap = new Map<String, double>();
+            //     PAD.log(ClassName, 'execute', 'STEP 2 - step2GroupedResults.size()==== ' + step2GroupedResults.size());
+            //     PAD.logAllList(ClassName, 'execute', 'STEP 2 - step2GroupedResults',step2GroupedResults);
                 
-                for (AggregateResult ar : step2GroupedResults) {
+            //     for (AggregateResult ar : step2GroupedResults) {
 
-                    PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART 0');
+            //         PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART 0');
                     
-                    // Create the Revenue Waterfall records or update the existing ones
-                    String groupId = String.valueOf(ar.get('groupId'));
-                    Double amount = Double.valueOf(ar.get('amount'));
+            //         // Create the Revenue Waterfall records or update the existing ones
+            //         String groupId = String.valueOf(ar.get('groupId'));
+            //         Double amount = Double.valueOf(ar.get('amount'));
                     
-                    PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - groupId:' + groupId);
-                    PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - amount:' + amount);
+            //         PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - groupId:' + groupId);
+            //         PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - amount:' + amount);
 
-                    if (String.isNotBlank(groupId)) {
+            //         if (String.isNotBlank(groupId)) {
 
-                        if (!step2AggregateAmountMap.containsKey(groupId)) {
-                            step2AggregateAmountMap.put(groupId,amount);
-                        } else {
-                            step2AggregateAmountMap.put(groupId,step2AggregateAmountMap.get(groupId)+amount);
-                        }
-                    }
+            //             if (!step2AggregateAmountMap.containsKey(groupId)) {
+            //                 step2AggregateAmountMap.put(groupId,amount);
+            //             } else {
+            //                 step2AggregateAmountMap.put(groupId,step2AggregateAmountMap.get(groupId)+amount);
+            //             }
+            //         }
                     
                     
-                    Boolean containsGroupId = revenueCascadeMap.keySet().Contains(groupId);
-                    PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - revenueCascadeMap.keySet().Contains(groupId):' + containsGroupId);
+            //         Boolean containsGroupId = revenueCascadeMap.keySet().Contains(groupId);
+            //         PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - revenueCascadeMap.keySet().Contains(groupId):' + containsGroupId);
 
-                    PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - String.valueOf(ar.get(rvp):' + String.valueOf(ar.get('rvp')));
-                    PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - String.valueOf(ar.get(rvp):' + ar.get('rvp'));
+            //         PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - String.valueOf(ar.get(rvp):' + String.valueOf(ar.get('rvp')));
+            //         PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - String.valueOf(ar.get(rvp):' + ar.get('rvp'));
                                         
-                    if (containsGroupId) {
-                        PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - revenueCascadeMap.get(groupId).keySet():' + revenueCascadeMap.get(groupId).keySet());
-                    }
+            //         if (containsGroupId) {
+            //             PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART I - revenueCascadeMap.get(groupId).keySet():' + revenueCascadeMap.get(groupId).keySet());
+            //         }
                     
-                    PAD.log(ClassName, 'execute', 'STEP 2 - group id ' + groupId);
+            //         PAD.log(ClassName, 'execute', 'STEP 2 - group id ' + groupId);
 
-                    String queryRvpResult = String.valueOf(ar.get('rvp'));
-                    String stDate = '';
+            //         String queryRvpResult = String.valueOf(ar.get('rvp'));
+            //         String stDate = '';
                 
-                    if(String.isNotBlank(queryRvpResult)){
-                        stDate = queryRvpResult.split(' ')[0];	
-                    }	
+            //         if(String.isNotBlank(queryRvpResult)){
+            //             stDate = queryRvpResult.split(' ')[0];	
+            //         }	
 
-                    // Create the Revenue Waterfall records or update the existing ones
-                    if (revenueCascadeMap.keySet().Contains(groupId) && revenueCascadeMap.get(groupId).keySet().Contains(stDate)) {
+            //         // Create the Revenue Waterfall records or update the existing ones
+            //         if (revenueCascadeMap.keySet().Contains(groupId) && revenueCascadeMap.get(groupId).keySet().Contains(stDate)) {
 
-                        PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART II');
-                        LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(groupId).get(stDate);
-                        updateRevCascade.LPCR_CreditNoteLineAggregation__c = amount;
+            //             PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART II');
+            //             LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(groupId).get(stDate);
+            //             updateRevCascade.LPCR_CreditNoteLineAggregation__c = amount;
 
-                        if(step2AggregateAmountMap.keySet().Contains(groupId)){
+            //             if(step2AggregateAmountMap.keySet().Contains(groupId)){
 
-                            PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART III :' + step1AggregateAmountMap.get(groupId));
-                            updateRevCascade.LPCR_CreditNoteRevenue__c = step1AggregateAmountMap.get(groupId); //aggregateAmount;
-                        }
+            //                 PAD.log(ClassName, 'execute', 'STEP 2 - Credit Note Line Management - PART III :' + step1AggregateAmountMap.get(groupId));
+            //                 updateRevCascade.LPCR_CreditNoteRevenue__c = step1AggregateAmountMap.get(groupId); //aggregateAmount;
+            //             }
                         
-                        upsertRevenueCascadeList.add(updateRevCascade);
-                    }
-                }
-            }
-            if(upsertRevenueCascadeList.size() > 0){
-                upsert upsertRevenueCascadeList;
-            }	
+            //             upsertRevenueCascadeList.add(updateRevCascade);
+            //         }
+            //     }
+            // }
+            // if(upsertRevenueCascadeList.size() > 0){
+            //     upsert upsertRevenueCascadeList;
+            // }	
+            //PDO end
             
             upsertRevenueCascadeList = new List<LPCR_RevenueCascade__c>();
             
@@ -405,19 +422,22 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
             
                 upsertRevenueCascadeList = new List<LPCR_RevenueCascade__c>();
                 Map<String,Double> creditNoteInvoicedAmountMap = new Map<String,Double>();
-                Set<String> creditNoteIdsSet = UM003_TypeManager.getFieldsOfListObjects(creditNoteLineList,'blng__CreditNote__c');
-                
+                Set<String> creditNoteIdsSet = UM003_TypeManager.getFieldsOfListObjects(creditNoteLineList,'Id');
+                System.debug('##pdo note cred '+creditNoteIdsSet);
                 if(creditNoteIdsSet.size() > 0) {
 
                     // this will give the Aggregated sum, group by field present on the order product
-                    list<AggregateResult> creditNoteLineGroupedResults = [SELECT blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c rvp, SUM(blng__Subtotal__c) amount 
-                                                            FROM blng__CreditNoteLine__c 
-                                                            WHERE 
-                                                            blng__CreditNote__c IN: creditNoteIdsSet
-                                                            AND 
-                                                            blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' 
-                                                            GROUP BY blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c 
-                                                            Order By blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c];
+                    // list<AggregateResult> creditNoteLineGroupedResults = [SELECT blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c rvp, SUM(blng__Subtotal__c) amount 
+                    //                                         FROM blng__CreditNoteLine__c 
+                    //                                         WHERE 
+                    //                                         blng__CreditNote__c IN: creditNoteIdsSet
+                    //                                         AND 
+                    //                                         blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' 
+                    //                                         GROUP BY blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c 
+                    //                                         Order By blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c];
+                    //PDO 18/11
+                    list<AggregateResult> creditNoteLineGroupedResults =[SELECT LPCR_LigneFacture__r.blng__OrderProduct__r.blng__GroupId__c rvp, SUM(LPCR_Montant__c) amount from LPCR_Avoir__c where LPCR_Facture__c IN: invoiceIdsSet  AND  LPCR_LigneFacture__r.blng__ChargeType__c != 'One-Time' GROUP BY LPCR_LigneFacture__r.blng__OrderProduct__r.blng__GroupId__c
+                                                                            Order By LPCR_LigneFacture__r.blng__OrderProduct__r.blng__GroupId__c];
                     
                     PAD.log(ClassName, 'execute', 'STEP 3 - creditNoteLineGroupedResults.size()==== ' + creditNoteLineGroupedResults.size());
                     
@@ -430,17 +450,20 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                     }
                     
                     // this will give the Aggregated Min and Max Date, group by field present on the order product
-                    list<AggregateResult> creditNoteLineGroupedResults2 = [SELECT blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c rvp, 
-                                                                                Min(blng__StartDate__c) minStartDate, Max(blng__EndDate__c) maxEndDate 
-                                                                            FROM blng__CreditNoteLine__c 
-                                                                            WHERE 
-                                                                            blng__CreditNote__c IN: creditNoteIdsSet
-                                                                            AND 
-                                                                            blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' 
-                                                                            AND
-                                                                            blng__Subtotal__c >= 0
-                                                                            GROUP BY blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c 
-                                                                            Order By blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c];
+                    // list<AggregateResult> creditNoteLineGroupedResults2 = [SELECT blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c rvp, 
+                    //                                                             Min(blng__StartDate__c) minStartDate, Max(blng__EndDate__c) maxEndDate 
+                    //                                                         FROM blng__CreditNoteLine__c 
+                    //                                                         WHERE 
+                    //                                                         blng__CreditNote__c IN: creditNoteIdsSet
+                    //                                                         AND 
+                    //                                                         blng__InvoiceLine__r.blng__ChargeType__c != 'One-Time' 
+                    //                                                         AND
+                    //                                                         blng__Subtotal__c >= 0
+                    //                                                         GROUP BY blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c 
+                    //                                                         Order By blng__InvoiceLine__r.blng__OrderProduct__r.blng__GroupId__c];
+                    list<AggregateResult> creditNoteLineGroupedResults2 =[SELECT LPCR_LigneFacture__r.blng__OrderProduct__r.blng__GroupId__c rvp, SUM(LPCR_Montant__c) amount, Min(LPCR_DateFacture__c) minStartDate, Max(LPCR_DateFinAvoir__c) maxEndDate  from LPCR_Avoir__c where LPCR_Facture__c IN: invoiceIdsSet  AND  LPCR_LigneFacture__r.blng__ChargeType__c != 'One-Time' 
+                    GROUP BY LPCR_LigneFacture__r.blng__OrderProduct__r.blng__GroupId__c
+                                                                                                Order By LPCR_LigneFacture__r.blng__OrderProduct__r.blng__GroupId__c];
                     
                     PAD.log(ClassName, 'execute', 'STEP 3 - creditNoteLineGroupedResults2.size()==== ' + creditNoteLineGroupedResults2.size());
                     
@@ -449,13 +472,22 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
                         PAD.log(ClassName, 'execute', 'STEP 3 - blng__GroupId__c id is : ' + ar.get('rvp'));
                         PAD.log(ClassName, 'execute', 'STEP 3 - minStartDate : ' + ar.get('minStartDate'));
                         PAD.log(ClassName, 'execute', 'STEP 3 - maxEndDate : ' + ar.get('maxEndDate'));
-
-                        if(revenueCascadeMap.containsKey(String.valueOf(ar.get('rvp'))) && revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).containsKey(String.valueOf(ar.get('minStartDate')))) {
-
-                            LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).get(String.valueOf(ar.get('minStartDate')));
+                        String minDate='';
+                        String minDateTrimmed='';
+                        minDate=String.valueof(ar.get('minStartDate'));
+                        if(minDate.contains(' ')){
+                            List<String> lst=minDate.split(' ');
+                        minDateTrimmed=lst[0];
+                            
+                        }
+                       
+                        if(revenueCascadeMap.containsKey(String.valueOf(ar.get('rvp'))) && revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).containsKey(minDateTrimmed)) {
+System.debug('pdo con'+creditNoteInvoicedAmountMap);
+                            System.debug('pdo con'+creditNoteInvoicedAmountMap);
+                            LPCR_RevenueCascade__c updateRevCascade = revenueCascadeMap.get(String.valueOf(ar.get('rvp'))).get(minDateTrimmed);
 
                             if(creditNoteInvoicedAmountMap.containsKey(String.valueOf(ar.get('rvp')))) {
-                                updateRevCascade.LPCR_MontantFacture__c = creditNoteInvoicedAmountMap.get(String.valueOf(ar.get('rvp')));
+                                updateRevCascade.LPCR_CreditNoteRevenue__c = creditNoteInvoicedAmountMap.get(String.valueOf(ar.get('rvp')));
                                 upsertRevenueCascadeList.add(updateRevCascade);
                             }
                         }
