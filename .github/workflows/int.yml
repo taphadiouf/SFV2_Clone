@@ -9,19 +9,23 @@ on:
 # Jobs to be executed
 jobs:
     int-pipeline:
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         steps:
+            # Install Salesforce CLI
+            - name: 'Install Salesforce CLI'
+              run: |
+                  wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-linux-x64.tar.xz
+                  mkdir ~/sfdx
+                  tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1
+                  echo "$HOME/sfdx/bin" >> $GITHUB_PATH
+                  ~/sfdx/bin/sfdx version
             # Checkout the source code
             - name: 'Checkout source code'
               uses: actions/checkout@v2
               with:
                   ref: ${{ github.event.client_payload.ref }}
                   
-                  
-            # Install Salesforce CLI
-            - name: 'Install Salesforce CLI'
-              run: echo "$HOME/sfdx/bin" >> $GITHUB_PATH
-
+             
             # Store secret for the org
             - name: 'Populate auth file with secret code'
               shell: bash
