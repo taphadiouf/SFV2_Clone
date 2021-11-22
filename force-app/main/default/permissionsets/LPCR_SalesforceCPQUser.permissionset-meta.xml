@@ -3251,7 +3251,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contact.LPCR_StatutPreinscription__c</field>
+        <field>Contact.LPCR_PreinscriptionStatut__c</field>
         <readable>true</readable>
     </fieldPermissions> 
     <fieldPermissions>
@@ -3862,6 +3862,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Contract.TECH_AjoutFraisGestion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract.LPCR_Indexation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9491,6 +9496,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_IndexationQuote__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__QuoteProcess__c.SBQQ__Default__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -10917,6 +10927,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.SubmittedUser__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_Indexation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

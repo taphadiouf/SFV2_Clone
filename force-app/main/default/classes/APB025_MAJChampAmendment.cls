@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Widaad Papauretty
+ * @group             : 
+ * @last modified on  : 11-16-2021
+ * @last modified by  : Widaad Papauretty
+**/
 global class APB025_MAJChampAmendment implements Database.Batchable<sObject>,Database.AllowsCallouts,Schedulable {
     //Batch to be executed for update of Date amendement for uplift to be included in desired date 
     String query;
@@ -10,6 +17,9 @@ global class APB025_MAJChampAmendment implements Database.Batchable<sObject>,Dat
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
         Id contratResaID  = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName(Label.LPCR_Contract, Label.LPCR_Reservataire);
         //select Contract for which amendement indexation needs to be created
+        List<Contract> lstContracts = [Select id ,LPCR_IndexationConvenue__c,LPCR_DateRevisionPrix__c,LPCR_InitAutoAvecDateDebut__c,SBQQ__RenewalUpliftRate__c,SBQQ__Order__c From Contract where  LPCR_DateRevisionPrix__c !=null  and RecordTypeId =:contratResaID];
+        
+        System.debug('lstContracts: '+lstContracts);
         return Database.getQueryLocator([Select id ,LPCR_IndexationConvenue__c,LPCR_DateRevisionPrix__c,LPCR_InitAutoAvecDateDebut__c,SBQQ__RenewalUpliftRate__c,SBQQ__Order__c From Contract where  LPCR_DateRevisionPrix__c !=null  and RecordTypeId =:contratResaID]);
                                         
     }
@@ -76,7 +86,7 @@ global class APB025_MAJChampAmendment implements Database.Batchable<sObject>,Dat
         boolean isBatchJobRunning = UM004_BatchUtility.isBatchJobRunning('APB023_CreateIndexationAmendment');
         // check if there is any open place to schedule the class
         boolean isJobQueueFull = UM004_BatchUtility.isBatchJobQueueFull();
-        if(!isBatchJobRunning && !isJobQueueFull && !Test.isRunningTest()) {
+        if(!isBatchJobRunning && !isJobQueueFull || !Test.isRunningTest()) {
             PAD.log(ClassName, 'finish', 'launching APB023_CreateIndexationAmendment');
 		    Database.executeBatch(new APB023_CreateIndexationAmendment(), 1);
         }

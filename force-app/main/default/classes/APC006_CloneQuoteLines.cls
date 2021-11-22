@@ -32,7 +32,7 @@ public with sharing class APC006_CloneQuoteLines {
             idToQuoteLineMap = new Map<Id,SBQQ__QuoteLine__c> ();
 
             String query = 'SELECT  LPCR_IndexationCustom__c,SBQQ__Quote__r.SBQQ__Type__c, SBQQ__UpgradedSubscription__r.SBQQ__NetPrice__c, ' +
-                ' SBQQ__UpgradedSubscription__r.SBQQ__CustomerPrice__c, SBQQ__UpgradedSubscription__r.SBQQ__RegularPrice__c, ';
+                ' SBQQ__UpgradedSubscription__r.SBQQ__CustomerPrice__c, SBQQ__UpgradedSubscription__r.SBQQ__RegularPrice__c, LPCR_RemiseSum__c, ';
 
             List <String> fieldsList = new List < String > ();
             for (Schema.FieldSetMember f: SObjectType.SBQQ__QuoteLine__c.FieldSets.LPCR_Tech_FieldSet.getFields()) {
