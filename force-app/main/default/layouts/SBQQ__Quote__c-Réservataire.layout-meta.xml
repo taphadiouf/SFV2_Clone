@@ -278,16 +278,7 @@
                 <field>LPCR_MethodeRenouvellement__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_DateDebut__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LPCR_DateFin__c</field>
-            </layoutItems>
-        </layoutColumns>
+        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -483,7 +474,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1x000002ia8W</masterLabel>
+        <masterLabel>00h5E000001KNAQ</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
