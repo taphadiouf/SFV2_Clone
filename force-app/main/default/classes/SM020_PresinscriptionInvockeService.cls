@@ -82,7 +82,7 @@ public class SM020_PresinscriptionInvockeService {
                 body = body.replace('{!LPCR_Preinscription__c.LPCR_ContactInscriptionsCreche__c}','');
                 body = body.replace('{!LPCR_Preinscription__c.LPCR_AdresseCreche__c}','');
 
-                callout(UserInfo.getUserEmail(), preinscription.LPCR_Rep1Email__c, body, template.subject, param.flagDocuments, preinscription.LPCR_Creche__c);
+                callout(UserInfo.getUserEmail(), preinscription.LPCR_Rep1Email__c, body, template.subject, param.flagDocuments, preinscription.LPCR_Creche__r.LPCR_IdExterne_Compte__c);
             
             } catch (Exception e) {
                 system.debug('Error is : ' + e.getMessage() + '|Line:' + e.getLineNumber());
