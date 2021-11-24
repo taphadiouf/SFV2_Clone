@@ -1193,9 +1193,4 @@ public with sharing class SM008_QuoteServices {
                 }
             }
     }
-<<<<<<< HEAD
 }
-=======
-    
-}
->>>>>>> origin/developEvoB2bSC23_CorrectionDuree
