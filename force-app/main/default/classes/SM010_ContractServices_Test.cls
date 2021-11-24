@@ -150,15 +150,16 @@ public class SM010_ContractServices_Test {
             Test.startTest();
 
             Account acc = [SELECT Id, name FROM Account WHERE name = 'test'];
-
+            Opportunity opp = [SELECT Id, name FROM Opportunity WHERE name = 'test'];
             acc.RecordTypeId = ACCOUNT_ENTREPRISE_RT_ID;
             update acc;
+
             blng__InvoicePlan__c invoicePlan = new blng__InvoicePlan__c(blng__BillingScheduleCreation__c = 'Order Product Activation', blng__Active__c = true);
             insert invoicePlan;
             SBQQ__Quote__c quote = Database.query(
                 'SELECT Id,	SBQQ__Ordered__c, LPCR_DureeContratJour__c,SBQQ__SalesRep__c, LPCR_ResponsableADV__c, LPCR_ResponsableServiceFamille__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,SBQQ__StartDate__c,SBQQ__EndDate__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__Account__c = \'' +
                 acc.id +
-                '\' LIMIT 1'
+                '\'AND SBQQ__Opportunity2__c = \''+opp.id+'\''
             );
 
             Order order = [
@@ -307,23 +308,22 @@ public class SM010_ContractServices_Test {
             Date lastMonth = Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day() + 1);
 
             Account acc = [SELECT Id, name FROM Account WHERE name = 'test'];
+            Opportunity opp = [SELECT Id, name FROM Opportunity WHERE name = 'test'];
+            Opportunity opp2 = [SELECT Id, name FROM Opportunity WHERE name = 'test2'];
 
             SBQQ__Quote__c quote = Database.query(
-                'SELECT Id,LPCR_DureeContratJour__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\''
+                'SELECT Id,LPCR_DureeContratJour__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE  SBQQ__Account__c = \''+acc.id+'\' AND SBQQ__Opportunity2__c = \''+opp.id+'\''
+            );
             Order order = Database.query('SELECT Id , Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \'' + quote.Id + '\'');
 
             SBQQ__Quote__c quote2 = Database.query(
-
-                'SELECT Id,LPCR_DureeContratJour__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test2\''
-
+                'SELECT Id,LPCR_DureeContratJour__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__Account__c = \''+acc.id+'\' AND	SBQQ__Opportunity2__c = \''+opp2.id+'\''
             );
             Order order2 = Database.query('SELECT Id , Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \'' + quote2.Id + '\'');
 
             order.SBQQ__Contracted__c = true;
-
             order.Status = 'Activated';
             order.SBQQ__ContractingMethod__c = 'Single Contract';
-
             update order;
 
             Contract contract = null;
@@ -414,15 +414,10 @@ public class SM010_ContractServices_Test {
 
             Date lastMonth = Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day() + 1);
             Account acc = [SELECT Id, name FROM Account WHERE name = 'test'];
-
-            SBQQ__Quote__c quote = Database.query(
-                'SELECT Id,LPCR_DureeContratJour__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\''
-
             Opportunity opp = [SELECT Id, name FROM Opportunity WHERE name = 'test'];
 
             SBQQ__Quote__c quote = Database.query(
                 'SELECT Id,LPCR_DureeContratJour__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__Account__c = \''+acc.id+'\' AND SBQQ__Opportunity2__c = \''+opp.id+'\''
-
             );
             quote.RecordTypeId = QUOTE_Referencement_RT_ID;
             update quote;
@@ -430,10 +425,8 @@ public class SM010_ContractServices_Test {
 
             order.RecordTypeId = Order_Referencement_RT_ID;
             order.SBQQ__Contracted__c = true;
-
             order.Status = 'Activated';
             order.SBQQ__ContractingMethod__c = 'Single Contract';
-
             update order;
 
             Contract contract = null;
@@ -523,10 +516,8 @@ public class SM010_ContractServices_Test {
             Order order = Database.query('SELECT Id , Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \'' + quote.Id + '\'');
 
             order.SBQQ__Contracted__c = true;
-
             order.Status = 'Activated';
             order.SBQQ__ContractingMethod__c = 'Single Contract';
-
             update order;
 
             Contract contract = null;
@@ -631,9 +622,7 @@ public class SM010_ContractServices_Test {
             Id referencementRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract', 'Referencement');
             Id reservataireRecTypeId = EM003_RecordTypeEntity.getRecTypeIdByObjectAndName('Contract', 'Reservataire');
             List<Order> orderLst = [SELECT Id, Name, LPCR_NumeroContrat__c FROM Order WHERE LPCR_NumeroContrat__c != NULL];
-
             System.debug('>>lstorder');
-
             Order order = orderLst.get(0);
             Account acc = [SELECT Id, name FROM Account WHERE name = 'test'];
             Test.startTest();
@@ -670,7 +659,4 @@ public class SM010_ContractServices_Test {
             Test.stopTest();
         }
     }
-
-
 }
-
