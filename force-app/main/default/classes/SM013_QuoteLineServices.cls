@@ -448,8 +448,7 @@ public with sharing class SM013_QuoteLineServices {
         //get existing quote
         for(SBQQ__Quote__c quot :[Select id, LPCR_RemiseCustom__c from SBQQ__Quote__c where id IN:mapQuoteRemiseMontantDevis.keyset() ]){
             //to add verif map 
-        	quoteListToUpdate.add(new SBQQ__Quote__c(id=quot.Id, LPCR_RemiseCustom__c=quot.LPCR_RemiseCustom__c+mapQuoteRemiseMontantDevis.get(quot.Id)));
-    	}
+       quoteListToUpdate.add(new SBQQ__Quote__c(id=quot.Id, LPCR_RemiseCustom__c=quot.LPCR_RemiseCustom__c != null ?quot.LPCR_RemiseCustom__c +mapQuoteRemiseMontantDevis.get(quot.Id) :mapQuoteRemiseMontantDevis.get(quot.Id)));}
         System.debug('##pdot quore to update '+quoteListToUpdate);
         //update quote 
         for(Id key : mapQuoteRemiseMontant.keySet()){
@@ -546,9 +545,23 @@ public with sharing class SM013_QuoteLineServices {
         }
         //set CA on amendment indexation QLI
     }
-    public static void updatePGGlobalQuoteLine(Map<Id,SBQQ__QuoteLine__c> newQuoteLineMap){
+public static void updatePGGlobalQuoteLine(Map<Id,SBQQ__QuoteLine__c> newQuoteLineMap,Map<Id,SBQQ__QuoteLine__c> oldQuoteLineMap){
         for(Id key :newQuoteLineMap.keyset() ){
             newQuoteLineMap.get(key).LPCR_PGFDossier__c=newQuoteLineMap.get(key).SBQQ__NetTotal__c;
+            Decimal currentdiscount=newQuoteLineMap.get(key).SBQQ__AdditionalDiscountAmount__c;
+            System.debug('currentdisocunt '+currentdiscount);
+            System.debug('old field value '+oldQuoteLineMap.get(key).LPCR_RemiseSum__c);
+            System.debug('new field value '+newQuoteLineMap.get(key).LPCR_RemiseSum__c);
+            //change in remise 
+            
+            if(currentdiscount != null && newQuoteLineMap.get(key).SBQQ__AdditionalDiscountAmount__c != oldQuoteLineMap.get(key).SBQQ__AdditionalDiscountAmount__c ){
+                //if(newQuoteLineMap.get(key).LPCR_TypeDeDevis__c !='Quote'){
+                  // newQuoteLineMap.get(key).LPCR_RemiseSum__c=oldQuoteLineMap.get(key).LPCR_RemiseSum__c+newQuoteLineMap.get(key).SBQQ__AdditionalDiscountAmount__c; 
+              //  }else{
+                   newQuoteLineMap.get(key).LPCR_RemiseSum__c=newQuoteLineMap.get(key).SBQQ__AdditionalDiscountAmount__c; 
+                //}
+                
+            }
         }
     }
 

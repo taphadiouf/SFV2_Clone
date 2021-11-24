@@ -2260,7 +2260,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Account.LPCR_IdExterne_Compte__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3251,7 +3251,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contact.LPCR_StatutPreinscription__c</field>
+        <field>Contact.LPCR_PreinscriptionStatut__c</field>
         <readable>true</readable>
     </fieldPermissions> 
     <fieldPermissions>
@@ -3866,6 +3866,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contract.LPCR_Indexation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_BaremeCAF__c.LPCR_DateDebut__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4015,7 +4020,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>LPCR_ModificationEntrante__c.LPCR_ExternalId__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5760,7 +5765,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>OrderItem.blng__UniqueId__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -9491,6 +9496,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_IndexationQuote__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__QuoteProcess__c.SBQQ__Default__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -9971,6 +9981,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_ByPassPriceRule__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_CheckboxTechnique__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -10251,6 +10266,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_MontantIndexation2__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_MontantIndexation__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -10517,11 +10537,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_ligneBerceauPlanFacturation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SBQQ__Quote__c.LPCR_ByPassPriceRule__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -10912,6 +10927,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.SubmittedUser__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_Indexation__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

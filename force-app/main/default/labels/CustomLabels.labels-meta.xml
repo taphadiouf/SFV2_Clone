@@ -190,6 +190,13 @@
         <value>Contact</value>
     </labels>
     <labels>
+        <fullName>LPCR_ContactColl</fullName>
+        <language>fr</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_ContactColl</shortDescription>
+        <value>Collaborateur</value>
+    </labels>
+    <labels>
         <fullName>LPCR_ContactEnfant</fullName>
         <language>en_US</language>
         <protected>false</protected>
@@ -307,6 +314,13 @@
         <protected>false</protected>
         <shortDescription>LPCR_CrecheWA</shortDescription>
         <value>Crèche</value>
+    </labels>
+    <labels>
+        <fullName>LPCR_Creche_externe</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LPCR_Creche_externe</shortDescription>
+        <value>Creche_Externe</value>
     </labels>
     <labels>
         <fullName>LPCR_DEF</fullName>

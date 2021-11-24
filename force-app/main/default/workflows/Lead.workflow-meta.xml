@@ -11,35 +11,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/LPCR_AlerteNonTraitementLead</template>
-    </alerts>
-    <alerts>
-        <fullName>LPCR_AlerteTraitementLead</fullName>
-        <description>Alerte non traitement du lead</description>
-        <protected>false</protected>
-        <recipients>
-            <field>LPCR_ManagerEmail__c</field>
-            <type>email</type>
-        </recipients>
-        <recipients>
-            <type>owner</type>
-        </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>unfiled$public/LPCR_AlerteNonTraitementLead</template>
-    </alerts>
-    <alerts>
-        <fullName>LPCR_AlerteTraitementLimiteLead</fullName>
-        <description>Alerte non traitement du lead</description>
-        <protected>false</protected>
-        <recipients>
-            <field>LPCR_ManagerEmail__c</field>
-            <type>email</type>
-        </recipients>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
         <template>unfiled$public/LPCR_AlerteNonTraitementLead</template>
     </alerts>
     <alerts>
@@ -63,25 +35,6 @@
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <rules>
-        <fullName>WF_AlerteDelaiLead</fullName>
-        <actions>
-            <name>LPCR_AlerteTraitementLimiteLead</name>
-            <type>Alert</type>
-        </actions>
-        <active>true</active>
-        <formula>RecordType.DeveloperName =&quot;Famille&quot;
-	&amp;&amp;
-	ISPICKVAL(Status,&quot;Nouveau&quot;)
- &amp;&amp;
-	LPCR_DateLimiteCommerce__c = TODAY() + 1</formula>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-        <workflowTimeTriggers>
-            <offsetFromField>Lead.LPCR_DateLimiteCommerce__c</offsetFromField>
-            <timeLength>-1</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-    </rules>
-    <rules>
         <fullName>WF_ManagerEmail</fullName>
         <actions>
             <name>Manager_Email</name>
@@ -92,6 +45,6 @@
             <field>Lead.OwnerId</field>
             <operation>notEqual</operation>
         </criteriaItems>
-        <triggerType>onCreateOnly</triggerType>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
 </Workflow>

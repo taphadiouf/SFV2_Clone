@@ -4,7 +4,8 @@
  * @description PAD Framework used for byPass, log and limit monitoring
  */
 public class PAD {
-    
+    // PRA 12-11-2021 variable qui permet de n'est pas executer le trigger AccountRelationContact lorsque on creer un contact.
+    public static boolean byPassTriggerAccContRel = false;
     //Used In order to know if user can by pass a class given in parameter
     public static boolean canTrigger(String ApexName) {
         

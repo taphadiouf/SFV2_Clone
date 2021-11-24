@@ -20,12 +20,16 @@ public with sharing class UM002_TestDataFactory {
 	private static final Map<String, Id> defaultRecTypeCache = new Map<String, Id>();
 	private static final Map<String, Id> referenceObjectCache = new Map<String, Id>();
     private static final Map<String, Schema.SObjectType> GlobalDescribe = Schema.getGlobalDescribe();
-
+    
     private static final String PERMISSIONSET_COMMERCIAL = 'LPCR_ChargeAffairesGC';
     private static final String PROFILE_NAME_COMMERCIAL = 'Chargé d\'Affaires Grands Comptes';
     private static final String ROLE_DEVELOPER_NAME_COMMERCIAL = 'LPCR_ChargeAffairesGrandsComptes';
+    private static final String ROLE_DEVELOPER_NAME_ADV = 'LPCR_ResponsableADV';
+    private static final String ROLE_DEVELOPER_NAME_SERVICE_FAMILLE = 'LPCR_ChargeRelationFamillesInscriptions';
     private static final String PSET_LICENSE_NAME_CPQ = 'SalesforceCPQ_CPQStandardPerm';
-    private static String ADMIN_PROFILE = 'System Administrator';
+    private static String ADMIN_PROFILE = 'Administrateur système';
+    private static String ADV_PROFILE = 'LPCR_Utilisateur';
+    private static String SERVICE_FAMILLE_PROFILE = 'Chargé de Relation Service Famille';
     
     public static map<String, set<String>> ExcludedFields = new map<String, set<String>>{
 		'All' => new set<String>{'OwnerId', 'LastModifiedById', 'CreatedById', 'LastModifiedDate', 'CreatedDate'},
@@ -414,6 +418,42 @@ newMe.FederationIdentifier = null;
         return usr;
     }
 
+    public static User createADVUser(){
+        String uniqueUserName = 'standarduser' +Integer.valueof((Math.random() * 10000))+ DateTime.now().millisecond() + '@testorg.com'; 
+        User newADVUser = new User(
+            Alias = 'testusr', 
+            Email = uniqueUserName,
+            EmailEncodingKey = 'UTF-8', 
+            LastName = 'Testing', 
+            LanguageLocaleKey = 'en_US',
+            LocaleSidKey = 'en_US', 
+            ProfileId = [SELECT Id FROM Profile WHERE Name=:ADV_PROFILE].Id,
+            UserRoleId = [SELECT Id FROM UserRole WHERE DeveloperName =: ROLE_DEVELOPER_NAME_ADV].Id,
+            TimeZoneSidKey = 'Europe/Paris',
+            UserName = uniqueUserName);
+            insert newADVUser;
+        
+        return newADVUser;
+    }
+
+    public static User createServiceFamilleUser(){
+        String uniqueUserName = 'standarduser' +Integer.valueof((Math.random() * 10000))+ DateTime.now().millisecond() + '@testorg.com'; 
+        User newFamilleUser = new User(
+            Alias = 'testusr', 
+            Email = uniqueUserName,
+            EmailEncodingKey = 'UTF-8', 
+            LastName = 'Testing', 
+            LanguageLocaleKey = 'en_US',
+            LocaleSidKey = 'en_US', 
+            ProfileId = [SELECT Id FROM Profile WHERE Name=:SERVICE_FAMILLE_PROFILE].Id,
+            UserRoleId = [SELECT Id FROM UserRole WHERE DeveloperName =: ROLE_DEVELOPER_NAME_SERVICE_FAMILLE].Id,
+            TimeZoneSidKey = 'Europe/Paris',
+            UserName = uniqueUserName);
+            insert newFamilleUser;
+        
+        return newFamilleUser;
+    }
+
     public static User createUser(Id roleId){
         User usr = null;
 
@@ -718,7 +758,7 @@ newMe.FederationIdentifier = null;
         return prod;
     }
 
-        public static Product2 createProduct(String name){
+    public static Product2 createProduct(String name){
         Product2 prod = new Product2();
         prod.isActive = true;
         prod.Name = name;
@@ -1325,7 +1365,7 @@ newMe.FederationIdentifier = null;
                 RecordTypeId = recTypeId,
                 LPCR_Creche__c = crecheId,
                 SBQQ__StartDate__c = date.today(),
-                SBQQ__EndDate__c = date.newInstance(System.Today().year(), 12, 31)
+                SBQQ__EndDate__c = System.Today().addYears(1)
             );
             quotes.add(tempQuote);
         }

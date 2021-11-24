@@ -31,7 +31,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "REFRES",
-            "LPCR_RefCodeProduit__c": "BerceauPlanFacturation",
             "Name": "Berceau - Plan de Facturation",
             "ProductCode": "BerceauPlanFacturation",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -104,7 +103,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "OptionBerceauMac",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Option Berceau Mac",
             "ProductCode": "OptionBerceauMac",
@@ -176,7 +174,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "REFRES",
-            "LPCR_RefCodeProduit__c": "PlateformePersonnalisee",
             "Name": "Plateforme personnalisée",
             "ProductCode": "PlateformePersonnalisee",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -245,7 +242,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "REFRES",
-            "LPCR_RefCodeProduit__c": "ConferenceParentalite",
             "Name": "Conférence parentalité",
             "ProductCode": "ConferenceParentalite",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -314,7 +310,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "REFRES",
-            "LPCR_RefCodeProduit__c": "AccueilOccasionnelUrgence",
             "Name": "Accueil occasionnel et d’urgence",
             "ProductCode": "AccueilOccasionnelUrgence",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -389,7 +384,6 @@
             "LPCR_FamilyProduct__c": "REF",
             "LPCR_PrixPlancherParisIDF__c": 12000,
             "LPCR_PrixPlancherProvince__c": 10000,
-            "LPCR_RefCodeProduit__c": "BerceauContratCadre",
             "Name": "Berceau Contrat Cadre",
             "ProductCode": "BerceauContratCadre",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -462,7 +456,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "AccueilOccasionnelMac",
             "LPCR_TypeEvenement__c": "EVT_HEURE_OCCASIONNEL",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Accueil occasionnel Mac",
@@ -535,7 +528,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "ALSH",
             "LPCR_TypeEvenement__c": "ALSH",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Accueil Loisirs sans Hébergement",
@@ -610,7 +602,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MACMICRO",
-            "LPCR_RefCodeProduit__c": "Repas",
             "LPCR_TypeEvenement__c": "EVT_NOMBRE_DE_REPAS",
             "Name": "Repas",
             "ProductCode": "Repas",
@@ -682,7 +673,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "AccueilUrgence",
             "LPCR_TypeEvenement__c": "ALSH",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Accueil d'urgence",
@@ -728,73 +718,6 @@
             "attributes": {
                 "type": "Product2",
                 "referenceId": "Product2Ref11"
-            },
-            "blng__BillingRule__r": {
-                "attributes": {
-                    "type": "blng__BillingRule__c",
-                    "url": "/services/data/v53.0/sobjects/blng__BillingRule__c/a1R3O000000PKpBUAW"
-                },
-                "Id": "a1R3O000000PKpBUAW"
-            },
-            "blng__RevenueRecognitionRule__r": {
-                "attributes": {
-                    "type": "blng__RevenueRecognitionRule__c",
-                    "url": "/services/data/v53.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
-                },
-                "Id": "a2A3O0000000yjYUAQ"
-            },
-            "blng__TaxRule__r": {
-                "attributes": {
-                    "type": "blng__TaxRule__c",
-                    "url": "/services/data/v53.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
-                },
-                "Id": "a2I3O00000097n2UAA"
-            },
-            "Family": "B2B",
-            "IsActive": false,
-            "IsArchived": false,
-            "IsDeleted": false,
-            "LPCR_RefCodeProduit__c": "BerceauMairieYerres",
-            "Name": "Berceau - Mairie De Yerres",
-            "ProductCode": "BerceauMairieYerres",
-            "SBQQ__BillingFrequency__c": "Invoice Plan",
-            "SBQQ__BillingType__c": "Advance",
-            "SBQQ__ChargeType__c": "Recurring",
-            "SBQQ__Component__c": false,
-            "SBQQ__ConfigurationEvent__c": "Always",
-            "SBQQ__ConfigurationType__c": "Allowed",
-            "SBQQ__CostEditable__c": false,
-            "SBQQ__CustomConfigurationRequired__c": false,
-            "SBQQ__DefaultQuantity__c": 1,
-            "SBQQ__DescriptionLocked__c": false,
-            "SBQQ__EnableLargeConfiguration__c": false,
-            "SBQQ__ExcludeFromMaintenance__c": false,
-            "SBQQ__ExcludeFromOpportunity__c": false,
-            "SBQQ__ExternallyConfigurable__c": false,
-            "SBQQ__HasConfigurationAttributes__c": false,
-            "SBQQ__HasConsumptionSchedule__c": false,
-            "SBQQ__Hidden__c": false,
-            "SBQQ__HidePriceInSearchResults__c": false,
-            "SBQQ__IncludeInMaintenance__c": false,
-            "SBQQ__NewQuoteGroup__c": false,
-            "SBQQ__NonDiscountable__c": false,
-            "SBQQ__NonPartnerDiscountable__c": false,
-            "SBQQ__Optional__c": false,
-            "SBQQ__PriceEditable__c": true,
-            "SBQQ__PricingMethod__c": "List",
-            "SBQQ__PricingMethodEditable__c": false,
-            "SBQQ__QuantityEditable__c": true,
-            "SBQQ__ReconfigurationDisabled__c": false,
-            "SBQQ__SubscriptionPricing__c": "Fixed Price",
-            "SBQQ__SubscriptionTerm__c": 12,
-            "SBQQ__SubscriptionType__c": "Renewable",
-            "SBQQ__Taxable__c": false,
-            "SystemModstamp": "2021-10-15T12:17:16.000+0000"
-        },
-        {
-            "attributes": {
-                "type": "Product2",
-                "referenceId": "Product2Ref12"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -866,7 +789,7 @@
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref13"
+                "referenceId": "Product2Ref12"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -894,7 +817,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "BerceauMac11Mois",
             "LPCR_Typemensualisation__c": "11",
             "Name": "Accueil MAC \"forfait 11 mois\"",
             "ProductCode": "BerceauMac11Mois",
@@ -940,7 +862,7 @@
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref14"
+                "referenceId": "Product2Ref13"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -970,7 +892,6 @@
             "LPCR_FamilyProduct__c": "RES",
             "LPCR_PrixPlancherParisIDF__c": 12000,
             "LPCR_PrixPlancherProvince__c": 10000,
-            "LPCR_RefCodeProduit__c": "BerceauReservataire",
             "Name": "Berceau Réservataire",
             "ProductCode": "BerceauReservataire",
             "SBQQ__BillingType__c": "Advance",
@@ -1009,7 +930,7 @@
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref15"
+                "referenceId": "Product2Ref14"
             },
             "blng__BillingRule__r": {
                 "attributes": {
@@ -1038,7 +959,6 @@
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MICRO",
             "LPCR_PourcentagePlancherMicro__c": 15,
-            "LPCR_RefCodeProduit__c": "BerceauMicro",
             "Name": "Accueil MICRO \" Parent SOLO\"",
             "ProductCode": "BerceauMicro",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -1083,7 +1003,7 @@
         {
             "attributes": {
                 "type": "Product2",
-                "referenceId": "Product2Ref16"
+                "referenceId": "Product2Ref15"
             },
             "blng__RevenueRecognitionRule__r": {
                 "attributes": {
@@ -1103,9 +1023,74 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LPCR_RefCodeProduit__c": "BerceauMairieAIXENPROVENCE",
             "Name": "Berceau Mairie d'Aix en Provence",
             "ProductCode": "BerceauMairieAIXENPROVENCE",
+            "SBQQ__BillingFrequency__c": "Invoice Plan",
+            "SBQQ__BillingType__c": "Advance",
+            "SBQQ__ChargeType__c": "Recurring",
+            "SBQQ__Component__c": false,
+            "SBQQ__ConfigurationEvent__c": "Always",
+            "SBQQ__ConfigurationType__c": "Allowed",
+            "SBQQ__CostEditable__c": false,
+            "SBQQ__CustomConfigurationRequired__c": false,
+            "SBQQ__DefaultQuantity__c": 1,
+            "SBQQ__DescriptionLocked__c": false,
+            "SBQQ__EnableLargeConfiguration__c": false,
+            "SBQQ__ExcludeFromMaintenance__c": false,
+            "SBQQ__ExcludeFromOpportunity__c": false,
+            "SBQQ__ExternallyConfigurable__c": false,
+            "SBQQ__HasConfigurationAttributes__c": false,
+            "SBQQ__HasConsumptionSchedule__c": false,
+            "SBQQ__Hidden__c": false,
+            "SBQQ__HidePriceInSearchResults__c": false,
+            "SBQQ__IncludeInMaintenance__c": false,
+            "SBQQ__NewQuoteGroup__c": false,
+            "SBQQ__NonDiscountable__c": false,
+            "SBQQ__NonPartnerDiscountable__c": false,
+            "SBQQ__Optional__c": false,
+            "SBQQ__PriceEditable__c": true,
+            "SBQQ__PricingMethod__c": "List",
+            "SBQQ__PricingMethodEditable__c": false,
+            "SBQQ__QuantityEditable__c": true,
+            "SBQQ__ReconfigurationDisabled__c": false,
+            "SBQQ__SubscriptionPricing__c": "Fixed Price",
+            "SBQQ__SubscriptionTerm__c": 12,
+            "SBQQ__SubscriptionType__c": "Renewable",
+            "SBQQ__Taxable__c": false,
+            "SystemModstamp": "2021-10-15T12:17:16.000+0000"
+        },
+        {
+            "attributes": {
+                "type": "Product2",
+                "referenceId": "Product2Ref16"
+            },
+            "blng__BillingRule__r": {
+                "attributes": {
+                    "type": "blng__BillingRule__c",
+                    "url": "/services/data/v53.0/sobjects/blng__BillingRule__c/a1R3O000000PKpDUAW"
+                },
+                "Id": "a1R3O000000PKpDUAW"
+            },
+            "blng__RevenueRecognitionRule__r": {
+                "attributes": {
+                    "type": "blng__RevenueRecognitionRule__c",
+                    "url": "/services/data/v53.0/sobjects/blng__RevenueRecognitionRule__c/a2A3O0000000yjYUAQ"
+                },
+                "Id": "a2A3O0000000yjYUAQ"
+            },
+            "blng__TaxRule__r": {
+                "attributes": {
+                    "type": "blng__TaxRule__c",
+                    "url": "/services/data/v53.0/sobjects/blng__TaxRule__c/a2I3O00000097n2UAA"
+                },
+                "Id": "a2I3O00000097n2UAA"
+            },
+            "Family": "B2B",
+            "IsActive": false,
+            "IsArchived": false,
+            "IsDeleted": false,
+            "Name": "Berceau - Ville de Boulogne Billancourt",
+            "ProductCode": "BerceauVilleBoulogneBillancourt",
             "SBQQ__BillingFrequency__c": "Invoice Plan",
             "SBQQ__BillingType__c": "Advance",
             "SBQQ__ChargeType__c": "Recurring",
@@ -1148,9 +1133,9 @@
             "blng__BillingRule__r": {
                 "attributes": {
                     "type": "blng__BillingRule__c",
-                    "url": "/services/data/v53.0/sobjects/blng__BillingRule__c/a1R3O000000PKpDUAW"
+                    "url": "/services/data/v53.0/sobjects/blng__BillingRule__c/a1R3O000000PKpEUAW"
                 },
-                "Id": "a1R3O000000PKpDUAW"
+                "Id": "a1R3O000000PKpEUAW"
             },
             "blng__RevenueRecognitionRule__r": {
                 "attributes": {
@@ -1170,9 +1155,8 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LPCR_RefCodeProduit__c": "BerceauVilleBoulogneBillancourt",
-            "Name": "Berceau - Ville de Boulogne Billancourt",
-            "ProductCode": "BerceauVilleBoulogneBillancourt",
+            "Name": "Berceau - Mairie de Mantes La Jolie",
+            "ProductCode": "BerceauMairieMantesLaJolie",
             "SBQQ__BillingFrequency__c": "Invoice Plan",
             "SBQQ__BillingType__c": "Advance",
             "SBQQ__ChargeType__c": "Recurring",
@@ -1215,9 +1199,9 @@
             "blng__BillingRule__r": {
                 "attributes": {
                     "type": "blng__BillingRule__c",
-                    "url": "/services/data/v53.0/sobjects/blng__BillingRule__c/a1R3O000000PKpEUAW"
+                    "url": "/services/data/v53.0/sobjects/blng__BillingRule__c/a1R3O000000PKpBUAW"
                 },
-                "Id": "a1R3O000000PKpEUAW"
+                "Id": "a1R3O000000PKpBUAW"
             },
             "blng__RevenueRecognitionRule__r": {
                 "attributes": {
@@ -1237,9 +1221,8 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LPCR_RefCodeProduit__c": "BerceauMairieMantesLaJolie",
-            "Name": "Berceau - Mairie de Mantes La Jolie",
-            "ProductCode": "BerceauMairieMantesLaJolie",
+            "Name": "Berceau - Mairie De Yerres",
+            "ProductCode": "BerceauMairieYerres",
             "SBQQ__BillingFrequency__c": "Invoice Plan",
             "SBQQ__BillingType__c": "Advance",
             "SBQQ__ChargeType__c": "Recurring",
@@ -1304,7 +1287,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LPCR_RefCodeProduit__c": "BerceauVilleSaintVictoret",
             "Name": "Berceau - Ville De Saint Victoret",
             "ProductCode": "BerceauVilleSaintVictoret",
             "SBQQ__BillingFrequency__c": "Invoice Plan",
@@ -1372,7 +1354,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "FraisInscriptionMac",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Frais d'inscription MAC",
             "ProductCode": "FraisInscriptionMac",
@@ -1439,7 +1420,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "REFRES",
-            "LPCR_RefCodeProduit__c": "BerceauMairieCourbevoie",
             "Name": "Berceau - Mairie De Courbevoie",
             "ProductCode": "BerceauMairieCourbevoie",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -1510,7 +1490,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "BerceauMac",
             "LPCR_Typemensualisation__c": "12",
             "Name": "Accueil MAC \"classique\"",
             "ProductCode": "BerceauMac",
@@ -1562,7 +1541,6 @@
             "IsActive": true,
             "IsArchived": false,
             "IsDeleted": false,
-            "LPCR_RefCodeProduit__c": "BerceauVilleSaintPriest",
             "Name": "Berceau - Ville De Saint Priest",
             "ProductCode": "BerceauVilleSaintPriest",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -1634,7 +1612,6 @@
             "IsDeleted": false,
             "LPCR_PrixPlancherParisIDF__c": 12000,
             "LPCR_PrixPlancherProvince__c": 10000,
-            "LPCR_RefCodeProduit__c": "BerceauContratCadreDel",
             "Name": "Berceau Contrat Cadre to delete",
             "ProductCode": "BerceauContratCadreDel",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -1685,7 +1662,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LPCR_RefCodeProduit__c": "BerceauContratCadreProvince",
             "Name": "Berceau Contrat Cadre Province",
             "ProductCode": "BerceauContratCadreProvince",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -1758,7 +1734,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "REFRES",
-            "LPCR_RefCodeProduit__c": "BerceauGratuit",
             "Name": "Berceau Gratuit",
             "ProductCode": "BerceauGratuit",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -1829,7 +1804,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MICRO",
-            "LPCR_RefCodeProduit__c": "BerceauMicroSpecifique",
             "Name": "Accueil MICRO \"Psu Like\"",
             "ProductCode": "BerceauMicroSpecifique",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -1902,7 +1876,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MICRO",
-            "LPCR_RefCodeProduit__c": "BerceauMicroSponsorise",
             "Name": "Accueil MICRO \"Sponsorisé\"",
             "ProductCode": "BerceauMicroSponsorise",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -1975,7 +1948,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "PeriodeAdaptation",
             "LPCR_TypeEvenement__c": "EVT_FACTURATION_ADAPTATION",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Période d’adaptation",
@@ -2048,7 +2020,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "REFRES",
-            "LPCR_RefCodeProduit__c": "RFA",
             "Name": "Remise de fin d’année",
             "ProductCode": "RFA",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -2115,7 +2086,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MICRO",
-            "LPCR_RefCodeProduit__c": "HeuresDeduitesMicro",
             "LPCR_TypeEvenement__c": "EVT_HEURES_DEDUITE_MICRO",
             "Name": "Heures Déduites Micro",
             "ProductCode": "HeuresDeduitesMicro",
@@ -2187,7 +2157,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "HeuresDeduitesMac",
             "LPCR_TypeEvenement__c": "EVT_HEURE_DEDUITE",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Heures déduites MAC",
@@ -2260,7 +2229,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MICRO",
-            "LPCR_RefCodeProduit__c": "FraisInscriptionMicro",
             "Name": "Frais d’inscription Micro",
             "ProductCode": "FraisInscriptionMicro",
             "SBQQ__BlockPricingField__c": "Quantity",
@@ -2325,7 +2293,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "REFRES",
-            "LPCR_RefCodeProduit__c": "Fraisdedossier",
             "Name": "Frais de dossier",
             "ProductCode": "Fraisdedossier",
             "SBQQ__BlockPricingField__c": "Quantity",
@@ -2389,7 +2356,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "AbsenceMAC",
             "LPCR_TypeEvenement__c": "EVT_ABSCENCE",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Absence",
@@ -2483,7 +2449,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LPCR_RefCodeProduit__c": "ProductA20",
             "Name": "Product A Tax 20",
             "ProductCode": "ProductA20",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -2535,7 +2500,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LPCR_RefCodeProduit__c": "ProductA10",
             "Name": "Product A Tax 10",
             "ProductCode": "ProductA10",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -2587,7 +2551,6 @@
             "IsActive": false,
             "IsArchived": false,
             "IsDeleted": false,
-            "LPCR_RefCodeProduit__c": "ProductA210",
             "Name": "Product A Tax 1.10",
             "ProductCode": "ProductA210",
             "SBQQ__AssetAmendmentBehavior__c": "Default",
@@ -2660,7 +2623,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MICRO",
-            "LPCR_RefCodeProduit__c": "AccueilOccasionnelMicro",
             "LPCR_TypeEvenement__c": "EVT_ACCUEIL_OCCASIONNEL_MICRO",
             "Name": "Accueil OCC MICRO journalier",
             "ProductCode": "AccueilOccasionnelMicro",
@@ -2732,7 +2694,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MICRO",
-            "LPCR_RefCodeProduit__c": "DepotDeGarantie",
             "Name": "Dépôt de Garantie",
             "ProductCode": "DepotDeGarantie",
             "SBQQ__BlockPricingField__c": "Quantity",
@@ -2797,7 +2758,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "AccueilHeuresSuppMac",
             "LPCR_TypeEvenement__c": "EVT_HEURE_SUPPLEMENTAIRE",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Accueil Heures Supplémentaires Mac",
@@ -2870,7 +2830,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MAC",
-            "LPCR_RefCodeProduit__c": "CongesNonPrisMac",
             "LPCR_TypeEvenement__c": "EVT_NOMBRE_CONGES_NON_PRIS",
             "LPCR_Typemensualisation__c": "1112",
             "Name": "Congés non pris MAC",
@@ -2943,7 +2902,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MICRO",
-            "LPCR_RefCodeProduit__c": "AccueilJourSuppMicro",
             "LPCR_TypeEvenement__c": "EVT_ACCUEIL_JOUR_SUPPLEMENTAIRE_MICRO",
             "Name": "Accueil Jour Supplémentaire Micro",
             "ProductCode": "AccueilJourSuppMicro",
@@ -3015,7 +2973,6 @@
             "IsArchived": false,
             "IsDeleted": false,
             "LPCR_FamilyProduct__c": "MICRO",
-            "LPCR_RefCodeProduit__c": "AbsenceMicro",
             "LPCR_TypeEvenement__c": "EVT_ABSCENCE",
             "Name": "Absence",
             "ProductCode": "AbsenceMicro",
@@ -3067,7 +3024,6 @@
             "IsDeleted": false,
             "LPCR_PrixPlancherParisIDF__c": 7500,
             "LPCR_PrixPlancherProvince__c": 6000,
-            "LPCR_RefCodeProduit__c": "BerceauReservataireTEST",
             "Name": "To be deleted Berceau Réservataire Rev rec",
             "ProductCode": "BerceauReservataireTEST",
             "SBQQ__BillingFrequency__c": "Monthly",

@@ -963,7 +963,9 @@ public class SM008_QuoteServices_Test {
         Test.stopTest();
     }
     @isTest()
-    public static void updateMontantIndexation(){
+  
+    public static void tantIndexation(){
+
         Test.startTest();
             LPCR_Planning__c planningEnfant = new LPCR_Planning__c();	
             insert planningEnfant;

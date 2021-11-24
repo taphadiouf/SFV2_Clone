@@ -611,7 +611,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Account.LPCR_IdExterne_Compte__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1206,7 +1206,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Account.LPCR_IDIntranetCompteFamille__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1652,7 +1652,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Contact.LPCR_StatutPreinscription__c</field>
+        <field>Contact.LPCR_PreinscriptionStatut__c</field>
         <readable>true</readable>
     </fieldPermissions> 
     <fieldPermissions>
@@ -3817,7 +3817,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.LPCR_PasDActivite__c</field>
+        <field>Lead.LPCR_PasActivite__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5267,6 +5267,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_IndexationQuote__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_AccesReseauLimite__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5996,6 +6001,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_Indexation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Subscription__c.LPCR_BonDachatPartenaire__c</field>
         <readable>true</readable>
@@ -6441,7 +6451,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>blng__Invoice__c.blng__UniqueId__c</field>
         <readable>true</readable>
     </fieldPermissions>
