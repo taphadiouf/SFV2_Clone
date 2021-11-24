@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DEL_LPCR_StatutPreinscription__c</fullName>
+    <externalId>false</externalId>
+    <label>DEL Statut (Préinscription)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Nouveau</fullName>
+                <default>false</default>
+                <label>Nouveau</label>
+            </value>
+            <value>
+                <fullName>Option</fullName>
+                <default>false</default>
+                <label>Option</label>
+            </value>
+            <value>
+                <fullName>Recommandation</fullName>
+                <default>false</default>
+                <label>Recommandation</label>
+            </value>
+            <value>
+                <fullName>Recommandation validée</fullName>
+                <default>false</default>
+                <label>Recommandation validée</label>
+            </value>
+            <value>
+                <fullName>Attribuée</fullName>
+                <default>false</default>
+                <label>Attribuée</label>
+            </value>
+            <value>
+                <fullName>Confirmé</fullName>
+                <default>false</default>
+                <label>Confirmé</label>
+            </value>
+            <value>
+                <fullName>Inscrit</fullName>
+                <default>false</default>
+                <label>Inscrit</label>
+            </value>
+            <value>
+                <fullName>Annulé</fullName>
+                <default>false</default>
+                <label>Annulé</label>
+            </value>
+            <value>
+                <fullName>Liste d’attente</fullName>
+                <default>false</default>
+                <label>Liste d’attente</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

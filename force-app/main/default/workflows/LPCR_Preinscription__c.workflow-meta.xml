@@ -41,6 +41,7 @@ IF(LPCR_NombreJours__c=5, &quot;5 jours&quot;,&quot;&quot;)</formula>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
         <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <rules>
         <fullName>Préinscription_Nombre De Jours IsChanged or New</fullName>

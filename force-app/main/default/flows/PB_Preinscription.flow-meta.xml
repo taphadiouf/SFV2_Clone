@@ -384,7 +384,7 @@
             <label>Statut modifié ?</label>
         </rules>
     </decisions>
-    <interviewLabel>PB_Preinscription-4_InterviewLabel</interviewLabel>
+    <interviewLabel>PB_Preinscription-5_InterviewLabel</interviewLabel>
     <label>PB_Preinscription</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -680,7 +680,7 @@
                     <stringValue>Reference</stringValue>
                 </value>
             </processMetadataValues>
-            <field>LPCR_PreinscriptionStatut__c</field>
+            <field>LPCR_StatutPreinscription__c</field>
             <value>
                 <elementReference>myVariable_current.LPCR_Statut__c</elementReference>
             </value>
