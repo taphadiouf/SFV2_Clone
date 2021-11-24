@@ -828,6 +828,45 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>LPCR_PreinscriptionStatut__c</picklist>
+        <values>
+            <fullName>Annulé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Attribuée</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Confirmé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inscrit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liste d%E2%80%99attente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nouveau</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Option</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recommandation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recommandation validée</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>LPCR_Rattachement__c</picklist>
         <values>
             <fullName>Crèche</fullName>
@@ -923,10 +962,6 @@
         </values>
         <values>
             <fullName>Inscrit</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Liste d%27attente</fullName>
             <default>false</default>
         </values>
         <values>

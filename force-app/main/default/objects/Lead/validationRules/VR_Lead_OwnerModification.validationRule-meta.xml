@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_Lead_OwnerModification</fullName>
+    <active>true</active>
+    <description>Bloque la modification du propriétaire d&apos;un Lead sans avoir indiqué le motif du transfert au préalable</description>
+    <errorConditionFormula>AND(
+					NOT(CONTAINS($Profile.Name,&apos;Admin&apos;)),
+					ISCHANGED( OwnerId ),
+					ISBLANK(LPCR_MotifTransfert__c)
+					)</errorConditionFormula>
+    <errorMessage>Merci de bien vouloir renseigner le motif de transfert avant de modifier le propriétaire de cette piste.</errorMessage>
+</ValidationRule>
