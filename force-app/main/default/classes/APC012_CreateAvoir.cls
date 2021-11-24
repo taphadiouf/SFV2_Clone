@@ -1,32 +1,12 @@
 public with sharing class APC012_CreateAvoir {
-
-    @AuraEnabled(Cacheable=true)
-    public static List<String> getPicklistvalues(){
-    
-    List<String> lstPicklistValue = new List<String>();
-    Schema.DescribeFieldResult describeFieldRslt = LPCR_Avoir__c.LPCR_NatureAvoirFacture__c.getDescribe();
-    List<Schema.PicklistEntry> pickListEntries = describeFieldRslt.getPicklistValues();
-    
-    for(Schema.PicklistEntry eachEntry : pickListEntries ) {
-        lstPicklistValue.add(eachEntry.getValue());
-    }
-   
-    return lstPicklistValue;
-    
-    }
-
     @AuraEnabled(cacheable=true)
     public static String getLigneFacture(Id invId){
         List<LigneFactureWrapper> ligneFactureWrapperList = new List<LigneFactureWrapper>();
-        for( blng__InvoiceLine__c ligneFacture :  [SELECT Id,Name, LPCR_MontantAvoirLigneFacture__c,blng__Invoice__r.LPCR_SocieteFacturante__c,blng__Invoice__r.blng__Account__r.LPCR_IDSage__c,blng__Invoice__r.blng__Order__r.SBQQ__Quote__r.LPCR_SocieteFacturante__r.Name, blng__EndDate__c, blng__StartDate__c,blng__TotalAmount__c ,LPCR_Creche__r.Name,blng__Quantity__c FROM blng__InvoiceLine__c where blng__Invoice__c  =:invId]){
-            Datetime dateTimeDebut=ligneFacture.blng__StartDate__c != null ? ligneFacture.blng__StartDate__c:null;
-            Datetime dateTimeFin=ligneFacture.blng__EndDate__c != null ? ligneFacture.blng__EndDate__c:null;
-            String datedebut=ligneFacture.blng__StartDate__c != null ? dateTimeDebut.format('dd-MM-YYYY'):'';
-            String datefin=ligneFacture.blng__EndDate__c != null ? dateTimeFin.format('dd-MM-YYYY'):'';
-            ligneFactureWrapperList.add(new LigneFactureWrapper(
-                ligneFacture.Id,
-                ligneFacture.Name,    
-                ligneFacture.blng__TotalAmount__c ,ligneFacture.blng__Invoice__r.blng__Order__r.SBQQ__Quote__r.LPCR_SocieteFacturante__r.Name,ligneFacture.blng__Invoice__r.blng__Account__r.LPCR_IDSage__c,ligneFacture.LPCR_Creche__r.Name,datedebut,datefin,ligneFacture.blng__Quantity__c));
+        for( blng__InvoiceLine__c ligneFacture :  [SELECT Id,Name, LPCR_MontantAvoirLigneFacture__c,blng__Invoice__r.LPCR_SocieteFacturante__c,blng__Invoice__r.blng__Account__r.LPCR_IDSage__c,blng__Invoice__r.blng__Order__r.SBQQ__Quote__r.LPCR_SocieteFacturante__r.Name, blng__EndDate__c, blng__StartDate__c  FROM blng__InvoiceLine__c where blng__Invoice__c  =:invId]){
+                ligneFactureWrapperList.add(new LigneFactureWrapper(
+                    ligneFacture.Id,
+                    ligneFacture.Name,    
+                    ligneFacture.LPCR_MontantAvoirLigneFacture__c ,ligneFacture.blng__Invoice__r.blng__Order__r.SBQQ__Quote__r.LPCR_SocieteFacturante__r.Name,ligneFacture.blng__Invoice__r.blng__Account__r.LPCR_IDSage__c));
         }
         return JSON.serialize(ligneFactureWrapperList);
     }
@@ -36,24 +16,14 @@ public with sharing class APC012_CreateAvoir {
         private Decimal Montant;
         private String socfac;
         private String ctNum;
-        private String Creche;
-        private String datedebut;
-        private String datefin;
-        private Decimal qty;
-        
-
        
-        LigneFactureWrapper(String recId,String name, Decimal Montant,String socfac,String ctNum,String Creche,String datedebut,String datefin,Decimal qty){
+        LigneFactureWrapper(String recId,String name, Decimal Montant,String socfac,String ctNum){
           this.recId = recId;
           this.name = name;
           this.Montant = Montant;
           this.socfac=socfac;
           this.ctNum=ctNum;
-          this.Creche=Creche;
-          this.datedebut=datedebut;
-          this.datefin=datefin;
-          this.qty=qty;
-
+          
         }
     }
     @AuraEnabled 
@@ -62,9 +32,6 @@ public with sharing class APC012_CreateAvoir {
         Map<String,Object> mapReturn = new Map<String,Object>();
         List<LPCR_Avoir__c> lstavoirInsert=new List<LPCR_Avoir__c> ();
         List<LPCR_Avoir__c> lstavoirInsertTotal=new List<LPCR_Avoir__c> ();
-
-        List<blng__Invoice__c> lstfacture=new List<blng__Invoice__c> ();
-
         Date datedebut;
         Date dateFin;
         Boolean applytoAllLines=false;
@@ -79,7 +46,6 @@ public with sharing class APC012_CreateAvoir {
         Id invID=mapSrtr.containsKey('invoiceID')? (ID)mapSrtr.get('invoiceID'):null;
         String typeAvoir=mapSrtr.containsKey('TypeAvoir')? (String)mapSrtr.get('TypeAvoir'):'';
         //get facture details
-
         for(blng__Invoice__c inv :[SELECT Id,blng__TotalAmount__c FROM blng__Invoice__c where id=:invID] ){
             montantFacture=inv.blng__TotalAmount__c;
         }
@@ -128,11 +94,7 @@ public with sharing class APC012_CreateAvoir {
                 if(mapSrtr.containsKey('avoirmontant')){
                 sommePartielCustom+=Decimal.valueof((string)mapSrtr.get('avoirmontant'));
                 }
-
-                LPCR_Avoir__c avoir=new LPCR_Avoir__c(LPCR_Facture__c=mapSrtr.containsKey('invoiceID')?(ID)mapSrtr.get('invoiceID'):null,
-                LPCR_Statut__c='Brouillon',LPCR_DateFacture__c=datedebut,LPCR_DateFinAvoir__c=dateFin,LPCR_Description__c=mapSrtr.containsKey('descavoir')?(String)mapSrtr.get('descavoir'):'',LPCR_Montant__c=mapSrtr.containsKey('avoirmontant')?Decimal.valueof((string)mapSrtr.get('avoirmontant')):0,LPCR_LigneFacture__c=(Id)mapObjet.get('recId'),LPCR_TypeAvoir__c =(String)mapSrtr.get('TypeAvoir'),LPCR_NatureAvoirFacture__c =mapSrtr.containsKey('NatureAvoir')?(String)mapSrtr.get('NatureAvoir'):null);
-
-        
+                LPCR_Avoir__c avoir=new LPCR_Avoir__c(LPCR_Facture__c=mapSrtr.containsKey('invoiceID')?(ID)mapSrtr.get('invoiceID'):null,LPCR_DateFacture__c=datedebut,LPCR_DateFinAvoir__c=dateFin,LPCR_Description__c=mapSrtr.containsKey('descavoir')?(String)mapSrtr.get('descavoir'):'',LPCR_Montant__c=mapSrtr.containsKey('avoirmontant')?Decimal.valueof((string)mapSrtr.get('avoirmontant')):0,LPCR_LigneFacture__c=(Id)mapObjet.get('recId'),LPCR_TypeAvoir__c =(String)mapSrtr.get('TypeAvoir'));
                 if(typeAvoir=='Avoir partiel'){
                     lstavoirInsert.add(avoir);
                 }
@@ -145,9 +107,7 @@ public with sharing class APC012_CreateAvoir {
                     sommePartielCustom+=Decimal.valueof((string)mapSrtr.get('avoirmontant'));
                 }
                 
-
-                LPCR_Avoir__c avoir=new LPCR_Avoir__c(LPCR_Facture__c=mapSrtr.containsKey('invoiceID')?(ID)mapSrtr.get('invoiceID'):null,LPCR_Statut__c='Brouillon',LPCR_Description__c=mapSrtr.containsKey('descavoir')?(String)mapSrtr.get('descavoir'):'',LPCR_LigneFacture__c=invLine.Id,LPCR_TypeAvoir__c =(String)mapSrtr.get('TypeAvoir'),LPCR_NatureAvoirFacture__c =mapSrtr.containsKey('NatureAvoir')?(String)mapSrtr.get('NatureAvoir'):null);
-
+                LPCR_Avoir__c avoir=new LPCR_Avoir__c(LPCR_Facture__c=mapSrtr.containsKey('invoiceID')?(ID)mapSrtr.get('invoiceID'):null,LPCR_Description__c=mapSrtr.containsKey('descavoir')?(String)mapSrtr.get('descavoir'):'',LPCR_LigneFacture__c=invLine.Id,LPCR_TypeAvoir__c =(String)mapSrtr.get('TypeAvoir'));
                 if(typeAvoir=='Avoir partiel'){
                     avoir.LPCR_DateFacture__c=datedebut;
                     avoir.LPCR_DateFinAvoir__c=dateFin;
@@ -165,7 +125,7 @@ public with sharing class APC012_CreateAvoir {
         }
         
         if(typeAvoir =='Avoir total'){
-            LPCR_Avoir__c avoir=new LPCR_Avoir__c(LPCR_Facture__c=(ID)mapSrtr.get('invoiceID'),LPCR_Statut__c='Brouillon',LPCR_DateFacture__c=datedebut,LPCR_DateFinAvoir__c=dateFin,LPCR_Description__c=(String)mapSrtr.get('descavoir'),LPCR_Montant__c=montantFacture,LPCR_TypeAvoir__c =(String)mapSrtr.get('TypeAvoir'));
+            LPCR_Avoir__c avoir=new LPCR_Avoir__c(LPCR_Facture__c=(ID)mapSrtr.get('invoiceID'),LPCR_DateFacture__c=datedebut,LPCR_DateFinAvoir__c=dateFin,LPCR_Description__c=(String)mapSrtr.get('descavoir'),LPCR_Montant__c=montantFacture,LPCR_TypeAvoir__c =(String)mapSrtr.get('TypeAvoir'));
            // lstavoirInsertTotal.add(avoir);
         }
         if((sommePartiel.abs()+sommePartielCustom.abs()) > montantFacture){
@@ -178,19 +138,7 @@ public with sharing class APC012_CreateAvoir {
             errorMsg='Facture contient deja un avoir partiel';
         }
         mapReturn.put('errorMessage',errorMsg);
-
-        //update total field on invoice 
-        if(String.isEmpty(errorMsg) && typeAvoir=='Avoir partiel'){
-            Decimal totalPartiel=sommePartiel+sommePartielCustom;
-            lstfacture.add(new blng__Invoice__c(Id=invID,LPCR_MontantAvoirFacture__c=totalPartiel,LPCR_TypeAvoir__c='Partiel',LPCR_CommentaireIndividuel__c=mapSrtr.containsKey('nomavoir')?(String)mapSrtr.get('nomavoir'):''));
-        }
-        if(String.isEmpty(errorMsg) && typeAvoir=='Avoir total'){
-            lstfacture.add(new blng__Invoice__c(Id=invID,LPCR_TypeAvoir__c='Total',LPCR_DescriptionAvoirFacture__c=mapSrtr.containsKey('descavoir')?(String)mapSrtr.get('descavoir'):'',LPCR_CommentaireIndividuel__c=mapSrtr.containsKey('nomavoir')?(String)mapSrtr.get('nomavoir'):''));
-      
-        }
         try{
-            if(lstfacture.size() >0 )update lstfacture;
-
             if(lstavoirInsert.size() > 0 && errorMsg==''  ) insert lstavoirInsert;
             if(lstavoirInsertTotal.size() > 0 && errorMsg==''  ) insert lstavoirInsertTotal;
         }catch(DmlException e) {
