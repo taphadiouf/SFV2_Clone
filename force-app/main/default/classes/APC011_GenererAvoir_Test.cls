@@ -184,7 +184,7 @@ public with sharing class APC011_GenererAvoir_Test {
 
         APC011_GenererAvoir controller = new APC011_GenererAvoir(sc);
         Test.startTest();
-        APC011_GenererAvoir.GenererAvoir(avoir.ID,'test');
+        APC011_GenererAvoir.GenererAvoir(avoir.ID);
         Test.stopTest();
     }
     @isTest
