@@ -189,7 +189,7 @@ public with sharing class APC011_GenererAvoir_Test {
     }
     @isTest
     public static void testMethod2(){
-        //APC012_CreateAvoir.getPicklistvalues();
+        APC012_CreateAvoir.getPicklistvalues();
         blng__Invoice__c invoice = [SELECT Id, blng__order__c FROM blng__Invoice__c LIMIT 1];
         blng__InvoiceLine__c ligneFacture=[SELECT Id,Name, LPCR_MontantAvoirLigneFacture__c,blng__Invoice__r.LPCR_SocieteFacturante__c,blng__Invoice__r.blng__Account__r.LPCR_IDSage__c,blng__Invoice__r.blng__Order__r.SBQQ__Quote__r.LPCR_SocieteFacturante__r.Name, blng__EndDate__c, blng__StartDate__c,blng__TotalAmount__c,LPCR_Creche__r.Name,blng__Quantity__c from blng__InvoiceLine__c limit 1 ];
         List<LigneFactureWrapper> lstfac=new List<LigneFactureWrapper>();
