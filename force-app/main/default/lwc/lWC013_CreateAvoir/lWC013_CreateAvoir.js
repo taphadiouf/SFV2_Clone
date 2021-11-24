@@ -123,36 +123,19 @@ export default class lWC013_CreateAvoir extends LightningElement {
               type: ''
           },
           {
-              label: 'Nom du produit',
+              label: 'Name',
               fieldName: 'name',
               type: ''
           },
-         
           {
-              label: 'Crèche',
-              fieldName: 'Creche',
+              label: 'ID',
+              fieldName: 'recId',
               type: ''
           },
-         
           {
-            label: 'Date de début',
-            fieldName: 'datedebut',
-            type: ''
-          },
-          {
-          label: 'Date de fin',
-          fieldName: 'datefin',
-          type: ''
-          },
-          {
-            label: 'Quantité',
-            fieldName: 'qty',
-            type: ''
-          },
-          {
-            label: 'Montant total',
-            fieldName: 'Montant',
-            type: ''
+              label: 'Montant',
+              fieldName: 'Montant',
+              type: ''
           }
       ];
   }
