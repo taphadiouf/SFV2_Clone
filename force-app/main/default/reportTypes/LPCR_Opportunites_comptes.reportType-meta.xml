@@ -3,16 +3,12 @@
     <baseObject>Opportunity</baseObject>
     <category>opportunities</category>
     <deployed>false</deployed>
-    <description>Opportunités avec berceaux et services associés</description>
+    <description>Opportunités et comptes</description>
     <join>
-        <join>
-            <outerJoin>false</outerJoin>
-            <relationship>OrderItems</relationship>
-        </join>
         <outerJoin>false</outerJoin>
-        <relationship>Orders</relationship>
+        <relationship>SBQQ__WebAccounts__r</relationship>
     </join>
-    <label>Opportunités avec berceaux et services associés</label>
+    <label>Opportunités et comptes</label>
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
@@ -624,1355 +620,1400 @@
             <field>LPCR_ZoneGeographique__c</field>
             <table>Opportunity</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.UserRole</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner.LPCR_RegionCommerciale__c</field>
-            <table>Opportunity</table>
-        </columns>
         <masterLabel>Opportunités</masterLabel>
     </sections>
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>ActivatedBy</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_AccueilUrgence__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AccueilOccasionel__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AccueilRegulier__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Actif__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Activite__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AddresseComplementaire__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>ShippingAddress</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>BillingAddress</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_AnnulationAnticipee__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_AfficherInfosFamillesFacture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__RenewalUpliftRate__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_AfficherNomsEnfantsFacture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_BDOM_OrderStartdate__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_AfficherNomsFamillesFacture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheAgrement__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AgrementTotal__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Agrment120__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AgrementBebes__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AgrementCible__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AgrementGrands__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AgrementMoyens__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AgrementPMI__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AllocataireCAF__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheAmplitude__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheAmplitudeSpecifique__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_FILOUE__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AutrePrestataire__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_BIC__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheBilingue__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>BillingGeocodeAccuracy</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Pricebook2</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_CrecheBio__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>StatusCode</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_BudgetAnnuel__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_SumCA__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_Capital__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ChiffreAffaires__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_CessationActivite__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CustomerAuthorizedBy</field>
-            <table>Opportunity.Orders</table>
+            <field>AnnualRevenue</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Jigsaw</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ClientInternational__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ClientVip__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CodeAnalytique__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CodeAPE__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NAF__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CodePaie__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>ShippingPostalCode</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>BillingPostalCode</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>OriginalOrder</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_CodePreinscription__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>IsReductionOrder</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_CodeServiceChorus__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__BillingAccount__c</field>
-            <table>Opportunity.Orders</table>
+            <field>Sic</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__PaymentTerm__c</field>
-            <table>Opportunity.Orders</table>
+            <field>SBQQ__CoTermedContractsCombined__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>ShipToContact</field>
-            <table>Opportunity.Orders</table>
+            <field>SBQQ__AssetQuantitiesCombined__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>BillToContact</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_Commentaire__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactEnfant__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_CommentaireIncidentPaiment__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactFacturation__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LCPR_CompteAnalytiqueClient__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CompteAnalytiqueClient__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CompteBancaire__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Parent</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContactCommercial__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>blng__BillToContact__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContactDirectrice__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContactEnfant1__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContactEnfant2__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_ContactEnfant3__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_ContactInscriptions__c</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactPrincipal__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_ContactPrincipalCompte__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__Contracted__c</field>
-            <table>Opportunity.Orders</table>
+            <field>SBQQ__ContractCoTermination__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_MasterDevis__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_CrecheCouches__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_Creche__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_Adherente__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheChoix1__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheChoix2__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheChoix3__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheVisite__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CreatedBy</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>ActivatedDate</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_CTNum__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CompanyAuthorizedDate</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_IDSage__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CustomerAuthorizedDate</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_DateCessationActivite__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_DateOuverture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_DateCloture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CreatedDate</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_DateDebut__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>EffectiveDate</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_DateDebutContrat__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LastModifiedDate</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_DateFin__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_DateFinContrat__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>EndDate</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_DateDernierAO__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PoDate</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_DateSignatureRUM__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_MinDateOverrideNextBilling__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_DateDernierAppelOffre__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_DateProchainAppelOffre__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_RemiseConcurrence__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_DateProchainAO__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_DateVisite__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_DateVisiteAgrement__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_DebutValiditePurchaseOrder__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_RegionCommerciale__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheDepartement__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Departement__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastActivityDate</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LastModifiedBy</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Description</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__Quote__c</field>
-            <table>Opportunity.Orders</table>
+            <field>SicDesc</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__RenewalTerm__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_DispositifExistantCompte__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_DispositifsExistants__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Email__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_EmailRepresentant1__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_EmailRepresentant2__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>NumberOfEmployees</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_EnCoursCreation__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Enjeux__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Enseigne__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_EntiteJuridique__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_EmailFacture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_EnvoiProforma__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheEspaceExterieur__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>TECH_IsCreatedBy__c</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__TaxAmount__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_EstMigre__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>TECH_IsOwner__c</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_InitAutoAvecDateDebut__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_EtatCaf__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__BillNow__c</field>
-            <table>Opportunity.Orders</table>
+            <field>Rating</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_FrequenceFacturation__c</field>
-            <table>Opportunity.Orders</table>
+            <field>SBQQ__CoTerminationEvent__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SBQQ__TaxExempt__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_DepotChorus__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_FacturerDepotPlateforme__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_EnvoieFactureParent__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_FacturerCrecheMarche__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_FinValiditePurchaseOrder__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SBQQ__PriceHoldEnd__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Ownership</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_FormuleRevalorisation__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Garde__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_IDExterne_CompteParent__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_GroupeEtablissement__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Handicap__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheHoraireOuverture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheHoraireFermeture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_IBAN__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LCPR_IDCompteCreche__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_IDCompteCreche__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_IDCompteEntreprise__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_IDCompteFamille__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Id</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_IdExterne_AccountId__c</field>
-            <table>Opportunity.Orders</table>
+            <field>blng__CustomerProfileId__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_IdExterne_ContractId__c</field>
-            <table>Opportunity.Orders</table>
+            <field>Sparklane_FR__ProfileId__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_IdExterne_MasterDevis__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_IdExterne_Compte__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_IdExterne_OpportunityId__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_IdExterneProprietaire__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_IdExterne__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_IDIntranetCompteFamille__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__BillingDayOfMonth__c</field>
-            <table>Opportunity.Orders</table>
+            <field>SBQQ__IgnoreParentContractedPrices__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sparklane_FR__inactive__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_IncidentPaiement__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_InformationsFacture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_InterlocuteurServiceFamille__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_JoindreEtatCAFFacture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheLait__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheLatitude__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>ShippingLatitude</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>BillingLatitude</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheLDS__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_LibelleAPE__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Creche_LienCapitalistique__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Chorus__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_LienChorus__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_LienSitePreinscription__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheLongitude__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>ShippingLongitude</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>BillingLongitude</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__InvoiceBatch__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_IsNumericIDSage__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_societeFacturanteName__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_MailLivraisonFacture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__PriceCalcStatusMessage__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_CrecheMarcheurs__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__ContractingMethod__c</field>
-            <table>Opportunity.Orders</table>
+            <field>SBQQ__RenewalPricingMethod__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_EstMigre__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_MinimumFacturation__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>TotalAmount</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_ModeFinancement__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__PendingBillings__c</field>
-            <table>Opportunity.Orders</table>
+            <field>SBQQ__RenewalModel__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__CanceledBillings__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_ModeleSpecifiqueFacture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__BilledAmountwithouttax__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_MontantPSU__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_MoyenPaiement__c</field>
-            <table>Opportunity.Orders</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Name</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_MoyenDeTransport__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_NombreEnfantsCharge__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_NouveauPlanFacture__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_NombreEnfantPrevuJeudi__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_NumeroContrat__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_NombreEnfantsLundi__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_NumeroContratCommande__c</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_NombreEnfantsMardi__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NombreEnfantsMercredi__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NombreEnfantPrevuVendredi__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NbreOptions__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NombreBerceaux__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NombreBerceauxConcurrence__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_BerceauxCommercialisables__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_BerceauxDisponibles__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NombrePlaces__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NombrePlacesAchetees__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NombrePlacesVendues__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NombreSection__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NombreStructures__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_NombreMaximalPlaces__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>true</checkedByDefault>
-            <field>OrderNumber</field>
-            <table>Opportunity.Orders</table>
+            <field>Name</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>OrderReferenceNumber</field>
-            <table>Opportunity.Orders</table>
+            <field>Sparklane_FR__ProfileName__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PoNumber</field>
-            <table>Opportunity.Orders</table>
+            <field>LPCR_NumeroAllocataire__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Contract</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_OpportuniteCommande__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ShippingCountry</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>BillingCountry</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_RenouvellementPlanFacture__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ProprietaireCommande__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ShippingState</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>BillingState</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__OrderBookings__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ResponsableADV__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ShippingStreet</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>BillingStreet</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ShippingGeocodeAccuracy</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CompanyAuthorizedBy</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_SocieteFacturante__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Status</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__PriceCalcStatus__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__BilledTax__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__TotalBilling__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_TypeAvenant__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>RecordType</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_TypeOpportunite__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Type</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_TypeCompte__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_TypeCreche__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_TypeFacturation__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_TypeDeVente__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_TypeEnregistrement__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ShippingCity</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>BillingCity</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <masterLabel>Commandes</masterLabel>
-    </sections>
-    <sections>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__Subscription__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__UpgradedSubscription__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__Asset__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__ContractAction__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__Activated__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__PriceSchedule__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__DiscountSchedule__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__TermDiscountSchedule__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_TotalBerceauGratuitRegion__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_BillingPlanProcessment__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_CAUnitaire__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__SegmentKey__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__TaxCode__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxZipCode__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_CompteAvecPO__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__ShippingAccount__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__BillingAccount__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_CompteFamille__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContactEnfant__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__Contracted__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__Contract__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_Creche__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedBy</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_DateArrondie__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__LastInvoiceTargetDate__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContractStartDate__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedDate</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>ServiceDate</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_DateDebut__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__OverrideInitialRevenueStartDate__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__InvoiceRunStartDate__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedDate</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__NextBillingDate__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>EndDate</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_DateFin__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__OverrideInitialRevenueEndDate__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__NextChargeDate__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__TerminatedDate__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__LastChargeToDate__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__OverrideNextBillingDate__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ContractEndDate__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__BillThroughDateOverride__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_DebutValiditePO__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedBy</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Description</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__PriceDimension__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__SubscriptionTerm__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__DefaultSubscriptionTerm__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__LegalEntity__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PricebookEntry</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__TaxAmount__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxState__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_ExclureDuPlanFacturation__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__InvoiceRun__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__HoldBilling__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_FinValiditePO__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__BillingFrequency__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__GroupId__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__InvoiceGrouping__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__InvoiceGroupId__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Id</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_IdExterne_OrderId__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_IdExterne_OriginalOrderItemId__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_IdExterne_Product2Id__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_IdExterne_QuoteLineItemId__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_IdExterne_QuoteLine__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_IdExterne_Subscription__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_IdExterne__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__UniqueId__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__SegmentIndex__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__BookingsIndicator__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_JoursSemaine__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_JoursSemaineFormule__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__QuoteLine__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__FinanceBookAccounting__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_societeFacturanteName__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxErrorMessage__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__ContractingMethod__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__PricingMethod__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_EstMigre__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__AllocatedRevenueAmount__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__RevenueLiabilityAmount__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__PendingBillings__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__CanceledBillings__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__TerminatedBillings__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__BilledAmountwithouttax__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__RevenueExpectedAmount__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__ProrateMultiplier__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_NombrePlace__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_NumBonCommande__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>AccountNumber</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_NumeroPurchaseOrder__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>true</checkedByDefault>
-            <field>OrderItemNumber</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxCountry__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_NumeroFacture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxPercentageApplied__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_PasDeSIRET__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_FirstInvoiceEndDate__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_CrecheCodePays__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>ListPrice</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>ShippingCountry</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__QuotedListPrice__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>BillingCountry</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__BlockPrice__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_PlanningTournant__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>TotalPrice</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_CrechePMI__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>UnitPrice</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_PrefixeNumFacture__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__BillableUnitPrice__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>SBQQ__PreserveBundle__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__OverrideBillableUnitPrice__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_PrestataireActuel__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__GroupUnitPrice__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_PrestataireActuelCreche__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__UnproratedNetPrice__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_PrivePublic__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Product2</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_ProcessRevenuCascade__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>OriginalOrderItem</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_CrecheProjet__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__RevisedOrderProduct__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>Owner</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Quantity</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_PSU__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__OrderedQuantity__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_PurchaseOrder__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__UsageFloorQuantity__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_CrecheRachat__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__GroupQuantity__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_RaisonSociale__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>AvailableQuantity</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_RC__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__QuotedQuantity__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__BundleRoot__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>blng__LegalEntityReference__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_RCS__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_Region__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__RevenueRecognitionRule__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>ShippingState</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__BillingRule__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>BillingState</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__BillingGLRule__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_RegionComFormule__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxRule__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_CrecheRegionCommerciale__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxGLRule__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_RegleFonctionnement__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__RequiredBy__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_RegularisationAuto__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__OrderProductBookings__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_CrecheRepas__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__Asset__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_Representant1__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__RevenueMostLikelyAmount__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_Representant2__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxStreet__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_ResponsableADV__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxStreet2__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_ResponsableServiceFamille__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__Status__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_RevenuMensuelFamille__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxStatus__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_CrecheRF__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__RevenueScheduleStatus__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_RFA__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__InvoiceRunStatusIndex__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_RIB__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__InvoiceRunProcessingStatus__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>ShippingStreet</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__SubscriptionPricing__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>BillingStreet</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxCounty__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_RUM__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__BilledTax__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_Scoring__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_TotalContractValue__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>Industry</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__TotalBilling__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>ShippingGeocodeAccuracy</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__BillingTreatment__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_Siege__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__BillingGLTreatment__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_SIREN__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxTreatment__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_SIRET__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxGLTreatment__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_SIRETChorus__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_TraitementLigneFacturationAvenant__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>Site</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_Tranche__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>Website</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__SubscriptionType__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_SituationFamiliale__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__ProductSubscriptionType__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_SocieteFacturanteCompte__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_TypeAccueil__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_Solde__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AccountSource</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_SourceMigration__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_SousActivite__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Statut__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheStatutAdhesion__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_StatutCreche__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>TickerSymbol</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Concurrence__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_TauxEffort__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Tech_NbOpportunitesGagnees__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Tech_AccountURL__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Fax</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Phone</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_TelephoneSupplementaire__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_TermeFacturation__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_Top100__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_TravailConcurrence__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Type</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecordType</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_TypeEntreprise__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_TypeContratPrincipal__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LPCR_TypeCreche__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__BillingType__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_TypeFacturation__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__ChargeType__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>blng__DefaultPaymentType__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>SBQQ__DimensionType__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_TypeReconduction__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>LPCR_Uplift__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_TypeStructure__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__IncludedUsage__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_TypeMensualisation__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>blng__TaxCity__c</field>
-            <table>Opportunity.Orders.OrderItems</table>
+            <field>LPCR_ImpactTauxEffort__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
-        <masterLabel>Produits commandés</masterLabel>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_CrecheNumStatutAdhesion__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LPCR_AdhesionStatusValue__c</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ShippingCity</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>BillingCity</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecordType.DeveloperName</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
+        </columns>
+        <masterLabel>Comptes</masterLabel>
     </sections>
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Owner.UserRole</field>
-            <table>Opportunity.Orders</table>
+            <field>Owner.LPCR_RegionCommerciale__c</field>
+            <table>Opportunity</table>
         </columns>
+        <masterLabel>Propriétaire de l&apos;opportunité</masterLabel>
+    </sections>
+    <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Account.Owner</field>
-            <table>Opportunity.Orders</table>
+            <field>Owner.UserRole</field>
+            <table>Opportunity.SBQQ__WebAccounts__r</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Account.LPCR_Statut__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Account.RecordType</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Account.TECH_IsOwner__c</field>
-            <table>Opportunity.Orders</table>
-        </columns>
-        <masterLabel>Comptes</masterLabel>
+        <masterLabel>Propriétaire du compte</masterLabel>
     </sections>
 </ReportType>
