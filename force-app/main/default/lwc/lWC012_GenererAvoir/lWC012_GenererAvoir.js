@@ -1,6 +1,7 @@
 import { LightningElement , api } from 'lwc';
 import  GenererAvoir from '@salesforce/apex/APC011_GenererAvoir.GenererAvoir';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { CloseActionScreenEvent } from 'lightning/actions';
 
 export default class LWC012_GenererAvoir extends LightningElement {
     @api recordId;
@@ -51,4 +52,7 @@ export default class LWC012_GenererAvoir extends LightningElement {
         const closeQA = new CustomEvent('close');
         this.dispatchEvent(closeQA);
     }
+    closeAction() {
+        this.dispatchEvent(new CloseActionScreenEvent());
+      }
 }
