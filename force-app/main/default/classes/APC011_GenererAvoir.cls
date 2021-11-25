@@ -10,15 +10,13 @@ public with sharing class APC011_GenererAvoir {
     public Map<String,String> mapCompanyDets {get;set;}
     public Map<String,String> mapAvoirDets {get;set;}
     public Date periodAvoir {get;set;}
-    public Date periodAvoirFin {get;set;}
     public Decimal montantAvoir {get;set;}
     public APC011_GenererAvoir(ApexPages.StandardController sc){
         String baseUrl = URL.getSalesforceBaseUrl().toExternalForm();
         String orgId=UserInfo.getOrganizationId();
         AvoirID=sc.getId();
        
-        List<Document> lstDocHead=[Select id,Name from Document where Name IN ('LCPR_AvoirFb','LPCR_AvoirYoutube','LCPR_AvoirTwitter','LCPR_AvoirIn','LCPR_AvoirJoinus','LCPR_AvoirInsta','LPCR_Upper') order by Name asc ];
-
+        List<Document> lstDocHead=[Select id,Name from Document where Name IN ('LCPR_AvoirFb','LPCR_AvoirYoutube','LCPR_AvoirTwitter','LCPR_AvoirIn','LCPR_AvoirJoinus','LCPR_AvoirInsta','LPCR_Upper') order by Name asc];
         //fb
         urlFB=Test.isRunningTest()?'': baseUrl+'/servlet/servlet.ImageServer?id='+lstDocHead[0].id+'&oid='+orgId;
         //linkedin
@@ -35,27 +33,16 @@ public with sharing class APC011_GenererAvoir {
         //company dets
         //mapCompanyDets=new  Map<String,String> ();
         //mapCompanyDets.put('hu','pari');
-        for(LPCR_Avoir__c avoir : [SELECT LPCR_CompteClient__c,LPCR_DateFinAvoir__c, LPCR_CompteClient__r.Name,LPCR_CompteClient__r.LPCR_IdSage__c,LPCR_CompteClient__r.LPCR_NumeroAllocataire__c,LPCR_CompteClient__r.Owner.FirstName,LPCR_CompteClient__r.Owner.LastName,LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName,LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName,LPCR_CompteClient__r.BillingCity, LPCR_CompteClient__r.BillingCountry,LPCR_CompteClient__r.BillingState, LPCR_CompteClient__r.BillingStreet,LPCR_CompteClient__r.BillingPostalCode ,Name,LPCR_NomSociete__r.Name,LPCR_Description__c ,LPCR_DateFacture__c ,LPCR_Montant__c ,LPCR_CompteClient__r.LPCR_SocieteFacturanteCompte__c ,LPCR_CompteClient__r.LPCR_SocieteFacturanteCompte__r.Name from LPCR_Avoir__c where ID=:AvoirID]){
-            String addCompteClient='';
-            if(avoir.LPCR_CompteClient__r.BillingStreet != null){
-                addCompteClient=addCompteClient+avoir.LPCR_CompteClient__r.BillingStreet;
-            }
-            if(avoir.LPCR_CompteClient__r.BillingPostalCode != null ){
-                addCompteClient=addCompteClient+' '+avoir.LPCR_CompteClient__r.BillingPostalCode;
-            }
-            if(avoir.LPCR_CompteClient__r.BillingCity != null ){
-                addCompteClient=addCompteClient+' '+avoir.LPCR_CompteClient__r.BillingCity;
-            }
+        for(LPCR_Avoir__c avoir : [SELECT LPCR_CompteClient__c, LPCR_CompteClient__r.Name,LPCR_CompteClient__r.LPCR_IdSage__c,LPCR_CompteClient__r.LPCR_NumeroAllocataire__c,LPCR_CompteClient__r.Owner.FirstName,LPCR_CompteClient__r.Owner.LastName,LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName,LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName,LPCR_CompteClient__r.BillingCity, LPCR_CompteClient__r.BillingCountry,LPCR_CompteClient__r.BillingState, LPCR_CompteClient__r.BillingStreet,LPCR_CompteClient__r.BillingPostalCode ,Name,LPCR_NomSociete__r.Name,LPCR_Description__c ,LPCR_DateFacture__c ,LPCR_Montant__c from LPCR_Avoir__c where ID=:AvoirID]){
             if(avoir.LPCR_CompteClient__c == null){
-                mapCompanyDets=new  Map<String,String>{'compteclien' => ' ','name'=>' ' ,'address'=>' ','owner'=>' ','adv'=>' ','nomsociete'=>' ' ,'socfac' =>' '};
+                mapCompanyDets=new  Map<String,String>{'compteclien' => ' ','name'=>' ' ,'address'=>' ','owner'=>' ','adv'=>' ','nomsociete'=>' ' };
             }else{
-                mapCompanyDets=new  Map<String,String>{'compteclien' => avoir.LPCR_CompteClient__r.LPCR_IDSage__c != null? avoir.LPCR_CompteClient__r.LPCR_IDSage__c: '','name'=>avoir.LPCR_CompteClient__r.Name != null ?avoir.LPCR_CompteClient__r.Name :'' ,'address'=>addCompteClient,'owner'=>avoir.LPCR_CompteClient__r.Owner.FirstName != null ?avoir.LPCR_CompteClient__r.Owner.FirstName :'' +' '+avoir.LPCR_CompteClient__r.Owner.LastName != null ? avoir.LPCR_CompteClient__r.Owner.LastName :'','adv'=>avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName != null ? avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName : ''+' '+avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName != null ?avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName:'' ,'nomsociete'=>avoir.LPCR_NomSociete__c!= null ?avoir.LPCR_NomSociete__r.Name  :'','socfac' =>avoir.LPCR_CompteClient__r.LPCR_SocieteFacturanteCompte__c != null ?avoir.LPCR_CompteClient__r.LPCR_SocieteFacturanteCompte__r.Name :''};
+                mapCompanyDets=new  Map<String,String>{'compteclien' => avoir.LPCR_CompteClient__r.Name != null? avoir.LPCR_CompteClient__r.Name: '','name'=>avoir.LPCR_CompteClient__r.Name != null ?avoir.LPCR_CompteClient__r.Name :'' ,'address'=>avoir.LPCR_CompteClient__r.BillingStreet != null ? avoir.LPCR_CompteClient__r.BillingStreet :'' +' '+avoir.LPCR_CompteClient__r.BillingPostalCode != null ?avoir.LPCR_CompteClient__r.BillingPostalCode :'' +' '+avoir.LPCR_CompteClient__r.BillingCity != null ? avoir.LPCR_CompteClient__r.BillingCity :'','owner'=>avoir.LPCR_CompteClient__r.Owner.FirstName != null ?avoir.LPCR_CompteClient__r.Owner.FirstName :'' +' '+avoir.LPCR_CompteClient__r.Owner.LastName != null ? avoir.LPCR_CompteClient__r.Owner.LastName :'','adv'=>avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName != null ? avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.FirstName : ''+' '+avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName != null ?avoir.LPCR_CompteClient__r.LPCR_ResponsableADV__r.LastName:'' ,'nomsociete'=>avoir.LPCR_NomSociete__r.Name != null ?avoir.LPCR_NomSociete__r.Name  :''};
             }
             
             
             mapAvoirDets= new  Map<String,String>{'avoirName'=>avoir.Name != null ?avoir.Name :'' ,'datetoday'=> System.now().format('dd/MM/yyyy'),'description'=>avoir.LPCR_Description__c!= null ? avoir.LPCR_Description__c:'' };
             periodAvoir=avoir.LPCR_DateFacture__c;
-            periodAvoirFin=avoir.LPCR_DateFinAvoir__c;
             montantAvoir=avoir.LPCR_Montant__c;
         }
         
@@ -97,7 +84,7 @@ public with sharing class APC011_GenererAvoir {
             FROM ContentVersion 
             WHERE Id =: contentVersionId
         ].ContentDocumentId;
-        cdl.LinkedEntityId = recordId;
+        cdl.LinkedEntityId = '0011x00001HQ8AXAA1';
         // ShareType is either 'V', 'C', or 'I'
         // V = Viewer, C = Collaborator, I = Inferred
         cdl.ShareType = 'V';
