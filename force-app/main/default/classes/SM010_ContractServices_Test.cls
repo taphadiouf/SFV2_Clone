@@ -312,8 +312,10 @@ public class SM010_ContractServices_Test {
             Opportunity opp2 = [SELECT Id, name FROM Opportunity WHERE name = 'test2'];
 
             SBQQ__Quote__c quote = Database.query(
+
                 'SELECT Id,LPCR_DureeContratJour__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE  SBQQ__Account__c = \''+acc.id+'\' AND SBQQ__Opportunity2__c = \''+opp.id+'\''
             );
+
             Order order = Database.query('SELECT Id , Status ,SBQQ__Contracted__c FROM Order WHERE SBQQ__Quote__c  = \'' + quote.Id + '\'');
 
             SBQQ__Quote__c quote2 = Database.query(
@@ -414,6 +416,10 @@ public class SM010_ContractServices_Test {
 
             Date lastMonth = Date.newInstance(System.today().Year(), System.today().month() - 1, System.today().day() + 1);
             Account acc = [SELECT Id, name FROM Account WHERE name = 'test'];
+
+            //SBQQ__Quote__c quote = Database.query('SELECT Id,LPCR_DureeContratJour__c,LPCR_IndexationConvenue__c,LPCR_TypeFacturation__c,SBQQ__BillingFrequency__c,LPCR_MasterDevis__c ,LPCR_DateDebut__c,LPCR_DateFin__c,LPCR_ChiffreAffaire__c, LPCR_MethodeRenouvellement__c,SBQQ__RenewalUpliftRate__c,LPCR_TypeEntreprise__c,LPCR_PlanningEnfant__c FROM SBQQ__Quote__c WHERE SBQQ__BillingCity__c = \'test\'')
+
+
             Opportunity opp = [SELECT Id, name FROM Opportunity WHERE name = 'test'];
 
             SBQQ__Quote__c quote = Database.query(
