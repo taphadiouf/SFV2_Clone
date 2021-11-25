@@ -228,7 +228,7 @@
     </availableFields>
     <description>Quote Line fields to display in the drawer for standard products.</description>
     <displayedFields>
-        <field>LPCR_Remise__c</field>
+        <field>LPCR_RemiseSum__c</field>
         <isFieldManaged>false</isFieldManaged>
         <isRequired>false</isRequired>
     </displayedFields>
