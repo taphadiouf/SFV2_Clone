@@ -9494,6 +9494,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>blng__LegalEntity__c.LPCR_IdExterne_Compte__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>blng__LegalEntity__c.LPCR_RCS__c</field>
         <readable>true</readable>
     </fieldPermissions>
