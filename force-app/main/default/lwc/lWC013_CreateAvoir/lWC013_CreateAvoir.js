@@ -5,9 +5,6 @@ import {
   wire,track
 } from 'lwc';
 import getLigneFacture from '@salesforce/apex/APC012_CreateAvoir.getLigneFacture';
-
-import getPicklistvalues from '@salesforce/apex/APC012_CreateAvoir.getPicklistvalues';
-
 import saveAvoir from '@salesforce/apex/APC012_CreateAvoir.saveAvoir';
 import { CloseActionScreenEvent } from 'lightning/actions';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
@@ -57,31 +54,8 @@ export default class lWC013_CreateAvoir extends LightningElement {
         this.showAll=true;
     }
   }
-
-  handleChangeNature(event){
-    this.natureavoir = event.detail.value;
-  }
   
-  @wire(getPicklistvalues, {})
-  getPicklistvaluesF({
-      error,
-      data
-  }) {
-      if (data) {
-          this.optionsNature = [];
-          for (let i = 0; i < data.length; i++) {
-              this.optionsNature.push({
-                  label: data[i],
-                  value: data[i]
-              });
-          }
-      }
-      if (error) {
-          console.error(error);
-      }
-
-  }
-
+  
   @wire(getLigneFacture, { invId :'$recordId'})
     wiredaccount({error, data}){
       if(data){
@@ -254,10 +228,7 @@ export default class lWC013_CreateAvoir extends LightningElement {
     
   }
    objettosend.TypeAvoir=this.value
-
-   objettosend.NatureAvoir=this.natureavoir
     // debugger
-
     saveAvoir({resp : JSON.stringify(objettosend)})
     .then(result => {
       this.loaded = true;
