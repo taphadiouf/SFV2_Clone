@@ -109,7 +109,7 @@ public with sharing class SM008_QuoteServices {
                     LPCR_FraisDossier__c,
                     LPCR_Section__c,
                     LPCR_CompteFacturation__c,
-                    LPCR_IndexationConvenue__c
+                    LPCR_IndexationConvenue__c,LPCR_Indexation__c  ,LPCR_MontantIndexation__c
                 FROM Contract
                 WHERE Id = :amendedContractIds
             ]
@@ -210,6 +210,7 @@ public with sharing class SM008_QuoteServices {
                         if (eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == referencementApprRecTypeId) {
                             eachQuote.LPCR_MasterDevis__c = contractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__RenewedContract__c).LPCR_MasterDevis__c;
                         }
+                        
                     }
                 }
             }
@@ -237,19 +238,26 @@ public with sharing class SM008_QuoteServices {
                         if (eachQuote.RecordTypeId == referencementRecTypeId || eachQuote.RecordTypeId == referencementApprRecTypeId) {
                             eachQuote.LPCR_MasterDevis__c = amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_MasterDevis__c;
                         }
-                    }
+                        if(eachQuote.LPCR_TypeAvenant__c !='Amendement d\'indexation'){
+                            eachQuote.LPCR_Indexation__c=amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_Indexation__c;
+                            eachQuote.LPCR_MontantIndexationContrat__c=amendedContractMap.get(opptyMap.get(eachQuote.SBQQ__Opportunity2__c).SBQQ__AmendedContract__c).LPCR_MontantIndexation__c;
+                        }
+                
+                    
                 }
             }
         }
     }
+}
 
-    public static void setB2CQuotesFromContract(
-        List<SBQQ__Quote__c> quotesList,
+    public static void setB2CQuotesFromContract(List<SBQQ__Quote__c> quotesList,
         Map<ID, Account> acctMap,
-        Map<Id, Opportunity> opptyMap,
-        Map<Id, Contract> amendedContractMap,
-        Map<Id, Contract> contractMap
+        Map<Id,Opportunity> opptyMap,
+        Map<Id,Contract> amendedContractMap,
+        Map<Id,Contract> contractMap
     ) {
+
+     
         Date dueDateRenewal = date.newInstance(System.Today().year(), 8, 31);
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
         Date nextYearDueDateRenewal = date.newInstance(System.Today().year() + 1, 8, 31);
@@ -390,7 +398,7 @@ public with sharing class SM008_QuoteServices {
         }
     }
 
-    public static void setB2BQuotesFromContract(List<SBQQ__Quote__c> quotesList, Map<ID, Account> acctMap, Map<Id, Opportunity> opptyMap, Map<Id, Contract> contractMap) {
+    public static void setB2BQuotesFromContract (List<SBQQ__Quote__c> quotesList, Map<ID, Account> acctMap, Map<Id, Opportunity> opptyMap, Map<Id, Contract> contractMap) {
         Date dueDateRenewal = date.newInstance(System.Today().year(), 8, 31);
         Date dueDateQuote = date.newInstance(System.Today().year(), 12, 31);
         Date nextYearDueDateRenewal = date.newInstance(System.Today().year() + 1, 8, 31);
@@ -1178,20 +1186,20 @@ public with sharing class SM008_QuoteServices {
     public static void updateDateRevision(List<SBQQ__Quote__c> quotesList, Map<Id, SBQQ__Quote__c> oldQuotesMap) {
         Date newYear;
 
-        for (SBQQ__Quote__c newQuote : quotesList)
-            if (oldQuotesMap == null || (newQuote.SBQQ__Status__c == QUOTE_STATUS_DRAFT && newQuote.SBQQ__StartDate__c != oldQuotesMap.get(newQuote.Id).SBQQ__StartDate__c)) {
-                if (newQuote.LPCR_InitAutoAvecDateDebut__c) {
-                    newQuote.LPCR_DateRevisionPrix__c = newQuote.SBQQ__StartDate__c.addyears(1);
-                } else if (
-                    (newQuote.RecordTypeId == reservataireRecTypeId || newQuote.RecordTypeId == reservataireApprouveRecTypeId) ||
-                    ((newQuote.RecordTypeId == acceuilRecTypeId || newQuote.RecordTypeId == acceuilApprRecTypeId) && newQuote.LPCR_TypeQuote__c == QUOTE_TYPE_MAC)
-                ) {
-                    newYear = newQuote.SBQQ__StartDate__c.addyears(1);
-                    newQuote.LPCR_DateRevisionPrix__c = date.newInstance(newYear.year(), 1, 1);
-                } else if ((newQuote.RecordTypeId == acceuilRecTypeId || newQuote.RecordTypeId == acceuilApprRecTypeId) && newQuote.LPCR_TypeQuote__c == QUOTE_TYPE_MICRO) {
-                    newYear = newQuote.SBQQ__StartDate__c.addyears(1);
-                    newQuote.LPCR_DateRevisionPrix__c = date.newInstance(newYear.year(), 9, 1);
-                }
+        for(SBQQ__Quote__c newQuote : quotesList) if(oldQuotesMap==null ||
+        (newQuote.SBQQ__Status__c==QUOTE_STATUS_DRAFT&&
+                (newQuote.SBQQ__StartDate__c!=oldQuotesMap.get(newQuote.Id).SBQQ__StartDate__c ||Trigger.isUpdate))){ 
+            if(newQuote.LPCR_InitAutoAvecDateDebut__c){
+                newQuote.LPCR_DateRevisionPrix__c = newQuote.SBQQ__StartDate__c.addyears(1);
+            }else if(((newQuote.RecordTypeId==reservataireRecTypeId || newQuote.RecordTypeId==reservataireApprouveRecTypeId)  && !newQuote.LPCR_InitAutoAvecDateDebut__c)|| 
+            ((newQuote.RecordTypeId==acceuilRecTypeId||newQuote.RecordTypeId==acceuilApprRecTypeId) &&
+            newQuote.LPCR_TypeQuote__c==QUOTE_TYPE_MAC)){
+                newYear = newQuote.SBQQ__StartDate__c.addyears(1);
+                newQuote.LPCR_DateRevisionPrix__c = date.newInstance(newYear.year(), 1, 1);
+            } else if ((newQuote.RecordTypeId == acceuilRecTypeId || newQuote.RecordTypeId == acceuilApprRecTypeId) && newQuote.LPCR_TypeQuote__c == QUOTE_TYPE_MICRO) {
+                newYear = newQuote.SBQQ__StartDate__c.addyears(1);
+                newQuote.LPCR_DateRevisionPrix__c = date.newInstance(newYear.year(), 9, 1);
             }
-    }
+        }
+        }
 }
