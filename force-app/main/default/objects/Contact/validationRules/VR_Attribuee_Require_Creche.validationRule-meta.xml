@@ -5,7 +5,7 @@
     <description>On ne doit pas pouvoir passer une préinscription au statut P sans que la checkbox &quot;Dossier complet&quot; soit cochée et que la crèche ait été renseignée</description>
     <errorConditionFormula>AND(
 NOT($Permission.LPCR_ByPass_VR),
-TEXT(LPCR_PreinscriptionStatut__c )=&quot;Attribuée&quot;,
+TEXT(LPCR_StatutPreinscription__c )=&quot;Attribuée&quot;,
 ISBLANK(LPCR_CrechePreinscription__c)
 )</errorConditionFormula>
     <errorDisplayField>LPCR_CrechePreinscription__c</errorDisplayField>
