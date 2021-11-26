@@ -153,7 +153,7 @@ public class SM015_InvoiceServices_Test {
                 cnLine.blng__CreditNoteLineDate__c = date.today();
                 cnLine.blng__Status__c = 'Draft';
                 cnLine.blng__Product__c = prod.Id;
-                cnLine.blng__Subtotal__c = 200;
+                cnLine.blng__TotalAmount__c = 200;
 
                 insert cnLine;
 
@@ -280,6 +280,11 @@ public class SM015_InvoiceServices_Test {
             blng__CreditNote__c creditNote = [SELECT Id, blng__Status__c FROM blng__CreditNote__c WHERE blng__Account__c =: account.id];
             creditNote.blng__Status__c = 'Posted';
             update creditNote;
+
+            blng__CreditNoteLine__c cnLine = [SELECT Id, blng__Status__c FROM blng__CreditNoteLine__c WHERE blng__CreditNote__c =: creditNote.id LIMIT 1];
+
+            cnLine.blng__Status__c = 'Posted';
+            update cnLine;
             
             blng__Invoice__c updatedInvoiceList = [SELECT Id, LPCR_CongesPrisPeriode__c FROM blng__Invoice__c WHERE LPCR_Commentaire__c = 'test' LIMIT 1];
             Decimal updatedInvoice = updatedInvoiceList.LPCR_CongesPrisPeriode__c;
