@@ -1962,7 +1962,12 @@
         <editable>true</editable>
         <field>Contract.LPCR_Indexation__c</field>
         <readable>true</readable>
-    </fieldPermissions>  
+    </fieldPermissions> 
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contract.LPCR_MontantIndexation__c</field>
+        <readable>true</readable>
+    </fieldPermissions> 
     <fieldPermissions>
         <editable>true</editable>
         <field>Event.Description</field>
@@ -5532,6 +5537,10 @@
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.LPCR_IndexationQuote__c</field>
         <readable>true</readable>
+    </fieldPermissions><fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_MontantIndexationContrat__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -6436,6 +6445,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Quote__c.LPCR_Indexation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__Quote__c.LPCR_MontantIndexationContrat__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
