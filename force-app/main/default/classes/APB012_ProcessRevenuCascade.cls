@@ -15,7 +15,7 @@ global class APB012_ProcessRevenuCascade implements Database.Batchable<sObject>,
 
         UM001_LogManager.writeLogActivityWithoutFuture(ClassName,'start', 'Batch' , null, 'Starting Batch', UM010_Constant.SUCCESS);
 
-        return Database.getQueryLocator([select id,LPCR_ProcessRevenuCascade__c from account where LPCR_ProcessRevenuCascade__c = true and id ='0013O00000nLkVUQA0']);
+        return Database.getQueryLocator([select id,LPCR_ProcessRevenuCascade__c from account where LPCR_ProcessRevenuCascade__c = true]);
     }
     
     global void execute(Database.BatchableContext BC, List<Account> scope) {
