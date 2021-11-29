@@ -22,7 +22,7 @@ public class SM020_PresinscriptionInvockeService {
         
         PresinscriptionParameter param = presinscriptionParameters.get(0);
         LPCR_Preinscription__c preinscription = [SELECT Id, Name, LPCR_ContactDirectriceCreche__c,LPCR_TelephoneDirectrice__c,LPCR_ContactInscriptionsCreche__c,
-                                                        LPCR_AdresseCreche__c,LPCR_Rep1Email__c, LPCR_Creche__r.Name,LPCR_CompteEntreprise__r.Name, LPCR_Creche__c,LPCR_CompteEntreprise__c,LPCR_DateEntreeCreche__c, LPCR_ContactParent__c, LPCR_ContactParent__r.email 
+                                                        LPCR_AdresseCreche__c,LPCR_Rep1Email__c, LPCR_Creche__r.Name,LPCR_CompteEntreprise__r.Name, LPCR_Creche__c,LPCR_CompteEntreprise__c,LPCR_DateEntreeCreche__c, LPCR_ContactParent__c, LPCR_ContactParent__r.email ,LPCR_Creche__r.LPCR_IdExterne_Compte__c
                                                 FROM LPCR_Preinscription__c 
                                                 WHERE Id =: param.presinscriptionId];
 
