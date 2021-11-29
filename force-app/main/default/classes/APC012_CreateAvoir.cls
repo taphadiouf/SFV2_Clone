@@ -18,11 +18,15 @@ public with sharing class APC012_CreateAvoir {
     @AuraEnabled(cacheable=true)
     public static String getLigneFacture(Id invId){
         List<LigneFactureWrapper> ligneFactureWrapperList = new List<LigneFactureWrapper>();
-        for( blng__InvoiceLine__c ligneFacture :  [SELECT Id,Name, LPCR_MontantAvoirLigneFacture__c,blng__Invoice__r.LPCR_SocieteFacturante__c,blng__Invoice__r.blng__Account__r.LPCR_IDSage__c,blng__Invoice__r.blng__Order__r.SBQQ__Quote__r.LPCR_SocieteFacturante__r.Name, blng__EndDate__c, blng__StartDate__c  FROM blng__InvoiceLine__c where blng__Invoice__c  =:invId]){
-                ligneFactureWrapperList.add(new LigneFactureWrapper(
-                    ligneFacture.Id,
-                    ligneFacture.Name,    
-                    ligneFacture.LPCR_MontantAvoirLigneFacture__c ,ligneFacture.blng__Invoice__r.blng__Order__r.SBQQ__Quote__r.LPCR_SocieteFacturante__r.Name,ligneFacture.blng__Invoice__r.blng__Account__r.LPCR_IDSage__c));
+        for( blng__InvoiceLine__c ligneFacture :  [SELECT Id,Name, LPCR_MontantAvoirLigneFacture__c,blng__Invoice__r.LPCR_SocieteFacturante__c,blng__Invoice__r.blng__Account__r.LPCR_IDSage__c,blng__Invoice__r.blng__Order__r.SBQQ__Quote__r.LPCR_SocieteFacturante__r.Name, blng__EndDate__c, blng__StartDate__c,blng__TotalAmount__c ,LPCR_Creche__r.Name,blng__Quantity__c FROM blng__InvoiceLine__c where blng__Invoice__c  =:invId]){
+            Datetime dateTimeDebut=ligneFacture.blng__StartDate__c != null ? ligneFacture.blng__StartDate__c:null;
+            Datetime dateTimeFin=ligneFacture.blng__EndDate__c != null ? ligneFacture.blng__EndDate__c:null;
+            String datedebut=ligneFacture.blng__StartDate__c != null ? dateTimeDebut.format('dd-MM-YYYY'):'';
+            String datefin=ligneFacture.blng__EndDate__c != null ? dateTimeFin.format('dd-MM-YYYY'):'';
+            ligneFactureWrapperList.add(new LigneFactureWrapper(
+                ligneFacture.Id,
+                ligneFacture.Name,    
+                ligneFacture.blng__TotalAmount__c ,ligneFacture.blng__Invoice__r.blng__Order__r.SBQQ__Quote__r.LPCR_SocieteFacturante__r.Name,ligneFacture.blng__Invoice__r.blng__Account__r.LPCR_IDSage__c,ligneFacture.LPCR_Creche__r.Name,datedebut,datefin,ligneFacture.blng__Quantity__c));
         }
         return JSON.serialize(ligneFactureWrapperList);
     }
@@ -32,14 +36,23 @@ public with sharing class APC012_CreateAvoir {
         private Decimal Montant;
         private String socfac;
         private String ctNum;
+        private String Creche;
+        private String datedebut;
+        private String datefin;
+        private Decimal qty;
+        
 
        
-        LigneFactureWrapper(String recId,String name, Decimal Montant,String socfac,String ctNum){
+        LigneFactureWrapper(String recId,String name, Decimal Montant,String socfac,String ctNum,String Creche,String datedebut,String datefin,Decimal qty){
           this.recId = recId;
           this.name = name;
           this.Montant = Montant;
           this.socfac=socfac;
           this.ctNum=ctNum;
+          this.Creche=Creche;
+          this.datedebut=datedebut;
+          this.datefin=datefin;
+          this.qty=qty;
 
         }
     }
@@ -168,7 +181,11 @@ public with sharing class APC012_CreateAvoir {
         //update total field on invoice 
         if(String.isEmpty(errorMsg) && typeAvoir=='Avoir partiel'){
             Decimal totalPartiel=sommePartiel+sommePartielCustom;
-            lstfacture.add(new blng__Invoice__c(Id=invID,LPCR_MontantAvoirFacture__c=totalPartiel));
+            lstfacture.add(new blng__Invoice__c(Id=invID,LPCR_MontantAvoirFacture__c=totalPartiel,LPCR_TypeAvoir__c='Partiel',LPCR_CommentaireIndividuel__c=mapSrtr.containsKey('nomavoir')?(String)mapSrtr.get('nomavoir'):''));
+        }
+        if(String.isEmpty(errorMsg) && typeAvoir=='Avoir total'){
+            lstfacture.add(new blng__Invoice__c(Id=invID,LPCR_TypeAvoir__c='Total',LPCR_DescriptionAvoirFacture__c=mapSrtr.containsKey('descavoir')?(String)mapSrtr.get('descavoir'):'',LPCR_CommentaireIndividuel__c=mapSrtr.containsKey('nomavoir')?(String)mapSrtr.get('nomavoir'):''));
+      
         }
         try{
             if(lstfacture.size() >0 )update lstfacture;
