@@ -94,11 +94,11 @@ public class SM020_PresinscriptionInvockeService {
     }
     
     @future(callout = true)
-    public static void callout(string fromemail, string to, string body, string template, boolean flagDoc, String presCrechId){
+    public static void callout(string fromemail, string to, string body, string template, boolean flagDoc, Id presCrechId){
         List<SM019_DocumentList_Callout.pageResultWrapper> lstdocinfo;
         List<SM016_SendMail_Callout.Document> lstDoc;
         if(flagDoc){
-            SM019_DocumentList_Callout.DocumentListFullResponse fullResponse2 = SM019_DocumentList_Callout.getDocumentListCallout(new List<String>{presCrechId});
+            SM019_DocumentList_Callout.DocumentListFullResponse fullResponse2 = SM019_DocumentList_Callout.getDocumentListCallout(new List<String>{String.valueOf(presCrechId)});
             if(fullResponse2.totalResultSize > 0) {
                 lstdocinfo = new List<SM019_DocumentList_Callout.pageResultWrapper>();
                 for(SM019_DocumentList_Callout.pageResultWrapper eachDoc : fullResponse2.pageResult){
