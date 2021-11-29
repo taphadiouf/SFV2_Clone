@@ -360,6 +360,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Account.LPCR_CrecheLatitude__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.LPCR_CrecheLongitude__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Account.LPCR_CrecheMarcheurs__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2195,7 +2205,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Event.LPCR_Compte_rendu__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Event.LPCR_SousTypeTache__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event.LPCR_Echeance__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2226,6 +2246,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>LPCR_Avoir__c.LPCR_DateFacture__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event.LPCR_SousTypeRdv__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2270,12 +2295,32 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_Avoir__c.LPCR_CompteClient__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Avoir__c.LPCR_Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_Avoir__c.LPCR_NatureAvoirFacture__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>LPCR_Avoir__c.LPCR_Montant__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>LPCR_Avoir__c.LPCR_Statut__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LPCR_Avoir__c.LPCR_NomSociete__c</field>
         <readable>true</readable>
     </fieldPermissions>
    
@@ -5151,17 +5196,27 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Opportunity.LPCR_IndexationConvenue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.LPCR_MasterDevis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Opportunity.LPCR_Micro__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Opportunity.LPCR_MotifAbandon__c</field>
+        <field>Opportunity.LPCR_NombrePotentielPlace__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Opportunity.LPCR_NombrePotentielPlace__c</field>
+        <field>Opportunity.LPCR_MotifAbandon__c</field>
         <readable>true</readable>
     </fieldPermissions> 
     <fieldPermissions>
@@ -5197,6 +5252,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.LPCR_SocieteFacturanteOpport__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.LPCR_TypeAO__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -7930,6 +7990,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_Indexation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__QuoteLine__c.LPCR_InferieurPP__c</field>
         <readable>true</readable>
@@ -7942,6 +8007,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__QuoteLine__c.LPCR_Majoration__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__QuoteLine__c.LPCR_NombreDeJour__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9071,12 +9141,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_MotifAnnulationDevis__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_NombreAgrmentCrcheSurSection__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>SBQQ__Quote__c.LPCR_NombreFraisDossier__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>SBQQ__Quote__c.LPCR_NombreJoursCummul__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9741,6 +9821,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>SBQQ__Subscription__c.LPCR_ContratFamille__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>SBQQ__Subscription__c.LPCR_Majoration__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -10147,6 +10232,46 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>SBQQ__Subscription__c.SBQQ__UnitCost__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__SummaryVariable__c.SBQQ__AggregateField__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__SummaryVariable__c.SBQQ__AggregateFunction__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__SummaryVariable__c.SBQQ__CombineWith__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__SummaryVariable__c.SBQQ__CompositeOperator__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__SummaryVariable__c.SBQQ__ConstraintField__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__SummaryVariable__c.SBQQ__FilterField__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__SummaryVariable__c.SBQQ__FilterValue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>SBQQ__SummaryVariable__c.SBQQ__Operator__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
