@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VR_AdresseFacturationObligatoire</fullName>
+    <active>true</active>
+    <description>Si un contact est renseigné en tant que représentant 1 dans un compte famille alors il doit obligatoirement avoir une adresse pour la facturation</description>
+    <errorConditionFormula>AND(
+NOT( $Permission.LPCR_ByPass_VR ),
+RecordType.DeveloperName = &apos;Famille&apos;,
+ISPICKVAL(Status,&quot;Converti&quot;), 
+ISBLANK(Address)
+				)</errorConditionFormula>
+    <errorMessage>L&apos;adresse est obligatoire pour le demandeur.</errorMessage>
+</ValidationRule>
