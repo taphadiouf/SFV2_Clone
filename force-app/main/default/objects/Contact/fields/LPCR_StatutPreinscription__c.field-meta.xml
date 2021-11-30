@@ -9,53 +9,6 @@
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
-        <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Nouveau</fullName>
-                <default>false</default>
-                <label>Nouveau</label>
-            </value>
-            <value>
-                <fullName>Option</fullName>
-                <default>false</default>
-                <label>Option</label>
-            </value>
-            <value>
-                <fullName>Recommandation</fullName>
-                <default>false</default>
-                <label>Recommandation</label>
-            </value>
-            <value>
-                <fullName>Recommandation validée</fullName>
-                <default>false</default>
-                <label>Recommandation validée</label>
-            </value>
-            <value>
-                <fullName>Attribuée</fullName>
-                <default>false</default>
-                <label>Attribuée</label>
-            </value>
-            <value>
-                <fullName>Confirmé</fullName>
-                <default>false</default>
-                <label>Confirmé</label>
-            </value>
-            <value>
-                <fullName>Inscrit</fullName>
-                <default>false</default>
-                <label>Inscrit</label>
-            </value>
-            <value>
-                <fullName>Annulé</fullName>
-                <default>false</default>
-                <label>Annulé</label>
-            </value>
-            <value>
-                <fullName>Liste d’attente</fullName>
-                <default>false</default>
-                <label>Liste d’attente</label>
-            </value>
-        </valueSetDefinition>
+        <valueSetName>LPCR_StatutInscription</valueSetName>
     </valueSet>
 </CustomField>

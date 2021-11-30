@@ -1487,6 +1487,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Contact.LPCR_StatutPreinscription__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Contact.LPCR_TypeAllocataire__c</field>
         <readable>true</readable>
     </fieldPermissions>
