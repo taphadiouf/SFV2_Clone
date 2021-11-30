@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LPCR_Revalorisation25Text__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( LPCR_Revalorisation25__c = True, &quot;Le prix de vente par Berceau indiqué sur le bon d’achat pourra être révisé à chaque date d’anniversaire du bon d’achat, le prix de vente par Berceau sera révisé automatiquement et de plein droit de 2.5%.&quot;, &quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Revalorisation 2,5% Text</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
