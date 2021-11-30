@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>LPCR_Indexation__c</fullName>
-    <defaultValue>false</defaultValue>
-    <description>champ pour determiner si le contrat a ete indexé</description>
+    <fullName>LPCR_MontantIndexation__c</fullName>
     <externalId>false</externalId>
-    <label>LPCR_Indexation</label>
+    <label>LPCR_MontantIndexation</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
-    <type>Checkbox</type>
+    <type>Currency</type>
 </CustomField>
