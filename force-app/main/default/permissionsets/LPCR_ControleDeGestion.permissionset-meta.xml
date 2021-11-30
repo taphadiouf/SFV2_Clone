@@ -2841,6 +2841,7 @@
         <field>LPCR_Preinscription__c.LPCR_EnregistreeBrouillon__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Preinscription__c.LPCR_AmplitudeHoraireLundi__c</field>
         <readable>true</readable>

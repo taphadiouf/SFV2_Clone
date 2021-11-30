@@ -2907,6 +2907,7 @@
         <field>LPCR_Avoir__c.LPCR_Statut__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>LPCR_Avoir__c.LPCR_TypeAvoir__c</field>
         <readable>true</readable>
